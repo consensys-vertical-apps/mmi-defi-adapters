@@ -1327,6 +1327,7 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     StargatePoolArbitrumLpToken,
   ],
+
   [
     metadataKey({
       protocolId: Protocol.Stargate,
@@ -1336,6 +1337,7 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     StargatePoolEthereumLpToken,
   ],
+
   [
     metadataKey({
       protocolId: Protocol.Stargate,

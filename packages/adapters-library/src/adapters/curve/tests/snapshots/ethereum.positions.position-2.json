@@ -75,7 +75,6 @@
           "name": "Curve.fi DAI/USDC/USDT",
           "symbol": "3Crv",
           "decimals": 18,
-          "guageType": "single",
           "balanceRaw": "6357359611959254406n",
           "type": "protocol",
           "tokens": [

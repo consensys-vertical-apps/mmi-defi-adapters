@@ -18,15 +18,15 @@
           "symbol": "S*LUSD",
           "decimals": 6,
           "type": "protocol",
-          "profit": 0.0001404419162771009,
-          "performance": 0.001411604354555208,
+          "profit": 0.00014044261456847007,
+          "performance": 0.001411604354555205,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": 0.09949099110094038,
-            "endPositionValue": 0.09963143301721748
+            "startPositionValue": 0.09949148578018051,
+            "endPositionValue": 0.09963192839474898
           }
         }
       ],

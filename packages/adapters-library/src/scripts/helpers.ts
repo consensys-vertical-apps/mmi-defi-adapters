@@ -74,7 +74,10 @@ export class Helpers {
       }
 
       return {
-        ...protocolToken,
+        address: protocolToken.address,
+        name: protocolToken.name,
+        symbol: protocolToken.symbol,
+        decimals: protocolToken.decimals,
         balanceRaw: balanceOf,
         type: TokenType.Protocol,
       }
@@ -97,7 +100,10 @@ export class Helpers {
     const pricePerShareRaw = BigInt(10 ** protocolToken.decimals)
 
     return {
-      ...protocolToken,
+      address: protocolToken.address,
+      name: protocolToken.name,
+      symbol: protocolToken.symbol,
+      decimals: protocolToken.decimals,
       baseRate: 1,
       type: TokenType.Protocol,
       tokens: [
@@ -175,10 +181,42 @@ export class Helpers {
     )
 
     return {
-      ...protocolToken,
+      address: protocolToken.address,
+      name: protocolToken.name,
+      symbol: protocolToken.symbol,
+      decimals: protocolToken.decimals,
       baseRate: 1,
       type: TokenType.Protocol,
       tokens: prices.map((price, index) => {
+        return {
+          ...underlyingTokens[index]!,
+          type: TokenType.Underlying,
+          underlyingRateRaw: price,
+        }
+      }),
+    }
+  }
+  async unwrapTokenWithRates({
+    protocolToken,
+    underlyingTokens,
+    underlyingRates,
+  }: {
+    protocolToken: Erc20Metadata
+    underlyingRates: bigint[]
+    underlyingTokens: Erc20Metadata[]
+  }): Promise<UnwrapExchangeRate> {
+    if (underlyingTokens.length !== underlyingRates.length) {
+      throw new Error('Underlying rate mismatch')
+    }
+
+    return {
+      address: protocolToken.address,
+      name: protocolToken.name,
+      symbol: protocolToken.symbol,
+      decimals: protocolToken.decimals,
+      baseRate: 1,
+      type: TokenType.Protocol,
+      tokens: underlyingRates.map((price, index) => {
         return {
           ...underlyingTokens[index]!,
           type: TokenType.Underlying,
@@ -231,7 +269,10 @@ export class Helpers {
         blockTag: blockNumber,
       })
       return {
-        ...protocolToken,
+        address: protocolToken.address,
+        name: protocolToken.name,
+        symbol: protocolToken.symbol,
+        decimals: protocolToken.decimals,
         type: TokenType.Protocol,
         totalSupplyRaw: protocolTokenTotalSupply,
       }
@@ -401,10 +442,19 @@ export class Helpers {
 
         return {
           transactionHash,
-          protocolToken,
+          protocolToken: {
+            address: protocolToken.address,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
+            tokenId: protocolToken.tokenId,
+          },
           tokens: [
             {
-              ...protocolToken,
+              address: protocolToken.address,
+              name: protocolToken.name,
+              symbol: protocolToken.symbol,
+              decimals: protocolToken.decimals,
               balanceRaw: protocolTokenMovementValueRaw,
               type: TokenType.Underlying,
               blockNumber,

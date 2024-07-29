@@ -108,6 +108,7 @@ export type GetEventsInput = {
 export type AdapterSettings = {
   enablePositionDetectionByProtocolTokenTransfer: boolean
   includeInUnwrap: boolean
+  version?: number
 }
 
 export type ProtocolDetails = {
