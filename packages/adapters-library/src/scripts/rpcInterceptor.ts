@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { isArray } from 'lodash'
 import { http, bypass } from 'msw'
 import { setupServer } from 'msw/node'
 import { Json } from '../types/json'
@@ -9,19 +10,23 @@ type RpcRequest = {
   id: number
 }
 
-export type RpcInterceptedRequest = Record<string, unknown>
-
-function createKey(url: string, requestBody: Json) {
-  return createHash('md5')
-    .update(url + JSON.stringify(requestBody))
-    .digest('hex')
+type RpcResponse = {
+  id: number
+  result: unknown
 }
 
-function slimRequest({ method, params }: RpcRequest) {
-  return {
-    method,
-    params,
-  }
+export type RpcInterceptedRequest = Record<string, unknown>
+
+function createKey(url: string, { method, params }: RpcRequest) {
+  return createHash('md5')
+    .update(
+      url +
+        JSON.stringify({
+          method,
+          params,
+        }),
+    )
+    .digest('hex')
 }
 
 function createResponse(body: ArrayBuffer) {
@@ -48,18 +53,37 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
           return response
         }
 
-        const requestBody = (await request.clone().json()) as RpcRequest
-        const slimRequestBody = slimRequest(requestBody)
+        const responseArrayBuffer = await response.arrayBuffer()
 
-        const key = createKey(url, slimRequestBody)
+        const requestBody = (await request.clone().json()) as
+          | RpcRequest
+          | RpcRequest[]
 
-        const body = await response.arrayBuffer()
+        const responseBody = JSON.parse(
+          new TextDecoder().decode(responseArrayBuffer),
+        ) as RpcResponse | RpcResponse[]
 
-        interceptedRequests[key] = JSON.parse(
-          new TextDecoder().decode(body),
-        ).result
+        const requests = Array.isArray(requestBody)
+          ? requestBody
+          : [requestBody]
 
-        return createResponse(body)
+        const responses = Array.isArray(responseBody)
+          ? responseBody
+          : [responseBody]
+
+        if (requests.length !== responses.length) {
+          throw Error('Length mismatch in requests and responses')
+        }
+
+        requests.forEach((request) => {
+          const key = createKey(url, request)
+
+          interceptedRequests[key] = responses.find(
+            (response) => response.id === request.id,
+          )!.result
+        })
+
+        return createResponse(responseArrayBuffer)
       }),
     ),
   )
@@ -79,23 +103,42 @@ export const startRpcMock = (
   const server = setupServer(
     ...chainProviderUrls.map((url) =>
       http.post(url, async ({ request }) => {
-        const requestBody = await request.clone().json()
-        const slimRequestBody = slimRequest(requestBody)
+        const requestBody = (await request.clone().json()) as
+          | RpcRequest
+          | RpcRequest[]
 
-        const key = createKey(url, slimRequestBody)
+        const requests = Array.isArray(requestBody)
+          ? requestBody
+          : [requestBody]
 
-        const storedResponse = interceptedRequests?.[key]
-        const responseBody = storedResponse
-          ? new TextEncoder().encode(
-              JSON.stringify({
-                result: storedResponse,
-                id: requestBody.id,
-                jsonrpc: '2.0',
-              }),
-            ).buffer
-          : await (await fetch(bypass(request))).arrayBuffer()
+        try {
+          const responses = requests.map((request) => {
+            const key = createKey(url, request)
 
-        return createResponse(responseBody)
+            const storedResponse = interceptedRequests?.[key]
+            if (!storedResponse) {
+              console.warn('RPC request not found in snapshot', request)
+              throw Error('RPC request not found in snapshot')
+            }
+
+            return {
+              id: request.id,
+              jsonrpc: '2.0',
+              result: storedResponse,
+            }
+          })
+
+          // If there is only one request, do not return an array
+          return createResponse(
+            new TextEncoder().encode(
+              JSON.stringify(responses.length > 1 ? responses : responses[0]),
+            ).buffer,
+          )
+        } catch (error) {
+          return createResponse(
+            await (await fetch(bypass(request))).arrayBuffer(),
+          )
+        }
       }),
     ),
   )
