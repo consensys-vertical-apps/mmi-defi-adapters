@@ -20,6 +20,24 @@ import type {
 } from './adapter'
 import type { Erc20Metadata } from './erc20Metadata'
 
+export type Json =
+  | null
+  | boolean
+  | number
+  | string
+  | Json[]
+  | { [prop: string]: Json }
+
+export type JsonMetadata = Record<string, Json>
+
+export type ProtocolToken<
+  // biome-ignore lint/complexity/noBannedTypes: <explanation>
+  AdditionalMetadata extends JsonMetadata = {},
+> = Erc20Metadata & {
+  underlyingTokens?: Erc20Metadata[]
+  tokenId?: string
+} & AdditionalMetadata
+
 export interface IProtocolAdapter {
   adapterSettings: AdapterSettings
 
@@ -52,9 +70,9 @@ export interface IProtocolAdapter {
   /**
    * @remarks Returns array of pool tokens (lp tokens) for the protocol
    *
-   * @returns {Promise<(Erc20Metadata & { tokenId?: string })[]>} An array of objects detailing the protocol tokens.
+   * @returns {Promise<ProtocolToken[]>} An array of objects detailing the protocol tokens.
    */
-  getProtocolTokens(): Promise<(Erc20Metadata & { tokenId?: string })[]>
+  getProtocolTokens(writeToFile?: boolean): Promise<ProtocolToken[]>
 
   /**
    *
