@@ -9,13 +9,7 @@ type RpcRequest = {
   id: number
 }
 
-export type RpcInterceptedRequest = Record<
-  string,
-  {
-    request: Omit<RpcRequest, 'id'>
-    response: string
-  }
->
+export type RpcInterceptedRequest = Record<string, string>
 
 function createKey(url: string, requestBody: Json) {
   return createHash('md5')
@@ -61,10 +55,9 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
 
         const body = await response.arrayBuffer()
 
-        interceptedRequests[key] = {
-          request: slimRequestBody,
-          response: JSON.parse(new TextDecoder().decode(body)).result,
-        }
+        interceptedRequests[key] = JSON.parse(
+          new TextDecoder().decode(body),
+        ).result
 
         return createResponse(body)
       }),
@@ -95,7 +88,7 @@ export const startRpcMock = (
         const responseBody = storedResponse
           ? new TextEncoder().encode(
               JSON.stringify({
-                result: storedResponse.response,
+                result: storedResponse,
                 id: requestBody.id,
                 jsonrpc: '2.0',
               }),
