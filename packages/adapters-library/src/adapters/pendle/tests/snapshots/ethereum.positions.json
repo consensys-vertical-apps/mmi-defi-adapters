@@ -1,6 +1,6 @@
 {
   "blockNumber": 20126536,
-  "aggregatedValues": ["USD1,056.24"],
+  "aggregatedValues": ["USD1,056.22"],
   "snapshot": [
     {
       "protocolId": "pendle",
@@ -27,7 +27,7 @@
               "symbol": "SY-weETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "288800752307004874n",
+              "balanceRaw": "288794833151525539n",
               "tokens": [
                 {
                   "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
@@ -35,13 +35,13 @@
                   "symbol": "weETH",
                   "decimals": 18,
                   "type": "underlying",
-                  "balanceRaw": "288800752307004874n",
-                  "balance": 0.28880075230700486,
+                  "balanceRaw": "288794833151525539n",
+                  "balance": 0.28879483315152554,
                   "price": 3657.343190215478,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
                 }
               ],
-              "balance": 0.28880075230700486,
+              "balance": 0.28879483315152554,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xAC0047886a985071476a1186bE89222659970d65/logo.png"
             }
           ],

@@ -36,9 +36,9 @@ import { fetchAllMarkets } from '../../backend/backendSdk'
 import {
   DURATION_15_MINS,
   DURATION_30_MINS,
-  PENDLE_ORACLE_ADDRESS_ALL_CHAINS,
+  PENDLE_ROUTER_STATIC_CONTRACT,
 } from '../../backend/constants'
-import { OraclePyYtLp__factory } from '../../contracts'
+import { OraclePyYtLp__factory, RouterStatic__factory } from '../../contracts'
 
 type Metadata = Record<
   string,
@@ -191,20 +191,17 @@ export class PendleLpTokenAdapter
       await this.getUnderlyingTokens(protocolTokenAddress)
     )[0]!
 
-    const oracle = OraclePyYtLp__factory.connect(
-      PENDLE_ORACLE_ADDRESS_ALL_CHAINS,
+    const oracle = RouterStatic__factory.connect(
+      PENDLE_ROUTER_STATIC_CONTRACT,
       this.provider,
     )
 
-    const rate: bigint = await oracle
-      .getLpToSyRate(metadata.marketAddress, DURATION_15_MINS, {
-        blockTag: blockNumber,
-      })
-      .catch((e) => {
-        return oracle.getLpToSyRate(metadata.marketAddress, DURATION_30_MINS, {
-          blockTag: blockNumber,
-        })
-      })
+    const marketAddress = metadata.marketAddress
+
+    // missing block number atm
+    const rate = await oracle.getLpToSyRate(marketAddress, {
+      blockTag: blockNumber,
+    })
 
     const underlying = {
       type: TokenType.Underlying,

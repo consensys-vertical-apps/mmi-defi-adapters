@@ -2,5 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { OraclePyYtLp } from "./OraclePyYtLp";
+export type { RouterStatic } from "./RouterStatic";
 export * as factories from "./factories";
 export { OraclePyYtLp__factory } from "./factories/OraclePyYtLp__factory";
+export { RouterStatic__factory } from "./factories/RouterStatic__factory";

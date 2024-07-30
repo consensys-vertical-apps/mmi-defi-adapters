@@ -33,12 +33,8 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
-import {
-  DURATION_15_MINS,
-  DURATION_30_MINS,
-  PENDLE_ORACLE_ADDRESS_ALL_CHAINS,
-} from '../../backend/constants'
-import { OraclePyYtLp__factory } from '../../contracts'
+import { PENDLE_ROUTER_STATIC_CONTRACT } from '../../backend/constants'
+import { OraclePyYtLp__factory, RouterStatic__factory } from '../../contracts'
 
 type Metadata = Record<
   string,
@@ -192,20 +188,17 @@ export class PendlePrincipleTokenAdapter
       await this.getUnderlyingTokens(protocolTokenAddress)
     )[0]!
 
-    const oracle = OraclePyYtLp__factory.connect(
-      PENDLE_ORACLE_ADDRESS_ALL_CHAINS,
+    const oracle = RouterStatic__factory.connect(
+      PENDLE_ROUTER_STATIC_CONTRACT,
       this.provider,
     )
 
-    const rate: bigint = await oracle
-      .getPtToSyRate(metadata.marketAddress, DURATION_15_MINS, {
-        blockTag: blockNumber,
-      })
-      .catch((e) => {
-        return oracle.getYtToSyRate(metadata.marketAddress, DURATION_30_MINS, {
-          blockTag: blockNumber,
-        })
-      })
+    const marketAddress = metadata.marketAddress
+
+    // missing block number atm
+    const rate = await oracle.getPtToSyRate(marketAddress, {
+      blockTag: blockNumber,
+    })
 
     const underlying = {
       type: TokenType.Underlying,

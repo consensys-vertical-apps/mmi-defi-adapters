@@ -39,12 +39,12 @@
           "tokens": [
             {
               "type": "underlying",
-              "underlyingRateRaw": "957181411833574830n",
+              "underlyingRateRaw": "957161793790500795n",
               "address": "0xAC0047886a985071476a1186bE89222659970d65",
               "name": "SY ether.fi weETH",
               "symbol": "SY-weETH",
               "decimals": 18,
-              "underlyingRate": 0.9571814118335749,
+              "underlyingRate": 0.9571617937905008,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xAC0047886a985071476a1186bE89222659970d65/logo.png"
             }
           ]

@@ -1,0 +1,65 @@
+{
+  "blockNumber": 20418253,
+  "aggregatedValues": ["USD0.00"],
+  "snapshot": [
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle Market adapter",
+      "siteUrl": "https://www.pendle.finance",
+      "iconUrl": "https://app.pendle.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "yield-token",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x98601E27d41ccff643da9d981dc708cf9eF1F150",
+          "name": "YT Zircuit Staking ezETH 27JUN2024",
+          "symbol": "YT-zs-ezETH-27JUN2024",
+          "decimals": 18,
+          "balanceRaw": "136827065199036097802n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744",
+              "name": "SY Zircuit Staking ezETH",
+              "symbol": "SY-zs-ezETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "tokens": [
+                {
+                  "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+                  "name": "Renzo Restaked ETH",
+                  "symbol": "ezETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "0n",
+                  "tokens": [
+                    {
+                      "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "balanceRaw": "0n",
+                      "balance": 0,
+                      "price": 3340.28,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
+                  "balance": 0,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
+                }
+              ],
+              "balance": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744/logo.png"
+            }
+          ],
+          "balance": 136.8270651990361
+        }
+      ]
+    }
+  ]
+}

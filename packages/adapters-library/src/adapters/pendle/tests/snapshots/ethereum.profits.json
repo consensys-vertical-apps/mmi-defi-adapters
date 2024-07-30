@@ -18,15 +18,15 @@
           "symbol": "PT-weETH-27JUN2024",
           "decimals": 18,
           "type": "protocol",
-          "profit": 3.688461292383863,
-          "performance": 0.00350429315348393,
+          "profit": 3.666758180181432,
+          "performance": 0.0034836735157554844,
           "calculationData": {
             "withdrawals": 0,
-            "deposits": 1052.5550034867474,
+            "deposits": 1052.5550582159658,
             "repays": 0,
             "borrows": 0,
             "startPositionValue": 0,
-            "endPositionValue": 1056.2434647791313
+            "endPositionValue": 1056.2218163961472
           }
         }
       ],
