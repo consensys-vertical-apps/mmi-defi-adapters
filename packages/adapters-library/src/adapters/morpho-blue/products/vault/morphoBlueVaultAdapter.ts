@@ -383,28 +383,4 @@ export class MorphoBlueVaultAdapter
     }))
   }
 
-  private async _fetchVaultMetadata(vaultAddress: string): Promise<Erc20Metadata> {
-    const vaults = await this.getProtocolTokens()
-    const vaultMetadata = vaults.find(
-      (vault) => vault.address.toLowerCase() === vaultAddress.toLowerCase(),
-    )
-    if (!vaultMetadata) {
-      logger.error({ vaultAddress }, 'Token metadata not found')
-      throw new Error('Token metadata not found')
-    }
-    return vaultMetadata
-  }
-
-  private async _fetchUnderlyingTokenMetadata(vaultAddress: string): Promise<Erc20Metadata> {
-    const vaults = await this.getProtocolTokens()
-    const vaultMetadata = vaults.find(
-      (vault) => vault.address.toLowerCase() === vaultAddress.toLowerCase(),
-    )
-    if (!vaultMetadata) {
-      logger.error({ vaultAddress }, 'Token metadata not found')
-      throw new Error('Token metadata not found')
-    }
-    return vaultMetadata
-  }
-
 }
