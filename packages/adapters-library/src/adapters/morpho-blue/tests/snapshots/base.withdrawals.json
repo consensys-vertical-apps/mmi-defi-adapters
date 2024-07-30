@@ -1,0 +1,38 @@
+{
+  "aggregatedValues": ["USD14,996.84"],
+  "snapshot": {
+    "protocolId": "morpho-blue",
+    "name": "MetaMorpho Vaults",
+    "description": "MetaMorpho Vaults adapter",
+    "siteUrl": "https://app.morpho.org/",
+    "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+    "positionType": "supply",
+    "chainId": 8453,
+    "productId": "vault",
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0xbeeF010f9cb27031ad51e3333f9aF9C6B1228183",
+          "name": "Steakhouse USDC",
+          "symbol": "steakUSDC",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "balanceRaw": "15005000000n",
+            "type": "underlying",
+            "price": 0.99945595291145,
+            "balance": 15005
+          }
+        ],
+        "blockNumber": 17605195,
+        "transactionHash": "0xe63171dbdfaa63a89563444972f713fc277c15ffbd817fa2bfe83f145164363f"
+      }
+    ]
+  }
+}

@@ -8,5 +8,5 @@ export type { MorphoBlue } from "./MorphoBlue";
 export * as factories from "./factories";
 export { AdaptiveCurveIrm__factory } from "./factories/AdaptiveCurveIrm__factory";
 export { Metamorpho__factory } from "./factories/Metamorpho__factory";
-export { Metamorphofactory__factory } from "./factories/Metamorphofactory__factory";
+export { Metamorphofactory__factory } from "./factories/MetaMorphoFactory__factory";
 export { MorphoBlue__factory } from "./factories/MorphoBlue__factory";

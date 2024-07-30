@@ -1,0 +1,37 @@
+{
+  "aggregatedValues": ["USD0.00"],
+  "snapshot": {
+    "protocolId": "morpho-blue",
+    "name": "MetaMorpho Vaults",
+    "description": "MetaMorpho Vaults adapter",
+    "siteUrl": "https://app.morpho.org/",
+    "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+    "positionType": "supply",
+    "chainId": 8453,
+    "productId": "vault",
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0xa0E430870c4604CcfC7B38Ca7845B1FF653D0ff1",
+          "name": "Moonwell Flagship ETH",
+          "symbol": "mwETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xa0E430870c4604CcfC7B38Ca7845B1FF653D0ff1",
+            "name": "Moonwell Flagship ETH",
+            "symbol": "mwETH",
+            "decimals": 18,
+            "balanceRaw": "3000000000000000000n",
+            "type": "underlying",
+            "balance": 3
+          }
+        ],
+        "blockNumber": 17776786,
+        "transactionHash": "0x6d9a6e5a7fa4222fe9c9936461849ccebc7abb2d1f49cf1f00bd0b98e62be95e"
+      }
+    ]
+  }
+}

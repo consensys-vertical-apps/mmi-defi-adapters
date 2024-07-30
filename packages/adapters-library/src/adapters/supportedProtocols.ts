@@ -337,6 +337,11 @@ export const supportedProtocols: Record<
       MorphoBlueMarketBorrowAdapter,
       MorphoBlueVaultAdapter,
     ],
+    [Chain.Base]: [
+      MorphoBlueMarketSupplyAdapter,
+      MorphoBlueMarketBorrowAdapter,
+      MorphoBlueVaultAdapter,
+    ],
   },
 
   [Protocol.MorphoCompoundV2]: {

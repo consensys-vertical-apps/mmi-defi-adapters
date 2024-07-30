@@ -3,5 +3,5 @@
 /* eslint-disable */
 export { AdaptiveCurveIrm__factory } from "./AdaptiveCurveIrm__factory";
 export { Metamorpho__factory } from "./Metamorpho__factory";
-export { Metamorphofactory__factory } from "./Metamorphofactory__factory";
+export { Metamorphofactory__factory } from "./MetaMorphoFactory__factory";
 export { MorphoBlue__factory } from "./MorphoBlue__factory";

@@ -1,38 +1,36 @@
 {
-  "aggregatedValues": ["USD93,991.53"],
+  "aggregatedValues": ["USD0.00"],
   "snapshot": {
     "protocolId": "morpho-blue",
-    "name": "MorphoBlue Supply",
-    "description": "Morpho Blue DeFi adapter on the supply side",
+    "name": "MetaMorpho Vaults",
+    "description": "MetaMorpho Vaults adapter",
     "siteUrl": "https://app.morpho.org/",
     "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
     "positionType": "supply",
     "chainId": 1,
-    "productId": "market-supply",
+    "productId": "vault",
     "success": true,
     "movements": [
       {
         "protocolToken": {
-          "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-          "tokenId": "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc",
-          "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-          "symbol": "USDC",
-          "decimals": 6
+          "address": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
+          "name": " Usual Boosted USDC",
+          "symbol": "USUALUSDC+",
+          "decimals": 18
         },
         "tokens": [
           {
-            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-            "name": "USD Coin",
-            "symbol": "USDC",
-            "decimals": 6,
-            "balanceRaw": "93831168062n",
+            "address": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
+            "name": " Usual Boosted USDC",
+            "symbol": "USUALUSDC+",
+            "decimals": 18,
+            "balanceRaw": "299996980000n",
             "type": "underlying",
-            "price": 1.0017090588031299,
-            "balance": 93831.168062
+            "balance": 2.9999698e-7
           }
         ],
-        "blockNumber": 19339143,
-        "transactionHash": "0xfb2c984ccb27a61ad33872ca6d9477b03634be24b83d274e6f20c646fb42d35e"
+        "blockNumber": 20417741,
+        "transactionHash": "0x814bc6cbfa24f936c63f4208c5d9a9f91b397070b932851241d1807c9385fe14"
       }
     ]
   },
