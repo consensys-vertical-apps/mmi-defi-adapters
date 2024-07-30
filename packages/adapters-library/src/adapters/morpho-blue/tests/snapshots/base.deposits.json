@@ -7,30 +7,30 @@
     "siteUrl": "https://app.morpho.org/",
     "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
     "positionType": "supply",
-    "chainId": 1,
+    "chainId": 8453,
     "productId": "vault",
     "success": true,
     "movements": [
       {
         "protocolToken": {
-          "address": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
-          "name": " Usual Boosted USDC",
-          "symbol": "USUALUSDC+",
+          "address": "0xa0E430870c4604CcfC7B38Ca7845B1FF653D0ff1",
+          "name": "Moonwell Flagship ETH",
+          "symbol": "mwETH",
           "decimals": 18
         },
         "tokens": [
           {
-            "address": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
-            "name": " Usual Boosted USDC",
-            "symbol": "USUALUSDC+",
+            "address": "0xa0E430870c4604CcfC7B38Ca7845B1FF653D0ff1",
+            "name": "Moonwell Flagship ETH",
+            "symbol": "mwETH",
             "decimals": 18,
-            "balanceRaw": "299996980000n",
+            "balanceRaw": "3000000000000000000n",
             "type": "underlying",
-            "balance": 2.9999698e-7
+            "balance": 3
           }
         ],
-        "blockNumber": 20417741,
-        "transactionHash": "0x814bc6cbfa24f936c63f4208c5d9a9f91b397070b932851241d1807c9385fe14"
+        "blockNumber": 17776786,
+        "transactionHash": "0x6d9a6e5a7fa4222fe9c9936461849ccebc7abb2d1f49cf1f00bd0b98e62be95e"
       }
     ]
   }
