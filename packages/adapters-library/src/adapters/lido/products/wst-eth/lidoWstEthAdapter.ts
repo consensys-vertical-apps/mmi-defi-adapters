@@ -39,18 +39,25 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
     return [await this.fetchProtocolTokenMetadata()]
   }
 
+  // TODO Temporary change to stop on-chain requests on init
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
-    const wstEthAddress = getAddress(
-      '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0',
-    )
-    return await getTokenMetadata(wstEthAddress, this.chainId, this.provider)
+    return {
+      address: '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0',
+      name: 'Wrapped liquid staked Ether 2.0',
+      symbol: 'wstETH',
+      decimals: 18,
+    }
   }
 
   protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
-    const stEthAddress = getAddress(
-      '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
-    )
-    return [await getTokenMetadata(stEthAddress, this.chainId, this.provider)]
+    return [
+      {
+        address: '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84',
+        name: 'Liquid staked Ether 2.0',
+        symbol: 'stETH',
+        decimals: 18,
+      },
+    ]
   }
 
   protected async getUnderlyingTokenBalances({

@@ -39,14 +39,24 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
     return [await this.fetchProtocolTokenMetadata()]
   }
 
+  // TODO Temporary change to stop on-chain requests on init
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
-    const stEthAddress = getAddress(
-      '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
-    )
-    return await getTokenMetadata(stEthAddress, this.chainId, this.provider)
+    return {
+      address: '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84',
+      name: 'Liquid staked Ether 2.0',
+      symbol: 'stETH',
+      decimals: 18,
+    }
   }
   protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
-    return [await getTokenMetadata(ZERO_ADDRESS, this.chainId, this.provider)]
+    return [
+      {
+        address: '0x0000000000000000000000000000000000000000',
+        symbol: 'ETH',
+        name: 'Ethereum',
+        decimals: 18,
+      },
+    ]
   }
 
   protected async getUnderlyingTokenBalances({

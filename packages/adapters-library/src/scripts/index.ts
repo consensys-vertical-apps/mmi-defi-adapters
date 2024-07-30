@@ -32,7 +32,7 @@ buildContractTypes(program)
 
 buildMetadata(program, chainProviders, adaptersController)
 
-buildSnapshots(program, defiProvider)
+buildSnapshots(program)
 
 stressCommand(program, defiProvider)
 

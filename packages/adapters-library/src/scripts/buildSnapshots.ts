@@ -2,6 +2,10 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { Command } from 'commander'
 import { parse, print, types, visit } from 'recast'
+import {
+  getAggregatedValues,
+  getAggregatedValuesMovements,
+} from '../adapters/aggrigateValues'
 import { Protocol } from '../adapters/protocols'
 import type { GetTransactionParams } from '../adapters/supportedProtocols'
 import { Chain, ChainName } from '../core/constants/chains'
@@ -14,14 +18,11 @@ import { DefiProvider } from '../defiProvider'
 import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
+import { startRpcSnapshot } from './rpcInterceptor'
 import n = types.namedTypes
 import b = types.builders
-import {
-  getAggregatedValues,
-  getAggregatedValuesMovements,
-} from '../adapters/aggrigateValues'
 
-export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
+export function buildSnapshots(program: Command) {
   program
     .command('build-snapshots')
     .option(
@@ -30,6 +31,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
     )
     .showHelpAfterError()
     .action(async ({ protocols }) => {
+      const defiProvider = new DefiProvider({ useMulticallInterceptor: false })
       const filterProtocolIds = multiProtocolFilter(protocols)
 
       for (const protocolId of Object.values(Protocol)) {
@@ -44,6 +46,12 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
         ).testCases
 
         for (const [index, testCase] of testCases.entries()) {
+          const msw = startRpcSnapshot(
+            Object.values(defiProvider.chainProvider.providers).map(
+              (provider) => provider._getConnection().url,
+            ),
+          )
+
           const chainId = testCase.chainId
 
           const snapshotFileContent = await (async () => {
@@ -234,10 +242,16 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
           await writeAndLintFile(
             filePath,
-            bigintJsonStringify(snapshotFileContent, 2),
+            bigintJsonStringify(
+              {
+                ...snapshotFileContent,
+                rpcResponses: msw.interceptedRequests,
+              },
+              2,
+            ),
           )
 
-          // Update test case
+          msw.stop()
         }
       }
     })

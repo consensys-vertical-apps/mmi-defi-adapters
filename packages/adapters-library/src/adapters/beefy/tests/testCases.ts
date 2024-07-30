@@ -92,10 +92,10 @@ export const testCases: TestCase[] = [
     key: 'moo-token',
     method: 'deposits',
     input: {
-      fromBlock: 38648545,
-      toBlock: 38648745,
-      userAddress: '0x04526c8Eb172CEe7814aEF2AE02046b71fdf9125',
-      protocolTokenAddress: '0xcCcDB0F6eCcd5f231d4737A00C554322167d814B',
+      fromBlock: 40723579,
+      toBlock: 40723581,
+      userAddress: '0x0bD0B724D8803685530fD6CECAb24B4Eb0814828',
+      protocolTokenAddress: '0x2A1b2B05A3c54C86F3f3AB837cA423ad60CF35d1',
       productId: 'moo-token',
     },
   },
@@ -103,25 +103,23 @@ export const testCases: TestCase[] = [
     chainId: Chain.Bsc,
     key: 'moo-token',
     method: 'positions',
-    input: {
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
 
-      filterProtocolTokens: [
-        '0x2A1b2B05A3c54C86F3f3AB837cA423ad60CF35d1',
-        '0xA5d3c08E0afb5F4d2428630e10d31DC53a14e2E5',
-      ],
+    input: {
+      userAddress: '0x518B7892B898322FC77ae9C51bEb88Ee199Bb6C3',
+      filterProtocolTokens: ['0x45070826065cF98C4A843fe3D811dBFc0e4bF107'],
     },
-    blockNumber: 39386513,
+
+    blockNumber: 40771740,
   },
   {
     chainId: Chain.Bsc,
     key: 'moo-token',
     method: 'withdrawals',
     input: {
-      fromBlock: 39296858,
-      toBlock: 39297114,
-      userAddress: '0x04526c8Eb172CEe7814aEF2AE02046b71fdf9125',
-      protocolTokenAddress: '0xcCcDB0F6eCcd5f231d4737A00C554322167d814B',
+      fromBlock: 40771740,
+      toBlock: 40771742,
+      userAddress: '0x518B7892B898322FC77ae9C51bEb88Ee199Bb6C3',
+      protocolTokenAddress: '0x45070826065cF98C4A843fe3D811dBFc0e4bF107',
       productId: 'moo-token',
     },
   },

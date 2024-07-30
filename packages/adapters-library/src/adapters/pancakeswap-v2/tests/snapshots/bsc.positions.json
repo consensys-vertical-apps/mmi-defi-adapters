@@ -1,6 +1,6 @@
 {
-  "blockNumber": 36672150,
-  "aggregatedValues": ["USD1,614.80", "USD1,331.83"],
+  "blockNumber": 40899757,
+  "aggregatedValues": ["USD19,172.09"],
   "snapshot": [
     {
       "protocolId": "pancakeswap-v2",
@@ -14,23 +14,23 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x0eD7e52944161450477ee417DE9Cd3a859b14fD0",
-          "name": "Pancake LPs Cake / WBNB",
-          "symbol": "Cake-LP/Cake/WBNB",
+          "address": "0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE",
+          "name": "Pancake LPs USDT / WBNB",
+          "symbol": "Cake-LP/USDT/WBNB",
           "decimals": 18,
-          "balanceRaw": "19999846012211264063n",
+          "balanceRaw": "213516814976390780877n",
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
-              "name": "PancakeSwap Token",
-              "symbol": "Cake",
+              "address": "0x55d398326f99059fF775485246999027B3197955",
+              "name": "Tether USD",
+              "symbol": "USDT",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "241767647898812388442n",
-              "balance": 241.76764789881238,
-              "price": 3.3391612926914975,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82/logo.png"
+              "balanceRaw": "9596515363314903772617n",
+              "balance": 9596.515363314904,
+              "price": 0.9996054008652827,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x55d398326f99059fF775485246999027B3197955/logo.png"
             },
             {
               "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
@@ -38,48 +38,53 @@
               "symbol": "WBNB",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "1930984973024404777n",
-              "balance": 1.9309849730244049,
-              "price": 418.17795423546283,
+              "balanceRaw": "16425331854169749100n",
+              "balance": 16.425331854169748,
+              "price": 583.2064838007915,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
             }
           ],
-          "balance": 19.999846012211265
-        },
-        {
-          "address": "0x804678fa97d91B974ec2af3c843270886528a9E6",
-          "name": "Pancake LPs Cake / BUSD",
-          "symbol": "Cake-LP/Cake/BUSD",
-          "decimals": 18,
-          "balanceRaw": "208723885632392099213n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
-              "name": "PancakeSwap Token",
-              "symbol": "Cake",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "199422733099078664629n",
-              "balance": 199.42273309907867,
-              "price": 3.3391612926914975,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82/logo.png"
-            },
-            {
-              "address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
-              "name": "BUSD Token",
-              "symbol": "BUSD",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "664595620864774825331n",
-              "balance": 664.5956208647748,
-              "price": 1.002008151428133,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56/logo.png"
-            }
-          ],
-          "balance": 208.7238856323921
+          "balance": 213.51681497639078
         }
       ]
     }
-  ]
+  ],
+  "rpcResponses": {
+    "f922425a14bf079487869894e9bf7e8a": {
+      "result": "0x00000000000000000000000000000000000000000000000b93241bf5e093d7cd"
+    },
+    "ca1d083accf0b9ca31096b8e6c028d78": {
+      "result": "0x0000000000000000000000000000000000000000000029a56d3184fc34d4bd84"
+    },
+    "67cda4638f632ad13300e8a109cd2304": {
+      "result": "0x000000000000000000000000000000000000000000074fc9ebd81ce6ca4495360000000000000000000000000000000000000000000003342861cc0eff4b963a0000000000000000000000000000000000000000000000000000000066a7b1c5"
+    },
+    "a350ab3c41e421f2545aad3196f4ef47": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a5465746865722055534400000000000000000000000000000000000000000000"
+    },
+    "bae5a210f51e0cd294bfcb5e982569a9": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553445400000000000000000000000000000000000000000000000000000000"
+    },
+    "523db02023be917a23b5f897559f2210": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "89fbdb51b2c12705e6ab409593fe0957": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b5772617070656420424e42000000000000000000000000000000000000000000"
+    },
+    "75b833b0bc94d98d981977907ddb6544": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000457424e4200000000000000000000000000000000000000000000000000000000"
+    },
+    "e4c1f2f9266ff9407683db5735fe10eb": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "50acd0298d677ac7fee5cb537906796d": {
+      "result": "0x00000000000000000000000000000000000000000000000200000000000f58330000000000000000000000000000000000000000000000000000004d4cbdf8000000000000000000000000000000000000000000000000000000000066a7b1ad0000000000000000000000000000000000000000000000000000000066a7b1ad00000000000000000000000000000000000000000000000200000000000f5833"
+    },
+    "ce4dc3cd45687e507a31028d48d29228": {
+      "result": "0x000000000000000000000000000000000000000000000000000111d609f02051"
+    },
+    "ec9e7a552cca277d978deb120e7ea4cc": {
+      "result": "0x00000000000000000000000000000000000000000000000002701606b6791eed"
+    }
+  }
 }

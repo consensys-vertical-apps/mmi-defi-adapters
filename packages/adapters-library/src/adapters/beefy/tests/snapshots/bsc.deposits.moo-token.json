@@ -1,5 +1,5 @@
 {
-  "aggregatedValues": ["USD10,605.03"],
+  "aggregatedValues": ["USD543.37"],
   "snapshot": {
     "protocolId": "beefy",
     "name": "Beefy",
@@ -12,51 +12,117 @@
     "success": true,
     "movements": [
       {
-        "transactionHash": "0x924fdb147a4191b26cae8689f72da26c9b448da9174499ce9d44bdaea440cfdc",
+        "transactionHash": "0xaee2c905d84f6525383b5ec791f30765960c6d3fed2d187eee5e4a08b1379d2b",
         "protocolToken": {
-          "address": "0xcCcDB0F6eCcd5f231d4737A00C554322167d814B",
-          "name": "Moo Thena Gamma weETH-ETH Narrow",
-          "symbol": "mooThenaGammaweETH-ETHNarrow",
+          "address": "0x2A1b2B05A3c54C86F3f3AB837cA423ad60CF35d1",
+          "name": "Moo Thena Gamma FIL-BNB Narrow",
+          "symbol": "mooThenaFIL-BNBNarrow",
           "decimals": 18
         },
         "tokens": [
           {
-            "address": "0xcCcDB0F6eCcd5f231d4737A00C554322167d814B",
-            "name": "Moo Thena Gamma weETH-ETH Narrow",
-            "symbol": "mooThenaGammaweETH-ETHNarrow",
+            "address": "0x2A1b2B05A3c54C86F3f3AB837cA423ad60CF35d1",
+            "name": "Moo Thena Gamma FIL-BNB Narrow",
+            "symbol": "mooThenaFIL-BNBNarrow",
             "decimals": 18,
-            "balanceRaw": "3505015052758336662n",
+            "balanceRaw": "3519835765191112404n",
             "type": "underlying",
-            "blockNumber": 38648645,
+            "blockNumber": 40723580,
             "tokens": [
               {
-                "address": "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A",
-                "name": "Wrapped eETH",
-                "symbol": "weETH",
+                "address": "0x0D8Ce2A99Bb6e3B7Db580eD848240e4a0F9aE153",
+                "name": "Filecoin",
+                "symbol": "FIL",
                 "decimals": 18,
                 "type": "underlying",
-                "balanceRaw": "1715841296253283409n",
-                "balance": 1.7158412962532834,
-                "price": 3033.2112778317537,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A/logo.png"
+                "balanceRaw": "71560194171930208591n",
+                "balance": 71.5601941719302,
+                "price": 4.528017161659833,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x0D8Ce2A99Bb6e3B7Db580eD848240e4a0F9aE153/logo.png"
               },
               {
-                "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
-                "name": "Ethereum Token",
-                "symbol": "ETH",
+                "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+                "name": "Wrapped BNB",
+                "symbol": "WBNB",
                 "decimals": 18,
                 "type": "underlying",
-                "balanceRaw": "1846799020935574057n",
-                "balance": 1.846799020935574,
-                "price": 2924.26218117,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x2170Ed0880ac9A755fd29B2688956BD959F933F8/logo.png"
+                "balanceRaw": "375027963931576822n",
+                "balance": 0.37502796393157684,
+                "price": 584.8730759066884,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
               }
             ],
-            "balance": 3.5050150527583366
+            "balance": 3.5198357651911123
           }
         ],
-        "blockNumber": 38648645
+        "blockNumber": 40723580
       }
     ]
+  },
+  "rpcResponses": {
+    "51bce0fab1c8d5425e70882db3a30cb7": {
+      "result": [
+        {
+          "address": "0x2a1b2b05a3c54c86f3f3ab837ca423ad60cf35d1",
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x0000000000000000000000000bd0b724d8803685530fd6cecab24b4eb0814828"
+          ],
+          "data": "0x00000000000000000000000000000000000000000000000030d8f7fac3ee76d4",
+          "blockNumber": "0x26d647c",
+          "transactionHash": "0xaee2c905d84f6525383b5ec791f30765960c6d3fed2d187eee5e4a08b1379d2b",
+          "transactionIndex": "0x2a",
+          "blockHash": "0x29b02bbaf8e53b8a979421e98f41610f244aa2af6961548cf6b87d449f8c7dd7",
+          "logIndex": "0x91",
+          "removed": false
+        }
+      ]
+    },
+    "c594e5d99dc7ba832b32629f63902025": {
+      "result": "0x00000000000000000000000000000000000000000000004842f03be77543775b"
+    },
+    "890f51148073b36bd82731469f835362": {
+      "result": "0x000000000000000000000000000000000000000000000033e8cd1d815f813665"
+    },
+    "58c612bf117f904a745acb039e020fe3": {
+      "result": "0x0000000000000000000000000000000000000000000001350c567b9a1f3e739d"
+    },
+    "97a3d700a3971729c16e41ee3c746332": {
+      "result": "0x0000000000000000000000000000000000000000000011a18252ebc76c289834000000000000000000000000000000000000000000000017a773379e83da100b"
+    },
+    "17c75372e485fbc7cd4249c0f52c305b": {
+      "result": "0x0000000000000000000000000d8ce2a99bb6e3b7db580ed848240e4a0f9ae153"
+    },
+    "c0b5042531f534a74ef930795b4aef54": {
+      "result": "0x000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+    },
+    "36b152a0925e233b49fc749dd6d1c443": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000846696c65636f696e000000000000000000000000000000000000000000000000"
+    },
+    "68443b64ae25f6adf7c21825988da5da": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000346494c0000000000000000000000000000000000000000000000000000000000"
+    },
+    "3520706b42d0a9676d0f2847547c3dc3": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "89fbdb51b2c12705e6ab409593fe0957": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b5772617070656420424e42000000000000000000000000000000000000000000"
+    },
+    "75b833b0bc94d98d981977907ddb6544": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000457424e4200000000000000000000000000000000000000000000000000000000"
+    },
+    "e4c1f2f9266ff9407683db5735fe10eb": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "c1d1fe237de90986e41680bcaa4d9372": {
+      "result": "0x00000000000000000000000000000000000000000000000200000000000f3f7000000000000000000000000000000000000000000000000000000051e480d78000000000000000000000000000000000000000000000000000000000669f9c5c00000000000000000000000000000000000000000000000000000000669f9c5c00000000000000000000000000000000000000000000000200000000000f3f70"
+    },
+    "1fc781ee519705eb547b0e4dd693c601": {
+      "result": "0x000000000000000000000000000000000000000000000000000492db54125613"
+    },
+    "40d208b9f270cff009c3c7085df60716": {
+      "result": "0x000000000000000000000000000000000000000000000000024ec4bf732b7b82"
+    }
   }
 }
