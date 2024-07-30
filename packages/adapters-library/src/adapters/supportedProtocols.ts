@@ -94,6 +94,8 @@ import { PendleLpTokenAdapter } from './pendle/products/lp-token/pendleLpTokenAd
 
 import { RenzoEzEthAdapter } from './renzo/products/ez-eth/renzoEzEthAdapter'
 
+import { MorphoBlueVaultAdapter } from './morpho-blue/products/vault/morphoBlueVaultAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -283,6 +285,12 @@ export const supportedProtocols: Record<
     [Chain.Ethereum]: [
       MorphoBlueMarketSupplyAdapter,
       MorphoBlueMarketBorrowAdapter,
+      MorphoBlueVaultAdapter,
+    ],
+    [Chain.Base]: [
+      MorphoBlueMarketSupplyAdapter,
+      MorphoBlueMarketBorrowAdapter,
+      MorphoBlueVaultAdapter,
     ],
   },
 
@@ -425,6 +433,7 @@ export const WriteActionInputs = {
   MendiFinanceSupplyMarketWriteActionInputs,
   MendiFinanceBorrowMarketWriteActionInputs,
 }
+
 export const GetTransactionParamsSchema = z.union([
   z.discriminatedUnion('action', [
     z.object({
@@ -553,7 +562,9 @@ export const GetTransactionParamsSchema = z.union([
       chainId: z.nativeEnum(Chain),
       action: z.literal('borrow'),
       inputs:
-        WriteActionInputs['CompoundV2BorrowMarketWriteActionInputs']['borrow'],
+        WriteActionInputs['MendiFinanceBorrowMarketWriteActionInputs'][
+          'borrow'
+        ],
     }),
     z.object({
       protocolId: z.literal(Protocol.MendiFinance),
@@ -561,7 +572,7 @@ export const GetTransactionParamsSchema = z.union([
       chainId: z.nativeEnum(Chain),
       action: z.literal('repay'),
       inputs:
-        WriteActionInputs['CompoundV2BorrowMarketWriteActionInputs']['repay'],
+        WriteActionInputs['MendiFinanceBorrowMarketWriteActionInputs']['repay'],
     }),
   ]),
 ])

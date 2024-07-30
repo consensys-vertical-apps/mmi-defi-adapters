@@ -1,40 +1,40 @@
 {
-  "blockNumber": 19425631,
-  "aggregatedValues": ["USD47,742,042.58"],
+  "blockNumber": 20417741,
+  "aggregatedValues": ["USD660,263.55"],
   "snapshot": [
     {
       "protocolId": "morpho-blue",
-      "name": "MorphoBlue Supply",
-      "description": "Morpho Blue DeFi adapter on the supply side",
+      "name": "MetaMorpho Vaults",
+      "description": "MetaMorpho Vaults adapter",
       "siteUrl": "https://app.morpho.org/",
       "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
       "positionType": "supply",
       "chainId": 1,
-      "productId": "market-supply",
+      "productId": "vault",
       "success": true,
       "tokens": [
         {
-          "tokenId": "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
-          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-          "name": "Wrapped Ether",
-          "symbol": "WETH",
+          "tokenId": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
+          "address": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
+          "name": " Usual Boosted USDC",
+          "symbol": "USUALUSDC+",
           "decimals": 18,
-          "balanceRaw": "11788350914073448993557n",
+          "balanceRaw": "659228547765082793841905n",
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "balanceRaw": "11788350914073448993557n",
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "659228547765n",
               "type": "underlying",
-              "balance": 11788.35091407345,
-              "price": 4049.93395,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+              "balance": 659228.547765,
+              "price": 1.0015700219341837,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ],
-          "balance": 11788.35091407345
+          "balance": 659228.5477650828
         }
       ]
     }
