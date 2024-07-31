@@ -84,8 +84,6 @@ export function buildSnapshots(program: Command) {
                   snapshot,
                 }
 
-                console.log(bigintJsonStringify(result, 2))
-
                 await updateBlockNumber(protocolId, index, blockNumber)
 
                 await updateFilters(protocolId, index, result.snapshot)
@@ -112,8 +110,6 @@ export function buildSnapshots(program: Command) {
                     },
                   }),
                 }
-
-                console.log(bigintJsonStringify(result, 2))
 
                 await updateBlockNumber(protocolId, index, blockNumber)
 
@@ -152,8 +148,6 @@ export function buildSnapshots(program: Command) {
                   chainId,
                 )
 
-                console.log(bigintJsonStringify(result, 2))
-
                 return {
                   aggregatedValues,
                   snapshot: result,
@@ -181,8 +175,6 @@ export function buildSnapshots(program: Command) {
                   chainId,
                 )
 
-                console.log(bigintJsonStringify(result, 2))
-
                 return {
                   snapshot: result,
                   aggregatedValues,
@@ -209,8 +201,6 @@ export function buildSnapshots(program: Command) {
                   }),
                 }
 
-                console.log(bigintJsonStringify(result, 2))
-
                 await updateBlockNumber(protocolId, index, blockNumber)
 
                 return result
@@ -235,8 +225,6 @@ export function buildSnapshots(program: Command) {
                     },
                   }),
                 }
-
-                console.log(bigintJsonStringify(result, 2))
 
                 await updateBlockNumber(protocolId, index, blockNumber)
 

@@ -121,6 +121,59 @@ export class BeefyMooTokenAdapter
     return res
   }
 
+<<<<<<< HEAD
+=======
+  async getProtocolTokens(): Promise<Erc20Metadata[]> {
+    return Object.values(await this.buildMetadata()).map(
+      ({ protocolToken }) => protocolToken,
+    )
+  }
+
+  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    return this.helpers.getBalanceOfTokens({
+      ...input,
+      protocolTokens: await this.getProtocolTokens(),
+    })
+  }
+
+  async getWithdrawals({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.withdrawals({
+      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
+  }
+
+  async getDeposits({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.deposits({
+      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
+  }
+
+  async getTotalValueLocked({
+    protocolTokenAddresses,
+    blockNumber,
+  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
+    const protocolTokens = await this.getProtocolTokens()
+
+    return await this.helpers.tvl({
+      protocolTokens,
+      filterProtocolTokenAddresses: protocolTokenAddresses,
+      blockNumber,
+    })
+  }
+
+>>>>>>> 2be40524 (feat: fix)
   async unwrap({
     protocolTokenAddress,
     tokenId,

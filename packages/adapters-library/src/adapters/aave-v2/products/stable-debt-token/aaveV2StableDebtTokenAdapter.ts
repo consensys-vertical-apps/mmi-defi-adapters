@@ -20,13 +20,6 @@ export class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
     includeInUnwrap: true,
   }
 
-  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    return this.helpers.getBalanceOfTokens({
-      ...input,
-      protocolTokens: await this.getProtocolTokens(),
-    })
-  }
-
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,

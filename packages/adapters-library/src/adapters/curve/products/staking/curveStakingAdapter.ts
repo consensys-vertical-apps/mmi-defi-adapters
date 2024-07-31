@@ -195,7 +195,7 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
     const protocolTokens = await this.getProtocolTokens()
 
-    return await this.helpers.tvlUsingUnwrap({
+    return await this.helpers.tvl({
       protocolTokens,
       filterProtocolTokenAddresses: protocolTokenAddresses,
       blockNumber,

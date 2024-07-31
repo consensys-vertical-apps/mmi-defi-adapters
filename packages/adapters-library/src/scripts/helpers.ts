@@ -227,7 +227,7 @@ export class Helpers {
     }
   }
 
-  async tvlUsingUnwrap({
+  async tvl({
     protocolTokens,
     filterProtocolTokenAddresses,
     blockNumber,

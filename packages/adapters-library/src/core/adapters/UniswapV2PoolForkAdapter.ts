@@ -351,7 +351,7 @@ export abstract class UniswapV2PoolForkAdapter
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
     const protocolTokens = await this.getProtocolTokens()
 
-    return await this.helpers.tvlUsingUnwrap({
+    return await this.helpers.tvl({
       protocolTokens,
       filterProtocolTokenAddresses: protocolTokenAddresses,
       blockNumber,
