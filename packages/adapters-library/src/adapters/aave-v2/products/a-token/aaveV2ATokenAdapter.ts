@@ -1,18 +1,48 @@
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { logger } from '../../../../core/utils/logger'
+import { Helpers } from '../../../../scripts/helpers'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
   PositionType,
+  ProtocolAdapterParams,
   ProtocolDetails,
+  ProtocolPosition,
+  ProtocolTokenTvl,
+  UnwrapExchangeRate,
+  UnwrapInput,
 } from '../../../../types/adapter'
 import { AaveBasePoolAdapter } from '../../common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../contracts'
 
 export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'a-token'
-
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
+  }
+
+  helpers: Helpers
+
+  constructor({
+    provider,
+    chainId,
+    protocolId,
+    adaptersController,
+    helpers,
+  }: ProtocolAdapterParams) {
+    super({
+      provider,
+      chainId,
+      protocolId,
+      adaptersController,
+      helpers,
+    })
+    this.helpers = helpers
   }
 
   getProtocolDetails(): ProtocolDetails {

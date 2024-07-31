@@ -142,7 +142,7 @@ export class RenzoEzEthAdapter implements IProtocolAdapter, IMetadataBuilder {
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
     const protocolTokens = await this.getProtocolTokens()
 
-    return await this.helpers.tvl({
+    return await this.helpers.tvlUsingUnwrap({
       protocolTokens,
       filterProtocolTokenAddresses: protocolTokenAddresses,
       blockNumber,

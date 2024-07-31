@@ -215,7 +215,7 @@ export class XfaiDexAdapter
     )
   }
 
-  protected async fetchProtocolTokenMetadata(
+  protected async getProtocolToken(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
@@ -264,7 +264,7 @@ export class XfaiDexAdapter
     ]
   }
 
-  protected async fetchUnderlyingTokensMetadata(
+  protected async getUnderlyingTokens(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
     const { underlyingTokens } =

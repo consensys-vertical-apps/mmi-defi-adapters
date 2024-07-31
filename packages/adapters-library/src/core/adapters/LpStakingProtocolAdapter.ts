@@ -183,7 +183,7 @@ export abstract class LpStakingAdapter
     return [underlyingTokenBalance]
   }
 
-  protected async fetchProtocolTokenMetadata(
+  protected async getProtocolToken(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
@@ -212,7 +212,7 @@ export abstract class LpStakingAdapter
     ]
   }
 
-  protected async fetchUnderlyingTokensMetadata(
+  protected async getUnderlyingTokens(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
     const { underlyingToken } =

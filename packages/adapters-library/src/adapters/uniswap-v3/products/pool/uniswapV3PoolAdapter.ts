@@ -96,13 +96,13 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     this.adaptersController = adaptersController
   }
 
-  protected async fetchProtocolTokenMetadata(
+  protected async getProtocolToken(
     _protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     throw new NotImplementedError()
   }
 
-  protected async fetchUnderlyingTokensMetadata(
+  protected async getUnderlyingTokens(
     _protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
     throw new NotImplementedError()

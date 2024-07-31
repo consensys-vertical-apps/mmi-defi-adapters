@@ -35,7 +35,7 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return [await this.fetchProtocolTokenMetadata()]
+    return [await this.getProtocolToken()]
   }
 
   protected async getUnderlyingTokenBalances({
@@ -46,7 +46,7 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
+    const [underlyingToken] = await this.getUnderlyingTokens()
     const [unwrappedTokenExchangeRate] = await this.unwrapProtocolToken(
       protocolTokenBalance,
       blockNumber,
@@ -66,7 +66,7 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
     ]
   }
 
-  protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
+  protected async getProtocolToken(): Promise<Erc20Metadata> {
     return {
       address: getAddress('0xf951E335afb289353dc249e82926178EaC7DEd78'),
       name: 'Swell Ethereum',
@@ -79,7 +79,7 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number,
   ): Promise<UnwrappedTokenExchangeRate[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
+    const [underlyingToken] = await this.getUnderlyingTokens()
 
     const swEthContract = SwEth__factory.connect(
       protocolTokenMetadata.address,
@@ -99,7 +99,7 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
     ]
   }
 
-  protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
+  protected async getUnderlyingTokens(): Promise<Erc20Metadata[]> {
     return [
       {
         address: ZERO_ADDRESS,

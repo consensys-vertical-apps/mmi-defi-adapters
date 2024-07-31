@@ -119,7 +119,7 @@ export abstract class SparkV1BasePoolAdapter
     return poolMetadata
   }
 
-  protected async fetchUnderlyingTokensMetadata(
+  protected async getUnderlyingTokens(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
     const { underlyingToken } =
@@ -128,7 +128,7 @@ export abstract class SparkV1BasePoolAdapter
     return [underlyingToken]
   }
 
-  protected async fetchProtocolTokenMetadata(
+  protected async getProtocolToken(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
