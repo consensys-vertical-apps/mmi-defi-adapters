@@ -35,7 +35,7 @@
                 "symbol": "SY-weETH",
                 "decimals": 18,
                 "type": "underlying",
-                "balanceRaw": "288277554010817490n",
+                "balanceRaw": "288277569000252909n",
                 "tokens": [
                   {
                     "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
@@ -43,13 +43,13 @@
                     "symbol": "weETH",
                     "decimals": 18,
                     "type": "underlying",
-                    "balanceRaw": "288277554010817490n",
-                    "balance": 0.2882775540108175,
+                    "balanceRaw": "288277569000252909n",
+                    "balance": 0.2882775690002529,
                     "price": 3651.18611852538,
                     "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
                   }
                 ],
-                "balance": 0.2882775540108175,
+                "balance": 0.2882775690002529,
                 "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xAC0047886a985071476a1186bE89222659970d65/logo.png"
               }
             ],
@@ -59,5 +59,26 @@
         "blockNumber": 20089673
       }
     ]
+  },
+  "rpcResponses": {
+    "94adda600e0397191fe53fbdae35d0ee": {
+      "result": [
+        {
+          "address": "0xc69ad9bab1dee23f4605a82b3354f8e40d1e5966",
+          "blockHash": "0x038380dcabc9d490f2bdffb0387967d678da1b0b5fb05337ce514b2177bcf9a2",
+          "blockNumber": "0x1328b49",
+          "data": "0x000000000000000000000000000000000000000000000000042fecb8247f0413",
+          "logIndex": "0xb4",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000f32e58f92e60f4b0a37a69b95d642a471365eae8",
+            "0x000000000000000000000000117c99451cae094b3a7d56c9d3a97c96900b8e7a"
+          ],
+          "transactionHash": "0x1332461b414753d3daf1e1c7d5294a4684d0bb14da461bb1b03c0e06590810c1",
+          "transactionIndex": "0x4e"
+        }
+      ]
+    }
   }
 }

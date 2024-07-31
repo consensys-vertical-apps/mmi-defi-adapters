@@ -1,6 +1,2 @@
-export const PENDLE_ORACLE_ADDRESS_ALL_CHAINS =
-  '0x9a9fa8338dd5e5b2188006f1cd2ef26d921650c2'
-
-// I don't know what these values for the smart contract method param mean - JP
-export const DURATION_15_MINS = 900
-export const DURATION_30_MINS = 1800
+export const PENDLE_ROUTER_STATIC_CONTRACT =
+  '0x263833d47eA3fA4a30f269323aba6a107f9eB14C'

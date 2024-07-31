@@ -5,18 +5,15 @@ import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
-import { NotImplementedError } from '../../../../core/errors/errors'
+
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
-import { Replacements } from '../../../../scripts/replacements'
-import { RewardsAdapter } from '../../../../scripts/rewardAdapter'
+
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
-  GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
@@ -25,20 +22,14 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  Underlying,
-  UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
-import {
-  DURATION_15_MINS,
-  DURATION_30_MINS,
-  PENDLE_ORACLE_ADDRESS_ALL_CHAINS,
-} from '../../backend/constants'
-import { OraclePyYtLp__factory } from '../../contracts'
+import { PENDLE_ROUTER_STATIC_CONTRACT } from '../../backend/constants'
+import { RouterStatic__factory } from '../../contracts'
 
 type Metadata = Record<
   string,
@@ -188,20 +179,17 @@ export class PendleYieldTokenAdapter
       await this.getUnderlyingTokens(protocolTokenAddress)
     )[0]!
 
-    const oracle = OraclePyYtLp__factory.connect(
-      PENDLE_ORACLE_ADDRESS_ALL_CHAINS,
+    const oracle = RouterStatic__factory.connect(
+      PENDLE_ROUTER_STATIC_CONTRACT,
       this.provider,
     )
 
-    const rate = await oracle
-      .getYtToSyRate(metadata.marketAddress, DURATION_15_MINS, {
-        blockTag: blockNumber,
-      })
-      .catch((e) => {
-        return oracle.getYtToSyRate(metadata.marketAddress, DURATION_30_MINS, {
-          blockTag: blockNumber,
-        })
-      })
+    const marketAddress = metadata.marketAddress
+
+    // this function was deployed around blockNumber 20418316
+    const rate = await oracle.getYtToSyRate(marketAddress, {
+      blockTag: blockNumber,
+    })
 
     const underlying = {
       type: TokenType.Underlying,
