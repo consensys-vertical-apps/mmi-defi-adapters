@@ -1,0 +1,365 @@
+{
+  "blockNumber": 17776549,
+  "snapshot": [
+    {
+      "protocolId": "morpho-blue",
+      "name": "MorphoBlue Supply",
+      "description": "Morpho Blue DeFi adapter on the supply side",
+      "siteUrl": "https://app.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 8453,
+      "productId": "market-supply",
+      "success": true,
+      "tokens": [
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "13275752784289627803098n",
+          "address": "0x4200000000000000000000000000000000000006",
+          "symbol": "ETH",
+          "name": "Ethereum",
+          "decimals": 18,
+          "totalSupply": 13275.752784289627,
+          "price": 3332.523362
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "32845311658366n",
+          "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "name": "USD Coin",
+          "symbol": "USDC",
+          "decimals": 6,
+          "totalSupply": 32845311.658366,
+          "price": 0.9997484314326445
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "500009302649380576904330n",
+          "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+          "name": "USDA",
+          "symbol": "USDA",
+          "decimals": 18,
+          "totalSupply": 500009.3026493806,
+          "price": 1.0362162847602683
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "500014084787689176755360n",
+          "address": "0xA61BeB4A3d02decb01039e378237032B351125B4",
+          "name": "EURA (previously agEUR)",
+          "symbol": "EURA",
+          "decimals": 18,
+          "totalSupply": 500014.08478768915,
+          "price": 1.0879383743109736
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "12815965854126384220319497n",
+          "address": "0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed",
+          "name": "Degen",
+          "symbol": "DEGEN",
+          "decimals": 18,
+          "totalSupply": 12815965.854126384,
+          "price": 0.005413405487213985
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "144466238734455937343166n",
+          "address": "0xbf1aeA8670D2528E08334083616dD9C5F3B087aE",
+          "name": "Mai Stablecoin",
+          "symbol": "MAI",
+          "decimals": 18,
+          "totalSupply": 144466.23873445592,
+          "price": 1.28632008783665
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "490945106996801534694714n",
+          "address": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
+          "name": "Wrapped Mountain Protocol USD",
+          "symbol": "wUSDM",
+          "decimals": 18,
+          "totalSupply": 490945.1069968015
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "2033069813026546810183700n",
+          "address": "0xCfA3Ef56d303AE4fAabA0592388F19d7C3399FB4",
+          "name": "Electronic Dollar",
+          "symbol": "eUSD",
+          "decimals": 18,
+          "totalSupply": 2033069.8130265467,
+          "price": 0.9373528368212017
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "5320781116706545176091n",
+          "address": "0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22",
+          "name": "Coinbase Wrapped Staked ETH",
+          "symbol": "cbETH",
+          "decimals": 18,
+          "totalSupply": 5320.781116706546,
+          "price": 3591.6680805996525
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "262135044763028518517n",
+          "address": "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A",
+          "name": "Wrapped eETH",
+          "symbol": "weETH",
+          "decimals": 18,
+          "totalSupply": 262.13504476302853,
+          "price": 3478.4506433410684
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "412347703846810683039n",
+          "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+          "name": "Renzo Restaked ETH",
+          "symbol": "ezETH",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "418662166013977230216n",
+              "totalSupply": 418.66216601397724,
+              "price": 3332.523362,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/info/logo.png"
+            }
+          ],
+          "totalSupply": 412.3477038468107
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "5831186840180093102610n",
+          "address": "0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452",
+          "name": "Wrapped liquid staked Ether 2.0",
+          "symbol": "wstETH",
+          "decimals": 18,
+          "totalSupply": 5831.186840180093,
+          "price": 3910.5999415018373
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "74872752918979873431153n",
+          "address": "0x940181a94A35A4569E4529A3CDfB74e38FD98631",
+          "name": "Aerodrome",
+          "symbol": "AERO",
+          "decimals": 18,
+          "totalSupply": 74872.75291897988,
+          "price": 0.878962283184731
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "15054653767181336n",
+          "address": "0xB6fe221Fe9EeF5aBa221c348bA20A1Bf5e73624c",
+          "name": "Rocket Pool ETH",
+          "symbol": "rETH",
+          "decimals": 18,
+          "totalSupply": 0.015054653767181335,
+          "price": 4074.8778435514137
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "729699834715622118171n",
+          "address": "0xCb327b99fF831bF8223cCEd12B1338FF3aA322Ff",
+          "name": "Based ETH",
+          "symbol": "bsdETH",
+          "decimals": 18,
+          "totalSupply": 729.6998347156222,
+          "price": 3358.889546310841
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "2000000000000000000n",
+          "address": "0x004626A008B1aCdC4c74ab51644093b155e59A23",
+          "name": "Staked EURA",
+          "symbol": "stEUR",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0xA61BeB4A3d02decb01039e378237032B351125B4",
+              "name": "EURA (previously agEUR)",
+              "symbol": "EURA",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "2000000000000000000n",
+              "totalSupply": 2,
+              "price": 1.0879383743109736,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0xA61BeB4A3d02decb01039e378237032B351125B4/logo.png"
+            }
+          ],
+          "totalSupply": 2
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "2000000000000000000n",
+          "address": "0x0022228a2cc5E7eF0274A7Baa600d44da5aB5776",
+          "name": "Staked USDA",
+          "symbol": "stUSD",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+              "name": "USDA",
+              "symbol": "USDA",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "2090196915363867524n",
+              "totalSupply": 2.0901969153638675,
+              "price": 1.0362162847602683,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x0000206329b97DB379d5E1Bf586BbDB969C63274/logo.png"
+            }
+          ],
+          "totalSupply": 2
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "4572449080719n",
+          "address": "0xd95ca61CE9aAF2143E81Ef5462C0c2325172E028",
+          "name": "Wrapped USD+",
+          "symbol": "wUSD+",
+          "decimals": 6,
+          "totalSupply": 4572449.080719
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "998857800124069100n",
+          "address": "0xc1256Ae5FF1cf2719D4937adb3bbCCab2E00A2Ca",
+          "name": "Moonwell Flagship USDC",
+          "symbol": "mwUSDC",
+          "decimals": 18,
+          "totalSupply": 0.9988578001240691
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "210201871402101381786520n",
+          "address": "0xCc7FF230365bD730eE4B352cC2492CEdAC49383e",
+          "name": "High Yield USD",
+          "symbol": "hyUSD",
+          "decimals": 18,
+          "totalSupply": 210201.8714021014,
+          "price": 1.0494446248649816
+        }
+      ]
+    },
+    {
+      "protocolId": "morpho-blue",
+      "name": "MorphoBlue Borrow",
+      "description": "Morpho Blue DeFi adapter on the borrow side",
+      "siteUrl": "https://app.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 8453,
+      "productId": "market-borrow",
+      "success": true,
+      "tokens": [
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "5239684081173696807434n",
+          "address": "0x4200000000000000000000000000000000000006",
+          "symbol": "ETH",
+          "name": "Ethereum",
+          "decimals": 18,
+          "totalSupply": 5239.6840811736965,
+          "price": 3332.523362
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "26655538101395n",
+          "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "name": "USD Coin",
+          "symbol": "USDC",
+          "decimals": 6,
+          "totalSupply": 26655538.101395,
+          "price": 0.9997484314326445
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "7429649380576904329n",
+          "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+          "name": "USDA",
+          "symbol": "USDA",
+          "decimals": 18,
+          "totalSupply": 7.429649380576905,
+          "price": 1.0362162847602683
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "3738000000000000000n",
+          "address": "0xA61BeB4A3d02decb01039e378237032B351125B4",
+          "name": "EURA (previously agEUR)",
+          "symbol": "EURA",
+          "decimals": 18,
+          "totalSupply": 3.738,
+          "price": 1.0879383743109736
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "1060782870505665090271n",
+          "address": "0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed",
+          "name": "Degen",
+          "symbol": "DEGEN",
+          "decimals": 18,
+          "totalSupply": 1060.7828705056652,
+          "price": 0.005413405487213985
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "133652397223881414218061n",
+          "address": "0xbf1aeA8670D2528E08334083616dD9C5F3B087aE",
+          "name": "Mai Stablecoin",
+          "symbol": "MAI",
+          "decimals": 18,
+          "totalSupply": 133652.39722388142,
+          "price": 1.28632008783665
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "8527235896839166014741n",
+          "address": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
+          "name": "Wrapped Mountain Protocol USD",
+          "symbol": "wUSDM",
+          "decimals": 18,
+          "totalSupply": 8527.235896839165
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "1260542101018750082103684n",
+          "address": "0xCfA3Ef56d303AE4fAabA0592388F19d7C3399FB4",
+          "name": "Electronic Dollar",
+          "symbol": "eUSD",
+          "decimals": 18,
+          "totalSupply": 1260542.10101875,
+          "price": 0.9373528368212017
+        }
+      ]
+    },
+    {
+      "protocolId": "morpho-blue",
+      "name": "MetaMorpho Vaults",
+      "description": "MetaMorpho Vaults adapter",
+      "siteUrl": "https://app.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 8453,
+      "productId": "vault",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xbeeF010f9cb27031ad51e3333f9aF9C6B1228183",
+          "name": "Steakhouse USDC",
+          "symbol": "USDC",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "2495732529018n",
+          "totalSupply": 2495732.529018
+        }
+      ]
+    }
+  ]
+}

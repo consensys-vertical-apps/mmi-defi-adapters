@@ -1,0 +1,42 @@
+{
+  "blockNumber": 17776788,
+  "aggregatedValues": ["USD9,992.83"],
+  "snapshot": [
+    {
+      "protocolId": "morpho-blue",
+      "name": "MetaMorpho Vaults",
+      "description": "MetaMorpho Vaults adapter",
+      "siteUrl": "https://app.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 8453,
+      "productId": "vault",
+      "success": true,
+      "tokens": [
+        {
+          "tokenId": "0xa0E430870c4604CcfC7B38Ca7845B1FF653D0ff1",
+          "address": "0xa0E430870c4604CcfC7B38Ca7845B1FF653D0ff1",
+          "name": "Moonwell Flagship ETH",
+          "symbol": "mwETH",
+          "decimals": 18,
+          "balanceRaw": "2995035841467461394n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x4200000000000000000000000000000000000006",
+              "symbol": "ETH",
+              "name": "Ethereum",
+              "decimals": 18,
+              "balanceRaw": "2995035841467461394n",
+              "type": "underlying",
+              "balance": 2.9950358414674616,
+              "price": 3336.46411744,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x4200000000000000000000000000000000000006/logo.png"
+            }
+          ],
+          "balance": 2.9950358414674616
+        }
+      ]
+    }
+  ]
+}

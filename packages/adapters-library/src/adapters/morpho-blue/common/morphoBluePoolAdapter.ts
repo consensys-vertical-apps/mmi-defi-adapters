@@ -53,6 +53,7 @@ const morphoBlueContractAddresses: Partial<
 > = {
   [Protocol.MorphoBlue]: {
     [Chain.Ethereum]: '0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb',
+    [Chain.Base]: '0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb',
   },
 }
 

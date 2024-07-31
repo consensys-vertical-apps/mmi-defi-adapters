@@ -174,6 +174,14 @@ import RenzoEzEthBscEzEth from '../../adapters/renzo/products/ez-eth/metadata/bs
 import RenzoEzEthEthereumEzEth from '../../adapters/renzo/products/ez-eth/metadata/ethereum.ez-eth.json'
 import RenzoEzEthLineaEzEth from '../../adapters/renzo/products/ez-eth/metadata/linea.ez-eth.json'
 
+import MorphoBlueVaultEthereumProtocolToken from '../../adapters/morpho-blue/products/vault/metadata/ethereum.protocol-token.json'
+
+import MorphoBlueMarketSupplyBaseMarketSupply from '../../adapters/morpho-blue/products/market-supply/metadata/base.market-supply.json'
+
+import MorphoBlueMarketBorrowBaseMarketBorrow from '../../adapters/morpho-blue/products/market-borrow/metadata/base.market-borrow.json'
+
+import MorphoBlueVaultBaseProtocolToken from '../../adapters/morpho-blue/products/vault/metadata/base.protocol-token.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -989,6 +997,15 @@ export const MetadataFiles = new Map<string, Json>([
     metadataKey({
       protocolId: Protocol.MorphoBlue,
       productId: 'market-borrow',
+      chainId: Chain.Base,
+      fileKey: 'market-borrow',
+    }),
+    MorphoBlueMarketBorrowBaseMarketBorrow,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoBlue,
+      productId: 'market-borrow',
       chainId: Chain.Ethereum,
       fileKey: 'market-borrow',
     }),
@@ -998,10 +1015,37 @@ export const MetadataFiles = new Map<string, Json>([
     metadataKey({
       protocolId: Protocol.MorphoBlue,
       productId: 'market-supply',
+      chainId: Chain.Base,
+      fileKey: 'market-supply',
+    }),
+    MorphoBlueMarketSupplyBaseMarketSupply,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoBlue,
+      productId: 'market-supply',
       chainId: Chain.Ethereum,
       fileKey: 'market-supply',
     }),
     MorphoBlueMarketSupplyEthereumMarketSupply,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoBlue,
+      productId: 'vault',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    MorphoBlueVaultBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoBlue,
+      productId: 'vault',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    MorphoBlueVaultEthereumProtocolToken,
   ],
   [
     metadataKey({
@@ -1327,7 +1371,6 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     StargatePoolArbitrumLpToken,
   ],
-
   [
     metadataKey({
       protocolId: Protocol.Stargate,
@@ -1337,7 +1380,6 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     StargatePoolEthereumLpToken,
   ],
-
   [
     metadataKey({
       protocolId: Protocol.Stargate,
