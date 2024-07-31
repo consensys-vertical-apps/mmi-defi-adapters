@@ -31,7 +31,6 @@ export function buildSnapshots(program: Command) {
     )
     .showHelpAfterError()
     .action(async ({ protocols }) => {
-      const defiProvider = new DefiProvider({ useMulticallInterceptor: false })
       const filterProtocolIds = multiProtocolFilter(protocols)
 
       for (const protocolId of Object.values(Protocol)) {
@@ -46,6 +45,10 @@ export function buildSnapshots(program: Command) {
         ).testCases
 
         for (const [index, testCase] of testCases.entries()) {
+          const defiProvider = new DefiProvider({
+            useMulticallInterceptor: false,
+          })
+
           const msw = startRpcSnapshot(
             Object.values(defiProvider.chainProvider.providers).map(
               (provider) => provider._getConnection().url,
