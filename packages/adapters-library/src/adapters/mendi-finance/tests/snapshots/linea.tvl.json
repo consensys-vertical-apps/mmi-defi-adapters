@@ -13,8 +13,8 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
           "name": "Mendi USD Coin",
+          "address": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
           "symbol": "meUSDC",
           "decimals": 8,
           "type": "protocol",
@@ -52,5 +52,13 @@
         }
       }
     }
-  ]
+  ],
+  "rpcResponses": {
+    "13bc172b0e08d63d1e4f1943e2d7568c": {
+      "result": "0x00000000000000000000000000000000000000000000000000a58b99593144ec"
+    },
+    "9cd75c85ca87d73721b0535c8e481907": {
+      "result": "0x000000000000000000000000000000000000000000000000000000b862f86dc0"
+    }
+  }
 }

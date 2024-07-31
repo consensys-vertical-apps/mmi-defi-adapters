@@ -84,6 +84,8 @@ export function buildSnapshots(program: Command) {
                   snapshot,
                 }
 
+                console.log(bigintJsonStringify(result, 2))
+
                 await updateBlockNumber(protocolId, index, blockNumber)
 
                 await updateFilters(protocolId, index, result.snapshot)
@@ -111,6 +113,8 @@ export function buildSnapshots(program: Command) {
                   }),
                 }
 
+                console.log(bigintJsonStringify(result, 2))
+
                 await updateBlockNumber(protocolId, index, blockNumber)
 
                 await updateFilters(protocolId, index, result.snapshot)
@@ -137,20 +141,22 @@ export function buildSnapshots(program: Command) {
               }
 
               case 'withdrawals': {
-                const snapshot = await defiProvider.getWithdrawals({
+                const result = await defiProvider.getWithdrawals({
                   ...testCase.input,
                   chainId: chainId,
                   protocolId: protocolId,
                 })
 
                 const aggregatedValues = getAggregatedValuesMovements(
-                  snapshot,
+                  result,
                   chainId,
                 )
 
+                console.log(bigintJsonStringify(result, 2))
+
                 return {
                   aggregatedValues,
-                  snapshot,
+                  snapshot: result,
                 }
               }
               case 'repays': {
@@ -164,12 +170,22 @@ export function buildSnapshots(program: Command) {
               }
 
               case 'borrows': {
+                const result = await defiProvider.getBorrows({
+                  ...testCase.input,
+                  chainId: chainId,
+                  protocolId: protocolId,
+                })
+
+                const aggregatedValues = getAggregatedValuesMovements(
+                  result,
+                  chainId,
+                )
+
+                console.log(bigintJsonStringify(result, 2))
+
                 return {
-                  snapshot: await defiProvider.getBorrows({
-                    ...testCase.input,
-                    chainId: chainId,
-                    protocolId: protocolId,
-                  }),
+                  snapshot: result,
+                  aggregatedValues,
                 }
               }
 
@@ -192,6 +208,8 @@ export function buildSnapshots(program: Command) {
                     filterProtocolToken: testCase.filterProtocolToken,
                   }),
                 }
+
+                console.log(bigintJsonStringify(result, 2))
 
                 await updateBlockNumber(protocolId, index, blockNumber)
 
@@ -217,6 +235,8 @@ export function buildSnapshots(program: Command) {
                     },
                   }),
                 }
+
+                console.log(bigintJsonStringify(result, 2))
 
                 await updateBlockNumber(protocolId, index, blockNumber)
 
