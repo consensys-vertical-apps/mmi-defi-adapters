@@ -300,7 +300,7 @@ export class ChimpExchangePoolAdapter
     )
   }
 
-  protected async getProtocolToken(
+  protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
@@ -362,7 +362,7 @@ export class ChimpExchangePoolAdapter
     return underlyingRates
   }
 
-  protected async getUnderlyingTokens(
+  protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
     const { underlyingTokens } =

@@ -78,13 +78,13 @@ export class LynexAlgebraAdapter extends SimplePoolAdapter {
     this.adaptersController = adaptersController
   }
 
-  protected async getProtocolToken(
+  protected async fetchProtocolTokenMetadata(
     _protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     throw new NotImplementedError()
   }
 
-  protected async getUnderlyingTokens(
+  protected async fetchUnderlyingTokensMetadata(
     _protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
     throw new NotImplementedError()

@@ -36,11 +36,11 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return [await this.getProtocolToken()]
+    return [await this.fetchProtocolTokenMetadata()]
   }
 
   // TODO Temporary change to stop on-chain requests on init
-  protected async getProtocolToken(): Promise<Erc20Metadata> {
+  protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
     return {
       address: '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84',
       name: 'Liquid staked Ether 2.0',
@@ -48,7 +48,7 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
       decimals: 18,
     }
   }
-  protected async getUnderlyingTokens(): Promise<Erc20Metadata[]> {
+  protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
     return [
       {
         address: '0x0000000000000000000000000000000000000000',
@@ -66,7 +66,7 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    const [underlyingToken] = await this.getUnderlyingTokens()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
 
     const underlyingTokenBalance = {
       ...underlyingToken!,
@@ -80,7 +80,7 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
   protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
   ): Promise<UnwrappedTokenExchangeRate[]> {
-    const [underlyingToken] = await this.getUnderlyingTokens()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
 
     // Always pegged one to one to underlying
     const pricePerShareRaw = BigInt(10 ** protocolTokenMetadata.decimals)

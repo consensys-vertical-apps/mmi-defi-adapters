@@ -26,25 +26,6 @@ export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
     includeInUnwrap: true,
   }
 
-  helpers: Helpers
-
-  constructor({
-    provider,
-    chainId,
-    protocolId,
-    adaptersController,
-    helpers,
-  }: ProtocolAdapterParams) {
-    super({
-      provider,
-      chainId,
-      protocolId,
-      adaptersController,
-      helpers,
-    })
-    this.helpers = helpers
-  }
-
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,

@@ -12,31 +12,12 @@ import {
 import { AaveBasePoolAdapter } from '../../common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../contracts'
 
-export abstract class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
+export class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'stable-debt-token'
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-  }
-
-  helpers: Helpers
-
-  constructor({
-    provider,
-    chainId,
-    protocolId,
-    adaptersController,
-    helpers,
-  }: ProtocolAdapterParams) {
-    super({
-      provider,
-      chainId,
-      protocolId,
-      adaptersController,
-      helpers,
-    })
-    this.helpers = helpers
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {

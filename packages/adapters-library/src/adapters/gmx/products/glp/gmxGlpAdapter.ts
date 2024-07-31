@@ -377,7 +377,8 @@ export class GmxGlpAdapter
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getProtocolTokenMovements({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
 
       filter: {
         fromBlock,
@@ -395,7 +396,8 @@ export class GmxGlpAdapter
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getProtocolTokenMovements({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
 
       filter: {
         fromBlock,
@@ -406,13 +408,13 @@ export class GmxGlpAdapter
     })
   }
 
-  protected async getProtocolToken(
+  protected async fetchProtocolTokenMetadata(
     _protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     return (await this.buildMetadata()).protocolToken
   }
 
-  protected async getUnderlyingTokens(
+  protected async fetchUnderlyingTokensMetadata(
     _protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
     return (await this.buildMetadata()).underlyingTokens

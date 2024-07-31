@@ -174,7 +174,7 @@ export class MendiFinanceSupplyMarketAdapter
     return [underlyingTokenBalance]
   }
 
-  protected async getProtocolToken(
+  protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
@@ -212,7 +212,7 @@ export class MendiFinanceSupplyMarketAdapter
     ]
   }
 
-  protected async getUnderlyingTokens(
+  protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
     const { underlyingToken } =

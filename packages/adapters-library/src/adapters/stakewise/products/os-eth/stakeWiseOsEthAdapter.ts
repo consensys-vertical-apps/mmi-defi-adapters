@@ -63,12 +63,12 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    const protocolToken = await this.getProtocolToken()
+    const protocolToken = await this.fetchProtocolTokenMetadata()
 
     return [protocolToken]
   }
 
-  protected async getProtocolToken(): Promise<Erc20Metadata> {
+  protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
     const address = getAddress('0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38')
 
     const data: Erc20Metadata = {
@@ -81,7 +81,7 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
     return data
   }
 
-  protected async getUnderlyingTokens(): Promise<Erc20Metadata[]> {
+  protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
     return [this.#underlyingToken]
   }
 
@@ -92,7 +92,7 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
 
     const [vaultsRegistryAddress, protocolToken] = await Promise.all([
       this.getVaultsRegistryAddress(),
-      this.getProtocolToken(),
+      this.fetchProtocolTokenMetadata(),
     ])
 
     const vaultsRegistryContract = VaultsRegistry__factory.connect(

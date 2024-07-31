@@ -190,7 +190,7 @@ export class SyncSwapPoolAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  protected async getProtocolToken(
+  protected async fetchProtocolTokenMetadata(
     _protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     throw new NotImplementedError()
@@ -203,7 +203,7 @@ export class SyncSwapPoolAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  protected async getUnderlyingTokens(
+  protected async fetchUnderlyingTokensMetadata(
     _protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
     throw new NotImplementedError()

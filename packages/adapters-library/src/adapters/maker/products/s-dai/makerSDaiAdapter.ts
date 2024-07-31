@@ -40,7 +40,7 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return [await this.getProtocolToken()]
+    return [await this.fetchProtocolTokenMetadata()]
   }
 
   protected async getUnderlyingTokenBalances({
@@ -50,7 +50,7 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    const [underlyingToken] = await this.getUnderlyingTokens()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
 
     const [underlyingTokenConversionRate] = await this.unwrapProtocolToken(
       protocolTokenBalance,
@@ -77,7 +77,7 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  protected async getProtocolToken(): Promise<Erc20Metadata> {
+  protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
     return {
       address: getAddress('0x83f20f44975d03b1b09e64809b757c47f942beea'),
       name: 'Savings Dai',
@@ -86,7 +86,7 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
     }
   }
 
-  protected async getUnderlyingTokens(): Promise<Erc20Metadata[]> {
+  protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
     return [
       {
         address: getAddress('0x6b175474e89094c44da98b954eedeac495271d0f'),
@@ -101,7 +101,7 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
   ): Promise<UnwrappedTokenExchangeRate[]> {
-    const [underlyingToken] = await this.getUnderlyingTokens()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
 
     const mcdPotContract = McdPot__factory.connect(
       MCD_POT_ADDRESS,
