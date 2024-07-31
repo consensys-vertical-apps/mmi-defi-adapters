@@ -1,6 +1,7 @@
 import { Chain } from '../../../core/constants/chains'
 import { TimePeriod } from '../../../core/constants/timePeriod'
 import type { TestCase } from '../../../types/testCase'
+import { WriteActions } from '../../../types/writeActions'
 
 export const testCases: TestCase[] = [
   {
@@ -70,5 +71,62 @@ export const testCases: TestCase[] = [
     method: 'tvl',
     filterProtocolTokens: ['0x004626A008B1aCdC4c74ab51644093b155e59A23'],
     blockNumber: 19661876,
+  },
+  {
+    key: 'tx-params-savings-deposit',
+    method: 'tx-params',
+    chainId: Chain.Ethereum,
+    input: {
+      productId: 'savings',
+      action: WriteActions.Deposit,
+      inputs: {
+        asset: '0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8',
+        amount: '10000000000000000000',
+        receiver: '0xB0b0F6F13A5158eB67724282F586a552E75b5728',
+      },
+    },
+  },
+  {
+    key: 'tx-params-savings-withdraw',
+    method: 'tx-params',
+    chainId: Chain.Ethereum,
+    input: {
+      productId: 'savings',
+      action: WriteActions.Withdraw,
+      inputs: {
+        asset: '0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8',
+        amount: '10000000000000000000',
+        receiver: '0xB0b0F6F13A5158eB67724282F586a552E75b5728',
+        owner: '0xB0b0F6F13A5158eB67724282F586a552E75b5728',
+      },
+    },
+  },
+  {
+    key: 'tx-params-transmuter-deposit',
+    method: 'tx-params',
+    chainId: Chain.Ethereum,
+    input: {
+      productId: 'transmuter',
+      action: WriteActions.Deposit,
+      inputs: {
+        asset: '0x0000206329b97DB379d5E1Bf586BbDB969C63274',
+        amount: '10000000000000000000',
+        receiver: '0xB0b0F6F13A5158eB67724282F586a552E75b5728',
+      },
+    },
+  },
+  {
+    key: 'tx-params-transmuter-withdraw',
+    method: 'tx-params',
+    chainId: Chain.Ethereum,
+    input: {
+      productId: 'transmuter',
+      action: WriteActions.Withdraw,
+      inputs: {
+        asset: '0x0000206329b97DB379d5E1Bf586BbDB969C63274',
+        amount: '10000000000000000000',
+        receiver: '0xB0b0F6F13A5158eB67724282F586a552E75b5728',
+      },
+    },
   },
 ]

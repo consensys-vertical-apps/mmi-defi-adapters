@@ -7,6 +7,23 @@
       "description": "AngleProtocol defi adapter",
       "siteUrl": "https://angle.money",
       "iconUrl": "https://raw.githubusercontent.com/AngleProtocol/angle-assets/main/02%20-%20Logos/02%20-%20Logo%20Only/angle-only-fill-blue.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "transmuter",
+      "success": false,
+      "error": {
+        "message": "Not Implemented (at AngleProtocolTransmuterAdapter.getTotalValueLocked)",
+        "details": {
+          "name": "NotImplementedError"
+        }
+      }
+    },
+    {
+      "protocolId": "angle-protocol",
+      "name": "AngleProtocol",
+      "description": "AngleProtocol defi adapter",
+      "siteUrl": "https://angle.money",
+      "iconUrl": "https://raw.githubusercontent.com/AngleProtocol/angle-assets/main/02%20-%20Logos/02%20-%20Logo%20Only/angle-only-fill-blue.png",
       "positionType": "stake",
       "chainId": 1,
       "productId": "savings",

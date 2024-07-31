@@ -2,5 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { Savings } from "./Savings";
+export type { Transmuter } from "./Transmuter";
 export * as factories from "./factories";
 export { Savings__factory } from "./factories/Savings__factory";
+export { Transmuter__factory } from "./factories/Transmuter__factory";
