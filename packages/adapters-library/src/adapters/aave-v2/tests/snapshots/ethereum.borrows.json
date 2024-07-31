@@ -46,5 +46,26 @@
         "blockNumber": 19262682
       }
     ]
+  },
+  "rpcResponses": {
+    "21c77fff60bc8b58eea88dfebdea7eb9": {
+      "result": [
+        {
+          "address": "0x531842cebbdd378f8ee36d171d6cc9c4fcf475ec",
+          "blockHash": "0xe074da08d888290e4dee2f9f37190620bcee455767796a58f6dbc0dcc9170bdc",
+          "blockNumber": "0x125ecda",
+          "data": "0x0000000000000000000000000000000000000000000000000000003a35294400",
+          "logIndex": "0xec",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x00000000000000000000000047ab2ba28c381011fa1f25417c4c2b2c0d5b4781"
+          ],
+          "transactionHash": "0x430d933c94aa53c50ade8814018f999f450c5d779c619b8036f86560fff9b688",
+          "transactionIndex": "0x87"
+        }
+      ]
+    }
   }
 }

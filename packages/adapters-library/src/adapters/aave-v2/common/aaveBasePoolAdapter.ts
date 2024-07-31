@@ -58,8 +58,6 @@ const protocolDataProviderContractAddresses: Partial<
   },
 }
 
-// Aave tokens always pegged one to one to underlying
-const PRICE_PEGGED_TO_ONE = 1
 export abstract class AaveBasePoolAdapter
   implements IMetadataBuilder, IProtocolAdapter
 {

@@ -326,7 +326,10 @@ export class Helpers {
       ])
 
       return {
-        ...protocolToken,
+        name: protocolToken.name,
+        address: protocolToken.address,
+        symbol: protocolToken.symbol,
+        decimals: protocolToken.decimals,
         type: TokenType.Protocol,
         totalSupplyRaw: protocolTokenTotalSupply,
         tokens,
