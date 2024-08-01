@@ -1,17 +1,6 @@
 {
-  "blockNumber": 228323745,
-  "aggregatedValues": [
-    "USD9.76",
-    "USD23.18",
-    "USD7.42",
-    "USD4.27",
-    "USD9.47",
-    "USD7.70",
-    "USD5.17",
-    "USD12.41",
-    "USD7.14",
-    "USD11.87"
-  ],
+  "blockNumber": 224830413,
+  "aggregatedValues": ["USD13.22", "USD7.57", "USD12.28"],
   "snapshot": [
     {
       "protocolId": "beefy",
@@ -24,237 +13,6 @@
       "productId": "cow-token",
       "success": true,
       "tokens": [
-        {
-          "address": "0xA297024a99098d52aae466AC5F48520d514262bA",
-          "name": "Cow Pancake Arb WETH-USDC",
-          "symbol": "cowPancakeArbWETH-USDC",
-          "decimals": 18,
-          "balanceRaw": "9894755n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "1789155512974271n",
-              "balance": 0.001789155512974271,
-              "price": 3296.0106,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
-            },
-            {
-              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
-              "name": "USD Coin",
-              "symbol": "USDC",
-              "decimals": 6,
-              "type": "underlying",
-              "balanceRaw": "3860164n",
-              "balance": 3.860164,
-              "price": 1.0007964975040928,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
-            }
-          ],
-          "balance": 9.894755e-12
-        },
-        {
-          "address": "0xF0eB29f3E21f8F88a6c93dE44993bac27c4B519F",
-          "name": "Cow Pancake Arb WETH-USDT",
-          "symbol": "cowPancakeArbWETH-USDT",
-          "decimals": 18,
-          "balanceRaw": "23611939n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "4353448278972380n",
-              "balance": 0.00435344827897238,
-              "price": 3296.0106,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
-            },
-            {
-              "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
-              "name": "Tether USD",
-              "symbol": "USDT",
-              "decimals": 6,
-              "type": "underlying",
-              "balanceRaw": "8838899n",
-              "balance": 8.838899,
-              "price": 0.999335582941605,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
-            }
-          ],
-          "balance": 2.3611939e-11
-        },
-        {
-          "address": "0x2Ba14a1308789322694a69C06acDFEbA824B7e2A",
-          "name": "Cow Camelot LINK-WETH",
-          "symbol": "cowCamelotLINK-WETH",
-          "decimals": 18,
-          "balanceRaw": "555359522428530226n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "1669867795859906n",
-              "balance": 0.001669867795859906,
-              "price": 3296.0106,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
-            },
-            {
-              "address": "0xf97f4df75117a78c1A5a0DBb814Af92458539FB4",
-              "name": "ChainLink Token",
-              "symbol": "LINK",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "134679433833273652n",
-              "balance": 0.13467943383327366,
-              "price": 14.205848064395441,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf97f4df75117a78c1A5a0DBb814Af92458539FB4/logo.png"
-            }
-          ],
-          "balance": 0.5553595224285303
-        },
-        {
-          "address": "0xf7ac5f7F05fB27AB4974607aa9EBcD24BBD2192a",
-          "name": "Cow Camelot USDT-WETH",
-          "symbol": "cowCamelotUSDT-WETH",
-          "decimals": 18,
-          "balanceRaw": "4415499n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "769979513598178n",
-              "balance": 0.000769979513598178,
-              "price": 3296.0106,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
-            },
-            {
-              "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
-              "name": "Tether USD",
-              "symbol": "USDT",
-              "decimals": 6,
-              "type": "underlying",
-              "balanceRaw": "1736651n",
-              "balance": 1.736651,
-              "price": 0.999335582941605,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
-            }
-          ],
-          "balance": 4.415499e-12
-        },
-        {
-          "address": "0xEe839B08Ac1Fb711Fd4A583fB450EeD60ce52446",
-          "name": "Cow Camelot weETH-WETH",
-          "symbol": "cowCamelotweETH-WETH",
-          "decimals": 18,
-          "balanceRaw": "2870846746327420n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe",
-              "name": "Wrapped eETH",
-              "symbol": "weETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "1372387345065701n",
-              "balance": 0.001372387345065701,
-              "price": 3419.5576788533976,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe/logo.png"
-            },
-            {
-              "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "1449015798393331n",
-              "balance": 0.001449015798393331,
-              "price": 3296.0106,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
-            }
-          ],
-          "balance": 0.00287084674632742
-        },
-        {
-          "address": "0x79899918e6AdA2cb5D984f444A9c188bd2B7daae",
-          "name": "Cow Camelot ARB-WETH",
-          "symbol": "cowCamelotARB-WETH",
-          "decimals": 18,
-          "balanceRaw": "10177396824899700077n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "1513193931670467n",
-              "balance": 0.001513193931670467,
-              "price": 3296.0106,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
-            },
-            {
-              "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-              "name": "Arbitrum",
-              "symbol": "ARB",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "3525217521687940419n",
-              "balance": 3.5252175216879404,
-              "price": 0.7682316561060594,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
-            }
-          ],
-          "balance": 10.1773968248997
-        },
-        {
-          "address": "0x8bc2AE3862617838357c329ccfd9eD8Fded58cfc",
-          "name": "Cow Camelot ARB-USDC",
-          "symbol": "cowCamelotARB-USDC",
-          "decimals": 18,
-          "balanceRaw": "5330292n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-              "name": "Arbitrum",
-              "symbol": "ARB",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "3783940386793617580n",
-              "balance": 3.7839403867936174,
-              "price": 0.7682316561060594,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
-            },
-            {
-              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
-              "name": "USD Coin",
-              "symbol": "USDC",
-              "decimals": 6,
-              "type": "underlying",
-              "balanceRaw": "2262726n",
-              "balance": 2.262726,
-              "price": 1.0007964975040928,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
-            }
-          ],
-          "balance": 5.330292e-12
-        },
         {
           "address": "0x168285c55a871fd2219329F680EB0CA8fB8711e4",
           "name": "Cow Camelot WBTC-WETH",
@@ -269,9 +27,9 @@
               "symbol": "WBTC",
               "decimals": 8,
               "type": "underlying",
-              "balanceRaw": "10242n",
-              "balance": 0.00010242,
-              "price": 60169.381976541685,
+              "balanceRaw": "10291n",
+              "balance": 0.00010291,
+              "price": 64213.92764380567,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
             },
             {
@@ -280,9 +38,9 @@
               "symbol": "WETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "1896718062906531n",
-              "balance": 0.001896718062906531,
-              "price": 3296.0106,
+              "balanceRaw": "1887206113847254n",
+              "balance": 0.001887206113847254,
+              "price": 3503.02825366,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
           ],
@@ -302,7 +60,7 @@
               "symbol": "ezETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "1071738047847010n",
+              "balanceRaw": "1069368837284744n",
               "tokens": [
                 {
                   "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
@@ -310,13 +68,13 @@
                   "symbol": "ETH",
                   "decimals": 18,
                   "type": "underlying",
-                  "balanceRaw": "1086235298227779n",
-                  "balance": 0.001086235298227779,
-                  "price": 3296.0106,
+                  "balanceRaw": "1082930634790691n",
+                  "balance": 0.001082930634790691,
+                  "price": 3503.02825366,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/info/logo.png"
                 }
               ],
-              "balance": 0.00107173804784701,
+              "balance": 0.001069368837284744,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2416092f143378750bb29b79eD961ab195CcEea5/logo.png"
             },
             {
@@ -325,9 +83,9 @@
               "symbol": "WETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "1078787969893805n",
-              "balance": 0.001078787969893805,
-              "price": 3296.0106,
+              "balanceRaw": "1077804940043260n",
+              "balance": 0.00107780494004326,
+              "price": 3503.02825366,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
           ],
@@ -347,9 +105,9 @@
               "symbol": "WETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "2155910298560514n",
-              "balance": 0.002155910298560514,
-              "price": 3296.0106,
+              "balanceRaw": "1753026383887297n",
+              "balance": 0.001753026383887297,
+              "price": 3503.02825366,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             },
             {
@@ -358,9 +116,9 @@
               "symbol": "USDC",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "4763334n",
-              "balance": 4.763334,
-              "price": 1.0007964975040928,
+              "balanceRaw": "6143092n",
+              "balance": 6.143092,
+              "price": 0.9996099888203004,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
             }
           ],
