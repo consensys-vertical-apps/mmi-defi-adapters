@@ -26,7 +26,7 @@ export abstract class BeefyBaseAdapter<
     MetadataEntry
   >,
 > {
-  productId = '' // Overwritten in child classes
+  abstract productId: string
   protocolId: Protocol
   chainId: Chain
   helpers: Helpers

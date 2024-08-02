@@ -459,17 +459,16 @@ export const testCases: TestCase[] = [
     ],
   },
 
-  /// rmoo tokens
   {
     chainId: Chain.Arbitrum,
     key: 'rmoo-token',
     method: 'deposits',
     input: {
-      fromBlock: 236679336,
-      toBlock: 236679356,
+      fromBlock: 238239331,
+      toBlock: 238239331,
       userAddress: '0x560858580455B2E277dde49E4e907653761DF20c',
-      protocolTokenAddress: '0x9cbB28eE98699aB491afE05653804B7aa426880b',
-      productId: 'rcow-token',
+      protocolTokenAddress: '0x6BfEC4E5BCf4dE8b5Ba5be1422663218f425A242',
+      productId: 'rmoo-token',
     },
   },
   {
