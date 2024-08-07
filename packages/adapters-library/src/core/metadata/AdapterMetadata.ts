@@ -174,6 +174,50 @@ import RenzoEzEthBscEzEth from '../../adapters/renzo/products/ez-eth/metadata/bs
 import RenzoEzEthEthereumEzEth from '../../adapters/renzo/products/ez-eth/metadata/ethereum.ez-eth.json'
 import RenzoEzEthLineaEzEth from '../../adapters/renzo/products/ez-eth/metadata/linea.ez-eth.json'
 
+import BeefyCowTokenEthereumProtocolToken from '../../adapters/beefy/products/cow-token/metadata/ethereum.protocol-token.json'
+
+import BeefyRcowTokenEthereumProtocolToken from '../../adapters/beefy/products/rcow-token/metadata/ethereum.protocol-token.json'
+
+import BeefyRmooTokenEthereumProtocolToken from '../../adapters/beefy/products/rmoo-token/metadata/ethereum.protocol-token.json'
+
+import BeefyRcowTokenOptimismProtocolToken from '../../adapters/beefy/products/rcow-token/metadata/optimism.protocol-token.json'
+
+import BeefyRmooTokenOptimismProtocolToken from '../../adapters/beefy/products/rmoo-token/metadata/optimism.protocol-token.json'
+
+import BeefyCowTokenBscProtocolToken from '../../adapters/beefy/products/cow-token/metadata/bsc.protocol-token.json'
+
+import BeefyRcowTokenBscProtocolToken from '../../adapters/beefy/products/rcow-token/metadata/bsc.protocol-token.json'
+
+import BeefyRmooTokenBscProtocolToken from '../../adapters/beefy/products/rmoo-token/metadata/bsc.protocol-token.json'
+
+import BeefyRcowTokenPolygonProtocolToken from '../../adapters/beefy/products/rcow-token/metadata/polygon.protocol-token.json'
+
+import BeefyRmooTokenPolygonProtocolToken from '../../adapters/beefy/products/rmoo-token/metadata/polygon.protocol-token.json'
+
+import BeefyCowTokenFantomProtocolToken from '../../adapters/beefy/products/cow-token/metadata/fantom.protocol-token.json'
+
+import BeefyRcowTokenFantomProtocolToken from '../../adapters/beefy/products/rcow-token/metadata/fantom.protocol-token.json'
+
+import BeefyRmooTokenFantomProtocolToken from '../../adapters/beefy/products/rmoo-token/metadata/fantom.protocol-token.json'
+
+import BeefyRcowTokenBaseProtocolToken from '../../adapters/beefy/products/rcow-token/metadata/base.protocol-token.json'
+
+import BeefyRmooTokenBaseProtocolToken from '../../adapters/beefy/products/rmoo-token/metadata/base.protocol-token.json'
+
+import BeefyRcowTokenArbitrumProtocolToken from '../../adapters/beefy/products/rcow-token/metadata/arbitrum.protocol-token.json'
+
+import BeefyRmooTokenArbitrumProtocolToken from '../../adapters/beefy/products/rmoo-token/metadata/arbitrum.protocol-token.json'
+
+import BeefyMooTokenAvalancheProtocolToken from '../../adapters/beefy/products/moo-token/metadata/avalanche.protocol-token.json'
+
+import BeefyRcowTokenAvalancheProtocolToken from '../../adapters/beefy/products/rcow-token/metadata/avalanche.protocol-token.json'
+
+import BeefyRmooTokenAvalancheProtocolToken from '../../adapters/beefy/products/rmoo-token/metadata/avalanche.protocol-token.json'
+
+import BeefyRcowTokenLineaProtocolToken from '../../adapters/beefy/products/rcow-token/metadata/linea.protocol-token.json'
+
+import BeefyRmooTokenLineaProtocolToken from '../../adapters/beefy/products/rmoo-token/metadata/linea.protocol-token.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -548,6 +592,33 @@ export const MetadataFiles = new Map<string, Json>([
     metadataKey({
       protocolId: Protocol.Beefy,
       productId: 'cow-token',
+      chainId: Chain.Bsc,
+      fileKey: 'protocol-token',
+    }),
+    BeefyCowTokenBscProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'cow-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    BeefyCowTokenEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'cow-token',
+      chainId: Chain.Fantom,
+      fileKey: 'protocol-token',
+    }),
+    BeefyCowTokenFantomProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'cow-token',
       chainId: Chain.Linea,
       fileKey: 'protocol-token',
     }),
@@ -579,6 +650,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     BeefyMooTokenArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenAvalancheProtocolToken,
   ],
   [
     metadataKey({
@@ -642,6 +722,168 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     BeefyMooTokenPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rcow-token',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRcowTokenArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rcow-token',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRcowTokenAvalancheProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rcow-token',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRcowTokenBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rcow-token',
+      chainId: Chain.Bsc,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRcowTokenBscProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rcow-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRcowTokenEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rcow-token',
+      chainId: Chain.Fantom,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRcowTokenFantomProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rcow-token',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRcowTokenLineaProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rcow-token',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRcowTokenOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rcow-token',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRcowTokenPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rmoo-token',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRmooTokenArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rmoo-token',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRmooTokenAvalancheProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rmoo-token',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRmooTokenBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rmoo-token',
+      chainId: Chain.Bsc,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRmooTokenBscProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rmoo-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRmooTokenEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rmoo-token',
+      chainId: Chain.Fantom,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRmooTokenFantomProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rmoo-token',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRmooTokenLineaProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rmoo-token',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRmooTokenOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'rmoo-token',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    BeefyRmooTokenPolygonProtocolToken,
   ],
   [
     metadataKey({

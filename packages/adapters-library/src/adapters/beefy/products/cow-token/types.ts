@@ -1,10 +1,8 @@
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { ProtocolUnwrapType } from '../../sdk/types'
 
-export type MetadataEntry = {
+export type CowMetadataEntry = {
   protocolToken: Erc20Metadata
   underlyingTokens: Erc20Metadata[]
-  unwrapType: ProtocolUnwrapType
 }
 
-export type Metadata = Record<string, MetadataEntry>
+export type CowMetadata = Record<string, CowMetadataEntry>

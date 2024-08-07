@@ -1,5 +1,12 @@
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 
+export enum BeefyProductType {
+  COW_TOKEN = 'cow-token',
+  MOO_TOKEN = 'moo-token',
+  RCOW_TOKEN = 'rcow-token',
+  RMOO_TOKEN = 'rmoo-token',
+}
+
 export type ApiVault = {
   id: string
   status: 'active' | 'eol'
@@ -15,9 +22,54 @@ export type ApiVault = {
   bridged?: object
   assets?: string[]
 }
+
+export type ApiClmManager = {
+  id: string
+  status: 'active' | 'eol'
+  version: number
+  platformId: ApiPlatformId
+  strategyTypeId?: ApiStrategyTypeId
+  chain: string
+  type: 'cowcentrated' | 'others'
+  tokenAddress: string // underlying pool address
+  depositTokenAddresses: string[] // token0 and token1
+  earnContractAddress: string // reward pool address
+  earnedTokenAddress: string // clm manager address
+}
+
+export type ApiClmRewardPool = {
+  id: string
+  status: 'active' | 'eol'
+  version: number
+  platformId: ApiPlatformId
+  strategyTypeId?: ApiStrategyTypeId
+  chain: string
+  tokenAddress: string // clm address (want)
+  earnContractAddress: string // reward pool address
+  earnedTokenAddresses: string[] // reward tokens
+}
+
+export type ApiGovVault = {
+  id: string
+  status: 'active' | 'eol'
+  version: number
+  chain: string
+  tokenAddress: string // clm address
+  earnContractAddress: string // reward pool address
+  earnedTokenAddresses: string[]
+}
+
 export type ApiBoost = {
   id: string
   poolId: string
+
+  version: number
+  chain: string
+  status: 'active' | 'eol'
+
+  tokenAddress: string // underlying
+  earnedTokenAddress: string // reward token address
+  earnContractAddress: string // reward pool address
 }
 
 export type ProtocolUnwrapType =

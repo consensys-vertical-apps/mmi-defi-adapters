@@ -1,4 +1,91 @@
 {
+  "0x46EA5993fdDC27E4f770eFfB6921F401101Cbd59": {
+    "protocolToken": {
+      "address": "0x46EA5993fdDC27E4f770eFfB6921F401101Cbd59",
+      "name": "Moo Curve ShezETH-ETH",
+      "symbol": "mooCurveShezETH-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x63a0964A36c34E81959da5894ad888800e17405b",
+        "name": "ShezmuETH",
+        "symbol": "ShezETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x637213593e31Bc25F49D37C74B43a89eb1743D73",
+      "name": "shezETH/ETH",
+      "symbol": "shezETHETH",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x93027914546190635C51647FC9270f0025dA8C53": {
+    "protocolToken": {
+      "address": "0x93027914546190635C51647FC9270f0025dA8C53",
+      "name": "Moo Curve ShezUSD-USDC",
+      "symbol": "mooCurveShezUSD-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xD60EeA80C83779a8A5BFCDAc1F3323548e6BB62d",
+        "name": "ShezmuUSD",
+        "symbol": "ShezUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x66267c6E24fBcdeBf06AE9104e0ccFb9C8b2AE08",
+      "name": "shezUSD/USDC",
+      "symbol": "shezUSDUSD",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x1817CFfc44c78d5aED61420bF48Cc273E504B7BE": {
+    "protocolToken": {
+      "address": "0x1817CFfc44c78d5aED61420bF48Cc273E504B7BE",
+      "name": "Moo Curve eUSD-USDC",
+      "symbol": "mooCurve_eUSD-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xA0d69E286B938e21CBf7E51D71F6A4c8918f482F",
+        "name": "Electronic Dollar",
+        "symbol": "eUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x08BfA22bB3e024CDfEB3eca53c0cb93bF59c4147",
+      "name": "eUSD/USDC",
+      "symbol": "eUSDUSDC",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
   "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5": {
     "protocolToken": {
       "address": "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5",
@@ -97,6 +184,35 @@
       "decimals": 18
     },
     "unwrapType": "balancer_aura_multi_lp_locked"
+  },
+  "0xAE0bFfc3110e69DA8993F11C1CBd9a6eA3d16daF": {
+    "protocolToken": {
+      "address": "0xAE0bFfc3110e69DA8993F11C1CBd9a6eA3d16daF",
+      "name": "Moo Curve vETH",
+      "symbol": "mooCurveVETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x38D64ce1Bdf1A9f24E0Ec469C9cAde61236fB4a0",
+        "name": "Vector ETH",
+        "symbol": "vETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x6685fcFCe05e7502bf9f0AA03B36025b09374726",
+      "name": "vETH/ETH",
+      "symbol": "vETHETH",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
   },
   "0x1153211f7E810C73cC45eE09FF9A0742fBB6b467": {
     "protocolToken": {
@@ -461,35 +577,6 @@
       "address": "0x42ED016F826165C2e5976fe5bC3df540C5aD0Af7",
       "name": "wstETH-rETH-sfrxETH-BPT",
       "symbol": "wstETH-rETH-sfrxETH-BPT",
-      "decimals": 18
-    },
-    "unwrapType": "balancer_aura_multi_lp"
-  },
-  "0xC2fea9942506CEF6d18b655Cb2de36d479Dc43bD": {
-    "protocolToken": {
-      "address": "0xC2fea9942506CEF6d18b655Cb2de36d479Dc43bD",
-      "name": "Moo Aura AURA-WETH",
-      "symbol": "mooAuraAURA-WETH",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
-      },
-      {
-        "address": "0xC0c293ce456fF0ED870ADd98a0828Dd4d2903DBF",
-        "name": "Aura",
-        "symbol": "AURA",
-        "decimals": 18
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0xCfCA23cA9CA720B6E98E3Eb9B6aa0fFC4a5C08B9",
-      "name": "50WETH-50AURA",
-      "symbol": "50WETH-50AURA",
       "decimals": 18
     },
     "unwrapType": "balancer_aura_multi_lp"

@@ -1,4 +1,26 @@
 {
+  "0x18A04E449869CC9fa08eE5723e0aEf7ACAbA4e72": {
+    "protocolToken": {
+      "address": "0x18A04E449869CC9fa08eE5723e0aEf7ACAbA4e72",
+      "name": "Cow Sushi Linea USDC-WETH",
+      "symbol": "cowSushiLineaUSDC-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
   "0x97BaB27d3EC82a43aFC60ce521ac121CD6F6Cc3e": {
     "protocolToken": {
       "address": "0x97BaB27d3EC82a43aFC60ce521ac121CD6F6Cc3e",
@@ -19,8 +41,7 @@
         "symbol": "USDT",
         "decimals": 6
       }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0x0Db58cB843B8AF6A8704338447c0a7e36F4D5613": {
     "protocolToken": {
@@ -42,8 +63,7 @@
         "symbol": "WETH",
         "decimals": 18
       }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0x4d6d208e75d800957c4AF83FB9f42AabFEbc6b6D": {
     "protocolToken": {
@@ -65,7 +85,6 @@
         "symbol": "WETH",
         "decimals": 18
       }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   }
 }

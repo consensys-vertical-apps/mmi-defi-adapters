@@ -15,6 +15,8 @@ import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-
 import { AngleProtocolSavingsAdapter } from './angle-protocol/products/savings/angleProtocolSavingsAdapter'
 import { BeefyCowTokenAdapter } from './beefy/products/cow-token/beefyCowTokenAdapter'
 import { BeefyMooTokenAdapter } from './beefy/products/moo-token/beefyMooTokenAdapter'
+import { BeefyRcowTokenAdapter } from './beefy/products/rcow-token/beefyRcowTokenAdapter'
+import { BeefyRmooTokenAdapter } from './beefy/products/rmoo-token/beefyRmooTokenAdapter'
 import { CarbonDeFiStrategiesAdapter } from './carbon-defi/products/strategies/carbonDeFiStrategiesAdapter'
 import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
 import {
@@ -168,15 +170,60 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Beefy]: {
-    [Chain.Ethereum]: [BeefyMooTokenAdapter],
-    [Chain.Optimism]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
-    [Chain.Bsc]: [BeefyMooTokenAdapter],
-    [Chain.Polygon]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
-    [Chain.Fantom]: [BeefyMooTokenAdapter],
-    [Chain.Base]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
-    [Chain.Arbitrum]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
-    [Chain.Avalanche]: [BeefyCowTokenAdapter],
-    [Chain.Linea]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
+    [Chain.Ethereum]: [
+      BeefyCowTokenAdapter,
+      BeefyMooTokenAdapter,
+      BeefyRcowTokenAdapter,
+      BeefyRmooTokenAdapter,
+    ],
+    [Chain.Optimism]: [
+      BeefyCowTokenAdapter,
+      BeefyMooTokenAdapter,
+      BeefyRcowTokenAdapter,
+      BeefyRmooTokenAdapter,
+    ],
+    [Chain.Bsc]: [
+      BeefyCowTokenAdapter,
+      BeefyMooTokenAdapter,
+      BeefyRcowTokenAdapter,
+      BeefyRmooTokenAdapter,
+    ],
+    [Chain.Polygon]: [
+      BeefyCowTokenAdapter,
+      BeefyMooTokenAdapter,
+      BeefyRcowTokenAdapter,
+      BeefyRmooTokenAdapter,
+    ],
+    [Chain.Fantom]: [
+      BeefyCowTokenAdapter,
+      BeefyMooTokenAdapter,
+      BeefyRcowTokenAdapter,
+      BeefyRmooTokenAdapter,
+    ],
+    [Chain.Base]: [
+      BeefyCowTokenAdapter,
+      BeefyMooTokenAdapter,
+      BeefyRcowTokenAdapter,
+      BeefyRmooTokenAdapter,
+    ],
+    [Chain.Arbitrum]: [
+      BeefyCowTokenAdapter,
+      BeefyMooTokenAdapter,
+      BeefyRcowTokenAdapter,
+      BeefyRmooTokenAdapter,
+    ],
+    [Chain.Avalanche]: [
+      BeefyCowTokenAdapter,
+      BeefyMooTokenAdapter,
+      BeefyRcowTokenAdapter,
+      BeefyRmooTokenAdapter,
+    ],
+    [Chain.Linea]: [
+      BeefyCowTokenAdapter,
+      BeefyMooTokenAdapter,
+      BeefyRcowTokenAdapter,
+      BeefyRmooTokenAdapter,
+    ],
   },
 
   [Protocol.CarbonDeFi]: {
