@@ -1,5 +1,5 @@
-{
-  "0x82E64f49Ed5EC1bC6e43DAD4FC8Af9bb3A2312EE": {
+[
+  {
     "address": "0x82E64f49Ed5EC1bC6e43DAD4FC8Af9bb3A2312EE",
     "name": "Aave Optimism DAI",
     "symbol": "aOptDAI",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0x191c10Aa4AF7C30e871E70C95dB0E4eb77237530": {
+  {
     "address": "0x191c10Aa4AF7C30e871E70C95dB0E4eb77237530",
     "name": "Aave Optimism LINK",
     "symbol": "aOptLINK",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0x625E7708f30cA75bfd92586e17077590C60eb4cD": {
+  {
     "address": "0x625E7708f30cA75bfd92586e17077590C60eb4cD",
     "name": "Aave Optimism USDC",
     "symbol": "aOptUSDC",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x078f358208685046a11C85e8ad32895DED33A249": {
+  {
     "address": "0x078f358208685046a11C85e8ad32895DED33A249",
     "name": "Aave Optimism WBTC",
     "symbol": "aOptWBTC",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8": {
+  {
     "address": "0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8",
     "name": "Aave Optimism WETH",
     "symbol": "aOptWETH",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0x6ab707Aca953eDAeFBc4fD23bA73294241490620": {
+  {
     "address": "0x6ab707Aca953eDAeFBc4fD23bA73294241490620",
     "name": "Aave Optimism USDT",
     "symbol": "aOptUSDT",
@@ -83,7 +83,7 @@
       }
     ]
   },
-  "0xf329e36C7bF6E5E86ce2150875a84Ce77f477375": {
+  {
     "address": "0xf329e36C7bF6E5E86ce2150875a84Ce77f477375",
     "name": "Aave Optimism AAVE",
     "symbol": "aOptAAVE",
@@ -97,7 +97,7 @@
       }
     ]
   },
-  "0x6d80113e533a2C0fe82EaBD35f1875DcEA89Ea97": {
+  {
     "address": "0x6d80113e533a2C0fe82EaBD35f1875DcEA89Ea97",
     "name": "Aave Optimism SUSD",
     "symbol": "aOptSUSD",
@@ -111,7 +111,7 @@
       }
     ]
   },
-  "0x513c7E3a9c69cA3e22550eF58AC1C0088e918FFf": {
+  {
     "address": "0x513c7E3a9c69cA3e22550eF58AC1C0088e918FFf",
     "name": "Aave Optimism OP",
     "symbol": "aOptOP",
@@ -125,7 +125,7 @@
       }
     ]
   },
-  "0xc45A479877e1e9Dfe9FcD4056c699575a1045dAA": {
+  {
     "address": "0xc45A479877e1e9Dfe9FcD4056c699575a1045dAA",
     "name": "Aave Optimism wstETH",
     "symbol": "aOptwstETH",
@@ -139,7 +139,7 @@
       }
     ]
   },
-  "0x8Eb270e296023E9D92081fdF967dDd7878724424": {
+  {
     "address": "0x8Eb270e296023E9D92081fdF967dDd7878724424",
     "name": "Aave Optimism LUSD",
     "symbol": "aOptLUSD",
@@ -153,7 +153,7 @@
       }
     ]
   },
-  "0x724dc807b04555b71ed48a6896b6F41593b8C637": {
+  {
     "address": "0x724dc807b04555b71ed48a6896b6F41593b8C637",
     "name": "Aave Optimism rETH",
     "symbol": "aOptrETH",
@@ -167,7 +167,7 @@
       }
     ]
   },
-  "0x38d693cE1dF5AaDF7bC62595A37D667aD57922e5": {
+  {
     "address": "0x38d693cE1dF5AaDF7bC62595A37D667aD57922e5",
     "name": "Aave Optimism USDCn",
     "symbol": "aOptUSDCn",
@@ -181,4 +181,4 @@
       }
     ]
   }
-}
+]

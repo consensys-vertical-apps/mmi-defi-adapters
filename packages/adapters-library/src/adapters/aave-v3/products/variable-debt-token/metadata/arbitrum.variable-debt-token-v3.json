@@ -1,5 +1,5 @@
-{
-  "0x8619d80FB0141ba7F184CbF22fd724116D9f7ffC": {
+[
+  {
     "address": "0x8619d80FB0141ba7F184CbF22fd724116D9f7ffC",
     "name": "Aave Arbitrum Variable Debt DAI",
     "symbol": "variableDebtArbDAI",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0x953A573793604aF8d41F306FEb8274190dB4aE0e": {
+  {
     "address": "0x953A573793604aF8d41F306FEb8274190dB4aE0e",
     "name": "Aave Arbitrum Variable Debt LINK",
     "symbol": "variableDebtArbLINK",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0xFCCf3cAbbe80101232d343252614b6A3eE81C989": {
+  {
     "address": "0xFCCf3cAbbe80101232d343252614b6A3eE81C989",
     "name": "Aave Arbitrum Variable Debt USDC",
     "symbol": "variableDebtArbUSDC",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x92b42c66840C7AD907b4BF74879FF3eF7c529473": {
+  {
     "address": "0x92b42c66840C7AD907b4BF74879FF3eF7c529473",
     "name": "Aave Arbitrum Variable Debt WBTC",
     "symbol": "variableDebtArbWBTC",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0x0c84331e39d6658Cd6e6b9ba04736cC4c4734351": {
+  {
     "address": "0x0c84331e39d6658Cd6e6b9ba04736cC4c4734351",
     "name": "Aave Arbitrum Variable Debt WETH",
     "symbol": "variableDebtArbWETH",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0xfb00AC187a8Eb5AFAE4eACE434F493Eb62672df7": {
+  {
     "address": "0xfb00AC187a8Eb5AFAE4eACE434F493Eb62672df7",
     "name": "Aave Arbitrum Variable Debt USDT",
     "symbol": "variableDebtArbUSDT",
@@ -83,7 +83,7 @@
       }
     ]
   },
-  "0xE80761Ea617F66F96274eA5e8c37f03960ecC679": {
+  {
     "address": "0xE80761Ea617F66F96274eA5e8c37f03960ecC679",
     "name": "Aave Arbitrum Variable Debt AAVE",
     "symbol": "variableDebtArbAAVE",
@@ -97,7 +97,7 @@
       }
     ]
   },
-  "0x77CA01483f379E58174739308945f044e1a764dc": {
+  {
     "address": "0x77CA01483f379E58174739308945f044e1a764dc",
     "name": "Aave Arbitrum Variable Debt wstETH",
     "symbol": "variableDebtArbwstETH",
@@ -111,7 +111,7 @@
       }
     ]
   },
-  "0xCE186F6Cccb0c955445bb9d10C59caE488Fea559": {
+  {
     "address": "0xCE186F6Cccb0c955445bb9d10C59caE488Fea559",
     "name": "Aave Arbitrum Variable Debt rETH",
     "symbol": "variableDebtArbrETH",
@@ -125,7 +125,7 @@
       }
     ]
   },
-  "0xA8669021776Bc142DfcA87c21b4A52595bCbB40a": {
+  {
     "address": "0xA8669021776Bc142DfcA87c21b4A52595bCbB40a",
     "name": "Aave Arbitrum Variable Debt LUSD",
     "symbol": "variableDebtArbLUSD",
@@ -139,7 +139,7 @@
       }
     ]
   },
-  "0xf611aEb5013fD2c0511c9CD55c7dc5C1140741A6": {
+  {
     "address": "0xf611aEb5013fD2c0511c9CD55c7dc5C1140741A6",
     "name": "Aave Arbitrum Variable Debt USDCn",
     "symbol": "variableDebtArbUSDCn",
@@ -153,7 +153,7 @@
       }
     ]
   },
-  "0x5D557B07776D12967914379C71a1310e917C7555": {
+  {
     "address": "0x5D557B07776D12967914379C71a1310e917C7555",
     "name": "Aave Arbitrum Variable Debt FRAX",
     "symbol": "variableDebtArbFRAX",
@@ -167,7 +167,7 @@
       }
     ]
   },
-  "0x44705f578135cC5d703b4c9c122528C73Eb87145": {
+  {
     "address": "0x44705f578135cC5d703b4c9c122528C73Eb87145",
     "name": "Aave Arbitrum Variable Debt ARB",
     "symbol": "variableDebtArbARB",
@@ -181,7 +181,7 @@
       }
     ]
   },
-  "0x3ca5FA07689F266e907439aFd1fBB59c44fe12f6": {
+  {
     "address": "0x3ca5FA07689F266e907439aFd1fBB59c44fe12f6",
     "name": "Aave Arbitrum Variable Debt weETH",
     "symbol": "variableDebtArbweETH",
@@ -195,7 +195,7 @@
       }
     ]
   },
-  "0x18248226C16BF76c032817854E7C83a2113B4f06": {
+  {
     "address": "0x18248226C16BF76c032817854E7C83a2113B4f06",
     "name": "Aave Arbitrum Variable Debt GHO",
     "symbol": "variableDebtArbGHO",
@@ -209,4 +209,4 @@
       }
     ]
   }
-}
+]

@@ -20,6 +20,7 @@ import {
   UnwrapExchangeRate,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
+import { JsonMetadata, ProtocolToken } from '../types/IProtocolAdapter'
 
 export const REAL_ESTATE_TOKEN_METADATA = {
   address: getAddress('0x6b8734ad31D42F5c05A86594314837C416ADA984'),
@@ -41,6 +42,24 @@ export class Helpers {
   }) {
     this.provider = provider
     this.chainId = chainId
+  }
+
+  async getProtocolTokenByAddress<AdditionalMetadata extends JsonMetadata>({
+    protocolTokens,
+    protocolTokenAddress,
+  }: {
+    protocolTokens: ProtocolToken<AdditionalMetadata>[]
+    protocolTokenAddress: string
+  }): Promise<ProtocolToken<AdditionalMetadata>> {
+    const protocolToken = protocolTokens.find(
+      (token) => token.address === protocolTokenAddress,
+    )
+    if (!protocolToken) {
+      throw new Error(
+        `Protocol token with address ${protocolTokenAddress} not found`,
+      )
+    }
+    return protocolToken
   }
 
   async getBalanceOfTokens({

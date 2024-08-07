@@ -1,5 +1,5 @@
-{
-  "0x27F8D03b3a2196956ED754baDc28D73be8830A6e": {
+[
+  {
     "address": "0x27F8D03b3a2196956ED754baDc28D73be8830A6e",
     "name": "Aave Matic Market DAI",
     "symbol": "amDAI",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0x1a13F4Ca1d028320A707D99520AbFefca3998b7F": {
+  {
     "address": "0x1a13F4Ca1d028320A707D99520AbFefca3998b7F",
     "name": "Aave Matic Market USDC",
     "symbol": "amUSDC",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0x60D55F02A771d515e077c9C2403a1ef324885CeC": {
+  {
     "address": "0x60D55F02A771d515e077c9C2403a1ef324885CeC",
     "name": "Aave Matic Market USDT",
     "symbol": "amUSDT",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x5c2ed810328349100A66B82b78a1791B101C9D61": {
+  {
     "address": "0x5c2ed810328349100A66B82b78a1791B101C9D61",
     "name": "Aave Matic Market WBTC",
     "symbol": "amWBTC",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0x28424507fefb6f7f8E9D3860F56504E4e5f5f390": {
+  {
     "address": "0x28424507fefb6f7f8E9D3860F56504E4e5f5f390",
     "name": "Aave Matic Market WETH",
     "symbol": "amWETH",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0x8dF3aad3a84da6b69A4DA8aeC3eA40d9091B2Ac4": {
+  {
     "address": "0x8dF3aad3a84da6b69A4DA8aeC3eA40d9091B2Ac4",
     "name": "Aave Matic Market WMATIC",
     "symbol": "amWMATIC",
@@ -83,4 +83,4 @@
       }
     ]
   }
-}
+]

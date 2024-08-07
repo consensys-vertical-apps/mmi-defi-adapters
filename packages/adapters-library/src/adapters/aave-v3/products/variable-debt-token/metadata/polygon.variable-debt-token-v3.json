@@ -1,5 +1,5 @@
-{
-  "0x8619d80FB0141ba7F184CbF22fd724116D9f7ffC": {
+[
+  {
     "address": "0x8619d80FB0141ba7F184CbF22fd724116D9f7ffC",
     "name": "Aave Polygon Variable Debt DAI",
     "symbol": "variableDebtPolDAI",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0x953A573793604aF8d41F306FEb8274190dB4aE0e": {
+  {
     "address": "0x953A573793604aF8d41F306FEb8274190dB4aE0e",
     "name": "Aave Polygon Variable Debt LINK",
     "symbol": "variableDebtPolLINK",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0xFCCf3cAbbe80101232d343252614b6A3eE81C989": {
+  {
     "address": "0xFCCf3cAbbe80101232d343252614b6A3eE81C989",
     "name": "Aave Polygon Variable Debt USDC",
     "symbol": "variableDebtPolUSDC",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x92b42c66840C7AD907b4BF74879FF3eF7c529473": {
+  {
     "address": "0x92b42c66840C7AD907b4BF74879FF3eF7c529473",
     "name": "Aave Polygon Variable Debt WBTC",
     "symbol": "variableDebtPolWBTC",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0x0c84331e39d6658Cd6e6b9ba04736cC4c4734351": {
+  {
     "address": "0x0c84331e39d6658Cd6e6b9ba04736cC4c4734351",
     "name": "Aave Polygon Variable Debt WETH",
     "symbol": "variableDebtPolWETH",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0xfb00AC187a8Eb5AFAE4eACE434F493Eb62672df7": {
+  {
     "address": "0xfb00AC187a8Eb5AFAE4eACE434F493Eb62672df7",
     "name": "Aave Polygon Variable Debt USDT",
     "symbol": "variableDebtPolUSDT",
@@ -83,7 +83,7 @@
       }
     ]
   },
-  "0xE80761Ea617F66F96274eA5e8c37f03960ecC679": {
+  {
     "address": "0xE80761Ea617F66F96274eA5e8c37f03960ecC679",
     "name": "Aave Polygon Variable Debt AAVE",
     "symbol": "variableDebtPolAAVE",
@@ -97,7 +97,7 @@
       }
     ]
   },
-  "0x4a1c3aD6Ed28a636ee1751C69071f6be75DEb8B8": {
+  {
     "address": "0x4a1c3aD6Ed28a636ee1751C69071f6be75DEb8B8",
     "name": "Aave Polygon Variable Debt WMATIC",
     "symbol": "variableDebtPolWMATIC",
@@ -111,7 +111,7 @@
       }
     ]
   },
-  "0xCE186F6Cccb0c955445bb9d10C59caE488Fea559": {
+  {
     "address": "0xCE186F6Cccb0c955445bb9d10C59caE488Fea559",
     "name": "Aave Polygon Variable Debt GHST",
     "symbol": "variableDebtPolGHST",
@@ -125,7 +125,7 @@
       }
     ]
   },
-  "0x5D557B07776D12967914379C71a1310e917C7555": {
+  {
     "address": "0x5D557B07776D12967914379C71a1310e917C7555",
     "name": "Aave Polygon Variable Debt EURS",
     "symbol": "variableDebtPolEURS",
@@ -139,7 +139,7 @@
       }
     ]
   },
-  "0x6b030Ff3FB9956B1B69f475B77aE0d3Cf2CC5aFa": {
+  {
     "address": "0x6b030Ff3FB9956B1B69f475B77aE0d3Cf2CC5aFa",
     "name": "Aave Polygon Variable Debt STMATIC",
     "symbol": "variableDebtPolSTMATIC",
@@ -153,7 +153,7 @@
       }
     ]
   },
-  "0xB5b46F918C2923fC7f26DB76e8a6A6e9C4347Cf9": {
+  {
     "address": "0xB5b46F918C2923fC7f26DB76e8a6A6e9C4347Cf9",
     "name": "Aave Polygon Variable Debt MATICX",
     "symbol": "variableDebtPolMATICX",
@@ -167,7 +167,7 @@
       }
     ]
   },
-  "0x77fA66882a8854d883101Fb8501BD3CaD347Fc32": {
+  {
     "address": "0x77fA66882a8854d883101Fb8501BD3CaD347Fc32",
     "name": "Aave Polygon Variable Debt wstETH",
     "symbol": "variableDebtPolwstETH",
@@ -181,7 +181,7 @@
       }
     ]
   },
-  "0xE701126012EC0290822eEA17B794454d1AF8b030": {
+  {
     "address": "0xE701126012EC0290822eEA17B794454d1AF8b030",
     "name": "Aave Polygon Variable Debt USDCn",
     "symbol": "variableDebtPolUSDCn",
@@ -195,4 +195,4 @@
       }
     ]
   }
-}
+]

@@ -1,5 +1,5 @@
-{
-  "0x60F6A45006323B97d97cB0a42ac39e2b757ADA63": {
+[
+  {
     "address": "0x60F6A45006323B97d97cB0a42ac39e2b757ADA63",
     "name": "Aave Avalanche Market stable debt WETH",
     "symbol": "stableDebtvWETH",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0x3676E4EE689D527dDb89812B63fAD0B7501772B3": {
+  {
     "address": "0x3676E4EE689D527dDb89812B63fAD0B7501772B3",
     "name": "Aave Avalanche Market stable debt DAI",
     "symbol": "stableDebtvDAI",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0x9c7B81A867499B7387ed05017a13d4172a0c17bF": {
+  {
     "address": "0x9c7B81A867499B7387ed05017a13d4172a0c17bF",
     "name": "Aave Avalanche Market stable debt USDT",
     "symbol": "stableDebtvUSDT",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x5B14679135dbE8B02015ec3Ca4924a12E4C6C85a": {
+  {
     "address": "0x5B14679135dbE8B02015ec3Ca4924a12E4C6C85a",
     "name": "Aave Avalanche Market stable debt USDC",
     "symbol": "stableDebtvUSDC",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0x2920CD5b8A160b2Addb00Ec5d5f4112255d4ae75": {
+  {
     "address": "0x2920CD5b8A160b2Addb00Ec5d5f4112255d4ae75",
     "name": "Aave Avalanche Market stable debt WAVAX",
     "symbol": "stableDebtvWAVAX",
@@ -69,4 +69,4 @@
       }
     ]
   }
-}
+]

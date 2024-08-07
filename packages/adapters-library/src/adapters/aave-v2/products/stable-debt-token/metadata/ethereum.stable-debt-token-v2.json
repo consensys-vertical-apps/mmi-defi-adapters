@@ -1,5 +1,5 @@
-{
-  "0xe91D55AB2240594855aBd11b3faAE801Fd4c4687": {
+[
+  {
     "address": "0xe91D55AB2240594855aBd11b3faAE801Fd4c4687",
     "name": "Aave stable debt bearing USDT",
     "symbol": "stableDebtUSDT",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0x51B039b9AFE64B78758f8Ef091211b5387eA717c": {
+  {
     "address": "0x51B039b9AFE64B78758f8Ef091211b5387eA717c",
     "name": "Aave stable debt bearing WBTC",
     "symbol": "stableDebtWBTC",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0x4e977830ba4bd783C0BB7F15d3e243f73FF57121": {
+  {
     "address": "0x4e977830ba4bd783C0BB7F15d3e243f73FF57121",
     "name": "Aave stable debt bearing WETH",
     "symbol": "stableDebtWETH",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x778A13D3eeb110A4f7bb6529F99c000119a08E92": {
+  {
     "address": "0x778A13D3eeb110A4f7bb6529F99c000119a08E92",
     "name": "Aave stable debt bearing DAI",
     "symbol": "stableDebtDAI",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0xE4922afAB0BbaDd8ab2a88E0C79d884Ad337fcA6": {
+  {
     "address": "0xE4922afAB0BbaDd8ab2a88E0C79d884Ad337fcA6",
     "name": "Aave stable debt bearing USDC",
     "symbol": "stableDebtUSDC",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0x66457616Dd8489dF5D0AFD8678F4A260088aAF55": {
+  {
     "address": "0x66457616Dd8489dF5D0AFD8678F4A260088aAF55",
     "name": "Aave stable debt bearing STETH",
     "symbol": "stableDebtSTETH",
@@ -83,4 +83,4 @@
       }
     ]
   }
-}
+]

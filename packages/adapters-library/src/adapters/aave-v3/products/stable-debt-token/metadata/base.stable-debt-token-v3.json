@@ -1,5 +1,5 @@
-{
-  "0xaED3b56FeA82E809665f02AcBcDEc0816c75f4d9": {
+[
+  {
     "address": "0xaED3b56FeA82E809665f02AcBcDEc0816c75f4d9",
     "name": "Aave Base Stable Debt WETH",
     "symbol": "stableDebtBasWETH",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0xa9dF5c62d16d3f496673F4d736852017b086eCA0": {
+  {
     "address": "0xa9dF5c62d16d3f496673F4d736852017b086eCA0",
     "name": "Aave Base Stable Debt cbETH",
     "symbol": "stableDebtBascbETH",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0xBBaDd47fbaFa9dE717FE203e4707DEB893C64654": {
+  {
     "address": "0xBBaDd47fbaFa9dE717FE203e4707DEB893C64654",
     "name": "Aave Base Stable Debt USDbC",
     "symbol": "stableDebtBasUSDbC",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0xfe742Fa2a84294E8316F05b17c05090Fc68B5105": {
+  {
     "address": "0xfe742Fa2a84294E8316F05b17c05090Fc68B5105",
     "name": "Aave Base Stable Debt wstETH",
     "symbol": "stableDebtBaswstETH",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0x03506214379aA86ad1176af71c260278cfa10B38": {
+  {
     "address": "0x03506214379aA86ad1176af71c260278cfa10B38",
     "name": "Aave Base Stable Debt USDC",
     "symbol": "stableDebtBasUSDC",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0xCBEdA45432D5325585ACAD29244f113C237B6Cf0": {
+  {
     "address": "0xCBEdA45432D5325585ACAD29244f113C237B6Cf0",
     "name": "Aave Base Stable Debt weETH",
     "symbol": "stableDebtBasweETH",
@@ -83,4 +83,4 @@
       }
     ]
   }
-}
+]
