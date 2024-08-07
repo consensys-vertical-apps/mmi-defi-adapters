@@ -44,7 +44,7 @@ export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
   async getProtocolTokens() {
     return super.getProtocolTokens()
   }
-  
+
   protected getReserveTokenAddress(
     reserveTokenAddresses: Awaited<
       ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>

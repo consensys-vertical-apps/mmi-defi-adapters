@@ -9,6 +9,7 @@ import { filterMapAsync } from '../core/utils/filters'
 import { getOnChainTokenMetadata } from '../core/utils/getTokenMetadata'
 import { logger } from '../core/utils/logger'
 import { nativeToken, nativeTokenAddresses } from '../core/utils/nativeTokens'
+import { JsonMetadata, ProtocolToken } from '../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -20,7 +21,6 @@ import {
   UnwrapExchangeRate,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
-import { JsonMetadata, ProtocolToken } from '../types/IProtocolAdapter'
 
 export const REAL_ESTATE_TOKEN_METADATA = {
   address: getAddress('0x6b8734ad31D42F5c05A86594314837C416ADA984'),
