@@ -262,7 +262,7 @@ export abstract class AaveBasePoolAdapter
     reserveData: Awaited<ReturnType<ProtocolDataProvider['getReserveData']>>,
   ): bigint
 
-  async fetchPoolMetadata(protocolTokenAddress: string) {
+  private async fetchPoolMetadata(protocolTokenAddress: string) {
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
     if (!poolMetadata) {
