@@ -14,6 +14,10 @@ export function retryHandlerFactory({
     retryCount = 0,
   ): Promise<T> {
     try {
+      if (timeoutInMs <= 0) {
+        return await action()
+      }
+
       return await new Promise<T>((resolve, reject) => {
         const timeout = setTimeout(
           () => reject(new Error(TimeoutErrorMessage)),
