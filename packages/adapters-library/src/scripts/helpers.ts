@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { Erc20__factory } from '../contracts'
 import { TransferEvent } from '../contracts/Erc20'
+import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
 import { Chain } from '../core/constants/chains'
 import { MaxMovementLimitExceededError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
@@ -226,23 +227,6 @@ export class Helpers {
     }
   }
 
-  withdrawals({
-    protocolToken,
-    filter: { fromBlock, toBlock, userAddress },
-  }: {
-    protocolToken: Erc20Metadata & { tokenId?: string }
-    filter: {
-      fromBlock: number
-      toBlock: number
-      userAddress: string
-    }
-  }): Promise<MovementsByBlock[]> {
-    return this.getErc20Movements({
-      protocolToken,
-      filter: { fromBlock, toBlock, from: userAddress, to: undefined },
-    })
-  }
-
   async tvl({
     protocolTokens,
     filterProtocolTokenAddresses,
@@ -276,6 +260,141 @@ export class Helpers {
         type: TokenType.Protocol,
         totalSupplyRaw: protocolTokenTotalSupply,
       }
+    })
+  }
+
+  async tvlUsingUnderlyingTokenBalances({
+    protocolTokens,
+    filterProtocolTokenAddresses,
+    blockNumber,
+  }: {
+    protocolTokens: (Erc20Metadata & { underlyingTokens: Erc20Metadata[] })[]
+    filterProtocolTokenAddresses: string[] | undefined
+    blockNumber: number | undefined
+  }): Promise<ProtocolTokenTvl[]> {
+    return await filterMapAsync(protocolTokens, async (protocolToken) => {
+      if (
+        filterProtocolTokenAddresses &&
+        !filterProtocolTokenAddresses.includes(protocolToken.address)
+      ) {
+        return undefined
+      }
+
+      const protocolTokenContact = Erc20__factory.connect(
+        protocolToken.address,
+        this.provider,
+      )
+
+      const underlyingTokens = protocolToken.underlyingTokens
+
+      const underlyingTokenBalances = filterMapAsync(
+        underlyingTokens,
+        async (underlyingToken) => {
+          if (underlyingToken.address === ZERO_ADDRESS) {
+            const balanceOf = await this.provider
+              .getBalance(protocolToken.address, blockNumber)
+              .catch(() => 0n)
+            return {
+              ...underlyingToken,
+              totalSupplyRaw: balanceOf,
+              type: TokenType.Underlying,
+            }
+          }
+
+          const contract = Erc20__factory.connect(
+            underlyingToken.address,
+            this.provider,
+          )
+
+          const balanceOf = await contract
+            .balanceOf(protocolToken.address, {
+              blockTag: blockNumber,
+            })
+            .catch(() => 0n)
+
+          return {
+            ...underlyingToken,
+            totalSupplyRaw: balanceOf,
+            type: TokenType.Underlying,
+          }
+        },
+      )
+
+      const [protocolTokenTotalSupply, tokens] = await Promise.all([
+        protocolTokenContact.totalSupply({ blockTag: blockNumber }),
+        underlyingTokenBalances,
+      ])
+
+      return {
+        name: protocolToken.name,
+        address: protocolToken.address,
+        symbol: protocolToken.symbol,
+        decimals: protocolToken.decimals,
+        type: TokenType.Protocol,
+        totalSupplyRaw: protocolTokenTotalSupply,
+        tokens,
+      }
+    })
+  }
+
+  async borrows({
+    protocolToken,
+    filter: { fromBlock, toBlock, userAddress },
+  }: {
+    protocolToken: Erc20Metadata & { tokenId?: string }
+    filter: {
+      fromBlock: number
+      toBlock: number
+      userAddress: string
+    }
+  }): Promise<MovementsByBlock[]> {
+    return this.getErc20Movements({
+      protocolToken,
+      filter: {
+        fromBlock,
+        toBlock,
+        from: undefined,
+        to: userAddress,
+      },
+    })
+  }
+
+  async repays({
+    protocolToken,
+    filter: { fromBlock, toBlock, userAddress },
+  }: {
+    protocolToken: Erc20Metadata & { tokenId?: string }
+    filter: {
+      fromBlock: number
+      toBlock: number
+      userAddress: string
+    }
+  }): Promise<MovementsByBlock[]> {
+    return this.getErc20Movements({
+      protocolToken,
+      filter: {
+        fromBlock,
+        toBlock,
+        from: userAddress,
+        to: undefined,
+      },
+    })
+  }
+
+  withdrawals({
+    protocolToken,
+    filter: { fromBlock, toBlock, userAddress },
+  }: {
+    protocolToken: Erc20Metadata & { tokenId?: string }
+    filter: {
+      fromBlock: number
+      toBlock: number
+      userAddress: string
+    }
+  }): Promise<MovementsByBlock[]> {
+    return this.getErc20Movements({
+      protocolToken,
+      filter: { fromBlock, toBlock, from: userAddress, to: undefined },
     })
   }
 

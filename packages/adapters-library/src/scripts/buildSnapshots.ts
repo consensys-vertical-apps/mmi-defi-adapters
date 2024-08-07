@@ -137,20 +137,20 @@ export function buildSnapshots(program: Command) {
               }
 
               case 'withdrawals': {
-                const snapshot = await defiProvider.getWithdrawals({
+                const result = await defiProvider.getWithdrawals({
                   ...testCase.input,
                   chainId: chainId,
                   protocolId: protocolId,
                 })
 
                 const aggregatedValues = getAggregatedValuesMovements(
-                  snapshot,
+                  result,
                   chainId,
                 )
 
                 return {
                   aggregatedValues,
-                  snapshot,
+                  snapshot: result,
                 }
               }
               case 'repays': {
@@ -164,12 +164,20 @@ export function buildSnapshots(program: Command) {
               }
 
               case 'borrows': {
+                const result = await defiProvider.getBorrows({
+                  ...testCase.input,
+                  chainId: chainId,
+                  protocolId: protocolId,
+                })
+
+                const aggregatedValues = getAggregatedValuesMovements(
+                  result,
+                  chainId,
+                )
+
                 return {
-                  snapshot: await defiProvider.getBorrows({
-                    ...testCase.input,
-                    chainId: chainId,
-                    protocolId: protocolId,
-                  }),
+                  snapshot: result,
+                  aggregatedValues,
                 }
               }
 

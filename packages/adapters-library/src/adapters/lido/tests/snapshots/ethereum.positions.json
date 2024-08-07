@@ -23,11 +23,11 @@
           "tokens": [
             {
               "address": "0x0000000000000000000000000000000000000000",
-              "symbol": "ETH",
               "name": "Ethereum",
+              "symbol": "ETH",
               "decimals": 18,
-              "balanceRaw": "4944483824413014n",
               "type": "underlying",
+              "balanceRaw": "4944483824413014n",
               "balance": 0.004944483824413014,
               "price": 1577.5088,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
@@ -62,7 +62,7 @@
               "symbol": "stETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "90177902840852853190524n",
+              "balanceRaw": "90177902840852853131608n",
               "tokens": [
                 {
                   "address": "0x0000000000000000000000000000000000000000",
@@ -70,7 +70,7 @@
                   "symbol": "ETH",
                   "decimals": 18,
                   "type": "underlying",
-                  "balanceRaw": "90177902840852853190524n",
+                  "balanceRaw": "90177902840852853131608n",
                   "balance": 90177.90284085285,
                   "price": 1577.5088,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
@@ -92,8 +92,8 @@
     "1b04657656af1daa35763856b55b46b3": {
       "result": "0x0000000000000000000000000000000000000000000010b3a16049202009d2bc"
     },
-    "5c2e0e1067c3dd43df9d0d19afe92cd8": {
-      "result": "0x0000000000000000000000000000000000000000000013188dccf2bfe36a6f7c"
+    "9cca41a32a5d7cf6ea0910172ca6ed70": {
+      "result": "0x0000000000000000000000000000000000000000000000000fde014d75ba9c06"
     },
     "381a717139bf2631bc68e8400f91a99a": {
       "result": "0x00000000000000000000000000000000000000000000000600000000000019b000000000000000000000000000000000000000000000000000000024baaf670000000000000000000000000000000000000000000000000000000000652fd5d300000000000000000000000000000000000000000000000000000000652fd5d300000000000000000000000000000000000000000000000600000000000019b0"

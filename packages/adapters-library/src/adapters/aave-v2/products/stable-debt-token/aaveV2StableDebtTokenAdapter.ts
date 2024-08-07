@@ -1,8 +1,13 @@
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { Helpers } from '../../../../scripts/helpers'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
+  GetPositionsInput,
   PositionType,
+  ProtocolAdapterParams,
   ProtocolDetails,
+  ProtocolPosition,
 } from '../../../../types/adapter'
 import { AaveBasePoolAdapter } from '../../common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../contracts'

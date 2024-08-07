@@ -22,12 +22,34 @@
           "type": "protocol",
           "tokens": [
             {
+              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+              "name": "Curve DAO Token",
+              "symbol": "CRV",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "372044214451447016728n",
+              "balance": 372.04421445144703,
+              "price": 0.573965052493556,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
+            },
+            {
+              "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+              "name": "Convex Token",
+              "symbol": "CVX",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "3348397930063023150n",
+              "balance": 3.3483979300630233,
+              "price": 3.7100032709602577,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
+            },
+            {
               "address": "0x845838DF265Dcd2c412A1Dc9e959c7d08537f8a2",
               "name": "Curve.fi cDAI/cUSDC",
               "symbol": "cDAI+cUSDC",
               "decimals": 18,
-              "balanceRaw": "128997493050015238077933n",
               "type": "underlying",
+              "balanceRaw": "128997493050015238077933n",
               "tokens": [
                 {
                   "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
@@ -78,28 +100,6 @@
               ],
               "balance": 128997.49305001524,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x845838DF265Dcd2c412A1Dc9e959c7d08537f8a2/logo.png"
-            },
-            {
-              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
-              "name": "Curve DAO Token",
-              "symbol": "CRV",
-              "decimals": 18,
-              "type": "underlying-claimable",
-              "balanceRaw": "372044214451447016728n",
-              "balance": 372.04421445144703,
-              "price": 0.573965052493556,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
-            },
-            {
-              "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
-              "name": "Convex Token",
-              "symbol": "CVX",
-              "decimals": 18,
-              "type": "underlying-claimable",
-              "balanceRaw": "3348397930063023150n",
-              "balance": 3.3483979300630233,
-              "price": 3.7100032709602577,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
             }
           ],
           "balance": 128997.49305001524
@@ -113,12 +113,34 @@
           "type": "protocol",
           "tokens": [
             {
+              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+              "name": "Curve DAO Token",
+              "symbol": "CRV",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "413964457384170678506n",
+              "balance": 413.96445738417066,
+              "price": 0.573965052493556,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
+            },
+            {
+              "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+              "name": "Convex Token",
+              "symbol": "CVX",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "3725680116457536106n",
+              "balance": 3.725680116457536,
+              "price": 3.7100032709602577,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
+            },
+            {
               "address": "0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E",
               "name": "Curve.fi Factory Plain Pool: crvUSD/USDC",
               "symbol": "crvUSDUSDC-f",
               "decimals": 18,
-              "balanceRaw": "24451518302618481212814n",
               "type": "underlying",
+              "balanceRaw": "24451518302618481212814n",
               "tokens": [
                 {
                   "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
@@ -145,28 +167,6 @@
               ],
               "balance": 24451.518302618482,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E/logo.png"
-            },
-            {
-              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
-              "name": "Curve DAO Token",
-              "symbol": "CRV",
-              "decimals": 18,
-              "type": "underlying-claimable",
-              "balanceRaw": "413964457384170678506n",
-              "balance": 413.96445738417066,
-              "price": 0.573965052493556,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
-            },
-            {
-              "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
-              "name": "Convex Token",
-              "symbol": "CVX",
-              "decimals": 18,
-              "type": "underlying-claimable",
-              "balanceRaw": "3725680116457536106n",
-              "balance": 3.725680116457536,
-              "price": 3.7100032709602577,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
             }
           ],
           "balance": 24451.518302618482

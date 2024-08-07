@@ -114,70 +114,10 @@ export class StargatePoolAdapter implements IProtocolAdapter {
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
     const protocolTokens = await this.getProtocolTokens()
 
-    return await filterMapAsync(protocolTokens, async (protocolToken) => {
-      if (
-        protocolTokenAddresses &&
-        !protocolTokenAddresses.includes(protocolToken.address)
-      ) {
-        return undefined
-      }
-
-      const protocolTokenContact = Erc20__factory.connect(
-        protocolToken.address,
-        this.provider,
-      )
-
-      const underlyingTokens = (
-        await this.getProtocolTokenByAddress(protocolToken.address)
-      ).underlyingTokens
-
-      const underlyingTokenBalances = filterMapAsync(
-        underlyingTokens,
-        async (underlyingToken) => {
-          if (underlyingToken.address === ZERO_ADDRESS) {
-            const balanceOf = await this.provider
-              .getBalance(protocolToken.address, blockNumber)
-              .catch(() => 0n)
-            return {
-              ...underlyingToken,
-              totalSupplyRaw: balanceOf,
-              type: TokenType.Underlying,
-            }
-          }
-
-          const contract = Erc20__factory.connect(
-            underlyingToken.address,
-            this.provider,
-          )
-
-          const balanceOf = await contract
-            .balanceOf(protocolToken.address, {
-              blockTag: blockNumber,
-            })
-            .catch(() => 0n)
-
-          return {
-            ...underlyingToken,
-            totalSupplyRaw: balanceOf,
-            type: TokenType.Underlying,
-          }
-        },
-      )
-
-      const [protocolTokenTotalSupply, tokens] = await Promise.all([
-        protocolTokenContact.totalSupply({ blockTag: blockNumber }),
-        underlyingTokenBalances,
-      ])
-
-      return {
-        name: protocolToken.name,
-        address: protocolToken.address,
-        symbol: protocolToken.symbol,
-        decimals: protocolToken.decimals,
-        type: TokenType.Protocol,
-        totalSupplyRaw: protocolTokenTotalSupply,
-        tokens,
-      }
+    return await this.helpers.tvlUsingUnderlyingTokenBalances({
+      protocolTokens,
+      filterProtocolTokenAddresses: protocolTokenAddresses,
+      blockNumber,
     })
   }
 

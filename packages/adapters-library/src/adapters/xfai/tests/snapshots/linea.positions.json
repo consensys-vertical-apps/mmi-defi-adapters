@@ -22,23 +22,23 @@
           "type": "protocol",
           "tokens": [
             {
-              "type": "underlying",
               "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
-              "balanceRaw": "63440363n",
-              "balance": 0.63440363,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4/logo.png"
             },
             {
-              "type": "underlying",
               "address": "0x0000000000000000000000000000000000000000",
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "balanceRaw": "11442382811021283137n",
-              "balance": 11.442382811021282,
+              "type": "underlying",
+              "balanceRaw": "26340n",
+              "balance": 2.634e-14,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
             }
           ],
@@ -53,23 +53,23 @@
           "type": "protocol",
           "tokens": [
             {
-              "type": "underlying",
               "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
-              "balanceRaw": "12221802229n",
-              "balance": 12221.802229,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
             },
             {
-              "type": "underlying",
               "address": "0x0000000000000000000000000000000000000000",
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "balanceRaw": "3528667580183623779n",
-              "balance": 3.528667580183624,
+              "type": "underlying",
+              "balanceRaw": "15737n",
+              "balance": 1.5737e-14,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
             }
           ],
@@ -84,23 +84,23 @@
           "type": "protocol",
           "tokens": [
             {
-              "type": "underlying",
               "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "name": "USDC",
               "symbol": "USDC",
               "decimals": 6,
-              "balanceRaw": "15968046995n",
-              "balance": 15968.046995,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
-              "type": "underlying",
               "address": "0x0000000000000000000000000000000000000000",
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "balanceRaw": "4587235621232850950n",
-              "balance": 4.587235621232851,
+              "type": "underlying",
+              "balanceRaw": "2215n",
+              "balance": 2.215e-15,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
             }
           ],
@@ -115,23 +115,23 @@
           "type": "protocol",
           "tokens": [
             {
-              "type": "underlying",
               "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "balanceRaw": "9289581757684334061302n",
-              "balance": 9289.581757684335,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
             },
             {
-              "type": "underlying",
               "address": "0x0000000000000000000000000000000000000000",
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "balanceRaw": "2673542956215878391n",
-              "balance": 2.6735429562158783,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
             }
           ],
@@ -146,23 +146,23 @@
           "type": "protocol",
           "tokens": [
             {
-              "type": "underlying",
               "address": "0x8C56017B172226fE024dEa197748FC1eaccC82B1",
               "name": "XFIT",
               "symbol": "XFIT",
               "decimals": 18,
-              "balanceRaw": "8525972386431251112541n",
-              "balance": 8525.972386431251,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x8C56017B172226fE024dEa197748FC1eaccC82B1/logo.png"
             },
             {
-              "type": "underlying",
               "address": "0x0000000000000000000000000000000000000000",
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "balanceRaw": "98260646780694109n",
-              "balance": 0.09826064678069411,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
             }
           ],
@@ -177,23 +177,23 @@
           "type": "protocol",
           "tokens": [
             {
-              "type": "underlying",
               "address": "0x2442Bd7AE83b51F6664De408A385375fe4a84F52",
               "name": "Maker",
               "symbol": "MKR",
               "decimals": 18,
-              "balanceRaw": "1117868992272975934n",
-              "balance": 1.1178689922729759,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x2442Bd7AE83b51F6664De408A385375fe4a84F52/logo.png"
             },
             {
-              "type": "underlying",
               "address": "0x0000000000000000000000000000000000000000",
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "balanceRaw": "676571365103491058n",
-              "balance": 0.676571365103491,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
             }
           ],
@@ -208,23 +208,23 @@
           "type": "protocol",
           "tokens": [
             {
-              "type": "underlying",
               "address": "0x1578f35532FA091EcED8638730F9dB829930ce16",
               "name": "agEUR",
               "symbol": "agEUR",
               "decimals": 18,
-              "balanceRaw": "1019958372857599551278n",
-              "balance": 1019.9583728575996,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x1578f35532FA091EcED8638730F9dB829930ce16/logo.png"
             },
             {
-              "type": "underlying",
               "address": "0x0000000000000000000000000000000000000000",
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "balanceRaw": "598938780281029180n",
-              "balance": 0.5989387802810292,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
             }
           ],

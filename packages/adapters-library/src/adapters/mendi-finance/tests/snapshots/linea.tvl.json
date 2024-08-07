@@ -13,8 +13,8 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
           "name": "Mendi USD Coin",
+          "address": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
           "symbol": "meUSDC",
           "decimals": 8,
           "type": "protocol",

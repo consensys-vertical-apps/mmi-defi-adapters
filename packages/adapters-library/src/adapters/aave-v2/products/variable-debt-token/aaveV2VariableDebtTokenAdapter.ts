@@ -1,4 +1,5 @@
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   PositionType,
