@@ -30,20 +30,20 @@
             "hasTokensWithoutUSDPrices": true,
             "tokensWithoutUSDPrices": [
               {
-                "type": "underlying",
                 "address": "0x0000000000000000000000000000000000000000",
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "decimals": 18,
-                "balanceRaw": "11157581948332594718n"
+                "type": "underlying",
+                "balanceRaw": "25684n"
               },
               {
-                "type": "underlying",
                 "address": "0x0000000000000000000000000000000000000000",
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "decimals": 18,
-                "balanceRaw": "11442382811021283137n"
+                "type": "underlying",
+                "balanceRaw": "26340n"
               }
             ]
           }
@@ -66,20 +66,20 @@
             "hasTokensWithoutUSDPrices": true,
             "tokensWithoutUSDPrices": [
               {
-                "type": "underlying",
                 "address": "0x0000000000000000000000000000000000000000",
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "decimals": 18,
-                "balanceRaw": "3680525955131740766n"
+                "type": "underlying",
+                "balanceRaw": "16415n"
               },
               {
-                "type": "underlying",
                 "address": "0x0000000000000000000000000000000000000000",
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "decimals": 18,
-                "balanceRaw": "3528667580183623779n"
+                "type": "underlying",
+                "balanceRaw": "15737n"
               }
             ]
           }
@@ -102,20 +102,20 @@
             "hasTokensWithoutUSDPrices": true,
             "tokensWithoutUSDPrices": [
               {
-                "type": "underlying",
                 "address": "0x0000000000000000000000000000000000000000",
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "decimals": 18,
-                "balanceRaw": "4798604599645925651n"
+                "type": "underlying",
+                "balanceRaw": "2317n"
               },
               {
-                "type": "underlying",
                 "address": "0x0000000000000000000000000000000000000000",
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "decimals": 18,
-                "balanceRaw": "4587235621232850950n"
+                "type": "underlying",
+                "balanceRaw": "2215n"
               }
             ]
           }
@@ -138,20 +138,20 @@
             "hasTokensWithoutUSDPrices": true,
             "tokensWithoutUSDPrices": [
               {
-                "type": "underlying",
                 "address": "0x0000000000000000000000000000000000000000",
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "decimals": 18,
-                "balanceRaw": "2800466817458055637n"
+                "type": "underlying",
+                "balanceRaw": "0n"
               },
               {
-                "type": "underlying",
                 "address": "0x0000000000000000000000000000000000000000",
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "decimals": 18,
-                "balanceRaw": "2673542956215878391n"
+                "type": "underlying",
+                "balanceRaw": "0n"
               }
             ]
           }
@@ -174,20 +174,20 @@
             "hasTokensWithoutUSDPrices": true,
             "tokensWithoutUSDPrices": [
               {
-                "type": "underlying",
                 "address": "0x0000000000000000000000000000000000000000",
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "decimals": 18,
-                "balanceRaw": "102332551956987823n"
+                "type": "underlying",
+                "balanceRaw": "0n"
               },
               {
-                "type": "underlying",
                 "address": "0x0000000000000000000000000000000000000000",
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "decimals": 18,
-                "balanceRaw": "98260646780694109n"
+                "type": "underlying",
+                "balanceRaw": "0n"
               }
             ]
           }
@@ -210,20 +210,20 @@
             "hasTokensWithoutUSDPrices": true,
             "tokensWithoutUSDPrices": [
               {
-                "type": "underlying",
                 "address": "0x0000000000000000000000000000000000000000",
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "decimals": 18,
-                "balanceRaw": "715304996029986034n"
+                "type": "underlying",
+                "balanceRaw": "0n"
               },
               {
-                "type": "underlying",
                 "address": "0x0000000000000000000000000000000000000000",
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "decimals": 18,
-                "balanceRaw": "676571365103491058n"
+                "type": "underlying",
+                "balanceRaw": "0n"
               }
             ]
           }
@@ -246,20 +246,20 @@
             "hasTokensWithoutUSDPrices": true,
             "tokensWithoutUSDPrices": [
               {
-                "type": "underlying",
                 "address": "0x0000000000000000000000000000000000000000",
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "decimals": 18,
-                "balanceRaw": "598061721125929613n"
+                "type": "underlying",
+                "balanceRaw": "0n"
               },
               {
-                "type": "underlying",
                 "address": "0x0000000000000000000000000000000000000000",
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "decimals": 18,
-                "balanceRaw": "598938780281029180n"
+                "type": "underlying",
+                "balanceRaw": "0n"
               }
             ]
           }
