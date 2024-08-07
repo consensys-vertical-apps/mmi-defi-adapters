@@ -1,5 +1,5 @@
-{
-  "0x102633152313C81cD80419b6EcF66d14Ad68949A": {
+[
+  {
     "address": "0x102633152313C81cD80419b6EcF66d14Ad68949A",
     "name": "Aave Ethereum Stable Debt WETH",
     "symbol": "stableDebtEthWETH",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0x39739943199c0fBFe9E5f1B5B160cd73a64CB85D": {
+  {
     "address": "0x39739943199c0fBFe9E5f1B5B160cd73a64CB85D",
     "name": "Aave Ethereum Stable Debt wstETH",
     "symbol": "stableDebtEthwstETH",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0xA1773F1ccF6DB192Ad8FE826D15fe1d328B03284": {
+  {
     "address": "0xA1773F1ccF6DB192Ad8FE826D15fe1d328B03284",
     "name": "Aave Ethereum Stable Debt WBTC",
     "symbol": "stableDebtEthWBTC",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0xB0fe3D292f4bd50De902Ba5bDF120Ad66E9d7a39": {
+  {
     "address": "0xB0fe3D292f4bd50De902Ba5bDF120Ad66E9d7a39",
     "name": "Aave Ethereum Stable Debt USDC",
     "symbol": "stableDebtEthUSDC",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0x413AdaC9E2Ef8683ADf5DDAEce8f19613d60D1bb": {
+  {
     "address": "0x413AdaC9E2Ef8683ADf5DDAEce8f19613d60D1bb",
     "name": "Aave Ethereum Stable Debt DAI",
     "symbol": "stableDebtEthDAI",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0x63B1129ca97D2b9F97f45670787Ac12a9dF1110a": {
+  {
     "address": "0x63B1129ca97D2b9F97f45670787Ac12a9dF1110a",
     "name": "Aave Ethereum Stable Debt LINK",
     "symbol": "stableDebtEthLINK",
@@ -83,7 +83,7 @@
       }
     ]
   },
-  "0x268497bF083388B1504270d0E717222d3A87D6F2": {
+  {
     "address": "0x268497bF083388B1504270d0E717222d3A87D6F2",
     "name": "Aave Ethereum Stable Debt AAVE",
     "symbol": "stableDebtEthAAVE",
@@ -97,7 +97,7 @@
       }
     ]
   },
-  "0x82bE6012cea6D147B968eBAea5ceEcF6A5b4F493": {
+  {
     "address": "0x82bE6012cea6D147B968eBAea5ceEcF6A5b4F493",
     "name": "Aave Ethereum Stable Debt cbETH",
     "symbol": "stableDebtEthcbETH",
@@ -111,7 +111,7 @@
       }
     ]
   },
-  "0x822Fa72Df1F229C3900f5AD6C3Fa2C424D691622": {
+  {
     "address": "0x822Fa72Df1F229C3900f5AD6C3Fa2C424D691622",
     "name": "Aave Ethereum Stable Debt USDT",
     "symbol": "stableDebtEthUSDT",
@@ -125,7 +125,7 @@
       }
     ]
   },
-  "0x1d1906f909CAe494c7441604DAfDDDbD0485A925": {
+  {
     "address": "0x1d1906f909CAe494c7441604DAfDDDbD0485A925",
     "name": "Aave Ethereum Stable Debt rETH",
     "symbol": "stableDebtEthrETH",
@@ -139,7 +139,7 @@
       }
     ]
   },
-  "0x37A6B708FDB1483C231961b9a7F145261E815fc3": {
+  {
     "address": "0x37A6B708FDB1483C231961b9a7F145261E815fc3",
     "name": "Aave Ethereum Stable Debt LUSD",
     "symbol": "stableDebtEthLUSD",
@@ -153,7 +153,7 @@
       }
     ]
   },
-  "0x90D9CD005E553111EB8C9c31Abe9706a186b6048": {
+  {
     "address": "0x90D9CD005E553111EB8C9c31Abe9706a186b6048",
     "name": "Aave Ethereum Stable Debt CRV",
     "symbol": "stableDebtEthCRV",
@@ -167,7 +167,7 @@
       }
     ]
   },
-  "0x0496372BE7e426D28E89DEBF01f19F014d5938bE": {
+  {
     "address": "0x0496372BE7e426D28E89DEBF01f19F014d5938bE",
     "name": "Aave Ethereum Stable Debt MKR",
     "symbol": "stableDebtEthMKR",
@@ -181,7 +181,7 @@
       }
     ]
   },
-  "0x478E1ec1A2BeEd94c1407c951E4B9e22d53b2501": {
+  {
     "address": "0x478E1ec1A2BeEd94c1407c951E4B9e22d53b2501",
     "name": "Aave Ethereum Stable Debt SNX",
     "symbol": "stableDebtEthSNX",
@@ -195,7 +195,7 @@
       }
     ]
   },
-  "0xB368d45aaAa07ee2c6275Cb320D140b22dE43CDD": {
+  {
     "address": "0xB368d45aaAa07ee2c6275Cb320D140b22dE43CDD",
     "name": "Aave Ethereum Stable Debt BAL",
     "symbol": "stableDebtEthBAL",
@@ -209,7 +209,7 @@
       }
     ]
   },
-  "0x2FEc76324A0463c46f32e74A86D1cf94C02158DC": {
+  {
     "address": "0x2FEc76324A0463c46f32e74A86D1cf94C02158DC",
     "name": "Aave Ethereum Stable Debt UNI",
     "symbol": "stableDebtEthUNI",
@@ -223,7 +223,7 @@
       }
     ]
   },
-  "0xa0a5bF5781Aeb548db9d4226363B9e89287C5FD2": {
+  {
     "address": "0xa0a5bF5781Aeb548db9d4226363B9e89287C5FD2",
     "name": "Aave Ethereum Stable Debt LDO",
     "symbol": "stableDebtEthLDO",
@@ -237,7 +237,7 @@
       }
     ]
   },
-  "0x7617d02E311CdE347A0cb45BB7DF2926BBaf5347": {
+  {
     "address": "0x7617d02E311CdE347A0cb45BB7DF2926BBaf5347",
     "name": "Aave Ethereum Stable Debt ENS",
     "symbol": "stableDebtEthENS",
@@ -251,7 +251,7 @@
       }
     ]
   },
-  "0x4b62bFAff61AB3985798e5202D2d167F567D0BCD": {
+  {
     "address": "0x4b62bFAff61AB3985798e5202D2d167F567D0BCD",
     "name": "Aave Ethereum Stable Debt 1INCH",
     "symbol": "stableDebtEth1INCH",
@@ -265,7 +265,7 @@
       }
     ]
   },
-  "0x219640546c0DFDDCb9ab3bcdA89B324e0a376367": {
+  {
     "address": "0x219640546c0DFDDCb9ab3bcdA89B324e0a376367",
     "name": "Aave Ethereum Stable Debt FRAX",
     "symbol": "stableDebtEthFRAX",
@@ -279,7 +279,7 @@
       }
     ]
   },
-  "0x3f3DF7266dA30102344A813F1a3D07f5F041B5AC": {
+  {
     "address": "0x3f3DF7266dA30102344A813F1a3D07f5F041B5AC",
     "name": "Aave Ethereum Stable Debt GHO",
     "symbol": "stableDebtEthGHO",
@@ -293,7 +293,7 @@
       }
     ]
   },
-  "0x41e330fd8F7eA31E2e8F02cC0C9392D1403597B4": {
+  {
     "address": "0x41e330fd8F7eA31E2e8F02cC0C9392D1403597B4",
     "name": "Aave Ethereum Stable Debt RPL",
     "symbol": "stableDebtEthRPL",
@@ -307,7 +307,7 @@
       }
     ]
   },
-  "0x48Bc45f084988bC01933EA93EeFfEBC0416534f6": {
+  {
     "address": "0x48Bc45f084988bC01933EA93EeFfEBC0416534f6",
     "name": "Aave Ethereum Stable Debt sDAI",
     "symbol": "stableDebtEthsDAI",
@@ -321,7 +321,7 @@
       }
     ]
   },
-  "0xb55C604075D79486b8A329c396Fc711Be54B5330": {
+  {
     "address": "0xb55C604075D79486b8A329c396Fc711Be54B5330",
     "name": "Aave Ethereum Stable Debt crvUSD",
     "symbol": "stableDebtEthcrvUSD",
@@ -335,7 +335,7 @@
       }
     ]
   },
-  "0x5B393DB4c72B1Bd82CE2834F6485d61b137Bc7aC": {
+  {
     "address": "0x5B393DB4c72B1Bd82CE2834F6485d61b137Bc7aC",
     "name": "Aave Ethereum Stable Debt PYUSD",
     "symbol": "stableDebtEthPYUSD",
@@ -349,7 +349,7 @@
       }
     ]
   },
-  "0xBad6eF8e76E26F39e985474aD0974FDcabF85d37": {
+  {
     "address": "0xBad6eF8e76E26F39e985474aD0974FDcabF85d37",
     "name": "Aave Ethereum Stable Debt weETH",
     "symbol": "stableDebtEthweETH",
@@ -363,7 +363,7 @@
       }
     ]
   },
-  "0x48Fa27f511F40d16f9E7C913e9388d52d95bC6d2": {
+  {
     "address": "0x48Fa27f511F40d16f9E7C913e9388d52d95bC6d2",
     "name": "Aave Ethereum Stable Debt osETH",
     "symbol": "stableDebtEthosETH",
@@ -377,7 +377,7 @@
       }
     ]
   },
-  "0x43Cc8AD0c223b38D9c04802bB184A2D97e497D38": {
+  {
     "address": "0x43Cc8AD0c223b38D9c04802bB184A2D97e497D38",
     "name": "Aave Ethereum Stable Debt USDe",
     "symbol": "stableDebtEthUSDe",
@@ -391,7 +391,7 @@
       }
     ]
   },
-  "0xBDfa7DE5CF7a7DdE4F023Cac842BF520fcF5395C": {
+  {
     "address": "0xBDfa7DE5CF7a7DdE4F023Cac842BF520fcF5395C",
     "name": "Aave Ethereum Stable Debt ETHx",
     "symbol": "stableDebtEthETHx",
@@ -405,7 +405,7 @@
       }
     ]
   },
-  "0xc9335dE638f4C96a8330b2FFc44353Bab58774e3": {
+  {
     "address": "0xc9335dE638f4C96a8330b2FFc44353Bab58774e3",
     "name": "Aave Ethereum Stable Debt sUSDe",
     "symbol": "stableDebtEthsUSDe",
@@ -419,4 +419,4 @@
       }
     ]
   }
-}
+]

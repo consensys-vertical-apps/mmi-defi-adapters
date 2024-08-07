@@ -1,5 +1,5 @@
-{
-  "0x82E64f49Ed5EC1bC6e43DAD4FC8Af9bb3A2312EE": {
+[
+  {
     "address": "0x82E64f49Ed5EC1bC6e43DAD4FC8Af9bb3A2312EE",
     "name": "Aave Polygon DAI",
     "symbol": "aPolDAI",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0x191c10Aa4AF7C30e871E70C95dB0E4eb77237530": {
+  {
     "address": "0x191c10Aa4AF7C30e871E70C95dB0E4eb77237530",
     "name": "Aave Polygon LINK",
     "symbol": "aPolLINK",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0x625E7708f30cA75bfd92586e17077590C60eb4cD": {
+  {
     "address": "0x625E7708f30cA75bfd92586e17077590C60eb4cD",
     "name": "Aave Polygon USDC",
     "symbol": "aPolUSDC",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x078f358208685046a11C85e8ad32895DED33A249": {
+  {
     "address": "0x078f358208685046a11C85e8ad32895DED33A249",
     "name": "Aave Polygon WBTC",
     "symbol": "aPolWBTC",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8": {
+  {
     "address": "0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8",
     "name": "Aave Polygon WETH",
     "symbol": "aPolWETH",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0x6ab707Aca953eDAeFBc4fD23bA73294241490620": {
+  {
     "address": "0x6ab707Aca953eDAeFBc4fD23bA73294241490620",
     "name": "Aave Polygon USDT",
     "symbol": "aPolUSDT",
@@ -83,7 +83,7 @@
       }
     ]
   },
-  "0xf329e36C7bF6E5E86ce2150875a84Ce77f477375": {
+  {
     "address": "0xf329e36C7bF6E5E86ce2150875a84Ce77f477375",
     "name": "Aave Polygon AAVE",
     "symbol": "aPolAAVE",
@@ -97,7 +97,7 @@
       }
     ]
   },
-  "0x6d80113e533a2C0fe82EaBD35f1875DcEA89Ea97": {
+  {
     "address": "0x6d80113e533a2C0fe82EaBD35f1875DcEA89Ea97",
     "name": "Aave Polygon WMATIC",
     "symbol": "aPolWMATIC",
@@ -111,7 +111,7 @@
       }
     ]
   },
-  "0x8Eb270e296023E9D92081fdF967dDd7878724424": {
+  {
     "address": "0x8Eb270e296023E9D92081fdF967dDd7878724424",
     "name": "Aave Polygon GHST",
     "symbol": "aPolGHST",
@@ -125,7 +125,7 @@
       }
     ]
   },
-  "0x38d693cE1dF5AaDF7bC62595A37D667aD57922e5": {
+  {
     "address": "0x38d693cE1dF5AaDF7bC62595A37D667aD57922e5",
     "name": "Aave Polygon EURS",
     "symbol": "aPolEURS",
@@ -139,7 +139,7 @@
       }
     ]
   },
-  "0xEA1132120ddcDDA2F119e99Fa7A27a0d036F7Ac9": {
+  {
     "address": "0xEA1132120ddcDDA2F119e99Fa7A27a0d036F7Ac9",
     "name": "Aave Polygon STMATIC",
     "symbol": "aPolSTMATIC",
@@ -153,7 +153,7 @@
       }
     ]
   },
-  "0x80cA0d8C38d2e2BcbaB66aA1648Bd1C7160500FE": {
+  {
     "address": "0x80cA0d8C38d2e2BcbaB66aA1648Bd1C7160500FE",
     "name": "Aave Polygon MATICX",
     "symbol": "aPolMATICX",
@@ -167,7 +167,7 @@
       }
     ]
   },
-  "0xf59036CAEBeA7dC4b86638DFA2E3C97dA9FcCd40": {
+  {
     "address": "0xf59036CAEBeA7dC4b86638DFA2E3C97dA9FcCd40",
     "name": "Aave Polygon wstETH",
     "symbol": "aPolwstETH",
@@ -181,7 +181,7 @@
       }
     ]
   },
-  "0xA4D94019934D8333Ef880ABFFbF2FDd611C762BD": {
+  {
     "address": "0xA4D94019934D8333Ef880ABFFbF2FDd611C762BD",
     "name": "Aave Polygon USDCn",
     "symbol": "aPolUSDCn",
@@ -195,4 +195,4 @@
       }
     ]
   }
-}
+]

@@ -1,5 +1,5 @@
-{
-  "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811": {
+[
+  {
     "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
     "name": "Aave interest bearing USDT",
     "symbol": "aUSDT",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656": {
+  {
     "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
     "name": "Aave interest bearing WBTC",
     "symbol": "aWBTC",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e": {
+  {
     "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
     "name": "Aave interest bearing WETH",
     "symbol": "aWETH",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x028171bCA77440897B824Ca71D1c56caC55b68A3": {
+  {
     "address": "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
     "name": "Aave interest bearing DAI",
     "symbol": "aDAI",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0xBcca60bB61934080951369a648Fb03DF4F96263C": {
+  {
     "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
     "name": "Aave interest bearing USDC",
     "symbol": "aUSDC",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0x1982b2F5814301d4e9a8b0201555376e62F82428": {
+  {
     "address": "0x1982b2F5814301d4e9a8b0201555376e62F82428",
     "name": "Aave interest bearing STETH",
     "symbol": "aSTETH",
@@ -83,4 +83,4 @@
       }
     ]
   }
-}
+]

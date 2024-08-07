@@ -96,16 +96,10 @@ export class StargatePoolAdapter implements IProtocolAdapter {
   async getProtocolTokenByAddress(
     protocolTokenAddress: string,
   ): Promise<ProtocolToken<AdditionalMetadata>> {
-    const protocolTokens = await this.getProtocolTokens()
-    const protocolToken = protocolTokens.find(
-      (token) => token.address === protocolTokenAddress,
-    )
-    if (!protocolToken) {
-      throw new Error(
-        `Protocol token with address ${protocolTokenAddress} not found`,
-      )
-    }
-    return protocolToken
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
   }
 
   async getTotalValueLocked({

@@ -1,5 +1,5 @@
-{
-  "0xD4a0e0b9149BCee3C920d2E00b5dE09138fd8bb7": {
+[
+  {
     "address": "0xD4a0e0b9149BCee3C920d2E00b5dE09138fd8bb7",
     "name": "Aave Base WETH",
     "symbol": "aBasWETH",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0xcf3D55c10DB69f28fD1A75Bd73f3D8A2d9c595ad": {
+  {
     "address": "0xcf3D55c10DB69f28fD1A75Bd73f3D8A2d9c595ad",
     "name": "Aave Base cbETH",
     "symbol": "aBascbETH",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0x0a1d576f3eFeF75b330424287a95A366e8281D54": {
+  {
     "address": "0x0a1d576f3eFeF75b330424287a95A366e8281D54",
     "name": "Aave Base USDbC",
     "symbol": "aBasUSDbC",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x99CBC45ea5bb7eF3a5BC08FB1B7E56bB2442Ef0D": {
+  {
     "address": "0x99CBC45ea5bb7eF3a5BC08FB1B7E56bB2442Ef0D",
     "name": "Aave Base wstETH",
     "symbol": "aBaswstETH",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0x4e65fE4DbA92790696d040ac24Aa414708F5c0AB": {
+  {
     "address": "0x4e65fE4DbA92790696d040ac24Aa414708F5c0AB",
     "name": "Aave Base USDC",
     "symbol": "aBasUSDC",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0x7C307e128efA31F540F2E2d976C995E0B65F51F6": {
+  {
     "address": "0x7C307e128efA31F540F2E2d976C995E0B65F51F6",
     "name": "Aave Base weETH",
     "symbol": "aBasweETH",
@@ -83,4 +83,4 @@
       }
     ]
   }
-}
+]

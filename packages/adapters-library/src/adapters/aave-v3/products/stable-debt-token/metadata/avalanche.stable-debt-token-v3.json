@@ -1,5 +1,5 @@
-{
-  "0xd94112B5B62d53C9402e7A60289c6810dEF1dC9B": {
+[
+  {
     "address": "0xd94112B5B62d53C9402e7A60289c6810dEF1dC9B",
     "name": "Aave Avalanche Stable Debt DAI",
     "symbol": "stableDebtAvaDAI",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0x89D976629b7055ff1ca02b927BA3e020F22A44e4": {
+  {
     "address": "0x89D976629b7055ff1ca02b927BA3e020F22A44e4",
     "name": "Aave Avalanche Stable Debt LINK",
     "symbol": "stableDebtAvaLINK",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0x307ffe186F84a3bc2613D1eA417A5737D69A7007": {
+  {
     "address": "0x307ffe186F84a3bc2613D1eA417A5737D69A7007",
     "name": "Aave Avalanche Stable Debt USDC",
     "symbol": "stableDebtAvaUSDC",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0xD8Ad37849950903571df17049516a5CD4cbE55F6": {
+  {
     "address": "0xD8Ad37849950903571df17049516a5CD4cbE55F6",
     "name": "Aave Avalanche Stable Debt WETH",
     "symbol": "stableDebtAvaWETH",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0x70eFfc565DB6EEf7B927610155602d31b670e802": {
+  {
     "address": "0x70eFfc565DB6EEf7B927610155602d31b670e802",
     "name": "Aave Avalanche Stable Debt USDT",
     "symbol": "stableDebtAvaUSDT",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0xfAeF6A702D15428E588d4C0614AEFb4348D83D48": {
+  {
     "address": "0xfAeF6A702D15428E588d4C0614AEFb4348D83D48",
     "name": "Aave Avalanche Stable Debt AAVE",
     "symbol": "stableDebtAvaAAVE",
@@ -83,7 +83,7 @@
       }
     ]
   },
-  "0xF15F26710c827DDe8ACBA678682F3Ce24f2Fb56E": {
+  {
     "address": "0xF15F26710c827DDe8ACBA678682F3Ce24f2Fb56E",
     "name": "Aave Avalanche Stable Debt WAVAX",
     "symbol": "stableDebtAvaWAVAX",
@@ -97,7 +97,7 @@
       }
     ]
   },
-  "0x08Cb71192985E936C7Cd166A8b268035e400c3c3": {
+  {
     "address": "0x08Cb71192985E936C7Cd166A8b268035e400c3c3",
     "name": "Aave Avalanche Stable Debt SAVAX",
     "symbol": "stableDebtAvaSAVAX",
@@ -111,7 +111,7 @@
       }
     ]
   },
-  "0x78246294a4c6fBf614Ed73CcC9F8b875ca8eE841": {
+  {
     "address": "0x78246294a4c6fBf614Ed73CcC9F8b875ca8eE841",
     "name": "Aave Avalanche Stable Debt FRAX",
     "symbol": "stableDebtAvaFRAX",
@@ -125,7 +125,7 @@
       }
     ]
   },
-  "0xa5e408678469d23efDB7694b1B0A85BB0669e8bd": {
+  {
     "address": "0xa5e408678469d23efDB7694b1B0A85BB0669e8bd",
     "name": "Aave Avalanche Stable Debt BTC.b",
     "symbol": "stableDebtAvaBTC.b",
@@ -139,4 +139,4 @@
       }
     ]
   }
-}
+]

@@ -1,5 +1,5 @@
-{
-  "0x82E64f49Ed5EC1bC6e43DAD4FC8Af9bb3A2312EE": {
+[
+  {
     "address": "0x82E64f49Ed5EC1bC6e43DAD4FC8Af9bb3A2312EE",
     "name": "Aave Arbitrum DAI",
     "symbol": "aArbDAI",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0x191c10Aa4AF7C30e871E70C95dB0E4eb77237530": {
+  {
     "address": "0x191c10Aa4AF7C30e871E70C95dB0E4eb77237530",
     "name": "Aave Arbitrum LINK",
     "symbol": "aArbLINK",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0x625E7708f30cA75bfd92586e17077590C60eb4cD": {
+  {
     "address": "0x625E7708f30cA75bfd92586e17077590C60eb4cD",
     "name": "Aave Arbitrum USDC",
     "symbol": "aArbUSDC",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x078f358208685046a11C85e8ad32895DED33A249": {
+  {
     "address": "0x078f358208685046a11C85e8ad32895DED33A249",
     "name": "Aave Arbitrum WBTC",
     "symbol": "aArbWBTC",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8": {
+  {
     "address": "0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8",
     "name": "Aave Arbitrum WETH",
     "symbol": "aArbWETH",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0x6ab707Aca953eDAeFBc4fD23bA73294241490620": {
+  {
     "address": "0x6ab707Aca953eDAeFBc4fD23bA73294241490620",
     "name": "Aave Arbitrum USDT",
     "symbol": "aArbUSDT",
@@ -83,7 +83,7 @@
       }
     ]
   },
-  "0xf329e36C7bF6E5E86ce2150875a84Ce77f477375": {
+  {
     "address": "0xf329e36C7bF6E5E86ce2150875a84Ce77f477375",
     "name": "Aave Arbitrum AAVE",
     "symbol": "aArbAAVE",
@@ -97,7 +97,7 @@
       }
     ]
   },
-  "0x513c7E3a9c69cA3e22550eF58AC1C0088e918FFf": {
+  {
     "address": "0x513c7E3a9c69cA3e22550eF58AC1C0088e918FFf",
     "name": "Aave Arbitrum wstETH",
     "symbol": "aArbwstETH",
@@ -111,7 +111,7 @@
       }
     ]
   },
-  "0x8Eb270e296023E9D92081fdF967dDd7878724424": {
+  {
     "address": "0x8Eb270e296023E9D92081fdF967dDd7878724424",
     "name": "Aave Arbitrum rETH",
     "symbol": "aArbrETH",
@@ -125,7 +125,7 @@
       }
     ]
   },
-  "0x8ffDf2DE812095b1D19CB146E4c004587C0A0692": {
+  {
     "address": "0x8ffDf2DE812095b1D19CB146E4c004587C0A0692",
     "name": "Aave Arbitrum LUSD",
     "symbol": "aArbLUSD",
@@ -139,7 +139,7 @@
       }
     ]
   },
-  "0x724dc807b04555b71ed48a6896b6F41593b8C637": {
+  {
     "address": "0x724dc807b04555b71ed48a6896b6F41593b8C637",
     "name": "Aave Arbitrum USDCn",
     "symbol": "aArbUSDCn",
@@ -153,7 +153,7 @@
       }
     ]
   },
-  "0x38d693cE1dF5AaDF7bC62595A37D667aD57922e5": {
+  {
     "address": "0x38d693cE1dF5AaDF7bC62595A37D667aD57922e5",
     "name": "Aave Arbitrum FRAX",
     "symbol": "aArbFRAX",
@@ -167,7 +167,7 @@
       }
     ]
   },
-  "0x6533afac2E7BCCB20dca161449A13A32D391fb00": {
+  {
     "address": "0x6533afac2E7BCCB20dca161449A13A32D391fb00",
     "name": "Aave Arbitrum ARB",
     "symbol": "aArbARB",
@@ -181,7 +181,7 @@
       }
     ]
   },
-  "0x8437d7C167dFB82ED4Cb79CD44B7a32A1dd95c77": {
+  {
     "address": "0x8437d7C167dFB82ED4Cb79CD44B7a32A1dd95c77",
     "name": "Aave Arbitrum weETH",
     "symbol": "aArbweETH",
@@ -195,7 +195,7 @@
       }
     ]
   },
-  "0xeBe517846d0F36eCEd99C735cbF6131e1fEB775D": {
+  {
     "address": "0xeBe517846d0F36eCEd99C735cbF6131e1fEB775D",
     "name": "Aave Arbitrum GHO",
     "symbol": "aArbGHO",
@@ -209,4 +209,4 @@
       }
     ]
   }
-}
+]

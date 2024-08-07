@@ -1,5 +1,5 @@
-{
-  "0x2238101B7014C279aaF6b408A284E49cDBd5DB55": {
+[
+  {
     "address": "0x2238101B7014C279aaF6b408A284E49cDBd5DB55",
     "name": "Aave Matic Market stable debt DAI",
     "symbol": "stableDebtmDAI",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0xdeb05676dB0DB85cecafE8933c903466Bf20C572": {
+  {
     "address": "0xdeb05676dB0DB85cecafE8933c903466Bf20C572",
     "name": "Aave Matic Market stable debt USDC",
     "symbol": "stableDebtmUSDC",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0xe590cfca10e81FeD9B0e4496381f02256f5d2f61": {
+  {
     "address": "0xe590cfca10e81FeD9B0e4496381f02256f5d2f61",
     "name": "Aave Matic Market stable debt USDT",
     "symbol": "stableDebtmUSDT",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x2551B15dB740dB8348bFaDFe06830210eC2c2F13": {
+  {
     "address": "0x2551B15dB740dB8348bFaDFe06830210eC2c2F13",
     "name": "Aave Matic Market stable debt WBTC",
     "symbol": "stableDebtmWBTC",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0xc478cBbeB590C76b01ce658f8C4dda04f30e2C6f": {
+  {
     "address": "0xc478cBbeB590C76b01ce658f8C4dda04f30e2C6f",
     "name": "Aave Matic Market stable debt WETH",
     "symbol": "stableDebtmWETH",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0xb9A6E29fB540C5F1243ef643EB39b0AcbC2e68E3": {
+  {
     "address": "0xb9A6E29fB540C5F1243ef643EB39b0AcbC2e68E3",
     "name": "Aave Matic Market stable debt WMATIC",
     "symbol": "stableDebtmWMATIC",
@@ -83,4 +83,4 @@
       }
     ]
   }
-}
+]

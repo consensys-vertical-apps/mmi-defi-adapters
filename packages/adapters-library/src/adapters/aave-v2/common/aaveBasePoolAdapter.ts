@@ -7,7 +7,10 @@ import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvi
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import { Helpers } from '../../../scripts/helpers'
-import { IProtocolAdapter } from '../../../types/IProtocolAdapter'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
   GetEventsInput,
@@ -32,12 +35,7 @@ import {
   ProtocolDataProvider__factory,
 } from '../contracts'
 
-type AaveV2PoolMetadata = Record<
-  string,
-  Erc20Metadata & {
-    underlyingTokens: Erc20Metadata[]
-  }
->
+type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
 const protocolDataProviderContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
@@ -58,9 +56,7 @@ const protocolDataProviderContractAddresses: Partial<
   },
 }
 
-export abstract class AaveBasePoolAdapter
-  implements IMetadataBuilder, IProtocolAdapter
-{
+export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
   chainId: Chain
   protocolId: Protocol
   abstract productId: string
@@ -88,6 +84,15 @@ export abstract class AaveBasePoolAdapter
 
   abstract getProtocolDetails(): ProtocolDetails
 
+  async getProtocolTokenByAddress(
+    protocolTokenAddress: string,
+  ): Promise<ProtocolToken<AdditionalMetadata>> {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
+  }
+
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
     return this.helpers.getBalanceOfTokens({
       ...input,
@@ -101,7 +106,7 @@ export abstract class AaveBasePoolAdapter
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     return this.helpers.unwrapOneToOne({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress),
     })
   }
@@ -113,7 +118,7 @@ export abstract class AaveBasePoolAdapter
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -125,7 +130,7 @@ export abstract class AaveBasePoolAdapter
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.deposits({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -137,7 +142,7 @@ export abstract class AaveBasePoolAdapter
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.borrows({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -149,7 +154,7 @@ export abstract class AaveBasePoolAdapter
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.repays({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -158,7 +163,7 @@ export abstract class AaveBasePoolAdapter
     protocolTokenAddresses,
     blockNumber,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = Object.values(await this.buildMetadata())
+    const protocolTokens = await this.getProtocolTokens()
 
     return await this.helpers.tvlUsingUnderlyingTokenBalances({
       protocolTokens,
@@ -167,18 +172,7 @@ export abstract class AaveBasePoolAdapter
     })
   }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ name, symbol, decimals, address }) => ({
-        name,
-        symbol,
-        decimals,
-        address,
-      }),
-    )
-  }
-
-  async buildMetadata() {
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
       protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
@@ -187,7 +181,7 @@ export abstract class AaveBasePoolAdapter
     const reserveTokens =
       await protocolDataProviderContract.getAllReservesTokens()
 
-    const metadataObject: AaveV2PoolMetadata = {}
+    const metadataObject: ProtocolToken<AdditionalMetadata>[] = []
 
     const promises = reserveTokens.map(async ({ tokenAddress }) => {
       const reserveConfigurationData =
@@ -223,10 +217,10 @@ export abstract class AaveBasePoolAdapter
         underlyingTokenPromise,
       ])
 
-      metadataObject[protocolToken.address] = {
+      metadataObject.push({
         ...protocolToken,
         underlyingTokens: [underlyingToken],
-      }
+      })
     })
 
     await Promise.all(promises)
@@ -238,7 +232,7 @@ export abstract class AaveBasePoolAdapter
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     const { name, symbol, decimals, address } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     return { name, symbol, decimals, address }
   }
@@ -247,7 +241,7 @@ export abstract class AaveBasePoolAdapter
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
     const { underlyingTokens } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     return underlyingTokens
   }
@@ -261,23 +255,4 @@ export abstract class AaveBasePoolAdapter
   protected abstract getReserveTokenRate(
     reserveData: Awaited<ReturnType<ProtocolDataProvider['getReserveData']>>,
   ): bigint
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
-  }
 }

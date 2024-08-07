@@ -18,6 +18,7 @@ export class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
+    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -34,8 +35,8 @@ export class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   }
 
   @CacheToFile({ fileKey: 'stable-debt-token-v2' })
-  async buildMetadata() {
-    return super.buildMetadata()
+  async getProtocolTokens() {
+    return super.getProtocolTokens()
   }
 
   protected getReserveTokenAddress(

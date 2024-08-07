@@ -1,5 +1,5 @@
-{
-  "0x4e575CacB37bc1b5afEc68a0462c4165A5268983": {
+[
+  {
     "address": "0x4e575CacB37bc1b5afEc68a0462c4165A5268983",
     "name": "Aave Avalanche Market variable debt vWETH",
     "symbol": "variableDebtvWETH",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0x1852DC24d1a8956a0B356AA18eDe954c7a0Ca5ae": {
+  {
     "address": "0x1852DC24d1a8956a0B356AA18eDe954c7a0Ca5ae",
     "name": "Aave Avalanche Market variable debt vDAI",
     "symbol": "variableDebtvDAI",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0xfc1AdA7A288d6fCe0d29CcfAAa57Bc9114bb2DbE": {
+  {
     "address": "0xfc1AdA7A288d6fCe0d29CcfAAa57Bc9114bb2DbE",
     "name": "Aave Avalanche Market variable debt vUSDT",
     "symbol": "variableDebtvUSDT",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x848c080d2700CBE1B894a3374AD5E887E5cCb89c": {
+  {
     "address": "0x848c080d2700CBE1B894a3374AD5E887E5cCb89c",
     "name": "Aave Avalanche Market variable debt vUSDC",
     "symbol": "variableDebtvUSDC",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0x66A0FE52Fb629a6cB4D10B8580AFDffE888F5Fd4": {
+  {
     "address": "0x66A0FE52Fb629a6cB4D10B8580AFDffE888F5Fd4",
     "name": "Aave Avalanche Market variable debt vWAVAX",
     "symbol": "variableDebtvWAVAX",
@@ -69,4 +69,4 @@
       }
     ]
   }
-}
+]

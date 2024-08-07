@@ -1,5 +1,5 @@
-{
-  "0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec": {
+[
+  {
     "address": "0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec",
     "name": "Aave variable debt bearing USDT",
     "symbol": "variableDebtUSDT",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0x9c39809Dec7F95F5e0713634a4D0701329B3b4d2": {
+  {
     "address": "0x9c39809Dec7F95F5e0713634a4D0701329B3b4d2",
     "name": "Aave variable debt bearing WBTC",
     "symbol": "variableDebtWBTC",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0xF63B34710400CAd3e044cFfDcAb00a0f32E33eCf": {
+  {
     "address": "0xF63B34710400CAd3e044cFfDcAb00a0f32E33eCf",
     "name": "Aave variable debt bearing WETH",
     "symbol": "variableDebtWETH",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x6C3c78838c761c6Ac7bE9F59fe808ea2A6E4379d": {
+  {
     "address": "0x6C3c78838c761c6Ac7bE9F59fe808ea2A6E4379d",
     "name": "Aave variable debt bearing DAI",
     "symbol": "variableDebtDAI",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0x619beb58998eD2278e08620f97007e1116D5D25b": {
+  {
     "address": "0x619beb58998eD2278e08620f97007e1116D5D25b",
     "name": "Aave variable debt bearing USDC",
     "symbol": "variableDebtUSDC",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0xA9DEAc9f00Dc4310c35603FCD9D34d1A750f81Db": {
+  {
     "address": "0xA9DEAc9f00Dc4310c35603FCD9D34d1A750f81Db",
     "name": "Aave variable debt bearing STETH",
     "symbol": "variableDebtSTETH",
@@ -83,4 +83,4 @@
       }
     ]
   }
-}
+]

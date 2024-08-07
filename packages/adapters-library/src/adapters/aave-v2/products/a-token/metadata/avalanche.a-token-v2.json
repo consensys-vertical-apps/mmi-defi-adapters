@@ -1,5 +1,5 @@
-{
-  "0x53f7c5869a859F0AeC3D334ee8B4Cf01E3492f21": {
+[
+  {
     "address": "0x53f7c5869a859F0AeC3D334ee8B4Cf01E3492f21",
     "name": "Aave Avalanche Market WETH",
     "symbol": "avWETH",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0x47AFa96Cdc9fAb46904A55a6ad4bf6660B53c38a": {
+  {
     "address": "0x47AFa96Cdc9fAb46904A55a6ad4bf6660B53c38a",
     "name": "Aave Avalanche Market DAI",
     "symbol": "avDAI",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0x532E6537FEA298397212F09A61e03311686f548e": {
+  {
     "address": "0x532E6537FEA298397212F09A61e03311686f548e",
     "name": "Aave Avalanche Market USDT",
     "symbol": "avUSDT",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x46A51127C3ce23fb7AB1DE06226147F446e4a857": {
+  {
     "address": "0x46A51127C3ce23fb7AB1DE06226147F446e4a857",
     "name": "Aave Avalanche Market USDC",
     "symbol": "avUSDC",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0xDFE521292EcE2A4f44242efBcD66Bc594CA9714B": {
+  {
     "address": "0xDFE521292EcE2A4f44242efBcD66Bc594CA9714B",
     "name": "Aave Avalanche Market WAVAX",
     "symbol": "avWAVAX",
@@ -69,4 +69,4 @@
       }
     ]
   }
-}
+]

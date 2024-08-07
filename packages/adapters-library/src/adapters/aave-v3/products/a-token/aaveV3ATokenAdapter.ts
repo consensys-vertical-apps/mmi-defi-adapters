@@ -22,6 +22,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
+    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -38,8 +39,8 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
   }
 
   @CacheToFile({ fileKey: 'a-token-v3' })
-  async buildMetadata() {
-    return super.buildMetadata()
+  async getProtocolTokens() {
+    return super.getProtocolTokens()
   }
 
   protected getReserveTokenAddress(

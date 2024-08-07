@@ -1,5 +1,5 @@
-{
-  "0xeA51d7853EEFb32b6ee06b1C12E6dcCA88Be0fFE": {
+[
+  {
     "address": "0xeA51d7853EEFb32b6ee06b1C12E6dcCA88Be0fFE",
     "name": "Aave Ethereum Variable Debt WETH",
     "symbol": "variableDebtEthWETH",
@@ -13,7 +13,7 @@
       }
     ]
   },
-  "0xC96113eED8cAB59cD8A66813bCB0cEb29F06D2e4": {
+  {
     "address": "0xC96113eED8cAB59cD8A66813bCB0cEb29F06D2e4",
     "name": "Aave Ethereum Variable Debt wstETH",
     "symbol": "variableDebtEthwstETH",
@@ -27,7 +27,7 @@
       }
     ]
   },
-  "0x40aAbEf1aa8f0eEc637E0E7d92fbfFB2F26A8b7B": {
+  {
     "address": "0x40aAbEf1aa8f0eEc637E0E7d92fbfFB2F26A8b7B",
     "name": "Aave Ethereum Variable Debt WBTC",
     "symbol": "variableDebtEthWBTC",
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "0x72E95b8931767C79bA4EeE721354d6E99a61D004": {
+  {
     "address": "0x72E95b8931767C79bA4EeE721354d6E99a61D004",
     "name": "Aave Ethereum Variable Debt USDC",
     "symbol": "variableDebtEthUSDC",
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "0xcF8d0c70c850859266f5C338b38F9D663181C314": {
+  {
     "address": "0xcF8d0c70c850859266f5C338b38F9D663181C314",
     "name": "Aave Ethereum Variable Debt DAI",
     "symbol": "variableDebtEthDAI",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "0x4228F8895C7dDA20227F6a5c6751b8Ebf19a6ba8": {
+  {
     "address": "0x4228F8895C7dDA20227F6a5c6751b8Ebf19a6ba8",
     "name": "Aave Ethereum Variable Debt LINK",
     "symbol": "variableDebtEthLINK",
@@ -83,7 +83,7 @@
       }
     ]
   },
-  "0xBae535520Abd9f8C85E58929e0006A2c8B372F74": {
+  {
     "address": "0xBae535520Abd9f8C85E58929e0006A2c8B372F74",
     "name": "Aave Ethereum Variable Debt AAVE",
     "symbol": "variableDebtEthAAVE",
@@ -97,7 +97,7 @@
       }
     ]
   },
-  "0x0c91bcA95b5FE69164cE583A2ec9429A569798Ed": {
+  {
     "address": "0x0c91bcA95b5FE69164cE583A2ec9429A569798Ed",
     "name": "Aave Ethereum Variable Debt cbETH",
     "symbol": "variableDebtEthcbETH",
@@ -111,7 +111,7 @@
       }
     ]
   },
-  "0x6df1C1E379bC5a00a7b4C6e67A203333772f45A8": {
+  {
     "address": "0x6df1C1E379bC5a00a7b4C6e67A203333772f45A8",
     "name": "Aave Ethereum Variable Debt USDT",
     "symbol": "variableDebtEthUSDT",
@@ -125,7 +125,7 @@
       }
     ]
   },
-  "0xae8593DD575FE29A9745056aA91C4b746eee62C8": {
+  {
     "address": "0xae8593DD575FE29A9745056aA91C4b746eee62C8",
     "name": "Aave Ethereum Variable Debt rETH",
     "symbol": "variableDebtEthrETH",
@@ -139,7 +139,7 @@
       }
     ]
   },
-  "0x33652e48e4B74D18520f11BfE58Edd2ED2cEc5A2": {
+  {
     "address": "0x33652e48e4B74D18520f11BfE58Edd2ED2cEc5A2",
     "name": "Aave Ethereum Variable Debt LUSD",
     "symbol": "variableDebtEthLUSD",
@@ -153,7 +153,7 @@
       }
     ]
   },
-  "0x1b7D3F4b3c032a5AE656e30eeA4e8E1Ba376068F": {
+  {
     "address": "0x1b7D3F4b3c032a5AE656e30eeA4e8E1Ba376068F",
     "name": "Aave Ethereum Variable Debt CRV",
     "symbol": "variableDebtEthCRV",
@@ -167,7 +167,7 @@
       }
     ]
   },
-  "0x6Efc73E54E41b27d2134fF9f98F15550f30DF9B1": {
+  {
     "address": "0x6Efc73E54E41b27d2134fF9f98F15550f30DF9B1",
     "name": "Aave Ethereum Variable Debt MKR",
     "symbol": "variableDebtEthMKR",
@@ -181,7 +181,7 @@
       }
     ]
   },
-  "0x8d0de040e8aAd872eC3c33A3776dE9152D3c34ca": {
+  {
     "address": "0x8d0de040e8aAd872eC3c33A3776dE9152D3c34ca",
     "name": "Aave Ethereum Variable Debt SNX",
     "symbol": "variableDebtEthSNX",
@@ -195,7 +195,7 @@
       }
     ]
   },
-  "0x3D3efceb4Ff0966D34d9545D3A2fa2dcdBf451f2": {
+  {
     "address": "0x3D3efceb4Ff0966D34d9545D3A2fa2dcdBf451f2",
     "name": "Aave Ethereum Variable Debt BAL",
     "symbol": "variableDebtEthBAL",
@@ -209,7 +209,7 @@
       }
     ]
   },
-  "0xF64178Ebd2E2719F2B1233bCb5Ef6DB4bCc4d09a": {
+  {
     "address": "0xF64178Ebd2E2719F2B1233bCb5Ef6DB4bCc4d09a",
     "name": "Aave Ethereum Variable Debt UNI",
     "symbol": "variableDebtEthUNI",
@@ -223,7 +223,7 @@
       }
     ]
   },
-  "0xc30808705C01289A3D306ca9CAB081Ba9114eC82": {
+  {
     "address": "0xc30808705C01289A3D306ca9CAB081Ba9114eC82",
     "name": "Aave Ethereum Variable Debt LDO",
     "symbol": "variableDebtEthLDO",
@@ -237,7 +237,7 @@
       }
     ]
   },
-  "0xd180D7fdD4092f07428eFE801E17BC03576b3192": {
+  {
     "address": "0xd180D7fdD4092f07428eFE801E17BC03576b3192",
     "name": "Aave Ethereum Variable Debt ENS",
     "symbol": "variableDebtEthENS",
@@ -251,7 +251,7 @@
       }
     ]
   },
-  "0xA38fCa8c6Bf9BdA52E76EB78f08CaA3BE7c5A970": {
+  {
     "address": "0xA38fCa8c6Bf9BdA52E76EB78f08CaA3BE7c5A970",
     "name": "Aave Ethereum Variable Debt 1INCH",
     "symbol": "variableDebtEth1INCH",
@@ -265,7 +265,7 @@
       }
     ]
   },
-  "0x88B8358F5BC87c2D7E116cCA5b65A9eEb2c5EA3F": {
+  {
     "address": "0x88B8358F5BC87c2D7E116cCA5b65A9eEb2c5EA3F",
     "name": "Aave Ethereum Variable Debt FRAX",
     "symbol": "variableDebtEthFRAX",
@@ -279,7 +279,7 @@
       }
     ]
   },
-  "0x786dBff3f1292ae8F92ea68Cf93c30b34B1ed04B": {
+  {
     "address": "0x786dBff3f1292ae8F92ea68Cf93c30b34B1ed04B",
     "name": "Aave Ethereum Variable Debt GHO",
     "symbol": "variableDebtEthGHO",
@@ -293,7 +293,7 @@
       }
     ]
   },
-  "0x8988ECA19D502fd8b9CCd03fA3bD20a6f599bc2A": {
+  {
     "address": "0x8988ECA19D502fd8b9CCd03fA3bD20a6f599bc2A",
     "name": "Aave Ethereum Variable Debt RPL",
     "symbol": "variableDebtEthRPL",
@@ -307,7 +307,7 @@
       }
     ]
   },
-  "0x8Db9D35e117d8b93C6Ca9b644b25BaD5d9908141": {
+  {
     "address": "0x8Db9D35e117d8b93C6Ca9b644b25BaD5d9908141",
     "name": "Aave Ethereum Variable Debt sDAI",
     "symbol": "variableDebtEthsDAI",
@@ -321,7 +321,7 @@
       }
     ]
   },
-  "0x028f7886F3e937f8479efaD64f31B3fE1119857a": {
+  {
     "address": "0x028f7886F3e937f8479efaD64f31B3fE1119857a",
     "name": "Aave Ethereum Variable Debt crvUSD",
     "symbol": "variableDebtEthcrvUSD",
@@ -335,7 +335,7 @@
       }
     ]
   },
-  "0x57B67e4DE077085Fd0AF2174e9c14871BE664546": {
+  {
     "address": "0x57B67e4DE077085Fd0AF2174e9c14871BE664546",
     "name": "Aave Ethereum Variable Debt PYUSD",
     "symbol": "variableDebtEthPYUSD",
@@ -349,7 +349,7 @@
       }
     ]
   },
-  "0x77ad9BF13a52517AD698D65913e8D381300c8Bf3": {
+  {
     "address": "0x77ad9BF13a52517AD698D65913e8D381300c8Bf3",
     "name": "Aave Ethereum Variable Debt weETH",
     "symbol": "variableDebtEthweETH",
@@ -363,7 +363,7 @@
       }
     ]
   },
-  "0x8838eefF2af391863E1Bb8b1dF563F86743a8470": {
+  {
     "address": "0x8838eefF2af391863E1Bb8b1dF563F86743a8470",
     "name": "Aave Ethereum Variable Debt osETH",
     "symbol": "variableDebtEthosETH",
@@ -377,7 +377,7 @@
       }
     ]
   },
-  "0x015396E1F286289aE23a762088E863b3ec465145": {
+  {
     "address": "0x015396E1F286289aE23a762088E863b3ec465145",
     "name": "Aave Ethereum Variable Debt USDe",
     "symbol": "variableDebtEthUSDe",
@@ -391,7 +391,7 @@
       }
     ]
   },
-  "0x08a8Dc81AeA67F84745623aC6c72CDA3967aab8b": {
+  {
     "address": "0x08a8Dc81AeA67F84745623aC6c72CDA3967aab8b",
     "name": "Aave Ethereum Variable Debt ETHx",
     "symbol": "variableDebtEthETHx",
@@ -405,7 +405,7 @@
       }
     ]
   },
-  "0xeFFDE9BFA8EC77c14C364055a200746d6e12BeD6": {
+  {
     "address": "0xeFFDE9BFA8EC77c14C364055a200746d6e12BeD6",
     "name": "Aave Ethereum Variable Debt sUSDe",
     "symbol": "variableDebtEthsUSDe",
@@ -419,4 +419,4 @@
       }
     ]
   }
-}
+]

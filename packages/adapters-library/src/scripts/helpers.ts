@@ -9,6 +9,7 @@ import { filterMapAsync } from '../core/utils/filters'
 import { getOnChainTokenMetadata } from '../core/utils/getTokenMetadata'
 import { logger } from '../core/utils/logger'
 import { nativeToken, nativeTokenAddresses } from '../core/utils/nativeTokens'
+import { JsonMetadata, ProtocolToken } from '../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -41,6 +42,24 @@ export class Helpers {
   }) {
     this.provider = provider
     this.chainId = chainId
+  }
+
+  async getProtocolTokenByAddress<AdditionalMetadata extends JsonMetadata>({
+    protocolTokens,
+    protocolTokenAddress,
+  }: {
+    protocolTokens: ProtocolToken<AdditionalMetadata>[]
+    protocolTokenAddress: string
+  }): Promise<ProtocolToken<AdditionalMetadata>> {
+    const protocolToken = protocolTokens.find(
+      (token) => token.address === protocolTokenAddress,
+    )
+    if (!protocolToken) {
+      throw new Error(
+        `Protocol token with address ${protocolTokenAddress} not found`,
+      )
+    }
+    return protocolToken
   }
 
   async getBalanceOfTokens({
