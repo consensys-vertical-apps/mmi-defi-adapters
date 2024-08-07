@@ -268,7 +268,7 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Deri]: {
-    [Chain.Bsc]: [DeriPoolAdapter],
+    // [Chain.Bsc]: [DeriPoolAdapter], Disabled until we can support getting all logs for BSC
     [Chain.Arbitrum]: [DeriPoolAdapter],
     [Chain.Linea]: [DeriPoolAdapter],
   },
