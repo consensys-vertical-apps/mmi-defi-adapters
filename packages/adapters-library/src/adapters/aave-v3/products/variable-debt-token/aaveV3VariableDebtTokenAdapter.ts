@@ -1,4 +1,3 @@
-import { version } from 'os'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   AssetType,
