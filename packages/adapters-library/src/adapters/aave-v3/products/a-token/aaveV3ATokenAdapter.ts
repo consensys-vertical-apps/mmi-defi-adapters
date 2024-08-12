@@ -140,7 +140,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     const protocolToken =
-      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const aTokenContract = AToken__factory.connect(
       protocolTokenAddress,
@@ -187,7 +187,10 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
           },
           tokens: [
             {
-              ...protocolToken,
+              address: protocolToken.address,
+              name: protocolToken.name,
+              symbol: protocolToken.symbol,
+              decimals: protocolToken.decimals,
               balanceRaw: supplyEvent.amount,
               type: TokenType.Underlying,
               blockNumber,
