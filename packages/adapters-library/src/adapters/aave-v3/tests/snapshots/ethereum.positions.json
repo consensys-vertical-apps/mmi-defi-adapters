@@ -26,8 +26,8 @@
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
-              "balanceRaw": "6720014050643307510n",
               "type": "underlying",
+              "balanceRaw": "6720014050643307510n",
               "balance": 6.720014050643307,
               "price": 3076.35,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
@@ -61,8 +61,8 @@
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
-              "balanceRaw": "7750080824n",
               "type": "underlying",
+              "balanceRaw": "7750080824n",
               "balance": 7750.080824,
               "price": 1.0012955629873528,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
