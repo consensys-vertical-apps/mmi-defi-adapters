@@ -80,16 +80,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
     GetTransactionParams,
     { protocolId: typeof Protocol.AaveV3; productId: 'a-token' }
   >): Promise<{ to: string; data: string }> {
-    const poolContractAddress = PoolContractAddresses[this.chainId]
-
-    if (!poolContractAddress) {
-      throw new Error('Chain not supported')
-    }
-
-    const poolContract = Pool__factory.connect(
-      poolContractAddress,
-      this.provider,
-    )
+    const poolContract = this.getPoolContract()
 
     switch (action) {
       case WriteActions.Deposit: {
