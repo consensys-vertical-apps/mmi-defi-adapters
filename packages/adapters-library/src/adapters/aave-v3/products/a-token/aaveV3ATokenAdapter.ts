@@ -2,9 +2,7 @@ import { getAddress } from 'ethers'
 import { z } from 'zod'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import { findEventArgs } from '../../../../core/utils/findEventArgs'
 import {
-  AssetType,
   GetEventsInput,
   MovementsByBlock,
   PositionType,
@@ -20,10 +18,8 @@ import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter
 import { ProtocolDataProvider } from '../../../aave-v2/contracts'
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
-import { AToken__factory, Pool__factory } from '../../contracts'
-import { TransferEvent } from '../../contracts/AToken'
-import { Pool, SupplyEvent } from '../../contracts/Pool'
-import { PoolContract } from '../../contracts/PoolContract'
+import { Pool__factory } from '../../contracts'
+import { Pool } from '../../contracts/Pool'
 import { TypedContractEvent } from '../../contracts/common'
 
 const PoolContractAddresses: Partial<Record<Chain, string>> = {
@@ -182,6 +178,61 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
       filter: poolContract.filters.Withdraw(
         underlyingTokenAddress,
         userAddress, // user is the account from with the token is withdrawn
+        undefined,
+        undefined,
+      ),
+      fromBlock,
+      toBlock,
+    })
+  }
+
+  async getBorrows({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    const poolContract = this.getPoolContract()
+
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+
+    const underlyingTokenAddress = protocolToken.underlyingTokens[0]?.address
+
+    return await this.getAaveV3Movements({
+      protocolToken,
+      poolContract,
+      filter: poolContract.filters.Borrow(
+        underlyingTokenAddress,
+        undefined,
+        userAddress, // onBehalfOf is the account that borrows the token
+        undefined,
+        undefined,
+      ),
+      fromBlock,
+      toBlock,
+    })
+  }
+
+  async getRepays({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    const poolContract = this.getPoolContract()
+
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+
+    const underlyingTokenAddress = protocolToken.underlyingTokens[0]?.address
+
+    return await this.getAaveV3Movements({
+      protocolToken,
+      poolContract,
+      filter: poolContract.filters.Repay(
+        underlyingTokenAddress,
+        userAddress, // user is the account that has the token repaid
         undefined,
         undefined,
       ),
