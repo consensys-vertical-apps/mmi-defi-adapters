@@ -136,39 +136,6 @@ export class Helpers {
     }
   }
 
-  public unwrapOneToOneModuloDecimals({
-    protocolToken,
-    underlyingTokens,
-  }: {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-  }): UnwrapExchangeRate {
-    if (underlyingTokens.length !== 1) {
-      throw new Error(
-        `Need exactly one underlying token to unwrap, but received ${underlyingTokens.length}`,
-      )
-    }
-    const underlyingToken = underlyingTokens[0]!
-
-    const pricePerShareRaw = BigInt(10 ** underlyingToken.decimals)
-
-    return {
-      address: protocolToken.address,
-      name: protocolToken.name,
-      symbol: protocolToken.symbol,
-      decimals: protocolToken.decimals,
-      baseRate: 1,
-      type: TokenType.Protocol,
-      tokens: [
-        {
-          ...underlyingToken,
-          type: TokenType.Underlying,
-          underlyingRateRaw: pricePerShareRaw,
-        },
-      ],
-    }
-  }
-
   async unwrapTokenAsRatio({
     protocolToken,
     underlyingTokens,
