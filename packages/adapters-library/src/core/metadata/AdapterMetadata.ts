@@ -218,6 +218,14 @@ import BeefyRcowTokenLineaProtocolToken from '../../adapters/beefy/products/rcow
 
 import BeefyRmooTokenLineaProtocolToken from '../../adapters/beefy/products/rmoo-token/metadata/linea.protocol-token.json'
 
+import SolvSolvBtcEthereumSolvBtc from '../../adapters/solv/products/solv-btc/metadata/ethereum.solv-btc.json'
+
+import SolvSolvBtcBscSolvBtc from '../../adapters/solv/products/solv-btc/metadata/bsc.solv-btc.json'
+
+import SolvSolvBtcArbitrumSolvBtc from '../../adapters/solv/products/solv-btc/metadata/arbitrum.solv-btc.json'
+
+import SolvSolvBtcAvalancheSolvBtc from '../../adapters/solv/products/solv-btc/metadata/avalanche.solv-btc.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -1508,6 +1516,42 @@ export const MetadataFiles = new Map<string, Json>([
   ],
   [
     metadataKey({
+      protocolId: Protocol.Solv,
+      productId: 'solv-btc',
+      chainId: Chain.Arbitrum,
+      fileKey: 'solv-btc',
+    }),
+    SolvSolvBtcArbitrumSolvBtc,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Solv,
+      productId: 'solv-btc',
+      chainId: Chain.Avalanche,
+      fileKey: 'solv-btc',
+    }),
+    SolvSolvBtcAvalancheSolvBtc,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Solv,
+      productId: 'solv-btc',
+      chainId: Chain.Bsc,
+      fileKey: 'solv-btc',
+    }),
+    SolvSolvBtcBscSolvBtc,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Solv,
+      productId: 'solv-btc',
+      chainId: Chain.Ethereum,
+      fileKey: 'solv-btc',
+    }),
+    SolvSolvBtcEthereumSolvBtc,
+  ],
+  [
+    metadataKey({
       protocolId: Protocol.Sonne,
       productId: 'borrow-market',
       chainId: Chain.Base,
@@ -1569,7 +1613,6 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     StargatePoolArbitrumLpToken,
   ],
-
   [
     metadataKey({
       protocolId: Protocol.Stargate,
@@ -1579,7 +1622,6 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     StargatePoolEthereumLpToken,
   ],
-
   [
     metadataKey({
       protocolId: Protocol.Stargate,

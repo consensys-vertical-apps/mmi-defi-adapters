@@ -104,6 +104,17 @@ export class Helpers {
     })
   }
 
+  /**
+   * Unwraps the protocol token to its underlying token while accounting for decimal differences.
+   *
+   * This method resolves a 1:1 unwrap rate between the protocol token and it's underlying,
+   * even though they have different decimal places. It uses the underlying token's decimals to adjust the unwrap rate.
+   *
+   * @returns {Promise<UnwrapExchangeRate>} A promise that resolves to an `UnwrapExchangeRate` object,
+   * containing the details of the unwrapped tokens, including adjusted rates to account for decimal differences.
+   *
+   * @throws {Error} If there is an issue retrieving the protocol or underlying token information.
+   */
   unwrapOneToOne({
     protocolToken,
     underlyingTokens,
@@ -117,7 +128,7 @@ export class Helpers {
     const underlyingToken = underlyingTokens[0]!
 
     // Always pegged one to one to underlying
-    const pricePerShareRaw = BigInt(10 ** protocolToken.decimals)
+    const pricePerShareRaw = BigInt(10 ** underlyingToken.decimals)
 
     return {
       address: protocolToken.address,
