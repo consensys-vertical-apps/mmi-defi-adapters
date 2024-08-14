@@ -18,7 +18,6 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
-  TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
@@ -141,23 +140,6 @@ export class SolvSolvBtcAdapter implements IProtocolAdapter, IMetadataBuilder {
     })
   }
 
-  /**
-   * Unwraps the protocol token to its underlying token while accounting for decimal differences.
-   *
-   * This method resolves a 1:1 unwrap rate between `SolvBTC` and it's underlying (which depends on the chain),
-   * even though they have different decimal places. It uses the underlying token's decimals to adjust the unwrap rate.
-   *
-   * @param {string} UnwrapInput.protocolTokenAddress - The address of the protocol token (SolvBTC) to unwrap.
-   *
-   * @returns {Promise<UnwrapExchangeRate>} A promise that resolves to an `UnwrapExchangeRate` object,
-   * containing the details of the unwrapped tokens, including adjusted rates to account for decimal differences.
-   *
-   * @throws {Error} If there is an issue retrieving the protocol or underlying token information.
-   *
-   * @remark Currently, this implementation handles the specific case of `SolvBTC` and  it's underlying having different decimals.
-   * If we encounter another protocol with a similar 1:1 rate but different decimal configurations,
-   * we can refactor this logic into a helper function and introduce an option for this scenario in the corresponding questionnaire.
-   */
   async unwrap({
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
@@ -166,23 +148,10 @@ export class SolvSolvBtcAdapter implements IProtocolAdapter, IMetadataBuilder {
       this.getUnderlyingToken(protocolTokenAddress),
     ])
 
-    const pricePerShareRaw = BigInt(10 ** underlyingToken.decimals)
-
-    return {
-      address: protocolToken.address,
-      name: protocolToken.name,
-      symbol: protocolToken.symbol,
-      decimals: protocolToken.decimals,
-      baseRate: 1,
-      type: TokenType.Protocol,
-      tokens: [
-        {
-          ...underlyingToken,
-          type: TokenType.Underlying,
-          underlyingRateRaw: pricePerShareRaw,
-        },
-      ],
-    }
+    return this.helpers.unwrapOneToOne({
+      protocolToken,
+      underlyingTokens: [underlyingToken],
+    })
   }
 
   private async getProtocolToken(protocolTokenAddress: string) {
