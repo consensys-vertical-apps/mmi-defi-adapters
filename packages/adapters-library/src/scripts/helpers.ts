@@ -117,7 +117,7 @@ export class Helpers {
     const underlyingToken = underlyingTokens[0]!
 
     // Always pegged one to one to underlying
-    const pricePerShareRaw = BigInt(10 ** protocolToken.decimals)
+    const pricePerShareRaw = BigInt(10 ** underlyingToken.decimals)
 
     return {
       address: protocolToken.address,
