@@ -2,7 +2,7 @@ import { Command } from 'commander'
 import { Protocol } from '../adapters/protocols'
 import type { GetTransactionParams } from '../adapters/supportedProtocols'
 import { Chain } from '../core/constants/chains'
-import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
+import { TimePeriod } from '../core/constants/timePeriod'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { filterMapSync } from '../core/utils/filters'
 import { DefiProvider } from '../defiProvider'
@@ -16,144 +16,103 @@ import {
 import { simulateTx } from './simulator/simulateTx'
 
 export function featureCommands(program: Command, defiProvider: DefiProvider) {
-  addressCommand(
-    program,
-    'positions',
-    defiProvider.getPositions.bind(defiProvider),
-    '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
-  )
-  addressCommand(
-    program,
-    'profits',
-    defiProvider.getProfits.bind(defiProvider),
-    '0xCEadFdCCd0E8E370D985c49Ed3117b2572243A4a',
-  )
-
-  transactionParamsCommand(
-    program,
-    'params',
-    defiProvider.getTransactionParams.bind(defiProvider),
-    defiProvider.chainProvider.providers,
-  )
-
-  addressEventsCommand(
-    program,
-    'deposits',
-    defiProvider.getDeposits.bind(defiProvider),
-    '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',
-    18262163,
-    18262164,
-    '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
-    'pool',
-    Protocol.UniswapV3,
-    Chain.Ethereum.toString(),
-    '573046',
-  )
-  addressEventsCommand(
-    program,
-    'withdrawals',
-    defiProvider.getWithdrawals.bind(defiProvider),
-    '0x1d201a9B9f136dE7e7fF4A80a27e96Af7789D9BE',
-    18274545,
-    18274547,
-    '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
-    'pool',
-    Protocol.UniswapV3,
-    Chain.Ethereum.toString(),
-    '573517',
-  )
-
-  protocolCommand(program, 'unwrap', defiProvider.unwrap.bind(defiProvider))
-  protocolCommand(
-    program,
-    'tvl',
-    defiProvider.getTotalValueLocked.bind(defiProvider),
-  )
-
   program
-    .command('support')
+    .command('positions')
+    .argument('<userAddress>', 'Address of the target account')
     .option(
       '-p, --protocols <protocols>',
       'comma-separated protocols filter (e.g. stargate,aave-v2)',
+      multiProtocolFilter,
     )
     .option(
       '-c, --chains <chains>',
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
+      multiChainFilter,
     )
     .showHelpAfterError()
-    .action(async ({ protocols, chains }) => {
-      const filterProtocolIds = multiProtocolFilter(protocols)
-      const filterChainIds = multiChainFilter(chains)
+    .action(
+      async (
+        userAddress: string,
+        {
+          protocols,
+          chains,
+        }: {
+          protocols?: Protocol[]
+          chains?: Chain[]
+        },
+      ) => {
+        const data = await defiProvider.getPositions({
+          userAddress,
+          filterProtocolIds: protocols,
+          filterChainIds: chains,
+        })
 
-      const data = await defiProvider.getSupport({
-        filterChainIds,
-        filterProtocolIds,
-      })
+        printResponse(filterResponse(data))
+      },
+    )
 
-      printResponse(data)
-    })
-}
-
-function addressCommand(
-  program: Command,
-  commandName: string,
-  feature: (input: {
-    userAddress: string
-    filterProtocolIds?: Protocol[]
-    filterChainIds?: Chain[]
-    includeRawValues?: boolean
-  }) => Promise<AdapterResponse<unknown>[]>,
-  defaultAddress: string,
-) {
   program
-    .command(commandName)
-    .argument('[userAddress]', 'Address of the target account', defaultAddress)
+    .command('profits')
+    .argument('<userAddress>', 'Address of the target account')
     .option(
       '-p, --protocols <protocols>',
       'comma-separated protocols filter (e.g. stargate,aave-v2)',
+      multiProtocolFilter,
     )
     .option(
       '-c, --chains <chains>',
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
+      multiChainFilter,
     )
     .option(
-      '-r, --raw <raw>',
-      'true or false to include raw values, available on profits requests only (e.g. true)',
+      '-tp, --time-period <timePeriod>',
+      'Time period filter (1, 7, or 30)',
+      (value) => {
+        const timePeriod = Number.parseInt(value, 10)
+        if (![1, 7, 30].includes(timePeriod)) {
+          throw new Error('Time period must be one of 1, 7, or 30')
+        }
+        return timePeriod
+      },
+    )
+    .option(
+      '-r, --raw',
+      'include raw values, available on profits requests only',
     )
     .showHelpAfterError()
-    .action(async (userAddress, { protocols, chains, raw }) => {
-      const filterProtocolIds = multiProtocolFilter(protocols)
-      const filterChainIds = multiChainFilter(chains)
+    .action(
+      async (
+        userAddress: string,
+        {
+          protocols,
+          chains,
+          timePeriod,
+          raw,
+        }: {
+          protocols?: Protocol[]
+          chains?: Chain[]
+          timePeriod?: TimePeriod
+          raw?: boolean
+        },
+      ) => {
+        const data = await defiProvider.getProfits({
+          userAddress,
+          filterProtocolIds: protocols,
+          filterChainIds: chains,
+          timePeriod,
+          includeRawValues: raw,
+        })
 
-      const includeRawValues = raw === 'true'
+        printResponse(filterResponse(data))
+      },
+    )
 
-      const data = await feature({
-        userAddress,
-        filterProtocolIds,
-        filterChainIds,
-        includeRawValues,
-      })
-
-      printResponse(filterResponse(data))
-    })
-}
-
-function transactionParamsCommand(
-  program: Command,
-  commandName: string,
-  feature: (input: GetTransactionParams) => Promise<
-    AdapterResponse<{
-      params: { to: string; data: string }
-    }>
-  >,
-  chainProviders: Record<Chain, CustomJsonRpcProvider>,
-) {
   program
-    .command(commandName)
-    .argument('[action]', 'Name of action you want to do on protocol')
-    .argument('[protocol]', 'Name of the protocol')
-    .argument('[productId]', 'Name of the product')
-    .argument('[chain]', 'Chain Id ')
+    .command('params')
+    .argument('<action>', 'Name of action you want to do on protocol')
+    .argument('<protocol>', 'Name of the protocol')
+    .argument('<productId>', 'Name of the product')
+    .argument('<chain>', 'Chain Id ')
     .argument(
       '[inputs]',
       'comma-separated input params filter (e.g. 0x5000...,true,stake)',
@@ -213,7 +172,7 @@ function transactionParamsCommand(
           throw new Error('Chain could not be parsed from input')
         }
 
-        const data = await feature({
+        const data = await defiProvider.getTransactionParams({
           action,
           protocolId,
           productId,
@@ -234,7 +193,7 @@ function transactionParamsCommand(
           return
         }
 
-        const provider = chainProviders[chainId]
+        const provider = defiProvider.chainProvider.providers[chainId]
         await simulateTx({
           provider,
           chainId,
@@ -250,6 +209,63 @@ function transactionParamsCommand(
         })
       },
     )
+
+  addressEventsCommand(
+    program,
+    'deposits',
+    defiProvider.getDeposits.bind(defiProvider),
+    '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',
+    18262163,
+    18262164,
+    '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
+    'pool',
+    Protocol.UniswapV3,
+    Chain.Ethereum.toString(),
+    '573046',
+  )
+  addressEventsCommand(
+    program,
+    'withdrawals',
+    defiProvider.getWithdrawals.bind(defiProvider),
+    '0x1d201a9B9f136dE7e7fF4A80a27e96Af7789D9BE',
+    18274545,
+    18274547,
+    '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
+    'pool',
+    Protocol.UniswapV3,
+    Chain.Ethereum.toString(),
+    '573517',
+  )
+
+  protocolCommand(program, 'unwrap', defiProvider.unwrap.bind(defiProvider))
+  protocolCommand(
+    program,
+    'tvl',
+    defiProvider.getTotalValueLocked.bind(defiProvider),
+  )
+
+  program
+    .command('support')
+    .option(
+      '-p, --protocols <protocols>',
+      'comma-separated protocols filter (e.g. stargate,aave-v2)',
+    )
+    .option(
+      '-c, --chains <chains>',
+      'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
+    )
+    .showHelpAfterError()
+    .action(async ({ protocols, chains }) => {
+      const filterProtocolIds = multiProtocolFilter(protocols)
+      const filterChainIds = multiChainFilter(chains)
+
+      const data = await defiProvider.getSupport({
+        filterChainIds,
+        filterProtocolIds,
+      })
+
+      printResponse(data)
+    })
 }
 
 function addressEventsCommand(
@@ -320,23 +336,27 @@ function protocolCommand(
     .option(
       '-p, --protocols <protocols>',
       'comma-separated protocols filter (e.g. stargate,aave-v2)',
+      multiProtocolFilter,
     )
     .option(
       '-c, --chains <chains>',
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
+      multiChainFilter,
     )
     .showHelpAfterError()
-    .action(async ({ protocols, chains }) => {
-      const filterProtocolIds = multiProtocolFilter(protocols)
-      const filterChainIds = multiChainFilter(chains)
+    .action(
+      async ({
+        protocols,
+        chains,
+      }: { protocols?: Protocol[]; chains?: Chain[] }) => {
+        const data = await feature({
+          filterProtocolIds: protocols,
+          filterChainIds: chains,
+        })
 
-      const data = await feature({
-        filterProtocolIds,
-        filterChainIds,
-      })
-
-      printResponse(filterResponse(data))
-    })
+        printResponse(filterResponse(data))
+      },
+    )
 }
 
 function filterResponse(
