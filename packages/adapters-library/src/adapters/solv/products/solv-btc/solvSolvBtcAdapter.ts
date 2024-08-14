@@ -144,7 +144,7 @@ export class SolvSolvBtcAdapter implements IProtocolAdapter, IMetadataBuilder {
   /**
    * Unwraps the protocol token to its underlying token while accounting for decimal differences.
    *
-   * This method resolves a 1:1 unwrap rate between `SolvBTC` and it's underlying (which depends on the chaing),
+   * This method resolves a 1:1 unwrap rate between `SolvBTC` and it's underlying (which depends on the chain),
    * even though they have different decimal places. It uses the underlying token's decimals to adjust the unwrap rate.
    *
    * @param {string} UnwrapInput.protocolTokenAddress - The address of the protocol token (SolvBTC) to unwrap.
