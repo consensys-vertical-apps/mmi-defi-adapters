@@ -96,6 +96,8 @@ import { PendleLpTokenAdapter } from './pendle/products/lp-token/pendleLpTokenAd
 
 import { RenzoEzEthAdapter } from './renzo/products/ez-eth/renzoEzEthAdapter'
 
+import { SolvSolvBtcAdapter } from './solv/products/solv-btc/solvSolvBtcAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -348,6 +350,33 @@ export const supportedProtocols: Record<
     [Chain.Linea]: [PancakeswapV2PoolAdapter],
   },
 
+  [Protocol.Pendle]: {
+    [Chain.Ethereum]: [
+      PendleYieldTokenAdapter,
+      PendlePrincipleTokenAdapter,
+      PendleStandardisedYieldTokenAdapter,
+      PendleLpTokenAdapter,
+    ],
+    [Chain.Arbitrum]: [
+      PendleYieldTokenAdapter,
+      PendlePrincipleTokenAdapter,
+      PendleStandardisedYieldTokenAdapter,
+      PendleLpTokenAdapter,
+    ],
+    [Chain.Bsc]: [
+      PendleYieldTokenAdapter,
+      PendlePrincipleTokenAdapter,
+      PendleStandardisedYieldTokenAdapter,
+      PendleLpTokenAdapter,
+    ],
+    [Chain.Optimism]: [
+      PendleYieldTokenAdapter,
+      PendlePrincipleTokenAdapter,
+      PendleStandardisedYieldTokenAdapter,
+      PendleLpTokenAdapter,
+    ],
+  },
+
   [Protocol.PricesV2]: {
     [Chain.Ethereum]: [PricesV2UsdAdapter],
     [Chain.Polygon]: [PricesV2UsdAdapter],
@@ -372,6 +401,13 @@ export const supportedProtocols: Record<
 
   [Protocol.RocketPool]: {
     [Chain.Ethereum]: [RocketPoolRethAdapter],
+  },
+
+  [Protocol.Solv]: {
+    [Chain.Ethereum]: [SolvSolvBtcAdapter],
+    [Chain.Bsc]: [SolvSolvBtcAdapter],
+    [Chain.Arbitrum]: [SolvSolvBtcAdapter],
+    [Chain.Avalanche]: [SolvSolvBtcAdapter],
   },
 
   [Protocol.Sonne]: {
@@ -434,33 +470,6 @@ export const supportedProtocols: Record<
 
   [Protocol.Xfai]: {
     [Chain.Linea]: [XfaiDexAdapter],
-  },
-
-  [Protocol.Pendle]: {
-    [Chain.Ethereum]: [
-      PendleYieldTokenAdapter,
-      PendlePrincipleTokenAdapter,
-      PendleStandardisedYieldTokenAdapter,
-      PendleLpTokenAdapter,
-    ],
-    [Chain.Arbitrum]: [
-      PendleYieldTokenAdapter,
-      PendlePrincipleTokenAdapter,
-      PendleStandardisedYieldTokenAdapter,
-      PendleLpTokenAdapter,
-    ],
-    [Chain.Bsc]: [
-      PendleYieldTokenAdapter,
-      PendlePrincipleTokenAdapter,
-      PendleStandardisedYieldTokenAdapter,
-      PendleLpTokenAdapter,
-    ],
-    [Chain.Optimism]: [
-      PendleYieldTokenAdapter,
-      PendlePrincipleTokenAdapter,
-      PendleStandardisedYieldTokenAdapter,
-      PendleLpTokenAdapter,
-    ],
   },
 }
 

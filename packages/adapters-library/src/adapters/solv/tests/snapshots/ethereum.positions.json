@@ -1,0 +1,74 @@
+{
+  "blockNumber": 20520223,
+  "aggregatedValues": ["USD0.00"],
+  "snapshot": [
+    {
+      "protocolId": "solv",
+      "name": "Solv",
+      "description": "Solv defi adapter",
+      "siteUrl": "https://solv.finance/",
+      "iconUrl": "https://solv.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "solv-btc",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x7A56E1C57C7475CCf742a1832B028F0456652F97",
+          "name": "Solv BTC",
+          "symbol": "SolvBTC",
+          "decimals": 18,
+          "balanceRaw": "2569621110000000000n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xC96dE26018A54D51c097160568752c4E3BD6C364",
+              "name": "Fire Bitcoin",
+              "symbol": "FBTC",
+              "decimals": 8,
+              "type": "underlying",
+              "balanceRaw": "256962111n",
+              "balance": 2.56962111,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC96dE26018A54D51c097160568752c4E3BD6C364/logo.png"
+            }
+          ],
+          "balance": 2.56962111
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "0c43f9d0b645e67747b811d8ee94cfc6": {
+      "result": "0x1391d50"
+    },
+    "7caa3b2fb3dd4610cd02fbbc0e85cf70": {
+      "error": {
+        "code": -32005,
+        "data": {
+          "from": "0x554095",
+          "limit": 10000,
+          "to": "0xE2620A"
+        },
+        "message": "query returned more than 10000 results. Try with this block range [0x554095, 0xE2620A]."
+      }
+    },
+    "8f17aee35ca7b01dc5b4ca8f66d414ae": {
+      "result": "0x00000000000000000000000000000000000000000000000023a920c8fce51c00"
+    },
+    "7dccc055f1b76f0185f5fdc04e17349e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000c4669726520426974636f696e0000000000000000000000000000000000000000"
+    },
+    "f54d9ec857d921aabb51b255383b1d05": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000044642544300000000000000000000000000000000000000000000000000000000"
+    },
+    "cc1ca35cc99e7e496034a44ce95cd028": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000008"
+    },
+    "d08b4042a0ef8454bc3e4d04e863e9d9": {
+      "result": "0x000000000000000000000000000000000000000000000006000000000000545b0000000000000000000000000000000000000000000000000000003e0dcaa7260000000000000000000000000000000000000000000000000000000066bb65d70000000000000000000000000000000000000000000000000000000066bb65d7000000000000000000000000000000000000000000000006000000000000545b"
+    },
+    "7eb4a8856b589f29a7caca9cd67ddf67": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  }
+}

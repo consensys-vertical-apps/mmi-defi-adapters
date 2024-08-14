@@ -1,0 +1,16 @@
+{
+  "0x4aae823a6a0b376De6A78e74eCC5b079d38cBCf7": {
+    "protocolToken": {
+      "address": "0x4aae823a6a0b376De6A78e74eCC5b079d38cBCf7",
+      "name": "Solv BTC",
+      "symbol": "SolvBTC",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+      "name": "BTCB Token",
+      "symbol": "BTCB",
+      "decimals": 18
+    }
+  }
+}
