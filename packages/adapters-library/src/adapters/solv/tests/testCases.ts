@@ -24,4 +24,15 @@ export const testCases: TestCase[] = [
 
     blockNumber: 242460102,
   },
+  {
+    chainId: Chain.Arbitrum,
+    method: 'profits',
+
+    input: {
+      userAddress: '0xd87D6D2D766b15cDA45e3cACC8742104B5A921ea',
+      filterProtocolTokens: ['0x3647c54c4c2C65bC7a2D63c0Da2809B399DBBDC0'],
+    },
+
+    blockNumber: 242737820,
+  },
 ]

@@ -1,0 +1,37 @@
+{
+  "blockNumber": 242737820,
+  "snapshot": [
+    {
+      "protocolId": "solv",
+      "name": "Solv",
+      "description": "Solv defi adapter",
+      "siteUrl": "https://solv.finance/",
+      "iconUrl": "https://solv.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "solv-btc",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x3647c54c4c2C65bC7a2D63c0Da2809B399DBBDC0",
+          "name": "Solv BTC",
+          "symbol": "SolvBTC",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.003699580181700593,
+          "performance": 0.08589641400972947,
+          "calculationData": {
+            "withdrawals": 0.07267167706494704,
+            "deposits": 0.11574192888339364,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0.046769832000147206
+          }
+        }
+      ],
+      "fromBlock": 240495874,
+      "toBlock": 242737820
+    }
+  ]
+}
