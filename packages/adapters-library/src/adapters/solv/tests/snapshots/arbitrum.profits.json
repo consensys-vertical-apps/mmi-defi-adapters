@@ -1,5 +1,5 @@
 {
-  "blockNumber": 242737820,
+  "blockNumber": 243409368,
   "snapshot": [
     {
       "protocolId": "solv",
@@ -18,20 +18,20 @@
           "symbol": "SolvBTC",
           "decimals": 18,
           "type": "protocol",
-          "profit": 0.003699580181700593,
-          "performance": 0.08589641400972947,
+          "profit": 0.0018767356110560296,
+          "performance": 0.043573824898145604,
           "calculationData": {
             "withdrawals": 0.07267167706494704,
             "deposits": 0.11574192888339364,
             "repays": 0,
             "borrows": 0,
             "startPositionValue": 0,
-            "endPositionValue": 0.046769832000147206
+            "endPositionValue": 0.044946987429502636
           }
         }
       ],
-      "fromBlock": 240495874,
-      "toBlock": 242737820
+      "fromBlock": 241167422,
+      "toBlock": 243409368
     }
   ]
 }
