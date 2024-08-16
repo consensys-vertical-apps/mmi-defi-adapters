@@ -1,86 +1,64 @@
 import { BlankAdapterOutcomeOptions, QuestionAnswers } from './questionnaire'
 
 export const Replacements = {
-  BUILD_METADATA: {
-    replace: (
-      outcomes: BlankAdapterOutcomeOptions,
-      blankAdapter: string,
-    ): string => {
-      const regex = /return Replacements.BUILD_METADATA.placeholder/g
-
-      switch (true) {
-        case outcomes.buildMetadataFunction === 'singleProtocolToken' &&
-          outcomes.underlyingTokens === 'oneUnderlying':
-          return blankAdapter.replace(
-            regex,
-            `const protocolToken = await this.helpers.getTokenMetadata(
-                  getAddress('0x')
-                )
-            
-                const underlyingTokens = await this.helpers.getTokenMetadata(
-                  getAddress('0x')
-                )
-                return {
-                  [protocolToken.address]: {
-                    protocolToken: protocolToken,
-                    underlyingTokens: [underlyingTokens],
-                  },
-                }`,
-          )
-        case outcomes.buildMetadataFunction === 'singleProtocolToken' &&
-          outcomes.underlyingTokens === 'multipleUnderlying':
-          return blankAdapter.replace(
-            regex,
-            `const protocolToken = await this.helpers.getTokenMetadata(
-                  '0x'
-                )
-            
-                const underlyingTokensOne = await this.helpers.getTokenMetadata(
-                  '0x'
-                )
-                const underlyingTokensTwo = await this.helpers.getTokenMetadata(
-                  '0x'
-                )
-                return {
-                  [protocolToken.address]: {
-                    protocolToken: protocolToken,
-                    underlyingTokens: [underlyingTokensOne, underlyingTokensTwo],
-                  },
-                }`,
-          )
-        case outcomes.buildMetadataFunction === 'multipleProtocolTokens' &&
-          outcomes.underlyingTokens === 'oneUnderlying':
-          return blankAdapter.replace(regex, 'throw new NotImplementedError()')
-        case outcomes.buildMetadataFunction === 'multipleProtocolTokens' &&
-          outcomes.underlyingTokens === 'multipleUnderlying':
-          return blankAdapter.replace(regex, 'throw new NotImplementedError()')
-        default:
-          return blankAdapter.replace(regex, 'throw new NotImplementedError()')
-      }
-    },
-  },
   GET_PROTOCOL_TOKENS: {
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
-      updatedTemplate: string,
-      _answers: QuestionAnswers,
+      adapterCode: string,
     ): string => {
-      const regexProtocolTokens =
-        /return Replacements.GET_PROTOCOL_TOKENS.placeholder/g
+      const regex = /return Replacements.GET_PROTOCOL_TOKENS.placeholder/g
       switch (true) {
-        case outcomes.defiAssetStructure === 'singleProtocolToken':
-        case outcomes.defiAssetStructure === 'multipleProtocolTokens':
-          return updatedTemplate.replace(
-            regexProtocolTokens,
-            `return Object.values(await this.buildMetadata()).map(
-                  ({ protocolToken }) => protocolToken,
-                )`,
+        case outcomes.buildMetadataFunction === 'singleProtocolToken' &&
+          outcomes.underlyingTokens === 'oneUnderlying':
+          return adapterCode.replace(
+            regex,
+            `
+            const protocolToken = await this.helpers.getTokenMetadata(getAddress('0x'))
+
+            const underlyingToken = await this.helpers.getTokenMetadata(
+              getAddress('0x')
+            )
+
+            return [
+              {
+                ...protocolToken,
+                underlyingTokens: [underlyingToken],
+              },
+            ]`,
           )
+
+        case outcomes.buildMetadataFunction === 'singleProtocolToken' &&
+          outcomes.underlyingTokens === 'multipleUnderlying':
+          return adapterCode.replace(
+            regex,
+            `
+            const protocolToken = await this.helpers.getTokenMetadata(getAddress('0x'))
+
+            const underlyingTokens = await Promise.all([
+              this.helpers.getTokenMetadata(getAddress('0x')),
+              this.helpers.getTokenMetadata(getAddress('0x')),
+            ])
+
+            return [
+              {
+                ...protocolToken,
+                underlyingTokens,
+              },
+            ]`,
+          )
+
+        case outcomes.buildMetadataFunction === 'multipleProtocolTokens' &&
+          outcomes.underlyingTokens === 'oneUnderlying':
+          // TODO
+          return adapterCode.replace(regex, 'throw new NotImplementedError()')
+
+        case outcomes.buildMetadataFunction === 'multipleProtocolTokens' &&
+          outcomes.underlyingTokens === 'multipleUnderlying':
+          // TODO
+          return adapterCode.replace(regex, 'throw new NotImplementedError()')
+
         default:
-          return updatedTemplate.replace(
-            regexProtocolTokens,
-            'throw new NotImplementedError()',
-          )
+          return adapterCode.replace(regex, 'throw new NotImplementedError()')
       }
     },
   },
@@ -133,7 +111,7 @@ export const Replacements = {
           return updatedTemplate.replace(
             regexWithdrawals,
             `return this.helpers.withdrawals({
-                  protocolToken: await this.getProtocolToken(protocolTokenAddress),
+                  protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
                   filter: { fromBlock, toBlock, userAddress }
                 })`,
           )
@@ -159,7 +137,7 @@ export const Replacements = {
           return updatedTemplate.replace(
             regexDeposits,
             `return this.helpers.deposits({
-                  protocolToken: await this.getProtocolToken(protocolTokenAddress),
+                  protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
                   filter: { fromBlock, toBlock, userAddress }
                 })`,
           )
@@ -184,16 +162,16 @@ export const Replacements = {
           return updatedTemplate.replace(
             regex,
             `return this.helpers.unwrapOneToOne({
-                  protocolToken: await this.getProtocolToken(protocolTokenAddress),
-                  underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress)
+                  protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
+                  underlyingTokens: (await this.getProtocolTokenByAddress(protocolTokenAddress)).underlyingTokens,
                 })`,
           )
         case 'useUnwrapRatioMethod':
           return updatedTemplate.replace(
             regex,
             `return this.helpers.unwrapTokenAsRatio({
-                  protocolToken: await this.getProtocolToken(protocolTokenAddress),
-                  underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress),
+                  protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
+                  underlyingTokens: (await this.getProtocolTokenByAddress(protocolTokenAddress)).underlyingTokens,
                   blockNumber
                 })`,
           )
