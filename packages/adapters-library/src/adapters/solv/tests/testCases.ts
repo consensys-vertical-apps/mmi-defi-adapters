@@ -89,8 +89,9 @@ export const testCases: TestCase[] = [
 
     input: {
       userAddress: User3,
+      filterProtocolTokens: ['0x53E63a31fD1077f949204b94F431bCaB98F72BCE'],
     },
 
-    blockNumber: 41410879,
+    blockNumber: 41411562,
   },
 ]

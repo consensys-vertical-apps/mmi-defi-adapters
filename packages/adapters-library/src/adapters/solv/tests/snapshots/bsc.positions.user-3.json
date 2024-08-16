@@ -1,25 +1,79 @@
 {
-  "blockNumber": 41410879,
-  "aggregatedValues": [],
-  "snapshot": [],
+  "blockNumber": 41411562,
+  "aggregatedValues": ["USD13.43"],
+  "snapshot": [
+    {
+      "protocolId": "solv",
+      "name": "Solv",
+      "description": "Solv defi adapter",
+      "siteUrl": "https://solv.finance/",
+      "iconUrl": "https://solv.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 56,
+      "productId": "solv-btc",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x53E63a31fD1077f949204b94F431bCaB98F72BCE",
+          "name": "SolvBTC Ethena",
+          "symbol": "SolvBTC.ENA",
+          "decimals": 18,
+          "balanceRaw": "230000000000000n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x4aae823a6a0b376De6A78e74eCC5b079d38cBCf7",
+              "name": "Solv BTC",
+              "symbol": "SolvBTC",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "230000000000000n",
+              "tokens": [
+                {
+                  "address": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+                  "name": "BTCB Token",
+                  "symbol": "BTCB",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "230000000000000n",
+                  "balance": 0.00023,
+                  "price": 58401.915892677695,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c/logo.png"
+                }
+              ],
+              "balance": 0.00023,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x4aae823a6a0b376De6A78e74eCC5b079d38cBCf7/logo.png"
+            }
+          ],
+          "balance": 0.00023
+        }
+      ]
+    }
+  ],
   "rpcResponses": {
-    "d308551cd3f47070053dc822015a67a0": {
-      "error": {
-        "code": -32000,
-        "message": "missing trie node d3eb04ea92a8dde93cc10e9268f95fb0e38d6f342167818e8393025ef50531ad (path ) state 0xd3eb04ea92a8dde93cc10e9268f95fb0e38d6f342167818e8393025ef50531ad is not available"
-      }
+    "6c24d4531d5a5c3a707dd33ba2e6de81": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
-    "6a98c36beca0e6c33c8c55dc3d988163": {
-      "error": {
-        "code": -32000,
-        "message": "missing trie node d3eb04ea92a8dde93cc10e9268f95fb0e38d6f342167818e8393025ef50531ad (path ) state 0xd3eb04ea92a8dde93cc10e9268f95fb0e38d6f342167818e8393025ef50531ad is not available"
-      }
+    "7886fe5b5da5cb777a98ae20a1d9ad41": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
-    "004e4d9d3d7effefcd2ff0dd23722e72": {
-      "error": {
-        "code": -32000,
-        "message": "missing trie node d3eb04ea92a8dde93cc10e9268f95fb0e38d6f342167818e8393025ef50531ad (path ) state 0xd3eb04ea92a8dde93cc10e9268f95fb0e38d6f342167818e8393025ef50531ad is not available"
-      }
+    "48006bb7e7269e4c3280ae216ef63862": {
+      "result": "0x0000000000000000000000000000000000000000000000000000d12f0c4c6000"
+    },
+    "5e8909cb0f337a43d3d2f88a0b04539f": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a4254434220546f6b656e00000000000000000000000000000000000000000000"
+    },
+    "67b0fc329ecb8ce95f3b3b59092d05fe": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000044254434200000000000000000000000000000000000000000000000000000000"
+    },
+    "a0a62216238d83b257623384cf4818ce": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "a1a87387c47c36dea99d4f1fa9ad383d": {
+      "result": "0x00000000000000000000000000000000000000000000000200000000000fa7d50000000000000000000000000000000000000000000000000000003cf080a3400000000000000000000000000000000000000000000000000000000066bf2e140000000000000000000000000000000000000000000000000000000066bf2e1400000000000000000000000000000000000000000000000200000000000fa7d5"
+    },
+    "d6695b1af377a0f4acaf2087e1ca8835": {
+      "result": "0x00000000000000000000000000000000000000000000000135a9a4bf60468d82"
     }
   }
 }
