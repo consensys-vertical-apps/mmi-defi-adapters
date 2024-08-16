@@ -1,0 +1,61 @@
+{
+  "blockNumber": 243434198,
+  "aggregatedValues": ["USD13.01"],
+  "snapshot": [
+    {
+      "protocolId": "solv",
+      "name": "Solv",
+      "description": "Solv defi adapter",
+      "siteUrl": "https://solv.finance/",
+      "iconUrl": "https://solv.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "solv-btc",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x3647c54c4c2C65bC7a2D63c0Da2809B399DBBDC0",
+          "name": "Solv BTC",
+          "symbol": "SolvBTC",
+          "decimals": 18,
+          "balanceRaw": "222712076938228n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "type": "underlying",
+              "balanceRaw": "22271n",
+              "balance": 0.00022271,
+              "price": 58414.57596608962,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
+            }
+          ],
+          "balance": 0.000222712076938228
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "1b14b254dad3ed5590969e937dcb5157": {
+      "result": "0x0000000000000000000000000000000000000000000000000000ca8e323babf4"
+    },
+    "bca91afb23ddaed80e46af84ddff0a15": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b5772617070656420425443000000000000000000000000000000000000000000"
+    },
+    "69f099e2db79a6f4155525d4f2ec2b8f": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045742544300000000000000000000000000000000000000000000000000000000"
+    },
+    "296a903d692ad93922b47feec4841291": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000008"
+    },
+    "357e1e828d7b9e614d0f542880a960fc": {
+      "result": "0x000000000000000000000000000000000000000000000001000000000009fda20000000000000000000000000000000000000000000000000000003cfca96e400000000000000000000000000000000000000000000000000000000066bf28110000000000000000000000000000000000000000000000000000000066bf2811000000000000000000000000000000000000000000000001000000000009fda2"
+    },
+    "93c9669eec14950a572ceae54db130ca": {
+      "result": "0x0000000000000000000000000000000000000002d09590ea7556fe5361306e37"
+    }
+  }
+}

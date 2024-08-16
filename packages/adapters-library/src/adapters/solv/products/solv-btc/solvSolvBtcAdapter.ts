@@ -1,3 +1,4 @@
+import { flatMap, keyBy, mapValues, uniq, zipObject } from 'lodash'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -77,17 +78,28 @@ export class SolvSolvBtcAdapter implements IProtocolAdapter, IMetadataBuilder {
 
   @CacheToFile({ fileKey: 'solv-btc' })
   async buildMetadata(): Promise<Metadata> {
-    const tokens = TokenAddresses[this.chainId]!
-    const [protocolToken, underlyingToken] = await Promise.all([
-      this.helpers.getTokenMetadata(tokens.protocolToken),
-      this.helpers.getTokenMetadata(tokens.underlyingToken),
-    ])
-    return {
-      [protocolToken.address]: {
-        protocolToken,
-        underlyingToken,
-      },
-    }
+    const tokenInfos = TokenAddresses[this.chainId]!
+
+    // Extract all unique addresses (protocolToken and underlyingToken) from the input array
+    const addresses = uniq(
+      flatMap(tokenInfos, (item) => [item.protocolToken, item.underlyingToken]),
+    )
+
+    // Run getTokenMetadata for each unique address in parallel
+    const metadataResults = await Promise.all(
+      addresses.map((address) => this.helpers.getTokenMetadata(address)),
+    )
+
+    // Create a mapping from address to its metadata result
+    const addressToMetadata = zipObject(addresses, metadataResults)
+
+    // Create the final output object
+    const result = mapValues(keyBy(tokenInfos, 'protocolToken'), (item) => ({
+      protocolToken: addressToMetadata[item.protocolToken]!,
+      underlyingToken: addressToMetadata[item.underlyingToken]!,
+    }))
+
+    return result
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
