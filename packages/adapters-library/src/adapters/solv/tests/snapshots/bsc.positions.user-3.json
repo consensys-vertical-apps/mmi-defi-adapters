@@ -1,0 +1,25 @@
+{
+  "blockNumber": 41410879,
+  "aggregatedValues": [],
+  "snapshot": [],
+  "rpcResponses": {
+    "d308551cd3f47070053dc822015a67a0": {
+      "error": {
+        "code": -32000,
+        "message": "missing trie node d3eb04ea92a8dde93cc10e9268f95fb0e38d6f342167818e8393025ef50531ad (path ) state 0xd3eb04ea92a8dde93cc10e9268f95fb0e38d6f342167818e8393025ef50531ad is not available"
+      }
+    },
+    "6a98c36beca0e6c33c8c55dc3d988163": {
+      "error": {
+        "code": -32000,
+        "message": "missing trie node d3eb04ea92a8dde93cc10e9268f95fb0e38d6f342167818e8393025ef50531ad (path ) state 0xd3eb04ea92a8dde93cc10e9268f95fb0e38d6f342167818e8393025ef50531ad is not available"
+      }
+    },
+    "004e4d9d3d7effefcd2ff0dd23722e72": {
+      "error": {
+        "code": -32000,
+        "message": "missing trie node d3eb04ea92a8dde93cc10e9268f95fb0e38d6f342167818e8393025ef50531ad (path ) state 0xd3eb04ea92a8dde93cc10e9268f95fb0e38d6f342167818e8393025ef50531ad is not available"
+      }
+    }
+  }
+}
