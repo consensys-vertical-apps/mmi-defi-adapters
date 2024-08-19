@@ -27,6 +27,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { PositionManager__factory } from '../../contracts'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 
 // Parameter needed for static call request
 // Set the date in the future to ensure the static call request doesn't trigger smart contract validation
@@ -44,7 +45,7 @@ const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
 
 export const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)
 
-export class LynexAlgebraAdapter extends SimplePoolAdapter {
+export class LynexAlgebraAdapter implements IProtocolAdapter {
   productId = 'algebra'
   protocolId: Protocol
   chainId: Chain
@@ -52,6 +53,7 @@ export class LynexAlgebraAdapter extends SimplePoolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
+    version: 2,
   }
 
   adaptersController: AdaptersController
@@ -63,45 +65,11 @@ export class LynexAlgebraAdapter extends SimplePoolAdapter {
     chainId,
     protocolId,
     adaptersController,
-    helpers,
   }: ProtocolAdapterParams) {
-    super({
-      provider,
-      chainId,
-      protocolId,
-      adaptersController,
-      helpers,
-    })
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
-  }
-
-  protected async fetchProtocolTokenMetadata(
-    _protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    throw new NotImplementedError()
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    _protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    throw new NotImplementedError()
-  }
-
-  protected async getUnderlyingTokenBalances(_input: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    throw new NotImplementedError()
-  }
-  protected async unwrapProtocolToken(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnwrappedTokenExchangeRate[]> {
-    throw new NotImplementedError()
   }
 
   getProtocolDetails(): ProtocolDetails {

@@ -32,18 +32,17 @@ import {
   CvxMint__factory,
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardsFactory'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 
 export const CONVEX_TOKEN_ADDRESS = '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b'
 
-export class ConvexStakingAdapter
-  extends LpStakingAdapter
-  implements IMetadataBuilder
-{
+export class ConvexStakingAdapter extends LpStakingAdapter {
   productId = 'staking'
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
+    version: 2,
   }
 
   private async getCrv(): Promise<Erc20Metadata> {
@@ -85,7 +84,7 @@ export class ConvexStakingAdapter
   }
 
   @CacheToFile({ fileKey: 'metadata' })
-  async buildMetadata() {
+  async getProtocolTokens() {
     const convexFactory = ConvexFactory__factory.connect(
       CONVEX_FACTORY_ADDRESS,
       this.provider,
@@ -93,7 +92,7 @@ export class ConvexStakingAdapter
 
     const length = await convexFactory.poolLength()
 
-    const metadata: LpStakingProtocolMetadata = {}
+    const metadata: ProtocolToken<LpStakingProtocolMetadata>[] = []
     await Promise.all(
       Array.from({ length: Number(length) }, async (_, i) => {
         const convexData = await convexFactory.poolInfo(i)
@@ -105,14 +104,13 @@ export class ConvexStakingAdapter
             this.getExtraRewardTokenMetadata(convexData.crvRewards),
           ])
 
-        metadata[getAddress(convexData.crvRewards)] = {
-          protocolToken: {
-            ...convexToken,
-            address: getAddress(convexData.crvRewards),
-          },
-          underlyingToken,
+        metadata.push({
+          ...convexToken,
+          address: getAddress(convexData.crvRewards),
+
+          underlyingTokens: [underlyingToken],
           extraRewardTokens,
-        }
+        })
       }),
     )
 
@@ -138,7 +136,9 @@ export class ConvexStakingAdapter
 
         if (crvRewardBalance === 0n) return
 
-        const { protocolToken } = await this.fetchPoolMetadata(protocolAddress)
+        const protocolToken = await this.fetchProtocolTokenMetadata(
+          protocolAddress,
+        )
         const crvRewardMetadata = await this.getCrv()
         const convexRewardMetadata = await this.getMinter()
 
@@ -185,8 +185,11 @@ export class ConvexStakingAdapter
     const balances: ProtocolPosition[] = await filterMapAsync(
       protocolTokenAddresses,
       async (protocolTokenAddress) => {
-        const { protocolToken, extraRewardTokens } =
-          await this.fetchPoolMetadata(protocolTokenAddress)
+        const { name, symbol, decimals, address, extraRewardTokens } =
+          await this.helpers.getProtocolTokenByAddress({
+            protocolTokens: await this.getProtocolTokens(),
+            protocolTokenAddress,
+          })
 
         // If extraRewards is empty or undefined, skip this protocolToken
         if (!extraRewardTokens || extraRewardTokens.length === 0) return
@@ -218,7 +221,10 @@ export class ConvexStakingAdapter
         if (!underlying || underlying.length === 0) return
 
         return {
-          ...protocolToken,
+          name,
+          symbol,
+          decimals,
+          address,
           type: TokenType.Protocol,
           balanceRaw: 0n,
           tokens: underlying,
@@ -239,7 +245,9 @@ export class ConvexStakingAdapter
       this.provider,
     )
 
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
 
     const convexToken = await this.getMinter()
     const crvToken = await this.getCrv()
@@ -305,8 +313,11 @@ export class ConvexStakingAdapter
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const { protocolToken, extraRewardTokens } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+    const { name, symbol, decimals, address, extraRewardTokens } =
+      await this.helpers.getProtocolTokenByAddress({
+        protocolTokens: await this.getProtocolTokens(),
+        protocolTokenAddress,
+      })
 
     const responsePromises = extraRewardTokens!.map(
       async (extraRewardToken) => {
@@ -334,7 +345,7 @@ export class ConvexStakingAdapter
 
           return {
             transactionHash: transactionHash,
-            protocolToken,
+            protocolToken: { name, address, decimals, symbol },
             tokens: [
               {
                 ...extraRewardToken.token,

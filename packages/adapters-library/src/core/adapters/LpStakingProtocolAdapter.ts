@@ -1,3 +1,4 @@
+import { ProtocolToken } from '../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -22,21 +23,12 @@ export type ExtraRewardToken = {
   manager: string
 }
 
-export type LpStakingProtocolMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
-    extraRewardTokens: ExtraRewardToken[]
-  }
->
+export type LpStakingProtocolMetadata = {
+  underlyingTokens: Erc20Metadata[]
+  extraRewardTokens: ExtraRewardToken[]
+}
 
-export abstract class LpStakingAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
-  abstract buildMetadata(): Promise<LpStakingProtocolMetadata>
-
+export abstract class LpStakingAdapter extends SimplePoolAdapter<LpStakingProtocolMetadata> {
   abstract getRewardPositionsLpStakingAdapter({
     userAddress,
     blockNumber,
@@ -98,11 +90,9 @@ export abstract class LpStakingAdapter
       )
   }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
-  }
+  abstract getProtocolTokens(): Promise<
+    ProtocolToken<LpStakingProtocolMetadata>[]
+  >
 
   private async addTokensToPosition(
     position: ProtocolPosition,
@@ -170,12 +160,12 @@ export abstract class LpStakingAdapter
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
+    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
       protocolTokenBalance.address,
     )
 
     const underlyingTokenBalance = {
-      ...underlyingToken,
+      ...underlyingTokens[0]!,
       balanceRaw: protocolTokenBalance.balanceRaw,
       type: TokenType.Underlying,
     }
@@ -186,7 +176,9 @@ export abstract class LpStakingAdapter
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
 
     return protocolToken
   }
@@ -195,7 +187,7 @@ export abstract class LpStakingAdapter
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
   ): Promise<UnwrappedTokenExchangeRate[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
+    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
       protocolTokenMetadata.address,
     )
 
@@ -205,7 +197,7 @@ export abstract class LpStakingAdapter
 
     return [
       {
-        ...underlyingToken,
+        ...underlyingTokens[0]!,
         type: TokenType.Underlying,
         underlyingRateRaw: pricePerShareRaw,
       },
@@ -215,29 +207,11 @@ export abstract class LpStakingAdapter
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
+      protocolTokenAddress,
+    )
 
-    return [underlyingToken]
-  }
-
-  protected async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
+    return underlyingTokens
   }
 
   private handleError(error: unknown, methodName: string) {

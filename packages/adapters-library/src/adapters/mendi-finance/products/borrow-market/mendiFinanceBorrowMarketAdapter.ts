@@ -28,14 +28,7 @@ import {
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { Cerc20__factory, Comptroller__factory } from '../../contracts'
-
-type MendiFinanceBorrowMarketAdapterMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
-  }
->
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 
 const contractAddresses: Partial<
   Record<
@@ -62,15 +55,17 @@ const contractAddresses: Partial<
   },
 }
 
-export class MendiFinanceBorrowMarketAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+}
+
+export class MendiFinanceBorrowMarketAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'borrow-market'
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
+    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -87,7 +82,7 @@ export class MendiFinanceBorrowMarketAdapter
   }
 
   @CacheToFile({ fileKey: 'mendi' })
-  async buildMetadata() {
+  async getProtocolTokens() {
     const comptrollerContract = Comptroller__factory.connect(
       contractAddresses[this.chainId]!.comptroller,
       this.provider,
@@ -95,7 +90,7 @@ export class MendiFinanceBorrowMarketAdapter
 
     const pools = await comptrollerContract.getAllMarkets()
 
-    const metadataObject: MendiFinanceBorrowMarketAdapterMetadata = {}
+    const metadataObject: ProtocolToken<AdditionalMetadata>[] = []
 
     await Promise.all(
       pools.map(async (poolContractAddress) => {
@@ -127,19 +122,13 @@ export class MendiFinanceBorrowMarketAdapter
           underlyingTokenPromise,
         ])
 
-        metadataObject[protocolToken.address] = {
-          protocolToken,
-          underlyingToken,
-        }
+        metadataObject.push({
+          ...protocolToken,
+          underlyingTokens: [underlyingToken],
+        })
       }),
     )
     return metadataObject
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
   }
 
   protected getUnderlyingTokenBalances(_input: {
@@ -156,47 +145,11 @@ export class MendiFinanceBorrowMarketAdapter
     throw new NotImplementedError()
   }
 
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
-  }
-
   protected async unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
   ): Promise<UnwrappedTokenExchangeRate[]> {
     throw new NotImplementedError()
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return [underlyingToken]
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
   }
 
   async getTransactionParams({
@@ -206,8 +159,8 @@ export class MendiFinanceBorrowMarketAdapter
     GetTransactionParams,
     { protocolId: typeof Protocol.MendiFinance; productId: 'borrow-market' }
   >): Promise<{ to: string; data: string }> {
-    const assetPool = Object.values(await this.buildMetadata()).find(
-      (pool) => pool.protocolToken.address === inputs.asset,
+    const assetPool = Object.values(await this.getProtocolTokens()).find(
+      (pool) => pool.address === inputs.asset,
     )
 
     if (!assetPool) {
@@ -215,7 +168,7 @@ export class MendiFinanceBorrowMarketAdapter
     }
 
     const poolContract = Cerc20__factory.connect(
-      assetPool.protocolToken.address,
+      assetPool.address,
       this.provider,
     )
 

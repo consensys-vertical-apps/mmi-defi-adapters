@@ -24,19 +24,18 @@ import {
 } from '../../../../types/adapter'
 import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
 import { ConvexFactory__factory } from '../../contracts'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 
 /**
  * First version of Convex had additional token which needed to be staked to accrue rewards
  */
-export class ConvexPoolAdapter
-  extends LpStakingAdapter
-  implements IMetadataBuilder
-{
+export class ConvexPoolAdapter extends LpStakingAdapter {
   productId = 'pool'
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
+    version: 2,
   }
 
   async getRewardPositionsLpStakingAdapter(
@@ -62,7 +61,9 @@ export class ConvexPoolAdapter
   }
 
   @CacheToFile({ fileKey: 'metadata' })
-  async buildMetadata() {
+  async getProtocolTokens(): Promise<
+    ProtocolToken<LpStakingProtocolMetadata>[]
+  > {
     const convexFactory = ConvexFactory__factory.connect(
       CONVEX_FACTORY_ADDRESS,
       this.provider,
@@ -70,7 +71,7 @@ export class ConvexPoolAdapter
 
     const pools = await convexFactory.poolLength()
 
-    const metadata: LpStakingProtocolMetadata = {}
+    const metadata: ProtocolToken<LpStakingProtocolMetadata>[] = []
     await Promise.all(
       Array.from({ length: Number(pools) }, async (_, i) => {
         const convexData = await convexFactory.poolInfo(i)
@@ -80,11 +81,11 @@ export class ConvexPoolAdapter
           getTokenMetadata(convexData.lptoken, this.chainId, this.provider),
         ])
 
-        metadata[getAddress(convexData.token)] = {
-          protocolToken: convexToken,
-          underlyingToken,
+        metadata.push({
+          ...convexToken,
+          underlyingTokens: [underlyingToken],
           extraRewardTokens: [],
-        }
+        })
       }),
     )
 

@@ -31,16 +31,15 @@ import {
   ConvexRewardFactorySidechain__factory,
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardFactorySidechain'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 
-export class ConvexSidechainStakingAdapter
-  extends LpStakingAdapter
-  implements IMetadataBuilder
-{
+export class ConvexSidechainStakingAdapter extends LpStakingAdapter {
   productId = 'sidechain-staking'
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
+    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -60,7 +59,7 @@ export class ConvexSidechainStakingAdapter
   }
 
   @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
+  async getProtocolTokens() {
     const convexFactory = ConvexFactorySidechain__factory.connect(
       CONVEX_FACTORY_ADDRESS,
       this.provider,
@@ -68,7 +67,7 @@ export class ConvexSidechainStakingAdapter
 
     const length = await convexFactory.poolLength()
 
-    const metadata: LpStakingProtocolMetadata = {}
+    const metadata: ProtocolToken<LpStakingProtocolMetadata>[] = []
     await Promise.all(
       Array.from({ length: Number(length) }, async (_, i) => {
         const convexData = await convexFactory.poolInfo(i)
@@ -81,13 +80,11 @@ export class ConvexSidechainStakingAdapter
             this.getExtraRewardTokensMetadata(convexData.rewards),
           ])
 
-        metadata[getAddress(convexToken.address)] = {
-          protocolToken: {
-            ...convexToken,
-          },
-          underlyingToken,
+        metadata.push({
+          ...convexToken,
+          underlyingTokens: [underlyingToken],
           extraRewardTokens,
-        }
+        })
       }),
     )
 
@@ -136,8 +133,11 @@ export class ConvexSidechainStakingAdapter
     const balances: ProtocolPosition[] = await filterMapAsync(
       protocolTokenAddresses,
       async (protocolTokenAddress) => {
-        const { extraRewardTokens, protocolToken } =
-          await this.fetchPoolMetadata(protocolTokenAddress)
+        const { extraRewardTokens, address, name, decimals, symbol } =
+          await this.helpers.getProtocolTokenByAddress({
+            protocolTokens: await this.getProtocolTokens(),
+            protocolTokenAddress,
+          })
 
         // If extraRewards is empty or undefined, skip this protocolToken
         if (!extraRewardTokens || extraRewardTokens.length === 0) return
@@ -154,7 +154,10 @@ export class ConvexSidechainStakingAdapter
         )
 
         return {
-          ...protocolToken,
+          address,
+          name,
+          decimals,
+          symbol,
           type: TokenType.Reward,
           balanceRaw: 0n,
           tokens: await Promise.all(
@@ -201,7 +204,9 @@ export class ConvexSidechainStakingAdapter
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
 
     const extraRewardTracker = ConvexRewardFactorySidechain__factory.connect(
       protocolTokenAddress,

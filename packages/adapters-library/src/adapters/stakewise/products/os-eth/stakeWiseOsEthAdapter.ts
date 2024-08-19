@@ -19,22 +19,25 @@ import {
   Vault__factory,
   VaultsRegistry__factory,
 } from '../../contracts'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 
 const amount1 = parseEther('1')
 
-export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+}
+
+const PROTOCOL_TOKEN_ADDRESS = getAddress(
+  '0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38',
+)
+export class StakeWiseOsEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'os-eth'
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false, // this might be able to be true but im not too sure just incase leaving as false
     includeInUnwrap: true,
-  }
-
-  #underlyingToken: Erc20Metadata = {
-    address: ZERO_ADDRESS,
-    name: 'Ethereum',
-    symbol: 'ETH',
-    decimals: 18,
+    version: 2,
   }
 
   private async getVaultsRegistryAddress(): Promise<string> {
@@ -62,27 +65,24 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
     }
   }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    const protocolToken = await this.fetchProtocolTokenMetadata()
-
-    return [protocolToken]
-  }
-
-  protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
-    const address = getAddress('0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38')
-
-    const data: Erc20Metadata = {
-      name: 'StakeWise osETH',
-      symbol: 'osETH',
-      decimals: 18,
-      address,
-    }
-
-    return data
-  }
-
-  protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
-    return [this.#underlyingToken]
+  @CacheToFile({ fileKey: 'protocolToken' })
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+    return [
+      {
+        name: 'StakeWise osETH',
+        symbol: 'osETH',
+        decimals: 18,
+        address: PROTOCOL_TOKEN_ADDRESS,
+        underlyingTokens: [
+          {
+            address: ZERO_ADDRESS,
+            name: 'Ethereum',
+            symbol: 'ETH',
+            decimals: 18,
+          },
+        ],
+      },
+    ]
   }
 
   async getTotalValueLocked(
@@ -92,7 +92,7 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
 
     const [vaultsRegistryAddress, protocolToken] = await Promise.all([
       this.getVaultsRegistryAddress(),
-      this.fetchProtocolTokenMetadata(),
+      this.fetchProtocolTokenMetadata(PROTOCOL_TOKEN_ADDRESS),
     ])
 
     const vaultsRegistryContract = VaultsRegistry__factory.connect(
@@ -140,6 +140,10 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
       0n,
     )
 
+    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
+      PROTOCOL_TOKEN_ADDRESS,
+    )
+
     return [
       {
         ...protocolToken,
@@ -147,7 +151,7 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
         totalSupplyRaw: osEthTotalSupply,
         tokens: [
           {
-            ...this.#underlyingToken,
+            ...underlyingTokens[0]!,
             totalSupplyRaw: underlyingTokenSupply,
             type: TokenType.Underlying,
           },
@@ -175,9 +179,13 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
       { blockTag: blockNumber },
     )
 
+    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
+      PROTOCOL_TOKEN_ADDRESS,
+    )
+
     return [
       {
-        ...this.#underlyingToken,
+        ...underlyingTokens[0]!,
         type: TokenType.Underlying,
         balanceRaw,
       },
@@ -200,45 +208,16 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
       { blockTag: blockNumber },
     )
 
+    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
+      PROTOCOL_TOKEN_ADDRESS,
+    )
+
     return [
       {
-        ...this.#underlyingToken,
+        ...underlyingTokens[0]!,
         type: TokenType.Underlying,
         underlyingRateRaw,
       },
     ]
   }
 }
-
-// NOTE: The APY/APR feature has been removed as of March 2024.
-// The below contains logic that may be useful for future features or reference. For more context on this decision, refer to ticket [MMI-4731].
-
-// async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-//   throw new NotImplementedError()
-// }
-
-// async getApy(values: GetApyInput): Promise<ProtocolTokenApy> {
-//   const { blockNumber } = values
-
-//   const [osEthControllerAddress, protocolToken] = await Promise.all([
-//     this.getOsEthControllerAddress(),
-//     this.fetchProtocolTokenMetadata(),
-//   ])
-
-//   const osEthControllerContract = OsEthController__factory.connect(
-//     osEthControllerAddress,
-//     this.provider,
-//   )
-
-//   const rewardPerSecond = await osEthControllerContract.avgRewardPerSecond({
-//     blockTag: blockNumber,
-//   })
-
-//   const apyDecimal =
-//     ((Number(rewardPerSecond) * SECONDS_PER_YEAR) / Number(amount1)) * 100
-
-//   return {
-//     ...protocolToken,
-//     apyDecimal,
-//   }
-// }

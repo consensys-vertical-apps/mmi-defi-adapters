@@ -8,7 +8,7 @@ export function AddClaimedRewards({
   rewardAdapterIds: string[]
 }) {
   return function actualDecorator(
-    originalMethod: SimplePoolAdapter['getWithdrawals'],
+    originalMethod: IProtocolAdapter['getWithdrawals'],
     _context: ClassMethodDecoratorContext,
   ) {
     async function replacementMethod(

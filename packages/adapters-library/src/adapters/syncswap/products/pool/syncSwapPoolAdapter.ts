@@ -9,13 +9,18 @@ import {
   AssetType,
   GetEventsInput,
   GetPositionsInput,
+  GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
+  ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
+  ProtocolTokenTvl,
   TokenBalance,
   TokenType,
   Underlying,
+  UnwrapExchangeRate,
+  UnwrapInput,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -25,6 +30,13 @@ import {
   Multicall__factory,
   MutlicallOld__factory,
 } from '../../contracts'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
+import { AdaptersController } from '../../../../core/adaptersController'
+import { Protocol } from '../../../protocols'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 
 interface SyncSwapAdapterContracts {
   multicall: string
@@ -56,12 +68,40 @@ const contractAddresses: Partial<Record<Chain, SyncSwapAdapterContracts>> = {
   },
 }
 
-export class SyncSwapPoolAdapter extends SimplePoolAdapter {
+export class SyncSwapPoolAdapter implements IProtocolAdapter {
   productId = 'pool'
+
+  protocolId: Protocol
+  chainId: Chain
+  adaptersController: AdaptersController
+  provider: CustomJsonRpcProvider
+
+  constructor({
+    provider,
+    chainId,
+    protocolId,
+    adaptersController,
+  }: ProtocolAdapterParams) {
+    this.provider = provider
+    this.chainId = chainId
+    this.protocolId = protocolId
+    this.adaptersController = adaptersController
+  }
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
+    version: 2,
+  }
+
+  unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
+    throw new NotImplementedError()
+  }
+
+  async getTotalValueLocked(
+    _input: GetTotalValueLockedInput,
+  ): Promise<ProtocolTokenTvl[]> {
+    throw new NotImplementedError()
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -77,7 +117,7 @@ export class SyncSwapPoolAdapter extends SimplePoolAdapter {
     }
   }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     throw new NotImplementedError()
   }
 
@@ -180,33 +220,6 @@ export class SyncSwapPoolAdapter extends SimplePoolAdapter {
       toBlock,
       eventType: 'deposit',
     })
-  }
-
-  protected async getUnderlyingTokenBalances(_input: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    throw new NotImplementedError()
-  }
-
-  protected async fetchProtocolTokenMetadata(
-    _protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    throw new NotImplementedError()
-  }
-
-  protected async unwrapProtocolToken(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnwrappedTokenExchangeRate[]> {
-    throw new NotImplementedError()
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    _protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    throw new NotImplementedError()
   }
 
   private async getSyncSwapMovements({
