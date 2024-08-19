@@ -34,10 +34,15 @@ export const Replacements = {
             `
             const protocolToken = await this.helpers.getTokenMetadata(getAddress('0x'))
 
-            const underlyingTokens = await Promise.all([
-              this.helpers.getTokenMetadata(getAddress('0x')),
-              this.helpers.getTokenMetadata(getAddress('0x')),
-            ])
+            const underlyingTokens = await Promise.all(
+              [
+                '0x',
+                '0x',
+                // Ideally fetched on-chain
+              ].map(async (address) =>
+                this.helpers.getTokenMetadata(getAddress(address)),
+              ),
+            )
 
             return [
               {
@@ -49,13 +54,67 @@ export const Replacements = {
 
         case outcomes.buildMetadataFunction === 'multipleProtocolTokens' &&
           outcomes.underlyingTokens === 'oneUnderlying':
-          // TODO
-          return adapterCode.replace(regex, 'throw new NotImplementedError()')
+          return adapterCode.replace(
+            regex,
+            `
+            const protocolTokens = await Promise.all(
+              [
+                '0x',
+                '0x',
+                // Ideally fetched on-chain from factory contract
+              ].map(async (address) =>
+                this.helpers.getTokenMetadata(getAddress(address)),
+              ),
+            )
+
+            return await Promise.all(
+              protocolTokens.map(async (protocolToken) => {
+                const underlyingToken = await this.helpers.getTokenMetadata(
+                  getAddress('0x'), // Ideally fetched on-chain
+                )
+
+                return {
+                  ...protocolToken,
+                  underlyingTokens: [underlyingToken],
+                }
+              }),
+            )`,
+          )
 
         case outcomes.buildMetadataFunction === 'multipleProtocolTokens' &&
           outcomes.underlyingTokens === 'multipleUnderlying':
-          // TODO
-          return adapterCode.replace(regex, 'throw new NotImplementedError()')
+          return adapterCode.replace(
+            regex,
+            `
+            const protocolTokens = await Promise.all(
+              [
+                '0x',
+                '0x',
+                // Ideally fetched on-chain from factory contract
+              ].map(async (address) =>
+                this.helpers.getTokenMetadata(getAddress(address)),
+              ),
+            )
+
+            return await Promise.all(
+              protocolTokens.map(async (protocolToken) => {
+                const underlyingTokens = await Promise.all(
+                  [
+                    '0x',
+                    '0x',
+                    // Ideally fetched on-chain
+                  ].map(async (address) =>
+                    this.helpers.getTokenMetadata(getAddress(address)),
+                  ),
+                )
+
+                return {
+                  ...protocolToken,
+                  underlyingTokens,
+                }
+              }),
+            )`,
+          )
 
         default:
           return adapterCode.replace(regex, 'throw new NotImplementedError()')
