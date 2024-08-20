@@ -1,0 +1,16 @@
+[
+  {
+    "address": "0xf951E335afb289353dc249e82926178EaC7DEd78",
+    "name": "Swell Ethereum",
+    "symbol": "SWETH",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x0000000000000000000000000000000000000000",
+        "name": "Ethereum",
+        "symbol": "ETH",
+        "decimals": 18
+      }
+    ]
+  }
+]
