@@ -1,5 +1,5 @@
 {
-  "blockNumber": 20126536,
+  "blockNumber": 20572049,
   "snapshot": [
     {
       "protocolId": "pendle",
@@ -27,29 +27,13 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "principle-token",
-      "success": true,
-      "tokens": [
-        {
-          "baseRate": 1,
-          "type": "protocol",
-          "address": "0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966",
-          "name": "PT-weETH-27JUN2024",
-          "symbol": "PT-weETH-27JUN2024",
-          "decimals": 18,
-          "tokens": [
-            {
-              "type": "underlying",
-              "underlyingRateRaw": "957161793790500795n",
-              "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-              "name": "weETH",
-              "symbol": "weETH",
-              "decimals": 18,
-              "underlyingRate": 0.9571617937905008,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
-            }
-          ]
+      "success": false,
+      "error": {
+        "message": "Protocol token pool not found",
+        "details": {
+          "name": "Error"
         }
-      ]
+      }
     },
     {
       "protocolId": "pendle",
@@ -60,13 +44,29 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "standardised-yield-token",
-      "success": false,
-      "error": {
-        "message": "Protocol token pool not found",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9",
+          "name": "SY-rswETH",
+          "symbol": "SY-rswETH",
+          "decimals": 18,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
+              "name": "rswETH",
+              "symbol": "rswETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "1000000000000000000n",
+              "underlyingRate": 1,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0/logo.png"
+            }
+          ]
         }
-      }
+      ]
     },
     {
       "protocolId": "pendle",
@@ -87,8 +87,8 @@
     }
   ],
   "rpcResponses": {
-    "d50f07fdb33cd829a4e38a8faca3b65e": {
-      "result": "0x0000000000000000000000000000000000000000000000000d48859487755fbb"
+    "0c43f9d0b645e67747b811d8ee94cfc6": {
+      "result": "0x139e7c2"
     }
   }
 }

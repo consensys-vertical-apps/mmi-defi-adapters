@@ -1,5 +1,5 @@
 {
-  "blockNumber": 20126536,
+  "blockNumber": 20572049,
   "snapshot": [
     {
       "protocolId": "pendle",
@@ -32,20 +32,20 @@
         {
           "baseRate": 1,
           "type": "protocol",
-          "address": "0xDDFD5e912C1949B4bDb12579002c44B7A83F9E88",
-          "name": "PT-zs-ezETH-27JUN2024",
-          "symbol": "PT-zs-ezETH-27JUN2024",
+          "address": "0xF0574d8B9Dc3a9DE768eaa7DBB7bB0C68521b148",
+          "name": "PT-rswETH-26SEP2024",
+          "symbol": "PT-rswETH-26SEP2024",
           "decimals": 18,
           "tokens": [
             {
               "type": "underlying",
-              "underlyingRateRaw": "984748754646175952n",
-              "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
-              "name": "ezETH",
-              "symbol": "ezETH",
+              "underlyingRateRaw": "975262482310168247n",
+              "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
+              "name": "rswETH",
+              "symbol": "rswETH",
               "decimals": 18,
-              "underlyingRate": 0.984748754646176,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
+              "underlyingRate": 0.9752624823101682,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0/logo.png"
             }
           ]
         }
@@ -87,8 +87,11 @@
     }
   ],
   "rpcResponses": {
-    "0ef62849be686f61e3f6b97a8284f3e0": {
-      "result": "0x0000000000000000000000000000000000000000000000000daa87c661b190d0"
+    "0c43f9d0b645e67747b811d8ee94cfc6": {
+      "result": "0x139e7c2"
+    },
+    "00224c9bf3c83d02dbabf5ad7d1d8d74": {
+      "result": "0x0000000000000000000000000000000000000000000000000d88d40f7cdcfeb7"
     }
   }
 }

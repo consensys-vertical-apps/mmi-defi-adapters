@@ -1,5 +1,5 @@
 {
-  "blockNumber": 20126536,
+  "blockNumber": 20572049,
   "snapshot": [
     {
       "protocolId": "pendle",
@@ -27,29 +27,13 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "principle-token",
-      "success": true,
-      "tokens": [
-        {
-          "baseRate": 1,
-          "type": "protocol",
-          "address": "0xeEE8aED1957ca1545a0508AfB51b53cCA7e3c0d1",
-          "name": "PT-ezETH-25APR2024",
-          "symbol": "PT-ezETH-25APR2024",
-          "decimals": 18,
-          "tokens": [
-            {
-              "type": "underlying",
-              "underlyingRateRaw": "988085047045351601n",
-              "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
-              "name": "ezETH",
-              "symbol": "ezETH",
-              "decimals": 18,
-              "underlyingRate": 0.9880850470453516,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
-            }
-          ]
+      "success": false,
+      "error": {
+        "message": "Protocol token pool not found",
+        "details": {
+          "name": "Error"
         }
-      ]
+      }
     },
     {
       "protocolId": "pendle",
@@ -77,18 +61,37 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "lp-token",
-      "success": false,
-      "error": {
-        "message": "Protocol token pool not found",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "baseRate": 1,
+          "type": "protocol",
+          "address": "0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6",
+          "name": "PENDLE-LPT",
+          "symbol": "PENDLE-LPT",
+          "decimals": 18,
+          "tokens": [
+            {
+              "type": "underlying",
+              "underlyingRateRaw": "1971480255441696729n",
+              "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
+              "name": "rswETH",
+              "symbol": "rswETH",
+              "decimals": 18,
+              "underlyingRate": 1.9714802554416968,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0/logo.png"
+            }
+          ]
         }
-      }
+      ]
     }
   ],
   "rpcResponses": {
-    "1c4d8356e3f784caeb81ff0569966aab": {
-      "result": "0x0000000000000000000000000000000000000000000000000db6621d7d0368b1"
+    "0c43f9d0b645e67747b811d8ee94cfc6": {
+      "result": "0x139e7c2"
+    },
+    "0de74011371cee5605bae937fc61604b": {
+      "result": "0x0000000000000000000000000000000000000000000000001b5c1ad8d34c77d9"
     }
   }
 }
