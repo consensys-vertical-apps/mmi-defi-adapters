@@ -31,7 +31,10 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
 import { PENDLE_ROUTER_STATIC_CONTRACT } from '../../backend/constants'
-import { Market__factory, RouterStatic__factory } from '../../contracts'
+import {
+  LiquidityProviderToken__factory,
+  RouterStatic__factory,
+} from '../../contracts'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 
@@ -217,7 +220,7 @@ export class PendleLpTokenAdapter
     protocolTokenAddress,
     blockNumber,
   }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
-    const marketTokenContract = Market__factory.connect(
+    const marketTokenContract = LiquidityProviderToken__factory.connect(
       protocolTokenAddress,
       this.provider,
     )

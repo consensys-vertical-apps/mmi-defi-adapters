@@ -4,31 +4,41 @@
 
 import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
-  StandardisedYield,
-  StandardisedYieldInterface,
-} from "../StandardisedYield";
+  LiquidityProviderToken,
+  LiquidityProviderTokenInterface,
+} from "../LiquidityProviderToken";
 
 const _abi = [
   {
     inputs: [
       {
-        internalType: "string",
-        name: "_name",
-        type: "string",
+        internalType: "address",
+        name: "_PT",
+        type: "address",
       },
       {
-        internalType: "string",
-        name: "_symbol",
-        type: "string",
+        internalType: "int256",
+        name: "_scalarRoot",
+        type: "int256",
+      },
+      {
+        internalType: "int256",
+        name: "_initialAnchor",
+        type: "int256",
+      },
+      {
+        internalType: "uint80",
+        name: "_lnFeeRateRoot",
+        type: "uint80",
       },
       {
         internalType: "address",
-        name: "_rswETH",
+        name: "_vePendle",
         type: "address",
       },
       {
         internalType: "address",
-        name: "_referral",
+        name: "_gaugeController",
         type: "address",
       },
     ],
@@ -43,65 +53,139 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "actualSharesOut",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "requiredSharesOut",
-        type: "uint256",
+        internalType: "int256",
+        name: "exchangeRate",
+        type: "int256",
       },
     ],
-    name: "SYInsufficientSharesOut",
-    type: "error",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "actualTokenOut",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "requiredTokenOut",
-        type: "uint256",
-      },
-    ],
-    name: "SYInsufficientTokenOut",
-    type: "error",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "token",
-        type: "address",
-      },
-    ],
-    name: "SYInvalidTokenIn",
-    type: "error",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "token",
-        type: "address",
-      },
-    ],
-    name: "SYInvalidTokenOut",
+    name: "MarketExchangeRateBelowOne",
     type: "error",
   },
   {
     inputs: [],
-    name: "SYZeroDeposit",
+    name: "MarketExpired",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "int256",
+        name: "currentAmount",
+        type: "int256",
+      },
+      {
+        internalType: "int256",
+        name: "requiredAmount",
+        type: "int256",
+      },
+    ],
+    name: "MarketInsufficientPtForTrade",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "actualBalance",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "requiredBalance",
+        type: "uint256",
+      },
+    ],
+    name: "MarketInsufficientPtReceived",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "actualBalance",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "requiredBalance",
+        type: "uint256",
+      },
+    ],
+    name: "MarketInsufficientSyReceived",
     type: "error",
   },
   {
     inputs: [],
-    name: "SYZeroRedeem",
+    name: "MarketProportionMustNotEqualOne",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "int256",
+        name: "proportion",
+        type: "int256",
+      },
+      {
+        internalType: "int256",
+        name: "maxProportion",
+        type: "int256",
+      },
+    ],
+    name: "MarketProportionTooHigh",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "int256",
+        name: "rateScalar",
+        type: "int256",
+      },
+    ],
+    name: "MarketRateScalarBelowZero",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "int256",
+        name: "scalarRoot",
+        type: "int256",
+      },
+    ],
+    name: "MarketScalarRootBelowZero",
+    type: "error",
+  },
+  {
+    inputs: [],
+    name: "MarketZeroAmountsInput",
+    type: "error",
+  },
+  {
+    inputs: [],
+    name: "MarketZeroAmountsOutput",
+    type: "error",
+  },
+  {
+    inputs: [],
+    name: "MarketZeroLnImpliedRate",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "int256",
+        name: "totalPt",
+        type: "int256",
+      },
+      {
+        internalType: "int256",
+        name: "totalAsset",
+        type: "int256",
+      },
+    ],
+    name: "MarketZeroTotalPtOrTotalAsset",
     type: "error",
   },
   {
@@ -146,60 +230,35 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "user",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address[]",
-        name: "rewardTokens",
-        type: "address[]",
-      },
-      {
-        indexed: false,
-        internalType: "uint256[]",
-        name: "rewardAmounts",
-        type: "uint256[]",
-      },
-    ],
-    name: "ClaimRewards",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "caller",
+        name: "receiverSy",
         type: "address",
       },
       {
         indexed: true,
         internalType: "address",
-        name: "receiver",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "tokenIn",
+        name: "receiverPt",
         type: "address",
       },
       {
         indexed: false,
         internalType: "uint256",
-        name: "amountDeposited",
+        name: "netLpBurned",
         type: "uint256",
       },
       {
         indexed: false,
         internalType: "uint256",
-        name: "amountSyOut",
+        name: "netSyOut",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "netPtOut",
         type: "uint256",
       },
     ],
-    name: "Deposit",
+    name: "Burn",
     type: "event",
   },
   {
@@ -213,44 +272,68 @@ const _abi = [
     inputs: [
       {
         indexed: false,
-        internalType: "uint8",
-        name: "version",
-        type: "uint8",
+        internalType: "uint16",
+        name: "observationCardinalityNextOld",
+        type: "uint16",
       },
-    ],
-    name: "Initialized",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "previousOwner",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "newOwner",
-        type: "address",
-      },
-    ],
-    name: "OwnershipTransferred",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
       {
         indexed: false,
-        internalType: "address",
-        name: "account",
-        type: "address",
+        internalType: "uint16",
+        name: "observationCardinalityNextNew",
+        type: "uint16",
       },
     ],
-    name: "Paused",
+    name: "IncreaseObservationCardinalityNext",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "receiver",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "netLpMinted",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "netSyUsed",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "netPtUsed",
+        type: "uint256",
+      },
+    ],
+    name: "Mint",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "user",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256[]",
+        name: "rewardsOut",
+        type: "uint256[]",
+      },
+    ],
+    name: "RedeemRewards",
     type: "event",
   },
   {
@@ -269,25 +352,31 @@ const _abi = [
         type: "address",
       },
       {
-        indexed: true,
-        internalType: "address",
-        name: "tokenOut",
-        type: "address",
+        indexed: false,
+        internalType: "int256",
+        name: "netPtOut",
+        type: "int256",
+      },
+      {
+        indexed: false,
+        internalType: "int256",
+        name: "netSyOut",
+        type: "int256",
       },
       {
         indexed: false,
         internalType: "uint256",
-        name: "amountSyToRedeem",
+        name: "netSyFee",
         type: "uint256",
       },
       {
         indexed: false,
         internalType: "uint256",
-        name: "amountTokenOut",
+        name: "netSyToReserve",
         type: "uint256",
       },
     ],
-    name: "Redeem",
+    name: "Swap",
     type: "event",
   },
   {
@@ -319,13 +408,19 @@ const _abi = [
     anonymous: false,
     inputs: [
       {
+        indexed: true,
+        internalType: "uint256",
+        name: "timestamp",
+        type: "uint256",
+      },
+      {
         indexed: false,
-        internalType: "address",
-        name: "account",
-        type: "address",
+        internalType: "uint256",
+        name: "lnLastImpliedRate",
+        type: "uint256",
       },
     ],
-    name: "Unpaused",
+    name: "UpdateImpliedRate",
     type: "event",
   },
   {
@@ -342,6 +437,44 @@ const _abi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "_storage",
+    outputs: [
+      {
+        internalType: "int128",
+        name: "totalPt",
+        type: "int128",
+      },
+      {
+        internalType: "int128",
+        name: "totalSy",
+        type: "int128",
+      },
+      {
+        internalType: "uint96",
+        name: "lastLnImpliedRate",
+        type: "uint96",
+      },
+      {
+        internalType: "uint16",
+        name: "observationIndex",
+        type: "uint16",
+      },
+      {
+        internalType: "uint16",
+        name: "observationCardinality",
+        type: "uint16",
+      },
+      {
+        internalType: "uint16",
+        name: "observationCardinalityNext",
+        type: "uint16",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "address",
@@ -349,12 +482,12 @@ const _abi = [
         type: "address",
       },
     ],
-    name: "accruedRewards",
+    name: "activeBalance",
     outputs: [
       {
-        internalType: "uint256[]",
-        name: "rewardAmounts",
-        type: "uint256[]",
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -409,29 +542,6 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "assetInfo",
-    outputs: [
-      {
-        internalType: "enum IStandardizedYield.AssetType",
-        name: "assetType",
-        type: "uint8",
-      },
-      {
-        internalType: "address",
-        name: "assetAddress",
-        type: "address",
-      },
-      {
-        internalType: "uint8",
-        name: "assetDecimals",
-        type: "uint8",
-      },
-    ],
-    stateMutability: "pure",
-    type: "function",
-  },
-  {
     inputs: [
       {
         internalType: "address",
@@ -451,26 +561,34 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "claimOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       {
         internalType: "address",
-        name: "",
+        name: "receiverSy",
         type: "address",
       },
+      {
+        internalType: "address",
+        name: "receiverPt",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "netLpToBurn",
+        type: "uint256",
+      },
     ],
-    name: "claimRewards",
+    name: "burn",
     outputs: [
       {
-        internalType: "uint256[]",
-        name: "rewardAmounts",
-        type: "uint256[]",
+        internalType: "uint256",
+        name: "netSyOut",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "netPtOut",
+        type: "uint256",
       },
     ],
     stateMutability: "nonpayable",
@@ -487,40 +605,6 @@ const _abi = [
       },
     ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "receiver",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "tokenIn",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "amountTokenToDeposit",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "minSharesOut",
-        type: "uint256",
-      },
-    ],
-    name: "deposit",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "amountSharesOut",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "payable",
     type: "function",
   },
   {
@@ -568,7 +652,7 @@ const _abi = [
   },
   {
     inputs: [],
-    name: "exchangeRate",
+    name: "expiry",
     outputs: [
       {
         internalType: "uint256",
@@ -581,37 +665,37 @@ const _abi = [
   },
   {
     inputs: [],
+    name: "factory",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getNonOverrideLnFeeRateRoot",
+    outputs: [
+      {
+        internalType: "uint80",
+        name: "",
+        type: "uint80",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "getRewardTokens",
     outputs: [
       {
         internalType: "address[]",
-        name: "rewardTokens",
-        type: "address[]",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getTokensIn",
-    outputs: [
-      {
-        internalType: "address[]",
-        name: "res",
-        type: "address[]",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getTokensOut",
-    outputs: [
-      {
-        internalType: "address[]",
-        name: "res",
+        name: "",
         type: "address[]",
       },
     ],
@@ -621,12 +705,19 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "token",
-        type: "address",
+        internalType: "uint16",
+        name: "cardinalityNext",
+        type: "uint16",
       },
     ],
-    name: "isValidTokenIn",
+    name: "increaseObservationsCardinalityNext",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "isExpired",
     outputs: [
       {
         internalType: "bool",
@@ -638,22 +729,55 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "token",
-        type: "address",
-      },
-    ],
-    name: "isValidTokenOut",
+    inputs: [],
+    name: "lastRewardBlock",
     outputs: [
       {
-        internalType: "bool",
+        internalType: "uint256",
         name: "",
-        type: "bool",
+        type: "uint256",
       },
     ],
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "receiver",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "netSyDesired",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "netPtDesired",
+        type: "uint256",
+      },
+    ],
+    name: "mint",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "netLpOut",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "netSyUsed",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "netPtUsed",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -689,32 +813,28 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "owner",
-    outputs: [
+    inputs: [
       {
-        internalType: "address",
+        internalType: "uint256",
         name: "",
-        type: "address",
+        type: "uint256",
       },
     ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "pause",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "paused",
+    name: "observations",
     outputs: [
       {
+        internalType: "uint32",
+        name: "blockTimestamp",
+        type: "uint32",
+      },
+      {
+        internalType: "uint216",
+        name: "lnImpliedRateCumulative",
+        type: "uint216",
+      },
+      {
         internalType: "bool",
-        name: "",
+        name: "initialized",
         type: "bool",
       },
     ],
@@ -722,13 +842,19 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "pendingOwner",
+    inputs: [
+      {
+        internalType: "uint32[]",
+        name: "secondsAgos",
+        type: "uint32[]",
+      },
+    ],
+    name: "observe",
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: "uint216[]",
+        name: "lnImpliedRateCumulative",
+        type: "uint216[]",
       },
     ],
     stateMutability: "view",
@@ -781,21 +907,86 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "tokenIn",
+        name: "router",
+        type: "address",
+      },
+    ],
+    name: "readState",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "int256",
+            name: "totalPt",
+            type: "int256",
+          },
+          {
+            internalType: "int256",
+            name: "totalSy",
+            type: "int256",
+          },
+          {
+            internalType: "int256",
+            name: "totalLp",
+            type: "int256",
+          },
+          {
+            internalType: "address",
+            name: "treasury",
+            type: "address",
+          },
+          {
+            internalType: "int256",
+            name: "scalarRoot",
+            type: "int256",
+          },
+          {
+            internalType: "uint256",
+            name: "expiry",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "lnFeeRateRoot",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "reserveFeePercent",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "lastLnImpliedRate",
+            type: "uint256",
+          },
+        ],
+        internalType: "struct MarketState",
+        name: "market",
+        type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "readTokens",
+    outputs: [
+      {
+        internalType: "contract IStandardizedYield",
+        name: "_SY",
         type: "address",
       },
       {
-        internalType: "uint256",
-        name: "amountTokenToDeposit",
-        type: "uint256",
+        internalType: "contract IPPrincipalToken",
+        name: "_PT",
+        type: "address",
       },
-    ],
-    name: "previewDeposit",
-    outputs: [
       {
-        internalType: "uint256",
-        name: "amountSharesOut",
-        type: "uint256",
+        internalType: "contract IPYieldToken",
+        name: "_YT",
+        type: "address",
       },
     ],
     stateMutability: "view",
@@ -805,24 +996,50 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "tokenOut",
+        name: "user",
         type: "address",
       },
-      {
-        internalType: "uint256",
-        name: "amountSharesToRedeem",
-        type: "uint256",
-      },
     ],
-    name: "previewRedeem",
+    name: "redeemRewards",
     outputs: [
       {
-        internalType: "uint256",
-        name: "amountTokenOut",
-        type: "uint256",
+        internalType: "uint256[]",
+        name: "",
+        type: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "rewardState",
+    outputs: [
+      {
+        internalType: "uint128",
+        name: "index",
+        type: "uint128",
+      },
+      {
+        internalType: "uint128",
+        name: "lastBalance",
+        type: "uint128",
       },
     ],
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "skim",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -834,30 +1051,25 @@ const _abi = [
       },
       {
         internalType: "uint256",
-        name: "amountSharesToRedeem",
+        name: "exactPtIn",
         type: "uint256",
       },
       {
-        internalType: "address",
-        name: "tokenOut",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "minTokenOut",
-        type: "uint256",
-      },
-      {
-        internalType: "bool",
-        name: "burnFromInternalBalance",
-        type: "bool",
+        internalType: "bytes",
+        name: "data",
+        type: "bytes",
       },
     ],
-    name: "redeem",
+    name: "swapExactPtForSy",
     outputs: [
       {
         internalType: "uint256",
-        name: "amountTokenOut",
+        name: "netSyOut",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "netSyFee",
         type: "uint256",
       },
     ],
@@ -865,55 +1077,37 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "referral",
-    outputs: [
+    inputs: [
       {
         internalType: "address",
-        name: "",
+        name: "receiver",
         type: "address",
       },
+      {
+        internalType: "uint256",
+        name: "exactPtOut",
+        type: "uint256",
+      },
+      {
+        internalType: "bytes",
+        name: "data",
+        type: "bytes",
+      },
     ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "rewardIndexesCurrent",
+    name: "swapSyForExactPt",
     outputs: [
       {
-        internalType: "uint256[]",
-        name: "indexes",
-        type: "uint256[]",
+        internalType: "uint256",
+        name: "netSyIn",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "netSyFee",
+        type: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "rewardIndexesStored",
-    outputs: [
-      {
-        internalType: "uint256[]",
-        name: "indexes",
-        type: "uint256[]",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "rswETH",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
     type: "function",
   },
   {
@@ -924,6 +1118,19 @@ const _abi = [
         internalType: "string",
         name: "",
         type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalActiveSupply",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -999,60 +1206,46 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "newOwner",
+        name: "",
         type: "address",
       },
-      {
-        internalType: "bool",
-        name: "direct",
-        type: "bool",
-      },
-      {
-        internalType: "bool",
-        name: "renounce",
-        type: "bool",
-      },
-    ],
-    name: "transferOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "unpause",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "yieldToken",
-    outputs: [
       {
         internalType: "address",
         name: "",
         type: "address",
       },
     ],
+    name: "userReward",
+    outputs: [
+      {
+        internalType: "uint128",
+        name: "index",
+        type: "uint128",
+      },
+      {
+        internalType: "uint128",
+        name: "accrued",
+        type: "uint128",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
-  {
-    stateMutability: "payable",
-    type: "receive",
-  },
 ] as const;
 
-export class StandardisedYield__factory {
+export class LiquidityProviderToken__factory {
   static readonly abi = _abi;
-  static createInterface(): StandardisedYieldInterface {
-    return new Interface(_abi) as StandardisedYieldInterface;
+  static createInterface(): LiquidityProviderTokenInterface {
+    return new Interface(_abi) as LiquidityProviderTokenInterface;
   }
   static connect(
     address: string,
     runner?: ContractRunner | null
-  ): StandardisedYield {
-    return new Contract(address, _abi, runner) as unknown as StandardisedYield;
+  ): LiquidityProviderToken {
+    return new Contract(
+      address,
+      _abi,
+      runner
+    ) as unknown as LiquidityProviderToken;
   }
 }

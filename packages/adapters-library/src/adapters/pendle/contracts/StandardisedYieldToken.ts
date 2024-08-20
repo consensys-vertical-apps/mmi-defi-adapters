@@ -23,7 +23,7 @@ import type {
   TypedContractMethod,
 } from "./common";
 
-export interface StandardisedYieldInterface extends Interface {
+export interface StandardisedYieldTokenInterface extends Interface {
   getFunction(
     nameOrSignature:
       | "DOMAIN_SEPARATOR"
@@ -478,11 +478,11 @@ export namespace UnpausedEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
-export interface StandardisedYield extends BaseContract {
-  connect(runner?: ContractRunner | null): StandardisedYield;
+export interface StandardisedYieldToken extends BaseContract {
+  connect(runner?: ContractRunner | null): StandardisedYieldToken;
   waitForDeployment(): Promise<this>;
 
-  interface: StandardisedYieldInterface;
+  interface: StandardisedYieldTokenInterface;
 
   queryFilter<TCEvent extends TypedContractEvent>(
     event: TCEvent,

@@ -57,7 +57,7 @@ export type MarketStateStructOutput = [
   lastLnImpliedRate: bigint;
 };
 
-export interface MarketInterface extends Interface {
+export interface LiquidityProviderTokenInterface extends Interface {
   getFunction(
     nameOrSignature:
       | "DOMAIN_SEPARATOR"
@@ -492,11 +492,11 @@ export namespace UpdateImpliedRateEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
-export interface Market extends BaseContract {
-  connect(runner?: ContractRunner | null): Market;
+export interface LiquidityProviderToken extends BaseContract {
+  connect(runner?: ContractRunner | null): LiquidityProviderToken;
   waitForDeployment(): Promise<this>;
 
-  interface: MarketInterface;
+  interface: LiquidityProviderTokenInterface;
 
   queryFilter<TCEvent extends TypedContractEvent>(
     event: TCEvent,

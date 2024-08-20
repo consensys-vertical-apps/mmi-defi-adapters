@@ -30,7 +30,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
-import { StandardisedYield__factory } from '../../contracts'
+import { StandardisedYieldToken__factory } from '../../contracts'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 
@@ -189,10 +189,11 @@ export class PendleStandardisedYieldTokenAdapter
     protocolTokenAddress,
     blockNumber,
   }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
-    const standardisedYieldTokenContract = StandardisedYield__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
+    const standardisedYieldTokenContract =
+      StandardisedYieldToken__factory.connect(
+        protocolTokenAddress,
+        this.provider,
+      )
 
     const rewardsOut =
       await standardisedYieldTokenContract.claimRewards.staticCall(
