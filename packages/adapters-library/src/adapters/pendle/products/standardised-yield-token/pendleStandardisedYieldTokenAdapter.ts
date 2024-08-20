@@ -208,7 +208,9 @@ export class PendleStandardisedYieldTokenAdapter
     }
 
     const rewardTokenAddresses =
-      await standardisedYieldTokenContract.getRewardTokens()
+      await standardisedYieldTokenContract.getRewardTokens({
+        blockTag: blockNumber,
+      })
 
     return await filterMapAsync(
       rewardTokenAddresses,

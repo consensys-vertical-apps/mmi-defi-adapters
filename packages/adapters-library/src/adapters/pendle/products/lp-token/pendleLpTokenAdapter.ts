@@ -220,23 +220,28 @@ export class PendleLpTokenAdapter
     protocolTokenAddress,
     blockNumber,
   }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
-    const marketTokenContract = LiquidityProviderToken__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
+    const liquidityProviderTokenContract =
+      LiquidityProviderToken__factory.connect(
+        protocolTokenAddress,
+        this.provider,
+      )
 
-    const rewardsOut = await marketTokenContract.redeemRewards.staticCall(
-      userAddress,
-      {
-        blockTag: blockNumber,
-      },
-    )
+    const rewardsOut =
+      await liquidityProviderTokenContract.redeemRewards.staticCall(
+        userAddress,
+        {
+          blockTag: blockNumber,
+        },
+      )
 
     if (!rewardsOut.length || rewardsOut.every((rewardValue) => !rewardValue)) {
       return []
     }
 
-    const rewardTokenAddresses = await marketTokenContract.getRewardTokens()
+    const rewardTokenAddresses =
+      await liquidityProviderTokenContract.getRewardTokens({
+        blockTag: blockNumber,
+      })
 
     return await filterMapAsync(
       rewardTokenAddresses,

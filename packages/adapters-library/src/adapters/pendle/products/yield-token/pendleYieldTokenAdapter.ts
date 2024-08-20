@@ -241,7 +241,9 @@ export class PendleYieldTokenAdapter
     }
 
     if (rewardsOut.length) {
-      const rewardTokenAddresses = await yieldTokenContract.getRewardTokens()
+      const rewardTokenAddresses = await yieldTokenContract.getRewardTokens({
+        blockTag: blockNumber,
+      })
 
       rewards.push(
         ...(await filterMapAsync(
