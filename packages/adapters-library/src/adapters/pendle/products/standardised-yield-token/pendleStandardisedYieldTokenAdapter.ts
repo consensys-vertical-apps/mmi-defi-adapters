@@ -212,7 +212,8 @@ export class PendleStandardisedYieldTokenAdapter
     return await filterMapAsync(
       rewardTokenAddresses,
       async (rewardTokenAddress, i) => {
-        if (!rewardsOut[i]) {
+        const rewardBalance = rewardsOut[i]
+        if (!rewardBalance) {
           return undefined
         }
 
@@ -225,7 +226,7 @@ export class PendleStandardisedYieldTokenAdapter
         return {
           ...rewardTokenMetadata,
           type: TokenType.UnderlyingClaimable,
-          balanceRaw: rewardsOut[i],
+          balanceRaw: rewardBalance,
         }
       },
     )

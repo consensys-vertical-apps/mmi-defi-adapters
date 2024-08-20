@@ -33,19 +33,19 @@
           "baseRate": 1,
           "type": "protocol",
           "address": "0xeEE8aED1957ca1545a0508AfB51b53cCA7e3c0d1",
-          "name": "PT Renzo ezETH 25APR2024",
+          "name": "PT-ezETH-25APR2024",
           "symbol": "PT-ezETH-25APR2024",
           "decimals": 18,
           "tokens": [
             {
               "type": "underlying",
               "underlyingRateRaw": "988085047045351601n",
-              "address": "0x22E12A50e3ca49FB183074235cB1db84Fe4C716D",
-              "name": "SY Renzo ezETH",
-              "symbol": "SY-ezETH",
+              "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+              "name": "ezETH",
+              "symbol": "ezETH",
               "decimals": 18,
               "underlyingRate": 0.9880850470453516,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x22E12A50e3ca49FB183074235cB1db84Fe4C716D/logo.png"
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
             }
           ]
         }

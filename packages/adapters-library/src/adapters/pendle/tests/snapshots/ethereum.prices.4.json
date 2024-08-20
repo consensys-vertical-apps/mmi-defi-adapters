@@ -16,19 +16,19 @@
           "baseRate": 1,
           "type": "protocol",
           "address": "0x98601E27d41ccff643da9d981dc708cf9eF1F150",
-          "name": "YT Zircuit Staking ezETH 27JUN2024",
+          "name": "YT-zs-ezETH-27JUN2024",
           "symbol": "YT-zs-ezETH-27JUN2024",
           "decimals": 18,
           "tokens": [
             {
               "type": "underlying",
               "underlyingRateRaw": "0n",
-              "address": "0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744",
-              "name": "SY Zircuit Staking ezETH",
-              "symbol": "SY-zs-ezETH",
+              "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+              "name": "ezETH",
+              "symbol": "ezETH",
               "decimals": 18,
               "underlyingRate": 0,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744/logo.png"
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
             }
           ]
         }

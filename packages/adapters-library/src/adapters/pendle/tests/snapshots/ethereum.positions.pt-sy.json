@@ -1,0 +1,440 @@
+{
+  "blockNumber": 20572021,
+  "aggregatedValues": [
+    "USD0.00",
+    "USD0.00",
+    "USD0.00",
+    "USD0.00",
+    "USD11,089.47",
+    "USD866.05",
+    "USD1,594.09",
+    "USD907.17",
+    "USD625.34"
+  ],
+  "snapshot": [
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle Market adapter",
+      "siteUrl": "https://www.pendle.finance",
+      "iconUrl": "https://app.pendle.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "yield-token",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xED97f94dd94255637A054098604E0201C442a3FD",
+          "name": "YT-Silo crvUSD-28MAR2024",
+          "symbol": "YT-Silo crvUSD-28MAR2024",
+          "decimals": 18,
+          "balanceRaw": "202250048854396667027857n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xb27D1729489d04473631f0AFAca3c3A7389ac9F8",
+              "name": "scrvUSD-CRV",
+              "symbol": "scrvUSD-CRV",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xb27D1729489d04473631f0AFAca3c3A7389ac9F8/logo.png"
+            }
+          ],
+          "balance": 202250.04885439668
+        },
+        {
+          "address": "0x256Fb830945141f7927785c06b65dAbc3744213c",
+          "name": "YT-ezETH-25APR2024",
+          "symbol": "YT-ezETH-25APR2024",
+          "decimals": 18,
+          "balanceRaw": "70683206443933940248n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+              "name": "ezETH",
+              "symbol": "ezETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "tokens": [
+                {
+                  "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "0n",
+                  "balance": 0,
+                  "price": 2594.3492,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                }
+              ],
+              "balance": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
+            }
+          ],
+          "balance": 70.68320644393394
+        },
+        {
+          "address": "0x391B570e81e354a85a496952b66ADc831715f54f",
+          "name": "YT-pufETH-27JUN2024",
+          "symbol": "YT-pufETH-27JUN2024",
+          "decimals": 18,
+          "balanceRaw": "75003262169582936158n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xD9A442856C234a39a81a089C06451EBAa4306a72",
+              "name": "pufETH",
+              "symbol": "pufETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "price": 2575.3391066874897,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD9A442856C234a39a81a089C06451EBAa4306a72/logo.png"
+            }
+          ],
+          "balance": 75.00326216958294
+        },
+        {
+          "address": "0x4AfdB1B0f9A56922e398D29239453e6A06148eD0",
+          "name": "YT-rswETH-27JUN2024",
+          "symbol": "YT-rswETH-27JUN2024",
+          "decimals": 18,
+          "balanceRaw": "31456466209142219237n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
+              "name": "rswETH",
+              "symbol": "rswETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "price": 2632.664790860908,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0/logo.png"
+            }
+          ],
+          "balance": 31.45646620914222
+        }
+      ]
+    },
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle Market adapter",
+      "siteUrl": "https://www.pendle.finance",
+      "iconUrl": "https://app.pendle.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "principle-token",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf99985822fb361117FCf3768D34a6353E6022F5F",
+          "name": "PT-stETH-25DEC2025",
+          "symbol": "PT-stETH-25DEC2025",
+          "decimals": 18,
+          "balanceRaw": "4484888964612528795n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+              "name": "wstETH",
+              "symbol": "wstETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "3633294147958810669n",
+              "tokens": [
+                {
+                  "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                  "name": "Liquid staked Ether 2.0",
+                  "symbol": "stETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "4274469471244098123n",
+                  "tokens": [
+                    {
+                      "address": "0x0000000000000000000000000000000000000000",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "balanceRaw": "4274469471244098123n",
+                      "balance": 4.274469471244098,
+                      "price": 2594.3492,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
+                  "balance": 4.274469471244098,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                }
+              ],
+              "balance": 3.633294147958811,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
+            }
+          ],
+          "balance": 4.484888964612529
+        }
+      ]
+    },
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "standardised-yield-token",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xcbC72d92b2dc8187414F6734718563898740C0BC",
+          "name": "SY-stETH",
+          "symbol": "SY-stETH",
+          "decimals": 18,
+          "balanceRaw": "283748506312827456n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+              "name": "wstETH",
+              "symbol": "wstETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "283748506312827456n",
+              "tokens": [
+                {
+                  "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                  "name": "Liquid staked Ether 2.0",
+                  "symbol": "stETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "333822222576360511n",
+                  "tokens": [
+                    {
+                      "address": "0x0000000000000000000000000000000000000000",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "balanceRaw": "333822222576360511n",
+                      "balance": 0.3338222225763605,
+                      "price": 2594.3492,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
+                  "balance": 0.3338222225763605,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                }
+              ],
+              "balance": 0.28374850631282744,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
+            }
+          ],
+          "balance": 0.28374850631282744
+        },
+        {
+          "address": "0x253008ba4aE2f3E6488DC998a5321D4EB1a0c905",
+          "name": "SY pufETH",
+          "symbol": "SY pufETH",
+          "decimals": 18,
+          "balanceRaw": "618983117134711107n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xD9A442856C234a39a81a089C06451EBAa4306a72",
+              "name": "pufETH",
+              "symbol": "pufETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "618983117134711107n",
+              "balance": 0.6189831171347111,
+              "price": 2575.3391066874897,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD9A442856C234a39a81a089C06451EBAa4306a72/logo.png"
+            }
+          ],
+          "balance": 0.6189831171347111
+        },
+        {
+          "address": "0xD7DF7E085214743530afF339aFC420c7c720BFa7",
+          "name": "SY-zs-weETH",
+          "symbol": "SY-zs-weETH",
+          "decimals": 18,
+          "balanceRaw": "334265716886494658n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+              "name": "weETH",
+              "symbol": "weETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "334265716886494658n",
+              "balance": 0.33426571688649465,
+              "price": 2713.9252582040895,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
+            }
+          ],
+          "balance": 0.33426571688649465
+        },
+        {
+          "address": "0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9",
+          "name": "SY-rswETH",
+          "symbol": "SY-rswETH",
+          "decimals": 18,
+          "balanceRaw": "237531096783559785n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
+              "name": "rswETH",
+              "symbol": "rswETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "237531096783559785n",
+              "balance": 0.2375310967835598,
+              "price": 2632.664790860908,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0/logo.png"
+            }
+          ],
+          "balance": 0.2375310967835598
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "b19558d669114c8d2156a456c82503a5": {
+      "result": "0x000000000000000000000000000000000000000000002ad3ff431a63c0f5e191"
+    },
+    "b9b8ef28e8378278f2f5d01b2e741f2f": {
+      "result": "0x000000000000000000000000000000000000000000000003d4ed31c3dc48ba18"
+    },
+    "255c6218b7876138a9e85bc847506c99": {
+      "result": "0x00000000000000000000000000000000000000000000000410e11d8f157c205e"
+    },
+    "5813d407c332db4402b1183b89f77d17": {
+      "result": "0x000000000000000000000000000000000000000000000001b48bd15a8d0021e5"
+    },
+    "32c5189e253f9e2b1255e908d43389b8": {
+      "result": "0x0000000000000000000000000000000000000000000000003e3d86c058cc9a9b"
+    },
+    "5512b1fb3a83c0f3c1182c64aad211be": {
+      "result": "0x00000000000000000000000000000000000000000000000003f013c35c52e240"
+    },
+    "39455c2c41cf3a492986761ba002c118": {
+      "result": "0x000000000000000000000000000000000000000000000000089711dd92c74943"
+    },
+    "be01214c4b5774f57218aa1d1857f6ca": {
+      "result": "0x00000000000000000000000000000000000000000000000004a38ce6039c5dc2"
+    },
+    "9743f2d544c0d4fcbedac1d34158d02b": {
+      "result": "0x000000000000000000000000000000000000000000000000034be14626e49c69"
+    },
+    "8cf3488cd8428d604290b2dbf438662a": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "c8db64a68a4f6f3ede0645ae4c9b6bc9": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "34b4810939f0fc4a004546f6a17f87da": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "525ee2668e9fa84f065c69043b005d7d": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "eae1a7874f910439fbebb277d3d2cd28": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "043ea3352b7d5731d098f872c609e784": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "ac4ee4a0c4e36beacd86893133068be8": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "05a8aa87ab5640a93771a28ced6b0cce": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "094ed71da9c25ad1821779623d37698c": {
+      "result": "0x0000000000000000000000000000000000000000000000000b3e1f042f4dc604"
+    },
+    "fe79a9a710d0f6b330496a95768fbb72": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000001000000000000000000000000d533a949740bb3306d119cc777fa900ba034cd52"
+    },
+    "ac5c7a7dfabec04899e26665f9129cc7": {
+      "result": "0x0000000000000000000000000000000000000000000000001053ab35e955c8f7"
+    },
+    "fa9230d0ae5cd1c10558c9e0765b5399": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000067075664554480000000000000000000000000000000000000000000000000000"
+    },
+    "9c76266363c4b5f1aa8b2380ae89a910": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000067075664554480000000000000000000000000000000000000000000000000000"
+    },
+    "d676b19aad5f94711142a8d6a2cc8f45": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "51f4ee66e29dfe8498a4684e13222899": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000c5772617070656420654554480000000000000000000000000000000000000000"
+    },
+    "60b7e97b2877770869c4d6eaf7d2484a": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000057765455448000000000000000000000000000000000000000000000000000000"
+    },
+    "fe7c2561af508a35d5d1193cf3dab0b6": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "491232d127551ba42dc0fba4da821966": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000067273774554480000000000000000000000000000000000000000000000000000"
+    },
+    "6e0286e0c8ae2ac4a4029ea58b4edc2b": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000067273774554480000000000000000000000000000000000000000000000000000"
+    },
+    "ba54104ca87a1ccca61e6417f847a52e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "d6512b66e4c47ef0e20cec2f6493bd0f": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000055be0000000000000000000000000000000000000000000000000000003c6786b8400000000000000000000000000000000000000000000000000000000066c4e6b30000000000000000000000000000000000000000000000000000000066c4e6b300000000000000000000000000000000000000000000000600000000000055be"
+    },
+    "476e3b53535fcb664b36101fc61655d2": {
+      "result": "0x0000000000000000000000000000000000000000000000000dc6ae6127261bac"
+    },
+    "c144c7165e27c67fbbf4ecea9f8d2750": {
+      "result": "0x0000000000000000000000000000000000000000000000000e847630b43d4a19"
+    },
+    "7d4458fa03390d8ad42472bbff2bd8c7": {
+      "result": "0x0000000000000000000000000000000000000000000000000e152ee7cc0ffc9d"
+    },
+    "820e93ad3fd7762ea1e4b39c7d95a6a9": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "bd97a58b6ccd0078608355515773c44f": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "0e54584116727afe4be9f40e592fdf78": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "9870468ac1fb47b67ec3d5321dc7fc50": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "99851e696935ffef677024393b52ec7d": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000003253696c6f2046696e616e636520426f72726f7761626c6520637276555344204465706f73697420696e204352562053696c6f0000000000000000000000000000"
+    },
+    "011d1e2f90c5b1a79be048fe2ef169a5": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b736372765553442d435256000000000000000000000000000000000000000000"
+    },
+    "43381156f5ce772551e61769fbefb9b2": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "e6362d62f4829ef76a0d6c06083c968e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "e5c506d817e8e9b0fa57b379a013445c": {
+      "result": "0x0000000000000000000000000000000000000000000000000e1dfce350c16d6c"
+    }
+  }
+}
