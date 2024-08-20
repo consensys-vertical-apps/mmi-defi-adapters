@@ -86,9 +86,5 @@
       }
     }
   ],
-  "rpcResponses": {
-    "0c43f9d0b645e67747b811d8ee94cfc6": {
-      "result": "0x139e7c2"
-    }
-  }
+  "rpcResponses": {}
 }

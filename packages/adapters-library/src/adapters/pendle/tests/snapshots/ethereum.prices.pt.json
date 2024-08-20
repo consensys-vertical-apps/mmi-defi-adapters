@@ -87,9 +87,6 @@
     }
   ],
   "rpcResponses": {
-    "0c43f9d0b645e67747b811d8ee94cfc6": {
-      "result": "0x139e7c2"
-    },
     "00224c9bf3c83d02dbabf5ad7d1d8d74": {
       "result": "0x0000000000000000000000000000000000000000000000000d88d40f7cdcfeb7"
     }
