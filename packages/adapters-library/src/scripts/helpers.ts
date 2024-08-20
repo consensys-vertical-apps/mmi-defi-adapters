@@ -473,6 +473,7 @@ export class Helpers {
     throw new Error(errorMessage)
   }
 
+  // Looks unused
   async getPositionsAndRewards(
     userAddress: string,
     positionsWithoutRewardsPromise: Promise<ProtocolPosition[]>,
@@ -505,6 +506,7 @@ export class Helpers {
     return positionsWithoutRewards
   }
 
+  // Looks unused
   async getWithdrawalsAndRewardWithdrawals(
     userAddress: string,
     protocolTokenAddress: string,

@@ -104,16 +104,16 @@ export class PendlePrincipleTokenAdapter
         decimals: value.pt.decimals,
       }
 
-      const sy: Erc20Metadata = {
-        address: getAddress(value.sy.address),
-        name: value.sy.name,
-        symbol: value.sy.symbol,
+      const underlyingAsset: Erc20Metadata = {
+        address: getAddress(value.underlyingAsset.address),
+        name: value.underlyingAsset.name,
+        symbol: value.underlyingAsset.symbol,
         decimals: value.underlyingAsset.decimals,
       }
 
       metadata[getAddress(pt.address)] = {
         protocolToken: pt,
-        underlyingTokens: [sy],
+        underlyingTokens: [underlyingAsset],
         marketAddress: market,
       }
 

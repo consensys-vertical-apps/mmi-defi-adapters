@@ -14,6 +14,7 @@ import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
+  GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
@@ -22,6 +23,7 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
+  UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
@@ -29,7 +31,7 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
 import { PENDLE_ROUTER_STATIC_CONTRACT } from '../../backend/constants'
-import { RouterStatic__factory } from '../../contracts'
+import { RouterStatic__factory, YieldToken__factory } from '../../contracts'
 
 type Metadata = Record<
   string,
@@ -100,16 +102,16 @@ export class PendleYieldTokenAdapter
         decimals: value.yt.decimals,
       }
 
-      const sy: Erc20Metadata = {
-        address: getAddress(value.sy.address),
-        name: value.sy.name,
-        symbol: value.sy.symbol,
+      const underlyingAsset: Erc20Metadata = {
+        address: getAddress(value.underlyingAsset.address),
+        name: value.underlyingAsset.name,
+        symbol: value.underlyingAsset.symbol,
         decimals: value.underlyingAsset.decimals,
       }
 
       metadata[getAddress(yt.address)] = {
         protocolToken: yt,
-        underlyingTokens: [sy],
+        underlyingTokens: [underlyingAsset],
         marketAddress: market,
       }
 
@@ -172,7 +174,6 @@ export class PendleYieldTokenAdapter
   async unwrap({
     blockNumber,
     protocolTokenAddress,
-    tokenId,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     const metadata = await this.fetchPoolMetadata(protocolTokenAddress)
     const underlyingToken = (
@@ -204,6 +205,37 @@ export class PendleYieldTokenAdapter
       ...metadata.protocolToken,
       tokens: [underlying],
     }
+  }
+
+  async getRewardPositions({
+    userAddress,
+    protocolTokenAddress,
+    blockNumber,
+  }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
+    const yieldTokenContract = YieldToken__factory.connect(
+      protocolTokenAddress,
+      this.provider,
+    )
+
+    const interestAndRewards =
+      await yieldTokenContract.redeemDueInterestAndRewards.staticCall(
+        userAddress,
+        true,
+        true,
+        { blockTag: blockNumber },
+      )
+
+    const underlyingToken = (
+      await this.getUnderlyingTokens(protocolTokenAddress)
+    )[0]!
+
+    return [
+      {
+        ...underlyingToken,
+        type: TokenType.UnderlyingClaimable,
+        balanceRaw: interestAndRewards.interestOut,
+      },
+    ]
   }
 
   private async getProtocolToken(protocolTokenAddress: string) {

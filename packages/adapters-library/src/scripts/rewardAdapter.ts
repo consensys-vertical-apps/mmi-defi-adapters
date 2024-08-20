@@ -7,6 +7,7 @@ import {
 } from '../types/adapter'
 import { Helpers } from './helpers'
 
+// Looks unused
 export abstract class RewardsAdapter {
   helpers: Helpers
   constructor({ helpers }: { helpers: Helpers }) {

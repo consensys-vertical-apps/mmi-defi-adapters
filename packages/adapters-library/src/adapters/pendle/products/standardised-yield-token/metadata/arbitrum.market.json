@@ -9,7 +9,7 @@
     "underlyingTokens": [
       {
         "address": "0x1aDDD80E6039594eE970E5872D247bf0414C8903",
-        "name": "Fee + Staked GLP",
+        "name": "fsGLP",
         "symbol": "fsGLP",
         "decimals": 18
       }
@@ -19,14 +19,14 @@
   "0xAF699fb0D9F12Bf7B14474aE5c9Bea688888DF73": {
     "protocolToken": {
       "address": "0xAF699fb0D9F12Bf7B14474aE5c9Bea688888DF73",
-      "name": "SY gDAI",
+      "name": "SY-gDAI",
       "symbol": "SY-gDAI",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0xd85E038593d7A098614721EaE955EC2022B9B91B",
-        "name": "Gains Network DAI",
+        "name": "gDAI",
         "symbol": "gDAI",
         "decimals": 18
       }
@@ -36,14 +36,14 @@
   "0x068DEf65B9dbAFf02b4ee54572a9Fa7dFb188EA3": {
     "protocolToken": {
       "address": "0x068DEf65B9dbAFf02b4ee54572a9Fa7dFb188EA3",
-      "name": "SY Stargate USDT",
+      "name": "SY-Stargate USDT",
       "symbol": "SY-Stargate USDT",
       "decimals": 6
     },
     "underlyingTokens": [
       {
         "address": "0xB6CfcF89a7B22988bfC96632aC2A9D6daB60d641",
-        "name": "Tether USD-LP",
+        "name": "S*USDT",
         "symbol": "S*USDT",
         "decimals": 6
       }
@@ -53,14 +53,14 @@
   "0xc79d8a2AA6d769138E599D4DBC30569c9870a6Ee": {
     "protocolToken": {
       "address": "0xc79d8a2AA6d769138E599D4DBC30569c9870a6Ee",
-      "name": "SY PENDLE-ETH_Camelot",
+      "name": "SY-PENDLE-ETH_Camelot",
       "symbol": "SY-PENDLE-ETH_Camelot",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0xBfCa4230115DE8341F3A3d5e8845fFb3337B2Be3",
-        "name": "Camelot LP",
+        "name": "CMLT-LP",
         "symbol": "CMLT-LP",
         "decimals": 18
       }
@@ -70,14 +70,14 @@
   "0x318EEC91f653cA72fAFB038f9AD792A6bC0d644C": {
     "protocolToken": {
       "address": "0x318EEC91f653cA72fAFB038f9AD792A6bC0d644C",
-      "name": "SY ARB-ETH_Camelot",
+      "name": "SY-ARB-ETH_Camelot",
       "symbol": "SY-ARB-ETH_Camelot",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0xa6c5C7D189fA4eB5Af8ba34E63dCDD3a635D433f",
-        "name": "Camelot LP",
+        "name": "CMLT-LP",
         "symbol": "CMLT-LP",
         "decimals": 18
       }
@@ -87,14 +87,14 @@
   "0xdd4C7313Fe4C92e043B9B7dFE433e239BcD05A0D": {
     "protocolToken": {
       "address": "0xdd4C7313Fe4C92e043B9B7dFE433e239BcD05A0D",
-      "name": "SY ARB-GRAIL_Camelot",
+      "name": "SY-ARB-GRAIL_Camelot",
       "symbol": "SY-ARB-GRAIL_Camelot",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0xC9da32C3b444F15412F7FeAC6104d1E258D23B1b",
-        "name": "Camelot LP",
+        "name": "CMLT-LP",
         "symbol": "CMLT-LP",
         "decimals": 18
       }
@@ -104,14 +104,14 @@
   "0x80c12D5b6Cc494632Bf11b03F09436c8B61Cc5Df": {
     "protocolToken": {
       "address": "0x80c12D5b6Cc494632Bf11b03F09436c8B61Cc5Df",
-      "name": "SY wstETH",
+      "name": "SY-wstETH",
       "symbol": "SY-wstETH",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
-        "name": "Wrapped liquid staked Ether 2.0",
+        "name": "wstETH",
         "symbol": "wstETH",
         "decimals": 18
       }
@@ -121,14 +121,14 @@
   "0xc0Cf4b266bE5B3229C49590B59E67A09c15b22f4": {
     "protocolToken": {
       "address": "0xc0Cf4b266bE5B3229C49590B59E67A09c15b22f4",
-      "name": "SY rETH",
+      "name": "SY-rETH",
       "symbol": "SY-rETH",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8",
-        "name": "Rocket Pool ETH",
+        "name": "rETH",
         "symbol": "rETH",
         "decimals": 18
       }
@@ -138,7 +138,7 @@
   "0xF18011766Cf11D905e93ed5626838d44c7FA14B7": {
     "protocolToken": {
       "address": "0xF18011766Cf11D905e93ed5626838d44c7FA14B7",
-      "name": "SY HLP",
+      "name": "SY-HLP",
       "symbol": "SY-HLP",
       "decimals": 18
     },
@@ -155,7 +155,7 @@
   "0x5C4110eD760470f79E469a901Bd6fb45a65BE0F4": {
     "protocolToken": {
       "address": "0x5C4110eD760470f79E469a901Bd6fb45a65BE0F4",
-      "name": "SY mPendle",
+      "name": "SY-mPendle",
       "symbol": "SY-mPendle",
       "decimals": 18
     },
@@ -172,14 +172,14 @@
   "0x4B3f79Ce3D5d752064288FD2Be968A1c21b3ba37": {
     "protocolToken": {
       "address": "0x4B3f79Ce3D5d752064288FD2Be968A1c21b3ba37",
-      "name": "SY MUXLP",
+      "name": "SY-MUXLP",
       "symbol": "SY-MUXLP",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x7CbaF5a14D953fF896E5B3312031515c858737C8",
-        "name": "MUX LP",
+        "name": "MUXLP",
         "symbol": "MUXLP",
         "decimals": 18
       }
@@ -189,14 +189,14 @@
   "0xC5b5d60EccB76C4a53F7DBE7cE3cb5D92557EFfF": {
     "protocolToken": {
       "address": "0xC5b5d60EccB76C4a53F7DBE7cE3cb5D92557EFfF",
-      "name": "SY GM ARB-USDC",
+      "name": "SY-GM-ARB-USDC",
       "symbol": "SY-GM-ARB-USDC",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0xC25cEf6061Cf5dE5eb761b50E4743c1F5D7E5407",
-        "name": "GMX Market",
+        "name": "GM",
         "symbol": "GM",
         "decimals": 18
       }
@@ -206,14 +206,14 @@
   "0x60955a190dec0dB9a45ABe553ad2994126EfdFcc": {
     "protocolToken": {
       "address": "0x60955a190dec0dB9a45ABe553ad2994126EfdFcc",
-      "name": "SY sUSDC-ARBSilo",
+      "name": "SY-sUSDC-ARBSilo",
       "symbol": "SY-sUSDC-ARBSilo",
       "decimals": 6
     },
     "underlyingTokens": [
       {
         "address": "0x55ADE3B74abef55bF379FF6Ae61CB77a405Eb4A8",
-        "name": "Silo Finance Borrowable USDC Deposit in ARB Silo",
+        "name": "sUSDC-ARB",
         "symbol": "sUSDC-ARB",
         "decimals": 6
       }
@@ -223,14 +223,14 @@
   "0xa6C895EB332E91c5b3D00B7baeEAae478cc502DA": {
     "protocolToken": {
       "address": "0xa6C895EB332E91c5b3D00B7baeEAae478cc502DA",
-      "name": "SY weETH",
+      "name": "SY-weETH",
       "symbol": "SY-weETH",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe",
-        "name": "Wrapped eETH",
+        "name": "weETH",
         "symbol": "weETH",
         "decimals": 18
       }
@@ -240,14 +240,14 @@
   "0xf176fB51F4eB826136a54FDc71C50fCd2202E272": {
     "protocolToken": {
       "address": "0xf176fB51F4eB826136a54FDc71C50fCd2202E272",
-      "name": "SY rsETH",
+      "name": "SY-rsETH",
       "symbol": "SY-rsETH",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x4186BFC76E2E237523CBC30FD220FE055156b41F",
-        "name": "KelpDao Restaked ETH",
+        "name": "rsETH",
         "symbol": "rsETH",
         "decimals": 18
       }
@@ -257,14 +257,14 @@
   "0xc49d8fdA920a46B21E1821780238f9E7A0de68df": {
     "protocolToken": {
       "address": "0xc49d8fdA920a46B21E1821780238f9E7A0de68df",
-      "name": "SY sETH-wstEthSilo",
+      "name": "SY-sETH-wstEthSilo",
       "symbol": "SY-sETH-wstEthSilo",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0xC46C5DE6eCa1CA6dc3f8c5d3ce863aE326F4b2CF",
-        "name": "Silo Finance Borrowable WETH Deposit in wstETH Silo",
+        "name": "sWETH-wstETH",
         "symbol": "sWETH-wstETH",
         "decimals": 18
       }
@@ -274,14 +274,14 @@
   "0x0ed2954AB05E59Ea63338e2a0c08C8316F245466": {
     "protocolToken": {
       "address": "0x0ed2954AB05E59Ea63338e2a0c08C8316F245466",
-      "name": "SY sETH-pteETHSilo",
+      "name": "SY-sETH-pteETHSilo",
       "symbol": "SY-sETH-pteETHSilo",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x8Be4715f1DB9e8551fEA5ef8b30A2eb99398e5d2",
-        "name": "Silo Finance Borrowable WETH Deposit in PT-weETH-25APR2024 Silo",
+        "name": "sWETH-PT-weETH-25APR2024",
         "symbol": "sWETH-PT-weETH-25APR2024",
         "decimals": 18
       }
@@ -291,14 +291,14 @@
   "0x50288c30c37FA1Ec6167a31E575EA8632645dE20": {
     "protocolToken": {
       "address": "0x50288c30c37FA1Ec6167a31E575EA8632645dE20",
-      "name": "SY aUSDC",
+      "name": "SY-aUSDC",
       "symbol": "SY-aUSDC",
       "decimals": 6
     },
     "underlyingTokens": [
       {
         "address": "0x724dc807b04555b71ed48a6896b6F41593b8C637",
-        "name": "Aave Arbitrum USDCn",
+        "name": "aArbUSDCn",
         "symbol": "aArbUSDCn",
         "decimals": 6
       }
@@ -308,14 +308,14 @@
   "0xd1F7d5fec6EB532847e552269c905Ac489992Ef6": {
     "protocolToken": {
       "address": "0xd1F7d5fec6EB532847e552269c905Ac489992Ef6",
-      "name": "SY GLP",
+      "name": "SY-GLP",
       "symbol": "SY-GLP",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x1aDDD80E6039594eE970E5872D247bf0414C8903",
-        "name": "Fee + Staked GLP",
+        "name": "fsGLP",
         "symbol": "fsGLP",
         "decimals": 18
       }
@@ -325,14 +325,14 @@
   "0x5220E1Ef8CE83Aa9fE0CCE1b8395cD698d04bc7E": {
     "protocolToken": {
       "address": "0x5220E1Ef8CE83Aa9fE0CCE1b8395cD698d04bc7E",
-      "name": "SY MUXLP",
+      "name": "SY-MUXLP",
       "symbol": "SY-MUXLP",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x7CbaF5a14D953fF896E5B3312031515c858737C8",
-        "name": "MUX LP",
+        "name": "MUXLP",
         "symbol": "MUXLP",
         "decimals": 18
       }
@@ -342,14 +342,14 @@
   "0x0dE802e3D6Cc9145A150bBDc8da9F988a98c5202": {
     "protocolToken": {
       "address": "0x0dE802e3D6Cc9145A150bBDc8da9F988a98c5202",
-      "name": "SY Renzo ezETH",
+      "name": "SY-ezETH",
       "symbol": "SY-ezETH",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
-        "name": "Renzo Restaked ETH",
+        "name": "ezETH",
         "symbol": "ezETH",
         "decimals": 18
       }
@@ -359,7 +359,7 @@
   "0xb3C24D9dcCC2Ec5f778742389ffe448E295B84e0": {
     "protocolToken": {
       "address": "0xb3C24D9dcCC2Ec5f778742389ffe448E295B84e0",
-      "name": "SY Ethena USDe",
+      "name": "SY-USDe",
       "symbol": "SY-USDe",
       "decimals": 18
     },
@@ -376,14 +376,14 @@
   "0xd0c4351a18F40b96b6446Da3A191496DF36d60F9": {
     "protocolToken": {
       "address": "0xd0c4351a18F40b96b6446Da3A191496DF36d60F9",
-      "name": "SY sETH-pteETHSilo",
+      "name": "SY-sETH-pteETHSilo",
       "symbol": "SY-sETH-pteETHSilo",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x22BED3E6E56266C347769189B44646D91b3150c4",
-        "name": "Silo Finance Borrowable WETH Deposit in PT-weETH-27JUN2024 Silo",
+        "name": "sWETH-PT-weETH-27JUN2024",
         "symbol": "sWETH-PT-weETH-27JUN2024",
         "decimals": 18
       }
@@ -393,14 +393,14 @@
   "0x8242F81F7B06C1e67bC80DFD2B2716f58bD46651": {
     "protocolToken": {
       "address": "0x8242F81F7B06C1e67bC80DFD2B2716f58bD46651",
-      "name": "SY sETH-ptezETHSilo",
+      "name": "SY-sETH-ptezETHSilo",
       "symbol": "SY-sETH-ptezETHSilo",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0xEde3D8D3213D8defC37E4EdEA86448D4c692bAa6",
-        "name": "Silo Finance Borrowable WETH Deposit in PT-ezETH-27JUN2024 Silo",
+        "name": "sWETH-PT-ezETH-27JUN2024",
         "symbol": "sWETH-PT-ezETH-27JUN2024",
         "decimals": 18
       }
@@ -410,7 +410,7 @@
   "0x4c43F75F34BF34D3DB3fc3841845d2b69A5eB6A3": {
     "protocolToken": {
       "address": "0x4c43F75F34BF34D3DB3fc3841845d2b69A5eB6A3",
-      "name": "SY HLP",
+      "name": "SY-HLP",
       "symbol": "SY-HLP",
       "decimals": 18
     },
@@ -427,14 +427,14 @@
   "0x369751A0b33DF3adE5e2eE55e7bB9556B10F390C": {
     "protocolToken": {
       "address": "0x369751A0b33DF3adE5e2eE55e7bB9556B10F390C",
-      "name": "SY Aave aUSDC",
+      "name": "SY-aUSDC",
       "symbol": "SY-aUSDC",
       "decimals": 6
     },
     "underlyingTokens": [
       {
         "address": "0x724dc807b04555b71ed48a6896b6F41593b8C637",
-        "name": "Aave Arbitrum USDCn",
+        "name": "aArbUSDCn",
         "symbol": "aArbUSDCn",
         "decimals": 6
       }
@@ -444,14 +444,14 @@
   "0x821CAC5cB29C2D9C99c63Be153316a479D550d72": {
     "protocolToken": {
       "address": "0x821CAC5cB29C2D9C99c63Be153316a479D550d72",
-      "name": "SY sETH-ptezETHSilo",
+      "name": "SY-sETH-ptezETHSilo",
       "symbol": "SY-sETH-ptezETHSilo",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x71453D859918A1D59354324c2A70d32e53b97f67",
-        "name": "Silo Finance Borrowable WETH Deposit in PT-ezETH-26SEP2024 Silo",
+        "name": "sWETH-PT-ezETH-26SEP2024",
         "symbol": "sWETH-PT-ezETH-26SEP2024",
         "decimals": 18
       }
@@ -461,14 +461,14 @@
   "0x8C8F82A3A24C3EF2DD9Cefd4A8faa8cA9807DB55": {
     "protocolToken": {
       "address": "0x8C8F82A3A24C3EF2DD9Cefd4A8faa8cA9807DB55",
-      "name": "SY sETH-pteETHSilo",
+      "name": "SY-sETH-pteETHSilo",
       "symbol": "SY-sETH-pteETHSilo",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x9d0c7DAFE3b34B51010DB522b9F17455Fa9Cea7C",
-        "name": "Silo Finance Borrowable WETH Deposit in PT-weETH-26SEP2024 Silo",
+        "name": "sWETH-PT-weETH-26SEP2024",
         "symbol": "sWETH-PT-weETH-26SEP2024",
         "decimals": 18
       }
@@ -478,14 +478,14 @@
   "0x8f5Ee98867f5d5CFd71eaEfE9997ea37A46dEb33": {
     "protocolToken": {
       "address": "0x8f5Ee98867f5d5CFd71eaEfE9997ea37A46dEb33",
-      "name": "SY sETH-ptrsETHSilo",
+      "name": "SY-sETH-ptrsETHSilo",
       "symbol": "SY-sETH-ptrsETHSilo",
       "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x1E6fD3251c949E1708a5277Faa773CC88E799B99",
-        "name": "Silo Finance Borrowable WETH Deposit in PT-rsETH-26SEP2024 Silo",
+        "name": "sWETH-PT-rsETH-26SEP2024",
         "symbol": "sWETH-PT-rsETH-26SEP2024",
         "decimals": 18
       }
@@ -495,18 +495,69 @@
   "0x84E0efc0633041aac9D0196B7aC8aF3505e8CC32": {
     "protocolToken": {
       "address": "0x84E0efc0633041aac9D0196B7aC8aF3505e8CC32",
-      "name": "SY Dolomite USDC",
+      "name": "SY-dUSDC",
       "symbol": "SY-dUSDC",
       "decimals": 6
     },
     "underlyingTokens": [
       {
         "address": "0x6DBd962b4f62D18F756b5DE57425574c4B8228D6",
-        "name": "Dolomite: USDC",
+        "name": "dUSDC",
         "symbol": "dUSDC",
         "decimals": 6
       }
     ],
     "marketAddress": "0x2fB73D98B1D60B35FD12508933578098f352cE7e"
+  },
+  "0x5b56f4bf94807B547EB5E7eBa5Cd8C033af83aed": {
+    "protocolToken": {
+      "address": "0x5b56f4bf94807B547EB5E7eBa5Cd8C033af83aed",
+      "name": "SY-uniETH",
+      "symbol": "SY-uniETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3d15fD46CE9e551498328B1C83071D9509E2C3a0",
+        "name": "uniETH",
+        "symbol": "uniETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x279b44E48226d40Ec389129061cb0B56C5c09e46"
+  },
+  "0x0a9eD458E6c283D1E84237e3347333Aa08221d09": {
+    "protocolToken": {
+      "address": "0x0a9eD458E6c283D1E84237e3347333Aa08221d09",
+      "name": "SY-gUSDC",
+      "symbol": "SY-gUSDC",
+      "decimals": 6
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xd3443ee1e91aF28e5FB858Fbd0D72A63bA8046E0",
+        "name": "gUSDC",
+        "symbol": "gUSDC",
+        "decimals": 6
+      }
+    ],
+    "marketAddress": "0xa877a0E177b54A37066c1786F91a1DAb68F094AF"
+  },
+  "0xA4ffe78ba40B7Ec0C348fFE36a8dE4F9d6198d2d": {
+    "protocolToken": {
+      "address": "0xA4ffe78ba40B7Ec0C348fFE36a8dE4F9d6198d2d",
+      "name": "SY-USDe",
+      "symbol": "SY-USDe",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+        "name": "USDe",
+        "symbol": "USDe",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x281fE15fd3E08A282f52D5cf09a4d13c3709E66D"
   }
 }

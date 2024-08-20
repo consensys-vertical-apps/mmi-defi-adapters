@@ -2,15 +2,15 @@
   "0x56051f8e46b67b4d286454995dBC6F5f3C433E34": {
     "protocolToken": {
       "address": "0x56051f8e46b67b4d286454995dBC6F5f3C433E34",
-      "name": "YT GLP 28MAR2024",
+      "name": "YT-GLP-28MAR2024",
       "symbol": "YT-GLP-28MAR2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x2066a650AF4b6895f72E618587Aad5e8120B7790",
-        "name": "SY GLP",
-        "symbol": "SY GLP",
+        "address": "0x1aDDD80E6039594eE970E5872D247bf0414C8903",
+        "name": "fsGLP",
+        "symbol": "fsGLP",
         "decimals": 18
       }
     ],
@@ -19,15 +19,15 @@
   "0x4a8E64c3A66ce0830e3bf2ea7863b013Aa592114": {
     "protocolToken": {
       "address": "0x4a8E64c3A66ce0830e3bf2ea7863b013Aa592114",
-      "name": "YT gDAI 28MAR2024",
+      "name": "YT-gDAI-28MAR2024",
       "symbol": "YT-gDAI-28MAR2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xAF699fb0D9F12Bf7B14474aE5c9Bea688888DF73",
-        "name": "SY gDAI",
-        "symbol": "SY-gDAI",
+        "address": "0xd85E038593d7A098614721EaE955EC2022B9B91B",
+        "name": "gDAI",
+        "symbol": "gDAI",
         "decimals": 18
       }
     ],
@@ -36,15 +36,15 @@
   "0x0AdEd315d2e51F676a2Aa8d2bc6A79C88e0F1c1a": {
     "protocolToken": {
       "address": "0x0AdEd315d2e51F676a2Aa8d2bc6A79C88e0F1c1a",
-      "name": "YT Stargate USDT 27JUN2024",
+      "name": "YT-Stargate USDT-27JUN2024",
       "symbol": "YT-Stargate USDT-27JUN2024",
       "decimals": 6
     },
     "underlyingTokens": [
       {
-        "address": "0x068DEf65B9dbAFf02b4ee54572a9Fa7dFb188EA3",
-        "name": "SY Stargate USDT",
-        "symbol": "SY-Stargate USDT",
+        "address": "0xB6CfcF89a7B22988bfC96632aC2A9D6daB60d641",
+        "name": "S*USDT",
+        "symbol": "S*USDT",
         "decimals": 6
       }
     ],
@@ -53,15 +53,15 @@
   "0x7588C74473a84d7Fa87Bec375B408e3402f7fdb9": {
     "protocolToken": {
       "address": "0x7588C74473a84d7Fa87Bec375B408e3402f7fdb9",
-      "name": "YT PENDLE-ETH_Camelot 27JUN2024",
+      "name": "YT-PENDLE-ETH_Camelot-27JUN2024",
       "symbol": "YT-PENDLE-ETH_Camelot-27JUN2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xc79d8a2AA6d769138E599D4DBC30569c9870a6Ee",
-        "name": "SY PENDLE-ETH_Camelot",
-        "symbol": "SY-PENDLE-ETH_Camelot",
+        "address": "0xBfCa4230115DE8341F3A3d5e8845fFb3337B2Be3",
+        "name": "CMLT-LP",
+        "symbol": "CMLT-LP",
         "decimals": 18
       }
     ],
@@ -70,15 +70,15 @@
   "0x69ddf9Ce5568EfA913f1eA601Ed298ccfeBfC811": {
     "protocolToken": {
       "address": "0x69ddf9Ce5568EfA913f1eA601Ed298ccfeBfC811",
-      "name": "YT ARB-ETH_Camelot 27JUN2024",
+      "name": "YT-ARB-ETH_Camelot-27JUN2024",
       "symbol": "YT-ARB-ETH_Camelot-27JUN2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x318EEC91f653cA72fAFB038f9AD792A6bC0d644C",
-        "name": "SY ARB-ETH_Camelot",
-        "symbol": "SY-ARB-ETH_Camelot",
+        "address": "0xa6c5C7D189fA4eB5Af8ba34E63dCDD3a635D433f",
+        "name": "CMLT-LP",
+        "symbol": "CMLT-LP",
         "decimals": 18
       }
     ],
@@ -87,15 +87,15 @@
   "0x60f83082fc2Aa538D684310365dA08314322F3D3": {
     "protocolToken": {
       "address": "0x60f83082fc2Aa538D684310365dA08314322F3D3",
-      "name": "YT ARB-GRAIL_Camelot 27JUN2024",
+      "name": "YT-ARB-GRAIL_Camelot-27JUN2024",
       "symbol": "YT-ARB-GRAIL_Camelot-27JUN2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xdd4C7313Fe4C92e043B9B7dFE433e239BcD05A0D",
-        "name": "SY ARB-GRAIL_Camelot",
-        "symbol": "SY-ARB-GRAIL_Camelot",
+        "address": "0xC9da32C3b444F15412F7FeAC6104d1E258D23B1b",
+        "name": "CMLT-LP",
+        "symbol": "CMLT-LP",
         "decimals": 18
       }
     ],
@@ -104,15 +104,15 @@
   "0xC8D9369809e48d03FF7B69D7979b174e2D34874C": {
     "protocolToken": {
       "address": "0xC8D9369809e48d03FF7B69D7979b174e2D34874C",
-      "name": "YT wstETH 26JUN2025",
+      "name": "YT-wstETH-26JUN2025",
       "symbol": "YT-wstETH-26JUN2025",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x80c12D5b6Cc494632Bf11b03F09436c8B61Cc5Df",
-        "name": "SY wstETH",
-        "symbol": "SY-wstETH",
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "wstETH",
+        "symbol": "wstETH",
         "decimals": 18
       }
     ],
@@ -121,15 +121,15 @@
   "0xe822AE44EB2466B4E263b1cbC94b4833dDEf9700": {
     "protocolToken": {
       "address": "0xe822AE44EB2466B4E263b1cbC94b4833dDEf9700",
-      "name": "YT rETH 26JUN2025",
+      "name": "YT-rETH-26JUN2025",
       "symbol": "YT-rETH-26JUN2025",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xc0Cf4b266bE5B3229C49590B59E67A09c15b22f4",
-        "name": "SY rETH",
-        "symbol": "SY-rETH",
+        "address": "0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8",
+        "name": "rETH",
+        "symbol": "rETH",
         "decimals": 18
       }
     ],
@@ -138,15 +138,15 @@
   "0x0052B6096f8c1DCBEfB9ba381EB6b67479b5c56b": {
     "protocolToken": {
       "address": "0x0052B6096f8c1DCBEfB9ba381EB6b67479b5c56b",
-      "name": "YT wstETH 27JUN2024",
+      "name": "YT-wstETH-27JUN2024",
       "symbol": "YT-wstETH-27JUN2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x80c12D5b6Cc494632Bf11b03F09436c8B61Cc5Df",
-        "name": "SY wstETH",
-        "symbol": "SY-wstETH",
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "wstETH",
+        "symbol": "wstETH",
         "decimals": 18
       }
     ],
@@ -155,15 +155,15 @@
   "0x722a6031d5976fc61fA952A02160406960969927": {
     "protocolToken": {
       "address": "0x722a6031d5976fc61fA952A02160406960969927",
-      "name": "YT wstETH 28DEC2023",
+      "name": "YT-wstETH-28DEC2023",
       "symbol": "YT-wstETH-28DEC2023",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x80c12D5b6Cc494632Bf11b03F09436c8B61Cc5Df",
-        "name": "SY wstETH",
-        "symbol": "SY-wstETH",
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "wstETH",
+        "symbol": "wstETH",
         "decimals": 18
       }
     ],
@@ -172,15 +172,15 @@
   "0x9D090Ef4Aafd0ACB821113a7689d5794e50bD047": {
     "protocolToken": {
       "address": "0x9D090Ef4Aafd0ACB821113a7689d5794e50bD047",
-      "name": "YT HLP 27JUN2024",
+      "name": "YT-HLP-27JUN2024",
       "symbol": "YT-HLP-27JUN2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xF18011766Cf11D905e93ed5626838d44c7FA14B7",
-        "name": "SY HLP",
-        "symbol": "SY-HLP",
+        "address": "0x4307fbDCD9Ec7AEA5a1c2958deCaa6f316952bAb",
+        "name": "HLP",
+        "symbol": "HLP",
         "decimals": 18
       }
     ],
@@ -189,15 +189,15 @@
   "0x9DbD1fC6D2731ebD42a5E5B8e268bFA7C68980Ae": {
     "protocolToken": {
       "address": "0x9DbD1fC6D2731ebD42a5E5B8e268bFA7C68980Ae",
-      "name": "YT mPendle 26SEP2024",
+      "name": "YT-mPendle-26SEP2024",
       "symbol": "YT-mPendle-26SEP2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x5C4110eD760470f79E469a901Bd6fb45a65BE0F4",
-        "name": "SY mPendle",
-        "symbol": "SY-mPendle",
+        "address": "0xB688BA096b7Bb75d7841e47163Cd12D18B36A5bF",
+        "name": "mPendle",
+        "symbol": "mPendle",
         "decimals": 18
       }
     ],
@@ -206,15 +206,15 @@
   "0xf31B528d724354575c0c65Ab17D6dEcde29d2900": {
     "protocolToken": {
       "address": "0xf31B528d724354575c0c65Ab17D6dEcde29d2900",
-      "name": "YT MUXLP 28MAR2024",
+      "name": "YT-MUXLP-28MAR2024",
       "symbol": "YT-MUXLP-28MAR2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x4B3f79Ce3D5d752064288FD2Be968A1c21b3ba37",
-        "name": "SY MUXLP",
-        "symbol": "SY-MUXLP",
+        "address": "0x7CbaF5a14D953fF896E5B3312031515c858737C8",
+        "name": "MUXLP",
+        "symbol": "MUXLP",
         "decimals": 18
       }
     ],
@@ -223,15 +223,15 @@
   "0x1B33c8D479Ce5596fF9756a3010E70a7412938E2": {
     "protocolToken": {
       "address": "0x1B33c8D479Ce5596fF9756a3010E70a7412938E2",
-      "name": "YT GM ARB-USDC 28MAR2024",
+      "name": "YT-GM-ARB-USDC-28MAR2024",
       "symbol": "YT-GM-ARB-USDC-28MAR2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xC5b5d60EccB76C4a53F7DBE7cE3cb5D92557EFfF",
-        "name": "SY GM ARB-USDC",
-        "symbol": "SY-GM-ARB-USDC",
+        "address": "0xC25cEf6061Cf5dE5eb761b50E4743c1F5D7E5407",
+        "name": "GM",
+        "symbol": "GM",
         "decimals": 18
       }
     ],
@@ -240,15 +240,15 @@
   "0x2591bC78d50d777CAC68AedDA0e8BC928A89A538": {
     "protocolToken": {
       "address": "0x2591bC78d50d777CAC68AedDA0e8BC928A89A538",
-      "name": "YT sUSDC-ARBSilo 1FEB2024",
+      "name": "YT-sUSDC-ARBSilo-1FEB2024",
       "symbol": "YT-sUSDC-ARBSilo-1FEB2024",
       "decimals": 6
     },
     "underlyingTokens": [
       {
-        "address": "0x60955a190dec0dB9a45ABe553ad2994126EfdFcc",
-        "name": "SY sUSDC-ARBSilo",
-        "symbol": "SY-sUSDC-ARBSilo",
+        "address": "0x55ADE3B74abef55bF379FF6Ae61CB77a405Eb4A8",
+        "name": "sUSDC-ARB",
+        "symbol": "sUSDC-ARB",
         "decimals": 6
       }
     ],
@@ -257,15 +257,15 @@
   "0xcA71E00e364BB033371a7F61f3F6B803b06e9fC4": {
     "protocolToken": {
       "address": "0xcA71E00e364BB033371a7F61f3F6B803b06e9fC4",
-      "name": "YT wstETH 28MAR2024",
+      "name": "YT-wstETH-28MAR2024",
       "symbol": "YT-wstETH-28MAR2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x80c12D5b6Cc494632Bf11b03F09436c8B61Cc5Df",
-        "name": "SY wstETH",
-        "symbol": "SY-wstETH",
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "wstETH",
+        "symbol": "wstETH",
         "decimals": 18
       }
     ],
@@ -274,15 +274,15 @@
   "0xF28Db483773E3616DA91FDfa7b5D4090Ac40cC59": {
     "protocolToken": {
       "address": "0xF28Db483773E3616DA91FDfa7b5D4090Ac40cC59",
-      "name": "YT weETH 25APR2024",
+      "name": "YT-weETH-25APR2024",
       "symbol": "YT-weETH-25APR2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xa6C895EB332E91c5b3D00B7baeEAae478cc502DA",
-        "name": "SY weETH",
-        "symbol": "SY-weETH",
+        "address": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe",
+        "name": "weETH",
+        "symbol": "weETH",
         "decimals": 18
       }
     ],
@@ -291,15 +291,15 @@
   "0x28DF0f193D8e45073BC1db6F2347812C031bA818": {
     "protocolToken": {
       "address": "0x28DF0f193D8e45073BC1db6F2347812C031bA818",
-      "name": "YT rsETH 25APR2024",
+      "name": "YT-rsETH-25APR2024",
       "symbol": "YT-rsETH-25APR2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xf176fB51F4eB826136a54FDc71C50fCd2202E272",
-        "name": "SY rsETH",
-        "symbol": "SY-rsETH",
+        "address": "0x4186BFC76E2E237523CBC30FD220FE055156b41F",
+        "name": "rsETH",
+        "symbol": "rsETH",
         "decimals": 18
       }
     ],
@@ -308,15 +308,15 @@
   "0xAE602e0560Fd3aDE52d4E94D1cDbe63E61019693": {
     "protocolToken": {
       "address": "0xAE602e0560Fd3aDE52d4E94D1cDbe63E61019693",
-      "name": "YT sETH-wstEthSilo 26DEC2024",
+      "name": "YT-sETH-wstEthSilo-26DEC2024",
       "symbol": "YT-sETH-wstEthSilo-26DEC2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xc49d8fdA920a46B21E1821780238f9E7A0de68df",
-        "name": "SY sETH-wstEthSilo",
-        "symbol": "SY-sETH-wstEthSilo",
+        "address": "0xC46C5DE6eCa1CA6dc3f8c5d3ce863aE326F4b2CF",
+        "name": "sWETH-wstETH",
+        "symbol": "sWETH-wstETH",
         "decimals": 18
       }
     ],
@@ -325,15 +325,15 @@
   "0x11C603EdBF3bA83D81B91069978dd5Ac57334c65": {
     "protocolToken": {
       "address": "0x11C603EdBF3bA83D81B91069978dd5Ac57334c65",
-      "name": "YT sETH-pteETHSilo 25APR2024",
+      "name": "YT-sETH-pteETHSilo-25APR2024",
       "symbol": "YT-sETH-pteETHSilo-25APR2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x0ed2954AB05E59Ea63338e2a0c08C8316F245466",
-        "name": "SY sETH-pteETHSilo",
-        "symbol": "SY-sETH-pteETHSilo",
+        "address": "0x8Be4715f1DB9e8551fEA5ef8b30A2eb99398e5d2",
+        "name": "sWETH-PT-weETH-25APR2024",
+        "symbol": "sWETH-PT-weETH-25APR2024",
         "decimals": 18
       }
     ],
@@ -342,15 +342,15 @@
   "0xA1c32EF8d3c4c30cB596bAb8647e11daF0FA5C94": {
     "protocolToken": {
       "address": "0xA1c32EF8d3c4c30cB596bAb8647e11daF0FA5C94",
-      "name": "YT aUSDC 27JUN2024",
+      "name": "YT-aUSDC-27JUN2024",
       "symbol": "YT-aUSDC-27JUN2024",
       "decimals": 6
     },
     "underlyingTokens": [
       {
-        "address": "0x50288c30c37FA1Ec6167a31E575EA8632645dE20",
-        "name": "SY aUSDC",
-        "symbol": "SY-aUSDC",
+        "address": "0x724dc807b04555b71ed48a6896b6F41593b8C637",
+        "name": "aArbUSDCn",
+        "symbol": "aArbUSDCn",
         "decimals": 6
       }
     ],
@@ -359,15 +359,15 @@
   "0x5A4956D9d4C362C6df3Ae442f87AC0AFcba468dA": {
     "protocolToken": {
       "address": "0x5A4956D9d4C362C6df3Ae442f87AC0AFcba468dA",
-      "name": "YT gDAI 26SEP2024",
+      "name": "YT-gDAI-26SEP2024",
       "symbol": "YT-gDAI-26SEP2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xAF699fb0D9F12Bf7B14474aE5c9Bea688888DF73",
-        "name": "SY gDAI",
-        "symbol": "SY-gDAI",
+        "address": "0xd85E038593d7A098614721EaE955EC2022B9B91B",
+        "name": "gDAI",
+        "symbol": "gDAI",
         "decimals": 18
       }
     ],
@@ -376,15 +376,15 @@
   "0xf875f32648BE14d04e0Df4a977Afd4290DD92713": {
     "protocolToken": {
       "address": "0xf875f32648BE14d04e0Df4a977Afd4290DD92713",
-      "name": "YT GLP 26SEP2024",
+      "name": "YT-GLP-26SEP2024",
       "symbol": "YT-GLP-26SEP2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xd1F7d5fec6EB532847e552269c905Ac489992Ef6",
-        "name": "SY GLP",
-        "symbol": "SY-GLP",
+        "address": "0x1aDDD80E6039594eE970E5872D247bf0414C8903",
+        "name": "fsGLP",
+        "symbol": "fsGLP",
         "decimals": 18
       }
     ],
@@ -393,15 +393,15 @@
   "0xD101DF41943Ec333F64Df316A3093cee1Bf16572": {
     "protocolToken": {
       "address": "0xD101DF41943Ec333F64Df316A3093cee1Bf16572",
-      "name": "YT MUXLP 27JUN2024",
+      "name": "YT-MUXLP-27JUN2024",
       "symbol": "YT-MUXLP-27JUN2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x5220E1Ef8CE83Aa9fE0CCE1b8395cD698d04bc7E",
-        "name": "SY MUXLP",
-        "symbol": "SY-MUXLP",
+        "address": "0x7CbaF5a14D953fF896E5B3312031515c858737C8",
+        "name": "MUXLP",
+        "symbol": "MUXLP",
         "decimals": 18
       }
     ],
@@ -410,15 +410,15 @@
   "0x05735B65686635F5C87AA9D2dae494Fb2E838f38": {
     "protocolToken": {
       "address": "0x05735B65686635F5C87AA9D2dae494Fb2E838f38",
-      "name": "YT Renzo ezETH 27JUN2024",
+      "name": "YT-ezETH-27JUN2024",
       "symbol": "YT-ezETH-27JUN2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x0dE802e3D6Cc9145A150bBDc8da9F988a98c5202",
-        "name": "SY Renzo ezETH",
-        "symbol": "SY-ezETH",
+        "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+        "name": "ezETH",
+        "symbol": "ezETH",
         "decimals": 18
       }
     ],
@@ -427,15 +427,15 @@
   "0xDcdC1004d5C271ADc048982d7EB900cC4F472333": {
     "protocolToken": {
       "address": "0xDcdC1004d5C271ADc048982d7EB900cC4F472333",
-      "name": "YT weETH 27JUN2024",
+      "name": "YT-weETH-27JUN2024",
       "symbol": "YT-weETH-27JUN2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xa6C895EB332E91c5b3D00B7baeEAae478cc502DA",
-        "name": "SY weETH",
-        "symbol": "SY-weETH",
+        "address": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe",
+        "name": "weETH",
+        "symbol": "weETH",
         "decimals": 18
       }
     ],
@@ -444,15 +444,15 @@
   "0xDA53c73a28dfF704Fe757b8B4f6f6359707533Da": {
     "protocolToken": {
       "address": "0xDA53c73a28dfF704Fe757b8B4f6f6359707533Da",
-      "name": "YT rsETH 27JUN2024",
+      "name": "YT-rsETH-27JUN2024",
       "symbol": "YT-rsETH-27JUN2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xf176fB51F4eB826136a54FDc71C50fCd2202E272",
-        "name": "SY rsETH",
-        "symbol": "SY-rsETH",
+        "address": "0x4186BFC76E2E237523CBC30FD220FE055156b41F",
+        "name": "rsETH",
+        "symbol": "rsETH",
         "decimals": 18
       }
     ],
@@ -461,15 +461,15 @@
   "0xF478f7FeaeAB0DFdC91E02cDd6C63c66E30a7335": {
     "protocolToken": {
       "address": "0xF478f7FeaeAB0DFdC91E02cDd6C63c66E30a7335",
-      "name": "YT Ethena USDe 29AUG2024",
+      "name": "YT-USDe-29AUG2024",
       "symbol": "YT-USDe-29AUG2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xb3C24D9dcCC2Ec5f778742389ffe448E295B84e0",
-        "name": "SY Ethena USDe",
-        "symbol": "SY-USDe",
+        "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+        "name": "USDe",
+        "symbol": "USDe",
         "decimals": 18
       }
     ],
@@ -478,15 +478,15 @@
   "0x7Cfb81E9c9402D48c6F3161204a21800b210BAeA": {
     "protocolToken": {
       "address": "0x7Cfb81E9c9402D48c6F3161204a21800b210BAeA",
-      "name": "YT sETH-pteETHSilo 27JUN2024",
+      "name": "YT-sETH-pteETHSilo-27JUN2024",
       "symbol": "YT-sETH-pteETHSilo-27JUN2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xd0c4351a18F40b96b6446Da3A191496DF36d60F9",
-        "name": "SY sETH-pteETHSilo",
-        "symbol": "SY-sETH-pteETHSilo",
+        "address": "0x22BED3E6E56266C347769189B44646D91b3150c4",
+        "name": "sWETH-PT-weETH-27JUN2024",
+        "symbol": "sWETH-PT-weETH-27JUN2024",
         "decimals": 18
       }
     ],
@@ -495,15 +495,15 @@
   "0x8138E8cAC470Dc963437b055834B54D56d6d6a29": {
     "protocolToken": {
       "address": "0x8138E8cAC470Dc963437b055834B54D56d6d6a29",
-      "name": "YT sETH-ptezETHSilo 27JUN2024",
+      "name": "YT-sETH-ptezETHSilo-27JUN2024",
       "symbol": "YT-sETH-ptezETHSilo-27JUN2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x8242F81F7B06C1e67bC80DFD2B2716f58bD46651",
-        "name": "SY sETH-ptezETHSilo",
-        "symbol": "SY-sETH-ptezETHSilo",
+        "address": "0xEde3D8D3213D8defC37E4EdEA86448D4c692bAa6",
+        "name": "sWETH-PT-ezETH-27JUN2024",
+        "symbol": "sWETH-PT-ezETH-27JUN2024",
         "decimals": 18
       }
     ],
@@ -512,15 +512,15 @@
   "0xfB2A7AC0372C2425c273932f8d438518402A873E": {
     "protocolToken": {
       "address": "0xfB2A7AC0372C2425c273932f8d438518402A873E",
-      "name": "YT weETH 26SEP2024",
+      "name": "YT-weETH-26SEP2024",
       "symbol": "YT-weETH-26SEP2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xa6C895EB332E91c5b3D00B7baeEAae478cc502DA",
-        "name": "SY weETH",
-        "symbol": "SY-weETH",
+        "address": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe",
+        "name": "weETH",
+        "symbol": "weETH",
         "decimals": 18
       }
     ],
@@ -529,15 +529,15 @@
   "0xE58AfaA6E2abF9A9F243D5A55Bd5447628c4D811": {
     "protocolToken": {
       "address": "0xE58AfaA6E2abF9A9F243D5A55Bd5447628c4D811",
-      "name": "YT Renzo ezETH 26SEP2024",
+      "name": "YT-ezETH-26SEP2024",
       "symbol": "YT-ezETH-26SEP2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x0dE802e3D6Cc9145A150bBDc8da9F988a98c5202",
-        "name": "SY Renzo ezETH",
-        "symbol": "SY-ezETH",
+        "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+        "name": "ezETH",
+        "symbol": "ezETH",
         "decimals": 18
       }
     ],
@@ -546,15 +546,15 @@
   "0x2FDc424946AA72D42E2F897447d7c335E64845F0": {
     "protocolToken": {
       "address": "0x2FDc424946AA72D42E2F897447d7c335E64845F0",
-      "name": "YT rsETH 26SEP2024",
+      "name": "YT-rsETH-26SEP2024",
       "symbol": "YT-rsETH-26SEP2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xf176fB51F4eB826136a54FDc71C50fCd2202E272",
-        "name": "SY rsETH",
-        "symbol": "SY-rsETH",
+        "address": "0x4186BFC76E2E237523CBC30FD220FE055156b41F",
+        "name": "rsETH",
+        "symbol": "rsETH",
         "decimals": 18
       }
     ],
@@ -563,15 +563,15 @@
   "0xF61267c3B79d6fdeB659174E0171E86cE7DC84B8": {
     "protocolToken": {
       "address": "0xF61267c3B79d6fdeB659174E0171E86cE7DC84B8",
-      "name": "YT MUXLP 26DEC2024",
+      "name": "YT-MUXLP-26DEC2024",
       "symbol": "YT-MUXLP-26DEC2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x5220E1Ef8CE83Aa9fE0CCE1b8395cD698d04bc7E",
-        "name": "SY MUXLP",
-        "symbol": "SY-MUXLP",
+        "address": "0x7CbaF5a14D953fF896E5B3312031515c858737C8",
+        "name": "MUXLP",
+        "symbol": "MUXLP",
         "decimals": 18
       }
     ],
@@ -580,15 +580,15 @@
   "0x93f94f1aDFa5f39E7f4C92f0e35c60d66EB5C3F6": {
     "protocolToken": {
       "address": "0x93f94f1aDFa5f39E7f4C92f0e35c60d66EB5C3F6",
-      "name": "YT HLP 26DEC2024",
+      "name": "YT-HLP-26DEC2024",
       "symbol": "YT-HLP-26DEC2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x4c43F75F34BF34D3DB3fc3841845d2b69A5eB6A3",
-        "name": "SY HLP",
-        "symbol": "SY-HLP",
+        "address": "0x4307fbDCD9Ec7AEA5a1c2958deCaa6f316952bAb",
+        "name": "HLP",
+        "symbol": "HLP",
         "decimals": 18
       }
     ],
@@ -597,15 +597,15 @@
   "0xF065e0f7AFA89DF5f2a8a109239C809f115129AE": {
     "protocolToken": {
       "address": "0xF065e0f7AFA89DF5f2a8a109239C809f115129AE",
-      "name": "YT Aave aUSDC 26DEC2024",
+      "name": "YT-aUSDC-26DEC2024",
       "symbol": "YT-aUSDC-26DEC2024",
       "decimals": 6
     },
     "underlyingTokens": [
       {
-        "address": "0x369751A0b33DF3adE5e2eE55e7bB9556B10F390C",
-        "name": "SY Aave aUSDC",
-        "symbol": "SY-aUSDC",
+        "address": "0x724dc807b04555b71ed48a6896b6F41593b8C637",
+        "name": "aArbUSDCn",
+        "symbol": "aArbUSDCn",
         "decimals": 6
       }
     ],
@@ -614,15 +614,15 @@
   "0xe7C4e31538A6610e8a452804628baA1025bb787d": {
     "protocolToken": {
       "address": "0xe7C4e31538A6610e8a452804628baA1025bb787d",
-      "name": "YT sETH-ptezETHSilo 26SEP2024",
+      "name": "YT-sETH-ptezETHSilo-26SEP2024",
       "symbol": "YT-sETH-ptezETHSilo-26SEP2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x821CAC5cB29C2D9C99c63Be153316a479D550d72",
-        "name": "SY sETH-ptezETHSilo",
-        "symbol": "SY-sETH-ptezETHSilo",
+        "address": "0x71453D859918A1D59354324c2A70d32e53b97f67",
+        "name": "sWETH-PT-ezETH-26SEP2024",
+        "symbol": "sWETH-PT-ezETH-26SEP2024",
         "decimals": 18
       }
     ],
@@ -631,15 +631,15 @@
   "0x30F030Cf922878b0b0fa07120F9Cec0c8278A293": {
     "protocolToken": {
       "address": "0x30F030Cf922878b0b0fa07120F9Cec0c8278A293",
-      "name": "YT sETH-pteETHSilo 26SEP2024",
+      "name": "YT-sETH-pteETHSilo-26SEP2024",
       "symbol": "YT-sETH-pteETHSilo-26SEP2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x8C8F82A3A24C3EF2DD9Cefd4A8faa8cA9807DB55",
-        "name": "SY sETH-pteETHSilo",
-        "symbol": "SY-sETH-pteETHSilo",
+        "address": "0x9d0c7DAFE3b34B51010DB522b9F17455Fa9Cea7C",
+        "name": "sWETH-PT-weETH-26SEP2024",
+        "symbol": "sWETH-PT-weETH-26SEP2024",
         "decimals": 18
       }
     ],
@@ -648,15 +648,15 @@
   "0x55561255b5E95d2bdCBE40cb964e65FDEe1F72cD": {
     "protocolToken": {
       "address": "0x55561255b5E95d2bdCBE40cb964e65FDEe1F72cD",
-      "name": "YT sETH-ptrsETHSilo 26SEP2024",
+      "name": "YT-sETH-ptrsETHSilo-26SEP2024",
       "symbol": "YT-sETH-ptrsETHSilo-26SEP2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x8f5Ee98867f5d5CFd71eaEfE9997ea37A46dEb33",
-        "name": "SY sETH-ptrsETHSilo",
-        "symbol": "SY-sETH-ptrsETHSilo",
+        "address": "0x1E6fD3251c949E1708a5277Faa773CC88E799B99",
+        "name": "sWETH-PT-rsETH-26SEP2024",
+        "symbol": "sWETH-PT-rsETH-26SEP2024",
         "decimals": 18
       }
     ],
@@ -665,18 +665,69 @@
   "0x916758e7605d0a4da4D9144e4e6fFc46E401eE67": {
     "protocolToken": {
       "address": "0x916758e7605d0a4da4D9144e4e6fFc46E401eE67",
-      "name": "YT Dolomite USDC 26SEP2024",
+      "name": "YT-dUSDC-26SEP2024",
       "symbol": "YT-dUSDC-26SEP2024",
       "decimals": 6
     },
     "underlyingTokens": [
       {
-        "address": "0x84E0efc0633041aac9D0196B7aC8aF3505e8CC32",
-        "name": "SY Dolomite USDC",
-        "symbol": "SY-dUSDC",
+        "address": "0x6DBd962b4f62D18F756b5DE57425574c4B8228D6",
+        "name": "dUSDC",
+        "symbol": "dUSDC",
         "decimals": 6
       }
     ],
     "marketAddress": "0x2fB73D98B1D60B35FD12508933578098f352cE7e"
+  },
+  "0xa810ba21e65D54dE0283002dB8fB6Ea504c83234": {
+    "protocolToken": {
+      "address": "0xa810ba21e65D54dE0283002dB8fB6Ea504c83234",
+      "name": "YT-uniETH-26DEC2024",
+      "symbol": "YT-uniETH-26DEC2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3d15fD46CE9e551498328B1C83071D9509E2C3a0",
+        "name": "uniETH",
+        "symbol": "uniETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x279b44E48226d40Ec389129061cb0B56C5c09e46"
+  },
+  "0x03577ffA91EDB93ac3aEE081EfBE6F323da949e1": {
+    "protocolToken": {
+      "address": "0x03577ffA91EDB93ac3aEE081EfBE6F323da949e1",
+      "name": "YT-gUSDC-26DEC2024",
+      "symbol": "YT-gUSDC-26DEC2024",
+      "decimals": 6
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xd3443ee1e91aF28e5FB858Fbd0D72A63bA8046E0",
+        "name": "gUSDC",
+        "symbol": "gUSDC",
+        "decimals": 6
+      }
+    ],
+    "marketAddress": "0xa877a0E177b54A37066c1786F91a1DAb68F094AF"
+  },
+  "0x8D0aC6c608fd4BF52FcC31DcEf30D0aE2aED2e81": {
+    "protocolToken": {
+      "address": "0x8D0aC6c608fd4BF52FcC31DcEf30D0aE2aED2e81",
+      "name": "YT-USDe-28NOV2024",
+      "symbol": "YT-USDe-28NOV2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+        "name": "USDe",
+        "symbol": "USDe",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x281fE15fd3E08A282f52D5cf09a4d13c3709E66D"
   }
 }

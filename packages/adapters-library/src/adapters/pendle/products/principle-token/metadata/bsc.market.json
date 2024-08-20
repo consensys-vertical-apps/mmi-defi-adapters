@@ -2,15 +2,15 @@
   "0x70c1138B54ba212776d3A9d29b6160C54C31cd5d": {
     "protocolToken": {
       "address": "0x70c1138B54ba212776d3A9d29b6160C54C31cd5d",
-      "name": "PT wbETH 26DEC2024",
+      "name": "PT-wbETH-26DEC2024",
       "symbol": "PT-wbETH-26DEC2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x96F77F24b3d17166FcaF3a9E3B8330fF38B966F9",
-        "name": "SY wbETH",
-        "symbol": "SY-wbETH",
+        "address": "0xa2E3356610840701BDf5611a53974510Ae27E2e1",
+        "name": "wBETH",
+        "symbol": "wBETH",
         "decimals": 18
       }
     ],
@@ -19,15 +19,15 @@
   "0x5eC2ae0AFDEc891E7702344dc2A31C636B3627Eb": {
     "protocolToken": {
       "address": "0x5eC2ae0AFDEc891E7702344dc2A31C636B3627Eb",
-      "name": "PT Thena frxETH-ETH 27JUN2024",
+      "name": "PT-Thena frxETH-ETH-27JUN2024",
       "symbol": "PT-Thena frxETH-ETH-27JUN2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xf86DDA825885674F85C5420079E1Df1bC0F372c6",
-        "name": "SY Thena frxETH-ETH",
-        "symbol": "SY-Thena frxETH-ETH",
+        "address": "0x8A420aACA0c92e3f97CDcFdd852e01Ac5b609452",
+        "name": "sAMM-ETH/frxETH",
+        "symbol": "sAMM-ETH/frxETH",
         "decimals": 18
       }
     ],
@@ -36,15 +36,15 @@
   "0x04eb6B56ff53f457c8E857ca8D4fbC8d9a531c0C": {
     "protocolToken": {
       "address": "0x04eb6B56ff53f457c8E857ca8D4fbC8d9a531c0C",
-      "name": "PT ankrBNB 26JUN2025",
+      "name": "PT-ankrBNB-26JUN2025",
       "symbol": "PT-ankrBNB-26JUN2025",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x58732F1C1243A0D5876a601FB8D1Ee508B21580D",
-        "name": "SY ankrBNB",
-        "symbol": "SY-ankrBNB",
+        "address": "0x52F24a5e03aee338Da5fd9Df68D2b6FAe1178827",
+        "name": "ankrBNB",
+        "symbol": "ankrBNB",
         "decimals": 18
       }
     ],
@@ -53,15 +53,15 @@
   "0x5eC5033a44ffb6f21DA3A4f4CCe4163485D61747": {
     "protocolToken": {
       "address": "0x5eC5033a44ffb6f21DA3A4f4CCe4163485D61747",
-      "name": "PT Renzo ezETH 26SEP2024",
+      "name": "PT-ezETH-26SEP2024",
       "symbol": "PT-ezETH-26SEP2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xe49269B5D31299BcE407c8CcCf241274e9A93C9A",
-        "name": "SY Renzo ezETH",
-        "symbol": "SY-ezETH",
+        "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+        "name": "ezETH",
+        "symbol": "ezETH",
         "decimals": 18
       }
     ],
@@ -70,15 +70,15 @@
   "0x0E8Ba474FCB6581059C61c328a21CFa285C7Cee7": {
     "protocolToken": {
       "address": "0x0E8Ba474FCB6581059C61c328a21CFa285C7Cee7",
-      "name": "PT weETH 26SEP2024",
+      "name": "PT-weETH-26SEP2024",
       "symbol": "PT-weETH-26SEP2024",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x56b70AC3a6Ae850F6AEE67591d1bB86895Ba211E",
-        "name": "SY weETH",
-        "symbol": "SY-weETH",
+        "address": "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A",
+        "name": "weETH",
+        "symbol": "weETH",
         "decimals": 18
       }
     ],
