@@ -9,6 +9,7 @@ import {
 } from '../../../../core/decorators/cacheToFile'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   PositionType,
@@ -26,7 +27,6 @@ import {
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { Cerc20__factory, Comptroller__factory } from '../../contracts'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 
 const contractAddresses: Partial<
   Record<

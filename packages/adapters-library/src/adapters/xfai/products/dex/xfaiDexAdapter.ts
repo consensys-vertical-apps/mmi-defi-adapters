@@ -10,6 +10,7 @@ import {
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   GetTotalValueLockedInput,
   PositionType,
@@ -22,7 +23,6 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { XfaiFactory__factory, XfaiPool__factory } from '../../contracts'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 
 type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]

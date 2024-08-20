@@ -10,6 +10,7 @@ import {
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   GetTotalValueLockedInput,
@@ -28,7 +29,6 @@ import {
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { Cerc20__factory, Comptroller__factory } from '../../contracts'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 
 const contractAddresses: Partial<
   Record<

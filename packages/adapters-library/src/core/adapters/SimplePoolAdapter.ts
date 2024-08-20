@@ -79,9 +79,8 @@ export abstract class SimplePoolAdapter<AdditionalMetadata extends JsonMetadata>
     blockNumber,
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const protocolTokenMetadata = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
+    const protocolTokenMetadata =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     const underlyingTokenConversionRate = await this.unwrapProtocolToken(
       protocolTokenMetadata,
@@ -103,9 +102,8 @@ export abstract class SimplePoolAdapter<AdditionalMetadata extends JsonMetadata>
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.withdrawals({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -117,9 +115,8 @@ export abstract class SimplePoolAdapter<AdditionalMetadata extends JsonMetadata>
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.deposits({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -131,9 +128,8 @@ export abstract class SimplePoolAdapter<AdditionalMetadata extends JsonMetadata>
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.borrows({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -145,9 +141,8 @@ export abstract class SimplePoolAdapter<AdditionalMetadata extends JsonMetadata>
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.repays({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }

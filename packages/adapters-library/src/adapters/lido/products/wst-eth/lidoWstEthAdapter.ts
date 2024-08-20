@@ -1,5 +1,6 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   AssetType,
@@ -12,7 +13,6 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { WstEthToken__factory } from '../../contracts'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 
 type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]

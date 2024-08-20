@@ -13,6 +13,7 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   GetEventsInput,
@@ -31,7 +32,6 @@ import {
   ConvexRewardFactorySidechain__factory,
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardFactorySidechain'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 
 export class ConvexSidechainStakingAdapter extends LpStakingAdapter {
   productId = 'sidechain-staking'
@@ -204,9 +204,8 @@ export class ConvexSidechainStakingAdapter extends LpStakingAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     const extraRewardTracker = ConvexRewardFactorySidechain__factory.connect(
       protocolTokenAddress,

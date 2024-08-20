@@ -11,6 +11,7 @@ import {
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   GetEventsInput,
@@ -24,7 +25,6 @@ import {
 } from '../../../../types/adapter'
 import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
 import { ConvexFactory__factory } from '../../contracts'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 
 /**
  * First version of Convex had additional token which needed to be staked to accrue rewards

@@ -12,13 +12,13 @@ import {
   ProtocolDataProvider__factory,
 } from '../contracts'
 
+import { ProtocolToken } from '../../../types/IProtocolAdapter'
 import {
   TokenBalance,
   TokenType,
   Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../types/adapter'
-import { ProtocolToken } from '../../../types/IProtocolAdapter'
 
 const PRICE_PEGGED_TO_ONE = 1
 const sparkEthereumProviderAddress =

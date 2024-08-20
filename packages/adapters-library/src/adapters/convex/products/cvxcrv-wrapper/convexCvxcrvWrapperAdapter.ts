@@ -159,12 +159,10 @@ export class ConvexCvxcrvWrapperAdapter extends SimplePoolAdapter<AdditionalMeta
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
-    const protocolRewardTokens = await this.fetchUnderlyingTokensMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
+    const protocolRewardTokens =
+      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
     const responsePromises = protocolRewardTokens.map(
       async (extraRewardToken) => {
         const cvxcrvContract = CvxcrvWrapper__factory.connect(

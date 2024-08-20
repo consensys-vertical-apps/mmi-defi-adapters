@@ -8,15 +8,15 @@ import {
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
 
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
+import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 
 type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]

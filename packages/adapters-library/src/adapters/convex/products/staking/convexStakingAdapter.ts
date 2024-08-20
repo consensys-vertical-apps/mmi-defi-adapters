@@ -12,6 +12,7 @@ import {
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   GetEventsInput,
@@ -32,7 +33,6 @@ import {
   CvxMint__factory,
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardsFactory'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 
 export const CONVEX_TOKEN_ADDRESS = '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b'
 
@@ -136,9 +136,8 @@ export class ConvexStakingAdapter extends LpStakingAdapter {
 
         if (crvRewardBalance === 0n) return
 
-        const protocolToken = await this.fetchProtocolTokenMetadata(
-          protocolAddress,
-        )
+        const protocolToken =
+          await this.fetchProtocolTokenMetadata(protocolAddress)
         const crvRewardMetadata = await this.getCrv()
         const convexRewardMetadata = await this.getMinter()
 
@@ -245,9 +244,8 @@ export class ConvexStakingAdapter extends LpStakingAdapter {
       this.provider,
     )
 
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     const convexToken = await this.getMinter()
     const crvToken = await this.getCrv()

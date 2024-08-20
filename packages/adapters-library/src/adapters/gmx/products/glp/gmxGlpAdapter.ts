@@ -382,9 +382,8 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getProtocolTokenMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
 
       filter: {
         fromBlock,
@@ -402,9 +401,8 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getProtocolTokenMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
 
       filter: {
         fromBlock,

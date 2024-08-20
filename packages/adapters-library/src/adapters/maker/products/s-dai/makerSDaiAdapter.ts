@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { RAY_POSITIONS } from '../../../../core/constants/RAY'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import {
   AssetType,
@@ -15,7 +16,6 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { McdPot__factory } from '../../contracts'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 
 const MCD_POT_ADDRESS = '0x197e90f9fad81970ba7976f33cbd77088e5d7cf7'
 

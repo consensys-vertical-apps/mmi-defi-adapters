@@ -5,6 +5,7 @@ import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   GetEventsInput,
@@ -24,7 +25,6 @@ import {
   Vault__factory,
 } from '../../contracts'
 import { PoolBalanceChangedEvent } from '../../contracts/Vault'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 
 type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]

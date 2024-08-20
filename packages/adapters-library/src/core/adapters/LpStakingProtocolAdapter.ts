@@ -176,9 +176,8 @@ export abstract class LpStakingAdapter extends SimplePoolAdapter<LpStakingProtoc
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     return protocolToken
   }
@@ -207,9 +206,8 @@ export abstract class LpStakingAdapter extends SimplePoolAdapter<LpStakingProtoc
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
-      protocolTokenAddress,
-    )
+    const underlyingTokens =
+      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
 
     return underlyingTokens
   }

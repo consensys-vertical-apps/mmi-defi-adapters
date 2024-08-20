@@ -1,6 +1,8 @@
 import { getAddress, parseEther } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   GetTotalValueLockedInput,
@@ -19,8 +21,6 @@ import {
   Vault__factory,
   VaultsRegistry__factory,
 } from '../../contracts'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 
 const amount1 = parseEther('1')
 
