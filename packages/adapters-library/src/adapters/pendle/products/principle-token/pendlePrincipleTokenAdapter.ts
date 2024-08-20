@@ -176,7 +176,6 @@ export class PendlePrincipleTokenAdapter
   async unwrap({
     blockNumber,
     protocolTokenAddress,
-    tokenId,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     const metadata = await this.fetchPoolMetadata(protocolTokenAddress)
     const underlyingToken = (

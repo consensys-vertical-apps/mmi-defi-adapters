@@ -14,6 +14,7 @@ import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
+  GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
@@ -21,12 +22,17 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
+  TokenType,
+  UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
+import { StandardisedYield__factory } from '../../contracts'
+import { filterMapAsync } from '../../../../core/utils/filters'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 
 type Metadata = Record<
   string,
@@ -171,13 +177,58 @@ export class PendleStandardisedYieldTokenAdapter
 
   async unwrap({
     protocolTokenAddress,
-    tokenId,
-    blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     return this.helpers.unwrapOneToOne({
       protocolToken: await this.getProtocolToken(protocolTokenAddress),
       underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress),
     })
+  }
+
+  async getRewardPositions({
+    userAddress,
+    protocolTokenAddress,
+    blockNumber,
+  }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
+    const standardisedYieldTokenContract = StandardisedYield__factory.connect(
+      protocolTokenAddress,
+      this.provider,
+    )
+
+    const rewardsOut =
+      await standardisedYieldTokenContract.claimRewards.staticCall(
+        userAddress,
+        {
+          blockTag: blockNumber,
+        },
+      )
+
+    if (!rewardsOut.length || rewardsOut.every((rewardValue) => !rewardValue)) {
+      return []
+    }
+
+    const rewardTokenAddresses =
+      await standardisedYieldTokenContract.getRewardTokens()
+
+    return await filterMapAsync(
+      rewardTokenAddresses,
+      async (rewardTokenAddress, i) => {
+        if (!rewardsOut[i]) {
+          return undefined
+        }
+
+        const rewardTokenMetadata = await getTokenMetadata(
+          rewardTokenAddress,
+          this.chainId,
+          this.provider,
+        )
+
+        return {
+          ...rewardTokenMetadata,
+          type: TokenType.UnderlyingClaimable,
+          balanceRaw: rewardsOut[i],
+        }
+      },
+    )
   }
 
   private async getProtocolToken(protocolTokenAddress: string) {

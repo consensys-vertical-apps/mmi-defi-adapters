@@ -32,6 +32,8 @@ import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
 import { PENDLE_ROUTER_STATIC_CONTRACT } from '../../backend/constants'
 import { RouterStatic__factory, YieldToken__factory } from '../../contracts'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { filterMapAsync } from '../../../../core/utils/filters'
 
 type Metadata = Record<
   string,
@@ -217,7 +219,7 @@ export class PendleYieldTokenAdapter
       this.provider,
     )
 
-    const interestAndRewards =
+    const { interestOut, rewardsOut } =
       await yieldTokenContract.redeemDueInterestAndRewards.staticCall(
         userAddress,
         true,
@@ -225,17 +227,45 @@ export class PendleYieldTokenAdapter
         { blockTag: blockNumber },
       )
 
-    const underlyingToken = (
-      await this.getUnderlyingTokens(protocolTokenAddress)
-    )[0]!
+    const rewards: UnderlyingReward[] = []
+    if (interestOut) {
+      const underlyingToken = (
+        await this.getUnderlyingTokens(protocolTokenAddress)
+      )[0]!
 
-    return [
-      {
+      rewards.push({
         ...underlyingToken,
         type: TokenType.UnderlyingClaimable,
-        balanceRaw: interestAndRewards.interestOut,
-      },
-    ]
+        balanceRaw: interestOut,
+      })
+    }
+
+    if (rewardsOut.length) {
+      const rewardTokenAddresses = await yieldTokenContract.getRewardTokens()
+
+      rewards.push(
+        ...(await filterMapAsync(
+          rewardTokenAddresses,
+          async (rewardTokenAddress, i) => {
+            if (!rewardsOut[i]) {
+              return undefined
+            }
+
+            return {
+              ...(await getTokenMetadata(
+                rewardTokenAddress,
+                this.chainId,
+                this.provider,
+              )),
+              type: TokenType.UnderlyingClaimable,
+              balanceRaw: rewardsOut[i],
+            }
+          },
+        )),
+      )
+    }
+
+    return rewards
   }
 
   private async getProtocolToken(protocolTokenAddress: string) {
