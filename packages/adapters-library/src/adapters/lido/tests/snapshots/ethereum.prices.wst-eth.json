@@ -10,29 +10,13 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "st-eth",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
-          "name": "Liquid staked Ether 2.0",
-          "symbol": "stETH",
-          "decimals": 18,
-          "baseRate": 1,
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x0000000000000000000000000000000000000000",
-              "symbol": "ETH",
-              "name": "Ethereum",
-              "decimals": 18,
-              "type": "underlying",
-              "underlyingRateRaw": "1000000000000000000n",
-              "underlyingRate": 1,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-            }
-          ]
+      "success": false,
+      "error": {
+        "message": "The number NaN cannot be converted to a BigInt because it is not an integer",
+        "details": {
+          "name": "RangeError"
         }
-      ]
+      }
     },
     {
       "protocolId": "lido",
@@ -48,8 +32,8 @@
         {
           "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
           "name": "Wrapped liquid staked Ether 2.0",
-          "symbol": "wstETH",
           "decimals": 18,
+          "symbol": "wstETH",
           "baseRate": 1,
           "type": "protocol",
           "tokens": [

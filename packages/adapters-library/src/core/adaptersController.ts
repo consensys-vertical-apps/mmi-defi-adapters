@@ -34,7 +34,9 @@ export class AdaptersController {
         Partial<
           Record<
             Chain,
-            (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]
+            (new (
+              input: ProtocolAdapterParams,
+            ) => IProtocolAdapter)[]
           >
         >
       >
@@ -128,7 +130,6 @@ export class AdaptersController {
             protocolTokens = await adapter.getProtocolTokens()
           } catch (error) {
             if (!(error instanceof NotImplementedError)) {
-              console.log('here 2')
               throw error
             }
             continue
@@ -249,25 +250,17 @@ export class AdaptersController {
 
           product.chains.push(chainId)
 
-          const protocolTokenAddresses: string[] = []
+          const protocolTokenAddresses = (
+            await adapter.getProtocolTokens().catch(() => undefined)
+          )?.map((token) => token.address)
 
-          try {
-            const protocolTokens = await adapter.getProtocolTokens()
-            protocolTokens.forEach((token) => {
-              protocolTokenAddresses.push(token.address)
-            })
-          } catch (error) {
-            if (!(error instanceof NotImplementedError)) {
-              console.error('Error fetching protocol tokens:', error)
-              throw error
+          if (protocolTokenAddresses) {
+            if (!product.protocolTokenAddresses) {
+              product.protocolTokenAddresses = {}
             }
-          }
 
-          if (!product.protocolTokenAddresses) {
-            product.protocolTokenAddresses = {}
+            product.protocolTokenAddresses[chainId] = protocolTokenAddresses
           }
-
-          product.protocolTokenAddresses[chainId] = protocolTokenAddresses
         }
       }
     }

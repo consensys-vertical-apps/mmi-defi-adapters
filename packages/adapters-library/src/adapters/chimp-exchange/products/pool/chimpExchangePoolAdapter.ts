@@ -283,7 +283,10 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
         )
 
         return {
-          ...protocolToken,
+          name: protocolToken.name,
+          address: protocolToken.address,
+          symbol: protocolToken.symbol,
+          decimals: protocolToken.decimals,
           type: TokenType.Protocol,
           tokens,
           totalSupplyRaw: totalSupplyRaw!,

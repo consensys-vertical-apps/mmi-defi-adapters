@@ -32,7 +32,7 @@ export class LidoStEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   async getProtocolTokens() {
     return [
       {
-        address: '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84',
+        address: PROTOCOL_TOKEN_ADDRESS,
         name: 'Liquid staked Ether 2.0',
         symbol: 'stETH',
         decimals: 18,
