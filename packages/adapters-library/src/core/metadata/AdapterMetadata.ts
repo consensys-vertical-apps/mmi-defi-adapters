@@ -226,17 +226,15 @@ import SolvSolvBtcArbitrumSolvBtc from '../../adapters/solv/products/solv-btc/me
 
 import SolvSolvBtcAvalancheSolvBtc from '../../adapters/solv/products/solv-btc/metadata/avalanche.solv-btc.json'
 
-import LidoStEthEthereumProtocolToken from '../../adapters/lido/products/st-eth/metadata/ethereum.protocolToken.json'
+import LidoStEthEthereumProtocolToken from '../../adapters/lido/products/st-eth/metadata/ethereum.protocol-token.json'
 
-import LidoWstEthEthereumProtocolToken from '../../adapters/lido/products/wst-eth/metadata/ethereum.protocolToken.json'
+import MakerSDaiEthereumProtocolToken from '../../adapters/maker/products/s-dai/metadata/ethereum.protocol-token.json'
 
-import MakerSDaiEthereumProtocolToken from '../../adapters/maker/products/s-dai/metadata/ethereum.protocolToken.json'
+import RocketPoolRethEthereumProtocolToken from '../../adapters/rocket-pool/products/reth/metadata/ethereum.protocol-token.json'
 
-import RocketPoolRethEthereumProtocolToken from '../../adapters/rocket-pool/products/reth/metadata/ethereum.protocolToken.json'
+import StakeWiseOsEthEthereumProtocolToken from '../../adapters/stakewise/products/os-eth/metadata/ethereum.protocol-token.json'
 
-import StakeWiseOsEthEthereumProtocolToken from '../../adapters/stakewise/products/os-eth/metadata/ethereum.protocolToken.json'
-
-import SwellSwEthEthereumProtocolToken from '../../adapters/swell/products/sw-eth/metadata/ethereum.protocolToken.json'
+import SwellSwEthEthereumProtocolToken from '../../adapters/swell/products/sw-eth/metadata/ethereum.protocol-token.json'
 
 export const MetadataFiles = new Map<string, Json>([
   [
@@ -1189,18 +1187,9 @@ export const MetadataFiles = new Map<string, Json>([
       protocolId: Protocol.Lido,
       productId: 'st-eth',
       chainId: Chain.Ethereum,
-      fileKey: 'protocolToken',
+      fileKey: 'protocol-token',
     }),
     LidoStEthEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Lido,
-      productId: 'wst-eth',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocolToken',
-    }),
-    LidoWstEthEthereumProtocolToken,
   ],
   [
     metadataKey({
@@ -1216,7 +1205,7 @@ export const MetadataFiles = new Map<string, Json>([
       protocolId: Protocol.Maker,
       productId: 's-dai',
       chainId: Chain.Ethereum,
-      fileKey: 'protocolToken',
+      fileKey: 'protocol-token',
     }),
     MakerSDaiEthereumProtocolToken,
   ],
@@ -1558,7 +1547,7 @@ export const MetadataFiles = new Map<string, Json>([
       protocolId: Protocol.RocketPool,
       productId: 'reth',
       chainId: Chain.Ethereum,
-      fileKey: 'protocolToken',
+      fileKey: 'protocol-token',
     }),
     RocketPoolRethEthereumProtocolToken,
   ],
@@ -1657,7 +1646,7 @@ export const MetadataFiles = new Map<string, Json>([
       protocolId: Protocol.StakeWise,
       productId: 'os-eth',
       chainId: Chain.Ethereum,
-      fileKey: 'protocolToken',
+      fileKey: 'protocol-token',
     }),
     StakeWiseOsEthEthereumProtocolToken,
   ],
@@ -1756,7 +1745,7 @@ export const MetadataFiles = new Map<string, Json>([
       protocolId: Protocol.Swell,
       productId: 'sw-eth',
       chainId: Chain.Ethereum,
-      fileKey: 'protocolToken',
+      fileKey: 'protocol-token',
     }),
     SwellSwEthEthereumProtocolToken,
   ],

@@ -83,7 +83,7 @@ export class MakerSDaiAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     throw new NotImplementedError()
   }
 
-  @CacheToFile({ fileKey: 'protocolToken' })
+  @CacheToFile({ fileKey: 'protocol-token' })
   async getProtocolTokens() {
     return [
       {

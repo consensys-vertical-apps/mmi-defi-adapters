@@ -42,7 +42,7 @@ export class LidoWstEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     }
   }
 
-  @CacheToFile({ fileKey: 'protocolToken' })
+  @CacheToFile({ fileKey: 'protocol-token' })
   async getProtocolTokens() {
     return [
       {

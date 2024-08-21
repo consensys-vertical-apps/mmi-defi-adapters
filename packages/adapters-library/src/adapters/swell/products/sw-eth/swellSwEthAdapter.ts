@@ -74,7 +74,7 @@ export class SwellSwEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     ]
   }
 
-  @CacheToFile({ fileKey: 'protocolToken' })
+  @CacheToFile({ fileKey: 'protocol-token' })
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     return [
       {
