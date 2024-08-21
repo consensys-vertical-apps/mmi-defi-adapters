@@ -10,6 +10,8 @@ import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcPr
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 
+import { filterMapAsync } from '../../../../core/utils/filters'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
@@ -32,8 +34,6 @@ import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
 import { PENDLE_ROUTER_STATIC_CONTRACT } from '../../backend/constants'
 import { RouterStatic__factory, YieldToken__factory } from '../../contracts'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { filterMapAsync } from '../../../../core/utils/filters'
 
 type Metadata = Record<
   string,

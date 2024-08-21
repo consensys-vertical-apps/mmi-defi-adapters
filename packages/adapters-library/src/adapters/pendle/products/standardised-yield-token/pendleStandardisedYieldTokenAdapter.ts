@@ -10,6 +10,8 @@ import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcPr
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 
+import { filterMapAsync } from '../../../../core/utils/filters'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
@@ -31,8 +33,6 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
 import { StandardisedYieldToken__factory } from '../../contracts'
-import { filterMapAsync } from '../../../../core/utils/filters'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 
 type Metadata = Record<
   string,
