@@ -44,9 +44,9 @@ Watch the [build contract classes from ABIs video](https://drive.google.com/file
 
 ### Build your DeFi asset metadata files
 
-Watch the [build your DeFi asset metadata files video](https://drive.google.com/file/d/1QfI5ZIg2-lkw2KqNypZo0G5ySye0o0WC/view 'Watch the build your DeFi asset metadata files') for a detailed guide.
+Watch the [build your DeFi asset metadata files video](https://drive.google.com/file/d/1F6AnSkhd9Iu7f62f3VcAJ60iHZfAib1B/view 'Watch the build your DeFi asset metadata files') for a detailed guide.
 
-6. Implement the buildMetadata function in your adapter.
+6. Implement the getProtocolToken function in your adapter.
 7. Run:
    - `npm run build-metadata -- -p <protocol-id>` to create your metadata files
 
