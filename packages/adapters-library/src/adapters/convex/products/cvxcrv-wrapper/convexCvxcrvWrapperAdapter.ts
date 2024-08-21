@@ -66,18 +66,15 @@ export class ConvexCvxcrvWrapperAdapter extends SimplePoolAdapter<AdditionalMeta
     blockNumber,
     protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const [protocolToken] = await this.getProtocolTokens()
+    const { name, address, symbol, decimals } = (
+      await this.getProtocolTokens()
+    )[0]!
 
-    if (
-      protocolTokenAddresses &&
-      !protocolTokenAddresses.includes(protocolToken!.address)
-    ) {
+    if (protocolTokenAddresses && !protocolTokenAddresses.includes(address)) {
       return []
     }
 
-    const extraRewardTokens = await this.fetchUnderlyingTokensMetadata(
-      protocolToken!.address,
-    )
+    const extraRewardTokens = await this.fetchUnderlyingTokensMetadata(address)
 
     const contract = CvxcrvWrapper__factory.connect(
       CVXCRV_WRAPPER_ADDRESS,
@@ -98,7 +95,10 @@ export class ConvexCvxcrvWrapperAdapter extends SimplePoolAdapter<AdditionalMeta
 
     return [
       {
-        ...protocolToken!,
+        name,
+        address,
+        symbol,
+        decimals,
         balanceRaw: lpTokenBalance,
         type: TokenType.Protocol,
         tokens: extraRewards.map((result) => {
@@ -159,10 +159,12 @@ export class ConvexCvxcrvWrapperAdapter extends SimplePoolAdapter<AdditionalMeta
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken =
-      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
-    const protocolRewardTokens =
-      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
+    const protocolRewardTokens = await this.fetchUnderlyingTokensMetadata(
+      protocolTokenAddress,
+    )
     const responsePromises = protocolRewardTokens.map(
       async (extraRewardToken) => {
         const cvxcrvContract = CvxcrvWrapper__factory.connect(

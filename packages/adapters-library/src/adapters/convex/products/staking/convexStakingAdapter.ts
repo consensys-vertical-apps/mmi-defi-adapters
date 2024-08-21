@@ -189,8 +189,6 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
 
     if (crvRewardBalance === 0n) return []
 
-    const protocolToken =
-      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
     const crvRewardMetadata = await this.getCrv()
     const convexRewardMetadata = await this.getMinter()
 
@@ -271,8 +269,9 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
       this.provider,
     )
 
-    const protocolToken =
-      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
 
     const convexToken = await this.getMinter()
     const crvToken = await this.getCrv()
@@ -332,6 +331,7 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
 
     return await Promise.all(results)
   }
+
   async getExtraRewardWithdrawals({
     userAddress,
     protocolTokenAddress,
