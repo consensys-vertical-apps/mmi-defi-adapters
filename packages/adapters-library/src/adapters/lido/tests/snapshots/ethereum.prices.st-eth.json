@@ -33,18 +33,6 @@
           ]
         }
       ]
-    },
-    {
-      "protocolId": "lido",
-      "name": "Lido wstEth",
-      "description": "Lido defi adapter for wstEth",
-      "siteUrl": "https://stake.lido.fi/wrap",
-      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png",
-      "positionType": "stake",
-      "chainId": 1,
-      "productId": "wst-eth",
-      "success": true,
-      "tokens": []
     }
   ],
   "rpcResponses": {}

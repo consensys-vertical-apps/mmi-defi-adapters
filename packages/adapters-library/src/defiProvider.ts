@@ -441,13 +441,20 @@ export class DefiProvider {
       return { tokens }
     }
 
-    return this.runForAllProtocolsAndChains({
-      runner,
-      filterProtocolIds,
-      filterChainIds,
+    const result = (
+      await this.runForAllProtocolsAndChains({
+        runner,
+        filterProtocolIds,
+        filterChainIds,
 
-      method: 'unwrap',
-    })
+        method: 'unwrap',
+      })
+    ).filter(
+      (result) =>
+        !result.success || (result.success && result.tokens.length > 0),
+    )
+
+    return result
   }
 
   async getWithdrawals({
