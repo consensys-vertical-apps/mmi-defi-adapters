@@ -11,22 +11,19 @@
         "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
         "name": "USDC",
         "symbol": "USDC",
-        "decimals": 6,
-        "index": 0
+        "decimals": 6
       },
       {
         "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
         "name": "Dai Stablecoin",
         "symbol": "DAI",
-        "decimals": 18,
-        "index": 1
+        "decimals": 18
       },
       {
         "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
         "name": "Tether USD",
         "symbol": "USDT",
-        "decimals": 6,
-        "index": 3
+        "decimals": 6
       }
     ]
   },
@@ -42,15 +39,13 @@
         "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
         "name": "USDC",
         "symbol": "USDC",
-        "decimals": 6,
-        "index": 0
+        "decimals": 6
       },
       {
         "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
         "name": "Tether USD",
         "symbol": "USDT",
-        "decimals": 6,
-        "index": 1
+        "decimals": 6
       }
     ]
   },
@@ -66,15 +61,13 @@
         "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
         "name": "Tether USD",
         "symbol": "USDT",
-        "decimals": 6,
-        "index": 0
+        "decimals": 6
       },
       {
         "address": "0xe38DF7880EF9408e9933Fd0e96abcC3CebF76006",
         "name": "50USDC-50WETH",
         "symbol": "50USDC-50WETH",
-        "decimals": 18,
-        "index": 1
+        "decimals": 18
       }
     ]
   },
@@ -90,15 +83,13 @@
         "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
         "name": "USDC",
         "symbol": "USDC",
-        "decimals": 6,
-        "index": 0
+        "decimals": 6
       },
       {
         "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
         "name": "Tether USD",
         "symbol": "USDT",
-        "decimals": 6,
-        "index": 1
+        "decimals": 6
       }
     ]
   },
@@ -114,15 +105,13 @@
         "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
         "name": "USDC",
         "symbol": "USDC",
-        "decimals": 6,
-        "index": 0
+        "decimals": 6
       },
       {
         "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
         "name": "Wrapped Ether",
         "symbol": "WETH",
-        "decimals": 18,
-        "index": 1
+        "decimals": 18
       }
     ]
   },
@@ -138,15 +127,13 @@
         "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
         "name": "Tether USD",
         "symbol": "USDT",
-        "decimals": 6,
-        "index": 0
+        "decimals": 6
       },
       {
         "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
         "name": "Wrapped Ether",
         "symbol": "WETH",
-        "decimals": 18,
-        "index": 1
+        "decimals": 18
       }
     ]
   },
@@ -162,15 +149,13 @@
         "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
         "name": "USDC",
         "symbol": "USDC",
-        "decimals": 6,
-        "index": 0
+        "decimals": 6
       },
       {
         "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
         "name": "Wrapped Ether",
         "symbol": "WETH",
-        "decimals": 18,
-        "index": 1
+        "decimals": 18
       }
     ]
   },
@@ -186,15 +171,13 @@
         "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
         "name": "USDC",
         "symbol": "USDC",
-        "decimals": 6,
-        "index": 0
+        "decimals": 6
       },
       {
         "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
         "name": "Wrapped Ether",
         "symbol": "WETH",
-        "decimals": 18,
-        "index": 1
+        "decimals": 18
       }
     ]
   },
@@ -210,15 +193,13 @@
         "address": "0x34835e193dea4880f0fE1a03D0E6063312F9b859",
         "name": "Hi Mom",
         "symbol": "MOM",
-        "decimals": 18,
-        "index": 0
+        "decimals": 18
       },
       {
         "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
         "name": "Wrapped Ether",
         "symbol": "WETH",
-        "decimals": 18,
-        "index": 1
+        "decimals": 18
       }
     ]
   }

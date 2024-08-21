@@ -84,7 +84,7 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
 
         const underlyingTokens = await filterMapAsync(
           poolTokens[0],
-          async (token, index) => {
+          async (token) => {
             if (getAddress(token) === getAddress(event.args.poolAddress)) {
               return undefined
             }
@@ -97,7 +97,6 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
 
             return {
               ...tokenMetadata,
-              index,
             }
           },
         )

@@ -269,9 +269,8 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
       this.provider,
     )
 
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     const convexToken = await this.getMinter()
     const crvToken = await this.getCrv()
