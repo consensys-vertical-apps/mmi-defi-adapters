@@ -236,6 +236,8 @@ import StakeWiseOsEthEthereumProtocolToken from '../../adapters/stakewise/produc
 
 import SwellSwEthEthereumProtocolToken from '../../adapters/swell/products/sw-eth/metadata/ethereum.protocol-token.json'
 
+import LidoWstEthEthereumProtocolToken from '../../adapters/lido/products/wst-eth/metadata/ethereum.protocol-token.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -1190,6 +1192,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     LidoStEthEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Lido,
+      productId: 'wst-eth',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    LidoWstEthEthereumProtocolToken,
   ],
   [
     metadataKey({

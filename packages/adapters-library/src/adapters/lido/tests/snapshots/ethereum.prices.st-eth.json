@@ -43,13 +43,8 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "wst-eth",
-      "success": false,
-      "error": {
-        "message": "invalid value for Contract target (argument=\"target\", value=null, code=INVALID_ARGUMENT, version=6.12.0)",
-        "details": {
-          "name": "TypeError"
-        }
-      }
+      "success": true,
+      "tokens": []
     }
   ],
   "rpcResponses": {}
