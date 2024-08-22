@@ -47,8 +47,8 @@
               "symbol": "USDT",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "59120209840470579892426593833334n",
-              "balance": 5.912020984047058e25,
+              "balanceRaw": "24668512n",
+              "balance": 24.668512,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
             }
           ],

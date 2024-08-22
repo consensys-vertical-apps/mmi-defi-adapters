@@ -25,11 +25,13 @@ import {
   Vault__factory,
 } from '../../contracts'
 import { PoolBalanceChangedEvent } from '../../contracts/Vault'
+import { symbol } from 'zod'
 
 type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]
   poolId: string
   totalSupplyType: string
+  underlyingTokensIndexes: number[]
 }
 
 const vaultContractAddresses: Partial<Record<Chain, string>> = {
@@ -84,7 +86,7 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
 
         const underlyingTokens = await filterMapAsync(
           poolTokens[0],
-          async (token) => {
+          async (token, index) => {
             if (getAddress(token) === getAddress(event.args.poolAddress)) {
               return undefined
             }
@@ -97,6 +99,7 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
 
             return {
               ...tokenMetadata,
+              index,
             }
           },
         )
@@ -105,7 +108,17 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
           poolId: event.args.poolId,
           totalSupplyType: event.args.specialization === 0n ? '2' : '0',
           ...protocolToken,
-          underlyingTokens,
+          underlyingTokens: underlyingTokens.map((underlyingToken) => {
+            return {
+              name: underlyingToken.name,
+              address: underlyingToken.address,
+              decimals: underlyingToken.decimals,
+              symbol: underlyingToken.symbol,
+            }
+          }),
+          underlyingTokensIndexes: underlyingTokens.map(
+            (underlyingToken) => underlyingToken.index,
+          ),
         })
       }),
     )
@@ -276,7 +289,8 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
         const tokens = poolMetadata.underlyingTokens.map(
           ({ ...token }, index) => ({
             ...token,
-            totalSupplyRaw: poolBalances[index]!,
+            totalSupplyRaw:
+              poolBalances[poolMetadata.underlyingTokensIndexes[index]!]!,
             type: TokenType.Underlying,
           }),
         )
@@ -331,7 +345,8 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
 
     const underlyingRates = poolMetadata.underlyingTokens.map(
       ({ ...token }, index) => {
-        const underlyingPoolBalance = poolBalances[index]!
+        const underlyingPoolBalance =
+          poolBalances[poolMetadata.underlyingTokensIndexes[index]!]!
         const underlyingRateRaw =
           totalSupplyRaw === 0n
             ? 0n

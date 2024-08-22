@@ -20,33 +20,33 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "name": "USDC",
-              "symbol": "USDC",
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "decimals": 6,
+              "symbol": "USDC",
               "totalSupplyRaw": "1386304138n",
               "type": "underlying",
               "totalSupply": 1386.304138,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
-              "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
               "name": "Dai Stablecoin",
-              "symbol": "DAI",
+              "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
               "decimals": 18,
+              "symbol": "DAI",
               "totalSupplyRaw": "1277334512004014371395n",
               "type": "underlying",
               "totalSupply": 1277.3345120040144,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
             },
             {
-              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
               "name": "Tether USD",
-              "symbol": "USDT",
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
               "decimals": 6,
-              "totalSupplyRaw": "2596148429267212472959128243483648n",
+              "symbol": "USDT",
+              "totalSupplyRaw": "1304557619n",
               "type": "underlying",
-              "totalSupply": 2.5961484292672125e27,
+              "totalSupply": 1304.557619,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
             }
           ],
@@ -61,20 +61,20 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "name": "USDC",
-              "symbol": "USDC",
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "decimals": 6,
+              "symbol": "USDC",
               "totalSupplyRaw": "1n",
               "type": "underlying",
               "totalSupply": 0.000001,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
-              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
               "name": "Tether USD",
-              "symbol": "USDT",
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
               "decimals": 6,
+              "symbol": "USDT",
               "totalSupplyRaw": "1n",
               "type": "underlying",
               "totalSupply": 0.000001,
@@ -92,20 +92,20 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
               "name": "Tether USD",
-              "symbol": "USDT",
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
               "decimals": 6,
+              "symbol": "USDT",
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
             },
             {
-              "address": "0xe38DF7880EF9408e9933Fd0e96abcC3CebF76006",
               "name": "50USDC-50WETH",
-              "symbol": "50USDC-50WETH",
+              "address": "0xe38DF7880EF9408e9933Fd0e96abcC3CebF76006",
               "decimals": 18,
+              "symbol": "50USDC-50WETH",
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "tokens": [
@@ -145,20 +145,20 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "name": "USDC",
-              "symbol": "USDC",
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "decimals": 6,
+              "symbol": "USDC",
               "totalSupplyRaw": "120385n",
               "type": "underlying",
               "totalSupply": 0.120385,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
-              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
               "name": "Tether USD",
-              "symbol": "USDT",
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
               "decimals": 6,
+              "symbol": "USDT",
               "totalSupplyRaw": "158083n",
               "type": "underlying",
               "totalSupply": 0.158083,
@@ -176,20 +176,20 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "name": "USDC",
-              "symbol": "USDC",
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "decimals": 6,
+              "symbol": "USDC",
               "totalSupplyRaw": "8979569751n",
               "type": "underlying",
               "totalSupply": 8979.569751,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
               "name": "Wrapped Ether",
-              "symbol": "WETH",
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
               "decimals": 18,
+              "symbol": "WETH",
               "totalSupplyRaw": "3377020804926250605n",
               "type": "underlying",
               "totalSupply": 3.3770208049262505,
@@ -207,20 +207,20 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
               "name": "Tether USD",
-              "symbol": "USDT",
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
               "decimals": 6,
+              "symbol": "USDT",
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
             },
             {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
               "name": "Wrapped Ether",
-              "symbol": "WETH",
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
               "decimals": 18,
+              "symbol": "WETH",
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
@@ -238,20 +238,20 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "name": "USDC",
-              "symbol": "USDC",
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "decimals": 6,
+              "symbol": "USDC",
               "totalSupplyRaw": "192323n",
               "type": "underlying",
               "totalSupply": 0.192323,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
               "name": "Wrapped Ether",
-              "symbol": "WETH",
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
               "decimals": 18,
+              "symbol": "WETH",
               "totalSupplyRaw": "101000000000000n",
               "type": "underlying",
               "totalSupply": 0.000101,
@@ -269,20 +269,20 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "name": "USDC",
-              "symbol": "USDC",
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "decimals": 6,
+              "symbol": "USDC",
               "totalSupplyRaw": "1969970n",
               "type": "underlying",
               "totalSupply": 1.96997,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
               "name": "Wrapped Ether",
-              "symbol": "WETH",
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
               "decimals": 18,
+              "symbol": "WETH",
               "totalSupplyRaw": "13730257958629n",
               "type": "underlying",
               "totalSupply": 0.000013730257958629,
@@ -300,20 +300,20 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x34835e193dea4880f0fE1a03D0E6063312F9b859",
               "name": "Hi Mom",
-              "symbol": "MOM",
+              "address": "0x34835e193dea4880f0fE1a03D0E6063312F9b859",
               "decimals": 18,
+              "symbol": "MOM",
               "totalSupplyRaw": "5000000000000000000000000n",
               "type": "underlying",
               "totalSupply": 5000000,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x34835e193dea4880f0fE1a03D0E6063312F9b859/logo.png"
             },
             {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
               "name": "Wrapped Ether",
-              "symbol": "WETH",
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
               "decimals": 18,
+              "symbol": "WETH",
               "totalSupplyRaw": "20000000000n",
               "type": "underlying",
               "totalSupply": 2e-8,

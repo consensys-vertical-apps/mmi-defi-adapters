@@ -8,24 +8,25 @@
     "decimals": 18,
     "underlyingTokens": [
       {
-        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
         "name": "USDC",
-        "symbol": "USDC",
-        "decimals": 6
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "decimals": 6,
+        "symbol": "USDC"
       },
       {
-        "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
         "name": "Dai Stablecoin",
-        "symbol": "DAI",
-        "decimals": 18
+        "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
+        "decimals": 18,
+        "symbol": "DAI"
       },
       {
-        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
         "name": "Tether USD",
-        "symbol": "USDT",
-        "decimals": 6
+        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+        "decimals": 6,
+        "symbol": "USDT"
       }
-    ]
+    ],
+    "underlyingTokensIndexes": [0, 1, 3]
   },
   {
     "poolId": "0xd2e846d6a2c1696b77678f1936df9b7fd3f25f8d000200000000000000000003",
@@ -36,18 +37,19 @@
     "decimals": 18,
     "underlyingTokens": [
       {
-        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
         "name": "USDC",
-        "symbol": "USDC",
-        "decimals": 6
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "decimals": 6,
+        "symbol": "USDC"
       },
       {
-        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
         "name": "Tether USD",
-        "symbol": "USDT",
-        "decimals": 6
+        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+        "decimals": 6,
+        "symbol": "USDT"
       }
-    ]
+    ],
+    "underlyingTokensIndexes": [0, 1]
   },
   {
     "poolId": "0xbb8e4e45cae19bc0b98961f66cce201624d2ce17000200000000000000000007",
@@ -58,18 +60,19 @@
     "decimals": 18,
     "underlyingTokens": [
       {
-        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
         "name": "Tether USD",
-        "symbol": "USDT",
-        "decimals": 6
+        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+        "decimals": 6,
+        "symbol": "USDT"
       },
       {
-        "address": "0xe38DF7880EF9408e9933Fd0e96abcC3CebF76006",
         "name": "50USDC-50WETH",
-        "symbol": "50USDC-50WETH",
-        "decimals": 18
+        "address": "0xe38DF7880EF9408e9933Fd0e96abcC3CebF76006",
+        "decimals": 18,
+        "symbol": "50USDC-50WETH"
       }
-    ]
+    ],
+    "underlyingTokensIndexes": [0, 1]
   },
   {
     "poolId": "0x1a2978168b7e64ebdc6b1fcb77cfc10123ac2df2000200000000000000000008",
@@ -80,18 +83,19 @@
     "decimals": 18,
     "underlyingTokens": [
       {
-        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
         "name": "USDC",
-        "symbol": "USDC",
-        "decimals": 6
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "decimals": 6,
+        "symbol": "USDC"
       },
       {
-        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
         "name": "Tether USD",
-        "symbol": "USDT",
-        "decimals": 6
+        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+        "decimals": 6,
+        "symbol": "USDT"
       }
-    ]
+    ],
+    "underlyingTokensIndexes": [0, 1]
   },
   {
     "poolId": "0xe38df7880ef9408e9933fd0e96abcc3cebf76006000200000000000000000001",
@@ -102,18 +106,19 @@
     "decimals": 18,
     "underlyingTokens": [
       {
-        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
         "name": "USDC",
-        "symbol": "USDC",
-        "decimals": 6
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "decimals": 6,
+        "symbol": "USDC"
       },
       {
-        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
         "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "decimals": 18,
+        "symbol": "WETH"
       }
-    ]
+    ],
+    "underlyingTokensIndexes": [0, 1]
   },
   {
     "poolId": "0xfee637c94e85b23472745f6b5ede2e4c0ad12a94000200000000000000000002",
@@ -124,18 +129,19 @@
     "decimals": 18,
     "underlyingTokens": [
       {
-        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
         "name": "Tether USD",
-        "symbol": "USDT",
-        "decimals": 6
+        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+        "decimals": 6,
+        "symbol": "USDT"
       },
       {
-        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
         "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "decimals": 18,
+        "symbol": "WETH"
       }
-    ]
+    ],
+    "underlyingTokensIndexes": [0, 1]
   },
   {
     "poolId": "0xb4ff092d031c7fd7eb988aac8bd9feb248ad4de4000200000000000000000004",
@@ -146,18 +152,19 @@
     "decimals": 18,
     "underlyingTokens": [
       {
-        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
         "name": "USDC",
-        "symbol": "USDC",
-        "decimals": 6
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "decimals": 6,
+        "symbol": "USDC"
       },
       {
-        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
         "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "decimals": 18,
+        "symbol": "WETH"
       }
-    ]
+    ],
+    "underlyingTokensIndexes": [0, 1]
   },
   {
     "poolId": "0x0692b65b1f2a74cb22f90314d5fb50c877b9d78a000200000000000000000006",
@@ -168,18 +175,19 @@
     "decimals": 18,
     "underlyingTokens": [
       {
-        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
         "name": "USDC",
-        "symbol": "USDC",
-        "decimals": 6
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "decimals": 6,
+        "symbol": "USDC"
       },
       {
-        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
         "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "decimals": 18,
+        "symbol": "WETH"
       }
-    ]
+    ],
+    "underlyingTokensIndexes": [0, 1]
   },
   {
     "poolId": "0x696df4c0db3fdc1a85513dddae01672ebefdc4c2000200000000000000000005",
@@ -190,17 +198,18 @@
     "decimals": 18,
     "underlyingTokens": [
       {
-        "address": "0x34835e193dea4880f0fE1a03D0E6063312F9b859",
         "name": "Hi Mom",
-        "symbol": "MOM",
-        "decimals": 18
+        "address": "0x34835e193dea4880f0fE1a03D0E6063312F9b859",
+        "decimals": 18,
+        "symbol": "MOM"
       },
       {
-        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
         "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "decimals": 18,
+        "symbol": "WETH"
       }
-    ]
+    ],
+    "underlyingTokensIndexes": [0, 1]
   }
 ]

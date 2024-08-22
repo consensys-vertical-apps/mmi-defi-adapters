@@ -35,7 +35,7 @@
                 "symbol": "USDT",
                 "decimals": 6,
                 "type": "underlying",
-                "balanceRaw": "59510390739628894971674851411242n"
+                "balanceRaw": "8656585n"
               },
               {
                 "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
@@ -43,7 +43,7 @@
                 "symbol": "USDT",
                 "decimals": 6,
                 "type": "underlying",
-                "balanceRaw": "59120209840470579892426593833334n"
+                "balanceRaw": "24668512n"
               }
             ]
           }
