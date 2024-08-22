@@ -1,5 +1,4 @@
 import { AbiCoder, keccak256 } from 'ethers'
-import { findKey, mapValues } from 'lodash'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
@@ -38,9 +37,9 @@ import {
   OpenFundShareDelegate__factory,
 } from '../../contracts'
 import {
-  SLOT_TO_PRODUCT_NAME,
   SOLV_YIELD_MARKETS,
   SolvYieldMarketConfig,
+  SolvYieldMarketPoolConfig,
 } from './config'
 
 /**
@@ -104,10 +103,10 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     const {
       navOracleAddress,
       openFundMarketAddress,
-      shareDelegateAddress,
-      shareConcreteAddress: openFundShareConcreteAddress,
-      redemptionDelegateAddress: openFundRedemptionDelegateAddress,
-      redemptionConcreteAddress: openFundRedemptionConcreteAddress,
+      openFundShareDelegateAddress,
+      openFundShareConcreteAddress,
+      openFundRedemptionDelegateAddress,
+      openFundRedemptionConcreteAddress,
     } = this.yieldMarketConfig
 
     this.navOracleContract = NavOracle__factory.connect(
@@ -121,7 +120,7 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     )
 
     this.openFundShareDelegateContract = OpenFundShareDelegate__factory.connect(
-      shareDelegateAddress,
+      openFundShareDelegateAddress,
       this.provider,
     )
 
@@ -160,6 +159,18 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     throw new NotImplementedError()
   }
 
+  private getPoolConfigBy(
+    paramName: keyof SolvYieldMarketPoolConfig,
+    value: string,
+  ) {
+    const poolConfig = this.yieldMarketConfig.pools.find(
+      (pool) => pool[paramName] === value,
+    )
+    if (!poolConfig)
+      throw new Error(`No pool config with ${paramName} = ${value}`)
+    return poolConfig
+  }
+
   /**
    * Each position in this chain's market is represented by holding either a GOEFS or a GOEFR. We can see them as NFTs.
    * The actual pool of the position is represented by the SFT's slot.
@@ -187,14 +198,12 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
   }
 
   private async getHoldings(userAddress: string): Promise<ProtocolPosition[]> {
-    const { shareDelegateAddress: openFundShareDelegateAddress } =
-      this.yieldMarketConfig
+    const { openFundShareDelegateAddress } = this.yieldMarketConfig
 
     // Count every instance of the GOEFS that the user holds
-    const tokensCount =
-      await this.openFundShareDelegateContract['balanceOf(address)'](
-        userAddress,
-      )
+    const tokensCount = await this.openFundShareDelegateContract[
+      'balanceOf(address)'
+    ](userAddress)
 
     if (!tokensCount) return []
 
@@ -219,15 +228,20 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
         userAddress,
         index,
       )
-    const balance =
-      await this.openFundShareDelegateContract['balanceOf(uint256)'](tokenId)
+    const balance = await this.openFundShareDelegateContract[
+      'balanceOf(uint256)'
+    ](tokenId)
 
     if (!balance) return
 
     const decimals = await this.openFundShareDelegateContract.valueDecimals()
     const slot = await this.openFundShareDelegateContract.slotOf(tokenId)
-    const [_, currency] =
-      await this.openFundShareConcreteContract.slotBaseInfo(slot)
+
+    const poolConfig = this.getPoolConfigBy('slotInShareSft', slot.toString())
+
+    const [_, currency] = await this.openFundShareConcreteContract.slotBaseInfo(
+      slot,
+    )
     const poolId = this.computePoolId(slot)
     const [latestSetNavTime] = await this.navOracleContract.poolNavInfos(poolId)
     const [nav] = await this.navOracleContract.getSubscribeNav(
@@ -269,14 +283,12 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
   private async getRedemptions(
     userAddress: string,
   ): Promise<ProtocolPosition[]> {
-    const { redemptionDelegateAddress: openFundRedemptionDelegateAddress } =
-      this.yieldMarketConfig
+    const { openFundRedemptionDelegateAddress } = this.yieldMarketConfig
 
     // Count every instance of the GOEFS that the user holds
-    const tokensCount =
-      await this.openFundRedemptionDelegateContract['balanceOf(address)'](
-        userAddress,
-      )
+    const tokensCount = await this.openFundRedemptionDelegateContract[
+      'balanceOf(address)'
+    ](userAddress)
     if (!tokensCount) return []
 
     const indexes = [...Array(Number.parseInt(tokensCount.toString())).keys()]
@@ -300,10 +312,9 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
         userAddress,
         index,
       )
-    const balance =
-      await this.openFundRedemptionDelegateContract['balanceOf(uint256)'](
-        tokenId,
-      )
+    const balance = await this.openFundRedemptionDelegateContract[
+      'balanceOf(uint256)'
+    ](tokenId)
 
     if (!balance) return
 
@@ -365,8 +376,7 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
    * @see https://github.com/solv-finance/SolvBTC/blob/ef5be00ec22549ac5a323378c2a914166bf0dcc1/contracts/SftWrappedToken.sol#L198
    */
   private computePoolId(slot: bigint): string {
-    const { shareDelegateAddress: openFundShareDelegateAddress } =
-      this.yieldMarketConfig
+    const { openFundShareDelegateAddress } = this.yieldMarketConfig
     const encodedData = AbiCoder.defaultAbiCoder().encode(
       ['address', 'uint256'],
       [openFundShareDelegateAddress, slot],
@@ -374,34 +384,34 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     return keccak256(encodedData)
   }
 
-  /**
-   * Performs a reverse look up to find the slot matching the passed Pool ID
-   */
-  private slotReverseLookup(poolId: string) {
-    /**
-     * Generate an object like:
-     * {
-     *   "slot1": "poolId1",
-     *   "slot2": "poolId2",
-     *   ...
-     * }
-     */
-    const slotsToPoolId = mapValues(SLOT_TO_PRODUCT_NAME, (_, key) =>
-      this.computePoolId(BigInt(key)),
-    )
+  //   /**
+  //    * Performs a reverse look up to find the slot matching the passed Pool ID
+  //    */
+  //   private slotReverseLookup(poolId: string) {
+  //     /**
+  //      * Generate an object like:
+  //      * {
+  //      *   "slot1": "poolId1",
+  //      *   "slot2": "poolId2",
+  //      *   ...
+  //      * }
+  //      */
+  //     const slotsToPoolId = mapValues(SLOT_TO_PRODUCT_NAME, (_, key) =>
+  //       this.computePoolId(BigInt(key)),
+  //     )
 
-    // Return the first key where value is passed Pool ID
-    const slot = findKey(slotsToPoolId, (value) => value === poolId)
+  //     // Return the first key where value is passed Pool ID
+  //     const slot = findKey(slotsToPoolId, (value) => value === poolId)
 
-    if (!slot)
-      throw new Error('Could not find a slot matching the passed pool ID')
+  //     if (!slot)
+  //       throw new Error('Could not find a slot matching the passed pool ID')
 
-    return slot
-  }
+  //     return slot
+  //   }
 
-  private getPoolName(slot: string): string {
-    return SLOT_TO_PRODUCT_NAME[slot] ?? 'Unknown'
-  }
+  //   private getPoolName(slot: string): string {
+  //     return SLOT_TO_PRODUCT_NAME[slot] ?? 'Unknown'
+  //   }
 
   async getWithdrawals({
     protocolTokenAddress,
