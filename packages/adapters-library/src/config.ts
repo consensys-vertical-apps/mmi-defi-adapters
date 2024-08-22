@@ -21,7 +21,8 @@ const ConfigSchema = z
         bsc: z
           .string()
           .default(
-            process.env.DEFI_ADAPTERS_PROVIDER_BSC || 'https://bscrpc.com',
+            process.env.DEFI_ADAPTERS_PROVIDER_BSC ||
+              'https://bsc-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
           ),
         polygon: z
           .string()
