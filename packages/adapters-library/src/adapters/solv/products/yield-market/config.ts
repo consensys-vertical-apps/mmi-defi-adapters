@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 
 export interface SolvYieldMarketConfig {
@@ -12,20 +13,44 @@ export interface SolvYieldMarketConfig {
 export const SOLV_YIELD_MARKETS: Partial<Record<Chain, SolvYieldMarketConfig>> =
   {
     [Chain.Arbitrum]: {
-      navOracleAddress: '0x6ec1fEC6c6AF53624733F671B490B8250Ff251eD',
-      openFundMarketAddress: '0x629aD7Bc14726e9cEA4FCb3A7b363D237bB5dBE8',
-      redemptionDelegateAddress: '0xe9bd233b2b34934fb83955ec15c2ac48f31a0e8c',
-      redemptionConcreteAddress: '0x5Fc1Dd6ce1744B8a45f815Fe808E936f5dc97320',
-      shareDelegateAddress: '0x22799daa45209338b7f938edf251bdfd1e6dcb32',
-      shareConcreteAddress: '0x9d9AaF63d073b4C0547285e98d126770a80C4dcE',
+      navOracleAddress: getAddress(
+        '0x6ec1fEC6c6AF53624733F671B490B8250Ff251eD',
+      ),
+      openFundMarketAddress: getAddress(
+        '0x629aD7Bc14726e9cEA4FCb3A7b363D237bB5dBE8',
+      ),
+      redemptionDelegateAddress: getAddress(
+        '0xe9bd233b2b34934fb83955ec15c2ac48f31a0e8c',
+      ),
+      redemptionConcreteAddress: getAddress(
+        '0x5Fc1Dd6ce1744B8a45f815Fe808E936f5dc97320',
+      ),
+      shareDelegateAddress: getAddress(
+        '0x22799daa45209338b7f938edf251bdfd1e6dcb32',
+      ),
+      shareConcreteAddress: getAddress(
+        '0x9d9AaF63d073b4C0547285e98d126770a80C4dcE',
+      ),
     },
     [Chain.Bsc]: {
-      navOracleAddress: '0x9C491539AeC346AAFeb0bee9a1e9D9c02AB50889',
-      openFundMarketAddress: '0xaE050694c137aD777611286C316E5FDda58242F3',
-      redemptionDelegateAddress: '0xe16cec2f385ea7a382772334a44506a865f98562',
-      redemptionConcreteAddress: '0x59999fe6a26c048f623a7476344702de56633cF4',
-      shareDelegateAddress: '0xb816018e5d421e8b809a4dc01af179d86056ebdf',
-      shareConcreteAddress: '0x7851fA49C56f8996444C869534CA311C0eAB3854',
+      navOracleAddress: getAddress(
+        '0x9C491539AeC346AAFeb0bee9a1e9D9c02AB50889',
+      ),
+      openFundMarketAddress: getAddress(
+        '0xaE050694c137aD777611286C316E5FDda58242F3',
+      ),
+      redemptionDelegateAddress: getAddress(
+        '0xe16cec2f385ea7a382772334a44506a865f98562',
+      ),
+      redemptionConcreteAddress: getAddress(
+        '0x59999fe6a26c048f623a7476344702de56633cF4',
+      ),
+      shareDelegateAddress: getAddress(
+        '0xb816018e5d421e8b809a4dc01af179d86056ebdf',
+      ),
+      shareConcreteAddress: getAddress(
+        '0x7851fA49C56f8996444C869534CA311C0eAB3854',
+      ),
     },
   }
 
