@@ -1,6 +1,6 @@
 {
   "blockNumber": 41584905,
-  "aggregatedValues": ["USD0.00", "USD0.00"],
+  "aggregatedValues": ["USD0.79", "USD0.37"],
   "snapshot": [
     {
       "protocolId": "solv",
@@ -16,7 +16,7 @@
         {
           "type": "protocol",
           "balanceRaw": "12878716164180n",
-          "address": "0xb816018e5d421e8b809a4dc01af179d86056ebdf",
+          "address": "0xB816018E5d421E8b809A4dc01aF179D86056eBDF",
           "tokenId": "38288",
           "name": "SolvBTC BNB LP Vault - BSC - B",
           "symbol": "SolvBTC BNB LP Vault - BSC - B",
@@ -30,7 +30,7 @@
               "symbol": "BTCB",
               "decimals": 18,
               "balance": 0.000012890654452843,
-              "price": 1.0009269781638883,
+              "price": 61301.49352098058,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c/logo.png"
             }
           ],
@@ -39,7 +39,7 @@
         {
           "type": "protocol",
           "balanceRaw": "6000000000000n",
-          "address": "0xe16cec2f385ea7a382772334a44506a865f98562",
+          "address": "0xe16cec2F385Ea7A382772334A44506a865f98562",
           "tokenId": "138",
           "name": "SolvBTC BNB LP Vault - BSC - B | Redemption pending",
           "symbol": "SolvBTC BNB LP Vault - BSC - B | Redemption pending",
@@ -53,7 +53,7 @@
               "symbol": "BTCB",
               "decimals": 18,
               "balance": 0.000006005561868983,
-              "price": 1.0009269781638883,
+              "price": 61301.49352098058,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c/logo.png"
             }
           ],
@@ -63,32 +63,11 @@
     }
   ],
   "rpcResponses": {
-    "1615424bae8119b98bcfb082a9421be2": {
-      "result": "0x27a89d0"
-    },
     "8b30e5b5e027d5801554d73750f33aad": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
     },
     "73857b779a49229b39aab425cc070f02": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
-    },
-    "bdbef79531f7ace0818fa71a78d8b206": {
-      "error": {
-        "code": -32000,
-        "message": "missing trie node 4badeb2b2e731c67f2bd8aefc1e5165027c2667d0fbc8a580efcd4df156e0675 (path ) state 0x4badeb2b2e731c67f2bd8aefc1e5165027c2667d0fbc8a580efcd4df156e0675 is not available, not found"
-      }
-    },
-    "5f67b435a6bde77615f58066691d76c4": {
-      "error": {
-        "code": -32000,
-        "message": "missing trie node 4badeb2b2e731c67f2bd8aefc1e5165027c2667d0fbc8a580efcd4df156e0675 (path ) state 0x4badeb2b2e731c67f2bd8aefc1e5165027c2667d0fbc8a580efcd4df156e0675 is not available, not found"
-      }
-    },
-    "35d180a8203f6c9f8291591271962821": {
-      "error": {
-        "code": -32000,
-        "message": "missing trie node 4badeb2b2e731c67f2bd8aefc1e5165027c2667d0fbc8a580efcd4df156e0675 (path ) state 0x4badeb2b2e731c67f2bd8aefc1e5165027c2667d0fbc8a580efcd4df156e0675 is not available, not found"
-      }
     },
     "993bdb22d8a9804f09dfed915c43f79d": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000009590"
@@ -126,26 +105,20 @@
     "8a3cdf3f226c36f1032986bcbd438a14": {
       "result": "0x0000000000000000000000000000000000000000000000000de401c89390506c0000000000000000000000000000000000000000000000000000000066bd4500"
     },
+    "5e8909cb0f337a43d3d2f88a0b04539f": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a4254434220546f6b656e00000000000000000000000000000000000000000000"
+    },
     "67b0fc329ecb8ce95f3b3b59092d05fe": {
       "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000044254434200000000000000000000000000000000000000000000000000000000"
     },
     "a0a62216238d83b257623384cf4818ce": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
     },
-    "5e8909cb0f337a43d3d2f88a0b04539f": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a4254434220546f6b656e00000000000000000000000000000000000000000000"
-    },
     "52b87000f3666df1bd91c3bfb1fcbd30": {
-      "error": {
-        "code": -32000,
-        "message": "missing trie node 4badeb2b2e731c67f2bd8aefc1e5165027c2667d0fbc8a580efcd4df156e0675 (path ) state 0x4badeb2b2e731c67f2bd8aefc1e5165027c2667d0fbc8a580efcd4df156e0675 is not available, not found"
-      }
+      "result": "0x00000000000000000000000000000000000000000000000300000000000026760000000000000000000000000000000000000000000000000000003d7e258dcf0000000000000000000000000000000000000000000000000000000066c722c40000000000000000000000000000000000000000000000000000000066c722c70000000000000000000000000000000000000000000000030000000000002676"
     },
     "4ce468d908e1bd2914a787b6df3d3b63": {
-      "error": {
-        "code": -32000,
-        "message": "missing trie node 4badeb2b2e731c67f2bd8aefc1e5165027c2667d0fbc8a580efcd4df156e0675 (path ) state 0x4badeb2b2e731c67f2bd8aefc1e5165027c2667d0fbc8a580efcd4df156e0675 is not available, not found"
-      }
+      "result": "0x000000000000000000000000000000000000000000000001421cc66ce9a71b6e"
     }
   }
 }

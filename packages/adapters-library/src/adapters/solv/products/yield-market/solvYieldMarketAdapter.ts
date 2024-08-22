@@ -18,6 +18,7 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
+  TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
@@ -191,10 +192,9 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
       this.yieldMarketConfig
 
     // Count every instance of the GOEFS that the user holds
-    const tokensCount =
-      await this.openFundShareDelegateContract['balanceOf(address)'](
-        userAddress,
-      )
+    const tokensCount = await this.openFundShareDelegateContract[
+      'balanceOf(address)'
+    ](userAddress)
 
     if (!tokensCount) return []
 
@@ -219,12 +219,14 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
         userAddress,
         index,
       )
-    const balance =
-      await this.openFundShareDelegateContract['balanceOf(uint256)'](tokenId)
+    const balance = await this.openFundShareDelegateContract[
+      'balanceOf(uint256)'
+    ](tokenId)
     const decimals = await this.openFundShareDelegateContract.valueDecimals()
     const slot = await this.openFundShareDelegateContract.slotOf(tokenId)
-    const [_, currency] =
-      await this.openFundShareConcreteContract.slotBaseInfo(slot)
+    const [_, currency] = await this.openFundShareConcreteContract.slotBaseInfo(
+      slot,
+    )
     const poolId = this.computePoolId(slot)
     const [latestSetNavTime] = await this.navOracleContract.poolNavInfos(poolId)
     const [nav] = await this.navOracleContract.getSubscribeNav(
@@ -233,33 +235,29 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     )
     const name = this.getPoolName(slot.toString())
 
-    const erc20Contract = Erc20__factory.connect(currency, this.provider)
-    const [underlyingSymbol, underlyingDecimals, underlyingName] =
-      await Promise.all([
-        erc20Contract.symbol(),
-        erc20Contract.decimals(),
-        erc20Contract.name(),
-      ])
+    const {
+      symbol: underlyingSymbol,
+      decimals: underlyingDecimals,
+      name: underlyingName,
+    } = await this.helpers.getTokenMetadata(currency)
 
     const position: ProtocolPosition = {
-      type: 'protocol',
+      type: TokenType.Protocol,
       balanceRaw: balance,
       address: sftAddress,
       tokenId: tokenId.toString(),
       name,
       symbol: name,
-      decimals: Number.parseInt(decimals.toString()),
+      decimals: Number(decimals),
       tokens: [
         {
-          type: 'underlying',
+          type: TokenType.Underlying,
           address: currency,
           priceRaw: nav,
-          balanceRaw:
-            (balance * nav) /
-            10n ** BigInt(Number.parseInt(decimals.toString())),
+          balanceRaw: (balance * nav) / 10n ** decimals,
           name: underlyingName,
           symbol: underlyingSymbol,
-          decimals: Number.parseInt(underlyingDecimals.toString()),
+          decimals: Number(underlyingDecimals),
         },
       ],
     }
@@ -274,10 +272,9 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
       this.yieldMarketConfig
 
     // Count every instance of the GOEFS that the user holds
-    const tokensCount =
-      await this.openFundRedemptionDelegateContract['balanceOf(address)'](
-        userAddress,
-      )
+    const tokensCount = await this.openFundRedemptionDelegateContract[
+      'balanceOf(address)'
+    ](userAddress)
     if (!tokensCount) return []
 
     const indexes = [...Array(Number.parseInt(tokensCount.toString())).keys()]
@@ -301,10 +298,9 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
         userAddress,
         index,
       )
-    const balance =
-      await this.openFundRedemptionDelegateContract['balanceOf(uint256)'](
-        tokenId,
-      )
+    const balance = await this.openFundRedemptionDelegateContract[
+      'balanceOf(uint256)'
+    ](tokenId)
     const decimals =
       await this.openFundRedemptionDelegateContract.valueDecimals()
     const slot = await this.openFundRedemptionDelegateContract.slotOf(tokenId)
@@ -321,33 +317,29 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
       shareSlot.toString(),
     )} | Redemption pending`
 
-    const erc20Contract = Erc20__factory.connect(currency, this.provider)
-    const [underlyingSymbol, underlyingDecimals, underlyingName] =
-      await Promise.all([
-        erc20Contract.symbol(),
-        erc20Contract.decimals(),
-        erc20Contract.name(),
-      ])
+    const {
+      symbol: underlyingSymbol,
+      decimals: underlyingDecimals,
+      name: underlyingName,
+    } = await this.helpers.getTokenMetadata(currency)
 
     const position: ProtocolPosition = {
-      type: 'protocol',
+      type: TokenType.Protocol,
       balanceRaw: balance,
       address: sftAddress,
       tokenId: tokenId.toString(),
       name,
       symbol: name,
-      decimals: Number.parseInt(decimals.toString()),
+      decimals: Number(decimals),
       tokens: [
         {
-          type: 'underlying',
+          type: TokenType.Underlying,
           address: currency,
           priceRaw: nav,
-          balanceRaw:
-            (balance * nav) /
-            10n ** BigInt(Number.parseInt(decimals.toString())),
+          balanceRaw: (balance * nav) / 10n ** decimals,
           name: underlyingName,
           symbol: underlyingSymbol,
-          decimals: Number.parseInt(underlyingDecimals.toString()),
+          decimals: Number(underlyingDecimals),
         },
       ],
     }
