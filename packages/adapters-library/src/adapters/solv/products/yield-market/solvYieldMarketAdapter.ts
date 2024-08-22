@@ -191,9 +191,10 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
       this.yieldMarketConfig
 
     // Count every instance of the GOEFS that the user holds
-    const tokensCount = await this.openFundShareDelegateContract[
-      'balanceOf(address)'
-    ](userAddress)
+    const tokensCount =
+      await this.openFundShareDelegateContract['balanceOf(address)'](
+        userAddress,
+      )
 
     if (!tokensCount) return []
 
@@ -218,14 +219,12 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
         userAddress,
         index,
       )
-    const balance = await this.openFundShareDelegateContract[
-      'balanceOf(uint256)'
-    ](tokenId)
+    const balance =
+      await this.openFundShareDelegateContract['balanceOf(uint256)'](tokenId)
     const decimals = await this.openFundShareDelegateContract.valueDecimals()
     const slot = await this.openFundShareDelegateContract.slotOf(tokenId)
-    const [_, currency] = await this.openFundShareConcreteContract.slotBaseInfo(
-      slot,
-    )
+    const [_, currency] =
+      await this.openFundShareConcreteContract.slotBaseInfo(slot)
     const poolId = this.computePoolId(slot)
     const [latestSetNavTime] = await this.navOracleContract.poolNavInfos(poolId)
     const [nav] = await this.navOracleContract.getSubscribeNav(
@@ -275,9 +274,10 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
       this.yieldMarketConfig
 
     // Count every instance of the GOEFS that the user holds
-    const tokensCount = await this.openFundRedemptionDelegateContract[
-      'balanceOf(address)'
-    ](userAddress)
+    const tokensCount =
+      await this.openFundRedemptionDelegateContract['balanceOf(address)'](
+        userAddress,
+      )
     if (!tokensCount) return []
 
     const indexes = [...Array(Number.parseInt(tokensCount.toString())).keys()]
@@ -301,9 +301,10 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
         userAddress,
         index,
       )
-    const balance = await this.openFundRedemptionDelegateContract[
-      'balanceOf(uint256)'
-    ](tokenId)
+    const balance =
+      await this.openFundRedemptionDelegateContract['balanceOf(uint256)'](
+        tokenId,
+      )
     const decimals =
       await this.openFundRedemptionDelegateContract.valueDecimals()
     const slot = await this.openFundRedemptionDelegateContract.slotOf(tokenId)
