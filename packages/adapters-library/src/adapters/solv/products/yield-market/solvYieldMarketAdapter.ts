@@ -1,6 +1,5 @@
 import { AbiCoder, keccak256 } from 'ethers'
 import { findKey, mapValues } from 'lodash'
-import { Erc20__factory } from '../../../../contracts'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
@@ -214,7 +213,7 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     userAddress: string,
     sftAddress: string,
     index: number,
-  ): Promise<ProtocolPosition> {
+  ): Promise<ProtocolPosition | undefined> {
     const tokenId =
       await this.openFundShareDelegateContract.tokenOfOwnerByIndex(
         userAddress,
@@ -222,6 +221,9 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
       )
     const balance =
       await this.openFundShareDelegateContract['balanceOf(uint256)'](tokenId)
+
+    if (!balance) return
+
     const decimals = await this.openFundShareDelegateContract.valueDecimals()
     const slot = await this.openFundShareDelegateContract.slotOf(tokenId)
     const [_, currency] =
@@ -292,7 +294,7 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     userAddress: string,
     sftAddress: string,
     index: number,
-  ): Promise<ProtocolPosition> {
+  ): Promise<ProtocolPosition | undefined> {
     const tokenId =
       await this.openFundRedemptionDelegateContract.tokenOfOwnerByIndex(
         userAddress,
@@ -302,6 +304,9 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
       await this.openFundRedemptionDelegateContract['balanceOf(uint256)'](
         tokenId,
       )
+
+    if (!balance) return
+
     const decimals =
       await this.openFundRedemptionDelegateContract.valueDecimals()
     const slot = await this.openFundRedemptionDelegateContract.slotOf(tokenId)
