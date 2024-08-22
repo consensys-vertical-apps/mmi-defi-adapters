@@ -159,6 +159,9 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     throw new NotImplementedError()
   }
 
+  /**
+   * @example this.getPoolConfigBy('name', 'GMX V2 USDC - A')
+   */
   private getPoolConfigBy(
     paramName: keyof SolvYieldMarketPoolConfig,
     value: string,
@@ -237,24 +240,22 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     const decimals = await this.openFundShareDelegateContract.valueDecimals()
     const slot = await this.openFundShareDelegateContract.slotOf(tokenId)
 
-    const poolConfig = this.getPoolConfigBy('slotInShareSft', slot.toString())
-
-    const [_, currency] = await this.openFundShareConcreteContract.slotBaseInfo(
-      slot,
+    const { id, name, currencyAddress } = this.getPoolConfigBy(
+      'slotInShareSft',
+      slot.toString(),
     )
-    const poolId = this.computePoolId(slot)
-    const [latestSetNavTime] = await this.navOracleContract.poolNavInfos(poolId)
+
+    const [latestSetNavTime] = await this.navOracleContract.poolNavInfos(id)
     const [nav] = await this.navOracleContract.getSubscribeNav(
-      poolId,
+      id,
       latestSetNavTime,
     )
-    const name = this.getPoolName(slot.toString())
 
     const {
       symbol: underlyingSymbol,
       decimals: underlyingDecimals,
       name: underlyingName,
-    } = await this.helpers.getTokenMetadata(currency)
+    } = await this.helpers.getTokenMetadata(currencyAddress)
 
     const position: ProtocolPosition = {
       type: TokenType.Protocol,
@@ -267,7 +268,7 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
       tokens: [
         {
           type: TokenType.Underlying,
-          address: currency,
+          address: currencyAddress,
           priceRaw: nav,
           balanceRaw: (balance * nav) / 10n ** decimals,
           name: underlyingName,
@@ -321,37 +322,38 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     const decimals =
       await this.openFundRedemptionDelegateContract.valueDecimals()
     const slot = await this.openFundRedemptionDelegateContract.slotOf(tokenId)
-    const [poolId, currency] =
-      await this.openFundRedemptionConcreteContract.getRedeemInfo(slot)
-    const [latestSetNavTime] = await this.navOracleContract.poolNavInfos(poolId)
+
+    const { id, name, currencyAddress } = this.getPoolConfigBy(
+      'slotInRedemptionSft',
+      slot.toString(),
+    )
+
+    const [latestSetNavTime] = await this.navOracleContract.poolNavInfos(id)
     const [nav] = await this.navOracleContract.getSubscribeNav(
-      poolId,
+      id,
       latestSetNavTime,
     )
 
-    const shareSlot = this.slotReverseLookup(poolId)
-    const name = `${this.getPoolName(
-      shareSlot.toString(),
-    )} | Redemption pending`
+    const poolNameWithRedemption = `${name} | Redemption pending`
 
     const {
       symbol: underlyingSymbol,
       decimals: underlyingDecimals,
       name: underlyingName,
-    } = await this.helpers.getTokenMetadata(currency)
+    } = await this.helpers.getTokenMetadata(currencyAddress)
 
     const position: ProtocolPosition = {
       type: TokenType.Protocol,
       balanceRaw: balance,
       address: sftAddress,
       tokenId: tokenId.toString(),
-      name,
-      symbol: name,
+      name: poolNameWithRedemption,
+      symbol: poolNameWithRedemption,
       decimals: Number(decimals),
       tokens: [
         {
           type: TokenType.Underlying,
-          address: currency,
+          address: currencyAddress,
           priceRaw: nav,
           balanceRaw: (balance * nav) / 10n ** decimals,
           name: underlyingName,
@@ -369,9 +371,8 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
    * Some Solv smart contracts methods accept the pool id instead of the slot.
    *
    * @example
-   * const openFundShareDelegateAddress = '0x22799daa45209338b7f938edf251bdfd1e6dcb32'
    * const slot = '5310353805259224968786693768403624884928279211848504288200646724372830798580'
-   * computePoolId(sftAddress, slot) // returns '0xe037ef7b5f74bf3c988d8ae8ab06ad34643749ba9d217092297241420d600fce'
+   * computePoolId(slot) // returns '0xe037ef7b5f74bf3c988d8ae8ab06ad34643749ba9d217092297241420d600fce'
    *
    * @see https://github.com/solv-finance/SolvBTC/blob/ef5be00ec22549ac5a323378c2a914166bf0dcc1/contracts/SftWrappedToken.sol#L198
    */
@@ -383,35 +384,6 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     )
     return keccak256(encodedData)
   }
-
-  //   /**
-  //    * Performs a reverse look up to find the slot matching the passed Pool ID
-  //    */
-  //   private slotReverseLookup(poolId: string) {
-  //     /**
-  //      * Generate an object like:
-  //      * {
-  //      *   "slot1": "poolId1",
-  //      *   "slot2": "poolId2",
-  //      *   ...
-  //      * }
-  //      */
-  //     const slotsToPoolId = mapValues(SLOT_TO_PRODUCT_NAME, (_, key) =>
-  //       this.computePoolId(BigInt(key)),
-  //     )
-
-  //     // Return the first key where value is passed Pool ID
-  //     const slot = findKey(slotsToPoolId, (value) => value === poolId)
-
-  //     if (!slot)
-  //       throw new Error('Could not find a slot matching the passed pool ID')
-
-  //     return slot
-  //   }
-
-  //   private getPoolName(slot: string): string {
-  //     return SLOT_TO_PRODUCT_NAME[slot] ?? 'Unknown'
-  //   }
 
   async getWithdrawals({
     protocolTokenAddress,
