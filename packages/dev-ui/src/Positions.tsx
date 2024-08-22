@@ -190,17 +190,14 @@ function PositionsDisplay({
       position.success,
   )
 
-  const groupedPositions = successfulPositions.reduce(
-    (acc, position) => {
-      const key = `${position.protocolId}#${position.chainId}`
-      if (!acc[key]) {
-        acc[key] = []
-      }
-      acc[key].push(position)
-      return acc
-    },
-    {} as Record<string, (DefiPositionResponse & { success: true })[]>,
-  )
+  const groupedPositions = successfulPositions.reduce((acc, position) => {
+    const key = `${position.protocolId}#${position.chainId}`
+    if (!acc[key]) {
+      acc[key] = []
+    }
+    acc[key].push(position)
+    return acc
+  }, {} as Record<string, (DefiPositionResponse & { success: true })[]>)
 
   return (
     <Tabs defaultValue="display" className="w-full">
@@ -242,7 +239,9 @@ function PositionsDisplay({
                                 <TooltipProvider>
                                   <Tooltip>
                                     <TooltipTrigger>
-                                      <h4>{token.name}</h4>
+                                      <h4>
+                                        {token.name} | {token.symbol}
+                                      </h4>
                                     </TooltipTrigger>
                                     <TooltipContent>
                                       <p>
@@ -336,7 +335,7 @@ function formatCurrency(amount: number) {
 function formatTokenBalance(amount: number) {
   return amount.toLocaleString('en-US', {
     minimumFractionDigits: 0,
-    maximumFractionDigits: 4,
+    maximumFractionDigits: 18,
   })
 }
 

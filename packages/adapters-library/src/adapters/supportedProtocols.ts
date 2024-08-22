@@ -98,6 +98,8 @@ import { RenzoEzEthAdapter } from './renzo/products/ez-eth/renzoEzEthAdapter'
 
 import { SolvSolvBtcAdapter } from './solv/products/solv-btc/solvSolvBtcAdapter'
 
+import { SolvYieldMarketAdapter } from './solv/products/yield-market/solvYieldMarketAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -405,8 +407,8 @@ export const supportedProtocols: Record<
 
   [Protocol.Solv]: {
     [Chain.Ethereum]: [SolvSolvBtcAdapter],
-    [Chain.Bsc]: [SolvSolvBtcAdapter],
-    [Chain.Arbitrum]: [SolvSolvBtcAdapter],
+    [Chain.Bsc]: [SolvSolvBtcAdapter, SolvYieldMarketAdapter],
+    [Chain.Arbitrum]: [SolvSolvBtcAdapter, SolvYieldMarketAdapter],
     [Chain.Avalanche]: [SolvSolvBtcAdapter],
   },
 
