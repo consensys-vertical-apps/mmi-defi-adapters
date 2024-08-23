@@ -6,6 +6,7 @@ const User1 = '0x7BFEe91193d9Df2Ac0bFe90191D40F23c773C060' // Has some SolvBTC o
 const User2 = '0xEBFAEEDE1D85E8E87BDe9326bc301830D55dfa8c' // Has some SolvBTC.BBN on Mainnet
 const User3 = '0x423e5E0ee2615E6bef4B181400553066dAE3b6fD' // Has some SolvBTC.ENA on BSC
 const User4 = '0xd87D6D2D766b15cDA45e3cACC8742104B5A921ea' // Has deposited + withdrew some SolvBTC over a few days
+const User5 = '0xabef19a5Cb082D0e512eB28363B1229B25BaB9a7' // Has Holdings and Redemptions in some yield markets on Arbitrum
 
 export const testCases: TestCase[] = [
   {
@@ -93,5 +94,44 @@ export const testCases: TestCase[] = [
     },
 
     blockNumber: 41411562,
+  },
+  {
+    key: 'user5',
+    chainId: Chain.Arbitrum,
+    method: 'positions',
+
+    input: {
+      userAddress: User5,
+
+      filterProtocolTokens: [
+        '0x22799daa45209338b7f938edf251bdfd1e6dcb32',
+        '0x22799daa45209338b7f938edf251bdfd1e6dcb32',
+        '0x22799daa45209338b7f938edf251bdfd1e6dcb32',
+        '0xe9bd233b2b34934fb83955ec15c2ac48f31a0e8c',
+        '0xe9bd233b2b34934fb83955ec15c2ac48f31a0e8c',
+      ],
+
+      filterTokenIds: ['10334', '10484', '10566', '3136', '3137'],
+    },
+
+    blockNumber: 245491037,
+  },
+  {
+    key: 'user5',
+    chainId: Chain.Bsc,
+    method: 'positions',
+
+    input: {
+      userAddress: User5,
+
+      filterProtocolTokens: [
+        '0xb816018e5d421e8b809a4dc01af179d86056ebdf',
+        '0xe16cec2f385ea7a382772334a44506a865f98562',
+      ],
+
+      filterTokenIds: ['38288', '138'],
+    },
+
+    blockNumber: 41584905,
   },
 ]

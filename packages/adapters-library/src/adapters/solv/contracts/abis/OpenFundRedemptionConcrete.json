@@ -1,0 +1,348 @@
+[
+  { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "version",
+        "type": "uint8"
+      }
+    ],
+    "name": "Initialized",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "oldAdmin",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "newAdmin",
+        "type": "address"
+      }
+    ],
+    "name": "NewAdmin",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "old_",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "new_",
+        "type": "address"
+      }
+    ],
+    "name": "NewDelegate",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "oldPendingAdmin",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "newPendingAdmin",
+        "type": "address"
+      }
+    ],
+    "name": "NewPendingAdmin",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "acceptAdmin",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "admin",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "allocatedCurrencyBalance",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "tokenId_", "type": "uint256" },
+      { "internalType": "uint256", "name": "burnValue_", "type": "uint256" }
+    ],
+    "name": "burnOnlyDelegate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "tokenId_", "type": "uint256" },
+      { "internalType": "uint256", "name": "slot_", "type": "uint256" },
+      { "internalType": "address", "name": "currency_", "type": "address" },
+      { "internalType": "uint256", "name": "claimValue_", "type": "uint256" }
+    ],
+    "name": "claimOnlyDelegate",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "claimCurrencyAmount_",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "tokenId_", "type": "uint256" }
+    ],
+    "name": "claimableValue",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "txSender_", "type": "address" },
+      { "internalType": "bytes", "name": "inputSlotInfo_", "type": "bytes" }
+    ],
+    "name": "createSlotOnlyDelegate",
+    "outputs": [
+      { "internalType": "uint256", "name": "slot_", "type": "uint256" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "delegate",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "slot_", "type": "uint256" }
+    ],
+    "name": "getRedeemInfo",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "bytes32", "name": "poolId", "type": "bytes32" },
+          { "internalType": "address", "name": "currency", "type": "address" },
+          {
+            "internalType": "uint256",
+            "name": "createTime",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "nav", "type": "uint256" }
+        ],
+        "internalType": "struct IOpenFundRedemptionConcrete.RedeemInfo",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "slot_", "type": "uint256" }
+    ],
+    "name": "getRedeemNav",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "initialize",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "slot_", "type": "uint256" }
+    ],
+    "name": "isSlotValid",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "", "type": "uint256" },
+      { "internalType": "uint256", "name": "slot_", "type": "uint256" },
+      { "internalType": "uint256", "name": "mintValue_", "type": "uint256" }
+    ],
+    "name": "mintOnlyDelegate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "txSender_", "type": "address" },
+      { "internalType": "address", "name": "currency_", "type": "address" },
+      { "internalType": "address", "name": "mintTo_", "type": "address" },
+      { "internalType": "uint256", "name": "slot_", "type": "uint256" },
+      { "internalType": "uint256", "name": "tokenId_", "type": "uint256" },
+      { "internalType": "uint256", "name": "amount_", "type": "uint256" }
+    ],
+    "name": "mintOnlyDelegate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "pendingAdmin",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "txSender_", "type": "address" },
+      { "internalType": "uint256", "name": "slot_", "type": "uint256" },
+      { "internalType": "address", "name": "currency_", "type": "address" },
+      {
+        "internalType": "uint256",
+        "name": "repayCurrencyAmount_",
+        "type": "uint256"
+      }
+    ],
+    "name": "repayOnlyDelegate",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "txSender_", "type": "address" },
+      { "internalType": "uint256", "name": "slot_", "type": "uint256" },
+      { "internalType": "address", "name": "currency_", "type": "address" },
+      {
+        "internalType": "uint256",
+        "name": "repayCurrencyAmount_",
+        "type": "uint256"
+      }
+    ],
+    "name": "repayWithBalanceOnlyDelegate",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newDelegate_", "type": "address" }
+    ],
+    "name": "setDelegate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newPendingAdmin_",
+        "type": "address"
+      }
+    ],
+    "name": "setPendingAdmin",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "slot_", "type": "uint256" },
+      { "internalType": "uint256", "name": "nav_", "type": "uint256" }
+    ],
+    "name": "setRedeemNavOnlyDelegate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "slot_", "type": "uint256" }
+    ],
+    "name": "slotCurrencyBalance",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "slot_", "type": "uint256" }
+    ],
+    "name": "slotInitialValue",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "slot_", "type": "uint256" }
+    ],
+    "name": "slotRepaidCurrencyAmount",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "slot_", "type": "uint256" }
+    ],
+    "name": "slotTotalValue",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "fromTokenId_", "type": "uint256" },
+      { "internalType": "uint256", "name": "toTokenId_", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "fromTokenBalance_",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "transferValue_", "type": "uint256" }
+    ],
+    "name": "transferOnlyDelegate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
