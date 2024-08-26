@@ -324,18 +324,20 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     return keccak256(encodedData)
   }
 
-  async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.getMovements('withdraw', input)
-  }
-
   async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.getMovements('deposit', input)
   }
 
+  async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.getMovements('withdraw', input)
+  }
+
   /**
-   * We look at 2 particular events emitted by the contracts
-   * - Transfer
-   * - TransferValue
+   * The event TransferValue(uint256,uint256,uint256)
+   * is emitted on all types of movements (deposit to the GOEFS, redeem request, claiming the GOEFR)
+   *
+   * It's arguments are:
+   * _fromTokenId, _toTokenId, _value
    *
    * @see https://eips.ethereum.org/EIPS/eip-3525
    */
@@ -343,8 +345,8 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     action: 'deposit' | 'withdraw',
     input: GetEventsInput,
   ): Promise<MovementsByBlock[]> {
-    const { userAddress, protocolTokenAddress, tokenId, fromBlock, toBlock } =
-      input
+    const isDeposit = action === 'deposit'
+    const { protocolTokenAddress, tokenId, fromBlock, toBlock } = input
 
     if (!tokenId) throw new Error('Argument tokenId cannot be undefined')
 
@@ -357,75 +359,64 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
       : this.openFundRedemptionDelegateContract
 
     const slot = await delegateContract.slotOf(tokenId)
-
-    const { transferFilter, transferValueFilter } = this.getFilters(
-      action,
-      delegateContract,
-      userAddress,
-      tokenId,
-    )
-
-    const [transferEvents, transferValueEvents] = await Promise.all([
-      delegateContract.queryFilter(transferFilter, fromBlock, toBlock),
-      delegateContract.queryFilter(transferValueFilter, fromBlock, toBlock),
-    ])
-
-    const { currencyAddress } = this.getPoolConfigBy(
+    const { id, currencyAddress } = this.getPoolConfigBy(
       isShare ? 'slotInShareSft' : 'slotInRedemptionSft',
       slot.toString(),
     )
-    const underlyingToken = await this.helpers.getTokenMetadata(currencyAddress)
 
-    const movements: MovementsByBlock[] = [
-      ...transferEvents,
-      ...transferValueEvents,
-    ].map((event) => ({
-      transactionHash: event.transactionHash,
-      protocolToken: {
-        address: protocolTokenAddress,
-        name: 'THE ANME',
-        symbol: 'THE SYMBOL',
-        decimals: 9999,
-        tokenId: event.args[0].toString(),
+    /**
+     * When depositing, we look at value transfers TO the SFT.
+     * When withdrawing, we look at value transfers FROM the SFT.
+     */
+    const filter = isDeposit
+      ? delegateContract.filters['TransferValue(uint256,uint256,uint256)'](
+          undefined,
+          tokenId,
+        )
+      : delegateContract.filters['TransferValue(uint256,uint256,uint256)'](
+          tokenId,
+        )
+
+    const [transferValueEvents, underlyingToken, decimals] = await Promise.all([
+      delegateContract.queryFilter(filter, fromBlock, toBlock),
+      this.helpers.getTokenMetadata(currencyAddress),
+      delegateContract.valueDecimals(),
+    ])
+
+    const movements: MovementsByBlock[] = await filterMapAsync(
+      transferValueEvents,
+      async (event) => {
+        const blockDate = (await event.getBlock()).date
+        if (!blockDate) throw new Error('No block date')
+
+        const [nav] = await this.navOracleContract.getSubscribeNav(
+          id,
+          (blockDate.getTime() / 1000).toFixed(0),
+        )
+
+        return {
+          transactionHash: event.transactionHash,
+          protocolToken: {
+            address: protocolTokenAddress,
+            name: id,
+            symbol: id,
+            decimals: Number(decimals),
+            tokenId: event.args[isDeposit ? 1 : 0].toString(),
+          },
+          tokens: [
+            {
+              ...underlyingToken,
+              type: 'underlying',
+              balanceRaw: (event.args[2] * nav) / 10n ** decimals,
+              priceRaw: nav,
+            },
+          ],
+          blockNumber: event.blockNumber,
+        }
       },
-      tokens: [
-        {
-          ...underlyingToken,
-          type: 'underlying',
-          balanceRaw: event.args[2],
-        },
-      ],
-      blockNumber: event.blockNumber,
-    }))
+    )
 
-    console.log('getDeposits', input, movements)
     return movements
-  }
-
-  private getFilters(
-    action: 'deposit' | 'withdraw',
-    delegateContract: OpenFundShareDelegate | OpenFundRedemptionDelegate,
-    userAddress: string,
-    tokenId: string,
-  ) {
-    if (action === 'deposit')
-      return {
-        transferFilter: delegateContract.filters[
-          'Transfer(address,address,uint256)'
-        ](undefined, userAddress),
-        transferValueFilter: delegateContract.filters[
-          'TransferValue(uint256,uint256,uint256)'
-        ](undefined, tokenId),
-      }
-
-    return {
-      transferFilter: delegateContract.filters[
-        'Transfer(address,address,uint256)'
-      ](undefined, userAddress),
-      transferValueFilter: delegateContract.filters[
-        'TransferValue(uint256,uint256,uint256)'
-      ](undefined, tokenId),
-    }
   }
 
   async unwrap({
