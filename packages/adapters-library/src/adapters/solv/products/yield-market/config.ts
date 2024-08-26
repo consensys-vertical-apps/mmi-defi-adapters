@@ -2,7 +2,6 @@ import { getAddress } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 
 export interface SolvYieldMarketConfig {
-  //   chainId: Chain
   navOracleAddress: string
   openFundMarketAddress: string
   openFundRedemptionConcreteAddress: string
