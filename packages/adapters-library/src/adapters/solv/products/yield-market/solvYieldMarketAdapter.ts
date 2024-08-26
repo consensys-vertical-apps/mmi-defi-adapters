@@ -192,45 +192,34 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
    * - 1 GOEFR with tokenId=X, slot="XXXX..." and balanceOf=xxx
    */
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    const { openFundShareDelegateAddress, openFundRedemptionDelegateAddress } =
+      this.yieldMarketConfig
     const { userAddress } = input
-    const [holdings, redemptions] = await Promise.all([
-      this.getHoldings(userAddress),
-      this.getRedemptions(userAddress),
+
+    const [sharesTokenIds, redemptionTokenIds] = await Promise.all([
+      this.getTokenIds(userAddress, 'share'),
+      this.getTokenIds(userAddress, 'redemption'),
     ])
-    return [...holdings, ...redemptions]
-  }
 
-  private async getHoldings(userAddress: string): Promise<ProtocolPosition[]> {
-    const { openFundShareDelegateAddress } = this.yieldMarketConfig
+    const [shares, redemptions] = await Promise.all([
+      filterMapAsync(sharesTokenIds, async (tokenId) =>
+        this.getShare(openFundShareDelegateAddress, tokenId),
+      ),
+      filterMapAsync(redemptionTokenIds, async (tokenId) =>
+        this.getRedemption(openFundRedemptionDelegateAddress, tokenId),
+      ),
+    ])
 
-    // Count every instance of the GOEFS that the user holds
-    const tokensCount = await this.openFundShareDelegateContract[
-      'balanceOf(address)'
-    ](userAddress)
-
-    if (!tokensCount) return []
-
-    const indexes = [...Array(Number.parseInt(tokensCount.toString())).keys()]
-
-    // Each GOEFS the user holds represents a position
-    return filterMapAsync(indexes, async (index) =>
-      this.getHolding(userAddress, openFundShareDelegateAddress, index),
-    )
+    return [...shares, ...redemptions]
   }
 
   /**
    * Build the position represented by the Nth GOEFS that the user holds
    */
-  private async getHolding(
-    userAddress: string,
+  private async getShare(
     sftAddress: string,
-    index: number,
+    tokenId: bigint,
   ): Promise<ProtocolPosition | undefined> {
-    const tokenId =
-      await this.openFundShareDelegateContract.tokenOfOwnerByIndex(
-        userAddress,
-        index,
-      )
     const balance = await this.openFundShareDelegateContract[
       'balanceOf(uint256)'
     ](tokenId)
@@ -281,38 +270,13 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     return position
   }
 
-  private async getRedemptions(
-    userAddress: string,
-  ): Promise<ProtocolPosition[]> {
-    const { openFundRedemptionDelegateAddress } = this.yieldMarketConfig
-
-    // Count every instance of the GOEFS that the user holds
-    const tokensCount = await this.openFundRedemptionDelegateContract[
-      'balanceOf(address)'
-    ](userAddress)
-    if (!tokensCount) return []
-
-    const indexes = [...Array(Number.parseInt(tokensCount.toString())).keys()]
-
-    // Each GOEFR the user holds represents a position
-    return filterMapAsync(indexes, async (index) =>
-      this.getRedemption(userAddress, openFundRedemptionDelegateAddress, index),
-    )
-  }
-
   /**
    * Build the position represented by the Nth GOEFR that the user holds
    */
   private async getRedemption(
-    userAddress: string,
     sftAddress: string,
-    index: number,
+    tokenId: bigint,
   ): Promise<ProtocolPosition | undefined> {
-    const tokenId =
-      await this.openFundRedemptionDelegateContract.tokenOfOwnerByIndex(
-        userAddress,
-        index,
-      )
     const balance = await this.openFundRedemptionDelegateContract[
       'balanceOf(uint256)'
     ](tokenId)
@@ -367,6 +331,34 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
   }
 
   /**
+   * Returns a promise that resolves to the list of tokenIds (bigints) that
+   * the user holds for either the GOEFS or the GOEFR.
+   *
+   * Use the flag `sftType` to choose between GOEFS and GOEFR.
+   */
+  private async getTokenIds(
+    userAddress: string,
+    sftType: 'share' | 'redemption' = 'share',
+  ): Promise<bigint[]> {
+    const contract =
+      sftType === 'share'
+        ? this.openFundShareDelegateContract
+        : this.openFundRedemptionDelegateContract
+
+    const tokensCount = await contract['balanceOf(address)'](userAddress)
+
+    if (!tokensCount) return []
+
+    const indexes = [...Array(Number.parseInt(tokensCount.toString())).keys()]
+
+    const tokenIds = await Promise.all(
+      indexes.map((index) => contract.tokenOfOwnerByIndex(userAddress, index)),
+    )
+
+    return tokenIds
+  }
+
+  /**
    * Computes a Pool ID from the SFT address and the slot.
    * Some Solv smart contracts methods accept the pool id instead of the slot.
    *
@@ -385,13 +377,24 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     return keccak256(encodedData)
   }
 
+  // BurnValue
+  // Transfer
+  // TransferValue
+  // MintValue
+
   async getWithdrawals({
     protocolTokenAddress,
     fromBlock,
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
+    const shareTransferValueFilter =
+      this.openFundShareDelegateContract.filters[
+        'TransferValue(uint256,uint256,uint256)'
+      ]()
+    return Promise.resolve([])
+    // const shareTransferFilter =
+    // throw new NotImplementedError()
   }
 
   async getDeposits({
