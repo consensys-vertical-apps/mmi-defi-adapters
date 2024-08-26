@@ -157,7 +157,8 @@ export const SOLV_YIELD_MARKETS: Partial<Record<Chain, SolvYieldMarketConfig>> =
           currencyAddress: getAddress(
             '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
           ),
-          slotInRedemptionSft: 'xxxx',
+          slotInRedemptionSft:
+            '44074021000998808849461636570363194005994559789235813407230812349723243412987',
           slotInShareSft:
             '67766898239605156258501380852207923193619740467985810194663587771723472117631',
         },
