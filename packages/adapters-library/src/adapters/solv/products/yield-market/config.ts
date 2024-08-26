@@ -47,6 +47,7 @@ export const SOLV_YIELD_MARKETS: Partial<Record<Chain, SolvYieldMarketConfig>> =
       openFundShareConcreteAddress: getAddress(
         '0x9d9AaF63d073b4C0547285e98d126770a80C4dcE',
       ),
+      // Can get each pool infos (expect name) by calling OpenFundMarket.poolInfos(poolId)
       pools: [
         {
           id: '0xe037ef7b5f74bf3c988d8ae8ab06ad34643749ba9d217092297241420d600fce',
@@ -65,7 +66,8 @@ export const SOLV_YIELD_MARKETS: Partial<Record<Chain, SolvYieldMarketConfig>> =
           currencyAddress: getAddress(
             '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f',
           ),
-          slotInRedemptionSft: 'xxx',
+          slotInRedemptionSft:
+            '98290986673889118452731758048971438390205933433902423978753254425345905450360',
           slotInShareSft:
             '70120449060830493694329237233476283664004495384113064083934107225342856266913',
         },
@@ -75,7 +77,8 @@ export const SOLV_YIELD_MARKETS: Partial<Record<Chain, SolvYieldMarketConfig>> =
           currencyAddress: getAddress(
             '0xaf88d065e77c8cC2239327C5EDb3A432268e5831',
           ),
-          slotInRedemptionSft: 'xxx',
+          slotInRedemptionSft:
+            '98974572148204184033214861803818192972245358947836421033950240775848768337316',
           slotInShareSft:
             '90475336609644448573394272833482234840324043364960181744352364553367280007122',
         },
@@ -85,7 +88,8 @@ export const SOLV_YIELD_MARKETS: Partial<Record<Chain, SolvYieldMarketConfig>> =
           currencyAddress: getAddress(
             '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f',
           ),
-          slotInRedemptionSft: 'xxx',
+          slotInRedemptionSft:
+            '2139383843032991515887021585757318387276334928879949132675929967244088307951',
           slotInShareSft:
             '18834720600760682316079182603327587109774167238702271733823387280510631407444',
         },
@@ -95,7 +99,8 @@ export const SOLV_YIELD_MARKETS: Partial<Record<Chain, SolvYieldMarketConfig>> =
           currencyAddress: getAddress(
             '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1',
           ),
-          slotInRedemptionSft: 'xxx',
+          slotInRedemptionSft:
+            '69664112976528255795811329107613953989151155581804621569286436478803209768518',
           slotInShareSft:
             '85588310140314543721105880238735853818871955453308764959170830337250794294829',
         },
@@ -105,7 +110,8 @@ export const SOLV_YIELD_MARKETS: Partial<Record<Chain, SolvYieldMarketConfig>> =
           currencyAddress: getAddress(
             '0xaf88d065e77c8cC2239327C5EDb3A432268e5831',
           ),
-          slotInRedemptionSft: 'xxx',
+          slotInRedemptionSft:
+            '16377928607519976477989963404979285027530097161947261304664635997470569641266',
           slotInShareSft:
             '32632017617207478546475046691496646944368542238531499037653794403708832457936',
         },
@@ -115,7 +121,7 @@ export const SOLV_YIELD_MARKETS: Partial<Record<Chain, SolvYieldMarketConfig>> =
           currencyAddress: getAddress(
             '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9',
           ),
-          slotInRedemptionSft: 'xxx',
+          slotInRedemptionSft: '0',
           slotInShareSft:
             '10171050319075320644586539334401394801050934983625915448386431993435893492954',
         },
@@ -125,7 +131,8 @@ export const SOLV_YIELD_MARKETS: Partial<Record<Chain, SolvYieldMarketConfig>> =
           currencyAddress: getAddress(
             '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9',
           ),
-          slotInRedemptionSft: 'xxx',
+          slotInRedemptionSft:
+            '67010130834589679143450896177673788544169968579764420817396184052701388895417',
           slotInShareSft:
             '17873186957027148109033339637575361280044016486300679380351688892728620516739',
         },
@@ -168,7 +175,8 @@ export const SOLV_YIELD_MARKETS: Partial<Record<Chain, SolvYieldMarketConfig>> =
           currencyAddress: getAddress(
             '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
           ),
-          slotInRedemptionSft: 'xxx',
+          slotInRedemptionSft:
+            '106220690354736756950357605171301348350483668253572181628901344430144145627984',
           slotInShareSft:
             '107795438894633394025820351322700143223339318121737007372144016231468215188882',
         },
