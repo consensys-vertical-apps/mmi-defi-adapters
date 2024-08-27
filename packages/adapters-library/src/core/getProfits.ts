@@ -15,7 +15,7 @@ import { Erc20Metadata } from '../types/erc20Metadata'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
 import { calculateDeFiAttributionPerformance } from './utils/calculateDeFiAttributionPerformance'
-import { unwrap, unwrapTokens } from './utils/unwrap'
+import { unwrap } from './utils/unwrap'
 
 export async function getProfits({
   adapter,

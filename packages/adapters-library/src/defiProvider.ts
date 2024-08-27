@@ -17,7 +17,7 @@ import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { filterMapAsync, filterMapSync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
-import { unwrap, unwrapTokens } from './core/utils/unwrap'
+import { unwrap } from './core/utils/unwrap'
 import { count } from './metricsCount'
 import {
   enrichMovements,
