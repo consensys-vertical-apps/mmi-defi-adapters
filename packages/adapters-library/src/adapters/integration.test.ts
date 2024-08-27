@@ -570,10 +570,13 @@ function normalizeZeroes(obj: unknown): unknown {
   }
 
   if (obj !== null && typeof obj === 'object') {
-    return Object.keys(obj).reduce((acc, key) => {
-      acc[key] = normalizeZeroes((obj as Record<string, unknown>)[key])
-      return acc
-    }, {} as Record<string, unknown>)
+    return Object.keys(obj).reduce(
+      (acc, key) => {
+        acc[key] = normalizeZeroes((obj as Record<string, unknown>)[key])
+        return acc
+      },
+      {} as Record<string, unknown>,
+    )
   }
   return obj
 }
