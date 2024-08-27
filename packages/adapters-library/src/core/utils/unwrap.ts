@@ -34,31 +34,19 @@ async function unwrapToken(
   token: Token,
   fieldToUpdate: string,
 ) {
-  if (
-    !token.tokens ||
-    token.tokens.every(
-      (token) =>
-        token.type === TokenType.UnderlyingClaimable ||
-        token.type === TokenType.Reward,
+  const underlyingProtocolTokenAdapter =
+    await adapter.adaptersController.fetchTokenAdapter(
+      adapter.chainId,
+      token.address,
     )
-  ) {
-    const underlyingProtocolTokenAdapter =
-      await adapter.adaptersController.fetchTokenAdapter(
-        adapter.chainId,
-        token.address,
-      )
 
-    // Try to fetch prices if there is no tokens and no adapter to resolve
-    // Return either way as this is a leaf
-    if (!underlyingProtocolTokenAdapter) {
-      const tokenPriceRaw = await fetchPrice(adapter, token, blockNumber)
-      if (tokenPriceRaw) {
-        token.priceRaw = tokenPriceRaw
-      }
-
-      return
+  // Try to fetch prices if there is no tokens and no adapter to resolve
+  if (!underlyingProtocolTokenAdapter) {
+    const tokenPriceRaw = await fetchPrice(adapter, token, blockNumber)
+    if (tokenPriceRaw) {
+      token.priceRaw = tokenPriceRaw
     }
-
+  } else {
     // Populate underlying tokens if there is an adapter for this token
     const unwrapExchangeRates = await fetchUnwrapExchangeRates(
       underlyingProtocolTokenAdapter,
@@ -66,38 +54,36 @@ async function unwrapToken(
       blockNumber,
     )
 
-    if (!unwrapExchangeRates?.tokens) {
-      return
-    }
+    if (unwrapExchangeRates?.tokens) {
+      if (!token.tokens) {
+        token.tokens = []
+      }
 
-    if (!token.tokens) {
-      token.tokens = []
-    }
-
-    token.tokens.push(
-      ...unwrapExchangeRates.tokens.map((unwrappedTokenExchangeRate) => {
-        const underlyingToken = {
-          address: unwrappedTokenExchangeRate.address,
-          name: unwrappedTokenExchangeRate.name,
-          symbol: unwrappedTokenExchangeRate.symbol,
-          decimals: unwrappedTokenExchangeRate.decimals,
-          type: UnderlyingTokenTypeMap[token.type],
-          [fieldToUpdate]:
+      token.tokens.push(
+        ...unwrapExchangeRates.tokens.map((unwrappedTokenExchangeRate) => {
+          const underlyingToken = {
+            address: unwrappedTokenExchangeRate.address,
+            name: unwrappedTokenExchangeRate.name,
+            symbol: unwrappedTokenExchangeRate.symbol,
+            decimals: unwrappedTokenExchangeRate.decimals,
+            type: UnderlyingTokenTypeMap[token.type],
+            [fieldToUpdate]:
             // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
-            (((token as any)[fieldToUpdate] as bigint) *
-              unwrappedTokenExchangeRate.underlyingRateRaw) /
-            10n ** BigInt(token.decimals),
-        }
+              (((token as any)[fieldToUpdate] as bigint) *
+                unwrappedTokenExchangeRate.underlyingRateRaw) /
+              10n ** BigInt(token.decimals),
+          }
 
-        return underlyingToken
-      }),
-    )
+          return underlyingToken
+        }),
+      )
+    }
   }
 
   await Promise.all(
-    token.tokens!.map(async (underlyingToken) => {
+    token.tokens?.map(async (underlyingToken) => {
       await unwrapToken(adapter, blockNumber, underlyingToken, fieldToUpdate)
-    }),
+    }) ?? [],
   )
 }
 
