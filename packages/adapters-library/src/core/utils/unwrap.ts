@@ -17,20 +17,20 @@ type Token = Erc20Metadata & {
   type: TokenType
 }
 
-export async function unwrapAll(
+export async function unwrapTokens(
   adapter: IProtocolAdapter,
   blockNumber: number | undefined,
   tokens: Token[],
   fieldToUpdate: string,
 ) {
   const promises = tokens.map(async (token) => {
-    await unwrap(adapter, blockNumber, token, fieldToUpdate)
+    await unwrapToken(adapter, blockNumber, token, fieldToUpdate)
   })
 
   await Promise.all(promises)
 }
 
-export async function unwrap(
+async function unwrapToken(
   adapter: IProtocolAdapter,
   blockNumber: number | undefined,
   token: Token,
@@ -97,100 +97,98 @@ export async function unwrap(
   }
 
   const promises = token.tokens!.map(async (underlyingToken) => {
-    await unwrap(adapter, blockNumber, underlyingToken, fieldToUpdate)
+    await unwrapToken(adapter, blockNumber, underlyingToken, fieldToUpdate)
   })
 
   await Promise.all(promises)
 }
 
-// export async function unwrap(
-//   adapter: IProtocolAdapter,
-//   blockNumber: number | undefined,
-//   tokens: Token[],
-//   fieldToUpdate: string,
-// ) {
-//   const promises = tokens.map(async (token) => {
-//     if (token.tokens) {
-//       const hasNonRewardUnderlyings = !token.tokens.every(
-//         (token) =>
-//           token.type === TokenType.UnderlyingClaimable ||
-//           token.type === TokenType.Reward,
-//       )
+export async function unwrap(
+  adapter: IProtocolAdapter,
+  blockNumber: number | undefined,
+  tokens: Token[],
+  fieldToUpdate: string,
+) {
+  const promises = tokens.map(async (token) => {
+    if (token.tokens) {
+      const hasNonRewardUnderlyings = !token.tokens.every(
+        (token) =>
+          token.type === TokenType.UnderlyingClaimable ||
+          token.type === TokenType.Reward,
+      )
 
-//       if (!hasNonRewardUnderlyings) {
-//         // Resolve underlying tokens if they exist
-//         await unwrap(adapter, blockNumber, token.tokens, fieldToUpdate)
-//       }
-//     }
+      // Resolve underlying tokens if they exist
+      await unwrap(adapter, blockNumber, token.tokens, fieldToUpdate)
 
-//     const underlyingProtocolTokenAdapter =
-//       await adapter.adaptersController.fetchTokenAdapter(
-//         adapter.chainId,
-//         token.address,
-//       )
+      // Return if there are underlying tokens that are not rewards
+      if (hasNonRewardUnderlyings) {
+        return
+      }
+    }
 
-//     if (!underlyingProtocolTokenAdapter) {
-//       // Fetch prices if there is no tokens and no adapter to resolve
-//       const tokenPriceRaw = await fetchPrice(adapter, token, blockNumber)
-//       if (tokenPriceRaw) {
-//         token.priceRaw = tokenPriceRaw
-//       }
-//       return
-//     }
+    const underlyingProtocolTokenAdapter =
+      await adapter.adaptersController.fetchTokenAdapter(
+        adapter.chainId,
+        token.address,
+      )
 
-//     if (
-//       token.address === '0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490' ||
-//       token.address === '0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434'
-//     ) {
-//       console.log('AAAAAA', token)
-//     }
+    if (!underlyingProtocolTokenAdapter) {
+      // Fetch prices if there is no tokens and no adapter to resolve
+      const tokenPriceRaw = await fetchPrice(adapter, token, blockNumber)
+      if (tokenPriceRaw) {
+        token.priceRaw = tokenPriceRaw
+      }
+      return
+    }
 
-//     // Populate underlying tokens if there is an adapter for this token
-//     const unwrapExchangeRates = await fetchUnwrapExchangeRates(
-//       underlyingProtocolTokenAdapter,
-//       token,
-//       blockNumber,
-//     )
+    // Populate underlying tokens if there is an adapter for this token
+    const unwrapExchangeRates = await fetchUnwrapExchangeRates(
+      underlyingProtocolTokenAdapter,
+      token,
+      blockNumber,
+    )
 
-//     if (
-//       token.address === '0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490' ||
-//       token.address === '0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434'
-//     ) {
-//       console.log('BBBBBBBBBBBB', unwrapExchangeRates)
-//     }
+    if (!unwrapExchangeRates?.tokens) {
+      return
+    }
 
-//     if (!unwrapExchangeRates?.tokens) {
-//       return
-//     }
+    if (!token.tokens) {
+      token.tokens = []
+    }
 
-//     if (!token.tokens) {
-//       token.tokens = []
-//     }
+    token.tokens.push(
+      ...unwrapExchangeRates.tokens.map((unwrappedTokenExchangeRate) => {
+        const underlyingToken = {
+          address: unwrappedTokenExchangeRate.address,
+          name: unwrappedTokenExchangeRate.name,
+          symbol: unwrappedTokenExchangeRate.symbol,
+          decimals: unwrappedTokenExchangeRate.decimals,
+          type: UnderlyingTokenTypeMap[token.type],
+          [fieldToUpdate]:
+          // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
+            (((token as any)[fieldToUpdate] as bigint) *
+              unwrappedTokenExchangeRate.underlyingRateRaw) /
+            10n ** BigInt(token.decimals),
+        }
 
-//     token.tokens.push(
-//       ...unwrapExchangeRates.tokens.map((unwrappedTokenExchangeRate) => {
-//         const underlyingToken = {
-//           address: unwrappedTokenExchangeRate.address,
-//           name: unwrappedTokenExchangeRate.name,
-//           symbol: unwrappedTokenExchangeRate.symbol,
-//           decimals: unwrappedTokenExchangeRate.decimals,
-//           type: UnderlyingTokenTypeMap[token.type],
-//           [fieldToUpdate]:
-//           // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
-//             (((token as any)[fieldToUpdate] as bigint) *
-//               unwrappedTokenExchangeRate.underlyingRateRaw) /
-//             10n ** BigInt(token.decimals),
-//         }
+        return underlyingToken
+      }),
+    )
 
-//         return underlyingToken
-//       }),
-//     )
+    await unwrap(
+      adapter,
+      blockNumber,
+      token.tokens!.filter(
+        (t) =>
+          t.type !== TokenType.UnderlyingClaimable &&
+          t.type !== TokenType.Reward,
+      ),
+      fieldToUpdate,
+    )
+  })
 
-//     await unwrap(adapter, blockNumber, token.tokens!, fieldToUpdate)
-//   })
-
-//   await Promise.all(promises)
-// }
+  await Promise.all(promises)
+}
 
 async function fetchUnwrapExchangeRates(
   underlyingProtocolTokenAdapter: IProtocolAdapter,

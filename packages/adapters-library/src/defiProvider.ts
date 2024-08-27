@@ -17,7 +17,7 @@ import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { filterMapAsync, filterMapSync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
-import { unwrap, unwrapAll } from './core/utils/unwrap'
+import { unwrap, unwrapTokens } from './core/utils/unwrap'
 import { count } from './metricsCount'
 import {
   enrichMovements,
@@ -142,7 +142,7 @@ export class DefiProvider {
 
       const getRewardTime = Date.now()
 
-      await unwrapAll(adapter, blockNumber, protocolPositions, 'balanceRaw')
+      await unwrap(adapter, blockNumber, protocolPositions, 'balanceRaw')
 
       const unwrapTime = Date.now()
 
@@ -486,7 +486,7 @@ export class DefiProvider {
 
       await Promise.all(
         positionsMovements.map(async (positionMovements) => {
-          return await unwrapAll(
+          return await unwrap(
             adapter,
             positionMovements.blockNumber,
             positionMovements.tokens,
@@ -569,7 +569,7 @@ export class DefiProvider {
 
       await Promise.all(
         positionsMovements.map(async (positionMovements) => {
-          return await unwrapAll(
+          return await unwrap(
             adapter,
             positionMovements.blockNumber,
             positionMovements.tokens,
@@ -622,7 +622,7 @@ export class DefiProvider {
 
       await Promise.all(
         positionsMovements.map(async (positionMovements) => {
-          return await unwrapAll(
+          return await unwrap(
             adapter,
             positionMovements.blockNumber,
             positionMovements.tokens,
@@ -675,7 +675,7 @@ export class DefiProvider {
 
       await Promise.all(
         positionsMovements.map(async (positionMovements) => {
-          return await unwrapAll(
+          return await unwrap(
             adapter,
             positionMovements.blockNumber,
             positionMovements.tokens,
@@ -713,7 +713,7 @@ export class DefiProvider {
         blockNumber,
       })
 
-      await unwrapAll(adapter, blockNumber, tokens, 'totalSupplyRaw')
+      await unwrap(adapter, blockNumber, tokens, 'totalSupplyRaw')
 
       return {
         tokens: tokens.map((value) =>
