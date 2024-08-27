@@ -42,6 +42,8 @@ async function unwrapToken(
     )
 
   if (!token.tokens?.some((t) => t.type === TokenType.Underlying)) {
+    // Only fetch prices or underlyings if the token is not already unwrapped
+
     if (!underlyingProtocolTokenAdapter) {
       // Try to fetch prices if there is no tokens and no adapter to resolve
       const tokenPriceRaw = await fetchPrice(adapter, token, blockNumber)
@@ -62,36 +64,22 @@ async function unwrapToken(
         }
 
         token.tokens.push(
-          ...filterMapSync(
-            unwrapExchangeRates.tokens,
-            (unwrappedTokenExchangeRate) => {
-              if (
-                token.tokens?.find(
-                  (t) =>
-                    t.type !== TokenType.UnderlyingClaimable &&
-                    t.type !== TokenType.Reward &&
-                    t.address === unwrappedTokenExchangeRate.address,
-                )
-              ) {
-                return
-              }
+          ...unwrapExchangeRates.tokens.map((unwrappedTokenExchangeRate) => {
+            const underlyingToken = {
+              address: unwrappedTokenExchangeRate.address,
+              name: unwrappedTokenExchangeRate.name,
+              symbol: unwrappedTokenExchangeRate.symbol,
+              decimals: unwrappedTokenExchangeRate.decimals,
+              type: UnderlyingTokenTypeMap[token.type],
+              [fieldToUpdate]:
+              // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
+                (((token as any)[fieldToUpdate] as bigint) *
+                  unwrappedTokenExchangeRate.underlyingRateRaw) /
+                10n ** BigInt(token.decimals),
+            }
 
-              const underlyingToken = {
-                address: unwrappedTokenExchangeRate.address,
-                name: unwrappedTokenExchangeRate.name,
-                symbol: unwrappedTokenExchangeRate.symbol,
-                decimals: unwrappedTokenExchangeRate.decimals,
-                type: UnderlyingTokenTypeMap[token.type],
-                [fieldToUpdate]:
-                  // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
-                  (((token as any)[fieldToUpdate] as bigint) *
-                    unwrappedTokenExchangeRate.underlyingRateRaw) /
-                  10n ** BigInt(token.decimals),
-              }
-
-              return underlyingToken
-            },
-          ),
+            return underlyingToken
+          }),
         )
       }
     }
