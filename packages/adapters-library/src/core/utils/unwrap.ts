@@ -83,7 +83,7 @@ async function unwrapToken(
           decimals: unwrappedTokenExchangeRate.decimals,
           type: UnderlyingTokenTypeMap[token.type],
           [fieldToUpdate]:
-          // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
+            // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
             (((token as any)[fieldToUpdate] as bigint) *
               unwrappedTokenExchangeRate.underlyingRateRaw) /
             10n ** BigInt(token.decimals),
