@@ -30,10 +30,14 @@ export async function unwrap(
       )
 
       if (!hasNonRewardUnderlyings) {
+        // Resolve underlying tokens if they exist
         await unwrap(adapter, blockNumber, token.tokens, fieldToUpdate)
       }
 
+      // Return if there are underlying tokens that are not rewards
+      if (hasNonRewardUnderlyings) {
       return
+      }
     }
 
     const underlyingProtocolTokenAdapter =
