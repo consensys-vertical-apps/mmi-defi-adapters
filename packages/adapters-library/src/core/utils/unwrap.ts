@@ -29,13 +29,11 @@ export async function unwrap(
           token.type === TokenType.Reward,
       )
 
-      // Return if there are underlying tokens that are not rewards
-      if (hasNonRewardUnderlyings) {
-        // Resolve underlying tokens if they exist
+      if (!hasNonRewardUnderlyings) {
         await unwrap(adapter, blockNumber, token.tokens, fieldToUpdate)
-
-        return
       }
+
+      return
     }
 
     const underlyingProtocolTokenAdapter =
