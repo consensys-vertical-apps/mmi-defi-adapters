@@ -3,7 +3,7 @@ import type { TestCase } from '../../../types/testCase'
 
 export const testCases: TestCase[] = [
   {
-    key: 'yt&lp',
+    key: 'yt-lp',
     chainId: Chain.Ethereum,
     method: 'positions',
 
@@ -25,7 +25,7 @@ export const testCases: TestCase[] = [
     blockNumber: 20572021,
   },
   {
-    key: 'pt&sy',
+    key: 'pt-sy',
     chainId: Chain.Ethereum,
     method: 'positions',
 

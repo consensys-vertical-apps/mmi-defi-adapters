@@ -29,11 +29,11 @@ export async function unwrap(
           token.type === TokenType.Reward,
       )
 
-      // Resolve underlying tokens if they exist
-      await unwrap(adapter, blockNumber, token.tokens, fieldToUpdate)
-
       // Return if there are underlying tokens that are not rewards
       if (hasNonRewardUnderlyings) {
+        // Resolve underlying tokens if they exist
+        await unwrap(adapter, blockNumber, token.tokens, fieldToUpdate)
+
         return
       }
     }
@@ -77,7 +77,7 @@ export async function unwrap(
           decimals: unwrappedTokenExchangeRate.decimals,
           type: UnderlyingTokenTypeMap[token.type],
           [fieldToUpdate]:
-            // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
+          // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
             (((token as any)[fieldToUpdate] as bigint) *
               unwrappedTokenExchangeRate.underlyingRateRaw) /
             10n ** BigInt(token.decimals),

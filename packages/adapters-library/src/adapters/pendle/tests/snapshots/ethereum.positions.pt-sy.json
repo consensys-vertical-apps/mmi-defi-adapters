@@ -32,14 +32,26 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xb27D1729489d04473631f0AFAca3c3A7389ac9F8",
-              "name": "scrvUSD-CRV",
-              "symbol": "scrvUSD-CRV",
+              "address": "0xE05082B184a34668CD8A904D85FA815802BBb04c",
+              "name": "SY-Silo crvUSD",
+              "symbol": "SY-Silo crvUSD",
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "0n",
+              "tokens": [
+                {
+                  "address": "0xb27D1729489d04473631f0AFAca3c3A7389ac9F8",
+                  "name": "scrvUSD-CRV",
+                  "symbol": "scrvUSD-CRV",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "0n",
+                  "balance": 0,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xb27D1729489d04473631f0AFAca3c3A7389ac9F8/logo.png"
+                }
+              ],
               "balance": 0,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xb27D1729489d04473631f0AFAca3c3A7389ac9F8/logo.png"
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xE05082B184a34668CD8A904D85FA815802BBb04c/logo.png"
             }
           ],
           "balance": 202250.04885439668
@@ -53,27 +65,39 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
-              "name": "ezETH",
-              "symbol": "ezETH",
+              "address": "0x22E12A50e3ca49FB183074235cB1db84Fe4C716D",
+              "name": "SY-ezETH",
+              "symbol": "SY-ezETH",
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "0n",
               "tokens": [
                 {
-                  "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-                  "name": "Ethereum",
-                  "symbol": "ETH",
+                  "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+                  "name": "ezETH",
+                  "symbol": "ezETH",
                   "decimals": 18,
                   "type": "underlying",
                   "balanceRaw": "0n",
+                  "tokens": [
+                    {
+                      "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "balanceRaw": "0n",
+                      "balance": 0,
+                      "price": 2594.3492,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
                   "balance": 0,
-                  "price": 2594.3492,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
                 }
               ],
               "balance": 0,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x22E12A50e3ca49FB183074235cB1db84Fe4C716D/logo.png"
             }
           ],
           "balance": 70.68320644393394
@@ -87,15 +111,27 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xD9A442856C234a39a81a089C06451EBAa4306a72",
-              "name": "pufETH",
-              "symbol": "pufETH",
+              "address": "0x253008ba4aE2f3E6488DC998a5321D4EB1a0c905",
+              "name": "SY pufETH",
+              "symbol": "SY pufETH",
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "0n",
+              "tokens": [
+                {
+                  "address": "0xD9A442856C234a39a81a089C06451EBAa4306a72",
+                  "name": "pufETH",
+                  "symbol": "pufETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "0n",
+                  "balance": 0,
+                  "price": 2575.3391066874897,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD9A442856C234a39a81a089C06451EBAa4306a72/logo.png"
+                }
+              ],
               "balance": 0,
-              "price": 2575.3391066874897,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD9A442856C234a39a81a089C06451EBAa4306a72/logo.png"
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x253008ba4aE2f3E6488DC998a5321D4EB1a0c905/logo.png"
             }
           ],
           "balance": 75.00326216958294
@@ -109,15 +145,27 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
-              "name": "rswETH",
-              "symbol": "rswETH",
+              "address": "0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9",
+              "name": "SY-rswETH",
+              "symbol": "SY-rswETH",
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "0n",
+              "tokens": [
+                {
+                  "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
+                  "name": "rswETH",
+                  "symbol": "rswETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "0n",
+                  "balance": 0,
+                  "price": 2632.664790860908,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0/logo.png"
+                }
+              ],
               "balance": 0,
-              "price": 2632.664790860908,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0/logo.png"
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9/logo.png"
             }
           ],
           "balance": 31.45646620914222
@@ -144,39 +192,51 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-              "name": "wstETH",
-              "symbol": "wstETH",
+              "address": "0xcbC72d92b2dc8187414F6734718563898740C0BC",
+              "name": "SY-stETH",
+              "symbol": "SY-stETH",
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "3633294147958810669n",
               "tokens": [
                 {
-                  "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
-                  "name": "Liquid staked Ether 2.0",
-                  "symbol": "stETH",
+                  "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+                  "name": "wstETH",
+                  "symbol": "wstETH",
                   "decimals": 18,
                   "type": "underlying",
-                  "balanceRaw": "4274469471244098123n",
+                  "balanceRaw": "3633294147958810669n",
                   "tokens": [
                     {
-                      "address": "0x0000000000000000000000000000000000000000",
-                      "name": "Ethereum",
-                      "symbol": "ETH",
+                      "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                      "name": "Liquid staked Ether 2.0",
+                      "symbol": "stETH",
                       "decimals": 18,
                       "type": "underlying",
                       "balanceRaw": "4274469471244098123n",
+                      "tokens": [
+                        {
+                          "address": "0x0000000000000000000000000000000000000000",
+                          "name": "Ethereum",
+                          "symbol": "ETH",
+                          "decimals": 18,
+                          "type": "underlying",
+                          "balanceRaw": "4274469471244098123n",
+                          "balance": 4.274469471244098,
+                          "price": 2594.3492,
+                          "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                        }
+                      ],
                       "balance": 4.274469471244098,
-                      "price": 2594.3492,
-                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
                     }
                   ],
-                  "balance": 4.274469471244098,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                  "balance": 3.633294147958811,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
                 }
               ],
               "balance": 3.633294147958811,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xcbC72d92b2dc8187414F6734718563898740C0BC/logo.png"
             }
           ],
           "balance": 4.484888964612529
@@ -367,9 +427,6 @@
     "14c97194d01f018dec47daaa1be8967c": {
       "result": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000001000000000000000000000000d533a949740bb3306d119cc777fa900ba034cd52"
     },
-    "ac5c7a7dfabec04899e26665f9129cc7": {
-      "result": "0x0000000000000000000000000000000000000000000000001053ab35e955c8f7"
-    },
     "fa9230d0ae5cd1c10558c9e0765b5399": {
       "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000067075664554480000000000000000000000000000000000000000000000000000"
     },
@@ -408,6 +465,9 @@
     },
     "7d4458fa03390d8ad42472bbff2bd8c7": {
       "result": "0x0000000000000000000000000000000000000000000000000e152ee7cc0ffc9d"
+    },
+    "ac5c7a7dfabec04899e26665f9129cc7": {
+      "result": "0x0000000000000000000000000000000000000000000000001053ab35e955c8f7"
     },
     "820e93ad3fd7762ea1e4b39c7d95a6a9": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000000"

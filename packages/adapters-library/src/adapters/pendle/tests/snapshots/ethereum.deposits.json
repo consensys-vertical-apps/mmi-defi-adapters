@@ -30,15 +30,27 @@
             "blockNumber": 20089673,
             "tokens": [
               {
-                "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-                "name": "weETH",
-                "symbol": "weETH",
+                "address": "0xAC0047886a985071476a1186bE89222659970d65",
+                "name": "SY-weETH",
+                "symbol": "SY-weETH",
                 "decimals": 18,
                 "type": "underlying",
                 "balanceRaw": "288277569000252909n",
+                "tokens": [
+                  {
+                    "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+                    "name": "weETH",
+                    "symbol": "weETH",
+                    "decimals": 18,
+                    "type": "underlying",
+                    "balanceRaw": "288277569000252909n",
+                    "balance": 0.2882775690002529,
+                    "price": 3651.18611852538,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
+                  }
+                ],
                 "balance": 0.2882775690002529,
-                "price": 3651.18611852538,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xAC0047886a985071476a1186bE89222659970d65/logo.png"
               }
             ],
             "balance": 0.30171997568755404

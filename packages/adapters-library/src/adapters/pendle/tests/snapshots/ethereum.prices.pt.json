@@ -40,12 +40,12 @@
             {
               "type": "underlying",
               "underlyingRateRaw": "975262482310168247n",
-              "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
-              "name": "rswETH",
-              "symbol": "rswETH",
+              "address": "0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9",
+              "name": "SY-rswETH",
+              "symbol": "SY-rswETH",
               "decimals": 18,
               "underlyingRate": 0.9752624823101682,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0/logo.png"
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9/logo.png"
             }
           ]
         }

@@ -71,10 +71,6 @@ export class PendlePrincipleTokenAdapter
     this.helpers = helpers
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -104,16 +100,16 @@ export class PendlePrincipleTokenAdapter
         decimals: value.pt.decimals,
       }
 
-      const underlyingAsset: Erc20Metadata = {
-        address: getAddress(value.underlyingAsset.address),
-        name: value.underlyingAsset.name,
-        symbol: value.underlyingAsset.symbol,
+      const sy: Erc20Metadata = {
+        address: getAddress(value.sy.address),
+        name: value.sy.name,
+        symbol: value.sy.symbol,
         decimals: value.underlyingAsset.decimals,
       }
 
       metadata[getAddress(pt.address)] = {
         protocolToken: pt,
-        underlyingTokens: [underlyingAsset],
+        underlyingTokens: [sy],
         marketAddress: market,
       }
 
