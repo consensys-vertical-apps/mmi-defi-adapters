@@ -7,6 +7,7 @@ import {
   NotImplementedError,
   ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
 } from '../errors/errors'
+import { filterMapSync } from './filters'
 import { logger } from './logger'
 
 type Token = Erc20Metadata & {
@@ -60,22 +61,36 @@ async function unwrapToken(
       }
 
       token.tokens.push(
-        ...unwrapExchangeRates.tokens.map((unwrappedTokenExchangeRate) => {
-          const underlyingToken = {
-            address: unwrappedTokenExchangeRate.address,
-            name: unwrappedTokenExchangeRate.name,
-            symbol: unwrappedTokenExchangeRate.symbol,
-            decimals: unwrappedTokenExchangeRate.decimals,
-            type: UnderlyingTokenTypeMap[token.type],
-            [fieldToUpdate]:
-            // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
-              (((token as any)[fieldToUpdate] as bigint) *
-                unwrappedTokenExchangeRate.underlyingRateRaw) /
-              10n ** BigInt(token.decimals),
-          }
+        ...filterMapSync(
+          unwrapExchangeRates.tokens,
+          (unwrappedTokenExchangeRate) => {
+            if (
+              token.tokens?.find(
+                (t) =>
+                  t.type !== TokenType.UnderlyingClaimable &&
+                  t.type !== TokenType.Reward &&
+                  t.address === unwrappedTokenExchangeRate.address,
+              )
+            ) {
+              return
+            }
 
-          return underlyingToken
-        }),
+            const underlyingToken = {
+              address: unwrappedTokenExchangeRate.address,
+              name: unwrappedTokenExchangeRate.name,
+              symbol: unwrappedTokenExchangeRate.symbol,
+              decimals: unwrappedTokenExchangeRate.decimals,
+              type: UnderlyingTokenTypeMap[token.type],
+              [fieldToUpdate]:
+              // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
+                (((token as any)[fieldToUpdate] as bigint) *
+                  unwrappedTokenExchangeRate.underlyingRateRaw) /
+                10n ** BigInt(token.decimals),
+            }
+
+            return underlyingToken
+          },
+        ),
       )
     }
   }
