@@ -15,7 +15,7 @@ import { Erc20Metadata } from '../types/erc20Metadata'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
 import { calculateDeFiAttributionPerformance } from './utils/calculateDeFiAttributionPerformance'
-import { unwrap } from './utils/unwrap'
+import { unwrap, unwrapAll } from './utils/unwrap'
 
 export async function getProfits({
   adapter,
@@ -52,7 +52,7 @@ export async function getProfits({
           tokenIds,
         })
         .then(async (result) => {
-          await unwrap(adapter, toBlock, result, 'balanceRaw')
+          await unwrapAll(adapter, toBlock, result, 'balanceRaw')
           return result
         })
         .then((result) => {
@@ -67,7 +67,7 @@ export async function getProfits({
           tokenIds,
         })
         .then(async (result) => {
-          await unwrap(adapter, fromBlock, result, 'balanceRaw')
+          await unwrapAll(adapter, fromBlock, result, 'balanceRaw')
           return result
         })
         .then((result) => {
@@ -83,7 +83,7 @@ export async function getProfits({
         blockNumber: toBlock,
       })
       .then(async (result) => {
-        await unwrap(adapter, toBlock, result, 'balanceRaw')
+        await unwrapAll(adapter, toBlock, result, 'balanceRaw')
         return result
       })
       .then((result) => {
@@ -99,7 +99,7 @@ export async function getProfits({
         tokenIds: Object.keys(endPositionValues), // endPositionValues is indexed by tokenId ?? protocolTokenAddress
       })
       .then(async (result) => {
-        await unwrap(adapter, fromBlock, result, 'balanceRaw')
+        await unwrapAll(adapter, fromBlock, result, 'balanceRaw')
         return result
       })
       .then((result) => {
@@ -135,7 +135,7 @@ export async function getProfits({
               .then(async (result) => {
                 await Promise.all(
                   result.map(async (positionMovements) => {
-                    return await unwrap(
+                    return await unwrapAll(
                       adapter,
                       positionMovements.blockNumber,
                       positionMovements.tokens,
@@ -164,7 +164,7 @@ export async function getProfits({
               .then(async (result) => {
                 await Promise.all(
                   result.map(async (positionMovements) => {
-                    return await unwrap(
+                    return await unwrapAll(
                       adapter,
                       positionMovements.blockNumber,
                       positionMovements.tokens,
@@ -193,7 +193,7 @@ export async function getProfits({
               .then(async (result) => {
                 await Promise.all(
                   result.map(async (positionMovements) => {
-                    return await unwrap(
+                    return await unwrapAll(
                       adapter,
                       positionMovements.blockNumber,
                       positionMovements.tokens,
@@ -222,7 +222,7 @@ export async function getProfits({
               .then(async (result) => {
                 await Promise.all(
                   result.map(async (positionMovements) => {
-                    return await unwrap(
+                    return await unwrapAll(
                       adapter,
                       positionMovements.blockNumber,
                       positionMovements.tokens,
