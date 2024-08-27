@@ -21,11 +21,11 @@ export async function unwrap(
   tokens: Token[],
   fieldToUpdate: string,
 ) {
-  const promises = tokens.map(async (token) => {
-    await unwrapToken(adapter, blockNumber, token, fieldToUpdate)
-  })
-
-  await Promise.all(promises)
+  return await Promise.all(
+    tokens.map(async (token) => {
+      await unwrapToken(adapter, blockNumber, token, fieldToUpdate)
+    }),
+  )
 }
 
 async function unwrapToken(
@@ -94,11 +94,11 @@ async function unwrapToken(
     )
   }
 
-  const promises = token.tokens!.map(async (underlyingToken) => {
-    await unwrapToken(adapter, blockNumber, underlyingToken, fieldToUpdate)
-  })
-
-  await Promise.all(promises)
+  await Promise.all(
+    token.tokens!.map(async (underlyingToken) => {
+      await unwrapToken(adapter, blockNumber, underlyingToken, fieldToUpdate)
+    }),
+  )
 }
 
 async function fetchUnwrapExchangeRates(
