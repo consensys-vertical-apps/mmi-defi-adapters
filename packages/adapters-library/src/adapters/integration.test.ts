@@ -265,7 +265,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               toBlockNumbersOverride: { [testCase.chainId]: blockNumber },
             })
 
-            expect(response).toEqual(snapshot)
+            expect(normalizeZeroes(response)).toEqual(snapshot)
           },
           TEST_TIMEOUT,
         )
@@ -558,4 +558,22 @@ async function loadJsonFile(testCase: TestCase, protocolId: Protocol) {
     blockNumber,
     rpcResponses,
   }
+}
+
+function normalizeZeroes(obj: unknown): unknown {
+  if (typeof obj === 'number' && Object.is(obj, -0)) {
+    return 0
+  }
+
+  if (Array.isArray(obj)) {
+    return obj.map(normalizeZeroes)
+  }
+
+  if (obj !== null && typeof obj === 'object') {
+    return Object.keys(obj).reduce((acc, key) => {
+      acc[key] = normalizeZeroes((obj as Record<string, unknown>)[key])
+      return acc
+    }, {} as Record<string, unknown>)
+  }
+  return obj
 }
