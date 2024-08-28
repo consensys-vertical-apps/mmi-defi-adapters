@@ -10,6 +10,7 @@ import {
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   GetTotalValueLockedInput,
@@ -28,14 +29,6 @@ import {
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { Cerc20__factory, Comptroller__factory } from '../../contracts'
-
-type MendiFinanceBorrowMarketAdapterMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
-  }
->
 
 const contractAddresses: Partial<
   Record<
@@ -62,15 +55,17 @@ const contractAddresses: Partial<
   },
 }
 
-export class MendiFinanceBorrowMarketAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+}
+
+export class MendiFinanceBorrowMarketAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'borrow-market'
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
+    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -87,7 +82,7 @@ export class MendiFinanceBorrowMarketAdapter
   }
 
   @CacheToFile({ fileKey: 'mendi' })
-  async buildMetadata() {
+  async getProtocolTokens() {
     const comptrollerContract = Comptroller__factory.connect(
       contractAddresses[this.chainId]!.comptroller,
       this.provider,
@@ -95,7 +90,7 @@ export class MendiFinanceBorrowMarketAdapter
 
     const pools = await comptrollerContract.getAllMarkets()
 
-    const metadataObject: MendiFinanceBorrowMarketAdapterMetadata = {}
+    const metadataObject: ProtocolToken<AdditionalMetadata>[] = []
 
     await Promise.all(
       pools.map(async (poolContractAddress) => {
@@ -127,19 +122,13 @@ export class MendiFinanceBorrowMarketAdapter
           underlyingTokenPromise,
         ])
 
-        metadataObject[protocolToken.address] = {
-          protocolToken,
-          underlyingToken,
-        }
+        metadataObject.push({
+          ...protocolToken,
+          underlyingTokens: [underlyingToken],
+        })
       }),
     )
     return metadataObject
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
   }
 
   protected getUnderlyingTokenBalances(_input: {
@@ -156,47 +145,11 @@ export class MendiFinanceBorrowMarketAdapter
     throw new NotImplementedError()
   }
 
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
-  }
-
   protected async unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
   ): Promise<UnwrappedTokenExchangeRate[]> {
     throw new NotImplementedError()
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return [underlyingToken]
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
   }
 
   async getTransactionParams({
@@ -206,8 +159,8 @@ export class MendiFinanceBorrowMarketAdapter
     GetTransactionParams,
     { protocolId: typeof Protocol.MendiFinance; productId: 'borrow-market' }
   >): Promise<{ to: string; data: string }> {
-    const assetPool = Object.values(await this.buildMetadata()).find(
-      (pool) => pool.protocolToken.address === inputs.asset,
+    const assetPool = Object.values(await this.getProtocolTokens()).find(
+      (pool) => pool.address === inputs.asset,
     )
 
     if (!assetPool) {
@@ -215,7 +168,7 @@ export class MendiFinanceBorrowMarketAdapter
     }
 
     const poolContract = Cerc20__factory.connect(
-      assetPool.protocolToken.address,
+      assetPool.address,
       this.provider,
     )
 
@@ -242,142 +195,3 @@ export const WriteActionInputs = {
     amount: z.string(),
   }),
 } satisfies WriteActionInputSchemas
-
-// NOTE: The APY/APR feature has been removed as of March 2024.
-// The below contains logic that may be useful for future features or reference. For more context on this decision, refer to ticket [MMI-4731].
-
-// async getApy({
-//   protocolTokenAddress,
-//   blockNumber,
-// }: GetApyInput): Promise<ProtocolTokenApy> {
-//   const apy = await this.getProtocolTokenApy({
-//     protocolTokenAddress,
-//     blockNumber,
-//   })
-
-//   return {
-//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-//     apyDecimal: apy * 100,
-//   }
-// }
-
-// async getApr({
-//   protocolTokenAddress,
-//   blockNumber,
-// }: GetAprInput): Promise<ProtocolTokenApr> {
-//   const apr = await this.getProtocolTokenApr({
-//     protocolTokenAddress,
-//     blockNumber,
-//   })
-
-//   return {
-//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-//     aprDecimal: apr * 100,
-//   }
-// }
-
-// private async getProtocolTokenApy({
-//   protocolTokenAddress,
-//   blockNumber,
-// }: GetApyInput): Promise<number> {
-//   const poolContract = Cerc20__factory.connect(
-//     protocolTokenAddress,
-//     this.provider,
-//   )
-
-//   const srpb = await poolContract.borrowRatePerBlock.staticCall({
-//     blockTag: blockNumber,
-//   })
-//   const apr = (Number(srpb) * Number(SECONDS_PER_YEAR)) / Number(1e18)
-//   const apy = aprToApy(apr, SECONDS_PER_YEAR)
-
-//   return apy
-// }
-
-// private async getProtocolTokenApr({
-//   protocolTokenAddress,
-//   blockNumber,
-// }: GetAprInput): Promise<number> {
-//   const poolContract = Cerc20__factory.connect(
-//     protocolTokenAddress,
-//     this.provider,
-//   )
-//   const underlyingTokenMetadata = (
-//     await this.fetchPoolMetadata(protocolTokenAddress)
-//   ).underlyingToken
-
-//   const speedContract = Speed__factory.connect(
-//     contractAddresses[this.chainId]!.speed,
-//     this.provider,
-//   )
-
-//   const oracleContract = Oracle__factory.connect(
-//     contractAddresses[this.chainId]!.oracle,
-//     this.provider,
-//   )
-
-//   const velocoreContract = Velocore__factory.connect(
-//     contractAddresses[this.chainId]!.velocore,
-//     this.provider,
-//   )
-
-//   const converterContract = Converter__factory.connect(
-//     contractAddresses[this.chainId]!.converter,
-//     this.provider,
-//   )
-
-//   const mendiAddress = contractAddresses[this.chainId]!.mendi
-
-//   const convertValue = await converterContract.latestAnswer.staticCall({
-//     blockTag: blockNumber,
-//   })
-
-//   const baseTokenBytes32 =
-//     '0x' +
-//     contractAddresses[this.chainId]!.usdcE.replace(/^0x/, '').padStart(
-//       64,
-//       '0',
-//     )
-
-//   const quoteTokenBytes32 =
-//     '0x' + mendiAddress.replace(/^0x/, '').padStart(64, '0')
-
-//   const mPrice = await velocoreContract.spotPrice.staticCall(
-//     quoteTokenBytes32,
-//     baseTokenBytes32,
-//     10n ** 18n,
-//     { blockTag: blockNumber },
-//   )
-//   const mPriceFixed = (
-//     (Number(mPrice) / 1e6) *
-//     (Number(convertValue) / 1e8)
-//   ).toFixed(3)
-
-//   const supplySpeed = await speedContract.rewardMarketState.staticCall(
-//     mendiAddress,
-//     protocolTokenAddress,
-//     { blockTag: blockNumber },
-//   )
-
-//   const tokenBorrows = await poolContract.totalBorrows.staticCall({
-//     blockTag: blockNumber,
-//   })
-
-//   const underlingPrice = await oracleContract.getPrice.staticCall(
-//     protocolTokenAddress,
-//     { blockTag: blockNumber },
-//   )
-
-//   const tokenDecimal = underlyingTokenMetadata.decimals
-
-//   const marketTotalBorrows =
-//     (Number(tokenBorrows) / Math.pow(10, tokenDecimal)) *
-//     Number(underlingPrice)
-//   const apr =
-//     (Number(supplySpeed.borrowSpeed) *
-//       Number(mPriceFixed) *
-//       SECONDS_PER_YEAR) /
-//     marketTotalBorrows
-
-//   return apr
-// }

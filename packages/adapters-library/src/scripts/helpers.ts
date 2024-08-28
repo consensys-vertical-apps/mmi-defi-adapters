@@ -55,9 +55,7 @@ export class Helpers {
       (token) => token.address === protocolTokenAddress,
     )
     if (!protocolToken) {
-      throw new Error(
-        `Protocol token with address ${protocolTokenAddress} not found`,
-      )
+      throw new Error(`Protocol token ${protocolTokenAddress} not found`)
     }
     return protocolToken
   }

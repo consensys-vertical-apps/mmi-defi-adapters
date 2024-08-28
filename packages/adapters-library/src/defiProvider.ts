@@ -131,14 +131,24 @@ export class DefiProvider {
 
       await Promise.all(
         protocolPositions.map(async (pos) => {
-          const rewards = await adapter.getRewardPositions?.({
-            userAddress,
-            blockNumber,
-            protocolTokenAddress: pos.address,
-          })
+          const [rewards, extraRewards] = await Promise.all([
+            adapter.getRewardPositions?.({
+              userAddress,
+              blockNumber,
+              protocolTokenAddress: pos.address,
+            }),
+            adapter.getExtraRewardPositions?.({
+              userAddress,
+              blockNumber,
+              protocolTokenAddress: pos.address,
+            }),
+          ])
 
           if (rewards && rewards?.length > 0) {
             pos.tokens = [...(pos.tokens ?? []), ...rewards]
+          }
+          if (extraRewards && extraRewards?.length > 0) {
+            pos.tokens = [...(pos.tokens ?? []), ...extraRewards]
           }
         }),
       )
@@ -391,16 +401,22 @@ export class DefiProvider {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
+      const protocolTokenAddresses = (await adapter.getProtocolTokens()).map(
+        (token) => token.address,
+      )
+
+      if (
+        filterProtocolToken &&
+        !protocolTokenAddresses.includes(filterProtocolToken)
+      ) {
+        return { tokens: [] }
+      }
       const protocolTokens = filterProtocolToken
-        ? [
-            {
-              address: filterProtocolToken,
-            },
-          ]
-        : await adapter.getProtocolTokens()
+        ? [filterProtocolToken]
+        : protocolTokenAddresses
 
       const tokens = await Promise.all(
-        protocolTokens.map(async ({ address }) => {
+        protocolTokens.map(async (address) => {
           const startTime = Date.now()
 
           const unwrap = await adapter.unwrap({
@@ -429,13 +445,20 @@ export class DefiProvider {
       return { tokens }
     }
 
-    return this.runForAllProtocolsAndChains({
+    const result = await this.runForAllProtocolsAndChains({
       runner,
       filterProtocolIds,
       filterChainIds,
-
       method: 'unwrap',
     })
+
+    // remove empty tokens this happens with filterProtocolToken is applied
+    const filteredResult = result.filter(
+      (result) =>
+        !result.success || (result.success && result.tokens.length > 0),
+    )
+
+    return filteredResult
   }
 
   async getWithdrawals({
@@ -475,6 +498,17 @@ export class DefiProvider {
       if (typeof adapter.getRewardPositions === 'function') {
         positionsMovementsPromises.push(
           adapter.getRewardWithdrawals!({
+            protocolTokenAddress: getAddress(protocolTokenAddress),
+            fromBlock,
+            toBlock,
+            userAddress,
+            tokenId,
+          }),
+        )
+      }
+      if (typeof adapter.getExtraRewardWithdrawals === 'function') {
+        positionsMovementsPromises.push(
+          adapter.getExtraRewardWithdrawals!({
             protocolTokenAddress: getAddress(protocolTokenAddress),
             fromBlock,
             toBlock,

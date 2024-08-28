@@ -15,8 +15,8 @@
         {
           "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
           "name": "Rocket Pool rETH",
-          "symbol": "rETH",
           "decimals": 18,
+          "symbol": "rETH",
           "baseRate": 1,
           "type": "protocol",
           "tokens": [
