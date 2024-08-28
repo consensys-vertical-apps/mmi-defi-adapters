@@ -572,21 +572,3 @@ async function loadJsonFile(testCase: TestCase, protocolId: Protocol) {
     rpcResponses,
   }
 }
-
-function normalizeZeroes(obj: unknown): unknown {
-  if (typeof obj === 'number' && Object.is(obj, -0)) {
-    return 0
-  }
-
-  if (Array.isArray(obj)) {
-    return obj.map(normalizeZeroes)
-  }
-
-  if (obj !== null && typeof obj === 'object') {
-    return Object.keys(obj).reduce((acc, key) => {
-      acc[key] = normalizeZeroes((obj as Record<string, unknown>)[key])
-      return acc
-    }, {} as Record<string, unknown>)
-  }
-  return obj
-}
