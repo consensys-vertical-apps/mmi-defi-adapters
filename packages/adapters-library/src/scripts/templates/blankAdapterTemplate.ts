@@ -38,7 +38,6 @@ export function blankAdapterTemplate({
     import { Erc20Metadata } from '../../../../types/erc20Metadata'
     import { IProtocolAdapter, ProtocolToken } from '../../../../types/IProtocolAdapter'
     import { Helpers } from '../../../../scripts/helpers'
-    import { RewardsAdapter } from '../../../../scripts/rewardAdapter'
     import { NotImplementedError } from '../../../../core/errors/errors'
     import { Replacements } from '../../../../scripts/replacements'
 
