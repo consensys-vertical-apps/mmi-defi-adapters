@@ -1,5 +1,8 @@
 import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter'
-import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
+import {
+  CacheToFile,
+  IMetadataBuilder,
+} from '../../../core/decorators/cacheToFile'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 
@@ -9,6 +12,7 @@ import {
   ProtocolDataProvider__factory,
 } from '../contracts'
 
+import { ProtocolToken } from '../../../types/IProtocolAdapter'
 import {
   TokenBalance,
   TokenType,
@@ -20,19 +24,12 @@ const PRICE_PEGGED_TO_ONE = 1
 const sparkEthereumProviderAddress =
   '0xFc21d6d146E6086B8359705C8b28512a983db0cb'
 
-export type SparkMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
-  }
->
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+}
 
-export abstract class SparkV1BasePoolAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
-  async buildMetadata(): Promise<SparkMetadata> {
+export abstract class SparkV1BasePoolAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+  async getProtocolTokens() {
     const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
       sparkEthereumProviderAddress,
       this.provider,
@@ -41,7 +38,7 @@ export abstract class SparkV1BasePoolAdapter
     const reserveTokens =
       await protocolDataProviderContract.getAllReservesTokens()
 
-    const metadataObject: SparkMetadata = {}
+    const metadataObject: ProtocolToken<AdditionalMetadata>[] = []
 
     const promises = reserveTokens.map(async ({ tokenAddress }) => {
       const reserveConfigurationData =
@@ -77,10 +74,10 @@ export abstract class SparkV1BasePoolAdapter
         underlyingTokenPromise,
       ])
 
-      metadataObject[protocolToken.address] = {
-        protocolToken,
-        underlyingToken,
-      }
+      metadataObject.push({
+        ...protocolToken,
+        underlyingTokens: [underlyingToken],
+      })
     })
 
     await Promise.all(promises)
@@ -94,48 +91,6 @@ export abstract class SparkV1BasePoolAdapter
     >,
   ): string
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return [underlyingToken]
-  }
-
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
-  }
-
   protected async getUnderlyingTokenBalances({
     protocolTokenBalance,
   }: {
@@ -143,12 +98,12 @@ export abstract class SparkV1BasePoolAdapter
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
+    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
       protocolTokenBalance.address,
     )
 
     const underlyingTokenBalance = {
-      ...underlyingToken,
+      ...underlyingTokens[0]!,
       balanceRaw: protocolTokenBalance.balanceRaw,
       type: TokenType.Underlying,
     }
@@ -160,7 +115,7 @@ export abstract class SparkV1BasePoolAdapter
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
   ): Promise<UnwrappedTokenExchangeRate[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
+    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
       protocolTokenMetadata.address,
     )
 
@@ -171,7 +126,7 @@ export abstract class SparkV1BasePoolAdapter
 
     return [
       {
-        ...underlyingToken,
+        ...underlyingTokens[0]!,
         type: TokenType.Underlying,
         underlyingRateRaw: pricePerShareRaw,
       },

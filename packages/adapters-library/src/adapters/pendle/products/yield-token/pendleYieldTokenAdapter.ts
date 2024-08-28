@@ -10,10 +10,13 @@ import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcPr
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 
+import { filterMapAsync } from '../../../../core/utils/filters'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
+  GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
@@ -22,6 +25,7 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
+  UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
@@ -29,7 +33,7 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
 import { PENDLE_ROUTER_STATIC_CONTRACT } from '../../backend/constants'
-import { RouterStatic__factory } from '../../contracts'
+import { RouterStatic__factory, YieldToken__factory } from '../../contracts'
 
 type Metadata = Record<
   string,
@@ -172,7 +176,6 @@ export class PendleYieldTokenAdapter
   async unwrap({
     blockNumber,
     protocolTokenAddress,
-    tokenId,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     const metadata = await this.fetchPoolMetadata(protocolTokenAddress)
     const underlyingToken = (
@@ -204,6 +207,68 @@ export class PendleYieldTokenAdapter
       ...metadata.protocolToken,
       tokens: [underlying],
     }
+  }
+
+  async getRewardPositions({
+    userAddress,
+    protocolTokenAddress,
+    blockNumber,
+  }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
+    const yieldTokenContract = YieldToken__factory.connect(
+      protocolTokenAddress,
+      this.provider,
+    )
+
+    const { interestOut, rewardsOut } =
+      await yieldTokenContract.redeemDueInterestAndRewards.staticCall(
+        userAddress,
+        true,
+        true,
+        { blockTag: blockNumber },
+      )
+
+    const rewards: UnderlyingReward[] = []
+    if (interestOut) {
+      const underlyingToken = (
+        await this.getUnderlyingTokens(protocolTokenAddress)
+      )[0]!
+
+      rewards.push({
+        ...underlyingToken,
+        type: TokenType.UnderlyingClaimable,
+        balanceRaw: interestOut,
+      })
+    }
+
+    if (rewardsOut.length) {
+      const rewardTokenAddresses = await yieldTokenContract.getRewardTokens({
+        blockTag: blockNumber,
+      })
+
+      rewards.push(
+        ...(await filterMapAsync(
+          rewardTokenAddresses,
+          async (rewardTokenAddress, i) => {
+            const rewardBalance = rewardsOut[i]
+            if (!rewardBalance) {
+              return undefined
+            }
+
+            return {
+              ...(await getTokenMetadata(
+                rewardTokenAddress,
+                this.chainId,
+                this.provider,
+              )),
+              type: TokenType.UnderlyingClaimable,
+              balanceRaw: rewardBalance,
+            }
+          },
+        )),
+      )
+    }
+
+    return rewards
   }
 
   private async getProtocolToken(protocolTokenAddress: string) {

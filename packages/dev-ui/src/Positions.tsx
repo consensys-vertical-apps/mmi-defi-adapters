@@ -242,7 +242,9 @@ function PositionsDisplay({
                                 <TooltipProvider>
                                   <Tooltip>
                                     <TooltipTrigger>
-                                      <h4>{token.name}</h4>
+                                      <h4>
+                                        {token.name} | {token.symbol}
+                                      </h4>
                                     </TooltipTrigger>
                                     <TooltipContent>
                                       <p>
@@ -336,7 +338,7 @@ function formatCurrency(amount: number) {
 function formatTokenBalance(amount: number) {
   return amount.toLocaleString('en-US', {
     minimumFractionDigits: 0,
-    maximumFractionDigits: 4,
+    maximumFractionDigits: 18,
   })
 }
 

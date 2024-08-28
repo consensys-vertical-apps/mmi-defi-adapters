@@ -1,0 +1,232 @@
+{
+  "blockNumber": 245491037,
+  "aggregatedValues": ["USD0.43", "USD0.50", "USD1.06", "USD0.46", "USD0.12"],
+  "snapshot": [
+    {
+      "protocolId": "solv",
+      "name": "Solv",
+      "description": "Solv defi adapter for Yield Market vaults",
+      "siteUrl": "https://solv.finance/",
+      "iconUrl": "https://solv.finance/favicon.ico",
+      "positionType": "stake",
+      "chainId": 42161,
+      "productId": "yield-market",
+      "success": true,
+      "tokens": [
+        {
+          "type": "protocol",
+          "balanceRaw": "369263620708988794n",
+          "address": "0x22799DAA45209338B7f938edf251bdfD1E6dCB32",
+          "tokenId": "10334",
+          "name": "GMX V2 USDC - A",
+          "symbol": "GMX V2 USDC - A",
+          "decimals": 18,
+          "tokens": [
+            {
+              "type": "underlying",
+              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+              "balanceRaw": "426147n",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balance": 0.426147,
+              "price": 1.0006469002007277,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
+            }
+          ],
+          "balance": 0.36926362070898877
+        },
+        {
+          "type": "protocol",
+          "balanceRaw": "433863948942890488n",
+          "address": "0x22799DAA45209338B7f938edf251bdfD1E6dCB32",
+          "tokenId": "10484",
+          "name": "GMX V2 USDC - A",
+          "symbol": "GMX V2 USDC - A",
+          "decimals": 18,
+          "tokens": [
+            {
+              "type": "underlying",
+              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+              "balanceRaw": "500699n",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balance": 0.500699,
+              "price": 1.0006469002007277,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
+            }
+          ],
+          "balance": 0.4338639489428905
+        },
+        {
+          "type": "protocol",
+          "balanceRaw": "16247734890344n",
+          "address": "0x22799DAA45209338B7f938edf251bdfD1E6dCB32",
+          "tokenId": "10566",
+          "name": "GMX V2 WBTC - A",
+          "symbol": "GMX V2 WBTC - A",
+          "decimals": 18,
+          "tokens": [
+            {
+              "type": "underlying",
+              "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
+              "balanceRaw": "1748n",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "balance": 0.00001748,
+              "price": 60790.94491032797,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
+            }
+          ],
+          "balance": 0.000016247734890344
+        },
+        {
+          "type": "protocol",
+          "balanceRaw": "400000000000000000n",
+          "address": "0xe9bD233b2b34934Fb83955EC15c2ac48F31A0E8c",
+          "tokenId": "3136",
+          "name": "GMX V2 USDC - A | Redemption pending",
+          "symbol": "GMX V2 USDC - A | Redemption pending",
+          "decimals": 18,
+          "tokens": [
+            {
+              "type": "underlying",
+              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+              "balanceRaw": "461619n",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balance": 0.461619,
+              "price": 1.0006469002007277,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
+            }
+          ],
+          "balance": 0.4
+        },
+        {
+          "type": "protocol",
+          "balanceRaw": "100000000000000000n",
+          "address": "0xe9bD233b2b34934Fb83955EC15c2ac48F31A0E8c",
+          "tokenId": "3137",
+          "name": "GMX V2 USDC - A | Redemption pending",
+          "symbol": "GMX V2 USDC - A | Redemption pending",
+          "decimals": 18,
+          "tokens": [
+            {
+              "type": "underlying",
+              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+              "balanceRaw": "115404n",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balance": 0.115404,
+              "price": 1.0006469002007277,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
+            }
+          ],
+          "balance": 0.1
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "27e579fe61a2e07fd1cd9620cfb44e54": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000003"
+    },
+    "cca1658e73edcbf4abe9ba403743663c": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000002"
+    },
+    "dece69f2527debd9a6c55bce85c109c3": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000285e"
+    },
+    "e78a5a7539e36d323292ef2d5e49c29c": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000028f4"
+    },
+    "4a98530e988934ac29d17f214111d279": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000002946"
+    },
+    "ba8e1c018dd391b1cc62743a85ded67f": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000c40"
+    },
+    "2881fe0fd5418707621093faa60b3d39": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000c41"
+    },
+    "c2080ee1e18cef3c46f247ffdbfb73c8": {
+      "result": "0x000000000000000000000000000000000000000000000000051fe34e7cd5777a"
+    },
+    "c07b6b2bb810c0b69c920a5a82660037": {
+      "result": "0x000000000000000000000000000000000000000000000000060564f67d96d5f8"
+    },
+    "ffc93bea8ac42c0a12330828a2e11fd3": {
+      "result": "0x00000000000000000000000000000000000000000000000000000ec6f8776f68"
+    },
+    "6020a44ecf7d6e96e40ac4c11f4b4edc": {
+      "result": "0x000000000000000000000000000000000000000000000000058d15e176280000"
+    },
+    "83305fceb5cbb579ad1d82d95ec71273": {
+      "result": "0x000000000000000000000000000000000000000000000000016345785d8a0000"
+    },
+    "7b629f0ae86f3aaf7e259e58aa126e2c": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "cf5ccb393cde93f4a645ef43563abe2d": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "3f6a7656f77fd4579672cbf51488d05c": {
+      "result": "0x0bbd8dc1f7cad4b4ec83e16da794308c8c028f6a9e8ef9c7218754e7704ac2f4"
+    },
+    "9f750957ef5c4a5d963cf4578462cb94": {
+      "result": "0x0bbd8dc1f7cad4b4ec83e16da794308c8c028f6a9e8ef9c7218754e7704ac2f4"
+    },
+    "d4f4e26ca3487d1ab3ef5f3f8fb734e6": {
+      "result": "0x9b06c48974370ac718c1893f61c5583db301cc640166cc4a8c32fdbe249604a1"
+    },
+    "2ccb758b5fc7a2e1e7d33793d74b7f2b": {
+      "result": "0x3ce0c44930e74e53b2babecc76ff7f0c4af28b1f2791aaa0edf1ed4bfd9a52d9"
+    },
+    "fe394e36f299c2e6b58a6ecf681a3c2a": {
+      "result": "0x3ce0c44930e74e53b2babecc76ff7f0c4af28b1f2791aaa0edf1ed4bfd9a52d9"
+    },
+    "b6659a089884970a5c37565870897538": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000066c7d100000000000000000000000000000000000000000000000000000000000011935e"
+    },
+    "0a669571241b6dcda78988a962643fff": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000066c7d1000000000000000000000000000000000000000000000000000000000006663c29"
+    },
+    "dd4f3a4fdd7f8fe7ad82d3cbb58404af": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000119c000000000000000000000000000000000000000000000000000000000066c7d100"
+    },
+    "0469294e197ef0b8c9831ef89b59a180": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000669ec320000000000000000000000000000000000000000000000000000000066c7d100"
+    },
+    "8735245bf4ef4037a312b7171ee14d7d": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000855534420436f696e000000000000000000000000000000000000000000000000"
+    },
+    "d683da24d182f943902479f3d9ce58c1": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
+    },
+    "a359bf5aad105657e89ceb0c09c4a1eb": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "bca91afb23ddaed80e46af84ddff0a15": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b5772617070656420425443000000000000000000000000000000000000000000"
+    },
+    "69f099e2db79a6f4155525d4f2ec2b8f": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045742544300000000000000000000000000000000000000000000000000000000"
+    },
+    "296a903d692ad93922b47feec4841291": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000008"
+    },
+    "7f587f8986e8048bbd20fa589f954ad0": {
+      "result": "0x00000000000000000000000000000000000000000000000100000000000a0d940000000000000000000000000000000000000000000000000000003d2e858f700000000000000000000000000000000000000000000000000000000066c70ac60000000000000000000000000000000000000000000000000000000066c70ac600000000000000000000000000000000000000000000000100000000000a0d94"
+    },
+    "c7ebdc4d0ea6f5266f51b9b39bcee98b": {
+      "result": "0x0000000000000000000000000000000000000000013afdf83b6ad1bedb23fc19"
+    },
+    "56ff58940d7b73afb5469273556125b9": {
+      "result": "0x0000000000000000000000000000000000000002eb82dcc94418f637eda472e6"
+    }
+  }
+}
