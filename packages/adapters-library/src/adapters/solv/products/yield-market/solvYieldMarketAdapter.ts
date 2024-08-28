@@ -1,5 +1,4 @@
 import { AbiCoder, keccak256 } from 'ethers'
-import { findKey, mapValues } from 'lodash'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
@@ -38,9 +37,9 @@ import {
   OpenFundShareDelegate__factory,
 } from '../../contracts'
 import {
-  SLOT_TO_PRODUCT_NAME,
   SOLV_YIELD_MARKETS,
   SolvYieldMarketConfig,
+  SolvYieldMarketPoolConfig,
 } from './config'
 
 /**
@@ -54,7 +53,7 @@ import {
  * - "Redemption SFT": The ERC-3525 token that represents a chunk of user's share of a given pool that they have requested for redemption
  * - "Redemption": To withdraw funds, users trade some amount of their Fund SFT for a Redemption SFT. After some time, they will be able to burn this Redemption SFT in exchange of their underlying
  * - "GOEFR": General Open-end Fund Redemption. Synonym of Redemption SFT
- * - "openFundShare": Synonym of Redemption SFT
+ * - "openFundRedemption": Synonym of Redemption SFT
  * - "Market": A list of pools on the same chain id. For instance the group of Arbitrum pools
  * - "Pool": This for instance https://app.solv.finance/fund/open-fund/detail/5. It's defined by its pool ID, which is derived from the pair [Fund SFT address, Slot]
  * - "Vault": Synonym of pool
@@ -104,10 +103,10 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     const {
       navOracleAddress,
       openFundMarketAddress,
-      shareDelegateAddress,
-      shareConcreteAddress: openFundShareConcreteAddress,
-      redemptionDelegateAddress: openFundRedemptionDelegateAddress,
-      redemptionConcreteAddress: openFundRedemptionConcreteAddress,
+      openFundShareDelegateAddress,
+      openFundShareConcreteAddress,
+      openFundRedemptionDelegateAddress,
+      openFundRedemptionConcreteAddress,
     } = this.yieldMarketConfig
 
     this.navOracleContract = NavOracle__factory.connect(
@@ -121,7 +120,7 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     )
 
     this.openFundShareDelegateContract = OpenFundShareDelegate__factory.connect(
-      shareDelegateAddress,
+      openFundShareDelegateAddress,
       this.provider,
     )
 
@@ -161,6 +160,21 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
   }
 
   /**
+   * @example this.getPoolConfigBy('name', 'GMX V2 USDC - A')
+   */
+  private getPoolConfigBy(
+    paramName: keyof SolvYieldMarketPoolConfig,
+    value: string,
+  ) {
+    const poolConfig = this.yieldMarketConfig.pools.find(
+      (pool) => pool[paramName] === value,
+    )
+    if (!poolConfig)
+      throw new Error(`No pool config with ${paramName} = ${value}`)
+    return poolConfig
+  }
+
+  /**
    * Each position in this chain's market is represented by holding either a GOEFS or a GOEFR. We can see them as NFTs.
    * The actual pool of the position is represented by the SFT's slot.
    * The value of the pool is represented by the balance of the SFT. This is where we rely on the Semi-Fungibily.
@@ -178,82 +192,79 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
    * - 1 GOEFR with tokenId=X, slot="XXXX..." and balanceOf=xxx
    */
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    const { openFundShareDelegateAddress, openFundRedemptionDelegateAddress } =
+      this.yieldMarketConfig
     const { userAddress } = input
-    const [holdings, redemptions] = await Promise.all([
-      this.getHoldings(userAddress),
-      this.getRedemptions(userAddress),
+
+    const [sharesTokenIds, redemptionTokenIds] = await Promise.all([
+      this.getTokenIds(userAddress, 'share'),
+      this.getTokenIds(userAddress, 'redemption'),
     ])
-    return [...holdings, ...redemptions]
-  }
 
-  private async getHoldings(userAddress: string): Promise<ProtocolPosition[]> {
-    const { shareDelegateAddress: openFundShareDelegateAddress } =
-      this.yieldMarketConfig
+    const [shares, redemptions] = await Promise.all([
+      filterMapAsync(sharesTokenIds, async (tokenId) =>
+        this.getPosition(openFundShareDelegateAddress, tokenId),
+      ),
+      filterMapAsync(redemptionTokenIds, async (tokenId) =>
+        this.getPosition(openFundRedemptionDelegateAddress, tokenId),
+      ),
+    ])
 
-    // Count every instance of the GOEFS that the user holds
-    const tokensCount =
-      await this.openFundShareDelegateContract['balanceOf(address)'](
-        userAddress,
-      )
-
-    if (!tokensCount) return []
-
-    const indexes = [...Array(Number.parseInt(tokensCount.toString())).keys()]
-
-    // Each GOEFS the user holds represents a position
-    return filterMapAsync(indexes, async (index) =>
-      this.getHolding(userAddress, openFundShareDelegateAddress, index),
-    )
+    return [...shares, ...redemptions]
   }
 
   /**
-   * Build the position represented by the Nth GOEFS that the user holds
+   * Build the position represented by the Nth GOEFS or GOEFR that the user holds
    */
-  private async getHolding(
-    userAddress: string,
+  private async getPosition(
     sftAddress: string,
-    index: number,
+    tokenId: bigint,
   ): Promise<ProtocolPosition | undefined> {
-    const tokenId =
-      await this.openFundShareDelegateContract.tokenOfOwnerByIndex(
-        userAddress,
-        index,
-      )
-    const balance =
-      await this.openFundShareDelegateContract['balanceOf(uint256)'](tokenId)
+    const isShare =
+      sftAddress === this.yieldMarketConfig.openFundShareDelegateAddress
+
+    const delegateContract = isShare
+      ? this.openFundShareDelegateContract
+      : this.openFundRedemptionDelegateContract
+
+    const balance = await delegateContract['balanceOf(uint256)'](tokenId)
 
     if (!balance) return
 
-    const decimals = await this.openFundShareDelegateContract.valueDecimals()
-    const slot = await this.openFundShareDelegateContract.slotOf(tokenId)
-    const [_, currency] =
-      await this.openFundShareConcreteContract.slotBaseInfo(slot)
-    const poolId = this.computePoolId(slot)
-    const [latestSetNavTime] = await this.navOracleContract.poolNavInfos(poolId)
+    const decimals = await delegateContract.valueDecimals()
+    const slot = await delegateContract.slotOf(tokenId)
+
+    const { id, name, currencyAddress } = this.getPoolConfigBy(
+      isShare ? 'slotInShareSft' : 'slotInRedemptionSft',
+      slot.toString(),
+    )
+
+    const poolName = isShare ? name : `${name} | Redemption pending`
+
+    const [latestSetNavTime] = await this.navOracleContract.poolNavInfos(id)
     const [nav] = await this.navOracleContract.getSubscribeNav(
-      poolId,
+      id,
       latestSetNavTime,
     )
-    const name = this.getPoolName(slot.toString())
 
     const {
       symbol: underlyingSymbol,
       decimals: underlyingDecimals,
       name: underlyingName,
-    } = await this.helpers.getTokenMetadata(currency)
+    } = await this.helpers.getTokenMetadata(currencyAddress)
 
     const position: ProtocolPosition = {
       type: TokenType.Protocol,
       balanceRaw: balance,
       address: sftAddress,
       tokenId: tokenId.toString(),
-      name,
-      symbol: name,
+      name: poolName,
+      symbol: poolName,
       decimals: Number(decimals),
       tokens: [
         {
           type: TokenType.Underlying,
-          address: currency,
+          address: currencyAddress,
           priceRaw: nav,
           balanceRaw: (balance * nav) / 10n ** decimals,
           name: underlyingName,
@@ -266,91 +277,32 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     return position
   }
 
-  private async getRedemptions(
+  /**
+   * Returns a promise that resolves to the list of tokenIds (bigints) that
+   * the user holds for either the GOEFS or the GOEFR.
+   *
+   * Use the flag `sftType` to choose between GOEFS and GOEFR.
+   */
+  private async getTokenIds(
     userAddress: string,
-  ): Promise<ProtocolPosition[]> {
-    const { redemptionDelegateAddress: openFundRedemptionDelegateAddress } =
-      this.yieldMarketConfig
+    sftType: 'share' | 'redemption' = 'share',
+  ): Promise<bigint[]> {
+    const contract =
+      sftType === 'share'
+        ? this.openFundShareDelegateContract
+        : this.openFundRedemptionDelegateContract
 
-    // Count every instance of the GOEFS that the user holds
-    const tokensCount =
-      await this.openFundRedemptionDelegateContract['balanceOf(address)'](
-        userAddress,
-      )
+    const tokensCount = await contract['balanceOf(address)'](userAddress)
+
     if (!tokensCount) return []
 
-    const indexes = [...Array(Number.parseInt(tokensCount.toString())).keys()]
+    const indexes = [...Array(Number(tokensCount)).keys()]
 
-    // Each GOEFR the user holds represents a position
-    return filterMapAsync(indexes, async (index) =>
-      this.getRedemption(userAddress, openFundRedemptionDelegateAddress, index),
-    )
-  }
-
-  /**
-   * Build the position represented by the Nth GOEFR that the user holds
-   */
-  private async getRedemption(
-    userAddress: string,
-    sftAddress: string,
-    index: number,
-  ): Promise<ProtocolPosition | undefined> {
-    const tokenId =
-      await this.openFundRedemptionDelegateContract.tokenOfOwnerByIndex(
-        userAddress,
-        index,
-      )
-    const balance =
-      await this.openFundRedemptionDelegateContract['balanceOf(uint256)'](
-        tokenId,
-      )
-
-    if (!balance) return
-
-    const decimals =
-      await this.openFundRedemptionDelegateContract.valueDecimals()
-    const slot = await this.openFundRedemptionDelegateContract.slotOf(tokenId)
-    const [poolId, currency] =
-      await this.openFundRedemptionConcreteContract.getRedeemInfo(slot)
-    const [latestSetNavTime] = await this.navOracleContract.poolNavInfos(poolId)
-    const [nav] = await this.navOracleContract.getSubscribeNav(
-      poolId,
-      latestSetNavTime,
+    const tokenIds = await Promise.all(
+      indexes.map((index) => contract.tokenOfOwnerByIndex(userAddress, index)),
     )
 
-    const shareSlot = this.slotReverseLookup(poolId)
-    const name = `${this.getPoolName(
-      shareSlot.toString(),
-    )} | Redemption pending`
-
-    const {
-      symbol: underlyingSymbol,
-      decimals: underlyingDecimals,
-      name: underlyingName,
-    } = await this.helpers.getTokenMetadata(currency)
-
-    const position: ProtocolPosition = {
-      type: TokenType.Protocol,
-      balanceRaw: balance,
-      address: sftAddress,
-      tokenId: tokenId.toString(),
-      name,
-      symbol: name,
-      decimals: Number(decimals),
-      tokens: [
-        {
-          type: TokenType.Underlying,
-          address: currency,
-          priceRaw: nav,
-          balanceRaw: (balance * nav) / 10n ** decimals,
-          name: underlyingName,
-          symbol: underlyingSymbol,
-          decimals: Number(underlyingDecimals),
-        },
-      ],
-    }
-
-    return position
+    return tokenIds
   }
 
   /**
@@ -358,15 +310,13 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
    * Some Solv smart contracts methods accept the pool id instead of the slot.
    *
    * @example
-   * const openFundShareDelegateAddress = '0x22799daa45209338b7f938edf251bdfd1e6dcb32'
    * const slot = '5310353805259224968786693768403624884928279211848504288200646724372830798580'
-   * computePoolId(sftAddress, slot) // returns '0xe037ef7b5f74bf3c988d8ae8ab06ad34643749ba9d217092297241420d600fce'
+   * computePoolId(slot) // returns '0xe037ef7b5f74bf3c988d8ae8ab06ad34643749ba9d217092297241420d600fce'
    *
    * @see https://github.com/solv-finance/SolvBTC/blob/ef5be00ec22549ac5a323378c2a914166bf0dcc1/contracts/SftWrappedToken.sol#L198
    */
   private computePoolId(slot: bigint): string {
-    const { shareDelegateAddress: openFundShareDelegateAddress } =
-      this.yieldMarketConfig
+    const { openFundShareDelegateAddress } = this.yieldMarketConfig
     const encodedData = AbiCoder.defaultAbiCoder().encode(
       ['address', 'uint256'],
       [openFundShareDelegateAddress, slot],
@@ -374,51 +324,99 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     return keccak256(encodedData)
   }
 
+  async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.getMovements('deposit', input)
+  }
+
+  async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.getMovements('withdraw', input)
+  }
+
   /**
-   * Performs a reverse look up to find the slot matching the passed Pool ID
+   * The event TransferValue(uint256,uint256,uint256)
+   * is emitted on all types of movements (deposit to the GOEFS, redeem request, claiming the GOEFR)
+   *
+   * It's arguments are:
+   * _fromTokenId, _toTokenId, _value
+   *
+   * @see https://eips.ethereum.org/EIPS/eip-3525
    */
-  private slotReverseLookup(poolId: string) {
-    /**
-     * Generate an object like:
-     * {
-     *   "slot1": "poolId1",
-     *   "slot2": "poolId2",
-     *   ...
-     * }
-     */
-    const slotsToPoolId = mapValues(SLOT_TO_PRODUCT_NAME, (_, key) =>
-      this.computePoolId(BigInt(key)),
+  private async getMovements(
+    action: 'deposit' | 'withdraw',
+    input: GetEventsInput,
+  ): Promise<MovementsByBlock[]> {
+    const isDeposit = action === 'deposit'
+    const { protocolTokenAddress, tokenId, fromBlock, toBlock } = input
+
+    if (!tokenId) throw new Error('Argument tokenId cannot be undefined')
+
+    const isShare =
+      protocolTokenAddress ===
+      this.yieldMarketConfig.openFundShareDelegateAddress
+
+    const delegateContract = isShare
+      ? this.openFundShareDelegateContract
+      : this.openFundRedemptionDelegateContract
+
+    const slot = await delegateContract.slotOf(tokenId)
+    const { id, currencyAddress } = this.getPoolConfigBy(
+      isShare ? 'slotInShareSft' : 'slotInRedemptionSft',
+      slot.toString(),
     )
 
-    // Return the first key where value is passed Pool ID
-    const slot = findKey(slotsToPoolId, (value) => value === poolId)
+    /**
+     * When depositing, we look at value transfers TO the SFT.
+     * When withdrawing, we look at value transfers FROM the SFT.
+     */
+    const filter = isDeposit
+      ? delegateContract.filters['TransferValue(uint256,uint256,uint256)'](
+          undefined,
+          tokenId,
+        )
+      : delegateContract.filters['TransferValue(uint256,uint256,uint256)'](
+          tokenId,
+        )
 
-    if (!slot)
-      throw new Error('Could not find a slot matching the passed pool ID')
+    const [transferValueEvents, underlyingToken, decimals] = await Promise.all([
+      delegateContract.queryFilter(filter, fromBlock, toBlock),
+      this.helpers.getTokenMetadata(currencyAddress),
+      delegateContract.valueDecimals(),
+    ])
 
-    return slot
-  }
+    const movements: MovementsByBlock[] = await filterMapAsync(
+      transferValueEvents,
+      async (event) => {
+        const blockDate = (await event.getBlock()).date
+        if (!blockDate) throw new Error('No block date')
 
-  private getPoolName(slot: string): string {
-    return SLOT_TO_PRODUCT_NAME[slot] ?? 'Unknown'
-  }
+        const [nav] = await this.navOracleContract.getSubscribeNav(
+          id,
+          (blockDate.getTime() / 1000).toFixed(0),
+        )
 
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
+        return {
+          transactionHash: event.transactionHash,
+          protocolToken: {
+            address: protocolTokenAddress,
+            name: id,
+            symbol: id,
+            decimals: Number(decimals),
+            tokenId: event.args[isDeposit ? 1 : 0].toString(),
+          },
+          tokens: [
+            {
+              ...underlyingToken,
+              type: 'underlying',
+              balanceRaw: (event.args[2] * nav) / 10n ** decimals,
+              priceRaw: nav,
+            },
+          ],
+          blockNumber: event.blockNumber,
+        }
+      },
+    )
 
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
+    return movements
   }
 
   async unwrap({
