@@ -7,7 +7,6 @@ import {
   NotImplementedError,
   ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
 } from '../errors/errors'
-import { filterMapSync } from './filters'
 import { logger } from './logger'
 
 type Token = Erc20Metadata & {
@@ -42,6 +41,8 @@ async function unwrapToken(
     )
 
   if (!token.tokens?.some((t) => t.type === TokenType.Underlying)) {
+    // Only fetch prices or underlyings if the token is not already unwrapped
+
     if (!underlyingProtocolTokenAdapter) {
       // Try to fetch prices if there is no tokens and no adapter to resolve
       const tokenPriceRaw = await fetchPrice(adapter, token, blockNumber)
@@ -58,40 +59,22 @@ async function unwrapToken(
 
       if (unwrapExchangeRates?.tokens) {
         if (!token.tokens) {
+          // Initialize tokens array if it's undefined
           token.tokens = []
         }
 
         token.tokens.push(
-          ...filterMapSync(
-            unwrapExchangeRates.tokens,
-            (unwrappedTokenExchangeRate) => {
-              if (
-                token.tokens?.find(
-                  (t) =>
-                    t.type !== TokenType.UnderlyingClaimable &&
-                    t.type !== TokenType.Reward &&
-                    t.address === unwrappedTokenExchangeRate.address,
-                )
-              ) {
-                return
-              }
-
-              const underlyingToken = {
-                address: unwrappedTokenExchangeRate.address,
-                name: unwrappedTokenExchangeRate.name,
-                symbol: unwrappedTokenExchangeRate.symbol,
-                decimals: unwrappedTokenExchangeRate.decimals,
-                type: UnderlyingTokenTypeMap[token.type],
-                [fieldToUpdate]:
-                  // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
-                  (((token as any)[fieldToUpdate] as bigint) *
-                    unwrappedTokenExchangeRate.underlyingRateRaw) /
-                  10n ** BigInt(token.decimals),
-              }
-
-              return underlyingToken
-            },
-          ),
+          ...unwrapExchangeRates.tokens.map((unwrappedTokenExchangeRate) => ({
+            address: unwrappedTokenExchangeRate.address,
+            name: unwrappedTokenExchangeRate.name,
+            symbol: unwrappedTokenExchangeRate.symbol,
+            decimals: unwrappedTokenExchangeRate.decimals,
+            type: UnderlyingTokenTypeMap[token.type],
+            [fieldToUpdate]:
+              (((token as Record<string, unknown>)[fieldToUpdate] as bigint) *
+                unwrappedTokenExchangeRate.underlyingRateRaw) /
+              10n ** BigInt(token.decimals),
+          })),
         )
       }
     }

@@ -15,8 +15,8 @@
         {
           "address": "0xf951E335afb289353dc249e82926178EaC7DEd78",
           "name": "Swell Ethereum",
-          "symbol": "SWETH",
           "decimals": 18,
+          "symbol": "SWETH",
           "baseRate": 1,
           "type": "protocol",
           "tokens": [

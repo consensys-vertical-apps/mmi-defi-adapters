@@ -55,9 +55,7 @@ export class Helpers {
       (token) => token.address === protocolTokenAddress,
     )
     if (!protocolToken) {
-      throw new Error(
-        `Protocol token with address ${protocolTokenAddress} not found`,
-      )
+      throw new Error(`Protocol token ${protocolTokenAddress} not found`)
     }
     return protocolToken
   }
@@ -471,82 +469,6 @@ export class Helpers {
     const errorMessage = 'Cannot find token metadata for token'
     logger.error({ tokenAddress, chainId: this.chainId }, errorMessage)
     throw new Error(errorMessage)
-  }
-
-  // Looks unused
-  async getPositionsAndRewards(
-    userAddress: string,
-    positionsWithoutRewardsPromise: Promise<ProtocolPosition[]>,
-    getRewardPositions: ({
-      userAddress,
-      protocolTokenAddress,
-      blockNumber,
-    }: {
-      userAddress: string
-      blockNumber?: number
-      protocolTokenAddress: string
-      tokenIds?: string[]
-    }) => Promise<Underlying[]>,
-    blockNumber?: number,
-  ): Promise<ProtocolPosition[]> {
-    const positionsWithoutRewards = await positionsWithoutRewardsPromise
-
-    await Promise.all(
-      positionsWithoutRewards.map(async (position) => {
-        const rewardTokensPositions = await getRewardPositions({
-          userAddress,
-          blockNumber,
-          protocolTokenAddress: position.address,
-        })
-
-        position.tokens = [...(position.tokens ?? []), ...rewardTokensPositions]
-      }),
-    )
-
-    return positionsWithoutRewards
-  }
-
-  // Looks unused
-  async getWithdrawalsAndRewardWithdrawals(
-    userAddress: string,
-    protocolTokenAddress: string,
-    fromBlock: number,
-    toBlock: number,
-    getWithdrawalsWithoutRewards: ({
-      userAddress,
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-    }: GetEventsInput) => Promise<MovementsByBlock[]>,
-    getRewardWithdrawals: ({
-      userAddress,
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-    }: GetEventsInput) => Promise<MovementsByBlock[]>,
-  ): Promise<MovementsByBlock[]> {
-    const withdrawalMethods = [
-      getWithdrawalsWithoutRewards,
-      getRewardWithdrawals,
-    ]
-
-    const withdrawals = await Promise.all(
-      withdrawalMethods.map(async (method) => {
-        return await method.call(this, {
-          userAddress,
-          protocolTokenAddress,
-          fromBlock,
-          toBlock,
-        })
-      }),
-    )
-
-    return withdrawals
-      .flat()
-      .filter(
-        (withdrawal): withdrawal is MovementsByBlock =>
-          withdrawal !== undefined,
-      )
   }
 
   async getErc20Movements({

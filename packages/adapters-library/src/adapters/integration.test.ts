@@ -66,6 +66,18 @@ const filterProtocolId = protocolFilter(
   process.env.DEFI_ADAPTERS_TEST_FILTER_PROTOCOL,
 )
 
+// @ts-ignore
+const normalizeNegativeZero = (obj) => {
+  Object.keys(obj).forEach((key) => {
+    if (typeof obj[key] === 'number' && Object.is(obj[key], -0)) {
+      obj[key] = Math.abs(obj[key])
+    } else if (obj[key] && typeof obj[key] === 'object') {
+      normalizeNegativeZero(obj[key])
+    }
+  })
+  return obj
+}
+
 const protocolTestCases = {
   [Protocol.AaveV2]: aaveV2TestCases,
   [Protocol.AaveV3]: aaveV3TestCases,
@@ -265,9 +277,8 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               toBlockNumbersOverride: { [testCase.chainId]: blockNumber },
             })
 
-            const normalizedResponse = normalizeZeroes(response)
-
-            expect(normalizedResponse).toEqual(snapshot)
+            // Morpho profit test were failing with -0 comparison with 0
+            expect(normalizeNegativeZero(response)).toEqual(snapshot)
           },
           TEST_TIMEOUT,
         )
@@ -572,13 +583,10 @@ function normalizeZeroes(obj: unknown): unknown {
   }
 
   if (obj !== null && typeof obj === 'object') {
-    return Object.keys(obj).reduce(
-      (acc, key) => {
-        acc[key] = normalizeZeroes((obj as Record<string, unknown>)[key])
-        return acc
-      },
-      {} as Record<string, unknown>,
-    )
+    return Object.keys(obj).reduce((acc, key) => {
+      acc[key] = normalizeZeroes((obj as Record<string, unknown>)[key])
+      return acc
+    }, {} as Record<string, unknown>)
   }
   return obj
 }
