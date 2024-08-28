@@ -1,4 +1,5 @@
 import { getAddress } from 'ethers'
+import { symbol } from 'zod'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -25,7 +26,6 @@ import {
   Vault__factory,
 } from '../../contracts'
 import { PoolBalanceChangedEvent } from '../../contracts/Vault'
-import { symbol } from 'zod'
 
 type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]
