@@ -175,9 +175,20 @@ export class StargatePoolAdapter implements IProtocolAdapter {
       [Chain.Ethereum]: getAddress(
         '0x06D538690AF257Da524f25D0CD52fD85b1c2173E',
       ),
+      [Chain.Optimism]: getAddress(
+        '0xE3B53AF74a4BF62Ae5511055290838050bf764Df',
+      ),
+      [Chain.Bsc]: getAddress('0xe7Ec689f432f29383f217e36e680B5C855051f25'),
+      [Chain.Polygon]: getAddress('0x808d7c71ad2ba3FA531b068a2417C63106BC0949'),
+      [Chain.Fantom]: getAddress('0x9d1B1669c73b033DFe47ae5a0164Ab96df25B944'),
+      [Chain.Base]: getAddress('0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6'),
       [Chain.Arbitrum]: getAddress(
         '0x55bDb4164D28FBaF0898e0eF14a589ac09Ac9970',
       ),
+      [Chain.Avalanche]: getAddress(
+        '0x808d7c71ad2ba3FA531b068a2417C63106BC0949',
+      ),
+      [Chain.Linea]: getAddress('0xaf54be5b6eec24d6bfacf1cce4eaf680a8239398'),
     }
 
     const lpFactoryContract = StargateFactory__factory.connect(

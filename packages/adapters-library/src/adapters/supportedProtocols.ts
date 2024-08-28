@@ -430,7 +430,14 @@ export const supportedProtocols: Record<
 
   [Protocol.Stargate]: {
     [Chain.Ethereum]: [StargatePoolAdapter, StargateVotingEscrowAdapter],
+    [Chain.Optimism]: [StargatePoolAdapter],
+    [Chain.Bsc]: [StargatePoolAdapter],
+    [Chain.Polygon]: [StargatePoolAdapter],
+    [Chain.Fantom]: [StargatePoolAdapter],
+    [Chain.Base]: [StargatePoolAdapter],
     [Chain.Arbitrum]: [StargatePoolAdapter],
+    [Chain.Avalanche]: [StargatePoolAdapter],
+    [Chain.Linea]: [StargatePoolAdapter],
   },
 
   [Protocol.SushiswapV2]: {
