@@ -55,11 +55,7 @@ export class Helpers {
       (token) => token.address === protocolTokenAddress,
     )
     if (!protocolToken) {
-      // Ideally we want to throw here but when filterProtocolToken is included in defiProvider requests it will throw which makes the snapshots include many errors which is confusing
-      // We need to improve the flows when filterProtocolToken is included in the request
-      // JP to discuss with Bernardo
-
-      return {} as ProtocolToken<AdditionalMetadata>
+      throw new Error(`Protocol token ${protocolTokenAddress} not found`)
     }
     return protocolToken
   }
