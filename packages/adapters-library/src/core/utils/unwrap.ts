@@ -7,7 +7,6 @@ import {
   NotImplementedError,
   ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
 } from '../errors/errors'
-import { filterMapSync } from './filters'
 import { logger } from './logger'
 
 type Token = Erc20Metadata & {
