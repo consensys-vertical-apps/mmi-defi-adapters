@@ -18,7 +18,11 @@ type RpcResponse = {
 
 export type RpcInterceptedResponse = Record<
   string,
-  { result?: unknown; error?: unknown }
+  {
+    result?: unknown
+    error?: unknown
+    request?: { method: string; params: unknown[] }
+  }
 >
 
 function createKey(url: string, { method, params }: RpcRequest) {
@@ -87,6 +91,13 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
           )!
 
           interceptedRequests[key] = { result, error }
+
+          if (process.env.DEFI_ADAPTERS_SAVE_INTERCEPTED_REQUESTS === 'true') {
+            interceptedRequests[key]!.request = {
+              method: request.method,
+              params: request.params,
+            }
+          }
         })
 
         return createResponse(responseArrayBuffer)
