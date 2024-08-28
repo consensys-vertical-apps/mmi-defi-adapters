@@ -71,10 +71,6 @@ export class PendlePrincipleTokenAdapter
     this.helpers = helpers
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -176,7 +172,6 @@ export class PendlePrincipleTokenAdapter
   async unwrap({
     blockNumber,
     protocolTokenAddress,
-    tokenId,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     const metadata = await this.fetchPoolMetadata(protocolTokenAddress)
     const underlyingToken = (

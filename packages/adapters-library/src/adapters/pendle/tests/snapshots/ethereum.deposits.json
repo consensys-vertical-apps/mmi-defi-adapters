@@ -15,14 +15,14 @@
         "transactionHash": "0x1332461b414753d3daf1e1c7d5294a4684d0bb14da461bb1b03c0e06590810c1",
         "protocolToken": {
           "address": "0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966",
-          "name": "PT ether.fi weETH 27JUN2024",
+          "name": "PT-weETH-27JUN2024",
           "symbol": "PT-weETH-27JUN2024",
           "decimals": 18
         },
         "tokens": [
           {
             "address": "0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966",
-            "name": "PT ether.fi weETH 27JUN2024",
+            "name": "PT-weETH-27JUN2024",
             "symbol": "PT-weETH-27JUN2024",
             "decimals": 18,
             "balanceRaw": "301719975687554067n",
@@ -31,7 +31,7 @@
             "tokens": [
               {
                 "address": "0xAC0047886a985071476a1186bE89222659970d65",
-                "name": "SY ether.fi weETH",
+                "name": "SY-weETH",
                 "symbol": "SY-weETH",
                 "decimals": 18,
                 "type": "underlying",
@@ -39,7 +39,7 @@
                 "tokens": [
                   {
                     "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-                    "name": "Wrapped eETH",
+                    "name": "weETH",
                     "symbol": "weETH",
                     "decimals": 18,
                     "type": "underlying",
