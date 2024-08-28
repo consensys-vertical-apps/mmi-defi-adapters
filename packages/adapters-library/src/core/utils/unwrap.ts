@@ -60,25 +60,22 @@ async function unwrapToken(
 
       if (unwrapExchangeRates?.tokens) {
         if (!token.tokens) {
+          // Initialize tokens array if it's undefined
           token.tokens = []
         }
 
         token.tokens.push(
-          ...unwrapExchangeRates.tokens.map((unwrappedTokenExchangeRate) => {
-            const underlyingToken = {
-              address: unwrappedTokenExchangeRate.address,
-              name: unwrappedTokenExchangeRate.name,
-              symbol: unwrappedTokenExchangeRate.symbol,
-              decimals: unwrappedTokenExchangeRate.decimals,
-              type: UnderlyingTokenTypeMap[token.type],
-              [fieldToUpdate]:
-                (((token as Record<string, unknown>)[fieldToUpdate] as bigint) *
-                  unwrappedTokenExchangeRate.underlyingRateRaw) /
-                10n ** BigInt(token.decimals),
-            }
-
-            return underlyingToken
-          }),
+          ...unwrapExchangeRates.tokens.map((unwrappedTokenExchangeRate) => ({
+            address: unwrappedTokenExchangeRate.address,
+            name: unwrappedTokenExchangeRate.name,
+            symbol: unwrappedTokenExchangeRate.symbol,
+            decimals: unwrappedTokenExchangeRate.decimals,
+            type: UnderlyingTokenTypeMap[token.type],
+            [fieldToUpdate]:
+              (((token as Record<string, unknown>)[fieldToUpdate] as bigint) *
+                unwrappedTokenExchangeRate.underlyingRateRaw) /
+              10n ** BigInt(token.decimals),
+          })),
         )
       }
     }
