@@ -296,7 +296,7 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
 
     if (!tokensCount) return []
 
-    const indexes = [...Array(Number.parseInt(tokensCount.toString())).keys()]
+    const indexes = [...Array(Number(tokensCount)).keys()]
 
     const tokenIds = await Promise.all(
       indexes.map((index) => contract.tokenOfOwnerByIndex(userAddress, index)),
