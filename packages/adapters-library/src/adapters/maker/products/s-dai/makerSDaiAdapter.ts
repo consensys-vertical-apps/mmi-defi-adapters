@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { RAY_POSITIONS } from '../../../../core/constants/RAY'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import {
   AssetType,
@@ -18,12 +19,19 @@ import { McdPot__factory } from '../../contracts'
 
 const MCD_POT_ADDRESS = '0x197e90f9fad81970ba7976f33cbd77088e5d7cf7'
 
-export class MakerSDaiAdapter extends SimplePoolAdapter {
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+}
+const PROTOCOL_TOKEN_ADDRESS = getAddress(
+  '0x83f20f44975d03b1b09e64809b757c47f942beea',
+)
+export class MakerSDaiAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 's-dai'
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
+    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -39,10 +47,6 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
     }
   }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return [await this.fetchProtocolTokenMetadata()]
-  }
-
   protected async getUnderlyingTokenBalances({
     protocolTokenBalance,
     blockNumber,
@@ -50,7 +54,9 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      PROTOCOL_TOKEN_ADDRESS,
+    )
 
     const [underlyingTokenConversionRate] = await this.unwrapProtocolToken(
       protocolTokenBalance,
@@ -77,22 +83,22 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
-    return {
-      address: getAddress('0x83f20f44975d03b1b09e64809b757c47f942beea'),
-      name: 'Savings Dai',
-      symbol: 'sDAI',
-      decimals: 18,
-    }
-  }
-
-  protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
+  @CacheToFile({ fileKey: 'protocol-token' })
+  async getProtocolTokens() {
     return [
       {
-        address: getAddress('0x6b175474e89094c44da98b954eedeac495271d0f'),
-        name: 'Dai Stablecoin',
-        symbol: 'DAI',
+        address: PROTOCOL_TOKEN_ADDRESS,
+        name: 'Savings Dai',
+        symbol: 'sDAI',
         decimals: 18,
+        underlyingTokens: [
+          {
+            address: getAddress('0x6b175474e89094c44da98b954eedeac495271d0f'),
+            name: 'Dai Stablecoin',
+            symbol: 'DAI',
+            decimals: 18,
+          },
+        ],
       },
     ]
   }
@@ -101,7 +107,9 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
   ): Promise<UnwrappedTokenExchangeRate[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      PROTOCOL_TOKEN_ADDRESS,
+    )
 
     const mcdPotContract = McdPot__factory.connect(
       MCD_POT_ADDRESS,

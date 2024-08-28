@@ -2,7 +2,11 @@ import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
 import { TransferEvent } from '../../contracts/Erc20'
 import { Helpers } from '../../scripts/helpers'
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import {
+  IProtocolAdapter,
+  JsonMetadata,
+  ProtocolToken,
+} from '../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -27,7 +31,9 @@ import { MaxMovementLimitExceededError } from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
 
-export abstract class SimplePoolAdapter implements IProtocolAdapter {
+export abstract class SimplePoolAdapter<AdditionalMetadata extends JsonMetadata>
+  implements IProtocolAdapter
+{
   chainId: Chain
   protocolId: Protocol
   abstract productId: string
@@ -37,6 +43,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
+    version: 2,
   }
 
   protected provider: CustomJsonRpcProvider
@@ -59,7 +66,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
   abstract getProtocolDetails(): ProtocolDetails
 
-  abstract getProtocolTokens(): Promise<Erc20Metadata[]>
+  abstract getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]>
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
     return this.helpers.getBalanceOfTokens({
@@ -170,17 +177,33 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
    * Fetches the protocol-token metadata
    * @param protocolTokenAddress
    */
-  protected abstract fetchProtocolTokenMetadata(
+  protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
-  ): Promise<Erc20Metadata>
+  ): Promise<Erc20Metadata> {
+    const { address, name, decimals, symbol } =
+      await this.helpers.getProtocolTokenByAddress<AdditionalMetadata>({
+        protocolTokens: await this.getProtocolTokens(),
+        protocolTokenAddress,
+      })
+
+    return { address, name, decimals, symbol }
+  }
 
   /**
    * Fetches the protocol-token's underlying token details
    * @param protocolTokenAddress
    */
-  protected abstract fetchUnderlyingTokensMetadata(
+  protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]>
+  ): Promise<Erc20Metadata[]> {
+    const { underlyingTokens } =
+      await this.helpers.getProtocolTokenByAddress<AdditionalMetadata>({
+        protocolTokens: await this.getProtocolTokens(),
+        protocolTokenAddress,
+      })
+
+    return underlyingTokens!
+  }
 
   /**
    * Calculates the user's underlying token balances.

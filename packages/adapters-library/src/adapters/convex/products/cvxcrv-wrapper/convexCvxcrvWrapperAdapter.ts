@@ -32,15 +32,17 @@ const CVXCRV_WRAPPER_ADDRESS = getAddress(
   '0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434',
 )
 
-export class ConvexCvxcrvWrapperAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+}
+
+export class ConvexCvxcrvWrapperAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'cvxcrv-wrapper'
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
+    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -64,18 +66,15 @@ export class ConvexCvxcrvWrapperAdapter
     blockNumber,
     protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const [protocolToken] = await this.getProtocolTokens()
+    const { name, address, symbol, decimals } = (
+      await this.getProtocolTokens()
+    )[0]!
 
-    if (
-      protocolTokenAddresses &&
-      !protocolTokenAddresses.includes(protocolToken!.address)
-    ) {
+    if (protocolTokenAddresses && !protocolTokenAddresses.includes(address)) {
       return []
     }
 
-    const extraRewardTokens = await this.fetchUnderlyingTokensMetadata(
-      protocolToken!.address,
-    )
+    const extraRewardTokens = await this.fetchUnderlyingTokensMetadata(address)
 
     const contract = CvxcrvWrapper__factory.connect(
       CVXCRV_WRAPPER_ADDRESS,
@@ -96,7 +95,10 @@ export class ConvexCvxcrvWrapperAdapter
 
     return [
       {
-        ...protocolToken!,
+        name,
+        address,
+        symbol,
+        decimals,
         balanceRaw: lpTokenBalance,
         type: TokenType.Protocol,
         tokens: extraRewards.map((result) => {
@@ -116,7 +118,7 @@ export class ConvexCvxcrvWrapperAdapter
   }
 
   @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
+  async getProtocolTokens() {
     const contract = CvxcrvWrapper__factory.connect(
       CVXCRV_WRAPPER_ADDRESS,
       this.provider,
@@ -137,16 +139,18 @@ export class ConvexCvxcrvWrapperAdapter
       },
     )
 
-    return {
-      [CVXCRV_WRAPPER_ADDRESS]: {
-        protocolToken: await getTokenMetadata(
-          CVXCRV_WRAPPER_ADDRESS,
-          this.chainId,
-          this.provider,
-        ),
+    const protocolToken = await getTokenMetadata(
+      CVXCRV_WRAPPER_ADDRESS,
+      this.chainId,
+      this.provider,
+    )
+
+    return [
+      {
+        ...protocolToken,
         underlyingTokens: await Promise.all(rewardTokens),
       },
-    }
+    ]
   }
 
   async getWithdrawals({
@@ -210,12 +214,6 @@ export class ConvexCvxcrvWrapperAdapter
     return [] // no deposits for rewards
   }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
-  }
-
   protected async getUnderlyingTokenBalances(_input: {
     userAddress: string
     protocolTokenBalance: TokenBalance
@@ -230,46 +228,10 @@ export class ConvexCvxcrvWrapperAdapter
     throw new NotImplementedError()
   }
 
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
-  }
-
   protected async unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
   ): Promise<UnwrappedTokenExchangeRate[]> {
     throw new NotImplementedError()
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingTokens } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return underlyingTokens
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
   }
 }
