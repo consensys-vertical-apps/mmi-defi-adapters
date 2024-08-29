@@ -10,785 +10,13 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "market-supply",
-      "success": true,
-      "tokens": [
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "32607677160719130171828n",
-          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-          "name": "Wrapped Ether",
-          "symbol": "WETH",
-          "decimals": 18,
-          "totalSupply": 32607.67716071913,
-          "price": 3338.83
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "116510748502278n",
-          "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-          "name": "USD Coin",
-          "symbol": "USDC",
-          "decimals": 6,
-          "totalSupply": 116510748.502278,
-          "price": 1.0017130222520743
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "39136567178731828267791n",
-          "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-          "name": "Wrapped liquid staked Ether 2.0",
-          "symbol": "wstETH",
-          "decimals": 18,
-          "tokens": [
-            {
-              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
-              "name": "Liquid staked Ether 2.0",
-              "symbol": "stETH",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "45952069849776669684049n",
-              "tokens": [
-                {
-                  "address": "0x0000000000000000000000000000000000000000",
-                  "name": "Ethereum",
-                  "symbol": "ETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "totalSupplyRaw": "45952069849776669684049n",
-                  "totalSupply": 45952.06984977667,
-                  "price": 3338.83,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-                }
-              ],
-              "totalSupply": 45952.06984977667,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
-            }
-          ],
-          "totalSupply": 39136.56717873183
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "21078972967850n",
-          "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-          "name": "Tether USD",
-          "symbol": "USDT",
-          "decimals": 6,
-          "totalSupply": 21078972.96785,
-          "price": 1.0007135599498926
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "12249746678446n",
-          "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
-          "name": "PayPal USD",
-          "symbol": "PYUSD",
-          "decimals": 6,
-          "totalSupply": 12249746.678446,
-          "price": 0.985211318958303
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "58291417943863570509088n",
-          "address": "0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f",
-          "name": "Monerium EUR emoney",
-          "symbol": "EURe",
-          "decimals": 18,
-          "totalSupply": 58291.41794386357,
-          "price": 1.093899949411114
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "454612869708210428948344646n",
-          "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-          "name": "Dai Stablecoin",
-          "symbol": "DAI",
-          "decimals": 18,
-          "totalSupply": 454612869.7082104,
-          "price": 1.0006158644709475
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "156568762309n",
-          "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-          "name": "Wrapped BTC",
-          "symbol": "WBTC",
-          "decimals": 8,
-          "totalSupply": 1565.68762309,
-          "price": 66832.56482439829
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "6478793273139655255643014n",
-          "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
-          "name": "USDA",
-          "symbol": "USDA",
-          "decimals": 18,
-          "totalSupply": 6478793.273139656
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "1607307822202192576649169n",
-          "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-          "name": "Curve.Fi USD Stablecoin",
-          "symbol": "crvUSD",
-          "decimals": 18,
-          "totalSupply": 1607307.8222021926,
-          "price": 0.9957397941063904
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "500000129n",
-          "address": "0xcbfb9B444d9735C345Df3A0F66cd89bD741692E9",
-          "name": "USDC",
-          "symbol": "USDC",
-          "decimals": 6,
-          "totalSupply": 500.000129
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "706178177692525420766541n",
-          "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
-          "name": "Frax",
-          "symbol": "FRAX",
-          "decimals": 18,
-          "totalSupply": 706178.1776925254,
-          "price": 0.997090830242508
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "193016360663020015330730218n",
-          "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-          "name": "USDe",
-          "symbol": "USDe",
-          "decimals": 18,
-          "totalSupply": 193016360.66302,
-          "price": 0.999156787816295
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "247478769142293615974830231n",
-          "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
-          "name": "Staked USDe",
-          "symbol": "sUSDe",
-          "decimals": 18,
-          "tokens": [
-            {
-              "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-              "name": "USDe",
-              "symbol": "USDe",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "270435015830594600493867566n",
-              "totalSupply": 270435015.8305946,
-              "price": 0.999156787816295,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4c9EDD5852cd905f086C759E8383e09bff1E68B3/logo.png"
-            }
-          ],
-          "totalSupply": 247478769.1422936
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "2847650135892449737417n",
-          "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
-          "name": "Renzo Restaked ETH",
-          "symbol": "ezETH",
-          "decimals": 18,
-          "tokens": [
-            {
-              "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-              "name": "Ethereum",
-              "symbol": "ETH",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "2891257456670907012702n",
-              "totalSupply": 2891.2574566709072,
-              "price": 3338.83,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-            }
-          ],
-          "totalSupply": 2847.6501358924497
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "6074999937320806699929n",
-          "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-          "name": "Wrapped eETH",
-          "symbol": "weETH",
-          "decimals": 18,
-          "totalSupply": 6074.999937320807,
-          "price": 3483.8370126090376
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "150018032742588900246507n",
-          "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
-          "name": "Savings Dai",
-          "symbol": "sDAI",
-          "decimals": 18,
-          "tokens": [
-            {
-              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-              "name": "Dai Stablecoin",
-              "symbol": "DAI",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "164940400994619079922498n",
-              "totalSupply": 164940.4009946191,
-              "price": 1.0006158644709475,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
-            }
-          ],
-          "totalSupply": 150018.0327425889
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "200000000000000000n",
-          "address": "0x73A15FeD60Bf67631dC6cd7Bc5B6e8da8190aCF5",
-          "name": "Usual USD",
-          "symbol": "USD0",
-          "decimals": 18,
-          "totalSupply": 0.2,
-          "price": 1.002889936952002
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "3000000000000000000n",
-          "address": "0x5F7827FDeb7c20b443265Fc2F40845B715385Ff2",
-          "name": "EUR CoinVertible",
-          "symbol": "EURCV",
-          "decimals": 18,
-          "totalSupply": 3
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "1000000000000000000n",
-          "address": "0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8",
-          "name": "EURA (previously agEUR)",
-          "symbol": "EURA",
-          "decimals": 18,
-          "totalSupply": 1,
-          "price": 1.0839554960710498
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "2978192926205100746481560n",
-          "address": "0xA0d69E286B938e21CBf7E51D71F6A4c8918f482F",
-          "name": "Electronic Dollar",
-          "symbol": "eUSD",
-          "decimals": 18,
-          "totalSupply": 2978192.926205101
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "406089750622174451491n",
-          "address": "0xcA2A7068e551d5C4482eb34880b194E4b945712F",
-          "name": "Wrapped Backed IB01 $ Treasury Bond 0-1yr",
-          "symbol": "wbIB01",
-          "decimals": 18,
-          "totalSupply": 406.08975062217445
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "701661583078756753990n",
-          "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
-          "name": "Staked ETH",
-          "symbol": "osETH",
-          "decimals": 18,
-          "tokens": [
-            {
-              "address": "0x0000000000000000000000000000000000000000",
-              "name": "Ethereum",
-              "symbol": "ETH",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "717523970812819231388n",
-              "totalSupply": 717.5239708128192,
-              "price": 3338.83,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-            }
-          ],
-          "totalSupply": 701.6615830787567
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "5411813166446309n",
-          "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
-          "name": "Rocket Pool ETH",
-          "symbol": "rETH",
-          "decimals": 18,
-          "tokens": [
-            {
-              "address": "0x0000000000000000000000000000000000000000",
-              "name": "Ethereum",
-              "symbol": "ETH",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "6019948922577993n",
-              "totalSupply": 0.006019948922577993,
-              "price": 3338.83,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-            }
-          ],
-          "totalSupply": 0.005411813166446309
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "520590261000000000000n",
-          "address": "0x95D7337d43340E2721960Dc402D9b9117f0d81a2",
-          "name": "Wrapped Backed GOVIES 0-6 months EURO investment grade",
-          "symbol": "wbC3M",
-          "decimals": 18,
-          "totalSupply": 520.590261
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "419989376170646173254n",
-          "address": "0x9Ba021B0a9b958B5E75cE9f6dff97C7eE52cb3E6",
-          "name": "Autocompounding Pirex Ether",
-          "symbol": "apxETH",
-          "decimals": 18,
-          "totalSupply": 419.98937617064615
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "1001000000000000000000n",
-          "address": "0xDD629E5241CbC5919847783e6C96B2De4754e438",
-          "name": "mTBILL",
-          "symbol": "mTBILL",
-          "decimals": 18,
-          "totalSupply": 1001
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "5000000000000000n",
-          "address": "0x454bB3cb427B21e1c052A080e21A57753cd6969e",
-          "name": "IdleCDO AA Tranche - Re7WETH",
-          "symbol": "AA_Re7WETH",
-          "decimals": 18,
-          "totalSupply": 0.005
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "12581949880290811651n",
-          "address": "0xb0Ce26C88e4e7DCa51968b6047f44646f5064278",
-          "name": "Staked TricryptoUSDT Convex Deposit Morpho",
-          "symbol": "stkcvxcrvUSDTWBTCWETH-morpho",
-          "decimals": 18,
-          "totalSupply": 12.581949880290813
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "2753685508931877842950n",
-          "address": "0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
-          "name": "rsETH",
-          "symbol": "rsETH",
-          "decimals": 18,
-          "totalSupply": 2753.685508931878,
-          "price": 3401.1719928528846
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "5000000000n",
-          "address": "0xCE8e559Ac89c2bDC97Bdb5F58705c54dB9cB77dC",
-          "name": "XP.LEVANNA.S",
-          "symbol": "XPC",
-          "decimals": 6,
-          "totalSupply": 5000
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "3000000000n",
-          "address": "0x910836B41791e07B4AC107c0DFbc41Ffd07d2702",
-          "name": "TOKEN",
-          "symbol": "TOKEN",
-          "decimals": 6,
-          "totalSupply": 3000
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "90394220950865957798n",
-          "address": "0x0ea1a65A2c255f24Ee8D81eA6AaC54Decd9d269e",
-          "name": "Staked TricryptoUSDC Convex Deposit Morpho",
-          "symbol": "stkcvxcrvUSDCWBTCWETH-morpho",
-          "decimals": 18,
-          "totalSupply": 90.39422095086596
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "672841768750312636124n",
-          "address": "0x3ce8Ec9f3d89aD0A2DdbCC3FDB8991BD241Fc82E",
-          "name": "Staked TricryptoLLAMA Convex Deposit Morpho",
-          "symbol": "stkcvxcrvCRVUSDTBTCWSTETH-morpho",
-          "decimals": 18,
-          "totalSupply": 672.8417687503127
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "131741468689459233150n",
-          "address": "0x6BA072F0d22806F2C52e9792AF47f2D59103BEBE",
-          "name": "Staked TryLSD Convex Deposit Morpho",
-          "symbol": "stkcvxTryLSD-morpho",
-          "decimals": 18,
-          "totalSupply": 131.74146868945923
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "3580387093923215810103n",
-          "address": "0xAc904BAfBb5FB04Deb2b6198FdCEedE75a78Ce5a",
-          "name": "Staked TriCRV Convex Deposit Morpho",
-          "symbol": "stkcvxcrvUSDETHCRV-morpho",
-          "decimals": 18,
-          "totalSupply": 3580.3870939232156
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "4000000000000000000000000000n",
-          "address": "0xd7173026AceB6e3c654FCC9f4422FC022A4c78A6",
-          "name": "MyToken",
-          "symbol": "MT",
-          "decimals": 18,
-          "totalSupply": 4000000000
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "10000000000000000n",
-          "address": "0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966",
-          "name": "PT ether.fi weETH 27JUN2024",
-          "symbol": "PT-weETH-27JUN2024",
-          "decimals": 18,
-          "tokens": [
-            {
-              "address": "0xAC0047886a985071476a1186bE89222659970d65",
-              "name": "SY ether.fi weETH",
-              "symbol": "SY-weETH",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "9577158186252993n",
-              "tokens": [
-                {
-                  "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-                  "name": "Wrapped eETH",
-                  "symbol": "weETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "totalSupplyRaw": "9577158186252993n",
-                  "totalSupply": 0.009577158186252993,
-                  "price": 3483.8370126090376,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
-                }
-              ],
-              "totalSupply": 0.009577158186252993,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xAC0047886a985071476a1186bE89222659970d65/logo.png"
-            }
-          ],
-          "totalSupply": 0.01
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "10000000000000000n",
-          "address": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-          "name": "Gauntlet WETH Prime",
-          "symbol": "gtWETH",
-          "decimals": 18,
-          "totalSupply": 0.01
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "257780120474766001143n",
-          "address": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
-          "name": "Re7 WETH",
-          "symbol": "Re7WETH",
-          "decimals": 18,
-          "totalSupply": 257.780120474766
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "11700000000000000000n",
-          "address": "0xdd0f28e19C1780eb6396170735D45153D261490d",
-          "name": "Gauntlet USDC Prime",
-          "symbol": "gtUSDC",
-          "decimals": 18,
-          "totalSupply": 11.7
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "21049648487812251160n",
-          "address": "0x95EeF579155cd2C5510F312c8fA39208c3Be01a8",
-          "name": "Re7 USDT",
-          "symbol": "Re7USDT",
-          "decimals": 18,
-          "totalSupply": 21.049648487812252
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "78337118302247199535009n",
-          "address": "0x004626A008B1aCdC4c74ab51644093b155e59A23",
-          "name": "Staked EURA",
-          "symbol": "stEUR",
-          "decimals": 18,
-          "tokens": [
-            {
-              "address": "0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8",
-              "name": "EURA (previously agEUR)",
-              "symbol": "EURA",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "81660567917004545385218n",
-              "totalSupply": 81660.56791700455,
-              "price": 1.0839554960710498,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8/logo.png"
-            }
-          ],
-          "totalSupply": 78337.1183022472
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "108248309333194566525n",
-          "address": "0xa0021EF8970104c2d008F38D92f115ad56a9B8e1",
-          "name": "PT Ethena USDe 25JUL2024",
-          "symbol": "PT-USDe-25JUL2024",
-          "decimals": 18,
-          "tokens": [
-            {
-              "address": "0x42862F48eAdE25661558AFE0A630b132038553D0",
-              "name": "SY Ethena USDe",
-              "symbol": "SY-USDe",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "108248309333194566525n",
-              "tokens": [
-                {
-                  "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-                  "name": "USDe",
-                  "symbol": "USDe",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "totalSupplyRaw": "108248309333194566525n",
-                  "totalSupply": 108.24830933319457,
-                  "price": 0.999156787816295,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4c9EDD5852cd905f086C759E8383e09bff1E68B3/logo.png"
-                }
-              ],
-              "totalSupply": 108.24830933319457,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x42862F48eAdE25661558AFE0A630b132038553D0/logo.png"
-            }
-          ],
-          "totalSupply": 108.24830933319457
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "1517270986169736901615n",
-          "address": "0xE72B141DF173b999AE7c1aDcbF60Cc9833Ce56a8",
-          "name": "ETHPlus",
-          "symbol": "ETH+",
-          "decimals": 18,
-          "totalSupply": 1517.270986169737,
-          "price": 3408.75004807282
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "7601000000000000000000n",
-          "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
-          "name": "ChainLink Token",
-          "symbol": "LINK",
-          "decimals": 18,
-          "totalSupply": 7601,
-          "price": 13.574350749267131
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "10000000000000000000000000000000n",
-          "address": "0x67C2A8aC5dcDE1b91299261fE16022b43d9DF69F",
-          "name": "MyToken",
-          "symbol": "MT",
-          "decimals": 18,
-          "totalSupply": 10000000000000
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "2080419237626958086678n",
-          "address": "0xD9A442856C234a39a81a089C06451EBAa4306a72",
-          "name": "pufETH",
-          "symbol": "pufETH",
-          "decimals": 18,
-          "totalSupply": 2080.419237626958,
-          "price": 3326.965756879849
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "1188837175056495824125n",
-          "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
-          "name": "rswETH",
-          "symbol": "rswETH",
-          "decimals": 18,
-          "totalSupply": 1188.8371750564959,
-          "price": 3349.830411312025
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "6348593482569n",
-          "address": "0x136471a34f6ef19fE571EFFC1CA711fdb8E49f2b",
-          "name": "US Yield Coin",
-          "symbol": "USYC",
-          "decimals": 6,
-          "totalSupply": 6348593.482569
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "1361094082035254989095n",
-          "address": "0xDcEe70654261AF21C44c093C300eD3Bb97b78192",
-          "name": "Wrapped OETH",
-          "symbol": "WOETH",
-          "decimals": 18,
-          "totalSupply": 1361.094082035255
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "25556180132167812797n",
-          "address": "0x18084fbA666a33d37592fA2633fD49a74DD93a88",
-          "name": "tBTC v2",
-          "symbol": "tBTC",
-          "decimals": 18,
-          "totalSupply": 25.556180132167814,
-          "price": 66985.88292828707
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "277495539123467236744n",
-          "address": "0x6ee2b5E19ECBa773a352E5B21415Dc419A700d1d",
-          "name": "PT ether.fi weETH 26DEC2024",
-          "symbol": "PT-weETH-26DEC2024",
-          "decimals": 18,
-          "tokens": [
-            {
-              "address": "0xAC0047886a985071476a1186bE89222659970d65",
-              "name": "SY ether.fi weETH",
-              "symbol": "SY-weETH",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "257973902237743192805n",
-              "tokens": [
-                {
-                  "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-                  "name": "Wrapped eETH",
-                  "symbol": "weETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "totalSupplyRaw": "257973902237743192805n",
-                  "totalSupply": 257.9739022377432,
-                  "price": 3483.8370126090376,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
-                }
-              ],
-              "totalSupply": 257.9739022377432,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xAC0047886a985071476a1186bE89222659970d65/logo.png"
-            }
-          ],
-          "totalSupply": 277.4955391234672
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "4989191831425062327913n",
-          "address": "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
-          "name": "Uniswap",
-          "symbol": "UNI",
-          "decimals": 18,
-          "totalSupply": 4989.191831425062,
-          "price": 7.611619325970069
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "10000000000000000n",
-          "address": "0xf7906F274c174A52d444175729E3fa98f9bde285",
-          "name": "PT Renzo ezETH 26DEC2024",
-          "symbol": "PT-ezETH-26DEC2024",
-          "decimals": 18,
-          "tokens": [
-            {
-              "address": "0x22E12A50e3ca49FB183074235cB1db84Fe4C716D",
-              "name": "SY Renzo ezETH",
-              "symbol": "SY-ezETH",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "9555580724473251n",
-              "tokens": [
-                {
-                  "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
-                  "name": "Renzo Restaked ETH",
-                  "symbol": "ezETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "totalSupplyRaw": "9555580724473251n",
-                  "tokens": [
-                    {
-                      "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-                      "name": "Ethereum",
-                      "symbol": "ETH",
-                      "decimals": 18,
-                      "type": "underlying",
-                      "totalSupplyRaw": "9701909540862753n",
-                      "totalSupply": 0.009701909540862754,
-                      "price": 3338.83,
-                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-                    }
-                  ],
-                  "totalSupply": 0.009555580724473252,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
-                }
-              ],
-              "totalSupply": 0.009555580724473252,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x22E12A50e3ca49FB183074235cB1db84Fe4C716D/logo.png"
-            }
-          ],
-          "totalSupply": 0.01
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "16505727602552462906341987n",
-          "address": "0x35D8949372D46B7a3D5A56006AE77B215fc69bC0",
-          "name": "USD0 Liquid Bond",
-          "symbol": "USD0++",
-          "decimals": 18,
-          "totalSupply": 16505727.602552462
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "1953042668356235302686412n",
-          "address": "0x07D1718fF05a8C53C8F05aDAEd57C0d672945f9a",
-          "name": "Aladdin rUSD",
-          "symbol": "arUSD",
-          "decimals": 18,
-          "totalSupply": 1953042.6683562354
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "2460681371642286824526n",
-          "address": "0xAE5099C39f023C91d3dd55244CAFB36225B0850E",
-          "name": "PT Ethena sUSDE 24OCT2024",
-          "symbol": "PT-sUSDE-24OCT2024",
-          "decimals": 18,
-          "totalSupply": 2460.6813716422866
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "9580857051586045565614858n",
-          "address": "0x1d08E7adC263CfC70b1BaBe6dC5Bb339c16Eec52",
-          "name": "USD0/USD0++",
-          "symbol": "USD0USD0++",
-          "decimals": 18,
-          "totalSupply": 9580857.051586045
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "7524018965435007426241n",
-          "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
-          "name": "Maker",
-          "symbol": "MKR",
-          "decimals": 18,
-          "totalSupply": 7524.018965435007,
-          "price": 2829.8125174649754
+      "success": false,
+      "error": {
+        "message": "Operation timed out",
+        "details": {
+          "name": "Error"
         }
-      ]
+      }
     },
     {
       "protocolId": "morpho-blue",
@@ -828,8 +56,7 @@
           "name": "Tether USD",
           "symbol": "USDT",
           "decimals": 6,
-          "totalSupply": 17563484.272414,
-          "price": 1.0007135599498926
+          "totalSupply": 17563484.272414
         },
         {
           "type": "protocol",
@@ -838,8 +65,7 @@
           "name": "PayPal USD",
           "symbol": "PYUSD",
           "decimals": 6,
-          "totalSupply": 10861107.474327,
-          "price": 0.985211318958303
+          "totalSupply": 10861107.474327
         },
         {
           "type": "protocol",
@@ -848,8 +74,7 @@
           "name": "Monerium EUR emoney",
           "symbol": "EURe",
           "decimals": 18,
-          "totalSupply": 49410.14096802528,
-          "price": 1.093899949411114
+          "totalSupply": 49410.14096802528
         },
         {
           "type": "protocol",
@@ -858,8 +83,7 @@
           "name": "Dai Stablecoin",
           "symbol": "DAI",
           "decimals": 18,
-          "totalSupply": 353738791.9958778,
-          "price": 1.0006158644709475
+          "totalSupply": 353738791.9958778
         },
         {
           "type": "protocol",
@@ -868,8 +92,7 @@
           "name": "Wrapped BTC",
           "symbol": "WBTC",
           "decimals": 8,
-          "totalSupply": 0.15027277,
-          "price": 66832.56482439829
+          "totalSupply": 0.15027277
         },
         {
           "type": "protocol",
@@ -887,8 +110,7 @@
           "name": "Curve.Fi USD Stablecoin",
           "symbol": "crvUSD",
           "decimals": 18,
-          "totalSupply": 1390545.592919416,
-          "price": 0.9957397941063904
+          "totalSupply": 1390545.592919416
         },
         {
           "type": "protocol",
@@ -906,8 +128,7 @@
           "name": "Frax",
           "symbol": "FRAX",
           "decimals": 18,
-          "totalSupply": 706166.525039745,
-          "price": 0.997090830242508
+          "totalSupply": 706166.525039745
         },
         {
           "type": "protocol",
@@ -916,8 +137,7 @@
           "name": "Usual USD",
           "symbol": "USD0",
           "decimals": 18,
-          "totalSupply": 0.19,
-          "price": 1.002889936952002
+          "totalSupply": 0.19
         },
         {
           "type": "protocol",
@@ -935,8 +155,7 @@
           "name": "EURA (previously agEUR)",
           "symbol": "EURA",
           "decimals": 18,
-          "totalSupply": 0.9,
-          "price": 1.0839554960710498
+          "totalSupply": 0.9
         },
         {
           "type": "protocol",
@@ -967,6 +186,19 @@
           "decimals": 6,
           "type": "protocol",
           "totalSupplyRaw": "45116097653719n",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "45116097653719000000000000n",
+              "totalSupply": 45116097653719000000,
+              "price": 1.0017130222520743,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
           "totalSupply": 45116097.653719
         }
       ]

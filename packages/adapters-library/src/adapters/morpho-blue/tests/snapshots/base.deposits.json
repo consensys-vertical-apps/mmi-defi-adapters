@@ -1,5 +1,5 @@
 {
-  "aggregatedValues": ["USD0.00"],
+  "aggregatedValues": ["USD10,009.39"],
   "snapshot": {
     "protocolId": "morpho-blue",
     "name": "MetaMorpho Vaults",
@@ -20,12 +20,13 @@
         },
         "tokens": [
           {
-            "address": "0xa0E430870c4604CcfC7B38Ca7845B1FF653D0ff1",
-            "name": "Moonwell Flagship ETH",
-            "symbol": "mwETH",
+            "address": "0x4200000000000000000000000000000000000006",
+            "symbol": "ETH",
+            "name": "Ethereum",
             "decimals": 18,
             "balanceRaw": "3000000000000000000n",
             "type": "underlying",
+            "price": 3336.46411744,
             "balance": 3
           }
         ],

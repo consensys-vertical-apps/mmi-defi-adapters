@@ -24,11 +24,17 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import { Metamorpho__factory, Metamorphofactory__factory } from '../../contracts'
+import {
+  Metamorpho__factory,
+  Metamorphofactory__factory,
+} from '../../contracts'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { TypedContractEvent, TypedDeferredTopicFilter } from '../../contracts/common'
-import { Erc20__factory } from '../../../../contracts'
+import {
+  TypedContractEvent,
+  TypedDeferredTopicFilter,
+} from '../../contracts/common'
 import { filterMapAsync } from '../../../../core/utils/filters'
+import { SupplyEvent } from '../../contracts/MorphoBlue'
 
 type MetaMorphoVaultMetadata = Record<
   string,
@@ -56,8 +62,8 @@ export class MorphoBlueVaultAdapter
   helpers: Helpers
 
   adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
-    includeInUnwrap: false,
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
   }
 
   private provider: CustomJsonRpcProvider
@@ -97,13 +103,18 @@ export class MorphoBlueVaultAdapter
       metaMorphoFactoryContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
     )
-    const createMetaMorphoFilter = metaMorphoFactoryContract.filters.CreateMetaMorpho()
+    const createMetaMorphoFilter =
+      metaMorphoFactoryContract.filters.CreateMetaMorpho()
 
     const metaMorphoVaults = (
-      await metaMorphoFactoryContract.queryFilter(createMetaMorphoFilter, 0, 'latest')
+      await metaMorphoFactoryContract.queryFilter(
+        createMetaMorphoFilter,
+        0,
+        'latest',
+      )
     ).map((event) => ({
       vault: event.args[0],
-      underlyingAsset: event.args[4]
+      underlyingAsset: event.args[4],
     }))
 
     const metadataObject: MetaMorphoVaultMetadata = {}
@@ -111,16 +122,8 @@ export class MorphoBlueVaultAdapter
     await Promise.all(
       metaMorphoVaults.map(async ({ vault, underlyingAsset }) => {
         const [vaultData, underlyingTokenData] = await Promise.all([
-          getTokenMetadata(
-            vault,
-            this.chainId,
-            this.provider,
-          ),
-          getTokenMetadata(
-            underlyingAsset,
-            this.chainId,
-            this.provider,
-          ),
+          getTokenMetadata(vault, this.chainId, this.provider),
+          getTokenMetadata(underlyingAsset, this.chainId, this.provider),
         ])
 
         metadataObject[vault] = {
@@ -133,106 +136,59 @@ export class MorphoBlueVaultAdapter
     return metadataObject
   }
 
-  async getProtocolTokens(): Promise<(Erc20Metadata)[]> {
+  async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
     )
   }
 
-  async getPositions({
-    userAddress,
-    blockNumber,
-    protocolTokenAddresses,
-  }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const protocolTokens = await this.getProtocolTokens()
-    const filteredTokens = protocolTokenAddresses
-      ? protocolTokens.filter(token => 
-          protocolTokenAddresses.map(addr => addr.toLowerCase())
-            .includes(token.address.toLowerCase())
-        )
-      : protocolTokens
-  
-    const positions: ProtocolPosition[] = []
-  
-    await Promise.all(
-      filteredTokens.map(async (protocolToken) => {
-        const underlyingToken = await this.getUnderlyingToken(protocolToken.address);
-        const metaMorphoContract = Metamorpho__factory.connect(
-          protocolToken.address,
-          this.provider
-        )
-        const underlyingAssetContract = Erc20__factory.connect(
-          underlyingToken.address,
-          this.provider
-        )
-  
-        const[balanceRaw, vaultDecimal, assetDecimals] = await Promise.all([
-          metaMorphoContract.balanceOf(userAddress, { blockTag: blockNumber }),
-          metaMorphoContract.decimals(),
-          underlyingAssetContract.decimals()
-        ])
-
-
-        
-        if (balanceRaw > 0n) {
-          const underlyingToken = await this.getUnderlyingToken(protocolToken.address)
-  
-          positions.push({
-            tokenId: protocolToken.address,
-            ...protocolToken,
-            balanceRaw,
-            type: TokenType.Protocol,
-            tokens: [
-              {
-                ...underlyingToken,
-                balanceRaw: balanceRaw / 10n ** (vaultDecimal - assetDecimals),
-                type: TokenType.Underlying,
-              },
-            ],
-          })
-        }
-      })
-    )
-  
-    return positions
+  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    return this.helpers.getBalanceOfTokens({
+      ...input,
+      protocolTokens: await this.getProtocolTokens(),
+    })
   }
 
   async getWithdrawals({
-    userAddress,
+    protocolTokenAddress,
     fromBlock,
     toBlock,
-    protocolTokenAddress,
+    userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return (
-      await Promise.all([
-        this.getMovements({
-          userAddress,
-          fromBlock,
-          toBlock,
-          eventType: 'withdraw',
-          metaMorphoVault: protocolTokenAddress,
-        })
-      ])
-    ).flat()
+    return this.helpers.withdrawals({
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
   }
 
   async getDeposits({
-    userAddress,
+    protocolTokenAddress,
     fromBlock,
     toBlock,
-    protocolTokenAddress,
+    userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return (
-      await Promise.all([
-        this.getMovements({
-          userAddress,
-          fromBlock,
-          toBlock,
-          eventType: 'deposit',
-          metaMorphoVault: protocolTokenAddress,
-        })
-      ])
-    ).flat()
+    return this.helpers.deposits({
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
+  }
+
+  /**
+   * Fetches the protocol-token metadata
+   * @param protocolTokenAddress
+   */
+  protected async fetchProtocolTokenMetadata(
+    protocolTokenAddress: string,
+  ): Promise<Erc20Metadata> {
+    const { address, name, decimals, symbol } =
+      await this.helpers.getProtocolTokenByAddress<AdditionalMetadata>({
+        protocolTokens: await this.getProtocolTokens(),
+        protocolTokenAddress,
+      })
+
+    return { address, name, decimals, symbol }
   }
 
   async getTotalValueLocked({
@@ -248,18 +204,18 @@ export class MorphoBlueVaultAdapter
         return undefined
       }
 
-      const underlyingToken = await this.getUnderlyingToken(protocolToken.address)
+      const underlyingToken = await this.getUnderlyingToken(
+        protocolToken.address,
+      )
 
       const protocolTokenContact = Metamorpho__factory.connect(
         protocolToken.address,
         this.provider,
       )
 
-      const protocolTokenTotalAsset = await 
-        protocolTokenContact.totalAssets({
-          blockTag: blockNumber,
-        })
-      
+      const protocolTokenTotalAsset = await protocolTokenContact.totalAssets({
+        blockTag: blockNumber,
+      })
 
       return {
         address: protocolToken.address,
@@ -276,13 +232,13 @@ export class MorphoBlueVaultAdapter
     protocolTokenAddress,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const protocolToken = await this.getProtocolToken(protocolTokenAddress);
-    const underlyingToken = await this.getUnderlyingToken(protocolTokenAddress);
-    
+    const protocolToken = await this.getProtocolToken(protocolTokenAddress)
+    const underlyingToken = await this.getUnderlyingToken(protocolTokenAddress)
+
     return this.helpers.unwrapOneToOne({
       protocolToken: protocolToken,
       underlyingTokens: [underlyingToken], // Wrap the single underlying token in an array
-    });
+    })
   }
 
   private async getProtocolToken(protocolTokenAddress: string) {
@@ -310,77 +266,4 @@ export class MorphoBlueVaultAdapter
 
     return poolMetadata
   }
-
-  private async getMovements({
-    userAddress,
-    fromBlock,
-    toBlock,
-    eventType,
-    metaMorphoVault,
-  }: {
-    userAddress: string
-
-    fromBlock: number
-    toBlock: number
-    eventType: 'deposit' | 'withdraw'
-    metaMorphoVault: string
-  }): Promise<MovementsByBlock[]> {
-
-    const metaMorphoContract = Metamorpho__factory.connect(
-      metaMorphoVault,
-      this.provider,
-    )
-
-    const [protocolToken, underlyingToken] = await Promise.all(
-      [
-      this.getProtocolToken(metaMorphoVault), 
-      this.getUnderlyingToken(metaMorphoVault)
-    ]
-    )
-    let filter: TypedDeferredTopicFilter<TypedContractEvent<any, any, any>>
-
-    switch (eventType) {
-      case 'deposit':
-        filter = metaMorphoContract.filters.Deposit(undefined, userAddress)
-        break
-      case 'withdraw':
-        filter = metaMorphoContract.filters.Withdraw(undefined, undefined, userAddress)
-        break
-    }
-
-
-    const eventResults = await metaMorphoContract.queryFilter(
-      filter,
-      fromBlock,
-      toBlock,
-    )
-
-    const movements = await Promise.all(
-      eventResults.map(async (event) => {
-        const eventData = event.args
-        let balanceRaw = eventData.assets 
-        return {
-          protocolToken,
-          tokens: [
-            {
-              ...underlyingToken!,
-              balanceRaw : Number(balanceRaw),
-              type: TokenType.Underlying,
-            },
-          ],
-          blockNumber: event.blockNumber,
-          transactionHash: event.transactionHash,
-        }
-      }),
-    )
-
-    return movements.map(movement => ({
-      ...movement,
-      tokens: movement.tokens.map(token => ({
-        ...token,
-        balanceRaw: BigInt(token.balanceRaw)
-      }))
-    }))
-  }
-
 }

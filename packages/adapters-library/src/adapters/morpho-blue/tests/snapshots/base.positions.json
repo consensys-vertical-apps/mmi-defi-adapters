@@ -14,7 +14,6 @@
       "success": true,
       "tokens": [
         {
-          "tokenId": "0xa0E430870c4604CcfC7B38Ca7845B1FF653D0ff1",
           "address": "0xa0E430870c4604CcfC7B38Ca7845B1FF653D0ff1",
           "name": "Moonwell Flagship ETH",
           "symbol": "mwETH",
@@ -24,11 +23,11 @@
           "tokens": [
             {
               "address": "0x4200000000000000000000000000000000000006",
-              "symbol": "ETH",
               "name": "Ethereum",
+              "symbol": "ETH",
               "decimals": 18,
-              "balanceRaw": "2995035841467461394n",
               "type": "underlying",
+              "balanceRaw": "2995035841467461394n",
               "balance": 2.9950358414674616,
               "price": 3336.46411744,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x4200000000000000000000000000000000000006/logo.png"

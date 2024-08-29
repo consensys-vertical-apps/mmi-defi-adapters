@@ -1,6 +1,6 @@
 {
   "blockNumber": 20417741,
-  "aggregatedValues": ["USD660,263.55"],
+  "aggregatedValues": ["USD660,263,551,044,713,984.00"],
   "snapshot": [
     {
       "protocolId": "morpho-blue",
@@ -14,7 +14,6 @@
       "success": true,
       "tokens": [
         {
-          "tokenId": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
           "address": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
           "name": " Usual Boosted USDC",
           "symbol": "USUALUSDC+",
@@ -27,9 +26,9 @@
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
-              "balanceRaw": "659228547765n",
               "type": "underlying",
-              "balance": 659228.547765,
+              "balanceRaw": "659228547765082793841905n",
+              "balance": 659228547765082800,
               "price": 1.0015700219341837,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
