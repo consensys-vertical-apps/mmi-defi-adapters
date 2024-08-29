@@ -1,0 +1,54 @@
+[
+  {
+    "address": "0x892785f33CdeE22A30AEF750F285E18c18040c3e",
+    "name": "USD Coin (Arb1)-LP",
+    "symbol": "S*USDC",
+    "decimals": 6,
+    "poolIndex": 0,
+    "stargateToken": {
+      "address": "0x6694340fc020c5E6B96567843da2df01b2CE1eb6",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  },
+  {
+    "address": "0xB6CfcF89a7B22988bfC96632aC2A9D6daB60d641",
+    "name": "Tether USD-LP",
+    "symbol": "S*USDT",
+    "decimals": 6,
+    "poolIndex": 1,
+    "stargateToken": {
+      "address": "0x6694340fc020c5E6B96567843da2df01b2CE1eb6",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  },
+  {
+    "address": "0x915A55e36A01285A14f05dE6e81ED9cE89772f8e",
+    "name": "Stargate Ether Vault-LP",
+    "symbol": "S*SGETH",
+    "decimals": 18,
+    "poolIndex": 2,
+    "stargateToken": {
+      "address": "0x6694340fc020c5E6B96567843da2df01b2CE1eb6",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  },
+  {
+    "address": "0xaa4BF442F024820B2C28Cd0FD72b82c63e66F56C",
+    "name": "Frax-LP",
+    "symbol": "S*FRAX",
+    "decimals": 6,
+    "poolIndex": 3,
+    "stargateToken": {
+      "address": "0x6694340fc020c5E6B96567843da2df01b2CE1eb6",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  }
+]

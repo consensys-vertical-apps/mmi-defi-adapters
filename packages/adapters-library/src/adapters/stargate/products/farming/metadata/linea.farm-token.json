@@ -1,0 +1,15 @@
+[
+  {
+    "address": "0xAad094F6A75A14417d39f04E690fC216f080A41a",
+    "name": "Stargate Ether Vault-LP",
+    "symbol": "S*SGETH",
+    "decimals": 18,
+    "poolIndex": 0,
+    "stargateToken": {
+      "address": "0x808d7c71ad2ba3FA531b068a2417C63106BC0949",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  }
+]

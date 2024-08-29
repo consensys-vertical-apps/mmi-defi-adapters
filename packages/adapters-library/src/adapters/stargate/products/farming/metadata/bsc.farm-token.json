@@ -1,0 +1,28 @@
+[
+  {
+    "address": "0x9aA83081AA06AF7208Dcc7A4cB72C94d057D2cda",
+    "name": "Tether USD-LP",
+    "symbol": "S*USDT",
+    "decimals": 6,
+    "poolIndex": 0,
+    "stargateToken": {
+      "address": "0xB0D502E938ed5f4df2E681fE6E419ff29631d62b",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  },
+  {
+    "address": "0x98a5737749490856b401DB5Dc27F522fC314A4e1",
+    "name": "BUSD Token-LP",
+    "symbol": "S*BUSD",
+    "decimals": 6,
+    "poolIndex": 1,
+    "stargateToken": {
+      "address": "0xB0D502E938ed5f4df2E681fE6E419ff29631d62b",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  }
+]

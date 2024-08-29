@@ -1,0 +1,28 @@
+[
+  {
+    "address": "0x12edeA9cd262006cC3C4E77c90d2CD2DD4b1eb97",
+    "name": "USD Coin-LP",
+    "symbol": "S*USDC",
+    "decimals": 6,
+    "poolIndex": 0,
+    "stargateToken": {
+      "address": "0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  },
+  {
+    "address": "0xc647CE76ec30033Aa319d472Ae9f4462068f2AD7",
+    "name": "USD Coin-LP",
+    "symbol": "S*USDC",
+    "decimals": 6,
+    "poolIndex": 1,
+    "stargateToken": {
+      "address": "0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  }
+]

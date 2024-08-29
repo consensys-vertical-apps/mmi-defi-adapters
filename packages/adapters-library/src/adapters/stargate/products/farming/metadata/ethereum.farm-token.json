@@ -1,0 +1,93 @@
+[
+  {
+    "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
+    "name": "USD Coin-LP",
+    "symbol": "S*USDC",
+    "decimals": 6,
+    "poolIndex": 0,
+    "stargateToken": {
+      "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  },
+  {
+    "address": "0x38EA452219524Bb87e18dE1C24D3bB59510BD783",
+    "name": "Tether USD-LP",
+    "symbol": "S*USDT",
+    "decimals": 6,
+    "poolIndex": 1,
+    "stargateToken": {
+      "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  },
+  {
+    "address": "0x101816545F6bd2b1076434B54383a1E633390A2E",
+    "name": "Stargate Ether Vault-LP",
+    "symbol": "S*SGETH",
+    "decimals": 18,
+    "poolIndex": 2,
+    "stargateToken": {
+      "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  },
+  {
+    "address": "0x0Faf1d2d3CED330824de3B8200fc8dc6E397850d",
+    "name": "Dai Stablecoin-LP",
+    "symbol": "S*DAI",
+    "decimals": 6,
+    "poolIndex": 3,
+    "stargateToken": {
+      "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  },
+  {
+    "address": "0xfA0F307783AC21C39E939ACFF795e27b650F6e68",
+    "name": "Frax-LP",
+    "symbol": "S*FRAX",
+    "decimals": 6,
+    "poolIndex": 4,
+    "stargateToken": {
+      "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  },
+  {
+    "address": "0x590d4f8A68583639f215f675F3a259Ed84790580",
+    "name": "Synth sUSD-LP",
+    "symbol": "S*sUSD",
+    "decimals": 6,
+    "poolIndex": 5,
+    "stargateToken": {
+      "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  },
+  {
+    "address": "0xE8F55368C82D38bbbbDb5533e7F56AfC2E978CC2",
+    "name": "LUSD Stablecoin-LP",
+    "symbol": "S*LUSD",
+    "decimals": 6,
+    "poolIndex": 6,
+    "stargateToken": {
+      "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  }
+]
