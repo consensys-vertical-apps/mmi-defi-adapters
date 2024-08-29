@@ -4,13 +4,30 @@ import type { TestCase } from '../../../types/testCase'
 import { WriteActions } from '../../../types/writeActions'
 
 export const testCases: TestCase[] = [
-  // {
-  //   chainId: Chain.Ethereum,
-  //   method: 'positions',
-  //   input: {
-  //     userAddress: '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
-  //   },
-  // },
+  {
+    key: 'lp-positions',
+    chainId: Chain.Ethereum,
+    method: 'positions',
+
+    input: {
+      userAddress: '0x006fbb8a8aeb9982b54ec213a675a19b121b3423',
+      filterProtocolTokens: ['0xfcb42A0e352a08AbD50b8EE68d01f581B6Dfd80A'],
+    },
+
+    blockNumber: 20636813,
+  },
+  {
+    key: 'lp-positions',
+    chainId: Chain.Base,
+    method: 'positions',
+
+    input: {
+      userAddress: '0x006fbb8a8aeb9982b54ec213a675a19b121b3423',
+      filterProtocolTokens: ['0x98fB8522d891F43B771e2d27367b41Ba138D0B80'],
+    },
+
+    blockNumber: 19088200,
+  },
   // {
   //   chainId: Chain.Ethereum,
   //   method: 'profits',
