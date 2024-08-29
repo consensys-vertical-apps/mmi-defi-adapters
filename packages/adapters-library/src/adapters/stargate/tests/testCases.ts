@@ -115,4 +115,15 @@ export const testCases: TestCase[] = [
 
     blockNumber: 20634750,
   },
+  {
+    key: 'lp-farming',
+    chainId: Chain.Optimism,
+    method: 'positions',
+
+    input: {
+      userAddress: '0xb4f4bde162ed8da7de651332b539052b9c41e3c7',
+    },
+
+    blockNumber: 20634750,
+  },
 ]

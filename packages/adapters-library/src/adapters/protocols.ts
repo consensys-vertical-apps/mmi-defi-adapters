@@ -33,6 +33,7 @@ export const Protocol = {
   SparkV1: 'spark-v1',
   StakeWise: 'stakewise',
   Stargate: 'stargate',
+  StargateV2: 'stargate-v2',
   SushiswapV2: 'sushiswap-v2',
   Swell: 'swell',
   SyncSwap: 'syncswap',
