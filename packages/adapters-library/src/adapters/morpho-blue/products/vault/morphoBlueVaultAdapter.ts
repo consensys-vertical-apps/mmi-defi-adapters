@@ -5,9 +5,14 @@ import {
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../../core/utils/filters'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -28,21 +33,15 @@ import {
   Metamorpho__factory,
   Metamorphofactory__factory,
 } from '../../contracts'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { SupplyEvent } from '../../contracts/MorphoBlue'
 import {
   TypedContractEvent,
   TypedDeferredTopicFilter,
 } from '../../contracts/common'
-import { filterMapAsync } from '../../../../core/utils/filters'
-import { SupplyEvent } from '../../contracts/MorphoBlue'
 
-type MetaMorphoVaultMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
-  }
->
+export type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+}
 
 const metaMorphoFactoryContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
@@ -53,9 +52,7 @@ const metaMorphoFactoryContractAddresses: Partial<
   },
 }
 
-export class MorphoBlueVaultAdapter
-  implements IProtocolAdapter, IMetadataBuilder
-{
+export class MorphoBlueVaultAdapter implements IProtocolAdapter {
   productId = 'vault'
   protocolId: Protocol
   chainId: Chain
@@ -64,6 +61,7 @@ export class MorphoBlueVaultAdapter
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
+    version: 2,
   }
 
   private provider: CustomJsonRpcProvider
@@ -98,7 +96,7 @@ export class MorphoBlueVaultAdapter
   }
 
   @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata(): Promise<MetaMorphoVaultMetadata> {
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const metaMorphoFactoryContract = Metamorphofactory__factory.connect(
       metaMorphoFactoryContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
@@ -117,7 +115,7 @@ export class MorphoBlueVaultAdapter
       underlyingAsset: event.args[4],
     }))
 
-    const metadataObject: MetaMorphoVaultMetadata = {}
+    const metadata: ProtocolToken<AdditionalMetadata>[] = []
 
     await Promise.all(
       metaMorphoVaults.map(async ({ vault, underlyingAsset }) => {
@@ -126,20 +124,14 @@ export class MorphoBlueVaultAdapter
           getTokenMetadata(underlyingAsset, this.chainId, this.provider),
         ])
 
-        metadataObject[vault] = {
-          protocolToken: vaultData,
-          underlyingToken: underlyingTokenData,
-        }
+        metadata.push({
+          ...vaultData,
+          underlyingTokens: [underlyingTokenData],
+        })
       }),
     )
 
-    return metadataObject
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
+    return metadata
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
@@ -175,22 +167,6 @@ export class MorphoBlueVaultAdapter
     })
   }
 
-  /**
-   * Fetches the protocol-token metadata
-   * @param protocolTokenAddress
-   */
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { address, name, decimals, symbol } =
-      await this.helpers.getProtocolTokenByAddress<AdditionalMetadata>({
-        protocolTokens: await this.getProtocolTokens(),
-        protocolTokenAddress,
-      })
-
-    return { address, name, decimals, symbol }
-  }
-
   async getTotalValueLocked({
     protocolTokenAddresses,
     blockNumber,
@@ -204,7 +180,7 @@ export class MorphoBlueVaultAdapter
         return undefined
       }
 
-      const underlyingToken = await this.getUnderlyingToken(
+      const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
         protocolToken.address,
       )
 
@@ -220,8 +196,8 @@ export class MorphoBlueVaultAdapter
       return {
         address: protocolToken.address,
         name: protocolToken.name,
-        symbol: underlyingToken.symbol,
-        decimals: underlyingToken.decimals,
+        symbol: underlyingToken!.symbol,
+        decimals: underlyingToken!.decimals,
         type: TokenType.Protocol,
         totalSupplyRaw: protocolTokenTotalAsset,
       }
@@ -232,38 +208,43 @@ export class MorphoBlueVaultAdapter
     protocolTokenAddress,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const protocolToken = await this.getProtocolToken(protocolTokenAddress)
-    const underlyingToken = await this.getUnderlyingToken(protocolTokenAddress)
-
     return this.helpers.unwrapOneToOne({
-      protocolToken: protocolToken,
-      underlyingTokens: [underlyingToken], // Wrap the single underlying token in an array
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      underlyingTokens:
+        await this.fetchUnderlyingTokensMetadata(protocolTokenAddress),
     })
   }
 
-  private async getProtocolToken(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
+  /**
+   * Fetches the protocol-token metadata
+   * @param protocolTokenAddress
+   */
+  private async fetchProtocolTokenMetadata(
+    protocolTokenAddress: string,
+  ): Promise<Erc20Metadata> {
+    const { address, name, decimals, symbol } =
+      await this.helpers.getProtocolTokenByAddress<AdditionalMetadata>({
+        protocolTokens: await this.getProtocolTokens(),
+        protocolTokenAddress,
+      })
+
+    return { address, name, decimals, symbol }
   }
-  private async getUnderlyingToken(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).underlyingToken
-  }
 
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
+  /**
+   * Fetches the protocol-token's underlying token details
+   * @param protocolTokenAddress
+   */
+  private async fetchUnderlyingTokensMetadata(
+    protocolTokenAddress: string,
+  ): Promise<Erc20Metadata[]> {
+    const { underlyingTokens } =
+      await this.helpers.getProtocolTokenByAddress<AdditionalMetadata>({
+        protocolTokens: await this.getProtocolTokens(),
+        protocolTokenAddress,
+      })
 
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
+    return underlyingTokens!
   }
 }
