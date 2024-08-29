@@ -5,12 +5,14 @@
     "symbol": "S*USDC",
     "decimals": 6,
     "poolIndex": 0,
-    "stargateToken": {
-      "address": "0x296F55F8Fb28E498B858d0BcDA06D955B2Cb3f97",
-      "name": "StargateToken",
-      "symbol": "STG",
+    "rewardToken": {
+      "address": "0x4200000000000000000000000000000000000042",
+      "name": "Optimism",
+      "symbol": "OP",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x4DeA9e918c6289a52cd469cAC652727B7b412Cd2"
   },
   {
     "address": "0xd22363e3762cA7339569F3d33EADe20127D5F98C",
@@ -18,12 +20,14 @@
     "symbol": "S*SGETH",
     "decimals": 18,
     "poolIndex": 1,
-    "stargateToken": {
-      "address": "0x296F55F8Fb28E498B858d0BcDA06D955B2Cb3f97",
-      "name": "StargateToken",
-      "symbol": "STG",
+    "rewardToken": {
+      "address": "0x4200000000000000000000000000000000000042",
+      "name": "Optimism",
+      "symbol": "OP",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x4DeA9e918c6289a52cd469cAC652727B7b412Cd2"
   },
   {
     "address": "0x165137624F1f692e69659f944BF69DE02874ee27",
@@ -31,12 +35,14 @@
     "symbol": "S*DAI",
     "decimals": 6,
     "poolIndex": 2,
-    "stargateToken": {
-      "address": "0x296F55F8Fb28E498B858d0BcDA06D955B2Cb3f97",
-      "name": "StargateToken",
-      "symbol": "STG",
+    "rewardToken": {
+      "address": "0x4200000000000000000000000000000000000042",
+      "name": "Optimism",
+      "symbol": "OP",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x4DeA9e918c6289a52cd469cAC652727B7b412Cd2"
   },
   {
     "address": "0x368605D9C6243A80903b9e326f1Cddde088B8924",
@@ -44,12 +50,14 @@
     "symbol": "S*FRAX",
     "decimals": 6,
     "poolIndex": 3,
-    "stargateToken": {
-      "address": "0x296F55F8Fb28E498B858d0BcDA06D955B2Cb3f97",
-      "name": "StargateToken",
-      "symbol": "STG",
+    "rewardToken": {
+      "address": "0x4200000000000000000000000000000000000042",
+      "name": "Optimism",
+      "symbol": "OP",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x4DeA9e918c6289a52cd469cAC652727B7b412Cd2"
   },
   {
     "address": "0x2F8bC9081c7FCFeC25b9f41a50d97EaA592058ae",
@@ -57,12 +65,14 @@
     "symbol": "S*sUSD",
     "decimals": 6,
     "poolIndex": 4,
-    "stargateToken": {
-      "address": "0x296F55F8Fb28E498B858d0BcDA06D955B2Cb3f97",
-      "name": "StargateToken",
-      "symbol": "STG",
+    "rewardToken": {
+      "address": "0x4200000000000000000000000000000000000042",
+      "name": "Optimism",
+      "symbol": "OP",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x4DeA9e918c6289a52cd469cAC652727B7b412Cd2"
   },
   {
     "address": "0x3533F5e279bDBf550272a199a223dA798D9eff78",
@@ -70,11 +80,13 @@
     "symbol": "S*LUSD",
     "decimals": 6,
     "poolIndex": 5,
-    "stargateToken": {
-      "address": "0x296F55F8Fb28E498B858d0BcDA06D955B2Cb3f97",
-      "name": "StargateToken",
-      "symbol": "STG",
+    "rewardToken": {
+      "address": "0x4200000000000000000000000000000000000042",
+      "name": "Optimism",
+      "symbol": "OP",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x4DeA9e918c6289a52cd469cAC652727B7b412Cd2"
   }
 ]

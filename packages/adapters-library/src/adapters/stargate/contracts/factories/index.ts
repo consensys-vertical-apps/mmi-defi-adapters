@@ -3,6 +3,7 @@
 /* eslint-disable */
 export { FeeDistributor__factory } from "./FeeDistributor__factory";
 export { LpStaking__factory } from "./LpStaking__factory";
+export { LpStakingTime__factory } from "./LpStakingTime__factory";
 export { StargateFactory__factory } from "./StargateFactory__factory";
 export { StargateToken__factory } from "./StargateToken__factory";
 export { StargateVotingEscrow__factory } from "./StargateVotingEscrow__factory";

@@ -5,12 +5,14 @@
     "symbol": "S*USDC",
     "decimals": 6,
     "poolIndex": 0,
-    "stargateToken": {
+    "rewardToken": {
       "address": "0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590",
       "name": "StargateToken",
       "symbol": "STG",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStaking",
+    "lpStakingAddress": "0x224D8Fd7aB6AD4c6eb4611Ce56EF35Dec2277F03"
   },
   {
     "address": "0xc647CE76ec30033Aa319d472Ae9f4462068f2AD7",
@@ -18,11 +20,13 @@
     "symbol": "S*USDC",
     "decimals": 6,
     "poolIndex": 1,
-    "stargateToken": {
+    "rewardToken": {
       "address": "0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590",
       "name": "StargateToken",
       "symbol": "STG",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStaking",
+    "lpStakingAddress": "0x224D8Fd7aB6AD4c6eb4611Ce56EF35Dec2277F03"
   }
 ]

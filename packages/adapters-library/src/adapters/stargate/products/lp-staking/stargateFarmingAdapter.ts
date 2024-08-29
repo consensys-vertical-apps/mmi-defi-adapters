@@ -26,14 +26,23 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import { LpStaking__factory } from '../../contracts'
+import {
+  LpStaking,
+  LpStaking__factory,
+  LpStakingTime,
+  LpStakingTime__factory,
+} from '../../contracts'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { filterMapAsync } from '../../../../core/utils/filters'
-import { contractAddresses } from '../../common/contractAddresses'
+import { staticChainData } from '../../common/staticChainData'
+import { AddressLike, BigNumberish } from 'ethers'
+import { TypedContractMethod } from '../../contracts/common'
 
 type AdditionalMetadata = {
   poolIndex: number
-  stargateToken: Erc20Metadata
+  rewardToken: Erc20Metadata
+  lpStakingType: 'LpStaking' | 'LpStakingTime'
+  lpStakingAddress: string
 }
 
 export class StargateLpStakingAdapter implements IProtocolAdapter {
@@ -81,22 +90,28 @@ export class StargateLpStakingAdapter implements IProtocolAdapter {
 
   @CacheToFile({ fileKey: 'farm-token' })
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
-    const lpStakingContract = LpStaking__factory.connect(
-      contractAddresses[this.chainId]!.lpStaking,
-      this.provider,
+    const { lpStakingAddress, lpStakingType, lpStakingTimeMetisAddress } =
+      staticChainData[this.chainId]!
+
+    const lpStakingContract =
+      lpStakingType === 'LpStaking'
+        ? LpStaking__factory.connect(lpStakingAddress, this.provider)
+        : LpStakingTime__factory.connect(lpStakingAddress, this.provider)
+
+    const rewardTokenPromise = (
+      lpStakingType === 'LpStaking'
+        ? (lpStakingContract as LpStaking).stargate()
+        : (lpStakingContract as LpStakingTime).eToken()
+    ).then((rewardTokenAddress) =>
+      getTokenMetadata(rewardTokenAddress, this.chainId, this.provider),
     )
 
-    const [poolLength, stargateToken] = await Promise.all([
-      lpStakingContract.poolLength(),
-      getTokenMetadata(
-        contractAddresses[this.chainId]!.stargateToken,
-        this.chainId,
-        this.provider,
-      ),
-    ])
+    const poolLength = await lpStakingContract.poolLength()
 
-    return await Promise.all(
-      Array.from({ length: Number(poolLength) }, async (_, i) => {
+    const poolPromises: Promise<ProtocolToken<AdditionalMetadata>>[] = []
+
+    poolPromises.push(
+      ...Array.from({ length: Number(poolLength) }, async (_, i) => {
         const { lpToken: protocolTokenAddress } =
           await lpStakingContract.poolInfo(i)
 
@@ -109,10 +124,44 @@ export class StargateLpStakingAdapter implements IProtocolAdapter {
         return {
           ...protocolToken,
           poolIndex: i,
-          stargateToken,
+          rewardToken: await rewardTokenPromise,
+          lpStakingType,
+          lpStakingAddress,
         }
       }),
     )
+
+    if (lpStakingTimeMetisAddress) {
+      poolPromises.push(
+        (async () => {
+          const lpStakingTimeMetisContract = LpStakingTime__factory.connect(
+            lpStakingTimeMetisAddress,
+            this.provider,
+          )
+
+          const [{ lpToken: protocolTokenAddress }, rewardTokenAddress] =
+            await Promise.all([
+              lpStakingTimeMetisContract.poolInfo(0),
+              lpStakingTimeMetisContract.eToken(),
+            ])
+
+          const [protocolToken, rewardToken] = await Promise.all([
+            getTokenMetadata(protocolTokenAddress, this.chainId, this.provider),
+            getTokenMetadata(rewardTokenAddress, this.chainId, this.provider),
+          ])
+
+          return {
+            ...protocolToken,
+            poolIndex: 0,
+            rewardToken,
+            lpStakingType: 'LpStakingTime',
+            lpStakingAddress: lpStakingTimeMetisAddress,
+          }
+        })(),
+      )
+    }
+
+    return await Promise.all(poolPromises)
   }
 
   private async getProtocolTokenByAddress(
@@ -131,11 +180,6 @@ export class StargateLpStakingAdapter implements IProtocolAdapter {
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const protocolTokens = await this.getProtocolTokens()
 
-    const lpStakingContract = LpStaking__factory.connect(
-      contractAddresses[this.chainId]!.lpStaking,
-      this.provider,
-    )
-
     return await filterMapAsync(protocolTokens, async (protocolToken) => {
       if (
         protocolTokenAddresses &&
@@ -143,6 +187,17 @@ export class StargateLpStakingAdapter implements IProtocolAdapter {
       ) {
         return undefined
       }
+
+      const lpStakingContract =
+        protocolToken.lpStakingType === 'LpStaking'
+          ? LpStaking__factory.connect(
+              protocolToken.lpStakingAddress,
+              this.provider,
+            )
+          : LpStakingTime__factory.connect(
+              protocolToken.lpStakingAddress,
+              this.provider,
+            )
 
       const { amount } = await lpStakingContract.userInfo(
         protocolToken.poolIndex,
@@ -172,26 +227,30 @@ export class StargateLpStakingAdapter implements IProtocolAdapter {
     blockNumber,
     protocolTokenAddress,
   }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
-    const { poolIndex, stargateToken } = await this.getProtocolTokenByAddress(
+    const { lpStakingAddress, lpStakingType } = staticChainData[this.chainId]!
+    const { poolIndex, rewardToken } = await this.getProtocolTokenByAddress(
       protocolTokenAddress,
     )
 
-    const lpStakingContract = LpStaking__factory.connect(
-      contractAddresses[this.chainId]!.lpStaking,
-      this.provider,
-    )
-
-    const pendingStargateReward = await lpStakingContract.pendingStargate(
+    const rewardFunctionInput = [
       poolIndex,
       userAddress,
-      {
-        blockTag: blockNumber,
-      },
-    )
+      { blockTag: blockNumber },
+    ] as const
+
+    const pendingStargateReward = await (lpStakingType === 'LpStaking'
+      ? LpStaking__factory.connect(
+          lpStakingAddress,
+          this.provider,
+        ).pendingStargate(...rewardFunctionInput)
+      : LpStakingTime__factory.connect(
+          lpStakingAddress,
+          this.provider,
+        ).pendingEmissionToken(...rewardFunctionInput))
 
     return [
       {
-        ...stargateToken,
+        ...rewardToken,
         type: TokenType.UnderlyingClaimable,
         balanceRaw: pendingStargateReward,
       },

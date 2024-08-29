@@ -3,12 +3,14 @@
 /* eslint-disable */
 export type { FeeDistributor } from "./FeeDistributor";
 export type { LpStaking } from "./LpStaking";
+export type { LpStakingTime } from "./LpStakingTime";
 export type { StargateFactory } from "./StargateFactory";
 export type { StargateToken } from "./StargateToken";
 export type { StargateVotingEscrow } from "./StargateVotingEscrow";
 export type { VotingEscrow } from "./VotingEscrow";
 export * as factories from "./factories";
 export { FeeDistributor__factory } from "./factories/FeeDistributor__factory";
+export { LpStakingTime__factory } from "./factories/LpStakingTime__factory";
 export { LpStaking__factory } from "./factories/LpStaking__factory";
 export { StargateFactory__factory } from "./factories/StargateFactory__factory";
 export { StargateToken__factory } from "./factories/StargateToken__factory";

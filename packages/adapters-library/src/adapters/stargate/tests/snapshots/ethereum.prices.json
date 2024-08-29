@@ -33,6 +33,23 @@
           ]
         }
       ]
+    },
+    {
+      "protocolId": "stargate",
+      "name": "Stargate",
+      "description": "Stargate defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "lp-staking",
+      "success": false,
+      "error": {
+        "message": "Not Implemented (at StargateLpStakingAdapter.unwrap)",
+        "details": {
+          "name": "NotImplementedError"
+        }
+      }
     }
   ],
   "rpcResponses": {

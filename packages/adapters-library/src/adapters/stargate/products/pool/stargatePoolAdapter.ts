@@ -27,7 +27,7 @@ import {
   StargateFactory__factory,
   StargateToken__factory,
 } from '../../contracts'
-import { contractAddresses } from '../../common/contractAddresses'
+import { staticChainData } from '../../common/staticChainData'
 
 type AdditionalMetadata = { poolId: number; underlyingTokens: Erc20Metadata[] }
 
@@ -161,7 +161,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
   @CacheToFile({ fileKey: 'lp-token' })
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const lpFactoryContract = StargateFactory__factory.connect(
-      contractAddresses[this.chainId]!.factory,
+      staticChainData[this.chainId]!.factoryAddress,
       this.provider,
     )
 

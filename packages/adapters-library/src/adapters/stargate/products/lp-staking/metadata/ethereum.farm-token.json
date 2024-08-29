@@ -5,12 +5,14 @@
     "symbol": "S*USDC",
     "decimals": 6,
     "poolIndex": 0,
-    "stargateToken": {
+    "rewardToken": {
       "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
       "name": "StargateToken",
       "symbol": "STG",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStaking",
+    "lpStakingAddress": "0xB0D502E938ed5f4df2E681fE6E419ff29631d62b"
   },
   {
     "address": "0x38EA452219524Bb87e18dE1C24D3bB59510BD783",
@@ -18,12 +20,14 @@
     "symbol": "S*USDT",
     "decimals": 6,
     "poolIndex": 1,
-    "stargateToken": {
+    "rewardToken": {
       "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
       "name": "StargateToken",
       "symbol": "STG",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStaking",
+    "lpStakingAddress": "0xB0D502E938ed5f4df2E681fE6E419ff29631d62b"
   },
   {
     "address": "0x101816545F6bd2b1076434B54383a1E633390A2E",
@@ -31,12 +35,14 @@
     "symbol": "S*SGETH",
     "decimals": 18,
     "poolIndex": 2,
-    "stargateToken": {
+    "rewardToken": {
       "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
       "name": "StargateToken",
       "symbol": "STG",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStaking",
+    "lpStakingAddress": "0xB0D502E938ed5f4df2E681fE6E419ff29631d62b"
   },
   {
     "address": "0x0Faf1d2d3CED330824de3B8200fc8dc6E397850d",
@@ -44,12 +50,14 @@
     "symbol": "S*DAI",
     "decimals": 6,
     "poolIndex": 3,
-    "stargateToken": {
+    "rewardToken": {
       "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
       "name": "StargateToken",
       "symbol": "STG",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStaking",
+    "lpStakingAddress": "0xB0D502E938ed5f4df2E681fE6E419ff29631d62b"
   },
   {
     "address": "0xfA0F307783AC21C39E939ACFF795e27b650F6e68",
@@ -57,12 +65,14 @@
     "symbol": "S*FRAX",
     "decimals": 6,
     "poolIndex": 4,
-    "stargateToken": {
+    "rewardToken": {
       "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
       "name": "StargateToken",
       "symbol": "STG",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStaking",
+    "lpStakingAddress": "0xB0D502E938ed5f4df2E681fE6E419ff29631d62b"
   },
   {
     "address": "0x590d4f8A68583639f215f675F3a259Ed84790580",
@@ -70,12 +80,14 @@
     "symbol": "S*sUSD",
     "decimals": 6,
     "poolIndex": 5,
-    "stargateToken": {
+    "rewardToken": {
       "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
       "name": "StargateToken",
       "symbol": "STG",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStaking",
+    "lpStakingAddress": "0xB0D502E938ed5f4df2E681fE6E419ff29631d62b"
   },
   {
     "address": "0xE8F55368C82D38bbbbDb5533e7F56AfC2E978CC2",
@@ -83,11 +95,28 @@
     "symbol": "S*LUSD",
     "decimals": 6,
     "poolIndex": 6,
-    "stargateToken": {
+    "rewardToken": {
       "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
       "name": "StargateToken",
       "symbol": "STG",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStaking",
+    "lpStakingAddress": "0xB0D502E938ed5f4df2E681fE6E419ff29631d62b"
+  },
+  {
+    "address": "0x430Ebff5E3E80A6C58E7e6ADA1d90F5c28AA116d",
+    "name": "Tether USD-LP",
+    "symbol": "S*USDT",
+    "decimals": 6,
+    "poolIndex": 0,
+    "rewardToken": {
+      "address": "0x9E32b13ce7f2E80A01932B42553652E053D6ed8e",
+      "name": "Metis Token",
+      "symbol": "Metis",
+      "decimals": 18
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x1c3000b8f475A958b87c73a5cc5780Ab763122FC"
   }
 ]

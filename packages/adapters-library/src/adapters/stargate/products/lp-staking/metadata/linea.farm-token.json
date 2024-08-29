@@ -5,11 +5,13 @@
     "symbol": "S*SGETH",
     "decimals": 18,
     "poolIndex": 0,
-    "stargateToken": {
+    "rewardToken": {
       "address": "0x808d7c71ad2ba3FA531b068a2417C63106BC0949",
       "name": "StargateToken",
       "symbol": "STG",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x4a364f8c717cAAD9A442737Eb7b8A55cc6cf18D8"
   }
 ]

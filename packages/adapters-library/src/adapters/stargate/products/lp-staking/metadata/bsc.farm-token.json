@@ -5,12 +5,14 @@
     "symbol": "S*USDT",
     "decimals": 6,
     "poolIndex": 0,
-    "stargateToken": {
+    "rewardToken": {
       "address": "0xB0D502E938ed5f4df2E681fE6E419ff29631d62b",
       "name": "StargateToken",
       "symbol": "STG",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStaking",
+    "lpStakingAddress": "0x3052A0F6ab15b4AE1df39962d5DdEFacA86DaB47"
   },
   {
     "address": "0x98a5737749490856b401DB5Dc27F522fC314A4e1",
@@ -18,11 +20,28 @@
     "symbol": "S*BUSD",
     "decimals": 6,
     "poolIndex": 1,
-    "stargateToken": {
+    "rewardToken": {
       "address": "0xB0D502E938ed5f4df2E681fE6E419ff29631d62b",
       "name": "StargateToken",
       "symbol": "STG",
       "decimals": 18
-    }
+    },
+    "lpStakingType": "LpStaking",
+    "lpStakingAddress": "0x3052A0F6ab15b4AE1df39962d5DdEFacA86DaB47"
+  },
+  {
+    "address": "0x68C6c27fB0e02285829e69240BE16f32C5f8bEFe",
+    "name": "Tether USD-LP",
+    "symbol": "S*USDT",
+    "decimals": 6,
+    "poolIndex": 0,
+    "rewardToken": {
+      "address": "0xceCB301c2e2A04dD631428C386DD21db70716F8a",
+      "name": "Metis",
+      "symbol": "METIS",
+      "decimals": 18
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x447f2078a1b6b2C1190B7b7aF98ef4B139d41F70"
   }
 ]
