@@ -36,8 +36,8 @@ type AdditionalMetadata = {
   stargateToken: Erc20Metadata
 }
 
-export class StargateFarmingAdapter implements IProtocolAdapter {
-  productId = 'farming'
+export class StargateLpStakingAdapter implements IProtocolAdapter {
+  productId = 'lp-staking'
   protocolId: Protocol
   chainId: Chain
   helpers: Helpers
