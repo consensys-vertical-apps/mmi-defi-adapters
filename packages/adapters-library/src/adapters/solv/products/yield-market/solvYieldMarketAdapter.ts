@@ -194,19 +194,23 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
     const { openFundShareDelegateAddress, openFundRedemptionDelegateAddress } =
       this.yieldMarketConfig
-    const { userAddress } = input
+    const { userAddress, blockNumber } = input
 
     const [sharesTokenIds, redemptionTokenIds] = await Promise.all([
-      this.getTokenIds(userAddress, 'share'),
-      this.getTokenIds(userAddress, 'redemption'),
+      this.getTokenIds(userAddress, blockNumber!, 'share'),
+      this.getTokenIds(userAddress, blockNumber!, 'redemption'),
     ])
 
     const [shares, redemptions] = await Promise.all([
       filterMapAsync(sharesTokenIds, async (tokenId) =>
-        this.getPosition(openFundShareDelegateAddress, tokenId),
+        this.getPosition(openFundShareDelegateAddress, blockNumber!, tokenId),
       ),
       filterMapAsync(redemptionTokenIds, async (tokenId) =>
-        this.getPosition(openFundRedemptionDelegateAddress, tokenId),
+        this.getPosition(
+          openFundRedemptionDelegateAddress,
+          blockNumber!,
+          tokenId,
+        ),
       ),
     ])
 
@@ -218,6 +222,7 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
    */
   private async getPosition(
     sftAddress: string,
+    blockNumber: number,
     tokenId: bigint,
   ): Promise<ProtocolPosition | undefined> {
     const isShare =
@@ -227,12 +232,18 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
       ? this.openFundShareDelegateContract
       : this.openFundRedemptionDelegateContract
 
-    const balance = await delegateContract['balanceOf(uint256)'](tokenId)
+    const balance = await delegateContract['balanceOf(uint256)'](tokenId, {
+      blockTag: blockNumber,
+    })
 
     if (!balance) return
 
-    const decimals = await delegateContract.valueDecimals()
-    const slot = await delegateContract.slotOf(tokenId)
+    const decimals = await delegateContract.valueDecimals({
+      blockTag: blockNumber,
+    })
+    const slot = await delegateContract.slotOf(tokenId, {
+      blockTag: blockNumber,
+    })
 
     const { id, name, currencyAddress } = this.getPoolConfigBy(
       isShare ? 'slotInShareSft' : 'slotInRedemptionSft',
@@ -241,10 +252,15 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
 
     const poolName = isShare ? name : `${name} | Redemption pending`
 
-    const [latestSetNavTime] = await this.navOracleContract.poolNavInfos(id)
+    const [latestSetNavTime] = await this.navOracleContract.poolNavInfos(id, {
+      blockTag: blockNumber,
+    })
     const [nav] = await this.navOracleContract.getSubscribeNav(
       id,
       latestSetNavTime,
+      {
+        blockTag: blockNumber,
+      },
     )
 
     const {
@@ -285,6 +301,7 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
    */
   private async getTokenIds(
     userAddress: string,
+    blockNumber: number,
     sftType: 'share' | 'redemption' = 'share',
   ): Promise<bigint[]> {
     const contract =
@@ -292,14 +309,20 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
         ? this.openFundShareDelegateContract
         : this.openFundRedemptionDelegateContract
 
-    const tokensCount = await contract['balanceOf(address)'](userAddress)
+    const tokensCount = await contract['balanceOf(address)'](userAddress, {
+      blockTag: blockNumber,
+    })
 
     if (!tokensCount) return []
 
     const indexes = [...Array(Number(tokensCount)).keys()]
 
     const tokenIds = await Promise.all(
-      indexes.map((index) => contract.tokenOfOwnerByIndex(userAddress, index)),
+      indexes.map((index) =>
+        contract.tokenOfOwnerByIndex(userAddress, index, {
+          blockTag: blockNumber,
+        }),
+      ),
     )
 
     return tokenIds
