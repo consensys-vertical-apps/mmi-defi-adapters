@@ -5,7 +5,7 @@ import { WriteActions } from '../../../types/writeActions'
 
 export const testCases: TestCase[] = [
   {
-    key: 'lp-positions',
+    key: 'lp',
     chainId: Chain.Ethereum,
     method: 'positions',
 
@@ -17,7 +17,7 @@ export const testCases: TestCase[] = [
     blockNumber: 20636813,
   },
   {
-    key: 'lp-positions',
+    key: 'lp',
     chainId: Chain.Base,
     method: 'positions',
 
@@ -27,6 +27,31 @@ export const testCases: TestCase[] = [
     },
 
     blockNumber: 19088200,
+  },
+  {
+    key: 'lp-staking',
+    chainId: Chain.Ethereum,
+    method: 'positions',
+
+    input: {
+      userAddress: '0x730964F8850708D16f6E455346EB7BC8042c737B',
+      filterProtocolTokens: ['0x17BBC9BD51A52aAf4d2CC6652630DaF4fdB358F7'],
+    },
+
+    blockNumber: 20641851,
+  },
+  {
+    key: 'lp-staking',
+    chainId: Chain.Ethereum,
+    method: 'profits',
+
+    input: {
+      userAddress: '0x730964F8850708D16f6E455346EB7BC8042c737B',
+      timePeriod: TimePeriod.sevenDays,
+      filterProtocolTokens: ['0x17BBC9BD51A52aAf4d2CC6652630DaF4fdB358F7'],
+    },
+
+    blockNumber: 20641851,
   },
   // {
   //   chainId: Chain.Ethereum,

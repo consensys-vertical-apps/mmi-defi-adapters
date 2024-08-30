@@ -4,15 +4,12 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
-import { Replacements } from '../../../../scripts/replacements'
 import {
   IProtocolAdapter,
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
@@ -24,7 +21,6 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  Underlying,
   UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -34,7 +30,6 @@ import { Protocol } from '../../../protocols'
 import { staticChainData } from '../../common/staticChainData'
 import {
   StargateMultiRewarder__factory,
-  StargatePoolNative__factory,
   StargateStaking__factory,
 } from '../../contracts'
 import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
@@ -223,22 +218,84 @@ export class StargateV2LpStakingAdapter implements IProtocolAdapter {
     })
   }
 
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
+  async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
+    return await this.getMovements({
+      ...input,
+      filterType: 'withdrawal',
+    })
   }
 
-  async getDeposits({
+  async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
+    return await this.getMovements({
+      ...input,
+      filterType: 'deposit',
+    })
+  }
+
+  private async getMovements({
     protocolTokenAddress,
     fromBlock,
     toBlock,
     userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
+    filterType,
+  }: GetEventsInput & {
+    filterType: 'deposit' | 'withdrawal'
+  }): Promise<MovementsByBlock[]> {
+    const { stargateStakingAddress } = staticChainData[this.chainId]!
+
+    const protocolToken = await this.getProtocolTokenByAddress(
+      protocolTokenAddress,
+    )
+
+    const lpStakingContract = StargateStaking__factory.connect(
+      stargateStakingAddress,
+      this.provider,
+    )
+
+    const filter =
+      filterType === 'deposit'
+        ? lpStakingContract.filters.Deposit(
+            protocolTokenAddress,
+            userAddress,
+            userAddress,
+          )
+        : lpStakingContract.filters.Withdraw(
+            protocolTokenAddress,
+            userAddress,
+            userAddress,
+          )
+
+    const events = await lpStakingContract.queryFilter(
+      filter,
+      fromBlock,
+      toBlock,
+    )
+
+    return events.map((event) => {
+      const { amount } = event.args!
+
+      return {
+        protocolToken: {
+          address: protocolToken.address,
+          name: protocolToken.name,
+          symbol: protocolToken.symbol,
+          decimals: protocolToken.decimals,
+        },
+        blockNumber: event.blockNumber,
+        transactionHash: event.transactionHash,
+        tokens: [
+          {
+            address: protocolToken.address,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
+            type: TokenType.Underlying,
+            blockNumber: event.blockNumber,
+            balanceRaw: amount,
+          },
+        ],
+      }
+    })
   }
 
   async getTotalValueLocked({
