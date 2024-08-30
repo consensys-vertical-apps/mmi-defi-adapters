@@ -1,1 +1,65 @@
-[]
+[
+  {
+    "address": "0x6Ea313859A5D9F6fF2a68f529e6361174bFD2225",
+    "name": "USDC-LP",
+    "symbol": "S*USDC",
+    "decimals": 6,
+    "rewarderAddress": "0x957b12606690C7692eF92bb5c34a0E63baED99C7",
+    "rewardTokens": [
+      {
+        "address": "0x6694340fc020c5E6B96567843da2df01b2CE1eb6",
+        "name": "StargateToken",
+        "symbol": "STG",
+        "decimals": 18
+      },
+      {
+        "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "name": "Arbitrum",
+        "symbol": "ARB",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x8D66Ff1845b1baCC6E87D867CA4680d05A349cA8",
+    "name": "USDT-LP",
+    "symbol": "S*USDT",
+    "decimals": 6,
+    "rewarderAddress": "0x957b12606690C7692eF92bb5c34a0E63baED99C7",
+    "rewardTokens": [
+      {
+        "address": "0x6694340fc020c5E6B96567843da2df01b2CE1eb6",
+        "name": "StargateToken",
+        "symbol": "STG",
+        "decimals": 18
+      },
+      {
+        "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "name": "Arbitrum",
+        "symbol": "ARB",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x993614e1c8c9C5AbE49462Ce5702431978Fd767F",
+    "name": "ETH-LP",
+    "symbol": "S*ETH",
+    "decimals": 18,
+    "rewarderAddress": "0x957b12606690C7692eF92bb5c34a0E63baED99C7",
+    "rewardTokens": [
+      {
+        "address": "0x6694340fc020c5E6B96567843da2df01b2CE1eb6",
+        "name": "StargateToken",
+        "symbol": "STG",
+        "decimals": 18
+      },
+      {
+        "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "name": "Arbitrum",
+        "symbol": "ARB",
+        "decimals": 18
+      }
+    ]
+  }
+]

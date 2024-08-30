@@ -100,7 +100,7 @@ import { SolvSolvBtcAdapter } from './solv/products/solv-btc/solvSolvBtcAdapter'
 
 import { SolvYieldMarketAdapter } from './solv/products/yield-market/solvYieldMarketAdapter'
 
-import { StargateLpStakingAdapter } from './stargate/products/lp-staking/stargateFarmingAdapter'
+import { StargateLpStakingAdapter } from './stargate/products/lp-staking/stargateLpStakingAdapter'
 
 import { StargateV2LpStakingAdapter } from './stargate-v2/products/lp-staking/stargateV2LpStakingAdapter'
 

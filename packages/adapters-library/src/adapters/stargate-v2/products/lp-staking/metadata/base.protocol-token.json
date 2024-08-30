@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "address": "0x98fB8522d891F43B771e2d27367b41Ba138D0B80",
+    "name": "ETH-LP",
+    "symbol": "S*ETH",
+    "decimals": 18,
+    "rewarderAddress": "0x9Aa02D4Fae7F58b8E8f34c66E756cC734DAc7fe4",
+    "rewardTokens": [
+      {
+        "address": "0xE3B53AF74a4BF62Ae5511055290838050bf764Df",
+        "name": "StargateToken",
+        "symbol": "STG",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x53983F31E8E0D0c3Fd0b8d85654989A1336317d7",
+    "name": "USDC-LP",
+    "symbol": "S*USDC",
+    "decimals": 6,
+    "rewarderAddress": "0x9Aa02D4Fae7F58b8E8f34c66E756cC734DAc7fe4",
+    "rewardTokens": [
+      {
+        "address": "0xE3B53AF74a4BF62Ae5511055290838050bf764Df",
+        "name": "StargateToken",
+        "symbol": "STG",
+        "decimals": 18
+      }
+    ]
+  }
+]

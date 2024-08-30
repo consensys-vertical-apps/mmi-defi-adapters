@@ -23,6 +23,7 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
+  TokenType,
   Underlying,
   UnderlyingReward,
   UnwrapExchangeRate,
@@ -30,8 +31,18 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
+import { staticChainData } from '../../common/staticChainData'
+import {
+  StargateMultiRewarder__factory,
+  StargatePoolNative__factory,
+  StargateStaking__factory,
+} from '../../contracts'
+import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
 
-type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
+type AdditionalMetadata = {
+  rewarderAddress: string
+  rewardTokens: Erc20Metadata[]
+}
 
 export class StargateV2LpStakingAdapter implements IProtocolAdapter {
   productId = 'lp-staking'
@@ -42,7 +53,7 @@ export class StargateV2LpStakingAdapter implements IProtocolAdapter {
   adapterSettings = {
     version: 2,
     enablePositionDetectionByProtocolTokenTransfer: false,
-    includeInUnwrap: true,
+    includeInUnwrap: false,
   }
 
   private provider: CustomJsonRpcProvider
@@ -82,29 +93,40 @@ export class StargateV2LpStakingAdapter implements IProtocolAdapter {
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
-    return []
-    // const protocolTokens = await Promise.all(
-    //   [
-    //     '0x',
-    //     '0x',
-    //     // Ideally fetched on-chain from factory contract
-    //   ].map(async (address) =>
-    //     this.helpers.getTokenMetadata(getAddress(address)),
-    //   ),
-    // )
+    const { stargateStakingAddress } = staticChainData[this.chainId]!
+    const stakingContract = StargateStaking__factory.connect(
+      stargateStakingAddress,
+      this.provider,
+    )
 
-    // return await Promise.all(
-    //   protocolTokens.map(async (protocolToken) => {
-    //     const underlyingToken = await this.helpers.getTokenMetadata(
-    //       getAddress('0x'), // Ideally fetched on-chain
-    //     )
+    const poolAddresses = await stakingContract['tokens()']()
 
-    //     return {
-    //       ...protocolToken,
-    //       underlyingTokens: [underlyingToken],
-    //     }
-    //   }),
-    // )
+    return await Promise.all(
+      poolAddresses.map(async (poolAddress) => {
+        const protocolTokenPromise = this.helpers.getTokenMetadata(
+          getAddress(poolAddress),
+        )
+
+        const rewarderAddress = await stakingContract.rewarder(poolAddress)
+
+        const multiRewarderContract = StargateMultiRewarder__factory.connect(
+          rewarderAddress,
+          this.provider,
+        )
+
+        const rewardTokenAddresses = await multiRewarderContract.rewardTokens()
+
+        return {
+          ...(await protocolTokenPromise),
+          rewarderAddress,
+          rewardTokens: await Promise.all(
+            rewardTokenAddresses.map(async (rewardTokenAddress) =>
+              this.helpers.getTokenMetadata(getAddress(rewardTokenAddress)),
+            ),
+          ),
+        }
+      }),
+    )
   }
 
   private async getProtocolTokenByAddress(
@@ -116,8 +138,89 @@ export class StargateV2LpStakingAdapter implements IProtocolAdapter {
     })
   }
 
-  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    throw new NotImplementedError()
+  async getPositions({
+    userAddress,
+    blockNumber,
+    protocolTokenAddresses,
+  }: GetPositionsInput): Promise<ProtocolPosition[]> {
+    const { stargateStakingAddress } = staticChainData[this.chainId]!
+    const protocolTokens = await this.getProtocolTokens()
+
+    return await filterMapAsync(protocolTokens, async (protocolToken) => {
+      if (
+        protocolTokenAddresses &&
+        !protocolTokenAddresses.includes(protocolToken.address)
+      ) {
+        return undefined
+      }
+
+      const lpStakingContract = StargateStaking__factory.connect(
+        stargateStakingAddress,
+        this.provider,
+      )
+
+      const amount = await lpStakingContract.balanceOf(
+        protocolToken.address,
+        userAddress,
+        {
+          blockTag: blockNumber,
+        },
+      )
+
+      if (!amount) {
+        return undefined
+      }
+
+      return {
+        type: TokenType.Protocol,
+        address: protocolToken.address,
+        symbol: protocolToken.symbol,
+        name: protocolToken.name,
+        decimals: protocolToken.decimals,
+        balanceRaw: amount,
+      }
+    })
+  }
+
+  async getRewardPositions({
+    userAddress,
+    blockNumber,
+    protocolTokenAddress,
+  }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
+    const { rewardTokens, rewarderAddress } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+
+    const rewarderContract = StargateMultiRewarder__factory.connect(
+      rewarderAddress,
+      this.provider,
+    )
+
+    const [rewardTokenAddresses, rewardAmounts] =
+      await rewarderContract.getRewards(protocolTokenAddress, userAddress, {
+        blockTag: blockNumber,
+      })
+
+    return filterMapSync(rewardTokenAddresses, (rewardTokenAddress, i) => {
+      const rewardAmount = rewardAmounts[i]!
+
+      if (!rewardAmount) {
+        return undefined
+      }
+
+      const rewardToken = rewardTokens.find(
+        (rt) => rt.address === rewardTokenAddress,
+      )
+
+      if (!rewardToken) {
+        throw Error('Missing reward token from Metadata')
+      }
+
+      return {
+        ...rewardToken,
+        type: TokenType.UnderlyingClaimable,
+        balanceRaw: rewardAmount,
+      }
+    })
   }
 
   async getWithdrawals({
@@ -151,11 +254,7 @@ export class StargateV2LpStakingAdapter implements IProtocolAdapter {
     })
   }
 
-  async unwrap({
-    protocolTokenAddress,
-    tokenId,
-    blockNumber,
-  }: UnwrapInput): Promise<UnwrapExchangeRate> {
+  async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
   }
 }
