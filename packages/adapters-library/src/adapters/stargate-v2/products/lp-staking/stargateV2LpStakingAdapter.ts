@@ -4,6 +4,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -32,7 +33,6 @@ import {
   StargateMultiRewarder__factory,
   StargateStaking__factory,
 } from '../../contracts'
-import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
 
 type AdditionalMetadata = {
   rewarderAddress: string
@@ -243,9 +243,8 @@ export class StargateV2LpStakingAdapter implements IProtocolAdapter {
   }): Promise<MovementsByBlock[]> {
     const { stargateStakingAddress } = staticChainData[this.chainId]!
 
-    const protocolToken = await this.getProtocolTokenByAddress(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const lpStakingContract = StargateStaking__factory.connect(
       stargateStakingAddress,

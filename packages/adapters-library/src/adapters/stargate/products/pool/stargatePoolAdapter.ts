@@ -23,11 +23,11 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
+import { staticChainData } from '../../common/staticChainData'
 import {
   StargateFactory__factory,
   StargateToken__factory,
 } from '../../contracts'
-import { staticChainData } from '../../common/staticChainData'
 
 type AdditionalMetadata = { poolId: number; underlyingTokens: Erc20Metadata[] }
 
@@ -108,9 +108,8 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.getProtocolTokenByAddress(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     return this.helpers.withdrawals({
       protocolToken,
@@ -134,9 +133,8 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     protocolTokenAddress,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const protocolToken = await this.getProtocolTokenByAddress(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const underlyingTokens = (
       await this.getProtocolTokenByAddress(protocolTokenAddress)

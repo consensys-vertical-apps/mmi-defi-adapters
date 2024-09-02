@@ -1,8 +1,11 @@
+import { Erc20__factory } from '../../../../contracts'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../../core/utils/filters'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -26,15 +29,13 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
+import { staticChainData } from '../../common/staticChainData'
 import {
   LpStaking,
-  LpStaking__factory,
   LpStakingTime,
   LpStakingTime__factory,
+  LpStaking__factory,
 } from '../../contracts'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { filterMapAsync } from '../../../../core/utils/filters'
-import { staticChainData } from '../../common/staticChainData'
 
 type AdditionalMetadata = {
   poolIndex: number
@@ -226,9 +227,8 @@ export class StargateLpStakingAdapter implements IProtocolAdapter {
     protocolTokenAddress,
   }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
     const { lpStakingAddress, lpStakingType } = staticChainData[this.chainId]!
-    const { poolIndex, rewardToken } = await this.getProtocolTokenByAddress(
-      protocolTokenAddress,
-    )
+    const { poolIndex, rewardToken } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const rewardFunctionInput = [
       poolIndex,
@@ -278,9 +278,8 @@ export class StargateLpStakingAdapter implements IProtocolAdapter {
   }: GetEventsInput & {
     filterType: 'deposit' | 'withdrawal'
   }): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.getProtocolTokenByAddress(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const lpStakingContract =
       protocolToken.lpStakingType === 'LpStaking'
@@ -333,6 +332,102 @@ export class StargateLpStakingAdapter implements IProtocolAdapter {
             type: TokenType.Underlying,
             blockNumber: event.blockNumber,
             balanceRaw: amount,
+          },
+        ],
+      }
+    })
+  }
+
+  /**
+   * There are no specific events for rewards, which occur as simple transfers whenever a Deposit or Withdrawal is actioned
+   * For this reason, we need to fetch all Deposit and Withdrawal events and then filter out the reward transfers
+   */
+  async getRewardWithdrawals({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+
+    const lpStakingContract =
+      protocolToken.lpStakingType === 'LpStaking'
+        ? LpStaking__factory.connect(
+            protocolToken.lpStakingAddress,
+            this.provider,
+          )
+        : LpStakingTime__factory.connect(
+            protocolToken.lpStakingAddress,
+            this.provider,
+          )
+
+    const depositFilter = lpStakingContract.filters.Deposit(
+      userAddress,
+      protocolToken.poolIndex,
+      undefined,
+    )
+
+    const withdrawalFilter = lpStakingContract.filters.Withdraw(
+      userAddress,
+      protocolToken.poolIndex,
+      undefined,
+    )
+
+    const [depositEvents, withdrawalEvents] = await Promise.all([
+      lpStakingContract.queryFilter(depositFilter, fromBlock, toBlock),
+      lpStakingContract.queryFilter(withdrawalFilter, fromBlock, toBlock),
+    ])
+
+    const rewardTokenContract = Erc20__factory.connect(
+      protocolToken.rewardToken.address,
+      this.provider,
+    )
+
+    const txHashes = Array.from(
+      new Set<string>([
+        ...depositEvents.map((event) => event.transactionHash),
+        ...withdrawalEvents.map((event) => event.transactionHash),
+      ]),
+    )
+
+    return await filterMapAsync(txHashes, async (txHash) => {
+      const txEvents = await this.provider.getTransactionReceipt(txHash)
+
+      // Filter for Transfer event from the lpStakingContract to the userAddress
+      const transferAmount = txEvents?.logs?.find(
+        (log) =>
+          log.address === protocolToken.rewardToken.address &&
+          log.topics[0] ===
+            rewardTokenContract.interface.getEvent('Transfer')?.topicHash &&
+          log.topics[1]?.includes(
+            protocolToken.lpStakingAddress.toLowerCase().slice(2),
+          ) &&
+          log.topics[2]?.includes(userAddress.toLowerCase().slice(2)),
+      )?.data
+
+      if (!transferAmount) {
+        return undefined
+      }
+
+      return {
+        protocolToken: {
+          address: protocolToken.address,
+          name: protocolToken.name,
+          symbol: protocolToken.symbol,
+          decimals: protocolToken.decimals,
+        },
+        blockNumber: txEvents.blockNumber,
+        transactionHash: txHash,
+        tokens: [
+          {
+            address: protocolToken.rewardToken.address,
+            name: protocolToken.rewardToken.name,
+            symbol: protocolToken.rewardToken.symbol,
+            decimals: protocolToken.rewardToken.decimals,
+            type: TokenType.Underlying,
+            blockNumber: txEvents.blockNumber,
+            balanceRaw: BigInt(transferAmount),
           },
         ],
       }
