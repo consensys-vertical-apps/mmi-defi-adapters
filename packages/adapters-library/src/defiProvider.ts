@@ -471,7 +471,6 @@ export class DefiProvider {
     productId,
     tokenId,
   }: GetEventsRequestInput): Promise<DefiMovementsResponse> {
-    console.log('AAAAAAAAAAAAAAAAAAAa')
     const provider = this.chainProvider.providers[chainId]
 
     let adapter: IProtocolAdapter

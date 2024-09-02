@@ -53,6 +53,21 @@ export const testCases: TestCase[] = [
 
     blockNumber: 20662804,
   },
+
+  {
+    key: 'lp-staking',
+    chainId: Chain.Ethereum,
+    method: 'withdrawals',
+
+    input: {
+      productId: 'lp-staking',
+      userAddress: '0x1EF1258341086d4a9566f797Da15FcfDc92bb3B8',
+      protocolTokenAddress: '0xfcb42a0e352a08abd50b8ee68d01f581b6dfd80a',
+      fromBlock: 20661895,
+      toBlock: 20661895,
+    },
+  },
+  //
   // {
   //   chainId: Chain.Ethereum,
   //   method: 'profits',

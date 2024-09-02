@@ -304,12 +304,6 @@ export class StargateV2LpStakingAdapter implements IProtocolAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    console.log('REWARDS WITHDRAWALS', {
-      userAddress,
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-    })
     const { rewardTokens, rewarderAddress, address, symbol, name, decimals } =
       await this.getProtocolTokenByAddress(protocolTokenAddress)
 
