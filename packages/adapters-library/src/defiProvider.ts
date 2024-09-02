@@ -315,10 +315,6 @@ export class DefiProvider {
   }): Promise<DefiProfitsResponse[]> {
     this.initAdapterControllerForUnwrapStage()
 
-    // toBlockNumbersOverride = {
-    //   [Chain.Ethereum]: 20641851,
-    // }
-
     const runner = async (
       adapter: IProtocolAdapter,
       provider: CustomJsonRpcProvider,
