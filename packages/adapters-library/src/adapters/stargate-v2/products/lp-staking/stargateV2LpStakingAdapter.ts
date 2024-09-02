@@ -256,13 +256,13 @@ export class StargateV2LpStakingAdapter implements IProtocolAdapter {
       filterType === 'deposit'
         ? lpStakingContract.filters.Deposit(
             protocolTokenAddress,
-            userAddress,
-            userAddress,
+            undefined,
+            userAddress, // Address that receives the tokens (to)
           )
         : lpStakingContract.filters.Withdraw(
             protocolTokenAddress,
-            userAddress,
-            userAddress,
+            userAddress, // Address from which the tokens are withdrawn (from)
+            undefined,
           )
 
     const events = await lpStakingContract.queryFilter(
@@ -294,6 +294,71 @@ export class StargateV2LpStakingAdapter implements IProtocolAdapter {
             balanceRaw: amount,
           },
         ],
+      }
+    })
+  }
+
+  async getRewardWithdrawals({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    console.log('REWARDS WITHDRAWALS', {
+      userAddress,
+      protocolTokenAddress,
+      fromBlock,
+      toBlock,
+    })
+    const { rewardTokens, rewarderAddress, address, symbol, name, decimals } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+
+    const multiRewarderContract = StargateMultiRewarder__factory.connect(
+      rewarderAddress,
+      this.provider,
+    )
+
+    const filter = multiRewarderContract.filters.RewardsClaimed(
+      userAddress,
+      undefined,
+      undefined,
+    )
+
+    const events = await multiRewarderContract.queryFilter(
+      filter,
+      fromBlock,
+      toBlock,
+    )
+
+    return events.map((event) => {
+      const { rewardTokens: rewardTokenAddresses, amounts } = event.args!
+
+      return {
+        protocolToken: {
+          address,
+          name,
+          symbol,
+          decimals,
+        },
+        blockNumber: event.blockNumber,
+        transactionHash: event.transactionHash,
+        tokens: rewardTokenAddresses.map((rewardTokenAddress, i) => {
+          const rewardAmount = amounts[i]!
+
+          const rewardToken = rewardTokens.find(
+            (rewardToken) => rewardToken.address === rewardTokenAddress,
+          )!
+
+          return {
+            address: rewardToken.address,
+            name: rewardToken.name,
+            symbol: rewardToken.symbol,
+            decimals: rewardToken.decimals,
+            type: TokenType.Underlying,
+            blockNumber: event.blockNumber,
+            balanceRaw: rewardAmount,
+          }
+        }),
       }
     })
   }
