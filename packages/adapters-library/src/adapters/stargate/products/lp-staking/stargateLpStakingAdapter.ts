@@ -35,8 +35,6 @@ import {
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { staticChainData } from '../../common/staticChainData'
-import { AddressLike, BigNumberish } from 'ethers'
-import { TypedContractMethod } from '../../contracts/common'
 
 type AdditionalMetadata = {
   poolIndex: number
@@ -257,22 +255,88 @@ export class StargateLpStakingAdapter implements IProtocolAdapter {
     ]
   }
 
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
+  async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
+    return await this.getMovements({
+      ...input,
+      filterType: 'withdrawal',
+    })
   }
 
-  async getDeposits({
+  async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
+    return await this.getMovements({
+      ...input,
+      filterType: 'deposit',
+    })
+  }
+
+  private async getMovements({
     protocolTokenAddress,
     fromBlock,
     toBlock,
     userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
+    filterType,
+  }: GetEventsInput & {
+    filterType: 'deposit' | 'withdrawal'
+  }): Promise<MovementsByBlock[]> {
+    const protocolToken = await this.getProtocolTokenByAddress(
+      protocolTokenAddress,
+    )
+
+    const lpStakingContract =
+      protocolToken.lpStakingType === 'LpStaking'
+        ? LpStaking__factory.connect(
+            protocolToken.lpStakingAddress,
+            this.provider,
+          )
+        : LpStakingTime__factory.connect(
+            protocolToken.lpStakingAddress,
+            this.provider,
+          )
+
+    const filter =
+      filterType === 'deposit'
+        ? lpStakingContract.filters.Deposit(
+            userAddress,
+            protocolToken.poolIndex,
+            undefined,
+          )
+        : lpStakingContract.filters.Withdraw(
+            userAddress,
+            protocolToken.poolIndex,
+            undefined,
+          )
+
+    const events = await lpStakingContract.queryFilter(
+      filter,
+      fromBlock,
+      toBlock,
+    )
+
+    return events.map((event) => {
+      const { amount } = event.args!
+
+      return {
+        protocolToken: {
+          address: protocolToken.address,
+          name: protocolToken.name,
+          symbol: protocolToken.symbol,
+          decimals: protocolToken.decimals,
+        },
+        blockNumber: event.blockNumber,
+        transactionHash: event.transactionHash,
+        tokens: [
+          {
+            address: protocolToken.address,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
+            type: TokenType.Underlying,
+            blockNumber: event.blockNumber,
+            balanceRaw: amount,
+          },
+        ],
+      }
+    })
   }
 
   async getTotalValueLocked({

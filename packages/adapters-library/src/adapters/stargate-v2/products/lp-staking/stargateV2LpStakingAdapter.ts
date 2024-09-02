@@ -258,10 +258,12 @@ export class StargateV2LpStakingAdapter implements IProtocolAdapter {
             protocolTokenAddress,
             undefined,
             userAddress, // Address that receives the tokens (to)
+            undefined,
           )
         : lpStakingContract.filters.Withdraw(
             protocolTokenAddress,
             userAddress, // Address from which the tokens are withdrawn (from)
+            undefined,
             undefined,
           )
 
