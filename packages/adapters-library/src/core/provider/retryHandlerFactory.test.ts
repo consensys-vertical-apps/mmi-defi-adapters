@@ -14,6 +14,23 @@ describe('retryHandlerFactory', () => {
     expect(result).toEqual({})
   })
 
+  it('does not set a timer when timeout is set to 0', async () => {
+    const retryHandler = retryHandlerFactory({
+      timeoutInMs: 0,
+      maxRetries: 0,
+    })
+
+    const result = await retryHandler(async () => {
+      return await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({})
+        }, 1000)
+      })
+    })
+
+    expect(result).toEqual({})
+  })
+
   it('throws if the timeout is reached', async () => {
     const retryHandler = retryHandlerFactory({
       timeoutInMs: 1,

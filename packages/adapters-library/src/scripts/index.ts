@@ -8,6 +8,7 @@ import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
 import { copyAdapter } from './copyAdapter'
 import { featureCommands } from './featureCommands'
+import { localTestingCommands } from './localTesting'
 import { newAdapter2Command } from './newAdapter2Command'
 import { newAdapterCommand } from './newAdapterCommand'
 import { performance } from './performance'
@@ -59,5 +60,7 @@ program
       })
     },
   )
+
+localTestingCommands(program, defiProvider)
 
 program.parseAsync()

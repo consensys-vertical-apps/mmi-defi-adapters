@@ -93,6 +93,7 @@ export class DefiProvider {
     blockNumbers,
     filterProtocolTokens,
     filterTokenIds,
+    chainTransferContractAddresses,
   }: {
     userAddress: string
     filterProtocolIds?: Protocol[]
@@ -100,6 +101,7 @@ export class DefiProvider {
     blockNumbers?: Partial<Record<Chain, number>>
     filterProtocolTokens?: string[]
     filterTokenIds?: string[]
+    chainTransferContractAddresses?: Partial<Record<Chain, string[]>>
   }): Promise<DefiPositionResponse[]> {
     const startGetPositions = Date.now()
     this.initAdapterControllerForUnwrapStage()
@@ -111,6 +113,7 @@ export class DefiProvider {
         userAddress,
         adapter,
         filterProtocolTokens,
+        chainTransferContractAddresses?.[adapter.chainId],
       )
 
       // no transfers so we return
@@ -217,7 +220,8 @@ export class DefiProvider {
   private async buildTokenFilter(
     userAddress: string,
     adapter: IProtocolAdapter,
-    filterProtocolTokensOverride?: string[],
+    filterProtocolTokensOverride: string[] | undefined,
+    userTransferEventAddresses: string[] | undefined,
   ) {
     try {
       // we use the overrides if provided
@@ -233,10 +237,17 @@ export class DefiProvider {
         return undefined
       }
 
-      const transferLogs =
-        await this.chainProvider.providers[
-          adapter.chainId
-        ].getAllTransferLogsToAddress(userAddress)
+      const transferLogs = userTransferEventAddresses
+        ? userTransferEventAddresses
+        : Array.from(
+            new Set(
+              (
+                await this.chainProvider.providers[
+                  adapter.chainId
+                ].getAllTransferLogsToAddress(userAddress)
+              ).map((log) => log.address),
+            ),
+          )
 
       // no logs on this chain means nothing done on this chain
       if (transferLogs.length === 0) {
@@ -250,13 +261,9 @@ export class DefiProvider {
         return undefined
       }
 
-      const uniqueAddresses = Array.from(
-        new Set(transferLogs.map((log) => log.address)),
-      )
-
       // we can build the filter
       const matchingProtocolTokenAddresses = await filterMapAsync(
-        uniqueAddresses,
+        transferLogs,
         async (address) => {
           const isAdapterToken =
             await this.adaptersController.isTokenBelongToAdapter(
@@ -281,6 +288,7 @@ export class DefiProvider {
 
       logger.warn(
         {
+          userAddress: `${userAddress.slice(0, 7)}...${userAddress.slice(-5)}`,
           chainId: adapter.chainId,
           protocolId: adapter.protocolId,
           productId: adapter.productId,
@@ -303,6 +311,7 @@ export class DefiProvider {
     filterProtocolTokens,
     includeRawValues = false,
     filterTokenIds,
+    chainUserTransferEventAddresses,
   }: {
     userAddress: string
     timePeriod?: TimePeriod
@@ -312,6 +321,7 @@ export class DefiProvider {
     filterProtocolTokens?: string[]
     filterTokenIds?: string[]
     includeRawValues?: boolean
+    chainUserTransferEventAddresses?: Record<Chain, string[] | undefined>
   }): Promise<DefiProfitsResponse[]> {
     this.initAdapterControllerForUnwrapStage()
 
@@ -333,6 +343,7 @@ export class DefiProvider {
         userAddress,
         adapter,
         filterProtocolTokens,
+        chainUserTransferEventAddresses?.[adapter.chainId],
       )
 
       // no transfers so we return

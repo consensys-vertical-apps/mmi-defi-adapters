@@ -133,3 +133,6 @@ dist
 
 # 
 *.tsbuildinfo
+
+# Local
+transferLogs.json

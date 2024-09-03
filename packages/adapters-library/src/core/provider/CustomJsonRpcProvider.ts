@@ -12,6 +12,7 @@ import { count } from '../../metricsCount'
 import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../constants/AVERAGE_BLOCKS_PER_10_MINS'
 import { Chain } from '../constants/chains'
 import { NotSupportedUnlimitedGetLogsBlockRange } from '../errors/errors'
+import { logger } from '../utils/logger'
 import { retryHandlerFactory } from './retryHandlerFactory'
 
 export type CustomJsonRpcProviderOptions = {
@@ -109,11 +110,24 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
     }
 
     const entryPromise = (async () => {
-      const result = this.callRetryHandler(() => super.call(transaction))
+      try {
+        const result = await this.callRetryHandler(() =>
+          super.call(transaction),
+        )
 
-      return {
-        result: await result,
-        timestamp: Date.now(),
+        return {
+          result: result,
+          timestamp: Date.now(),
+        }
+      } catch (error) {
+        logger.error({
+          source: 'rpc:call',
+          chainId: this.chainId,
+          transaction,
+          error: error instanceof Error ? error.message : error,
+        })
+
+        throw error
       }
     })()
 
@@ -139,11 +153,22 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
     }
 
     const entryPromise = (async () => {
-      const result = this.logsRetryHandler(() => super.getLogs(filter))
+      try {
+        const result = await this.logsRetryHandler(() => super.getLogs(filter))
 
-      return {
-        result: await result,
-        timestamp: Date.now(),
+        return {
+          result: result,
+          timestamp: Date.now(),
+        }
+      } catch (error) {
+        logger.error({
+          source: 'rpc:getLogs',
+          chainId: this.chainId,
+          filter,
+          error: error instanceof Error ? error.message : error,
+        })
+
+        throw error
       }
     })()
 
