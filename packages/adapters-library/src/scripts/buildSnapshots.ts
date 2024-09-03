@@ -265,6 +265,8 @@ export function buildSnapshots(program: Command) {
           msw.stop()
         }
       }
+
+      process.exit()
     })
 }
 
