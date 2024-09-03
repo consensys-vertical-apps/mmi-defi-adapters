@@ -29,8 +29,12 @@ export function buildSnapshots(program: Command) {
       '-p, --protocols <protocols>',
       'comma-separated protocols filter (e.g. stargate,aave-v2)',
     )
+    .option(
+      '-k, --key <test-key>',
+      'test key must be used with protocols filter',
+    )
     .showHelpAfterError()
-    .action(async ({ protocols }) => {
+    .action(async ({ protocols, key }) => {
       const filterProtocolIds = multiProtocolFilter(protocols)
 
       for (const protocolId of Object.values(Protocol)) {
@@ -45,6 +49,10 @@ export function buildSnapshots(program: Command) {
         ).testCases
 
         for (const [index, testCase] of testCases.entries()) {
+          if (key && testCase.key !== key) {
+            continue
+          }
+
           const defiProvider = new DefiProvider({
             useMulticallInterceptor: false,
           })
@@ -67,6 +75,8 @@ export function buildSnapshots(program: Command) {
                     chainId,
                   ))
 
+                const startTime = Date.now()
+
                 const snapshot = await defiProvider.getPositions({
                   ...testCase.input,
                   filterChainIds: [chainId],
@@ -76,10 +86,13 @@ export function buildSnapshots(program: Command) {
                   },
                 })
 
+                const endTime = Date.now()
+
                 const aggregatedValues = getAggregatedValues(snapshot, chainId)
 
                 const result = {
                   blockNumber,
+                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
                   aggregatedValues,
                   snapshot,
                 }
@@ -99,16 +112,23 @@ export function buildSnapshots(program: Command) {
                     chainId,
                   ))
 
+                const startTime = Date.now()
+
+                const snapshot = await defiProvider.getProfits({
+                  ...testCase.input,
+                  filterChainIds: [chainId],
+                  filterProtocolIds: [protocolId],
+                  toBlockNumbersOverride: {
+                    [chainId]: blockNumber,
+                  },
+                })
+
+                const endTime = Date.now()
+
                 const result = {
                   blockNumber,
-                  snapshot: await defiProvider.getProfits({
-                    ...testCase.input,
-                    filterChainIds: [chainId],
-                    filterProtocolIds: [protocolId],
-                    toBlockNumbersOverride: {
-                      [chainId]: blockNumber,
-                    },
-                  }),
+                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
+                  snapshot,
                 }
 
                 await updateBlockNumber(protocolId, index, blockNumber)
@@ -119,6 +139,7 @@ export function buildSnapshots(program: Command) {
               }
 
               case 'deposits': {
+                const startTime = Date.now()
                 const snapshot = await defiProvider.getDeposits({
                   ...testCase.input,
                   chainId: chainId,
@@ -130,13 +151,17 @@ export function buildSnapshots(program: Command) {
                   chainId,
                 )
 
+                const endTime = Date.now()
+
                 return {
                   aggregatedValues,
+                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
                   snapshot,
                 }
               }
 
               case 'withdrawals': {
+                const startTime = Date.now()
                 const result = await defiProvider.getWithdrawals({
                   ...testCase.input,
                   chainId: chainId,
@@ -148,22 +173,33 @@ export function buildSnapshots(program: Command) {
                   chainId,
                 )
 
+                const endTime = Date.now()
+
                 return {
                   aggregatedValues,
+                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
                   snapshot: result,
                 }
               }
               case 'repays': {
+                const startTime = Date.now()
+
+                const snapshot = await defiProvider.getRepays({
+                  ...testCase.input,
+                  chainId: chainId,
+                  protocolId: protocolId,
+                })
+
+                const endTime = Date.now()
+
                 return {
-                  snapshot: await defiProvider.getRepays({
-                    ...testCase.input,
-                    chainId: chainId,
-                    protocolId: protocolId,
-                  }),
+                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
+                  snapshot,
                 }
               }
 
               case 'borrows': {
+                const startTime = Date.now()
                 const result = await defiProvider.getBorrows({
                   ...testCase.input,
                   chainId: chainId,
@@ -175,7 +211,10 @@ export function buildSnapshots(program: Command) {
                   chainId,
                 )
 
+                const endTime = Date.now()
+
                 return {
+                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
                   snapshot: result,
                   aggregatedValues,
                 }
@@ -189,16 +228,23 @@ export function buildSnapshots(program: Command) {
                     chainId,
                   ))
 
+                const startTime = Date.now()
+
+                const snapshot = await defiProvider.unwrap({
+                  filterChainIds: [chainId],
+                  filterProtocolIds: [protocolId],
+                  blockNumbers: {
+                    [chainId]: blockNumber,
+                  },
+                  filterProtocolToken: testCase.filterProtocolToken,
+                })
+
+                const endTime = Date.now()
+
                 const result = {
+                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
                   blockNumber,
-                  snapshot: await defiProvider.unwrap({
-                    filterChainIds: [chainId],
-                    filterProtocolIds: [protocolId],
-                    blockNumbers: {
-                      [chainId]: blockNumber,
-                    },
-                    filterProtocolToken: testCase.filterProtocolToken,
-                  }),
+                  snapshot,
                 }
 
                 await updateBlockNumber(protocolId, index, blockNumber)
@@ -214,16 +260,22 @@ export function buildSnapshots(program: Command) {
                     chainId,
                   ))
 
+                const startTime = Date.now()
+                const snapshot = await defiProvider.getTotalValueLocked({
+                  filterChainIds: [chainId],
+                  filterProtocolIds: [protocolId],
+                  filterProtocolTokens: testCase.filterProtocolTokens,
+                  blockNumbers: {
+                    [chainId]: blockNumber,
+                  },
+                })
+
+                const endTime = Date.now()
+
                 const result = {
+                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
                   blockNumber,
-                  snapshot: await defiProvider.getTotalValueLocked({
-                    filterChainIds: [chainId],
-                    filterProtocolIds: [protocolId],
-                    filterProtocolTokens: testCase.filterProtocolTokens,
-                    blockNumbers: {
-                      [chainId]: blockNumber,
-                    },
-                  }),
+                  snapshot,
                 }
 
                 await updateBlockNumber(protocolId, index, blockNumber)

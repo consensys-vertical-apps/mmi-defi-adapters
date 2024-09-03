@@ -1,4 +1,4 @@
-import { ZeroAddress } from 'ethers'
+import { ethers, ZeroAddress } from 'ethers'
 import { Erc20__factory } from '../../../contracts/factories/Erc20__factory'
 import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
@@ -210,6 +210,7 @@ export abstract class MorphoBluePoolAdapter
       morphoBlue.market(marketId, {
         blockTag: blockNumber,
       }),
+
       morphoBlue.idToMarketParams(marketId, {
         blockTag: blockNumber,
       }),
@@ -283,8 +284,9 @@ export abstract class MorphoBluePoolAdapter
       const loanMetadata = await this._fetchLoanTokenMetadata(marketId)
 
       if (collateralAmount > 0n && positionType === PositionType.Supply) {
-        const collateralMetadata =
-          await this._fetchCollateralTokenMetadata(marketId)
+        const collateralMetadata = await this._fetchCollateralTokenMetadata(
+          marketId,
+        )
 
         protocolTokens.push({
           tokenId: marketId,
@@ -625,174 +627,4 @@ export abstract class MorphoBluePoolAdapter
 
     return movements
   }
-
-  // Whitelisted markets thanks to the below graphql extraction:
-  // private async graphQlPoolExtraction(chainId: typeof Chain.Ethereum): Promise<
-  //   {
-  //     marketId: string
-  //   }[]
-  // > {
-  //   const numberOfMarkets = 1000
-  //   const minVolumeUSD = 1000000
-  //   const graphQueryUrl: Record<
-  //     typeof Chain.Ethereum,
-  //     {
-  //       url: string
-  //       query: string
-  //     }
-  //   > = {
-  //     [Chain.Ethereum]: {
-  //       url: 'https://api.thegraph.com/subgraphs/name/morpho-association/morpho-blue',
-  //       query: `{ markets(first: ${numberOfMarkets} where: {totalValueLockedUSD_gt: ${minVolumeUSD}} orderBy: totalValueLockedUSD orderDirection: desc) {id}}`,
-  //     },
-  //   }
-
-  //   const { url, query } = graphQueryUrl[chainId]
-
-  //   const response = await fetch(url, {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({
-  //       query,
-  //     }),
-  //   })
-
-  //   const gqlResponse: {
-  //     data: {
-  //       markets: [
-  //         {
-  //           id: string
-  //         },
-  //       ]
-  //     }
-  //   } = await response.json()
-
-  //   return gqlResponse.data.markets.map((market) => {
-  //     return {
-  //       marketId: market.id,
-  //     }
-  //   })
-  // }
 }
-
-// NOTE: The APY/APR feature has been removed as of March 2024.
-// The below contains logic that may be useful for future features or reference. For more context on this decision, refer to ticket [MMI-4731].
-
-// protected async _getProtocolTokenApr({
-//   protocolTokenAddress,
-//   blockNumber,
-//   aprExpected,
-// }: GetAprInputExtended): Promise<number> {
-//   const morphoBlue = MorphoBlue__factory.connect(
-//     morphoBlueContractAddresses[this.protocolId]![this.chainId]!,
-//     this._provider,
-//   )
-
-//   const marketId = protocolTokenAddress
-
-//   const [marketData_, marketParams_] = await Promise.all([
-//     morphoBlue.market(protocolTokenAddress, {
-//       blockTag: blockNumber,
-//     }),
-//     morphoBlue.idToMarketParams(marketId, {
-//       blockTag: blockNumber,
-//     }),
-//   ])
-
-//   const marketParams: MarketParams = {
-//     loanToken: marketParams_.loanToken,
-//     collateralToken: marketParams_.collateralToken,
-//     oracle: marketParams_.oracle,
-//     irm: marketParams_.irm,
-//     lltv: marketParams_.lltv,
-//   }
-
-//   const marketData: MarketData = {
-//     totalSupplyAssets: marketData_.totalSupplyAssets,
-//     totalSupplyShares: marketData_.totalSupplyShares,
-//     totalBorrowAssets: marketData_.totalBorrowAssets,
-//     totalBorrowShares: marketData_.totalBorrowShares,
-//     lastUpdate: marketData_.lastUpdate,
-//     fee: marketData_.fee,
-//   }
-
-//   const irm = AdaptiveCurveIrm__factory.connect(
-//     marketParams.irm,
-//     this._provider,
-//   )
-
-//   const borrowRate =
-//     marketParams.irm !== ZeroAddress
-//       ? await irm.borrowRateView(marketParams, marketData, {
-//           blockTag: blockNumber,
-//         })
-//       : 0n
-
-//   const positionType = this.getProtocolDetails().positionType
-
-//   if (aprExpected === true) {
-//     const borrowAPR = borrowRate * BigInt(SECONDS_PER_YEAR)
-//     if (positionType === PositionType.Borrow) {
-//       return Number(borrowAPR) / Number(WAD)
-//     } else {
-//       const utilization = this.__MATH__.wDivUp(
-//         marketData.totalBorrowAssets,
-//         marketData.totalSupplyAssets,
-//       )
-//       const supplyAPR = this.__MATH__.wMulDown(
-//         this.__MATH__.wMulDown(utilization, borrowAPR),
-//         WAD - marketData.fee,
-//       )
-//       return Number(supplyAPR) / Number(WAD)
-//     }
-//   }
-
-//   const borrowAPY = this.__MATH__.wTaylorCompounded(
-//     borrowRate,
-//     BigInt(SECONDS_PER_YEAR),
-//   )
-//   if (positionType === PositionType.Borrow) {
-//     return Number(borrowAPY) / Number(WAD)
-//   } else {
-//     const utilization = this.__MATH__.wDivUp(
-//       marketData.totalBorrowAssets,
-//       marketData.totalSupplyAssets,
-//     )
-//     const supplyAPY = this.__MATH__.wMulDown(
-//       this.__MATH__.wMulDown(utilization, borrowAPY),
-//       WAD - marketData.fee,
-//     )
-//     return Number(supplyAPY) / Number(WAD)
-//   }
-// }
-
-// async getApr({
-//   protocolTokenAddress,
-//   blockNumber,
-// }: GetAprInput): Promise<ProtocolTokenApr> {
-//   const apr = await this._getProtocolTokenApr({
-//     protocolTokenAddress,
-//     blockNumber,
-//     aprExpected: true,
-//   })
-//   return {
-//     ...(await this._fetchTokenMetadata(protocolTokenAddress)),
-//     aprDecimal: apr * 100,
-//   }
-// }
-
-// async getApy({
-//   protocolTokenAddress,
-//   blockNumber,
-// }: GetApyInput): Promise<ProtocolTokenApy> {
-//   const apy = await this._getProtocolTokenApr({
-//     protocolTokenAddress,
-//     blockNumber,
-//     aprExpected: false,
-//   })
-
-//   return {
-//     ...(await this._fetchTokenMetadata(protocolTokenAddress)),
-//     apyDecimal: apy * 100,
-//   }
-// }

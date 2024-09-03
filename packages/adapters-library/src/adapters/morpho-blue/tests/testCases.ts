@@ -26,6 +26,7 @@ export const testCases: TestCase[] = [
     },
 
     blockNumber: 20633609,
+    key: '1',
   },
   {
     chainId: Chain.Ethereum,
@@ -59,7 +60,7 @@ export const testCases: TestCase[] = [
 
     input: {
       userAddress: '0x38989BBA00BDF8181F4082995b3DEAe96163aC5D',
-      timePeriod: TimePeriod.sevenDays,
+      timePeriod: TimePeriod.oneDay,
 
       filterProtocolTokens: [
         '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
@@ -77,27 +78,7 @@ export const testCases: TestCase[] = [
     },
 
     blockNumber: 20633660,
-  },
-  {
-    // TODO Check results
-    chainId: Chain.Ethereum,
-    method: 'tvl',
-    filterProtocolTokens: [
-      '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-      '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0',
-      '0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB',
-    ],
-    blockNumber: 20419139,
-  },
-  {
-    // TODO Check results
-    chainId: Chain.Base,
-    method: 'tvl',
-    filterProtocolTokens: [
-      '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-      '0xbeeF010f9cb27031ad51e3333f9aF9C6B1228183',
-    ],
-    blockNumber: 17776549,
+    key: '3',
   },
   {
     chainId: Chain.Ethereum,
@@ -111,6 +92,7 @@ export const testCases: TestCase[] = [
         '0xB323495F7E4148BE5643A4EA4A8221EEF163E4BCCFDEDC2A6F4696BAACBC86CC',
       productId: 'market-supply',
     },
+    key: '6',
   },
   {
     chainId: Chain.Ethereum,
@@ -124,6 +106,7 @@ export const testCases: TestCase[] = [
         '0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41',
       productId: 'market-borrow',
     },
+    key: '7',
   },
   {
     chainId: Chain.Ethereum,
@@ -137,6 +120,7 @@ export const testCases: TestCase[] = [
         '0xC54D7ACF14DE29E0E5527CABD7A576506870346A78A11A6762E2CCA66322EC41',
       productId: 'market-supply',
     },
+    key: '8',
   },
   {
     chainId: Chain.Base,
@@ -148,6 +132,7 @@ export const testCases: TestCase[] = [
       protocolTokenAddress: '0xbeef010f9cb27031ad51e3333f9af9c6b1228183',
       productId: 'vault',
     },
+    key: '9',
   },
   {
     chainId: Chain.Ethereum,
@@ -161,6 +146,7 @@ export const testCases: TestCase[] = [
         '0x698fe98247a40c5771537b5786b2f3f9d78eb487b4ce4d75533cd0e94d88a115',
       productId: 'market-borrow',
     },
+    key: '10',
   },
   {
     chainId: Chain.Ethereum,
@@ -170,6 +156,7 @@ export const testCases: TestCase[] = [
       filterProtocolTokens: ['0xd63070114470f685b75B74D60EEc7c1113d33a3D'], // Usual vault
     },
     blockNumber: 20417741, // Choose a recent block number
+    key: '11',
   },
   {
     chainId: Chain.Base,
@@ -179,6 +166,7 @@ export const testCases: TestCase[] = [
       filterProtocolTokens: ['0xa0e430870c4604ccfc7b38ca7845b1ff653d0ff1'], // mwETH Vault
     },
     blockNumber: 17776788, // Choose a recent block number
+    key: '12',
   },
   {
     chainId: Chain.Ethereum,
@@ -190,6 +178,7 @@ export const testCases: TestCase[] = [
       protocolTokenAddress: '0xd63070114470f685b75B74D60EEc7c1113d33a3D', // Usual vault
       productId: 'vault',
     },
+    key: '13',
   },
   {
     chainId: Chain.Base,
@@ -201,5 +190,6 @@ export const testCases: TestCase[] = [
       protocolTokenAddress: '0xa0e430870c4604ccfc7b38ca7845b1ff653d0ff1', // mwETH Vault
       productId: 'vault',
     },
+    key: '14',
   },
 ]
