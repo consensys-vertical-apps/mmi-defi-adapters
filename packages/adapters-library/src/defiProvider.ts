@@ -71,16 +71,19 @@ export class DefiProvider {
         (provider) =>
           !filterChainIds || filterChainIds.includes(provider.chainId),
       )
-      .reduce(async (accumulator, provider) => {
-        if (filterChainIds && !filterChainIds.includes(provider.chainId)) {
-          return accumulator
-        }
+      .reduce(
+        async (accumulator, provider) => {
+          if (filterChainIds && !filterChainIds.includes(provider.chainId)) {
+            return accumulator
+          }
 
-        return {
-          ...(await accumulator),
-          [provider.chainId]: await provider.getStableBlockNumber(),
-        }
-      }, {} as Promise<Partial<Record<Chain, number>>>)
+          return {
+            ...(await accumulator),
+            [provider.chainId]: await provider.getStableBlockNumber(),
+          }
+        },
+        {} as Promise<Partial<Record<Chain, number>>>,
+      )
   }
 
   async getPositions({
@@ -100,10 +103,6 @@ export class DefiProvider {
   }): Promise<DefiPositionResponse[]> {
     const startGetPositions = Date.now()
     this.initAdapterControllerForUnwrapStage()
-
-    process.on('unhandledRejection', (reason, promise) => {
-      console.error('Unhandled Rejection at:', promise, 'reason:', reason)
-    })
 
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
@@ -234,9 +233,10 @@ export class DefiProvider {
         return undefined
       }
 
-      const transferLogs = await this.chainProvider.providers[
-        adapter.chainId
-      ].getAllTransferLogsToAddress(userAddress)
+      const transferLogs =
+        await this.chainProvider.providers[
+          adapter.chainId
+        ].getAllTransferLogsToAddress(userAddress)
 
       // no logs on this chain means nothing done on this chain
       if (transferLogs.length === 0) {

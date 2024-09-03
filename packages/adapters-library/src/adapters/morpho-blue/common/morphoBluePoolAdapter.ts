@@ -1,4 +1,4 @@
-import { ethers, ZeroAddress } from 'ethers'
+import { ZeroAddress, ethers } from 'ethers'
 import { Erc20__factory } from '../../../contracts/factories/Erc20__factory'
 import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
@@ -284,9 +284,8 @@ export abstract class MorphoBluePoolAdapter
       const loanMetadata = await this._fetchLoanTokenMetadata(marketId)
 
       if (collateralAmount > 0n && positionType === PositionType.Supply) {
-        const collateralMetadata = await this._fetchCollateralTokenMetadata(
-          marketId,
-        )
+        const collateralMetadata =
+          await this._fetchCollateralTokenMetadata(marketId)
 
         protocolTokens.push({
           tokenId: marketId,
