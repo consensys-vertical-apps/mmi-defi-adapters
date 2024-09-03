@@ -1,0 +1,464 @@
+[
+  {
+    "address": "0xc1256Ae5FF1cf2719D4937adb3bbCCab2E00A2Ca",
+    "name": "Moonwell Flagship USDC",
+    "symbol": "mwUSDC",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0x6FFEe92E508D39A4b3edeB054E8a8B5e0F4BcdD9",
+    "name": "testusdc",
+    "symbol": "testusdc",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0xED0A7A49f2228E01a3169C4A5a72a2EbFE8756Dc",
+    "name": "MetaMorpho Test",
+    "symbol": "MMT",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0xbeeF010f9cb27031ad51e3333f9aF9C6B1228183",
+    "name": "Steakhouse USDC",
+    "symbol": "steakUSDC",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0xeE8F4eC5672F09119b96Ab6fB59C27E1b7e44b61",
+    "name": "Gauntlet USDC Prime",
+    "symbol": "gtUSDCp",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0xc0c5689e6f4D256E861F65465b691aeEcC0dEb12",
+    "name": "Gauntlet USDC Core",
+    "symbol": "gtUSDCc",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0x6b13c060F13Af1fdB319F52315BbbF3fb1D88844",
+    "name": "Gauntlet WETH Core",
+    "symbol": "gtWETHc",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0xcf0d2c68cde60C8827Ad901BA5Bfa3C6b42525ee",
+    "name": "prodtest",
+    "symbol": "prodtest",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x9E9a74Ef35b74dfb61B778250304F4Fcb446f268",
+    "name": "Storm USDC",
+    "symbol": "stormUSDC",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0xa0E430870c4604CcfC7B38Ca7845B1FF653D0ff1",
+    "name": "Moonwell Flagship ETH",
+    "symbol": "mwETH",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0xA2Cac0023a4797b4729Db94783405189a4203AFc",
+    "name": "Re7 WETH",
+    "symbol": "Re7WETH",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x12AFDeFb2237a5963e7BAb3e2D46ad0eee70406e",
+    "name": "Re7 USDC",
+    "symbol": "Re7USDC",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0xbEEf050a7485865A7a8d8Ca0CC5f7536b7a3443e",
+    "name": "Steakhouse ETH",
+    "symbol": "steakETH",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x4df778b23A6E4d1E3D15b68ee6AC0E0cc5A2DB93",
+    "name": "aUSDC Test Vault 1",
+    "symbol": "aUSDC-TV1",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0xAB8debaEC1eF6Ae0D8B6c20076D1cc47AE3d62F3",
+        "name": "Attested USDC",
+        "symbol": "aUSDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0xBEef03f0BF3cb2e348393008a826538AaDD7d183",
+    "name": "Steakhouse USDM",
+    "symbol": "steakUSDM",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
+        "name": "Wrapped Mountain Protocol USD",
+        "symbol": "wUSDM",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0xbEEfa1aBfEbE621DF50ceaEF9f54FdB73648c92C",
+    "name": "Steakhouse USDA",
+    "symbol": "steakUSDA",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+        "name": "USDA",
+        "symbol": "USDA",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0xBEeFA28D5e56d41D35df760AB53B94D9FfD7051F",
+    "name": "Steakhouse EURA",
+    "symbol": "steakEURA",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0xA61BeB4A3d02decb01039e378237032B351125B4",
+        "name": "EURA (previously agEUR)",
+        "symbol": "EURA",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0xdB90A4e973B7663ce0Ccc32B6FbD37ffb19BfA83",
+    "name": "Degen USDC",
+    "symbol": "degenUSDC",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0x8c3A6B12332a6354805Eb4b72ef619aEdd22BcdD",
+    "name": "Morpho Degen",
+    "symbol": "mDEGEN",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed",
+        "name": "Degen",
+        "symbol": "DEGEN",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x30B8A2c8E7Fa41e77b54b8FaF45c610e7aD909E3",
+    "name": "Morpho MAI",
+    "symbol": "mMAI",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0xbf1aeA8670D2528E08334083616dD9C5F3B087aE",
+        "name": "Mai Stablecoin",
+        "symbol": "MAI",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0xDd195bc052f172a996d721B25d587A1ea5B8385D",
+    "name": "Re7 USDA",
+    "symbol": "Re7USDA",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+        "name": "USDA",
+        "symbol": "USDA",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0xBD596239F71ce6BA9993100fbD5Aff366C9366a1",
+    "name": "Re7 eUSD",
+    "symbol": "Re7eUSD",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0xCfA3Ef56d303AE4fAabA0592388F19d7C3399FB4",
+        "name": "Electronic Dollar",
+        "symbol": "eUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x578Bf478A3Cf39eCd32bD6f78C784c13b12c865C",
+    "name": "Test verUSDC",
+    "symbol": "testverUSDC",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x59aaF835D34b1E3dF2170e4872B785f11E2a964b",
+        "name": "Verified USDC",
+        "symbol": "verUSDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0x6e37C95b43566E538D8C278eb69B00FC717a001b",
+    "name": "Re7 RWA",
+    "symbol": "Re7RWA",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x59aaF835D34b1E3dF2170e4872B785f11E2a964b",
+        "name": "Verified USDC",
+        "symbol": "verUSDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0xFE333f2c3c55138fAD556B6C1F1D9103c7268071",
+    "name": "mmTestUSDC",
+    "symbol": "mmTestUSDC",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x5449eCE0580A8287FC42d2634e848eBe8Dc97c07",
+        "name": "testUSDC",
+        "symbol": "testUSDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0x1Dd5e4a1bBD6105bf9F75a963Df2b928c2Aa5391",
+    "name": "mmTestUSDC",
+    "symbol": "mmTestUSDC",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0xBC77067f829979812d795d516E523C4033b66409",
+        "name": "testUSDC",
+        "symbol": "testUSDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0xbEefc4aDBE58173FCa2C042097Fe33095E68C3D6",
+    "name": "Steakhouse USDC RWA",
+    "symbol": "steakUSDCrwa",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x59aaF835D34b1E3dF2170e4872B785f11E2a964b",
+        "name": "Verified USDC",
+        "symbol": "verUSDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0xbb819D845b573B5D7C538F5b85057160cfb5f313",
+    "name": "Morpho eUSD",
+    "symbol": "meUSD",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0xCfA3Ef56d303AE4fAabA0592388F19d7C3399FB4",
+        "name": "Electronic Dollar",
+        "symbol": "eUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x6C0d2A9194f00d0121f21253268683644D3d267D",
+    "name": "jEURMetaMorpho",
+    "symbol": "jEURMM",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x4154550f4Db74Dc38d1FE98e1F3F28ed6daD627d",
+        "name": "Jarvis Synthetic Euro",
+        "symbol": "jEUR",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x4DbD80F8029d5264fAC0b57A16Ac54de512be45A",
+    "name": "EuroMetaMorpho",
+    "symbol": "EURMM",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x4154550f4Db74Dc38d1FE98e1F3F28ed6daD627d",
+        "name": "Jarvis Synthetic Euro",
+        "symbol": "jEUR",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x305a22602d0f6BCd14aDcC59555A36b0c9c3d76d",
+    "name": "testMetaMorphoUSDC",
+    "symbol": "testMMUSDC",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0x0FaBfEAcedf47e890c50C8120177fff69C6a1d9B",
+    "name": "Pyth USDC",
+    "symbol": "pythUSDC",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0x80D9964fEb4A507dD697b4437Fc5b25b618CE446",
+    "name": "Pyth ETH",
+    "symbol": "pythETH",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ]
+  }
+]
