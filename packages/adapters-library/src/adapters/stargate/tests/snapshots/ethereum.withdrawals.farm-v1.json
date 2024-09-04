@@ -1,5 +1,6 @@
 {
   "aggregatedValues": ["USD8,061.17"],
+  "latency": "Latency: 2.019 seconds",
   "snapshot": {
     "protocolId": "stargate",
     "name": "Stargate",
