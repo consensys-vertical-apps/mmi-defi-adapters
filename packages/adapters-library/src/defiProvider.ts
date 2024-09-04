@@ -131,7 +131,7 @@ export class DefiProvider {
 
       await Promise.all(
         protocolPositions.map(async (pos) => {
-          const [rewards, extraRewards] = await Promise.all([
+          const [rewards = [], extraRewards = []] = await Promise.all([
             adapter.getRewardPositions?.({
               userAddress,
               blockNumber,
@@ -144,10 +144,10 @@ export class DefiProvider {
             }),
           ])
 
-          if (rewards && rewards?.length > 0) {
+          if (rewards.length > 0) {
             pos.tokens = [...(pos.tokens ?? []), ...rewards]
           }
-          if (extraRewards && extraRewards?.length > 0) {
+          if (extraRewards.length > 0) {
             pos.tokens = [...(pos.tokens ?? []), ...extraRewards]
           }
         }),

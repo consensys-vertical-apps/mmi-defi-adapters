@@ -98,6 +98,7 @@ import { RenzoEzEthAdapter } from './renzo/products/ez-eth/renzoEzEthAdapter'
 
 import { SolvSolvBtcAdapter } from './solv/products/solv-btc/solvSolvBtcAdapter'
 
+import { MorphoBlueVaultAdapter } from './morpho-blue/products/vault/morphoBlueVaultAdapter'
 import { SolvYieldMarketAdapter } from './solv/products/yield-market/solvYieldMarketAdapter'
 
 import { StargateLpStakingAdapter } from './stargate/products/lp-staking/stargateLpStakingAdapter'
@@ -340,6 +341,12 @@ export const supportedProtocols: Record<
     [Chain.Ethereum]: [
       MorphoBlueMarketSupplyAdapter,
       MorphoBlueMarketBorrowAdapter,
+      MorphoBlueVaultAdapter,
+    ],
+    [Chain.Base]: [
+      MorphoBlueMarketSupplyAdapter,
+      MorphoBlueMarketBorrowAdapter,
+      MorphoBlueVaultAdapter,
     ],
   },
 
