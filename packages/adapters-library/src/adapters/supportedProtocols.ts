@@ -109,6 +109,8 @@ import { StargateV2PoolAdapter } from './stargate-v2/products/pool/stargateV2Poo
 
 import { StargatePoolV2Adapter } from './stargate/products/pool-v2/stargatePoolV2Adapter'
 
+import { StargateFarmV2Adapter } from './stargate/products/farm-v2/stargateFarmV2Adapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -449,42 +451,50 @@ export const supportedProtocols: Record<
       StargateVotingEscrowAdapter,
       StargateFarmAdapter,
       StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
     ],
     [Chain.Optimism]: [
       StargatePoolAdapter,
       StargateFarmAdapter,
       StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
     ],
     [Chain.Bsc]: [
       StargatePoolAdapter,
       StargateFarmAdapter,
       StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
     ],
     [Chain.Polygon]: [
       StargatePoolAdapter,
       StargateFarmAdapter,
       StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
     ],
     [Chain.Fantom]: [StargatePoolAdapter, StargateFarmAdapter],
     [Chain.Base]: [
       StargatePoolAdapter,
       StargateFarmAdapter,
       StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
     ],
     [Chain.Arbitrum]: [
       StargatePoolAdapter,
       StargateFarmAdapter,
       StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
     ],
     [Chain.Avalanche]: [
       StargatePoolAdapter,
       StargateFarmAdapter,
       StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
     ],
     [Chain.Linea]: [
       StargatePoolAdapter,
       StargateFarmAdapter,
       StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
     ],
   },
 
