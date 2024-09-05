@@ -78,6 +78,8 @@ import { SyncSwapPoolAdapter } from './syncswap/products/pool/syncSwapPoolAdapte
 import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
+import { MountainProtocolUsdmAdapter } from './mountain-protocol/products/usdm/mountainProtocolUsdmAdapter'
+import { MountainProtocolWUsdmAdapter } from './mountain-protocol/products/wusdm/mountainProtocolWUsdmAdapter'
 
 import {
   SparkV1SpTokenAdapter,
@@ -342,6 +344,26 @@ export const supportedProtocols: Record<
       MorphoCompoundV2OptimizerSupplyAdapter,
       MorphoCompoundV2OptimizerBorrowAdapter,
     ],
+  },
+
+  [Protocol.MountainProtocol]: {
+    [Chain.Ethereum]: [
+      MountainProtocolUsdmAdapter,
+      MountainProtocolWUsdmAdapter,
+    ],
+    [Chain.Optimism]: [
+      MountainProtocolUsdmAdapter,
+      MountainProtocolWUsdmAdapter,
+    ],
+    [Chain.Polygon]: [
+      MountainProtocolUsdmAdapter,
+      MountainProtocolWUsdmAdapter,
+    ],
+    [Chain.Arbitrum]: [
+      MountainProtocolUsdmAdapter,
+      MountainProtocolWUsdmAdapter,
+    ],
+    [Chain.Base]: [MountainProtocolUsdmAdapter, MountainProtocolWUsdmAdapter],
   },
 
   [Protocol.PancakeswapV2]: {
