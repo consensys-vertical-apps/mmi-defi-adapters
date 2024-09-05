@@ -52,14 +52,14 @@ export const testCases: TestCase[] = [
     chainId: Chain.Ethereum,
     method: 'prices',
     filterProtocolToken: '0x59d9356e565ab3a36dd77763fc0d87feaf85508c',
-    blockNumber: 20686564
+    blockNumber: 20686564,
   },
   {
     key: 'wusdm',
     chainId: Chain.Ethereum,
     method: 'prices',
     filterProtocolToken: '0x57f5e098cad7a3d1eed53991d4d66c45c9af7812',
-    blockNumber: 20686564
+    blockNumber: 20686564,
   },
   {
     chainId: Chain.Ethereum,
@@ -70,6 +70,6 @@ export const testCases: TestCase[] = [
       '0x57f5e098cad7a3d1eed53991d4d66c45c9af7812',
     ],
 
-    blockNumber: 19661884
+    blockNumber: 19661884,
   },
 ]

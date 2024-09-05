@@ -63,6 +63,8 @@ import { MorphoCompoundV2OptimizerBorrowAdapter } from './morpho-compound-v2/pro
 import { MorphoCompoundV2OptimizerSupplyAdapter } from './morpho-compound-v2/products/optimizer-supply/morphoCompoundV2OptimizerSupplyAdapter'
 import { PancakeswapV2PoolAdapter } from './pancakeswap-v2/products/pool/pancakeswapV2PoolAdapter'
 
+import { MountainProtocolUsdmAdapter } from './mountain-protocol/products/usdm/mountainProtocolUsdmAdapter'
+import { MountainProtocolWUsdmAdapter } from './mountain-protocol/products/wusdm/mountainProtocolWUsdmAdapter'
 import { PricesV2UsdAdapter } from './prices-v2/products/usd/pricesV2UsdAdapter'
 import { Protocol } from './protocols'
 import { QuickswapV2PoolAdapter } from './quickswap-v2/products/pool/quickswapV2PoolAdapter'
@@ -78,8 +80,6 @@ import { SyncSwapPoolAdapter } from './syncswap/products/pool/syncSwapPoolAdapte
 import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
-import { MountainProtocolUsdmAdapter } from './mountain-protocol/products/usdm/mountainProtocolUsdmAdapter'
-import { MountainProtocolWUsdmAdapter } from './mountain-protocol/products/wusdm/mountainProtocolWUsdmAdapter'
 
 import {
   SparkV1SpTokenAdapter,

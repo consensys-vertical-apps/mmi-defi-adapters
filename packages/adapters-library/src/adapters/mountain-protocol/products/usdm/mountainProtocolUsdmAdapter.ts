@@ -1,19 +1,19 @@
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  ProtocolDetails,
-  PositionType,
-  Underlying,
-  TokenBalance,
-  TokenType,
-  UnwrappedTokenExchangeRate,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   IProtocolAdapter,
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import {
+  PositionType,
+  ProtocolDetails,
+  TokenBalance,
+  TokenType,
+  Underlying,
+  UnwrappedTokenExchangeRate,
+} from '../../../../types/adapter'
+import { Erc20Metadata } from '../../../../types/erc20Metadata'
 // import {
 //   WriteActionInputSchemas,
 //   WriteActions,
