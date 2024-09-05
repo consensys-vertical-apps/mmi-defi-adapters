@@ -1,3 +1,4 @@
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
@@ -24,7 +25,7 @@ export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
+    version: 3,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -40,7 +41,7 @@ export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'a-token-v2' })
+  @CacheToDb()
   async getProtocolTokens() {
     return super.getProtocolTokens()
   }
