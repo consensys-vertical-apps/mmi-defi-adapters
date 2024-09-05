@@ -77,17 +77,18 @@ export class StargateFarmAdapter implements IProtocolAdapter {
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'Stargate',
-      description: 'Stargate defi adapter',
-      siteUrl: 'https:',
-      iconUrl: 'https://',
-      positionType: PositionType.Supply,
+      name: 'Stargate Farm',
+      description:
+        'Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi',
+      siteUrl: 'https://stargate.finance/',
+      iconUrl: 'https://stargate.finance/favicons/favicon-light.svg',
+      positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
     }
   }
 
-  @CacheToFile({ fileKey: 'farm-token' })
+  @CacheToFile({ fileKey: 'pool' })
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const { lpStakingAddress, lpStakingType, lpStakingTimeMetisAddress } =
       staticChainData[this.chainId]!

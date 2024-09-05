@@ -55,8 +55,6 @@ import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 
 import { testCases as solvTestCases } from './solv/tests/testCases'
 
-import { testCases as stargateV2TestCases } from './stargate-v2/tests/testCases'
-
 const TEST_TIMEOUT = 300000
 
 const defiProvider = new DefiProvider({ useMulticallInterceptor: false })
@@ -114,7 +112,6 @@ const protocolTestCases = {
   [Protocol.SparkV1]: sparkV1TestCases,
   [Protocol.StakeWise]: stakeWiseTestCases,
   [Protocol.Stargate]: stargateTestCases,
-  [Protocol.StargateV2]: stargateV2TestCases,
   [Protocol.SushiswapV2]: sushiswapV2TestCases,
   [Protocol.Swell]: swellTestCases,
   [Protocol.SyncSwap]: syncSwapTestCases,

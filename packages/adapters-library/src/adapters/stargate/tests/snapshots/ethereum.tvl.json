@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 1.836 seconds",
+  "latency": "Latency: 4.145 seconds",
   "blockNumber": 19661888,
   "snapshot": [
     {
@@ -80,7 +80,7 @@
       "iconUrl": "https://",
       "positionType": "supply",
       "chainId": 1,
-      "productId": "lp-staking",
+      "productId": "farm",
       "success": true,
       "tokens": [
         {
@@ -106,6 +106,30 @@
           "totalSupply": 28729037.008094
         }
       ]
+    },
+    {
+      "protocolId": "stargate",
+      "name": "StargateV2",
+      "description": "StargateV2 defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool-v2",
+      "success": true,
+      "tokens": []
+    },
+    {
+      "protocolId": "stargate",
+      "name": "StargateV2",
+      "description": "StargateV2 defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "farm-v2",
+      "success": true,
+      "tokens": []
     }
   ],
   "rpcResponses": {

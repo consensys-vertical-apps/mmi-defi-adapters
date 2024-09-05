@@ -69,24 +69,21 @@ export class StargateFarmV2Adapter implements IProtocolAdapter {
     this.helpers = helpers
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'StargateV2',
-      description: 'StargateV2 defi adapter',
-      siteUrl: 'https:',
-      iconUrl: 'https://',
-      positionType: PositionType.Supply,
+      name: 'Stargate Farm V2',
+      description:
+        'Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi',
+      siteUrl: 'https://stargate.finance/',
+      iconUrl: 'https://stargate.finance/favicons/favicon-light.svg',
+      positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToFile({ fileKey: 'pool' })
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const { stargateStakingAddress } = staticChainDataV2[this.chainId]!
     const stakingContract = StargateStaking__factory.connect(

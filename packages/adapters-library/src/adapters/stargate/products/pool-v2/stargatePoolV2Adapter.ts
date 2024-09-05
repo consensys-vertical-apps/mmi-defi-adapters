@@ -58,17 +58,14 @@ export class StargatePoolV2Adapter implements IProtocolAdapter {
     this.helpers = helpers
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'StargateV2',
-      description: 'StargateV2 defi adapter',
-      siteUrl: 'https:',
-      iconUrl: 'https://',
+      name: 'Stargate Liquidity Pools V2',
+      description:
+        'Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi',
+      siteUrl: 'https://stargate.finance/',
+      iconUrl: 'https://stargate.finance/favicons/favicon-light.svg',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

@@ -62,7 +62,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'Stargate',
+      name: 'Stargate Liquidity Pools',
       description:
         'Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi',
       siteUrl: 'https://stargate.finance/',
@@ -108,8 +108,9 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
+    const protocolToken = await this.getProtocolTokenByAddress(
+      protocolTokenAddress,
+    )
 
     return this.helpers.withdrawals({
       protocolToken,
@@ -133,8 +134,9 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     protocolTokenAddress,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const protocolToken =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
+    const protocolToken = await this.getProtocolTokenByAddress(
+      protocolTokenAddress,
+    )
 
     const underlyingTokens = (
       await this.getProtocolTokenByAddress(protocolTokenAddress)
