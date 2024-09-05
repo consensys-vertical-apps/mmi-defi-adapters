@@ -1,11 +1,11 @@
 {
   "blockNumber": 20634750,
-  "latency": "Latency: 2.298 seconds",
+  "latency": "Latency: 2.354 seconds",
   "aggregatedValues": ["USD1,196.95", "USD58.72", "USD1,046.94"],
   "snapshot": [
     {
       "protocolId": "stargate",
-      "name": "Stargate",
+      "name": "Stargate Liquidity Pools",
       "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
       "siteUrl": "https://stargate.finance/",
       "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
@@ -75,13 +75,13 @@
     },
     {
       "protocolId": "stargate",
-      "name": "Stargate",
-      "description": "Stargate defi adapter",
-      "siteUrl": "https:",
-      "iconUrl": "https://",
-      "positionType": "supply",
+      "name": "Stargate Farm",
+      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+      "siteUrl": "https://stargate.finance/",
+      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+      "positionType": "stake",
       "chainId": 1,
-      "productId": "lp-staking",
+      "productId": "farm",
       "success": true,
       "tokens": [
         {

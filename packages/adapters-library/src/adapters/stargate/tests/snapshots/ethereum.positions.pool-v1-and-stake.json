@@ -1,11 +1,11 @@
 {
   "blockNumber": 18163124,
-  "latency": "Latency: 3.631 seconds",
+  "latency": "Latency: 4.652 seconds",
   "aggregatedValues": ["USD31,574.58", "USD4,847.20"],
   "snapshot": [
     {
       "protocolId": "stargate",
-      "name": "Stargate",
+      "name": "Stargate Liquidity Pools",
       "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
       "siteUrl": "https://stargate.finance/",
       "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",

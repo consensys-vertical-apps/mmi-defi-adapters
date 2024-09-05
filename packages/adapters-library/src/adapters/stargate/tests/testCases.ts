@@ -42,7 +42,6 @@ export const testCases: TestCase[] = [
     },
   },
   {
-    // TODO UPDATE
     chainId: Chain.Ethereum,
     method: 'profits',
     key: 'pool-v1',
@@ -54,7 +53,6 @@ export const testCases: TestCase[] = [
     blockNumber: 18163965,
   },
   {
-    // TODO CHECK lp-farming
     chainId: Chain.Ethereum,
     method: 'tvl',
     filterProtocolTokens: ['0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56'],
@@ -79,22 +77,11 @@ export const testCases: TestCase[] = [
   },
   {
     key: 'farm-v1',
-    chainId: Chain.Optimism,
-    method: 'positions',
-
-    input: {
-      userAddress: '0xb4f4bde162ed8da7de651332b539052b9c41e3c7',
-    },
-
-    blockNumber: 20634750,
-  },
-  {
-    key: 'farm-v1',
     chainId: Chain.Ethereum,
     method: 'withdrawals',
 
     input: {
-      productId: 'lp-staking',
+      productId: 'farm',
       userAddress: '0x93652aE25d0ba757c3C92A4Deb0b05dd1D4efE35',
       protocolTokenAddress: '0x38EA452219524Bb87e18dE1C24D3bB59510BD783',
       fromBlock: 20661441,
@@ -107,7 +94,7 @@ export const testCases: TestCase[] = [
     method: 'deposits',
 
     input: {
-      productId: 'lp-staking',
+      productId: 'farm',
       userAddress: '0xBe108Eb162a86586F4A833Df52123Ab314e9AF5C',
       protocolTokenAddress: '0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56',
       fromBlock: 20649377,
