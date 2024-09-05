@@ -32,10 +32,7 @@ export class MountainProtocolUsdmAdapter extends SimplePoolAdapter {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
   }
-  /**
-   * Update me.
-   * Add your protocol details
-   */
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
