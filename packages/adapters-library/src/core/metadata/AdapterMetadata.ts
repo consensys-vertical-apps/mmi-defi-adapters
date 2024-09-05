@@ -259,24 +259,6 @@ import StargatePoolAvalancheLpToken from '../../adapters/stargate/products/pool/
 
 import StargatePoolLineaLpToken from '../../adapters/stargate/products/pool/metadata/linea.lp-token.json'
 
-import StargateLpStakingEthereumFarmToken from '../../adapters/stargate/products/lp-staking/metadata/ethereum.farm-token.json'
-
-import StargateLpStakingOptimismFarmToken from '../../adapters/stargate/products/lp-staking/metadata/optimism.farm-token.json'
-
-import StargateLpStakingBscFarmToken from '../../adapters/stargate/products/lp-staking/metadata/bsc.farm-token.json'
-
-import StargateLpStakingPolygonFarmToken from '../../adapters/stargate/products/lp-staking/metadata/polygon.farm-token.json'
-
-import StargateLpStakingFantomFarmToken from '../../adapters/stargate/products/lp-staking/metadata/fantom.farm-token.json'
-
-import StargateLpStakingBaseFarmToken from '../../adapters/stargate/products/lp-staking/metadata/base.farm-token.json'
-
-import StargateLpStakingArbitrumFarmToken from '../../adapters/stargate/products/lp-staking/metadata/arbitrum.farm-token.json'
-
-import StargateLpStakingAvalancheFarmToken from '../../adapters/stargate/products/lp-staking/metadata/avalanche.farm-token.json'
-
-import StargateLpStakingLineaFarmToken from '../../adapters/stargate/products/lp-staking/metadata/linea.farm-token.json'
-
 import StargateV2LpStakingEthereumProtocolToken from '../../adapters/stargate-v2/products/lp-staking/metadata/ethereum.protocol-token.json'
 
 import StargateV2PoolEthereumLpToken from '../../adapters/stargate-v2/products/pool/metadata/ethereum.lp-token.json'
@@ -308,6 +290,24 @@ import StargateV2PoolAvalancheLpToken from '../../adapters/stargate-v2/products/
 import StargateV2LpStakingLineaProtocolToken from '../../adapters/stargate-v2/products/lp-staking/metadata/linea.protocol-token.json'
 
 import StargateV2PoolLineaLpToken from '../../adapters/stargate-v2/products/pool/metadata/linea.lp-token.json'
+
+import StargateFarmEthereumFarmToken from '../../adapters/stargate/products/farm/metadata/ethereum.farm-token.json'
+
+import StargateFarmOptimismFarmToken from '../../adapters/stargate/products/farm/metadata/optimism.farm-token.json'
+
+import StargateFarmBscFarmToken from '../../adapters/stargate/products/farm/metadata/bsc.farm-token.json'
+
+import StargateFarmPolygonFarmToken from '../../adapters/stargate/products/farm/metadata/polygon.farm-token.json'
+
+import StargateFarmFantomFarmToken from '../../adapters/stargate/products/farm/metadata/fantom.farm-token.json'
+
+import StargateFarmBaseFarmToken from '../../adapters/stargate/products/farm/metadata/base.farm-token.json'
+
+import StargateFarmArbitrumFarmToken from '../../adapters/stargate/products/farm/metadata/arbitrum.farm-token.json'
+
+import StargateFarmAvalancheFarmToken from '../../adapters/stargate/products/farm/metadata/avalanche.farm-token.json'
+
+import StargateFarmLineaFarmToken from '../../adapters/stargate/products/farm/metadata/linea.farm-token.json'
 
 export const MetadataFiles = new Map<string, Json>([
   [
@@ -1771,83 +1771,83 @@ export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
       protocolId: Protocol.Stargate,
-      productId: 'lp-staking',
+      productId: 'farm',
       chainId: Chain.Arbitrum,
       fileKey: 'farm-token',
     }),
-    StargateLpStakingArbitrumFarmToken,
+    StargateFarmArbitrumFarmToken,
   ],
   [
     metadataKey({
       protocolId: Protocol.Stargate,
-      productId: 'lp-staking',
+      productId: 'farm',
       chainId: Chain.Avalanche,
       fileKey: 'farm-token',
     }),
-    StargateLpStakingAvalancheFarmToken,
+    StargateFarmAvalancheFarmToken,
   ],
   [
     metadataKey({
       protocolId: Protocol.Stargate,
-      productId: 'lp-staking',
+      productId: 'farm',
       chainId: Chain.Base,
       fileKey: 'farm-token',
     }),
-    StargateLpStakingBaseFarmToken,
+    StargateFarmBaseFarmToken,
   ],
   [
     metadataKey({
       protocolId: Protocol.Stargate,
-      productId: 'lp-staking',
+      productId: 'farm',
       chainId: Chain.Bsc,
       fileKey: 'farm-token',
     }),
-    StargateLpStakingBscFarmToken,
+    StargateFarmBscFarmToken,
   ],
   [
     metadataKey({
       protocolId: Protocol.Stargate,
-      productId: 'lp-staking',
+      productId: 'farm',
       chainId: Chain.Ethereum,
       fileKey: 'farm-token',
     }),
-    StargateLpStakingEthereumFarmToken,
+    StargateFarmEthereumFarmToken,
   ],
   [
     metadataKey({
       protocolId: Protocol.Stargate,
-      productId: 'lp-staking',
+      productId: 'farm',
       chainId: Chain.Fantom,
       fileKey: 'farm-token',
     }),
-    StargateLpStakingFantomFarmToken,
+    StargateFarmFantomFarmToken,
   ],
   [
     metadataKey({
       protocolId: Protocol.Stargate,
-      productId: 'lp-staking',
+      productId: 'farm',
       chainId: Chain.Linea,
       fileKey: 'farm-token',
     }),
-    StargateLpStakingLineaFarmToken,
+    StargateFarmLineaFarmToken,
   ],
   [
     metadataKey({
       protocolId: Protocol.Stargate,
-      productId: 'lp-staking',
+      productId: 'farm',
       chainId: Chain.Optimism,
       fileKey: 'farm-token',
     }),
-    StargateLpStakingOptimismFarmToken,
+    StargateFarmOptimismFarmToken,
   ],
   [
     metadataKey({
       protocolId: Protocol.Stargate,
-      productId: 'lp-staking',
+      productId: 'farm',
       chainId: Chain.Polygon,
       fileKey: 'farm-token',
     }),
-    StargateLpStakingPolygonFarmToken,
+    StargateFarmPolygonFarmToken,
   ],
   [
     metadataKey({

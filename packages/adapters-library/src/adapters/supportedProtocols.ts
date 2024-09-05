@@ -101,7 +101,7 @@ import { SolvSolvBtcAdapter } from './solv/products/solv-btc/solvSolvBtcAdapter'
 import { MorphoBlueVaultAdapter } from './morpho-blue/products/vault/morphoBlueVaultAdapter'
 import { SolvYieldMarketAdapter } from './solv/products/yield-market/solvYieldMarketAdapter'
 
-import { StargateLpStakingAdapter } from './stargate/products/lp-staking/stargateLpStakingAdapter'
+import { StargateFarmAdapter } from './stargate/products/farm/stargateFarmAdapter'
 
 import { StargateV2LpStakingAdapter } from './stargate-v2/products/lp-staking/stargateV2LpStakingAdapter'
 
@@ -445,16 +445,16 @@ export const supportedProtocols: Record<
     [Chain.Ethereum]: [
       StargatePoolAdapter,
       StargateVotingEscrowAdapter,
-      StargateLpStakingAdapter,
+      StargateFarmAdapter,
     ],
-    [Chain.Optimism]: [StargatePoolAdapter, StargateLpStakingAdapter],
-    [Chain.Bsc]: [StargatePoolAdapter, StargateLpStakingAdapter],
-    [Chain.Polygon]: [StargatePoolAdapter, StargateLpStakingAdapter],
-    [Chain.Fantom]: [StargatePoolAdapter, StargateLpStakingAdapter],
-    [Chain.Base]: [StargatePoolAdapter, StargateLpStakingAdapter],
-    [Chain.Arbitrum]: [StargatePoolAdapter, StargateLpStakingAdapter],
-    [Chain.Avalanche]: [StargatePoolAdapter, StargateLpStakingAdapter],
-    [Chain.Linea]: [StargatePoolAdapter, StargateLpStakingAdapter],
+    [Chain.Optimism]: [StargatePoolAdapter, StargateFarmAdapter],
+    [Chain.Bsc]: [StargatePoolAdapter, StargateFarmAdapter],
+    [Chain.Polygon]: [StargatePoolAdapter, StargateFarmAdapter],
+    [Chain.Fantom]: [StargatePoolAdapter, StargateFarmAdapter],
+    [Chain.Base]: [StargatePoolAdapter, StargateFarmAdapter],
+    [Chain.Arbitrum]: [StargatePoolAdapter, StargateFarmAdapter],
+    [Chain.Avalanche]: [StargatePoolAdapter, StargateFarmAdapter],
+    [Chain.Linea]: [StargatePoolAdapter, StargateFarmAdapter],
   },
 
   [Protocol.StargateV2]: {
