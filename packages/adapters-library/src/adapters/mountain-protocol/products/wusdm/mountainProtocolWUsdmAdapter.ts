@@ -16,13 +16,20 @@ import {
 import { Wusdm__factory } from '../../contracts'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { Protocol } from '../../../protocols'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 
-export class MountainProtocolWUsdmAdapter extends SimplePoolAdapter {
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+}
+
+const PROTOCOL_TOKEN_ADDRESS = '0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812'
+export class MountainProtocolWUsdmAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'wusdm'
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
+    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -37,28 +44,22 @@ export class MountainProtocolWUsdmAdapter extends SimplePoolAdapter {
       productId: this.productId,
     }
   }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return [await this.fetchProtocolTokenMetadata()]
-  }
-
-  // TODO Temporary change to stop on-chain requests on init
-  protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
-    return {
-      address: '0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812',
-      name: 'Wrapped Mountain Protocol USD',
-      symbol: 'wUSDM',
-      decimals: 18,
-    }
-  }
-
-  protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
+  @CacheToFile({ fileKey: 'protocol-token' })
+  async getProtocolTokens() {
     return [
       {
-        address: '0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C',
-        name: 'Mountain Protocol USD',
-        symbol: 'USDM',
+        address: PROTOCOL_TOKEN_ADDRESS,
+        name: 'Wrapped Mountain Protocol USD',
+        symbol: 'wUSDM',
         decimals: 18,
+        underlyingTokens: [
+          {
+            address: '0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C',
+            name: 'Mountain Protocol USD',
+            symbol: 'USDM',
+            decimals: 18,
+          },
+        ],
       },
     ]
   }
@@ -71,7 +72,9 @@ export class MountainProtocolWUsdmAdapter extends SimplePoolAdapter {
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      PROTOCOL_TOKEN_ADDRESS,
+    )
 
     const wUSDMContract = Wusdm__factory.connect(
       protocolTokenBalance.address,
@@ -98,7 +101,9 @@ export class MountainProtocolWUsdmAdapter extends SimplePoolAdapter {
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
   ): Promise<UnwrappedTokenExchangeRate[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      PROTOCOL_TOKEN_ADDRESS,
+    )
 
     const wUSDMContract = Wusdm__factory.connect(
       protocolTokenMetadata.address,

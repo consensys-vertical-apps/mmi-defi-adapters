@@ -13,6 +13,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 // import {
 //   WriteActionInputSchemas,
 //   WriteActions,
@@ -25,12 +26,18 @@ import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 //   CurveStableSwapNg__factory,
 // } from '../../contracts'
 
-export class MountainProtocolUsdmAdapter extends SimplePoolAdapter {
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+}
+
+const PROTOCOL_TOKEN_ADDRESS = '0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C'
+export class MountainProtocolUsdmAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'usdm'
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
+    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -46,17 +53,24 @@ export class MountainProtocolUsdmAdapter extends SimplePoolAdapter {
     }
   }
 
-  async getProtocolTokens(): Promise<ProtocolToken<Erc20Metadata>[]> {
-    return [await this.fetchProtocolTokenMetadata()]
-  }
-
-  protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
-    return {
-      address: '0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C',
-      name: 'Mountain Protocol USD',
-      symbol: 'USDM',
-      decimals: 18,
-    }
+  @CacheToFile({ fileKey: 'protocol-token' })
+  async getProtocolTokens() {
+    return [
+      {
+        address: PROTOCOL_TOKEN_ADDRESS,
+        name: 'Mountain Protocol USD',
+        symbol: 'USDM',
+        decimals: 18,
+        underlyingTokens: [
+          {
+            address: this.getUSDCAddress(),
+            symbol: 'USDC',
+            name: 'USD Coin',
+            decimals: 18,
+          },
+        ],
+      },
+    ]
   }
 
   private getUSDCAddress(): string {
@@ -76,17 +90,6 @@ export class MountainProtocolUsdmAdapter extends SimplePoolAdapter {
     }
   }
 
-  protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
-    return [
-      {
-        address: this.getUSDCAddress(),
-        symbol: 'USDC',
-        name: 'USD Coin',
-        decimals: 18,
-      },
-    ]
-  }
-
   protected async getUnderlyingTokenBalances({
     protocolTokenBalance,
   }: {
@@ -94,7 +97,9 @@ export class MountainProtocolUsdmAdapter extends SimplePoolAdapter {
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      PROTOCOL_TOKEN_ADDRESS,
+    )
 
     const underlyingTokenBalance = {
       ...underlyingToken!,
@@ -108,7 +113,9 @@ export class MountainProtocolUsdmAdapter extends SimplePoolAdapter {
   protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
   ): Promise<UnwrappedTokenExchangeRate[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      PROTOCOL_TOKEN_ADDRESS,
+    )
 
     // Always pegged one to one to underlying
     const pricePerShareRaw = BigInt(10 ** protocolTokenMetadata.decimals)
