@@ -1,10 +1,10 @@
-import words from 'lodash/words'
-import lodashToString from 'lodash/toString'
 import camelCase from 'lodash/camelCase'
 import lowerCase from 'lodash/lowerCase'
 import lowerFirst from 'lodash/lowerFirst'
+import lodashToString from 'lodash/toString'
 import upperCase from 'lodash/upperCase'
 import upperFirst from 'lodash/upperFirst'
+import words from 'lodash/words'
 
 function pascalCase(string?: string) {
   return upperFirst(camelCase(string))

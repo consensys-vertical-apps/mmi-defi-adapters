@@ -228,9 +228,8 @@ export class StargateFarmAdapter implements IProtocolAdapter {
     protocolTokenAddress,
   }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
     const { lpStakingAddress, lpStakingType } = staticChainData[this.chainId]!
-    const { poolIndex, rewardToken } = await this.getProtocolTokenByAddress(
-      protocolTokenAddress,
-    )
+    const { poolIndex, rewardToken } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const rewardFunctionInput = [
       poolIndex,
@@ -280,9 +279,8 @@ export class StargateFarmAdapter implements IProtocolAdapter {
   }: GetEventsInput & {
     filterType: 'deposit' | 'withdrawal'
   }): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.getProtocolTokenByAddress(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const lpStakingContract =
       protocolToken.lpStakingType === 'LpStaking'
@@ -351,9 +349,8 @@ export class StargateFarmAdapter implements IProtocolAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.getProtocolTokenByAddress(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const lpStakingContract =
       protocolToken.lpStakingType === 'LpStaking'

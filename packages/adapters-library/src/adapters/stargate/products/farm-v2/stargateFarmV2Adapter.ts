@@ -240,9 +240,8 @@ export class StargateFarmV2Adapter implements IProtocolAdapter {
   }): Promise<MovementsByBlock[]> {
     const { stargateStakingAddress } = staticChainDataV2[this.chainId]!
 
-    const protocolToken = await this.getProtocolTokenByAddress(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const lpStakingContract = StargateStaking__factory.connect(
       stargateStakingAddress,
