@@ -134,6 +134,3 @@ dist
 # 
 *.tsbuildinfo
 
-
-# Ignore SQLite database files
-*.db
