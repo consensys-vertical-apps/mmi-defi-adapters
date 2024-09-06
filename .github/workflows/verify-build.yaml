@@ -70,7 +70,7 @@ jobs:
 
       - id: set-matrix
         run: |
-          MATRIX=$(npm run -s support | sed -n '/^{/,$p' | jq -r 'keys | @json')
+          MATRIX='["aave-v2","aave-v3","angle-protocol","beefy","carbon-defi","chimp-exchange","compound-v2","convex","curve","deri","ethena","flux","gmx","iziswap","lido","lynex","maker","mendi-finance","morpho-aave-v2","morpho-aave-v3","morpho-blue","morpho-compound-v2","pancakeswap-v2","pendle","prices-v2","quickswap-v2","renzo","rocket-pool","solv","sonne","spark-v1","stakewise","stargate","sushiswap-v2","swell","syncswap","uniswap-v2","uniswap-v3","xfai"]'
           echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
 
   integration-tests:
