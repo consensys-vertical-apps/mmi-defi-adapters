@@ -2,10 +2,12 @@ import Database from 'better-sqlite3'
 import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
 import { Chain, ChainName } from '../constants/chains'
 import { logger } from '../utils/logger'
+import { promises as fs } from 'node:fs'
 
 import { Protocol } from '../../adapters/protocols'
 
 export function CacheToDb() {
+  console.log('getPoolsFromDb')
   return function actualDecorator(
     // biome-ignore lint/suspicious/noExplicitAny: Decorator code
     originalMethod: any,
@@ -15,6 +17,8 @@ export function CacheToDb() {
       this: IProtocolAdapter,
       ...args: unknown[]
     ) {
+      console.log('getPoolsFromDb')
+
       const writeToDb = args[0] as boolean
       if (writeToDb) {
         logger.info(
@@ -38,13 +42,11 @@ export function CacheToDb() {
         } as any
       }
 
-      const metadata = getPoolsFromDb({
+      const metadata = await getPoolsFromDb({
         protocolId: this.protocolId,
         productId: this.productId,
         chainId: this.chainId,
       })
-
-      console.log(metadata)
 
       if (!metadata) {
         logger.error(
@@ -66,7 +68,7 @@ export function CacheToDb() {
   }
 }
 
-function getPoolsFromDb({
+async function getPoolsFromDb({
   protocolId,
   productId,
   chainId,
@@ -74,7 +76,18 @@ function getPoolsFromDb({
   protocolId: Protocol
   productId: string
   chainId: Chain
-}): ProtocolToken[] {
+}): Promise<ProtocolToken[]> {
+  console.log('getPoolsFromDb')
+  const dbPath = `./${ChainName[chainId]}.db`
+
+  try {
+    await fs.access(dbPath)
+    logger.info(`Database file already exists: ${dbPath}`)
+  } catch {
+    logger.info(`Database file does not exist: ${dbPath}`)
+    throw `Database file does not exist: ${dbPath}`
+  }
+
   const db = new Database(`./${ChainName[chainId]}.db`)
 
   const query = `

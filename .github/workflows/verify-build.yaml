@@ -70,7 +70,7 @@ jobs:
 
       - id: set-matrix
         run: |
-          MATRIX=$(npm run -s support | jq -r 'keys | @json')
+          MATRIX=$(npm run -s support | sed -n '/^{/,$p' | jq -r 'keys | @json')
           echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
 
   integration-tests:
