@@ -1,11 +1,7 @@
-import sqlite3 from 'sqlite3'
-import { open } from 'sqlite'
-import { Chain, ChainName } from '../constants/chains'
-import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
-import { Json } from '../../types/json'
-import { MetadataFiles, metadataKey } from '../metadata/AdapterMetadata'
-import { logger } from '../utils/logger'
 import Database from 'better-sqlite3'
+import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
+import { Chain, ChainName } from '../constants/chains'
+import { logger } from '../utils/logger'
 
 import { Protocol } from '../../adapters/protocols'
 
@@ -167,6 +163,7 @@ function getPoolsFromDb({
         ? JSON.parse(row.reward_additional_data)
         : {}
 
+      //@ts-ignore
       pool.rewardTokens!.push({
         address: row.reward_token_address,
         name: row.reward_token_name,
@@ -181,6 +178,7 @@ function getPoolsFromDb({
         ? JSON.parse(row.extra_reward_additional_data)
         : {}
 
+      //@ts-ignore
       pool.extraRewardTokens!.push({
         address: row.extra_reward_token_address,
         name: row.extra_reward_token_name,
