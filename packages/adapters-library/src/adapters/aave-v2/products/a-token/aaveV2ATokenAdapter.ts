@@ -44,13 +44,7 @@ export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
 
   @CacheToDb()
   async getProtocolTokens() {
-    const tokens = await super.getProtocolTokens()
-
-    if (this.chainId === Chain.Ethereum) {
-      console.log('tokens', tokens, this.chainId)
-    }
-
-    return tokens
+    return super.getProtocolTokens()
   }
 
   protected getReserveTokenAddress(

@@ -84,7 +84,6 @@ export function buildMetadataDb(
             ) {
               continue
             }
-            console.log(adapter.getProtocolDetails())
 
             const metadataDetails = (await adapter
               .getProtocolTokens(true)
