@@ -1,5 +1,5 @@
 import { promises as fs } from 'node:fs'
-import path from 'node:path'
+import path, { resolve } from 'node:path'
 import { Chain, ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
@@ -57,7 +57,9 @@ import { testCases as solvTestCases } from './solv/tests/testCases'
 
 const TEST_TIMEOUT = 300000
 
-const defiProvider = new DefiProvider({ useMulticallInterceptor: false })
+const defiProvider = new DefiProvider({
+  useMulticallInterceptor: false,
+})
 const defiProviderWithMulticall = new DefiProvider({
   useMulticallInterceptor: true,
 })
