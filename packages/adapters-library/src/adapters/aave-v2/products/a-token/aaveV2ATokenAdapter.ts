@@ -1,3 +1,4 @@
+import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { logger } from '../../../../core/utils/logger'
@@ -43,7 +44,13 @@ export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
 
   @CacheToDb()
   async getProtocolTokens() {
-    return super.getProtocolTokens()
+    const tokens = await super.getProtocolTokens()
+
+    if (this.chainId === Chain.Ethereum) {
+      console.log('tokens', tokens, this.chainId)
+    }
+
+    return tokens
   }
 
   protected getReserveTokenAddress(

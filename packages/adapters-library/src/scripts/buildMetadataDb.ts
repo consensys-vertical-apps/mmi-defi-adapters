@@ -48,7 +48,7 @@ export function buildMetadataDb(
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterChainIds = multiChainFilter(chains)
 
-      createDatabases()
+      await createDatabases()
 
       for (const [protocolIdKey, supportedChains] of Object.entries(
         supportedProtocols,
@@ -134,7 +134,7 @@ export function buildMetadataDb(
               return
             }
 
-            writeProtocolTokensToDb({
+            await writeProtocolTokensToDb({
               ...adapterDetails,
               metadata,
             })
@@ -144,7 +144,7 @@ export function buildMetadataDb(
     })
 }
 
-function writeProtocolTokensToDb({
+async function writeProtocolTokensToDb({
   protocolId,
   productId,
   chainId,
@@ -156,7 +156,17 @@ function writeProtocolTokensToDb({
   metadata: ProtocolToken[] // Array of ProtocolToken objects
 }) {
   try {
-    const db = new Database(`./${ChainName[chainId]}.db`)
+    const dbPath = path.resolve(`./${ChainName[chainId]}.db`)
+
+    try {
+      await fs.access(dbPath)
+      logger.info(`Database file already exists: ${dbPath}`)
+    } catch {
+      logger.info(`Database file does not exist: ${dbPath}`)
+      throw `Database file does not exist: ${dbPath}`
+    }
+
+    const db = new Database(dbPath)
 
     // Step 1: Ensure adapter exists or create it
     const insertOrIgnoreAdapterQuery = `
@@ -374,7 +384,7 @@ const createTableQueries = {
 
 async function createDatabase(name: string) {
   try {
-    const dbPath = `./${name}.db`
+    const dbPath = path.resolve(`./${name}.db`)
 
     try {
       await fs.access(dbPath)

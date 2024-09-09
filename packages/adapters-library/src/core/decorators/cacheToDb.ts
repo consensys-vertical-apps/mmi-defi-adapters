@@ -1,8 +1,9 @@
+import { promises as fs } from 'node:fs'
+import path from 'node:path'
 import Database from 'better-sqlite3'
 import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
 import { Chain, ChainName } from '../constants/chains'
 import { logger } from '../utils/logger'
-import { promises as fs } from 'node:fs'
 
 import { Protocol } from '../../adapters/protocols'
 
@@ -77,8 +78,8 @@ async function getPoolsFromDb({
   productId: string
   chainId: Chain
 }): Promise<ProtocolToken[]> {
-  console.log('getPoolsFromDb')
-  const dbPath = `./${ChainName[chainId]}.db`
+  const name = ChainName[chainId]
+  const dbPath = path.join(__dirname, '../../../../..', `${name}.db`)
 
   try {
     await fs.access(dbPath)
@@ -88,7 +89,7 @@ async function getPoolsFromDb({
     throw `Database file does not exist: ${dbPath}`
   }
 
-  const db = new Database(`./${ChainName[chainId]}.db`)
+  const db = new Database(dbPath)
 
   const query = `
     SELECT 
