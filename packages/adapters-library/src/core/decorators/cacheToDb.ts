@@ -8,7 +8,6 @@ import { logger } from '../utils/logger'
 import { Protocol } from '../../adapters/protocols'
 
 export function CacheToDb() {
-  console.log('getPoolsFromDb')
   return function actualDecorator(
     // biome-ignore lint/suspicious/noExplicitAny: Decorator code
     originalMethod: any,
@@ -18,8 +17,6 @@ export function CacheToDb() {
       this: IProtocolAdapter,
       ...args: unknown[]
     ) {
-      console.log('getPoolsFromDb')
-
       const writeToDb = args[0] as boolean
       if (writeToDb) {
         logger.info(
