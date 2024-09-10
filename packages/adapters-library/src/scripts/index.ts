@@ -4,6 +4,7 @@ import { Chain } from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
 import { blockAverage } from './blockAverage'
 import { buildMetadata } from './buildMetadata'
+import { buildMetadataDb } from './buildMetadataDb'
 import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
 import { copyAdapter } from './copyAdapter'
@@ -31,6 +32,8 @@ blockAverage(program, chainProviders)
 buildContractTypes(program)
 
 buildMetadata(program, chainProviders, adaptersController)
+
+buildMetadataDb(program, chainProviders, adaptersController)
 
 buildSnapshots(program)
 
