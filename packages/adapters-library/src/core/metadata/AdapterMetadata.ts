@@ -237,6 +237,27 @@ import StakeWiseOsEthEthereumProtocolToken from '../../adapters/stakewise/produc
 import SwellSwEthEthereumProtocolToken from '../../adapters/swell/products/sw-eth/metadata/ethereum.protocol-token.json'
 
 import LidoWstEthEthereumProtocolToken from '../../adapters/lido/products/wst-eth/metadata/ethereum.protocol-token.json'
+
+import MountainProtocolUSDMEthereumProtocolToken from '../../adapters/mountain-protocol/products/usdm/metadata/ethereum.protocol-token.json'
+
+import MountainProtocolUSDMArbitrumProtocolToken from '../../adapters/mountain-protocol/products/usdm/metadata/arbitrum.protocol-token.json'
+
+import MountainProtocolUSDMPolygonProtocolToken from '../../adapters/mountain-protocol/products/usdm/metadata/polygon.protocol-token.json'
+
+import MountainProtocolUSDMBaseProtocolToken from '../../adapters/mountain-protocol/products/usdm/metadata/base.protocol-token.json'
+
+import MountainProtocolUSDMOptimismProtocolToken from '../../adapters/mountain-protocol/products/usdm/metadata/optimism.protocol-token.json'
+
+import MountainProtocolWUSDMEthereumProtocolToken from '../../adapters/mountain-protocol/products/wusdm/metadata/ethereum.protocol-token.json'
+
+import MountainProtocolWUSDMBaseProtocolToken from '../../adapters/mountain-protocol/products/wusdm/metadata/base.protocol-token.json'
+
+import MountainProtocolWUSDMArbitrumProtocolToken from '../../adapters/mountain-protocol/products/wusdm/metadata/arbitrum.protocol-token.json'
+
+import MountainProtocolWUSDMPolygonProtocolToken from '../../adapters/mountain-protocol/products/wusdm/metadata/polygon.protocol-token.json'
+
+import MountainProtocolWUSDMOptimismProtocolToken from '../../adapters/mountain-protocol/products/wusdm/metadata/optimism.protocol-token.json'
+
 import MorphoBlueVaultEthereumProtocolToken from '../../adapters/morpho-blue/products/vault/metadata/ethereum.protocol-token.json'
 
 import MorphoBlueMarketSupplyBaseMarketSupply from '../../adapters/morpho-blue/products/market-supply/metadata/base.market-supply.json'
@@ -1352,6 +1373,96 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'optimizer-supply',
     }),
     MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MountainProtocol,
+      productId: 'usdm',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    MountainProtocolUSDMEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MountainProtocol,
+      productId: 'usdm',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    MountainProtocolUSDMPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MountainProtocol,
+      productId: 'usdm',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    MountainProtocolUSDMArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MountainProtocol,
+      productId: 'usdm',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    MountainProtocolUSDMOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MountainProtocol,
+      productId: 'usdm',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    MountainProtocolUSDMBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MountainProtocol,
+      productId: 'wusdm',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    MountainProtocolWUSDMEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MountainProtocol,
+      productId: 'wusdm',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    MountainProtocolWUSDMPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MountainProtocol,
+      productId: 'wusdm',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    MountainProtocolWUSDMArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MountainProtocol,
+      productId: 'wusdm',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    MountainProtocolWUSDMOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MountainProtocol,
+      productId: 'wusdm',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    MountainProtocolWUSDMBaseProtocolToken,
   ],
   [
     metadataKey({

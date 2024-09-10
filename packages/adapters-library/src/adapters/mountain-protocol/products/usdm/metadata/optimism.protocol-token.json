@@ -1,0 +1,16 @@
+[
+  {
+    "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
+    "name": "Mountain Protocol USD",
+    "symbol": "USDM",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "Token USDC",
+        "decimals": 6
+      }
+    ]
+  }
+]

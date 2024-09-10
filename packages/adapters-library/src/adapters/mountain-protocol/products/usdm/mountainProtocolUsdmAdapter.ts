@@ -66,7 +66,7 @@ export class MountainProtocolUsdmAdapter extends SimplePoolAdapter<AdditionalMet
             address: this.getUSDCAddress(),
             symbol: 'USDC',
             name: 'USD Coin',
-            decimals: 18,
+            decimals: 6,
           },
         ],
       },
@@ -103,7 +103,7 @@ export class MountainProtocolUsdmAdapter extends SimplePoolAdapter<AdditionalMet
 
     const underlyingTokenBalance = {
       ...underlyingToken!,
-      balanceRaw: protocolTokenBalance.balanceRaw,
+      balanceRaw: BigInt(1 ** 6),
       type: TokenType.Underlying,
     }
 
@@ -117,8 +117,10 @@ export class MountainProtocolUsdmAdapter extends SimplePoolAdapter<AdditionalMet
       PROTOCOL_TOKEN_ADDRESS,
     )
 
-    // Always pegged one to one to underlying
-    const pricePerShareRaw = BigInt(10 ** protocolTokenMetadata.decimals)
+    // Not really clear how this works, but it seems that using USDC shares makes it work
+    // Basically if we were to set this to BigInt(10 ** 18) as any other ERC20
+    // The balance would add 12 extra 0's
+    const pricePerShareRaw = BigInt(10 ** underlyingToken!.decimals)
 
     return [
       {
