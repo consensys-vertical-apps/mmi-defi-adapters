@@ -4,11 +4,11 @@ import {
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
-import { AaveBasePoolAdapter } from '../common/aaveBasePoolAdapter'
+import { ZeroLendBasePoolAdapter } from '../common/zerolendBasePoolAdapter'
 import { ProtocolDataProvider } from '../../contracts'
 
-export class ZeroLendStableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
-  productId = 'stable-debt-token'
+export class ZeroLendVariableDebtTokenPoolAdapter extends ZeroLendBasePoolAdapter {
+  productId = 'variable-debt-token'
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
@@ -19,8 +19,8 @@ export class ZeroLendStableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'ZeroLend StableDebtToken', // TODO change
-      description: 'ZeroLend defi adapter for stable interest-accruing token', // TODO change
+      name: 'ZeroLend VariableDebtToken', // TODO change
+      description: 'ZeroLend defi adapter for variable interest-accruing token', // TODO change
       siteUrl: 'https://app.zerolend.xyz/',
       iconUrl: 'https://app.zerolend.xyz/favicon.ico',
       positionType: PositionType.Borrow,
@@ -29,7 +29,7 @@ export class ZeroLendStableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'stable-debt-token-v3' })
+  @CacheToFile({ fileKey: 'variable-debt-token-v3' })
   async getProtocolTokens() {
     return super.getProtocolTokens()
   }
@@ -39,12 +39,12 @@ export class ZeroLendStableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
       ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
     >,
   ): string {
-    return reserveTokenAddresses.stableDebtTokenAddress
+    return reserveTokenAddresses.variableDebtTokenAddress
   }
 
   protected getReserveTokenRate(
     reserveData: Awaited<ReturnType<ProtocolDataProvider['getReserveData']>>,
   ): bigint {
-    return reserveData.stableBorrowRate
+    return reserveData.variableBorrowRate
   }
 }

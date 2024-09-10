@@ -104,9 +104,9 @@ import { SolvYieldMarketAdapter } from './solv/products/yield-market/solvYieldMa
 import {
   ZeroLendATokenPoolAdapter,
   WriteActionInputs as ZerolendATokenWriteActionInputs,
-} from './zerolend/products/a-token/aaveV3ATokenAdapter'
-import { ZeroLendStableDebtTokenPoolAdapter } from './zerolend/products/stable-debt-token/aaveV3StableDebtTokenAdapter'
-import { ZeroLendVariableDebtTokenPoolAdapter } from './zerolend/products/variable-debt-token/aaveV3VariableDebtTokenAdapter'
+} from './zerolend/products/a-token/zerolendATokenAdapter'
+import { ZeroLendStableDebtTokenPoolAdapter } from './zerolend/products/stable-debt-token/zerolendStableDebtTokenAdapter'
+import { ZeroLendVariableDebtTokenPoolAdapter } from './zerolend/products/variable-debt-token/zerolendVariableDebtTokenAdapter'
 
 
 export const supportedProtocols: Record<

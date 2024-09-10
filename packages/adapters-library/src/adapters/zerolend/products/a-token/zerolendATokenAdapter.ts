@@ -10,12 +10,12 @@ import {
   WriteActionInputSchemas,
   WriteActions,
 } from '../../../../types/writeActions'
-import { AaveBasePoolAdapter } from '../common/aaveBasePoolAdapter'
+import { ZeroLendBasePoolAdapter } from '../common/zerolendBasePoolAdapter'
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
 
-export class ZeroLendATokenPoolAdapter extends AaveBasePoolAdapter {
+export class ZeroLendATokenPoolAdapter extends ZeroLendBasePoolAdapter {
   productId = 'a-token'
 
   adapterSettings = {

@@ -46,7 +46,7 @@ const protocolDataProviderContractAddresses: Partial<
   },
 }
 
-export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
+export abstract class ZeroLendBasePoolAdapter implements IProtocolAdapter {
   chainId: Chain
   protocolId: Protocol
   abstract productId: string
