@@ -245,6 +245,18 @@ import MorphoBlueMarketBorrowBaseMarketBorrow from '../../adapters/morpho-blue/p
 
 import MorphoBlueVaultBaseProtocolToken from '../../adapters/morpho-blue/products/vault/metadata/base.protocol-token.json'
 
+import ZeroLendATokenEthereumATokenV3 from '../../adapters/zerolend/products/a-token/metadata/ethereum.a-token-v3.json'
+
+import ZeroLendStableDebtTokenEthereumStableDebtTokenV3 from '../../adapters/zerolend/products/stable-debt-token/metadata/ethereum.stable-debt-token-v3.json'
+
+import ZeroLendVariableDebtTokenEthereumVariableDebtTokenV3 from '../../adapters/zerolend/products/variable-debt-token/metadata/ethereum.variable-debt-token-v3.json'
+
+import ZeroLendATokenLineaATokenV3 from '../../adapters/zerolend/products/a-token/metadata/linea.a-token-v3.json'
+
+import ZeroLendStableDebtTokenLineaStableDebtTokenV3 from '../../adapters/zerolend/products/stable-debt-token/metadata/linea.stable-debt-token-v3.json'
+
+import ZeroLendVariableDebtTokenLineaVariableDebtTokenV3 from '../../adapters/zerolend/products/variable-debt-token/metadata/linea.variable-debt-token-v3.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -1865,6 +1877,60 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'lp-token',
     }),
     XfaiDexLineaLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.ZeroLend,
+      productId: 'a-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'a-token-v3',
+    }),
+    ZeroLendATokenEthereumATokenV3,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.ZeroLend,
+      productId: 'a-token',
+      chainId: Chain.Linea,
+      fileKey: 'a-token-v3',
+    }),
+    ZeroLendATokenLineaATokenV3,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.ZeroLend,
+      productId: 'stable-debt-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'stable-debt-token-v3',
+    }),
+    ZeroLendStableDebtTokenEthereumStableDebtTokenV3,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.ZeroLend,
+      productId: 'stable-debt-token',
+      chainId: Chain.Linea,
+      fileKey: 'stable-debt-token-v3',
+    }),
+    ZeroLendStableDebtTokenLineaStableDebtTokenV3,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.ZeroLend,
+      productId: 'variable-debt-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'variable-debt-token-v3',
+    }),
+    ZeroLendVariableDebtTokenEthereumVariableDebtTokenV3,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.ZeroLend,
+      productId: 'variable-debt-token',
+      chainId: Chain.Linea,
+      fileKey: 'variable-debt-token-v3',
+    }),
+    ZeroLendVariableDebtTokenLineaVariableDebtTokenV3,
   ],
 ])
 

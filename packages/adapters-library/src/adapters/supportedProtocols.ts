@@ -101,6 +101,14 @@ import { SolvSolvBtcAdapter } from './solv/products/solv-btc/solvSolvBtcAdapter'
 import { MorphoBlueVaultAdapter } from './morpho-blue/products/vault/morphoBlueVaultAdapter'
 import { SolvYieldMarketAdapter } from './solv/products/yield-market/solvYieldMarketAdapter'
 
+import {
+  ZeroLendATokenPoolAdapter,
+  WriteActionInputs as ZerolendATokenWriteActionInputs,
+} from './zerolend/products/a-token/aaveV3ATokenAdapter'
+import { ZeroLendStableDebtTokenPoolAdapter } from './zerolend/products/stable-debt-token/aaveV3StableDebtTokenAdapter'
+import { ZeroLendVariableDebtTokenPoolAdapter } from './zerolend/products/variable-debt-token/aaveV3VariableDebtTokenAdapter'
+
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -480,6 +488,19 @@ export const supportedProtocols: Record<
   [Protocol.Xfai]: {
     [Chain.Linea]: [XfaiDexAdapter],
   },
+
+  [Protocol.ZeroLend]: {
+    [Chain.Ethereum]: [
+      ZeroLendATokenPoolAdapter,
+      ZeroLendStableDebtTokenPoolAdapter,
+      ZeroLendVariableDebtTokenPoolAdapter
+    ],
+    [Chain.Linea]: [
+      ZeroLendATokenPoolAdapter,
+      ZeroLendStableDebtTokenPoolAdapter,
+      ZeroLendVariableDebtTokenPoolAdapter
+    ],
+  },
 }
 
 export const WriteActionInputs = {
@@ -489,6 +510,7 @@ export const WriteActionInputs = {
   SparkV1SpTokenWriteActionInputs,
   MendiFinanceSupplyMarketWriteActionInputs,
   MendiFinanceBorrowMarketWriteActionInputs,
+  ZerolendATokenWriteActionInputs
 }
 
 export const GetTransactionParamsSchema = z.union([
@@ -630,6 +652,36 @@ export const GetTransactionParamsSchema = z.union([
       action: z.literal('repay'),
       inputs:
         WriteActionInputs['MendiFinanceBorrowMarketWriteActionInputs']['repay'],
+    }),
+  ]),
+  z.discriminatedUnion('action', [
+    z.object({
+      protocolId: z.literal(Protocol.ZeroLend),
+      productId: z.literal('a-token'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('deposit'),
+      inputs: WriteActionInputs['ZerolendATokenWriteActionInputs']['deposit'],
+    }),
+    z.object({
+      protocolId: z.literal(Protocol.ZeroLend),
+      productId: z.literal('a-token'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('withdraw'),
+      inputs: WriteActionInputs['ZerolendATokenWriteActionInputs']['withdraw'],
+    }),
+    z.object({
+      protocolId: z.literal(Protocol.ZeroLend),
+      productId: z.literal('a-token'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('borrow'),
+      inputs: WriteActionInputs['ZerolendATokenWriteActionInputs']['borrow'],
+    }),
+    z.object({
+      protocolId: z.literal(Protocol.ZeroLend),
+      productId: z.literal('a-token'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('repay'),
+      inputs: WriteActionInputs['ZerolendATokenWriteActionInputs']['repay'],
     }),
   ]),
 ])
