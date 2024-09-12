@@ -5,27 +5,27 @@ import AaveV2StableDebtTokenPolygonStableDebtTokenV2 from '../../adapters/aave2/
 import AaveV2VariableDebtTokenAvalancheVariableDebtTokenV2 from '../../adapters/aave2/products/variable-debt-token/metadata/avalanche.variable-debt-token-v2.json'
 import AaveV2VariableDebtTokenEthereumVariableDebtTokenV2 from '../../adapters/aave2/products/variable-debt-token/metadata/ethereum.variable-debt-token-v2.json'
 import AaveV2VariableDebtTokenPolygonVariableDebtTokenV2 from '../../adapters/aave2/products/variable-debt-token/metadata/polygon.variable-debt-token-v2.json'
-import AaveV3ATokenArbitrumATokenV3 from '../../adapters/aave-v3/products/a-token/metadata/arbitrum.a-token-v3.json'
-import AaveV3ATokenAvalancheATokenV3 from '../../adapters/aave-v3/products/a-token/metadata/avalanche.a-token-v3.json'
-import AaveV3ATokenBaseATokenV3 from '../../adapters/aave-v3/products/a-token/metadata/base.a-token-v3.json'
-import AaveV3ATokenEthereumATokenV3 from '../../adapters/aave-v3/products/a-token/metadata/ethereum.a-token-v3.json'
-import AaveV3ATokenFantomATokenV3 from '../../adapters/aave-v3/products/a-token/metadata/fantom.a-token-v3.json'
-import AaveV3ATokenOptimismATokenV3 from '../../adapters/aave-v3/products/a-token/metadata/optimism.a-token-v3.json'
-import AaveV3ATokenPolygonATokenV3 from '../../adapters/aave-v3/products/a-token/metadata/polygon.a-token-v3.json'
-import AaveV3StableDebtTokenArbitrumStableDebtTokenV3 from '../../adapters/aave-v3/products/stable-debt-token/metadata/arbitrum.stable-debt-token-v3.json'
-import AaveV3StableDebtTokenAvalancheStableDebtTokenV3 from '../../adapters/aave-v3/products/stable-debt-token/metadata/avalanche.stable-debt-token-v3.json'
-import AaveV3StableDebtTokenBaseStableDebtTokenV3 from '../../adapters/aave-v3/products/stable-debt-token/metadata/base.stable-debt-token-v3.json'
-import AaveV3StableDebtTokenEthereumStableDebtTokenV3 from '../../adapters/aave-v3/products/stable-debt-token/metadata/ethereum.stable-debt-token-v3.json'
-import AaveV3StableDebtTokenFantomStableDebtTokenV3 from '../../adapters/aave-v3/products/stable-debt-token/metadata/fantom.stable-debt-token-v3.json'
-import AaveV3StableDebtTokenOptimismStableDebtTokenV3 from '../../adapters/aave-v3/products/stable-debt-token/metadata/optimism.stable-debt-token-v3.json'
-import AaveV3StableDebtTokenPolygonStableDebtTokenV3 from '../../adapters/aave-v3/products/stable-debt-token/metadata/polygon.stable-debt-token-v3.json'
-import AaveV3VariableDebtTokenArbitrumVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/arbitrum.variable-debt-token-v3.json'
-import AaveV3VariableDebtTokenAvalancheVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/avalanche.variable-debt-token-v3.json'
-import AaveV3VariableDebtTokenBaseVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/base.variable-debt-token-v3.json'
-import AaveV3VariableDebtTokenEthereumVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/ethereum.variable-debt-token-v3.json'
-import AaveV3VariableDebtTokenFantomVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/fantom.variable-debt-token-v3.json'
-import AaveV3VariableDebtTokenOptimismVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/optimism.variable-debt-token-v3.json'
-import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/polygon.variable-debt-token-v3.json'
+import AaveV3ATokenArbitrumATokenV3 from '../../adapters/aave3/products/a-token/metadata/arbitrum.a-token-v3.json'
+import AaveV3ATokenAvalancheATokenV3 from '../../adapters/aave3/products/a-token/metadata/avalanche.a-token-v3.json'
+import AaveV3ATokenBaseATokenV3 from '../../adapters/aave3/products/a-token/metadata/base.a-token-v3.json'
+import AaveV3ATokenEthereumATokenV3 from '../../adapters/aave3/products/a-token/metadata/ethereum.a-token-v3.json'
+import AaveV3ATokenFantomATokenV3 from '../../adapters/aave3/products/a-token/metadata/fantom.a-token-v3.json'
+import AaveV3ATokenOptimismATokenV3 from '../../adapters/aave3/products/a-token/metadata/optimism.a-token-v3.json'
+import AaveV3ATokenPolygonATokenV3 from '../../adapters/aave3/products/a-token/metadata/polygon.a-token-v3.json'
+import AaveV3StableDebtTokenArbitrumStableDebtTokenV3 from '../../adapters/aave3/products/stable-debt-token/metadata/arbitrum.stable-debt-token-v3.json'
+import AaveV3StableDebtTokenAvalancheStableDebtTokenV3 from '../../adapters/aave3/products/stable-debt-token/metadata/avalanche.stable-debt-token-v3.json'
+import AaveV3StableDebtTokenBaseStableDebtTokenV3 from '../../adapters/aave3/products/stable-debt-token/metadata/base.stable-debt-token-v3.json'
+import AaveV3StableDebtTokenEthereumStableDebtTokenV3 from '../../adapters/aave3/products/stable-debt-token/metadata/ethereum.stable-debt-token-v3.json'
+import AaveV3StableDebtTokenFantomStableDebtTokenV3 from '../../adapters/aave3/products/stable-debt-token/metadata/fantom.stable-debt-token-v3.json'
+import AaveV3StableDebtTokenOptimismStableDebtTokenV3 from '../../adapters/aave3/products/stable-debt-token/metadata/optimism.stable-debt-token-v3.json'
+import AaveV3StableDebtTokenPolygonStableDebtTokenV3 from '../../adapters/aave3/products/stable-debt-token/metadata/polygon.stable-debt-token-v3.json'
+import AaveV3VariableDebtTokenArbitrumVariableDebtTokenV3 from '../../adapters/aave3/products/variable-debt-token/metadata/arbitrum.variable-debt-token-v3.json'
+import AaveV3VariableDebtTokenAvalancheVariableDebtTokenV3 from '../../adapters/aave3/products/variable-debt-token/metadata/avalanche.variable-debt-token-v3.json'
+import AaveV3VariableDebtTokenBaseVariableDebtTokenV3 from '../../adapters/aave3/products/variable-debt-token/metadata/base.variable-debt-token-v3.json'
+import AaveV3VariableDebtTokenEthereumVariableDebtTokenV3 from '../../adapters/aave3/products/variable-debt-token/metadata/ethereum.variable-debt-token-v3.json'
+import AaveV3VariableDebtTokenFantomVariableDebtTokenV3 from '../../adapters/aave3/products/variable-debt-token/metadata/fantom.variable-debt-token-v3.json'
+import AaveV3VariableDebtTokenOptimismVariableDebtTokenV3 from '../../adapters/aave3/products/variable-debt-token/metadata/optimism.variable-debt-token-v3.json'
+import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aave3/products/variable-debt-token/metadata/polygon.variable-debt-token-v3.json'
 import AngleProtocolSavingsArbitrumProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/arbitrum.protocol-tokens.json'
 import AngleProtocolSavingsAvalancheProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/avalanche.protocol-tokens.json'
 import AngleProtocolSavingsBaseProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/base.protocol-tokens.json'
@@ -71,22 +71,22 @@ import CurveStakingOptimismProtocolToken from '../../adapters/curve/products/sta
 import CurveStakingPolygonProtocolToken from '../../adapters/curve/products/staking/metadata/polygon.protocol-token.json'
 import CurveVotingEscrowEthereumProtocolToken from '../../adapters/curve/products/voting-escrow/metadata/ethereum.protocol-token.json'
 import EthenaEthenaEthereumProtocolToken from '../../adapters/ethena/products/ethena/metadata/ethereum.protocol-token.json'
-import FluxBorrowMarketEthereumProtocolToken from '../../adapters/flux/products/borrow-market/metadata/ethereum.protocol-token.json'
-import FluxSupplyMarketEthereumProtocolToken from '../../adapters/flux/products/supply-market/metadata/ethereum.protocol-token.json'
+import FluxBorrowMarketEthereumProtocolToken from '../../adapters/fluxdefi/products/borrow-market/metadata/ethereum.protocol-token.json'
+import FluxSupplyMarketEthereumProtocolToken from '../../adapters/fluxdefi/products/supply-market/metadata/ethereum.protocol-token.json'
 import GmxGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
 import GmxGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
 
 import LynexClassicLineaProtocolToken from '../../adapters/lynex/products/classic/metadata/linea.protocol-token.json'
 
-import MendiFinanceBorrowMarketLineaMendi from '../../adapters/mendi-finance/products/borrow-market/metadata/linea.mendi.json'
-import MendiFinanceSupplyMarketLineaMendi from '../../adapters/mendi-finance/products/supply-market/metadata/linea.mendi.json'
+import MendiFinanceBorrowMarketLineaMendi from '../../adapters/mendi/products/borrow-market/metadata/linea.mendi.json'
+import MendiFinanceSupplyMarketLineaMendi from '../../adapters/mendi/products/supply-market/metadata/linea.mendi.json'
 
 import MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import MorphoAaveV3OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v3/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoAaveV3OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v3/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
-import MorphoBlueMarketBorrowEthereumMarketBorrow from '../../adapters/morpho-blue/products/market-borrow/metadata/ethereum.market-borrow.json'
-import MorphoBlueMarketSupplyEthereumMarketSupply from '../../adapters/morpho-blue/products/market-supply/metadata/ethereum.market-supply.json'
+import MorphoBlueMarketBorrowEthereumMarketBorrow from '../../adapters/morphoblue/products/market-borrow/metadata/ethereum.market-borrow.json'
+import MorphoBlueMarketSupplyEthereumMarketSupply from '../../adapters/morphoblue/products/market-supply/metadata/ethereum.market-supply.json'
 import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import PancakeswapV2PoolArbitrumProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
@@ -96,7 +96,7 @@ import PancakeswapV2PoolEthereumProtocolToken from '../../adapters/pancakeswap-v
 import PancakeswapV2PoolLineaProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/linea.protocol-token.json'
 
 import { Protocol } from '../../adapters/protocols'
-import QuickswapV2PoolPolygonProtocolToken from '../../adapters/quickswap-v2/products/pool/metadata/polygon.protocol-token.json'
+import QuickswapV2PoolPolygonProtocolToken from '../../adapters/quickswap/products/pool/metadata/polygon.protocol-token.json'
 import SonneBorrowMarketBaseProtocolToken from '../../adapters/sonne/products/borrow-market/metadata/base.protocol-token.json'
 import SonneBorrowMarketOptimismProtocolToken from '../../adapters/sonne/products/borrow-market/metadata/optimism.protocol-token.json'
 import SonneSupplyMarketBaseProtocolToken from '../../adapters/sonne/products/supply-market/metadata/base.protocol-token.json'
@@ -104,60 +104,60 @@ import SonneSupplyMarketOptimismProtocolToken from '../../adapters/sonne/product
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
 import StargateVotingEscrowEthereumProtocolToken from '../../adapters/stargate/products/voting-escrow/metadata/ethereum.protocol-token.json'
-import SushiswapV2PoolArbitrumProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
-import SushiswapV2PoolAvalancheProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/avalanche.protocol-token.json'
-import SushiswapV2PoolBaseProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/base.protocol-token.json'
-import SushiswapV2PoolBscProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/bsc.protocol-token.json'
-import SushiswapV2PoolEthereumProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/ethereum.protocol-token.json'
-import SushiswapV2PoolFantomProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/fantom.protocol-token.json'
-import SushiswapV2PoolPolygonProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/polygon.protocol-token.json'
-import UniswapV2PoolArbitrumProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
-import UniswapV2PoolAvalancheProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/avalanche.protocol-token.json'
-import UniswapV2PoolBaseProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/base.protocol-token.json'
-import UniswapV2PoolBscProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/bsc.protocol-token.json'
-import UniswapV2PoolOptimismProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/optimism.protocol-token.json'
-import UniswapV2PoolPolygonProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/polygon.protocol-token.json'
+import SushiswapV2PoolArbitrumProtocolToken from '../../adapters/sushiswap/products/pool/metadata/arbitrum.protocol-token.json'
+import SushiswapV2PoolAvalancheProtocolToken from '../../adapters/sushiswap/products/pool/metadata/avalanche.protocol-token.json'
+import SushiswapV2PoolBaseProtocolToken from '../../adapters/sushiswap/products/pool/metadata/base.protocol-token.json'
+import SushiswapV2PoolBscProtocolToken from '../../adapters/sushiswap/products/pool/metadata/bsc.protocol-token.json'
+import SushiswapV2PoolEthereumProtocolToken from '../../adapters/sushiswap/products/pool/metadata/ethereum.protocol-token.json'
+import SushiswapV2PoolFantomProtocolToken from '../../adapters/sushiswap/products/pool/metadata/fantom.protocol-token.json'
+import SushiswapV2PoolPolygonProtocolToken from '../../adapters/sushiswap/products/pool/metadata/polygon.protocol-token.json'
+import UniswapV2PoolArbitrumProtocolToken from '../../adapters/uniswap/products/pool/metadata/arbitrum.protocol-token.json'
+import UniswapV2PoolAvalancheProtocolToken from '../../adapters/uniswap/products/pool/metadata/avalanche.protocol-token.json'
+import UniswapV2PoolBaseProtocolToken from '../../adapters/uniswap/products/pool/metadata/base.protocol-token.json'
+import UniswapV2PoolBscProtocolToken from '../../adapters/uniswap/products/pool/metadata/bsc.protocol-token.json'
+import UniswapV2PoolOptimismProtocolToken from '../../adapters/uniswap/products/pool/metadata/optimism.protocol-token.json'
+import UniswapV2PoolPolygonProtocolToken from '../../adapters/uniswap/products/pool/metadata/polygon.protocol-token.json'
 import XfaiDexLineaLpToken from '../../adapters/xfai/products/dex/metadata/linea.lp-token.json'
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
 
 import BeefyCowTokenAvalancheProtocolToken from '../../adapters/beefy/products/cow-token/metadata/avalanche.protocol-token.json'
 
-import SparkV1SpTokenEthereumSpTokenV1 from '../../adapters/spark-v1/products/sp-token/metadata/ethereum.sp-token-v1.json'
+import SparkV1SpTokenEthereumSpTokenV1 from '../../adapters/spark/products/sp-token/metadata/ethereum.sp-token-v1.json'
 
-import SparkV1VariableDebtTokenEthereumVariableDebtTokenV1 from '../../adapters/spark-v1/products/variable-debt-token/metadata/ethereum.variable-debt-token-v1.json'
+import SparkV1VariableDebtTokenEthereumVariableDebtTokenV1 from '../../adapters/spark/products/variable-debt-token/metadata/ethereum.variable-debt-token-v1.json'
 
-import PendleYieldTokenEthereumMarket from '../../adapters/pendle/products/yield-token/metadata/ethereum.market.json'
+import PendleYieldTokenEthereumMarket from '../../adapters/pendle2/products/yield-token/metadata/ethereum.market.json'
 
-import PendlePrincipleTokenEthereumMarket from '../../adapters/pendle/products/principle-token/metadata/ethereum.market.json'
+import PendlePrincipleTokenEthereumMarket from '../../adapters/pendle2/products/principle-token/metadata/ethereum.market.json'
 
-import PendleStandardisedYieldTokenEthereumMarket from '../../adapters/pendle/products/standardised-yield-token/metadata/ethereum.market.json'
+import PendleStandardisedYieldTokenEthereumMarket from '../../adapters/pendle2/products/standardised-yield-token/metadata/ethereum.market.json'
 
-import PendleLpTokenEthereumMarket from '../../adapters/pendle/products/lp-token/metadata/ethereum.market.json'
+import PendleLpTokenEthereumMarket from '../../adapters/pendle2/products/lp-token/metadata/ethereum.market.json'
 
-import PendleYieldTokenOptimismMarket from '../../adapters/pendle/products/yield-token/metadata/optimism.market.json'
+import PendleYieldTokenOptimismMarket from '../../adapters/pendle2/products/yield-token/metadata/optimism.market.json'
 
-import PendlePrincipleTokenOptimismMarket from '../../adapters/pendle/products/principle-token/metadata/optimism.market.json'
+import PendlePrincipleTokenOptimismMarket from '../../adapters/pendle2/products/principle-token/metadata/optimism.market.json'
 
-import PendleStandardisedYieldTokenOptimismMarket from '../../adapters/pendle/products/standardised-yield-token/metadata/optimism.market.json'
+import PendleStandardisedYieldTokenOptimismMarket from '../../adapters/pendle2/products/standardised-yield-token/metadata/optimism.market.json'
 
-import PendleLpTokenOptimismMarket from '../../adapters/pendle/products/lp-token/metadata/optimism.market.json'
+import PendleLpTokenOptimismMarket from '../../adapters/pendle2/products/lp-token/metadata/optimism.market.json'
 
-import PendleYieldTokenBscMarket from '../../adapters/pendle/products/yield-token/metadata/bsc.market.json'
+import PendleYieldTokenBscMarket from '../../adapters/pendle2/products/yield-token/metadata/bsc.market.json'
 
-import PendlePrincipleTokenBscMarket from '../../adapters/pendle/products/principle-token/metadata/bsc.market.json'
+import PendlePrincipleTokenBscMarket from '../../adapters/pendle2/products/principle-token/metadata/bsc.market.json'
 
-import PendleStandardisedYieldTokenBscMarket from '../../adapters/pendle/products/standardised-yield-token/metadata/bsc.market.json'
+import PendleStandardisedYieldTokenBscMarket from '../../adapters/pendle2/products/standardised-yield-token/metadata/bsc.market.json'
 
-import PendleLpTokenBscMarket from '../../adapters/pendle/products/lp-token/metadata/bsc.market.json'
+import PendleLpTokenBscMarket from '../../adapters/pendle2/products/lp-token/metadata/bsc.market.json'
 
-import PendleYieldTokenArbitrumMarket from '../../adapters/pendle/products/yield-token/metadata/arbitrum.market.json'
+import PendleYieldTokenArbitrumMarket from '../../adapters/pendle2/products/yield-token/metadata/arbitrum.market.json'
 
-import PendlePrincipleTokenArbitrumMarket from '../../adapters/pendle/products/principle-token/metadata/arbitrum.market.json'
+import PendlePrincipleTokenArbitrumMarket from '../../adapters/pendle2/products/principle-token/metadata/arbitrum.market.json'
 
-import PendleStandardisedYieldTokenArbitrumMarket from '../../adapters/pendle/products/standardised-yield-token/metadata/arbitrum.market.json'
+import PendleStandardisedYieldTokenArbitrumMarket from '../../adapters/pendle2/products/standardised-yield-token/metadata/arbitrum.market.json'
 
-import PendleLpTokenArbitrumMarket from '../../adapters/pendle/products/lp-token/metadata/arbitrum.market.json'
+import PendleLpTokenArbitrumMarket from '../../adapters/pendle2/products/lp-token/metadata/arbitrum.market.json'
 
 import DeriPoolBscProtocolMetadata from '../../adapters/deri/products/pool/metadata/bsc.protocol-metadata.json'
 
@@ -225,22 +225,22 @@ import SolvSolvBtcAvalancheSolvBtc from '../../adapters/solv/products/solv-btc/m
 
 import LidoStEthEthereumProtocolToken from '../../adapters/lido/products/st-eth/metadata/ethereum.protocol-token.json'
 
-import MakerSDaiEthereumProtocolToken from '../../adapters/maker/products/s-dai/metadata/ethereum.protocol-token.json'
+import MakerSDaiEthereumProtocolToken from '../../adapters/makerdao/products/s-dai/metadata/ethereum.protocol-token.json'
 
-import RocketPoolRethEthereumProtocolToken from '../../adapters/rocket-pool/products/reth/metadata/ethereum.protocol-token.json'
+import RocketPoolRethEthereumProtocolToken from '../../adapters/rocketpool/products/reth/metadata/ethereum.protocol-token.json'
 
 import StakeWiseOsEthEthereumProtocolToken from '../../adapters/stakewise/products/os-eth/metadata/ethereum.protocol-token.json'
 
 import SwellSwEthEthereumProtocolToken from '../../adapters/swell/products/sw-eth/metadata/ethereum.protocol-token.json'
 
 import LidoWstEthEthereumProtocolToken from '../../adapters/lido/products/wst-eth/metadata/ethereum.protocol-token.json'
-import MorphoBlueVaultEthereumProtocolToken from '../../adapters/morpho-blue/products/vault/metadata/ethereum.protocol-token.json'
+import MorphoBlueVaultEthereumProtocolToken from '../../adapters/morphoblue/products/vault/metadata/ethereum.protocol-token.json'
 
-import MorphoBlueMarketSupplyBaseMarketSupply from '../../adapters/morpho-blue/products/market-supply/metadata/base.market-supply.json'
+import MorphoBlueMarketSupplyBaseMarketSupply from '../../adapters/morphoblue/products/market-supply/metadata/base.market-supply.json'
 
-import MorphoBlueMarketBorrowBaseMarketBorrow from '../../adapters/morpho-blue/products/market-borrow/metadata/base.market-borrow.json'
+import MorphoBlueMarketBorrowBaseMarketBorrow from '../../adapters/morphoblue/products/market-borrow/metadata/base.market-borrow.json'
 
-import MorphoBlueVaultBaseProtocolToken from '../../adapters/morpho-blue/products/vault/metadata/base.protocol-token.json'
+import MorphoBlueVaultBaseProtocolToken from '../../adapters/morphoblue/products/vault/metadata/base.protocol-token.json'
 
 export const MetadataFiles = new Map<string, Json>([
   [

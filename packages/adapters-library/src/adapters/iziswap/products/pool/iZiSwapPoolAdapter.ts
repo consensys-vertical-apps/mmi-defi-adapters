@@ -24,7 +24,7 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import { maxUint128 } from '../../../uniswap-v3/products/pool/uniswapV3PoolAdapter'
+import { maxUint128 } from '../../../uniswap3/products/pool/uniswapV3PoolAdapter'
 import { LiquidityManager__factory } from '../../contracts/factories'
 
 const contractAddresses: Partial<Record<Chain, { liquidityManager: string }>> =

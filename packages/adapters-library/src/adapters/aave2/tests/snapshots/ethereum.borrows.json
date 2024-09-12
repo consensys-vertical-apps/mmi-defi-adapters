@@ -1,7 +1,7 @@
 {
-  "latency": "Latency: 1.902 seconds",
+  "latency": "Latency: 1.84 seconds",
   "snapshot": {
-    "protocolId": "aave-v2",
+    "protocolId": "aave2",
     "name": "Aave v2 VariableDebtToken",
     "description": "Aave v2 defi adapter for variable interest-accruing token",
     "siteUrl": "https://aave.com/",

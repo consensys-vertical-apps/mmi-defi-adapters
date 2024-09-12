@@ -9,9 +9,9 @@ import { AaveV2VariableDebtTokenPoolAdapter } from './aave2/products/variable-de
 import {
   AaveV3ATokenPoolAdapter,
   WriteActionInputs as AaveV3ATokenWriteActionInputs,
-} from './aave-v3/products/a-token/aaveV3ATokenAdapter'
-import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenAdapter'
-import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenAdapter'
+} from './aave3/products/a-token/aaveV3ATokenAdapter'
+import { AaveV3StableDebtTokenPoolAdapter } from './aave3/products/stable-debt-token/aaveV3StableDebtTokenAdapter'
+import { AaveV3VariableDebtTokenPoolAdapter } from './aave3/products/variable-debt-token/aaveV3VariableDebtTokenAdapter'
 import { AngleProtocolSavingsAdapter } from './angle-protocol/products/savings/angleProtocolSavingsAdapter'
 import { BeefyCowTokenAdapter } from './beefy/products/cow-token/beefyCowTokenAdapter'
 import { BeefyMooTokenAdapter } from './beefy/products/moo-token/beefyMooTokenAdapter'
@@ -36,69 +36,69 @@ import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapte
 import { CurveVotingEscrowAdapter } from './curve/products/voting-escrow/curveVotingEscrowAdapter'
 import { DeriPoolAdapter } from './deri/products/pool/deriPoolAdapter'
 import { EthenaStakedUsdeAdapter } from './ethena/products/staked-usde/ethenaStakedUsdeAdapter'
-import { FluxBorrowMarketAdapter } from './flux/products/borrow-market/fluxBorrowMarketAdapter'
-import { FluxSupplyMarketAdapter } from './flux/products/supply-market/fluxSupplyMarketAdapter'
+import { FluxBorrowMarketAdapter } from './fluxdefi/products/borrow-market/fluxBorrowMarketAdapter'
+import { FluxSupplyMarketAdapter } from './fluxdefi/products/supply-market/fluxSupplyMarketAdapter'
 import { GmxGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
 import { IZiSwapPoolAdapter } from './iziswap/products/pool/iZiSwapPoolAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { LynexAlgebraAdapter } from './lynex/products/algebra/lynexAlgebralAdapter'
 import { LynexClassicAdapter } from './lynex/products/classic/lynexClassicAdapter'
-import { MakerSDaiAdapter } from './maker/products/s-dai/makerSDaiAdapter'
+import { MakerSDaiAdapter } from './makerdao/products/s-dai/makerSDaiAdapter'
 import {
   MendiFinanceBorrowMarketAdapter,
   WriteActionInputs as MendiFinanceBorrowMarketWriteActionInputs,
-} from './mendi-finance/products/borrow-market/mendiFinanceBorrowMarketAdapter'
+} from './mendi/products/borrow-market/mendiFinanceBorrowMarketAdapter'
 import {
   MendiFinanceSupplyMarketAdapter,
   WriteActionInputs as MendiFinanceSupplyMarketWriteActionInputs,
-} from './mendi-finance/products/supply-market/mendiFinanceSupplyMarketAdapter'
+} from './mendi/products/supply-market/mendiFinanceSupplyMarketAdapter'
 import { MorphoAaveV2OptimizerBorrowAdapter } from './morpho-aave-v2/products/optimizer-borrow/morphoAaveV2OptimizerBorrowAdapter'
 import { MorphoAaveV2OptimizerSupplyAdapter } from './morpho-aave-v2/products/optimizer-supply/morphoAaveV2OptimizerSupplyAdapter'
 import { MorphoAaveV3OptimizerBorrowAdapter } from './morpho-aave-v3/products/optimizer-borrow/morphoAaveV3OptimizerBorrowAdapter'
 import { MorphoAaveV3OptimizerSupplyAdapter } from './morpho-aave-v3/products/optimizer-supply/morphoAaveV3OptimizerSupplyAdapter'
-import { MorphoBlueMarketBorrowAdapter } from './morpho-blue/products/market-borrow/morphoBlueMarketBorrowAdapter'
-import { MorphoBlueMarketSupplyAdapter } from './morpho-blue/products/market-supply/morphoBlueMarketSupplyAdapter'
+import { MorphoBlueMarketBorrowAdapter } from './morphoblue/products/market-borrow/morphoBlueMarketBorrowAdapter'
+import { MorphoBlueMarketSupplyAdapter } from './morphoblue/products/market-supply/morphoBlueMarketSupplyAdapter'
 import { MorphoCompoundV2OptimizerBorrowAdapter } from './morpho-compound-v2/products/optimizer-borrow/morphoCompoundV2OptimizerBorrowAdapter'
 import { MorphoCompoundV2OptimizerSupplyAdapter } from './morpho-compound-v2/products/optimizer-supply/morphoCompoundV2OptimizerSupplyAdapter'
 import { PancakeswapV2PoolAdapter } from './pancakeswap-v2/products/pool/pancakeswapV2PoolAdapter'
 
 import { PricesV2UsdAdapter } from './prices-v2/products/usd/pricesV2UsdAdapter'
 import { Protocol } from './protocols'
-import { QuickswapV2PoolAdapter } from './quickswap-v2/products/pool/quickswapV2PoolAdapter'
-import { RocketPoolRethAdapter } from './rocket-pool/products/reth/rocketPoolRethAdapter'
+import { QuickswapV2PoolAdapter } from './quickswap/products/pool/quickswapV2PoolAdapter'
+import { RocketPoolRethAdapter } from './rocketpool/products/reth/rocketPoolRethAdapter'
 import { SonneBorrowMarketAdapter } from './sonne/products/borrow-market/sonneBorrowMarketAdapter'
 import { SonneSupplyMarketAdapter } from './sonne/products/supply-market/sonneSupplyMarketAdapter'
 import { StakeWiseOsEthAdapter } from './stakewise/products/os-eth/stakeWiseOsEthAdapter'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVotingEscrowAdapter } from './stargate/products/voting-escrow/stargateVotingEscrowAdapter'
-import { SushiswapV2PoolAdapter } from './sushiswap-v2/products/pool/sushiswapV2PoolAdapter'
+import { SushiswapV2PoolAdapter } from './sushiswap/products/pool/sushiswapV2PoolAdapter'
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
 import { SyncSwapPoolAdapter } from './syncswap/products/pool/syncSwapPoolAdapter'
-import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAdapter'
-import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
+import { UniswapV2PoolAdapter } from './uniswap/products/pool/uniswapV2PoolAdapter'
+import { UniswapV3PoolAdapter } from './uniswap3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
 
 import {
   SparkV1SpTokenAdapter,
   WriteActionInputs as SparkV1SpTokenWriteActionInputs,
-} from './spark-v1/products/sp-token/sparkV1SpTokenAdapter'
+} from './spark/products/sp-token/sparkV1SpTokenAdapter'
 
-import { SparkV1VariableDebtTokenPoolAdapter } from './spark-v1/products/variable-debt-token/sparkV1VariableDebtTokenAdapter'
+import { SparkV1VariableDebtTokenPoolAdapter } from './spark/products/variable-debt-token/sparkV1VariableDebtTokenAdapter'
 
-import { PendleYieldTokenAdapter } from './pendle/products/yield-token/pendleYieldTokenAdapter'
+import { PendleYieldTokenAdapter } from './pendle2/products/yield-token/pendleYieldTokenAdapter'
 
-import { PendlePrincipleTokenAdapter } from './pendle/products/principle-token/pendlePrincipleTokenAdapter'
+import { PendlePrincipleTokenAdapter } from './pendle2/products/principle-token/pendlePrincipleTokenAdapter'
 
-import { PendleStandardisedYieldTokenAdapter } from './pendle/products/standardised-yield-token/pendleStandardisedYieldTokenAdapter'
+import { PendleStandardisedYieldTokenAdapter } from './pendle2/products/standardised-yield-token/pendleStandardisedYieldTokenAdapter'
 
-import { PendleLpTokenAdapter } from './pendle/products/lp-token/pendleLpTokenAdapter'
+import { PendleLpTokenAdapter } from './pendle2/products/lp-token/pendleLpTokenAdapter'
 
 import { RenzoEzEthAdapter } from './renzo/products/ez-eth/renzoEzEthAdapter'
 
 import { SolvSolvBtcAdapter } from './solv/products/solv-btc/solvSolvBtcAdapter'
 
-import { MorphoBlueVaultAdapter } from './morpho-blue/products/vault/morphoBlueVaultAdapter'
+import { MorphoBlueVaultAdapter } from './morphoblue/products/vault/morphoBlueVaultAdapter'
 import { SolvYieldMarketAdapter } from './solv/products/yield-market/solvYieldMarketAdapter'
 
 export const supportedProtocols: Record<

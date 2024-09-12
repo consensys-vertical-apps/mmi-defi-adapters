@@ -12,7 +12,7 @@ import {
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { RocketTokenRETH__factory } from '../../../rocket-pool/contracts'
+import { RocketTokenRETH__factory } from '../../contracts'
 
 type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]
