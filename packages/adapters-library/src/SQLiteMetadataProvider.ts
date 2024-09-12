@@ -165,6 +165,7 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
           ? JSON.parse(row.reward_additional_data)
           : {}
 
+        // todo: IProtocolToken interface needs to be updated to include reward token data
         //@ts-ignore
         pool.rewardTokens!.push({
           address: row.reward_token_address,
@@ -180,6 +181,7 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
           ? JSON.parse(row.extra_reward_additional_data)
           : {}
 
+        // todo: IProtocolToken interface needs to be updated to include extra reward token data
         //@ts-ignore
         pool.extraRewardTokens!.push({
           address: row.extra_reward_token_address,
