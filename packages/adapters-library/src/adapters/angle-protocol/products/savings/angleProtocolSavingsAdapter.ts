@@ -27,6 +27,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { Savings, Savings__factory } from '../../contracts'
+import { Helpers } from '../../../../scripts/helpers'
 
 type AngleProtocolMetadata = {
   protocolToken: Erc20Metadata
@@ -44,6 +45,7 @@ export class AngleProtocolSavingsAdapter
   productId = 'savings'
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
@@ -59,11 +61,13 @@ export class AngleProtocolSavingsAdapter
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   getProtocolDetails(): ProtocolDetails {

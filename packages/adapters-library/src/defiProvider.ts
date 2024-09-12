@@ -25,7 +25,7 @@ import {
   enrichTotalValueLocked,
   enrichUnwrappedTokenExchangeRates,
 } from './responseAdapters'
-import { IProtocolAdapter } from './types/IProtocolAdapter'
+import { IProtocolAdapter, ProtocolToken } from './types/IProtocolAdapter'
 import { PositionType } from './types/adapter'
 import { DeepPartial } from './types/deepPartial'
 import {
@@ -38,6 +38,34 @@ import {
   PricePerShareResponse,
   TotalValueLockResponse,
 } from './types/response'
+import {
+  IMetadataProvider,
+  SQLiteMetadataProvider,
+} from './SQLiteMetadataProvider'
+import path from 'node:path'
+import Database from 'better-sqlite3'
+
+import { existsSync } from 'node:fs'
+
+function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
+  return Object.values(Chain).reduce((acc, chain) => {
+    acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
+    return acc
+  }, {} as Record<Chain, IMetadataProvider>)
+}
+
+const dbParams = (chainId: Chain): [string, Database.Options] => {
+  const dbPath = path.join(__dirname, '../../..', `${ChainName[chainId]}.db`)
+
+  if (!existsSync(dbPath)) {
+    logger.info(`Database file does not exist: ${dbPath}`)
+    throw new Error(`Database file does not exist: ${dbPath}`)
+  }
+
+  logger.info(`Database file exists: ${dbPath}`)
+
+  return [dbPath, { fileMustExist: true }]
+}
 
 export class DefiProvider {
   private parsedConfig
@@ -45,13 +73,21 @@ export class DefiProvider {
   adaptersController: AdaptersController
   private adaptersControllerWithoutPrices: AdaptersController
 
-  constructor(config?: DeepPartial<IConfig>) {
+  private metadataProvider: Record<Chain, IMetadataProvider>
+
+  constructor(
+    config?: DeepPartial<IConfig>,
+    metadataProvider?: Record<Chain, IMetadataProvider>,
+  ) {
+    this.metadataProvider = metadataProvider ?? buildMetadataProviders()
+
     this.parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
 
     this.adaptersController = new AdaptersController({
       providers: this.chainProvider.providers,
       supportedProtocols,
+      metadataProvider: this.metadataProvider,
     })
 
     const { [Protocol.PricesV2]: _, ...supportedProtocolsWithoutPrices } =
@@ -60,6 +96,7 @@ export class DefiProvider {
     this.adaptersControllerWithoutPrices = new AdaptersController({
       providers: this.chainProvider.providers,
       supportedProtocols: supportedProtocolsWithoutPrices,
+      metadataProvider: this.metadataProvider,
     })
   }
 
@@ -71,19 +108,16 @@ export class DefiProvider {
         (provider) =>
           !filterChainIds || filterChainIds.includes(provider.chainId),
       )
-      .reduce(
-        async (accumulator, provider) => {
-          if (filterChainIds && !filterChainIds.includes(provider.chainId)) {
-            return accumulator
-          }
+      .reduce(async (accumulator, provider) => {
+        if (filterChainIds && !filterChainIds.includes(provider.chainId)) {
+          return accumulator
+        }
 
-          return {
-            ...(await accumulator),
-            [provider.chainId]: await provider.getStableBlockNumber(),
-          }
-        },
-        {} as Promise<Partial<Record<Chain, number>>>,
-      )
+        return {
+          ...(await accumulator),
+          [provider.chainId]: await provider.getStableBlockNumber(),
+        }
+      }, {} as Promise<Partial<Record<Chain, number>>>)
   }
 
   async getPositions({
@@ -233,10 +267,9 @@ export class DefiProvider {
         return undefined
       }
 
-      const transferLogs =
-        await this.chainProvider.providers[
-          adapter.chainId
-        ].getAllTransferLogsToAddress(userAddress)
+      const transferLogs = await this.chainProvider.providers[
+        adapter.chainId
+      ].getAllTransferLogsToAddress(userAddress)
 
       // no logs on this chain means nothing done on this chain
       if (transferLogs.length === 0) {

@@ -28,6 +28,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { PositionManager__factory } from '../../contracts'
+import { Helpers } from '../../../../scripts/helpers'
 
 // Parameter needed for static call request
 // Set the date in the future to ensure the static call request doesn't trigger smart contract validation
@@ -72,6 +73,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
   productId = 'pool'
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   adaptersController: AdaptersController
 
@@ -82,11 +84,13 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {

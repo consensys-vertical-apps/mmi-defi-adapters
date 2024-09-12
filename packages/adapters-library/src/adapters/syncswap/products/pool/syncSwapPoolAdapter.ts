@@ -37,6 +37,7 @@ import {
   Multicall__factory,
   MutlicallOld__factory,
 } from '../../contracts'
+import { Helpers } from '../../../../scripts/helpers'
 
 interface SyncSwapAdapterContracts {
   multicall: string
@@ -75,17 +76,20 @@ export class SyncSwapPoolAdapter implements IProtocolAdapter {
   chainId: Chain
   adaptersController: AdaptersController
   provider: CustomJsonRpcProvider
+  helpers: Helpers
 
   constructor({
     provider,
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   adapterSettings = {

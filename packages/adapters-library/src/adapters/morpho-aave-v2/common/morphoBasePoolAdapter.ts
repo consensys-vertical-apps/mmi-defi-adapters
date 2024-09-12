@@ -35,6 +35,7 @@ import {
   TypedContractEvent,
   TypedDeferredTopicFilter,
 } from '../contracts/common'
+import { Helpers } from '../../../scripts/helpers'
 
 type MorphoAaveV2PeerToPoolAdapterMetadata = Record<
   string,
@@ -55,6 +56,7 @@ const morphoAaveV2ContractAddresses: Partial<
 export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   private provider: CustomJsonRpcProvider
 
@@ -63,11 +65,13 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   lensAddress = getAddress('0x507fa343d0a90786d86c7cd885f5c49263a91ff4')
@@ -164,8 +168,9 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   private async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+    const { underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenAddress,
+    )
 
     return [underlyingToken]
   }

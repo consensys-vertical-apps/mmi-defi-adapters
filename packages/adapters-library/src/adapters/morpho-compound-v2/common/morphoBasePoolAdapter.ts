@@ -36,6 +36,7 @@ import {
   TypedContractEvent,
   TypedDeferredTopicFilter,
 } from '../contracts/common'
+import { Helpers } from '../../../scripts/helpers'
 
 type MorphoCompoundV2PeerToPoolAdapterMetadata = Record<
   string,
@@ -56,6 +57,7 @@ const morphoCompoundV2ContractAddresses: Partial<
 export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   private provider: CustomJsonRpcProvider
 
@@ -64,11 +66,13 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   lensAddress = getAddress('0x930f1b46e1d081ec1524efd95752be3ece51ef67')
@@ -133,8 +137,9 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   private async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
-    const { protocolToken } =
-      await this._fetchPoolMetadata(protocolTokenAddress)
+    const { protocolToken } = await this._fetchPoolMetadata(
+      protocolTokenAddress,
+    )
 
     return protocolToken
   }
@@ -173,8 +178,9 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   private async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } =
-      await this._fetchPoolMetadata(protocolTokenAddress)
+    const { underlyingToken } = await this._fetchPoolMetadata(
+      protocolTokenAddress,
+    )
 
     return [underlyingToken]
   }
@@ -388,10 +394,12 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       this.provider,
     )
 
-    const protocolToken =
-      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
-    const [underlyingToken] =
-      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      protocolTokenAddress,
+    )
 
     let filter: TypedDeferredTopicFilter<
       TypedContractEvent<

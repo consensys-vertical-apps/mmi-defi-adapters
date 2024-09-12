@@ -38,6 +38,7 @@ import {
 import { Protocol } from '../../protocols'
 import { MorphoAaveMath } from '../internal-utils/AaveV3.maths'
 import P2PInterestRates from '../internal-utils/P2PInterestRates'
+import { Helpers } from '../../../scripts/helpers'
 
 type MorphoAaveV3PeerToPoolAdapterMetadata = Record<
   string,
@@ -59,6 +60,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   protocolId: Protocol
   chainId: Chain
 
+  helpers: Helpers
   private provider: CustomJsonRpcProvider
 
   constructor({
@@ -66,11 +68,13 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   __IRM__ = new P2PInterestRates()
@@ -196,8 +200,9 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   private async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+    const { underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenAddress,
+    )
 
     return [underlyingToken]
   }
@@ -569,10 +574,12 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       this.provider,
     )
 
-    const protocolToken =
-      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
-    const [underlyingToken] =
-      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      protocolTokenAddress,
+    )
 
     let filter: TypedDeferredTopicFilter<
       TypedContractEvent<

@@ -21,6 +21,7 @@ import {
   UnwrapExchangeRate,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
+import { IMetadataProvider } from '../SQLiteMetadataProvider'
 
 export const REAL_ESTATE_TOKEN_METADATA = {
   address: getAddress('0x6b8734ad31D42F5c05A86594314837C416ADA984'),
@@ -32,16 +33,20 @@ export const REAL_ESTATE_TOKEN_METADATA = {
 export class Helpers {
   provider: CustomJsonRpcProvider
   chainId: Chain
+  metadataProvider: IMetadataProvider
 
   constructor({
     provider,
     chainId,
+    metadataProvider,
   }: {
     provider: CustomJsonRpcProvider
     chainId: Chain
+    metadataProvider: IMetadataProvider
   }) {
     this.provider = provider
     this.chainId = chainId
+    this.metadataProvider = metadataProvider
   }
 
   async getProtocolTokenByAddress<AdditionalMetadata extends JsonMetadata>({

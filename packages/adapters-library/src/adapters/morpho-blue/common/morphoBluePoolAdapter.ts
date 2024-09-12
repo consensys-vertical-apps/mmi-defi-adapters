@@ -38,6 +38,7 @@ import {
 } from '../contracts/factories'
 import { MarketData, MarketParams } from '../internal-utils/Blue'
 import { MorphoBlueMath } from '../internal-utils/MorphoBlue.maths'
+import { Helpers } from '../../../scripts/helpers'
 
 type MorphoBlueAdapterMetadata = Record<
   string,
@@ -62,6 +63,7 @@ export abstract class MorphoBluePoolAdapter
 {
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   abstract productId: string
   abstract adapterSettings: AdapterSettings
@@ -73,11 +75,13 @@ export abstract class MorphoBluePoolAdapter
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this._provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   __MATH__ = new MorphoBlueMath()
@@ -284,8 +288,9 @@ export abstract class MorphoBluePoolAdapter
       const loanMetadata = await this._fetchLoanTokenMetadata(marketId)
 
       if (collateralAmount > 0n && positionType === PositionType.Supply) {
-        const collateralMetadata =
-          await this._fetchCollateralTokenMetadata(marketId)
+        const collateralMetadata = await this._fetchCollateralTokenMetadata(
+          marketId,
+        )
 
         protocolTokens.push({
           tokenId: marketId,

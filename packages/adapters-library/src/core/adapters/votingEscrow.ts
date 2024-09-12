@@ -1,5 +1,6 @@
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
+import { Helpers } from '../../scripts/helpers'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import {
   GetEventsInput,
@@ -46,6 +47,7 @@ export abstract class VotingEscrow
   abstract productId: string
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   provider: CustomJsonRpcProvider
 
@@ -61,11 +63,13 @@ export abstract class VotingEscrow
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   abstract getProtocolDetails(): ProtocolDetails

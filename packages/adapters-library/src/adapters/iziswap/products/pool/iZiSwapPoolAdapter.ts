@@ -26,6 +26,7 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { maxUint128 } from '../../../uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { LiquidityManager__factory } from '../../contracts/factories'
+import { Helpers } from '../../../../scripts/helpers'
 
 const contractAddresses: Partial<Record<Chain, { liquidityManager: string }>> =
   {
@@ -55,6 +56,7 @@ export class IZiSwapPoolAdapter implements IProtocolAdapter {
   productId = 'pool'
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
@@ -70,11 +72,13 @@ export class IZiSwapPoolAdapter implements IProtocolAdapter {
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   getProtocolDetails(): ProtocolDetails {

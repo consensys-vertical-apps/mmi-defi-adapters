@@ -25,6 +25,7 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { ChainLink__factory, OneInchOracle__factory } from '../../contracts'
 import { priceAdapterConfig } from './priceV2Config'
+import { Helpers } from '../../../../scripts/helpers'
 
 export const USD = 'USD'
 
@@ -35,6 +36,7 @@ export class PricesV2UsdAdapter implements IProtocolAdapter {
   productId = 'usd'
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
@@ -50,11 +52,13 @@ export class PricesV2UsdAdapter implements IProtocolAdapter {
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   /**
