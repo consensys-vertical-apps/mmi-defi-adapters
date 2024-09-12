@@ -5,6 +5,7 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { Helpers } from '../../../../scripts/helpers'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
@@ -26,7 +27,6 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { maxUint128 } from '../../../uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { LiquidityManager__factory } from '../../contracts/factories'
-import { Helpers } from '../../../../scripts/helpers'
 
 const contractAddresses: Partial<Record<Chain, { liquidityManager: string }>> =
   {

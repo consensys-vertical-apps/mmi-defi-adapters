@@ -8,6 +8,7 @@ import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvi
 import { filterMapAsync } from '../../../core/utils/filters'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
+import { Helpers } from '../../../scripts/helpers'
 import { IProtocolAdapter } from '../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
@@ -38,7 +39,6 @@ import {
 } from '../contracts/factories'
 import { MarketData, MarketParams } from '../internal-utils/Blue'
 import { MorphoBlueMath } from '../internal-utils/MorphoBlue.maths'
-import { Helpers } from '../../../scripts/helpers'
 
 type MorphoBlueAdapterMetadata = Record<
   string,
@@ -288,9 +288,8 @@ export abstract class MorphoBluePoolAdapter
       const loanMetadata = await this._fetchLoanTokenMetadata(marketId)
 
       if (collateralAmount > 0n && positionType === PositionType.Supply) {
-        const collateralMetadata = await this._fetchCollateralTokenMetadata(
-          marketId,
-        )
+        const collateralMetadata =
+          await this._fetchCollateralTokenMetadata(marketId)
 
         protocolTokens.push({
           tokenId: marketId,

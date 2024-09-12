@@ -7,6 +7,7 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,
@@ -37,7 +38,6 @@ import {
   Multicall__factory,
   MutlicallOld__factory,
 } from '../../contracts'
-import { Helpers } from '../../../../scripts/helpers'
 
 interface SyncSwapAdapterContracts {
   multicall: string

@@ -8,6 +8,7 @@ import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
+import { Helpers } from '../../../scripts/helpers'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -36,7 +37,6 @@ import {
   TypedContractEvent,
   TypedDeferredTopicFilter,
 } from '../contracts/common'
-import { Helpers } from '../../../scripts/helpers'
 
 type MorphoCompoundV2PeerToPoolAdapterMetadata = Record<
   string,
@@ -137,9 +137,8 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   private async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this._fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { protocolToken } =
+      await this._fetchPoolMetadata(protocolTokenAddress)
 
     return protocolToken
   }
@@ -178,9 +177,8 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   private async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } = await this._fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { underlyingToken } =
+      await this._fetchPoolMetadata(protocolTokenAddress)
 
     return [underlyingToken]
   }
@@ -394,12 +392,10 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       this.provider,
     )
 
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
+    const [underlyingToken] =
+      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
 
     let filter: TypedDeferredTopicFilter<
       TypedContractEvent<

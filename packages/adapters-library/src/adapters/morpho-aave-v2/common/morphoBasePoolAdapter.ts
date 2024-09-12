@@ -7,6 +7,7 @@ import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
+import { Helpers } from '../../../scripts/helpers'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -35,7 +36,6 @@ import {
   TypedContractEvent,
   TypedDeferredTopicFilter,
 } from '../contracts/common'
-import { Helpers } from '../../../scripts/helpers'
 
 type MorphoAaveV2PeerToPoolAdapterMetadata = Record<
   string,
@@ -168,9 +168,8 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   private async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { underlyingToken } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     return [underlyingToken]
   }

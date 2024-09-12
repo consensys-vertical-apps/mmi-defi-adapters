@@ -5,6 +5,7 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { nativeTokenAddresses } from '../../../../core/utils/nativeTokens'
+import { Helpers } from '../../../../scripts/helpers'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
@@ -25,7 +26,6 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { ChainLink__factory, OneInchOracle__factory } from '../../contracts'
 import { priceAdapterConfig } from './priceV2Config'
-import { Helpers } from '../../../../scripts/helpers'
 
 export const USD = 'USD'
 

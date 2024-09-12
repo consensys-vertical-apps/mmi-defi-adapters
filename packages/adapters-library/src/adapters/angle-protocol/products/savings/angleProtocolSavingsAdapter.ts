@@ -8,6 +8,7 @@ import {
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { Helpers } from '../../../../scripts/helpers'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
@@ -27,7 +28,6 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { Savings, Savings__factory } from '../../contracts'
-import { Helpers } from '../../../../scripts/helpers'
 
 type AngleProtocolMetadata = {
   protocolToken: Erc20Metadata

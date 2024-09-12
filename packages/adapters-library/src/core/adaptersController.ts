@@ -1,6 +1,6 @@
+import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Protocol } from '../adapters/protocols'
 import { WriteActionInputs } from '../adapters/supportedProtocols'
-import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Helpers } from '../scripts/helpers'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import {
@@ -36,7 +36,9 @@ export class AdaptersController {
         Partial<
           Record<
             Chain,
-            (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]
+            (new (
+              input: ProtocolAdapterParams,
+            ) => IProtocolAdapter)[]
           >
         >
       >
