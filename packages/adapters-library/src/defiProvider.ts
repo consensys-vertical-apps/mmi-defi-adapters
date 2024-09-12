@@ -48,13 +48,10 @@ import {
 import { existsSync } from 'node:fs'
 
 function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
-  return Object.values(Chain).reduce(
-    (acc, chain) => {
-      acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
-      return acc
-    },
-    {} as Record<Chain, IMetadataProvider>,
-  )
+  return Object.values(Chain).reduce((acc, chain) => {
+    acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
+    return acc
+  }, {} as Record<Chain, IMetadataProvider>)
 }
 
 const dbParams = (chainId: Chain): [string, Database.Options] => {
@@ -76,13 +73,13 @@ export class DefiProvider {
   adaptersController: AdaptersController
   private adaptersControllerWithoutPrices: AdaptersController
 
-  private metadataProvider: Record<Chain, IMetadataProvider>
+  private metadataProviders: Record<Chain, IMetadataProvider>
 
   constructor(
     config?: DeepPartial<IConfig>,
-    metadataProvider?: Record<Chain, IMetadataProvider>,
+    metadataProviders?: Record<Chain, IMetadataProvider>,
   ) {
-    this.metadataProvider = metadataProvider ?? buildMetadataProviders()
+    this.metadataProviders = metadataProviders ?? buildMetadataProviders()
 
     this.parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
@@ -90,7 +87,7 @@ export class DefiProvider {
     this.adaptersController = new AdaptersController({
       providers: this.chainProvider.providers,
       supportedProtocols,
-      metadataProvider: this.metadataProvider,
+      metadataProviders: this.metadataProviders,
     })
 
     const { [Protocol.PricesV2]: _, ...supportedProtocolsWithoutPrices } =
@@ -99,7 +96,7 @@ export class DefiProvider {
     this.adaptersControllerWithoutPrices = new AdaptersController({
       providers: this.chainProvider.providers,
       supportedProtocols: supportedProtocolsWithoutPrices,
-      metadataProvider: this.metadataProvider,
+      metadataProviders: this.metadataProviders,
     })
   }
 
@@ -111,19 +108,16 @@ export class DefiProvider {
         (provider) =>
           !filterChainIds || filterChainIds.includes(provider.chainId),
       )
-      .reduce(
-        async (accumulator, provider) => {
-          if (filterChainIds && !filterChainIds.includes(provider.chainId)) {
-            return accumulator
-          }
+      .reduce(async (accumulator, provider) => {
+        if (filterChainIds && !filterChainIds.includes(provider.chainId)) {
+          return accumulator
+        }
 
-          return {
-            ...(await accumulator),
-            [provider.chainId]: await provider.getStableBlockNumber(),
-          }
-        },
-        {} as Promise<Partial<Record<Chain, number>>>,
-      )
+        return {
+          ...(await accumulator),
+          [provider.chainId]: await provider.getStableBlockNumber(),
+        }
+      }, {} as Promise<Partial<Record<Chain, number>>>)
   }
 
   async getPositions({
@@ -273,10 +267,9 @@ export class DefiProvider {
         return undefined
       }
 
-      const transferLogs =
-        await this.chainProvider.providers[
-          adapter.chainId
-        ].getAllTransferLogsToAddress(userAddress)
+      const transferLogs = await this.chainProvider.providers[
+        adapter.chainId
+      ].getAllTransferLogsToAddress(userAddress)
 
       // no logs on this chain means nothing done on this chain
       if (transferLogs.length === 0) {

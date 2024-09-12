@@ -27,7 +27,7 @@ export class AdaptersController {
   constructor({
     providers,
     supportedProtocols,
-    metadataProvider,
+    metadataProviders,
   }: {
     providers: Record<Chain, CustomJsonRpcProvider>
     supportedProtocols: Partial<
@@ -36,14 +36,12 @@ export class AdaptersController {
         Partial<
           Record<
             Chain,
-            (new (
-              input: ProtocolAdapterParams,
-            ) => IProtocolAdapter)[]
+            (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]
           >
         >
       >
     >
-    metadataProvider: Record<Chain, IMetadataProvider>
+    metadataProviders: Record<Chain, IMetadataProvider>
   }) {
     Object.entries(supportedProtocols).forEach(
       ([protocolIdKey, supportedChains]) => {
@@ -64,7 +62,7 @@ export class AdaptersController {
                 helpers: new Helpers({
                   provider,
                   chainId,
-                  metadataProvider: metadataProvider[chainId],
+                  metadataProvider: metadataProviders[chainId],
                 }),
               })
 

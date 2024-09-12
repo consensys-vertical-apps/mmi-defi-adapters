@@ -1,3 +1,4 @@
+import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Protocol } from '../adapters/protocols'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { ProtocolAdapterParams } from '../types/adapter'
@@ -6,15 +7,12 @@ import { Chain } from './constants/chains'
 import { AdapterMissingError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 
-const providers = Object.values(Chain).reduce(
-  (accumulator, current) => {
-    return {
-      ...accumulator,
-      [current]: jest.fn() as unknown as CustomJsonRpcProvider,
-    }
-  },
-  {} as Record<Chain, CustomJsonRpcProvider>,
-)
+const providers = Object.values(Chain).reduce((accumulator, current) => {
+  return {
+    ...accumulator,
+    [current]: jest.fn() as unknown as CustomJsonRpcProvider,
+  }
+}, {} as Record<Chain, CustomJsonRpcProvider>)
 
 class MockProtocolAdapter {
   productId = 'example-pool'
@@ -40,6 +38,7 @@ describe('AdaptersController', () => {
     adaptersController = new AdaptersController({
       providers,
       supportedProtocols,
+      metadataProviders: {} as unknown as Record<Chain, IMetadataProvider>,
     })
   })
 
@@ -61,12 +60,11 @@ describe('AdaptersController', () => {
             Partial<
               Record<
                 Chain,
-                (new (
-                  input: ProtocolAdapterParams,
-                ) => IProtocolAdapter)[]
+                (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]
               >
             >
           >,
+          metadataProviders: {} as unknown as Record<Chain, IMetadataProvider>,
         })
 
       expect(codeThatThrows).toThrowError('Duplicated adapter')
