@@ -2,11 +2,11 @@
 export const Protocol = {
   AaveV2: 'aave2', // done
   AaveV3: 'aave3', // done
-  AngleProtocol: 'angle-protocol', // missing from list
+  AngleProtocol: 'angle-protocol', // missing
   Beefy: 'beefy', // same
   CarbonDeFi: 'carbon-defi', // missing
   ChimpExchange: 'chimp-exchange', // missing
-  CompoundV2: 'compound-v2', // dont know what to do check adapters
+  CompoundV2: 'compound-v2', // missing
   Convex: 'convex', // same
   Curve: 'curve', // same
   Deri: 'deri', // missing
@@ -18,8 +18,8 @@ export const Protocol = {
   Lynex: 'lynex', // missing
   Maker: 'makerdao', // done
   MendiFinance: 'mendi', // done
-  MorphoAaveV2: 'morpho-aave-v2', // missing - not sure
-  MorphoAaveV3: 'morpho-aave-v3', // missing - not sure
+  MorphoAaveV2: 'morpho-aave-v2', // missing
+  MorphoAaveV3: 'morpho-aave-v3', // missing
   MorphoBlue: 'morphoblue', // done
   MorphoCompoundV2: 'morpho-compound-v2', // not sure
   PancakeswapV2: 'pancakeswap', // done
@@ -38,6 +38,6 @@ export const Protocol = {
   SyncSwap: 'syncswap', // missing
   UniswapV2: 'uniswap', // missing
   UniswapV3: 'uniswap3', // done
-  Xfai: 'xfai', // missing 
+  Xfai: 'xfai', // missing
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
