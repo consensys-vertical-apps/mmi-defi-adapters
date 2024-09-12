@@ -10,8 +10,8 @@ import {
   WriteActionInputSchemas,
   WriteActions,
 } from '../../../../types/writeActions'
-import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
-import { ProtocolDataProvider } from '../../../aave-v2/contracts'
+import { AaveBasePoolAdapter } from '../../../aave2/common/aaveBasePoolAdapter'
+import { ProtocolDataProvider } from '../../../aave2/contracts'
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { PoolContract__factory } from '../../contracts'

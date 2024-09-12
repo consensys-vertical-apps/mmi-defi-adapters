@@ -4,8 +4,8 @@ import {
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
-import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
-import { ProtocolDataProvider } from '../../../aave-v2/contracts'
+import { AaveBasePoolAdapter } from '../../../aave2/common/aaveBasePoolAdapter'
+import { ProtocolDataProvider } from '../../../aave2/contracts'
 
 export class AaveV3VariableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'variable-debt-token'

@@ -3,9 +3,9 @@ import { z } from 'zod'
 import { Chain } from '../core/constants/chains'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { ProtocolAdapterParams } from '../types/adapter'
-import { AaveV2ATokenPoolAdapter } from './aave-v2/products/a-token/aaveV2ATokenAdapter'
-import { AaveV2StableDebtTokenPoolAdapter } from './aave-v2/products/stable-debt-token/aaveV2StableDebtTokenAdapter'
-import { AaveV2VariableDebtTokenPoolAdapter } from './aave-v2/products/variable-debt-token/aaveV2VariableDebtTokenAdapter'
+import { AaveV2ATokenPoolAdapter } from './aave2/products/a-token/aaveV2ATokenAdapter'
+import { AaveV2StableDebtTokenPoolAdapter } from './aave2/products/stable-debt-token/aaveV2StableDebtTokenAdapter'
+import { AaveV2VariableDebtTokenPoolAdapter } from './aave2/products/variable-debt-token/aaveV2VariableDebtTokenAdapter'
 import {
   AaveV3ATokenPoolAdapter,
   WriteActionInputs as AaveV3ATokenWriteActionInputs,

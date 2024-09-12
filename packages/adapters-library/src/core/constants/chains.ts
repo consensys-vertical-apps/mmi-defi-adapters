@@ -28,3 +28,35 @@ export const ChainName: Record<Chain, string> = {
   [Chain.Avalanche]: 'avalanche',
   [Chain.Linea]: 'linea',
 }
+
+export const ChainShortName: Record<Chain, string> = {
+  [Chain.Ethereum]: 'ethereum',
+  [Chain.Optimism]: 'optimism',
+  [Chain.Bsc]: 'bsc',
+  [Chain.Polygon]: 'matic',
+  [Chain.Fantom]: 'ftm',
+  [Chain.Base]: 'base',
+  [Chain.Arbitrum]: 'arb',
+  [Chain.Avalanche]: 'avax',
+  [Chain.Linea]: 'linea',
+}
+
+// Example short names
+// arb
+// avax
+// base
+// bsc
+// canto
+// cro
+// era
+// ftm
+// linea
+// matic
+// mobm
+// mnt
+// op
+// pls
+// scrl
+// sei
+// tlos
+// xdai
