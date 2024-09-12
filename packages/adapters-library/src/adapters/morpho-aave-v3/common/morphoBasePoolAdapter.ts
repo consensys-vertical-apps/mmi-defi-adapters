@@ -8,6 +8,7 @@ import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
+import { Helpers } from '../../../scripts/helpers'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -59,6 +60,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   protocolId: Protocol
   chainId: Chain
 
+  helpers: Helpers
   private provider: CustomJsonRpcProvider
 
   constructor({
@@ -66,11 +68,13 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   __IRM__ = new P2PInterestRates()

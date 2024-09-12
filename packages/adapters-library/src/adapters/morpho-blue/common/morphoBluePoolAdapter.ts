@@ -8,6 +8,7 @@ import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvi
 import { filterMapAsync } from '../../../core/utils/filters'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
+import { Helpers } from '../../../scripts/helpers'
 import { IProtocolAdapter } from '../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
@@ -62,6 +63,7 @@ export abstract class MorphoBluePoolAdapter
 {
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   abstract productId: string
   abstract adapterSettings: AdapterSettings
@@ -73,11 +75,13 @@ export abstract class MorphoBluePoolAdapter
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this._provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   __MATH__ = new MorphoBlueMath()

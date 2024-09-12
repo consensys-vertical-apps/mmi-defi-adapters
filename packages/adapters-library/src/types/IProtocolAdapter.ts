@@ -43,7 +43,7 @@ export type ProtocolToken<
 export interface IProtocolAdapter {
   adapterSettings: AdapterSettings
 
-  helpers?: Helpers
+  helpers: Helpers
 
   /**
    * Unique identifier of the protocol.
