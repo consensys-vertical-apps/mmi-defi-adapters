@@ -36,7 +36,9 @@ export class AdaptersController {
         Partial<
           Record<
             Chain,
-            (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]
+            (new (
+              input: ProtocolAdapterParams,
+            ) => IProtocolAdapter)[]
           >
         >
       >

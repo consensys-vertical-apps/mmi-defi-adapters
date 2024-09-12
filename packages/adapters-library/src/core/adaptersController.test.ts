@@ -7,12 +7,15 @@ import { Chain } from './constants/chains'
 import { AdapterMissingError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 
-const providers = Object.values(Chain).reduce((accumulator, current) => {
-  return {
-    ...accumulator,
-    [current]: jest.fn() as unknown as CustomJsonRpcProvider,
-  }
-}, {} as Record<Chain, CustomJsonRpcProvider>)
+const providers = Object.values(Chain).reduce(
+  (accumulator, current) => {
+    return {
+      ...accumulator,
+      [current]: jest.fn() as unknown as CustomJsonRpcProvider,
+    }
+  },
+  {} as Record<Chain, CustomJsonRpcProvider>,
+)
 
 class MockProtocolAdapter {
   productId = 'example-pool'
@@ -60,7 +63,9 @@ describe('AdaptersController', () => {
             Partial<
               Record<
                 Chain,
-                (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]
+                (new (
+                  input: ProtocolAdapterParams,
+                ) => IProtocolAdapter)[]
               >
             >
           >,
