@@ -101,6 +101,10 @@ import { SolvSolvBtcAdapter } from './solv/products/solv-btc/solvSolvBtcAdapter'
 import { MorphoBlueVaultAdapter } from './morpho-blue/products/vault/morphoBlueVaultAdapter'
 import { SolvYieldMarketAdapter } from './solv/products/yield-market/solvYieldMarketAdapter'
 
+import { EtherFiEEthAdapter } from './etherfi/products/e-eth/etherFiEEthAdapter'
+
+import { EtherFiWeEthAdapter } from './etherfi/products/we-eth/etherFiWeEthAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -280,6 +284,10 @@ export const supportedProtocols: Record<
 
   [Protocol.Ethena]: {
     [Chain.Ethereum]: [EthenaStakedUsdeAdapter],
+  },
+
+  [Protocol.EtherFi]: {
+    [Chain.Ethereum]: [EtherFiEEthAdapter, EtherFiWeEthAdapter],
   },
 
   [Protocol.Flux]: {

@@ -242,6 +242,10 @@ import MorphoBlueMarketBorrowBaseMarketBorrow from '../../adapters/morpho-blue/p
 
 import MorphoBlueVaultBaseProtocolToken from '../../adapters/morpho-blue/products/vault/metadata/base.protocol-token.json'
 
+import EtherFiEEthEthereumProtocolToken from '../../adapters/etherfi/products/e-eth/metadata/ethereum.protocol-token.json'
+
+import EtherFiWeEthEthereumProtocolToken from '../../adapters/etherfi/products/we-eth/metadata/ethereum.protocol-token.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -1124,6 +1128,24 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     EthenaEthenaEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.EtherFi,
+      productId: 'e-eth',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    EtherFiEEthEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.EtherFi,
+      productId: 'we-eth',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    EtherFiWeEthEthereumProtocolToken,
   ],
   [
     metadataKey({
