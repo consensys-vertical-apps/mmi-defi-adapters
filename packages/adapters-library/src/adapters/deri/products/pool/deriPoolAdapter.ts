@@ -2,6 +2,7 @@ import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
@@ -272,8 +273,25 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
         blockNumber,
       )
 
+      const burnFilter = tokenContract.filters.Transfer(
+        userAddress,
+        ZERO_ADDRESS,
+        undefined,
+      )
+
+      const burnEventsRaw = await tokenContract.queryFilter(
+        burnFilter,
+        undefined,
+        blockNumber,
+      )
+
+      const burnedTokenIds = burnEventsRaw.map((log) => log.args.tokenId)
+
       for (const log of transferEventsRaw) {
         const tokenId = log.args.tokenId
+        if (burnedTokenIds.includes(tokenId)) {
+          continue
+        }
         if (
           getAddress(
             await tokenContract.ownerOf(tokenId, {
