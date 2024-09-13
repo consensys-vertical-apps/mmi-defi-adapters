@@ -1,3 +1,4 @@
+import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Protocol } from '../adapters/protocols'
 import { WriteActionInputs } from '../adapters/supportedProtocols'
 import { Helpers } from '../scripts/helpers'
@@ -26,6 +27,7 @@ export class AdaptersController {
   constructor({
     providers,
     supportedProtocols,
+    metadataProviders,
   }: {
     providers: Record<Chain, CustomJsonRpcProvider>
     supportedProtocols: Partial<
@@ -41,6 +43,7 @@ export class AdaptersController {
         >
       >
     >
+    metadataProviders: Record<Chain, IMetadataProvider>
   }) {
     Object.entries(supportedProtocols).forEach(
       ([protocolIdKey, supportedChains]) => {
@@ -58,7 +61,11 @@ export class AdaptersController {
                 chainId,
                 protocolId,
                 adaptersController: this,
-                helpers: new Helpers({ provider, chainId }),
+                helpers: new Helpers({
+                  provider,
+                  chainId,
+                  metadataProvider: metadataProviders[chainId],
+                }),
               })
 
               const productId = adapter.productId

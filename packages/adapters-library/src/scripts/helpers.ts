@@ -1,4 +1,5 @@
 import { getAddress } from 'ethers'
+import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Erc20__factory } from '../contracts'
 import { TransferEvent } from '../contracts/Erc20'
 import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
@@ -32,16 +33,20 @@ export const REAL_ESTATE_TOKEN_METADATA = {
 export class Helpers {
   provider: CustomJsonRpcProvider
   chainId: Chain
+  metadataProvider: IMetadataProvider
 
   constructor({
     provider,
     chainId,
+    metadataProvider,
   }: {
     provider: CustomJsonRpcProvider
     chainId: Chain
+    metadataProvider: IMetadataProvider
   }) {
     this.provider = provider
     this.chainId = chainId
+    this.metadataProvider = metadataProvider
   }
 
   async getProtocolTokenByAddress<AdditionalMetadata extends JsonMetadata>({
