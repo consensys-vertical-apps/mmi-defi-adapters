@@ -23,7 +23,7 @@ import type {
   TypedContractMethod,
 } from "./common";
 
-export interface MetamorphofactoryInterface extends Interface {
+export interface MetamorphoFactoryInterface extends Interface {
   getFunction(
     nameOrSignature: "MORPHO" | "createMetaMorpho" | "isMetaMorpho"
   ): FunctionFragment;
@@ -88,11 +88,11 @@ export namespace CreateMetaMorphoEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
-export interface Metamorphofactory extends BaseContract {
-  connect(runner?: ContractRunner | null): Metamorphofactory;
+export interface MetamorphoFactory extends BaseContract {
+  connect(runner?: ContractRunner | null): MetamorphoFactory;
   waitForDeployment(): Promise<this>;
 
-  interface: MetamorphofactoryInterface;
+  interface: MetamorphoFactoryInterface;
 
   queryFilter<TCEvent extends TypedContractEvent>(
     event: TCEvent,
