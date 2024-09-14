@@ -105,6 +105,8 @@ import { EtherFiEEthAdapter } from './etherfi/products/e-eth/etherFiEEthAdapter'
 
 import { EtherFiWeEthAdapter } from './etherfi/products/we-eth/etherFiWeEthAdapter'
 
+import { EtherFiLiquidAdapter } from './etherfi/products/liquid/etherFiLiquidAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -287,7 +289,11 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.EtherFi]: {
-    [Chain.Ethereum]: [EtherFiEEthAdapter, EtherFiWeEthAdapter],
+    [Chain.Ethereum]: [
+      EtherFiEEthAdapter,
+      EtherFiWeEthAdapter,
+      EtherFiLiquidAdapter,
+    ],
   },
 
   [Protocol.Flux]: {

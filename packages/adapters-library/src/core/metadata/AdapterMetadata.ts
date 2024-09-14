@@ -246,6 +246,8 @@ import EtherFiEEthEthereumProtocolToken from '../../adapters/etherfi/products/e-
 
 import EtherFiWeEthEthereumProtocolToken from '../../adapters/etherfi/products/we-eth/metadata/ethereum.protocol-token.json'
 
+import EtherFiLiquidEthereumProtocolToken from '../../adapters/etherfi/products/liquid/metadata/ethereum.protocol-token.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -1137,6 +1139,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     EtherFiEEthEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.EtherFi,
+      productId: 'liquid',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    EtherFiLiquidEthereumProtocolToken,
   ],
   [
     metadataKey({
