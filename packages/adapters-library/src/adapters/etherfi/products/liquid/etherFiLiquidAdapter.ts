@@ -114,6 +114,19 @@ export class EtherFiLiquidAdapter implements IProtocolAdapter {
       }),
     )
 
+    /**
+     * Each item in parsedLogs looks like this:
+     *
+     * {
+     *   name: "ContractDeployed",
+     *   args: [
+     *      'Bridging Test ETH Vault Accountant With Rate Providers V1.3', // Deployed contract name
+     *      '0xBA4397B2B1780097eD1B483E3C0717E0Ed4fAAa5', // Deployed contract address
+     *      '0x...', // Constructor arguments
+     *   ],
+     *   ...
+     * }
+     */
     const accountantContractAddresses = parsedLogs
       .filter((log) => log?.args[0].toLocaleLowerCase().includes('accountant'))
       .map((log) => log?.args[1])
@@ -125,14 +138,17 @@ export class EtherFiLiquidAdapter implements IProtocolAdapter {
           this.provider,
         )
 
-        const boringVaultContractAddress = await accountantContract.vault()
-        const underlyingTokenAddress = await accountantContract.base()
-        const protocolToken = await this.helpers.getTokenMetadata(
-          getAddress(boringVaultContractAddress),
-        )
-        const underlyingToken = await this.helpers.getTokenMetadata(
-          getAddress(underlyingTokenAddress),
-        )
+        const [boringVaultContractAddress, underlyingTokenAddress] =
+          await Promise.all([
+            accountantContract.vault(),
+            accountantContract.base(),
+          ])
+
+        const [protocolToken, underlyingToken] = await Promise.all([
+          this.helpers.getTokenMetadata(getAddress(boringVaultContractAddress)),
+          this.helpers.getTokenMetadata(getAddress(underlyingTokenAddress)),
+        ])
+
         return {
           ...protocolToken,
           underlyingTokens: [underlyingToken],
@@ -219,16 +235,13 @@ export class EtherFiLiquidAdapter implements IProtocolAdapter {
       (item) => item.address === protocolTokenAddress,
     )
     if (!protocolToken)
-      throw new Error(
-        `Could not find protocol token with address ${protocolTokenAddress}`,
-      )
+      throw new Error(`No protocol token with address ${protocolTokenAddress}`)
 
     const underlyingToken = (protocolToken.underlyingTokens || [])[0]
-    if (!underlyingToken) throw new Error('No protocol token found')
+    if (!underlyingToken) throw new Error('No underlying token found')
 
-    const { accountantContractAddress } = protocolToken
     const accountantContract = AccountantWithRateProviders__factory.connect(
-      accountantContractAddress,
+      protocolToken.accountantContractAddress,
       this.provider,
     )
 
