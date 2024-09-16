@@ -936,7 +936,7 @@ export class DefiProvider {
     if (error instanceof Error) {
       adapterError = {
         message: error.message,
-        details: { name: error.name, stack: error.stack },
+        details: { name: error.name },
       }
     } else if (typeof error === 'string') {
       adapterError = {
