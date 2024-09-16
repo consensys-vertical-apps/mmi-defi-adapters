@@ -138,9 +138,8 @@ export class EtherFiEEthAdapter implements IProtocolAdapter {
   async unwrap({
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const protocolToken = await this.getProtocolTokenByAddress(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
     const underlyingTokens = protocolToken.underlyingTokens
     if (!underlyingTokens || !underlyingTokens.length)
       throw new Error('No underlying tokens found')
