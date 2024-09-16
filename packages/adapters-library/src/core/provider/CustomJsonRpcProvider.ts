@@ -94,7 +94,10 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
   }
 
   async call(transaction: TransactionRequest): Promise<string> {
-    const key = JSON.stringify(transaction)
+    const key = JSON.stringify({
+      ...transaction,
+      chainId: transaction.chainId?.toString(), // JSON.stringify cannot serialize bigints by default
+    })
 
     const cachedEntryPromise = this.cacheCalls[key]
 

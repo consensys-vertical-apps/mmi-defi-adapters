@@ -1,13 +1,13 @@
-import path from 'node:path'
 import Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
+import path from 'node:path'
 import {
   IMetadataProvider,
   SQLiteMetadataProvider,
 } from './SQLiteMetadataProvider'
 import { Protocol } from './adapters/protocols'
-import { supportedProtocols } from './adapters/supportedProtocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
+import { supportedProtocols } from './adapters/supportedProtocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
@@ -21,7 +21,7 @@ import {
 import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
-import { filterMapAsync, filterMapSync } from './core/utils/filters'
+import { filterMapAsync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
 import { unwrap } from './core/utils/unwrap'
 import { count } from './metricsCount'
@@ -31,7 +31,7 @@ import {
   enrichTotalValueLocked,
   enrichUnwrappedTokenExchangeRates,
 } from './responseAdapters'
-import { IProtocolAdapter, ProtocolToken } from './types/IProtocolAdapter'
+import { IProtocolAdapter } from './types/IProtocolAdapter'
 import { PositionType } from './types/adapter'
 import { DeepPartial } from './types/deepPartial'
 import {
@@ -48,13 +48,10 @@ import {
 import { existsSync } from 'node:fs'
 
 function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
-  return Object.values(Chain).reduce(
-    (acc, chain) => {
-      acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
-      return acc
-    },
-    {} as Record<Chain, IMetadataProvider>,
-  )
+  return Object.values(Chain).reduce((acc, chain) => {
+    acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
+    return acc
+  }, {} as Record<Chain, IMetadataProvider>)
 }
 
 const dbParams = (chainId: Chain): [string, Database.Options] => {
@@ -111,19 +108,16 @@ export class DefiProvider {
         (provider) =>
           !filterChainIds || filterChainIds.includes(provider.chainId),
       )
-      .reduce(
-        async (accumulator, provider) => {
-          if (filterChainIds && !filterChainIds.includes(provider.chainId)) {
-            return accumulator
-          }
+      .reduce(async (accumulator, provider) => {
+        if (filterChainIds && !filterChainIds.includes(provider.chainId)) {
+          return accumulator
+        }
 
-          return {
-            ...(await accumulator),
-            [provider.chainId]: await provider.getStableBlockNumber(),
-          }
-        },
-        {} as Promise<Partial<Record<Chain, number>>>,
-      )
+        return {
+          ...(await accumulator),
+          [provider.chainId]: await provider.getStableBlockNumber(),
+        }
+      }, {} as Promise<Partial<Record<Chain, number>>>)
   }
 
   async getPositions({
@@ -273,10 +267,9 @@ export class DefiProvider {
         return undefined
       }
 
-      const transferLogs =
-        await this.chainProvider.providers[
-          adapter.chainId
-        ].getAllTransferLogsToAddress(userAddress)
+      const transferLogs = await this.chainProvider.providers[
+        adapter.chainId
+      ].getAllTransferLogsToAddress(userAddress)
 
       // no logs on this chain means nothing done on this chain
       if (transferLogs.length === 0) {
@@ -936,7 +929,7 @@ export class DefiProvider {
     if (error instanceof Error) {
       adapterError = {
         message: error.message,
-        details: { name: error.name },
+        details: { name: error.name, stack: error.stack },
       }
     } else if (typeof error === 'string') {
       adapterError = {

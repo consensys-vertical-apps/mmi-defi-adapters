@@ -12,13 +12,11 @@ import { logger } from '../core/utils/logger'
 import { nativeToken, nativeTokenAddresses } from '../core/utils/nativeTokens'
 import { JsonMetadata, ProtocolToken } from '../types/IProtocolAdapter'
 import {
-  GetEventsInput,
   GetPositionsInput,
   MovementsByBlock,
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  Underlying,
   UnwrapExchangeRate,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
@@ -31,23 +29,12 @@ export const REAL_ESTATE_TOKEN_METADATA = {
 }
 
 export class Helpers {
-  provider: CustomJsonRpcProvider
-  chainId: Chain
-  metadataProvider: IMetadataProvider
-
-  constructor({
-    provider,
-    chainId,
-    metadataProvider,
-  }: {
-    provider: CustomJsonRpcProvider
-    chainId: Chain
-    metadataProvider: IMetadataProvider
-  }) {
-    this.provider = provider
-    this.chainId = chainId
-    this.metadataProvider = metadataProvider
-  }
+  constructor(
+    public readonly provider: CustomJsonRpcProvider,
+    public readonly chainId: Chain,
+    public readonly metadataProvider: IMetadataProvider,
+    public readonly allJsonRpcProviders: Record<Chain, CustomJsonRpcProvider>,
+  ) {}
 
   async getProtocolTokenByAddress<AdditionalMetadata extends JsonMetadata>({
     protocolTokens,

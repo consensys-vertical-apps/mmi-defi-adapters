@@ -1,0 +1,16 @@
+[
+  {
+    "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+    "name": "Wrapped eETH",
+    "symbol": "weETH",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x0000000000000000000000000000000000000000",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ]
+  }
+]

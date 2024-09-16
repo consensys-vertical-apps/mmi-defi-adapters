@@ -3,11 +3,7 @@ import { Protocol } from '../adapters/protocols'
 import { WriteActionInputs } from '../adapters/supportedProtocols'
 import { Helpers } from '../scripts/helpers'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
-import {
-  AssetType,
-  PositionType,
-  ProtocolAdapterParams,
-} from '../types/adapter'
+import { PositionType, ProtocolAdapterParams } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { Support } from '../types/response'
 import { WriteActions } from '../types/writeActions'
@@ -36,9 +32,7 @@ export class AdaptersController {
         Partial<
           Record<
             Chain,
-            (new (
-              input: ProtocolAdapterParams,
-            ) => IProtocolAdapter)[]
+            (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]
           >
         >
       >
@@ -61,11 +55,12 @@ export class AdaptersController {
                 chainId,
                 protocolId,
                 adaptersController: this,
-                helpers: new Helpers({
+                helpers: new Helpers(
                   provider,
                   chainId,
-                  metadataProvider: metadataProviders[chainId],
-                }),
+                  metadataProviders[chainId],
+                  providers,
+                ),
               })
 
               const productId = adapter.productId
