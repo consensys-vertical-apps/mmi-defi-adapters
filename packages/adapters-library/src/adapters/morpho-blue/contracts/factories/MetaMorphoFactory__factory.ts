@@ -4,9 +4,9 @@
 
 import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
-  MetamorphoFactory,
-  MetamorphoFactoryInterface,
-} from "../MetamorphoFactory";
+  Metamorphofactory,
+  MetamorphofactoryInterface,
+} from "../Metamorphofactory";
 
 const _abi = [
   {
@@ -158,15 +158,15 @@ const _abi = [
   },
 ] as const;
 
-export class MetamorphoFactory__factory {
+export class Metamorphofactory__factory {
   static readonly abi = _abi;
-  static createInterface(): MetamorphoFactoryInterface {
-    return new Interface(_abi) as MetamorphoFactoryInterface;
+  static createInterface(): MetamorphofactoryInterface {
+    return new Interface(_abi) as MetamorphofactoryInterface;
   }
   static connect(
     address: string,
     runner?: ContractRunner | null
-  ): MetamorphoFactory {
-    return new Contract(address, _abi, runner) as unknown as MetamorphoFactory;
+  ): Metamorphofactory {
+    return new Contract(address, _abi, runner) as unknown as Metamorphofactory;
   }
 }

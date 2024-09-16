@@ -1,9 +1,13 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import {
+  CacheToFile,
+  IMetadataBuilder,
+} from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -26,9 +30,14 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import {
-  MetamorphoFactory__factory,
   Metamorpho__factory,
+  Metamorphofactory__factory,
 } from '../../contracts'
+import { SupplyEvent } from '../../contracts/MorphoBlue'
+import {
+  TypedContractEvent,
+  TypedDeferredTopicFilter,
+} from '../../contracts/common'
 
 export type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]
@@ -88,7 +97,7 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
-    const metaMorphoFactoryContract = MetamorphoFactory__factory.connect(
+    const metaMorphoFactoryContract = Metamorphofactory__factory.connect(
       metaMorphoFactoryContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
     )
@@ -139,9 +148,8 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.withdrawals({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -153,9 +161,8 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.deposits({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -202,12 +209,10 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     return this.helpers.unwrapOneToOne({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      underlyingTokens:
+        await this.fetchUnderlyingTokensMetadata(protocolTokenAddress),
     })
   }
 
