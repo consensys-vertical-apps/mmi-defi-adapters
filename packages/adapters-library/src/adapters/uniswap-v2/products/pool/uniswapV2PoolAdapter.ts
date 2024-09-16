@@ -3,6 +3,7 @@ import {
   UniswapV2PoolForkPositionStrategy,
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 
@@ -27,7 +28,7 @@ export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   > {
     return {
       [Chain.Ethereum]: {
-        type: 'logs',
+        type: 'factory',
         factoryAddress: '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f',
       },
       [Chain.Optimism]: {
@@ -57,8 +58,8 @@ export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
-    return super.buildMetadata()
+  @CacheToDb()
+  async getProtocolTokens() {
+    return super.getProtocolTokens()
   }
 }

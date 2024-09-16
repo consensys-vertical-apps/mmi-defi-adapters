@@ -4,7 +4,7 @@ import {
   UniswapV2Pair__factory,
 } from '../../contracts'
 import { Helpers } from '../../scripts/helpers'
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
 import {
   AdapterSettings,
   GetEventsInput,
@@ -30,14 +30,11 @@ import { filterMapAsync } from '../utils/filters'
 import { getTokenMetadata } from '../utils/getTokenMetadata'
 import { logger } from '../utils/logger'
 
-export type UniswapV2PoolForkAdapterMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    token0: Erc20Metadata
-    token1: Erc20Metadata
-  }
->
+export type AdditionalTokenMetadata = {
+  underlyingTokens: Erc20Metadata[]
+  token0: string
+  token1: string
+}
 
 export type UniswapV2PoolForkPositionStrategy = { factoryAddress: string } & (
   | {
@@ -49,9 +46,7 @@ export type UniswapV2PoolForkPositionStrategy = { factoryAddress: string } & (
   | { type: 'logs' }
 )
 
-export abstract class UniswapV2PoolForkAdapter
-  implements IProtocolAdapter, IMetadataBuilder
-{
+export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
   protected readonly MAX_FACTORY_PAIRS: number = 1000
   protected readonly MIN_SUBGRAPH_VOLUME: number = 50000
   protected readonly MIN_TOKEN_RESERVE: number = 1
@@ -93,6 +88,7 @@ export abstract class UniswapV2PoolForkAdapter
     this.adapterSettings = {
       enablePositionDetectionByProtocolTokenTransfer: this.metadataBased,
       includeInUnwrap: this.metadataBased,
+      version: 3,
     }
   }
 
@@ -102,7 +98,9 @@ export abstract class UniswapV2PoolForkAdapter
     Record<Chain, UniswapV2PoolForkPositionStrategy>
   >
 
-  async buildMetadata(): Promise<UniswapV2PoolForkAdapterMetadata> {
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalTokenMetadata>[]> {
+    console.log('UniswapV2PoolForkAdapter getProtocolTokens')
+
     const factoryMetadata = this.chainMetadataSettings()[this.chainId]
 
     if (!factoryMetadata) {
@@ -139,32 +137,32 @@ export abstract class UniswapV2PoolForkAdapter
         )
 
         return {
-          protocolToken: protocolTokenUpdated,
-          token0,
-          token1,
+          ...protocolTokenUpdated,
+          underlyingTokens: [token0, token1],
+          token0: pair.token0Address,
+          token1: pair.token1Address,
         }
       }),
     )
 
     return pairPromises.reduce((metadataObject, pair) => {
       if (pair.status === 'fulfilled') {
-        metadataObject[pair.value.protocolToken.address] = pair.value
+        metadataObject.push(pair.value)
       }
       return metadataObject
-    }, {} as UniswapV2PoolForkAdapterMetadata)
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    if (this.metadataBased) {
-      return Object.values(await this.buildMetadata()).map(
-        ({ protocolToken }) => protocolToken,
-      )
-    }
-
-    throw new NotImplementedError()
+    }, [] as ProtocolToken<AdditionalTokenMetadata>[])
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    if (
+      input.protocolTokenAddresses &&
+      input.protocolTokenAddresses.length === 0
+    ) {
+      throw new Error(
+        'No protocol token address filter provided, must be provided for this adapter due to the large number of pools',
+      )
+    }
+
     if (this.metadataBased) {
       return this.helpers.getBalanceOfTokens({
         ...input,
@@ -362,7 +360,7 @@ export abstract class UniswapV2PoolForkAdapter
     protocolTokenAddress,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const { protocolToken, token0, token1 } =
+    const { token0, token1, underlyingTokens, ...protocolToken } =
       await this.fetchPoolMetadata(protocolTokenAddress)
 
     const pairContract = UniswapV2Pair__factory.connect(
@@ -396,24 +394,28 @@ export abstract class UniswapV2PoolForkAdapter
         {
           type: TokenType.Underlying,
           underlyingRateRaw: pricePerShare0!,
-          ...token0,
+          ...underlyingTokens.find((token) => token.address === token0)!,
         },
         {
           type: TokenType.Underlying,
           underlyingRateRaw: pricePerShare1!,
-          ...token1,
+          ...underlyingTokens.find((token) => token.address === token1)!,
         },
       ],
     }
   }
 
   private async getProtocolToken(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
+    const { token0, token1, underlyingTokens, ...protocolToken } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
+    return protocolToken
   }
 
   protected async fetchPoolMetadata(protocolTokenAddress: string) {
     if (this.metadataBased) {
-      const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
+      const poolMetadata = (await this.getProtocolTokens()).find(
+        (pool) => pool.address === protocolTokenAddress,
+      )
 
       if (!poolMetadata) {
         logger.error(
@@ -435,22 +437,30 @@ export abstract class UniswapV2PoolForkAdapter
       protocolTokenAddress,
       this.provider,
     )
+
+    const protocolToken = await getTokenMetadata(
+      protocolTokenAddress,
+      this.chainId,
+      this.provider,
+    )
+
+    const token0 = await getTokenMetadata(
+      await pairContract.token0(),
+      this.chainId,
+      this.provider,
+    )
+
+    const token1 = await getTokenMetadata(
+      await pairContract.token1(),
+      this.chainId,
+      this.provider,
+    )
+
     return {
-      protocolToken: await getTokenMetadata(
-        protocolTokenAddress,
-        this.chainId,
-        this.provider,
-      ),
-      token0: await getTokenMetadata(
-        await pairContract.token0(),
-        this.chainId,
-        this.provider,
-      ),
-      token1: await getTokenMetadata(
-        await pairContract.token1(),
-        this.chainId,
-        this.provider,
-      ),
+      ...protocolToken,
+      underlyingTokens: [token0, token1],
+      token0: token0.address,
+      token1: token1.address,
     }
   }
 

@@ -45,6 +45,7 @@ export function buildMetadataDb(
     )
     .showHelpAfterError()
     .action(async ({ protocols, chains }) => {
+      console.log('protocols', protocols)
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterChainIds = multiChainFilter(chains)
 

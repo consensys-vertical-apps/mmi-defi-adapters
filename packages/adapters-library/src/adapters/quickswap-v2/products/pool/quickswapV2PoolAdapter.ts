@@ -52,6 +52,6 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    return super.buildMetadata()
+    return super.getProtocolTokens()
   }
 }
