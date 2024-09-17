@@ -910,6 +910,7 @@ export class DefiProvider {
 
       return {
         ...protocolDetails,
+        chainName: ChainName[adapter.chainId],
         success: true,
         ...adapterResult,
       }
