@@ -1,4 +1,5 @@
 {
+  "latency": "Latency: 0.153 seconds",
   "blockNumber": 19661887,
   "snapshot": [
     {
@@ -10,6 +11,7 @@
       "protocolId": "stakewise",
       "productId": "os-eth",
       "chainId": 1,
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

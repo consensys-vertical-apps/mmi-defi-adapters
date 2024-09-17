@@ -1,5 +1,6 @@
 {
   "aggregatedValues": ["USD0.28"],
+  "latency": "Latency: 1.865 seconds",
   "snapshot": {
     "name": "StakeWise",
     "siteUrl": "https://app.stakewise.io/",
@@ -9,6 +10,7 @@
     "protocolId": "stakewise",
     "productId": "os-eth",
     "chainId": 1,
+    "chainName": "ethereum",
     "success": true,
     "movements": [
       {

@@ -1,5 +1,6 @@
 {
   "blockNumber": 18634843,
+  "latency": "Latency: 5.452 seconds",
   "aggregatedValues": ["USD147,541.36", "USD24,790.67", "USD154.56"],
   "snapshot": [
     {
@@ -11,6 +12,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "staking",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -182,6 +184,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "cvxcrv-wrapper",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

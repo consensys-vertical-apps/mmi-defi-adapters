@@ -1,5 +1,6 @@
 {
   "aggregatedValues": ["USD57,238.00"],
+  "latency": "Latency: 3.722 seconds",
   "snapshot": {
     "protocolId": "uniswap-v3",
     "name": "UniswapV3",
@@ -9,6 +10,7 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "pool",
+    "chainName": "ethereum",
     "success": true,
     "movements": [
       {

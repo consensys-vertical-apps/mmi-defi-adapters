@@ -10,6 +10,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "supply-market",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -59,6 +60,7 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "borrow-market",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

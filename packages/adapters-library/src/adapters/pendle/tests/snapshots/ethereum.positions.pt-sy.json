@@ -1,5 +1,6 @@
 {
   "blockNumber": 20572021,
+  "latency": "Latency: 3.347 seconds",
   "aggregatedValues": [
     "USD0.00",
     "USD0.00",
@@ -21,6 +22,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "yield-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -181,6 +183,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "principle-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -252,6 +255,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "standardised-yield-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

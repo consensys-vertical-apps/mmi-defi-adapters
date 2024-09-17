@@ -1,5 +1,6 @@
 {
   "blockNumber": 18163965,
+  "latency": "Latency: 4.272 seconds",
   "snapshot": [
     {
       "protocolId": "stargate",
@@ -10,6 +11,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
