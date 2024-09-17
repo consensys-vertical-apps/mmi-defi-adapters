@@ -1,5 +1,6 @@
 {
   "blockNumber": 45143862,
+  "latency": "Latency: 5.538 seconds",
   "snapshot": [
     {
       "protocolId": "gmx",
@@ -10,6 +11,7 @@
       "positionType": "supply",
       "chainId": 43114,
       "productId": "glp",
+      "chainName": "avax",
       "success": true,
       "tokens": [
         {

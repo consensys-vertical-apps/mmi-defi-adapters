@@ -1,5 +1,6 @@
 {
   "blockNumber": 18377483,
+  "latency": "Latency: 2.003 seconds",
   "snapshot": [
     {
       "protocolId": "lido",
@@ -10,6 +11,7 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "st-eth",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -42,6 +44,7 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "wst-eth",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

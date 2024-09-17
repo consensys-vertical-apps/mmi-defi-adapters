@@ -1,5 +1,6 @@
 {
   "blockNumber": 19074240,
+  "latency": "Latency: 1.743 seconds",
   "aggregatedValues": ["USD127,716,164.58"],
   "snapshot": [
     {
@@ -11,6 +12,7 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "reth",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

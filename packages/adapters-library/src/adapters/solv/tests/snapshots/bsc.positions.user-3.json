@@ -1,5 +1,6 @@
 {
   "blockNumber": 41411562,
+  "latency": "Latency: 1.846 seconds",
   "aggregatedValues": ["USD13.43"],
   "snapshot": [
     {
@@ -11,6 +12,7 @@
       "positionType": "supply",
       "chainId": 56,
       "productId": "solv-btc",
+      "chainName": "bsc",
       "success": true,
       "tokens": [
         {

@@ -1,5 +1,6 @@
 {
   "aggregatedValues": ["USD71.17", "USD48.13"],
+  "latency": "Latency: 3.453 seconds",
   "snapshot": {
     "protocolId": "gmx",
     "name": "GMX",
@@ -9,6 +10,7 @@
     "positionType": "supply",
     "chainId": 43114,
     "productId": "glp",
+    "chainName": "avax",
     "success": true,
     "movements": [
       {

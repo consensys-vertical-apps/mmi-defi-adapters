@@ -10,6 +10,7 @@
       "positionType": "supply",
       "chainId": 10,
       "productId": "supply-market",
+      "chainName": "op",
       "success": true,
       "tokens": [
         {

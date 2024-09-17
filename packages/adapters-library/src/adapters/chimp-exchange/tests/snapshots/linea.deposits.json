@@ -1,5 +1,6 @@
 {
   "aggregatedValues": [],
+  "latency": "Latency: 2.02 seconds",
   "snapshot": {
     "protocolId": "chimp-exchange",
     "name": "ChimpExchange",
@@ -9,6 +10,7 @@
     "positionType": "supply",
     "chainId": 59144,
     "productId": "pool",
+    "chainName": "linea",
     "success": true,
     "movements": [
       {

@@ -1,5 +1,6 @@
 {
   "blockNumber": 243434198,
+  "latency": "Latency: 2.31 seconds",
   "aggregatedValues": ["USD13.01"],
   "snapshot": [
     {
@@ -11,6 +12,7 @@
       "positionType": "supply",
       "chainId": 42161,
       "productId": "solv-btc",
+      "chainName": "arb",
       "success": true,
       "tokens": [
         {
@@ -30,7 +32,7 @@
               "balanceRaw": "22271n",
               "balance": 0.00022271,
               "price": 58414.57596608962,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arb/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
             }
           ],
           "balance": 0.000222712076938228

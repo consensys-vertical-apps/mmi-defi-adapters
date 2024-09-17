@@ -1,5 +1,6 @@
 {
   "aggregatedValues": ["USD2,008,038.95"],
+  "latency": "Latency: 1.928 seconds",
   "snapshot": {
     "protocolId": "rocket-pool",
     "name": "RocketPool",
@@ -9,6 +10,7 @@
     "positionType": "stake",
     "chainId": 1,
     "productId": "reth",
+    "chainName": "ethereum",
     "success": true,
     "movements": [
       {

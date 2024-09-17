@@ -1,5 +1,6 @@
 {
   "blockNumber": 243434209,
+  "latency": "Latency: 2.227 seconds",
   "aggregatedValues": ["USD1,576.36"],
   "snapshot": [
     {
@@ -11,6 +12,7 @@
       "positionType": "supply",
       "chainId": 42161,
       "productId": "solv-btc",
+      "chainName": "arb",
       "success": true,
       "tokens": [
         {

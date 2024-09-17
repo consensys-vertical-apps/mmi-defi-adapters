@@ -11,6 +11,7 @@
       "positionType": "stake",
       "chainId": 42161,
       "productId": "yield-market",
+      "chainName": "arb",
       "success": true,
       "tokens": [
         {
