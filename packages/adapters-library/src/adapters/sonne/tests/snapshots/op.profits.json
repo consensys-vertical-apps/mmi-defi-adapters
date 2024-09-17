@@ -111,6 +111,7 @@
       "positionType": "borrow",
       "chainId": 10,
       "productId": "borrow-market",
+      "chainName": "op",
       "success": true,
       "tokens": [
         {
