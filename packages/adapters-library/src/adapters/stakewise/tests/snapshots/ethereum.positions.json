@@ -1,5 +1,6 @@
 {
   "blockNumber": 19240234,
+  "latency": "Latency: 1.819 seconds",
   "aggregatedValues": ["USD0.28"],
   "snapshot": [
     {
@@ -11,6 +12,7 @@
       "protocolId": "stakewise",
       "productId": "os-eth",
       "chainId": 1,
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

@@ -1,6 +1,6 @@
 {
   "blockNumber": 18183880,
-  "latency": "Latency: 4.545 seconds",
+  "latency": "Latency: 6.053 seconds",
   "aggregatedValues": [
     "USD10,363,085.23",
     "USD1,296,164.67",
@@ -19,6 +19,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "a-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -76,6 +77,7 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "variable-debt-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

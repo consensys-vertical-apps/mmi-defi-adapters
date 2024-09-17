@@ -8,6 +8,7 @@
     "positionType": "borrow",
     "chainId": 1,
     "productId": "borrow-market",
+    "chainName": "ethereum",
     "success": true,
     "params": {
       "to": "0xc3d688B66703497DAA19211EEdff47f25384cdc3",

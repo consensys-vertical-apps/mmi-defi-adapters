@@ -11,6 +11,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "a-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -60,6 +61,7 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "variable-debt-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

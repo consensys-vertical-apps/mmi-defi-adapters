@@ -1,5 +1,6 @@
 {
   "blockNumber": 18713643,
+  "latency": "Latency: 11.417 seconds",
   "snapshot": [
     {
       "protocolId": "convex",
@@ -10,6 +11,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "cvxcrv-wrapper",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

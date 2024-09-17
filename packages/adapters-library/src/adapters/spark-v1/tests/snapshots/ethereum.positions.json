@@ -1,5 +1,6 @@
 {
   "blockNumber": 20112246,
+  "latency": "Latency: 1.673 seconds",
   "aggregatedValues": ["USD239,349,702.78"],
   "snapshot": [
     {
@@ -11,6 +12,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "sp-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

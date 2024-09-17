@@ -1,5 +1,6 @@
 {
   "blockNumber": 20126536,
+  "latency": "Latency: 3.295 seconds",
   "snapshot": [
     {
       "protocolId": "pendle",
@@ -10,6 +11,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "principle-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

@@ -1,5 +1,6 @@
 {
   "blockNumber": 1498597,
+  "latency": "Latency: 2.149 seconds",
   "snapshot": [
     {
       "protocolId": "chimp-exchange",
@@ -10,6 +11,7 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "pool",
+      "chainName": "linea",
       "success": true,
       "tokens": [
         {

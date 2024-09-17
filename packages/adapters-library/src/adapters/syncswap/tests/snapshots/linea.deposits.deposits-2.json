@@ -1,5 +1,6 @@
 {
   "aggregatedValues": [],
+  "latency": "Latency: 2.13 seconds",
   "snapshot": {
     "protocolId": "syncswap",
     "name": "SyncSwap",
@@ -9,6 +10,7 @@
     "positionType": "supply",
     "chainId": 59144,
     "productId": "pool",
+    "chainName": "linea",
     "success": true,
     "movements": [
       {

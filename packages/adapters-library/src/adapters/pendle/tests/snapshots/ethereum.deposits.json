@@ -1,5 +1,6 @@
 {
   "aggregatedValues": ["USD1,052.56"],
+  "latency": "Latency: 2.455 seconds",
   "snapshot": {
     "protocolId": "pendle",
     "name": "Pendle",
@@ -9,6 +10,7 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "principle-token",
+    "chainName": "ethereum",
     "success": true,
     "movements": [
       {

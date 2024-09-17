@@ -1,5 +1,6 @@
 {
   "blockNumber": 18527822,
+  "latency": "Latency: 2.446 seconds",
   "aggregatedValues": ["USD5,608,461.96"],
   "snapshot": [
     {
@@ -11,6 +12,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "s-dai",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

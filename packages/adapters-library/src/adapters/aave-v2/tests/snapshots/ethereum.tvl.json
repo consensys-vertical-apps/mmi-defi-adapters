@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 4.033 seconds",
+  "latency": "Latency: 3.766 seconds",
   "blockNumber": 19661875,
   "snapshot": [
     {
@@ -11,6 +11,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "a-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -46,6 +47,7 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "stable-debt-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -81,6 +83,7 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "variable-debt-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
