@@ -60,6 +60,7 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "borrow-market",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

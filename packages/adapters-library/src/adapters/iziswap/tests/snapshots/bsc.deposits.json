@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD21.86"],
-  "latency": "Latency: 2.145 seconds",
+  "latency": "Latency: 1.701 seconds",
   "snapshot": {
     "protocolId": "iziswap",
     "name": "IZiSwap",
