@@ -917,12 +917,14 @@ export class DefiProvider {
 
       return {
         ...protocolDetails,
+        chainName: ChainName[adapter.chainId],
         success: true,
         ...adapterResult,
       }
     } catch (error) {
       return {
         ...protocolDetails,
+        chainName: ChainName[adapter.chainId],
         ...this.handleError(error),
       }
     }

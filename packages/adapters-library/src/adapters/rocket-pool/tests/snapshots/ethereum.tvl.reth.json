@@ -1,4 +1,5 @@
 {
+  "latency": "Latency: 1.749 seconds",
   "blockNumber": 19074240,
   "snapshot": [
     {
@@ -10,6 +11,7 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "reth",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
