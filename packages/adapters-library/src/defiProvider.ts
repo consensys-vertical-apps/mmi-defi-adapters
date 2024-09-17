@@ -6,8 +6,8 @@ import {
   SQLiteMetadataProvider,
 } from './SQLiteMetadataProvider'
 import { Protocol } from './adapters/protocols'
-import { supportedProtocols } from './adapters/supportedProtocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
+import { supportedProtocols } from './adapters/supportedProtocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
@@ -21,7 +21,7 @@ import {
 import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
-import { filterMapAsync, filterMapSync } from './core/utils/filters'
+import { filterMapAsync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
 import { unwrap } from './core/utils/unwrap'
 import { count } from './metricsCount'
@@ -31,7 +31,7 @@ import {
   enrichTotalValueLocked,
   enrichUnwrappedTokenExchangeRates,
 } from './responseAdapters'
-import { IProtocolAdapter, ProtocolToken } from './types/IProtocolAdapter'
+import { IProtocolAdapter } from './types/IProtocolAdapter'
 import { PositionType } from './types/adapter'
 import { DeepPartial } from './types/deepPartial'
 import {
