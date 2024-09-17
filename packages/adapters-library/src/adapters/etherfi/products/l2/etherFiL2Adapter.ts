@@ -2,8 +2,8 @@ import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { getBlockByDate } from '../../../../core/utils/getBlockByDate'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -23,7 +23,6 @@ import {
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
-import { WeETH__factory } from '../../contracts'
 
 const CHAIN_TO_CONFIG: Partial<
   Record<
@@ -174,54 +173,58 @@ export class EtherFiL2Adapter implements IProtocolAdapter {
    * So we can use the same rate as the Mainnet-weETH to unwrap the L2-weETH to Mainnet-eETH, and then to ETH.
    *
    * @See https://medium.com/layerzero-official/explaining-the-oft-standard-310de5e84052
+   *
+   * @note Disabled for now, in order to avoid undesirable cross-chain RPC calls + finding blocks by date.
+   * Will be solved for in later versions using the price-adapter.
    */
   async unwrap({ blockNumber }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const [protocolToken] = await this.getProtocolTokens()
-    if (!protocolToken) throw new Error('No protocol token found')
+    throw new NotImplementedError()
+    // const [protocolToken] = await this.getProtocolTokens()
+    // if (!protocolToken) throw new Error('No protocol token found')
 
-    const underlyingToken = (protocolToken.underlyingTokens || [])[0]
-    if (!underlyingToken) throw new Error('No protocol token found')
+    // const underlyingToken = (protocolToken.underlyingTokens || [])[0]
+    // if (!underlyingToken) throw new Error('No protocol token found')
 
-    const useBlockNumber = blockNumber ?? (await this.provider.getBlockNumber())
-    const l2Block = await this.provider.getBlock(useBlockNumber)
-    if (!l2Block)
-      throw new Error(`No L2 block found with block number ${blockNumber}`)
-    if (!l2Block.date)
-      throw new Error(
-        `Block with number ${blockNumber} has no date, but it's needed to determine the unwrap rate`,
-      )
+    // const useBlockNumber = blockNumber ?? (await this.provider.getBlockNumber())
+    // const l2Block = await this.provider.getBlock(useBlockNumber)
+    // if (!l2Block)
+    //   throw new Error(`No L2 block found with block number ${blockNumber}`)
+    // if (!l2Block.date)
+    //   throw new Error(
+    //     `Block with number ${blockNumber} has no date, but it's needed to determine the unwrap rate`,
+    //   )
 
-    const mainnetProvider = this.helpers.allJsonRpcProviders[Chain.Ethereum]
-    const weETHContractMainnet = WeETH__factory.connect(
-      WE_ETH_ADDRESS_MAINNET,
-      mainnetProvider,
-    )
+    // const mainnetProvider = this.helpers.allJsonRpcProviders[Chain.Ethereum]
+    // const weETHContractMainnet = WeETH__factory.connect(
+    //   WE_ETH_ADDRESS_MAINNET,
+    //   mainnetProvider,
+    // )
 
-    const sameDateMainnetBlockNumber = await getBlockByDate(
-      mainnetProvider,
-      l2Block.date,
-    )
-    if (!sameDateMainnetBlockNumber)
-      throw new Error('No Mainnet block with date close to L2 block')
+    // const sameDateMainnetBlockNumber = await getBlockByDate(
+    //   mainnetProvider,
+    //   l2Block.date,
+    // )
+    // if (!sameDateMainnetBlockNumber)
+    //   throw new Error('No Mainnet block with date close to L2 block')
 
-    // Use the rate  Mainnet-weETH -> Mainnet-eTH
-    // Then Mainnet-eTH unwraps 1-to-1 to ETH
-    const underlyingRateRaw = await weETHContractMainnet.getRate({
-      chainId: 1,
-      blockTag: sameDateMainnetBlockNumber.number,
-    })
+    // // Use the rate  Mainnet-weETH -> Mainnet-eTH
+    // // Then Mainnet-eTH unwraps 1-to-1 to ETH
+    // const underlyingRateRaw = await weETHContractMainnet.getRate({
+    //   chainId: 1,
+    //   blockTag: sameDateMainnetBlockNumber.number,
+    // })
 
-    return {
-      baseRate: 1,
-      type: 'protocol',
-      ...protocolToken,
-      tokens: [
-        {
-          type: 'underlying',
-          underlyingRateRaw,
-          ...underlyingToken,
-        },
-      ],
-    }
+    // return {
+    //   baseRate: 1,
+    //   type: 'protocol',
+    //   ...protocolToken,
+    //   tokens: [
+    //     {
+    //       type: 'underlying',
+    //       underlyingRateRaw,
+    //       ...underlyingToken,
+    //     },
+    //   ],
+    // }
   }
 }
