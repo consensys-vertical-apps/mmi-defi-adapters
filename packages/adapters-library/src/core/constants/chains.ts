@@ -19,12 +19,12 @@ export type Chain = (typeof Chain)[keyof typeof Chain]
  */
 export const ChainName: Record<Chain, string> = {
   [Chain.Ethereum]: 'ethereum',
-  [Chain.Optimism]: 'optimism',
+  [Chain.Optimism]: 'op',
   [Chain.Bsc]: 'bsc',
-  [Chain.Polygon]: 'polygon',
-  [Chain.Fantom]: 'fantom',
+  [Chain.Polygon]: 'matic',
+  [Chain.Fantom]: 'ftm',
   [Chain.Base]: 'base',
-  [Chain.Arbitrum]: 'arbitrum',
-  [Chain.Avalanche]: 'avalanche',
+  [Chain.Arbitrum]: 'arb',
+  [Chain.Avalanche]: 'avax',
   [Chain.Linea]: 'linea',
 }
