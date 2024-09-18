@@ -1,6 +1,6 @@
 {
   "blockNumber": 20035548,
-  "latency": "Latency: 4.053 seconds",
+  "latency": "Latency: 3.154 seconds",
   "aggregatedValues": ["USD7.73"],
   "snapshot": [
     {
@@ -63,8 +63,32 @@
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "254691569596349n",
+              "tokens": [
+                {
+                  "address": "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
+                  "name": "ether.fi ETH",
+                  "symbol": "eETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "264889735843325n",
+                  "tokens": [
+                    {
+                      "address": "0x0000000000000000000000000000000000000000",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "balanceRaw": "264889735843325n",
+                      "balance": 0.000264889735843325,
+                      "price": 3796.8250061,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
+                  "balance": 0.000264889735843325,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x35fA164735182de50811E8e2E824cFb9B6118ac2/logo.png"
+                }
+              ],
               "balance": 0.000254691569596349,
-              "price": 3947.5063341074956,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
             },
             {
@@ -352,8 +376,8 @@
     "77289b8a0fcbaf23251813664359d75c": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
-    "2d1088a1c9ae753e95931baae07aadbd": {
-      "result": "0x0000000000000000000000000000000000000000000000000e6db50920fa8ce1"
+    "d79e9d80386e19e428bbf80ee35f57ba": {
+      "result": "0x0000000000000000000000000000000000000000000000000e6ef7ff51edfdb2"
     },
     "170b38052d624fd350414ac74527fa13": {
       "result": "0x0000000000000000000000000000000000000000000000000de23ea49a46ad0e"
