@@ -285,7 +285,9 @@ export class DefiProvider {
 
       // we cant use the logs for this adapter
       if (
-        !adapter.adapterSettings.enablePositionDetectionByProtocolTokenTransfer
+        !adapter.adapterSettings
+          .enablePositionDetectionByProtocolTokenTransfer ||
+        !adapter.adapterSettings.includeInUnwrap
       ) {
         return undefined
       }
