@@ -49,7 +49,7 @@ export class PancakeswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
         subgraphQuery: `
           {
             pairs(
-              first: ${this.MAX_FACTORY_PAIRS}
+              first: ${this.MAX_SUBGRAPH_PAIRS}
               orderBy: trackedReserveBNB orderDirection: desc
             )
             {

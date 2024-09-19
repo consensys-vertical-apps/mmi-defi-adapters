@@ -47,7 +47,7 @@ export type UniswapV2PoolForkPositionStrategy = { factoryAddress: string } & (
 )
 
 export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
-  protected readonly MAX_FACTORY_PAIRS: number = 1000
+  protected readonly MAX_SUBGRAPH_PAIRS: number = 1000
   protected readonly MIN_SUBGRAPH_VOLUME: number = 50000
   protected readonly MIN_TOKEN_RESERVE: number = 1
 
@@ -487,7 +487,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
           `
           {
             pairs(
-              first: ${this.MAX_FACTORY_PAIRS}
+              first: ${this.MAX_SUBGRAPH_PAIRS}
               where: {
                 volumeUSD_gt: ${this.MIN_SUBGRAPH_VOLUME}
                 reserve0_gte: ${this.MIN_TOKEN_RESERVE}
@@ -548,7 +548,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
     const allPairsLength = Number(await factoryContract.allPairsLength())
 
     return await filterMapAsync(
-      [...Array(Math.min(allPairsLength, this.MAX_FACTORY_PAIRS)).keys()],
+      [...Array(allPairsLength).keys()],
       async (_, index) => {
         const pairAddress = await factoryContract.allPairs(index)
         const pairContract = UniswapV2Pair__factory.connect(
