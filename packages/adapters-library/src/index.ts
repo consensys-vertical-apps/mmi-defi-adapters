@@ -17,3 +17,4 @@ export {
 } from './adapters/supportedProtocols'
 
 export { SQLiteMetadataProvider } from './SQLiteMetadataProvider'
+export { UnwrapCache } from './unwrapCache'
