@@ -2,6 +2,7 @@ import { Protocol } from '../../adapters/protocols'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { TokenType, UnderlyingTokenTypeMap } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
+import { UnwrapCache } from '../../unwrapCache'
 import {
   AdapterMissingError,
   NotImplementedError,
@@ -20,10 +21,17 @@ export async function unwrap(
   blockNumber: number | undefined,
   tokens: Token[],
   fieldToUpdate: string,
+  cacheProvider: UnwrapCache,
 ) {
   return await Promise.all(
     tokens.map(async (token) => {
-      await unwrapToken(adapter, blockNumber, token, fieldToUpdate)
+      await unwrapToken(
+        adapter,
+        blockNumber,
+        token,
+        fieldToUpdate,
+        cacheProvider,
+      )
     }),
   )
 }
@@ -33,6 +41,7 @@ async function unwrapToken(
   blockNumber: number | undefined,
   token: Token,
   fieldToUpdate: string,
+  cacheProvider: UnwrapCache,
 ) {
   const underlyingProtocolTokenAdapter =
     await adapter.adaptersController.fetchTokenAdapter(
@@ -45,7 +54,12 @@ async function unwrapToken(
 
     if (!underlyingProtocolTokenAdapter) {
       // Try to fetch prices if there is no tokens and no adapter to resolve
-      const tokenPriceRaw = await fetchPrice(adapter, token, blockNumber)
+      const tokenPriceRaw = await fetchPrice(
+        adapter,
+        token,
+        blockNumber,
+        cacheProvider,
+      )
       if (tokenPriceRaw) {
         token.priceRaw = tokenPriceRaw
       }
@@ -55,6 +69,7 @@ async function unwrapToken(
         underlyingProtocolTokenAdapter,
         token,
         blockNumber,
+        cacheProvider,
       )
 
       if (unwrapExchangeRates?.tokens) {
@@ -82,7 +97,13 @@ async function unwrapToken(
 
   await Promise.all(
     token.tokens?.map(async (underlyingToken) => {
-      await unwrapToken(adapter, blockNumber, underlyingToken, fieldToUpdate)
+      await unwrapToken(
+        adapter,
+        blockNumber,
+        underlyingToken,
+        fieldToUpdate,
+        cacheProvider,
+      )
     }) ?? [],
   )
 }
@@ -91,12 +112,19 @@ async function fetchUnwrapExchangeRates(
   underlyingProtocolTokenAdapter: IProtocolAdapter,
   underlyingProtocolTokenPosition: Token,
   blockNumber: number | undefined,
+  cacheProvider: UnwrapCache,
 ) {
   try {
-    return await underlyingProtocolTokenAdapter.unwrap({
-      protocolTokenAddress: underlyingProtocolTokenPosition.address,
-      blockNumber,
-    })
+    return await cacheProvider.fetchWithCache(
+      {
+        protocolTokenAddress: underlyingProtocolTokenPosition.address,
+        blockNumber,
+      },
+      underlyingProtocolTokenAdapter.chainId,
+      underlyingProtocolTokenAdapter.unwrap.bind(
+        underlyingProtocolTokenAdapter,
+      ),
+    )
   } catch (error) {
     if (
       !(
@@ -114,6 +142,7 @@ async function fetchPrice(
   adapter: IProtocolAdapter,
   token: Erc20Metadata & { priceRaw?: bigint },
   blockNumber: number | undefined,
+  cacheProvider: UnwrapCache,
 ) {
   let priceAdapter: IProtocolAdapter
   try {
@@ -131,10 +160,14 @@ async function fetchPrice(
   }
 
   try {
-    const price = await priceAdapter.unwrap({
-      protocolTokenAddress: token.address,
-      blockNumber,
-    })
+    const price = await cacheProvider.fetchWithCache(
+      {
+        protocolTokenAddress: token.address,
+        blockNumber,
+      },
+      priceAdapter.chainId,
+      priceAdapter.unwrap.bind(priceAdapter),
+    )
 
     return price.tokens![0]!.underlyingRateRaw
   } catch (error) {

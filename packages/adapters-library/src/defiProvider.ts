@@ -46,6 +46,7 @@ import {
 } from './types/response'
 
 import { existsSync } from 'node:fs'
+import { MemoryUnwrapCache, UnwrapCache } from './unwrapCache'
 
 function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
   return Object.values(Chain).reduce(
@@ -77,12 +78,15 @@ export class DefiProvider {
   private adaptersControllerWithoutPrices: AdaptersController
 
   private metadataProviders: Record<Chain, IMetadataProvider>
+  private unwrapCache: UnwrapCache
 
   constructor(
     config?: DeepPartial<IConfig>,
     metadataProviders?: Record<Chain, IMetadataProvider>,
+    unwrapCache?: UnwrapCache,
   ) {
     this.metadataProviders = metadataProviders ?? buildMetadataProviders()
+    this.unwrapCache = unwrapCache ?? new MemoryUnwrapCache()
 
     this.parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
@@ -195,7 +199,13 @@ export class DefiProvider {
 
       const getRewardTime = Date.now()
 
-      await unwrap(adapter, blockNumber, protocolPositions, 'balanceRaw')
+      await unwrap(
+        adapter,
+        blockNumber,
+        protocolPositions,
+        'balanceRaw',
+        this.unwrapCache,
+      )
 
       const unwrapTime = Date.now()
 
@@ -392,6 +402,7 @@ export class DefiProvider {
         protocolTokenAddresses,
         tokenIds: filterTokenIds,
         includeRawValues,
+        cacheProvider: this.unwrapCache,
       })
 
       const endTime = Date.now()
@@ -461,10 +472,14 @@ export class DefiProvider {
         protocolTokens.map(async (address) => {
           const startTime = Date.now()
 
-          const unwrap = await adapter.unwrap({
-            protocolTokenAddress: getAddress(address),
-            blockNumber,
-          })
+          const unwrap = await this.unwrapCache.fetchWithCache(
+            {
+              protocolTokenAddress: getAddress(address),
+              blockNumber,
+            },
+            adapter.chainId,
+            adapter.unwrap.bind(adapter),
+          )
 
           const endTime = Date.now()
           logger.info({
@@ -571,6 +586,7 @@ export class DefiProvider {
             positionMovements.blockNumber,
             positionMovements.tokens,
             'balanceRaw',
+            this.unwrapCache,
           )
         }),
       )
@@ -654,6 +670,7 @@ export class DefiProvider {
             positionMovements.blockNumber,
             positionMovements.tokens,
             'balanceRaw',
+            this.unwrapCache,
           )
         }),
       )
@@ -707,6 +724,7 @@ export class DefiProvider {
             positionMovements.blockNumber,
             positionMovements.tokens,
             'balanceRaw',
+            this.unwrapCache,
           )
         }),
       )
@@ -760,6 +778,7 @@ export class DefiProvider {
             positionMovements.blockNumber,
             positionMovements.tokens,
             'balanceRaw',
+            this.unwrapCache,
           )
         }),
       )
@@ -793,7 +812,13 @@ export class DefiProvider {
         blockNumber,
       })
 
-      await unwrap(adapter, blockNumber, tokens, 'totalSupplyRaw')
+      await unwrap(
+        adapter,
+        blockNumber,
+        tokens,
+        'totalSupplyRaw',
+        this.unwrapCache,
+      )
 
       return {
         tokens: tokens.map((value) =>
