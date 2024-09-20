@@ -12,7 +12,7 @@ import {
   Underlying,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
-import { UnwrapCache } from '../unwrapCache'
+import { IUnwrapCache } from '../unwrapCache'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
 import { calculateDeFiAttributionPerformance } from './utils/calculateDeFiAttributionPerformance'
@@ -26,7 +26,7 @@ export async function getProfits({
   protocolTokenAddresses,
   tokenIds,
   includeRawValues,
-  cacheProvider,
+  unwrapCache,
 }: {
   adapter: IProtocolAdapter
   userAddress: string
@@ -35,7 +35,7 @@ export async function getProfits({
   protocolTokenAddresses?: string[]
   tokenIds?: string[]
   includeRawValues?: boolean
-  cacheProvider: UnwrapCache
+  unwrapCache: IUnwrapCache
 }): Promise<ProfitsWithRange> {
   let endPositionValues: ReturnType<typeof aggregateFiatBalances>
   let startPositionValues: ReturnType<typeof aggregateFiatBalances>
@@ -55,7 +55,7 @@ export async function getProfits({
           tokenIds,
         })
         .then(async (result) => {
-          await unwrap(adapter, toBlock, result, 'balanceRaw', cacheProvider)
+          await unwrap(adapter, toBlock, result, 'balanceRaw', unwrapCache)
           return result
         })
         .then((result) => {
@@ -70,7 +70,7 @@ export async function getProfits({
           tokenIds,
         })
         .then(async (result) => {
-          await unwrap(adapter, fromBlock, result, 'balanceRaw', cacheProvider)
+          await unwrap(adapter, fromBlock, result, 'balanceRaw', unwrapCache)
           return result
         })
         .then((result) => {
@@ -86,7 +86,7 @@ export async function getProfits({
         blockNumber: toBlock,
       })
       .then(async (result) => {
-        await unwrap(adapter, toBlock, result, 'balanceRaw', cacheProvider)
+        await unwrap(adapter, toBlock, result, 'balanceRaw', unwrapCache)
         return result
       })
       .then((result) => {
@@ -102,7 +102,7 @@ export async function getProfits({
         tokenIds: Object.keys(endPositionValues), // endPositionValues is indexed by tokenId ?? protocolTokenAddress
       })
       .then(async (result) => {
-        await unwrap(adapter, fromBlock, result, 'balanceRaw', cacheProvider)
+        await unwrap(adapter, fromBlock, result, 'balanceRaw', unwrapCache)
         return result
       })
       .then((result) => {
@@ -143,7 +143,7 @@ export async function getProfits({
                       positionMovements.blockNumber,
                       positionMovements.tokens,
                       'balanceRaw',
-                      cacheProvider,
+                      unwrapCache,
                     )
                   }),
                 )
@@ -173,7 +173,7 @@ export async function getProfits({
                       positionMovements.blockNumber,
                       positionMovements.tokens,
                       'balanceRaw',
-                      cacheProvider,
+                      unwrapCache,
                     )
                   }),
                 )
@@ -203,7 +203,7 @@ export async function getProfits({
                       positionMovements.blockNumber,
                       positionMovements.tokens,
                       'balanceRaw',
-                      cacheProvider,
+                      unwrapCache,
                     )
                   }),
                 )
@@ -233,7 +233,7 @@ export async function getProfits({
                       positionMovements.blockNumber,
                       positionMovements.tokens,
                       'balanceRaw',
-                      cacheProvider,
+                      unwrapCache,
                     )
                   }),
                 )

@@ -2,7 +2,7 @@ import { Protocol } from '../../adapters/protocols'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { TokenType, UnderlyingTokenTypeMap } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
-import { UnwrapCache } from '../../unwrapCache'
+import { IUnwrapCache } from '../../unwrapCache'
 import {
   AdapterMissingError,
   NotImplementedError,
@@ -21,17 +21,11 @@ export async function unwrap(
   blockNumber: number | undefined,
   tokens: Token[],
   fieldToUpdate: string,
-  cacheProvider: UnwrapCache,
+  unwrapCache: IUnwrapCache,
 ) {
   return await Promise.all(
     tokens.map(async (token) => {
-      await unwrapToken(
-        adapter,
-        blockNumber,
-        token,
-        fieldToUpdate,
-        cacheProvider,
-      )
+      await unwrapToken(adapter, blockNumber, token, fieldToUpdate, unwrapCache)
     }),
   )
 }
@@ -41,7 +35,7 @@ async function unwrapToken(
   blockNumber: number | undefined,
   token: Token,
   fieldToUpdate: string,
-  cacheProvider: UnwrapCache,
+  unwrapCache: IUnwrapCache,
 ) {
   const underlyingProtocolTokenAdapter =
     await adapter.adaptersController.fetchTokenAdapter(
@@ -58,7 +52,7 @@ async function unwrapToken(
         adapter,
         token,
         blockNumber,
-        cacheProvider,
+        unwrapCache,
       )
       if (tokenPriceRaw) {
         token.priceRaw = tokenPriceRaw
@@ -69,7 +63,7 @@ async function unwrapToken(
         underlyingProtocolTokenAdapter,
         token,
         blockNumber,
-        cacheProvider,
+        unwrapCache,
       )
 
       if (unwrapExchangeRates?.tokens) {
@@ -102,7 +96,7 @@ async function unwrapToken(
         blockNumber,
         underlyingToken,
         fieldToUpdate,
-        cacheProvider,
+        unwrapCache,
       )
     }) ?? [],
   )
@@ -112,10 +106,10 @@ async function fetchUnwrapExchangeRates(
   underlyingProtocolTokenAdapter: IProtocolAdapter,
   underlyingProtocolTokenPosition: Token,
   blockNumber: number | undefined,
-  cacheProvider: UnwrapCache,
+  unwrapCache: IUnwrapCache,
 ) {
   try {
-    return await cacheProvider.fetchWithCache(
+    return await unwrapCache.fetchWithCache(
       {
         protocolTokenAddress: underlyingProtocolTokenPosition.address,
         blockNumber,
@@ -142,7 +136,7 @@ async function fetchPrice(
   adapter: IProtocolAdapter,
   token: Erc20Metadata & { priceRaw?: bigint },
   blockNumber: number | undefined,
-  cacheProvider: UnwrapCache,
+  unwrapCache: IUnwrapCache,
 ) {
   let priceAdapter: IProtocolAdapter
   try {
@@ -160,7 +154,7 @@ async function fetchPrice(
   }
 
   try {
-    const price = await cacheProvider.fetchWithCache(
+    const price = await unwrapCache.fetchWithCache(
       {
         protocolTokenAddress: token.address,
         blockNumber,

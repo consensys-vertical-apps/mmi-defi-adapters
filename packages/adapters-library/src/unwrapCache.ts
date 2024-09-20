@@ -10,7 +10,15 @@ export interface IUnwrapCacheProvider {
   setToDb(key: string, value: UnwrapExchangeRate): Promise<void>
 }
 
-export class UnwrapCache {
+export interface IUnwrapCache {
+  fetchWithCache(
+    input: UnwrapInput,
+    chainId: Chain,
+    dataFetcher: (input: UnwrapInput) => Promise<UnwrapExchangeRate>,
+  ): Promise<UnwrapExchangeRate>
+}
+
+export class UnwrapCache implements IUnwrapCache {
   constructor(private readonly unwrapCacheProvider: IUnwrapCacheProvider) {}
 
   async fetchWithCache(
