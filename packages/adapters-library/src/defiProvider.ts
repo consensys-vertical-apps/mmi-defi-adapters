@@ -46,16 +46,13 @@ import {
 } from './types/response'
 
 import { existsSync } from 'node:fs'
-import { MemoryUnwrapCache, UnwrapCache } from './unwrapCache'
+import { MemoryUnwrapCacheProvider, UnwrapCache } from './unwrapCache'
 
 function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
-  return Object.values(Chain).reduce(
-    (acc, chain) => {
-      acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
-      return acc
-    },
-    {} as Record<Chain, IMetadataProvider>,
-  )
+  return Object.values(Chain).reduce((acc, chain) => {
+    acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
+    return acc
+  }, {} as Record<Chain, IMetadataProvider>)
 }
 
 const dbParams = (chainId: Chain): [string, Database.Options] => {
@@ -86,7 +83,8 @@ export class DefiProvider {
     unwrapCache?: UnwrapCache,
   ) {
     this.metadataProviders = metadataProviders ?? buildMetadataProviders()
-    this.unwrapCache = unwrapCache ?? new MemoryUnwrapCache()
+    this.unwrapCache =
+      unwrapCache ?? new UnwrapCache(new MemoryUnwrapCacheProvider())
 
     this.parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
@@ -115,19 +113,16 @@ export class DefiProvider {
         (provider) =>
           !filterChainIds || filterChainIds.includes(provider.chainId),
       )
-      .reduce(
-        async (accumulator, provider) => {
-          if (filterChainIds && !filterChainIds.includes(provider.chainId)) {
-            return accumulator
-          }
+      .reduce(async (accumulator, provider) => {
+        if (filterChainIds && !filterChainIds.includes(provider.chainId)) {
+          return accumulator
+        }
 
-          return {
-            ...(await accumulator),
-            [provider.chainId]: await provider.getStableBlockNumber(),
-          }
-        },
-        {} as Promise<Partial<Record<Chain, number>>>,
-      )
+        return {
+          ...(await accumulator),
+          [provider.chainId]: await provider.getStableBlockNumber(),
+        }
+      }, {} as Promise<Partial<Record<Chain, number>>>)
   }
 
   async getPositions({
@@ -283,10 +278,9 @@ export class DefiProvider {
         return undefined
       }
 
-      const transferLogs =
-        await this.chainProvider.providers[
-          adapter.chainId
-        ].getAllTransferLogsToAddress(userAddress)
+      const transferLogs = await this.chainProvider.providers[
+        adapter.chainId
+      ].getAllTransferLogsToAddress(userAddress)
 
       // no logs on this chain means nothing done on this chain
       if (transferLogs.length === 0) {

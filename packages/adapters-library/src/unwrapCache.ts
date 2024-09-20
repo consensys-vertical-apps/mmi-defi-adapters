@@ -5,7 +5,14 @@ import { UnwrapExchangeRate, UnwrapInput } from './types/adapter'
 
 const TEN_MINUTES_IN_MS = 10 * 60 * 1000
 
-export abstract class UnwrapCache {
+export interface IUnwrapCacheProvider {
+  getFromDb(key: string): Promise<UnwrapExchangeRate | undefined>
+  setToDb(key: string, value: UnwrapExchangeRate): Promise<void>
+}
+
+export class UnwrapCache {
+  constructor(private readonly unwrapCacheProvider: IUnwrapCacheProvider) {}
+
   async fetchWithCache(
     input: UnwrapInput,
     chainId: Chain,
@@ -16,7 +23,7 @@ export abstract class UnwrapCache {
       chainId,
     )}`
 
-    const dbValue = await this.getFromDb(key)
+    const dbValue = await this.unwrapCacheProvider.getFromDb(key)
 
     if (dbValue) {
       logger.warn({ key }, 'Cache hit')
@@ -27,7 +34,7 @@ export abstract class UnwrapCache {
 
     const value = await dataFetcher(input)
 
-    await this.setToDb(key, value)
+    await this.unwrapCacheProvider.setToDb(key, value)
 
     return value
   }
@@ -46,30 +53,16 @@ export abstract class UnwrapCache {
 
     return `B${blockKey}`
   }
-
-  protected abstract getFromDb(
-    key: string,
-  ): Promise<UnwrapExchangeRate | undefined>
-
-  protected abstract setToDb(
-    key: string,
-    value: UnwrapExchangeRate,
-  ): Promise<void>
 }
 
-export class MemoryUnwrapCache extends UnwrapCache {
+export class MemoryUnwrapCacheProvider implements IUnwrapCacheProvider {
   private cache: Record<string, UnwrapExchangeRate> = {}
 
-  protected async getFromDb(
-    key: string,
-  ): Promise<UnwrapExchangeRate | undefined> {
+  async getFromDb(key: string): Promise<UnwrapExchangeRate | undefined> {
     return this.cache[key]
   }
 
-  protected async setToDb(
-    key: string,
-    value: UnwrapExchangeRate,
-  ): Promise<void> {
+  async setToDb(key: string, value: UnwrapExchangeRate): Promise<void> {
     this.cache[key] = value
   }
 }
