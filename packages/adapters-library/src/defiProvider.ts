@@ -46,7 +46,11 @@ import {
 } from './types/response'
 
 import { existsSync } from 'node:fs'
-import { MemoryUnwrapCacheProvider, UnwrapCache } from './unwrapCache'
+import {
+  MemoryUnwrapCacheProvider,
+  IUnwrapCacheProvider,
+  UnwrapCache,
+} from './unwrapCache'
 
 function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
   return Object.values(Chain).reduce((acc, chain) => {
@@ -80,11 +84,12 @@ export class DefiProvider {
   constructor(
     config?: DeepPartial<IConfig>,
     metadataProviders?: Record<Chain, IMetadataProvider>,
-    unwrapCache?: UnwrapCache,
+    unwrapCacheProvider?: IUnwrapCacheProvider,
   ) {
     this.metadataProviders = metadataProviders ?? buildMetadataProviders()
-    this.unwrapCache =
-      unwrapCache ?? new UnwrapCache(new MemoryUnwrapCacheProvider())
+    this.unwrapCache = new UnwrapCache(
+      unwrapCacheProvider ?? new MemoryUnwrapCacheProvider(),
+    )
 
     this.parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
