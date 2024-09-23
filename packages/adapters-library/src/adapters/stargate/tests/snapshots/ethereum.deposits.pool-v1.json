@@ -1,5 +1,7 @@
 {
-  "aggregatedValues": ["USD0.00"],
+  "aggregatedValues": [
+    "USD0.00"
+  ],
   "latency": "Latency: 1.691 seconds",
   "snapshot": {
     "protocolId": "stargate",
@@ -10,6 +12,7 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "pool",
+    "chainName": "ethereum",
     "success": true,
     "movements": [
       {

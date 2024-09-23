@@ -1,7 +1,13 @@
+import path from 'node:path'
+import Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
+import {
+  IMetadataProvider,
+  SQLiteMetadataProvider,
+} from './SQLiteMetadataProvider'
 import { Protocol } from './adapters/protocols'
-import { supportedProtocols } from './adapters/supportedProtocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
+import { supportedProtocols } from './adapters/supportedProtocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
@@ -15,7 +21,7 @@ import {
 import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
-import { filterMapAsync, filterMapSync } from './core/utils/filters'
+import { filterMapAsync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
 import { unwrap } from './core/utils/unwrap'
 import { count } from './metricsCount'
@@ -39,19 +45,52 @@ import {
   TotalValueLockResponse,
 } from './types/response'
 
+import { existsSync } from 'node:fs'
+
+function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
+  return Object.values(Chain).reduce(
+    (acc, chain) => {
+      acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
+      return acc
+    },
+    {} as Record<Chain, IMetadataProvider>,
+  )
+}
+
+const dbParams = (chainId: Chain): [string, Database.Options] => {
+  const dbPath = path.join(__dirname, '../../..', `${ChainName[chainId]}.db`)
+
+  if (!existsSync(dbPath)) {
+    logger.info(`Database file does not exist: ${dbPath}`)
+    throw new Error(`Database file does not exist: ${dbPath}`)
+  }
+
+  logger.info(`Database file exists: ${dbPath}`)
+
+  return [dbPath, { fileMustExist: true }]
+}
+
 export class DefiProvider {
   private parsedConfig
   chainProvider: ChainProvider
   adaptersController: AdaptersController
   private adaptersControllerWithoutPrices: AdaptersController
 
-  constructor(config?: DeepPartial<IConfig>) {
+  private metadataProviders: Record<Chain, IMetadataProvider>
+
+  constructor(
+    config?: DeepPartial<IConfig>,
+    metadataProviders?: Record<Chain, IMetadataProvider>,
+  ) {
+    this.metadataProviders = metadataProviders ?? buildMetadataProviders()
+
     this.parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
 
     this.adaptersController = new AdaptersController({
       providers: this.chainProvider.providers,
       supportedProtocols,
+      metadataProviders: this.metadataProviders,
     })
 
     const { [Protocol.PricesV2]: _, ...supportedProtocolsWithoutPrices } =
@@ -60,6 +99,7 @@ export class DefiProvider {
     this.adaptersControllerWithoutPrices = new AdaptersController({
       providers: this.chainProvider.providers,
       supportedProtocols: supportedProtocolsWithoutPrices,
+      metadataProviders: this.metadataProviders,
     })
   }
 
@@ -245,7 +285,9 @@ export class DefiProvider {
 
       // we cant use the logs for this adapter
       if (
-        !adapter.adapterSettings.enablePositionDetectionByProtocolTokenTransfer
+        !adapter.adapterSettings
+          .enablePositionDetectionByProtocolTokenTransfer ||
+        !adapter.adapterSettings.includeInUnwrap
       ) {
         return undefined
       }
@@ -877,12 +919,14 @@ export class DefiProvider {
 
       return {
         ...protocolDetails,
+        chainName: ChainName[adapter.chainId],
         success: true,
         ...adapterResult,
       }
     } catch (error) {
       return {
         ...protocolDetails,
+        chainName: ChainName[adapter.chainId],
         ...this.handleError(error),
       }
     }

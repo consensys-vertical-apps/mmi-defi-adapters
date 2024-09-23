@@ -11,6 +11,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

@@ -1,5 +1,6 @@
 {
   "aggregatedValues": [],
+  "latency": "Latency: 1.953 seconds",
   "snapshot": {
     "protocolId": "lynex",
     "name": "Lynex Algebra",
@@ -9,6 +10,7 @@
     "positionType": "supply",
     "chainId": 59144,
     "productId": "algebra",
+    "chainName": "linea",
     "success": true,
     "movements": [
       {

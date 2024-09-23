@@ -1,3 +1,4 @@
+import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Protocol } from '../adapters/protocols'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { ProtocolAdapterParams } from '../types/adapter'
@@ -40,6 +41,7 @@ describe('AdaptersController', () => {
     adaptersController = new AdaptersController({
       providers,
       supportedProtocols,
+      metadataProviders: {} as unknown as Record<Chain, IMetadataProvider>,
     })
   })
 
@@ -67,6 +69,7 @@ describe('AdaptersController', () => {
               >
             >
           >,
+          metadataProviders: {} as unknown as Record<Chain, IMetadataProvider>,
         })
 
       expect(codeThatThrows).toThrowError('Duplicated adapter')
