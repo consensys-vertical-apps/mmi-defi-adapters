@@ -109,16 +109,10 @@ async function fetchUnwrapExchangeRates(
   unwrapCache: IUnwrapCache,
 ) {
   try {
-    return await unwrapCache.fetchWithCache(
-      {
-        protocolTokenAddress: underlyingProtocolTokenPosition.address,
-        blockNumber,
-      },
-      underlyingProtocolTokenAdapter.chainId,
-      underlyingProtocolTokenAdapter.unwrap.bind(
-        underlyingProtocolTokenAdapter,
-      ),
-    )
+    return await unwrapCache.fetchWithCache(underlyingProtocolTokenAdapter, {
+      protocolTokenAddress: underlyingProtocolTokenPosition.address,
+      blockNumber,
+    })
   } catch (error) {
     if (
       !(
@@ -154,14 +148,10 @@ async function fetchPrice(
   }
 
   try {
-    const price = await unwrapCache.fetchWithCache(
-      {
-        protocolTokenAddress: token.address,
-        blockNumber,
-      },
-      priceAdapter.chainId,
-      priceAdapter.unwrap.bind(priceAdapter),
-    )
+    const price = await unwrapCache.fetchWithCache(priceAdapter, {
+      protocolTokenAddress: token.address,
+      blockNumber,
+    })
 
     return price.tokens![0]!.underlyingRateRaw
   } catch (error) {

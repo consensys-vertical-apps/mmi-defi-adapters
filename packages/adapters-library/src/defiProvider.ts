@@ -479,14 +479,10 @@ export class DefiProvider {
         protocolTokens.map(async (address) => {
           const startTime = Date.now()
 
-          const unwrap = await this.unwrapCache.fetchWithCache(
-            {
-              protocolTokenAddress: getAddress(address),
-              blockNumber,
-            },
-            adapter.chainId,
-            adapter.unwrap.bind(adapter),
-          )
+          const unwrap = await this.unwrapCache.fetchWithCache(adapter, {
+            protocolTokenAddress: getAddress(address),
+            blockNumber,
+          })
 
           const endTime = Date.now()
           logger.info({

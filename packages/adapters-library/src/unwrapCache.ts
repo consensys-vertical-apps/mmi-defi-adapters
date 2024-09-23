@@ -2,6 +2,7 @@ import { AVERAGE_BLOCKS_PER_10_MINUTES } from './core/constants/AVERAGE_BLOCKS_P
 import { Chain } from './core/constants/chains'
 import { logger } from './core/utils/logger'
 import { UnwrapExchangeRate, UnwrapInput } from './types/adapter'
+import { IProtocolAdapter } from './types/IProtocolAdapter'
 
 const TEN_MINUTES_IN_MS = 10 * 60 * 1000
 
@@ -12,9 +13,8 @@ export interface IUnwrapCacheProvider {
 
 export interface IUnwrapCache {
   fetchWithCache(
+    adapter: IProtocolAdapter,
     input: UnwrapInput,
-    chainId: Chain,
-    dataFetcher: (input: UnwrapInput) => Promise<UnwrapExchangeRate>,
   ): Promise<UnwrapExchangeRate>
 }
 
@@ -22,45 +22,54 @@ export class UnwrapCache implements IUnwrapCache {
   constructor(private readonly unwrapCacheProvider: IUnwrapCacheProvider) {}
 
   async fetchWithCache(
+    adapter: IProtocolAdapter,
     input: UnwrapInput,
-    chainId: Chain,
-    dataFetcher: (input: UnwrapInput) => Promise<UnwrapExchangeRate>,
   ): Promise<UnwrapExchangeRate> {
-    const key = `${chainId}:${input.protocolTokenAddress}:${this.getKey(
-      input.blockNumber,
-      chainId,
-    )}`
+    const chainId = adapter.chainId
+    const key = `${chainId}:${
+      input.protocolTokenAddress
+    }:${getTenMinuteKeyByBlock(input.blockNumber, chainId)}`
 
     const dbValue = await this.unwrapCacheProvider.getFromDb(key)
 
     if (dbValue) {
-      logger.warn({ key }, 'Cache hit')
+      logger.debug({ key }, 'Unwrap cache hit')
       return dbValue
     }
 
-    logger.warn({ key }, 'Cache miss')
+    logger.debug({ key }, 'Unwrap cache miss')
 
-    const value = await dataFetcher(input)
+    const value = await adapter.unwrap(input)
 
     await this.unwrapCacheProvider.setToDb(key, value)
 
     return value
   }
+}
 
-  private getKey(blockNumber: number | undefined, chainId: Chain): string {
-    if (!blockNumber) {
-      const timestampKey =
-        Math.floor(Date.now() / TEN_MINUTES_IN_MS) * TEN_MINUTES_IN_MS
+export function getTenMinuteKeyByBlock(
+  blockNumber: number | undefined,
+  chainId: Chain,
+): string {
+  if (!blockNumber) {
+    const timestampKey = roundDownToNearestMultiple(
+      Date.now(),
+      TEN_MINUTES_IN_MS,
+    )
 
-      return `T${timestampKey}`
-    }
-
-    const blockKey =
-      Math.floor(blockNumber / AVERAGE_BLOCKS_PER_10_MINUTES[chainId]) *
-      AVERAGE_BLOCKS_PER_10_MINUTES[chainId]
-
-    return `B${blockKey}`
+    return `T${timestampKey}`
   }
+
+  const blockKey = roundDownToNearestMultiple(
+    blockNumber,
+    AVERAGE_BLOCKS_PER_10_MINUTES[chainId],
+  )
+
+  return `B${blockKey}`
+}
+
+function roundDownToNearestMultiple(value: number, multiple: number): number {
+  return Math.floor(value / multiple) * multiple
 }
 
 export class MemoryUnwrapCacheProvider implements IUnwrapCacheProvider {
