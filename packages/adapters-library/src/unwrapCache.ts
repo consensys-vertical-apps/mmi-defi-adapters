@@ -19,12 +19,16 @@ export interface IUnwrapCache {
 }
 
 export class UnwrapCache implements IUnwrapCache {
-  constructor(private readonly unwrapCacheProvider: IUnwrapCacheProvider) {}
+  constructor(private readonly unwrapCacheProvider?: IUnwrapCacheProvider) {}
 
   async fetchWithCache(
     adapter: IProtocolAdapter,
     input: UnwrapInput,
   ): Promise<UnwrapExchangeRate> {
+    if (!this.unwrapCacheProvider) {
+      return adapter.unwrap(input)
+    }
+
     const chainId = adapter.chainId
     const key = `${chainId}:${
       input.protocolTokenAddress
@@ -70,16 +74,4 @@ export function getTenMinuteKeyByBlock(
 
 function roundDownToNearestMultiple(value: number, multiple: number): number {
   return Math.floor(value / multiple) * multiple
-}
-
-export class MemoryUnwrapCacheProvider implements IUnwrapCacheProvider {
-  private cache: Record<string, UnwrapExchangeRate> = {}
-
-  async getFromDb(key: string): Promise<UnwrapExchangeRate | undefined> {
-    return this.cache[key]
-  }
-
-  async setToDb(key: string, value: UnwrapExchangeRate): Promise<void> {
-    this.cache[key] = value
-  }
 }

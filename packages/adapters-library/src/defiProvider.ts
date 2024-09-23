@@ -46,12 +46,7 @@ import {
 } from './types/response'
 
 import { existsSync } from 'node:fs'
-import {
-  IUnwrapCache,
-  IUnwrapCacheProvider,
-  MemoryUnwrapCacheProvider,
-  UnwrapCache,
-} from './unwrapCache'
+import { IUnwrapCache, IUnwrapCacheProvider, UnwrapCache } from './unwrapCache'
 
 function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
   return Object.values(Chain).reduce(
@@ -91,9 +86,7 @@ export class DefiProvider {
     unwrapCacheProvider?: IUnwrapCacheProvider,
   ) {
     this.metadataProviders = metadataProviders ?? buildMetadataProviders()
-    this.unwrapCache = new UnwrapCache(
-      unwrapCacheProvider ?? new MemoryUnwrapCacheProvider(),
-    )
+    this.unwrapCache = new UnwrapCache(unwrapCacheProvider)
 
     this.parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(this.parsedConfig.values)

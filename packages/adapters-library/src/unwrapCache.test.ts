@@ -20,6 +20,15 @@ describe('UnwrapCache', () => {
   }
 
   describe('fetchWithCache', () => {
+    it('returns immediatelly if there is no provider', async () => {
+      const unwrapCache = new UnwrapCache()
+
+      const result = await unwrapCache.fetchWithCache(mockAdapter, unwrapInput)
+
+      expect(result).toEqual(unwrapResult)
+      expect(mockAdapter.unwrap).toHaveBeenCalledWith(unwrapInput)
+    })
+
     it('misses cache if no value is provided', async () => {
       const unwrapCacheProvider = {
         getFromDb: jest.fn(),
