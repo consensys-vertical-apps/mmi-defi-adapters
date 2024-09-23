@@ -1,10 +1,7 @@
 {
   "blockNumber": 18163124,
   "latency": "Latency: 4.652 seconds",
-  "aggregatedValues": [
-    "USD31,574.58",
-    "USD4,847.20"
-  ],
+  "aggregatedValues": ["USD31,574.58", "USD4,847.20"],
   "snapshot": [
     {
       "protocolId": "stargate",
