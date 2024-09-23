@@ -2,9 +2,9 @@ import { AVERAGE_BLOCKS_PER_10_MINUTES } from './core/constants/AVERAGE_BLOCKS_P
 import { Chain } from './core/constants/chains'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
-  getTenMinuteKeyByBlock,
   IUnwrapCacheProvider,
   UnwrapCache,
+  getTenMinuteKeyByBlock,
 } from './unwrapCache'
 
 describe('UnwrapCache', () => {

@@ -1,8 +1,8 @@
 import { AVERAGE_BLOCKS_PER_10_MINUTES } from './core/constants/AVERAGE_BLOCKS_PER_10_MINS'
 import { Chain } from './core/constants/chains'
 import { logger } from './core/utils/logger'
-import { UnwrapExchangeRate, UnwrapInput } from './types/adapter'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
+import { UnwrapExchangeRate, UnwrapInput } from './types/adapter'
 
 const TEN_MINUTES_IN_MS = 10 * 60 * 1000
 
