@@ -8,18 +8,22 @@ import {
 } from './unwrapCache'
 
 describe('UnwrapCache', () => {
-  const unwrapResult = {}
-  const mockAdapter = {
-    chainId: Chain.Ethereum,
-    unwrap: jest.fn().mockResolvedValue(unwrapResult),
-  } as unknown as IProtocolAdapter
-
-  const unwrapInput = {
-    protocolTokenAddress: '0x123',
-    blockNumber: 123,
-  }
-
   describe('fetchWithCache', () => {
+    const unwrapResult = {}
+    const mockAdapter = {
+      chainId: Chain.Ethereum,
+      unwrap: jest.fn().mockResolvedValue(unwrapResult),
+    } as unknown as IProtocolAdapter
+
+    const unwrapInput = {
+      protocolTokenAddress: '0x123',
+      blockNumber: 123,
+    }
+
+    beforeEach(() => {
+      jest.clearAllMocks()
+    })
+
     it('returns immediatelly if there is no provider', async () => {
       const unwrapCache = new UnwrapCache()
 
