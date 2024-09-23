@@ -1,6 +1,6 @@
 {
   "blockNumber": 20634750,
-  "latency": "Latency: 2.354 seconds",
+  "latency": "Latency: 3.75 seconds",
   "aggregatedValues": ["USD1,196.95", "USD58.72", "USD1,046.94"],
   "snapshot": [
     {
@@ -12,6 +12,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -47,6 +48,7 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "voting-escrow",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -82,6 +84,7 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "farm",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

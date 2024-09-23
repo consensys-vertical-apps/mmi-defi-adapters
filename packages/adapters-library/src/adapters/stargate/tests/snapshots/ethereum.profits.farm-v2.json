@@ -1,6 +1,6 @@
 {
   "blockNumber": 20662804,
-  "latency": "Latency: 1.909 seconds",
+  "latency": "Latency: 2.186 seconds",
   "snapshot": [
     {
       "protocolId": "stargate",
@@ -11,6 +11,7 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "farm-v2",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

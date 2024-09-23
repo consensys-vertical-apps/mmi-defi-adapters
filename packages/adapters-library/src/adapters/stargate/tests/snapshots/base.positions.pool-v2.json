@@ -1,6 +1,6 @@
 {
   "blockNumber": 19088200,
-  "latency": "Latency: 1.494 seconds",
+  "latency": "Latency: 1.588 seconds",
   "aggregatedValues": ["USD431.67"],
   "snapshot": [
     {
@@ -12,6 +12,7 @@
       "positionType": "supply",
       "chainId": 8453,
       "productId": "pool-v2",
+      "chainName": "base",
       "success": true,
       "tokens": [
         {

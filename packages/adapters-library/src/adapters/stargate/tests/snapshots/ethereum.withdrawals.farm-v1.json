@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD8,061.17"],
-  "latency": "Latency: 2.503 seconds",
+  "latency": "Latency: 2.829 seconds",
   "snapshot": {
     "protocolId": "stargate",
     "name": "Stargate Farm",
@@ -10,6 +10,7 @@
     "positionType": "stake",
     "chainId": 1,
     "productId": "farm",
+    "chainName": "ethereum",
     "success": true,
     "movements": [
       {

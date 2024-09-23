@@ -1,6 +1,6 @@
 {
   "blockNumber": 20641851,
-  "latency": "Latency: 2.266 seconds",
+  "latency": "Latency: 3.028 seconds",
   "aggregatedValues": ["USD231,215.56"],
   "snapshot": [
     {
@@ -12,6 +12,7 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "farm-v2",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
