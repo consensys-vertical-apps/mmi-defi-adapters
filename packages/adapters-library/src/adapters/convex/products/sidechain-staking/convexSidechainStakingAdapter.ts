@@ -2,6 +2,7 @@ import { getAddress } from 'ethers'
 
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -34,7 +35,6 @@ import {
   ConvexRewardFactorySidechain__factory,
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardFactorySidechain'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const PRICE_PEGGED_TO_ONE = 1
 
@@ -241,9 +241,8 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     const extraRewardTracker = ConvexRewardFactorySidechain__factory.connect(
       protocolTokenAddress,

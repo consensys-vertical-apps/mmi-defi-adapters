@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   AssetType,
@@ -15,7 +16,6 @@ import { ProtocolDataProvider } from '../../../aave-v2/contracts'
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { PoolContract__factory } from '../../contracts'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'a-token'

@@ -2,6 +2,7 @@ import { getAddress } from 'ethers'
 
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -35,7 +36,6 @@ import {
   CvxMint__factory,
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardsFactory'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 export const CONVEX_TOKEN_ADDRESS = '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b'
 
@@ -269,9 +269,8 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
       this.provider,
     )
 
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     const convexToken = await this.getMinter()
     const crvToken = await this.getCrv()

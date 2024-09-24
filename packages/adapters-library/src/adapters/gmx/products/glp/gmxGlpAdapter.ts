@@ -3,6 +3,7 @@ import { Erc20__factory } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -32,7 +33,6 @@ import {
   RewardReader__factory,
   Vault__factory,
 } from '../../contracts'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = {
   glpRewardRouter: string
@@ -382,9 +382,8 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getProtocolTokenMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
 
       filter: {
         fromBlock,
@@ -402,9 +401,8 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getProtocolTokenMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
 
       filter: {
         fromBlock,

@@ -8,6 +8,7 @@ import {
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
 
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
@@ -17,7 +18,6 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]

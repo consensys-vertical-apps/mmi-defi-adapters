@@ -148,9 +148,8 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.withdrawals({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -162,9 +161,8 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.deposits({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -211,12 +209,10 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     return this.helpers.unwrapOneToOne({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      underlyingTokens:
+        await this.fetchUnderlyingTokensMetadata(protocolTokenAddress),
     })
   }
 

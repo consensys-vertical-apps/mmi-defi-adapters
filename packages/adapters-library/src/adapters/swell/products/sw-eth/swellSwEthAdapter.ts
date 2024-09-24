@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
@@ -14,7 +15,6 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { SwEth__factory } from '../../contracts'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]

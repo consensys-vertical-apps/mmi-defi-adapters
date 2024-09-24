@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -27,7 +28,6 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { CvxcrvWrapper__factory } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/CvxcrvWrapper'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const CVXCRV_WRAPPER_ADDRESS = getAddress(
   '0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434',
@@ -159,12 +159,10 @@ export class ConvexCvxcrvWrapperAdapter extends SimplePoolAdapter<AdditionalMeta
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
-    const protocolRewardTokens = await this.fetchUnderlyingTokensMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
+    const protocolRewardTokens =
+      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
     const responsePromises = protocolRewardTokens.map(
       async (extraRewardToken) => {
         const cvxcrvContract = CvxcrvWrapper__factory.connect(

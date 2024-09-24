@@ -2,6 +2,7 @@ import { getAddress } from 'ethers'
 
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -28,7 +29,6 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
 import { ConvexFactory__factory } from '../../contracts'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const PRICE_PEGGED_TO_ONE = 1
 

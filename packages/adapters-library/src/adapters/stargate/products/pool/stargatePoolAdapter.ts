@@ -1,6 +1,8 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
+
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../../scripts/helpers'
@@ -28,7 +30,6 @@ import {
   StargateFactory__factory,
   StargateToken__factory,
 } from '../../contracts'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = { poolId: number; underlyingTokens: Erc20Metadata[] }
 

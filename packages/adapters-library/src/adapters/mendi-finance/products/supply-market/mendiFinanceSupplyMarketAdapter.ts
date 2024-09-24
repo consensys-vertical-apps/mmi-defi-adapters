@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -27,7 +28,6 @@ import {
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { Cerc20__factory, Comptroller__factory } from '../../contracts'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const contractAddresses: Partial<
   Record<

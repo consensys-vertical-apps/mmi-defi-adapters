@@ -3,6 +3,7 @@ import {
   UniswapV2PoolForkPositionStrategy,
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   AssetType,
@@ -50,7 +51,7 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async buildMetadata() {
     return super.getProtocolTokens()
   }
