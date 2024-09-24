@@ -30,7 +30,7 @@
     "test": "jest src --testPathIgnorePatterns='src/adapters/integration.test.ts' --testPathIgnorePatterns='src/tests/detect-errors.test.ts'",
     "test:file": "if [ -z \"$TEST_FILE\" ]; then echo 'No test file specified'; exit 1; else jest $TEST_FILE; fi",
     "test:detect-errors": "jest src/tests/detect-errors.test.ts",
-    "test:update:adapter-snapshot": "jest src/scripts/newAdapterCommand.test.ts -u",
+    "test:update:adapter-snapshot": "jest src/scripts/adapterBuilder/newAdapterCommand.test.ts -u",
     "test:tsc": "tsc --noEmit -p tsconfig.json",
     "test:integration": "DEFI_ADAPTERS_TEST_FILTER_PROTOCOL=$npm_config_protocol jest --coverage --coverageDirectory='coverage/e2e/' src/adapters/integration.test.ts",
     "test:cov": "jest src --ci --coverage  --coverageDirectory='coverage/unit/' --testPathIgnorePatterns='src/adapters/integration.test.ts' --testPathIgnorePatterns='src/tests/detect-errors.test.ts'",
