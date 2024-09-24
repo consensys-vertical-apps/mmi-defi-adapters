@@ -39,7 +39,6 @@ export function blankAdapterTemplate({
     import { IProtocolAdapter, ProtocolToken } from '../../../../types/IProtocolAdapter'
     import { Helpers } from '../../../../scripts/helpers'
     import { NotImplementedError } from '../../../../core/errors/errors'
-    import { Replacements } from '../../../../scripts/replacements'
 
     type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
