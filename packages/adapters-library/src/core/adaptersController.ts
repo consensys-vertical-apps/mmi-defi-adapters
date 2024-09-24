@@ -138,8 +138,6 @@ export class AdaptersController {
             continue
           }
 
-          console.log(adapter, 'second oiioi')
-
           this.processDefaultCase(protocolTokens, chainAdaptersMap, adapter)
         }
       }
@@ -162,31 +160,20 @@ export class AdaptersController {
         existingAdapter?.getProtocolDetails().positionType ===
         PositionType.FiatPrices
 
-      console.log(protocolTokens, 'first oiioi')
-
       if (existingAdapter && !isPriceAdapter) {
-        logger.error(
-          `${
-            protocolToken.address
-          } has already been added to the adapter map by ${
-            existingAdapter.getProtocolDetails().protocolId
-          } ${existingAdapter.getProtocolDetails().productId} ${
-            existingAdapter.getProtocolDetails().chainId
-          } and is duplicated by ${adapter.getProtocolDetails().protocolId} ${
-            adapter.getProtocolDetails().productId
-          } ${adapter.getProtocolDetails().chainId}`,
-        )
-        throw new Error(
-          `Duplicate token address ${
-            protocolToken.address
-          } has already been added to the adapter map by ${
-            existingAdapter.getProtocolDetails().protocolId
-          } ${existingAdapter.getProtocolDetails().productId} ${
-            existingAdapter.getProtocolDetails().chainId
-          } and is duplicated by ${adapter.getProtocolDetails().protocolId} ${
-            adapter.getProtocolDetails().productId
-          } ${adapter.getProtocolDetails().chainId}`,
-        )
+        const errorMessage = `${
+          protocolToken.address
+        } has already been added to the adapter map by ${
+          existingAdapter.getProtocolDetails().protocolId
+        } ${existingAdapter.getProtocolDetails().productId} ${
+          existingAdapter.getProtocolDetails().chainId
+        } and is duplicated by ${adapter.getProtocolDetails().protocolId} ${
+          adapter.getProtocolDetails().productId
+        } ${adapter.getProtocolDetails().chainId}`
+
+        logger.error(errorMessage)
+
+        throw new Error(errorMessage)
       }
 
       // override price adapter

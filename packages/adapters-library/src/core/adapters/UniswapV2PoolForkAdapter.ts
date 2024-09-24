@@ -565,6 +565,14 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
 
       const gqlResponse = await response.json()
 
+      if (gqlResponse.message) {
+        console.error(
+          `Error fetching pairs at skip ${skip}:`,
+          gqlResponse.message,
+        )
+        throw new Error(gqlResponse.message)
+      }
+
       if (gqlResponse.errors) {
         console.error(
           `Error fetching pairs at skip ${skip}:`,

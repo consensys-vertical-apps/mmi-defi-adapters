@@ -55,11 +55,6 @@ import MorphoBlueMarketBorrowEthereumMarketBorrow from '../../adapters/morpho-bl
 import MorphoBlueMarketSupplyEthereumMarketSupply from '../../adapters/morpho-blue/products/market-supply/metadata/ethereum.market-supply.json'
 import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
-import PancakeswapV2PoolArbitrumProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/arb.protocol-token.json'
-import PancakeswapV2PoolBaseProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/base.protocol-token.json'
-import PancakeswapV2PoolBscProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/bsc.protocol-token.json'
-import PancakeswapV2PoolEthereumProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/ethereum.protocol-token.json'
-import PancakeswapV2PoolLineaProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/linea.protocol-token.json'
 
 import { Protocol } from '../../adapters/protocols'
 import QuickswapV2PoolPolygonProtocolToken from '../../adapters/quickswap-v2/products/pool/metadata/matic.protocol-token.json'
@@ -182,6 +177,16 @@ import SolvSolvBtcAvalancheSolvBtc from '../../adapters/solv/products/solv-btc/m
 import MorphoBlueMarketSupplyBaseMarketSupply from '../../adapters/morpho-blue/products/market-supply/metadata/base.market-supply.json'
 
 import MorphoBlueMarketBorrowBaseMarketBorrow from '../../adapters/morpho-blue/products/market-borrow/metadata/base.market-borrow.json'
+
+import EtherFiEEthEthereumProtocolToken from '../../adapters/etherfi/products/e-eth/metadata/ethereum.protocol-token.json'
+
+import EtherFiWeEthEthereumProtocolToken from '../../adapters/etherfi/products/we-eth/metadata/ethereum.protocol-token.json'
+
+import EtherFiLiquidEthereumProtocolToken from '../../adapters/etherfi/products/liquid/metadata/ethereum.protocol-token.json'
+
+import EtherFiL2BaseProtocolToken from '../../adapters/etherfi/products/l2/metadata/base.protocol-token.json'
+
+import EtherFiL2LineaProtocolToken from '../../adapters/etherfi/products/l2/metadata/linea.protocol-token.json'
 
 export const MetadataFiles = new Map<string, Json>([
   [
@@ -780,7 +785,51 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     EthenaEthenaEthereumProtocolToken,
   ],
-
+  [
+    metadataKey({
+      protocolId: Protocol.EtherFi,
+      productId: 'e-eth',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    EtherFiEEthEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.EtherFi,
+      productId: 'l2',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    EtherFiL2BaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.EtherFi,
+      productId: 'l2',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    EtherFiL2LineaProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.EtherFi,
+      productId: 'liquid',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    EtherFiLiquidEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.EtherFi,
+      productId: 'we-eth',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    EtherFiWeEthEthereumProtocolToken,
+  ],
   [
     metadataKey({
       protocolId: Protocol.Flux,
@@ -900,51 +949,7 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply,
   ],
-  [
-    metadataKey({
-      protocolId: Protocol.PancakeswapV2,
-      productId: 'pool',
-      chainId: Chain.Arbitrum,
-      fileKey: 'protocol-token',
-    }),
-    PancakeswapV2PoolArbitrumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.PancakeswapV2,
-      productId: 'pool',
-      chainId: Chain.Base,
-      fileKey: 'protocol-token',
-    }),
-    PancakeswapV2PoolBaseProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.PancakeswapV2,
-      productId: 'pool',
-      chainId: Chain.Bsc,
-      fileKey: 'protocol-token',
-    }),
-    PancakeswapV2PoolBscProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.PancakeswapV2,
-      productId: 'pool',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    PancakeswapV2PoolEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.PancakeswapV2,
-      productId: 'pool',
-      chainId: Chain.Linea,
-      fileKey: 'protocol-token',
-    }),
-    PancakeswapV2PoolLineaProtocolToken,
-  ],
+
   [
     metadataKey({
       protocolId: Protocol.Pendle,

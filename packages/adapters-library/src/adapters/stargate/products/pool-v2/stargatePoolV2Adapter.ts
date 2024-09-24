@@ -25,6 +25,7 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { staticChainDataV2 } from '../../common/staticChainData'
 import { StargatePoolNative__factory } from '../../contracts'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
@@ -72,7 +73,7 @@ export class StargatePoolV2Adapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'lp-token' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const { poolAddresses: pools } = staticChainDataV2[this.chainId]!
     return await Promise.all(
