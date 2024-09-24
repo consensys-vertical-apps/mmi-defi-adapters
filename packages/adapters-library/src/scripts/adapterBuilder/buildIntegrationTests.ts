@@ -4,9 +4,9 @@ import partition from 'lodash/partition'
 import { parse, print, types, visit } from 'recast'
 import { lowerFirst } from '../../core/utils/caseConversion'
 import { writeAndLintFile } from '../../core/utils/writeAndLintFile'
-import { testCases } from './templates/testCases'
 import { fileExists } from '../utils/fileExists'
 import { sortEntries } from '../utils/sortEntries'
+import { testCases } from './templates/testCases'
 import n = types.namedTypes
 import b = types.builders
 
