@@ -1,0 +1,47 @@
+[
+  {
+    "address": "0x1205f31718499dBf1fCa446663B532Ef87481fe1",
+    "name": "USD Coin-LP",
+    "symbol": "S*USDC",
+    "decimals": 6,
+    "poolIndex": 0,
+    "rewardToken": {
+      "address": "0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    },
+    "lpStakingType": "LpStaking",
+    "lpStakingAddress": "0x8731d54E9D02c286767d56ac03e8037C07e01e98"
+  },
+  {
+    "address": "0x29e38769f23701A2e4A8Ef0492e19dA4604Be62c",
+    "name": "TetherToken-LP",
+    "symbol": "S*USDt",
+    "decimals": 6,
+    "poolIndex": 1,
+    "rewardToken": {
+      "address": "0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    },
+    "lpStakingType": "LpStaking",
+    "lpStakingAddress": "0x8731d54E9D02c286767d56ac03e8037C07e01e98"
+  },
+  {
+    "address": "0x1c272232Df0bb6225dA87f4dEcD9d37c32f63Eea",
+    "name": "Frax-LP",
+    "symbol": "S*FRAX",
+    "decimals": 6,
+    "poolIndex": 2,
+    "rewardToken": {
+      "address": "0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    },
+    "lpStakingType": "LpStaking",
+    "lpStakingAddress": "0x8731d54E9D02c286767d56ac03e8037C07e01e98"
+  }
+]

@@ -242,6 +242,70 @@ import MorphoBlueMarketBorrowBaseMarketBorrow from '../../adapters/morpho-blue/p
 
 import MorphoBlueVaultBaseProtocolToken from '../../adapters/morpho-blue/products/vault/metadata/base.protocol-token.json'
 
+import StargatePoolOptimismLpToken from '../../adapters/stargate/products/pool/metadata/optimism.lp-token.json'
+
+import StargatePoolBscLpToken from '../../adapters/stargate/products/pool/metadata/bsc.lp-token.json'
+
+import StargatePoolPolygonLpToken from '../../adapters/stargate/products/pool/metadata/polygon.lp-token.json'
+
+import StargatePoolFantomLpToken from '../../adapters/stargate/products/pool/metadata/fantom.lp-token.json'
+
+import StargatePoolBaseLpToken from '../../adapters/stargate/products/pool/metadata/base.lp-token.json'
+
+import StargatePoolAvalancheLpToken from '../../adapters/stargate/products/pool/metadata/avalanche.lp-token.json'
+
+import StargatePoolLineaLpToken from '../../adapters/stargate/products/pool/metadata/linea.lp-token.json'
+
+import StargatePoolV2EthereumLpToken from '../../adapters/stargate/products/pool-v2/metadata/ethereum.lp-token.json'
+
+import StargatePoolV2OptimismLpToken from '../../adapters/stargate/products/pool-v2/metadata/optimism.lp-token.json'
+
+import StargatePoolV2BscLpToken from '../../adapters/stargate/products/pool-v2/metadata/bsc.lp-token.json'
+
+import StargatePoolV2PolygonLpToken from '../../adapters/stargate/products/pool-v2/metadata/polygon.lp-token.json'
+
+import StargatePoolV2BaseLpToken from '../../adapters/stargate/products/pool-v2/metadata/base.lp-token.json'
+
+import StargatePoolV2ArbitrumLpToken from '../../adapters/stargate/products/pool-v2/metadata/arbitrum.lp-token.json'
+
+import StargatePoolV2AvalancheLpToken from '../../adapters/stargate/products/pool-v2/metadata/avalanche.lp-token.json'
+
+import StargatePoolV2LineaLpToken from '../../adapters/stargate/products/pool-v2/metadata/linea.lp-token.json'
+
+import StargateFarmEthereumPool from '../../adapters/stargate/products/farm/metadata/ethereum.pool.json'
+
+import StargateFarmV2EthereumPool from '../../adapters/stargate/products/farm-v2/metadata/ethereum.pool.json'
+
+import StargateFarmOptimismPool from '../../adapters/stargate/products/farm/metadata/optimism.pool.json'
+
+import StargateFarmV2OptimismPool from '../../adapters/stargate/products/farm-v2/metadata/optimism.pool.json'
+
+import StargateFarmBscPool from '../../adapters/stargate/products/farm/metadata/bsc.pool.json'
+
+import StargateFarmV2BscPool from '../../adapters/stargate/products/farm-v2/metadata/bsc.pool.json'
+
+import StargateFarmPolygonPool from '../../adapters/stargate/products/farm/metadata/polygon.pool.json'
+
+import StargateFarmV2PolygonPool from '../../adapters/stargate/products/farm-v2/metadata/polygon.pool.json'
+
+import StargateFarmFantomPool from '../../adapters/stargate/products/farm/metadata/fantom.pool.json'
+
+import StargateFarmBasePool from '../../adapters/stargate/products/farm/metadata/base.pool.json'
+
+import StargateFarmV2BasePool from '../../adapters/stargate/products/farm-v2/metadata/base.pool.json'
+
+import StargateFarmArbitrumPool from '../../adapters/stargate/products/farm/metadata/arbitrum.pool.json'
+
+import StargateFarmV2ArbitrumPool from '../../adapters/stargate/products/farm-v2/metadata/arbitrum.pool.json'
+
+import StargateFarmAvalanchePool from '../../adapters/stargate/products/farm/metadata/avalanche.pool.json'
+
+import StargateFarmV2AvalanchePool from '../../adapters/stargate/products/farm-v2/metadata/avalanche.pool.json'
+
+import StargateFarmLineaPool from '../../adapters/stargate/products/farm/metadata/linea.pool.json'
+
+import StargateFarmV2LineaPool from '../../adapters/stargate/products/farm-v2/metadata/linea.pool.json'
+
 import EtherFiEEthEthereumProtocolToken from '../../adapters/etherfi/products/e-eth/metadata/ethereum.protocol-token.json'
 
 import EtherFiWeEthEthereumProtocolToken from '../../adapters/etherfi/products/we-eth/metadata/ethereum.protocol-token.json'
@@ -1732,6 +1796,159 @@ export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
       protocolId: Protocol.Stargate,
+      productId: 'farm',
+      chainId: Chain.Arbitrum,
+      fileKey: 'pool',
+    }),
+    StargateFarmArbitrumPool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm',
+      chainId: Chain.Avalanche,
+      fileKey: 'pool',
+    }),
+    StargateFarmAvalanchePool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm',
+      chainId: Chain.Base,
+      fileKey: 'pool',
+    }),
+    StargateFarmBasePool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm',
+      chainId: Chain.Bsc,
+      fileKey: 'pool',
+    }),
+    StargateFarmBscPool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm',
+      chainId: Chain.Ethereum,
+      fileKey: 'pool',
+    }),
+    StargateFarmEthereumPool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm',
+      chainId: Chain.Fantom,
+      fileKey: 'pool',
+    }),
+    StargateFarmFantomPool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm',
+      chainId: Chain.Linea,
+      fileKey: 'pool',
+    }),
+    StargateFarmLineaPool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm',
+      chainId: Chain.Optimism,
+      fileKey: 'pool',
+    }),
+    StargateFarmOptimismPool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm',
+      chainId: Chain.Polygon,
+      fileKey: 'pool',
+    }),
+    StargateFarmPolygonPool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm-v2',
+      chainId: Chain.Arbitrum,
+      fileKey: 'pool',
+    }),
+    StargateFarmV2ArbitrumPool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm-v2',
+      chainId: Chain.Avalanche,
+      fileKey: 'pool',
+    }),
+    StargateFarmV2AvalanchePool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm-v2',
+      chainId: Chain.Base,
+      fileKey: 'pool',
+    }),
+    StargateFarmV2BasePool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm-v2',
+      chainId: Chain.Bsc,
+      fileKey: 'pool',
+    }),
+    StargateFarmV2BscPool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm-v2',
+      chainId: Chain.Ethereum,
+      fileKey: 'pool',
+    }),
+    StargateFarmV2EthereumPool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm-v2',
+      chainId: Chain.Linea,
+      fileKey: 'pool',
+    }),
+    StargateFarmV2LineaPool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm-v2',
+      chainId: Chain.Optimism,
+      fileKey: 'pool',
+    }),
+    StargateFarmV2OptimismPool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'farm-v2',
+      chainId: Chain.Polygon,
+      fileKey: 'pool',
+    }),
+    StargateFarmV2PolygonPool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
       productId: 'pool',
       chainId: Chain.Arbitrum,
       fileKey: 'lp-token',
@@ -1742,10 +1959,145 @@ export const MetadataFiles = new Map<string, Json>([
     metadataKey({
       protocolId: Protocol.Stargate,
       productId: 'pool',
+      chainId: Chain.Avalanche,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolAvalancheLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool',
+      chainId: Chain.Base,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolBaseLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool',
+      chainId: Chain.Bsc,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolBscLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool',
       chainId: Chain.Ethereum,
       fileKey: 'lp-token',
     }),
     StargatePoolEthereumLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool',
+      chainId: Chain.Fantom,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolFantomLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool',
+      chainId: Chain.Linea,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolLineaLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool',
+      chainId: Chain.Optimism,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolOptimismLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool',
+      chainId: Chain.Polygon,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolPolygonLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool-v2',
+      chainId: Chain.Arbitrum,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolV2ArbitrumLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool-v2',
+      chainId: Chain.Avalanche,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolV2AvalancheLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool-v2',
+      chainId: Chain.Base,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolV2BaseLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool-v2',
+      chainId: Chain.Bsc,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolV2BscLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool-v2',
+      chainId: Chain.Ethereum,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolV2EthereumLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool-v2',
+      chainId: Chain.Linea,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolV2LineaLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool-v2',
+      chainId: Chain.Optimism,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolV2OptimismLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool-v2',
+      chainId: Chain.Polygon,
+      fileKey: 'lp-token',
+    }),
+    StargatePoolV2PolygonLpToken,
   ],
   [
     metadataKey({

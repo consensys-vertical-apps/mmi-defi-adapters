@@ -1,24 +1,14 @@
-import { getAddress } from 'ethers'
-import { Erc20__factory } from '../../../../contracts'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -28,15 +18,12 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
-  TokenBalance,
-  TokenType,
-  Underlying,
   UnwrapExchangeRate,
   UnwrapInput,
-  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
+import { staticChainData } from '../../common/staticChainData'
 import {
   StargateFactory__factory,
   StargateToken__factory,
@@ -75,7 +62,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'Stargate',
+      name: 'Stargate Liquidity Pools',
       description:
         'Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi',
       siteUrl: 'https://stargate.finance/',
@@ -171,17 +158,8 @@ export class StargatePoolAdapter implements IProtocolAdapter {
 
   @CacheToFile({ fileKey: 'lp-token' })
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
-    const contractAddresses: Partial<Record<Chain, string>> = {
-      [Chain.Ethereum]: getAddress(
-        '0x06D538690AF257Da524f25D0CD52fD85b1c2173E',
-      ),
-      [Chain.Arbitrum]: getAddress(
-        '0x55bDb4164D28FBaF0898e0eF14a589ac09Ac9970',
-      ),
-    }
-
     const lpFactoryContract = StargateFactory__factory.connect(
-      contractAddresses[this.chainId]!,
+      staticChainData[this.chainId]!.factoryAddress,
       this.provider,
     )
 

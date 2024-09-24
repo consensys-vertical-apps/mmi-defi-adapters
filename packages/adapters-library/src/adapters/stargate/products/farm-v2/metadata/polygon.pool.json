@@ -1,0 +1,32 @@
+[
+  {
+    "address": "0xfe2439B656d8b624c78B7bF7bDc440D101ff9929",
+    "name": "USDC-LP",
+    "symbol": "S*USDC",
+    "decimals": 6,
+    "rewarderAddress": "0xd240a859Efc77b7455AD1B1402357784a2D72a1B",
+    "rewardTokens": [
+      {
+        "address": "0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590",
+        "name": "StargateToken",
+        "symbol": "STG",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x3e3C6dC77Ebf9EA16E6d83bf3ba021aAa7374Ca7",
+    "name": "USDT-LP",
+    "symbol": "S*USDT",
+    "decimals": 6,
+    "rewarderAddress": "0xd240a859Efc77b7455AD1B1402357784a2D72a1B",
+    "rewardTokens": [
+      {
+        "address": "0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590",
+        "name": "StargateToken",
+        "symbol": "STG",
+        "decimals": 18
+      }
+    ]
+  }
+]

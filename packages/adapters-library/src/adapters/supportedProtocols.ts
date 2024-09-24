@@ -101,6 +101,12 @@ import { SolvSolvBtcAdapter } from './solv/products/solv-btc/solvSolvBtcAdapter'
 import { MorphoBlueVaultAdapter } from './morpho-blue/products/vault/morphoBlueVaultAdapter'
 import { SolvYieldMarketAdapter } from './solv/products/yield-market/solvYieldMarketAdapter'
 
+import { StargateFarmAdapter } from './stargate/products/farm/stargateFarmAdapter'
+
+import { StargatePoolV2Adapter } from './stargate/products/pool-v2/stargatePoolV2Adapter'
+
+import { StargateFarmV2Adapter } from './stargate/products/farm-v2/stargateFarmV2Adapter'
+
 import { EtherFiEEthAdapter } from './etherfi/products/e-eth/etherFiEEthAdapter'
 
 import { EtherFiWeEthAdapter } from './etherfi/products/we-eth/etherFiWeEthAdapter'
@@ -455,8 +461,56 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Stargate]: {
-    [Chain.Ethereum]: [StargatePoolAdapter, StargateVotingEscrowAdapter],
-    [Chain.Arbitrum]: [StargatePoolAdapter],
+    [Chain.Ethereum]: [
+      StargatePoolAdapter,
+      StargateVotingEscrowAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
+    [Chain.Optimism]: [
+      StargatePoolAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
+    [Chain.Bsc]: [
+      StargatePoolAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
+    [Chain.Polygon]: [
+      StargatePoolAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
+    [Chain.Fantom]: [StargatePoolAdapter, StargateFarmAdapter],
+    [Chain.Base]: [
+      StargatePoolAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
+    [Chain.Arbitrum]: [
+      StargatePoolAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
+    [Chain.Avalanche]: [
+      StargatePoolAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
+    [Chain.Linea]: [
+      StargatePoolAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
   },
 
   [Protocol.SushiswapV2]: {

@@ -1,151 +1,73 @@
 {
-  "latency": "Latency: 5.266 seconds",
-  "blockNumber": 19661888,
-  "snapshot": [
-    {
-      "protocolId": "stargate",
-      "name": "Stargate Liquidity Pools",
-      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
-      "siteUrl": "https://stargate.finance/",
-      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
-      "positionType": "supply",
-      "chainId": 1,
-      "productId": "pool",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": [
-        {
-          "name": "USD Coin-LP",
-          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
-          "symbol": "S*USDC",
-          "decimals": 6,
-          "type": "protocol",
-          "totalSupplyRaw": "28729037008094n",
-          "tokens": [
-            {
-              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-              "name": "USD Coin",
-              "symbol": "USDC",
-              "decimals": 6,
-              "totalSupplyRaw": "16955567147362n",
-              "type": "underlying",
-              "totalSupply": 16955567.147362,
-              "price": 0.9996146754500066,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-            }
-          ],
-          "totalSupply": 28729037.008094
-        }
-      ]
-    },
-    {
-      "protocolId": "stargate",
-      "name": "Stargate",
-      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
-      "siteUrl": "https://stargate.finance/",
-      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
-      "positionType": "stake",
-      "chainId": 1,
-      "productId": "voting-escrow",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": [
-        {
-          "totalSupplyRaw": "18484869439940665416121168n",
-          "type": "protocol",
-          "address": "0x0e42acBD23FAee03249DAFF896b78d7e79fBD58E",
-          "name": "veSTG",
-          "symbol": "veSTG",
-          "decimals": 18,
-          "tokens": [
-            {
-              "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
-              "name": "StargateToken",
-              "symbol": "STG",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "18484869439940665416121168n",
-              "totalSupply": 18484869.439940665,
-              "price": 0.5021491279414756,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6/logo.png"
-            }
-          ],
-          "totalSupply": 18484869.439940665
-        }
-      ]
-    },
-    {
-      "protocolId": "stargate",
-      "name": "Stargate Farm",
-      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
-      "siteUrl": "https://stargate.finance/",
-      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
-      "positionType": "stake",
-      "chainId": 1,
-      "productId": "farm",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": [
-        {
+  "aggregatedValues": ["USD0.00"],
+  "latency": "Latency: 1.915 seconds",
+  "snapshot": {
+    "protocolId": "stargate",
+    "name": "Stargate Liquidity Pools",
+    "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+    "siteUrl": "https://stargate.finance/",
+    "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "pool",
+    "chainName": "ethereum",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x9990a410f11d9b44119203cf096e2f6b5aeff7e681316f45ffba6ef0abd66b16",
+        "protocolToken": {
           "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
           "name": "USD Coin-LP",
           "symbol": "S*USDC",
-          "decimals": 6,
-          "type": "protocol",
-          "totalSupplyRaw": "28729037008094n",
-          "tokens": [
-            {
-              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-              "name": "USD Coin",
-              "symbol": "USDC",
-              "decimals": 6,
-              "type": "underlying",
-              "totalSupplyRaw": "28751388198886n",
-              "totalSupply": 28751388.198886,
-              "price": 0.9996146754500066,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-            }
-          ],
-          "totalSupply": 28729037.008094
-        }
-      ]
-    },
-    {
-      "protocolId": "stargate",
-      "name": "Stargate Liquidity Pools V2",
-      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
-      "siteUrl": "https://stargate.finance/",
-      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
-      "positionType": "supply",
-      "chainId": 1,
-      "productId": "pool-v2",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": []
-    },
-    {
-      "protocolId": "stargate",
-      "name": "Stargate Farm V2",
-      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
-      "siteUrl": "https://stargate.finance/",
-      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
-      "positionType": "stake",
-      "chainId": 1,
-      "productId": "farm-v2",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": []
-    }
-  ],
+          "decimals": 6
+        },
+        "tokens": [
+          {
+            "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
+            "name": "USD Coin-LP",
+            "symbol": "S*USDC",
+            "decimals": 6,
+            "balanceRaw": "599545110n",
+            "type": "underlying",
+            "blockNumber": 17719335,
+            "tokens": [
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "599999565n",
+                "balance": 599.999565,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+              }
+            ],
+            "balance": 599.54511
+          }
+        ],
+        "blockNumber": 17719335
+      }
+    ]
+  },
   "rpcResponses": {
-    "db9571c666c49fe49a4d3ee1dbfd78ed": {
-      "result": "0x00000000000000000000000000000000000000000000000000001a21000bacde"
-    },
-    "ceb66e027b3560cd2cac02cc2ed62edd": {
-      "result": "0x00000000000000000000000000000000000000000000000000000f6bc68e8962"
-    },
-    "9b68eb5e09bc841b257be91e833cef14": {
-      "result": "0x0000000000000000000000000000000000000000000f4a52c7be1e59bb547b50"
+    "5212ea3439df2ab4f14f2643b1831907": {
+      "result": [
+        {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "blockHash": "0x03f2b2f035db5d00b5da2340d88bebcdb5e07648eb9e713f2153ad93db4d18d0",
+          "blockNumber": "0x10e6027",
+          "data": "0x0000000000000000000000000000000000000000000000000000000023bc5516",
+          "logIndex": "0x89",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x0000000000000000000000002c5d4a0943e9cf4c597a76464396b0bf84c24c45"
+          ],
+          "transactionHash": "0x9990a410f11d9b44119203cf096e2f6b5aeff7e681316f45ffba6ef0abd66b16",
+          "transactionIndex": "0x7d"
+        }
+      ]
     },
     "258748a78b10266df6ff7130c12e5e40": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000014000000000000000000000000000000000000000000000000000000000000001c0000000000000000000000000000000000000000000000000000000000000024000000000000000000000000000000000000000000000000000000000000002c0000000000000000000000000000000000000000000000000000000000000034000000000000000000000000000000000000000000000000000000000000003c0000000000000000000000000000000000000000000000000000000000000044000000000000000000000000000000000000000000000000000000000000004c0000000000000000000000000000000000000000000000000000000000000054000000000000000000000000000000000000000000000000000000000000005c000000000000000000000000000000000000000000000000000000000000000400000000000000000000000006b175474e89094c44da98b954eedeac495271d0f00000000000000000000000000000000000000000000000000000000000000034441490000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000083f20f44975d03b1b09e64809b757c47f942beea000000000000000000000000000000000000000000000000000000000000000473444149000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48000000000000000000000000000000000000000000000000000000000000000455534443000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc20000000000000000000000000000000000000000000000000000000000000004574554480000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000007f39c581f595b53c5cb19bd0b3f8da6c935e2ca00000000000000000000000000000000000000000000000000000000000000006777374455448000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000002260fac5e5542a773aa44fbcfedf7c193bc2c5990000000000000000000000000000000000000000000000000000000000000004574254430000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000006810e776880c02933d47db1b9fc05908e5386b960000000000000000000000000000000000000000000000000000000000000003474e4f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000ae78736cd615f374d3085123a210448e74fc6393000000000000000000000000000000000000000000000000000000000000000472455448000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7000000000000000000000000000000000000000000000000000000000000000455534454000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000cd5fe23c85820f7b72d0926fc9b05b43e359b7ee00000000000000000000000000000000000000000000000000000000000000057765455448000000000000000000000000000000000000000000000000000000"
@@ -369,26 +291,14 @@
     "fe7c2561af508a35d5d1193cf3dab0b6": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
     },
-    "d7158f143a0a73dd331856216c2fb2ca": {
-      "result": "0x0000000000000000000000000000000000000000000000060000000000003c47000000000000000000000000000000000000000000000000000000494bf59bc000000000000000000000000000000000000000000000000000000000661d451b00000000000000000000000000000000000000000000000000000000661d451b0000000000000000000000000000000000000000000000060000000000003c47"
+    "3d0651afd612947a17cb8ccb085cad2a": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000f4536"
     },
-    "77f22666aefe7cf94fa93c53748aaefb": {
-      "result": "0x00000000000000000000000000000000000000000106a821b23556d3b5255c2b"
+    "f89f6d993a8399765a17a2341781e527": {
+      "result": "0x0000000000000000000000000000000000000000000000060000000000000e590000000000000000000000000000000000000000000000000000002c477dfc800000000000000000000000000000000000000000000000000000000064b653870000000000000000000000000000000000000000000000000000000064b653870000000000000000000000000000000000000000000000060000000000000e59"
     },
-    "0e52d7b9e3183300637a3122f14a7326": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5374617267617465546f6b656e00000000000000000000000000000000000000"
-    },
-    "809660d60c8e5a9dde2a90181531e177": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000035354470000000000000000000000000000000000000000000000000000000000"
-    },
-    "abbc0f52936a4241526d58af3b6530a2": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
-    },
-    "3325d28a6c8ec943aaa22167d8a3b9cb": {
-      "result": "0x00000000000000000000000000000000000000000000000000000000000f454a"
-    },
-    "dbaf07927b3af90c3243c903750472af": {
-      "result": "0x00000000000000000000000000000000000000000000000000009112da04cc55"
+    "b77252c8be1702264046cfaf34aab1e4": {
+      "result": "0x"
     }
   }
 }
