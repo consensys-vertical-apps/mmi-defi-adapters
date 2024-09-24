@@ -85,7 +85,7 @@ export class SushiswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   }
 
   @CacheToDb()
-  async buildMetadata() {
+  async getProtocolTokens() {
     return super.getProtocolTokens()
   }
 }

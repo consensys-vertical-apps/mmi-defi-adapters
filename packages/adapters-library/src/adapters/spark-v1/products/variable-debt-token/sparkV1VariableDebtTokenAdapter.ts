@@ -32,7 +32,7 @@ export class SparkV1VariableDebtTokenPoolAdapter extends SparkV1BasePoolAdapter 
   }
 
   @CacheToDb()
-  async buildMetadata() {
+  async getProtocolTokens() {
     return super.getProtocolTokens()
   }
 
