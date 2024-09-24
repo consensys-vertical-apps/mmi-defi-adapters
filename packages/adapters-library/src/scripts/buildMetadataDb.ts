@@ -177,7 +177,7 @@ async function writeProtocolTokensToDb({
 
     const db = new Database(dbPath)
 
-    // Enable performance optimizations
+    // // Enable performance optimizations
     db.exec('PRAGMA synchronous = OFF;') // Reduce disk synchronization overhead
     db.exec('PRAGMA journal_mode = WAL;') // Use Write-Ahead Logging for faster writes
     db.exec('PRAGMA foreign_keys = OFF;') // Disable foreign key constraints temporarily for performance

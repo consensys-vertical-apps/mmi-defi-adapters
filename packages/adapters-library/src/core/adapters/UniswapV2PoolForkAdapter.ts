@@ -55,6 +55,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
   protected readonly MIN_TOKEN_RESERVE: number = 1
   protected readonly MAX_CONCURRENT_FACTORY_PROMISES: number = 10000
   protected readonly MAX_FACTORY_JOB_SIZE: number = 10000
+  protected readonly MAX_CONCURRENT_GRAPHQL_REQUESTS: number = 10
 
   public adapterSettings: AdapterSettings
 
@@ -115,7 +116,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       throw new NotImplementedError()
     }
 
-    if (factoryMetadata.type !== 'graphql') {
+    if (factoryMetadata.type === 'factory') {
       return this.factoryPoolExtraction(factoryMetadata.factoryAddress)
     }
 
@@ -123,16 +124,9 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       pairAddress: string
       token0Address: string
       token1Address: string
-    }[] = await this.graphQlPoolExtraction(factoryMetadata)
+    }[] = await this.graphQlPoolExtractionWithLimit(factoryMetadata)
 
-    const pairPromises = await this.processPairsWithQueue(pairs)
-
-    return pairPromises.reduce((metadataObject, pair) => {
-      if (pair.status === 'fulfilled') {
-        metadataObject.push(pair.value)
-      }
-      return metadataObject
-    }, [] as ProtocolToken<AdditionalTokenMetadata>[])
+    return this.processPairsWithQueue(pairs)
   }
 
   async processPairsWithQueue(
@@ -508,7 +502,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
     }
   }
 
-  private async graphQlPoolExtraction({
+  private async graphQlPoolExtractionWithLimit({
     subgraphUrl,
     subgraphQuery,
   }: {
@@ -521,60 +515,104 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       token1Address: string
     }[]
   > {
-    // Volume and reserve filters have been added to avoid pairs that are not useful
-    const response = await fetch(subgraphUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        query:
-          subgraphQuery ??
-          `
-          {
-            pairs(
-              first: ${this.MAX_SUBGRAPH_PAIRS}
-              where: {
-                volumeUSD_gt: ${this.MIN_SUBGRAPH_VOLUME}
-                reserve0_gte: ${this.MIN_TOKEN_RESERVE}
-                reserve1_gte: ${this.MIN_TOKEN_RESERVE}
-              }
-              orderBy: reserveUSD orderDirection: desc
-            )
+    // Proceed with fetching pools if the total is under the limit (continue with your pagination logic)
+    const results: {
+      pairAddress: string
+      token0Address: string
+      token1Address: string
+    }[] = []
+
+    const BATCH_SIZE = 1000 // Number of pairs to request in each batch
+    let hasMore = true
+    let skip = 0
+
+    const queue = new PQueue({
+      concurrency: this.MAX_CONCURRENT_GRAPHQL_REQUESTS,
+    })
+
+    console.log(
+      `[${new Date().toISOString()}] Starting GraphQL pool extraction.`,
+    )
+
+    // Function to fetch pools in batches
+    const fetchPools = async (skip: number) => {
+      const response = await fetch(subgraphUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          query:
+            subgraphQuery ??
+            `
             {
-              id
-              token0 {
+              pairs(
+                first: ${BATCH_SIZE}
+                skip: ${skip}
+                where: {
+                  reserveUSD_gt: 50000
+                }
+                orderBy: reserveUSD
+                orderDirection: desc
+              ) {
                 id
+                token0 {
+                  id
+                }
+                token1 {
+                  id
+                }
               }
-              token1 {
-                id
-              }
             }
-          }`,
-      }),
-    })
+          `,
+        }),
+      })
 
-    const gqlResponse: {
-      data: {
-        pairs: [
-          {
-            id: string
-            token0: {
-              id: string
-            }
-            token1: {
-              id: string
-            }
-          },
-        ]
-      }
-    } = await response.json()
+      const gqlResponse = await response.json()
 
-    return gqlResponse.data.pairs.map((pair) => {
-      return {
-        pairAddress: pair.id,
-        token0Address: pair.token0.id,
-        token1Address: pair.token1.id,
-      }
-    })
+      return gqlResponse.data.pairs.map(
+        (pair: {
+          id: string
+          token0: { id: string }
+          token1: { id: string }
+        }) => ({
+          pairAddress: getAddress(pair.id),
+          token0Address: getAddress(pair.token0.id),
+          token1Address: getAddress(pair.token1.id),
+        }),
+      )
+    }
+
+    // Use p-queue to fetch batches of pools concurrently
+    while (hasMore) {
+      await queue.add(async () => {
+        const poolBatch = await fetchPools(skip)
+
+        if (poolBatch.length > 0) {
+          results.push(...poolBatch)
+          console.log(
+            `[${new Date().toISOString()}] Processed batch starting at ${skip}. Total pools so far: ${
+              results.length
+            }`,
+          )
+        }
+
+        if (poolBatch.length < BATCH_SIZE) {
+          hasMore = false // No more results to process
+        }
+
+        skip += BATCH_SIZE // Move to the next batch
+      })
+    }
+
+    // Wait for all tasks in the queue to complete
+    await queue.onIdle()
+
+    console.log(
+      `[${new Date().toISOString()}] Completed GraphQL pool extraction. Total pools indexed: ${
+        results.length
+      }`,
+    )
+
+    return results
   }
 
   private async factoryPoolExtraction(
@@ -593,25 +631,14 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
     // Initialize p-queue for concurrency control
     const queue = new PQueue({ concurrency })
 
-    const startIndex = await this.helpers.metadataProvider.getPoolCount(
-      this.protocolId,
-      this.productId,
-    )
-
     console.log(
-      `Starting factoryPoolExtraction with jobSize: ${jobSize}, concurrency: ${concurrency}, startIndex: ${startIndex}`,
+      `Starting factoryPoolExtraction with jobSize: ${jobSize}, concurrency: ${concurrency}`,
     )
 
     const results: ProtocolToken<AdditionalTokenMetadata>[] = []
 
-    // Start from adapterPoolCount and continue to jobSize
-
     // Process pairs from startIndex to jobSize
-    for (
-      let index = startIndex;
-      index < startIndex + jobSize && index < allPairsLength;
-      index++
-    ) {
+    for (let index = 0; index < jobSize && index < allPairsLength; index++) {
       queue.add(async () => {
         try {
           const pairAddress = getAddress(await factoryContract.allPairs(index))
