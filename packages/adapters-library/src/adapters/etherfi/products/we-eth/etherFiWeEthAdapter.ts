@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { Helpers } from '../../../../scripts/helpers'
@@ -23,7 +24,6 @@ import {
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
 import { WeETH__factory } from '../../contracts'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const WE_ETH_ADDRESS = getAddress('0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee')
 const E_ETH_ADDRESS = getAddress('0x35fA164735182de50811E8e2E824cFb9B6118ac2')

@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
@@ -23,7 +24,6 @@ import {
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const CHAIN_TO_CONFIG: Partial<
   Record<

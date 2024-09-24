@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
@@ -33,7 +34,6 @@ import {
   StargateMultiRewarder__factory,
   StargateStaking__factory,
 } from '../../contracts'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = {
   rewarderAddress: string
@@ -241,9 +241,8 @@ export class StargateFarmV2Adapter implements IProtocolAdapter {
   }): Promise<MovementsByBlock[]> {
     const { stargateStakingAddress } = staticChainDataV2[this.chainId]!
 
-    const protocolToken = await this.getProtocolTokenByAddress(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const lpStakingContract = StargateStaking__factory.connect(
       stargateStakingAddress,

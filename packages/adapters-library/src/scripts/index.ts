@@ -9,11 +9,11 @@ import { buildMetadata } from './buildMetadata'
 import { buildMetadataDb } from './buildMetadataDb'
 import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
+import { checkMetadataType } from './checkMetadataType'
 import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
-import { checkMetadataType } from './checkMetadataType'
 
 const program = new Command('mmi-adapters')
 

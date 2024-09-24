@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { Helpers } from '../../../../scripts/helpers'
@@ -22,7 +23,6 @@ import {
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const E_ETH_ADDRESS = getAddress('0x35fA164735182de50811E8e2E824cFb9B6118ac2')
 const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
@@ -139,9 +139,8 @@ export class EtherFiEEthAdapter implements IProtocolAdapter {
   async unwrap({
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const protocolToken = await this.getProtocolTokenByAddress(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
     const underlyingTokens = protocolToken.underlyingTokens
     if (!underlyingTokens || !underlyingTokens.length)
       throw new Error('No underlying tokens found')

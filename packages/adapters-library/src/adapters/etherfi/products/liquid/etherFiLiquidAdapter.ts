@@ -2,6 +2,7 @@ import { getAddress } from 'ethers'
 import { uniqBy } from 'lodash'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { Helpers } from '../../../../scripts/helpers'
@@ -27,7 +28,6 @@ import {
   AccountantWithRateProviders__factory,
   Deployer__factory,
 } from '../../contracts'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const DEPLOYER_CONTRACT_ADDRESS = '0x5f2f11ad8656439d5c14d9b351f8b09cdac2a02d'
 const DEPLOY_CONTRACT_TOPIC =
