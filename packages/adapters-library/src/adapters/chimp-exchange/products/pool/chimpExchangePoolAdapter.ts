@@ -265,47 +265,56 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
 
     const protocolTokens = await this.getProtocolTokens()
 
-    return Promise.all(
-      protocolTokens.map(async (protocolToken) => {
-        const poolMetadata = await this.helpers.getProtocolTokenByAddress({
-          protocolTokens: await this.getProtocolTokens(),
-          protocolTokenAddress: protocolToken.address,
-        })
+    return (
+      await Promise.all(
+        protocolTokens.map(async (protocolToken) => {
+          if (
+            input.protocolTokenAddresses &&
+            !input.protocolTokenAddresses.includes(protocolToken.address)
+          ) {
+            return undefined
+          }
 
-        const [[_poolTokens, poolBalances], [totalSupplyRaw]] =
-          await Promise.all([
-            vaultContract.getPoolTokens(poolMetadata.poolId, {
-              blockTag: input.blockNumber,
-            }),
-            balancerPoolDataQueriesContract.getTotalSupplyForPools(
-              [protocolToken.address],
-              [poolMetadata.totalSupplyType],
-              {
+          const poolMetadata = await this.helpers.getProtocolTokenByAddress({
+            protocolTokens: await this.getProtocolTokens(),
+            protocolTokenAddress: protocolToken.address,
+          })
+
+          const [[_poolTokens, poolBalances], [totalSupplyRaw]] =
+            await Promise.all([
+              vaultContract.getPoolTokens(poolMetadata.poolId, {
                 blockTag: input.blockNumber,
-              },
-            ),
-          ])
+              }),
+              balancerPoolDataQueriesContract.getTotalSupplyForPools(
+                [protocolToken.address],
+                [poolMetadata.totalSupplyType],
+                {
+                  blockTag: input.blockNumber,
+                },
+              ),
+            ])
 
-        const tokens = poolMetadata.underlyingTokens.map(
-          ({ ...token }, index) => ({
-            ...token,
-            totalSupplyRaw:
-              poolBalances[poolMetadata.underlyingTokensIndexes[index]!]!,
-            type: TokenType.Underlying,
-          }),
-        )
+          const tokens = poolMetadata.underlyingTokens.map(
+            ({ ...token }, index) => ({
+              ...token,
+              totalSupplyRaw:
+                poolBalances[poolMetadata.underlyingTokensIndexes[index]!]!,
+              type: TokenType.Underlying,
+            }),
+          )
 
-        return {
-          name: protocolToken.name,
-          address: protocolToken.address,
-          symbol: protocolToken.symbol,
-          decimals: protocolToken.decimals,
-          type: TokenType.Protocol,
-          tokens,
-          totalSupplyRaw: totalSupplyRaw!,
-        }
-      }),
-    )
+          return {
+            name: protocolToken.name,
+            address: protocolToken.address,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
+            type: TokenType.Protocol,
+            tokens,
+            totalSupplyRaw: totalSupplyRaw!,
+          }
+        }),
+      )
+    ).filter((item) => item !== undefined) as ProtocolTokenTvl[]
   }
 
   protected async unwrapProtocolToken(

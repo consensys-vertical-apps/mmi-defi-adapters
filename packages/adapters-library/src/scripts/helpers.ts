@@ -60,6 +60,13 @@ export class Helpers {
   }: GetPositionsInput & {
     protocolTokens: Erc20Metadata[]
   }): Promise<ProtocolPosition[]> {
+    // Otherwise we might overload the node
+    if (!protocolTokenAddresses && protocolTokens.length > 1000) {
+      throw new Error(
+        'Too many tokens to fetch, protocolTokenAddresses must be provided',
+      )
+    }
+
     return filterMapAsync(protocolTokens, async (protocolToken) => {
       if (
         protocolTokenAddresses &&

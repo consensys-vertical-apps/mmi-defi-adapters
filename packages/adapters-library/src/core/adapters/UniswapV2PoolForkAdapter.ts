@@ -92,7 +92,6 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
     this.adapterSettings = {
       enablePositionDetectionByProtocolTokenTransfer: this.metadataBased,
       includeInUnwrap: this.metadataBased,
-      version: 3,
     }
   }
 

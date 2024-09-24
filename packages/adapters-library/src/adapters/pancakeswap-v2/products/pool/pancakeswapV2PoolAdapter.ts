@@ -20,8 +20,8 @@ export class PancakeswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   }
 
   protected PROTOCOL_TOKEN_PREFIX_OVERRIDE = {
-    name: 'Pancake V2',
-    symbol: 'PANCAKE-V2',
+    name: 'Pancake LPs',
+    symbol: 'Cake-LP',
   }
 
   getProtocolDetails(): ProtocolDetails {
