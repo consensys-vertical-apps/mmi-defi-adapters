@@ -414,7 +414,7 @@ const createTableQueries = {
         additional_data TEXT,
         FOREIGN KEY (adapter_id) REFERENCES adapters(adapter_id),
         FOREIGN KEY (pool_address) REFERENCES tokens(token_address),
-        UNIQUE (pool_address, adapter_pool_id) -- Adjusted to refer to valid columns
+        UNIQUE (pool_address, adapter_id)
     );`,
   underlying_tokens: `
     CREATE TABLE IF NOT EXISTS underlying_tokens (

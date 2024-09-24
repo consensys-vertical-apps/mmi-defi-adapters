@@ -11,6 +11,7 @@ import { Chain } from './constants/chains'
 import { AdapterMissingError, NotImplementedError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 import { pascalCase } from './utils/caseConversion'
+import { logger } from './utils/logger'
 
 export class AdaptersController {
   private adapters: Map<Chain, Map<Protocol, Map<string, IProtocolAdapter>>> =
@@ -32,9 +33,7 @@ export class AdaptersController {
         Partial<
           Record<
             Chain,
-            (new (
-              input: ProtocolAdapterParams,
-            ) => IProtocolAdapter)[]
+            (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]
           >
         >
       >
@@ -139,6 +138,8 @@ export class AdaptersController {
             continue
           }
 
+          console.log(adapter, 'second oiioi')
+
           this.processDefaultCase(protocolTokens, chainAdaptersMap, adapter)
         }
       }
@@ -156,12 +157,36 @@ export class AdaptersController {
       const tokenAddress = protocolToken.address
 
       const existingAdapter = chainAdaptersMap.get(tokenAddress)
+
       const isPriceAdapter =
         existingAdapter?.getProtocolDetails().positionType ===
         PositionType.FiatPrices
 
+      console.log(protocolTokens, 'first oiioi')
+
       if (existingAdapter && !isPriceAdapter) {
-        throw new Error(`Duplicated protocol token ${protocolToken.address}`)
+        logger.error(
+          `${
+            protocolToken.address
+          } has already been added to the adapter map by ${
+            existingAdapter.getProtocolDetails().protocolId
+          } ${existingAdapter.getProtocolDetails().productId} ${
+            existingAdapter.getProtocolDetails().chainId
+          } and is duplicated by ${adapter.getProtocolDetails().protocolId} ${
+            adapter.getProtocolDetails().productId
+          } ${adapter.getProtocolDetails().chainId}`,
+        )
+        throw new Error(
+          `Duplicate token address ${
+            protocolToken.address
+          } has already been added to the adapter map by ${
+            existingAdapter.getProtocolDetails().protocolId
+          } ${existingAdapter.getProtocolDetails().productId} ${
+            existingAdapter.getProtocolDetails().chainId
+          } and is duplicated by ${adapter.getProtocolDetails().protocolId} ${
+            adapter.getProtocolDetails().productId
+          } ${adapter.getProtocolDetails().chainId}`,
+        )
       }
 
       // override price adapter

@@ -51,7 +51,7 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToFile({ fileKey: 'protocol-token' })
   async getProtocolTokens() {
     return super.getProtocolTokens()
   }

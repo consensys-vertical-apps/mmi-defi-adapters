@@ -52,13 +52,14 @@ export class PancakeswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
         factoryAddress: '0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73',
         subgraphUrl:
           'https://data-platform.nodereal.io/graph/v1/b4355ec60e4c4d85a3d3204386a8c5ed/projects/pancakeswap',
-        subgraphQuery: `
+        subgraphQuery: (BATCH_SIZE, skip) => `
           {
             pairs(
-              first: ${this.MAX_SUBGRAPH_PAIRS}
-              orderBy: trackedReserveBNB orderDirection: desc
-            )
-            {
+              first: ${BATCH_SIZE}
+              skip: ${skip}
+              orderBy: trackedReserveBNB
+              orderDirection: desc
+            ) {
               id
               token0 {
                 id
@@ -66,6 +67,7 @@ export class PancakeswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
               token1 {
                 id
               }
+              trackedReserveBNB
             }
           }`,
       },

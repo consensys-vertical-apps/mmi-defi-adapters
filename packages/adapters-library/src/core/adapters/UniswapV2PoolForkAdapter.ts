@@ -43,16 +43,13 @@ export type UniswapV2PoolForkPositionStrategy = { factoryAddress: string } & (
   | {
       type: 'graphql'
       subgraphUrl: string
-      subgraphQuery?: string
+      subgraphQuery?: (BATCH_SIZE: number, skip: number) => string
     }
   | { type: 'factory' }
   | { type: 'logs' }
 )
 
 export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
-  protected readonly MAX_SUBGRAPH_PAIRS: number = 1000
-  protected readonly MIN_SUBGRAPH_VOLUME: number = 50000
-  protected readonly MIN_TOKEN_RESERVE: number = 1
   protected readonly MAX_CONCURRENT_FACTORY_PROMISES: number = 10000
   protected readonly MAX_FACTORY_JOB_SIZE: number = 10000
   protected readonly MAX_CONCURRENT_GRAPHQL_REQUESTS: number = 10
@@ -507,7 +504,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
     subgraphQuery,
   }: {
     subgraphUrl: string
-    subgraphQuery?: string
+    subgraphQuery?: (BATCH_SIZE: number, skip: number) => string
   }): Promise<
     {
       pairAddress: string
@@ -541,7 +538,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           query:
-            subgraphQuery ??
+            subgraphQuery?.(BATCH_SIZE, skip) ??
             `
             {
               pairs(
@@ -567,6 +564,14 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       })
 
       const gqlResponse = await response.json()
+
+      if (gqlResponse.errors) {
+        console.error(
+          `Error fetching pairs at skip ${skip}:`,
+          gqlResponse.errors,
+        )
+        return []
+      }
 
       return gqlResponse.data.pairs.map(
         (pair: {
@@ -623,6 +628,12 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       this.provider,
     )
     const allPairsLength = Number(await factoryContract.allPairsLength())
+
+    if (allPairsLength > this.MAX_FACTORY_JOB_SIZE) {
+      throw new Error(
+        `Factory job size exceeds the limit ${allPairsLength} > ${this.MAX_FACTORY_JOB_SIZE}`,
+      )
+    }
 
     // Define jobSize to limit how many pairs to process in one go
     const jobSize = Math.min(this.MAX_FACTORY_JOB_SIZE, allPairsLength)
