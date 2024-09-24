@@ -78,6 +78,7 @@ export function buildMetadataDb(
             if (
               !(
                 typeof adapter.getProtocolTokens === 'function' &&
+                // private/secret param added at runtime
                 //@ts-ignore
                 adapter.getProtocolTokens.isCacheToDbDecorated
               )
@@ -182,8 +183,10 @@ async function writeProtocolTokensToDb({
     const getAdapterIdQuery = `
     SELECT adapter_id FROM adapters WHERE protocol_id = ? AND product_id = ?;
   `
-    const adapter = db.prepare(getAdapterIdQuery).get(protocolId, productId)
-    //@ts-ignore
+    const adapter = db
+      .prepare(getAdapterIdQuery)
+      .get(protocolId, productId) as { adapter_id: string }
+
     const adapterId = adapter?.adapter_id
 
     if (!adapterId) {
@@ -240,8 +243,8 @@ async function writeProtocolTokensToDb({
     }
 
     // Prepare data for tokens batch insert (pools + related tokens)
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    const tokenData: any[] = []
+
+    const tokenData: [string, string, string, number][] = []
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     const relatedTokenData: any[] = []
 
@@ -269,6 +272,7 @@ async function writeProtocolTokensToDb({
             poolId,
             token.address,
             //@ts-ignore
+            // Todo: underlying token type not yet accepting additionalData
             JSON.stringify(token.additionalData || {}),
           ],
         })
@@ -285,8 +289,10 @@ async function writeProtocolTokensToDb({
           name,
           symbol,
           decimals,
+          // Todo: ProtocolToken type does not yet support rewardTokens and extraRewardTokens
           //@ts-ignore
           rewardTokens,
+          // Todo: ProtocolToken type does not yet support rewardTokens and extraRewardTokens
           //@ts-ignore
           extraRewardTokens,
           ...additionalData

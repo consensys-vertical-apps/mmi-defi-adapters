@@ -1,4 +1,6 @@
 import { getAddress } from 'ethers'
+import { add } from 'lodash'
+import PQueue from 'p-queue'
 import { Protocol } from '../../adapters/protocols'
 import {
   UniswapV2Factory__factory,
@@ -30,8 +32,6 @@ import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
 import { getTokenMetadata } from '../utils/getTokenMetadata'
 import { logger } from '../utils/logger'
-import PQueue from 'p-queue'
-import { add } from 'lodash'
 
 export type AdditionalTokenMetadata = {
   underlyingTokens: Erc20Metadata[]
@@ -105,8 +105,6 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
   >
 
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalTokenMetadata>[]> {
-    console.log('UniswapV2PoolForkAdapter getProtocolTokens')
-
     const factoryMetadata = this.chainMetadataSettings()[this.chainId]
 
     if (!factoryMetadata) {
@@ -149,8 +147,11 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       concurrency: this.MAX_CONCURRENT_FACTORY_PROMISES,
     })
 
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    const results: any[] = []
+    const results: ({
+      underlyingTokens: Erc20Metadata[]
+      token0: string
+      token1: string
+    } & Erc20Metadata)[] = []
 
     // Process each pair with concurrency control
     for (const pair of pairs) {
