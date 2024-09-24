@@ -1,4 +1,5 @@
 {
+  "latency": "Latency: 0.001 seconds",
   "blockNumber": 20572049,
   "snapshot": [
     {
@@ -10,6 +11,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "standardised-yield-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

@@ -11,6 +11,7 @@ export const Protocol = {
   Curve: 'curve',
   Deri: 'deri',
   Ethena: 'ethena',
+  EtherFi: 'etherfi',
   Flux: 'flux',
   Gmx: 'gmx',
   IZiSwap: 'iziswap',

@@ -1,5 +1,6 @@
 {
   "blockNumber": 645596,
+  "latency": "Latency: 2 seconds",
   "snapshot": [
     {
       "protocolId": "syncswap",
@@ -10,6 +11,7 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "pool",
+      "chainName": "linea",
       "success": true,
       "tokens": [
         {

@@ -10,6 +10,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "strategies",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

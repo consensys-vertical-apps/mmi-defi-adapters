@@ -1,5 +1,6 @@
 {
   "blockNumber": 18527822,
+  "latency": "Latency: 5.434 seconds",
   "snapshot": [
     {
       "protocolId": "maker",
@@ -10,6 +11,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "s-dai",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

@@ -1,4 +1,5 @@
 import { getAddress } from 'ethers'
+import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Erc20__factory } from '../contracts'
 import { TransferEvent } from '../contracts/Erc20'
 import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
@@ -11,13 +12,11 @@ import { logger } from '../core/utils/logger'
 import { nativeToken, nativeTokenAddresses } from '../core/utils/nativeTokens'
 import { JsonMetadata, ProtocolToken } from '../types/IProtocolAdapter'
 import {
-  GetEventsInput,
   GetPositionsInput,
   MovementsByBlock,
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  Underlying,
   UnwrapExchangeRate,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
@@ -30,19 +29,12 @@ export const REAL_ESTATE_TOKEN_METADATA = {
 }
 
 export class Helpers {
-  provider: CustomJsonRpcProvider
-  chainId: Chain
-
-  constructor({
-    provider,
-    chainId,
-  }: {
-    provider: CustomJsonRpcProvider
-    chainId: Chain
-  }) {
-    this.provider = provider
-    this.chainId = chainId
-  }
+  constructor(
+    public readonly provider: CustomJsonRpcProvider,
+    public readonly chainId: Chain,
+    public readonly metadataProvider: IMetadataProvider,
+    public readonly allJsonRpcProviders: Record<Chain, CustomJsonRpcProvider>,
+  ) {}
 
   async getProtocolTokenByAddress<AdditionalMetadata extends JsonMetadata>({
     protocolTokens,

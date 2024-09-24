@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 2.126 seconds",
+  "latency": "Latency: 3.766 seconds",
   "blockNumber": 19661875,
   "snapshot": [
     {
@@ -11,6 +11,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "a-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -46,6 +47,7 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "stable-debt-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -81,6 +83,7 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "variable-debt-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -115,14 +118,14 @@
     "b639a4abe07163e1c4e3e56de96b6b15": {
       "result": "0x000000000000000000000000000000000000000000000000000075da414c8079"
     },
+    "f7f47d04615861e3ffec1258a94f117c": {
+      "result": "0x0000000000000000000000000000000000000000000000000000911d4870a95d"
+    },
     "4c31e6533d5ff9e8553e0c5e64818389": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
     "265963102ae3a61a555ed89e06d92f97": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    "f7f47d04615861e3ffec1258a94f117c": {
-      "result": "0x0000000000000000000000000000000000000000000000000000911d4870a95d"
     },
     "c7357e2ba19f7429344654687ce54e3c": {
       "result": "0x000000000000000000000000000000000000000000000000000018c0ed941d09"

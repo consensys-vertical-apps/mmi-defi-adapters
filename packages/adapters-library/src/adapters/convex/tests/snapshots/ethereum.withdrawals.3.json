@@ -1,5 +1,6 @@
 {
   "aggregatedValues": ["USD1,717.95", "USD1,452.75", "USD1,466.56"],
+  "latency": "Latency: 9.406 seconds",
   "snapshot": {
     "protocolId": "convex",
     "name": "Convex",
@@ -9,6 +10,7 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "cvxcrv-wrapper",
+    "chainName": "ethereum",
     "success": true,
     "movements": [
       {

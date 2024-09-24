@@ -1,0 +1,16 @@
+[
+  {
+    "address": "0x23A46eFDa973Bd4e97Ee84bAc87018537538D078",
+    "name": "ETH-LP",
+    "symbol": "S*ETH",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x0000000000000000000000000000000000000000",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ]
+  }
+]

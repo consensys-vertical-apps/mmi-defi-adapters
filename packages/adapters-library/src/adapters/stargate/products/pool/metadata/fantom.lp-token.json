@@ -1,0 +1,47 @@
+[
+  {
+    "poolId": 1,
+    "address": "0x12edeA9cd262006cC3C4E77c90d2CD2DD4b1eb97",
+    "name": "USD Coin-LP",
+    "symbol": "S*USDC",
+    "decimals": 6,
+    "underlyingTokens": [
+      {
+        "address": "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "poolId": 20,
+    "address": "0x333b6E02eFFD8bE6075F3de0D8075FeD842dd9a3",
+    "name": "Wootrade Network-LP",
+    "symbol": "S*WOO",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x6626c47c00F1D87902fc13EECfaC3ed06D5E8D8a",
+        "name": "Wootrade Network",
+        "symbol": "WOO",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "poolId": 21,
+    "address": "0xc647CE76ec30033Aa319d472Ae9f4462068f2AD7",
+    "name": "USD Coin-LP",
+    "symbol": "S*USDC",
+    "decimals": 6,
+    "underlyingTokens": [
+      {
+        "address": "0x28a92dde19D9989F39A49905d7C9C2FAc7799bDf",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  }
+]

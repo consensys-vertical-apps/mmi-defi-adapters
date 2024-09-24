@@ -55,6 +55,8 @@ import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 
 import { testCases as solvTestCases } from './solv/tests/testCases'
 
+import { testCases as etherFiTestCases } from './etherfi/tests/testCases'
+
 const TEST_TIMEOUT = 300000
 
 const defiProvider = new DefiProvider({
@@ -92,6 +94,7 @@ const protocolTestCases = {
   [Protocol.Curve]: curveTestCases,
   [Protocol.Deri]: deriTestCases,
   [Protocol.Ethena]: ethenaTestCases,
+  [Protocol.EtherFi]: etherFiTestCases,
   [Protocol.Flux]: fluxTestCases,
   [Protocol.Gmx]: gmxTestCases,
   [Protocol.IZiSwap]: iZiSwapTestCases,

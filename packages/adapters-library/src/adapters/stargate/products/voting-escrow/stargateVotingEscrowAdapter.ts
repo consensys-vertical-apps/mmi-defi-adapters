@@ -1,7 +1,6 @@
 import { getAddress } from 'ethers'
 import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
 import {
-  AssetType,
   GetPositionsInput,
   PositionType,
   ProtocolDetails,

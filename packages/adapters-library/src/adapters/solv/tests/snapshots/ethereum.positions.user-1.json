@@ -1,5 +1,6 @@
 {
   "blockNumber": 20540523,
+  "latency": "Latency: 2.351 seconds",
   "aggregatedValues": ["USD150,891.66"],
   "snapshot": [
     {
@@ -11,6 +12,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "solv-btc",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

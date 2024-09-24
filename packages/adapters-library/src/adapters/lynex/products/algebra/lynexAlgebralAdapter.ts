@@ -6,6 +6,7 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { Helpers } from '../../../../scripts/helpers'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
@@ -49,6 +50,7 @@ export class LynexAlgebraAdapter implements IProtocolAdapter {
   productId = 'algebra'
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
@@ -65,11 +67,13 @@ export class LynexAlgebraAdapter implements IProtocolAdapter {
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   getProtocolDetails(): ProtocolDetails {

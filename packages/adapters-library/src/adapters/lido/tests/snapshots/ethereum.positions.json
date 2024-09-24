@@ -1,5 +1,6 @@
 {
   "blockNumber": 18377483,
+  "latency": "Latency: 1.785 seconds",
   "aggregatedValues": ["USD7.80", "USD142,256,435.30"],
   "snapshot": [
     {
@@ -11,6 +12,7 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "st-eth",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -46,6 +48,7 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "wst-eth",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

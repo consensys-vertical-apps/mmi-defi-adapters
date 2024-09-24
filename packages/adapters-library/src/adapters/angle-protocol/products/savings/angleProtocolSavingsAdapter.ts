@@ -8,6 +8,7 @@ import {
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { Helpers } from '../../../../scripts/helpers'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
@@ -44,6 +45,7 @@ export class AngleProtocolSavingsAdapter
   productId = 'savings'
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
@@ -59,11 +61,13 @@ export class AngleProtocolSavingsAdapter
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   getProtocolDetails(): ProtocolDetails {
