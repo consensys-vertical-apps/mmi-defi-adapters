@@ -2,15 +2,14 @@
 import { Command } from 'commander'
 import { Chain } from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
+import { copyAdapter } from './adapterBuilder/copyAdapter'
+import { newAdapterCommand } from './adapterBuilder/newAdapterCommand'
 import { blockAverage } from './blockAverage'
 import { buildMetadata } from './buildMetadata'
 import { buildMetadataDb } from './buildMetadataDb'
 import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
-import { copyAdapter } from './copyAdapter'
 import { featureCommands } from './featureCommands'
-import { newAdapter2Command } from './newAdapter2Command'
-import { newAdapterCommand } from './newAdapterCommand'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
@@ -24,8 +23,6 @@ const adaptersController = defiProvider.adaptersController
 featureCommands(program, defiProvider)
 
 newAdapterCommand(program, defiProvider)
-
-newAdapter2Command(program, defiProvider)
 
 blockAverage(program, chainProviders)
 
