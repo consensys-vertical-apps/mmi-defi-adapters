@@ -18,6 +18,11 @@ export class PancakeswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
     includeInUnwrap: true,
   }
 
+  protected PROTOCOL_TOKEN_PREFIX_OVERRIDE = {
+    name: 'Pancake V2',
+    symbol: 'PANCAKE-V2',
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -49,7 +54,7 @@ export class PancakeswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
         subgraphQuery: `
           {
             pairs(
-              first: ${this.MAX_PAIRS_ALLOWED}
+              first: ${this.MAX_SUBGRAPH_PAIRS}
               orderBy: trackedReserveBNB orderDirection: desc
             )
             {

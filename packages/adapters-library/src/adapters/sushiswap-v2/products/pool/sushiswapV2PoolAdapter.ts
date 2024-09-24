@@ -18,6 +18,11 @@ export class SushiswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
     includeInUnwrap: true,
   }
 
+  protected PROTOCOL_TOKEN_PREFIX_OVERRIDE = {
+    name: 'Sushiswap V2',
+    symbol: 'SUSHI-V2',
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,

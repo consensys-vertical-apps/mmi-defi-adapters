@@ -18,6 +18,11 @@ export class LynexClassicAdapter extends UniswapV2PoolForkAdapter {
     includeInUnwrap: true,
   }
 
+  protected PROTOCOL_TOKEN_PREFIX_OVERRIDE = {
+    name: 'Lynex V2',
+    symbol: 'LYNEX-V2',
+  }
+
   // TODO: Ammend this if pairs grow over 1,000
   protected override readonly MIN_SUBGRAPH_VOLUME: number = -1
   protected override readonly MIN_TOKEN_RESERVE: number = 0
