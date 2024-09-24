@@ -1,6 +1,3 @@
-import { Chain } from '../../../core/constants/chains'
-import { BlankAdapterOutcomeOptions, QuestionAnswers } from '../questionnaire'
-
 export function votingEscrowAdapterTemplate({
   protocolKey,
   adapterClassName,
@@ -9,7 +6,6 @@ export function votingEscrowAdapterTemplate({
   protocolKey: string
   adapterClassName: string
   productId: string
-  chainKeys: (keyof typeof Chain)[]
 }) {
   return `import { getAddress } from 'ethers'
   import { VotingEscrow } from '../../../../core/adapters/votingEscrow'

@@ -1,5 +1,4 @@
 import { Chain } from '../../../core/constants/chains'
-import { BlankAdapterOutcomeOptions, QuestionAnswers } from '../questionnaire'
 
 export function uniswapV2PoolForkAdapterTemplate({
   protocolKey,

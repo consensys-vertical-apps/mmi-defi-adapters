@@ -95,10 +95,7 @@ export async function createCode(
   let code: string
   switch (true) {
     case answers.forkCheck === TemplateNames.SmartBuilder: {
-      const blankTemplate = Templates[answers.forkCheck]!({
-        ...answers,
-        adapterClassName: outcomes.adapterClassName,
-      })
+      const blankTemplate = Templates[answers.forkCheck]!()
 
       code = generateAdapter(answers, outcomes, blankTemplate!)
 

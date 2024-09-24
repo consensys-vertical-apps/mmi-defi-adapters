@@ -1,6 +1,3 @@
-import { Chain } from '../../../core/constants/chains'
-import { BlankAdapterOutcomeOptions, QuestionAnswers } from '../questionnaire'
-
 export function writeOnlyDeFiAdapter({
   protocolKey,
   adapterClassName,
@@ -9,7 +6,6 @@ export function writeOnlyDeFiAdapter({
   protocolKey: string
   adapterClassName: string
   productId: string
-  chainKeys: (keyof typeof Chain)[]
 }) {
   return `import { z } from 'zod'
   import { WriteOnlyDeFiAdapter } from '../../../../core/adapters/writeOnlyAdapter'

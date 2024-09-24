@@ -1,5 +1,3 @@
-import { Chain } from '../../../core/constants/chains'
-
 export function compoundV2BorrowMarketForkAdapterTemplate({
   protocolKey,
   adapterClassName,
@@ -8,7 +6,6 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
   protocolKey: string
   adapterClassName: string
   productId: string
-  chainKeys: (keyof typeof Chain)[]
 }) {
   return `
   import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'

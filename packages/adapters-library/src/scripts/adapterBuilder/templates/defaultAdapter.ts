@@ -1,6 +1,3 @@
-import { Chain } from '../../../core/constants/chains'
-import { QuestionAnswers } from '../questionnaire'
-
 export function defaultAdapterTemplate({
   protocolKey,
   adapterClassName,
@@ -9,7 +6,6 @@ export function defaultAdapterTemplate({
   protocolKey: string
   adapterClassName: string
   productId: string
-  chainKeys: (keyof typeof Chain)[]
 }) {
   return `
   import { AdaptersController } from '../../../../core/adaptersController'

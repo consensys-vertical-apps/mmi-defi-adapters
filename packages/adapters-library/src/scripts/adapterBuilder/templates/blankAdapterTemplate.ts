@@ -1,16 +1,4 @@
-import { Chain } from '../../../core/constants/chains'
-import { BlankAdapterOutcomeOptions, QuestionAnswers } from '../questionnaire'
-
-export function blankAdapterTemplate({
-  protocolKey,
-  adapterClassName,
-  productId,
-}: {
-  protocolKey: string
-  adapterClassName: string
-  productId: string
-  chainKeys: (keyof typeof Chain)[]
-}) {
+export function blankAdapterTemplate() {
   return `import { getAddress } from 'ethers'
     import { Protocol } from '../../../protocols'
     import { AdaptersController } from '../../../../core/adaptersController'
