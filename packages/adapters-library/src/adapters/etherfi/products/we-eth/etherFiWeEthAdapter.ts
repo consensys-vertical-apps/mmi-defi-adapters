@@ -23,6 +23,7 @@ import {
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
 import { WeETH__factory } from '../../contracts'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const WE_ETH_ADDRESS = getAddress('0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee')
 const E_ETH_ADDRESS = getAddress('0x35fA164735182de50811E8e2E824cFb9B6118ac2')
@@ -70,7 +71,7 @@ export class EtherFiWeEthAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const protocolToken = await this.helpers.getTokenMetadata(WE_ETH_ADDRESS)
     const underlyingToken = await this.helpers.getTokenMetadata(E_ETH_ADDRESS)

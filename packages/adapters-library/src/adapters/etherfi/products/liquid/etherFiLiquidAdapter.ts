@@ -27,6 +27,7 @@ import {
   AccountantWithRateProviders__factory,
   Deployer__factory,
 } from '../../contracts'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const DEPLOYER_CONTRACT_ADDRESS = '0x5f2f11ad8656439d5c14d9b351f8b09cdac2a02d'
 const DEPLOY_CONTRACT_TOPIC =
@@ -87,7 +88,7 @@ export class EtherFiLiquidAdapter implements IProtocolAdapter {
    * To do so, we fetch all logs from the "Deploy" contract, which acts as a factory.
    * Then we only keep logs that contain "accountant".
    */
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   public async getProtocolTokens(): Promise<
     ProtocolToken<AdditionalMetadata>[]
   > {

@@ -33,6 +33,7 @@ import {
   StargateMultiRewarder__factory,
   StargateStaking__factory,
 } from '../../contracts'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = {
   rewarderAddress: string
@@ -83,7 +84,7 @@ export class StargateFarmV2Adapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'pool' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const { stargateStakingAddress } = staticChainDataV2[this.chainId]!
     const stakingContract = StargateStaking__factory.connect(
@@ -240,8 +241,9 @@ export class StargateFarmV2Adapter implements IProtocolAdapter {
   }): Promise<MovementsByBlock[]> {
     const { stargateStakingAddress } = staticChainDataV2[this.chainId]!
 
-    const protocolToken =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
+    const protocolToken = await this.getProtocolTokenByAddress(
+      protocolTokenAddress,
+    )
 
     const lpStakingContract = StargateStaking__factory.connect(
       stargateStakingAddress,

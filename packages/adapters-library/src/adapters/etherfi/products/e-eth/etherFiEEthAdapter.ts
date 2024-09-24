@@ -22,6 +22,7 @@ import {
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const E_ETH_ADDRESS = getAddress('0x35fA164735182de50811E8e2E824cFb9B6118ac2')
 const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
@@ -69,7 +70,7 @@ export class EtherFiEEthAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const protocolToken = await this.helpers.getTokenMetadata(E_ETH_ADDRESS)
     const underlyingToken = await this.helpers.getTokenMetadata(ZERO_ADDRESS)
@@ -138,8 +139,9 @@ export class EtherFiEEthAdapter implements IProtocolAdapter {
   async unwrap({
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const protocolToken =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
+    const protocolToken = await this.getProtocolTokenByAddress(
+      protocolTokenAddress,
+    )
     const underlyingTokens = protocolToken.underlyingTokens
     if (!underlyingTokens || !underlyingTokens.length)
       throw new Error('No underlying tokens found')

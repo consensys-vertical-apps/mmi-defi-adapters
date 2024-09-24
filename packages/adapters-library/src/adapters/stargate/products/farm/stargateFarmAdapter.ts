@@ -1,6 +1,7 @@
 import { Erc20__factory } from '../../../../contracts'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
@@ -88,7 +89,7 @@ export class StargateFarmAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'pool' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const { lpStakingAddress, lpStakingType, lpStakingTimeMetisAddress } =
       staticChainData[this.chainId]!
@@ -228,8 +229,9 @@ export class StargateFarmAdapter implements IProtocolAdapter {
     protocolTokenAddress,
   }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
     const { lpStakingAddress, lpStakingType } = staticChainData[this.chainId]!
-    const { poolIndex, rewardToken } =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
+    const { poolIndex, rewardToken } = await this.getProtocolTokenByAddress(
+      protocolTokenAddress,
+    )
 
     const rewardFunctionInput = [
       poolIndex,
@@ -279,8 +281,9 @@ export class StargateFarmAdapter implements IProtocolAdapter {
   }: GetEventsInput & {
     filterType: 'deposit' | 'withdrawal'
   }): Promise<MovementsByBlock[]> {
-    const protocolToken =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
+    const protocolToken = await this.getProtocolTokenByAddress(
+      protocolTokenAddress,
+    )
 
     const lpStakingContract =
       protocolToken.lpStakingType === 'LpStaking'
@@ -349,8 +352,9 @@ export class StargateFarmAdapter implements IProtocolAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
+    const protocolToken = await this.getProtocolTokenByAddress(
+      protocolTokenAddress,
+    )
 
     const lpStakingContract =
       protocolToken.lpStakingType === 'LpStaking'

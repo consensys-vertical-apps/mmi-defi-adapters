@@ -13,6 +13,7 @@ import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
+import { checkMetadataType } from './checkMetadataType'
 
 const program = new Command('mmi-adapters')
 
@@ -21,6 +22,8 @@ const chainProviders = defiProvider.chainProvider.providers
 const adaptersController = defiProvider.adaptersController
 
 featureCommands(program, defiProvider)
+
+checkMetadataType(program, chainProviders, adaptersController)
 
 newAdapterCommand(program, defiProvider)
 
