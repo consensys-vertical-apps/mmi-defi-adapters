@@ -14,6 +14,7 @@ import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
+import { checkDbTotals } from './checkDbTotals'
 
 const program = new Command('mmi-adapters')
 
@@ -34,6 +35,7 @@ buildContractTypes(program)
 buildMetadata(program, chainProviders, adaptersController)
 
 buildMetadataDb(program, chainProviders, adaptersController)
+checkDbTotals(program, chainProviders, adaptersController)
 
 buildSnapshots(program)
 
