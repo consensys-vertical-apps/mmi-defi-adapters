@@ -10,6 +10,7 @@ import {
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   GetTotalValueLockedInput,
   PositionType,
@@ -23,19 +24,18 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { XfaiFactory__factory, XfaiPool__factory } from '../../contracts'
 
-type XfaiDexAdapterMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-  }
->
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+}
 
-export class XfaiDexAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
+export class XfaiDexAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'dex'
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false, // might be true but contracts not verified
+    includeInUnwrap: true,
+    version: 2,
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -47,14 +47,11 @@ export class XfaiDexAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: 'StandardErc20',
-      },
     }
   }
 
   @CacheToFile({ fileKey: 'lp-token' })
-  async buildMetadata() {
+  async getProtocolTokens() {
     const contractAddresses: Partial<Record<Chain, string>> = {
       [Chain.Linea]: getAddress('0xa5136eAd459F0E61C99Cec70fe8F5C24cF3ecA26'),
     }
@@ -66,7 +63,7 @@ export class XfaiDexAdapter
 
     const poolsLength = Number(await lpFactoryContract.allPoolsLength())
 
-    const metadataObject: XfaiDexAdapterMetadata = {}
+    const metadataObject: ProtocolToken<AdditionalMetadata>[] = []
 
     const promises = Array.from({ length: poolsLength }, async (_, i) => {
       const poolAddress = await lpFactoryContract.allPools(i)
@@ -91,8 +88,8 @@ export class XfaiDexAdapter
         underlyingTokenPromise,
       ])
 
-      metadataObject[protocolToken.address] = {
-        protocolToken,
+      metadataObject.push({
+        ...protocolToken,
         underlyingTokens: [
           underlyingToken,
           {
@@ -102,18 +99,12 @@ export class XfaiDexAdapter
             decimals: 18,
           },
         ],
-      }
+      })
     })
 
     await Promise.all(promises)
 
     return metadataObject
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
   }
 
   protected async getUnderlyingTokenBalances({
@@ -126,7 +117,10 @@ export class XfaiDexAdapter
   }): Promise<Underlying[]> {
     const poolAddress = protocolTokenBalance.address
     const poolContract = XfaiPool__factory.connect(poolAddress, this.provider)
-    const poolMeta = await this.fetchPoolMetadata(poolAddress)
+    const poolMeta = await this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress: poolAddress,
+    })
 
     const nonEthToken = poolMeta.underlyingTokens.find(
       (t) => t.address !== ZERO_ADDRESS,
@@ -162,63 +156,59 @@ export class XfaiDexAdapter
   async getTotalValueLocked({
     blockNumber,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const lps = await this.buildMetadata()!
+    const lps = await this.getProtocolTokens()
 
     return Promise.all(
-      Object.values(lps).map(async ({ protocolToken, underlyingTokens }) => {
-        const underlyingTokenBalances = filterMapAsync(
-          underlyingTokens,
-          async (underlyingToken: Erc20Metadata) => {
-            if (underlyingToken.address === ZERO_ADDRESS) {
-              const balanceOf = await this.provider
-                .getBalance(protocolToken.address, blockNumber)
+      Object.values(lps).map(
+        async ({ name, address, symbol, decimals, underlyingTokens }) => {
+          const underlyingTokenBalances = filterMapAsync(
+            underlyingTokens,
+            async (underlyingToken: Erc20Metadata) => {
+              if (underlyingToken.address === ZERO_ADDRESS) {
+                const balanceOf = await this.provider
+                  .getBalance(address, blockNumber)
+                  .catch(() => 0n)
+                return {
+                  ...underlyingToken,
+                  totalSupplyRaw: balanceOf,
+                  type: TokenType.Underlying,
+                }
+              }
+
+              const contract = Erc20__factory.connect(
+                underlyingToken.address,
+                this.provider,
+              )
+
+              const balanceOf = await contract
+                .balanceOf(address, {
+                  blockTag: blockNumber,
+                })
                 .catch(() => 0n)
+
               return {
                 ...underlyingToken,
                 totalSupplyRaw: balanceOf,
                 type: TokenType.Underlying,
               }
-            }
+            },
+          )
+          const contract = Erc20__factory.connect(address, this.provider)
 
-            const contract = Erc20__factory.connect(
-              underlyingToken.address,
-              this.provider,
-            )
-
-            const balanceOf = await contract
-              .balanceOf(protocolToken.address, {
-                blockTag: blockNumber,
-              })
-              .catch(() => 0n)
-
-            return {
-              ...underlyingToken,
-              totalSupplyRaw: balanceOf,
-              type: TokenType.Underlying,
-            }
-          },
-        )
-        const contract = Erc20__factory.connect(
-          protocolToken.address,
-          this.provider,
-        )
-
-        return {
-          type: 'protocol',
-          ...protocolToken,
-          tokens: await underlyingTokenBalances,
-          totalSupplyRaw: await contract.totalSupply({ blockTag: blockNumber }),
-        } as ProtocolTokenTvl
-      }),
+          return {
+            type: 'protocol',
+            name,
+            address,
+            symbol,
+            decimals,
+            tokens: await underlyingTokenBalances,
+            totalSupplyRaw: await contract.totalSupply({
+              blockTag: blockNumber,
+            }),
+          } as ProtocolTokenTvl
+        },
+      ),
     )
-  }
-
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
   }
 
   protected async unwrapProtocolToken(
@@ -227,7 +217,10 @@ export class XfaiDexAdapter
   ): Promise<UnwrappedTokenExchangeRate[]> {
     const poolAddress = protocolTokenMetadata.address
     const poolContract = XfaiPool__factory.connect(poolAddress, this.provider)
-    const poolMeta = await this.fetchPoolMetadata(poolAddress)
+    const poolMeta = await this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress: poolAddress,
+    })
 
     const nonEthToken = poolMeta.underlyingTokens.find(
       (t) => t.address !== ZERO_ADDRESS,
@@ -260,25 +253,5 @@ export class XfaiDexAdapter
         underlyingRateRaw: (oneLpUnit * ethAmount) / totalSupply,
       },
     ]
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingTokens } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return underlyingTokens
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error({ protocolTokenAddress }, 'Protocol token pool not found')
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
   }
 }

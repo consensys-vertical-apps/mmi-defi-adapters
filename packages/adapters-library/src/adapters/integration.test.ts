@@ -1,5 +1,5 @@
 import { promises as fs } from 'node:fs'
-import path from 'node:path'
+import path, { resolve } from 'node:path'
 import { Chain, ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
@@ -7,20 +7,24 @@ import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { getMetadataInvalidAddresses } from '../scripts/addressValidation'
 import { protocolFilter } from '../scripts/commandFilters'
+import { RpcInterceptedResponse, startRpcMock } from '../scripts/rpcInterceptor'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
 import { testCases as angleProtocolTestCases } from './angle-protocol/tests/testCases'
+import { testCases as beefyTestCases } from './beefy/tests/testCases'
 import { testCases as carbonDeFiTestCases } from './carbon-defi/tests/testCases'
 import { testCases as chimpExchangeTestCases } from './chimp-exchange/tests/testCases'
 import { testCases as compoundV2TestCases } from './compound-v2/tests/testCases'
 import { testCases as convexTestCases } from './convex/tests/testCases'
 import { testCases as curveTestCases } from './curve/tests/testCases'
+import { testCases as deriTestCases } from './deri/tests/testCases'
 import { testCases as ethenaTestCases } from './ethena/tests/testCases'
 import { testCases as fluxTestCases } from './flux/tests/testCases'
 import { testCases as gmxTestCases } from './gmx/tests/testCases'
 import { testCases as iZiSwapTestCases } from './iziswap/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
+import { testCases as lynexTestCases } from './lynex/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
 import { testCases as mendiFinanceTestCases } from './mendi-finance/tests/testCases'
 import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testCases'
@@ -28,11 +32,14 @@ import { testCases as morphoAaveV3TestCases } from './morpho-aave-v3/tests/testC
 import { testCases as morphoBlueTestCases } from './morpho-blue/tests/testCases'
 import { testCases as morphoCompoundV2TestCases } from './morpho-compound-v2/tests/testCases'
 import { testCases as pancakeswapV2TestCases } from './pancakeswap-v2/tests/testCases'
+import { testCases as pendleTestCases } from './pendle/tests/testCases'
 import { testCases as pricesV2TestCases } from './prices-v2/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as quickswapV2TestCases } from './quickswap-v2/tests/testCases'
+import { testCases as renzoTestCases } from './renzo/tests/testCases'
 import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
 import { testCases as sonneTestCases } from './sonne/tests/testCases'
+import { testCases as sparkV1TestCases } from './spark-v1/tests/testCases'
 import { testCases as stakeWiseTestCases } from './stakewise/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import {
@@ -46,27 +53,48 @@ import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 
-import { testCases as lynexTestCases } from './lynex/tests/testCases'
-import { testCases as pendleTestCases } from './pendle/tests/testCases'
+import { testCases as solvTestCases } from './solv/tests/testCases'
+
+import { testCases as etherFiTestCases } from './etherfi/tests/testCases'
 
 const TEST_TIMEOUT = 300000
 
-const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
+const defiProvider = new DefiProvider({
+  useMulticallInterceptor: false,
+})
+const defiProviderWithMulticall = new DefiProvider({
+  useMulticallInterceptor: true,
+})
 
 const filterProtocolId = protocolFilter(
   process.env.DEFI_ADAPTERS_TEST_FILTER_PROTOCOL,
 )
 
+// @ts-ignore
+const normalizeNegativeZero = (obj) => {
+  Object.keys(obj).forEach((key) => {
+    if (typeof obj[key] === 'number' && Object.is(obj[key], -0)) {
+      obj[key] = Math.abs(obj[key])
+    } else if (obj[key] && typeof obj[key] === 'object') {
+      normalizeNegativeZero(obj[key])
+    }
+  })
+  return obj
+}
+
 const protocolTestCases = {
   [Protocol.AaveV2]: aaveV2TestCases,
   [Protocol.AaveV3]: aaveV3TestCases,
   [Protocol.AngleProtocol]: angleProtocolTestCases,
+  [Protocol.Beefy]: beefyTestCases,
   [Protocol.CarbonDeFi]: carbonDeFiTestCases,
   [Protocol.ChimpExchange]: chimpExchangeTestCases,
   [Protocol.CompoundV2]: compoundV2TestCases,
   [Protocol.Convex]: convexTestCases,
   [Protocol.Curve]: curveTestCases,
+  [Protocol.Deri]: deriTestCases,
   [Protocol.Ethena]: ethenaTestCases,
+  [Protocol.EtherFi]: etherFiTestCases,
   [Protocol.Flux]: fluxTestCases,
   [Protocol.Gmx]: gmxTestCases,
   [Protocol.IZiSwap]: iZiSwapTestCases,
@@ -82,8 +110,11 @@ const protocolTestCases = {
   [Protocol.Pendle]: pendleTestCases,
   [Protocol.PricesV2]: pricesV2TestCases,
   [Protocol.QuickswapV2]: quickswapV2TestCases,
+  [Protocol.Renzo]: renzoTestCases,
   [Protocol.RocketPool]: rocketPoolTestCases,
+  [Protocol.Solv]: solvTestCases,
   [Protocol.Sonne]: sonneTestCases,
+  [Protocol.SparkV1]: sparkV1TestCases,
   [Protocol.StakeWise]: stakeWiseTestCases,
   [Protocol.Stargate]: stargateTestCases,
   [Protocol.SushiswapV2]: sushiswapV2TestCases,
@@ -112,6 +143,45 @@ function runAllTests() {
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
   describe(protocolId, () => {
+    let rpcMockStop: (() => void) | undefined
+
+    beforeAll(async () => {
+      const allMocks = (
+        await Promise.all(
+          testCases.map(async (testCase) => {
+            const { rpcResponses } = await loadJsonFile(testCase, protocolId)
+
+            if (!rpcResponses) {
+              return []
+            }
+
+            return Object.entries(rpcResponses).map(([key, responses]) => ({
+              key,
+              responses,
+            }))
+          }),
+        )
+      )
+        .flatMap((x) => x)
+        .reduce((acc, x) => {
+          acc[x.key] = x.responses
+          return acc
+        }, {} as RpcInterceptedResponse)
+
+      const chainUrls = Object.values(defiProvider.chainProvider.providers).map(
+        (rpcProvider) => rpcProvider._getConnection().url,
+      )
+
+      if (Object.keys(allMocks).length > 0) {
+        const { stop } = startRpcMock(allMocks, chainUrls)
+        rpcMockStop = stop
+      }
+    })
+
+    afterAll(() => {
+      rpcMockStop?.()
+    })
+
     const protocolChains = Object.keys(supportedProtocols[protocolId]).map(
       (chainIdKey) => Number(chainIdKey),
     ) as Chain[]
@@ -164,7 +234,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'positions for test %s match',
           async (_, testCase) => {
-            const { snapshot, blockNumber } = await fetchSnapshot(
+            const { snapshot, blockNumber, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
             )
@@ -200,7 +270,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'profits for test %s match',
           async (_, testCase) => {
-            const { snapshot, blockNumber } = await fetchSnapshot(
+            const { snapshot, blockNumber, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
             )
@@ -212,7 +282,8 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               toBlockNumbersOverride: { [testCase.chainId]: blockNumber },
             })
 
-            expect(response).toEqual(snapshot)
+            // Morpho profit test were failing with -0 comparison with 0
+            expect(normalizeNegativeZero(response)).toEqual(snapshot)
           },
           TEST_TIMEOUT,
         )
@@ -236,7 +307,10 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'deposits for test %s match',
           async (_, testCase) => {
-            const { snapshot } = await fetchSnapshot(testCase, protocolId)
+            const { snapshot, defiProvider } = await fetchSnapshot(
+              testCase,
+              protocolId,
+            )
 
             const response = await defiProvider.getDeposits({
               ...testCase.input,
@@ -266,7 +340,10 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'withdrawals for test %s match',
           async (_, testCase) => {
-            const { snapshot } = await fetchSnapshot(testCase, protocolId)
+            const { snapshot, defiProvider } = await fetchSnapshot(
+              testCase,
+              protocolId,
+            )
 
             const response = await defiProvider.getWithdrawals({
               ...testCase.input,
@@ -297,7 +374,10 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'repays for test %s match',
           async (_, testCase) => {
-            const { snapshot } = await fetchSnapshot(testCase, protocolId)
+            const { snapshot, defiProvider } = await fetchSnapshot(
+              testCase,
+              protocolId,
+            )
 
             const response = await defiProvider.getRepays({
               ...testCase.input,
@@ -327,7 +407,10 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'withdrawals for test %s match',
           async (_, testCase) => {
-            const { snapshot } = await fetchSnapshot(testCase, protocolId)
+            const { snapshot, defiProvider } = await fetchSnapshot(
+              testCase,
+              protocolId,
+            )
 
             const response = await defiProvider.getBorrows({
               ...testCase.input,
@@ -359,7 +442,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'unwrap for test %s match',
           async (_, testCase) => {
-            const { snapshot, blockNumber } = await fetchSnapshot(
+            const { snapshot, blockNumber, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
             )
@@ -391,7 +474,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         it.each(tvlTestCases.map((testCase) => [testKey(testCase), testCase]))(
           'tvl for test %s match',
           async (_, testCase) => {
-            const { snapshot, blockNumber } = await fetchSnapshot(
+            const { snapshot, blockNumber, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
             )
@@ -428,7 +511,10 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'tx-params for test %s match',
           async (_, testCase) => {
-            const { snapshot } = await fetchSnapshot(testCase, protocolId)
+            const { snapshot, defiProvider } = await fetchSnapshot(
+              testCase,
+              protocolId,
+            )
 
             const inputs = {
               ...testCase.input,
@@ -456,6 +542,19 @@ function testKey({ chainId, method, key }: TestCase) {
 }
 
 async function fetchSnapshot(testCase: TestCase, protocolId: Protocol) {
+  const { snapshot, blockNumber, rpcResponses } = await loadJsonFile(
+    testCase,
+    protocolId,
+  )
+
+  return {
+    snapshot,
+    blockNumber,
+    defiProvider: rpcResponses ? defiProvider : defiProviderWithMulticall,
+  }
+}
+
+async function loadJsonFile(testCase: TestCase, protocolId: Protocol) {
   const expectedString = await fs.readFile(
     path.resolve(
       __dirname,
@@ -464,9 +563,17 @@ async function fetchSnapshot(testCase: TestCase, protocolId: Protocol) {
     'utf-8',
   )
 
-  return bigintJsonParse(expectedString) as {
-    // biome-ignore lint/suspicious/noExplicitAny: Type could be narrower
-    snapshot: any
+  const { snapshot, blockNumber, rpcResponses } = bigintJsonParse(
+    expectedString,
+  ) as {
+    snapshot: unknown
     blockNumber?: number
+    rpcResponses?: RpcInterceptedResponse
+  }
+
+  return {
+    snapshot,
+    blockNumber,
+    rpcResponses,
   }
 }

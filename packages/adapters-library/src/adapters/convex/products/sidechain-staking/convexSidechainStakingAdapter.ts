@@ -1,9 +1,6 @@
 import { getAddress } from 'ethers'
-import {
-  ExtraRewardToken,
-  LpStakingAdapter,
-  LpStakingProtocolMetadata,
-} from '../../../../core/adapters/LpStakingProtocolAdapter'
+
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
   CacheToFile,
@@ -13,18 +10,24 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   GetEventsInput,
   GetPositionsInput,
   GetPositionsInputWithTokenAddresses,
+  GetRewardPositionsInput,
   MovementsByBlock,
   PositionType,
   ProtocolDetails,
   ProtocolPosition,
+  TokenBalance,
   TokenType,
+  Underlying,
   UnderlyingReward,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
+import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
 import {
   ConvexFactorySidechain__factory,
@@ -32,11 +35,26 @@ import {
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardFactorySidechain'
 
-export class ConvexSidechainStakingAdapter
-  extends LpStakingAdapter
-  implements IMetadataBuilder
-{
+const PRICE_PEGGED_TO_ONE = 1
+
+export type ExtraRewardToken = {
+  token: Erc20Metadata
+  manager: string
+}
+
+export type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+  extraRewardTokens: ExtraRewardToken[]
+}
+
+export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'sidechain-staking'
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: true,
+    version: 2,
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -51,14 +69,52 @@ export class ConvexSidechainStakingAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 
+  protected async getUnderlyingTokenBalances({
+    protocolTokenBalance,
+  }: {
+    userAddress: string
+    protocolTokenBalance: TokenBalance
+    blockNumber?: number
+  }): Promise<Underlying[]> {
+    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
+      protocolTokenBalance.address,
+    )
+
+    const underlyingTokenBalance = {
+      ...underlyingTokens[0]!,
+      balanceRaw: protocolTokenBalance.balanceRaw,
+      type: TokenType.Underlying,
+    }
+
+    return [underlyingTokenBalance]
+  }
+
+  protected async unwrapProtocolToken(
+    protocolTokenMetadata: Erc20Metadata,
+    _blockNumber?: number,
+  ): Promise<UnwrappedTokenExchangeRate[]> {
+    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
+      protocolTokenMetadata.address,
+    )
+
+    const pricePerShareRaw = BigInt(
+      PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
+    )
+
+    return [
+      {
+        ...underlyingTokens[0]!,
+        type: TokenType.Underlying,
+        underlyingRateRaw: pricePerShareRaw,
+      },
+    ]
+  }
+
   @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const convexFactory = ConvexFactorySidechain__factory.connect(
       CONVEX_FACTORY_ADDRESS,
       this.provider,
@@ -66,7 +122,7 @@ export class ConvexSidechainStakingAdapter
 
     const length = await convexFactory.poolLength()
 
-    const metadata: LpStakingProtocolMetadata = {}
+    const metadata: ProtocolToken<AdditionalMetadata>[] = []
     await Promise.all(
       Array.from({ length: Number(length) }, async (_, i) => {
         const convexData = await convexFactory.poolInfo(i)
@@ -79,13 +135,11 @@ export class ConvexSidechainStakingAdapter
             this.getExtraRewardTokensMetadata(convexData.rewards),
           ])
 
-        metadata[getAddress(convexToken.address)] = {
-          protocolToken: {
-            ...convexToken,
-          },
-          underlyingToken,
+        metadata.push({
+          ...convexToken,
+          underlyingTokens: [underlyingToken],
           extraRewardTokens,
-        }
+        })
       }),
     )
 
@@ -134,8 +188,11 @@ export class ConvexSidechainStakingAdapter
     const balances: ProtocolPosition[] = await filterMapAsync(
       protocolTokenAddresses,
       async (protocolTokenAddress) => {
-        const { extraRewardTokens, protocolToken } =
-          await this.fetchPoolMetadata(protocolTokenAddress)
+        const { extraRewardTokens, address, name, decimals, symbol } =
+          await this.helpers.getProtocolTokenByAddress({
+            protocolTokens: await this.getProtocolTokens(),
+            protocolTokenAddress,
+          })
 
         // If extraRewards is empty or undefined, skip this protocolToken
         if (!extraRewardTokens || extraRewardTokens.length === 0) return
@@ -152,7 +209,10 @@ export class ConvexSidechainStakingAdapter
         )
 
         return {
-          ...protocolToken,
+          address,
+          name,
+          decimals,
+          symbol,
           type: TokenType.Reward,
           balanceRaw: 0n,
           tokens: await Promise.all(
@@ -175,31 +235,14 @@ export class ConvexSidechainStakingAdapter
     return balances
   }
 
-  /**
-   * Not available on side-chains
-   */
-  async getRewardPositionsLpStakingAdapter(
-    _input: GetPositionsInput,
-  ): Promise<ProtocolPosition[]> {
-    throw new NotImplementedError()
-  }
-
-  /**
-   * Not available on side-chains
-   */
-  async getRewardWithdrawalsLpStakingAdapter(
-    _input: GetEventsInput,
-  ): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  async getExtraRewardWithdrawalsLpStakingAdapter({
+  async getExtraRewardWithdrawals({
     userAddress,
     protocolTokenAddress,
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     const extraRewardTracker = ConvexRewardFactorySidechain__factory.connect(
       protocolTokenAddress,
@@ -238,6 +281,38 @@ export class ConvexSidechainStakingAdapter
             },
           ],
           blockNumber: blockNumber,
+        }
+      }),
+    )
+  }
+
+  async getExtraRewardPositions({
+    userAddress,
+    blockNumber,
+    protocolTokenAddress,
+    tokenId,
+  }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
+    const extraRewardTokenContract =
+      ConvexRewardFactorySidechain__factory.connect(
+        protocolTokenAddress,
+        this.provider,
+      )
+
+    const balances = await extraRewardTokenContract.earned.staticCall(
+      userAddress,
+      { blockTag: blockNumber },
+    )
+
+    return await Promise.all(
+      balances.map(async (balance) => {
+        return {
+          type: TokenType.UnderlyingClaimable,
+          ...(await getTokenMetadata(
+            balance.token,
+            this.chainId,
+            this.provider,
+          )),
+          balanceRaw: balance.amount,
         }
       }),
     )

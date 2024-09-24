@@ -1,4 +1,5 @@
 {
+  "latency": "Latency: 0.168 seconds",
   "blockNumber": 19661887,
   "snapshot": [
     {
@@ -10,16 +11,14 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "reth",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
           "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
           "name": "Rocket Pool rETH",
-          "symbol": "rETH",
           "decimals": 18,
+          "symbol": "rETH",
           "baseRate": 1,
           "type": "protocol",
           "tokens": [
@@ -37,5 +36,10 @@
         }
       ]
     }
-  ]
+  ],
+  "rpcResponses": {
+    "26e9470ae0ddefed2aa186246ae2c181": {
+      "result": "0x0000000000000000000000000000000000000000000000000f512184523d3fcf"
+    }
+  }
 }

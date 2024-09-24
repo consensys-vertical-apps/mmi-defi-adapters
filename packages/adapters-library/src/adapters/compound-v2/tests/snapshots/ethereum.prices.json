@@ -1,4 +1,5 @@
 {
+  "latency": "Latency: 0.195 seconds",
   "blockNumber": 19661878,
   "snapshot": [
     {
@@ -10,9 +11,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "supply-market",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -46,9 +45,7 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "borrow-market",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
+      "chainName": "ethereum",
       "success": false,
       "error": {
         "message": "Not Implemented (at CompoundV2BorrowMarketAdapter.unwrap)",
@@ -57,5 +54,10 @@
         }
       }
     }
-  ]
+  ],
+  "rpcResponses": {
+    "931a17949159c1a1c8dd278e3b516efd": {
+      "result": "0x0000000000000000000000000000000000000000000000000000d85248099e26"
+    }
+  }
 }

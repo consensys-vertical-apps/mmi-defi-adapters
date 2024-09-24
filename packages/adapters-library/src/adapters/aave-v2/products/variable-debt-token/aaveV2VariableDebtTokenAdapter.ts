@@ -1,4 +1,5 @@
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   PositionType,
@@ -10,6 +11,12 @@ import { ProtocolDataProvider } from '../../contracts'
 export class AaveV2VariableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'variable-debt-token'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+    version: 2,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -20,15 +27,12 @@ export class AaveV2VariableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 
   @CacheToFile({ fileKey: 'variable-debt-token-v2' })
-  async buildMetadata() {
-    return super.buildMetadata()
+  async getProtocolTokens() {
+    return super.getProtocolTokens()
   }
 
   protected getReserveTokenAddress(

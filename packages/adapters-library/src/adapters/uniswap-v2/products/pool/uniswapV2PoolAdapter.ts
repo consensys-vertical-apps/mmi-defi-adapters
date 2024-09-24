@@ -1,14 +1,10 @@
 import {
   UniswapV2PoolForkAdapter,
-  UniswapV2PoolForkMetadataBuilder,
+  UniswapV2PoolForkPositionStrategy,
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import {
-  AssetType,
-  PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 
 export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   productId = 'pool'
@@ -23,20 +19,15 @@ export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 
   protected chainMetadataSettings(): Partial<
-    Record<Chain, UniswapV2PoolForkMetadataBuilder>
+    Record<Chain, UniswapV2PoolForkPositionStrategy>
   > {
     return {
       [Chain.Ethereum]: {
-        type: 'graphql',
-        subgraphUrl:
-          'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-dev',
+        type: 'logs',
         factoryAddress: '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f',
       },
       [Chain.Optimism]: {

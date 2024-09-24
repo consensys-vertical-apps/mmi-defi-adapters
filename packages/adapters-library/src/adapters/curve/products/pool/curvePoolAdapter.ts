@@ -1,4 +1,3 @@
-import { getAddress } from 'ethers'
 import { Erc20__factory } from '../../../../contracts/factories/Erc20__factory'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
@@ -10,14 +9,10 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
-import { Replacements } from '../../../../scripts/replacements'
-import { RewardsAdapter } from '../../../../scripts/rewardAdapter'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
-  GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
@@ -26,8 +21,6 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  Underlying,
-  UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
   UnwrappedTokenExchangeRate,
@@ -41,6 +34,11 @@ export class CurvePoolAdapter implements IProtocolAdapter, IMetadataBuilder {
   protocolId: Protocol
   chainId: Chain
   helpers: Helpers
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
 
   private provider: CustomJsonRpcProvider
 
@@ -71,9 +69,6 @@ export class CurvePoolAdapter implements IProtocolAdapter, IMetadataBuilder {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

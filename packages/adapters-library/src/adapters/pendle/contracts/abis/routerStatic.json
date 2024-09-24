@@ -1,0 +1,59 @@
+[
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "market",
+        "type": "address"
+      }
+    ],
+    "name": "getLpToSyRate",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "market",
+        "type": "address"
+      }
+    ],
+    "name": "getPtToSyRate",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "market",
+        "type": "address"
+      }
+    ],
+    "name": "getYtToSyRate",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

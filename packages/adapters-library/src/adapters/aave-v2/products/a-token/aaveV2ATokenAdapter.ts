@@ -1,14 +1,33 @@
+import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { logger } from '../../../../core/utils/logger'
+import { Helpers } from '../../../../scripts/helpers'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
   PositionType,
+  ProtocolAdapterParams,
   ProtocolDetails,
+  ProtocolPosition,
+  ProtocolTokenTvl,
+  UnwrapExchangeRate,
+  UnwrapInput,
 } from '../../../../types/adapter'
 import { AaveBasePoolAdapter } from '../../common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../contracts'
 
 export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'a-token'
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+    version: 3,
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -17,18 +36,15 @@ export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
       description: 'Aave v2 defi adapter for yield-generating token',
       siteUrl: 'https://aave.com/',
       iconUrl: 'https://aave.com/favicon.ico',
-      positionType: PositionType.Lend,
+      positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 
-  @CacheToFile({ fileKey: 'a-token-v2' })
-  async buildMetadata() {
-    return super.buildMetadata()
+  @CacheToDb()
+  async getProtocolTokens() {
+    return super.getProtocolTokens()
   }
 
   protected getReserveTokenAddress(

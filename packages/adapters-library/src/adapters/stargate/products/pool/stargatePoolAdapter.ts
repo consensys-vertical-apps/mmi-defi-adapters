@@ -1,46 +1,68 @@
-import { getAddress } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
+import { Helpers } from '../../../../scripts/helpers'
 import {
-  AssetType,
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
+import {
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
   PositionType,
+  ProtocolAdapterParams,
   ProtocolDetails,
-  TokenBalance,
-  TokenType,
-  Underlying,
-  UnwrappedTokenExchangeRate,
+  ProtocolPosition,
+  ProtocolTokenTvl,
+  UnwrapExchangeRate,
+  UnwrapInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { Protocol } from '../../../protocols'
+import { staticChainData } from '../../common/staticChainData'
 import {
   StargateFactory__factory,
   StargateToken__factory,
 } from '../../contracts'
 
-type StargatePoolMetadata = Record<
-  string,
-  {
-    poolId: number
-    protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
-  }
->
+type AdditionalMetadata = { poolId: number; underlyingTokens: Erc20Metadata[] }
 
-export class StargatePoolAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
+export class StargatePoolAdapter implements IProtocolAdapter {
   productId = 'pool'
+  helpers: Helpers
+  chainId: Chain
+  protocolId: Protocol
+  provider: CustomJsonRpcProvider
+  adaptersController: AdaptersController
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+    version: 2,
+  }
+
+  constructor({
+    chainId,
+    protocolId,
+    helpers,
+    provider,
+    adaptersController,
+  }: ProtocolAdapterParams) {
+    this.chainId = chainId
+    this.protocolId = protocolId
+    this.provider = provider
+    this.helpers = helpers
+    this.adaptersController = adaptersController
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'Stargate',
+      name: 'Stargate Liquidity Pools',
       description:
         'Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi',
       siteUrl: 'https://stargate.finance/',
@@ -48,31 +70,102 @@ export class StargatePoolAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 
-  @CacheToFile({ fileKey: 'lp-token' })
-  async buildMetadata() {
-    const contractAddresses: Partial<Record<Chain, string>> = {
-      [Chain.Ethereum]: getAddress(
-        '0x06D538690AF257Da524f25D0CD52fD85b1c2173E',
-      ),
-      [Chain.Arbitrum]: getAddress(
-        '0x55bDb4164D28FBaF0898e0eF14a589ac09Ac9970',
-      ),
-    }
+  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    return this.helpers.getBalanceOfTokens({
+      ...input,
+      protocolTokens: await this.getProtocolTokens(),
+    })
+  }
 
+  async getProtocolTokenByAddress(
+    protocolTokenAddress: string,
+  ): Promise<ProtocolToken<AdditionalMetadata>> {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
+  }
+
+  async getTotalValueLocked({
+    protocolTokenAddresses,
+    blockNumber,
+  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
+    const protocolTokens = await this.getProtocolTokens()
+
+    return await this.helpers.tvlUsingUnderlyingTokenBalances({
+      protocolTokens,
+      filterProtocolTokenAddresses: protocolTokenAddresses,
+      blockNumber,
+    })
+  }
+
+  async getWithdrawals({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+
+    return this.helpers.withdrawals({
+      protocolToken,
+      filter: { fromBlock, toBlock, userAddress },
+    })
+  }
+
+  async getDeposits({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.deposits({
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
+  }
+
+  async unwrap({
+    protocolTokenAddress,
+    blockNumber,
+  }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+
+    const underlyingTokens = (
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+    ).underlyingTokens
+
+    const oneToken = BigInt(1 * 10 ** protocolToken.decimals)
+
+    return this.helpers.unwrapTokenWithRates({
+      protocolToken,
+      underlyingTokens,
+      underlyingRates: [
+        await StargateToken__factory.connect(
+          protocolTokenAddress,
+          this.provider,
+        ).amountLPtoLD(oneToken, {
+          blockTag: blockNumber,
+        }),
+      ],
+    })
+  }
+
+  @CacheToFile({ fileKey: 'lp-token' })
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const lpFactoryContract = StargateFactory__factory.connect(
-      contractAddresses[this.chainId]!,
+      staticChainData[this.chainId]!.factoryAddress,
       this.provider,
     )
 
     const poolsLength = Number(await lpFactoryContract.allPoolsLength())
 
-    const metadataObject: StargatePoolMetadata = {}
+    const metadataObject: ProtocolToken<AdditionalMetadata>[] = []
 
     const promises = Array.from({ length: poolsLength }, async (_, i) => {
       const poolAddress = await lpFactoryContract.allPools(i)
@@ -106,111 +199,15 @@ export class StargatePoolAdapter
         underlyingTokenPromise,
       ])
 
-      metadataObject[protocolToken.address] = {
+      metadataObject.push({
         poolId: Number(poolId),
-        protocolToken,
-        underlyingToken,
-      }
+        ...protocolToken,
+        underlyingTokens: [underlyingToken],
+      })
     })
 
     await Promise.all(promises)
 
     return metadataObject
-  }
-
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-    blockNumber,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenBalance.address,
-    )
-
-    const balanceRaw = await StargateToken__factory.connect(
-      protocolTokenBalance.address,
-      this.provider,
-    ).amountLPtoLD(protocolTokenBalance.balanceRaw, {
-      blockTag: blockNumber,
-    })
-
-    const underlyingTokenBalance = {
-      ...underlyingToken,
-      balanceRaw,
-      type: TokenType.Underlying,
-    }
-
-    return [underlyingTokenBalance]
-  }
-
-  protected async unwrapProtocolToken(
-    protocolTokenMetadata: Erc20Metadata,
-    blockNumber?: number | undefined,
-  ): Promise<UnwrappedTokenExchangeRate[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenMetadata.address,
-    )
-
-    const oneToken = BigInt(1 * 10 ** protocolTokenMetadata.decimals)
-
-    const pricePerShareRaw = await StargateToken__factory.connect(
-      protocolTokenMetadata.address,
-      this.provider,
-    ).amountLPtoLD(oneToken, {
-      blockTag: blockNumber,
-    })
-
-    return [
-      {
-        ...underlyingToken,
-        type: TokenType.Underlying,
-        underlyingRateRaw: pricePerShareRaw,
-      },
-    ]
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
-  }
-
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return [underlyingToken]
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
   }
 }

@@ -1,0 +1,44 @@
+{
+  "0x4aae823a6a0b376De6A78e74eCC5b079d38cBCf7": {
+    "protocolToken": {
+      "address": "0x4aae823a6a0b376De6A78e74eCC5b079d38cBCf7",
+      "name": "Solv BTC",
+      "symbol": "SolvBTC",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+      "name": "BTCB Token",
+      "symbol": "BTCB",
+      "decimals": 18
+    }
+  },
+  "0x1346b618dC92810EC74163e4c27004c921D446a5": {
+    "protocolToken": {
+      "address": "0x1346b618dC92810EC74163e4c27004c921D446a5",
+      "name": "SolvBTC Babylon",
+      "symbol": "SolvBTC.BBN",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x4aae823a6a0b376De6A78e74eCC5b079d38cBCf7",
+      "name": "Solv BTC",
+      "symbol": "SolvBTC",
+      "decimals": 18
+    }
+  },
+  "0x53E63a31fD1077f949204b94F431bCaB98F72BCE": {
+    "protocolToken": {
+      "address": "0x53E63a31fD1077f949204b94F431bCaB98F72BCE",
+      "name": "SolvBTC Ethena",
+      "symbol": "SolvBTC.ENA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x4aae823a6a0b376De6A78e74eCC5b079d38cBCf7",
+      "name": "Solv BTC",
+      "symbol": "SolvBTC",
+      "decimals": 18
+    }
+  }
+}

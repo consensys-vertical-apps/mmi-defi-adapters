@@ -4,6 +4,7 @@ import { Chain } from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
 import { blockAverage } from './blockAverage'
 import { buildMetadata } from './buildMetadata'
+import { buildMetadataDb } from './buildMetadataDb'
 import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
 import { copyAdapter } from './copyAdapter'
@@ -32,7 +33,9 @@ buildContractTypes(program)
 
 buildMetadata(program, chainProviders, adaptersController)
 
-buildSnapshots(program, defiProvider)
+buildMetadataDb(program, chainProviders, adaptersController)
+
+buildSnapshots(program)
 
 stressCommand(program, defiProvider)
 

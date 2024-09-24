@@ -1,6 +1,6 @@
 import {
   UniswapV2PoolForkAdapter,
-  UniswapV2PoolForkMetadataBuilder,
+  UniswapV2PoolForkPositionStrategy,
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -18,6 +18,11 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
     symbol: 'QUICK',
   }
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -29,14 +34,11 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 
   protected chainMetadataSettings(): Partial<
-    Record<Chain, UniswapV2PoolForkMetadataBuilder>
+    Record<Chain, UniswapV2PoolForkPositionStrategy>
   > {
     return {
       [Chain.Polygon]: {

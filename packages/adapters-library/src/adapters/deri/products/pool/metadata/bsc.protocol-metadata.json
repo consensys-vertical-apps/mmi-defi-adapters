@@ -1,0 +1,15 @@
+{
+  "mainGateway": "0x2c2E1eE20C633EAe18239c0BF59cEf1FC44939aC",
+  "mainLToken": "0xaBFC820798095f3E4Bd9626DB6f8AD7d57A5C76A",
+  "mainPToken": "0x28a41C9EB8D0A9055de1644f9C4408F873c8550f",
+  "innoGateway": "0xAB43c2Eb56b63AaD8F9A54107D0c9FDe72d45AB9",
+  "innoLToken": "0x053E95113780DDf39b54BAf53820F9F415038A45",
+  "innoPToken": "0x4cb0df0611045DD5D546Fc622d61fDCB5D869170",
+  "oracle": "0xb7f803712f5B389d6F009F733916e18F9429E9d5",
+  "tokenB0": {
+    "address": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
+    "name": "USD Coin",
+    "symbol": "USDC",
+    "decimals": 18
+  }
+}

@@ -1,6 +1,8 @@
 import { getAddress } from 'ethers'
+import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Erc20__factory } from '../contracts'
 import { TransferEvent } from '../contracts/Erc20'
+import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
 import { Chain } from '../core/constants/chains'
 import { MaxMovementLimitExceededError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
@@ -8,14 +10,13 @@ import { filterMapAsync } from '../core/utils/filters'
 import { getOnChainTokenMetadata } from '../core/utils/getTokenMetadata'
 import { logger } from '../core/utils/logger'
 import { nativeToken, nativeTokenAddresses } from '../core/utils/nativeTokens'
+import { JsonMetadata, ProtocolToken } from '../types/IProtocolAdapter'
 import {
-  GetEventsInput,
   GetPositionsInput,
   MovementsByBlock,
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  Underlying,
   UnwrapExchangeRate,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
@@ -28,18 +29,27 @@ export const REAL_ESTATE_TOKEN_METADATA = {
 }
 
 export class Helpers {
-  provider: CustomJsonRpcProvider
-  chainId: Chain
+  constructor(
+    public readonly provider: CustomJsonRpcProvider,
+    public readonly chainId: Chain,
+    public readonly metadataProvider: IMetadataProvider,
+    public readonly allJsonRpcProviders: Record<Chain, CustomJsonRpcProvider>,
+  ) {}
 
-  constructor({
-    provider,
-    chainId,
+  async getProtocolTokenByAddress<AdditionalMetadata extends JsonMetadata>({
+    protocolTokens,
+    protocolTokenAddress,
   }: {
-    provider: CustomJsonRpcProvider
-    chainId: Chain
-  }) {
-    this.provider = provider
-    this.chainId = chainId
+    protocolTokens: ProtocolToken<AdditionalMetadata>[]
+    protocolTokenAddress: string
+  }): Promise<ProtocolToken<AdditionalMetadata>> {
+    const protocolToken = protocolTokens.find(
+      (token) => token.address === protocolTokenAddress,
+    )
+    if (!protocolToken) {
+      throw new Error(`Protocol token ${protocolTokenAddress} not found`)
+    }
+    return protocolToken
   }
 
   async getBalanceOfTokens({
@@ -74,13 +84,27 @@ export class Helpers {
       }
 
       return {
-        ...protocolToken,
+        address: protocolToken.address,
+        name: protocolToken.name,
+        symbol: protocolToken.symbol,
+        decimals: protocolToken.decimals,
         balanceRaw: balanceOf,
         type: TokenType.Protocol,
       }
     })
   }
 
+  /**
+   * Unwraps the protocol token to its underlying token while accounting for decimal differences.
+   *
+   * This method resolves a 1:1 unwrap rate between the protocol token and it's underlying,
+   * even though they have different decimal places. It uses the underlying token's decimals to adjust the unwrap rate.
+   *
+   * @returns {Promise<UnwrapExchangeRate>} A promise that resolves to an `UnwrapExchangeRate` object,
+   * containing the details of the unwrapped tokens, including adjusted rates to account for decimal differences.
+   *
+   * @throws {Error} If there is an issue retrieving the protocol or underlying token information.
+   */
   unwrapOneToOne({
     protocolToken,
     underlyingTokens,
@@ -94,10 +118,13 @@ export class Helpers {
     const underlyingToken = underlyingTokens[0]!
 
     // Always pegged one to one to underlying
-    const pricePerShareRaw = BigInt(10 ** protocolToken.decimals)
+    const pricePerShareRaw = BigInt(10 ** underlyingToken.decimals)
 
     return {
-      ...protocolToken,
+      address: protocolToken.address,
+      name: protocolToken.name,
+      symbol: protocolToken.symbol,
+      decimals: protocolToken.decimals,
       baseRate: 1,
       type: TokenType.Protocol,
       tokens: [
@@ -175,7 +202,10 @@ export class Helpers {
     )
 
     return {
-      ...protocolToken,
+      address: protocolToken.address,
+      name: protocolToken.name,
+      symbol: protocolToken.symbol,
+      decimals: protocolToken.decimals,
       baseRate: 1,
       type: TokenType.Protocol,
       tokens: prices.map((price, index) => {
@@ -187,22 +217,34 @@ export class Helpers {
       }),
     }
   }
-
-  withdrawals({
+  async unwrapTokenWithRates({
     protocolToken,
-    filter: { fromBlock, toBlock, userAddress },
+    underlyingTokens,
+    underlyingRates,
   }: {
-    protocolToken: Erc20Metadata & { tokenId?: string }
-    filter: {
-      fromBlock: number
-      toBlock: number
-      userAddress: string
+    protocolToken: Erc20Metadata
+    underlyingRates: bigint[]
+    underlyingTokens: Erc20Metadata[]
+  }): Promise<UnwrapExchangeRate> {
+    if (underlyingTokens.length !== underlyingRates.length) {
+      throw new Error('Underlying rate mismatch')
     }
-  }): Promise<MovementsByBlock[]> {
-    return this.getErc20Movements({
-      protocolToken,
-      filter: { fromBlock, toBlock, from: userAddress, to: undefined },
-    })
+
+    return {
+      address: protocolToken.address,
+      name: protocolToken.name,
+      symbol: protocolToken.symbol,
+      decimals: protocolToken.decimals,
+      baseRate: 1,
+      type: TokenType.Protocol,
+      tokens: underlyingRates.map((price, index) => {
+        return {
+          ...underlyingTokens[index]!,
+          type: TokenType.Underlying,
+          underlyingRateRaw: price,
+        }
+      }),
+    }
   }
 
   async tvl({
@@ -231,10 +273,148 @@ export class Helpers {
         blockTag: blockNumber,
       })
       return {
-        ...protocolToken,
+        address: protocolToken.address,
+        name: protocolToken.name,
+        symbol: protocolToken.symbol,
+        decimals: protocolToken.decimals,
         type: TokenType.Protocol,
         totalSupplyRaw: protocolTokenTotalSupply,
       }
+    })
+  }
+
+  async tvlUsingUnderlyingTokenBalances({
+    protocolTokens,
+    filterProtocolTokenAddresses,
+    blockNumber,
+  }: {
+    protocolTokens: (Erc20Metadata & { underlyingTokens: Erc20Metadata[] })[]
+    filterProtocolTokenAddresses: string[] | undefined
+    blockNumber: number | undefined
+  }): Promise<ProtocolTokenTvl[]> {
+    return await filterMapAsync(protocolTokens, async (protocolToken) => {
+      if (
+        filterProtocolTokenAddresses &&
+        !filterProtocolTokenAddresses.includes(protocolToken.address)
+      ) {
+        return undefined
+      }
+
+      const protocolTokenContact = Erc20__factory.connect(
+        protocolToken.address,
+        this.provider,
+      )
+
+      const underlyingTokens = protocolToken.underlyingTokens
+
+      const underlyingTokenBalances = filterMapAsync(
+        underlyingTokens,
+        async (underlyingToken) => {
+          if (underlyingToken.address === ZERO_ADDRESS) {
+            const balanceOf = await this.provider
+              .getBalance(protocolToken.address, blockNumber)
+              .catch(() => 0n)
+            return {
+              ...underlyingToken,
+              totalSupplyRaw: balanceOf,
+              type: TokenType.Underlying,
+            }
+          }
+
+          const contract = Erc20__factory.connect(
+            underlyingToken.address,
+            this.provider,
+          )
+
+          const balanceOf = await contract
+            .balanceOf(protocolToken.address, {
+              blockTag: blockNumber,
+            })
+            .catch(() => 0n)
+
+          return {
+            ...underlyingToken,
+            totalSupplyRaw: balanceOf,
+            type: TokenType.Underlying,
+          }
+        },
+      )
+
+      const [protocolTokenTotalSupply, tokens] = await Promise.all([
+        protocolTokenContact.totalSupply({ blockTag: blockNumber }),
+        underlyingTokenBalances,
+      ])
+
+      return {
+        name: protocolToken.name,
+        address: protocolToken.address,
+        symbol: protocolToken.symbol,
+        decimals: protocolToken.decimals,
+        type: TokenType.Protocol,
+        totalSupplyRaw: protocolTokenTotalSupply,
+        tokens,
+      }
+    })
+  }
+
+  async borrows({
+    protocolToken,
+    filter: { fromBlock, toBlock, userAddress },
+  }: {
+    protocolToken: Erc20Metadata & { tokenId?: string }
+    filter: {
+      fromBlock: number
+      toBlock: number
+      userAddress: string
+    }
+  }): Promise<MovementsByBlock[]> {
+    return this.getErc20Movements({
+      protocolToken,
+      filter: {
+        fromBlock,
+        toBlock,
+        from: undefined,
+        to: userAddress,
+      },
+    })
+  }
+
+  async repays({
+    protocolToken,
+    filter: { fromBlock, toBlock, userAddress },
+  }: {
+    protocolToken: Erc20Metadata & { tokenId?: string }
+    filter: {
+      fromBlock: number
+      toBlock: number
+      userAddress: string
+    }
+  }): Promise<MovementsByBlock[]> {
+    return this.getErc20Movements({
+      protocolToken,
+      filter: {
+        fromBlock,
+        toBlock,
+        from: userAddress,
+        to: undefined,
+      },
+    })
+  }
+
+  withdrawals({
+    protocolToken,
+    filter: { fromBlock, toBlock, userAddress },
+  }: {
+    protocolToken: Erc20Metadata & { tokenId?: string }
+    filter: {
+      fromBlock: number
+      toBlock: number
+      userAddress: string
+    }
+  }): Promise<MovementsByBlock[]> {
+    return this.getErc20Movements({
+      protocolToken,
+      filter: { fromBlock, toBlock, from: userAddress, to: undefined },
     })
   }
 
@@ -283,80 +463,6 @@ export class Helpers {
     throw new Error(errorMessage)
   }
 
-  async getPositionsAndRewards(
-    userAddress: string,
-    positionsWithoutRewardsPromise: Promise<ProtocolPosition[]>,
-    getRewardPositions: ({
-      userAddress,
-      protocolTokenAddress,
-      blockNumber,
-    }: {
-      userAddress: string
-      blockNumber?: number
-      protocolTokenAddress: string
-      tokenIds?: string[]
-    }) => Promise<Underlying[]>,
-    blockNumber?: number,
-  ): Promise<ProtocolPosition[]> {
-    const positionsWithoutRewards = await positionsWithoutRewardsPromise
-
-    await Promise.all(
-      positionsWithoutRewards.map(async (position) => {
-        const rewardTokensPositions = await getRewardPositions({
-          userAddress,
-          blockNumber,
-          protocolTokenAddress: position.address,
-        })
-
-        position.tokens = [...(position.tokens ?? []), ...rewardTokensPositions]
-      }),
-    )
-
-    return positionsWithoutRewards
-  }
-
-  async getWithdrawalsAndRewardWithdrawals(
-    userAddress: string,
-    protocolTokenAddress: string,
-    fromBlock: number,
-    toBlock: number,
-    getWithdrawalsWithoutRewards: ({
-      userAddress,
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-    }: GetEventsInput) => Promise<MovementsByBlock[]>,
-    getRewardWithdrawals: ({
-      userAddress,
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-    }: GetEventsInput) => Promise<MovementsByBlock[]>,
-  ): Promise<MovementsByBlock[]> {
-    const withdrawalMethods = [
-      getWithdrawalsWithoutRewards,
-      getRewardWithdrawals,
-    ]
-
-    const withdrawals = await Promise.all(
-      withdrawalMethods.map(async (method) => {
-        return await method.call(this, {
-          userAddress,
-          protocolTokenAddress,
-          fromBlock,
-          toBlock,
-        })
-      }),
-    )
-
-    return withdrawals
-      .flat()
-      .filter(
-        (withdrawal): withdrawal is MovementsByBlock =>
-          withdrawal !== undefined,
-      )
-  }
-
   async getErc20Movements({
     protocolToken,
     filter: { fromBlock, toBlock, from, to },
@@ -401,10 +507,19 @@ export class Helpers {
 
         return {
           transactionHash,
-          protocolToken,
+          protocolToken: {
+            address: protocolToken.address,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
+            tokenId: protocolToken.tokenId,
+          },
           tokens: [
             {
-              ...protocolToken,
+              address: protocolToken.address,
+              name: protocolToken.name,
+              symbol: protocolToken.symbol,
+              decimals: protocolToken.decimals,
               balanceRaw: protocolTokenMovementValueRaw,
               type: TokenType.Underlying,
               blockNumber,

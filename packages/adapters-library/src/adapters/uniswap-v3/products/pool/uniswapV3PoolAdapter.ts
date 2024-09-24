@@ -6,6 +6,8 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { Helpers } from '../../../../scripts/helpers'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   GetEventsInput,
@@ -62,10 +64,16 @@ const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
 
 export const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)
 
-export class UniswapV3PoolAdapter extends SimplePoolAdapter {
+export class UniswapV3PoolAdapter implements IProtocolAdapter {
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
+
   productId = 'pool'
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   adaptersController: AdaptersController
 
@@ -78,42 +86,20 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     adaptersController,
     helpers,
   }: ProtocolAdapterParams) {
-    super({
-      provider,
-      chainId,
-      protocolId,
-      adaptersController,
-      helpers,
-    })
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
-  protected async fetchProtocolTokenMetadata(
-    _protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
+  unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
   }
 
-  protected async fetchUnderlyingTokensMetadata(
-    _protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    throw new NotImplementedError()
-  }
-
-  protected async getUnderlyingTokenBalances(_input: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    throw new NotImplementedError()
-  }
-  protected async unwrapProtocolToken(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnwrappedTokenExchangeRate[]> {
+  async getTotalValueLocked(
+    _input: GetTotalValueLockedInput,
+  ): Promise<ProtocolTokenTvl[]> {
     throw new NotImplementedError()
   }
 
@@ -128,9 +114,6 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.NonStandardErc20,
-      },
     }
   }
 
@@ -310,16 +293,6 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
       eventType: 'deposit',
       tokenId,
     })
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
-  async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
-    throw new NotImplementedError()
   }
 
   private createUnderlyingToken(

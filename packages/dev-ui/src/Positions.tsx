@@ -15,6 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   Tooltip,
   TooltipContent,
@@ -22,30 +23,62 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/solid'
+import { DevTool } from '@hookform/devtools'
 import {
+  Chain,
   ChainName,
   DefiPositionResponse,
+  Protocol,
 } from '@metamask-institutional/defi-adapters'
-import { Underlying } from '@metamask-institutional/defi-adapters/dist/types/adapter'
+import {
+  TokenType,
+  Underlying,
+} from '@metamask-institutional/defi-adapters/dist/types/adapter'
 import { DisplayPosition } from '@metamask-institutional/defi-adapters/dist/types/response'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { useState } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import Select from 'react-select'
+import { JsonDisplay } from './JsonDisplay'
 import { provider } from './defiProvider'
+import { useFiltersContext } from './filtersContext'
+import { chainOptions, protocolOptions } from './filtersOptions'
+
+type FormValues = {
+  userAddress: string
+  protocolIds: { value: string; label: string }[] | undefined
+  chainIds: { value: number; label: string }[] | undefined
+}
 
 export function Positions() {
+  const filtersContext = useFiltersContext()
   const queryClient = useQueryClient()
-  const { register, handleSubmit } = useForm<{
-    userAddress: string
-  }>()
-  const [userAddress, setUserAddress] = useState('')
+  const {
+    handleSubmit,
+    register,
+    control,
+    formState: { errors },
+  } = useForm<FormValues>({
+    defaultValues: {
+      userAddress: filtersContext.userAddress,
+      protocolIds: filtersContext.protocolIds,
+      chainIds: filtersContext.chainIds,
+    },
+  })
 
-  const onSubmit: SubmitHandler<{
-    userAddress: string
-  }> = async (data) => {
-    setUserAddress(data.userAddress)
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    filtersContext.setFilters({
+      userAddress: data.userAddress,
+      protocolIds: data.protocolIds?.length ? data.protocolIds : undefined,
+      chainIds: data.chainIds?.length ? data.chainIds : undefined,
+    })
+
     await queryClient.invalidateQueries({
-      queryKey: ['positions', userAddress],
+      queryKey: [
+        'positions',
+        data.userAddress,
+        data.protocolIds?.length ? data.protocolIds.join(',') : null,
+        data.chainIds?.length ? data.chainIds.join(',') : null,
+      ],
     })
   }
 
@@ -53,30 +86,94 @@ export function Positions() {
     <div className="flex flex-col items-center justify-start min-h-screen gap-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="p-6 bg-white rounded shadow-md w-[50%]"
+        className="p-6 bg-white rounded shadow-md w-[50%] flex flex-col gap-4"
       >
         <Input
           type="text"
-          {...register('userAddress')}
+          {...register('userAddress', {
+            required: {
+              value: true,
+              message: 'User Address is required',
+            },
+            pattern: {
+              value: /^0x[a-fA-F0-9]{40}$/,
+              message: 'Invalid Ethereum Address',
+            },
+          })}
           placeholder="User Address"
-          className="p-2 mb-4 border border-gray-300 rounded"
+          className="border border-gray-300 rounded"
         />
+        {errors.userAddress && <p>{errors.userAddress.message}</p>}
+
+        <Controller
+          control={control}
+          name="protocolIds"
+          render={({ field }) => (
+            <Select
+              {...field}
+              options={protocolOptions}
+              isMulti={true}
+              placeholder="Protocol Filter"
+            />
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="chainIds"
+          render={({ field }) => (
+            <Select
+              {...field}
+              options={chainOptions}
+              isMulti={true}
+              placeholder="Chain Filter"
+            />
+          )}
+        />
+
         <Button
           type="submit"
-          className="p-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+          className="text-white bg-blue-500 rounded hover:bg-blue-600"
         >
           Search
         </Button>
       </form>
-      <PositionsDisplay userAddress={userAddress} />
+
+      <PositionsDisplay
+        userAddress={filtersContext.userAddress}
+        protocolIds={filtersContext.protocolIds?.map(
+          (selection) => selection.value,
+        )}
+        chainIds={filtersContext.chainIds?.map((selection) => selection.value)}
+      />
+      <DevTool control={control} />
     </div>
   )
 }
 
-function PositionsDisplay({ userAddress }: { userAddress: string }) {
+function PositionsDisplay({
+  userAddress,
+  protocolIds,
+  chainIds,
+}: {
+  userAddress: string
+  protocolIds: string[] | undefined
+  chainIds: number[] | undefined
+}) {
   const { isPending, error, data, isFetching, isRefetching } = useQuery({
-    queryKey: ['positions', userAddress],
-    queryFn: () => provider.getPositions({ userAddress }),
+    staleTime: 60000,
+    queryKey: [
+      'positions',
+      userAddress,
+      protocolIds?.length ? protocolIds.join(',') : null,
+      chainIds?.length ? chainIds.join(',') : null,
+    ],
+    queryFn: () =>
+      provider.getPositions({
+        userAddress,
+        filterProtocolIds: protocolIds as Protocol[] | undefined,
+        filterChainIds: chainIds as Chain[] | undefined,
+      }),
     enabled: userAddress.length > 0,
   })
 
@@ -85,6 +182,8 @@ function PositionsDisplay({ userAddress }: { userAddress: string }) {
   if (isPending || isFetching || isRefetching) return 'Loading...'
 
   if (error) return `An error has occurred: ${error.message}`
+
+  if (data.length === 0) return 'No positions found'
 
   const successfulPositions = data.filter(
     (position): position is DefiPositionResponse & { success: true } =>
@@ -104,109 +203,128 @@ function PositionsDisplay({ userAddress }: { userAddress: string }) {
   )
 
   return (
-    <div className="w-full">
-      {Object.entries(groupedPositions).map(([protocolChainKey, positions]) => {
-        const { protocolId, chainId, iconUrl } = positions[0]
-        return (
-          <Card key={protocolChainKey}>
-            <CardHeader>
-              <CardTitle>
-                <div className="flex gap-2 items-center">
-                  <img className="w-10 h-10" src={iconUrl} alt="Icon" />
-                  {protocolId}
-                </div>
-              </CardTitle>
-              <CardDescription>{ChainName[chainId]}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {positions.map((position, index) => {
-                return (
-                  <div key={index} className="mb-4 p-4 border border-gray-300">
-                    <h3>{position.name}</h3>
-                    {position.tokens.map((token, index) => {
-                      const underlyings = resolveUnderlyings(token.tokens)
-                      return (
-                        <div
-                          key={index}
-                          className="mb-2 p-2 border border-gray-300"
-                        >
-                          <div className="flex justify-between items-center">
-                            <TooltipProvider>
-                              <Tooltip>
-                                <TooltipTrigger>
-                                  <h4>{token.name}</h4>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                  <p>
-                                    {formatTokenBalance(token.balance)} tokens
-                                  </p>
-                                </TooltipContent>
-                              </Tooltip>
-                            </TooltipProvider>
+    <Tabs defaultValue="display" className="w-full">
+      <TabsList>
+        <TabsTrigger value="display">Display</TabsTrigger>
+        <TabsTrigger value="json">JSON</TabsTrigger>
+      </TabsList>
+      <TabsContent value="display">
+        {Object.entries(groupedPositions).map(
+          ([protocolChainKey, positions]) => {
+            const { protocolId, chainId, iconUrl } = positions[0]
+            return (
+              <Card key={protocolChainKey}>
+                <CardHeader>
+                  <CardTitle>
+                    <div className="flex gap-2 items-center">
+                      <img className="w-10 h-10" src={iconUrl} alt="Icon" />
+                      {protocolId}
+                    </div>
+                  </CardTitle>
+                  <CardDescription>{ChainName[chainId]}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {positions.map((position, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className="mb-4 p-4 border border-gray-300"
+                      >
+                        <h3>{position.name}</h3>
+                        {position.tokens.map((token, index) => {
+                          const underlyings = resolveUnderlyings(token.tokens)
+                          return (
+                            <div
+                              key={index}
+                              className="mb-2 p-2 border border-gray-300"
+                            >
+                              <div className="flex justify-between items-center">
+                                <TooltipProvider>
+                                  <Tooltip>
+                                    <TooltipTrigger>
+                                      <h4>
+                                        {token.name} | {token.symbol}
+                                      </h4>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                      <p>
+                                        {formatTokenBalance(token.balance)}{' '}
+                                        tokens
+                                      </p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TooltipProvider>
 
-                            <div className="flex gap-2 items-center">
-                              {underlyings.some(
-                                (token) => token.total === undefined,
-                              ) && (
-                                <ExclamationTriangleIcon className="h-5 w-5 text-yellow-500" />
-                              )}
-                              {formatCurrency(
-                                underlyings.reduce(
-                                  (acc, curr) => acc + (curr.total || 0),
-                                  0,
-                                ),
-                              )}
+                                <div className="flex gap-2 items-center">
+                                  {underlyings.some(
+                                    (token) => token.total === undefined,
+                                  ) && (
+                                    <ExclamationTriangleIcon className="h-5 w-5 text-yellow-500" />
+                                  )}
+                                  {formatCurrency(
+                                    underlyings.reduce(
+                                      (acc, curr) => acc + (curr.total || 0),
+                                      0,
+                                    ),
+                                  )}
+                                </div>
+                              </div>
+                              <Table>
+                                <TableHeader>
+                                  <TableRow>
+                                    <TableHead className="w-[200px]">
+                                      Token
+                                    </TableHead>
+                                    <TableHead>Balance</TableHead>
+                                    <TableHead className="text-right">
+                                      Market Value
+                                    </TableHead>
+                                  </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                  {underlyings.map((token, index) => (
+                                    <TableRow key={index}>
+                                      <TableCell>
+                                        <div className="flex gap-2 items-center">
+                                          <img
+                                            className="w-5 h-5"
+                                            src={token.iconUrl}
+                                            alt="Icon"
+                                          />
+                                          <span>{token.symbol}</span>
+                                          {token.type ===
+                                            'underlying-claimable' &&
+                                            '(reward)'}
+                                        </div>
+                                      </TableCell>
+                                      <TableCell>
+                                        {formatTokenBalance(token.balance)}
+                                      </TableCell>
+                                      <TableCell className="text-right">
+                                        {token.total
+                                          ? formatCurrency(token.total)
+                                          : 'NO PRICE'}
+                                      </TableCell>
+                                    </TableRow>
+                                  ))}
+                                </TableBody>
+                              </Table>
                             </div>
-                          </div>
-                          <Table>
-                            <TableHeader>
-                              <TableRow>
-                                <TableHead className="w-[100px]">
-                                  Token
-                                </TableHead>
-                                <TableHead>Balance</TableHead>
-                                <TableHead className="text-right">
-                                  Market Value
-                                </TableHead>
-                              </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                              {underlyings.map((token, index) => (
-                                <TableRow key={index}>
-                                  <TableCell>
-                                    <div className="flex gap-2 items-center">
-                                      <img
-                                        className="w-5 h-5"
-                                        src={token.iconUrl}
-                                        alt="Icon"
-                                      />
-                                      <span>{token.symbol}</span>
-                                    </div>
-                                  </TableCell>
-                                  <TableCell>
-                                    {formatTokenBalance(token.balance)}
-                                  </TableCell>
-                                  <TableCell className="text-right">
-                                    {token.total
-                                      ? formatCurrency(token.total)
-                                      : 'NO PRICE'}
-                                  </TableCell>
-                                </TableRow>
-                              ))}
-                            </TableBody>
-                          </Table>
-                        </div>
-                      )
-                    })}
-                  </div>
-                )
-              })}
-            </CardContent>
-          </Card>
-        )
-      })}
-      {/* <JsonDisplay data={data} /> */}
-    </div>
+                          )
+                        })}
+                      </div>
+                    )
+                  })}
+                </CardContent>
+              </Card>
+            )
+          },
+        )}
+      </TabsContent>
+      <TabsContent value="json">
+        <JsonDisplay data={data} />
+      </TabsContent>
+    </Tabs>
   )
 }
 
@@ -220,7 +338,7 @@ function formatCurrency(amount: number) {
 function formatTokenBalance(amount: number) {
   return amount.toLocaleString('en-US', {
     minimumFractionDigits: 0,
-    maximumFractionDigits: 4,
+    maximumFractionDigits: 18,
   })
 }
 
@@ -233,6 +351,7 @@ function resolveUnderlyings(
   balance: number
   price: number
   total: number | undefined
+  type: TokenType
 }[] {
   const result: {
     name: string
@@ -241,6 +360,7 @@ function resolveUnderlyings(
     balance: number
     price: number
     total: number | undefined
+    type: TokenType
   }[] = []
 
   if (!tokens) {
@@ -258,6 +378,7 @@ function resolveUnderlyings(
         iconUrl: token.iconUrl,
         price: token.price,
         total: token.price && token.balance * token.price,
+        type: token.type,
       })
     }
   }

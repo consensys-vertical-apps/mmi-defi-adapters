@@ -1,4 +1,5 @@
 {
+  "latency": "Latency: 0.347 seconds",
   "blockNumber": 19776342,
   "snapshot": [
     {
@@ -10,9 +11,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "ethena",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -37,5 +36,13 @@
         }
       ]
     }
-  ]
+  ],
+  "rpcResponses": {
+    "05221920bc7a66389a70b93f8973183d": {
+      "result": "0x000000000000000000000000000000000000000000ff5f289042d4544e5f4f40"
+    },
+    "69f0a4e430e905714a31905c5f1dedee": {
+      "result": "0x0000000000000000000000000000000000000000010dc74397669e229b318249"
+    }
+  }
 }

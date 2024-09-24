@@ -10,9 +10,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

@@ -33,21 +33,23 @@ import {
   Vault__factory,
 } from '../../contracts'
 
-type GmxGlpAdapterMetadata = {
+type AdditionalMetadata = {
   glpRewardRouter: string
   vaultAddress: string
   rewardReaderAddress: string
   feeTokenAddress: string
   stakedTokenAddress: string
-  protocolToken: Erc20Metadata
   underlyingTokens: Erc20Metadata[]
 }
 
-export class GmxGlpAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
+export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'glp'
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: true,
+    version: 2,
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -60,14 +62,11 @@ export class GmxGlpAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 
   @CacheToFile({ fileKey: 'glp' })
-  async buildMetadata(): Promise<GmxGlpAdapterMetadata> {
+  async getProtocolTokens() {
     const glpAddresses: Partial<
       Record<
         Chain,
@@ -158,19 +157,17 @@ export class GmxGlpAdapter
       this.provider,
     )
 
-    return {
-      glpRewardRouter,
-      vaultAddress,
-      rewardReaderAddress,
-      feeTokenAddress,
-      stakedTokenAddress,
-      protocolToken,
-      underlyingTokens,
-    }
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return [(await this.buildMetadata()).protocolToken]
+    return [
+      {
+        glpRewardRouter,
+        vaultAddress,
+        rewardReaderAddress,
+        feeTokenAddress,
+        stakedTokenAddress,
+        ...protocolToken,
+        underlyingTokens,
+      },
+    ]
   }
 
   async getPositions({
@@ -179,11 +176,14 @@ export class GmxGlpAdapter
     protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const {
+      glpRewardRouter,
+      vaultAddress,
+      stakedTokenAddress,
       rewardReaderAddress,
       feeTokenAddress: positionContractAddress,
-      protocolToken,
       underlyingTokens,
-    } = await this.buildMetadata()
+      ...protocolToken
+    } = (await this.getProtocolTokens())[0]!
 
     if (
       protocolTokenAddresses &&
@@ -321,8 +321,15 @@ export class GmxGlpAdapter
   }
 
   async unwrap({ blockNumber }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const { protocolToken, vaultAddress, underlyingTokens } =
-      await this.buildMetadata()
+    const {
+      glpRewardRouter,
+      vaultAddress,
+      stakedTokenAddress,
+      rewardReaderAddress,
+      feeTokenAddress: positionContractAddress,
+      underlyingTokens,
+      ...protocolToken
+    } = (await this.getProtocolTokens())[0]!
 
     const vaultContract = Vault__factory.connect(vaultAddress, this.provider)
 
@@ -404,18 +411,6 @@ export class GmxGlpAdapter
         to: ZERO_ADDRESS,
       },
     })
-  }
-
-  protected async fetchProtocolTokenMetadata(
-    _protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    return (await this.buildMetadata()).protocolToken
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    _protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    return (await this.buildMetadata()).underlyingTokens
   }
 
   protected getUnderlyingTokenBalances(_input: {

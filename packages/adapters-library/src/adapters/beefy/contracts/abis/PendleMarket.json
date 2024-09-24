@@ -1,0 +1,91 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "router",
+        "type": "address"
+      }
+    ],
+    "name": "readState",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "int256",
+            "name": "totalPt",
+            "type": "int256"
+          },
+          {
+            "internalType": "int256",
+            "name": "totalSy",
+            "type": "int256"
+          },
+          {
+            "internalType": "int256",
+            "name": "totalLp",
+            "type": "int256"
+          },
+          {
+            "internalType": "address",
+            "name": "treasury",
+            "type": "address"
+          },
+          {
+            "internalType": "int256",
+            "name": "scalarRoot",
+            "type": "int256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "expiry",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "lnFeeRateRoot",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "reserveFeePercent",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "lastLnImpliedRate",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct MarketState",
+        "name": "market",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "readTokens",
+    "outputs": [
+      {
+        "internalType": "contract IStandardizedYield",
+        "name": "_SY",
+        "type": "address"
+      },
+      {
+        "internalType": "contract IPPrincipalToken",
+        "name": "_PT",
+        "type": "address"
+      },
+      {
+        "internalType": "contract IPYieldToken",
+        "name": "_YT",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

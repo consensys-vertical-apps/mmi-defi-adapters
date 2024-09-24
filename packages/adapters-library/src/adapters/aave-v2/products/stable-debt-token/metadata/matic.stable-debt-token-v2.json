@@ -1,0 +1,86 @@
+[
+  {
+    "address": "0x2238101B7014C279aaF6b408A284E49cDBd5DB55",
+    "name": "Aave Matic Market stable debt DAI",
+    "symbol": "stableDebtmDAI",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+        "name": "(PoS) Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0xdeb05676dB0DB85cecafE8933c903466Bf20C572",
+    "name": "Aave Matic Market stable debt USDC",
+    "symbol": "stableDebtmUSDC",
+    "decimals": 6,
+    "underlyingTokens": [
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "name": "USD Coin (PoS)",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0xe590cfca10e81FeD9B0e4496381f02256f5d2f61",
+    "name": "Aave Matic Market stable debt USDT",
+    "symbol": "stableDebtmUSDT",
+    "decimals": 6,
+    "underlyingTokens": [
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "name": "(PoS) Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0x2551B15dB740dB8348bFaDFe06830210eC2c2F13",
+    "name": "Aave Matic Market stable debt WBTC",
+    "symbol": "stableDebtmWBTC",
+    "decimals": 8,
+    "underlyingTokens": [
+      {
+        "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        "name": "(PoS) Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      }
+    ]
+  },
+  {
+    "address": "0xc478cBbeB590C76b01ce658f8C4dda04f30e2C6f",
+    "name": "Aave Matic Market stable debt WETH",
+    "symbol": "stableDebtmWETH",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0xb9A6E29fB540C5F1243ef643EB39b0AcbC2e68E3",
+    "name": "Aave Matic Market stable debt WMATIC",
+    "symbol": "stableDebtmWMATIC",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "name": "Wrapped Matic",
+        "symbol": "WMATIC",
+        "decimals": 18
+      }
+    ]
+  }
+]

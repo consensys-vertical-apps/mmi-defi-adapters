@@ -1,96 +1,127 @@
 import { BlankAdapterOutcomeOptions, QuestionAnswers } from './questionnaire'
 
-// biome-ignore lint/suspicious/noExplicitAny: Useful for this placeholder
-const EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK = '' as any
-
 export const Replacements = {
-  BUILD_METADATA: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
-    replace: (
-      outcomes: BlankAdapterOutcomeOptions,
-      blankAdapter: string,
-    ): string => {
-      const regex = /return Replacements.BUILD_METADATA.placeholder/g
-
-      switch (true) {
-        case outcomes.buildMetadataFunction === 'singleProtocolToken' &&
-          outcomes.underlyingTokens === 'oneUnderlying':
-          return blankAdapter.replace(
-            regex,
-            `const protocolToken = await this.helpers.getTokenMetadata(
-                  getAddress('0x')
-                )
-            
-                const underlyingTokens = await this.helpers.getTokenMetadata(
-                  getAddress('0x')
-                )
-                return {
-                  [protocolToken.address]: {
-                    protocolToken: protocolToken,
-                    underlyingTokens: [underlyingTokens],
-                  },
-                }`,
-          )
-        case outcomes.buildMetadataFunction === 'singleProtocolToken' &&
-          outcomes.underlyingTokens === 'multipleUnderlying':
-          return blankAdapter.replace(
-            regex,
-            `const protocolToken = await this.helpers.getTokenMetadata(
-                  '0x'
-                )
-            
-                const underlyingTokensOne = await this.helpers.getTokenMetadata(
-                  '0x'
-                )
-                const underlyingTokensTwo = await this.helpers.getTokenMetadata(
-                  '0x'
-                )
-                return {
-                  [protocolToken.address]: {
-                    protocolToken: protocolToken,
-                    underlyingTokens: [underlyingTokensOne, underlyingTokensTwo],
-                  },
-                }`,
-          )
-        case outcomes.buildMetadataFunction === 'multipleProtocolTokens' &&
-          outcomes.underlyingTokens === 'oneUnderlying':
-          return blankAdapter.replace(regex, 'throw new NotImplementedError()')
-        case outcomes.buildMetadataFunction === 'multipleProtocolTokens' &&
-          outcomes.underlyingTokens === 'multipleUnderlying':
-          return blankAdapter.replace(regex, 'throw new NotImplementedError()')
-        default:
-          return blankAdapter.replace(regex, 'throw new NotImplementedError()')
-      }
-    },
-  },
   GET_PROTOCOL_TOKENS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
-      updatedTemplate: string,
-      _answers: QuestionAnswers,
+      adapterCode: string,
     ): string => {
-      const regexProtocolTokens =
-        /return Replacements.GET_PROTOCOL_TOKENS.placeholder/g
+      const regex = /return Replacements.GET_PROTOCOL_TOKENS.placeholder/g
       switch (true) {
-        case outcomes.defiAssetStructure === 'singleProtocolToken':
-        case outcomes.defiAssetStructure === 'multipleProtocolTokens':
-          return updatedTemplate.replace(
-            regexProtocolTokens,
-            `return Object.values(await this.buildMetadata()).map(
-                  ({ protocolToken }) => protocolToken,
-                )`,
+        case outcomes.buildMetadataFunction === 'singleProtocolToken' &&
+          outcomes.underlyingTokens === 'oneUnderlying':
+          return adapterCode.replace(
+            regex,
+            `
+            const protocolToken = await this.helpers.getTokenMetadata(getAddress('0x'))
+
+            const underlyingToken = await this.helpers.getTokenMetadata(
+              getAddress('0x')
+            )
+
+            return [
+              {
+                ...protocolToken,
+                underlyingTokens: [underlyingToken],
+              },
+            ]`,
           )
+
+        case outcomes.buildMetadataFunction === 'singleProtocolToken' &&
+          outcomes.underlyingTokens === 'multipleUnderlying':
+          return adapterCode.replace(
+            regex,
+            `
+            const protocolToken = await this.helpers.getTokenMetadata(getAddress('0x'))
+
+            const underlyingTokens = await Promise.all(
+              [
+                '0x',
+                '0x',
+                // Ideally fetched on-chain
+              ].map(async (address) =>
+                this.helpers.getTokenMetadata(getAddress(address)),
+              ),
+            )
+
+            return [
+              {
+                ...protocolToken,
+                underlyingTokens,
+              },
+            ]`,
+          )
+
+        case outcomes.buildMetadataFunction === 'multipleProtocolTokens' &&
+          outcomes.underlyingTokens === 'oneUnderlying':
+          return adapterCode.replace(
+            regex,
+            `
+            const protocolTokens = await Promise.all(
+              [
+                '0x',
+                '0x',
+                // Ideally fetched on-chain from factory contract
+              ].map(async (address) =>
+                this.helpers.getTokenMetadata(getAddress(address)),
+              ),
+            )
+
+            return await Promise.all(
+              protocolTokens.map(async (protocolToken) => {
+                const underlyingToken = await this.helpers.getTokenMetadata(
+                  getAddress('0x'), // Ideally fetched on-chain
+                )
+
+                return {
+                  ...protocolToken,
+                  underlyingTokens: [underlyingToken],
+                }
+              }),
+            )`,
+          )
+
+        case outcomes.buildMetadataFunction === 'multipleProtocolTokens' &&
+          outcomes.underlyingTokens === 'multipleUnderlying':
+          return adapterCode.replace(
+            regex,
+            `
+            const protocolTokens = await Promise.all(
+              [
+                '0x',
+                '0x',
+                // Ideally fetched on-chain from factory contract
+              ].map(async (address) =>
+                this.helpers.getTokenMetadata(getAddress(address)),
+              ),
+            )
+
+            return await Promise.all(
+              protocolTokens.map(async (protocolToken) => {
+                const underlyingTokens = await Promise.all(
+                  [
+                    '0x',
+                    '0x',
+                    // Ideally fetched on-chain
+                  ].map(async (address) =>
+                    this.helpers.getTokenMetadata(getAddress(address)),
+                  ),
+                )
+
+                return {
+                  ...protocolToken,
+                  underlyingTokens,
+                }
+              }),
+            )`,
+          )
+
         default:
-          return updatedTemplate.replace(
-            regexProtocolTokens,
-            'throw new NotImplementedError()',
-          )
+          return adapterCode.replace(regex, 'throw new NotImplementedError()')
       }
     },
   },
   GET_POSITIONS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -126,7 +157,6 @@ export const Replacements = {
     },
   },
   GET_WITHDRAWALS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -140,7 +170,7 @@ export const Replacements = {
           return updatedTemplate.replace(
             regexWithdrawals,
             `return this.helpers.withdrawals({
-                  protocolToken: await this.getProtocolToken(protocolTokenAddress),
+                  protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
                   filter: { fromBlock, toBlock, userAddress }
                 })`,
           )
@@ -154,7 +184,6 @@ export const Replacements = {
     },
   },
   GET_DEPOSITS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -167,7 +196,7 @@ export const Replacements = {
           return updatedTemplate.replace(
             regexDeposits,
             `return this.helpers.deposits({
-                  protocolToken: await this.getProtocolToken(protocolTokenAddress),
+                  protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
                   filter: { fromBlock, toBlock, userAddress }
                 })`,
           )
@@ -181,7 +210,6 @@ export const Replacements = {
     },
   },
   UNWRAP: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -193,16 +221,16 @@ export const Replacements = {
           return updatedTemplate.replace(
             regex,
             `return this.helpers.unwrapOneToOne({
-                  protocolToken: await this.getProtocolToken(protocolTokenAddress),
-                  underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress)
+                  protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
+                  underlyingTokens: (await this.getProtocolTokenByAddress(protocolTokenAddress)).underlyingTokens,
                 })`,
           )
         case 'useUnwrapRatioMethod':
           return updatedTemplate.replace(
             regex,
             `return this.helpers.unwrapTokenAsRatio({
-                  protocolToken: await this.getProtocolToken(protocolTokenAddress),
-                  underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress),
+                  protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
+                  underlyingTokens: (await this.getProtocolTokenByAddress(protocolTokenAddress)).underlyingTokens,
                   blockNumber
                 })`,
           )
@@ -214,26 +242,7 @@ export const Replacements = {
       }
     },
   },
-  ASSET_TYPE: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
-    replace: (
-      outcomes: BlankAdapterOutcomeOptions,
-      updatedTemplate: string,
-    ): string => {
-      const regex = /Replacements.ASSET_TYPE.placeholder/g
-
-      switch (outcomes.defiAssetStructure) {
-        case 'singleProtocolToken':
-        case 'multipleProtocolTokens':
-          return updatedTemplate.replace(regex, 'AssetType.StandardErc20')
-
-        default:
-          return updatedTemplate.replace(regex, 'AssetType.NonStandardErc20')
-      }
-    },
-  },
   TVL: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -263,7 +272,6 @@ export const Replacements = {
     },
   },
   PRODUCT_ID: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -276,7 +284,6 @@ export const Replacements = {
     },
   },
   PROTOCOL_ID: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -289,7 +296,6 @@ export const Replacements = {
     },
   },
   PROTOCOL_KEY: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -302,7 +308,6 @@ export const Replacements = {
     },
   },
   ADAPTER_CLASS_NAME: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -315,7 +320,6 @@ export const Replacements = {
     },
   },
   GET_REWARD_POSITIONS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -343,7 +347,6 @@ export const Replacements = {
     },
   },
   GET_REWARD_WITHDRAWALS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -371,7 +374,6 @@ export const Replacements = {
     },
   },
   GET_EXTRA_REWARD_POSITIONS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -399,7 +401,6 @@ export const Replacements = {
     },
   },
   GET_EXTRA_REWARD_WITHDRAWALS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -423,6 +424,49 @@ export const Replacements = {
 
         default:
           return updatedTemplate.replace(regexRewardWithdrawals, '')
+      }
+    },
+  },
+  ENABLE_POSITION_DETECTION_BY_PROTOCOL_TOKEN_TRANSFER: {
+    replace: (
+      outcomes: BlankAdapterOutcomeOptions,
+      updatedTemplate: string,
+      answers: QuestionAnswers,
+    ): string => {
+      const regexDetectionSetting = RegExp(
+        /Replacements.ENABLE_POSITION_DETECTION_BY_PROTOCOL_TOKEN_TRANSFER.placeholder/,
+        'g',
+      )
+
+      switch (true) {
+        case answers.erc20Event:
+          return updatedTemplate.replace(regexDetectionSetting, 'true')
+
+        default:
+          return updatedTemplate.replace(regexDetectionSetting, 'false')
+      }
+    },
+  },
+  INCLUDE_IN_UNWRAP: {
+    replace: (
+      outcomes: BlankAdapterOutcomeOptions,
+      updatedTemplate: string,
+      answers: QuestionAnswers,
+    ): string => {
+      const regexDetectionSetting = RegExp(
+        /Replacements.INCLUDE_IN_UNWRAP.placeholder/,
+        'g',
+      )
+
+      switch (true) {
+        case answers.defiAssetStructure ===
+          'Single ERC20 protocol token (Like stETH)':
+        case answers.defiAssetStructure ===
+          'Multiple ERC20 protocol tokens (Like Aave: aETH, aUSDC, Compound: cETH, cUSDC)':
+          return updatedTemplate.replace(regexDetectionSetting, 'true')
+
+        default:
+          return updatedTemplate.replace(regexDetectionSetting, 'false')
       }
     },
   },

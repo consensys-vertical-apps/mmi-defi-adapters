@@ -1,6 +1,6 @@
 import {
   UniswapV2PoolForkAdapter,
-  UniswapV2PoolForkMetadataBuilder,
+  UniswapV2PoolForkPositionStrategy,
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -12,6 +12,11 @@ import {
 
 export class LynexClassicAdapter extends UniswapV2PoolForkAdapter {
   productId = 'classic'
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
 
   // TODO: Ammend this if pairs grow over 1,000
   protected override readonly MIN_SUBGRAPH_VOLUME: number = -1
@@ -27,14 +32,11 @@ export class LynexClassicAdapter extends UniswapV2PoolForkAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 
   protected chainMetadataSettings(): Partial<
-    Record<Chain, UniswapV2PoolForkMetadataBuilder>
+    Record<Chain, UniswapV2PoolForkPositionStrategy>
   > {
     // TODO - For each supported chain, provide the settings needed to build the list of pools
     // If using subgraph (recommended for forks with an available subgraph), provide the subgraph URL and factory cotract address

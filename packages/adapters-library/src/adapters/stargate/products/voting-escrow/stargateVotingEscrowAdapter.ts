@@ -1,7 +1,6 @@
 import { getAddress } from 'ethers'
 import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
 import {
-  AssetType,
   GetPositionsInput,
   PositionType,
   ProtocolDetails,
@@ -10,6 +9,11 @@ import { FeeDistributor__factory, VotingEscrow__factory } from '../../contracts'
 
 export class StargateVotingEscrowAdapter extends VotingEscrow {
   productId = 'voting-escrow'
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: true,
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -22,9 +26,6 @@ export class StargateVotingEscrowAdapter extends VotingEscrow {
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

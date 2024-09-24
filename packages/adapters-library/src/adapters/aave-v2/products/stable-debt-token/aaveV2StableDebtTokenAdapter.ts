@@ -1,14 +1,25 @@
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { Helpers } from '../../../../scripts/helpers'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
+  GetPositionsInput,
   PositionType,
+  ProtocolAdapterParams,
   ProtocolDetails,
+  ProtocolPosition,
 } from '../../../../types/adapter'
 import { AaveBasePoolAdapter } from '../../common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../contracts'
 
 export class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'stable-debt-token'
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+    version: 2,
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -20,15 +31,12 @@ export class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 
   @CacheToFile({ fileKey: 'stable-debt-token-v2' })
-  async buildMetadata() {
-    return super.buildMetadata()
+  async getProtocolTokens() {
+    return super.getProtocolTokens()
   }
 
   protected getReserveTokenAddress(

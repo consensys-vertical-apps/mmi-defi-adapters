@@ -8,6 +8,7 @@ import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
+import { Helpers } from '../../../scripts/helpers'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -56,6 +57,7 @@ const morphoCompoundV2ContractAddresses: Partial<
 export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   private provider: CustomJsonRpcProvider
 
@@ -64,11 +66,13 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   lensAddress = getAddress('0x930f1b46e1d081ec1524efd95752be3ece51ef67')

@@ -1,13 +1,12 @@
 import { getAddress } from 'ethers'
+import { symbol } from 'zod'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   GetEventsInput,
@@ -28,15 +27,12 @@ import {
 } from '../../contracts'
 import { PoolBalanceChangedEvent } from '../../contracts/Vault'
 
-type ChimpExchangePoolAdapterMetadata = Record<
-  string,
-  {
-    poolId: string
-    totalSupplyType: string
-    protocolToken: Erc20Metadata
-    underlyingTokens: (Erc20Metadata & { index: number })[]
-  }
->
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+  poolId: string
+  totalSupplyType: string
+  underlyingTokensIndexes: number[]
+}
 
 const vaultContractAddresses: Partial<Record<Chain, string>> = {
   [Chain.Linea]: getAddress('0x286381aEdd20e51f642fE4A200B5CB2Fe3729695'),
@@ -45,11 +41,14 @@ const poolDataQueryContractAddresses: Partial<Record<Chain, string>> = {
   [Chain.Linea]: getAddress('0xb2F2537E332F9A1aADa289df9fC770D5120613C9'),
 }
 
-export class ChimpExchangePoolAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
+export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'pool'
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+    version: 2,
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -61,14 +60,11 @@ export class ChimpExchangePoolAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 
   @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
+  async getProtocolTokens() {
     const vaultContract = Vault__factory.connect(
       vaultContractAddresses[this.chainId]!,
       this.provider,
@@ -77,7 +73,7 @@ export class ChimpExchangePoolAdapter
     const eventFilter = vaultContract.filters.PoolRegistered()
     const events = await vaultContract.queryFilter(eventFilter)
 
-    const metadataObject: ChimpExchangePoolAdapterMetadata = {}
+    const metadata: ProtocolToken<AdditionalMetadata>[] = []
     await Promise.all(
       events.map(async (event) => {
         const protocolToken = await getTokenMetadata(
@@ -108,16 +104,26 @@ export class ChimpExchangePoolAdapter
           },
         )
 
-        metadataObject[protocolToken.address] = {
+        metadata.push({
           poolId: event.args.poolId,
           totalSupplyType: event.args.specialization === 0n ? '2' : '0',
-          protocolToken,
-          underlyingTokens,
-        }
+          ...protocolToken,
+          underlyingTokens: underlyingTokens.map((underlyingToken) => {
+            return {
+              name: underlyingToken.name,
+              address: underlyingToken.address,
+              decimals: underlyingToken.decimals,
+              symbol: underlyingToken.symbol,
+            }
+          }),
+          underlyingTokensIndexes: underlyingTokens.map(
+            (underlyingToken) => underlyingToken.index,
+          ),
+        })
       }),
     )
 
-    return metadataObject
+    return metadata
   }
 
   async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
@@ -143,8 +149,11 @@ export class ChimpExchangePoolAdapter
   }: GetEventsInput & { filterPredicate: (total: bigint) => boolean }): Promise<
     MovementsByBlock[]
   > {
-    const { poolId, protocolToken } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+    const { poolId, name, decimals, symbol, address } =
+      await this.helpers.getProtocolTokenByAddress({
+        protocolTokens: await this.getProtocolTokens(),
+        protocolTokenAddress: protocolTokenAddress,
+      })
 
     const vaultContract = Vault__factory.connect(
       vaultContractAddresses[this.chainId]!,
@@ -195,7 +204,7 @@ export class ChimpExchangePoolAdapter
 
         return {
           transactionHash: event.transactionHash,
-          protocolToken,
+          protocolToken: { name, decimals, symbol, address },
           tokens: tokensData,
           blockNumber: event.blockNumber,
         }
@@ -205,12 +214,6 @@ export class ChimpExchangePoolAdapter
     return movements
   }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
-  }
-
   protected async getUnderlyingTokenBalances({
     protocolTokenBalance,
     blockNumber,
@@ -218,17 +221,17 @@ export class ChimpExchangePoolAdapter
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    const poolMetadata = await this.fetchPoolMetadata(
-      protocolTokenBalance.address,
-    )
-
+    const poolMetadata = await this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress: protocolTokenBalance.address,
+    })
     const underlyingTokenConversionRate = await this.unwrapProtocolToken(
       protocolTokenBalance,
       blockNumber,
     )
 
     const underlyingBalances = poolMetadata.underlyingTokens.map(
-      ({ index: _tokenIndex, ...token }) => {
+      ({ ...token }) => {
         const unwrappedTokenExchangeRateRaw =
           underlyingTokenConversionRate.find(
             (tokenRate) => tokenRate.address === token.address,
@@ -264,7 +267,10 @@ export class ChimpExchangePoolAdapter
 
     return Promise.all(
       protocolTokens.map(async (protocolToken) => {
-        const poolMetadata = await this.fetchPoolMetadata(protocolToken.address)
+        const poolMetadata = await this.helpers.getProtocolTokenByAddress({
+          protocolTokens: await this.getProtocolTokens(),
+          protocolTokenAddress: protocolToken.address,
+        })
 
         const [[_poolTokens, poolBalances], [totalSupplyRaw]] =
           await Promise.all([
@@ -281,29 +287,25 @@ export class ChimpExchangePoolAdapter
           ])
 
         const tokens = poolMetadata.underlyingTokens.map(
-          ({ index: tokenIndex, ...token }) => ({
+          ({ ...token }, index) => ({
             ...token,
-            totalSupplyRaw: poolBalances[tokenIndex]!,
+            totalSupplyRaw:
+              poolBalances[poolMetadata.underlyingTokensIndexes[index]!]!,
             type: TokenType.Underlying,
           }),
         )
 
         return {
-          ...protocolToken,
+          name: protocolToken.name,
+          address: protocolToken.address,
+          symbol: protocolToken.symbol,
+          decimals: protocolToken.decimals,
           type: TokenType.Protocol,
           tokens,
           totalSupplyRaw: totalSupplyRaw!,
         }
       }),
     )
-  }
-
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
   }
 
   protected async unwrapProtocolToken(
@@ -320,9 +322,10 @@ export class ChimpExchangePoolAdapter
         this.provider,
       )
 
-    const poolMetadata = await this.fetchPoolMetadata(
-      protocolTokenMetadata.address,
-    )
+    const poolMetadata = await this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress: protocolTokenMetadata.address,
+    })
 
     const [_poolTokens, poolBalances] = await vaultContract.getPoolTokens(
       poolMetadata.poolId,
@@ -341,8 +344,9 @@ export class ChimpExchangePoolAdapter
       )
 
     const underlyingRates = poolMetadata.underlyingTokens.map(
-      ({ index: tokenIndex, ...token }) => {
-        const underlyingPoolBalance = poolBalances[tokenIndex]!
+      ({ ...token }, index) => {
+        const underlyingPoolBalance =
+          poolBalances[poolMetadata.underlyingTokensIndexes[index]!]!
         const underlyingRateRaw =
           totalSupplyRaw === 0n
             ? 0n
@@ -358,33 +362,5 @@ export class ChimpExchangePoolAdapter
     )
 
     return underlyingRates
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingTokens } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return underlyingTokens.map(({ index: _tokenIndex, ...token }) => token)
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
   }
 }

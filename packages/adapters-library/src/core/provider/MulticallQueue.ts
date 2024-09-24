@@ -59,6 +59,9 @@ export class MulticallQueue {
     this.provider = new ethers.JsonRpcProvider(
       fetchRequest,
       Network.from(chainId),
+      {
+        staticNetwork: Network.from(chainId),
+      },
     )
     this.chainId = chainId
 

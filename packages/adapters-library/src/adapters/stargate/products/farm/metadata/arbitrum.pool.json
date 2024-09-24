@@ -1,0 +1,62 @@
+[
+  {
+    "address": "0x892785f33CdeE22A30AEF750F285E18c18040c3e",
+    "name": "USD Coin (Arb1)-LP",
+    "symbol": "S*USDC",
+    "decimals": 6,
+    "poolIndex": 0,
+    "rewardToken": {
+      "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+      "name": "Arbitrum",
+      "symbol": "ARB",
+      "decimals": 18
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x9774558534036Ff2E236331546691b4eB70594b1"
+  },
+  {
+    "address": "0xB6CfcF89a7B22988bfC96632aC2A9D6daB60d641",
+    "name": "Tether USD-LP",
+    "symbol": "S*USDT",
+    "decimals": 6,
+    "poolIndex": 1,
+    "rewardToken": {
+      "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+      "name": "Arbitrum",
+      "symbol": "ARB",
+      "decimals": 18
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x9774558534036Ff2E236331546691b4eB70594b1"
+  },
+  {
+    "address": "0x915A55e36A01285A14f05dE6e81ED9cE89772f8e",
+    "name": "Stargate Ether Vault-LP",
+    "symbol": "S*SGETH",
+    "decimals": 18,
+    "poolIndex": 2,
+    "rewardToken": {
+      "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+      "name": "Arbitrum",
+      "symbol": "ARB",
+      "decimals": 18
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x9774558534036Ff2E236331546691b4eB70594b1"
+  },
+  {
+    "address": "0xaa4BF442F024820B2C28Cd0FD72b82c63e66F56C",
+    "name": "Frax-LP",
+    "symbol": "S*FRAX",
+    "decimals": 6,
+    "poolIndex": 3,
+    "rewardToken": {
+      "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+      "name": "Arbitrum",
+      "symbol": "ARB",
+      "decimals": 18
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x9774558534036Ff2E236331546691b4eB70594b1"
+  }
+]

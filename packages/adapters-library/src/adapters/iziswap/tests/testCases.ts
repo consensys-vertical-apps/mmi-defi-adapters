@@ -6,11 +6,13 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Bsc,
     method: 'positions',
+
     input: {
-      userAddress: '0x2E13580a21Fd7fEd9BAB89761A637dd63245a4D5',
+      userAddress: '0x195bB56eAe9832Cf9DfC5E5982b11eb379a1CB7d',
       filterProtocolTokens: ['0xBF55ef05412f1528DbD96ED9E7181f87d8C9F453'],
+      filterTokenIds: ['239'],
     },
-    blockNumber: 34467153,
+    blockNumber: 40893675,
   },
   {
     chainId: Chain.Linea,
@@ -25,12 +27,12 @@ export const testCases: TestCase[] = [
     chainId: Chain.Bsc,
     method: 'deposits',
     input: {
-      userAddress: '0x581e52c4a9d837b9DDCE5a2dcCcD2E6CD938d397',
-      fromBlock: 34118504,
-      toBlock: 34118506,
+      userAddress: '0x195bB56eAe9832Cf9DfC5E5982b11eb379a1CB7d',
+      fromBlock: 40547403,
+      toBlock: 40547405,
       protocolTokenAddress: '0xBF55ef05412f1528DbD96ED9E7181f87d8C9F453',
       productId: 'pool',
-      tokenId: '84',
+      tokenId: '239',
     },
   },
   {
@@ -43,18 +45,6 @@ export const testCases: TestCase[] = [
       protocolTokenAddress: '0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c',
       productId: 'pool',
       tokenId: '22264',
-    },
-  },
-  {
-    chainId: Chain.Bsc,
-    method: 'withdrawals',
-    input: {
-      userAddress: '0x4F21a0Af178d9EB793c2D94d9d88910e974a98fD',
-      fromBlock: 34127856,
-      toBlock: 34127858,
-      protocolTokenAddress: '0xBF55ef05412f1528DbD96ED9E7181f87d8C9F453',
-      productId: 'pool',
-      tokenId: '85',
     },
   },
   {

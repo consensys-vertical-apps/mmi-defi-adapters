@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   AssetType,
   PositionType,
@@ -13,8 +14,21 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { RocketTokenRETH__factory } from '../../../rocket-pool/contracts'
 
-export class RocketPoolRethAdapter extends SimplePoolAdapter {
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+}
+
+const PROTOCOL_TOKEN_ADDRESS = getAddress(
+  '0xae78736Cd615f374D3085123A210448E74Fc6393',
+)
+export class RocketPoolRethAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'reth'
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+    version: 2,
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -26,14 +40,7 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter {
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return [await this.fetchProtocolTokenMetadata()]
   }
 
   protected async getUnderlyingTokenBalances({
@@ -44,7 +51,9 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter {
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      PROTOCOL_TOKEN_ADDRESS,
+    )
     const [unwrappedTokenExchangeRate] = await this.unwrapProtocolToken(
       protocolTokenBalance,
       blockNumber,
@@ -64,20 +73,33 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter {
     ]
   }
 
-  protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
-    return {
-      address: getAddress('0xae78736Cd615f374D3085123A210448E74Fc6393'),
-      name: 'Rocket Pool rETH',
-      symbol: 'rETH',
-      decimals: 18,
-    }
+  @CacheToFile({ fileKey: 'protocol-token' })
+  async getProtocolTokens() {
+    return [
+      {
+        address: PROTOCOL_TOKEN_ADDRESS,
+        name: 'Rocket Pool rETH',
+        symbol: 'rETH',
+        decimals: 18,
+        underlyingTokens: [
+          {
+            address: ZERO_ADDRESS,
+            name: 'Ethereum',
+            symbol: 'ETH',
+            decimals: 18,
+          },
+        ],
+      },
+    ]
   }
 
   protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number,
   ): Promise<UnwrappedTokenExchangeRate[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      PROTOCOL_TOKEN_ADDRESS,
+    )
 
     const rEthContract = RocketTokenRETH__factory.connect(
       protocolTokenMetadata.address,
@@ -93,17 +115,6 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter {
         ...underlyingToken!,
         type: TokenType.Underlying,
         underlyingRateRaw,
-      },
-    ]
-  }
-
-  protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
-    return [
-      {
-        address: ZERO_ADDRESS,
-        name: 'Ethereum',
-        symbol: 'ETH',
-        decimals: 18,
       },
     ]
   }

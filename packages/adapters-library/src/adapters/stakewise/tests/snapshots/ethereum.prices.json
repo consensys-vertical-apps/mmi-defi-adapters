@@ -1,4 +1,5 @@
 {
+  "latency": "Latency: 0.153 seconds",
   "blockNumber": 19661887,
   "snapshot": [
     {
@@ -10,16 +11,14 @@
       "protocolId": "stakewise",
       "productId": "os-eth",
       "chainId": 1,
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
-          "name": "StakeWise osETH",
-          "symbol": "osETH",
-          "decimals": 18,
           "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
+          "name": "StakeWise osETH",
+          "decimals": 18,
+          "symbol": "osETH",
           "baseRate": 1,
           "type": "protocol",
           "tokens": [
@@ -37,5 +36,10 @@
         }
       ]
     }
-  ]
+  ],
+  "rpcResponses": {
+    "9f28246025faf34a50631ce3941335f2": {
+      "result": "0x0000000000000000000000000000000000000000000000000e1164118e618104"
+    }
+  }
 }

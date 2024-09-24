@@ -1,0 +1,32 @@
+[
+  {
+    "address": "0x28fc411f9e1c480AD312b3d9C60c22b965015c6B",
+    "name": "Stargate Ether Vault-LP",
+    "symbol": "S*SGETH",
+    "decimals": 18,
+    "poolIndex": 0,
+    "rewardToken": {
+      "address": "0xE3B53AF74a4BF62Ae5511055290838050bf764Df",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x06Eb48763f117c7Be887296CDcdfad2E4092739C"
+  },
+  {
+    "address": "0x4c80E24119CFB836cdF0a6b53dc23F04F7e652CA",
+    "name": "USD Base Coin-LP",
+    "symbol": "S*USDbC",
+    "decimals": 6,
+    "poolIndex": 1,
+    "rewardToken": {
+      "address": "0xE3B53AF74a4BF62Ae5511055290838050bf764Df",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    },
+    "lpStakingType": "LpStakingTime",
+    "lpStakingAddress": "0x06Eb48763f117c7Be887296CDcdfad2E4092739C"
+  }
+]

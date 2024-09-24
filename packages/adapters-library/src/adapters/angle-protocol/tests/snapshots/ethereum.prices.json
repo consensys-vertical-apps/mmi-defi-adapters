@@ -1,4 +1,5 @@
 {
+  "latency": "Latency: 0.193 seconds",
   "blockNumber": 19544644,
   "snapshot": [
     {
@@ -10,9 +11,7 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "savings",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -37,5 +36,10 @@
         }
       ]
     }
-  ]
+  ],
+  "rpcResponses": {
+    "453e8c0666fda73c6bfdc1f0bdc92bf2": {
+      "result": "0x0000000000000000000000000000000000000000000000000e2b476d6b70c3eb"
+    }
+  }
 }

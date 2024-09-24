@@ -1,7 +1,13 @@
+import path from 'node:path'
+import Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
+import {
+  IMetadataProvider,
+  SQLiteMetadataProvider,
+} from './SQLiteMetadataProvider'
 import { Protocol } from './adapters/protocols'
-import { supportedProtocols } from './adapters/supportedProtocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
+import { supportedProtocols } from './adapters/supportedProtocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
@@ -15,7 +21,7 @@ import {
 import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
-import { filterMapAsync, filterMapSync } from './core/utils/filters'
+import { filterMapAsync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
 import { unwrap } from './core/utils/unwrap'
 import { count } from './metricsCount'
@@ -39,19 +45,52 @@ import {
   TotalValueLockResponse,
 } from './types/response'
 
+import { existsSync } from 'node:fs'
+
+function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
+  return Object.values(Chain).reduce(
+    (acc, chain) => {
+      acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
+      return acc
+    },
+    {} as Record<Chain, IMetadataProvider>,
+  )
+}
+
+const dbParams = (chainId: Chain): [string, Database.Options] => {
+  const dbPath = path.join(__dirname, '../../..', `${ChainName[chainId]}.db`)
+
+  if (!existsSync(dbPath)) {
+    logger.info(`Database file does not exist: ${dbPath}`)
+    throw new Error(`Database file does not exist: ${dbPath}`)
+  }
+
+  logger.info(`Database file exists: ${dbPath}`)
+
+  return [dbPath, { fileMustExist: true }]
+}
+
 export class DefiProvider {
   private parsedConfig
   chainProvider: ChainProvider
   adaptersController: AdaptersController
   private adaptersControllerWithoutPrices: AdaptersController
 
-  constructor(config?: DeepPartial<IConfig>) {
+  private metadataProviders: Record<Chain, IMetadataProvider>
+
+  constructor(
+    config?: DeepPartial<IConfig>,
+    metadataProviders?: Record<Chain, IMetadataProvider>,
+  ) {
+    this.metadataProviders = metadataProviders ?? buildMetadataProviders()
+
     this.parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
 
     this.adaptersController = new AdaptersController({
       providers: this.chainProvider.providers,
       supportedProtocols,
+      metadataProviders: this.metadataProviders,
     })
 
     const { [Protocol.PricesV2]: _, ...supportedProtocolsWithoutPrices } =
@@ -60,6 +99,7 @@ export class DefiProvider {
     this.adaptersControllerWithoutPrices = new AdaptersController({
       providers: this.chainProvider.providers,
       supportedProtocols: supportedProtocolsWithoutPrices,
+      metadataProviders: this.metadataProviders,
     })
   }
 
@@ -131,14 +171,24 @@ export class DefiProvider {
 
       await Promise.all(
         protocolPositions.map(async (pos) => {
-          const rewards = await adapter.getRewardPositions?.({
-            userAddress,
-            blockNumber,
-            protocolTokenAddress: pos.address,
-          })
+          const [rewards = [], extraRewards = []] = await Promise.all([
+            adapter.getRewardPositions?.({
+              userAddress,
+              blockNumber,
+              protocolTokenAddress: pos.address,
+            }),
+            adapter.getExtraRewardPositions?.({
+              userAddress,
+              blockNumber,
+              protocolTokenAddress: pos.address,
+            }),
+          ])
 
-          if (rewards && rewards?.length > 0) {
+          if (rewards.length > 0) {
             pos.tokens = [...(pos.tokens ?? []), ...rewards]
+          }
+          if (extraRewards.length > 0) {
+            pos.tokens = [...(pos.tokens ?? []), ...extraRewards]
           }
         }),
       )
@@ -234,7 +284,11 @@ export class DefiProvider {
       }
 
       // we cant use the logs for this adapter
-      if (!this.filterSupported(adapter)) {
+      if (
+        !adapter.adapterSettings
+          .enablePositionDetectionByProtocolTokenTransfer ||
+        !adapter.adapterSettings.includeInUnwrap
+      ) {
         return undefined
       }
 
@@ -280,19 +334,6 @@ export class DefiProvider {
       // we cant use the logs on this chain
       return undefined
     }
-  }
-
-  private filterSupported(adapter: IProtocolAdapter) {
-    // we don't support these atm but something can be done here for standard NFT positions
-    if (adapter.getProtocolDetails().assetDetails.type === 'NonStandardErc20') {
-      return false
-    }
-    // we cant use transfer events if contract is missing them
-    if (adapter.getProtocolDetails().assetDetails.missingTransferEvents) {
-      return false
-    }
-
-    return true
   }
 
   async getProfits({
@@ -402,16 +443,22 @@ export class DefiProvider {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
+      const protocolTokenAddresses = (await adapter.getProtocolTokens()).map(
+        (token) => token.address,
+      )
+
+      if (
+        filterProtocolToken &&
+        !protocolTokenAddresses.includes(filterProtocolToken)
+      ) {
+        return { tokens: [] }
+      }
       const protocolTokens = filterProtocolToken
-        ? [
-            {
-              address: filterProtocolToken,
-            },
-          ]
-        : await adapter.getProtocolTokens()
+        ? [filterProtocolToken]
+        : protocolTokenAddresses
 
       const tokens = await Promise.all(
-        protocolTokens.map(async ({ address }) => {
+        protocolTokens.map(async (address) => {
           const startTime = Date.now()
 
           const unwrap = await adapter.unwrap({
@@ -440,13 +487,20 @@ export class DefiProvider {
       return { tokens }
     }
 
-    return this.runForAllProtocolsAndChains({
+    const result = await this.runForAllProtocolsAndChains({
       runner,
       filterProtocolIds,
       filterChainIds,
-
       method: 'unwrap',
     })
+
+    // remove empty tokens this happens with filterProtocolToken is applied
+    const filteredResult = result.filter(
+      (result) =>
+        !result.success || (result.success && result.tokens.length > 0),
+    )
+
+    return filteredResult
   }
 
   async getWithdrawals({
@@ -486,6 +540,17 @@ export class DefiProvider {
       if (typeof adapter.getRewardPositions === 'function') {
         positionsMovementsPromises.push(
           adapter.getRewardWithdrawals!({
+            protocolTokenAddress: getAddress(protocolTokenAddress),
+            fromBlock,
+            toBlock,
+            userAddress,
+            tokenId,
+          }),
+        )
+      }
+      if (typeof adapter.getExtraRewardWithdrawals === 'function') {
+        positionsMovementsPromises.push(
+          adapter.getExtraRewardWithdrawals!({
             protocolTokenAddress: getAddress(protocolTokenAddress),
             fromBlock,
             toBlock,
@@ -854,12 +919,14 @@ export class DefiProvider {
 
       return {
         ...protocolDetails,
+        chainName: ChainName[adapter.chainId],
         success: true,
         ...adapterResult,
       }
     } catch (error) {
       return {
         ...protocolDetails,
+        chainName: ChainName[adapter.chainId],
         ...this.handleError(error),
       }
     }

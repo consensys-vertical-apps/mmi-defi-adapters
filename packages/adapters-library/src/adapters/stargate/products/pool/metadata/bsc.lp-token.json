@@ -1,0 +1,107 @@
+[
+  {
+    "poolId": 2,
+    "address": "0x9aA83081AA06AF7208Dcc7A4cB72C94d057D2cda",
+    "name": "Tether USD-LP",
+    "symbol": "S*USDT",
+    "decimals": 6,
+    "underlyingTokens": [
+      {
+        "address": "0x55d398326f99059fF775485246999027B3197955",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "poolId": 5,
+    "address": "0x98a5737749490856b401DB5Dc27F522fC314A4e1",
+    "name": "BUSD Token-LP",
+    "symbol": "S*BUSD",
+    "decimals": 6,
+    "underlyingTokens": [
+      {
+        "address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+        "name": "BUSD Token",
+        "symbol": "BUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "poolId": 11,
+    "address": "0x4e145a589e4c03cBe3d28520e4BF3089834289Df",
+    "name": "Decentralized USD-LP",
+    "symbol": "S*USDD",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0xd17479997F34dd9156Deef8F95A52D81D265be9c",
+        "name": "Decentralized USD",
+        "symbol": "USDD",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "poolId": 16,
+    "address": "0x7BfD7f2498C4796f10b6C611D9db393D3052510C",
+    "name": "Mai Stablecoin-LP",
+    "symbol": "S*MAI",
+    "decimals": 6,
+    "underlyingTokens": [
+      {
+        "address": "0x3F56e0c36d275367b8C502090EDF38289b3dEa0d",
+        "name": "Mai Stablecoin",
+        "symbol": "MAI",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "poolId": 17,
+    "address": "0xD4CEc732b3B135eC52a3c0bc8Ce4b8cFb9dacE46",
+    "name": "Metis Token-LP",
+    "symbol": "S*Metis",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0xe552Fb52a4F19e44ef5A967632DBc320B0820639",
+        "name": "Metis Token",
+        "symbol": "Metis",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "poolId": 19,
+    "address": "0x68C6c27fB0e02285829e69240BE16f32C5f8bEFe",
+    "name": "Tether USD-LP",
+    "symbol": "S*USDT",
+    "decimals": 6,
+    "underlyingTokens": [
+      {
+        "address": "0x55d398326f99059fF775485246999027B3197955",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "poolId": 20,
+    "address": "0x5a0F550bfCaDe1D898034D57A6f72E7Aef32CE79",
+    "name": "Wootrade Network-LP",
+    "symbol": "S*WOO",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x4691937a7508860F876c9c0a2a617E7d9E945D4B",
+        "name": "Wootrade Network",
+        "symbol": "WOO",
+        "decimals": 18
+      }
+    ]
+  }
+]

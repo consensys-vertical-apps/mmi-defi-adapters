@@ -1,6 +1,8 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
   PositionType,
@@ -13,8 +15,21 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { SwEth__factory } from '../../contracts'
 
-export class SwellSwEthAdapter extends SimplePoolAdapter {
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+}
+
+const PROTOCOL_TOKEN_ADDRESS = getAddress(
+  '0xf951E335afb289353dc249e82926178EaC7DEd78',
+)
+export class SwellSwEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'sw-eth'
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+    version: 2,
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -26,14 +41,7 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return [await this.fetchProtocolTokenMetadata()]
   }
 
   protected async getUnderlyingTokenBalances({
@@ -44,7 +52,9 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      PROTOCOL_TOKEN_ADDRESS,
+    )
     const [unwrappedTokenExchangeRate] = await this.unwrapProtocolToken(
       protocolTokenBalance,
       blockNumber,
@@ -64,20 +74,33 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
     ]
   }
 
-  protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
-    return {
-      address: getAddress('0xf951E335afb289353dc249e82926178EaC7DEd78'),
-      name: 'Swell Ethereum',
-      symbol: 'SWETH',
-      decimals: 18,
-    }
+  @CacheToFile({ fileKey: 'protocol-token' })
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+    return [
+      {
+        address: PROTOCOL_TOKEN_ADDRESS,
+        name: 'Swell Ethereum',
+        symbol: 'SWETH',
+        decimals: 18,
+        underlyingTokens: [
+          {
+            address: ZERO_ADDRESS,
+            name: 'Ethereum',
+            symbol: 'ETH',
+            decimals: 18,
+          },
+        ],
+      },
+    ]
   }
 
   protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number,
   ): Promise<UnwrappedTokenExchangeRate[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      PROTOCOL_TOKEN_ADDRESS,
+    )
 
     const swEthContract = SwEth__factory.connect(
       protocolTokenMetadata.address,
@@ -93,17 +116,6 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
         ...underlyingToken!,
         type: TokenType.Underlying,
         underlyingRateRaw,
-      },
-    ]
-  }
-
-  protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
-    return [
-      {
-        address: ZERO_ADDRESS,
-        name: 'Ethereum',
-        symbol: 'ETH',
-        decimals: 18,
       },
     ]
   }

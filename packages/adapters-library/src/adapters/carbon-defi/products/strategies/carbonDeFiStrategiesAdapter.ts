@@ -3,6 +3,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { Helpers } from '../../../../scripts/helpers'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
@@ -46,6 +47,12 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
   productId = 'strategies'
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
 
   adaptersController: AdaptersController
 
@@ -56,11 +63,13 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -73,9 +82,6 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.NonStandardErc20,
-      },
     }
   }
 

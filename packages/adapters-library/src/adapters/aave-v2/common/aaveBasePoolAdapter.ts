@@ -1,13 +1,31 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter'
+import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
+import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
+import { Helpers } from '../../../scripts/helpers'
 import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../types/IProtocolAdapter'
+import {
+  AdapterSettings,
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
+  ProtocolAdapterParams,
+  ProtocolDetails,
+  ProtocolPosition,
+  ProtocolTokenTvl,
   TokenBalance,
   TokenType,
   Underlying,
+  UnwrapExchangeRate,
+  UnwrapInput,
   UnwrappedTokenExchangeRate,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
@@ -17,13 +35,7 @@ import {
   ProtocolDataProvider__factory,
 } from '../contracts'
 
-type AaveV2PoolMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
-  }
->
+type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
 const protocolDataProviderContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
@@ -44,19 +56,123 @@ const protocolDataProviderContractAddresses: Partial<
   },
 }
 
-// Aave tokens always pegged one to one to underlying
-const PRICE_PEGGED_TO_ONE = 1
-export abstract class AaveBasePoolAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
+export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
+  chainId: Chain
+  protocolId: Protocol
+  abstract productId: string
+  helpers: Helpers
+
+  protected provider: CustomJsonRpcProvider
+
+  adaptersController: AdaptersController
+
+  constructor({
+    provider,
+    chainId,
+    protocolId,
+    adaptersController,
+    helpers,
+  }: ProtocolAdapterParams) {
+    this.provider = provider
+    this.chainId = chainId
+    this.protocolId = protocolId
+    this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
-  async buildMetadata() {
+  abstract adapterSettings: AdapterSettings
+
+  abstract getProtocolDetails(): ProtocolDetails
+
+  async getProtocolTokenByAddress(
+    protocolTokenAddress: string,
+  ): Promise<ProtocolToken<AdditionalMetadata>> {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
+  }
+
+  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    return this.helpers.getBalanceOfTokens({
+      ...input,
+      protocolTokens: await this.getProtocolTokens(),
+    })
+  }
+
+  async unwrap({
+    protocolTokenAddress,
+    tokenId,
+    blockNumber,
+  }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    return this.helpers.unwrapOneToOne({
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
+      underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress),
+    })
+  }
+
+  async getWithdrawals({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.withdrawals({
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
+  }
+
+  async getDeposits({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.deposits({
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
+  }
+
+  async getBorrows({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.borrows({
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
+  }
+
+  async getRepays({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.repays({
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
+  }
+
+  async getTotalValueLocked({
+    protocolTokenAddresses,
+    blockNumber,
+  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
+    const protocolTokens = await this.getProtocolTokens()
+
+    return await this.helpers.tvlUsingUnderlyingTokenBalances({
+      protocolTokens,
+      filterProtocolTokenAddresses: protocolTokenAddresses,
+      blockNumber,
+    })
+  }
+
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
       protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
@@ -65,7 +181,7 @@ export abstract class AaveBasePoolAdapter
     const reserveTokens =
       await protocolDataProviderContract.getAllReservesTokens()
 
-    const metadataObject: AaveV2PoolMetadata = {}
+    const metadataObject: ProtocolToken<AdditionalMetadata>[] = []
 
     const promises = reserveTokens.map(async ({ tokenAddress }) => {
       const reserveConfigurationData =
@@ -101,10 +217,10 @@ export abstract class AaveBasePoolAdapter
         underlyingTokenPromise,
       ])
 
-      metadataObject[protocolToken.address] = {
-        protocolToken,
-        underlyingToken,
-      }
+      metadataObject.push({
+        ...protocolToken,
+        underlyingTokens: [underlyingToken],
+      })
     })
 
     await Promise.all(promises)
@@ -112,63 +228,22 @@ export abstract class AaveBasePoolAdapter
     return metadataObject
   }
 
-  protected async fetchProtocolTokenMetadata(
+  protected async getProtocolToken(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
+    const { name, symbol, decimals, address } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
-    return protocolToken
+    return { name, symbol, decimals, address }
   }
 
-  protected async fetchUnderlyingTokensMetadata(
+  protected async getUnderlyingTokens(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+    const { underlyingTokens } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
-    return [underlyingToken]
-  }
-
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenBalance.address,
-    )
-
-    const underlyingTokenBalance = {
-      ...underlyingToken,
-      balanceRaw: protocolTokenBalance.balanceRaw,
-      type: TokenType.Underlying,
-    }
-
-    return [underlyingTokenBalance]
-  }
-
-  protected async unwrapProtocolToken(
-    protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnwrappedTokenExchangeRate[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenMetadata.address,
-    )
-
-    // Aave tokens always pegged one to one to underlying
-    const pricePerShareRaw = BigInt(
-      PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
-    )
-
-    return [
-      {
-        ...underlyingToken,
-        type: TokenType.Underlying,
-        underlyingRateRaw: pricePerShareRaw,
-      },
-    ]
+    return underlyingTokens
   }
 
   protected abstract getReserveTokenAddress(
@@ -180,80 +255,4 @@ export abstract class AaveBasePoolAdapter
   protected abstract getReserveTokenRate(
     reserveData: Awaited<ReturnType<ProtocolDataProvider['getReserveData']>>,
   ): bigint
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
-  }
 }
-
-// NOTE: The APY/APR feature has been removed as of March 2024.
-// The below contains logic that may be useful for future features or reference. For more context on this decision, refer to ticket [MMI-4731].
-
-// async getApy({
-//   protocolTokenAddress,
-//   blockNumber,
-// }: GetApyInput): Promise<ProtocolTokenApy> {
-//   const apr = await this.getProtocolTokenApr({
-//     protocolTokenAddress,
-//     blockNumber,
-//   })
-
-//   const apy = aprToApy(apr, SECONDS_PER_YEAR)
-
-//   return {
-//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-//     apyDecimal: apy * 100,
-//   }
-// }
-// async getApr({
-//   protocolTokenAddress,
-//   blockNumber,
-// }: GetAprInput): Promise<ProtocolTokenApr> {
-//   const apr = await this.getProtocolTokenApr({
-//     protocolTokenAddress,
-//     blockNumber,
-//   })
-
-//   return {
-//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-//     aprDecimal: apr * 100,
-//   }
-// }
-
-// private async getProtocolTokenApr({
-//   protocolTokenAddress,
-//   blockNumber,
-// }: GetAprInput): Promise<number> {
-//   const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
-//     protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!,
-//     this.provider,
-//   )
-
-//   const underlyingTokenMetadata = (
-//     await this.fetchPoolMetadata(protocolTokenAddress)
-//   ).underlyingToken
-
-//   const reserveData = await protocolDataProviderContract.getReserveData(
-//     underlyingTokenMetadata.address,
-//     { blockTag: blockNumber },
-//   )
-
-//   const aprRaw = this.getReserveTokenRate(reserveData)
-
-//   return Number(aprRaw) / RAY
-// }

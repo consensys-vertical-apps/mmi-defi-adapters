@@ -1,6 +1,8 @@
 import { Protocol } from '../../adapters/protocols'
+import { Helpers } from '../../scripts/helpers'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -33,6 +35,12 @@ export abstract class WriteOnlyDeFiAdapter
   abstract productId: string
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
 
   provider: CustomJsonRpcProvider
 
@@ -43,11 +51,13 @@ export abstract class WriteOnlyDeFiAdapter
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   abstract buildMetadata(): Promise<DeFiAssetsMetadata>

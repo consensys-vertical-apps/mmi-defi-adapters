@@ -1,12 +1,9 @@
+import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Protocol } from '../adapters/protocols'
 import { WriteActionInputs } from '../adapters/supportedProtocols'
 import { Helpers } from '../scripts/helpers'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
-import {
-  AssetType,
-  PositionType,
-  ProtocolAdapterParams,
-} from '../types/adapter'
+import { PositionType, ProtocolAdapterParams } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { Support } from '../types/response'
 import { WriteActions } from '../types/writeActions'
@@ -26,6 +23,7 @@ export class AdaptersController {
   constructor({
     providers,
     supportedProtocols,
+    metadataProviders,
   }: {
     providers: Record<Chain, CustomJsonRpcProvider>
     supportedProtocols: Partial<
@@ -41,6 +39,7 @@ export class AdaptersController {
         >
       >
     >
+    metadataProviders: Record<Chain, IMetadataProvider>
   }) {
     Object.entries(supportedProtocols).forEach(
       ([protocolIdKey, supportedChains]) => {
@@ -58,7 +57,12 @@ export class AdaptersController {
                 chainId,
                 protocolId,
                 adaptersController: this,
-                helpers: new Helpers({ provider, chainId }),
+                helpers: new Helpers(
+                  provider,
+                  chainId,
+                  metadataProviders[chainId],
+                  providers,
+                ),
               })
 
               const productId = adapter.productId
@@ -119,11 +123,9 @@ export class AdaptersController {
 
       for (const [_protocolId, protocolAdapters] of chainAdapters) {
         for (const [_productId, adapter] of protocolAdapters) {
-          const {
-            assetDetails: { type: assetType },
-          } = adapter.getProtocolDetails()
+          const { includeInUnwrap } = adapter.adapterSettings
 
-          if (assetType === AssetType.NonStandardErc20) {
+          if (!includeInUnwrap) {
             continue
           }
 

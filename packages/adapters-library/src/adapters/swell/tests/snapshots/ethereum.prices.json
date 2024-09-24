@@ -1,4 +1,5 @@
 {
+  "latency": "Latency: 0.171 seconds",
   "blockNumber": 19661890,
   "snapshot": [
     {
@@ -10,16 +11,14 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "sw-eth",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
           "address": "0xf951E335afb289353dc249e82926178EaC7DEd78",
           "name": "Swell Ethereum",
-          "symbol": "SWETH",
           "decimals": 18,
+          "symbol": "SWETH",
           "baseRate": 1,
           "type": "protocol",
           "tokens": [
@@ -37,5 +36,10 @@
         }
       ]
     }
-  ]
+  ],
+  "rpcResponses": {
+    "81ffee3ce77527a03e6bf5f944de97ca": {
+      "result": "0x0000000000000000000000000000000000000000000000000eaa20440bd94b0e"
+    }
+  }
 }
