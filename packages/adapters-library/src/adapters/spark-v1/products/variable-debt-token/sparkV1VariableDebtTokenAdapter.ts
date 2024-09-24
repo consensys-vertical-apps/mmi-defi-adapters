@@ -1,3 +1,4 @@
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   AssetType,
@@ -14,7 +15,6 @@ export class SparkV1VariableDebtTokenPoolAdapter extends SparkV1BasePoolAdapter 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -31,7 +31,7 @@ export class SparkV1VariableDebtTokenPoolAdapter extends SparkV1BasePoolAdapter 
     }
   }
 
-  @CacheToFile({ fileKey: 'variable-debt-token-v1' })
+  @CacheToDb()
   async buildMetadata() {
     return super.getProtocolTokens()
   }

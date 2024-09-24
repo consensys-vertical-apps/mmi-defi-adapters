@@ -35,6 +35,7 @@ import {
   CvxMint__factory,
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardsFactory'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 export const CONVEX_TOKEN_ADDRESS = '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b'
 
@@ -56,7 +57,6 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
-    version: 2,
   }
 
   protected async getUnderlyingTokenBalances({
@@ -138,7 +138,7 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
     }
   }
 
-  @CacheToFile({ fileKey: 'metadata' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const convexFactory = ConvexFactory__factory.connect(
       CONVEX_FACTORY_ADDRESS,
@@ -269,8 +269,9 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
       this.provider,
     )
 
-    const protocolToken =
-      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
 
     const convexToken = await this.getMinter()
     const crvToken = await this.getCrv()

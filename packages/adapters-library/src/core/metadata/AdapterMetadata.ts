@@ -111,12 +111,7 @@ import SushiswapV2PoolBscProtocolToken from '../../adapters/sushiswap-v2/product
 import SushiswapV2PoolEthereumProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/ethereum.protocol-token.json'
 import SushiswapV2PoolFantomProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/fantom.protocol-token.json'
 import SushiswapV2PoolPolygonProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/matic.protocol-token.json'
-import UniswapV2PoolArbitrumProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/arb.protocol-token.json'
-import UniswapV2PoolAvalancheProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/avax.protocol-token.json'
-import UniswapV2PoolBaseProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/base.protocol-token.json'
-import UniswapV2PoolBscProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/bsc.protocol-token.json'
-import UniswapV2PoolPolygonProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/matic.protocol-token.json'
-import UniswapV2PoolOptimismProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/op.protocol-token.json'
+
 import XfaiDexLineaLpToken from '../../adapters/xfai/products/dex/metadata/linea.lp-token.json'
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
@@ -2179,60 +2174,6 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     SwellSwEthEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.UniswapV2,
-      productId: 'pool',
-      chainId: Chain.Arbitrum,
-      fileKey: 'protocol-token',
-    }),
-    UniswapV2PoolArbitrumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.UniswapV2,
-      productId: 'pool',
-      chainId: Chain.Avalanche,
-      fileKey: 'protocol-token',
-    }),
-    UniswapV2PoolAvalancheProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.UniswapV2,
-      productId: 'pool',
-      chainId: Chain.Base,
-      fileKey: 'protocol-token',
-    }),
-    UniswapV2PoolBaseProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.UniswapV2,
-      productId: 'pool',
-      chainId: Chain.Bsc,
-      fileKey: 'protocol-token',
-    }),
-    UniswapV2PoolBscProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.UniswapV2,
-      productId: 'pool',
-      chainId: Chain.Optimism,
-      fileKey: 'protocol-token',
-    }),
-    UniswapV2PoolOptimismProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.UniswapV2,
-      productId: 'pool',
-      chainId: Chain.Polygon,
-      fileKey: 'protocol-token',
-    }),
-    UniswapV2PoolPolygonProtocolToken,
   ],
   [
     metadataKey({

@@ -26,6 +26,7 @@ import {
   Vault__factory,
 } from '../../contracts'
 import { PoolBalanceChangedEvent } from '../../contracts/Vault'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]
@@ -47,7 +48,6 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -63,7 +63,7 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens() {
     const vaultContract = Vault__factory.connect(
       vaultContractAddresses[this.chainId]!,

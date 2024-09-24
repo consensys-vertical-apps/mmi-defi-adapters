@@ -1,5 +1,6 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -61,7 +62,6 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   private provider: CustomJsonRpcProvider
@@ -95,7 +95,7 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const metaMorphoFactoryContract = Metamorphofactory__factory.connect(
       metaMorphoFactoryContractAddresses[this.protocolId]![this.chainId]!,
@@ -148,8 +148,9 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.withdrawals({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      protocolToken: await this.fetchProtocolTokenMetadata(
+        protocolTokenAddress,
+      ),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -161,8 +162,9 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.deposits({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      protocolToken: await this.fetchProtocolTokenMetadata(
+        protocolTokenAddress,
+      ),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -209,10 +211,12 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     return this.helpers.unwrapOneToOne({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
-      underlyingTokens:
-        await this.fetchUnderlyingTokensMetadata(protocolTokenAddress),
+      protocolToken: await this.fetchProtocolTokenMetadata(
+        protocolTokenAddress,
+      ),
+      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
+        protocolTokenAddress,
+      ),
     })
   }
 

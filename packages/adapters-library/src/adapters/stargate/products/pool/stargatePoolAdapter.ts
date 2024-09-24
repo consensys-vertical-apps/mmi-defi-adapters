@@ -28,6 +28,7 @@ import {
   StargateFactory__factory,
   StargateToken__factory,
 } from '../../contracts'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = { poolId: number; underlyingTokens: Erc20Metadata[] }
 
@@ -42,7 +43,6 @@ export class StargatePoolAdapter implements IProtocolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   constructor({
@@ -108,8 +108,9 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
+    const protocolToken = await this.getProtocolTokenByAddress(
+      protocolTokenAddress,
+    )
 
     return this.helpers.withdrawals({
       protocolToken,
@@ -133,8 +134,9 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     protocolTokenAddress,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const protocolToken =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
+    const protocolToken = await this.getProtocolTokenByAddress(
+      protocolTokenAddress,
+    )
 
     const underlyingTokens = (
       await this.getProtocolTokenByAddress(protocolTokenAddress)
@@ -156,7 +158,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  @CacheToFile({ fileKey: 'lp-token' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const lpFactoryContract = StargateFactory__factory.connect(
       staticChainData[this.chainId]!.factoryAddress,

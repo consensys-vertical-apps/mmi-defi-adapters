@@ -16,6 +16,7 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { McdPot__factory } from '../../contracts'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const MCD_POT_ADDRESS = '0x197e90f9fad81970ba7976f33cbd77088e5d7cf7'
 
@@ -31,7 +32,6 @@ export class MakerSDaiAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -83,7 +83,7 @@ export class MakerSDaiAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     throw new NotImplementedError()
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens() {
     return [
       {

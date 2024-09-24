@@ -27,6 +27,7 @@ import {
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { Cerc20__factory, Comptroller__factory } from '../../contracts'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const contractAddresses: Partial<
   Record<
@@ -63,7 +64,6 @@ export class MendiFinanceSupplyMarketAdapter extends SimplePoolAdapter<Additiona
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -79,7 +79,7 @@ export class MendiFinanceSupplyMarketAdapter extends SimplePoolAdapter<Additiona
     }
   }
 
-  @CacheToFile({ fileKey: 'mendi' })
+  @CacheToDb()
   async getProtocolTokens() {
     const comptrollerContract = Comptroller__factory.connect(
       contractAddresses[this.chainId]!.comptroller,

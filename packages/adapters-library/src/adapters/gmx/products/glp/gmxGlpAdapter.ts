@@ -32,6 +32,7 @@ import {
   RewardReader__factory,
   Vault__factory,
 } from '../../contracts'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = {
   glpRewardRouter: string
@@ -48,7 +49,6 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -65,7 +65,7 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     }
   }
 
-  @CacheToFile({ fileKey: 'glp' })
+  @CacheToDb()
   async getProtocolTokens() {
     const glpAddresses: Partial<
       Record<
@@ -382,8 +382,9 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getProtocolTokenMovements({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      protocolToken: await this.fetchProtocolTokenMetadata(
+        protocolTokenAddress,
+      ),
 
       filter: {
         fromBlock,
@@ -401,8 +402,9 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getProtocolTokenMovements({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      protocolToken: await this.fetchProtocolTokenMetadata(
+        protocolTokenAddress,
+      ),
 
       filter: {
         fromBlock,

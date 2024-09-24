@@ -21,6 +21,7 @@ import {
   Vault__factory,
   VaultsRegistry__factory,
 } from '../../contracts'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const amount1 = parseEther('1')
 
@@ -37,7 +38,6 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter<AdditionalMetadata>
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false, // this might be able to be true but im not too sure just incase leaving as false
     includeInUnwrap: true,
-    version: 2,
   }
 
   private async getVaultsRegistryAddress(): Promise<string> {
@@ -65,7 +65,7 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter<AdditionalMetadata>
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     return [
       {

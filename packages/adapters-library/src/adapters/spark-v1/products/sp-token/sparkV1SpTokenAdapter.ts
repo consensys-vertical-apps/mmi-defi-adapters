@@ -17,6 +17,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]
@@ -28,7 +29,6 @@ export class SparkV1SpTokenAdapter extends SparkV1BasePoolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -45,7 +45,7 @@ export class SparkV1SpTokenAdapter extends SparkV1BasePoolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'sp-token-v1' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     return super.getProtocolTokens()
   }

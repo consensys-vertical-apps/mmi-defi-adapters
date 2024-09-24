@@ -34,6 +34,7 @@ import {
   ConvexRewardFactorySidechain__factory,
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardFactorySidechain'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const PRICE_PEGGED_TO_ONE = 1
 
@@ -53,7 +54,6 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -113,7 +113,7 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
     ]
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const convexFactory = ConvexFactorySidechain__factory.connect(
       CONVEX_FACTORY_ADDRESS,
@@ -241,8 +241,9 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken =
-      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
 
     const extraRewardTracker = ConvexRewardFactorySidechain__factory.connect(
       protocolTokenAddress,
