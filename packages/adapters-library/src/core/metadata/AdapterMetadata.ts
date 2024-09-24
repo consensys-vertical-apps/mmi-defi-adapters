@@ -178,16 +178,6 @@ import MorphoBlueMarketSupplyBaseMarketSupply from '../../adapters/morpho-blue/p
 
 import MorphoBlueMarketBorrowBaseMarketBorrow from '../../adapters/morpho-blue/products/market-borrow/metadata/base.market-borrow.json'
 
-import EtherFiEEthEthereumProtocolToken from '../../adapters/etherfi/products/e-eth/metadata/ethereum.protocol-token.json'
-
-import EtherFiWeEthEthereumProtocolToken from '../../adapters/etherfi/products/we-eth/metadata/ethereum.protocol-token.json'
-
-import EtherFiLiquidEthereumProtocolToken from '../../adapters/etherfi/products/liquid/metadata/ethereum.protocol-token.json'
-
-import EtherFiL2BaseProtocolToken from '../../adapters/etherfi/products/l2/metadata/base.protocol-token.json'
-
-import EtherFiL2LineaProtocolToken from '../../adapters/etherfi/products/l2/metadata/linea.protocol-token.json'
-
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -784,51 +774,6 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     EthenaEthenaEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.EtherFi,
-      productId: 'e-eth',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    EtherFiEEthEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.EtherFi,
-      productId: 'l2',
-      chainId: Chain.Base,
-      fileKey: 'protocol-token',
-    }),
-    EtherFiL2BaseProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.EtherFi,
-      productId: 'l2',
-      chainId: Chain.Linea,
-      fileKey: 'protocol-token',
-    }),
-    EtherFiL2LineaProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.EtherFi,
-      productId: 'liquid',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    EtherFiLiquidEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.EtherFi,
-      productId: 'we-eth',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    EtherFiWeEthEthereumProtocolToken,
   ],
   [
     metadataKey({
