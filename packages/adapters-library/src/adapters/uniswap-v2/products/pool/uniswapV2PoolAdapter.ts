@@ -10,6 +10,11 @@ import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   productId = 'pool'
 
+  protected PROTOCOL_TOKEN_PREFIX_OVERRIDE = {
+    name: 'Uniswap V2',
+    symbol: 'UNI-V2',
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,

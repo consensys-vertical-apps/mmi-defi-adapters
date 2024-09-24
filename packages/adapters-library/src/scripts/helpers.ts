@@ -458,8 +458,8 @@ export class Helpers {
       return onChainTokenMetadata
     }
 
-    const errorMessage = 'Cannot find token metadata for token'
-    logger.error({ tokenAddress, chainId: this.chainId }, errorMessage)
+    const errorMessage = 'Token metadata request failed'
+    logger.error({ tokenAddress, chainId: this.chainId })
     throw new Error(errorMessage)
   }
 

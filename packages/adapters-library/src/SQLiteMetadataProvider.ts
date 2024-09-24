@@ -12,6 +12,8 @@ export type IMetadataProvider = {
     protocolId: Protocol
     productId: string
   }) => Promise<ProtocolToken[]>
+
+  getPoolCount: (protocolId: string, productId: string) => Promise<number>
 }
 
 export type PoolRow = {
@@ -54,6 +56,24 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
     productId: string
   }): Promise<ProtocolToken[]> {
     return this.getPoolsFromDb(input)
+  }
+
+  async getPoolCount(protocolId: string, productId: string): Promise<number> {
+    // Prepare the query to get the adapter ID and count the pools
+    const query = `
+      SELECT COUNT(*) AS pool_count
+      FROM pools
+      WHERE adapter_id = (
+        SELECT adapter_id FROM adapters WHERE protocol_id = ? AND product_id = ?
+      );
+    `
+
+    // Execute the query with the provided protocolId and productId
+    const stmt = this.database.prepare(query)
+    const result = stmt.get(protocolId, productId) as { pool_count?: number }
+
+    // Return the pool count from the result
+    return Number(result.pool_count ?? 0)
   }
 
   private readonly selectProtocolPoolsQuery = `

@@ -167,6 +167,11 @@ async function writeProtocolTokensToDb({
 
     const db = new Database(dbPath)
 
+    // Enable performance optimizations
+    db.exec('PRAGMA synchronous = OFF;') // Reduce disk synchronization overhead
+    db.exec('PRAGMA journal_mode = WAL;') // Use Write-Ahead Logging for faster writes
+    db.exec('PRAGMA foreign_keys = OFF;') // Disable foreign key constraints temporarily for performance
+
     // Step 1: Ensure adapter exists or create it
     const insertOrIgnoreAdapterQuery = `
     INSERT OR IGNORE INTO adapters (protocol_id, product_id)
@@ -185,65 +190,101 @@ async function writeProtocolTokensToDb({
       throw new Error('Failed to retrieve or create adapter')
     }
 
-    // Function to insert a single token into the tokens table
-    function insertToken(token: Erc20Metadata) {
-      const insertTokenQuery = `
-      INSERT OR REPLACE INTO tokens (
-        token_address,
-        token_name,
-        token_symbol,
-        token_decimals
+    const insertPoolStmt = db.prepare(`
+      INSERT INTO pools (
+        adapter_id,
+        pool_address,
+        adapter_pool_id,
+        additional_data
       ) VALUES (?, ?, ?, ?);
-    `
-      db.prepare(insertTokenQuery).run(
-        token.address,
-        token.name,
-        token.symbol,
-        token.decimals,
-      )
+    `)
+
+    // Define relatedTokenQueries for underlying_tokens, reward_tokens, extra_reward_tokens
+    const relatedTokenQueries: Record<string, string> = {
+      underlying_tokens: `
+        INSERT OR REPLACE INTO underlying_tokens (
+          pool_id,
+          token_address,
+          additional_data
+        ) VALUES (?, ?, ?);
+      `,
+      reward_tokens: `
+        INSERT OR REPLACE INTO reward_tokens (
+          pool_id,
+          token_address,
+          additional_data
+        ) VALUES (?, ?, ?);
+      `,
+      extra_reward_tokens: `
+        INSERT OR REPLACE INTO extra_reward_tokens (
+          pool_id,
+          token_address,
+          additional_data
+        ) VALUES (?, ?, ?);
+      `,
     }
 
-    // Function to insert related tokens into a specific table
-    function insertRelatedTokens(
+    // Use a single transaction for all inserts to boost performance
+    db.exec('BEGIN TRANSACTION')
+
+    // Batch insert function
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    function batchInsert(query: string, data: any[][]) {
+      const stmt = db.prepare(query)
+      const batch = db.transaction((items) => {
+        for (const item of items) {
+          stmt.run(...item)
+        }
+      })
+      batch(data)
+    }
+
+    // Prepare data for tokens batch insert (pools + related tokens)
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    const tokenData: any[] = []
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    const relatedTokenData: any[] = []
+
+    // Helper function to collect token data for batch insert
+    function collectTokenData(
       poolId: number,
       tokens: Erc20Metadata[] | undefined,
       tableName: string,
     ) {
       if (!tokens || tokens.length === 0) return
 
-      const insertRelatedTokenQuery = `
-      INSERT OR REPLACE INTO ${tableName} (
-        pool_id,
-        token_address,
-        additional_data
-      ) VALUES (?, ?, ?);
-    `
+      tokens.forEach((token) => {
+        // Add token to be inserted into the tokens table
+        tokenData.push([
+          token.address,
+          token.name,
+          token.symbol,
+          token.decimals,
+        ])
 
-      const insertStmt = db.prepare(insertRelatedTokenQuery)
-
-      for (const relatedToken of tokens) {
-        try {
-          const { name, decimals, symbol, address, ...additionalData } =
-            relatedToken
-          insertToken({ name, decimals, symbol, address }) // Ensure the related token is also in the tokens table
-          insertStmt.run(poolId, address, JSON.stringify(additionalData))
-        } catch (error) {
-          console.error('Error saving related token to database:', relatedToken)
-          throw error
-        }
-      }
+        // Add related token to the specific table (underlying_tokens, reward_tokens, etc.)
+        relatedTokenData.push({
+          tableName,
+          values: [
+            poolId,
+            token.address,
+            //@ts-ignore
+            JSON.stringify(token.additionalData || {}),
+          ],
+        })
+      })
     }
 
-    // Step 2: Iterate over the metadata array and process each ProtocolToken
+    // Process each pool and collect token data
     for (const pool of metadata) {
       try {
         const {
-          name,
-          decimals,
-          symbol,
           address,
           tokenId,
           underlyingTokens,
+          name,
+          symbol,
+          decimals,
           //@ts-ignore
           rewardTokens,
           //@ts-ignore
@@ -251,25 +292,16 @@ async function writeProtocolTokensToDb({
           ...additionalData
         } = pool
 
-        insertToken({ name, decimals, symbol, address })
+        // Add the main token data for pools
+        tokenData.push([address, pool.name, pool.symbol, pool.decimals])
 
-        const insertPoolQuery = `
-        INSERT INTO pools (
-          adapter_id,
-          pool_address,
-          adapter_pool_id,
-          additional_data
-        ) VALUES (?, ?, ?, ?);
-      `
-
-        const result = db
-          .prepare(insertPoolQuery)
-          .run(
-            adapterId,
-            address,
-            tokenId || null,
-            JSON.stringify(additionalData),
-          )
+        // Insert pool data
+        const result = insertPoolStmt.run(
+          adapterId,
+          address,
+          tokenId || null,
+          JSON.stringify(additionalData),
+        )
 
         const poolId = result.lastInsertRowid
 
@@ -277,32 +309,18 @@ async function writeProtocolTokensToDb({
           throw new Error('Failed to insert pool')
         }
 
-        // Insert related tokens into the corresponding tables
-        insertRelatedTokens(
+        // Collect related token data
+        collectTokenData(
           poolId as number,
-          pool.underlyingTokens,
+          underlyingTokens,
           'underlying_tokens',
         )
-
-        //@ts-ignore
-        if (pool.rewardTokens) {
-          //@ts-ignore
-          insertRelatedTokens(
-            poolId as number,
-            //@ts-ignore
-            pool.rewardTokens,
-            'reward_tokens',
-          )
-        }
-
-        //@ts-ignore
-        if (pool.extraRewardTokens) {
-          insertRelatedTokens(
-            poolId as number, //@ts-ignore
-            pool.extraRewardTokens,
-            'extra_reward_tokens',
-          )
-        }
+        collectTokenData(poolId as number, rewardTokens, 'reward_tokens')
+        collectTokenData(
+          poolId as number,
+          extraRewardTokens,
+          'extra_reward_tokens',
+        )
       } catch (error) {
         console.error('Error saving pool to database:', pool, {
           chainId,
@@ -313,6 +331,33 @@ async function writeProtocolTokensToDb({
         throw error
       }
     }
+
+    // Batch insert all tokens into the tokens table
+    batchInsert(
+      `
+      INSERT OR REPLACE INTO tokens (
+        token_address,
+        token_name,
+        token_symbol,
+        token_decimals
+      ) VALUES (?, ?, ?, ?);
+    `,
+      tokenData,
+    )
+
+    // Batch insert related tokens directly into their respective tables
+    for (const { tableName, values } of relatedTokenData) {
+      const query = relatedTokenQueries[tableName]
+      if (query) {
+        batchInsert(query, [values])
+      }
+    }
+
+    // Commit the transaction
+    db.exec('COMMIT')
+
+    // Re-enable foreign key constraints after the transaction is complete
+    db.exec('PRAGMA foreign_keys = ON;')
 
     console.log(
       'All protocol tokens and their related tokens have been saved to the database successfully.',
@@ -353,7 +398,8 @@ const createTableQueries = {
         adapter_pool_id VARCHAR(255),
         additional_data TEXT,
         FOREIGN KEY (adapter_id) REFERENCES adapters(adapter_id),
-        FOREIGN KEY (pool_address) REFERENCES tokens(token_address)
+        FOREIGN KEY (pool_address) REFERENCES tokens(token_address),
+        UNIQUE (pool_address, adapter_pool_id) -- Adjusted to refer to valid columns
     );`,
   underlying_tokens: `
     CREATE TABLE IF NOT EXISTS underlying_tokens (
@@ -361,7 +407,8 @@ const createTableQueries = {
         token_address VARCHAR(255),
         additional_data TEXT,
         FOREIGN KEY (pool_id) REFERENCES pools(pool_id),
-        FOREIGN KEY (token_address) REFERENCES tokens(token_address)
+        FOREIGN KEY (token_address) REFERENCES tokens(token_address),
+        UNIQUE (pool_id, token_address)
     );`,
   reward_tokens: `
     CREATE TABLE IF NOT EXISTS reward_tokens (
@@ -369,7 +416,8 @@ const createTableQueries = {
         token_address VARCHAR(255),
         additional_data TEXT,
         FOREIGN KEY (pool_id) REFERENCES pools(pool_id),
-        FOREIGN KEY (token_address) REFERENCES tokens(token_address)
+        FOREIGN KEY (token_address) REFERENCES tokens(token_address),
+        UNIQUE (pool_id, token_address)
     );`,
   extra_reward_tokens: `
     CREATE TABLE IF NOT EXISTS extra_reward_tokens (
@@ -377,7 +425,8 @@ const createTableQueries = {
         token_address VARCHAR(255),
         additional_data TEXT,
         FOREIGN KEY (pool_id) REFERENCES pools(pool_id),
-        FOREIGN KEY (token_address) REFERENCES tokens(token_address)
+        FOREIGN KEY (token_address) REFERENCES tokens(token_address),
+        UNIQUE (pool_id, token_address)
     );`,
 }
 

@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { Protocol } from '../../adapters/protocols'
 import {
   UniswapV2Factory__factory,
@@ -29,6 +30,8 @@ import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
 import { getTokenMetadata } from '../utils/getTokenMetadata'
 import { logger } from '../utils/logger'
+import PQueue from 'p-queue'
+import { add } from 'lodash'
 
 export type AdditionalTokenMetadata = {
   underlyingTokens: Erc20Metadata[]
@@ -50,12 +53,15 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
   protected readonly MAX_SUBGRAPH_PAIRS: number = 1000
   protected readonly MIN_SUBGRAPH_VOLUME: number = 50000
   protected readonly MIN_TOKEN_RESERVE: number = 1
+  protected readonly MAX_CONCURRENT_FACTORY_PROMISES: number = 10000
+  protected readonly MAX_FACTORY_JOB_SIZE: number = 100000
 
   public adapterSettings: AdapterSettings
 
-  protected readonly PROTOCOL_TOKEN_PREFIX_OVERRIDE:
-    | { name: string; symbol: string }
-    | undefined
+  protected abstract PROTOCOL_TOKEN_PREFIX_OVERRIDE: {
+    name: string
+    symbol: string
+  }
 
   protected metadataBased: boolean
 
@@ -111,39 +117,17 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       throw new NotImplementedError()
     }
 
+    if (factoryMetadata.type !== 'graphql') {
+      return this.factoryPoolExtraction(factoryMetadata.factoryAddress)
+    }
+
     const pairs: {
       pairAddress: string
       token0Address: string
       token1Address: string
-    }[] =
-      factoryMetadata.type === 'graphql'
-        ? await this.graphQlPoolExtraction(factoryMetadata)
-        : await this.factoryPoolExtraction(factoryMetadata.factoryAddress)
+    }[] = await this.graphQlPoolExtraction(factoryMetadata)
 
-    const pairPromises = await Promise.allSettled(
-      pairs.map(async (pair) => {
-        const [protocolToken, token0, token1] = await Promise.all([
-          getTokenMetadata(pair.pairAddress, this.chainId, this.provider),
-          getTokenMetadata(pair.token0Address, this.chainId, this.provider),
-          getTokenMetadata(pair.token1Address, this.chainId, this.provider),
-        ])
-
-        const protocolTokenUpdated = await this.setTokenNameAndSymbol(
-          protocolToken,
-          {
-            token0,
-            token1,
-          },
-        )
-
-        return {
-          ...protocolTokenUpdated,
-          underlyingTokens: [token0, token1],
-          token0: pair.token0Address,
-          token1: pair.token1Address,
-        }
-      }),
-    )
+    const pairPromises = await this.processPairsWithQueue(pairs)
 
     return pairPromises.reduce((metadataObject, pair) => {
       if (pair.status === 'fulfilled') {
@@ -151,6 +135,67 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       }
       return metadataObject
     }, [] as ProtocolToken<AdditionalTokenMetadata>[])
+  }
+
+  async processPairsWithQueue(
+    pairs: {
+      pairAddress: string
+      token0Address: string
+      token1Address: string
+    }[],
+  ) {
+    // Initialize p-queue with controlled concurrency
+    const queue = new PQueue({
+      concurrency: this.MAX_CONCURRENT_FACTORY_PROMISES,
+    })
+
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    const results: any[] = []
+
+    // Process each pair with concurrency control
+    for (const pair of pairs) {
+      queue.add(async () => {
+        try {
+          // Fetch token metadata concurrently
+          const [token0, token1] = await Promise.all([
+            this.helpers.getTokenMetadata(pair.token0Address),
+            this.helpers.getTokenMetadata(pair.token1Address),
+          ])
+
+          // Update protocol token with token0 and token1 metadata
+          const protocolTokenUpdated = await this.setTokenNameAndSymbol(
+            pair.pairAddress,
+            { token0, token1 },
+          )
+
+          // Construct the result and push to results array
+          const result = {
+            ...protocolTokenUpdated,
+            underlyingTokens: [token0, token1],
+            token0: pair.token0Address,
+            token1: pair.token1Address,
+          }
+
+          results.push(result)
+
+          console.log(
+            `[${new Date().toISOString()}] Processed metadata ${
+              results.length
+            } of ${pairs.length}`,
+          )
+        } catch (error) {
+          console.error(
+            `Error processing pair: ${pair.pairAddress}`,
+            (error as Error).message,
+          )
+        }
+      })
+    }
+
+    // Wait for the queue to finish processing all pairs
+    await queue.onIdle()
+
+    return results
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
@@ -212,7 +257,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
         })
 
         const protocolTokenBalanceUpdated = await this.setTokenNameAndSymbol(
-          protocolTokenBalance,
+          protocolTokenBalance.address,
           {
             // Uniswap V2 pairs always have two tokens
             token0: underlyingRates.tokens![0]!,
@@ -222,6 +267,8 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
 
         return {
           ...protocolTokenBalanceUpdated,
+          type: protocolTokenBalance.type,
+          balanceRaw: protocolTokenBalance.balanceRaw,
           tokens: underlyingRates.tokens!.map((token) => {
             return {
               address: token.address,
@@ -252,9 +299,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       })
     }
 
-    const protocolToken = await this.setTokenNameAndSymbol(
-      await getTokenMetadata(protocolTokenAddress, this.chainId, this.provider),
-    )
+    const protocolToken = await this.setTokenNameAndSymbol(protocolTokenAddress)
 
     const withdrawals = await this.helpers.withdrawals({
       protocolToken,
@@ -304,9 +349,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       })
     }
 
-    const protocolToken = await this.setTokenNameAndSymbol(
-      await getTokenMetadata(protocolTokenAddress, this.chainId, this.provider),
-    )
+    const protocolToken = await this.setTokenNameAndSymbol(protocolTokenAddress)
 
     const deposits = await this.helpers.deposits({
       protocolToken,
@@ -533,55 +576,116 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
     })
   }
 
-  private async factoryPoolExtraction(factoryAddress: string): Promise<
-    {
-      pairAddress: string
-      token0Address: string
-      token1Address: string
-    }[]
-  > {
+  private async factoryPoolExtraction(
+    factoryAddress: string,
+  ): Promise<ProtocolToken<AdditionalTokenMetadata>[]> {
     const factoryContract = UniswapV2Factory__factory.connect(
       factoryAddress,
       this.provider,
     )
-
     const allPairsLength = Number(await factoryContract.allPairsLength())
 
-    return await filterMapAsync(
-      [...Array(allPairsLength).keys()],
-      async (_, index) => {
-        const pairAddress = await factoryContract.allPairs(index)
-        const pairContract = UniswapV2Pair__factory.connect(
-          pairAddress,
-          this.provider,
-        )
-        const [token0, token1, totalSupply] = await Promise.all([
-          pairContract.token0(),
-          pairContract.token1(),
-          pairContract.totalSupply(),
-        ])
+    // Define jobSize to limit how many pairs to process in one go
+    const jobSize = Math.min(this.MAX_FACTORY_JOB_SIZE, allPairsLength)
+    const concurrency = Number(this.MAX_CONCURRENT_FACTORY_PROMISES)
 
-        if (totalSupply > 0) {
-          return {
-            pairAddress,
-            token0Address: token0,
-            token1Address: token1,
-          }
-        }
-      },
+    // Initialize p-queue for concurrency control
+    const queue = new PQueue({ concurrency })
+
+    const startIndex = await this.helpers.metadataProvider.getPoolCount(
+      this.protocolId,
+      this.productId,
     )
+
+    console.log(
+      `Starting factoryPoolExtraction with jobSize: ${jobSize}, concurrency: ${concurrency}, startIndex: ${startIndex}`,
+    )
+
+    const results: ProtocolToken<AdditionalTokenMetadata>[] = []
+
+    // Start from adapterPoolCount and continue to jobSize
+
+    // Process pairs from startIndex to jobSize
+    for (
+      let index = startIndex;
+      index < startIndex + jobSize && index < allPairsLength;
+      index++
+    ) {
+      queue.add(async () => {
+        try {
+          const pairAddress = getAddress(await factoryContract.allPairs(index))
+          const pairContract = UniswapV2Pair__factory.connect(
+            pairAddress,
+            this.provider,
+          )
+
+          const [token0Address, token1Address] = await Promise.all([
+            pairContract.token0(),
+            pairContract.token1(),
+          ])
+
+          const [token0, token1] = await Promise.all([
+            this.helpers.getTokenMetadata(token0Address),
+            this.helpers.getTokenMetadata(token1Address),
+          ])
+
+          // Update protocol token with token0 and token1 metadata
+          const protocolTokenUpdated = await this.setTokenNameAndSymbol(
+            pairAddress,
+            { token0, token1 },
+          )
+
+          // Construct the result and push to results array
+          const result = {
+            ...protocolTokenUpdated,
+            address: getAddress(protocolTokenUpdated.address),
+
+            underlyingTokens: [
+              { ...token0, address: getAddress(token0.address) },
+              { ...token1, address: getAddress(token1.address) },
+            ],
+            token0: getAddress(token0.address),
+            token1: getAddress(token1.address),
+          }
+
+          results.push(result)
+
+          console.log(
+            `[${new Date().toISOString()}] Processed metadata ${
+              results.length
+            } of ${jobSize}`,
+          )
+
+          console.log(`Processed pair at index ${index}`)
+        } catch (error) {
+          console.error(
+            `Error processing pair at index ${index}:`,
+            (error as Error).message,
+          )
+        }
+      })
+    }
+
+    // Wait for the queue to finish all tasks
+    await queue.onIdle()
+
+    console.log(
+      `Completed factoryPoolExtraction. Processed ${results.length} pairs.`,
+    )
+
+    return results
   }
 
-  private async setTokenNameAndSymbol<Token extends Erc20Metadata>(
-    protocolToken: Token,
+  private async setTokenNameAndSymbol(
+    pairAddress: string,
     underlyings?: { token0: Erc20Metadata; token1: Erc20Metadata },
-  ): Promise<Token> {
+  ): Promise<Erc20Metadata> {
     let token0: Erc20Metadata
     let token1: Erc20Metadata
 
     if (!underlyings) {
       const pairContract = UniswapV2Pair__factory.connect(
-        protocolToken.address,
+        pairAddress,
         this.provider,
       )
 
@@ -590,25 +694,24 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
         pairContract.token1(),
       ])
       ;[token0, token1] = await Promise.all([
-        getTokenMetadata(token0Address, this.chainId, this.provider),
-        getTokenMetadata(token1Address, this.chainId, this.provider),
+        this.helpers.getTokenMetadata(token0Address),
+        this.helpers.getTokenMetadata(token1Address),
       ])
     } else {
       token0 = underlyings.token0
       token1 = underlyings.token1
     }
 
-    const [name, symbol] = this.PROTOCOL_TOKEN_PREFIX_OVERRIDE
-      ? [
-          this.PROTOCOL_TOKEN_PREFIX_OVERRIDE.name,
-          this.PROTOCOL_TOKEN_PREFIX_OVERRIDE.symbol,
-        ]
-      : [protocolToken.name, protocolToken.symbol]
+    const [name, symbol] = [
+      this.PROTOCOL_TOKEN_PREFIX_OVERRIDE.name,
+      this.PROTOCOL_TOKEN_PREFIX_OVERRIDE.symbol,
+    ]
 
     return {
-      ...protocolToken,
+      address: getAddress(pairAddress),
       name: `${name} ${token0.symbol} / ${token1.symbol}`,
       symbol: `${symbol}/${token0.symbol}/${token1.symbol}`,
+      decimals: 18,
     }
   }
 
