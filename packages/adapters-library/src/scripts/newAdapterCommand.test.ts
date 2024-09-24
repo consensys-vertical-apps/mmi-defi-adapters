@@ -1,6 +1,6 @@
 import { DefiProvider } from '../defiProvider'
 
-import { calculateAdapterOutcomes, createCode } from './newAdapter2Command'
+import { calculateAdapterOutcomes, createCode } from './newAdapterCommand'
 import { QuestionAnswers } from './questionnaire'
 
 function generateAllAnswers(): QuestionAnswers[] {

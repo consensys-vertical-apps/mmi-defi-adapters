@@ -5,11 +5,9 @@ import { Chain } from '../core/constants/chains'
 import { lowerFirst, pascalCase } from '../core/utils/caseConversion'
 import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import { DefiProvider } from '../defiProvider'
-import {
-  addProtocol,
-  buildIntegrationTests,
-  exportAdapter,
-} from './newAdapterCommand'
+import { addProtocol } from './adapterBuilder/addProtocol'
+import { buildIntegrationTests } from './adapterBuilder/buildIntegrationTests'
+import { exportAdapter } from './adapterBuilder/exportAdapter'
 
 const defiProvider = new DefiProvider()
 

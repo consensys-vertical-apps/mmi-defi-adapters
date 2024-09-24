@@ -1,673 +1,338 @@
-import { promises as fs } from 'node:fs'
-import * as path from 'node:path'
+import { readFile } from 'node:fs/promises'
+import path from 'node:path'
 import chalk from 'chalk'
 import { Command } from 'commander'
-import { QuestionCollection, prompt } from 'inquirer'
-import partition from 'lodash/partition'
-import { parse, print, types, visit } from 'recast'
-import { Protocol } from '../adapters/protocols'
+import { prompt } from 'inquirer'
 import { Chain } from '../core/constants/chains'
-import {
-  isKebabCase,
-  isPascalCase,
-  kebabCase,
-  lowerFirst,
-  pascalCase,
-} from '../core/utils/caseConversion'
-import { filterMapSync } from '../core/utils/filters'
+import { lowerFirst, pascalCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
 import { writeAndLintFile } from '../core/utils/writeAndLintFile'
-import { DefiProvider } from '../defiProvider'
-import { chainFilter, protocolFilter } from './commandFilters'
-import { compoundV2BorrowMarketForkAdapterTemplate } from './templates/compoundV2BorrowMarketForkAdapter'
-import { compoundV2SupplyMarketForkAdapterTemplate } from './templates/compoundV2SupplyMarketForkAdapter'
-import { defaultAdapterTemplate } from './templates/defaultAdapter'
-import { lpStakingAdapterTemplate } from './templates/lpStakingProtocolAdapter'
-import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
-import { testCases } from './templates/testCases'
-import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
-import { votingEscrowAdapterTemplate } from './templates/votingEscrowAdapter'
-import { writeOnlyDeFiAdapter } from './templates/writeOnlyDeFiAdapter'
-import { sortEntries } from './utils/sortEntries'
-import n = types.namedTypes
-import b = types.builders
+import type { DefiProvider } from '../defiProvider'
+import { addProtocol } from './adapterBuilder/addProtocol'
+import { buildIntegrationTests } from './adapterBuilder/buildIntegrationTests'
+import { exportAdapter } from './adapterBuilder/exportAdapter'
+import { newAdapterCliLogo } from './newAdapterCliLogo'
+import {
+  BlankAdapterOutcomeOptions,
+  QuestionAnswers,
+  QuestionName,
+  TemplateNames,
+  Templates,
+  getQuestionnaire,
+} from './questionnaire'
+import { Replacements } from './replacements'
 
-export type TemplateBuilder = (adapterSettings: NewAdapterAnswers) => string
+const colorBlue = chalk.rgb(0, 112, 243).bold
+const boldWhiteBg = chalk.bgWhite.bold
+const boldText = chalk.bold
+const italic = chalk.italic
+const bluePrefix = chalk.blue('?')
 
-export type NewAdapterAnswers = {
-  protocolKey: string
-  protocolId: string
-  productId: string
-  adapterClassName: string
-  templateBuilder: TemplateBuilder
-  chainKeys: (keyof typeof Chain)[]
-}
+type QuestionnaireType = Awaited<ReturnType<typeof getQuestionnaire>>
+type KeyofQuestionnaire = keyof QuestionnaireType
+type ValueOfQuestionnaire = QuestionnaireType[KeyofQuestionnaire]
 
-const Templates: Record<string, TemplateBuilder> = {
-  ['DefaultAdapter (blank adapter - hard mode)']: defaultAdapterTemplate,
-  ['SimplePoolAdapter (your DeFi token(s) follows ERC20 standard)']:
-    simplePoolAdapterTemplate,
-  ['UniswapV2PoolForkAdapter']: uniswapV2PoolForkAdapterTemplate,
-  ['LpStakingAdapter (lp token and supports rewards)']:
-    lpStakingAdapterTemplate,
-  ['CompoundV2SupplyMarketForkAdapter']:
-    compoundV2SupplyMarketForkAdapterTemplate,
-  ['CompoundV2BorrowMarketForkAdapter']:
-    compoundV2BorrowMarketForkAdapterTemplate,
-  ['VotingEscrowAdapter (like curve and stargate voting escrow)']:
-    votingEscrowAdapterTemplate,
-  ['WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)']:
-    writeOnlyDeFiAdapter,
-}
-
-export function newAdapterCommand(
+export async function newAdapterCommand(
   program: Command,
   defiProvider: DefiProvider,
 ) {
   program
     .command('new-adapter')
-    .option('-p, --protocol <protocol>', 'Protocol name for the adapter')
-    .option('-pd, --product <product>', 'Product name')
-    .option('-t, --template <template>', 'Template to use')
-    .option(
-      '-c, --chains <chains>',
-      'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
-    )
+    .description('Start the interactive CLI questionnaire')
     .option('-y, --yes', 'Skip prompts and use default values')
-    .showHelpAfterError()
-    .action(
-      async ({
-        protocol,
-        product,
-        template,
-        chains,
-        yes: skipQuestions,
-      }: {
-        protocol: string
-        product: string
-        template: string
-        chains: string
-        yes: boolean
-      }) => {
-        const chainKeys = filterMapSync(
-          chains?.split(',') ?? [],
-          (filterInput) => {
-            try {
-              const chainId = chainFilter(filterInput)
-              return Object.keys(Chain).find((chainKey) => {
-                return Chain[chainKey as keyof typeof Chain] === chainId
-              })
-            } catch (e) {
-              return undefined
-            }
-          },
-        ) as (keyof typeof Chain)[]
+    .option('-t, --template <template>', 'Template to use')
+    .action(initiateQuestionnaire(defiProvider))
+}
 
-        const inputProtocolId = (() => {
-          try {
-            return protocolFilter(protocol)
-          } catch (e) {
-            return undefined
-          }
-        })()
+export function initiateQuestionnaire(defiProvider: DefiProvider) {
+  return async ({
+    yes: skipQuestions,
+    template: inputTemplate,
+  }: {
+    yes: boolean
+    template: QuestionAnswers['forkCheck']
+  }) => {
+    if (!skipQuestions) {
+      const exit = await welcome(defiProvider)
+      if (exit) {
+        return
+      }
+    }
 
-        const inputProtocolKey = inputProtocolId
-          ? Object.entries(Protocol).find(
-              ([_, value]) => value === inputProtocolId,
-            )![0]
-          : undefined
-
-        const questions: QuestionCollection = [
-          {
-            type: 'input',
-            name: 'protocolKey',
-            message:
-              'What PascalCase name should be used as this protocol key?',
-            default: protocol ? pascalCase(protocol) : undefined,
-            validate: (input: string) =>
-              isPascalCase(input) || 'Value must be PascalCase',
-            when: !inputProtocolId,
-          },
-          {
-            type: 'input',
-            name: 'protocolId',
-            message:
-              'What kebab-case name should be used for this protocol folder?',
-            default: ({ protocolKey }: { protocolKey: string }) =>
-              kebabCase(protocol ? protocol : protocolKey),
-            validate: (input: string) =>
-              isKebabCase(input) || 'Value must be kebab-case',
-            when: !inputProtocolId,
-          },
-          {
-            type: 'checkbox',
-            name: 'chainKeys',
-            message: 'What chains will the adapter be valid for?',
-            choices: Object.keys(Chain),
-            default: chainKeys.length ? chainKeys : ['Ethereum'],
-          },
-          {
-            type: 'input',
-            name: 'productId',
-            message:
-              'What kebab-case name should be used for this adapter product?',
-            default: product ? kebabCase(product) : undefined,
-            validate: (
-              input: string,
-              { chainKeys }: { chainKeys: (keyof typeof Chain)[] },
-            ) => {
-              if (!isKebabCase(input)) {
-                return 'Value must be kebab-case'
-              }
-
-              if (!inputProtocolId) {
-                return true
-              }
-
-              // Check if that productId already exists for that protocol
-              const productExists = chainKeys.some((chainKey) => {
-                const chainId = Chain[chainKey]
-
-                try {
-                  return defiProvider.adaptersController.fetchAdapter(
-                    chainId,
-                    inputProtocolId,
-                    input,
-                  )
-                } catch (_) {
-                  return false
-                }
-              })
-
-              if (productExists) {
-                return 'ProductId already exists for that Protocol and one of the chains selected'
-              }
-
-              return true
-            },
-          },
-          {
-            type: 'list',
-            name: 'templateBuilder',
-            message: 'What template should be used for the adapter class?',
-            choices: Object.keys(Templates),
-            default: template ? template : undefined,
-            filter: (input: string) => Templates[input],
-            pageSize: 9990,
-          },
-        ]
-
-        const initialAnswers: Partial<NewAdapterAnswers> = skipQuestions
-          ? {
-              protocolKey: inputProtocolKey ?? pascalCase(protocol),
-              protocolId:
-                inputProtocolId ??
-                (isKebabCase(protocol) ? protocol : kebabCase(protocol)),
-              chainKeys: chainKeys.length ? chainKeys : ['Ethereum'],
-              productId: kebabCase(product),
-              templateBuilder: Templates[template],
-            }
-          : {
-              protocolKey: inputProtocolKey,
-              protocolId: inputProtocolId,
-            }
-
-        const inquirerAnswers = await prompt<NewAdapterAnswers>(
-          questions,
-          initialAnswers,
-        )
-
-        const answers = {
-          ...inquirerAnswers,
-          adapterClassName: `${inquirerAnswers.protocolKey}${pascalCase(
-            inquirerAnswers.productId,
-          )}Adapter`,
-        }
-
-        logger.debug(answers, 'Create new adapter')
-
-        await buildAdapterFromTemplate(answers)
-        await buildIntegrationTests(answers)
-        await addProtocol(answers)
-        await exportAdapter(answers)
-
-        console.log(
-          chalk`\n{bold New adapter created at: {bgBlack.red src/adapters/${
-            answers.protocolId
-          }/products/${answers.productId}/${lowerFirst(
-            answers.adapterClassName,
-          )}.ts}}\n`,
-        )
-      },
+    const answers = await getAnswersAndOutcomes(
+      defiProvider,
+      skipQuestions,
+      inputTemplate,
     )
-}
 
-/**
- * @description Creates a new adapter using the template
- */
-async function buildAdapterFromTemplate(adapterSettings: NewAdapterAnswers) {
-  const { protocolId, productId, adapterClassName, templateBuilder } =
-    adapterSettings
+    const outcomes = calculateAdapterOutcomes(defiProvider, answers)
 
-  const adapterFilePath = buildAdapterFilePath(
-    protocolId,
-    productId,
-    adapterClassName,
-  )
+    const code: string = await createCode(answers, outcomes)
 
-  await writeAndLintFile(adapterFilePath, templateBuilder(adapterSettings))
-}
-
-/**
- * @description Creates a new file for integration tests if it doesn't exist
- */
-export async function buildIntegrationTests({
-  protocolId,
-  protocolKey,
-  productId,
-}: {
-  protocolId: string
-  protocolKey: string
-  productId: string
-}) {
-  const testCasesFilePath = `./packages/adapters-library/src/adapters/${protocolId}/tests/testCases.ts`
-
-  if (await fileExists(testCasesFilePath)) {
-    return
-  }
-
-  await writeAndLintFile(testCasesFilePath, testCases(productId))
-
-  const testsFile = path.resolve(
-    './packages/adapters-library/src/adapters/integration.test.ts',
-  )
-  const contents = await fs.readFile(testsFile, 'utf-8')
-  const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
-  })
-
-  visit(ast, {
-    visitProgram(path) {
-      const programNode = path.value as n.Program
-
-      addTestCasesImport(programNode, protocolId, protocolKey)
-
-      this.traverse(path)
-    },
-    visitVariableDeclarator(path) {
-      const node = path.node
-      if (!n.Identifier.check(node.id)) {
-        return false
-      }
-
-      if (
-        node.id.name === 'protocolTestCases' &&
-        n.ObjectExpression.check(node.init)
-      ) {
-        if (
-          node.init.properties.some(
-            (property) =>
-              n.ObjectProperty.check(property) &&
-              n.MemberExpression.check(property.key) &&
-              n.Identifier.check(property.key.property) &&
-              property.key.property.name === protocolKey,
-          )
-        ) {
-          return false
-        }
-
-        const newEntry = b.objectProperty(
-          b.memberExpression(
-            b.identifier('Protocol'),
-            b.identifier(protocolKey),
-          ),
-          b.identifier(`${lowerFirst(protocolKey)}TestCases`),
-        )
-        newEntry.computed = true
-
-        node.init.properties.push(newEntry)
-
-        sortEntries(
-          node.init.properties,
-          (entry) => ((entry as n.ObjectProperty).value as n.Identifier).name,
-        )
-      }
-
-      this.traverse(path)
-    },
-  })
-
-  await writeAndLintFile(testsFile, print(ast).code)
-}
-
-/**
- * @description Adds a new entry to the imports for the test cases
- *
- * @param programNode AST node for the Protocol program
- */
-function addTestCasesImport(
-  programNode: n.Program,
-  protocolId: string,
-  protocolKey: string,
-) {
-  const [importNodes, codeAfterImports] = partition(programNode.body, (node) =>
-    n.ImportDeclaration.check(node),
-  )
-
-  const newImportEntry = buildImportTestCasesEntry(protocolId, protocolKey)
-
-  programNode.body = [...importNodes, newImportEntry, ...codeAfterImports]
-}
-
-/*
-import { testCases as <protocolId>TestCases } from './<protocolId>/tests/testCases'
-*/
-function buildImportTestCasesEntry(protocolId: string, protocolKey: string) {
-  return b.importDeclaration(
-    [
-      b.importSpecifier(
-        b.identifier('testCases'),
-        b.identifier(`${lowerFirst(protocolKey)}TestCases`),
-      ),
-    ],
-    b.literal(`./${protocolId}/tests/testCases`),
-  )
-}
-
-/**
- * @description Writes changes to include new adapter in src/adapters/protocols.ts file
- */
-export async function addProtocol({
-  protocolKey,
-  protocolId,
-}: {
-  protocolKey: string
-  protocolId: string
-}) {
-  const protocolsFile = path.resolve(
-    './packages/adapters-library/src/adapters/protocols.ts',
-  )
-  const contents = await fs.readFile(protocolsFile, 'utf-8')
-  const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
-  })
-
-  visit(ast, {
-    visitVariableDeclarator(path) {
-      const node = path.node
-      if (!n.Identifier.check(node.id)) {
-        // Skips any other declaration
-        return false
-      }
-
-      if (node.id.name === 'Protocol') {
-        addProtocolEntry(node, protocolKey, protocolId)
-      }
-
-      this.traverse(path)
-    },
-  })
-
-  await writeAndLintFile(protocolsFile, print(ast).code)
-}
-
-/**
- * @description Writes changes to include new adapter in src/adapters/supportedProtocols.ts file
- */
-export async function exportAdapter({
-  protocolKey,
-  protocolId,
-  productId,
-  adapterClassName,
-  chainKeys,
-}: {
-  protocolKey: string
-  protocolId: string
-  productId: string
-  adapterClassName: string
-  chainKeys: (keyof typeof Chain)[]
-}) {
-  const adaptersFile = path.resolve(
-    './packages/adapters-library/src/adapters/supportedProtocols.ts',
-  )
-  const contents = await fs.readFile(adaptersFile, 'utf-8')
-  const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
-  })
-
-  visit(ast, {
-    visitProgram(path) {
-      const programNode = path.value as n.Program
-
-      addAdapterImport(programNode, protocolId, productId, adapterClassName)
-
-      this.traverse(path)
-    },
-    visitVariableDeclarator(path) {
-      const node = path.node
-      if (!n.Identifier.check(node.id)) {
-        // Skips any other declaration
-        return false
-      }
-
-      if (node.id.name === 'supportedProtocols') {
-        addAdapterEntries(node, protocolKey, adapterClassName, chainKeys)
-      }
-
-      this.traverse(path)
-    },
-  })
-
-  await writeAndLintFile(adaptersFile, print(ast).code)
-}
-
-/**
- * @description Adds a new entry to the imports for the new adapter
- *
- * @param programNode AST node for the Protocol program
- */
-function addAdapterImport(
-  programNode: n.Program,
-  protocolId: string,
-  productId: string,
-  adapterClassName: string,
-) {
-  const [importNodes, codeAfterImports] = partition(programNode.body, (node) =>
-    n.ImportDeclaration.check(node),
-  )
-
-  const newImportEntry = buildImportAdapterEntry(
-    protocolId,
-    productId,
-    adapterClassName,
-  )
-
-  programNode.body = [...importNodes, newImportEntry, ...codeAfterImports]
-}
-
-/**
- * @description Adds a new entry to the Protocol constant if it does not exist.
- *
- * @param protocolListDeclaratorNode AST node for the Protocol declarator
- */
-function addProtocolEntry(
-  protocolListDeclaratorNode: n.VariableDeclarator,
-  protocolKey: string,
-  protocolId: string,
-) {
-  const protocolListObjectNode = protocolListDeclaratorNode.init
-  if (
-    !n.TSAsExpression.check(protocolListObjectNode) ||
-    !n.ObjectExpression.check(protocolListObjectNode.expression)
-  ) {
-    throw new Error('Incorrectly typed Protocol object')
-  }
-
-  const protocolEntryObjectNode =
-    protocolListObjectNode.expression.properties.find((property) => {
-      if (
-        !n.ObjectProperty.check(property) ||
-        !n.Identifier.check(property.key)
-      ) {
-        throw new Error('Incorrectly typed Protocol object')
-      }
-
-      return property.key.name === protocolKey
+    await createAdapterFile(answers, code, outcomes)
+    await buildIntegrationTests(answers)
+    await addProtocol(answers)
+    await exportAdapter({
+      ...answers,
+      adapterClassName: outcomes.adapterClassName,
     })
 
-  if (!protocolEntryObjectNode) {
-    protocolListObjectNode.expression.properties.push(
-      buildProtocolEntry(protocolKey, protocolId),
+    console.log(
+      chalk`\n{bold New adapter created at: {bgBlack.red src/adapters/${
+        answers.protocolId
+      }/products/${answers.productId}/${lowerFirst(
+        outcomes.adapterClassName,
+      )}.ts}}\n`,
     )
-
-    sortEntries(
-      protocolListObjectNode.expression.properties,
-      (entry) => ((entry as n.ObjectProperty).key as n.Identifier).name,
-    )
+    console.log('The file has been saved!')
   }
 }
 
-/**
- * @description Adds chain entries for the adapter to the supportedProtocols constant
- *
- * @param supportedProtocolsDeclaratorNode AST node for the supportedProtocols declarator
- */
-function addAdapterEntries(
-  supportedProtocolsDeclaratorNode: n.VariableDeclarator,
-  protocolKey: string,
-  adapterClassName: string,
-  chainKeys: (keyof typeof Chain)[],
+export async function createCode(
+  answers: QuestionAnswers,
+  outcomes: BlankAdapterOutcomeOptions,
 ) {
-  const supportedProtocolsObjectNode = supportedProtocolsDeclaratorNode.init
-  if (!n.ObjectExpression.check(supportedProtocolsObjectNode)) {
-    throw new Error('Incorrectly typed supportedProtocols object')
+  let code: string
+  switch (true) {
+    case answers.forkCheck === TemplateNames.SmartBuilder: {
+      const blankTemplate = Templates[answers.forkCheck]!({
+        ...answers,
+        adapterClassName: outcomes.adapterClassName,
+      })
+
+      code = generateAdapter(answers, outcomes, blankTemplate!)
+
+      break
+    }
+    case Object.keys(Templates).includes(answers.forkCheck):
+      {
+        const template = Templates[answers.forkCheck]!
+        code = template({
+          protocolKey: answers.protocolKey,
+          adapterClassName: outcomes.adapterClassName,
+          productId: answers.productId,
+          chainKeys: answers.chainKeys,
+        })
+      }
+      break
+    default: {
+      logger.error(`Template not found: ${answers.forkCheck}`)
+      logger.error(
+        `Must be one of these values: No, ${Object.keys(Templates).join(', ')}`,
+      )
+      throw new Error(`No template with name: ${answers.forkCheck}`)
+    }
+  }
+  return code
+}
+
+async function getAnswersAndOutcomes(
+  defiProvider: DefiProvider,
+  skipQuestions: boolean,
+  inputTemplate: QuestionAnswers['forkCheck'],
+) {
+  let answers = {} as QuestionAnswers
+
+  if (!skipQuestions) {
+    const firstQuestionId = 'protocolKey'
+
+    answers = await askQuestion(firstQuestionId, defiProvider)
+  } else {
+    const questionnaire = getQuestionnaire(defiProvider, answers)
+    answers = calculateDefaultAnswers(questionnaire, inputTemplate)
+    console.log({ answers, inputTemplate })
+    answers.productId = `${answers.productId}-${answers.forkCheck
+      .replace(/[^\w\s]/gi, '')
+      .replace(/\s+/g, '')}Template`
   }
 
-  let protocolChainsObjectPropertyNode =
-    supportedProtocolsObjectNode.properties.find((property) => {
-      if (
-        !n.ObjectProperty.check(property) ||
-        !n.MemberExpression.check(property.key) ||
-        !n.Identifier.check(property.key.property)
-      ) {
-        throw new Error('Incorrectly typed supportedProtocols object')
+  answers.forkCheck = inputTemplate ?? answers.forkCheck
+
+  return answers
+}
+
+function calculateDefaultAnswers(
+  questionnaire: QuestionnaireType,
+  inputTemplate?: string,
+) {
+  const answers = {} as QuestionAnswers
+
+  Object.keys(questionnaire).forEach((key) => {
+    const defaultValue =
+      questionnaire[key as keyof typeof questionnaire].default()
+
+    //@ts-ignore
+    answers[key as keyof typeof QuestionAnswers] = defaultValue
+  })
+
+  if (inputTemplate) {
+    //@ts-ignore
+    answers.forkCheck = inputTemplate
+  }
+  return answers
+}
+
+export function calculateAdapterOutcomes(
+  defiProvider: DefiProvider,
+  answers: QuestionAnswers,
+): BlankAdapterOutcomeOptions {
+  const questionnaire = getQuestionnaire(defiProvider, answers)
+
+  // Bit of a hack to add QuestionName.AdapterClassName but its a skip question that I want the answer for
+  // find better way to include that answer
+  return [...Object.keys(answers), QuestionName.AdapterClassName].reduce(
+    (acc, key) => {
+      const answer = answers[key as keyof QuestionAnswers]
+      const questionConfig = questionnaire[key as keyof QuestionnaireType]
+      // Step 3: add outcome to outcomes
+      if ('outcomes' in questionConfig) {
+        let outcomeResults: Partial<BlankAdapterOutcomeOptions> = {}
+
+        const newOutcomes = questionConfig.outcomes(
+          //@ts-ignore
+          answer,
+        ) as Partial<BlankAdapterOutcomeOptions>
+
+        outcomeResults = {
+          ...outcomeResults,
+
+          ...newOutcomes,
+        }
+        return {
+          ...acc,
+          ...outcomeResults,
+        }
       }
 
-      return property.key.property.name === protocolKey
-    }) as n.ObjectProperty
+      return acc
+    },
+    {} as BlankAdapterOutcomeOptions,
+  )
+}
 
-  if (!protocolChainsObjectPropertyNode) {
-    protocolChainsObjectPropertyNode = buildSupportedProtocolEntry(protocolKey)
+async function welcome(defiProvider: DefiProvider) {
+  showMessage(colorBlue(newAdapterCliLogo))
 
-    supportedProtocolsObjectNode.properties.push(
-      protocolChainsObjectPropertyNode,
+  const listQuestionsAnswers = await prompt({
+    type: 'confirm',
+    name: 'viewAllQuestions',
+    message:
+      'Would you like to view all questions? This will help you know what to look for in the protocol.',
+    prefix: chalk.blue('?'),
+  })
+
+  if (listQuestionsAnswers.viewAllQuestions) {
+    displayAllQuestions(defiProvider)
+
+    const start = await prompt({
+      type: 'confirm',
+      name: 'start',
+      message: 'Ready to answer the questions?',
+      prefix: bluePrefix,
+    })
+
+    if (!start.start) {
+      showMessage('Goodbye!')
+      return true
+    }
+  }
+}
+
+function displayAllQuestions(defiProvider: DefiProvider) {
+  showMessage(boldWhiteBg('See all questions below:'))
+  showMessage(boldWhiteBg(' '.repeat(110)))
+  showMessage(boldWhiteBg(' '.repeat(110)))
+
+  const questionnaire = getQuestionnaire(defiProvider, {})
+
+  Object.keys(questionnaire).forEach((questionKey, index) => {
+    const question = questionnaire[questionKey as KeyofQuestionnaire]
+    showMessage(
+      italic(boldText(`Q${index + 1} ${pascalCase(questionKey)}: `)) +
+        italic(question.message),
     )
 
-    sortEntries(
-      supportedProtocolsObjectNode.properties,
-      (entry) =>
-        (
-          ((entry as n.ObjectProperty).key as n.MemberExpression)
-            .property as n.Identifier
-        ).name,
-    )
+    displayQuestionOptions(question)
+  })
+
+  showMessage(boldWhiteBg('All questions end'))
+  showMessage(boldWhiteBg(' '.repeat(111)))
+}
+
+function displayQuestionOptions(question: ValueOfQuestionnaire) {
+  if ('choices' in question) {
+    showMessage(italic('Options:'))
+    //@ts-ignore
+    question.choices.forEach((choice: string, index: number) => {
+      showMessage(italic(`  ${index + 1}. ${choice}`))
+    })
+    //@ts-ignore
+  } else if (question.type === 'confirm') {
+    showMessage(italic('Options:'))
+    showMessage(italic(' 1. Yes'))
+    showMessage(italic(' 2. No'))
+    //@ts-ignore
+  } else if (question.type === 'text') {
+    showMessage(italic('Options:'))
+    //@ts-ignore
+    showMessage(`${italic(' For example')} ${italic(question.default())}`)
   }
+}
 
-  const protocolChainEntries = protocolChainsObjectPropertyNode.value
-  if (!n.ObjectExpression.check(protocolChainEntries)) {
-    throw new Error('Incorrectly typed supportedProtocols object')
-  }
+function showMessage(message: string) {
+  console.log(message)
+}
 
-  for (const chainKey of chainKeys) {
-    let protocolChainEntryNode = protocolChainEntries.properties.find(
-      (property) => {
-        if (
-          !n.ObjectProperty.check(property) ||
-          !n.MemberExpression.check(property.key) ||
-          !n.Identifier.check(property.key.property)
-        ) {
-          throw new Error('Incorrectly typed supportedProtocols object')
-        }
+async function askQuestion(
+  nextQuestionName: KeyofQuestionnaire,
+  defiProvider: DefiProvider,
+  answers = {} as QuestionAnswers,
+  outcomes = {} as BlankAdapterOutcomeOptions,
+): Promise<QuestionAnswers> {
+  const questionConfig = getQuestionnaire(defiProvider, answers)[
+    nextQuestionName
+  ]
 
-        return property.key.property.name === chainKey
+  // Step1: ask question and get answer
+  const answer = (
+    await prompt([
+      {
+        ...questionConfig,
+        prefix: chalk.blue('?'),
+        pageSize: 9990,
       },
-    ) as n.ObjectProperty
+    ])
+  )[nextQuestionName]
 
-    if (!protocolChainEntryNode) {
-      protocolChainEntryNode = buildChainEntry(chainKey)
+  //@ts-ignore
+  answers[nextQuestionName as keyof QuestionAnswers] = answer
 
-      protocolChainEntries.properties.push(protocolChainEntryNode)
-    }
-
-    if (!n.ArrayExpression.check(protocolChainEntryNode.value)) {
-      throw new Error('Incorrectly typed supportedProtocols object')
-    }
-
-    const newAdapterEntry = buildAdapterEntry(adapterClassName)
-    protocolChainEntryNode.value.elements.push(newAdapterEntry)
+  //@ts-ignore
+  if (questionConfig.next(answer) === 'end') {
+    return answers
   }
+
+  //@ts-ignore
+  const nextQuestion = questionConfig.next(answer) as QuestionName
+  return await askQuestion(nextQuestion, defiProvider, answers, outcomes)
 }
 
-/*
-<ProtocolKey>: 'protocol-id'
-*/
-function buildProtocolEntry(protocolKey: string, protocolId: string) {
-  const key = b.identifier(protocolKey)
-  const value = b.stringLiteral(protocolId)
-
-  return b.objectProperty(key, value)
+export async function readBlankTemplate(filePath: string) {
+  return readFile(filePath, { encoding: 'utf8' })
 }
 
-/*
-import { <AdapterClassName> } from './<protocol-id>/products/<product-id>/<adapterClassName>'
-*/
-function buildImportAdapterEntry(
-  protocolId: string,
-  productId: string,
-  adapterClassName: string,
+async function createAdapterFile(
+  answers: QuestionAnswers,
+  code: string,
+  outcomes: BlankAdapterOutcomeOptions,
 ) {
-  return b.importDeclaration(
-    [b.importSpecifier(b.identifier(adapterClassName))],
-    b.literal(
-      `./${protocolId}/products/${productId}/${lowerFirst(adapterClassName)}`,
-    ),
+  const adapterFilePath = buildAdapterFilePath(
+    answers.protocolId,
+    answers.productId,
+    outcomes.adapterClassName,
   )
-}
 
-/*
-[Protocol.<ProtocolKey>]: {}
-*/
-function buildSupportedProtocolEntry(protocolKey: string) {
-  const key = b.memberExpression(
-    b.identifier('Protocol'),
-    b.identifier(protocolKey),
-  )
-  const value = b.objectExpression([])
-
-  const newEntry = b.objectProperty(key, value)
-  newEntry.computed = true
-
-  return newEntry
-}
-
-/*
-[Chain.<ChainKey>]: [],
-*/
-function buildChainEntry(chainKey: keyof typeof Chain) {
-  const key = b.memberExpression(b.identifier('Chain'), b.identifier(chainKey))
-  const value = b.arrayExpression([])
-
-  const newEntry = b.objectProperty(key, value)
-  newEntry.computed = true
-
-  return newEntry
-}
-
-/*
-<AdapterClassName>
-*/
-function buildAdapterEntry(adapterClassName: string) {
-  return b.identifier(`${adapterClassName}`)
+  await writeAndLintFile(adapterFilePath, code)
 }
 
 export function buildAdapterFilePath(
@@ -682,9 +347,23 @@ export function buildAdapterFilePath(
   return path.resolve(productPath, `${lowerFirst(adapterClassName)}.ts`)
 }
 
-async function fileExists(filePath: string) {
-  return fs
-    .access(filePath, fs.constants.F_OK)
-    .then(() => true)
-    .catch(() => false)
+export function generateAdapter(
+  answers: QuestionAnswers,
+  outcomes: BlankAdapterOutcomeOptions,
+  blankAdapter: string,
+): string {
+  return Object.keys(Replacements).reduce(
+    (currentTemplate, replace: string) => {
+      // Check if the operation exists in the Replacements object
+      const replacement = Replacements[replace as keyof typeof Replacements]
+      if (replacement) {
+        // Apply the replacement operation
+        return replacement.replace(outcomes, currentTemplate, answers)
+      }
+
+      console.warn(`Replacement operation '${replace}' not found.`)
+      return currentTemplate
+    },
+    blankAdapter,
+  )
 }

@@ -1,6 +1,4 @@
 import { Chain } from '../../core/constants/chains'
-import { NewAdapterAnswers } from '../newAdapterCommand'
-import { BlankAdapterOutcomeOptions, QuestionAnswers } from '../questionnaire'
 
 export function compoundV2BorrowMarketForkAdapterTemplate({
   protocolKey,
