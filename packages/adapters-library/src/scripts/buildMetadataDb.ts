@@ -86,13 +86,17 @@ export function buildMetadataDb(
               continue
             }
 
+            // Start time tracking for getProtocolTokens
+            console.time(
+              `getProtocolTokens-${protocolId}-${adapter.productId}-${chainId}`,
+            )
+
             const metadataDetails = (await adapter
               .getProtocolTokens(true)
               .catch((e) => {
                 if (!(e instanceof NotImplementedError)) {
                   throw e
                 }
-
                 return undefined
               })) as
               | {
@@ -104,6 +108,11 @@ export function buildMetadataDb(
                   }
                 }
               | undefined
+
+            // End time tracking for getProtocolTokens
+            console.timeEnd(
+              `getProtocolTokens-${protocolId}-${adapter.productId}-${chainId}`,
+            )
 
             if (!metadataDetails) {
               continue

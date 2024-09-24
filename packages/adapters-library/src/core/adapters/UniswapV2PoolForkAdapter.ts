@@ -54,7 +54,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
   protected readonly MIN_SUBGRAPH_VOLUME: number = 50000
   protected readonly MIN_TOKEN_RESERVE: number = 1
   protected readonly MAX_CONCURRENT_FACTORY_PROMISES: number = 10000
-  protected readonly MAX_FACTORY_JOB_SIZE: number = 100000
+  protected readonly MAX_FACTORY_JOB_SIZE: number = 10000
 
   public adapterSettings: AdapterSettings
 
