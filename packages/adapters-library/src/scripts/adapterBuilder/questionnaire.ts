@@ -1,13 +1,13 @@
 import { Answers } from 'inquirer'
-import { Protocol } from '../adapters/protocols'
-import { Chain } from '../core/constants/chains'
+import { Protocol } from '../../adapters/protocols'
+import { Chain } from '../../core/constants/chains'
 import {
   isKebabCase,
   isPascalCase,
   kebabCase,
   pascalCase,
-} from '../core/utils/caseConversion'
-import { DefiProvider } from '../defiProvider'
+} from '../../core/utils/caseConversion'
+import { DefiProvider } from '../../defiProvider'
 
 import { blankAdapterTemplate } from './templates/blankAdapterTemplate'
 import { compoundV2BorrowMarketForkAdapterTemplate } from './templates/compoundV2BorrowMarketForkAdapter'

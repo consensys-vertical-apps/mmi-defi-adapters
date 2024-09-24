@@ -1,9 +1,11 @@
-import { Chain } from '../../core/constants/chains'
+import { Chain } from '../../../core/constants/chains'
+import { BlankAdapterOutcomeOptions, QuestionAnswers } from '../questionnaire'
 
-export function compoundV2BorrowMarketForkAdapterTemplate({
+export function uniswapV2PoolForkAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
+  chainKeys,
 }: {
   protocolKey: string
   adapterClassName: string
@@ -11,7 +13,10 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
   chainKeys: (keyof typeof Chain)[]
 }) {
   return `
-  import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
+  import {
+    UniswapV2PoolForkAdapter,
+    UniswapV2PoolForkPositionStrategy,
+  } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
   import { Chain } from '../../../../core/constants/chains'
   import { CacheToFile } from '../../../../core/decorators/cacheToFile'
   import { NotImplementedError } from '../../../../core/errors/errors'
@@ -21,27 +26,51 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
   } from '../../../../types/adapter'
   import { Protocol } from '../../../protocols'
   
-  export class ${adapterClassName} extends CompoundV2BorrowMarketForkAdapter {
+  export class ${adapterClassName} extends UniswapV2PoolForkAdapter {
     productId = '${productId}'
-  
-    contractAddresses: Partial<Record<Chain, { comptrollerAddress: string }>> = {}
   
     getProtocolDetails(): ProtocolDetails {
       return {
         protocolId: this.protocolId,
         name: '${protocolKey}',
-        description: '${protocolKey} borrow market adapter',
+        description: '${protocolKey} pool adapter',
         siteUrl: '',
         iconUrl: '',
-        positionType: PositionType.Borrow,
+        positionType: PositionType.Supply,
         chainId: this.chainId,
         productId: this.productId,
       }
     }
   
+    protected chainMetadataSettings(): Partial<
+      Record<Chain, UniswapV2PoolForkPositionStrategy>
+    > {
+      // TODO - For each supported chain, provide the settings needed to build the list of pools
+      // If using subgraph (recommended for forks with an available subgraph), provide the subgraph URL and factory cotract address
+      // If using factory contract (recommended when subgraph is no available), provide the factory contract address
+      return {
+        ${chainKeys
+          .map((chainKey, i) => {
+            const metadataBuilderType =
+              i === 0
+                ? `type: 'graphql',
+          subgraphUrl:
+            'https://api.thegraph.com/subgraphs/name/<SUBGRAPH-PATH>',
+          factoryAddress: '<FACTORY-CONTRACT-ADDRESS>',`
+                : `type: 'factory',
+              factoryAddress: '<FACTORY-CONTRACT-ADDRESS>',`
+
+            return `[Chain.${chainKey}]: {
+          ${metadataBuilderType}
+        }`
+          })
+          .join(',')}
+      }
+    }
+  
     @CacheToFile({ fileKey: 'protocol-token' })
     async buildMetadata() {
-      return await super.buildMetadata()
+      return super.buildMetadata()
     }
 
     /**

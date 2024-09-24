@@ -1,4 +1,4 @@
-import { Chain } from '../../core/constants/chains'
+import { Chain } from '../../../core/constants/chains'
 import { QuestionAnswers } from '../questionnaire'
 
 export function simplePoolAdapterTemplate({

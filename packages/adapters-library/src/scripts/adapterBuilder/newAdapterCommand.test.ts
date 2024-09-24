@@ -1,4 +1,4 @@
-import { DefiProvider } from '../defiProvider'
+import { DefiProvider } from '../../defiProvider'
 
 import { calculateAdapterOutcomes, createCode } from './newAdapterCommand'
 import { QuestionAnswers } from './questionnaire'

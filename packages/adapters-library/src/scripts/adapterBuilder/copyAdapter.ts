@@ -1,13 +1,13 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import { Protocol } from '../adapters/protocols'
-import { Chain } from '../core/constants/chains'
-import { lowerFirst, pascalCase } from '../core/utils/caseConversion'
-import { writeAndLintFile } from '../core/utils/writeAndLintFile'
-import { DefiProvider } from '../defiProvider'
-import { addProtocol } from './adapterBuilder/addProtocol'
-import { buildIntegrationTests } from './adapterBuilder/buildIntegrationTests'
-import { exportAdapter } from './adapterBuilder/exportAdapter'
+import { Protocol } from '../../adapters/protocols'
+import { Chain } from '../../core/constants/chains'
+import { lowerFirst, pascalCase } from '../../core/utils/caseConversion'
+import { writeAndLintFile } from '../../core/utils/writeAndLintFile'
+import { DefiProvider } from '../../defiProvider'
+import { addProtocol } from './addProtocol'
+import { buildIntegrationTests } from './buildIntegrationTests'
+import { exportAdapter } from './exportAdapter'
 
 const defiProvider = new DefiProvider()
 
