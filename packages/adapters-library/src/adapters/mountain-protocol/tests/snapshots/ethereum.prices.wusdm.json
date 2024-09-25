@@ -1,39 +1,7 @@
 {
+  "latency": "Latency: 0.641 seconds",
   "blockNumber": 20686564,
   "snapshot": [
-    {
-      "protocolId": "mountain-protocol",
-      "name": "Mountain Protocol USDM",
-      "description": "MountainProtocol defi adapter",
-      "siteUrl": "https://mountainprotocol.com/",
-      "iconUrl": "https://mountainprotocol.com/favicon.svg",
-      "positionType": "stake",
-      "chainId": 1,
-      "productId": "usdm",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
-          "name": "Mountain Protocol USD",
-          "symbol": "USDM",
-          "decimals": 18,
-          "baseRate": 1,
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-              "symbol": "USDC",
-              "name": "USD Coin",
-              "decimals": 18,
-              "type": "underlying",
-              "underlyingRateRaw": "1000000000000000000n",
-              "underlyingRate": 1,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-            }
-          ]
-        }
-      ]
-    },
     {
       "protocolId": "mountain-protocol",
       "name": "Mountain Protocol wUSDM",
@@ -43,20 +11,21 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "wusdm",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
           "address": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
           "name": "Wrapped Mountain Protocol USD",
-          "symbol": "wUSDM",
           "decimals": 18,
+          "symbol": "wUSDM",
           "baseRate": 1,
           "type": "protocol",
           "tokens": [
             {
               "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
-              "name": "Mountain Protocol USD",
               "symbol": "USDM",
+              "name": "Mountain Protocol USD",
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1045584184700503445n",
@@ -69,9 +38,6 @@
     }
   ],
   "rpcResponses": {
-    "0c43f9d0b645e67747b811d8ee94cfc6": {
-      "result": "0x13ba715"
-    },
     "5a531f594fbee96015153e168c325589": {
       "result": "0x0000000000000000000000000000000000000000000000000e82a946b7d70595"
     }

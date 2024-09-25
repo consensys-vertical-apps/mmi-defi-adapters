@@ -1,6 +1,8 @@
+import { getAddress } from 'ethers'
 import { z } from 'zod'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   PositionType,
   ProtocolDetails,
@@ -22,7 +24,14 @@ type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]
 }
 
-const PROTOCOL_TOKEN_ADDRESS = '0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812'
+const PROTOCOL_TOKEN_ADDRESS = getAddress(
+  '0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812',
+)
+
+const USDM_TOKEN_ADDRESS = getAddress(
+  '0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C',
+)
+
 export class MountainProtocolWUsdmAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'wusdm'
 
@@ -44,55 +53,23 @@ export class MountainProtocolWUsdmAdapter extends SimplePoolAdapter<AdditionalMe
       productId: this.productId,
     }
   }
+
   @CacheToFile({ fileKey: 'protocol-token' })
   async getProtocolTokens() {
     return [
       {
-        address: PROTOCOL_TOKEN_ADDRESS,
-        name: 'Wrapped Mountain Protocol USD',
-        symbol: 'wUSDM',
-        decimals: 18,
+        ...(await getTokenMetadata(
+          PROTOCOL_TOKEN_ADDRESS,
+          this.chainId,
+          this.provider,
+        )),
         underlyingTokens: [
-          {
-            address: '0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C',
-            name: 'Mountain Protocol USD',
-            symbol: 'USDM',
-            decimals: 18,
-          },
+          await getTokenMetadata(
+            USDM_TOKEN_ADDRESS,
+            this.chainId,
+            this.provider,
+          ),
         ],
-      },
-    ]
-  }
-
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-    blockNumber,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
-      PROTOCOL_TOKEN_ADDRESS,
-    )
-
-    const wUSDMContract = Wusdm__factory.connect(
-      protocolTokenBalance.address,
-      this.provider,
-    )
-
-    const usdmBalance = await wUSDMContract.convertToAssets(
-      protocolTokenBalance.balanceRaw,
-      {
-        blockTag: blockNumber,
-      },
-    )
-
-    return [
-      {
-        ...underlyingToken!,
-        type: TokenType.Underlying,
-        balanceRaw: usdmBalance,
       },
     ]
   }
@@ -111,7 +88,7 @@ export class MountainProtocolWUsdmAdapter extends SimplePoolAdapter<AdditionalMe
     )
 
     const pricePerShareRaw = await wUSDMContract.convertToAssets(
-      BigInt(1 * 1e18),
+      BigInt(10 ** protocolTokenMetadata.decimals),
       {
         blockTag: blockNumber,
       },

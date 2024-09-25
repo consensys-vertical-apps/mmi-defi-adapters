@@ -1,36 +1,23 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import {
-  IProtocolAdapter,
-  ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   PositionType,
   ProtocolDetails,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-// import {
-//   WriteActionInputSchemas,
-//   WriteActions,
-// } from '../../../../types/writeActions'
-// import { z } from 'zod'
-// import { GetTransactionParams } from '../../../supportedProtocols'
-// import { Protocol } from '../../../protocols'
-// import {
-//   CurveStableSwapMetaNg__factory,
-//   CurveStableSwapNg__factory,
-// } from '../../contracts'
 
 type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]
 }
 
-const PROTOCOL_TOKEN_ADDRESS = '0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C'
+const PROTOCOL_TOKEN_ADDRESS = getAddress(
+  '0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C',
+)
 export class MountainProtocolUsdmAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'usdm'
 
@@ -57,17 +44,17 @@ export class MountainProtocolUsdmAdapter extends SimplePoolAdapter<AdditionalMet
   async getProtocolTokens() {
     return [
       {
-        address: PROTOCOL_TOKEN_ADDRESS,
-        name: 'Mountain Protocol USD',
-        symbol: 'USDM',
-        decimals: 18,
+        ...(await getTokenMetadata(
+          PROTOCOL_TOKEN_ADDRESS,
+          this.chainId,
+          this.provider,
+        )),
         underlyingTokens: [
-          {
-            address: this.getUSDCAddress(),
-            symbol: 'USDC',
-            name: 'USD Coin',
-            decimals: 6,
-          },
+          await getTokenMetadata(
+            getAddress(this.getUSDCAddress()),
+            this.chainId,
+            this.provider,
+          ),
         ],
       },
     ]
@@ -90,36 +77,11 @@ export class MountainProtocolUsdmAdapter extends SimplePoolAdapter<AdditionalMet
     }
   }
 
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
+  protected async unwrapProtocolToken(): Promise<UnwrappedTokenExchangeRate[]> {
     const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
       PROTOCOL_TOKEN_ADDRESS,
     )
 
-    const underlyingTokenBalance = {
-      ...underlyingToken!,
-      balanceRaw: BigInt(1 ** 6),
-      type: TokenType.Underlying,
-    }
-
-    return [underlyingTokenBalance]
-  }
-
-  protected async unwrapProtocolToken(
-    protocolTokenMetadata: Erc20Metadata,
-  ): Promise<UnwrappedTokenExchangeRate[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
-      PROTOCOL_TOKEN_ADDRESS,
-    )
-
-    // Not really clear how this works, but it seems that using USDC shares makes it work
-    // Basically if we were to set this to BigInt(10 ** 18) as any other ERC20
-    // The balance would add 12 extra 0's
     const pricePerShareRaw = BigInt(10 ** underlyingToken!.decimals)
 
     return [
