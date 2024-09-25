@@ -3,6 +3,7 @@ import { Erc20__factory } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -48,7 +49,6 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -65,7 +65,7 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     }
   }
 
-  @CacheToFile({ fileKey: 'glp' })
+  @CacheToDb()
   async getProtocolTokens() {
     const glpAddresses: Partial<
       Record<

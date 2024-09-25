@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
@@ -28,7 +29,6 @@ export class SwellSwEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -74,7 +74,7 @@ export class SwellSwEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     ]
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     return [
       {

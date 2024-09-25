@@ -1,15 +1,17 @@
 {
+  "latency": "Latency: 5.266 seconds",
   "blockNumber": 19661888,
   "snapshot": [
     {
       "protocolId": "stargate",
-      "name": "Stargate",
+      "name": "Stargate Liquidity Pools",
       "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
       "siteUrl": "https://stargate.finance/",
       "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -45,6 +47,7 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "voting-escrow",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -70,6 +73,68 @@
           "totalSupply": 18484869.439940665
         }
       ]
+    },
+    {
+      "protocolId": "stargate",
+      "name": "Stargate Farm",
+      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+      "siteUrl": "https://stargate.finance/",
+      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "farm",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "28729037008094n",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "28751388198886n",
+              "totalSupply": 28751388.198886,
+              "price": 0.9996146754500066,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
+          "totalSupply": 28729037.008094
+        }
+      ]
+    },
+    {
+      "protocolId": "stargate",
+      "name": "Stargate Liquidity Pools V2",
+      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+      "siteUrl": "https://stargate.finance/",
+      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool-v2",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": []
+    },
+    {
+      "protocolId": "stargate",
+      "name": "Stargate Farm V2",
+      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+      "siteUrl": "https://stargate.finance/",
+      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "farm-v2",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": []
     }
   ],
   "rpcResponses": {
@@ -318,6 +383,9 @@
     },
     "abbc0f52936a4241526d58af3b6530a2": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "3325d28a6c8ec943aaa22167d8a3b9cb": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000f454a"
     },
     "dbaf07927b3af90c3243c903750472af": {
       "result": "0x00000000000000000000000000000000000000000000000000009112da04cc55"

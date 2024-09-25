@@ -1,4 +1,5 @@
 {
+  "latency": "Latency: 0.153 seconds",
   "blockNumber": 19661887,
   "snapshot": [
     {
@@ -10,11 +11,12 @@
       "protocolId": "stakewise",
       "productId": "os-eth",
       "chainId": 1,
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
           "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
-          "name": "StakeWise osETH",
+          "name": "Staked ETH",
           "decimals": 18,
           "symbol": "osETH",
           "baseRate": 1,

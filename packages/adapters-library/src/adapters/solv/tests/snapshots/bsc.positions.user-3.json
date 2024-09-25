@@ -1,5 +1,6 @@
 {
   "blockNumber": 41411562,
+  "latency": "Latency: 1.698 seconds",
   "aggregatedValues": ["USD13.43"],
   "snapshot": [
     {
@@ -11,6 +12,7 @@
       "positionType": "supply",
       "chainId": 56,
       "productId": "solv-btc",
+      "chainName": "bsc",
       "success": true,
       "tokens": [
         {
@@ -38,11 +40,11 @@
                   "balanceRaw": "230000000000000n",
                   "balance": 0.00023,
                   "price": 58401.915892677695,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c/logo.png"
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/binance/assets/0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c/logo.png"
                 }
               ],
               "balance": 0.00023,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x4aae823a6a0b376De6A78e74eCC5b079d38cBCf7/logo.png"
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/binance/assets/0x4aae823a6a0b376De6A78e74eCC5b079d38cBCf7/logo.png"
             }
           ],
           "balance": 0.00023
