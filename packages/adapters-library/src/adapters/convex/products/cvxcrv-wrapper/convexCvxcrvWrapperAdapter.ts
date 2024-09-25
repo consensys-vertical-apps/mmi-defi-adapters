@@ -214,14 +214,6 @@ export class ConvexCvxcrvWrapperAdapter extends SimplePoolAdapter<AdditionalMeta
     return [] // no deposits for rewards
   }
 
-  protected async getUnderlyingTokenBalances(_input: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    throw new NotImplementedError()
-  }
-
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {

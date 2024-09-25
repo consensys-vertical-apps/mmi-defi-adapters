@@ -62,26 +62,6 @@ export class LidoStEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     }
   }
 
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
-      PROTOCOL_TOKEN_ADDRESS,
-    )
-
-    const underlyingTokenBalance = {
-      ...underlyingToken!,
-      balanceRaw: protocolTokenBalance.balanceRaw,
-      type: TokenType.Underlying,
-    }
-
-    return [underlyingTokenBalance]
-  }
-
   protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
   ): Promise<UnwrappedTokenExchangeRate[]> {

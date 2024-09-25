@@ -159,13 +159,6 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     throw new NotImplementedError()
   }
 
-  protected async getUnderlyingTokenBalances(_input: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    throw new NotImplementedError()
-  }
   protected async unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,

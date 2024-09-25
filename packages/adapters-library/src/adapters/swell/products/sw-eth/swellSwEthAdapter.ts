@@ -44,36 +44,6 @@ export class SwellSwEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     }
   }
 
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-    blockNumber,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
-      PROTOCOL_TOKEN_ADDRESS,
-    )
-    const [unwrappedTokenExchangeRate] = await this.unwrapProtocolToken(
-      protocolTokenBalance,
-      blockNumber,
-    )
-
-    const underlyingTokenBalanceRaw =
-      (protocolTokenBalance.balanceRaw *
-        unwrappedTokenExchangeRate!.underlyingRateRaw) /
-      10n ** BigInt(protocolTokenBalance.decimals)
-
-    return [
-      {
-        ...underlyingToken!,
-        type: TokenType.Underlying,
-        balanceRaw: underlyingTokenBalanceRaw,
-      },
-    ]
-  }
-
   @CacheToFile({ fileKey: 'protocol-token' })
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     return [

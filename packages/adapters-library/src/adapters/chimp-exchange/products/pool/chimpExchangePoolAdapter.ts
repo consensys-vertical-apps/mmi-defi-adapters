@@ -214,42 +214,6 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
     return movements
   }
 
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-    blockNumber,
-  }: {
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const poolMetadata = await this.helpers.getProtocolTokenByAddress({
-      protocolTokens: await this.getProtocolTokens(),
-      protocolTokenAddress: protocolTokenBalance.address,
-    })
-    const underlyingTokenConversionRate = await this.unwrapProtocolToken(
-      protocolTokenBalance,
-      blockNumber,
-    )
-
-    const underlyingBalances = poolMetadata.underlyingTokens.map(
-      ({ ...token }) => {
-        const unwrappedTokenExchangeRateRaw =
-          underlyingTokenConversionRate.find(
-            (tokenRate) => tokenRate.address === token.address,
-          )!.underlyingRateRaw
-
-        return {
-          ...token,
-          balanceRaw:
-            (unwrappedTokenExchangeRateRaw * protocolTokenBalance.balanceRaw) /
-            10n ** BigInt(protocolTokenBalance.decimals),
-          type: TokenType.Underlying,
-        }
-      },
-    )
-
-    return underlyingBalances
-  }
-
   async getTotalValueLocked(
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {

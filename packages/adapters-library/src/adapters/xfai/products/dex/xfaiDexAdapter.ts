@@ -107,52 +107,6 @@ export class XfaiDexAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     return metadataObject
   }
 
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-    blockNumber,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const poolAddress = protocolTokenBalance.address
-    const poolContract = XfaiPool__factory.connect(poolAddress, this.provider)
-    const poolMeta = await this.helpers.getProtocolTokenByAddress({
-      protocolTokens: await this.getProtocolTokens(),
-      protocolTokenAddress: poolAddress,
-    })
-
-    const nonEthToken = poolMeta.underlyingTokens.find(
-      (t) => t.address !== ZERO_ADDRESS,
-    )!
-
-    const [totalSupply, [tokenAmount, ethAmount]] = await Promise.all([
-      poolContract.totalSupply({
-        blockTag: blockNumber,
-      }),
-      poolContract.getStates({
-        blockTag: blockNumber,
-      }),
-    ])
-
-    return [
-      {
-        type: TokenType.Underlying,
-        ...nonEthToken,
-        balanceRaw:
-          (protocolTokenBalance.balanceRaw * tokenAmount) / totalSupply,
-      },
-      {
-        type: TokenType.Underlying,
-        address: ZeroAddress,
-        name: 'Ethereum',
-        symbol: 'ETH',
-        decimals: 18,
-        balanceRaw: (protocolTokenBalance.balanceRaw * ethAmount) / totalSupply,
-      },
-    ]
-  }
-
   async getTotalValueLocked({
     blockNumber,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {

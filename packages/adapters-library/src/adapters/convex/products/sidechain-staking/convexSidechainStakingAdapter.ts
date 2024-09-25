@@ -72,26 +72,6 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
     }
   }
 
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
-      protocolTokenBalance.address,
-    )
-
-    const underlyingTokenBalance = {
-      ...underlyingTokens[0]!,
-      balanceRaw: protocolTokenBalance.balanceRaw,
-      type: TokenType.Underlying,
-    }
-
-    return [underlyingTokenBalance]
-  }
-
   protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number,

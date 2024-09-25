@@ -47,36 +47,6 @@ export class MakerSDaiAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     }
   }
 
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-    blockNumber,
-  }: {
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
-      PROTOCOL_TOKEN_ADDRESS,
-    )
-
-    const [underlyingTokenConversionRate] = await this.unwrapProtocolToken(
-      protocolTokenBalance,
-      blockNumber,
-    )
-
-    const daiBalance =
-      (protocolTokenBalance.balanceRaw *
-        underlyingTokenConversionRate!.underlyingRateRaw) /
-      10n ** BigInt(underlyingTokenConversionRate!.decimals)
-
-    return [
-      {
-        ...underlyingToken!,
-        balanceRaw: daiBalance,
-        type: TokenType.Underlying,
-      },
-    ]
-  }
-
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {

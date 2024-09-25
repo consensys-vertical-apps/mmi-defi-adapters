@@ -131,14 +131,6 @@ export class MendiFinanceBorrowMarketAdapter extends SimplePoolAdapter<Additiona
     return metadataObject
   }
 
-  protected getUnderlyingTokenBalances(_input: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number | undefined
-  }): Promise<Underlying[]> {
-    throw new NotImplementedError()
-  }
-
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
