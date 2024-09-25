@@ -1,6 +1,6 @@
 {
   "blockNumber": 18634843,
-  "latency": "Latency: 6.696 seconds",
+  "latency": "Latency: 4.713 seconds",
   "aggregatedValues": ["USD147,541.36", "USD24,790.67", "USD154.56"],
   "snapshot": [
     {
@@ -286,6 +286,9 @@
     },
     "b58fa918698ef99d811ab4619e39f45e": {
       "result": "0x00000000000000000000000000000000000000000000001670e930b694d2e8ea"
+    },
+    "e9aea5daac1890bdc22532bb5efb6ea7": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
     "695a18aa1b69b9d393d6c16b66eb8c5c": {
       "result": "0x000000000000000000000000d533a949740bb3306d119cc777fa900ba034cd52"

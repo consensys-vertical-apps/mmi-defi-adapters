@@ -1,7 +1,7 @@
 {
   "blockNumber": 18634843,
-  "latency": "Latency: 9.228 seconds",
-  "aggregatedValues": ["USD20.10", "USD64,508.97", "USD65,427.35", "USD264.53"],
+  "latency": "Latency: 7.3 seconds",
+  "aggregatedValues": ["USD20.10", "USD64,573.29", "USD65,427.35", "USD264.53"],
   "snapshot": [
     {
       "protocolId": "convex",
@@ -87,6 +87,41 @@
               "balance": 0.009390648882772428,
               "price": 3.7100032709602577,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
+            },
+            {
+              "type": "underlying-claimable",
+              "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+              "name": "Wrapped liquid staked Ether 2.0",
+              "symbol": "wstETH",
+              "decimals": 18,
+              "balanceRaw": "27258448877792235n",
+              "tokens": [
+                {
+                  "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                  "name": "Liquid staked Ether 2.0",
+                  "symbol": "stETH",
+                  "decimals": 18,
+                  "type": "underlying-claimable",
+                  "balanceRaw": "31282707399788675n",
+                  "tokens": [
+                    {
+                      "address": "0x0000000000000000000000000000000000000000",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying-claimable",
+                      "balanceRaw": "31282707399788675n",
+                      "balance": 0.031282707399788674,
+                      "price": 2055.9896,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
+                  "balance": 0.031282707399788674,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                }
+              ],
+              "balance": 0.027258448877792236,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
             },
             {
               "address": "0x06325440D014e39736583c165C2963BA99fAf14E",
@@ -324,6 +359,15 @@
     "9e01279edff37444a5001e2dc42124ce": {
       "result": "0x00000000000000000000000000000000000000000000001a33f62068364cd2db"
     },
+    "4bd6f652dfabe8fbe1765953c905bd9c": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "d3ada31d2bb53ed1e44e562f9f567b15": {
+      "result": "0x0000000000000000000000000000000000000000000000000060d76a327d2beb"
+    },
+    "ff134b87b37de032c710fa829ac11dfc": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
     "695a18aa1b69b9d393d6c16b66eb8c5c": {
       "result": "0x000000000000000000000000d533a949740bb3306d119cc777fa900ba034cd52"
     },
@@ -431,6 +475,9 @@
     },
     "aaa0d480ff15c99ae464774c3ec8c3b2": {
       "result": "0x00000000000000000000000000000000000000000030c74a5ccfb695630b096a"
+    },
+    "3ed9fd863930645d10589e645a8c54f9": {
+      "result": "0x0000000000000000000000000000000000000000000000000fed36880b855d1e"
     },
     "f46d30ab06a9a57678f12a7a475394cc": {
       "result": "0x0000000000000000000000000000000000000000000014f1f5ffffc01233a6c4"

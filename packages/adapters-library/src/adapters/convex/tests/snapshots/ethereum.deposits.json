@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD0.00"],
-  "latency": "Latency: 1.703 seconds",
+  "latency": "Latency: 1.547 seconds",
   "snapshot": {
     "protocolId": "convex",
     "name": "Convex",
