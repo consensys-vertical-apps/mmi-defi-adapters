@@ -95,7 +95,6 @@ export class SyncSwapPoolAdapter implements IProtocolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
-    version: 2,
   }
 
   unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {

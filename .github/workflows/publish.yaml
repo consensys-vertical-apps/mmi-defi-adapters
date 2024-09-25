@@ -1,30 +1,13 @@
-name: Tag and publish package
+name: Publish package
 
 on:
   workflow_dispatch:
-    inputs:
-      semver:
-        description: 'The semver to increase (major, minor, patch, premajor, preminor, prepatch, prerelease)'
-        required: true
 
 jobs:
   tag-and-publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Validate input
-        run: |
-          semver="${{ github.event.inputs.semver }}"
-          valid_values=("major" "minor" "patch" "premajor" "preminor" "prepatch" "prerelease")
-          if ! [[ " ${valid_values[@]} " =~ " ${semver} " ]]; then
-            echo "Invalid semver input: ${semver}"
-            exit 1
-          fi
-
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-tags: true
-          token: ${{ secrets.DEFI_ADAPTERS_SERVICE_ACCOUNT_GITHUB_PAT }}
+      - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
@@ -33,32 +16,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Test
-        run: npm run test:cov 
-        env:
-          DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_BSC: ${{ secrets.BSC_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_POLYGON: ${{ secrets.POLYGON_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_FANTOM: ${{ secrets.FANTOM_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_BASE: ${{ secrets.BASE_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_ARBITRUM: ${{ secrets.ARBITRUM_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_AVALANCHE: ${{ secrets.AVALANCHE_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_LINEA: ${{ secrets.LINEA_PROVIDER_URL }}
-          DEFI_ADAPTERS_LOG_LEVEL: warn
-
-      - name: Configure Git User
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}"@users.noreply.github.com
-
-
-      - name: Update package version
-        run: npm version ${{ github.event.inputs.semver }} --workspaces && git add **/package.json; npm version ${{ github.event.inputs.semver }} --include-workspace-root --force
-
-      - name: Push new version tag to main branch
-        run: git push origin main --tags
 
       - name: Build
         run: npm run build

@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 1.343 seconds",
+  "latency": "Latency: 1.013 seconds",
   "blockNumber": 201320270,
   "snapshot": [
     {
@@ -23,6 +23,16 @@
           "baseRate": 1,
           "tokens": [
             {
+              "address": "0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F",
+              "name": "Frax",
+              "symbol": "FRAX",
+              "decimals": 18,
+              "underlyingRateRaw": "141195180079297539n",
+              "type": "underlying",
+              "underlyingRate": 0.14119518007929754,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
+            },
+            {
               "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
               "name": "Wrapped BTC",
               "symbol": "WBTC",
@@ -43,6 +53,26 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             },
             {
+              "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "underlyingRateRaw": "53011210044401477n",
+              "type": "underlying",
+              "underlyingRate": 0.05301121004440148,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
+            },
+            {
+              "address": "0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A",
+              "name": "Magic Internet Money",
+              "symbol": "MIM",
+              "decimals": 18,
+              "underlyingRateRaw": "11999868209n",
+              "type": "underlying",
+              "underlyingRate": 1.1999868209e-8,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A/logo.png"
+            },
+            {
               "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
               "name": "USD Coin (Arb1)",
               "symbol": "USDC",
@@ -51,16 +81,6 @@
               "type": "underlying",
               "underlyingRate": 0.068878,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo.png"
-            },
-            {
-              "address": "0xf97f4df75117a78c1A5a0DBb814Af92458539FB4",
-              "name": "ChainLink Token",
-              "symbol": "LINK",
-              "decimals": 18,
-              "underlyingRateRaw": "2296337192846610n",
-              "type": "underlying",
-              "underlyingRate": 0.00229633719284661,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf97f4df75117a78c1A5a0DBb814Af92458539FB4/logo.png"
             },
             {
               "address": "0xFa7F8980b0f1E64A2062791cc3b0871572f1F7f0",
@@ -83,36 +103,6 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
             },
             {
-              "address": "0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A",
-              "name": "Magic Internet Money",
-              "symbol": "MIM",
-              "decimals": 18,
-              "underlyingRateRaw": "11999868209n",
-              "type": "underlying",
-              "underlyingRate": 1.1999868209e-8,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A/logo.png"
-            },
-            {
-              "address": "0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F",
-              "name": "Frax",
-              "symbol": "FRAX",
-              "decimals": 18,
-              "underlyingRateRaw": "141195180079297539n",
-              "type": "underlying",
-              "underlyingRate": 0.14119518007929754,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
-            },
-            {
-              "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
-              "name": "Dai Stablecoin",
-              "symbol": "DAI",
-              "decimals": 18,
-              "underlyingRateRaw": "53011210044401477n",
-              "type": "underlying",
-              "underlyingRate": 0.05301121004440148,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
-            },
-            {
               "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
               "name": "USD Coin",
               "symbol": "USDC",
@@ -121,6 +111,16 @@
               "type": "underlying",
               "underlyingRate": 0.399062,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
+            },
+            {
+              "address": "0xf97f4df75117a78c1A5a0DBb814Af92458539FB4",
+              "name": "ChainLink Token",
+              "symbol": "LINK",
+              "decimals": 18,
+              "underlyingRateRaw": "2296337192846610n",
+              "type": "underlying",
+              "underlyingRate": 0.00229633719284661,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf97f4df75117a78c1A5a0DBb814Af92458539FB4/logo.png"
             }
           ]
         }
@@ -131,17 +131,23 @@
     "6fa1e0f33791d4037b746174462c22a6": {
       "result": "0x000000000000000000000000000000000000000000469fb415f1d44f05cb2b52"
     },
+    "f31cdd09b969eaf1d75f870b1ae394e0": {
+      "result": "0x00000000000000000000000000000000000000000009f8c457edc8a5025c17f0"
+    },
     "832ff8d48549ae41b02d38a2625ce300": {
       "result": "0x000000000000000000000000000000000000000000000000000000081f22d30d"
     },
     "bcb689019824ac329c631c5dbcac62ae": {
       "result": "0x0000000000000000000000000000000000000000000001d7c84896a5cf5ee66d"
     },
+    "6f9aa70e8eebd93f1f7fe020459b1eb2": {
+      "result": "0x00000000000000000000000000000000000000000003be6d4ca060ddba6d8f80"
+    },
+    "5baa7d12a60d7391da30303431649f51": {
+      "result": "0x0000000000000000000000000000000000000000000000000e37e2948bd01ec7"
+    },
     "4390f46f0be225ca2e6315e7bbdccb56": {
       "result": "0x000000000000000000000000000000000000000000000000000005593939b864"
-    },
-    "2d71f50226b4afdf8e2c685624400f02": {
-      "result": "0x000000000000000000000000000000000000000000002984605985f99f098b25"
     },
     "8be1556fdee93cf95f680d167fda318d": {
       "result": "0x0000000000000000000000000000000000000000000046825f5e5d3eb6758e0f"
@@ -149,17 +155,11 @@
     "61f9711a792ab848025528fbade83ce6": {
       "result": "0x000000000000000000000000000000000000000000000000000003a2e6a530e2"
     },
-    "5baa7d12a60d7391da30303431649f51": {
-      "result": "0x0000000000000000000000000000000000000000000000000e37e2948bd01ec7"
-    },
-    "f31cdd09b969eaf1d75f870b1ae394e0": {
-      "result": "0x00000000000000000000000000000000000000000009f8c457edc8a5025c17f0"
-    },
-    "6f9aa70e8eebd93f1f7fe020459b1eb2": {
-      "result": "0x00000000000000000000000000000000000000000003be6d4ca060ddba6d8f80"
-    },
     "662d05896f1bd9a993489fd2d598e214": {
       "result": "0x00000000000000000000000000000000000000000000000000001efce579fa0f"
+    },
+    "2d71f50226b4afdf8e2c685624400f02": {
+      "result": "0x000000000000000000000000000000000000000000002984605985f99f098b25"
     }
   }
 }

@@ -1,6 +1,7 @@
 import { Erc20__factory } from '../../../../contracts'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
@@ -88,7 +89,7 @@ export class StargateFarmAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'pool' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const { lpStakingAddress, lpStakingType, lpStakingTimeMetisAddress } =
       staticChainData[this.chainId]!

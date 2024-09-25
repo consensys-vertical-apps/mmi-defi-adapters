@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
@@ -83,7 +84,7 @@ export class StargateFarmV2Adapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'pool' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const { stargateStakingAddress } = staticChainDataV2[this.chainId]!
     const stakingContract = StargateStaking__factory.connect(
