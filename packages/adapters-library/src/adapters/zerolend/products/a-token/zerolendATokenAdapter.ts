@@ -10,10 +10,10 @@ import {
   WriteActionInputSchemas,
   WriteActions,
 } from '../../../../types/writeActions'
-import { ZeroLendBasePoolAdapter } from '../common/zerolendBasePoolAdapter'
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
+import { ZeroLendBasePoolAdapter } from '../common/zerolendBasePoolAdapter'
 
 export class ZeroLendATokenPoolAdapter extends ZeroLendBasePoolAdapter {
   productId = 'a-token'
@@ -21,7 +21,6 @@ export class ZeroLendATokenPoolAdapter extends ZeroLendBasePoolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -110,13 +109,14 @@ export class ZeroLendATokenPoolAdapter extends ZeroLendBasePoolAdapter {
 }
 
 const getAddress = (chainId: Chain) => {
-  if (chainId === Chain.Ethereum) {
-    return '0xFD856E1a33225B86f70D686f9280435E3fF75FCF' // TODO: add btc market too
-  } else if(chainId === Chain.Linea) {
-    return '0xC44827C51d00381ed4C52646aeAB45b455d200eB'
+  switch (chainId) {
+    case Chain.Ethereum:
+      return '0xFD856E1a33225B86f70D686f9280435E3fF75FCF' // TODO: add btc market too
+    case Chain.Linea:
+      return '0xC44827C51d00381ed4C52646aeAB45b455d200eB'
+    default:
+      throw new Error('Chain not supported')
   }
-
-  throw new Error('Chain not supported')
 }
 
 export const WriteActionInputs = {
