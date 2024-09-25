@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { Helpers } from '../../../../scripts/helpers'
@@ -70,7 +71,7 @@ export class EtherFiWeEthAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const protocolToken = await this.helpers.getTokenMetadata(WE_ETH_ADDRESS)
     const underlyingToken = await this.helpers.getTokenMetadata(E_ETH_ADDRESS)

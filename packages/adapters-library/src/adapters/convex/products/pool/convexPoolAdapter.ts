@@ -2,6 +2,7 @@ import { getAddress } from 'ethers'
 
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -47,7 +48,6 @@ export class ConvexPoolAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
-    version: 2,
   }
 
   protected async unwrapProtocolToken(
@@ -113,7 +113,7 @@ export class ConvexPoolAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     throw new NotImplementedError()
   }
 
-  @CacheToFile({ fileKey: 'metadata' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const convexFactory = ConvexFactory__factory.connect(
       CONVEX_FACTORY_ADDRESS,

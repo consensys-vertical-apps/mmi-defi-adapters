@@ -55,7 +55,6 @@ export class LynexAlgebraAdapter implements IProtocolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
-    version: 2,
   }
 
   adaptersController: AdaptersController

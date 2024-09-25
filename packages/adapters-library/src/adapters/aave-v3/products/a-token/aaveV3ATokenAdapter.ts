@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   AssetType,
@@ -22,7 +23,6 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -38,7 +38,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'a-token-v3' })
+  @CacheToDb()
   async getProtocolTokens() {
     return super.getProtocolTokens()
   }

@@ -11,6 +11,7 @@ import { Chain } from './constants/chains'
 import { AdapterMissingError, NotImplementedError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 import { pascalCase } from './utils/caseConversion'
+import { logger } from './utils/logger'
 
 export class AdaptersController {
   private adapters: Map<Chain, Map<Protocol, Map<string, IProtocolAdapter>>> =
@@ -156,12 +157,23 @@ export class AdaptersController {
       const tokenAddress = protocolToken.address
 
       const existingAdapter = chainAdaptersMap.get(tokenAddress)
+
       const isPriceAdapter =
         existingAdapter?.getProtocolDetails().positionType ===
         PositionType.FiatPrices
 
       if (existingAdapter && !isPriceAdapter) {
-        throw new Error(`Duplicated protocol token ${protocolToken.address}`)
+        const protocolDetails = existingAdapter.getProtocolDetails()
+        const duplicateDetails = adapter.getProtocolDetails()
+
+        const errorMessage = `${protocolToken.address} has already been added to the adapter map by 
+          ${protocolDetails.protocolId} ${protocolDetails.productId} ${protocolDetails.chainId} 
+          and is duplicated by 
+          ${duplicateDetails.protocolId} ${duplicateDetails.productId} ${duplicateDetails.chainId}`
+
+        logger.error(errorMessage)
+
+        throw new Error(errorMessage)
       }
 
       // override price adapter

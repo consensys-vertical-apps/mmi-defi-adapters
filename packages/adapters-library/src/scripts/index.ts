@@ -9,6 +9,8 @@ import { buildMetadata } from './buildMetadata'
 import { buildMetadataDb } from './buildMetadataDb'
 import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
+import { checkDbTotals } from './checkDbTotals'
+import { checkMetadataType } from './checkMetadataType'
 import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
@@ -22,6 +24,8 @@ const adaptersController = defiProvider.adaptersController
 
 featureCommands(program, defiProvider)
 
+checkMetadataType(program, chainProviders, adaptersController)
+
 newAdapterCommand(program, defiProvider)
 
 blockAverage(program, chainProviders)
@@ -31,6 +35,7 @@ buildContractTypes(program)
 buildMetadata(program, chainProviders, adaptersController)
 
 buildMetadataDb(program, chainProviders, adaptersController)
+checkDbTotals(program, chainProviders, adaptersController)
 
 buildSnapshots(program)
 

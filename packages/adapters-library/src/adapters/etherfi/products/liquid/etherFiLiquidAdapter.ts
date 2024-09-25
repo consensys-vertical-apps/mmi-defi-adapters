@@ -2,6 +2,7 @@ import { getAddress } from 'ethers'
 import { uniqBy } from 'lodash'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { Helpers } from '../../../../scripts/helpers'
@@ -87,7 +88,7 @@ export class EtherFiLiquidAdapter implements IProtocolAdapter {
    * To do so, we fetch all logs from the "Deploy" contract, which acts as a factory.
    * Then we only keep logs that contain "accountant".
    */
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   public async getProtocolTokens(): Promise<
     ProtocolToken<AdditionalMetadata>[]
   > {

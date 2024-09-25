@@ -12,6 +12,8 @@ export type IMetadataProvider = {
     protocolId: Protocol
     productId: string
   }) => Promise<ProtocolToken[]>
+
+  getPoolCount: (protocolId: string, productId: string) => Promise<number>
 }
 
 export type PoolRow = {
@@ -54,6 +56,24 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
     productId: string
   }): Promise<ProtocolToken[]> {
     return this.getPoolsFromDb(input)
+  }
+
+  async getPoolCount(protocolId: string, productId: string): Promise<number> {
+    // Prepare the query to get the adapter ID and count the pools
+    const query = `
+      SELECT COUNT(*) AS pool_count
+      FROM pools
+      WHERE adapter_id = (
+        SELECT adapter_id FROM adapters WHERE protocol_id = ? AND product_id = ?
+      );
+    `
+
+    // Execute the query with the provided protocolId and productId
+    const stmt = this.database.prepare(query)
+    const result = stmt.get(protocolId, productId) as { pool_count?: number }
+
+    // Return the pool count from the result
+    return Number(result.pool_count ?? 0)
   }
 
   private readonly selectProtocolPoolsQuery = `
@@ -136,16 +156,16 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
           name: row.main_token_name,
           symbol: row.main_token_symbol,
           decimals: row.main_token_decimals,
-          tokenId: row.adapter_pool_id,
+          tokenId:
+            row.adapter_pool_id === null ? undefined : row.adapter_pool_id,
           ...poolAdditionalData, // Spread parsed JSON
-          underlyingTokens: [],
-          rewardTokens: [],
-          extraRewardTokens: [],
+          underlyingTokens: [], // This one seems to always be populated
         }
       }
 
       const pool = poolsMap[poolId]!
 
+      // Handle underlyingTokens
       if (row.underlying_token_address) {
         const underlyingAdditionalData = row.underlying_additional_data
           ? JSON.parse(row.underlying_additional_data)
@@ -160,14 +180,21 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
         })
       }
 
+      // Handle rewardTokens only if it exists
       if (row.reward_token_address) {
         const rewardAdditionalData = row.reward_additional_data
           ? JSON.parse(row.reward_additional_data)
           : {}
 
-        // todo: IProtocolToken interface needs to be updated to include reward token data
+        // IProtocolTokenType needs updating to include rewardTokens
         //@ts-ignore
-        pool.rewardTokens!.push({
+        if (!pool.rewardTokens) {
+          //@ts-ignore
+          pool.rewardTokens = []
+        }
+
+        //@ts-ignore
+        pool.rewardTokens.push({
           address: row.reward_token_address,
           name: row.reward_token_name,
           symbol: row.reward_token_symbol,
@@ -176,14 +203,21 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
         })
       }
 
+      // Handle extraRewardTokens only if it exists
       if (row.extra_reward_token_address) {
         const extraRewardAdditionalData = row.extra_reward_additional_data
           ? JSON.parse(row.extra_reward_additional_data)
           : {}
 
-        // todo: IProtocolToken interface needs to be updated to include extra reward token data
+        // IProtocolTokenType needs updating to include rewardTokens
         //@ts-ignore
-        pool.extraRewardTokens!.push({
+        if (!pool.extraRewardTokens) {
+          //@ts-ignore
+          pool.extraRewardTokens = []
+        }
+
+        //@ts-ignore
+        pool.extraRewardTokens.push({
           address: row.extra_reward_token_address,
           name: row.extra_reward_token_name,
           symbol: row.extra_reward_token_symbol,

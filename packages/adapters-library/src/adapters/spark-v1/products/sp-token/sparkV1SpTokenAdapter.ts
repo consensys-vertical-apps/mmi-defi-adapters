@@ -8,6 +8,7 @@ import {
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
 
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
@@ -28,7 +29,6 @@ export class SparkV1SpTokenAdapter extends SparkV1BasePoolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -45,7 +45,7 @@ export class SparkV1SpTokenAdapter extends SparkV1BasePoolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'sp-token-v1' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     return super.getProtocolTokens()
   }

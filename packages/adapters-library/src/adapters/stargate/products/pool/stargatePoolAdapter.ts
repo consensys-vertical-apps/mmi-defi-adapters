@@ -1,6 +1,8 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
+
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../../scripts/helpers'
@@ -42,7 +44,6 @@ export class StargatePoolAdapter implements IProtocolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   constructor({
@@ -156,7 +157,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  @CacheToFile({ fileKey: 'lp-token' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const lpFactoryContract = StargateFactory__factory.connect(
       staticChainData[this.chainId]!.factoryAddress,
