@@ -33,9 +33,7 @@ export class AdaptersController {
         Partial<
           Record<
             Chain,
-            (new (
-              input: ProtocolAdapterParams,
-            ) => IProtocolAdapter)[]
+            (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]
           >
         >
       >
@@ -163,15 +161,13 @@ export class AdaptersController {
         PositionType.FiatPrices
 
       if (existingAdapter && !isPriceAdapter) {
-        const errorMessage = `${
-          protocolToken.address
-        } has already been added to the adapter map by ${
-          existingAdapter.getProtocolDetails().protocolId
-        } ${existingAdapter.getProtocolDetails().productId} ${
-          existingAdapter.getProtocolDetails().chainId
-        } and is duplicated by ${adapter.getProtocolDetails().protocolId} ${
-          adapter.getProtocolDetails().productId
-        } ${adapter.getProtocolDetails().chainId}`
+        const protocolDetails = existingAdapter.getProtocolDetails()
+        const duplicateDetails = adapter.getProtocolDetails()
+
+        const errorMessage = `${protocolToken.address} has already been added to the adapter map by 
+          ${protocolDetails.protocolId} ${protocolDetails.productId} ${protocolDetails.chainId} 
+          and is duplicated by 
+          ${duplicateDetails.protocolId} ${duplicateDetails.productId} ${duplicateDetails.chainId}`
 
         logger.error(errorMessage)
 

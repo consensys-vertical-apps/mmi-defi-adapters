@@ -63,13 +63,6 @@ import SonneBorrowMarketOptimismProtocolToken from '../../adapters/sonne/product
 import SonneSupplyMarketBaseProtocolToken from '../../adapters/sonne/products/supply-market/metadata/base.protocol-token.json'
 import SonneSupplyMarketOptimismProtocolToken from '../../adapters/sonne/products/supply-market/metadata/op.protocol-token.json'
 import StargateVotingEscrowEthereumProtocolToken from '../../adapters/stargate/products/voting-escrow/metadata/ethereum.protocol-token.json'
-import SushiswapV2PoolArbitrumProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/arb.protocol-token.json'
-import SushiswapV2PoolAvalancheProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/avax.protocol-token.json'
-import SushiswapV2PoolBaseProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/base.protocol-token.json'
-import SushiswapV2PoolBscProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/bsc.protocol-token.json'
-import SushiswapV2PoolEthereumProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/ethereum.protocol-token.json'
-import SushiswapV2PoolFantomProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/fantom.protocol-token.json'
-import SushiswapV2PoolPolygonProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/matic.protocol-token.json'
 
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
@@ -1185,69 +1178,6 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     StargateVotingEscrowEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.SushiswapV2,
-      productId: 'pool',
-      chainId: Chain.Arbitrum,
-      fileKey: 'protocol-token',
-    }),
-    SushiswapV2PoolArbitrumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.SushiswapV2,
-      productId: 'pool',
-      chainId: Chain.Avalanche,
-      fileKey: 'protocol-token',
-    }),
-    SushiswapV2PoolAvalancheProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.SushiswapV2,
-      productId: 'pool',
-      chainId: Chain.Base,
-      fileKey: 'protocol-token',
-    }),
-    SushiswapV2PoolBaseProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.SushiswapV2,
-      productId: 'pool',
-      chainId: Chain.Bsc,
-      fileKey: 'protocol-token',
-    }),
-    SushiswapV2PoolBscProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.SushiswapV2,
-      productId: 'pool',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    SushiswapV2PoolEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.SushiswapV2,
-      productId: 'pool',
-      chainId: Chain.Fantom,
-      fileKey: 'protocol-token',
-    }),
-    SushiswapV2PoolFantomProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.SushiswapV2,
-      productId: 'pool',
-      chainId: Chain.Polygon,
-      fileKey: 'protocol-token',
-    }),
-    SushiswapV2PoolPolygonProtocolToken,
   ],
 ])
 

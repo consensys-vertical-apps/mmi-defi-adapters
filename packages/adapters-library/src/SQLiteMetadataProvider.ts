@@ -156,16 +156,16 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
           name: row.main_token_name,
           symbol: row.main_token_symbol,
           decimals: row.main_token_decimals,
-          tokenId: row.adapter_pool_id,
+          tokenId:
+            row.adapter_pool_id === null ? undefined : row.adapter_pool_id,
           ...poolAdditionalData, // Spread parsed JSON
-          underlyingTokens: [],
-          rewardTokens: [],
-          extraRewardTokens: [],
+          underlyingTokens: [], // This one seems to always be populated
         }
       }
 
       const pool = poolsMap[poolId]!
 
+      // Handle underlyingTokens
       if (row.underlying_token_address) {
         const underlyingAdditionalData = row.underlying_additional_data
           ? JSON.parse(row.underlying_additional_data)
@@ -180,14 +180,21 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
         })
       }
 
+      // Handle rewardTokens only if it exists
       if (row.reward_token_address) {
         const rewardAdditionalData = row.reward_additional_data
           ? JSON.parse(row.reward_additional_data)
           : {}
 
-        // todo: IProtocolToken interface needs to be updated to include reward token data
+        // IProtocolTokenType needs updating to include rewardTokens
         //@ts-ignore
-        pool.rewardTokens!.push({
+        if (!pool.rewardTokens) {
+          //@ts-ignore
+          pool.rewardTokens = []
+        }
+
+        //@ts-ignore
+        pool.rewardTokens.push({
           address: row.reward_token_address,
           name: row.reward_token_name,
           symbol: row.reward_token_symbol,
@@ -196,14 +203,21 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
         })
       }
 
+      // Handle extraRewardTokens only if it exists
       if (row.extra_reward_token_address) {
         const extraRewardAdditionalData = row.extra_reward_additional_data
           ? JSON.parse(row.extra_reward_additional_data)
           : {}
 
-        // todo: IProtocolToken interface needs to be updated to include extra reward token data
+        // IProtocolTokenType needs updating to include rewardTokens
         //@ts-ignore
-        pool.extraRewardTokens!.push({
+        if (!pool.extraRewardTokens) {
+          //@ts-ignore
+          pool.extraRewardTokens = []
+        }
+
+        //@ts-ignore
+        pool.extraRewardTokens.push({
           address: row.extra_reward_token_address,
           name: row.extra_reward_token_name,
           symbol: row.extra_reward_token_symbol,

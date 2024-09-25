@@ -519,10 +519,7 @@ export class Helpers {
             name: protocolToken.name,
             symbol: protocolToken.symbol,
             decimals: protocolToken.decimals,
-            tokenId:
-              protocolToken.tokenId === null
-                ? undefined
-                : protocolToken.tokenId,
+            tokenId: protocolToken.tokenId,
           },
           tokens: [
             {

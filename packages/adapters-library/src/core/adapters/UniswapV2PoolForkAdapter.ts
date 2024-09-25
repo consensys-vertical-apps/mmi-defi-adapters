@@ -51,7 +51,7 @@ export type UniswapV2PoolForkPositionStrategy = { factoryAddress: string } & (
 
 export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
   protected readonly MAX_CONCURRENT_FACTORY_PROMISES: number = 10000
-  protected readonly MAX_FACTORY_JOB_SIZE: number = 10000
+  protected readonly MAX_FACTORY_POOL_COUNT: number = 10000
   protected readonly MAX_CONCURRENT_GRAPHQL_REQUESTS: number = 10
 
   public adapterSettings: AdapterSettings
@@ -634,16 +634,16 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       factoryAddress,
       this.provider,
     )
-    const allPairsLength = Number(await factoryContract.allPairsLength())
+    const allPairsLength = 1 ?? Number(await factoryContract.allPairsLength())
 
-    if (allPairsLength > this.MAX_FACTORY_JOB_SIZE) {
+    if (allPairsLength > this.MAX_FACTORY_POOL_COUNT) {
       throw new Error(
-        `Factory job size exceeds the limit ${allPairsLength} > ${this.MAX_FACTORY_JOB_SIZE}`,
+        `Factory job size exceeds the limit ${allPairsLength} > ${this.MAX_FACTORY_POOL_COUNT}`,
       )
     }
 
     // Define jobSize to limit how many pairs to process in one go
-    const jobSize = Math.min(this.MAX_FACTORY_JOB_SIZE, allPairsLength)
+    const jobSize = Math.min(this.MAX_FACTORY_POOL_COUNT, allPairsLength)
     const concurrency = Number(this.MAX_CONCURRENT_FACTORY_PROMISES)
 
     // Initialize p-queue for concurrency control

@@ -484,10 +484,3 @@ function createDatabases() {
     createDatabase(name)
   }
 }
-
-// Initialize databases
-try {
-  createDatabases()
-} catch (err) {
-  console.error('Error creating databases: ', err)
-}
