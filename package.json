@@ -40,7 +40,9 @@
     "test:integration": "npm run test:integration -w packages/adapters-library",
     "test:cov": "npm run test:cov -w packages/adapters-library",
     "build-docs": "npm run build-docs -w packages/adapters-library",
-    "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; patch-package"
+    "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; patch-package",
+    "k6:run": "./packages/stress-test/runK6.sh $@",
+    "k6:run-all-chains": "./packages/stress-test/runAllChains.sh"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.7.3",
