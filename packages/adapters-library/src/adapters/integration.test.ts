@@ -56,6 +56,7 @@ import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 import { testCases as solvTestCases } from './solv/tests/testCases'
 
 import { testCases as etherFiTestCases } from './etherfi/tests/testCases'
+import { testCases as zeroLendTestCases } from './zerolend/tests/testCases'
 
 const TEST_TIMEOUT = 300000
 
@@ -123,6 +124,7 @@ const protocolTestCases = {
   [Protocol.UniswapV2]: uniswapV2TestCases,
   [Protocol.UniswapV3]: uniswapV3TestCases,
   [Protocol.Xfai]: xfaiTestCases,
+  [Protocol.ZeroLend]: zeroLendTestCases,
 }
 
 runAllTests()
