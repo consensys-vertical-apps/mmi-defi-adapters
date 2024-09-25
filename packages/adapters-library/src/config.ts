@@ -123,7 +123,7 @@ const ConfigSchema = z
           .default(
             parseNumberEnv(
               process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_ETHEREUM,
-              1000,
+              100,
             ),
           ),
         optimism: z
@@ -173,7 +173,7 @@ const ConfigSchema = z
           .default(
             parseNumberEnv(
               process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_AVALANCHE,
-              10,
+              100,
             ),
           ),
         linea: z
