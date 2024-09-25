@@ -158,66 +158,11 @@ export class XfaiDexAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   ): Promise<ProtocolTokenTvl[]> {
     const lps = await this.getProtocolTokens()
 
-    return (
-      await Promise.all(
-        Object.values(lps).map(
-          async ({ name, address, symbol, decimals, underlyingTokens }) => {
-            const underlyingTokenBalances = filterMapAsync(
-              underlyingTokens,
-              async (underlyingToken: Erc20Metadata) => {
-                if (
-                  input.protocolTokenAddresses &&
-                  !input.protocolTokenAddresses.includes(address)
-                ) {
-                  return undefined
-                }
-
-                if (underlyingToken.address === ZERO_ADDRESS) {
-                  const balanceOf = await this.provider
-                    .getBalance(address, input.blockNumber)
-                    .catch(() => 0n)
-                  return {
-                    ...underlyingToken,
-                    totalSupplyRaw: balanceOf,
-                    type: TokenType.Underlying,
-                  }
-                }
-
-                const contract = Erc20__factory.connect(
-                  underlyingToken.address,
-                  this.provider,
-                )
-
-                const balanceOf = await contract
-                  .balanceOf(address, {
-                    blockTag: input.blockNumber,
-                  })
-                  .catch(() => 0n)
-
-                return {
-                  ...underlyingToken,
-                  totalSupplyRaw: balanceOf,
-                  type: TokenType.Underlying,
-                }
-              },
-            )
-            const contract = Erc20__factory.connect(address, this.provider)
-
-            return {
-              type: 'protocol',
-              name,
-              address,
-              symbol,
-              decimals,
-              tokens: await underlyingTokenBalances,
-              totalSupplyRaw: await contract.totalSupply({
-                blockTag: input.blockNumber,
-              }),
-            } as ProtocolTokenTvl
-          },
-        ),
-      )
-    ).filter((item) => item !== undefined) as ProtocolTokenTvl[]
+    return await this.helpers.tvl({
+      protocolTokens: lps,
+      filterProtocolTokenAddresses: input.protocolTokenAddresses,
+      blockNumber: input.blockNumber,
+    })
   }
 
   protected async unwrapProtocolToken(
