@@ -1,5 +1,6 @@
 {
   "blockNumber": 19818581,
+  "latency": "Latency: 3.81 seconds",
   "aggregatedValues": ["USD20,673.12", "USD7,760.12"],
   "snapshot": [
     {
@@ -11,6 +12,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "a-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -46,6 +48,7 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "variable-debt-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

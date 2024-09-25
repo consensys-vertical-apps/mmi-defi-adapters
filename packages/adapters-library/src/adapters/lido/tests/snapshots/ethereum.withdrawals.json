@@ -1,5 +1,6 @@
 {
   "aggregatedValues": ["USD116.79"],
+  "latency": "Latency: 1.636 seconds",
   "snapshot": {
     "protocolId": "lido",
     "name": "Lido stEth",
@@ -9,6 +10,7 @@
     "positionType": "stake",
     "chainId": 1,
     "productId": "st-eth",
+    "chainName": "ethereum",
     "success": true,
     "movements": [
       {

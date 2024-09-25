@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/defi-adapters",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "Defi adapters for MMI Dashboard",
   "author": "MMI Team",
   "license": "MIT",
@@ -30,7 +30,7 @@
     "test": "jest src --testPathIgnorePatterns='src/adapters/integration.test.ts' --testPathIgnorePatterns='src/tests/detect-errors.test.ts'",
     "test:file": "if [ -z \"$TEST_FILE\" ]; then echo 'No test file specified'; exit 1; else jest $TEST_FILE; fi",
     "test:detect-errors": "jest src/tests/detect-errors.test.ts",
-    "test:update:adapter-snapshot": "jest src/scripts/newAdapter2Command.test.ts -u",
+    "test:update:adapter-snapshot": "jest src/scripts/adapterBuilder/newAdapterCommand.test.ts -u",
     "test:tsc": "tsc --noEmit -p tsconfig.json",
     "test:integration": "DEFI_ADAPTERS_TEST_FILTER_PROTOCOL=$npm_config_protocol jest --coverage --coverageDirectory='coverage/e2e/' src/adapters/integration.test.ts",
     "test:cov": "jest src --ci --coverage  --coverageDirectory='coverage/unit/' --testPathIgnorePatterns='src/adapters/integration.test.ts' --testPathIgnorePatterns='src/tests/detect-errors.test.ts'",
@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@typechain/ethers-v6": "^0.5.0",
+    "@types/better-sqlite3": "^7.6.11",
     "@types/ethereum-block-by-date": "^1.4.1",
     "@types/inquirer": "^8.2.6",
     "@types/jest": "^29.5.12",
@@ -62,9 +63,11 @@
     "typedoc-plugin-mdn-links": "^3.1.0"
   },
   "dependencies": {
+    "better-sqlite3": "^11.2.1",
     "ethers": "^6.7.1",
     "evm-maths": "^6.0.0",
     "lodash": "^4.17.21",
+    "p-queue": "^6.6.2",
     "pino": "^8.15.0",
     "zod": "^3.22.4"
   }

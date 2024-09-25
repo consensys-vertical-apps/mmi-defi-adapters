@@ -1,6 +1,6 @@
 import { getAddress } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
@@ -8,7 +8,6 @@ import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../../scripts/helpers'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -110,20 +109,21 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
       }
     }
 
-    if (this.chainId === Chain.Bsc) {
-      return {
-        mainGateway: getAddress('0x2c2e1ee20c633eae18239c0bf59cef1fc44939ac'),
-        mainLToken: getAddress('0xabfc820798095f3e4bd9626db6f8ad7d57a5c76a'),
-        mainPToken: getAddress('0x28a41c9eb8d0a9055de1644f9c4408f873c8550f'),
-        innoGateway: getAddress('0xab43c2eb56b63aad8f9a54107d0c9fde72d45ab9'),
-        innoLToken: getAddress('0x053e95113780ddf39b54baf53820f9f415038a45'),
-        innoPToken: getAddress('0x4cb0df0611045dd5d546fc622d61fdcb5d869170'),
-        oracle: getAddress('0xb7f803712f5b389d6f009f733916e18f9429e9d5'),
-        tokenB0: await this.helpers.getTokenMetadata(
-          getAddress('0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d'),
-        ),
-      }
-    }
+    // TODO Disabled as we cannot fetch all contract logs for BSC
+    // if (this.chainId === Chain.Bsc) {
+    //   return {
+    //     mainGateway: getAddress('0x2c2e1ee20c633eae18239c0bf59cef1fc44939ac'),
+    //     mainLToken: getAddress('0xabfc820798095f3e4bd9626db6f8ad7d57a5c76a'),
+    //     mainPToken: getAddress('0x28a41c9eb8d0a9055de1644f9c4408f873c8550f'),
+    //     innoGateway: getAddress('0xab43c2eb56b63aad8f9a54107d0c9fde72d45ab9'),
+    //     innoLToken: getAddress('0x053e95113780ddf39b54baf53820f9f415038a45'),
+    //     innoPToken: getAddress('0x4cb0df0611045dd5d546fc622d61fdcb5d869170'),
+    //     oracle: getAddress('0xb7f803712f5b389d6f009f733916e18f9429e9d5'),
+    //     tokenB0: await this.helpers.getTokenMetadata(
+    //       getAddress('0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d'),
+    //     ),
+    //   }
+    // }
 
     throw new Error('Chain not supported')
   }
@@ -266,15 +266,23 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
         undefined,
       )
 
-      const transferEventsRaw = await tokenContract.queryFilter(
-        transferFilter,
+      const burnFilter = tokenContract.filters.Transfer(
+        userAddress,
+        ZERO_ADDRESS,
         undefined,
-        blockNumber,
       )
+
+      const [transferEventsRaw, burnEventsRaw] = await Promise.all([
+        tokenContract.queryFilter(transferFilter, undefined, blockNumber),
+        tokenContract.queryFilter(burnFilter, undefined, blockNumber),
+      ])
+
+      const burnedTokenIds = burnEventsRaw.map((log) => log.args.tokenId)
 
       for (const log of transferEventsRaw) {
         const tokenId = log.args.tokenId
         if (
+          !burnedTokenIds.includes(tokenId) &&
           getAddress(
             await tokenContract.ownerOf(tokenId, {
               blockTag: blockNumber,

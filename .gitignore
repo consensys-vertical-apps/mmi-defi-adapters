@@ -133,3 +133,6 @@ dist
 
 # 
 *.tsbuildinfo
+
+*db-shm
+*db-wal

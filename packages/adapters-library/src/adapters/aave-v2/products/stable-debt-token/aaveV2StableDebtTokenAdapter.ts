@@ -1,3 +1,4 @@
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { Helpers } from '../../../../scripts/helpers'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
@@ -18,7 +19,6 @@ export class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -34,7 +34,7 @@ export class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'stable-debt-token-v2' })
+  @CacheToDb()
   async getProtocolTokens() {
     return super.getProtocolTokens()
   }

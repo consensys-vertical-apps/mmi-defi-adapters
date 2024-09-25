@@ -66,6 +66,7 @@ export function CacheToFile({ fileKey }: { fileKey: string }) {
 
       return metadata
     }
+    replacementMethod.isCacheToFileDecorated = true
 
     return replacementMethod
   }

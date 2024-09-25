@@ -1,12 +1,9 @@
+import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Protocol } from '../adapters/protocols'
 import { WriteActionInputs } from '../adapters/supportedProtocols'
 import { Helpers } from '../scripts/helpers'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
-import {
-  AssetType,
-  PositionType,
-  ProtocolAdapterParams,
-} from '../types/adapter'
+import { PositionType, ProtocolAdapterParams } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { Support } from '../types/response'
 import { WriteActions } from '../types/writeActions'
@@ -14,6 +11,7 @@ import { Chain } from './constants/chains'
 import { AdapterMissingError, NotImplementedError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 import { pascalCase } from './utils/caseConversion'
+import { logger } from './utils/logger'
 
 export class AdaptersController {
   private adapters: Map<Chain, Map<Protocol, Map<string, IProtocolAdapter>>> =
@@ -26,6 +24,7 @@ export class AdaptersController {
   constructor({
     providers,
     supportedProtocols,
+    metadataProviders,
   }: {
     providers: Record<Chain, CustomJsonRpcProvider>
     supportedProtocols: Partial<
@@ -41,6 +40,7 @@ export class AdaptersController {
         >
       >
     >
+    metadataProviders: Record<Chain, IMetadataProvider>
   }) {
     Object.entries(supportedProtocols).forEach(
       ([protocolIdKey, supportedChains]) => {
@@ -58,7 +58,12 @@ export class AdaptersController {
                 chainId,
                 protocolId,
                 adaptersController: this,
-                helpers: new Helpers({ provider, chainId }),
+                helpers: new Helpers(
+                  provider,
+                  chainId,
+                  metadataProviders[chainId],
+                  providers,
+                ),
               })
 
               const productId = adapter.productId
@@ -152,12 +157,23 @@ export class AdaptersController {
       const tokenAddress = protocolToken.address
 
       const existingAdapter = chainAdaptersMap.get(tokenAddress)
+
       const isPriceAdapter =
         existingAdapter?.getProtocolDetails().positionType ===
         PositionType.FiatPrices
 
       if (existingAdapter && !isPriceAdapter) {
-        throw new Error(`Duplicated protocol token ${protocolToken.address}`)
+        const protocolDetails = existingAdapter.getProtocolDetails()
+        const duplicateDetails = adapter.getProtocolDetails()
+
+        const errorMessage = `${protocolToken.address} has already been added to the adapter map by 
+          ${protocolDetails.protocolId} ${protocolDetails.productId} ${protocolDetails.chainId} 
+          and is duplicated by 
+          ${duplicateDetails.protocolId} ${duplicateDetails.productId} ${duplicateDetails.chainId}`
+
+        logger.error(errorMessage)
+
+        throw new Error(errorMessage)
       }
 
       // override price adapter

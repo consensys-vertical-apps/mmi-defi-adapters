@@ -35,13 +35,15 @@ export type ProtocolToken<
   AdditionalMetadata extends JsonMetadata = {},
 > = Erc20Metadata & {
   underlyingTokens?: Erc20Metadata[]
+  // rewardTokens?: Erc20Metadata[]
+  // extraRewardTokens?: Erc20Metadata[]
   tokenId?: string
 } & AdditionalMetadata
 
 export interface IProtocolAdapter {
   adapterSettings: AdapterSettings
 
-  helpers?: Helpers
+  helpers: Helpers
 
   /**
    * Unique identifier of the protocol.

@@ -7,6 +7,7 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,
@@ -75,23 +76,25 @@ export class SyncSwapPoolAdapter implements IProtocolAdapter {
   chainId: Chain
   adaptersController: AdaptersController
   provider: CustomJsonRpcProvider
+  helpers: Helpers
 
   constructor({
     provider,
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
-    version: 2,
   }
 
   unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {

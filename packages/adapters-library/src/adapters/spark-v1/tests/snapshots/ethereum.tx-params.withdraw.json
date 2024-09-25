@@ -8,6 +8,7 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "sp-token",
+    "chainName": "ethereum",
     "success": true,
     "params": {
       "to": "0xC13e21B648A5Ee794902342038FF3aDAB66BE987",

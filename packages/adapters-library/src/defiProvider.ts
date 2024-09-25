@@ -1,7 +1,13 @@
+import path from 'node:path'
+import Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
+import {
+  IMetadataProvider,
+  SQLiteMetadataProvider,
+} from './SQLiteMetadataProvider'
 import { Protocol } from './adapters/protocols'
-import { supportedProtocols } from './adapters/supportedProtocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
+import { supportedProtocols } from './adapters/supportedProtocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
@@ -15,7 +21,7 @@ import {
 import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
-import { filterMapAsync, filterMapSync } from './core/utils/filters'
+import { filterMapAsync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
 import { unwrap } from './core/utils/unwrap'
 import { count } from './metricsCount'
@@ -39,19 +45,65 @@ import {
   TotalValueLockResponse,
 } from './types/response'
 
+import { existsSync } from 'node:fs'
+import { IUnwrapCache, IUnwrapCacheProvider, UnwrapCache } from './unwrapCache'
+
+function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
+  return Object.values(Chain).reduce(
+    (acc, chain) => {
+      acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
+      return acc
+    },
+    {} as Record<Chain, IMetadataProvider>,
+  )
+}
+
+const dbParams = (chainId: Chain): [string, Database.Options] => {
+  const dbPath = path.join(__dirname, '../../..', `${ChainName[chainId]}.db`)
+
+  if (
+    !(process.env.DEFI_ALLOW_DB_CREATION !== 'false') &&
+    !existsSync(dbPath)
+  ) {
+    logger.info(`Database file does not exist: ${dbPath}`)
+    throw new Error(`Database file does not exist: ${dbPath}`)
+  }
+
+  logger.info(`Database file exists: ${dbPath}`)
+
+  return [
+    dbPath,
+    {
+      fileMustExist: !(process.env.DEFI_ALLOW_DB_CREATION !== 'false'),
+      readonly: true,
+    },
+  ]
+}
+
 export class DefiProvider {
   private parsedConfig
   chainProvider: ChainProvider
   adaptersController: AdaptersController
   private adaptersControllerWithoutPrices: AdaptersController
 
-  constructor(config?: DeepPartial<IConfig>) {
+  private metadataProviders: Record<Chain, IMetadataProvider>
+  private unwrapCache: IUnwrapCache
+
+  constructor(
+    config?: DeepPartial<IConfig>,
+    metadataProviders?: Record<Chain, IMetadataProvider>,
+    unwrapCacheProvider?: IUnwrapCacheProvider,
+  ) {
+    this.metadataProviders = metadataProviders ?? buildMetadataProviders()
+    this.unwrapCache = new UnwrapCache(unwrapCacheProvider)
+
     this.parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
 
     this.adaptersController = new AdaptersController({
       providers: this.chainProvider.providers,
       supportedProtocols,
+      metadataProviders: this.metadataProviders,
     })
 
     const { [Protocol.PricesV2]: _, ...supportedProtocolsWithoutPrices } =
@@ -60,6 +112,7 @@ export class DefiProvider {
     this.adaptersControllerWithoutPrices = new AdaptersController({
       providers: this.chainProvider.providers,
       supportedProtocols: supportedProtocolsWithoutPrices,
+      metadataProviders: this.metadataProviders,
     })
   }
 
@@ -155,7 +208,13 @@ export class DefiProvider {
 
       const getRewardTime = Date.now()
 
-      await unwrap(adapter, blockNumber, protocolPositions, 'balanceRaw')
+      await unwrap(
+        adapter,
+        blockNumber,
+        protocolPositions,
+        'balanceRaw',
+        this.unwrapCache,
+      )
 
       const unwrapTime = Date.now()
 
@@ -245,7 +304,9 @@ export class DefiProvider {
 
       // we cant use the logs for this adapter
       if (
-        !adapter.adapterSettings.enablePositionDetectionByProtocolTokenTransfer
+        !adapter.adapterSettings
+          .enablePositionDetectionByProtocolTokenTransfer ||
+        !adapter.adapterSettings.includeInUnwrap
       ) {
         return undefined
       }
@@ -350,6 +411,7 @@ export class DefiProvider {
         protocolTokenAddresses,
         tokenIds: filterTokenIds,
         includeRawValues,
+        unwrapCache: this.unwrapCache,
       })
 
       const endTime = Date.now()
@@ -419,7 +481,7 @@ export class DefiProvider {
         protocolTokens.map(async (address) => {
           const startTime = Date.now()
 
-          const unwrap = await adapter.unwrap({
+          const unwrap = await this.unwrapCache.fetchWithCache(adapter, {
             protocolTokenAddress: getAddress(address),
             blockNumber,
           })
@@ -529,6 +591,7 @@ export class DefiProvider {
             positionMovements.blockNumber,
             positionMovements.tokens,
             'balanceRaw',
+            this.unwrapCache,
           )
         }),
       )
@@ -612,6 +675,7 @@ export class DefiProvider {
             positionMovements.blockNumber,
             positionMovements.tokens,
             'balanceRaw',
+            this.unwrapCache,
           )
         }),
       )
@@ -665,6 +729,7 @@ export class DefiProvider {
             positionMovements.blockNumber,
             positionMovements.tokens,
             'balanceRaw',
+            this.unwrapCache,
           )
         }),
       )
@@ -718,6 +783,7 @@ export class DefiProvider {
             positionMovements.blockNumber,
             positionMovements.tokens,
             'balanceRaw',
+            this.unwrapCache,
           )
         }),
       )
@@ -751,7 +817,13 @@ export class DefiProvider {
         blockNumber,
       })
 
-      await unwrap(adapter, blockNumber, tokens, 'totalSupplyRaw')
+      await unwrap(
+        adapter,
+        blockNumber,
+        tokens,
+        'totalSupplyRaw',
+        this.unwrapCache,
+      )
 
       return {
         tokens: tokens.map((value) =>
@@ -877,12 +949,14 @@ export class DefiProvider {
 
       return {
         ...protocolDetails,
+        chainName: ChainName[adapter.chainId],
         success: true,
         ...adapterResult,
       }
     } catch (error) {
       return {
         ...protocolDetails,
+        chainName: ChainName[adapter.chainId],
         ...this.handleError(error),
       }
     }

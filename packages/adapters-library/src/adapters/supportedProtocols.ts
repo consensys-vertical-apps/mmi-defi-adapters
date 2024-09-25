@@ -108,6 +108,19 @@ import {
 import { ZeroLendStableDebtTokenPoolAdapter } from './zerolend/products/stable-debt-token/zerolendStableDebtTokenAdapter'
 import { ZeroLendVariableDebtTokenPoolAdapter } from './zerolend/products/variable-debt-token/zerolendVariableDebtTokenAdapter'
 
+import { StargateFarmAdapter } from './stargate/products/farm/stargateFarmAdapter'
+
+import { StargatePoolV2Adapter } from './stargate/products/pool-v2/stargatePoolV2Adapter'
+
+import { StargateFarmV2Adapter } from './stargate/products/farm-v2/stargateFarmV2Adapter'
+
+import { EtherFiEEthAdapter } from './etherfi/products/e-eth/etherFiEEthAdapter'
+
+import { EtherFiWeEthAdapter } from './etherfi/products/we-eth/etherFiWeEthAdapter'
+
+import { EtherFiLiquidAdapter } from './etherfi/products/liquid/etherFiLiquidAdapter'
+
+import { EtherFiL2Adapter } from './etherfi/products/l2/etherFiL2Adapter'
 
 export const supportedProtocols: Record<
   Protocol,
@@ -281,13 +294,24 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Deri]: {
-    [Chain.Bsc]: [DeriPoolAdapter],
+    // [Chain.Bsc]: [DeriPoolAdapter], Disabled until we can support getting all logs for BSC
     [Chain.Arbitrum]: [DeriPoolAdapter],
     [Chain.Linea]: [DeriPoolAdapter],
   },
 
   [Protocol.Ethena]: {
     [Chain.Ethereum]: [EthenaStakedUsdeAdapter],
+  },
+
+  [Protocol.EtherFi]: {
+    [Chain.Ethereum]: [
+      EtherFiEEthAdapter,
+      EtherFiWeEthAdapter,
+      EtherFiLiquidAdapter,
+    ],
+
+    [Chain.Base]: [EtherFiL2Adapter],
+    [Chain.Linea]: [EtherFiL2Adapter],
   },
 
   [Protocol.Flux]: {
@@ -444,8 +468,56 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Stargate]: {
-    [Chain.Ethereum]: [StargatePoolAdapter, StargateVotingEscrowAdapter],
-    [Chain.Arbitrum]: [StargatePoolAdapter],
+    [Chain.Ethereum]: [
+      StargatePoolAdapter,
+      StargateVotingEscrowAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
+    [Chain.Optimism]: [
+      StargatePoolAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
+    [Chain.Bsc]: [
+      StargatePoolAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
+    [Chain.Polygon]: [
+      StargatePoolAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
+    [Chain.Fantom]: [StargatePoolAdapter, StargateFarmAdapter],
+    [Chain.Base]: [
+      StargatePoolAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
+    [Chain.Arbitrum]: [
+      StargatePoolAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
+    [Chain.Avalanche]: [
+      StargatePoolAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
+    [Chain.Linea]: [
+      StargatePoolAdapter,
+      StargateFarmAdapter,
+      StargatePoolV2Adapter,
+      StargateFarmV2Adapter,
+    ],
   },
 
   [Protocol.SushiswapV2]: {
@@ -493,12 +565,12 @@ export const supportedProtocols: Record<
     [Chain.Ethereum]: [
       ZeroLendATokenPoolAdapter,
       ZeroLendStableDebtTokenPoolAdapter,
-      ZeroLendVariableDebtTokenPoolAdapter
+      ZeroLendVariableDebtTokenPoolAdapter,
     ],
     [Chain.Linea]: [
       ZeroLendATokenPoolAdapter,
       ZeroLendStableDebtTokenPoolAdapter,
-      ZeroLendVariableDebtTokenPoolAdapter
+      ZeroLendVariableDebtTokenPoolAdapter,
     ],
   },
 }
@@ -510,7 +582,7 @@ export const WriteActionInputs = {
   SparkV1SpTokenWriteActionInputs,
   MendiFinanceSupplyMarketWriteActionInputs,
   MendiFinanceBorrowMarketWriteActionInputs,
-  ZerolendATokenWriteActionInputs
+  ZerolendATokenWriteActionInputs,
 }
 
 export const GetTransactionParamsSchema = z.union([

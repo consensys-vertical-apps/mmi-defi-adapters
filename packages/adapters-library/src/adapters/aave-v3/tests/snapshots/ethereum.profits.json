@@ -1,5 +1,6 @@
 {
   "blockNumber": 19818884,
+  "latency": "Latency: 15.116 seconds",
   "snapshot": [
     {
       "protocolId": "aave-v3",
@@ -10,6 +11,7 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "a-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {
@@ -76,6 +78,7 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "variable-debt-token",
+      "chainName": "ethereum",
       "success": true,
       "tokens": [
         {

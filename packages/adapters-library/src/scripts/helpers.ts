@@ -1,4 +1,5 @@
 import { getAddress } from 'ethers'
+import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Erc20__factory } from '../contracts'
 import { TransferEvent } from '../contracts/Erc20'
 import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
@@ -11,13 +12,11 @@ import { logger } from '../core/utils/logger'
 import { nativeToken, nativeTokenAddresses } from '../core/utils/nativeTokens'
 import { JsonMetadata, ProtocolToken } from '../types/IProtocolAdapter'
 import {
-  GetEventsInput,
   GetPositionsInput,
   MovementsByBlock,
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  Underlying,
   UnwrapExchangeRate,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
@@ -30,19 +29,12 @@ export const REAL_ESTATE_TOKEN_METADATA = {
 }
 
 export class Helpers {
-  provider: CustomJsonRpcProvider
-  chainId: Chain
-
-  constructor({
-    provider,
-    chainId,
-  }: {
-    provider: CustomJsonRpcProvider
-    chainId: Chain
-  }) {
-    this.provider = provider
-    this.chainId = chainId
-  }
+  constructor(
+    public readonly provider: CustomJsonRpcProvider,
+    public readonly chainId: Chain,
+    public readonly metadataProvider: IMetadataProvider,
+    public readonly allJsonRpcProviders: Record<Chain, CustomJsonRpcProvider>,
+  ) {}
 
   async getProtocolTokenByAddress<AdditionalMetadata extends JsonMetadata>({
     protocolTokens,
@@ -68,6 +60,13 @@ export class Helpers {
   }: GetPositionsInput & {
     protocolTokens: Erc20Metadata[]
   }): Promise<ProtocolPosition[]> {
+    // Otherwise we might overload the node
+    if (!protocolTokenAddresses && protocolTokens.length > 1000) {
+      throw new Error(
+        'Too many tokens to fetch, protocolTokenAddresses must be provided',
+      )
+    }
+
     return filterMapAsync(protocolTokens, async (protocolToken) => {
       if (
         protocolTokenAddresses &&
@@ -466,8 +465,8 @@ export class Helpers {
       return onChainTokenMetadata
     }
 
-    const errorMessage = 'Cannot find token metadata for token'
-    logger.error({ tokenAddress, chainId: this.chainId }, errorMessage)
+    const errorMessage = 'Token metadata request failed'
+    logger.error({ tokenAddress, chainId: this.chainId })
     throw new Error(errorMessage)
   }
 
