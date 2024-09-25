@@ -134,5 +134,5 @@ dist
 # 
 *.tsbuildinfo
 
-*db-shn
+*db-shm
 *db-wal
