@@ -1,3 +1,4 @@
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   AssetType,
@@ -13,7 +14,6 @@ export class AaveV3StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -29,7 +29,7 @@ export class AaveV3StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'stable-debt-token-v3' })
+  @CacheToDb()
   async getProtocolTokens() {
     return super.getProtocolTokens()
   }

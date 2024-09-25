@@ -1,14 +1,11 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
-  AssetType,
   PositionType,
   ProtocolDetails,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -27,7 +24,6 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter<AdditionalMetadata>
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -43,7 +39,7 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter<AdditionalMetadata>
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens() {
     return [
       {

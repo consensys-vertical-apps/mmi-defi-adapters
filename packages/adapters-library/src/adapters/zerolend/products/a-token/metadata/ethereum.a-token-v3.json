@@ -1,0 +1,142 @@
+[
+  {
+    "address": "0x29a3a6Af690942A3b7665bb2839a3f563C6F987b",
+    "name": "ZeroLend DAI",
+    "symbol": "z0DAI",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0xb2feb2c46305329a340E6188532f31FcE9347a5c",
+    "name": "ZeroLend USDC",
+    "symbol": "z0USDC",
+    "decimals": 6,
+    "underlyingTokens": [
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0x6c735966bC965BD4066c14fcA3Df443496CE14fb",
+    "name": "ZeroLend USDT",
+    "symbol": "z0USDT",
+    "decimals": 6,
+    "underlyingTokens": [
+      {
+        "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ]
+  },
+  {
+    "address": "0xFb932A75c5F69d03B0F6e59573FDe6976aF0D88C",
+    "name": "ZeroLend WETH",
+    "symbol": "z0WETH",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x84E55c6Bc5B7e9505d87b3Df6Ceff7753e15A0c5",
+    "name": "ZeroLend weETH",
+    "symbol": "z0weETH",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x68fD75cF5a91F49EFfAd0E857ef2E97e5d1f35e7",
+    "name": "ZeroLend ezETH",
+    "symbol": "z0ezETH",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+        "name": "Renzo Restaked ETH",
+        "symbol": "ezETH",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0xeF4A41E692319aE4AA596314D282B3F2a3830bED",
+    "name": "ZeroLend rsETH",
+    "symbol": "z0rsETH",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
+        "name": "rsETH",
+        "symbol": "rsETH",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0xdD7Afc0f014A1E1716307Ff040704fA12E8D33A3",
+    "name": "ZeroLend Puffer ETH",
+    "symbol": "z0pufETH",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0xD9A442856C234a39a81a089C06451EBAa4306a72",
+        "name": "pufETH",
+        "symbol": "pufETH",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0xd9855847FFD9Bc0c5f3efFbEf67B558dBf090a71",
+    "name": "ZeroLend Renzo pzETH",
+    "symbol": "z0pzETH",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x8c9532a60E0E7C6BbD2B2c1303F63aCE1c3E9811",
+        "name": "Renzo Restaked LST ",
+        "symbol": "pzETH",
+        "decimals": 18
+      }
+    ]
+  },
+  {
+    "address": "0x7740f60f773bc743ED76310Ac1D054A4A4A17E7C",
+    "name": "ZeroLend PT Kelp rsETH 26SEP2024",
+    "symbol": "z0PT-rsETH-26SEP2024",
+    "decimals": 18,
+    "underlyingTokens": [
+      {
+        "address": "0x7bAf258049cc8B9A78097723dc19a8b103D4098F",
+        "name": "PT Kelp rsETH 26SEP2024",
+        "symbol": "PT-rsETH-26SEP2024",
+        "decimals": 18
+      }
+    ]
+  }
+]

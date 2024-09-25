@@ -3,6 +3,7 @@ import {
   UniswapV2PoolForkPositionStrategy,
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   AssetType,
@@ -18,9 +19,10 @@ export class LynexClassicAdapter extends UniswapV2PoolForkAdapter {
     includeInUnwrap: true,
   }
 
-  // TODO: Ammend this if pairs grow over 1,000
-  protected override readonly MIN_SUBGRAPH_VOLUME: number = -1
-  protected override readonly MIN_TOKEN_RESERVE: number = 0
+  protected PROTOCOL_TOKEN_PREFIX_OVERRIDE = {
+    name: 'Lynex V2',
+    symbol: 'LYNEX-V2',
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -51,8 +53,8 @@ export class LynexClassicAdapter extends UniswapV2PoolForkAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
-    return super.buildMetadata()
+  @CacheToDb()
+  async getProtocolTokens() {
+    return super.getProtocolTokens()
   }
 }

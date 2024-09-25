@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -42,7 +43,6 @@ export class ConvexCvxcrvWrapperAdapter extends SimplePoolAdapter<AdditionalMeta
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -117,7 +117,7 @@ export class ConvexCvxcrvWrapperAdapter extends SimplePoolAdapter<AdditionalMeta
     ]
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens() {
     const contract = CvxcrvWrapper__factory.connect(
       CVXCRV_WRAPPER_ADDRESS,

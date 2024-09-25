@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/defi-adapters",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "Defi adapters for MMI Dashboard",
   "author": "MMI Team",
   "license": "MIT",
@@ -67,6 +67,7 @@
     "ethers": "^6.7.1",
     "evm-maths": "^6.0.0",
     "lodash": "^4.17.21",
+    "p-queue": "^6.6.2",
     "pino": "^8.15.0",
     "zod": "^3.22.4"
   }

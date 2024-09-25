@@ -2,6 +2,7 @@ import { getAddress } from 'ethers'
 
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -53,7 +54,6 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -93,7 +93,7 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
     ]
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const convexFactory = ConvexFactorySidechain__factory.connect(
       CONVEX_FACTORY_ADDRESS,

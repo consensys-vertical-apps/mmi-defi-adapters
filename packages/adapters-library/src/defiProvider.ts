@@ -61,14 +61,23 @@ function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
 const dbParams = (chainId: Chain): [string, Database.Options] => {
   const dbPath = path.join(__dirname, '../../..', `${ChainName[chainId]}.db`)
 
-  if (!existsSync(dbPath)) {
+  if (
+    !(process.env.DEFI_ALLOW_DB_CREATION !== 'false') &&
+    !existsSync(dbPath)
+  ) {
     logger.info(`Database file does not exist: ${dbPath}`)
     throw new Error(`Database file does not exist: ${dbPath}`)
   }
 
   logger.info(`Database file exists: ${dbPath}`)
 
-  return [dbPath, { fileMustExist: true }]
+  return [
+    dbPath,
+    {
+      fileMustExist: !(process.env.DEFI_ALLOW_DB_CREATION !== 'false'),
+      readonly: true,
+    },
+  ]
 }
 
 export class DefiProvider {

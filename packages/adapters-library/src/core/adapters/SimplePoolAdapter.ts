@@ -43,7 +43,6 @@ export abstract class SimplePoolAdapter<AdditionalMetadata extends JsonMetadata>
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 2,
   }
 
   protected provider: CustomJsonRpcProvider

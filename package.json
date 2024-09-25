@@ -1,6 +1,6 @@
 {
   "name": "defi-adapters-monorepo",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "Defi adapters monorepo for MMI Dashboard",
   "author": "MMI Team",
   "license": "MIT",
@@ -19,6 +19,8 @@
     "adapters-cli": "node --env-file=.env packages/adapters-library/dist/scripts/index.js",
     "build-metadata": "npm run adapters-cli build-metadata --",
     "build-metadata-db": "npm run adapters-cli build-metadata-db --",
+    "check-metadata-type": "npm run adapters-cli check-metadata-type --",
+    "check-db-totals": "npm run adapters-cli check-db-totals --",
     "build-types": "npm run adapters-cli build-types --",
     "new-adapter": "npm run adapters-cli new-adapter --",
     "build-snapshots": "npm run adapters-cli build-snapshots --",
@@ -40,7 +42,8 @@
     "test:integration": "npm run test:integration -w packages/adapters-library",
     "test:cov": "npm run test:cov -w packages/adapters-library",
     "build-docs": "npm run build-docs -w packages/adapters-library",
-    "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; patch-package"
+    "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; patch-package",
+    "drop:db": "bash -c 'read -p \"Are you sure you know what you are doing? This will delete all .db files! (y/n): \" confirm && [ \"$confirm\" = \"y\" ] && rm *.db && echo \"All .db files have been deleted successfully.\" || echo \"Aborted. No files were deleted.\"'"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.7.3",

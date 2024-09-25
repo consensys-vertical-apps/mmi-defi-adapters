@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { RAY_POSITIONS } from '../../../../core/constants/RAY'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import {
@@ -31,7 +32,6 @@ export class MakerSDaiAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -53,7 +53,7 @@ export class MakerSDaiAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     throw new NotImplementedError()
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens() {
     return [
       {

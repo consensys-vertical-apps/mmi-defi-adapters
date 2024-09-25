@@ -1,24 +1,16 @@
 import { ZeroAddress, getAddress } from 'ethers'
-import { Erc20__factory } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
-import { filterMapAsync } from '../../../../core/utils/filters'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   GetTotalValueLockedInput,
   PositionType,
   ProtocolDetails,
   ProtocolTokenTvl,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -34,7 +26,6 @@ export class XfaiDexAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false, // might be true but contracts not verified
     includeInUnwrap: true,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -50,7 +41,7 @@ export class XfaiDexAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     }
   }
 
-  @CacheToFile({ fileKey: 'lp-token' })
+  @CacheToDb()
   async getProtocolTokens() {
     const contractAddresses: Partial<Record<Chain, string>> = {
       [Chain.Linea]: getAddress('0xa5136eAd459F0E61C99Cec70fe8F5C24cF3ecA26'),
@@ -107,62 +98,16 @@ export class XfaiDexAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     return metadataObject
   }
 
-  async getTotalValueLocked({
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
+  async getTotalValueLocked(
+    input: GetTotalValueLockedInput,
+  ): Promise<ProtocolTokenTvl[]> {
     const lps = await this.getProtocolTokens()
 
-    return Promise.all(
-      Object.values(lps).map(
-        async ({ name, address, symbol, decimals, underlyingTokens }) => {
-          const underlyingTokenBalances = filterMapAsync(
-            underlyingTokens,
-            async (underlyingToken: Erc20Metadata) => {
-              if (underlyingToken.address === ZERO_ADDRESS) {
-                const balanceOf = await this.provider
-                  .getBalance(address, blockNumber)
-                  .catch(() => 0n)
-                return {
-                  ...underlyingToken,
-                  totalSupplyRaw: balanceOf,
-                  type: TokenType.Underlying,
-                }
-              }
-
-              const contract = Erc20__factory.connect(
-                underlyingToken.address,
-                this.provider,
-              )
-
-              const balanceOf = await contract
-                .balanceOf(address, {
-                  blockTag: blockNumber,
-                })
-                .catch(() => 0n)
-
-              return {
-                ...underlyingToken,
-                totalSupplyRaw: balanceOf,
-                type: TokenType.Underlying,
-              }
-            },
-          )
-          const contract = Erc20__factory.connect(address, this.provider)
-
-          return {
-            type: 'protocol',
-            name,
-            address,
-            symbol,
-            decimals,
-            tokens: await underlyingTokenBalances,
-            totalSupplyRaw: await contract.totalSupply({
-              blockTag: blockNumber,
-            }),
-          } as ProtocolTokenTvl
-        },
-      ),
-    )
+    return await this.helpers.tvl({
+      protocolTokens: lps,
+      filterProtocolTokenAddresses: input.protocolTokenAddresses,
+      blockNumber: input.blockNumber,
+    })
   }
 
   protected async unwrapProtocolToken(

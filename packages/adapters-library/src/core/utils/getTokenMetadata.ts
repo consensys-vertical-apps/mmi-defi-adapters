@@ -52,8 +52,8 @@ export async function getTokenMetadata(
     return onChainTokenMetadata
   }
 
-  const errorMessage = 'Cannot find token metadata for token'
-  logger.error({ tokenAddress, chainId }, errorMessage)
+  const errorMessage = 'Failed getting token metadata'
+  logger.error({ tokenAddress, chainId })
   throw new Error(errorMessage)
 }
 

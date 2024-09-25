@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -65,7 +66,6 @@ export class MendiFinanceBorrowMarketAdapter extends SimplePoolAdapter<Additiona
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
-    version: 2,
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -81,7 +81,7 @@ export class MendiFinanceBorrowMarketAdapter extends SimplePoolAdapter<Additiona
     }
   }
 
-  @CacheToFile({ fileKey: 'mendi' })
+  @CacheToDb()
   async getProtocolTokens() {
     const comptrollerContract = Comptroller__factory.connect(
       contractAddresses[this.chainId]!.comptroller,
