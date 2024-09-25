@@ -82,7 +82,7 @@ const ConfigSchema = z
     rpcCallTimeoutInMs: z
       .number()
       .default(
-        parseNumberEnv(process.env.DEFI_ADAPTERS_RPC_CALL_TIMEOUT_IN_MS, 100),
+        parseNumberEnv(process.env.DEFI_ADAPTERS_RPC_CALL_TIMEOUT_IN_MS, 10000),
       ),
     rpcCallRetries: z
       .number()
