@@ -26,6 +26,12 @@ export function uniswapV2PoolForkAdapterTemplate({
   import { Protocol } from '../../../protocols'
   
   export class ${adapterClassName} extends UniswapV2PoolForkAdapter {
+
+    protected PROTOCOL_TOKEN_PREFIX_OVERRIDE = {
+    name: 'Update with protocol name',
+    symbol: 'Update with protocol symbol',
+  }
+
     productId = '${productId}'
   
     getProtocolDetails(): ProtocolDetails {
@@ -68,8 +74,8 @@ export function uniswapV2PoolForkAdapterTemplate({
     }
   
     @CacheToFile({ fileKey: 'protocol-token' })
-    async buildMetadata() {
-      return super.buildMetadata()
+    async getProtocolTokens() {
+      return super.getProtocolTokens()
     }
 
     /**
