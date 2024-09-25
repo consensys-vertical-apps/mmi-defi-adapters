@@ -1,5 +1,4 @@
 import { getAddress } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
@@ -9,7 +8,6 @@ import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../../scripts/helpers'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -268,32 +266,23 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
         undefined,
       )
 
-      const transferEventsRaw = await tokenContract.queryFilter(
-        transferFilter,
-        undefined,
-        blockNumber,
-      )
-
       const burnFilter = tokenContract.filters.Transfer(
         userAddress,
         ZERO_ADDRESS,
         undefined,
       )
 
-      const burnEventsRaw = await tokenContract.queryFilter(
-        burnFilter,
-        undefined,
-        blockNumber,
-      )
+      const [transferEventsRaw, burnEventsRaw] = await Promise.all([
+        tokenContract.queryFilter(transferFilter, undefined, blockNumber),
+        tokenContract.queryFilter(burnFilter, undefined, blockNumber),
+      ])
 
       const burnedTokenIds = burnEventsRaw.map((log) => log.args.tokenId)
 
       for (const log of transferEventsRaw) {
         const tokenId = log.args.tokenId
-        if (burnedTokenIds.includes(tokenId)) {
-          continue
-        }
         if (
+          !burnedTokenIds.includes(tokenId) &&
           getAddress(
             await tokenContract.ownerOf(tokenId, {
               blockTag: blockNumber,
