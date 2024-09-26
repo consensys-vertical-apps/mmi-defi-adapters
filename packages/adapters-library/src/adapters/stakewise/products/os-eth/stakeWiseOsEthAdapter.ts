@@ -160,38 +160,6 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter<AdditionalMetadata>
     ]
   }
 
-  protected async getUnderlyingTokenBalances(values: {
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-    userAddress: string
-  }): Promise<Underlying[]> {
-    const { protocolTokenBalance, blockNumber } = values
-
-    const osEthControllerAddress = await this.getOsEthControllerAddress()
-
-    const osEthControllerContract = OsEthController__factory.connect(
-      osEthControllerAddress,
-      this.provider,
-    )
-
-    const balanceRaw = await osEthControllerContract.convertToAssets(
-      protocolTokenBalance.balanceRaw,
-      { blockTag: blockNumber },
-    )
-
-    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
-      PROTOCOL_TOKEN_ADDRESS,
-    )
-
-    return [
-      {
-        ...underlyingTokens[0]!,
-        type: TokenType.Underlying,
-        balanceRaw,
-      },
-    ]
-  }
-
   protected async unwrapProtocolToken(
     _: Erc20Metadata,
     blockNumber?: number,

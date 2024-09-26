@@ -2,14 +2,10 @@ import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
-  AssetType,
   PositionType,
   ProtocolDetails,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -41,36 +37,6 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter<AdditionalMetadata>
       chainId: this.chainId,
       productId: this.productId,
     }
-  }
-
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-    blockNumber,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
-      PROTOCOL_TOKEN_ADDRESS,
-    )
-    const [unwrappedTokenExchangeRate] = await this.unwrapProtocolToken(
-      protocolTokenBalance,
-      blockNumber,
-    )
-
-    const underlyingTokenBalanceRaw =
-      (protocolTokenBalance.balanceRaw *
-        unwrappedTokenExchangeRate!.underlyingRateRaw) /
-      10n ** BigInt(protocolTokenBalance.decimals)
-
-    return [
-      {
-        ...underlyingToken!,
-        type: TokenType.Underlying,
-        balanceRaw: underlyingTokenBalanceRaw,
-      },
-    ]
   }
 
   @CacheToDb()

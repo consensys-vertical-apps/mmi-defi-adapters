@@ -83,19 +83,6 @@ export function simplePoolAdapterTemplate({
   
     /**
      * Update me.
-     * Add logic to turn the LP token balance into the correct underlying token(s) balance
-     * For context see dashboard example ./dashboard.png
-     */
-    protected async getUnderlyingTokenBalances(_input: {
-      userAddress: string
-      protocolTokenBalance: TokenBalance
-      blockNumber?: number
-    }): Promise<Underlying[]> {
-      throw new NotImplementedError()
-    }
-  
-    /**
-     * Update me.
      * Add logic to find tvl in a pool
      *
      */

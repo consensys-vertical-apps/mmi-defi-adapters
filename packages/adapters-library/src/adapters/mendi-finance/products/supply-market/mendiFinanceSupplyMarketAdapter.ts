@@ -129,40 +129,6 @@ export class MendiFinanceSupplyMarketAdapter extends SimplePoolAdapter<Additiona
     return metadataObject
   }
 
-  protected async getUnderlyingTokenBalances({
-    userAddress,
-    protocolTokenBalance,
-    blockNumber,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
-      protocolTokenBalance.address,
-    )
-
-    const poolContract = Cerc20__factory.connect(
-      protocolTokenBalance.address,
-      this.provider,
-    )
-
-    const underlyingBalance = await poolContract.balanceOfUnderlying.staticCall(
-      userAddress,
-      {
-        blockTag: blockNumber,
-      },
-    )
-
-    const underlyingTokenBalance = {
-      ...underlyingTokens[0]!,
-      balanceRaw: underlyingBalance,
-      type: TokenType.Underlying,
-    }
-
-    return [underlyingTokenBalance]
-  }
-
   protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
