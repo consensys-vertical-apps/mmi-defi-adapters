@@ -205,20 +205,6 @@ export abstract class SimplePoolAdapter<AdditionalMetadata extends JsonMetadata>
   }
 
   /**
-   * Calculates the user's underlying token balances.
-   * We pass here the LP token balance and find the underlying token balances
-   * Refer to dashboard screenshot located here ./dashboard.png for example
-   *
-   * @param protocolTokenBalance
-   * @param blockNumber
-   */
-  protected abstract getUnderlyingTokenBalances(input: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]>
-
-  /**
    * Fetches the LP token to underlying tokens exchange rate
    * @param protocolTokenMetadata
    * @param blockNumber

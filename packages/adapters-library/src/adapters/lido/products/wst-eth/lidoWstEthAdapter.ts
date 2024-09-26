@@ -62,39 +62,6 @@ export class LidoWstEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     ]
   }
 
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-    blockNumber,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
-      PROTOCOL_TOKEN_ADDRESS,
-    )
-
-    const wstEthContract = WstEthToken__factory.connect(
-      protocolTokenBalance.address,
-      this.provider,
-    )
-
-    const stEthBalance = await wstEthContract.getStETHByWstETH(
-      protocolTokenBalance.balanceRaw,
-      {
-        blockTag: blockNumber,
-      },
-    )
-
-    return [
-      {
-        ...underlyingToken!,
-        type: TokenType.Underlying,
-        balanceRaw: stEthBalance,
-      },
-    ]
-  }
-
   protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,

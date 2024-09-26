@@ -413,13 +413,6 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     })
   }
 
-  protected getUnderlyingTokenBalances(_input: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number | undefined
-  }): Promise<Underlying[]> {
-    throw new NotImplementedError()
-  }
   protected unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,

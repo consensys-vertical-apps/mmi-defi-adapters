@@ -1,25 +1,16 @@
 import { ZeroAddress, getAddress } from 'ethers'
-import { Erc20__factory } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
-import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   GetTotalValueLockedInput,
   PositionType,
   ProtocolDetails,
   ProtocolTokenTvl,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -105,52 +96,6 @@ export class XfaiDexAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     await Promise.all(promises)
 
     return metadataObject
-  }
-
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-    blockNumber,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const poolAddress = protocolTokenBalance.address
-    const poolContract = XfaiPool__factory.connect(poolAddress, this.provider)
-    const poolMeta = await this.helpers.getProtocolTokenByAddress({
-      protocolTokens: await this.getProtocolTokens(),
-      protocolTokenAddress: poolAddress,
-    })
-
-    const nonEthToken = poolMeta.underlyingTokens.find(
-      (t) => t.address !== ZERO_ADDRESS,
-    )!
-
-    const [totalSupply, [tokenAmount, ethAmount]] = await Promise.all([
-      poolContract.totalSupply({
-        blockTag: blockNumber,
-      }),
-      poolContract.getStates({
-        blockTag: blockNumber,
-      }),
-    ])
-
-    return [
-      {
-        type: TokenType.Underlying,
-        ...nonEthToken,
-        balanceRaw:
-          (protocolTokenBalance.balanceRaw * tokenAmount) / totalSupply,
-      },
-      {
-        type: TokenType.Underlying,
-        address: ZeroAddress,
-        name: 'Ethereum',
-        symbol: 'ETH',
-        decimals: 18,
-        balanceRaw: (protocolTokenBalance.balanceRaw * ethAmount) / totalSupply,
-      },
-    ]
   }
 
   async getTotalValueLocked(
