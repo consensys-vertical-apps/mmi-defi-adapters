@@ -31,6 +31,7 @@ import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testC
 import { testCases as morphoAaveV3TestCases } from './morpho-aave-v3/tests/testCases'
 import { testCases as morphoBlueTestCases } from './morpho-blue/tests/testCases'
 import { testCases as morphoCompoundV2TestCases } from './morpho-compound-v2/tests/testCases'
+import { testCases as mountainProtocolTestCases } from './mountain-protocol/tests/testCases'
 import { testCases as pancakeswapV2TestCases } from './pancakeswap-v2/tests/testCases'
 import { testCases as pendleTestCases } from './pendle/tests/testCases'
 import { testCases as pricesV2TestCases } from './prices-v2/tests/testCases'
@@ -107,6 +108,7 @@ const protocolTestCases = {
   [Protocol.MorphoAaveV3]: morphoAaveV3TestCases,
   [Protocol.MorphoBlue]: morphoBlueTestCases,
   [Protocol.MorphoCompoundV2]: morphoCompoundV2TestCases,
+  [Protocol.MountainProtocol]: mountainProtocolTestCases,
   [Protocol.PancakeswapV2]: pancakeswapV2TestCases,
   [Protocol.Pendle]: pendleTestCases,
   [Protocol.PricesV2]: pricesV2TestCases,
