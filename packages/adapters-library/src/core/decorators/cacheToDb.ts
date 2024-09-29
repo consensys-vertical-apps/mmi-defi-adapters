@@ -1,11 +1,5 @@
-import { promises as fs } from 'node:fs'
-import path from 'node:path'
-import Database from 'better-sqlite3'
-import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
-import { Chain, ChainName } from '../constants/chains'
+import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { logger } from '../utils/logger'
-
-import { Protocol } from '../../adapters/protocols'
 
 export function CacheToDb() {
   return function actualDecorator(

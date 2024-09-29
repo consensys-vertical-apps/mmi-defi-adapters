@@ -1,18 +1,15 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
-
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { logger } from '../../../../core/utils/logger'
-import { Helpers } from '../../../../scripts/helpers'
-
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
+import { Helpers } from '../../../../scripts/helpers'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -35,18 +32,12 @@ import { fetchAllMarkets } from '../../backend/backendSdk'
 import { PENDLE_ROUTER_STATIC_CONTRACT } from '../../backend/constants'
 import { RouterStatic__factory, YieldToken__factory } from '../../contracts'
 
-type Metadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-    marketAddress: string
-  }
->
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+  marketAddress: string
+}
 
-export class PendleYieldTokenAdapter
-  implements IProtocolAdapter, IMetadataBuilder
-{
+export class PendleYieldTokenAdapter implements IProtocolAdapter {
   productId = 'yield-token'
   protocolId: Protocol
   chainId: Chain
@@ -88,14 +79,12 @@ export class PendleYieldTokenAdapter
     }
   }
 
-  @CacheToFile({ fileKey: 'market' })
-  async buildMetadata(): Promise<Metadata> {
+  @CacheToDb()
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const resp = await fetchAllMarkets(this.chainId)
 
-    const metadata: Metadata = {}
-
-    resp.results.map((value) => {
-      const market = getAddress(value.address)
+    return resp.results.map((value) => {
+      const marketAddress = getAddress(value.address)
 
       const yt: Erc20Metadata = {
         address: getAddress(value.yt.address),
@@ -111,22 +100,12 @@ export class PendleYieldTokenAdapter
         decimals: value.underlyingAsset.decimals,
       }
 
-      metadata[getAddress(yt.address)] = {
-        protocolToken: yt,
+      return {
+        ...yt,
         underlyingTokens: [sy],
-        marketAddress: market,
+        marketAddress,
       }
-
-      return
     })
-
-    return metadata
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
@@ -143,7 +122,7 @@ export class PendleYieldTokenAdapter
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -155,7 +134,7 @@ export class PendleYieldTokenAdapter
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.deposits({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -177,17 +156,16 @@ export class PendleYieldTokenAdapter
     blockNumber,
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const metadata = await this.fetchPoolMetadata(protocolTokenAddress)
-    const underlyingToken = (
-      await this.getUnderlyingTokens(protocolTokenAddress)
-    )[0]!
+    const {
+      underlyingTokens: [underlyingToken],
+      marketAddress,
+      ...protocolToken
+    } = await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const oracle = RouterStatic__factory.connect(
       PENDLE_ROUTER_STATIC_CONTRACT,
       this.provider,
     )
-
-    const marketAddress = metadata.marketAddress
 
     // this function was deployed around blockNumber 20418316
     const rate = await oracle.getYtToSyRate(marketAddress, {
@@ -198,13 +176,13 @@ export class PendleYieldTokenAdapter
       type: TokenType.Underlying,
 
       underlyingRateRaw: rate,
-      ...underlyingToken,
+      ...underlyingToken!,
     }
 
     return {
       baseRate: 1,
       type: TokenType.Protocol,
-      ...metadata.protocolToken,
+      ...protocolToken,
       tokens: [underlying],
     }
   }
@@ -229,12 +207,12 @@ export class PendleYieldTokenAdapter
 
     const rewards: UnderlyingReward[] = []
     if (interestOut) {
-      const underlyingToken = (
-        await this.getUnderlyingTokens(protocolTokenAddress)
-      )[0]!
+      const {
+        underlyingTokens: [underlyingToken],
+      } = await this.getProtocolTokenByAddress(protocolTokenAddress)
 
       rewards.push({
-        ...underlyingToken,
+        ...underlyingToken!,
         type: TokenType.UnderlyingClaimable,
         balanceRaw: interestOut,
       })
@@ -271,29 +249,12 @@ export class PendleYieldTokenAdapter
     return rewards
   }
 
-  private async getProtocolToken(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
-  }
-  private async getUnderlyingTokens(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).underlyingTokens
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
+  private async getProtocolTokenByAddress(
+    protocolTokenAddress: string,
+  ): Promise<ProtocolToken<AdditionalMetadata>> {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
   }
 }

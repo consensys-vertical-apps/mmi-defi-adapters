@@ -1,32 +1,23 @@
-import { promises as fs } from 'node:fs'
+import fs from 'node:fs'
 import path from 'node:path'
+import Database from 'better-sqlite3'
 import chalk from 'chalk'
 import { Command } from 'commander'
-import partition from 'lodash/partition'
-import { parse, print, types, visit } from 'recast'
 import { Protocol } from '../adapters/protocols'
 import { supportedProtocols } from '../adapters/supportedProtocols'
 import { AdaptersController } from '../core/adaptersController'
 import { Chain, ChainName } from '../core/constants/chains'
-import { IMetadataBuilder } from '../core/decorators/cacheToFile'
 import {
   NotImplementedError,
   ProviderMissingError,
 } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { pascalCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
-import { writeAndLintFile } from '../core/utils/writeAndLintFile'
-import { Json } from '../types/json'
+import { IProtocolAdapter, ProtocolToken } from '../types/IProtocolAdapter'
+import { Erc20Metadata } from '../types/erc20Metadata'
 import { getMetadataInvalidAddresses } from './addressValidation'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
-import { sortEntries } from './utils/sortEntries'
-import n = types.namedTypes
-import b = types.builders
-
-import Database from 'better-sqlite3'
-import { ProtocolToken } from '../types/IProtocolAdapter'
-import { Erc20Metadata } from '../types/erc20Metadata'
+import { filterMapSync } from '../core/utils/filters'
 
 export function buildMetadataDb(
   program: Command,
@@ -48,109 +39,126 @@ export function buildMetadataDb(
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterChainIds = multiChainFilter(chains)
 
-      await createDatabases()
+      const dbConnections = createDatabases(filterChainIds)
 
-      for (const [protocolIdKey, supportedChains] of Object.entries(
-        supportedProtocols,
-      )) {
-        const protocolId = protocolIdKey as Protocol
-        if (filterProtocolIds && !filterProtocolIds.includes(protocolId)) {
-          continue
-        }
+      try {
+        await Promise.allSettled(
+          dbConnections.map(async ([chainId, db]) => {
+            for (const [protocolIdKey, supportedChains] of Object.entries(
+              supportedProtocols,
+            )) {
+              const protocolId = protocolIdKey as Protocol
+              if (
+                (filterProtocolIds &&
+                  !filterProtocolIds.includes(protocolId)) ||
+                !(chainId in supportedChains)
+              ) {
+                continue
+              }
 
-        for (const [chainIdKey, _] of Object.entries(supportedChains)) {
-          const chainId = +chainIdKey as Chain
-          if (filterChainIds && !filterChainIds.includes(chainId)) {
-            continue
-          }
+              const provider = chainProviders[chainId]
 
-          const provider = chainProviders[chainId]
+              if (!provider) {
+                logger.error({ chainId }, 'No provider found for chain')
+                throw new ProviderMissingError(chainId)
+              }
 
-          if (!provider) {
-            logger.error({ chainId }, 'No provider found for chain')
-            throw new ProviderMissingError(chainId)
-          }
+              const chainProtocolAdapters =
+                adaptersController.fetchChainProtocolAdapters(
+                  chainId,
+                  protocolId,
+                )
 
-          const chainProtocolAdapters =
-            adaptersController.fetchChainProtocolAdapters(chainId, protocolId)
-
-          for (const [_, adapter] of chainProtocolAdapters) {
-            if (
-              !(
-                typeof adapter.getProtocolTokens === 'function' &&
-                // private/secret param added at runtime
-                //@ts-ignore
-                adapter.getProtocolTokens.isCacheToDbDecorated
-              )
-            ) {
-              continue
-            }
-
-            // Start time tracking for getProtocolTokens
-            console.time(
-              `getProtocolTokens-${protocolId}-${adapter.productId}-${chainId}`,
-            )
-
-            const metadataDetails = (await adapter
-              .getProtocolTokens(true)
-              .catch((e) => {
-                if (!(e instanceof NotImplementedError)) {
-                  throw e
+              for (const [_, adapter] of chainProtocolAdapters) {
+                if (
+                  !(
+                    typeof adapter.getProtocolTokens === 'function' &&
+                    // private/secret param added at runtime
+                    //@ts-ignore
+                    adapter.getProtocolTokens.isCacheToDbDecorated
+                  )
+                ) {
+                  continue
                 }
-                return undefined
-              })) as
-              | {
-                  metadata: ProtocolToken[]
-                  adapterDetails: {
-                    protocolId: Protocol
-                    productId: string
-                    chainId: Chain
-                  }
+
+                const metadataDetails = await buildAdapterMetadata(adapter)
+
+                if (metadataDetails) {
+                  await writeProtocolTokensToDb({
+                    ...metadataDetails.adapterDetails,
+                    metadata: metadataDetails.metadata,
+                    db,
+                  })
                 }
-              | undefined
-
-            // End time tracking for getProtocolTokens
-            console.timeEnd(
-              `getProtocolTokens-${protocolId}-${adapter.productId}-${chainId}`,
-            )
-
-            if (!metadataDetails) {
-              continue
+              }
             }
-
-            const { metadata, adapterDetails } = metadataDetails
-
-            const invalidAddresses = getMetadataInvalidAddresses(metadata)
-
-            if (invalidAddresses.length > 0) {
-              console.error(chalk.yellow(invalidAddresses.join('\n')))
-
-              console.error(
-                chalk.red(
-                  '\n * The above addresses found in the metadata file are not in checksum format.',
-                ),
-              )
-              console.error(
-                chalk.green(
-                  '\n * Please ensure that addresses are in checksum format by wrapping them with getAddress from the ethers package.',
-                ),
-              )
-              console.error(
-                chalk.green(
-                  '\n * Please checksum your addresses inside the buildMetadata() method.',
-                ),
-              )
-              return
-            }
-
-            await writeProtocolTokensToDb({
-              ...adapterDetails,
-              metadata,
-            })
-          }
+          }),
+        )
+      } finally {
+        for (const [_, db] of Object.values(dbConnections)) {
+          // Re-enable foreign key constraints
+          db.exec('PRAGMA foreign_keys = ON;')
+          db.close()
         }
       }
     })
+}
+
+async function buildAdapterMetadata(adapter: IProtocolAdapter) {
+  // Start time tracking for getProtocolTokens
+  console.time(
+    `getProtocolTokens-${adapter.protocolId}-${adapter.productId}-${adapter.chainId}`,
+  )
+
+  const metadataDetails = (await adapter.getProtocolTokens(true).catch((e) => {
+    if (!(e instanceof NotImplementedError)) {
+      throw e
+    }
+    return undefined
+  })) as
+    | {
+        metadata: ProtocolToken[]
+        adapterDetails: {
+          protocolId: Protocol
+          productId: string
+          chainId: Chain
+        }
+      }
+    | undefined
+
+  // End time tracking for getProtocolTokens
+  console.timeEnd(
+    `getProtocolTokens-${adapter.protocolId}-${adapter.productId}-${adapter.chainId}`,
+  )
+
+  if (!metadataDetails) {
+    return
+  }
+
+  const invalidAddresses = getMetadataInvalidAddresses(metadataDetails.metadata)
+
+  if (invalidAddresses.length > 0) {
+    console.error(chalk.yellow(invalidAddresses.join('\n')))
+
+    console.error(
+      chalk.red(
+        '\n * The above addresses found in the metadata file are not in checksum format.',
+      ),
+    )
+    console.error(
+      chalk.green(
+        '\n * Please ensure that addresses are in checksum format by wrapping them with getAddress from the ethers package.',
+      ),
+    )
+    console.error(
+      chalk.green(
+        '\n * Please checksum your addresses inside the buildMetadata() method.',
+      ),
+    )
+    return
+  }
+
+  return metadataDetails
 }
 
 async function writeProtocolTokensToDb({
@@ -158,30 +166,15 @@ async function writeProtocolTokensToDb({
   productId,
   chainId,
   metadata,
+  db,
 }: {
   protocolId: Protocol
   productId: string
   chainId: Chain
   metadata: ProtocolToken[] // Array of ProtocolToken objects
+  db: Database.Database
 }) {
   try {
-    const dbPath = path.resolve(`./${ChainName[chainId]}.db`)
-
-    try {
-      await fs.access(dbPath)
-      logger.info(`Database file already exists: ${dbPath}`)
-    } catch {
-      logger.info(`Database file does not exist: ${dbPath}`)
-      throw `Database file does not exist: ${dbPath}`
-    }
-
-    const db = new Database(dbPath)
-
-    // // Enable performance optimizations
-    db.exec('PRAGMA synchronous = OFF;') // Reduce disk synchronization overhead
-    db.exec('PRAGMA journal_mode = WAL;') // Use Write-Ahead Logging for faster writes
-    db.exec('PRAGMA foreign_keys = OFF;') // Disable foreign key constraints temporarily for performance
-
     // Step 1: Ensure adapter exists or create it
     const insertOrIgnoreAdapterQuery = `
     INSERT OR IGNORE INTO adapters (protocol_id, product_id)
@@ -192,9 +185,9 @@ async function writeProtocolTokensToDb({
     const getAdapterIdQuery = `
     SELECT adapter_id FROM adapters WHERE protocol_id = ? AND product_id = ?;
   `
-    const adapter = db
-      .prepare(getAdapterIdQuery)
-      .get(protocolId, productId) as { adapter_id: string }
+    const adapter = db.prepare(getAdapterIdQuery).get(protocolId, productId) as
+      | { adapter_id: string }
+      | undefined
 
     const adapterId = adapter?.adapter_id
 
@@ -208,7 +201,11 @@ async function writeProtocolTokensToDb({
         pool_address,
         adapter_pool_id,
         additional_data
-      ) VALUES (?, ?, ?, ?);
+      ) VALUES (?, ?, ?, ?)
+      ON CONFLICT(adapter_id, pool_address)
+      DO UPDATE SET
+        adapter_pool_id = excluded.adapter_pool_id,
+        additional_data = excluded.additional_data;
     `)
 
     // Define relatedTokenQueries for underlying_tokens, reward_tokens, extra_reward_tokens
@@ -240,8 +237,7 @@ async function writeProtocolTokensToDb({
     db.exec('BEGIN TRANSACTION')
 
     // Batch insert function
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    function batchInsert(query: string, data: any[][]) {
+    function batchInsert(query: string, data: unknown[][]) {
       const stmt = db.prepare(query)
       const batch = db.transaction((items) => {
         for (const item of items) {
@@ -252,10 +248,11 @@ async function writeProtocolTokensToDb({
     }
 
     // Prepare data for tokens batch insert (pools + related tokens)
-
     const tokenData: [string, string, string, number][] = []
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    const relatedTokenData: any[] = []
+    const relatedTokenData: {
+      tableName: string
+      values: [number, string, string]
+    }[] = []
 
     // Helper function to collect token data for batch insert
     function collectTokenData(
@@ -290,26 +287,27 @@ async function writeProtocolTokensToDb({
 
     // Process each pool and collect token data
     for (const pool of metadata) {
+      const {
+        address,
+        tokenId,
+        underlyingTokens,
+        name,
+        symbol,
+        decimals,
+        // Todo: ProtocolToken type does not yet support rewardTokens and extraRewardTokens
+        //@ts-ignore
+        rewardTokens,
+        // Todo: ProtocolToken type does not yet support rewardTokens and extraRewardTokens
+        //@ts-ignore
+        extraRewardTokens,
+        ...additionalData
+      } = pool
+
+      // Add the main token data for pools
+      tokenData.push([address, pool.name, pool.symbol, pool.decimals])
+
+      let poolId: number | bigint
       try {
-        const {
-          address,
-          tokenId,
-          underlyingTokens,
-          name,
-          symbol,
-          decimals,
-          // Todo: ProtocolToken type does not yet support rewardTokens and extraRewardTokens
-          //@ts-ignore
-          rewardTokens,
-          // Todo: ProtocolToken type does not yet support rewardTokens and extraRewardTokens
-          //@ts-ignore
-          extraRewardTokens,
-          ...additionalData
-        } = pool
-
-        // Add the main token data for pools
-        tokenData.push([address, pool.name, pool.symbol, pool.decimals])
-
         // Insert pool data
         const result = insertPoolStmt.run(
           adapterId,
@@ -318,26 +316,9 @@ async function writeProtocolTokensToDb({
           JSON.stringify(additionalData),
         )
 
-        const poolId = result.lastInsertRowid
-
-        if (!poolId) {
-          throw new Error('Failed to insert pool')
-        }
-
-        // Collect related token data
-        collectTokenData(
-          poolId as number,
-          underlyingTokens,
-          'underlying_tokens',
-        )
-        collectTokenData(poolId as number, rewardTokens, 'reward_tokens')
-        collectTokenData(
-          poolId as number,
-          extraRewardTokens,
-          'extra_reward_tokens',
-        )
+        poolId = result.lastInsertRowid
       } catch (error) {
-        console.error('Error saving pool to database:', pool, {
+        console.error('Failed to insert pool', pool, {
           chainId,
           productId,
           protocolId,
@@ -345,6 +326,15 @@ async function writeProtocolTokensToDb({
         })
         throw error
       }
+
+      // Collect related token data
+      collectTokenData(poolId as number, underlyingTokens, 'underlying_tokens')
+      collectTokenData(poolId as number, rewardTokens, 'reward_tokens')
+      collectTokenData(
+        poolId as number,
+        extraRewardTokens,
+        'extra_reward_tokens',
+      )
     }
 
     // Batch insert all tokens into the tokens table
@@ -371,15 +361,10 @@ async function writeProtocolTokensToDb({
     // Commit the transaction
     db.exec('COMMIT')
 
-    // Re-enable foreign key constraints after the transaction is complete
-    db.exec('PRAGMA foreign_keys = ON;')
-
     console.log(
       'All protocol tokens and their related tokens have been saved to the database successfully.',
       { protocolId, productId, chainId, pools: metadata.length, adapterId },
     )
-
-    db.close()
   } catch (error) {
     console.error('Error saving protocol tokens to database:', {
       error,
@@ -445,23 +430,43 @@ const createTableQueries = {
     );`,
 }
 
-async function createDatabase(name: string) {
+/**
+ * Creates and returns database connections for each chain.
+ * @param filterChainIds - An optional array of chain IDs to filter the databases.
+ * @returns An array of [chainId, database] pairs.
+ */
+function createDatabases(
+  filterChainIds: Chain[] | undefined,
+): [Chain, Database.Database][] {
+  return filterMapSync(Object.entries(ChainName), ([chainIdKey, chainName]) => {
+    const chainId = +chainIdKey as Chain
+    if (filterChainIds && !filterChainIds.includes(chainId)) {
+      return
+    }
+
+    return [chainId, createDatabase(chainName)]
+  })
+}
+
+/**
+ * Creates a database and tables for a given chain.
+ * @param name - The name of the chain.
+ * @returns The database connection.
+ */
+function createDatabase(name: string) {
   try {
     const dbPath = path.resolve(`./${name}.db`)
 
-    try {
-      await fs.access(dbPath)
+    if (fs.existsSync(dbPath)) {
       logger.debug(`Database file already exists: ${dbPath}`)
-    } catch {
+    } else {
       logger.debug(`Database file does not exist: ${dbPath}`)
     }
 
     const db = new Database(dbPath)
 
     // Create each table and verify its creation
-    for (const [tableName, createTableQuery] of Object.entries(
-      createTableQueries,
-    )) {
+    for (const createTableQuery of Object.values(createTableQueries)) {
       db.exec(createTableQuery)
     }
 
@@ -470,17 +475,14 @@ async function createDatabase(name: string) {
       .all()
     logger.debug(`Tables in ${name} database:`, tables)
 
-    db.close()
+    // Enable performance optimizations
+    db.exec('PRAGMA synchronous = OFF;') // Reduce disk synchronization overhead
+    db.exec('PRAGMA journal_mode = WAL;') // Use Write-Ahead Logging for faster writes
+    db.exec('PRAGMA foreign_keys = OFF;') // Disable foreign key constraints temporarily for performance
 
-    // Check if database file exists, if not create it
+    return db
   } catch (error) {
     logger.error(`Failed to create database or tables for '${name}':`, error)
-  }
-}
-
-// Function to create databases for each chain
-function createDatabases() {
-  for (const [chain, name] of Object.entries(ChainName)) {
-    createDatabase(name)
+    throw error
   }
 }
