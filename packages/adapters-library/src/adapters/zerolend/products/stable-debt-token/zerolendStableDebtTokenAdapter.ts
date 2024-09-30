@@ -1,9 +1,5 @@
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import {
-  AssetType,
-  PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import { ProtocolDataProvider } from '../../contracts'
 import { ZeroLendBasePoolAdapter } from '../common/zerolendBasePoolAdapter'
 
@@ -28,7 +24,7 @@ export class ZeroLendStableDebtTokenPoolAdapter extends ZeroLendBasePoolAdapter 
     }
   }
 
-  @CacheToFile({ fileKey: 'stable-debt-token-v3' })
+  @CacheToDb()
   async getProtocolTokens() {
     return super.getProtocolTokens()
   }

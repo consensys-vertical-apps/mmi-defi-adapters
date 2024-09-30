@@ -1,11 +1,8 @@
 import { getAddress } from 'ethers'
-import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
-import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
-import { logger } from '../../../core/utils/logger'
 import { Helpers } from '../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -21,12 +18,8 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
-  TokenBalance,
-  TokenType,
-  Underlying,
   UnwrapExchangeRate,
   UnwrapInput,
-  UnwrappedTokenExchangeRate,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'
