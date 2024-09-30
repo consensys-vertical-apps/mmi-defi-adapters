@@ -111,13 +111,13 @@ export async function getProfits({
       })
   }
 
-  const rawWithdrawals: MovementsByBlock[] = []
-  const rawDeposits: MovementsByBlock[] = []
-  const rawRepays: MovementsByBlock[] = []
-  const rawBorrows: MovementsByBlock[] = []
-
   const tokens = await Promise.all(
     Object.values(endPositionValues).map(async ({ protocolTokenMetadata }) => {
+      const rawWithdrawals: MovementsByBlock[] = []
+      const rawDeposits: MovementsByBlock[] = []
+      const rawRepays: MovementsByBlock[] = []
+      const rawBorrows: MovementsByBlock[] = []
+
       const getEventsInput: GetEventsInput = {
         userAddress,
         protocolTokenAddress: protocolTokenMetadata.address,
@@ -332,13 +332,19 @@ export async function getProfits({
         },
         rawValues: includeRawValues
           ? {
-              rawEndPositionValues: rawEndPositionValues.map(
-                (protocolPosition) =>
-                  enrichPositionBalance(protocolPosition, adapter.chainId),
+              rawEndPositionValue: enrichPositionBalance(
+                rawEndPositionValues.find(
+                  (protocolPosition) =>
+                    protocolPosition.address === protocolTokenMetadata.address,
+                )!,
+                adapter.chainId,
               ),
-              rawStartPositionValues: rawStartPositionValues.map(
-                (protocolPosition) =>
-                  enrichPositionBalance(protocolPosition, adapter.chainId),
+              rawStartPositionValue: enrichPositionBalance(
+                rawStartPositionValues.find(
+                  (protocolPosition) =>
+                    protocolPosition.address === protocolTokenMetadata.address,
+                )!,
+                adapter.chainId,
               ),
               rawWithdrawals: rawWithdrawals.map((value) =>
                 enrichMovements(value, adapter.chainId),

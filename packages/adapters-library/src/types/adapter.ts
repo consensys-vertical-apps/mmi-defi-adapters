@@ -4,6 +4,7 @@ import type { Chain } from '../core/constants/chains'
 import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { Helpers } from '../scripts/helpers'
 import type { Erc20Metadata } from './erc20Metadata'
+import { DisplayMovementsByBlock, DisplayPosition } from './response'
 
 export const TokenType = {
   Protocol: 'protocol',
@@ -303,13 +304,6 @@ export interface ProfitsWithRange {
    * Profits earned by user address
    */
   tokens: PositionProfits[]
-
-  rawValues?: {
-    rawEndPositionValues: ProtocolPosition[]
-    rawStartPositionValues: ProtocolPosition[]
-    rawWithdrawals: MovementsByBlock[]
-    rawDeposits: MovementsByBlock[]
-  }
 }
 
 export interface UnderlyingProfitValues extends Erc20Metadata {
@@ -329,6 +323,15 @@ export interface UnderlyingProfitValues extends Erc20Metadata {
 export interface PositionProfits extends Erc20Metadata, UnderlyingProfitValues {
   tokenId?: string
   type: typeof TokenType.Protocol
+
+  rawValues?: {
+    rawEndPositionValue: DisplayPosition<ProtocolPosition>
+    rawStartPositionValue: DisplayPosition<ProtocolPosition>
+    rawWithdrawals: DisplayMovementsByBlock[]
+    rawDeposits: DisplayMovementsByBlock[]
+    rawRepays: DisplayMovementsByBlock[]
+    rawBorrows: DisplayMovementsByBlock[]
+  }
 }
 
 export interface CalculationData {
