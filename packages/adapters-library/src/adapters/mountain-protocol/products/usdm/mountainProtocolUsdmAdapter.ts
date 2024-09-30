@@ -1,7 +1,6 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   PositionType,
@@ -10,6 +9,7 @@ import {
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]
@@ -40,7 +40,7 @@ export class MountainProtocolUsdmAdapter extends SimplePoolAdapter<AdditionalMet
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens() {
     return [
       {

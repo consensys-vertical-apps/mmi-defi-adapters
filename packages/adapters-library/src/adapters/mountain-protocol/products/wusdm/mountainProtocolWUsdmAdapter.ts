@@ -1,14 +1,11 @@
 import { getAddress } from 'ethers'
 import { z } from 'zod'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   PositionType,
   ProtocolDetails,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -19,6 +16,7 @@ import {
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { Wusdm__factory } from '../../contracts'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]
@@ -54,7 +52,7 @@ export class MountainProtocolWUsdmAdapter extends SimplePoolAdapter<AdditionalMe
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb()
   async getProtocolTokens() {
     return [
       {
