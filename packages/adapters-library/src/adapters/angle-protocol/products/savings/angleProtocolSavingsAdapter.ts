@@ -33,7 +33,7 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { Savings, Savings__factory } from '../../contracts'
 
-export type AdditionalMetadata = {
+type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]
 }
 

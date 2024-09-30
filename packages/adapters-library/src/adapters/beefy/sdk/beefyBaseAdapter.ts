@@ -54,9 +54,6 @@ export abstract class BeefyBaseAdapter<
     this.helpers = helpers
   }
 
-  /**
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
