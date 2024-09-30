@@ -1,13 +1,8 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
-import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -29,12 +24,10 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import { BeefyBaseAdapter } from '../../sdk/beefyBaseAdapter'
 import { chainIdMap } from '../../sdk/config'
 import { ApiBoost, BeefyProductType } from '../../sdk/types'
-import { RmooMetadata, RmooMetadataEntry } from './types'
 
-export type AdditionalMetadata = {
+type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]
   rewardTokens: Erc20Metadata[]
 }
