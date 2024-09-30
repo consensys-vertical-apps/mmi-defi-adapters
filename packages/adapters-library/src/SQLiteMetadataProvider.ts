@@ -48,6 +48,8 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
 
   constructor(filename: string | Buffer, options: Database.Options) {
     this.database = new Database(filename, options)
+
+    this.database.pragma('journal_mode = DELETE')
   }
 
   getMetadata(input: {
