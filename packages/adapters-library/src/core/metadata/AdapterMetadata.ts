@@ -4,7 +4,6 @@ import DeriPoolArbitrumProtocolMetadata from '../../adapters/deri/products/pool/
 import DeriPoolBscProtocolMetadata from '../../adapters/deri/products/pool/metadata/bsc.protocol-metadata.json'
 import DeriPoolLineaProtocolMetadata from '../../adapters/deri/products/pool/metadata/linea.protocol-metadata.json'
 import EthenaEthenaEthereumProtocolToken from '../../adapters/ethena/products/ethena/metadata/ethereum.protocol-token.json'
-import LynexClassicLineaProtocolToken from '../../adapters/lynex/products/classic/metadata/linea.protocol-token.json'
 import MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import MorphoAaveV3OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v3/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
@@ -71,16 +70,6 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     EthenaEthenaEthereumProtocolToken,
   ],
-  [
-    metadataKey({
-      protocolId: Protocol.Lynex,
-      productId: 'classic',
-      chainId: Chain.Linea,
-      fileKey: 'protocol-token',
-    }),
-    LynexClassicLineaProtocolToken,
-  ],
-
   [
     metadataKey({
       protocolId: Protocol.MorphoAaveV2,
