@@ -1,5 +1,7 @@
 {
-  "aggregatedValues": ["USD1,053.49"],
+  "aggregatedValues": [
+    "USD1,053.49"
+  ],
   "latency": "Latency: 2.104 seconds",
   "snapshot": {
     "protocolId": "pendle",
@@ -41,7 +43,7 @@
                 "tokens": [
                   {
                     "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-                    "name": "weETH",
+                    "name": "Wrapped eETH",
                     "symbol": "weETH",
                     "decimals": 18,
                     "type": "underlying",
