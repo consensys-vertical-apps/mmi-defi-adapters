@@ -1,7 +1,9 @@
 {
   "blockNumber": 19774108,
   "latency": "Latency: 2.85 seconds",
-  "aggregatedValues": ["USD8,277,993.81"],
+  "aggregatedValues": [
+    "USD8,277,993.81"
+  ],
   "snapshot": [
     {
       "protocolId": "ethena",
@@ -11,7 +13,7 @@
       "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57e114b691db790c35207b2e685d4a43181e6061/logo.png",
       "positionType": "supply",
       "chainId": 1,
-      "productId": "ethena",
+      "productId": "staked-usde",
       "chainName": "ethereum",
       "success": true,
       "tokens": [
