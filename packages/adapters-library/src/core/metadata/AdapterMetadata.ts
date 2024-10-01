@@ -11,7 +11,6 @@ import MorphoBlueMarketSupplyEthereumMarketSupply from '../../adapters/morpho-bl
 import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import { Protocol } from '../../adapters/protocols'
-import SparkV1VariableDebtTokenEthereumVariableDebtTokenV1 from '../../adapters/spark-v1/products/variable-debt-token/metadata/ethereum.variable-debt-token-v1.json'
 import StargateVotingEscrowEthereumProtocolToken from '../../adapters/stargate/products/voting-escrow/metadata/ethereum.protocol-token.json'
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
@@ -115,15 +114,6 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'optimizer-supply',
     }),
     MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.SparkV1,
-      productId: 'variable-debt-token',
-      chainId: Chain.Ethereum,
-      fileKey: 'variable-debt-token-v1',
-    }),
-    SparkV1VariableDebtTokenEthereumVariableDebtTokenV1,
   ],
   [
     metadataKey({
