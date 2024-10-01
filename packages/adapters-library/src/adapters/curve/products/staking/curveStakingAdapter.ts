@@ -3,12 +3,11 @@ import { TransferEvent } from '../../../../contracts/Erc20'
 import { Erc20__factory } from '../../../../contracts/factories/Erc20__factory'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { Chain, ChainName } from '../../../../core/constants/chains'
+import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,

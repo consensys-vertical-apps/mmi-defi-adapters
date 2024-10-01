@@ -1,12 +1,10 @@
 import { Erc20__factory } from '../../../../contracts/factories/Erc20__factory'
 import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain, ChainName } from '../../../../core/constants/chains'
+import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -25,7 +23,6 @@ import {
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
-  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'

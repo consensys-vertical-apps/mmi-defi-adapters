@@ -16,11 +16,6 @@ import MorphoBlueMarketSupplyEthereumMarketSupply from '../../adapters/morpho-bl
 import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import { Protocol } from '../../adapters/protocols'
-import RenzoEzEthArbitrumEzEth from '../../adapters/renzo/products/ez-eth/metadata/arb.ez-eth.json'
-import RenzoEzEthBaseEzEth from '../../adapters/renzo/products/ez-eth/metadata/base.ez-eth.json'
-import RenzoEzEthBscEzEth from '../../adapters/renzo/products/ez-eth/metadata/bsc.ez-eth.json'
-import RenzoEzEthEthereumEzEth from '../../adapters/renzo/products/ez-eth/metadata/ethereum.ez-eth.json'
-import RenzoEzEthLineaEzEth from '../../adapters/renzo/products/ez-eth/metadata/linea.ez-eth.json'
 import SolvSolvBtcArbitrumSolvBtc from '../../adapters/solv/products/solv-btc/metadata/arb.solv-btc.json'
 import SolvSolvBtcAvalancheSolvBtc from '../../adapters/solv/products/solv-btc/metadata/avax.solv-btc.json'
 import SolvSolvBtcBscSolvBtc from '../../adapters/solv/products/solv-btc/metadata/bsc.solv-btc.json'
@@ -176,52 +171,6 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply,
   ],
-  [
-    metadataKey({
-      protocolId: Protocol.Renzo,
-      productId: 'ez-eth',
-      chainId: Chain.Arbitrum,
-      fileKey: 'ez-eth',
-    }),
-    RenzoEzEthArbitrumEzEth,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Renzo,
-      productId: 'ez-eth',
-      chainId: Chain.Base,
-      fileKey: 'ez-eth',
-    }),
-    RenzoEzEthBaseEzEth,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Renzo,
-      productId: 'ez-eth',
-      chainId: Chain.Bsc,
-      fileKey: 'ez-eth',
-    }),
-    RenzoEzEthBscEzEth,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Renzo,
-      productId: 'ez-eth',
-      chainId: Chain.Ethereum,
-      fileKey: 'ez-eth',
-    }),
-    RenzoEzEthEthereumEzEth,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Renzo,
-      productId: 'ez-eth',
-      chainId: Chain.Linea,
-      fileKey: 'ez-eth',
-    }),
-    RenzoEzEthLineaEzEth,
-  ],
-
   [
     metadataKey({
       protocolId: Protocol.Solv,

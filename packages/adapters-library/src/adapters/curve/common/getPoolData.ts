@@ -1,7 +1,7 @@
 import { Chain, ChainName } from '../../../core/constants/chains'
+import { filterMapAsync } from '../../../core/utils/filters'
 import { logger } from '../../../core/utils/logger'
 import { Protocol } from '../../protocols'
-import { filterMapAsync } from '../../../core/utils/filters'
 
 export async function getCurvePoolData(chainId: Chain, productId: string) {
   const minVolumeUSD = 50000
