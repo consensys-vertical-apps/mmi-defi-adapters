@@ -15,10 +15,6 @@ import MorphoBlueMarketSupplyEthereumMarketSupply from '../../adapters/morpho-bl
 import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import { Protocol } from '../../adapters/protocols'
-import SolvSolvBtcArbitrumSolvBtc from '../../adapters/solv/products/solv-btc/metadata/arb.solv-btc.json'
-import SolvSolvBtcAvalancheSolvBtc from '../../adapters/solv/products/solv-btc/metadata/avax.solv-btc.json'
-import SolvSolvBtcBscSolvBtc from '../../adapters/solv/products/solv-btc/metadata/bsc.solv-btc.json'
-import SolvSolvBtcEthereumSolvBtc from '../../adapters/solv/products/solv-btc/metadata/ethereum.solv-btc.json'
 import SparkV1VariableDebtTokenEthereumVariableDebtTokenV1 from '../../adapters/spark-v1/products/variable-debt-token/metadata/ethereum.variable-debt-token-v1.json'
 import StargateVotingEscrowEthereumProtocolToken from '../../adapters/stargate/products/voting-escrow/metadata/ethereum.protocol-token.json'
 import { Json } from '../../types/json'
@@ -159,42 +155,6 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'optimizer-supply',
     }),
     MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Solv,
-      productId: 'solv-btc',
-      chainId: Chain.Arbitrum,
-      fileKey: 'solv-btc',
-    }),
-    SolvSolvBtcArbitrumSolvBtc,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Solv,
-      productId: 'solv-btc',
-      chainId: Chain.Avalanche,
-      fileKey: 'solv-btc',
-    }),
-    SolvSolvBtcAvalancheSolvBtc,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Solv,
-      productId: 'solv-btc',
-      chainId: Chain.Bsc,
-      fileKey: 'solv-btc',
-    }),
-    SolvSolvBtcBscSolvBtc,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Solv,
-      productId: 'solv-btc',
-      chainId: Chain.Ethereum,
-      fileKey: 'solv-btc',
-    }),
-    SolvSolvBtcEthereumSolvBtc,
   ],
   [
     metadataKey({
