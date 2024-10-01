@@ -1,15 +1,17 @@
 import { Erc20__factory } from '../../../../contracts/factories/Erc20__factory'
 import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain } from '../../../../core/constants/chains'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
+import { Chain, ChainName } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../../core/utils/filters'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -26,10 +28,15 @@ import {
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { queryCurvePools } from '../../../curve/common/getPoolData'
 import { Protocol } from '../../../protocols'
+import { getCurvePoolData } from '../../common/getPoolData'
 
-export class CurvePoolAdapter implements IProtocolAdapter, IMetadataBuilder {
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+  lpTokenManager: string
+}
+
+export class CurvePoolAdapter implements IProtocolAdapter {
   productId = 'pool'
   protocolId: Protocol
   chainId: Chain
@@ -72,14 +79,31 @@ export class CurvePoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
-    return queryCurvePools(this.chainId, this.provider)
-  }
+  @CacheToDb()
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+    const pools = await getCurvePoolData(this.chainId, this.productId)
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
+    return await Promise.all(
+      pools.map(async (pool) => {
+        return {
+          ...(await getTokenMetadata(
+            pool.lpTokenAddress,
+            this.chainId,
+            this.provider,
+          )),
+          underlyingTokens: await Promise.all(
+            pool.coins.map(
+              async (coin) =>
+                await getTokenMetadata(
+                  coin.address,
+                  this.chainId,
+                  this.provider,
+                ),
+            ),
+          ),
+          lpTokenManager: pool.address,
+        }
+      }),
     )
   }
 
@@ -97,7 +121,7 @@ export class CurvePoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -109,7 +133,7 @@ export class CurvePoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.deposits({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -125,32 +149,8 @@ export class CurvePoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     blockNumber,
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const protocolTokenMetadata =
-      await this.fetchPoolMetadata(protocolTokenAddress)
-
-    const underlyingTokenConversionRate = await this.unwrapProtocolToken(
-      protocolTokenMetadata.protocolToken,
-      blockNumber,
-    )
-
-    return {
-      ...protocolTokenMetadata.protocolToken,
-      baseRate: 1,
-      type: TokenType.Protocol,
-      tokens: underlyingTokenConversionRate,
-    }
-  }
-
-  protected async unwrapProtocolToken(
-    protocolTokenMetadata: Erc20Metadata,
-    blockNumber: number | undefined,
-  ): Promise<UnwrappedTokenExchangeRate[]> {
-    const { underlyingTokens, protocolToken, lpTokenManager } =
-      (await this.fetchPoolMetadata(protocolTokenMetadata.address)) as {
-        protocolToken: Erc20Metadata
-        underlyingTokens: Erc20Metadata[]
-        lpTokenManager: string
-      }
+    const { underlyingTokens, lpTokenManager, ...protocolToken } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const balances = await Promise.all(
       underlyingTokens.map(async (token) => {
@@ -177,43 +177,35 @@ export class CurvePoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     const supply = await lpTokenContract.totalSupply({ blockTag: blockNumber })
 
     // note balances array not same size as underlying array, might be a vyper: no dynamic array limitation
-    return underlyingTokens.map((underlyingToken, index) => {
-      const balance = balances[index]!
+    const underlyingTokenConversionRate = underlyingTokens.map(
+      (underlyingToken, index) => {
+        const balance = balances[index]!
 
-      const underlyingRateRaw =
-        balance / (supply / 10n ** BigInt(protocolToken.decimals))
+        const underlyingRateRaw =
+          balance / (supply / 10n ** BigInt(protocolToken.decimals))
 
-      return {
-        type: TokenType.Underlying,
-        underlyingRateRaw,
-        ...underlyingToken,
-      }
-    })
-  }
+        return {
+          type: TokenType.Underlying,
+          underlyingRateRaw,
+          ...underlyingToken,
+        }
+      },
+    )
 
-  private async getProtocolToken(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
-  }
-  private async getUnderlyingTokens(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).underlyingTokens
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
+    return {
+      ...protocolToken,
+      baseRate: 1,
+      type: TokenType.Protocol,
+      tokens: underlyingTokenConversionRate,
     }
+  }
 
-    return poolMetadata
+  private async getProtocolTokenByAddress(
+    protocolTokenAddress: string,
+  ): Promise<ProtocolToken<AdditionalMetadata>> {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
   }
 }

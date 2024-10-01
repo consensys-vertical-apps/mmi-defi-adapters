@@ -3,26 +3,17 @@ import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
-  GetPositionsInputWithTokenAddresses,
   GetRewardPositionsInput,
   MovementsByBlock,
   PositionType,
   ProtocolDetails,
-  ProtocolPosition,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnderlyingReward,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
@@ -118,7 +109,7 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
     }
   }
 
-  @CacheToFile({ fileKey: 'metadata' })
+  @CacheToDb()
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const convexFactory = ConvexFactory__factory.connect(
       CONVEX_FACTORY_ADDRESS,

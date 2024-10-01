@@ -123,7 +123,7 @@ const ConfigSchema = z
           .default(
             parseNumberEnv(
               process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_ETHEREUM,
-              100,
+              10,
             ),
           ),
         optimism: z
