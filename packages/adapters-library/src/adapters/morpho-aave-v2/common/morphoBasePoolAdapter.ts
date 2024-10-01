@@ -9,8 +9,10 @@ import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import { Helpers } from '../../../scripts/helpers'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
+  GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
@@ -21,6 +23,7 @@ import {
   TokenBalance,
   TokenType,
   Underlying,
+  UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../types/adapter'
@@ -36,6 +39,14 @@ import {
   TypedContractEvent,
   TypedDeferredTopicFilter,
 } from '../contracts/common'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../types/IProtocolAdapter'
+import { GetTransactionParams } from '../../supportedProtocols'
+import { CacheToDb } from '../../../core/decorators/cacheToDb'
+
+type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
 type MorphoAaveV2PeerToPoolAdapterMetadata = Record<
   string,
@@ -53,10 +64,13 @@ const morphoAaveV2ContractAddresses: Partial<
   },
 }
 
-export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
+export abstract class MorphoBasePoolAdapter implements IProtocolAdapter {
+  abstract productId: string
   protocolId: Protocol
   chainId: Chain
   helpers: Helpers
+
+  abstract adapterSettings: AdapterSettings
 
   private provider: CustomJsonRpcProvider
 
@@ -120,9 +134,40 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return metadataObject
   }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
+  @CacheToDb()
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+    const morphoAaveV2Contract = MorphoAaveV2__factory.connect(
+      morphoAaveV2ContractAddresses[this.protocolId]![this.chainId]!,
+      this.provider,
+    )
+
+    const markets = await morphoAaveV2Contract.getMarketsCreated()
+
+    return await Promise.all(
+      markets.map(async (marketAddress) => {
+        const aTokenContract = AToken__factory.connect(
+          marketAddress,
+          this.provider,
+        )
+
+        const supplyTokenAddress = await aTokenContract
+          .UNDERLYING_ASSET_ADDRESS()
+          .catch((err) => {
+            if (err) return ZERO_ADDRESS
+            throw err
+          })
+
+        // Await the promises directly within Promise.all
+        const [protocolToken, underlyingToken] = await Promise.all([
+          getTokenMetadata(marketAddress, this.chainId, this.provider),
+          getTokenMetadata(supplyTokenAddress, this.chainId, this.provider),
+        ])
+
+        return {
+          ...protocolToken,
+          underlyingTokens: [underlyingToken],
+        }
+      }),
     )
   }
 
@@ -344,7 +389,10 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
         }
 
         return {
-          ...tokenMetadata,
+          address: tokenMetadata.address,
+          symbol: tokenMetadata.symbol,
+          name: tokenMetadata.name,
+          decimals: tokenMetadata.decimals,
           type: TokenType.Protocol,
           totalSupplyRaw: totalValueRaw !== undefined ? totalValueRaw : 0n,
         }
