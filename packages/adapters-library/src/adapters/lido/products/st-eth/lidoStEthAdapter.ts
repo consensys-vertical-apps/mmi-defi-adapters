@@ -1,16 +1,9 @@
-import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
-  AssetType,
   PositionType,
   ProtocolDetails,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'

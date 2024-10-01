@@ -2,10 +2,6 @@ import { WeiPerEther, getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
@@ -15,7 +11,6 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,

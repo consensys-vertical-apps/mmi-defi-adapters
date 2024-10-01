@@ -17,7 +17,6 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
-  TokenBalance,
   TokenType,
   Underlying,
   UnwrapExchangeRate,
@@ -32,11 +31,6 @@ import {
   OracleImplementation__factory,
 } from '../../contracts'
 
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
-import { logger } from '../../../../core/utils/logger'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 
 const chainContractAddresses: Partial<

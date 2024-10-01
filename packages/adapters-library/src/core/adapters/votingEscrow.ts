@@ -1,7 +1,7 @@
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
 import { Helpers } from '../../scripts/helpers'
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -19,31 +19,18 @@ import {
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
-import { CacheToFile, IMetadataBuilder } from '../decorators/cacheToFile'
+import { CacheToDb } from '../decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { getErc20Movements } from '../utils/erc20Movements'
 import { getTokenMetadata } from '../utils/getTokenMetadata'
 import { unixTimestampToDateString } from '../utils/unixTimestampToDateString'
 
-type Metadata = {
-  address: string
-} & (
-  | { tag_id: TagIds.token; value: Erc20Metadata }
-  | { tag_id: TagIds.isProtocolToken; value: boolean }
-  | { tag_id: TagIds.isRewardManager; value: boolean }
-  | { tag_id: TagIds.underlyingTokenLink; value: string }
-)
-
-enum TagIds {
-  token = 'token',
-  underlyingTokenLink = 'underlying_token_link',
-  isProtocolToken = 'is_protocol_token',
-  isRewardManager = 'is_reward_manager',
+type AdditionalMetadata = {
+  underlyingTokens: Erc20Metadata[]
+  rewardTokens: Erc20Metadata[]
 }
 
-export abstract class VotingEscrow
-  implements IProtocolAdapter, IMetadataBuilder
-{
+export abstract class VotingEscrow implements IProtocolAdapter {
   abstract productId: string
   protocolId: Protocol
   chainId: Chain
@@ -87,103 +74,8 @@ export abstract class VotingEscrow
     input: GetPositionsInput,
   ): Promise<{ amount: bigint; end: bigint }>
 
-  /**
-   * Creates a token and isProtocol tag
-   */
-  createProtocolTokenMetadata(protocolToken: Erc20Metadata): Metadata[] {
-    return [
-      {
-        address: this.addresses.veToken,
-        tag_id: TagIds.isProtocolToken,
-        value: true,
-      },
-
-      {
-        address: protocolToken.address,
-        tag_id: TagIds.token,
-        value: protocolToken,
-      },
-    ]
-  }
-
-  /**
-   * Finds tokens which have isProtocolToken tag
-   */
-  async getProtocolTokenMetadata(): Promise<Erc20Metadata[]> {
-    const metadata = (await this.buildMetadata()) as Metadata[]
-
-    const protocolMetadata = metadata.filter(
-      (metadata) => metadata.tag_id === TagIds.isProtocolToken,
-    )
-
-    return protocolMetadata.reduce((acc: Erc20Metadata[], protocolToken) => {
-      const relatedTokenTag = metadata.find(
-        (metadata) =>
-          metadata.address === protocolToken.address &&
-          metadata.tag_id === TagIds.token,
-      )
-      if (relatedTokenTag) {
-        acc.push(relatedTokenTag.value as Erc20Metadata)
-      }
-      return acc
-    }, [])
-  }
-
-  /**
-   * Creates a token and underlying_token_link from the protocol token address to the underlying token address
-   */
-  createUnderlyingTokenMetadata(
-    parentTokenAddress: string,
-    underlyingToken: Erc20Metadata,
-  ): Metadata[] {
-    return [
-      {
-        address: parentTokenAddress,
-        tag_id: TagIds.underlyingTokenLink,
-        value: underlyingToken.address,
-      },
-
-      {
-        address: underlyingToken.address,
-        tag_id: TagIds.token,
-        value: underlyingToken,
-      },
-    ]
-  }
-
-  /**
-   * Finds tokens which are linked to the parent token address
-   */
-  async getUnderlyingTokenMetadata(
-    parentTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const metadatas = (await this.buildMetadata()) as Metadata[]
-    const link = metadatas.find(
-      (metadata) =>
-        metadata.tag_id === TagIds.underlyingTokenLink &&
-        metadata.address === parentTokenAddress,
-    )
-    const underlyingToken = metadatas.find(
-      (metadata) =>
-        metadata.address === link?.value && metadata.tag_id === TagIds.token,
-    )
-
-    return underlyingToken?.value as Erc20Metadata
-  }
-
-  /**
-   * Creates a reward manager tag
-   */
-  createRewardManagerMetadata(address: string): Metadata {
-    return {
-      address: address,
-      tag_id: TagIds.isRewardManager,
-      value: true,
-    }
-  }
-
-  @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
+  @CacheToDb()
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const [
       protocolTokenMetadata,
       underlyingTokenMetadata,
@@ -198,35 +90,27 @@ export abstract class VotingEscrow
       getTokenMetadata(this.addresses.rewardToken, this.chainId, this.provider),
     ])
 
-    const metadata = [
-      ...this.createProtocolTokenMetadata(protocolTokenMetadata),
-
-      ...this.createUnderlyingTokenMetadata(
-        protocolTokenMetadata.address,
-        underlyingTokenMetadata,
-      ),
-      ...this.createUnderlyingTokenMetadata(
-        this.addresses.feeDistributor,
-        rewardTokenMetadata,
-      ),
-      this.createRewardManagerMetadata(this.addresses.feeDistributor),
+    return [
+      {
+        ...protocolTokenMetadata,
+        underlyingTokens: [underlyingTokenMetadata],
+        rewardTokens: [rewardTokenMetadata],
+      },
     ]
-
-    return metadata
   }
 
   async getRewardPosition(input: GetPositionsInput): Promise<Underlying> {
     const balance = await this.getRewardBalance(input)
 
+    const {
+      rewardTokens: [rewardToken],
+    } = (await this.getProtocolTokens())[0]!
+
     return {
-      ...(await this.getUnderlyingTokenMetadata(this.addresses.feeDistributor)),
+      ...rewardToken!,
       balanceRaw: balance,
       type: TokenType.UnderlyingClaimable,
     }
-  }
-
-  async getProtocolToken(): Promise<Erc20Metadata> {
-    return (await this.getProtocolTokens())[0]!
   }
 
   async unwrappedBalance(
@@ -245,13 +129,9 @@ export abstract class VotingEscrow
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const lockedDetailsPromise = await this.getLockedDetails(input)
-
-    const protocolTokenPromise = this.getProtocolToken()
-
-    const [{ amount, end }, protocolToken] = await Promise.all([
-      lockedDetailsPromise,
-      protocolTokenPromise,
+    const [{ amount, end }, [protocolToken]] = await Promise.all([
+      this.getLockedDetails(input),
+      this.getProtocolTokens(),
     ])
 
     if (amount === 0n) {
@@ -267,7 +147,7 @@ export abstract class VotingEscrow
     })
 
     const nameWithUnlockTime = `${
-      protocolToken.name
+      protocolToken!.name
     } - Unlock time ${unixTimestampToDateString(end)}`
 
     const tokens = [unwrappedToken]
@@ -280,23 +160,23 @@ export abstract class VotingEscrow
       {
         type: TokenType.Protocol,
         balanceRaw: amount,
-        ...protocolToken,
+        address: protocolToken!.address,
+        symbol: protocolToken!.symbol,
         name: nameWithUnlockTime,
+        decimals: protocolToken!.decimals,
         tokens,
       },
     ]
   }
 
   async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.getProtocolToken()
+    const [protocolToken] = await this.getProtocolTokens()
     return (
       await Promise.all([
         getErc20Movements({
-          protocolToken: protocolToken,
+          protocolToken: protocolToken!,
           provider: this.provider,
-          erc20Token: await this.getUnderlyingTokenMetadata(
-            protocolToken.address,
-          ),
+          erc20Token: protocolToken!.underlyingTokens[0]!,
           filter: {
             fromBlock: input.fromBlock,
             toBlock: input.toBlock,
@@ -310,11 +190,11 @@ export abstract class VotingEscrow
   }
 
   async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.getProtocolToken()
+    const [protocolToken] = await this.getProtocolTokens()
     return getErc20Movements({
-      protocolToken: await this.getProtocolToken(),
+      protocolToken: protocolToken!,
       provider: this.provider,
-      erc20Token: await this.getUnderlyingTokenMetadata(protocolToken.address),
+      erc20Token: protocolToken!.underlyingTokens[0]!,
       filter: {
         fromBlock: input.fromBlock,
         toBlock: input.toBlock,
@@ -325,14 +205,12 @@ export abstract class VotingEscrow
   }
 
   async getClaimedRewards(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.getProtocolToken()
+    const [protocolToken] = await this.getProtocolTokens()
 
     return getErc20Movements({
-      protocolToken: protocolToken,
+      protocolToken: protocolToken!,
       provider: this.provider,
-      erc20Token: await this.getUnderlyingTokenMetadata(
-        this.addresses.feeDistributor,
-      ),
+      erc20Token: protocolToken!.rewardTokens[0]!,
       filter: {
         fromBlock: input.fromBlock,
         toBlock: input.toBlock,
@@ -349,7 +227,7 @@ export abstract class VotingEscrow
       this.addresses.underlyingToken,
       this.provider,
     )
-    const protocolToken = await this.getProtocolToken()
+    const [protocolToken] = await this.getProtocolTokens()
 
     const balance = await crvContract.balanceOf(this.addresses.veToken, {
       blockTag: blockNumber,
@@ -359,24 +237,30 @@ export abstract class VotingEscrow
       {
         totalSupplyRaw: balance,
         type: TokenType.Protocol,
-        ...protocolToken,
+        address: protocolToken!.address,
+        symbol: protocolToken!.symbol,
+        name: protocolToken!.name,
+        decimals: protocolToken!.decimals,
       },
     ]
   }
 
-  async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const protocolToken = await this.getProtocolToken()
-    const underlyingToken = await this.getUnderlyingTokenMetadata(
-      protocolToken.address,
-    )
+  async unwrap({
+    protocolTokenAddress,
+  }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     return {
-      ...protocolToken,
+      address: protocolToken.address,
+      symbol: protocolToken.symbol,
+      name: protocolToken.name,
+      decimals: protocolToken.decimals,
       baseRate: 1,
       type: TokenType.Protocol,
       tokens: [
         {
-          ...underlyingToken,
+          ...protocolToken.underlyingTokens[0]!,
           type: TokenType.Underlying,
           underlyingRateRaw: BigInt(1) * BigInt(10 ** 18),
         },
@@ -384,7 +268,12 @@ export abstract class VotingEscrow
     }
   }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return this.getProtocolTokenMetadata()
+  private async getProtocolTokenByAddress(
+    protocolTokenAddress: string,
+  ): Promise<ProtocolToken<AdditionalMetadata>> {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
   }
 }

@@ -26,7 +26,6 @@ import {
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
-import { IMetadataBuilder } from '../decorators/cacheToFile'
 import { NotImplementedError } from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'

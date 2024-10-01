@@ -1,24 +1,14 @@
 import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../core/decorators/cacheToFile'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 
-import { logger } from '../../../core/utils/logger'
 import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
 } from '../contracts'
 
 import { ProtocolToken } from '../../../types/IProtocolAdapter'
-import {
-  TokenBalance,
-  TokenType,
-  Underlying,
-  UnwrappedTokenExchangeRate,
-} from '../../../types/adapter'
+import { TokenType, UnwrappedTokenExchangeRate } from '../../../types/adapter'
 
 const PRICE_PEGGED_TO_ONE = 1
 const sparkEthereumProviderAddress =

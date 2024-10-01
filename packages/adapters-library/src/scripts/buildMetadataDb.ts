@@ -31,77 +31,90 @@ export function buildMetadataDb(
       'comma-separated protocols filter (e.g. stargate,aave-v2)',
     )
     .option(
+      '-pd, --products <products>',
+      'comma-separated product filter (e.g. voting-escrow,market-borrow)',
+    )
+    .option(
       '-c, --chains <chains>',
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
     )
     .showHelpAfterError()
-    .action(async ({ protocols, chains }) => {
-      const filterProtocolIds = multiProtocolFilter(protocols)
-      const filterChainIds = multiChainFilter(chains)
+    .action(
+      async ({
+        protocols,
+        products,
+        chains,
+      }: { protocols?: string; products?: string; chains?: string }) => {
+        const filterProtocolIds = multiProtocolFilter(protocols)
+        const filterProductIds = products?.split(',')
+        const filterChainIds = multiChainFilter(chains)
 
-      const dbConnections = createDatabases(filterChainIds)
+        const dbConnections = createDatabases(filterChainIds)
 
-      try {
-        await Promise.allSettled(
-          dbConnections.map(async ([chainId, db]) => {
-            for (const [protocolIdKey, supportedChains] of Object.entries(
-              supportedProtocols,
-            )) {
-              const protocolId = protocolIdKey as Protocol
-              if (
-                (filterProtocolIds &&
-                  !filterProtocolIds.includes(protocolId)) ||
-                !(chainId in supportedChains)
-              ) {
-                continue
-              }
-
-              const provider = chainProviders[chainId]
-
-              if (!provider) {
-                logger.error({ chainId }, 'No provider found for chain')
-                throw new ProviderMissingError(chainId)
-              }
-
-              const chainProtocolAdapters =
-                adaptersController.fetchChainProtocolAdapters(
-                  chainId,
-                  protocolId,
-                )
-
-              for (const [_, adapter] of chainProtocolAdapters) {
+        try {
+          await Promise.allSettled(
+            dbConnections.map(async ([chainId, db]) => {
+              for (const [protocolIdKey, supportedChains] of Object.entries(
+                supportedProtocols,
+              )) {
+                const protocolId = protocolIdKey as Protocol
                 if (
-                  !(
-                    typeof adapter.getProtocolTokens === 'function' &&
-                    // private/secret param added at runtime
-                    //@ts-ignore
-                    adapter.getProtocolTokens.isCacheToDbDecorated
-                  )
+                  (filterProtocolIds &&
+                    !filterProtocolIds.includes(protocolId)) ||
+                  !(chainId in supportedChains)
                 ) {
                   continue
                 }
 
-                const metadataDetails = await buildAdapterMetadata(adapter)
+                const provider = chainProviders[chainId]
 
-                if (metadataDetails) {
-                  await writeProtocolTokensToDb({
-                    ...metadataDetails.adapterDetails,
-                    metadata: metadataDetails.metadata,
-                    db,
-                  })
+                if (!provider) {
+                  logger.error({ chainId }, 'No provider found for chain')
+                  throw new ProviderMissingError(chainId)
+                }
+
+                const chainProtocolAdapters =
+                  adaptersController.fetchChainProtocolAdapters(
+                    chainId,
+                    protocolId,
+                  )
+
+                for (const [_, adapter] of chainProtocolAdapters) {
+                  if (
+                    !(
+                      typeof adapter.getProtocolTokens === 'function' &&
+                      // private/secret param added at runtime
+                      //@ts-ignore
+                      adapter.getProtocolTokens.isCacheToDbDecorated
+                    ) ||
+                    (filterProductIds &&
+                      !filterProductIds.includes(adapter.productId))
+                  ) {
+                    continue
+                  }
+
+                  const metadataDetails = await buildAdapterMetadata(adapter)
+
+                  if (metadataDetails) {
+                    await writeProtocolTokensToDb({
+                      ...metadataDetails.adapterDetails,
+                      metadata: metadataDetails.metadata,
+                      db,
+                    })
+                  }
                 }
               }
-            }
-          }),
-        )
-      } finally {
-        for (const [_, db] of Object.values(dbConnections)) {
-          // Re-enable foreign key constraints
-          db.exec('PRAGMA foreign_keys = ON;')
-          db.close()
+            }),
+          )
+        } finally {
+          for (const [_, db] of Object.values(dbConnections)) {
+            // Re-enable foreign key constraints
+            db.exec('PRAGMA foreign_keys = ON;')
+            db.close()
+          }
         }
-      }
-    })
+      },
+    )
 }
 
 async function buildAdapterMetadata(adapter: IProtocolAdapter) {

@@ -2,17 +2,13 @@ import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { RAY_POSITIONS } from '../../../../core/constants/RAY'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import {
-  AssetType,
   GetTotalValueLockedInput,
   PositionType,
   ProtocolDetails,
   ProtocolTokenTvl,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'

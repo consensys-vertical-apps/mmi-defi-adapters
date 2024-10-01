@@ -2,16 +2,10 @@ import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -20,9 +14,7 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'

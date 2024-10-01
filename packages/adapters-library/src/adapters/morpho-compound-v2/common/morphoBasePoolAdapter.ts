@@ -3,11 +3,9 @@ import * as WadMath from 'evm-maths/lib/wad'
 import { AdaptersController } from '../../../core/adaptersController'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../core/constants/chains'
-import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
-import { logger } from '../../../core/utils/logger'
 import { Helpers } from '../../../scripts/helpers'
 import {
   AdapterSettings,

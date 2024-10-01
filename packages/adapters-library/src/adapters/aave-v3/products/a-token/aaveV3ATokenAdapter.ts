@@ -1,12 +1,7 @@
 import { z } from 'zod'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import {
-  AssetType,
-  PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import {
   WriteActionInputSchemas,
   WriteActions,

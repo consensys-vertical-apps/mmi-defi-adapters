@@ -2,17 +2,13 @@ import { getAddress, parseEther } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetTotalValueLockedInput,
   PositionType,
   ProtocolDetails,
   ProtocolTokenTvl,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'

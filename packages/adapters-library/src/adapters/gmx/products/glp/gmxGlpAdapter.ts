@@ -4,14 +4,9 @@ import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -20,9 +15,7 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnwrapExchangeRate,
   UnwrapInput,
   UnwrappedTokenExchangeRate,
