@@ -75,7 +75,6 @@ const dbParams = (chainId: Chain): [string, Database.Options] => {
     dbPath,
     {
       fileMustExist: !(process.env.DEFI_ALLOW_DB_CREATION !== 'false'),
-      readonly: true,
     },
   ]
 }

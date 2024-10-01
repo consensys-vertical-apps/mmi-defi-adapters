@@ -3,10 +3,15 @@ import { min } from 'evm-maths/lib/utils'
 import { AdaptersController } from '../../../core/adaptersController'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../core/constants/chains'
+import { CacheToDb } from '../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../scripts/helpers'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
   GetEventsInput,
@@ -38,11 +43,6 @@ import {
 import { Protocol } from '../../protocols'
 import { MorphoAaveMath } from '../internal-utils/AaveV3.maths'
 import P2PInterestRates from '../internal-utils/P2PInterestRates'
-import {
-  IProtocolAdapter,
-  ProtocolToken,
-} from '../../../types/IProtocolAdapter'
-import { CacheToDb } from '../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 

@@ -1,9 +1,7 @@
 {
   "blockNumber": 19774108,
   "latency": "Latency: 2.85 seconds",
-  "aggregatedValues": [
-    "USD8,277,993.81"
-  ],
+  "aggregatedValues": ["USD8,277,993.81"],
   "snapshot": [
     {
       "protocolId": "ethena",

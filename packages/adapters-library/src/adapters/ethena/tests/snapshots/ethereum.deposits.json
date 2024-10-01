@@ -1,7 +1,5 @@
 {
-  "aggregatedValues": [
-    "USD2,214.82"
-  ],
+  "aggregatedValues": ["USD2,214.82"],
   "latency": "Latency: 2.729 seconds",
   "snapshot": {
     "protocolId": "ethena",

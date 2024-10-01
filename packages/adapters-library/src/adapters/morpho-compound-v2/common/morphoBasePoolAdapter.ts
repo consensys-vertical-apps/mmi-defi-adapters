@@ -3,10 +3,15 @@ import * as WadMath from 'evm-maths/lib/wad'
 import { AdaptersController } from '../../../core/adaptersController'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../core/constants/chains'
+import { CacheToDb } from '../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../scripts/helpers'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
   GetEventsInput,
@@ -36,11 +41,6 @@ import {
   TypedContractEvent,
   TypedDeferredTopicFilter,
 } from '../contracts/common'
-import {
-  IProtocolAdapter,
-  ProtocolToken,
-} from '../../../types/IProtocolAdapter'
-import { CacheToDb } from '../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
