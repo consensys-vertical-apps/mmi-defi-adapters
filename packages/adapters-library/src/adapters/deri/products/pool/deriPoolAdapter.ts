@@ -39,7 +39,69 @@ import {
 import { logger } from '../../../../core/utils/logger'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 
-export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
+const chainContractAddresses: Partial<
+  Record<
+    Chain,
+    {
+      mainGateway: string
+      mainLToken: string
+      mainPToken: string
+      innoGateway: string
+      innoLToken: string
+      innoPToken: string
+      oracle: string
+      tokenB0: Erc20Metadata
+    }
+  >
+> = {
+  [Chain.Arbitrum]: {
+    mainGateway: getAddress('0x7c4a640461427c310a710d367c2ba8c535a7ef81'),
+    mainLToken: getAddress('0xd849c2b7991060023e5d92b92c68f4077ae2c2ba'),
+    mainPToken: getAddress('0x3330664fe007463ddc859830b2d96380440c3a24'),
+    innoGateway: getAddress('0xc38bcd426b3c88f80b3f3ca35957e256bbb704be'),
+    innoLToken: getAddress('0x48e33d67d286fd1901693c66d16494192ece9fa6'),
+    innoPToken: getAddress('0x9e5b500e6705c1a6f35812e93eef12e4f3672912'),
+    oracle: getAddress('0xd3d89af508590f3b43a476f0ed7295a8749f730e'),
+    tokenB0: {
+      address: getAddress('0xaf88d065e77c8cC2239327C5EDb3A432268e5831'),
+      name: 'USD Coin',
+      symbol: 'USDC',
+      decimals: 6,
+    },
+  },
+  [Chain.Linea]: {
+    mainGateway: getAddress('0xe840bb03fe58540841e6ebee94264d5317b88866'),
+    mainLToken: getAddress('0xc79102c36bbba246b8bb6ae81b50ba8544e45174'),
+    mainPToken: getAddress('0x5a9dbbc5e6bd9ecdf81d48580d861653f12ea91e'),
+    innoGateway: getAddress('0xd91cea5b209a3c327f72283c803b60bac2c2d8b3'),
+    innoLToken: getAddress('0x5bb30e7d81507cf171f16ebeefbdd0e287e60a4f'),
+    innoPToken: getAddress('0x14200cc7446d9fb32f75dff1526699cd164d7c47'),
+    oracle: getAddress('0x3b823dc7087d1ba9778ab8161b791b59053a0941'),
+    tokenB0: {
+      address: getAddress('0x176211869cA2b568f2A7D4EE941E073a821EE1ff'),
+      name: 'USDC',
+      symbol: 'USDC',
+      decimals: 6,
+    },
+  },
+  [Chain.Bsc]: {
+    mainGateway: getAddress('0x2c2e1ee20c633eae18239c0bf59cef1fc44939ac'),
+    mainLToken: getAddress('0xabfc820798095f3e4bd9626db6f8ad7d57a5c76a'),
+    mainPToken: getAddress('0x28a41c9eb8d0a9055de1644f9c4408f873c8550f'),
+    innoGateway: getAddress('0xab43c2eb56b63aad8f9a54107d0c9fde72d45ab9'),
+    innoLToken: getAddress('0x053e95113780ddf39b54baf53820f9f415038a45'),
+    innoPToken: getAddress('0x4cb0df0611045dd5d546fc622d61fdcb5d869170'),
+    oracle: getAddress('0xb7f803712f5b389d6f009f733916e18f9429e9d5'),
+    tokenB0: {
+      address: getAddress('0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d'),
+      name: 'USD Coin',
+      symbol: 'USDC',
+      decimals: 18,
+    },
+  },
+}
+
+export class DeriPoolAdapter implements IProtocolAdapter {
   productId = 'pool'
   protocolId: Protocol
   chainId: Chain
@@ -67,83 +129,6 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     this.protocolId = protocolId
     this.adaptersController = adaptersController
     this.helpers = helpers
-  }
-
-  @CacheToFile({ fileKey: 'protocol-metadata' })
-  async buildMetadata(): Promise<{
-    mainGateway: string
-    mainLToken: string
-    mainPToken: string
-    innoGateway: string
-    innoLToken: string
-    innoPToken: string
-    oracle: string
-    tokenB0: Erc20Metadata
-  }> {
-    if (this.chainId === Chain.Arbitrum) {
-      return {
-        mainGateway: getAddress('0x7c4a640461427c310a710d367c2ba8c535a7ef81'),
-        mainLToken: getAddress('0xd849c2b7991060023e5d92b92c68f4077ae2c2ba'),
-        mainPToken: getAddress('0x3330664fe007463ddc859830b2d96380440c3a24'),
-        innoGateway: getAddress('0xc38bcd426b3c88f80b3f3ca35957e256bbb704be'),
-        innoLToken: getAddress('0x48e33d67d286fd1901693c66d16494192ece9fa6'),
-        innoPToken: getAddress('0x9e5b500e6705c1a6f35812e93eef12e4f3672912'),
-        oracle: getAddress('0xd3d89af508590f3b43a476f0ed7295a8749f730e'),
-        tokenB0: await this.helpers.getTokenMetadata(
-          getAddress('0xaf88d065e77c8cc2239327c5edb3a432268e5831'),
-        ),
-      }
-    }
-    if (this.chainId === Chain.Linea) {
-      return {
-        mainGateway: getAddress('0xe840bb03fe58540841e6ebee94264d5317b88866'),
-        mainLToken: getAddress('0xc79102c36bbba246b8bb6ae81b50ba8544e45174'),
-        mainPToken: getAddress('0x5a9dbbc5e6bd9ecdf81d48580d861653f12ea91e'),
-        innoGateway: getAddress('0xd91cea5b209a3c327f72283c803b60bac2c2d8b3'),
-        innoLToken: getAddress('0x5bb30e7d81507cf171f16ebeefbdd0e287e60a4f'),
-        innoPToken: getAddress('0x14200cc7446d9fb32f75dff1526699cd164d7c47'),
-        oracle: getAddress('0x3b823dc7087d1ba9778ab8161b791b59053a0941'),
-        tokenB0: await this.helpers.getTokenMetadata(
-          getAddress('0x176211869ca2b568f2a7d4ee941e073a821ee1ff'),
-        ),
-      }
-    }
-
-    // TODO Disabled as we cannot fetch all contract logs for BSC
-    // if (this.chainId === Chain.Bsc) {
-    //   return {
-    //     mainGateway: getAddress('0x2c2e1ee20c633eae18239c0bf59cef1fc44939ac'),
-    //     mainLToken: getAddress('0xabfc820798095f3e4bd9626db6f8ad7d57a5c76a'),
-    //     mainPToken: getAddress('0x28a41c9eb8d0a9055de1644f9c4408f873c8550f'),
-    //     innoGateway: getAddress('0xab43c2eb56b63aad8f9a54107d0c9fde72d45ab9'),
-    //     innoLToken: getAddress('0x053e95113780ddf39b54baf53820f9f415038a45'),
-    //     innoPToken: getAddress('0x4cb0df0611045dd5d546fc622d61fdcb5d869170'),
-    //     oracle: getAddress('0xb7f803712f5b389d6f009f733916e18f9429e9d5'),
-    //     tokenB0: await this.helpers.getTokenMetadata(
-    //       getAddress('0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d'),
-    //     ),
-    //   }
-    // }
-
-    throw new Error('Chain not supported')
-  }
-
-  private async fetchPoolMetadata() {
-    const poolMetadata = await this.buildMetadata()
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
   }
 
   protected async fetchProtocolTokenMetadata(
@@ -187,7 +172,7 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     blockNumber,
     tokenIds: tokenIdsRaw,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const contractAddresses = await this.fetchPoolMetadata()
+    const contractAddresses = chainContractAddresses[this.chainId]!
 
     const tokenIds =
       tokenIdsRaw?.map((tokenId) => BigInt(tokenId)) ??
@@ -240,7 +225,7 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     userAddress: string,
     blockNumber: number | undefined,
   ): Promise<bigint[]> {
-    const contractAddresses = await this.fetchPoolMetadata()
+    const contractAddresses = chainContractAddresses[this.chainId]!
 
     const dTokens = [
       contractAddresses!.mainLToken,
@@ -296,7 +281,7 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     tokenId: bigint,
     blockNumber: number | undefined,
   ): Promise<ProtocolPosition | undefined> {
-    const contractAddresses = await this.fetchPoolMetadata()
+    const contractAddresses = chainContractAddresses[this.chainId]!
 
     const gatewayContract = GatewayImplementation__factory.connect(
       gateway,
@@ -401,7 +386,7 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     tokenId: bigint,
     blockNumber: number | undefined,
   ): Promise<ProtocolPosition | undefined> {
-    const contractAddresses = await this.fetchPoolMetadata()
+    const contractAddresses = chainContractAddresses[this.chainId]!
 
     const gatewayContract = GatewayImplementation__factory.connect(
       gateway,
@@ -506,7 +491,7 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     toBlock,
     tokenId,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const contractAddresses = await this.fetchPoolMetadata()
+    const contractAddresses = chainContractAddresses[this.chainId]!
 
     if (!tokenId) {
       throw new Error('TokenId required for deposits')
@@ -559,7 +544,7 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     toBlock,
     tokenId,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const contractAddresses = await this.fetchPoolMetadata()
+    const contractAddresses = chainContractAddresses[this.chainId]!
 
     if (!tokenId) {
       throw new Error('TokenId required for deposits')
@@ -639,7 +624,7 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     toBlock: number,
     tokenId: string,
   ): Promise<MovementsByBlock[]> {
-    const contractAddresses = await this.fetchPoolMetadata()
+    const contractAddresses = chainContractAddresses[this.chainId]!
 
     const gatewayContract = GatewayImplementation__factory.connect(
       gateway,
@@ -741,7 +726,7 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     toBlock: number,
     tokenId: string,
   ): Promise<MovementsByBlock[]> {
-    const contractAddresses = await this.fetchPoolMetadata()
+    const contractAddresses = chainContractAddresses[this.chainId]!
 
     const gatewayContract = GatewayImplementation__factory.connect(
       gateway,
