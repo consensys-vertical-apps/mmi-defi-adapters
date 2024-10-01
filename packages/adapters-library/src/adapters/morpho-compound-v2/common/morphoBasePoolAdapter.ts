@@ -10,6 +10,7 @@ import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import { Helpers } from '../../../scripts/helpers'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -37,14 +38,13 @@ import {
   TypedContractEvent,
   TypedDeferredTopicFilter,
 } from '../contracts/common'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../types/IProtocolAdapter'
+import { CacheToDb } from '../../../core/decorators/cacheToDb'
 
-type MorphoCompoundV2PeerToPoolAdapterMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
-  }
->
+type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
 const morphoCompoundV2ContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
@@ -54,10 +54,13 @@ const morphoCompoundV2ContractAddresses: Partial<
   },
 }
 
-export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
+export abstract class MorphoBasePoolAdapter implements IProtocolAdapter {
+  abstract productId: string
   protocolId: Protocol
   chainId: Chain
   helpers: Helpers
+
+  abstract adapterSettings: AdapterSettings
 
   private provider: CustomJsonRpcProvider
 
@@ -81,24 +84,16 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
   abstract getProtocolDetails(): ProtocolDetails
 
-  private _metadataCache: MorphoCompoundV2PeerToPoolAdapterMetadata | null =
-    null
-
-  async buildMetadata() {
-    if (this._metadataCache) {
-      return this._metadataCache
-    }
-
+  @CacheToDb()
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const morphoCompoundContract = MorphoCompound__factory.connect(
       morphoCompoundV2ContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
     )
 
-    const metadataObject: MorphoCompoundV2PeerToPoolAdapterMetadata = {}
-
     const markets = await morphoCompoundContract.getAllMarkets()
 
-    await Promise.all(
+    return await Promise.all(
       markets.map(async (marketAddress) => {
         const cTokenContract = CToken__factory.connect(
           marketAddress,
@@ -117,41 +112,12 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
           getTokenMetadata(supplyTokenAddress, this.chainId, this.provider),
         ])
 
-        metadataObject[protocolToken.address] = {
-          protocolToken,
-          underlyingToken,
+        return {
+          ...protocolToken,
+          underlyingTokens: [underlyingToken],
         }
       }),
     )
-
-    this._metadataCache = metadataObject
-    return metadataObject
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
-  }
-
-  private async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } =
-      await this._fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
-  }
-
-  private async _fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error({ protocolTokenAddress }, 'Protocol token pool not found')
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
   }
 
   private async getUnderlyingTokenBalances({
@@ -161,26 +127,17 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    const { underlyingToken } = await this._fetchPoolMetadata(
-      protocolTokenBalance.address,
-    )
+    const {
+      underlyingTokens: [underlyingToken],
+    } = await this.getProtocolTokenByAddress(protocolTokenBalance.address)
 
     const underlyingTokenBalance = {
-      ...underlyingToken,
+      ...underlyingToken!,
       balanceRaw: protocolTokenBalance.balanceRaw,
       type: TokenType.Underlying,
     }
 
     return [underlyingTokenBalance]
-  }
-
-  private async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } =
-      await this._fetchPoolMetadata(protocolTokenAddress)
-
-    return [underlyingToken]
   }
 
   async getPositions({
@@ -230,16 +187,16 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       protocolTokensBalances
         .filter((protocolTokenBalance) => protocolTokenBalance.balance !== 0n) // Filter out balances equal to 0
         .map(async (protocolTokenBalance) => {
-          const tokenMetadata = await this.fetchProtocolTokenMetadata(
+          const protocolToken = await this.getProtocolTokenByAddress(
             protocolTokenBalance.address,
           )
 
           const completeTokenBalance: TokenBalance = {
             address: protocolTokenBalance.address,
             balanceRaw: protocolTokenBalance.balance,
-            name: tokenMetadata.name,
-            symbol: tokenMetadata.symbol,
-            decimals: tokenMetadata.decimals,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
           }
 
           const underlyingTokenBalances = await this.getUnderlyingTokenBalances(
@@ -253,9 +210,9 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
           return {
             ...protocolTokenBalance,
             balanceRaw: protocolTokenBalance.balance,
-            name: tokenMetadata.name,
-            symbol: tokenMetadata.symbol,
-            decimals: tokenMetadata.decimals,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
             type: TokenType.Protocol,
             tokens: underlyingTokenBalances,
           }
@@ -362,7 +319,10 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
         totalValueRaw = WadMath.wadDiv(totalValueRaw, exchangeRate)
 
         return {
-          ...tokenMetadata,
+          address: tokenMetadata.address,
+          symbol: tokenMetadata.symbol,
+          name: tokenMetadata.name,
+          decimals: tokenMetadata.decimals,
           type: TokenType.Protocol,
           totalSupplyRaw: totalValueRaw !== undefined ? totalValueRaw : 0n,
         }
@@ -392,10 +352,10 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       this.provider,
     )
 
-    const protocolToken =
-      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
-    const [underlyingToken] =
-      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
+    const {
+      underlyingTokens: [underlyingToken],
+      ...protocolToken
+    } = await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     let filter: TypedDeferredTopicFilter<
       TypedContractEvent<
@@ -462,6 +422,15 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     )
 
     return movements
+  }
+
+  private async getProtocolTokenByAddress(
+    protocolTokenAddress: string,
+  ): Promise<ProtocolToken<AdditionalMetadata>> {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
   }
 }
 

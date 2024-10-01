@@ -4,8 +4,6 @@ import MorphoBlueMarketBorrowBaseMarketBorrow from '../../adapters/morpho-blue/p
 import MorphoBlueMarketBorrowEthereumMarketBorrow from '../../adapters/morpho-blue/products/market-borrow/metadata/ethereum.market-borrow.json'
 import MorphoBlueMarketSupplyBaseMarketSupply from '../../adapters/morpho-blue/products/market-supply/metadata/base.market-supply.json'
 import MorphoBlueMarketSupplyEthereumMarketSupply from '../../adapters/morpho-blue/products/market-supply/metadata/ethereum.market-supply.json'
-import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
-import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import { Protocol } from '../../adapters/protocols'
 import StargateVotingEscrowEthereumProtocolToken from '../../adapters/stargate/products/voting-escrow/metadata/ethereum.protocol-token.json'
 import { Json } from '../../types/json'
@@ -56,24 +54,6 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'market-supply',
     }),
     MorphoBlueMarketSupplyEthereumMarketSupply,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.MorphoCompoundV2,
-      productId: 'optimizer-borrow',
-      chainId: Chain.Ethereum,
-      fileKey: 'optimizer-borrow',
-    }),
-    MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.MorphoCompoundV2,
-      productId: 'optimizer-supply',
-      chainId: Chain.Ethereum,
-      fileKey: 'optimizer-supply',
-    }),
-    MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply,
   ],
   [
     metadataKey({
