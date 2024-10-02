@@ -68,57 +68,40 @@ jobs:
       - name: Build
         run: npm run build
 
-      # Step 1: Capture raw JSON output and store it as an artifact
-      - name: Capture and export raw JSON output
+      - name: Capture raw output from npm run support
         run: |
           OUTPUT=$(npm run -s support)
           echo "$OUTPUT" > raw_output.json
+
+      - name: Upload raw output as an artifact
         uses: actions/upload-artifact@v3
         with:
           name: raw-output
           path: raw_output.json
 
-      # Step 2: Extract keys, store result as an artifact
-      - name: Extract keys from JSON and store as artifact
+      # Step 2: Extract keys from the raw JSON
+      - name: Extract keys from raw JSON
         run: |
           OUTPUT=$(npm run -s support)
-          echo "$OUTPUT" | jq 'keys' > keys_output.json
+          KEYS=$(echo "$OUTPUT" | jq 'keys')
+          echo "$KEYS" > keys_output.json
+
+      - name: Upload keys as an artifact
         uses: actions/upload-artifact@v3
         with:
           name: keys-output
           path: keys_output.json
 
-      # Step 3: Filter JSON by condition (e.g., keys starting with "0x") and store result as artifact
-      - name: Filter JSON by condition and store as artifact
-        run: |
-          OUTPUT=$(npm run -s support)
-          echo "$OUTPUT" | jq '[.[] | select(test("^0x"))]' > filtered_output.json
-        uses: actions/upload-artifact@v3
+      - name: Download keys artifact
+        uses: actions/download-artifact@v3
         with:
-          name: filtered-output
-          path: filtered_output.json
+          name: keys-output
+          path: ./  # Downloads artifact into current working directory
 
-      # Step 4: Pretty print transformed JSON and store result as artifact
-      - name: Pretty print transformed JSON and store as artifact
-        run: |
-          OUTPUT=$(npm run -s support)
-          echo "$OUTPUT" | jq '. | {keys: keys}' > pretty_output.json
-        uses: actions/upload-artifact@v3
-        with:
-          name: pretty-output
-          path: pretty_output.json
-
-      # Step 5: Set protocol matrix (final step) and export result as artifact
       - id: set-matrix
         run: |
-          MATRIX=$(npm run -s support | jq -r 'keys | @json')
+          MATRIX=$(cat keys_output.json | jq -r 'keys | @json')
           echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
-          echo "$MATRIX" > protocol_matrix.json
-        uses: actions/upload-artifact@v3
-        with:
-          name: protocol-matrix
-          path: protocol_matrix.json
-
 
   integration-tests:
     needs: generate-protocol-matrix
