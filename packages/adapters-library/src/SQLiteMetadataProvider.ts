@@ -1,17 +1,20 @@
 import { promises as fs } from 'node:fs'
+import { existsSync } from 'node:fs'
 import path from 'node:path'
 import Database, { Database as DbType } from 'better-sqlite3'
 import { Protocol } from './adapters/protocols'
 import { Chain, ChainName } from './core/constants/chains'
 import { logger } from './core/utils/logger'
 import { ProtocolToken } from './types/IProtocolAdapter'
-import { existsSync } from 'node:fs'
 
 export function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
-  return Object.values(Chain).reduce((acc, chain) => {
-    acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
-    return acc
-  }, {} as Record<Chain, IMetadataProvider>)
+  return Object.values(Chain).reduce(
+    (acc, chain) => {
+      acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
+      return acc
+    },
+    {} as Record<Chain, IMetadataProvider>,
+  )
 }
 
 export const dbParams = (chainId: Chain): [string, Database.Options] => {
