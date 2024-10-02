@@ -5,6 +5,35 @@ import { Protocol } from './adapters/protocols'
 import { Chain, ChainName } from './core/constants/chains'
 import { logger } from './core/utils/logger'
 import { ProtocolToken } from './types/IProtocolAdapter'
+import { existsSync } from 'node:fs'
+
+export function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
+  return Object.values(Chain).reduce((acc, chain) => {
+    acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
+    return acc
+  }, {} as Record<Chain, IMetadataProvider>)
+}
+
+export const dbParams = (chainId: Chain): [string, Database.Options] => {
+  const dbPath = path.join(__dirname, '../../..', `${ChainName[chainId]}.db`)
+
+  if (
+    !(process.env.DEFI_ALLOW_DB_CREATION !== 'false') &&
+    !existsSync(dbPath)
+  ) {
+    logger.info(`Database file does not exist: ${dbPath}`)
+    throw new Error(`Database file does not exist: ${dbPath}`)
+  }
+
+  logger.debug(`Database file exists: ${dbPath}`)
+
+  return [
+    dbPath,
+    {
+      fileMustExist: !(process.env.DEFI_ALLOW_DB_CREATION !== 'false'),
+    },
+  ]
+}
 
 export type IMetadataProvider = {
   getMetadata: (input: {
