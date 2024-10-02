@@ -68,10 +68,43 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Step 1: Print raw JSON output
+      - name: Print raw JSON output
+        run: |
+          OUTPUT=$(npm run -s support)
+          echo "Raw JSON Output:"
+          echo "$OUTPUT"
+
+      # Step 2: Extract and print keys from JSON
+      - name: Extract keys from JSON
+        run: |
+          OUTPUT=$(npm run -s support)
+          KEYS=$(echo "$OUTPUT" | jq 'keys')
+          echo "Extracted Keys:"
+          echo "$KEYS"
+
+      # Step 3: Filter JSON based on condition (e.g., keys that start with "0x")
+      - name: Filter JSON by condition (keys starting with "0x")
+        run: |
+          OUTPUT=$(npm run -s support)
+          FILTERED=$(echo "$OUTPUT" | jq '[.[] | select(test("^0x"))]')
+          echo "Filtered JSON Output:"
+          echo "$FILTERED"
+
+      # Step 4: Pretty print transformed JSON
+      - name: Pretty print transformed JSON
+        run: |
+          OUTPUT=$(npm run -s support)
+          TRANSFORMED=$(echo "$OUTPUT" | jq '. | {keys: keys}')
+          echo "Pretty Printed JSON:"
+          echo "$TRANSFORMED" | jq .
+
+      # Step 5: Set protocol matrix (final step)
       - id: set-matrix
         run: |
           MATRIX=$(npm run -s support | jq -r 'keys | @json')
           echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
+
 
   integration-tests:
     needs: generate-protocol-matrix
