@@ -1,15 +1,17 @@
-import { ZeroAddress, ethers } from 'ethers'
+import { ZeroAddress } from 'ethers'
 import { Erc20__factory } from '../../../contracts/factories/Erc20__factory'
 import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
-import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../core/utils/filters'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import { Helpers } from '../../../scripts/helpers'
-import { IProtocolAdapter } from '../../../types/IProtocolAdapter'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
   GetEventsInput,
@@ -39,15 +41,13 @@ import {
 } from '../contracts/factories'
 import { MarketData, MarketParams } from '../internal-utils/Blue'
 import { MorphoBlueMath } from '../internal-utils/MorphoBlue.maths'
+import { CacheToDb } from '../../../core/decorators/cacheToDb'
 
-type MorphoBlueAdapterMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata & { tokenId: string }
-    underlyingToken: Erc20Metadata
-    collateralToken: Erc20Metadata
-  }
->
+type AdditionalMetadata = {
+  tokenId: string
+  underlyingTokens: Erc20Metadata[]
+  collateralToken: Erc20Metadata
+}
 
 const morphoBlueContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
@@ -58,9 +58,7 @@ const morphoBlueContractAddresses: Partial<
   },
 }
 
-export abstract class MorphoBluePoolAdapter
-  implements IMetadataBuilder, IProtocolAdapter
-{
+export abstract class MorphoBluePoolAdapter implements IProtocolAdapter {
   protocolId: Protocol
   chainId: Chain
   helpers: Helpers
@@ -90,7 +88,8 @@ export abstract class MorphoBluePoolAdapter
 
   abstract getProtocolDetails(): ProtocolDetails
 
-  async buildMetadata() {
+  @CacheToDb()
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const morphoBlueContract = MorphoBlue__factory.connect(
       morphoBlueContractAddresses[this.protocolId]![this.chainId]!,
       this._provider,
@@ -101,12 +100,11 @@ export abstract class MorphoBluePoolAdapter
       await morphoBlueContract.queryFilter(createMarketFilter, 0, 'latest')
     ).map((event) => event.args.id)
 
-    const metadataObject: MorphoBlueAdapterMetadata = {}
+    return await filterMapAsync(marketIds, async (id) => {
+      const marketParams: MarketParams =
+        await morphoBlueContract.idToMarketParams(id)
 
-    await Promise.all(
-      marketIds.map(async (id) => {
-        const marketParams: MarketParams =
-          await morphoBlueContract.idToMarketParams(id)
+      try {
         const [loanTokenData, collateralTokenData] = await Promise.all([
           getTokenMetadata(
             marketParams.loanToken,
@@ -120,36 +118,41 @@ export abstract class MorphoBluePoolAdapter
           ),
         ])
 
-        metadataObject[id] = {
-          protocolToken: {
-            address: marketParams.loanToken,
-            tokenId: id,
-            name: marketParams.loanToken,
-            symbol: loanTokenData.symbol,
-            decimals: loanTokenData.decimals,
-          },
-          underlyingToken: loanTokenData,
+        return {
+          tokenId: id,
+          address: id,
+          name: marketParams.loanToken,
+          symbol: loanTokenData.symbol,
+          decimals: loanTokenData.decimals,
+          underlyingTokens: [loanTokenData],
           collateralToken: collateralTokenData,
         }
-      }),
-    )
-
-    return metadataObject
-  }
-
-  async getProtocolTokens(): Promise<(Erc20Metadata & { tokenId: string })[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
+      } catch (error) {
+        logger.error(
+          {
+            protocolId: this.protocolId,
+            productId: this.productId,
+            chainId: this.chainId,
+            marketId: id,
+            marketParams,
+            error: error instanceof Error ? error.message : error,
+          },
+          'Error fetching token metadata for market id',
+        )
+        return undefined
+      }
+    })
   }
 
   private async getMarketsId(): Promise<string[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken.tokenId,
+    return Object.values(await this.getProtocolTokens()).map(
+      ({ tokenId }) => tokenId,
     )
   }
 
-  private async _fetchTokenMetadata(tokenId: string): Promise<Erc20Metadata> {
+  private async _fetchTokenMetadata(
+    tokenId: string,
+  ): Promise<Erc20Metadata & { tokenId: string }> {
     const tokens = await this.getProtocolTokens()
     const tokenMetadata = tokens.find(
       (token) => token.tokenId.toLowerCase() === tokenId.toLowerCase(),
@@ -158,14 +161,22 @@ export abstract class MorphoBluePoolAdapter
       logger.error({ tokenId }, 'Token metadata not found')
       throw new Error('Token metadata not found')
     }
-    return tokenMetadata
+    return {
+      address: tokenMetadata.name,
+      name: tokenMetadata.name,
+      symbol: tokenMetadata.symbol,
+      decimals: tokenMetadata.decimals,
+      tokenId: tokenMetadata.tokenId,
+    }
   }
 
   // get the loan token metadata
   private async _fetchLoanTokenMetadata(id: string): Promise<Erc20Metadata> {
-    const { underlyingToken } = await this._fetchMarketMetadata(id)
+    const {
+      underlyingTokens: [underlyingToken],
+    } = await this._fetchMarketMetadata(id)
 
-    return underlyingToken
+    return underlyingToken!
   }
 
   // get the collateral token metadata
@@ -179,14 +190,19 @@ export abstract class MorphoBluePoolAdapter
   // get the market token metadata
   private async _fetchMarketMetadata(id: string) {
     const lowerCaseId = id.toLowerCase()
-    const marketMetadata = (await this.buildMetadata())[lowerCaseId]
+    const marketMetadata = (await this.getProtocolTokens()).find(
+      ({ tokenId }) => tokenId === lowerCaseId,
+    )
 
     if (!marketMetadata) {
       logger.error({ id: lowerCaseId }, 'id market not found')
       throw new Error('id market not found')
     }
 
-    return marketMetadata
+    return {
+      ...marketMetadata,
+      address: marketMetadata.name,
+    }
   }
 
   async getBalance(
@@ -435,7 +451,7 @@ export abstract class MorphoBluePoolAdapter
   async getTotalValueLocked({
     blockNumber,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const metadata = await this.buildMetadata()
+    const metadata = await this.getProtocolTokens()
     const morphoBlue = MorphoBlue__factory.connect(
       morphoBlueContractAddresses[this.protocolId]![this.chainId]!,
       this._provider,
@@ -448,12 +464,15 @@ export abstract class MorphoBluePoolAdapter
     const collateralTokensSet: Set<string> = new Set()
     const marketsIds = await this.getMarketsId()
     for (const marketId of marketsIds) {
-      const marketMetadata = metadata[marketId]
+      const {
+        underlyingTokens: [underlyingToken],
+        collateralToken,
+      } = metadata.find(({ tokenId }) => tokenId === marketId)!
       const marketData: MarketData = await morphoBlue.market(marketId, {
         blockTag: blockNumber,
       })
 
-      const loanTokenAddress = marketMetadata?.underlyingToken.address
+      const loanTokenAddress = underlyingToken!.address
       if (loanTokenAddress) {
         supplyAssetsAggregator[loanTokenAddress] =
           (supplyAssetsAggregator[loanTokenAddress] || 0n) +
@@ -464,7 +483,7 @@ export abstract class MorphoBluePoolAdapter
           marketData.totalBorrowAssets
       }
 
-      const collateralTokenAddress = marketMetadata?.collateralToken?.address
+      const collateralTokenAddress = collateralToken.address
       if (collateralTokenAddress) {
         collateralTokensSet.add(collateralTokenAddress)
       }
@@ -515,11 +534,18 @@ export abstract class MorphoBluePoolAdapter
 
       const isCollateralToken = collateralTokensSet.has(tokenAddress)
 
-      const tokenMetadata = Object.values(metadata).find((market) =>
-        isCollateralToken
-          ? market.collateralToken.address === tokenAddress
-          : market.underlyingToken.address === tokenAddress,
-      )?.[isCollateralToken ? 'collateralToken' : 'underlyingToken']
+      let tokenMetadata: Erc20Metadata | undefined
+
+      if (isCollateralToken) {
+        tokenMetadata = Object.values(metadata).find(
+          ({ collateralToken }) => collateralToken.address === tokenAddress,
+        )?.collateralToken
+      } else {
+        tokenMetadata = Object.values(metadata).find(
+          ({ underlyingTokens: [underlyingToken] }) =>
+            underlyingToken!.address === tokenAddress,
+        )?.underlyingTokens[0]
+      }
 
       if (tokenMetadata) {
         tvlResults.push({

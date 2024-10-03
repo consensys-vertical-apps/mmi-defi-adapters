@@ -157,66 +157,10 @@ async function buildAdapterMetadata(adapter: IProtocolAdapter) {
   return metadataDetails
 }
 
-const upsertAdapterQuery = `
-  INSERT OR IGNORE INTO adapters (protocol_id, product_id)
-  VALUES (?, ?);
-`
-
-const getAdapterIdQuery = `
-  SELECT adapter_id FROM adapters WHERE protocol_id = ? AND product_id = ?;
-`
-
-const upsertTokenQuery = `
-  INSERT OR REPLACE INTO tokens (
-    token_address,
-    token_name,
-    token_symbol,
-    token_decimals
-  ) VALUES (?, ?, ?, ?);
-`
-
-const upsertPoolQuery = `
-  INSERT INTO pools (
-    adapter_id,
-    pool_address,
-    adapter_pool_id,
-    additional_data
-  ) VALUES (?, ?, ?, ?)
-  ON CONFLICT(adapter_id, pool_address)
-  DO UPDATE SET
-    adapter_pool_id = excluded.adapter_pool_id,
-    additional_data = excluded.additional_data
-  RETURNING pool_id;
-`
-
 type TokenTableName =
   | 'underlying_tokens'
   | 'reward_tokens'
   | 'extra_reward_tokens'
-
-const upsertPoolTokenQueries: Record<TokenTableName, string> = {
-  underlying_tokens: `
-    INSERT OR REPLACE INTO underlying_tokens (
-      pool_id,
-      token_address,
-      additional_data
-    ) VALUES (?, ?, ?);
-  `,
-  reward_tokens: `
-    INSERT OR REPLACE INTO reward_tokens (
-      pool_id,
-      token_address,
-      additional_data
-    ) VALUES (?, ?, ?);
-  `,
-  extra_reward_tokens: `
-    INSERT OR REPLACE INTO extra_reward_tokens (
-      pool_id,
-      token_address,
-      additional_data
-    ) VALUES (?, ?, ?);
-  `,
-}
 
 async function writeProtocolTokensToDb({
   protocolId,
@@ -233,11 +177,16 @@ async function writeProtocolTokensToDb({
 }) {
   try {
     // Step 1: Ensure adapter exists or create it
-    db.prepare(upsertAdapterQuery).run(protocolId, productId)
+    db.prepare(`
+      INSERT OR IGNORE INTO adapters (protocol_id, product_id)
+      VALUES (?, ?);
+    `).run(protocolId, productId)
 
-    const adapter = db.prepare(getAdapterIdQuery).get(protocolId, productId) as
-      | { adapter_id: number | bigint }
-      | undefined
+    const adapter = db
+      .prepare(`
+        SELECT adapter_id FROM adapters WHERE protocol_id = ? AND product_id = ?;
+      `)
+      .get(protocolId, productId) as { adapter_id: number | bigint } | undefined
 
     const adapterId = adapter?.adapter_id
 
@@ -246,14 +195,51 @@ async function writeProtocolTokensToDb({
     }
 
     // Step 2: Prepare statements
-    const upsertPoolStmt = db.prepare(upsertPoolQuery)
-    const upsertTokenStmt = db.prepare(upsertTokenQuery)
+    const upsertPoolStmt = db.prepare(`
+      INSERT INTO pools (
+        adapter_id,
+        pool_address,
+        adapter_pool_id,
+        additional_data
+      ) VALUES (?, ?, ?, ?)
+      ON CONFLICT(adapter_id, pool_address)
+      DO UPDATE SET
+        adapter_pool_id = excluded.adapter_pool_id,
+        additional_data = excluded.additional_data
+      RETURNING pool_id;
+    `)
+
+    const upsertTokenStmt = db.prepare(`
+      INSERT OR REPLACE INTO tokens (
+        token_address,
+        token_name,
+        token_symbol,
+        token_decimals
+      ) VALUES (?, ?, ?, ?);
+    `)
+
     const upsertPoolTokenStmts: Record<TokenTableName, Database.Statement> = {
-      underlying_tokens: db.prepare(upsertPoolTokenQueries.underlying_tokens),
-      reward_tokens: db.prepare(upsertPoolTokenQueries.reward_tokens),
-      extra_reward_tokens: db.prepare(
-        upsertPoolTokenQueries.extra_reward_tokens,
-      ),
+      underlying_tokens: db.prepare(`
+        INSERT OR REPLACE INTO underlying_tokens (
+          pool_id,
+          token_address,
+          additional_data
+        ) VALUES (?, ?, ?);
+      `),
+      reward_tokens: db.prepare(`
+        INSERT OR REPLACE INTO reward_tokens (
+          pool_id,
+          token_address,
+          additional_data
+        ) VALUES (?, ?, ?);
+      `),
+      extra_reward_tokens: db.prepare(`
+        INSERT OR REPLACE INTO extra_reward_tokens (
+          pool_id,
+          token_address,
+          additional_data
+        ) VALUES (?, ?, ?);
+      `),
     }
 
     // Use a single transaction for all inserts to boost performance

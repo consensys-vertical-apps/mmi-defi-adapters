@@ -1,9 +1,4 @@
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import {
-  AssetType,
-  PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import { MorphoBluePoolAdapter } from '../../common/morphoBluePoolAdapter'
 
 export class MorphoBlueMarketBorrowAdapter extends MorphoBluePoolAdapter {
@@ -25,10 +20,5 @@ export class MorphoBlueMarketBorrowAdapter extends MorphoBluePoolAdapter {
       chainId: this.chainId,
       productId: this.productId,
     }
-  }
-
-  @CacheToFile({ fileKey: 'market-borrow' })
-  async buildMetadata() {
-    return super.buildMetadata()
   }
 }
