@@ -1,9 +1,6 @@
-import { promises as fs } from 'node:fs'
-import path from 'node:path'
 import Database, { Database as DbType } from 'better-sqlite3'
 import { Protocol } from './adapters/protocols'
-import { Chain, ChainName } from './core/constants/chains'
-import { logger } from './core/utils/logger'
+import { Chain } from './core/constants/chains'
 import { ProtocolToken } from './types/IProtocolAdapter'
 
 export type IMetadataProvider = {

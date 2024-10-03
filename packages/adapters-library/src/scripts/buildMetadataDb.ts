@@ -17,7 +17,7 @@ import { logger } from '../core/utils/logger'
 import { IProtocolAdapter, ProtocolToken } from '../types/IProtocolAdapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { Json } from '../types/json'
-import { getMetadataInvalidAddresses } from './addressValidation'
+import { getInvalidAddresses } from './addressValidation'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
 export function buildMetadataDb(
@@ -131,7 +131,7 @@ async function buildAdapterMetadata(adapter: IProtocolAdapter) {
     `getProtocolTokens-${adapter.protocolId}-${adapter.productId}-${adapter.chainId}`,
   )
 
-  const invalidAddresses = getMetadataInvalidAddresses(metadataDetails)
+  const invalidAddresses = getInvalidAddresses(metadataDetails)
 
   if (invalidAddresses.length > 0) {
     console.error(chalk.yellow(invalidAddresses.join('\n')))

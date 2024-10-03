@@ -1,19 +1,19 @@
 import { getAddress, isAddress } from 'ethers'
 import { Json } from '../types/json'
 
-export function getMetadataInvalidAddresses(metadata: Json): string[] {
-  if (typeof metadata === 'string') {
-    return isChecksummedOrNonEthAddress(metadata) ? [] : [metadata]
+export function getInvalidAddresses(data: Json): string[] {
+  if (typeof data === 'string') {
+    return isChecksummedOrNonEthAddress(data) ? [] : [data]
   }
 
-  if (Array.isArray(metadata)) {
-    return metadata.flatMap((value) => getMetadataInvalidAddresses(value) || [])
+  if (Array.isArray(data)) {
+    return data.flatMap((value) => getInvalidAddresses(value) || [])
   }
 
-  if (metadata && typeof metadata === 'object') {
-    return Object.entries(metadata).flatMap(([key, value]) => {
-      const keyInvalidAddresses = getMetadataInvalidAddresses(key)
-      const valueInvalidAddresses = getMetadataInvalidAddresses(value)
+  if (data && typeof data === 'object') {
+    return Object.entries(data).flatMap(([key, value]) => {
+      const keyInvalidAddresses = getInvalidAddresses(key)
+      const valueInvalidAddresses = getInvalidAddresses(value)
 
       return [...keyInvalidAddresses, ...valueInvalidAddresses]
     })
