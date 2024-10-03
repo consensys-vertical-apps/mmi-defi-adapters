@@ -35,8 +35,8 @@ export type ProtocolToken<
   AdditionalMetadata extends JsonMetadata = {},
 > = Erc20Metadata & {
   underlyingTokens?: Erc20Metadata[]
-  // rewardTokens?: Erc20Metadata[]
-  // extraRewardTokens?: Erc20Metadata[]
+  rewardTokens?: Erc20Metadata[]
+  extraRewardTokens?: Erc20Metadata[]
   tokenId?: string
 } & AdditionalMetadata
 

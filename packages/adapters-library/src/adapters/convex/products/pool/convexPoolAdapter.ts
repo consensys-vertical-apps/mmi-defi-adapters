@@ -21,15 +21,7 @@ import { ConvexFactory__factory } from '../../contracts'
 
 const PRICE_PEGGED_TO_ONE = 1
 
-export type ExtraRewardToken = {
-  token: Erc20Metadata
-  manager: string
-}
-
-export type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-  extraRewardTokens: ExtraRewardToken[]
-}
+type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
 export class ConvexPoolAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'pool'
@@ -104,7 +96,6 @@ export class ConvexPoolAdapter extends SimplePoolAdapter<AdditionalMetadata> {
         metadata.push({
           ...convexToken,
           underlyingTokens: [underlyingToken],
-          extraRewardTokens: [],
         })
       }),
     )

@@ -28,16 +28,15 @@ import {
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardsFactory'
 
-export const CONVEX_TOKEN_ADDRESS = '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b'
+const CONVEX_TOKEN_ADDRESS = '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b'
 
 const PRICE_PEGGED_TO_ONE = 1
 
-export type ExtraRewardToken = {
-  token: Erc20Metadata
+type ExtraRewardToken = Erc20Metadata & {
   manager: string
 }
 
-export type AdditionalMetadata = {
+type AdditionalMetadata = {
   underlyingTokens: Erc20Metadata[]
   extraRewardTokens: ExtraRewardToken[]
 }
@@ -217,7 +216,10 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
 
         return {
           type: TokenType.UnderlyingClaimable,
-          ...extraRewardToken.token,
+          address: extraRewardToken.address,
+          symbol: extraRewardToken.symbol,
+          name: extraRewardToken.name,
+          decimals: extraRewardToken.decimals,
           balanceRaw: balance,
         }
       },
@@ -315,7 +317,7 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
       })
 
     const responsePromises = extraRewardTokens!.map(
-      async (extraRewardToken) => {
+      async (extraRewardToken: ExtraRewardToken) => {
         const extraRewardTracker = ConvexRewardTracker__factory.connect(
           extraRewardToken.manager,
           this.provider,
@@ -343,7 +345,10 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
             protocolToken: { name, address, decimals, symbol },
             tokens: [
               {
-                ...extraRewardToken.token,
+                address: extraRewardToken.address,
+                symbol: extraRewardToken.symbol,
+                name: extraRewardToken.name,
+                decimals: extraRewardToken.decimals,
                 balanceRaw: protocolTokenMovementValueRaw,
                 type: TokenType.Underlying,
               },
@@ -394,7 +399,7 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
           )
 
           extraRewards.push({
-            token: rewardTokenMetadata,
+            ...rewardTokenMetadata,
             manager: extraRewardTokenManager,
           })
         }),

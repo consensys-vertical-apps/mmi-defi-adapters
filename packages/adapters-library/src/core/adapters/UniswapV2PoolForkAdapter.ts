@@ -34,8 +34,6 @@ import { logger } from '../utils/logger'
 
 export type AdditionalTokenMetadata = {
   underlyingTokens: Erc20Metadata[]
-  token0: string
-  token1: string
 }
 
 export type UniswapV2PoolForkPositionStrategy = { factoryAddress: string } & (
@@ -138,8 +136,6 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
 
     const results: ({
       underlyingTokens: Erc20Metadata[]
-      token0: string
-      token1: string
     } & Erc20Metadata)[] = []
 
     // Process each pair with concurrency control
@@ -162,19 +158,17 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
           const result = {
             ...protocolTokenUpdated,
             underlyingTokens: [token0, token1],
-            token0: pair.token0Address,
-            token1: pair.token1Address,
           }
 
           results.push(result)
 
-          console.log(
+          logger.info(
             `[${new Date().toISOString()}] Processed metadata ${
               results.length
             } of ${pairs.length}`,
           )
         } catch (error) {
-          console.error(
+          logger.error(
             `Error processing pair: ${pair.pairAddress}`,
             (error as Error).message,
           )
@@ -393,8 +387,10 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
     protocolTokenAddress,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const { token0, token1, underlyingTokens, ...protocolToken } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+    const {
+      underlyingTokens: [token0, token1],
+      ...protocolToken
+    } = await this.fetchPoolMetadata(protocolTokenAddress)
 
     const pairContract = UniswapV2Pair__factory.connect(
       protocolTokenAddress,
@@ -427,19 +423,19 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
         {
           type: TokenType.Underlying,
           underlyingRateRaw: pricePerShare0!,
-          ...underlyingTokens.find((token) => token.address === token0)!,
+          ...token0!,
         },
         {
           type: TokenType.Underlying,
           underlyingRateRaw: pricePerShare1!,
-          ...underlyingTokens.find((token) => token.address === token1)!,
+          ...token1!,
         },
       ],
     }
   }
 
   private async getProtocolToken(protocolTokenAddress: string) {
-    const { token0, token1, underlyingTokens, ...protocolToken } =
+    const { underlyingTokens, ...protocolToken } =
       await this.fetchPoolMetadata(protocolTokenAddress)
     return protocolToken
   }

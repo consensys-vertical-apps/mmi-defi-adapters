@@ -21,17 +21,8 @@ export function CacheToDb() {
           },
           'Write to database',
         )
-        const metadataObject = await originalMethod.call(this, ...args)
 
-        return {
-          metadata: metadataObject,
-          adapterDetails: {
-            protocolId: this.protocolId,
-            productId: this.productId,
-            chainId: this.chainId,
-          },
-          // biome-ignore lint/suspicious/noExplicitAny: Decorator code
-        } as any
+        return await originalMethod.call(this, ...args)
       }
 
       const metadata = await this.helpers.metadataProvider.getMetadata({

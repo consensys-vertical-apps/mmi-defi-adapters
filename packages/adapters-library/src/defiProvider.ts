@@ -157,7 +157,13 @@ export class DefiProvider {
     this.initAdapterControllerForUnwrapStage()
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const blockNumber = blockNumbers?.[adapter.chainId]
+      if (adapter.productId !== 'staking') {
+        return { tokens: [] }
+      }
+
+      filterProtocolTokens = ['0x0A760466E1B4621579a82a39CB56Dda2F4E70f03']
+
+      const blockNumber = blockNumbers?.[adapter.chainId] ?? 18634843
 
       const protocolTokenAddresses = await this.buildTokenFilter(
         userAddress,
