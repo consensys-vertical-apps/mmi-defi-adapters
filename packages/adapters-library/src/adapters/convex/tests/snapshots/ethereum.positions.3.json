@@ -1,6 +1,6 @@
 {
   "blockNumber": 18634843,
-  "latency": "Latency: 4.713 seconds",
+  "latency": "Latency: 10.43 seconds",
   "aggregatedValues": ["USD147,541.36", "USD24,790.67", "USD154.56"],
   "snapshot": [
     {
@@ -54,29 +54,6 @@
               "balanceRaw": "128997493050015238077933n",
               "tokens": [
                 {
-                  "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
-                  "name": "Compound Dai",
-                  "symbol": "cDAI",
-                  "decimals": 8,
-                  "type": "underlying",
-                  "balanceRaw": "234816797172236n",
-                  "tokens": [
-                    {
-                      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-                      "name": "Dai Stablecoin",
-                      "symbol": "DAI",
-                      "decimals": 18,
-                      "type": "underlying",
-                      "balanceRaw": "52944683373471127878932n",
-                      "balance": 52944.683373471125,
-                      "price": 0.9992119774262888,
-                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
-                    }
-                  ],
-                  "balance": 2348167.97172236,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643/logo.png"
-                },
-                {
                   "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
                   "name": "Compound USD Coin",
                   "symbol": "cUSDC",
@@ -98,6 +75,29 @@
                   ],
                   "balance": 4035509.43329222,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x39AA39c021dfbaE8faC545936693aC917d5E7563/logo.png"
+                },
+                {
+                  "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
+                  "name": "Compound Dai",
+                  "symbol": "cDAI",
+                  "decimals": 8,
+                  "type": "underlying",
+                  "balanceRaw": "234816797172236n",
+                  "tokens": [
+                    {
+                      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                      "name": "Dai Stablecoin",
+                      "symbol": "DAI",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "balanceRaw": "52944683373471127878932n",
+                      "balance": 52944.683373471125,
+                      "price": 0.9992119774262888,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                    }
+                  ],
+                  "balance": 2348167.97172236,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643/logo.png"
                 }
               ],
               "balance": 128997.49305001524,
@@ -374,11 +374,11 @@
     "ddb4da865975d57104568df4515299f2": {
       "result": "0x00000000000000000000000000000000000000000052058849e2fe62a53adf27"
     },
-    "f4ac36cf508513a04cfb08429ad96c99": {
-      "result": "0x0000000000000000000000000000000000000000000000000009df9694b71388"
-    },
     "1707ad3a32c81f628c92c999c2bff00f": {
       "result": "0x0000000000000000000000000000000000000000000000000010f7db6917a921"
+    },
+    "f4ac36cf508513a04cfb08429ad96c99": {
+      "result": "0x0000000000000000000000000000000000000000000000000009df9694b71388"
     },
     "6d5e8afa7b170c0d8aa01be55ad7ce6c": {
       "result": "0x000000000000000000000000000000000000000000000000000007e207e12b18"
@@ -404,11 +404,11 @@
     "b6784a65ec9ed7ca298e3d7eadc74ed4": {
       "result": "0x0000000000000000000000000000000000000000000000000001b8333f8e57a3"
     },
-    "ec5ea8f8d696490e940b10b9deb76573": {
-      "result": "0x000000000000000000000000000000000000000000ba819de21789a4a6352d22"
-    },
     "e639cb92474eb1557b8426f6421eb9d6": {
       "result": "0x0000000000000000000000000000000000000000000000000000d309595398cf"
+    },
+    "ec5ea8f8d696490e940b10b9deb76573": {
+      "result": "0x000000000000000000000000000000000000000000ba819de21789a4a6352d22"
     }
   }
 }

@@ -10,7 +10,10 @@ import { filterMapAsync } from '../core/utils/filters'
 import { getOnChainTokenMetadata } from '../core/utils/getTokenMetadata'
 import { logger } from '../core/utils/logger'
 import { nativeToken, nativeTokenAddresses } from '../core/utils/nativeTokens'
-import { JsonMetadata, ProtocolToken } from '../types/IProtocolAdapter'
+import {
+  AdditionalMetadataWithReservedFields,
+  ProtocolToken,
+} from '../types/IProtocolAdapter'
 import {
   GetPositionsInput,
   MovementsByBlock,
@@ -37,8 +40,7 @@ export class Helpers {
   ) {}
 
   async getProtocolTokenByAddress<
-    // biome-ignore lint/complexity/noBannedTypes: <explanation>
-    AdditionalMetadata extends JsonMetadata = {},
+    AdditionalMetadata extends AdditionalMetadataWithReservedFields,
   >({
     protocolTokens,
     protocolTokenAddress,

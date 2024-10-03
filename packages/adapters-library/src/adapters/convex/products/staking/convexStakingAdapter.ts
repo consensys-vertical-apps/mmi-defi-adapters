@@ -37,7 +37,7 @@ type ExtraRewardToken = Erc20Metadata & {
 }
 
 type AdditionalMetadata = {
-  extraRewardTokens: ExtraRewardToken[]
+  extraRewardTokens?: ExtraRewardToken[]
 }
 
 export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> {
@@ -315,7 +315,7 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
         protocolTokenAddress,
       })
 
-    const responsePromises = extraRewardTokens!.map(
+    const responsePromises = (extraRewardTokens ?? []).map(
       async (extraRewardToken: ExtraRewardToken) => {
         const extraRewardTracker = ConvexRewardTracker__factory.connect(
           extraRewardToken.manager,
@@ -357,8 +357,6 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
         })
       },
     )
-
-    if (!responsePromises) return []
 
     const nestedResults = await Promise.all(responsePromises)
     const response: MovementsByBlock[] = nestedResults.flat()

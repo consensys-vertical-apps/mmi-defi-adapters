@@ -7,16 +7,17 @@ import { Protocol } from '../adapters/protocols'
 import { supportedProtocols } from '../adapters/supportedProtocols'
 import { AdaptersController } from '../core/adaptersController'
 import { Chain, ChainName } from '../core/constants/chains'
-import {
-  NotImplementedError,
-  ProviderMissingError,
-} from '../core/errors/errors'
+import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { filterMapSync } from '../core/utils/filters'
 import { logger } from '../core/utils/logger'
-import { IProtocolAdapter, ProtocolToken } from '../types/IProtocolAdapter'
+import {
+  AdditionalMetadataWithReservedFields,
+  Erc20ExtendedMetadata,
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../types/IProtocolAdapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
-import { Json } from '../types/json'
 import { getInvalidAddresses } from './addressValidation'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
@@ -172,7 +173,9 @@ async function writeProtocolTokensToDb({
   protocolId: Protocol
   productId: string
   chainId: Chain
-  pools: ProtocolToken[] // Array of ProtocolToken objects
+  pools: ProtocolToken<
+    AdditionalMetadataWithReservedFields & { underlyingTokens: Erc20Metadata[] }
+  >[]
   db: Database.Database
 }) {
   try {
@@ -258,7 +261,7 @@ async function writeProtocolTokensToDb({
         .prepare(`
           SELECT pool_id FROM pools WHERE adapter_id = ? AND pool_address = ? AND (adapter_pool_id = ? OR ? IS NULL)
         `)
-        .get(adapterId, address, tokenId ?? null, tokenId) as
+        .get(adapterId, address, tokenId ?? null, tokenId ?? null) as
         | { pool_id: number | bigint }
         | undefined
 
@@ -343,7 +346,7 @@ async function writeProtocolTokensToDb({
 // Helper function to collect token data for batch insert
 function collectTokenData(
   poolId: number | bigint,
-  tokens: (Erc20Metadata & Record<string, Json>)[] | undefined,
+  tokens: Erc20ExtendedMetadata[] | undefined,
   tableName: TokenTableName,
   tokenData: [string, string, string, number][],
   poolTokenData: {

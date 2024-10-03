@@ -1,8 +1,7 @@
 import { Protocol } from '../../adapters/protocols'
-import { Erc20__factory } from '../../contracts'
-import { TransferEvent } from '../../contracts/Erc20'
 import { Helpers } from '../../scripts/helpers'
 import {
+  AdditionalMetadataWithReservedFields,
   IProtocolAdapter,
   JsonMetadata,
   ProtocolToken,
@@ -16,24 +15,20 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnwrapExchangeRate,
   UnwrapInput,
   UnwrappedTokenExchangeRate,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { AdaptersController } from '../adaptersController'
-import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { Chain } from '../constants/chains'
-import { MaxMovementLimitExceededError } from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
 
 export abstract class SimplePoolAdapter<
-  // biome-ignore lint/complexity/noBannedTypes: <explanation>
-  AdditionalMetadata extends JsonMetadata = {},
+  AdditionalMetadata extends
+    AdditionalMetadataWithReservedFields = JsonMetadata,
 > implements IProtocolAdapter
 {
   chainId: Chain
