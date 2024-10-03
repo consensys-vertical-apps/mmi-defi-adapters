@@ -23,7 +23,6 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { staticChainData } from '../../common/staticChainData'
 import {
@@ -31,7 +30,7 @@ import {
   StargateToken__factory,
 } from '../../contracts'
 
-type AdditionalMetadata = { poolId: number; underlyingTokens: Erc20Metadata[] }
+type AdditionalMetadata = { poolId: number }
 
 export class StargatePoolAdapter implements IProtocolAdapter {
   productId = 'pool'

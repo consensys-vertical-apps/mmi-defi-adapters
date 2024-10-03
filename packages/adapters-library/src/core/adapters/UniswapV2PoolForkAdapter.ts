@@ -1,5 +1,4 @@
 import { getAddress } from 'ethers'
-import { add } from 'lodash'
 import PQueue from 'p-queue'
 import { Protocol } from '../../adapters/protocols'
 import {
@@ -26,15 +25,12 @@ import {
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
+import { CacheToDb } from '../decorators/cacheToDb'
 import { NotImplementedError } from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
 import { getTokenMetadata } from '../utils/getTokenMetadata'
 import { logger } from '../utils/logger'
-
-export type AdditionalTokenMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
 
 export type UniswapV2PoolForkPositionStrategy = { factoryAddress: string } & (
   | {
@@ -98,7 +94,8 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
     Record<Chain, UniswapV2PoolForkPositionStrategy>
   >
 
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalTokenMetadata>[]> {
+  @CacheToDb()
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const factoryMetadata = this.chainMetadataSettings()[this.chainId]
 
     if (!factoryMetadata) {
@@ -134,9 +131,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       concurrency: this.MAX_CONCURRENT_FACTORY_PROMISES,
     })
 
-    const results: ({
-      underlyingTokens: Erc20Metadata[]
-    } & Erc20Metadata)[] = []
+    const results: ProtocolToken[] = []
 
     // Process each pair with concurrency control
     for (const pair of pairs) {
@@ -624,7 +619,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
 
   private async factoryPoolExtraction(
     factoryAddress: string,
-  ): Promise<ProtocolToken<AdditionalTokenMetadata>[]> {
+  ): Promise<ProtocolToken[]> {
     const factoryContract = UniswapV2Factory__factory.connect(
       factoryAddress,
       this.provider,
@@ -648,7 +643,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       `Starting factoryPoolExtraction with jobSize: ${jobSize}, concurrency: ${concurrency}`,
     )
 
-    const results: ProtocolToken<AdditionalTokenMetadata>[] = []
+    const results: ProtocolToken[] = []
 
     // Process pairs from startIndex to jobSize
     for (let index = 0; index < jobSize && index < allPairsLength; index++) {

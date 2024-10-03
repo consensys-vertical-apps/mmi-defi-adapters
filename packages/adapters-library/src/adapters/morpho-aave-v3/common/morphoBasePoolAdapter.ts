@@ -44,8 +44,6 @@ import { Protocol } from '../../protocols'
 import { MorphoAaveMath } from '../internal-utils/AaveV3.maths'
 import P2PInterestRates from '../internal-utils/P2PInterestRates'
 
-type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
-
 const morphoAaveV3ContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
 > = {
@@ -88,7 +86,7 @@ export abstract class MorphoBasePoolAdapter implements IProtocolAdapter {
   abstract getProtocolDetails(): ProtocolDetails
 
   @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const morphoAaveV3Contract = MorphoAaveV3__factory.connect(
       morphoAaveV3ContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
@@ -632,9 +630,7 @@ export abstract class MorphoBasePoolAdapter implements IProtocolAdapter {
     return movements
   }
 
-  private async getProtocolTokenByAddress(
-    protocolTokenAddress: string,
-  ): Promise<ProtocolToken<AdditionalMetadata>> {
+  private async getProtocolTokenByAddress(protocolTokenAddress: string) {
     return this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,

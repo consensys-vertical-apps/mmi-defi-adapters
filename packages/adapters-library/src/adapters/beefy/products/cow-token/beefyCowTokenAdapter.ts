@@ -23,12 +23,9 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { breakdownFetcherMap, chainIdMap } from '../../sdk/config'
 import { ApiClmManager, BeefyProductType } from '../../sdk/types'
-
-type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
 export class BeefyCowTokenAdapter implements IProtocolAdapter {
   productId = BeefyProductType.COW_TOKEN
@@ -73,7 +70,7 @@ export class BeefyCowTokenAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const chain = chainIdMap[this.chainId]
 
     const vaults = await fetch(`https://api.beefy.finance/cow-vaults/${chain}`)
@@ -222,7 +219,7 @@ export class BeefyCowTokenAdapter implements IProtocolAdapter {
 
   private async getProtocolTokenByAddress(
     protocolTokenAddress: string,
-  ): Promise<ProtocolToken<AdditionalMetadata>> {
+  ): Promise<ProtocolToken> {
     return this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,

@@ -21,7 +21,6 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import {
   BalancerRateProvider__factory,
@@ -32,8 +31,6 @@ import {
   TokenAddresses,
   xRenzoDeposit,
 } from './config'
-
-type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
 export class RenzoEzEthAdapter implements IProtocolAdapter {
   productId = 'ez-eth'
@@ -78,7 +75,7 @@ export class RenzoEzEthAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const tokens = TokenAddresses[this.chainId]!
     const [protocolToken, underlyingToken] = await Promise.all([
       this.helpers.getTokenMetadata(tokens.protocolToken),
@@ -174,9 +171,7 @@ export class RenzoEzEthAdapter implements IProtocolAdapter {
     }
   }
 
-  private async getProtocolTokenByAddress(
-    protocolTokenAddress: string,
-  ): Promise<ProtocolToken<AdditionalMetadata>> {
+  private async getProtocolTokenByAddress(protocolTokenAddress: string) {
     return this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,

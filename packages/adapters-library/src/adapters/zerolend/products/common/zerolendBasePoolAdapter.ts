@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../../scripts/helpers'
@@ -27,8 +28,6 @@ import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
 } from '../../contracts'
-
-type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
 const protocolDataProviderContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
@@ -69,7 +68,7 @@ export abstract class ZeroLendBasePoolAdapter implements IProtocolAdapter {
 
   async getProtocolTokenByAddress(
     protocolTokenAddress: string,
-  ): Promise<ProtocolToken<AdditionalMetadata>> {
+  ): Promise<ProtocolToken> {
     return this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,
@@ -155,7 +154,8 @@ export abstract class ZeroLendBasePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  @CacheToDb()
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
       protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
@@ -164,7 +164,7 @@ export abstract class ZeroLendBasePoolAdapter implements IProtocolAdapter {
     const reserveTokens =
       await protocolDataProviderContract.getAllReservesTokens()
 
-    const protocolTokens: ProtocolToken<AdditionalMetadata>[] = []
+    const protocolTokens: ProtocolToken[] = []
 
     const promises = reserveTokens.map(async ({ tokenAddress }) => {
       const reserveConfigurationData =

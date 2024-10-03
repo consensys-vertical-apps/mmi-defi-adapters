@@ -46,11 +46,7 @@ const contractAddresses: Partial<
   },
 }
 
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
-
-export class MendiFinanceSupplyMarketAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class MendiFinanceSupplyMarketAdapter extends SimplePoolAdapter {
   productId = 'supply-market'
 
   adapterSettings = {
@@ -72,7 +68,7 @@ export class MendiFinanceSupplyMarketAdapter extends SimplePoolAdapter<Additiona
   }
 
   @CacheToDb()
-  async getProtocolTokens() {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const comptrollerContract = Comptroller__factory.connect(
       contractAddresses[this.chainId]!.comptroller,
       this.provider,
@@ -80,7 +76,7 @@ export class MendiFinanceSupplyMarketAdapter extends SimplePoolAdapter<Additiona
 
     const pools = await comptrollerContract.getAllMarkets()
 
-    const metadataObject: ProtocolToken<AdditionalMetadata>[] = []
+    const metadataObject: ProtocolToken[] = []
 
     await Promise.all(
       pools.map(async (poolContractAddress) => {

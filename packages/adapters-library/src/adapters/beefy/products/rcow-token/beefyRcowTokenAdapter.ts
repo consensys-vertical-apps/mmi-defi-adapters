@@ -28,7 +28,6 @@ import { chainIdMap } from '../../sdk/config'
 import { ApiClmRewardPool, BeefyProductType } from '../../sdk/types'
 
 type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
   rewardTokens: Erc20Metadata[]
 }
 

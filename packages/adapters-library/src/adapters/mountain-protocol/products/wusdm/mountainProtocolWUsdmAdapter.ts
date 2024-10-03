@@ -18,10 +18,6 @@ import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { Wusdm__factory } from '../../contracts'
 
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
-
 const PROTOCOL_TOKEN_ADDRESS = getAddress(
   '0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812',
 )
@@ -30,7 +26,7 @@ const USDM_TOKEN_ADDRESS = getAddress(
   '0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C',
 )
 
-export class MountainProtocolWUsdmAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class MountainProtocolWUsdmAdapter extends SimplePoolAdapter {
   productId = 'wusdm'
 
   adapterSettings = {

@@ -29,7 +29,6 @@ import { PENDLE_ROUTER_STATIC_CONTRACT } from '../../backend/constants'
 import { RouterStatic__factory } from '../../contracts'
 
 type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
   marketAddress: string
 }
 

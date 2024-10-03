@@ -29,7 +29,6 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
   CrvMinter__factory,
   GaugeN__factory,
@@ -55,7 +54,6 @@ const CRV_TOKEN = {
 }
 
 type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
   gaugeType: GaugeType
 }
 

@@ -30,15 +30,14 @@ export type Json =
 
 export type JsonMetadata = Record<string, Json>
 
-export type ProtocolToken<
-  // biome-ignore lint/complexity/noBannedTypes: <explanation>
-  AdditionalMetadata extends JsonMetadata = {},
-> = Erc20Metadata & {
-  underlyingTokens?: Erc20Metadata[]
-  rewardTokens?: Erc20Metadata[]
-  extraRewardTokens?: Erc20Metadata[]
-  tokenId?: string
-} & AdditionalMetadata
+// biome-ignore lint/complexity/noBannedTypes: <explanation>
+export type ProtocolToken<AdditionalMetadata extends JsonMetadata = {}> =
+  Erc20Metadata & {
+    underlyingTokens: Erc20Metadata[]
+    rewardTokens?: Erc20Metadata[]
+    extraRewardTokens?: Erc20Metadata[]
+    tokenId?: string
+  } & AdditionalMetadata
 
 export interface IProtocolAdapter {
   adapterSettings: AdapterSettings

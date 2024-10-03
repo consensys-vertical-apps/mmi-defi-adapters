@@ -24,12 +24,10 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { getCurvePoolData } from '../../common/getPoolData'
 
 type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
   lpTokenManager: string
 }
 

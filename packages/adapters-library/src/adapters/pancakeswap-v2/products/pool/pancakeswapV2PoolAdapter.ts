@@ -3,7 +3,6 @@ import {
   UniswapV2PoolForkPositionStrategy,
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 
 export class PancakeswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
@@ -83,10 +82,5 @@ export class PancakeswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
           'https://graph-query.linea.build/subgraphs/name/pancakeswap/exhange-v2',
       },
     }
-  }
-
-  @CacheToDb()
-  async getProtocolTokens() {
-    return super.getProtocolTokens()
   }
 }

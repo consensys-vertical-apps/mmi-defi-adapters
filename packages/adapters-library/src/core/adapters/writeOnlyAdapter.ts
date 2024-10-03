@@ -1,8 +1,7 @@
 import { Protocol } from '../../adapters/protocols'
 import { Helpers } from '../../scripts/helpers'
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
 import {
-  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -17,7 +16,6 @@ import {
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
-import { IMetadataBuilder } from '../decorators/cacheToFile'
 import { NotImplementedError } from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 
@@ -29,9 +27,7 @@ export type DeFiAssetsMetadata = Record<
   }
 >
 
-export abstract class WriteOnlyDeFiAdapter
-  implements IProtocolAdapter, IMetadataBuilder
-{
+export abstract class WriteOnlyDeFiAdapter implements IProtocolAdapter {
   abstract productId: string
   protocolId: Protocol
   chainId: Chain
@@ -60,11 +56,9 @@ export abstract class WriteOnlyDeFiAdapter
     this.helpers = helpers
   }
 
-  abstract buildMetadata(): Promise<DeFiAssetsMetadata>
-
   abstract getProtocolDetails(): ProtocolDetails
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     throw new NotImplementedError()
   }
 

@@ -28,10 +28,6 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { Savings, Savings__factory } from '../../contracts'
 
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
-
 enum Stablecoin {
   stEUR = 'stEUR',
   stUSD = 'stUSD',
@@ -81,7 +77,7 @@ export class AngleProtocolSavingsAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const contractAddresses: Record<
       Stablecoin,
       Partial<Record<Chain, string>>

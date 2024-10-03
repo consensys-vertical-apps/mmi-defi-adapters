@@ -31,8 +31,10 @@ import { MaxMovementLimitExceededError } from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
 
-export abstract class SimplePoolAdapter<AdditionalMetadata extends JsonMetadata>
-  implements IProtocolAdapter
+export abstract class SimplePoolAdapter<
+  // biome-ignore lint/complexity/noBannedTypes: <explanation>
+  AdditionalMetadata extends JsonMetadata = {},
+> implements IProtocolAdapter
 {
   chainId: Chain
   protocolId: Protocol

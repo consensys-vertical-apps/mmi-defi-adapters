@@ -3,7 +3,6 @@ import {
   UniswapV2PoolForkPositionStrategy,
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 
 export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
@@ -66,10 +65,5 @@ export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
         factoryAddress: '0x9e5A52f57b3038F1B8EeE45F28b3C1967e22799C',
       },
     }
-  }
-
-  @CacheToDb()
-  async getProtocolTokens() {
-    return super.getProtocolTokens()
   }
 }

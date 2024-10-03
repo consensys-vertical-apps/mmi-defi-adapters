@@ -9,16 +9,11 @@ import {
   TokenType,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
 
 const PROTOCOL_TOKEN_ADDRESS = getAddress(
   '0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C',
 )
-export class MountainProtocolUsdmAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class MountainProtocolUsdmAdapter extends SimplePoolAdapter {
   productId = 'usdm'
 
   adapterSettings = {

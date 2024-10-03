@@ -21,11 +21,8 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { TokenAddresses } from './config'
-
-type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
 export class SolvSolvBtcAdapter implements IProtocolAdapter {
   productId = 'solv-btc'
@@ -70,7 +67,7 @@ export class SolvSolvBtcAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const tokenInfos = TokenAddresses[this.chainId]!
 
     // Extract all unique addresses (protocolToken and underlyingToken) from the input array
@@ -150,9 +147,7 @@ export class SolvSolvBtcAdapter implements IProtocolAdapter {
     })
   }
 
-  private async getProtocolTokenByAddress(
-    protocolTokenAddress: string,
-  ): Promise<ProtocolToken<AdditionalMetadata>> {
+  private async getProtocolTokenByAddress(protocolTokenAddress: string) {
     return this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,

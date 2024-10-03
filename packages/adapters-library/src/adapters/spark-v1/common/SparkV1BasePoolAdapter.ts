@@ -14,11 +14,7 @@ const PRICE_PEGGED_TO_ONE = 1
 const sparkEthereumProviderAddress =
   '0xFc21d6d146E6086B8359705C8b28512a983db0cb'
 
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
-
-export abstract class SparkV1BasePoolAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export abstract class SparkV1BasePoolAdapter extends SimplePoolAdapter {
   async getProtocolTokens() {
     const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
       sparkEthereumProviderAddress,
@@ -28,7 +24,7 @@ export abstract class SparkV1BasePoolAdapter extends SimplePoolAdapter<Additiona
     const reserveTokens =
       await protocolDataProviderContract.getAllReservesTokens()
 
-    const metadataObject: ProtocolToken<AdditionalMetadata>[] = []
+    const metadataObject: ProtocolToken[] = []
 
     const promises = reserveTokens.map(async ({ tokenAddress }) => {
       const reserveConfigurationData =

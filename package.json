@@ -17,7 +17,6 @@
     "build": "npm run build -w packages/adapters-library",
     "build:watch": "npm run build:watch -w packages/adapters-library",
     "adapters-cli": "node --env-file=.env packages/adapters-library/dist/scripts/index.js",
-    "build-metadata": "npm run adapters-cli build-metadata --",
     "build-metadata-db": "npm run adapters-cli build-metadata-db --",
     "check-metadata-type": "npm run adapters-cli check-metadata-type --",
     "check-db-totals": "npm run adapters-cli check-db-totals --",

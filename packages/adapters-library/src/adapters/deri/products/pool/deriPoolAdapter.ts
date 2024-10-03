@@ -31,7 +31,10 @@ import {
   OracleImplementation__factory,
 } from '../../contracts'
 
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
 
 const chainContractAddresses: Partial<
   Record<
@@ -157,7 +160,7 @@ export class DeriPoolAdapter implements IProtocolAdapter {
     }
   }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     throw new NotImplementedError()
   }
 

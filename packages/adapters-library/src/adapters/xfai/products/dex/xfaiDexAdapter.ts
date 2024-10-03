@@ -16,11 +16,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { XfaiFactory__factory, XfaiPool__factory } from '../../contracts'
 
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
-
-export class XfaiDexAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class XfaiDexAdapter extends SimplePoolAdapter {
   productId = 'dex'
 
   adapterSettings = {
@@ -54,7 +50,7 @@ export class XfaiDexAdapter extends SimplePoolAdapter<AdditionalMetadata> {
 
     const poolsLength = Number(await lpFactoryContract.allPoolsLength())
 
-    const metadataObject: ProtocolToken<AdditionalMetadata>[] = []
+    const metadataObject: ProtocolToken[] = []
 
     const promises = Array.from({ length: poolsLength }, async (_, i) => {
       const poolAddress = await lpFactoryContract.allPools(i)

@@ -10,13 +10,7 @@ export function compoundV2SupplyMarketForkAdapterTemplate({
   return `
   import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
   import { Chain } from '../../../../core/constants/chains'
-  import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-  import { NotImplementedError } from '../../../../core/errors/errors'
-  import {
-    ProtocolDetails,
-    PositionType,
-  } from '../../../../types/adapter'
-  import { Protocol } from '../../../protocols'
+  import { PositionType, ProtocolDetails } from '../../../../types/adapter'
   
   export class ${adapterClassName} extends CompoundV2SupplyMarketForkAdapter {
     productId = '${productId}'
@@ -36,11 +30,6 @@ export function compoundV2SupplyMarketForkAdapterTemplate({
       }
     }
   
-    @CacheToFile({ fileKey: 'protocol-token' })
-    async buildMetadata() {
-      return await super.buildMetadata()
-    }
-
     /**
    * Retrieves transaction parameters for specific actions based on provided inputs.
    *

@@ -116,6 +116,7 @@ export class StargateFarmV2Adapter implements IProtocolAdapter {
               this.helpers.getTokenMetadata(getAddress(rewardTokenAddress)),
             ),
           ),
+          underlyingTokens: [],
         }
       }),
     )

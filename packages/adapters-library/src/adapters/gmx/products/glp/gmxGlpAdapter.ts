@@ -33,7 +33,6 @@ type AdditionalMetadata = {
   rewardReaderAddress: string
   feeTokenAddress: string
   stakedTokenAddress: string
-  underlyingTokens: Erc20Metadata[]
 }
 
 export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {

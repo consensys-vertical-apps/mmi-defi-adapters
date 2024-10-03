@@ -34,7 +34,6 @@ import {
 } from '../../sdk/types'
 
 type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
   unwrapType: ProtocolUnwrapType
   underlyingLPToken: Erc20Metadata
 }

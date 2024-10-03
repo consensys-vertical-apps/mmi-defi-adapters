@@ -36,7 +36,6 @@ import {
 } from '../../contracts'
 
 type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
   marketAddress: string
 }
 

@@ -28,8 +28,6 @@ import {
   ProtocolDataProvider__factory,
 } from '../contracts'
 
-type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
-
 const protocolDataProviderContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
 > = {
@@ -79,7 +77,7 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
 
   async getProtocolTokenByAddress(
     protocolTokenAddress: string,
-  ): Promise<ProtocolToken<AdditionalMetadata>> {
+  ): Promise<ProtocolToken> {
     return this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,
@@ -165,7 +163,7 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
       protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
@@ -174,7 +172,7 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
     const reserveTokens =
       await protocolDataProviderContract.getAllReservesTokens()
 
-    const metadataObject: ProtocolToken<AdditionalMetadata>[] = []
+    const metadataObject: ProtocolToken[] = []
 
     const promises = reserveTokens.map(async ({ tokenAddress }) => {
       const reserveConfigurationData =

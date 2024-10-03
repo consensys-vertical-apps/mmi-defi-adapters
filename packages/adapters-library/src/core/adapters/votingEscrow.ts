@@ -26,7 +26,6 @@ import { getTokenMetadata } from '../utils/getTokenMetadata'
 import { unixTimestampToDateString } from '../utils/unixTimestampToDateString'
 
 type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
   rewardTokens: Erc20Metadata[]
 }
 

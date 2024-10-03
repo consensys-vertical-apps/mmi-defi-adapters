@@ -127,6 +127,7 @@ export class StargateFarmAdapter implements IProtocolAdapter {
           rewardToken: await rewardTokenPromise,
           lpStakingType,
           lpStakingAddress,
+          underlyingTokens: [],
         }
       }),
     )
@@ -156,6 +157,7 @@ export class StargateFarmAdapter implements IProtocolAdapter {
             rewardToken,
             lpStakingType: 'LpStakingTime',
             lpStakingAddress: lpStakingTimeMetisAddress,
+            underlyingTokens: [],
           }
         })(),
       )

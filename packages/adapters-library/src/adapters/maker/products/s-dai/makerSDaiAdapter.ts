@@ -3,6 +3,7 @@ import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { RAY_POSITIONS } from '../../../../core/constants/RAY'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   GetTotalValueLockedInput,
   PositionType,
@@ -16,13 +17,10 @@ import { McdPot__factory } from '../../contracts'
 
 const MCD_POT_ADDRESS = '0x197e90f9fad81970ba7976f33cbd77088e5d7cf7'
 
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
 const PROTOCOL_TOKEN_ADDRESS = getAddress(
   '0x83f20f44975d03b1b09e64809b757c47f942beea',
 )
-export class MakerSDaiAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class MakerSDaiAdapter extends SimplePoolAdapter {
   productId = 's-dai'
 
   adapterSettings = {
@@ -50,7 +48,7 @@ export class MakerSDaiAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   }
 
   @CacheToDb()
-  async getProtocolTokens() {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     return [
       {
         address: PROTOCOL_TOKEN_ADDRESS,

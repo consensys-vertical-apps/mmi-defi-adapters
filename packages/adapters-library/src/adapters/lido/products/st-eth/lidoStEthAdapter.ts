@@ -1,5 +1,6 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   PositionType,
   ProtocolDetails,
@@ -8,12 +9,8 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
-
 const PROTOCOL_TOKEN_ADDRESS = '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84'
-export class LidoStEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class LidoStEthAdapter extends SimplePoolAdapter {
   productId = 'st-eth'
 
   adapterSettings = {
@@ -22,7 +19,7 @@ export class LidoStEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   }
 
   @CacheToDb()
-  async getProtocolTokens() {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     return [
       {
         address: PROTOCOL_TOKEN_ADDRESS,

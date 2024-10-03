@@ -32,7 +32,6 @@ type ExtraRewardToken = Erc20Metadata & {
 }
 
 type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
   extraRewardTokens: ExtraRewardToken[]
 }
 

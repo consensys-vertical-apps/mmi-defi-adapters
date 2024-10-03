@@ -36,7 +36,10 @@ export class Helpers {
     public readonly allJsonRpcProviders: Record<Chain, CustomJsonRpcProvider>,
   ) {}
 
-  async getProtocolTokenByAddress<AdditionalMetadata extends JsonMetadata>({
+  async getProtocolTokenByAddress<
+    // biome-ignore lint/complexity/noBannedTypes: <explanation>
+    AdditionalMetadata extends JsonMetadata = {},
+  >({
     protocolTokens,
     protocolTokenAddress,
   }: {
@@ -295,7 +298,7 @@ export class Helpers {
     filterProtocolTokenAddresses,
     blockNumber,
   }: {
-    protocolTokens: (Erc20Metadata & { underlyingTokens: Erc20Metadata[] })[]
+    protocolTokens: ProtocolToken[]
     filterProtocolTokenAddresses: string[] | undefined
     blockNumber: number | undefined
   }): Promise<ProtocolTokenTvl[]> {

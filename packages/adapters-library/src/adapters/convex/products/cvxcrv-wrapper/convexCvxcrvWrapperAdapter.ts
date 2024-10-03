@@ -25,11 +25,7 @@ const CVXCRV_WRAPPER_ADDRESS = getAddress(
   '0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434',
 )
 
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
-
-export class ConvexCvxcrvWrapperAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class ConvexCvxcrvWrapperAdapter extends SimplePoolAdapter {
   productId = 'cvxcrv-wrapper'
 
   adapterSettings = {

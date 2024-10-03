@@ -21,10 +21,7 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-
-type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
 export class EthenaStakedUsdeAdapter implements IProtocolAdapter {
   productId = 'staked-usde'
@@ -70,7 +67,7 @@ export class EthenaStakedUsdeAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const protocolToken = await this.helpers.getTokenMetadata(
       getAddress('0x9D39A5DE30e57443BfF2A8307A4256c8797A3497'),
     )
@@ -146,7 +143,7 @@ export class EthenaStakedUsdeAdapter implements IProtocolAdapter {
 
   private async getProtocolTokenByAddress(
     protocolTokenAddress: string,
-  ): Promise<ProtocolToken<AdditionalMetadata>> {
+  ): Promise<ProtocolToken> {
     return this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,

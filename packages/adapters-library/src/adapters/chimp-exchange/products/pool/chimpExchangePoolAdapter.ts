@@ -23,7 +23,6 @@ import {
 import { PoolBalanceChangedEvent } from '../../contracts/Vault'
 
 type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
   poolId: string
   totalSupplyType: string
   underlyingTokensIndexes: number[]

@@ -45,7 +45,6 @@ import { MorphoBlueMath } from '../internal-utils/MorphoBlue.maths'
 
 type AdditionalMetadata = {
   tokenId: string
-  underlyingTokens: Erc20Metadata[]
   collateralToken: Erc20Metadata
 }
 

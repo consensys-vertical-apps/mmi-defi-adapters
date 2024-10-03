@@ -21,14 +21,10 @@ import {
 
 const amount1 = parseEther('1')
 
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
-
 const PROTOCOL_TOKEN_ADDRESS = getAddress(
   '0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38',
 )
-export class StakeWiseOsEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
   productId = 'os-eth'
 
   adapterSettings = {
@@ -62,7 +58,7 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter<AdditionalMetadata>
   }
 
   @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     return [
       {
         name: 'StakeWise osETH',

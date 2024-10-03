@@ -3,7 +3,7 @@ export function blankAdapterTemplate() {
     import { Protocol } from '../../../protocols'
     import { AdaptersController } from '../../../../core/adaptersController'
     import { Chain } from '../../../../core/constants/chains'
-    import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+    import { CacheToDb } from '../../../../core/decorators/cacheToDb'
     import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
     import { logger } from '../../../../core/utils/logger'
     import {
@@ -28,7 +28,11 @@ export function blankAdapterTemplate() {
     import { Helpers } from '../../../../scripts/helpers'
     import { NotImplementedError } from '../../../../core/errors/errors'
 
-    type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
+    /**
+     * Update me.
+     * Add additional metadata or delete type
+     */
+    type AdditionalMetadata = {}
 
     export class ADAPTER_CLASS_NAME implements IProtocolAdapter {
       productId = 'Replacements.PRODUCT_ID.placeholder'
@@ -77,14 +81,14 @@ export function blankAdapterTemplate() {
         }
       }
 
-      @CacheToFile({ fileKey: 'protocol-token' })
+      @CacheToDb()
       async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
         return Replacements.GET_PROTOCOL_TOKENS.placeholder
       }
 
       private async getProtocolTokenByAddress(
         protocolTokenAddress: string,
-      ): Promise<ProtocolToken<AdditionalMetadata>> {
+      ) {
         return this.helpers.getProtocolTokenByAddress({
           protocolTokens: await this.getProtocolTokens(),
           protocolTokenAddress,

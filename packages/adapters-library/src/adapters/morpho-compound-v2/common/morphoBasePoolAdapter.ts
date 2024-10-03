@@ -42,8 +42,6 @@ import {
   TypedDeferredTopicFilter,
 } from '../contracts/common'
 
-type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
-
 const morphoCompoundV2ContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
 > = {
@@ -83,7 +81,7 @@ export abstract class MorphoBasePoolAdapter implements IProtocolAdapter {
   abstract getProtocolDetails(): ProtocolDetails
 
   @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const morphoCompoundContract = MorphoCompound__factory.connect(
       morphoCompoundV2ContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
@@ -422,9 +420,7 @@ export abstract class MorphoBasePoolAdapter implements IProtocolAdapter {
     return movements
   }
 
-  private async getProtocolTokenByAddress(
-    protocolTokenAddress: string,
-  ): Promise<ProtocolToken<AdditionalMetadata>> {
+  private async getProtocolTokenByAddress(protocolTokenAddress: string) {
     return this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,

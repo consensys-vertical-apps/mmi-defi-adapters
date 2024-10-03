@@ -19,10 +19,7 @@ import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { CacheToDb } from '../decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
-import {
-  AdditionalMetadata,
-  getProtocolTokens,
-} from './compoundV2ProtocolTokens'
+import { getProtocolTokens } from './compoundV2ProtocolTokens'
 
 export abstract class CompoundV2SupplyMarketForkAdapter
   implements IProtocolAdapter
@@ -63,7 +60,7 @@ export abstract class CompoundV2SupplyMarketForkAdapter
   abstract getProtocolDetails(): ProtocolDetails
 
   @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     return await getProtocolTokens({
       chainId: this.chainId,
       provider: this.provider,
@@ -151,9 +148,7 @@ export abstract class CompoundV2SupplyMarketForkAdapter
     }
   }
 
-  private async getProtocolTokenByAddress(
-    protocolTokenAddress: string,
-  ): Promise<ProtocolToken<AdditionalMetadata>> {
+  private async getProtocolTokenByAddress(protocolTokenAddress: string) {
     return this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,

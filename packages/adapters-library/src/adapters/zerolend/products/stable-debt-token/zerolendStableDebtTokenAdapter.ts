@@ -1,4 +1,3 @@
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import { ProtocolDataProvider } from '../../contracts'
 import { ZeroLendBasePoolAdapter } from '../common/zerolendBasePoolAdapter'
@@ -22,11 +21,6 @@ export class ZeroLendStableDebtTokenPoolAdapter extends ZeroLendBasePoolAdapter 
       chainId: this.chainId,
       productId: this.productId,
     }
-  }
-
-  @CacheToDb()
-  async getProtocolTokens() {
-    return super.getProtocolTokens()
   }
 
   protected getReserveTokenAddress(
