@@ -47,6 +47,7 @@ function filterErrors(
         'NotApplicableError',
         'NotImplementedError',
         'NotSupportedError',
+        'ProtocolTokenFilterRequiredError',
       ].includes(responseEntry.error.details?.name),
   )
 }

@@ -27,7 +27,10 @@ import { Erc20Metadata } from '../../types/erc20Metadata'
 import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { IMetadataBuilder } from '../decorators/cacheToFile'
-import { NotImplementedError } from '../errors/errors'
+import {
+  NotImplementedError,
+  ProtocolTokenFilterRequiredError,
+} from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
 import { getTokenMetadata } from '../utils/getTokenMetadata'
@@ -194,9 +197,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       input.protocolTokenAddresses &&
       input.protocolTokenAddresses.length === 0
     ) {
-      throw new Error(
-        'No protocol token address filter provided, must be provided for this adapter due to the large number of pools',
-      )
+      throw new ProtocolTokenFilterRequiredError()
     }
 
     if (this.metadataBased) {
@@ -634,13 +635,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       factoryAddress,
       this.provider,
     )
-    const allPairsLength = 1 ?? Number(await factoryContract.allPairsLength())
-
-    if (allPairsLength > this.MAX_FACTORY_POOL_COUNT) {
-      throw new Error(
-        `Factory job size exceeds the limit ${allPairsLength} > ${this.MAX_FACTORY_POOL_COUNT}`,
-      )
-    }
+    const allPairsLength = Number(await factoryContract.allPairsLength())
 
     // Define jobSize to limit how many pairs to process in one go
     const jobSize = Math.min(this.MAX_FACTORY_POOL_COUNT, allPairsLength)

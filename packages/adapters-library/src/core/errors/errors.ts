@@ -143,3 +143,11 @@ export class MulticallError extends BaseError {
     this.maxBatchSize = maxBatchSize
   }
 }
+
+export class ProtocolTokenFilterRequiredError extends BaseError {
+  constructor(
+    message = 'Too many tokens to fetch, protocolTokenAddresses filter must be provided',
+  ) {
+    super(message)
+  }
+}
