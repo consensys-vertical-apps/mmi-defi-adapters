@@ -176,7 +176,6 @@ async function writeProtocolTokensToDb({
   db: Database.Database
 }) {
   try {
-    // Step 1: Ensure adapter exists or create it
     db.prepare(`
       INSERT OR IGNORE INTO adapters (protocol_id, product_id)
       VALUES (?, ?);
@@ -193,21 +192,6 @@ async function writeProtocolTokensToDb({
     if (!adapterId) {
       throw new Error('Failed to retrieve or create adapter')
     }
-
-    // Step 2: Prepare statements
-    const upsertPoolStmt = db.prepare(`
-      INSERT INTO pools (
-        adapter_id,
-        pool_address,
-        adapter_pool_id,
-        additional_data
-      ) VALUES (?, ?, ?, ?)
-      ON CONFLICT(adapter_id, pool_address)
-      DO UPDATE SET
-        adapter_pool_id = excluded.adapter_pool_id,
-        additional_data = excluded.additional_data
-      RETURNING pool_id;
-    `)
 
     const upsertTokenStmt = db.prepare(`
       INSERT OR REPLACE INTO tokens (
@@ -269,12 +253,41 @@ async function writeProtocolTokensToDb({
       upsertTokenStmt.run([address, name, symbol, decimals])
 
       // Insert pool
-      const { pool_id: poolId } = upsertPoolStmt.get(
-        adapterId,
-        address,
-        tokenId || null,
-        JSON.stringify(additionalData),
-      ) as { pool_id: number | bigint }
+      let poolId: number | bigint
+      const poolRowResult = db
+        .prepare(`
+          SELECT pool_id FROM pools WHERE adapter_id = ? AND pool_address = ? AND (adapter_pool_id = ? OR ? IS NULL)
+        `)
+        .get(adapterId, address, tokenId ?? null, tokenId) as
+        | { pool_id: number | bigint }
+        | undefined
+
+      if (poolRowResult) {
+        db.prepare(`
+          UPDATE pools SET additional_data = ? WHERE pool_id = ?
+        `).run(JSON.stringify(additionalData), poolRowResult.pool_id)
+
+        poolId = poolRowResult.pool_id
+      } else {
+        const insertResult = db
+          .prepare(`
+          INSERT INTO pools (
+            adapter_id,
+            pool_address,
+            adapter_pool_id,
+            additional_data
+          ) VALUES (?, ?, ?, ?)
+          RETURNING pool_id;
+        `)
+          .run(
+            adapterId,
+            address,
+            tokenId ?? null,
+            JSON.stringify(additionalData),
+          )
+
+        poolId = insertResult.lastInsertRowid
+      }
 
       collectTokenData(
         poolId,
@@ -389,7 +402,7 @@ const createTableQueries = {
         additional_data TEXT,
         FOREIGN KEY (adapter_id) REFERENCES adapters(adapter_id),
         FOREIGN KEY (pool_address) REFERENCES tokens(token_address),
-        UNIQUE (pool_address, adapter_id)
+        UNIQUE (adapter_pool_id, pool_address, adapter_id)
     );`,
   underlying_tokens: `
     CREATE TABLE IF NOT EXISTS underlying_tokens (

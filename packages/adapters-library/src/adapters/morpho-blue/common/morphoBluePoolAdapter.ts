@@ -2,6 +2,7 @@ import { ZeroAddress } from 'ethers'
 import { Erc20__factory } from '../../../contracts/factories/Erc20__factory'
 import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
+import { CacheToDb } from '../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../core/utils/filters'
@@ -41,7 +42,6 @@ import {
 } from '../contracts/factories'
 import { MarketData, MarketParams } from '../internal-utils/Blue'
 import { MorphoBlueMath } from '../internal-utils/MorphoBlue.maths'
-import { CacheToDb } from '../../../core/decorators/cacheToDb'
 
 type AdditionalMetadata = {
   tokenId: string
@@ -120,8 +120,8 @@ export abstract class MorphoBluePoolAdapter implements IProtocolAdapter {
 
         return {
           tokenId: id,
-          address: id,
-          name: marketParams.loanToken,
+          address: marketParams.loanToken,
+          name: loanTokenData.name,
           symbol: loanTokenData.symbol,
           decimals: loanTokenData.decimals,
           underlyingTokens: [loanTokenData],
@@ -162,7 +162,7 @@ export abstract class MorphoBluePoolAdapter implements IProtocolAdapter {
       throw new Error('Token metadata not found')
     }
     return {
-      address: tokenMetadata.name,
+      address: tokenMetadata.address,
       name: tokenMetadata.name,
       symbol: tokenMetadata.symbol,
       decimals: tokenMetadata.decimals,
@@ -199,10 +199,7 @@ export abstract class MorphoBluePoolAdapter implements IProtocolAdapter {
       throw new Error('id market not found')
     }
 
-    return {
-      ...marketMetadata,
-      address: marketMetadata.name,
-    }
+    return marketMetadata
   }
 
   async getBalance(
