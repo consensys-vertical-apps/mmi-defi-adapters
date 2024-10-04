@@ -1,6 +1,8 @@
+import { existsSync } from 'node:fs'
+import path from 'node:path'
 import Database, { Database as DbType } from 'better-sqlite3'
 import { Protocol } from './adapters/protocols'
-import { Chain } from './core/constants/chains'
+import { Chain, ChainName } from './core/constants/chains'
 import { logger } from './core/utils/logger'
 import {
   AdditionalMetadataWithReservedFields,
@@ -82,18 +84,11 @@ const selectAllPoolsQuery = `
 
 export class SQLiteMetadataProvider implements IMetadataProvider {
   database: Database.Database
-  chainId: Chain
 
   allTokens: Promise<Map<string, ProtocolToken[]>>
 
-  constructor(
-    filename: string | Buffer,
-    options: Database.Options,
-    chainId: Chain,
-  ) {
+  constructor(filename: string | Buffer, options: Database.Options) {
     this.database = new Database(filename, options)
-
-    this.chainId = chainId
 
     this.allTokens = new Promise<Map<string, ProtocolToken[]>>(
       (resolve, reject) => {
@@ -236,4 +231,47 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
   private adapterKey(protocolId: string, productId: string) {
     return `${protocolId}#${productId}`
   }
+}
+
+export function buildMetadataProviders(
+  metadataProviderSettings:
+    | Record<Chain, { dbPath: string; options: Database.Options }>
+    | undefined = defaultMetadataProviderSettings(),
+): Record<Chain, IMetadataProvider> {
+  return Object.entries(metadataProviderSettings).reduce(
+    (acc, [chainId, { dbPath, options }]) => {
+      if (options.fileMustExist && !existsSync(dbPath)) {
+        logger.info(`Database file does not exist: ${dbPath}`)
+        throw new Error(`Database file does not exist: ${dbPath}`)
+      }
+
+      logger.info(`Database file exists: ${dbPath}`)
+
+      acc[+chainId as Chain] = new SQLiteMetadataProvider(dbPath, options)
+      return acc
+    },
+    {} as Record<Chain, IMetadataProvider>,
+  )
+}
+
+function defaultMetadataProviderSettings() {
+  const allowDbCreation = process.env.DEFI_ALLOW_DB_CREATION !== 'false'
+
+  return Object.values(Chain).reduce(
+    (chainMetadataProvider, chainId) => {
+      chainMetadataProvider[chainId] = {
+        dbPath: path.join(__dirname, '../../..', `${ChainName[chainId]}.db`),
+        options: { fileMustExist: !allowDbCreation },
+      }
+
+      return chainMetadataProvider
+    },
+    {} as Record<
+      Chain,
+      {
+        dbPath: string
+        options: Database.Options
+      }
+    >,
+  )
 }

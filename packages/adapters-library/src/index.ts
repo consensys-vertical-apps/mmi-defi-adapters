@@ -16,5 +16,4 @@ export {
   WriteActionInputs,
 } from './adapters/supportedProtocols'
 
-export { SQLiteMetadataProvider } from './SQLiteMetadataProvider'
 export type { IUnwrapCacheProvider } from './unwrapCache'

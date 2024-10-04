@@ -1,9 +1,8 @@
-import { existsSync } from 'node:fs'
-import path from 'node:path'
+import Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
 import {
   IMetadataProvider,
-  SQLiteMetadataProvider,
+  buildMetadataProviders,
 } from './SQLiteMetadataProvider'
 import { Protocol } from './adapters/protocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
@@ -46,36 +45,6 @@ import {
 } from './types/response'
 import { IUnwrapCache, IUnwrapCacheProvider, UnwrapCache } from './unwrapCache'
 
-function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
-  const allowDbCreation = process.env.DEFI_ALLOW_DB_CREATION !== 'false'
-
-  return Object.values(Chain).reduce(
-    (acc, chainId) => {
-      const dbPath = path.join(
-        __dirname,
-        '../../..',
-        `${ChainName[chainId]}.db`,
-      )
-
-      if (!allowDbCreation && !existsSync(dbPath)) {
-        logger.info(`Database file does not exist: ${dbPath}`)
-        throw new Error(`Database file does not exist: ${dbPath}`)
-      }
-
-      logger.info(`Database file exists: ${dbPath}`)
-
-      acc[chainId] = new SQLiteMetadataProvider(
-        dbPath,
-        {
-          fileMustExist: !allowDbCreation,
-        },
-        chainId,
-      )
-      return acc
-    },
-    {} as Record<Chain, IMetadataProvider>,
-  )
-}
 export class DefiProvider {
   private parsedConfig
   chainProvider: ChainProvider
@@ -87,10 +56,16 @@ export class DefiProvider {
 
   constructor(
     config?: DeepPartial<IConfig>,
-    metadataProviders?: Record<Chain, IMetadataProvider>,
+    metadataProviderSettings?: Record<
+      Chain,
+      {
+        dbPath: string
+        options: Database.Options
+      }
+    >,
     unwrapCacheProvider?: IUnwrapCacheProvider,
   ) {
-    this.metadataProviders = metadataProviders ?? buildMetadataProviders()
+    this.metadataProviders = buildMetadataProviders(metadataProviderSettings)
     this.unwrapCache = new UnwrapCache(unwrapCacheProvider)
 
     this.parsedConfig = new Config(config)
