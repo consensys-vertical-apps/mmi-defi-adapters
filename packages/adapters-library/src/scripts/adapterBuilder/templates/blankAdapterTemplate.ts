@@ -81,7 +81,7 @@ export function blankAdapterTemplate() {
         }
       }
 
-      @CacheToDb()
+      @CacheToDb
       async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
         return Replacements.GET_PROTOCOL_TOKENS.placeholder
       }

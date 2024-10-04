@@ -78,7 +78,7 @@ export class PendleYieldTokenAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const resp = await fetchAllMarkets(this.chainId)
 

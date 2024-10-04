@@ -56,7 +56,7 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens() {
     const vaultContract = Vault__factory.connect(
       vaultContractAddresses[this.chainId]!,

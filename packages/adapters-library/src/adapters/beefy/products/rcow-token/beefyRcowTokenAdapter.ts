@@ -73,7 +73,7 @@ export class BeefyRcowTokenAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const chain = chainIdMap[this.chainId]
 

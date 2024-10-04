@@ -88,7 +88,7 @@ export class StargateFarmAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const { lpStakingAddress, lpStakingType, lpStakingTimeMetisAddress } =
       staticChainData[this.chainId]!

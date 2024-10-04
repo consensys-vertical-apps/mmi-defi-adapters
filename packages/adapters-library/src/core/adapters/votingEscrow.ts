@@ -73,7 +73,7 @@ export abstract class VotingEscrow implements IProtocolAdapter {
     input: GetPositionsInput,
   ): Promise<{ amount: bigint; end: bigint }>
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const [
       protocolTokenMetadata,

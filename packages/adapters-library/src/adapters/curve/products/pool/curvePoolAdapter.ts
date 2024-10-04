@@ -74,7 +74,7 @@ export class CurvePoolAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const pools = await getCurvePoolData(this.chainId, this.productId)
 

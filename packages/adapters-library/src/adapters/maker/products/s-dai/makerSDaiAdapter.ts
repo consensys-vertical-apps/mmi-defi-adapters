@@ -47,7 +47,7 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     return [
       {

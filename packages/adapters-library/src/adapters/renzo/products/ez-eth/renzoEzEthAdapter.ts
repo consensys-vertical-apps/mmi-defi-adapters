@@ -74,7 +74,7 @@ export class RenzoEzEthAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const tokens = TokenAddresses[this.chainId]!
     const [protocolToken, underlyingToken] = await Promise.all([

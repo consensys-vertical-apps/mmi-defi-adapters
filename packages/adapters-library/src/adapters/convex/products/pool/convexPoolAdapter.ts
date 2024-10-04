@@ -72,7 +72,7 @@ export class ConvexPoolAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const convexFactory = ConvexFactory__factory.connect(
       CONVEX_FACTORY_ADDRESS,

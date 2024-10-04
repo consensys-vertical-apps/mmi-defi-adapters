@@ -57,7 +57,7 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     return [
       {

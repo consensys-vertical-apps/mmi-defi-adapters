@@ -66,7 +66,7 @@ export class EthenaStakedUsdeAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const protocolToken = await this.helpers.getTokenMetadata(
       getAddress('0x9D39A5DE30e57443BfF2A8307A4256c8797A3497'),

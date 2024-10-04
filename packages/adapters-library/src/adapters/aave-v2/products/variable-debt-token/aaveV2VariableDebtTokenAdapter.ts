@@ -24,7 +24,7 @@ export class AaveV2VariableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens() {
     return super.getProtocolTokens()
   }

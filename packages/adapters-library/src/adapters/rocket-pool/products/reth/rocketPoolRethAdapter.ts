@@ -35,7 +35,7 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens() {
     return [
       {

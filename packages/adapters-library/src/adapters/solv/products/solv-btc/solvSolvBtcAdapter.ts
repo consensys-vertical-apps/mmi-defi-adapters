@@ -66,7 +66,7 @@ export class SolvSolvBtcAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const tokenInfos = TokenAddresses[this.chainId]!
 

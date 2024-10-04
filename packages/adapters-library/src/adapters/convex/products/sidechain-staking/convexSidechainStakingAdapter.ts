@@ -80,7 +80,7 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
     ]
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const convexFactory = ConvexFactorySidechain__factory.connect(
       CONVEX_FACTORY_ADDRESS,

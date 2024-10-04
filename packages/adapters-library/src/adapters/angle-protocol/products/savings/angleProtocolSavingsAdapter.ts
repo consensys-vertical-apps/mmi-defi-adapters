@@ -76,7 +76,7 @@ export class AngleProtocolSavingsAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const contractAddresses: Record<
       Stablecoin,

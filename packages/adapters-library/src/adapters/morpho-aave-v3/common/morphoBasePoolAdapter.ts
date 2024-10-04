@@ -85,7 +85,7 @@ export abstract class MorphoBasePoolAdapter implements IProtocolAdapter {
 
   abstract getProtocolDetails(): ProtocolDetails
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const morphoAaveV3Contract = MorphoAaveV3__factory.connect(
       morphoAaveV3ContractAddresses[this.protocolId]![this.chainId]!,

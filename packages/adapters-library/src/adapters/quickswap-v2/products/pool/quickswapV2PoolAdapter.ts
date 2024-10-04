@@ -47,7 +47,7 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens() {
     const poolAddresses: string[] = []
     let nextPage: string | null =

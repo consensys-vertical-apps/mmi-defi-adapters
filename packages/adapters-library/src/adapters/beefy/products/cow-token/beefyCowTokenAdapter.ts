@@ -69,7 +69,7 @@ export class BeefyCowTokenAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const chain = chainIdMap[this.chainId]
 

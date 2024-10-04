@@ -156,7 +156,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const lpFactoryContract = StargateFactory__factory.connect(
       staticChainData[this.chainId]!.factoryAddress,

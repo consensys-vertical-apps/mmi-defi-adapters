@@ -69,7 +69,7 @@ export class StargatePoolV2Adapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const { poolAddresses: pools } = staticChainDataV2[this.chainId]!
     return await Promise.all(

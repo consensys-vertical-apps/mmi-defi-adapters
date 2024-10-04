@@ -154,7 +154,7 @@ export abstract class ZeroLendBasePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
       protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!,

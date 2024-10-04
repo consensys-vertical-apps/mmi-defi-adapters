@@ -87,7 +87,7 @@ export class EtherFiLiquidAdapter implements IProtocolAdapter {
    * To do so, we fetch all logs from the "Deploy" contract, which acts as a factory.
    * Then we only keep logs that contain "accountant".
    */
-  @CacheToDb()
+  @CacheToDb
   public async getProtocolTokens(): Promise<
     ProtocolToken<AdditionalMetadata>[]
   > {

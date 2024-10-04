@@ -36,7 +36,7 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     return [
       {

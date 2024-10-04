@@ -18,7 +18,7 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
     includeInUnwrap: true,
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     return [
       {

@@ -69,7 +69,7 @@ export class MendiFinanceBorrowMarketAdapter extends SimplePoolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const comptrollerContract = Comptroller__factory.connect(
       contractAddresses[this.chainId]!.comptroller,

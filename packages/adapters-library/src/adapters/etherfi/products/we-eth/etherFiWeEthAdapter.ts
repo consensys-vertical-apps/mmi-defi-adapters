@@ -70,7 +70,7 @@ export class EtherFiWeEthAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const protocolToken = await this.helpers.getTokenMetadata(WE_ETH_ADDRESS)
     const underlyingToken = await this.helpers.getTokenMetadata(E_ETH_ADDRESS)

@@ -94,7 +94,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
     Record<Chain, UniswapV2PoolForkPositionStrategy>
   >
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const factoryMetadata = this.chainMetadataSettings()[this.chainId]
 

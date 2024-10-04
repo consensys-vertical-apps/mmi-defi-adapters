@@ -81,7 +81,7 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const metaMorphoFactoryContract = Metamorphofactory__factory.connect(
       metaMorphoFactoryContractAddresses[this.protocolId]![this.chainId]!,

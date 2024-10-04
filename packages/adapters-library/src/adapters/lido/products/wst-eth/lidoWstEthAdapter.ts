@@ -33,7 +33,7 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     return [
       {

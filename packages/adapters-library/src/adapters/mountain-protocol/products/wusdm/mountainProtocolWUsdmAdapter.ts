@@ -48,7 +48,7 @@ export class MountainProtocolWUsdmAdapter extends SimplePoolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens() {
     return [
       {

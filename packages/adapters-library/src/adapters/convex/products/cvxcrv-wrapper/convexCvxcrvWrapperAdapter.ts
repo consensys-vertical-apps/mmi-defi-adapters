@@ -105,7 +105,7 @@ export class ConvexCvxcrvWrapperAdapter extends SimplePoolAdapter {
     ]
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens() {
     const contract = CvxcrvWrapper__factory.connect(
       CVXCRV_WRAPPER_ADDRESS,

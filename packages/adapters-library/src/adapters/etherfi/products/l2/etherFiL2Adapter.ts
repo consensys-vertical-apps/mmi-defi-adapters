@@ -95,7 +95,7 @@ export class EtherFiL2Adapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const config = CHAIN_TO_CONFIG[this.chainId]
     if (!config) throw new Error(`No config for chain ${this.chainId}`)

@@ -36,7 +36,7 @@ export class SparkV1SpTokenAdapter extends SparkV1BasePoolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     return super.getProtocolTokens()
   }

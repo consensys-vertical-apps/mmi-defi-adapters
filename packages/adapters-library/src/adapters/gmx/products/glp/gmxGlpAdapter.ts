@@ -57,7 +57,7 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens() {
     const glpAddresses: Partial<
       Record<

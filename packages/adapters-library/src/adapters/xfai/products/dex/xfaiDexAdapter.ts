@@ -37,7 +37,7 @@ export class XfaiDexAdapter extends SimplePoolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens() {
     const contractAddresses: Partial<Record<Chain, string>> = {
       [Chain.Linea]: getAddress('0xa5136eAd459F0E61C99Cec70fe8F5C24cF3ecA26'),

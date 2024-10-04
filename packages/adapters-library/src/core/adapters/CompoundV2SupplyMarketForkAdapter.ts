@@ -59,7 +59,7 @@ export abstract class CompoundV2SupplyMarketForkAdapter
 
   abstract getProtocolDetails(): ProtocolDetails
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     return await getProtocolTokens({
       chainId: this.chainId,

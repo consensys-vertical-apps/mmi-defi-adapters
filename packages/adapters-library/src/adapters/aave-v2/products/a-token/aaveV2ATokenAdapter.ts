@@ -24,7 +24,7 @@ export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens() {
     return super.getProtocolTokens()
   }
