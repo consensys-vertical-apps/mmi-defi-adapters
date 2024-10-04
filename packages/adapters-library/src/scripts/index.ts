@@ -59,6 +59,7 @@ program
         protocolId: newProtocolId,
         chainKeys: chainKeys.split(',') as (keyof typeof Chain)[],
         sourceProtocolId: sourceProtocolId,
+        defiProvider,
       })
     },
   )

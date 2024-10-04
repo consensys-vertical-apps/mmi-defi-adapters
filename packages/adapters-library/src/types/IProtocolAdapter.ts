@@ -13,7 +13,6 @@ import type {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
-  Underlying,
   UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -42,7 +41,9 @@ export type AdditionalMetadataWithReservedFields = {
 export type ProtocolToken<
   AdditionalMetadata extends
     AdditionalMetadataWithReservedFields = JsonMetadata,
-> = Erc20Metadata & { underlyingTokens: Erc20Metadata[] } & AdditionalMetadata
+> = Erc20Metadata & {
+  underlyingTokens: Erc20ExtendedMetadata[]
+} & AdditionalMetadata
 
 export interface IProtocolAdapter {
   adapterSettings: AdapterSettings

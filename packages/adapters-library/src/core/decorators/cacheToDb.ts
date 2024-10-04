@@ -24,7 +24,6 @@ export function CacheToDb(
     const metadata = await this.helpers.metadataProvider.getMetadata({
       protocolId: this.protocolId,
       productId: this.productId,
-      chainId: this.chainId,
     })
 
     if (!metadata) {

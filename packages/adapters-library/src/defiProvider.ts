@@ -1,5 +1,5 @@
+import { existsSync } from 'node:fs'
 import path from 'node:path'
-import Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
 import {
   IMetadataProvider,
@@ -44,41 +44,38 @@ import {
   PricePerShareResponse,
   TotalValueLockResponse,
 } from './types/response'
-
-import { existsSync } from 'node:fs'
 import { IUnwrapCache, IUnwrapCacheProvider, UnwrapCache } from './unwrapCache'
 
 function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
+  const allowDbCreation = process.env.DEFI_ALLOW_DB_CREATION !== 'false'
+
   return Object.values(Chain).reduce(
-    (acc, chain) => {
-      acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
+    (acc, chainId) => {
+      const dbPath = path.join(
+        __dirname,
+        '../../..',
+        `${ChainName[chainId]}.db`,
+      )
+
+      if (!allowDbCreation && !existsSync(dbPath)) {
+        logger.info(`Database file does not exist: ${dbPath}`)
+        throw new Error(`Database file does not exist: ${dbPath}`)
+      }
+
+      logger.info(`Database file exists: ${dbPath}`)
+
+      acc[chainId] = new SQLiteMetadataProvider(
+        dbPath,
+        {
+          fileMustExist: !allowDbCreation,
+        },
+        chainId,
+      )
       return acc
     },
     {} as Record<Chain, IMetadataProvider>,
   )
 }
-
-const dbParams = (chainId: Chain): [string, Database.Options] => {
-  const dbPath = path.join(__dirname, '../../..', `${ChainName[chainId]}.db`)
-
-  if (
-    !(process.env.DEFI_ALLOW_DB_CREATION !== 'false') &&
-    !existsSync(dbPath)
-  ) {
-    logger.info(`Database file does not exist: ${dbPath}`)
-    throw new Error(`Database file does not exist: ${dbPath}`)
-  }
-
-  logger.info(`Database file exists: ${dbPath}`)
-
-  return [
-    dbPath,
-    {
-      fileMustExist: !(process.env.DEFI_ALLOW_DB_CREATION !== 'false'),
-    },
-  ]
-}
-
 export class DefiProvider {
   private parsedConfig
   chainProvider: ChainProvider
