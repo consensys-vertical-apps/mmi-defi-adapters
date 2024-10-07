@@ -1,26 +1,15 @@
 import { getAddress } from 'ethers'
 import { z } from 'zod'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
-import {
-  PositionType,
-  ProtocolDetails,
-  TokenType,
-  UnwrappedTokenExchangeRate,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import {
   WriteActionInputSchemas,
   WriteActions,
 } from '../../../../types/writeActions'
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
-import { Cerc20__factory, Comptroller__factory } from '../../contracts'
-import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
+import { Cerc20__factory } from '../../contracts'
 
 export const contractAddresses: Partial<
   Record<
