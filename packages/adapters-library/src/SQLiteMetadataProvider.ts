@@ -1,59 +1,29 @@
-import { promises as fs } from 'node:fs'
 import { existsSync } from 'node:fs'
 import path from 'node:path'
 import Database, { Database as DbType } from 'better-sqlite3'
 import { Protocol } from './adapters/protocols'
 import { Chain, ChainName } from './core/constants/chains'
 import { logger } from './core/utils/logger'
-import { ProtocolToken } from './types/IProtocolAdapter'
-
-export function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
-  return Object.values(Chain).reduce(
-    (acc, chain) => {
-      acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
-      return acc
-    },
-    {} as Record<Chain, IMetadataProvider>,
-  )
-}
-
-export const dbParams = (chainId: Chain): [string, Database.Options] => {
-  const dbPath = path.join(__dirname, '../../..', `${ChainName[chainId]}.db`)
-
-  if (
-    !(process.env.DEFI_ALLOW_DB_CREATION !== 'false') &&
-    !existsSync(dbPath)
-  ) {
-    logger.info(`Database file does not exist: ${dbPath}`)
-    throw new Error(`Database file does not exist: ${dbPath}`)
-  }
-
-  logger.debug(`Database file exists: ${dbPath}`)
-
-  return [
-    dbPath,
-    {
-      fileMustExist: !(process.env.DEFI_ALLOW_DB_CREATION !== 'false'),
-    },
-  ]
-}
+import {
+  AdditionalMetadataWithReservedFields,
+  ProtocolToken,
+} from './types/IProtocolAdapter'
 
 export type IMetadataProvider = {
   getMetadata: (input: {
-    chainId: Chain
     protocolId: Protocol
     productId: string
   }) => Promise<ProtocolToken[]>
 
-  getPoolCount: (protocolId: string, productId: string) => Promise<number>
+  getPoolCount: (protocolId: Protocol, productId: string) => Promise<number>
 }
 
 export type PoolRow = {
-  pool_id: number
-  pool_address: string
+  protocol_id: string
+  product_id: string
+  pool_id: number | bigint | undefined
   adapter_pool_id?: string
   pool_additional_data?: string // JSON stored as a string
-  adapter_id: number
   main_token_address: string
   main_token_name: string
   main_token_symbol: string
@@ -75,109 +45,106 @@ export type PoolRow = {
   extra_reward_additional_data?: string // JSON stored as a string
 }
 
+const selectAllPoolsQuery = `
+  SELECT 
+    a.protocol_id,
+    a.product_id,
+    p.pool_id,
+    p.adapter_pool_id,
+    p.additional_data AS pool_additional_data,
+    t.token_address AS main_token_address,
+    t.token_name AS main_token_name,
+    t.token_symbol AS main_token_symbol,
+    t.token_decimals AS main_token_decimals,
+    ut.token_address AS underlying_token_address,
+    ut_t.token_name AS underlying_token_name,
+    ut_t.token_symbol AS underlying_token_symbol,
+    ut_t.token_decimals AS underlying_token_decimals,
+    ut.additional_data AS underlying_additional_data,
+    rt.token_address AS reward_token_address,
+    rt_t.token_name AS reward_token_name,
+    rt_t.token_symbol AS reward_token_symbol,
+    rt_t.token_decimals AS reward_token_decimals,
+    rt.additional_data AS reward_additional_data,
+    ert.token_address AS extra_reward_token_address,
+    ert_t.token_name AS extra_reward_token_name,
+    ert_t.token_symbol AS extra_reward_token_symbol,
+    ert_t.token_decimals AS extra_reward_token_decimals,
+    ert.additional_data AS extra_reward_additional_data
+  FROM  adapters a 
+        LEFT JOIN pools p ON a.adapter_id = p.adapter_id
+        LEFT JOIN tokens t ON p.pool_address = t.token_address
+        LEFT JOIN underlying_tokens ut ON p.pool_id = ut.pool_id
+        LEFT JOIN tokens ut_t ON ut.token_address = ut_t.token_address
+        LEFT JOIN reward_tokens rt ON p.pool_id = rt.pool_id
+        LEFT JOIN tokens rt_t ON rt.token_address = rt_t.token_address
+        LEFT JOIN extra_reward_tokens ert ON p.pool_id = ert.pool_id
+        LEFT JOIN tokens ert_t ON ert.token_address = ert_t.token_address;
+`
+
 export class SQLiteMetadataProvider implements IMetadataProvider {
-  database: DbType
+  database: Database.Database
+
+  allTokens: Promise<Map<string, ProtocolToken[]>>
 
   constructor(filename: string | Buffer, options: Database.Options) {
     this.database = new Database(filename, options)
 
-    this.database.pragma('journal_mode = DELETE')
+    this.allTokens = new Promise<Map<string, ProtocolToken[]>>(
+      (resolve, reject) => {
+        try {
+          const allRows = this.database
+            .prepare(selectAllPoolsQuery)
+            .all() as PoolRow[]
+
+          resolve(this.formatDbResponse(allRows))
+        } catch (error) {
+          logger.error({ filename, options }, 'Error fetching database rows')
+          reject(error)
+        }
+      },
+    )
   }
 
-  getMetadata(input: {
-    chainId: Chain
-    protocolId: Protocol
-    productId: string
-  }): Promise<ProtocolToken[]> {
-    return this.getPoolsFromDb(input)
-  }
-
-  async getPoolCount(protocolId: string, productId: string): Promise<number> {
-    // Prepare the query to get the adapter ID and count the pools
-    const query = `
-      SELECT COUNT(*) AS pool_count
-      FROM pools
-      WHERE adapter_id = (
-        SELECT adapter_id FROM adapters WHERE protocol_id = ? AND product_id = ?
-      );
-    `
-
-    // Execute the query with the provided protocolId and productId
-    const stmt = this.database.prepare(query)
-    const result = stmt.get(protocolId, productId) as { pool_count?: number }
-
-    // Return the pool count from the result
-    return Number(result.pool_count ?? 0)
-  }
-
-  private readonly selectProtocolPoolsQuery = `
-      SELECT 
-          p.pool_id AS pool_id,
-          p.pool_address AS pool_address,
-          p.adapter_pool_id AS adapter_pool_id,
-          p.additional_data AS pool_additional_data,
-          p.adapter_id AS adapter_id,
-          t.token_address AS main_token_address,
-          t.token_name AS main_token_name,
-          t.token_symbol AS main_token_symbol,
-          t.token_decimals AS main_token_decimals,
-          ut.token_address AS underlying_token_address,
-          ut_t.token_name AS underlying_token_name,
-          ut_t.token_symbol AS underlying_token_symbol,
-          ut_t.token_decimals AS underlying_token_decimals,
-          ut.additional_data AS underlying_additional_data,
-          rt.token_address AS reward_token_address,
-          rt_t.token_name AS reward_token_name,
-          rt_t.token_symbol AS reward_token_symbol,
-          rt_t.token_decimals AS reward_token_decimals,
-          rt.additional_data AS reward_additional_data,
-          ert.token_address AS extra_reward_token_address,
-          ert_t.token_name AS extra_reward_token_name,
-          ert_t.token_symbol AS extra_reward_token_symbol,
-          ert_t.token_decimals AS extra_reward_token_decimals,
-          ert.additional_data AS extra_reward_additional_data
-      FROM pools p
-      JOIN tokens t ON p.pool_address = t.token_address
-      LEFT JOIN underlying_tokens ut ON p.pool_id = ut.pool_id
-      LEFT JOIN tokens ut_t ON ut.token_address = ut_t.token_address
-      LEFT JOIN reward_tokens rt ON p.pool_id = rt.pool_id
-      LEFT JOIN tokens rt_t ON rt.token_address = rt_t.token_address
-      LEFT JOIN extra_reward_tokens ert ON p.pool_id = ert.pool_id
-      LEFT JOIN tokens ert_t ON ert.token_address = ert_t.token_address
-      WHERE p.adapter_id = (
-          SELECT adapter_id FROM adapters WHERE protocol_id = ? AND product_id = ?
-      );
-    `
-
-  private async getPoolsFromDb({
+  async getMetadata({
     protocolId,
     productId,
-    chainId,
   }: {
     protocolId: Protocol
     productId: string
-    chainId: Chain
   }): Promise<ProtocolToken[]> {
-    return this.selectProtocolPools(this.database, protocolId, productId)
+    const adapterTokens = (await this.allTokens).get(
+      this.adapterKey(protocolId, productId),
+    )
+
+    return adapterTokens ?? []
   }
 
-  private selectProtocolPools(
-    db: DbType,
-    protocolId: string,
-    productId: string,
-  ) {
-    const query = this.selectProtocolPoolsQuery
-
-    const rows = db.prepare(query).all(protocolId, productId) as PoolRow[]
-
-    return this.formatDbResponse(rows)
+  async getPoolCount(protocolId: Protocol, productId: string): Promise<number> {
+    return (await this.getMetadata({ protocolId, productId })).length
   }
 
-  private formatDbResponse(rows: PoolRow[]) {
-    const poolsMap: Record<string, ProtocolToken> = {}
+  private formatDbResponse(rows: PoolRow[]): Map<string, ProtocolToken[]> {
+    const poolsMap: Record<
+      string,
+      ProtocolToken<AdditionalMetadataWithReservedFields> & {
+        adapterKey: string
+      }
+    > = {}
+    const adaptersMap = new Map<string, ProtocolToken[]>()
 
     for (const row of rows as PoolRow[]) {
-      const poolId = row.pool_id
+      const adapterKey = this.adapterKey(row.protocol_id, row.product_id)
+
+      if (!adaptersMap.has(adapterKey)) {
+        adaptersMap.set(adapterKey, [])
+      }
+
+      if (!row.pool_id) {
+        continue
+      }
+
+      const poolId = row.pool_id.toString()
 
       if (!poolsMap[poolId]) {
         // Parse pool_additional_data if it exists
@@ -186,6 +153,7 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
           : {}
 
         poolsMap[poolId] = {
+          adapterKey,
           address: row.main_token_address,
           name: row.main_token_name,
           symbol: row.main_token_symbol,
@@ -220,14 +188,10 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
           ? JSON.parse(row.reward_additional_data)
           : {}
 
-        // IProtocolTokenType needs updating to include rewardTokens
-        //@ts-ignore
         if (!pool.rewardTokens) {
-          //@ts-ignore
           pool.rewardTokens = []
         }
 
-        //@ts-ignore
         pool.rewardTokens.push({
           address: row.reward_token_address,
           name: row.reward_token_name,
@@ -243,14 +207,10 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
           ? JSON.parse(row.extra_reward_additional_data)
           : {}
 
-        // IProtocolTokenType needs updating to include rewardTokens
-        //@ts-ignore
         if (!pool.extraRewardTokens) {
-          //@ts-ignore
           pool.extraRewardTokens = []
         }
 
-        //@ts-ignore
         pool.extraRewardTokens.push({
           address: row.extra_reward_token_address,
           name: row.extra_reward_token_name,
@@ -261,6 +221,57 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
       }
     }
 
-    return Object.values(poolsMap)
+    Object.values(poolsMap).forEach(({ adapterKey, ...pool }) => {
+      adaptersMap.get(adapterKey)!.push(pool)
+    })
+
+    return adaptersMap
   }
+
+  private adapterKey(protocolId: string, productId: string) {
+    return `${protocolId}#${productId}`
+  }
+}
+
+export function buildMetadataProviders(
+  metadataProviderSettings:
+    | Record<Chain, { dbPath: string; options: Database.Options }>
+    | undefined = defaultMetadataProviderSettings(),
+): Record<Chain, IMetadataProvider> {
+  return Object.entries(metadataProviderSettings).reduce(
+    (acc, [chainId, { dbPath, options }]) => {
+      if (options.fileMustExist && !existsSync(dbPath)) {
+        logger.info(`Database file does not exist: ${dbPath}`)
+        throw new Error(`Database file does not exist: ${dbPath}`)
+      }
+
+      logger.debug(`Database file exists: ${dbPath}`)
+
+      acc[+chainId as Chain] = new SQLiteMetadataProvider(dbPath, options)
+      return acc
+    },
+    {} as Record<Chain, IMetadataProvider>,
+  )
+}
+
+function defaultMetadataProviderSettings() {
+  const allowDbCreation = process.env.DEFI_ALLOW_DB_CREATION !== 'false'
+
+  return Object.values(Chain).reduce(
+    (chainMetadataProvider, chainId) => {
+      chainMetadataProvider[chainId] = {
+        dbPath: path.join(__dirname, '../../..', `${ChainName[chainId]}.db`),
+        options: { fileMustExist: !allowDbCreation },
+      }
+
+      return chainMetadataProvider
+    },
+    {} as Record<
+      Chain,
+      {
+        dbPath: string
+        options: Database.Options
+      }
+    >,
+  )
 }
