@@ -21,6 +21,23 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Linea,
+    method: 'positions',
+    key: 'with-borrow',
+
+    input: {
+      userAddress: '0x5Cd2d1EA68d962d4687B47604b062156c23E5889',
+
+      filterProtocolTokens: [
+        '0xf669C3C03D9fdF4339e19214A749E52616300E89',
+        '0xAd7f33984bed10518012013D4aB0458D37FEE6F3',
+        '0x8a90D208666Deec08123444F67Bf5B1836074a67',
+      ],
+    },
+
+    blockNumber: 10441623,
+  },
+  {
+    chainId: Chain.Linea,
     method: 'profits',
     input: {
       userAddress: '0x61e17C36c0f177c6A46F9Ae531E621D18c1aCD93',

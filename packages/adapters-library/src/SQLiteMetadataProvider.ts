@@ -245,7 +245,7 @@ export function buildMetadataProviders(
         throw new Error(`Database file does not exist: ${dbPath}`)
       }
 
-      logger.info(`Database file exists: ${dbPath}`)
+      logger.debug(`Database file exists: ${dbPath}`)
 
       acc[+chainId as Chain] = new SQLiteMetadataProvider(dbPath, options)
       return acc
