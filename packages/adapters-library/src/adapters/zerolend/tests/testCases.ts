@@ -9,44 +9,32 @@ export const testCases: TestCase[] = [
     method: 'positions',
 
     input: {
-      userAddress: '0x4f575BDdc36c3Ec42D923AEeEc4Ada1a60ce4086',
-
-      filterProtocolTokens: [
-        '0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8',
-        '0x6df1C1E379bC5a00a7b4C6e67A203333772f45A8',
-      ],
+      userAddress: '0x394F94ca8Dec8D0bD48c738AB28dCe146a67Bbd9',
+      filterProtocolTokens: ['0xFb932A75c5F69d03B0F6e59573FDe6976aF0D88C'],
     },
 
-    blockNumber: 19818581,
+    blockNumber: 20862963,
   },
   {
     chainId: Chain.Ethereum,
     method: 'profits',
 
     input: {
-      userAddress: '0xee46ee0dE21937772291a006c3541aFa557dc9B8',
+      userAddress: '0x394F94ca8Dec8D0bD48c738AB28dCe146a67Bbd9',
       timePeriod: TimePeriod.oneDay,
-
-      filterProtocolTokens: [
-        '0x5Ee5bf7ae06D1Be5997A1A72006FE6C607eC6DE8',
-        '0x5E8C8A7243651DB1384C0dDfDbE39761E8e7E51a',
-        '0x23878914EFE38d27C4D67Ab83ed1b93A74D4086a',
-        '0xeA51d7853EEFb32b6ee06b1C12E6dcCA88Be0fFE',
-      ],
+      filterProtocolTokens: ['0xFb932A75c5F69d03B0F6e59573FDe6976aF0D88C'],
     },
 
-    blockNumber: 19818884,
+    blockNumber: 20862963,
   },
   {
     chainId: Chain.Ethereum,
     method: 'tvl',
-
     filterProtocolTokens: [
-      '0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8',
-      '0x0B925eD163218f6662a35e0f0371Ac234f9E9371',
-      '0x98C23E9d8f34FEFb1B7BD6a91B7FF122F4e16F5c',
+      '0xFb932A75c5F69d03B0F6e59573FDe6976aF0D88C',
+      '0x84E55c6Bc5B7e9505d87b3Df6Ceff7753e15A0c5',
+      '0x68fD75cF5a91F49EFfAd0E857ef2E97e5d1f35e7',
     ],
-
     blockNumber: 19818582,
   },
 

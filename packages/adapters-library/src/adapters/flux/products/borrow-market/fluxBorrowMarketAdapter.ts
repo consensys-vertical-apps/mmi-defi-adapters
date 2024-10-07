@@ -1,10 +1,5 @@
 import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import {
-  AssetType,
-  PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import { contractAddresses } from '../../common/contractAddresses'
 
 export class FluxBorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
@@ -28,11 +23,6 @@ export class FluxBorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
       chainId: this.chainId,
       productId: this.productId,
     }
-  }
-
-  @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
-    return await super.buildMetadata()
   }
 
   /**

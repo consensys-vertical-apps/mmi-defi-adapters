@@ -1,15 +1,11 @@
 import { Command } from 'commander'
-
 import { Protocol } from '../adapters/protocols'
 import { supportedProtocols } from '../adapters/supportedProtocols'
 import { AdaptersController } from '../core/adaptersController'
 import { Chain } from '../core/constants/chains'
-
 import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-
 import { logger } from '../core/utils/logger'
-import { buildMetadata } from './buildMetadata'
 
 export function checkDbTotals(
   program: Command,

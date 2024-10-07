@@ -9,13 +9,12 @@ import { addProtocol } from './addProtocol'
 import { buildIntegrationTests } from './buildIntegrationTests'
 import { exportAdapter } from './exportAdapter'
 
-const defiProvider = new DefiProvider()
-
 export async function copyAdapter(data: {
   protocolKey: string
   protocolId: string
   chainKeys: (keyof typeof Chain)[]
   sourceProtocolId: string
+  defiProvider: DefiProvider
 }) {
   // Find adapter file
   const sourceProtocolKey = Object.entries(Protocol).find(
@@ -45,7 +44,7 @@ export async function copyAdapter(data: {
   )
 
   const productIds = (
-    await defiProvider.getSupport({
+    await data.defiProvider.getSupport({
       filterProtocolIds: [data.sourceProtocolId as Protocol],
     })
   )[data.sourceProtocolId as Protocol]!.map(

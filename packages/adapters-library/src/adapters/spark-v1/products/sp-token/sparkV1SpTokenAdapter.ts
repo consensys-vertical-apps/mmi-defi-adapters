@@ -1,6 +1,5 @@
 import { z } from 'zod'
 import { Chain } from '../../../../core/constants/chains'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   WriteActionInputSchemas,
   WriteActions,
@@ -10,18 +9,10 @@ import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
 
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
-import {
-  AssetType,
-  PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter'
-
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
 
 export class SparkV1SpTokenAdapter extends SparkV1BasePoolAdapter {
   productId = 'sp-token'
@@ -45,8 +36,8 @@ export class SparkV1SpTokenAdapter extends SparkV1BasePoolAdapter {
     }
   }
 
-  @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     return super.getProtocolTokens()
   }
 

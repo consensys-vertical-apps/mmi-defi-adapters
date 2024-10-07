@@ -263,7 +263,7 @@ function addressEventsCommand(
   defaultProductId: string,
   defaultProtocolId: Protocol,
   defaultChainId: string,
-  defaultTokenId: string,
+  defaultTokenId?: string,
 ) {
   program
     .command(commandName)

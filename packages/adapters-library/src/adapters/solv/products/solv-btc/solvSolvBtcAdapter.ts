@@ -1,14 +1,13 @@
-import { flatMap, keyBy, mapValues, uniq, zipObject } from 'lodash'
+import { flatMap, uniq, zipObject } from 'lodash'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -22,19 +21,10 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { TokenAddresses } from './config'
 
-type Metadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
-  }
->
-
-export class SolvSolvBtcAdapter implements IProtocolAdapter, IMetadataBuilder {
+export class SolvSolvBtcAdapter implements IProtocolAdapter {
   productId = 'solv-btc'
   protocolId: Protocol
   chainId: Chain
@@ -76,8 +66,8 @@ export class SolvSolvBtcAdapter implements IProtocolAdapter, IMetadataBuilder {
     }
   }
 
-  @CacheToFile({ fileKey: 'solv-btc' })
-  async buildMetadata(): Promise<Metadata> {
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const tokenInfos = TokenAddresses[this.chainId]!
 
     // Extract all unique addresses (protocolToken and underlyingToken) from the input array
@@ -93,18 +83,11 @@ export class SolvSolvBtcAdapter implements IProtocolAdapter, IMetadataBuilder {
     // Create a mapping from address to its metadata result
     const addressToMetadata = zipObject(addresses, metadataResults)
 
-    // Create the final output object
-    const result = mapValues(keyBy(tokenInfos, 'protocolToken'), (item) => ({
-      protocolToken: addressToMetadata[item.protocolToken]!,
-      underlyingToken: addressToMetadata[item.underlyingToken]!,
-    }))
-
-    return result
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
+    return await Promise.all(
+      tokenInfos.map(async (item) => ({
+        ...addressToMetadata[item.protocolToken]!,
+        underlyingTokens: [addressToMetadata[item.underlyingToken]!],
+      })),
     )
   }
 
@@ -122,7 +105,7 @@ export class SolvSolvBtcAdapter implements IProtocolAdapter, IMetadataBuilder {
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -134,7 +117,7 @@ export class SolvSolvBtcAdapter implements IProtocolAdapter, IMetadataBuilder {
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.deposits({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -155,40 +138,19 @@ export class SolvSolvBtcAdapter implements IProtocolAdapter, IMetadataBuilder {
   async unwrap({
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const [protocolToken, underlyingToken] = await Promise.all([
-      this.getProtocolToken(protocolTokenAddress),
-      this.getUnderlyingToken(protocolTokenAddress),
-    ])
+    const { underlyingTokens, ...protocolToken } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     return this.helpers.unwrapOneToOne({
       protocolToken,
-      underlyingTokens: [underlyingToken],
+      underlyingTokens,
     })
   }
 
-  private async getProtocolToken(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
-  }
-  private async getUnderlyingToken(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).underlyingToken
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
+  private async getProtocolTokenByAddress(protocolTokenAddress: string) {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
   }
 }

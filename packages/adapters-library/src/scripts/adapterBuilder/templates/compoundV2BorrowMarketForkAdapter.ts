@@ -10,13 +10,7 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
   return `
   import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
   import { Chain } from '../../../../core/constants/chains'
-  import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-  import { NotImplementedError } from '../../../../core/errors/errors'
-  import {
-    ProtocolDetails,
-    PositionType,
-  } from '../../../../types/adapter'
-  import { Protocol } from '../../../protocols'
+  import { PositionType, ProtocolDetails } from '../../../../types/adapter'
   
   export class ${adapterClassName} extends CompoundV2BorrowMarketForkAdapter {
     productId = '${productId}'
@@ -34,11 +28,6 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
         chainId: this.chainId,
         productId: this.productId,
       }
-    }
-  
-    @CacheToFile({ fileKey: 'protocol-token' })
-    async buildMetadata() {
-      return await super.buildMetadata()
     }
 
     /**

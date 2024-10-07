@@ -1,11 +1,6 @@
 import { z } from 'zod'
 import { Chain } from '../../../../core/constants/chains'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import {
-  AssetType,
-  PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import {
   WriteActionInputSchemas,
   WriteActions,
@@ -34,11 +29,6 @@ export class ZeroLendATokenPoolAdapter extends ZeroLendBasePoolAdapter {
       chainId: this.chainId,
       productId: this.productId,
     }
-  }
-
-  @CacheToFile({ fileKey: 'a-token-v3' })
-  async getProtocolTokens() {
-    return super.getProtocolTokens()
   }
 
   protected getReserveTokenAddress(

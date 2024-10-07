@@ -1,9 +1,8 @@
-import path from 'node:path'
 import Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
 import {
   IMetadataProvider,
-  SQLiteMetadataProvider,
+  buildMetadataProviders,
 } from './SQLiteMetadataProvider'
 import { Protocol } from './adapters/protocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
@@ -44,37 +43,7 @@ import {
   PricePerShareResponse,
   TotalValueLockResponse,
 } from './types/response'
-
-import { existsSync } from 'node:fs'
 import { IUnwrapCache, IUnwrapCacheProvider, UnwrapCache } from './unwrapCache'
-
-function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
-  return Object.values(Chain).reduce((acc, chain) => {
-    acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
-    return acc
-  }, {} as Record<Chain, IMetadataProvider>)
-}
-
-const dbParams = (chainId: Chain): [string, Database.Options] => {
-  const dbPath = path.join(__dirname, '../../..', `${ChainName[chainId]}.db`)
-
-  if (
-    !(process.env.DEFI_ALLOW_DB_CREATION !== 'false') &&
-    !existsSync(dbPath)
-  ) {
-    logger.info(`Database file does not exist: ${dbPath}`)
-    throw new Error(`Database file does not exist: ${dbPath}`)
-  }
-
-  logger.info(`Database file exists: ${dbPath}`)
-
-  return [
-    dbPath,
-    {
-      fileMustExist: !(process.env.DEFI_ALLOW_DB_CREATION !== 'false'),
-    },
-  ]
-}
 
 export class DefiProvider {
   private parsedConfig
@@ -87,10 +56,16 @@ export class DefiProvider {
 
   constructor(
     config?: DeepPartial<IConfig>,
-    metadataProviders?: Record<Chain, IMetadataProvider>,
+    metadataProviderSettings?: Record<
+      Chain,
+      {
+        dbPath: string
+        options: Database.Options
+      }
+    >,
     unwrapCacheProvider?: IUnwrapCacheProvider,
   ) {
-    this.metadataProviders = metadataProviders ?? buildMetadataProviders()
+    this.metadataProviders = buildMetadataProviders(metadataProviderSettings)
     this.unwrapCache = new UnwrapCache(unwrapCacheProvider)
 
     this.parsedConfig = new Config(config)
@@ -120,16 +95,19 @@ export class DefiProvider {
         (provider) =>
           !filterChainIds || filterChainIds.includes(provider.chainId),
       )
-      .reduce(async (accumulator, provider) => {
-        if (filterChainIds && !filterChainIds.includes(provider.chainId)) {
-          return accumulator
-        }
+      .reduce(
+        async (accumulator, provider) => {
+          if (filterChainIds && !filterChainIds.includes(provider.chainId)) {
+            return accumulator
+          }
 
-        return {
-          ...(await accumulator),
-          [provider.chainId]: await provider.getStableBlockNumber(),
-        }
-      }, {} as Promise<Partial<Record<Chain, number>>>)
+          return {
+            ...(await accumulator),
+            [provider.chainId]: await provider.getStableBlockNumber(),
+          }
+        },
+        {} as Promise<Partial<Record<Chain, number>>>,
+      )
   }
 
   async getPositions({
@@ -285,9 +263,10 @@ export class DefiProvider {
         return undefined
       }
 
-      const transferLogs = await this.chainProvider.providers[
-        adapter.chainId
-      ].getAllTransferLogsToAddress(userAddress)
+      const transferLogs =
+        await this.chainProvider.providers[
+          adapter.chainId
+        ].getAllTransferLogsToAddress(userAddress)
 
       // no logs on this chain means nothing done on this chain
       if (transferLogs.length === 0) {

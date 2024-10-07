@@ -1,14 +1,9 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -34,15 +29,6 @@ import {
   Metamorpho__factory,
   Metamorphofactory__factory,
 } from '../../contracts'
-import { SupplyEvent } from '../../contracts/MorphoBlue'
-import {
-  TypedContractEvent,
-  TypedDeferredTopicFilter,
-} from '../../contracts/common'
-
-export type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
 
 const metaMorphoFactoryContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
@@ -95,8 +81,8 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const metaMorphoFactoryContract = Metamorphofactory__factory.connect(
       metaMorphoFactoryContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
@@ -115,7 +101,7 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
       underlyingAsset: event.args[4],
     }))
 
-    const metadata: ProtocolToken<AdditionalMetadata>[] = []
+    const metadata: ProtocolToken[] = []
 
     await Promise.all(
       metaMorphoVaults.map(async ({ vault, underlyingAsset }) => {
@@ -224,7 +210,7 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     const { address, name, decimals, symbol } =
-      await this.helpers.getProtocolTokenByAddress<AdditionalMetadata>({
+      await this.helpers.getProtocolTokenByAddress({
         protocolTokens: await this.getProtocolTokens(),
         protocolTokenAddress,
       })
@@ -239,11 +225,10 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
   private async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingTokens } =
-      await this.helpers.getProtocolTokenByAddress<AdditionalMetadata>({
-        protocolTokens: await this.getProtocolTokens(),
-        protocolTokenAddress,
-      })
+    const { underlyingTokens } = await this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
 
     return underlyingTokens!
   }

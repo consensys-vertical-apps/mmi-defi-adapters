@@ -7,7 +7,7 @@ export function votingEscrowAdapterTemplate({
   adapterClassName: string
   productId: string
 }) {
-  return `import { getAddress } from 'ethers'
+  return `
   import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
   import { NotImplementedError } from '../../../../core/errors/errors'
   import {

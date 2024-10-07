@@ -53,10 +53,19 @@ export async function getErc20Movements({
 
       return {
         transactionHash,
-        protocolToken,
+        protocolToken: {
+          address: protocolToken.address,
+          symbol: protocolToken.symbol,
+          name: protocolToken.name,
+          decimals: protocolToken.decimals,
+          tokenId: protocolToken.tokenId,
+        },
         tokens: [
           {
-            ...erc20Token,
+            address: erc20Token.address,
+            symbol: erc20Token.symbol,
+            name: erc20Token.name,
+            decimals: erc20Token.decimals,
             balanceRaw: protocolTokenMovementValueRaw,
             type: TokenType.Underlying,
             blockNumber,

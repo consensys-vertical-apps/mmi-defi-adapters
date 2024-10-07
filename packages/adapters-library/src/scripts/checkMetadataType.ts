@@ -1,15 +1,11 @@
 import { Command } from 'commander'
-
 import { Protocol } from '../adapters/protocols'
 import { supportedProtocols } from '../adapters/supportedProtocols'
 import { AdaptersController } from '../core/adaptersController'
 import { Chain } from '../core/constants/chains'
-
 import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-
 import { logger } from '../core/utils/logger'
-import { buildMetadata } from './buildMetadata'
 
 export function checkMetadataType(
   program: Command,
@@ -22,7 +18,6 @@ export function checkMetadataType(
     .showHelpAfterError()
     .action(async () => {
       const dbAdapters = []
-      const fileAdapters = []
       const other = []
       for (const [protocolIdKey, supportedChains] of Object.entries(
         supportedProtocols,
@@ -51,21 +46,6 @@ export function checkMetadataType(
                 protocolId,
               })
               //@ts-ignore
-            } else if (adapter.getProtocolTokens.isCacheToFileDecorated) {
-              fileAdapters.push({
-                productId: adapter.productId,
-                protocolId,
-              })
-            } else if (
-              //@ts-ignore
-              adapter.buildMetadata?.isCacheToFileDecorated ??
-              //@ts-ignore
-              adapter.getProtocolTokens?.isCacheToFileDecorated
-            ) {
-              fileAdapters.push({
-                productId: adapter.productId,
-                protocolId,
-              })
             } else {
               other.push({
                 productId: adapter.productId,
@@ -78,7 +58,6 @@ export function checkMetadataType(
 
       // Remove duplicates from all lists
       const uniqueDbAdapters = uniqueAdapters(dbAdapters)
-      const uniqueFileAdapters = uniqueAdapters(fileAdapters)
       const uniqueOtherAdapters = uniqueAdapters(other)
       console.log('--- Cached Adapters Summary ---\n')
 
@@ -91,17 +70,6 @@ export function checkMetadataType(
           )
         })
         console.log(`  Total DB Adapters: ${uniqueDbAdapters.length}\n`)
-      }
-
-      // Log for File Cached Adapters
-      if (uniqueFileAdapters.length > 0) {
-        console.log('File Cached Adapters:')
-        uniqueFileAdapters.forEach((adapter) => {
-          console.log(
-            `  Protocol ID: ${adapter.protocolId} - Product ID: ${adapter.productId}`,
-          )
-        })
-        console.log(`  Total File Adapters: ${uniqueFileAdapters.length}\n`)
       }
 
       // Log for Other Adapters

@@ -1,12 +1,7 @@
 import { z } from 'zod'
 import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import {
-  AssetType,
-  PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import {
   WriteActionInputSchemas,
   WriteActions,
@@ -39,11 +34,6 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAda
       chainId: this.chainId,
       productId: this.productId,
     }
-  }
-
-  @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
-    return await super.buildMetadata()
   }
 
   getTransactionParams({

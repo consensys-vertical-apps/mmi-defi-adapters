@@ -5,7 +5,7 @@ import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
-import { getMetadataInvalidAddresses } from '../scripts/addressValidation'
+import { getInvalidAddresses } from '../scripts/addressValidation'
 import { protocolFilter } from '../scripts/commandFilters'
 import { RpcInterceptedResponse, startRpcMock } from '../scripts/rpcInterceptor'
 import { TestCase } from '../types/testCase'
@@ -210,9 +210,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             return
           }
 
-          const invalidAddresses = getMetadataInvalidAddresses(
-            protocolTokenAddresses,
-          )
+          const invalidAddresses = getInvalidAddresses(protocolTokenAddresses)
 
           if (invalidAddresses.length > 0) {
             throw new Error(

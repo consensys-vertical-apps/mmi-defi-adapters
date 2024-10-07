@@ -1,18 +1,15 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
-
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { logger } from '../../../../core/utils/logger'
-import { Helpers } from '../../../../scripts/helpers'
-
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
+import { Helpers } from '../../../../scripts/helpers'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -34,18 +31,11 @@ import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
 import { StandardisedYieldToken__factory } from '../../contracts'
 
-type Metadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-    marketAddress: string
-  }
->
+type AdditionalMetadata = {
+  marketAddress: string
+}
 
-export class PendleStandardisedYieldTokenAdapter
-  implements IProtocolAdapter, IMetadataBuilder
-{
+export class PendleStandardisedYieldTokenAdapter implements IProtocolAdapter {
   productId = 'standardised-yield-token'
   protocolId: Protocol
   chainId: Chain
@@ -74,10 +64,6 @@ export class PendleStandardisedYieldTokenAdapter
     this.helpers = helpers
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -91,14 +77,12 @@ export class PendleStandardisedYieldTokenAdapter
     }
   }
 
-  @CacheToFile({ fileKey: 'market' })
-  async buildMetadata(): Promise<Metadata> {
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const resp = await fetchAllMarkets(this.chainId)
 
-    const metadata: Metadata = {}
-
-    resp.results.map((value) => {
-      const market = getAddress(value.address)
+    return resp.results.map((value) => {
+      const marketAddress = getAddress(value.address)
 
       const underlyingAsset: Erc20Metadata = {
         address: getAddress(value.underlyingAsset.address),
@@ -113,22 +97,12 @@ export class PendleStandardisedYieldTokenAdapter
         decimals: value.underlyingAsset.decimals,
       }
 
-      metadata[getAddress(sy.address)] = {
-        protocolToken: sy,
+      return {
+        ...sy,
         underlyingTokens: [underlyingAsset],
-        marketAddress: market,
+        marketAddress,
       }
-
-      return
     })
-
-    return metadata
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
@@ -145,7 +119,7 @@ export class PendleStandardisedYieldTokenAdapter
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -157,7 +131,7 @@ export class PendleStandardisedYieldTokenAdapter
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.deposits({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -178,9 +152,12 @@ export class PendleStandardisedYieldTokenAdapter
   async unwrap({
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    const { underlyingTokens, ...protocolToken } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+
     return this.helpers.unwrapOneToOne({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
-      underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress),
+      protocolToken: protocolToken,
+      underlyingTokens,
     })
   }
 
@@ -235,29 +212,12 @@ export class PendleStandardisedYieldTokenAdapter
     )
   }
 
-  private async getProtocolToken(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
-  }
-  private async getUnderlyingTokens(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).underlyingTokens
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
+  private async getProtocolTokenByAddress(
+    protocolTokenAddress: string,
+  ): Promise<ProtocolToken<AdditionalMetadata>> {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
   }
 }

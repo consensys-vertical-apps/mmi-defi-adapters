@@ -2,21 +2,12 @@ import {
   CompoundV2Cerc20__factory,
   CompoundV2Comptroller__factory,
 } from '../../contracts'
-import { Erc20Metadata } from '../../types/erc20Metadata'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { Chain } from '../constants/chains'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../utils/getTokenMetadata'
 
-export type CompoundV2MarketAdapterMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
-  }
->
-
-export async function buildMetadata({
+export async function getProtocolTokens({
   chainId,
   provider,
   contractAddresses,
@@ -32,9 +23,7 @@ export async function buildMetadata({
 
   const pools = await comptrollerContract.getAllMarkets()
 
-  const metadataObject: CompoundV2MarketAdapterMetadata = {}
-
-  await Promise.all(
+  return await Promise.all(
     pools.map(async (poolContractAddress) => {
       const poolContract = CompoundV2Cerc20__factory.connect(
         poolContractAddress,
@@ -64,12 +53,10 @@ export async function buildMetadata({
         underlyingTokenPromise,
       ])
 
-      metadataObject[protocolToken.address] = {
-        protocolToken,
-        underlyingToken,
+      return {
+        ...protocolToken,
+        underlyingTokens: [underlyingToken],
       }
     }),
   )
-
-  return metadataObject
 }

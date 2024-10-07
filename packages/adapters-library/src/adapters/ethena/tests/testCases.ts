@@ -47,7 +47,7 @@ export const testCases: TestCase[] = [
       fromBlock: 19776211,
       toBlock: 19776211,
       protocolTokenAddress: '0x9D39A5DE30e57443BfF2A8307A4256c8797A3497',
-      productId: 'ethena',
+      productId: 'staked-usde',
     },
   },
 ]

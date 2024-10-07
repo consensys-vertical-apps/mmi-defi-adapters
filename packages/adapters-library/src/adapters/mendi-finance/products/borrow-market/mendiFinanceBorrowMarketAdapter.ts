@@ -4,22 +4,14 @@ import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetTotalValueLockedInput,
   PositionType,
   ProtocolDetails,
   ProtocolTokenTvl,
-  TokenBalance,
-  Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -56,11 +48,7 @@ const contractAddresses: Partial<
   },
 }
 
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
-
-export class MendiFinanceBorrowMarketAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class MendiFinanceBorrowMarketAdapter extends SimplePoolAdapter {
   productId = 'borrow-market'
 
   adapterSettings = {
@@ -81,8 +69,8 @@ export class MendiFinanceBorrowMarketAdapter extends SimplePoolAdapter<Additiona
     }
   }
 
-  @CacheToDb()
-  async getProtocolTokens() {
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const comptrollerContract = Comptroller__factory.connect(
       contractAddresses[this.chainId]!.comptroller,
       this.provider,
@@ -90,7 +78,7 @@ export class MendiFinanceBorrowMarketAdapter extends SimplePoolAdapter<Additiona
 
     const pools = await comptrollerContract.getAllMarkets()
 
-    const metadataObject: ProtocolToken<AdditionalMetadata>[] = []
+    const metadataObject: ProtocolToken[] = []
 
     await Promise.all(
       pools.map(async (poolContractAddress) => {

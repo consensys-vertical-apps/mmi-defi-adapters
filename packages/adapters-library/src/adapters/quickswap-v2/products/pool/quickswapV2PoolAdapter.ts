@@ -1,15 +1,11 @@
+import { UniswapV2Pair__factory } from '../../../../contracts'
 import {
   UniswapV2PoolForkAdapter,
   UniswapV2PoolForkPositionStrategy,
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import {
-  AssetType,
-  PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 
 export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   productId = 'pool'
@@ -51,8 +47,51 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToDb
   async getProtocolTokens() {
-    return super.getProtocolTokens()
+    const poolAddresses: string[] = []
+    let nextPage: string | null =
+      'https://app.geckoterminal.com/api/p1/polygon_pos/pools?dex=quickswap&dexes=quickswap&liquidity[gte]=50000&networks=polygon_pos&page=1&sort=-24h_volume'
+
+    while (nextPage) {
+      const result = (await fetch(nextPage).then((res) => res.json())) as {
+        data: { type: string; attributes: { address: string } }[]
+        links: { next: string | null }
+      }
+
+      poolAddresses.push(
+        ...result.data
+          .filter(({ type }) => type === 'pool')
+          .map(({ attributes: { address } }) => address),
+      )
+
+      nextPage = result.links.next
+    }
+
+    const pairs: {
+      pairAddress: string
+      token0Address: string
+      token1Address: string
+    }[] = await Promise.all(
+      poolAddresses.map(async (address) => {
+        const pairContract = UniswapV2Pair__factory.connect(
+          address,
+          this.provider,
+        )
+
+        const [token0Address, token1Address] = await Promise.all([
+          pairContract.token0(),
+          pairContract.token1(),
+        ])
+
+        return {
+          pairAddress: address,
+          token0Address: token0Address,
+          token1Address: token1Address,
+        }
+      }),
+    )
+
+    return this.processPairsWithQueue(pairs)
   }
 }
