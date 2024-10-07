@@ -73,7 +73,7 @@ jobs:
           MATRIX=$(npm run -s support | jq -r 'keys | @json')
           echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
         env:
-          DEFI_ADAPTERS_LOG_LEVEL: never  # Suppress logs during execution
+          DEFI_ADAPTERS_LOG_LEVEL: silent  # Suppress logs during execution
 
   integration-tests:
     needs: generate-protocol-matrix
