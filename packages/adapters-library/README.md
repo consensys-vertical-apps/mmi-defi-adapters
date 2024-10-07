@@ -42,13 +42,27 @@ Watch the [build contract classes from ABIs video](https://drive.google.com/file
 5. Run:
    - `npm run build-types` to generate your smart contract classes
 
-### Build your DeFi asset metadata files
+### Build your DeFi asset metadata
 
-Watch the [build your DeFi asset metadata files video](https://drive.google.com/file/d/1F6AnSkhd9Iu7f62f3VcAJ60iHZfAib1B/view 'Watch the build your DeFi asset metadata files') for a detailed guide.
+Watch the [build your DeFi asset metadata video](https://drive.google.com/file/d/1F6AnSkhd9Iu7f62f3VcAJ60iHZfAib1B/view 'Watch the build your DeFi asset metadata') for a detailed guide.
 
-6. Implement the getProtocolToken function in your adapter.
+6. Implement the `getProtocolToken` method in your adapter and make sure it is decorated with `@CacheToDb`.
+
+- If the adapter requires additional metadata. The `AdditionalMetadata` type should be updated accordingly, otherwise it should be deleted.
+- You can add any data that is serializable as JSON (including BigInt) as additional metadata.
+- There are four protected fields that, if added, must adhere to stricter types. Those are:
+
+```
+{
+  underlyingTokens?: Erc20ExtendedMetadata[]
+  rewardTokens?: Erc20ExtendedMetadata[]
+  extraRewardTokens?: Erc20ExtendedMetadata[]
+  tokenId?: string
+}
+```
+
 7. Run:
-   - `npm run build-metadata -- -p <protocol-id>` to create your metadata files
+   - `npm run build-metadata-db -- -p <protocol-id> -pd <product-id>` to create your metadata files
 
 ### Build your Snapshot tests
 
@@ -65,7 +79,7 @@ The tutorial video below shows an intro to on how to add write adapter actions t
 Don't have a read adapter? And don't intend to create a read adapter? Then:
 
 1. Select "WriteOnlyAdapterTemplate" on our new-adapter CLI. See section "Build adapter steps" above for more information.
-2. Implement the buildMetadata() method see section "Build your DeFi asset metadata files" above for more information.
+2. Implement the `getProtocolToken` method see section "Build your DeFi asset metadata" above for more information.
 3. Then follow the video tutorial below:
 
 Watch the [build write adapter video](https://drive.google.com/file/d/1ZNWwOkzHlc7Zt2qLy5ZRuHqoDgWSnww7/view 'Watch the build write adapter video') for a detailed guide.
