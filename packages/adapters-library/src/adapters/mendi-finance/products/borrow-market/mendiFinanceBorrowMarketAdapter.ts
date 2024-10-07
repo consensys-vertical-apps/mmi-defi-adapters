@@ -49,4 +49,47 @@ export class MendiFinanceBorrowMarketAdapter extends CompoundV2BorrowMarketForkA
       productId: this.productId,
     }
   }
+
+  async getTransactionParams({
+    action,
+    inputs,
+  }: Extract<
+    GetTransactionParams,
+    { protocolId: typeof Protocol.MendiFinance; productId: 'borrow-market' }
+  >): Promise<{ to: string; data: string }> {
+    const assetPool = Object.values(await this.getProtocolTokens()).find(
+      (pool) => pool.address === inputs.asset,
+    )
+
+    if (!assetPool) {
+      throw new Error('Asset pool not found')
+    }
+
+    const poolContract = Cerc20__factory.connect(
+      assetPool.address,
+      this.provider,
+    )
+
+    const { amount } = inputs
+
+    switch (action) {
+      case WriteActions.Borrow: {
+        return poolContract.borrow.populateTransaction(amount)
+      }
+      case WriteActions.Repay: {
+        return poolContract.repayBorrow.populateTransaction(amount)
+      }
+    }
+  }
 }
+
+export const WriteActionInputs = {
+  [WriteActions.Borrow]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+  }),
+  [WriteActions.Repay]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+  }),
+} satisfies WriteActionInputSchemas
