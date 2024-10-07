@@ -1,9 +1,7 @@
-import path from 'node:path'
 import Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
 import {
   IMetadataProvider,
-  SQLiteMetadataProvider,
   buildMetadataProviders,
 } from './SQLiteMetadataProvider'
 import { Protocol } from './adapters/protocols'
@@ -45,7 +43,6 @@ import {
   PricePerShareResponse,
   TotalValueLockResponse,
 } from './types/response'
-
 import { IUnwrapCache, IUnwrapCacheProvider, UnwrapCache } from './unwrapCache'
 
 export class DefiProvider {
@@ -59,10 +56,16 @@ export class DefiProvider {
 
   constructor(
     config?: DeepPartial<IConfig>,
-    metadataProviders?: Record<Chain, IMetadataProvider>,
+    metadataProviderSettings?: Record<
+      Chain,
+      {
+        dbPath: string
+        options: Database.Options
+      }
+    >,
     unwrapCacheProvider?: IUnwrapCacheProvider,
   ) {
-    this.metadataProviders = metadataProviders ?? buildMetadataProviders()
+    this.metadataProviders = buildMetadataProviders(metadataProviderSettings)
     this.unwrapCache = new UnwrapCache(unwrapCacheProvider)
 
     this.parsedConfig = new Config(config)
