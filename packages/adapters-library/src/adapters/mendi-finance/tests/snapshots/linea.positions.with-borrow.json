@@ -1,0 +1,219 @@
+{
+  "blockNumber": 10441623,
+  "latency": "Latency: 0.925 seconds",
+  "aggregatedValues": [],
+  "snapshot": [
+    {
+      "protocolId": "mendi-finance",
+      "name": "MendiFinance",
+      "description": "MendiFinance supply adapter",
+      "siteUrl": "https://mendi.finance/:",
+      "iconUrl": "https://mendi.finance/mendi-token.svg",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "supply-market",
+      "chainName": "linea",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf669C3C03D9fdF4339e19214A749E52616300E89",
+          "name": "Mendi USD Tether",
+          "symbol": "meUSDT",
+          "decimals": 8,
+          "balanceRaw": "501952199598n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "108416655n",
+              "balance": 108.416655,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            }
+          ],
+          "balance": 5019.52199598
+        },
+        {
+          "address": "0xAd7f33984bed10518012013D4aB0458D37FEE6F3",
+          "name": "Mendi Wrapped Ether",
+          "symbol": "meWETH",
+          "decimals": 8,
+          "balanceRaw": "7067776824n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "1500002469094071529n",
+              "balance": 1.5000024690940714,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "balance": 70.67776824
+        }
+      ]
+    },
+    {
+      "protocolId": "mendi-finance",
+      "name": "MendiFinance",
+      "description": "MendiFinance borrow adapter",
+      "siteUrl": "https://mendi.finance/:",
+      "iconUrl": "https://mendi.finance/mendi-token.svg",
+      "positionType": "borrow",
+      "chainId": 59144,
+      "productId": "borrow-market",
+      "chainName": "linea",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x8a90D208666Deec08123444F67Bf5B1836074a67",
+          "name": "Mendi Renzo Restaked ETH",
+          "symbol": "meezETH",
+          "decimals": 8,
+          "balanceRaw": "1n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+              "name": "Renzo Restaked ETH",
+              "symbol": "ezETH",
+              "decimals": 18,
+              "balanceRaw": "1020010231992735136n",
+              "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "1041478910919750938n",
+                  "balance": 1.0414789109197509,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+                }
+              ],
+              "balance": 1.020010231992735,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x2416092f143378750bb29b79eD961ab195CcEea5/logo.png"
+            }
+          ],
+          "balance": 1e-8
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "a8336d8367787a302c16c9a7504bb4f0": {
+      "result": "0x9f53c8"
+    },
+    "14fd1d2de6a6b135a7f831f640830ba6": {
+      "result": [
+        {
+          "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
+          "blockHash": "0x9a37826f8d3e40bd94e76cbd66ecb1d3ac429db36cf7d42dae77444bd9da8d86",
+          "blockNumber": "0x9f4375",
+          "data": "0x0000000000000000000000000000000000000000000000000000000006765301",
+          "logIndex": "0x9",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000efd5ec2cc043e3bd3c840f7998cc42ee712700ba",
+            "0x0000000000000000000000005cd2d1ea68d962d4687b47604b062156c23e5889"
+          ],
+          "transactionHash": "0xa5d643ec46cb0e65a6229b8f5df3b77dbb7859585b6f1045e5af85694a8e06cf",
+          "transactionIndex": "0x4"
+        },
+        {
+          "address": "0xf669c3c03d9fdf4339e19214a749e52616300e89",
+          "blockHash": "0xcc53a7b36ade2add8bfcc2b82494d6641c451b76e54d13546f4de12c4ae40a10",
+          "blockNumber": "0x9f43b9",
+          "data": "0x00000000000000000000000000000000000000000000000000000074deaebbae",
+          "logIndex": "0x5",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000f669c3c03d9fdf4339e19214a749e52616300e89",
+            "0x0000000000000000000000005cd2d1ea68d962d4687b47604b062156c23e5889"
+          ],
+          "transactionHash": "0xdc6891cfc6e99c5a9b823c9a4e27ed1cb73ff28e98a3415385ab8033d7dad539",
+          "transactionIndex": "0x0"
+        },
+        {
+          "address": "0xad7f33984bed10518012013d4ab0458d37fee6f3",
+          "blockHash": "0x8895890dde016d031730530aef36761ad3cf12445b66199bfbd67b73ad86c8bd",
+          "blockNumber": "0x9f43e6",
+          "data": "0x00000000000000000000000000000000000000000000000000000001a545b738",
+          "logIndex": "0xd",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000ad7f33984bed10518012013d4ab0458d37fee6f3",
+            "0x0000000000000000000000005cd2d1ea68d962d4687b47604b062156c23e5889"
+          ],
+          "transactionHash": "0x0a3dae3161964284b59004b04a064046744dc511a8060588c7f9af210c9917cf",
+          "transactionIndex": "0x3"
+        },
+        {
+          "address": "0x2416092f143378750bb29b79ed961ab195cceea5",
+          "blockHash": "0x64bab5bcfab252ecf89e83d6b94783d05242f1ce3a2deb88f227247ffd6d1629",
+          "blockNumber": "0x9f4407",
+          "data": "0x0000000000000000000000000000000000000000000000000e27c49886e60000",
+          "logIndex": "0x4",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000008a90d208666deec08123444f67bf5b1836074a67",
+            "0x0000000000000000000000005cd2d1ea68d962d4687b47604b062156c23e5889"
+          ],
+          "transactionHash": "0xbe66ca94b3f761405cba4e52500f6a017176a9c67262ad8e5d9081ebb9c3bef6",
+          "transactionIndex": "0x1"
+        },
+        {
+          "address": "0x46a15b0b27311cedf172ab29e4f4766fbe7f4364",
+          "blockHash": "0x623c3e54472266d3b430577381d01e694c2bd31524f4c2aa7e8c13eb0122b50d",
+          "blockNumber": "0x9f4415",
+          "data": "0x",
+          "logIndex": "0xa",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x0000000000000000000000005cd2d1ea68d962d4687b47604b062156c23e5889",
+            "0x0000000000000000000000000000000000000000000000000000000000014512"
+          ],
+          "transactionHash": "0xf6fba0afb28c6c918ecdc604ea4e81b75af415e0ef00a462e1f281a4e29549bd",
+          "transactionIndex": "0x4"
+        }
+      ]
+    },
+    "b619b271c426aa65d96ff3753ff465d3": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000002000000000000000000000000ad7f33984bed10518012013d4ab0458d37fee6f30000000000000000000000008a90d208666deec08123444f67bf5b1836074a67"
+    },
+    "6e6e3ec704be89cb04628b6e6a51df11": {
+      "result": "0x00000000000000000000000000000000000000000000000000000074deaebbae"
+    },
+    "692efd5511ac69535c2108d427f03137": {
+      "result": "0x00000000000000000000000000000000000000000000000000000001a545b738"
+    },
+    "355353af0838d07f859e0d8d42314a9d": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "b12e8d8b1f120bc9e85f2d604d021558": {
+      "result": "0x0000000000000000000000000000000000000000000000000e27cde6d930d5a0"
+    },
+    "2942c4c5332a5d699514a6ead76a5117": {
+      "result": "0x0000000000000000000000000000000000000000000000000000c4720b938be4"
+    },
+    "af3be61cdf5de107e2961511c8f56f14": {
+      "result": "0x000000000000000000000000000000000000000000af8db2331867c743e7764a"
+    },
+    "fd93ba249cbeeeb3f4d9bbef5392e829": {
+      "result": "0x0000000000000000000000000000000000000000000000000e2b7d4db937ee34"
+    }
+  }
+}
