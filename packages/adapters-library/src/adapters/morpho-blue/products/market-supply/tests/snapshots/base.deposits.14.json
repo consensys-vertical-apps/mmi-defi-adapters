@@ -1,0 +1,77 @@
+{
+  "aggregatedValues": ["USD9,992.83"],
+  "latency": "Latency: 1.564 seconds",
+  "snapshot": {
+    "protocolId": "morpho-blue",
+    "name": "MetaMorpho Vaults",
+    "description": "MetaMorpho Vaults adapter",
+    "siteUrl": "https://app.morpho.org/",
+    "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+    "positionType": "supply",
+    "chainId": 8453,
+    "productId": "vault",
+    "chainName": "base",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x6d9a6e5a7fa4222fe9c9936461849ccebc7abb2d1f49cf1f00bd0b98e62be95e",
+        "protocolToken": {
+          "address": "0xa0E430870c4604CcfC7B38Ca7845B1FF653D0ff1",
+          "name": "Moonwell Flagship ETH",
+          "symbol": "mwETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xa0E430870c4604CcfC7B38Ca7845B1FF653D0ff1",
+            "name": "Moonwell Flagship ETH",
+            "symbol": "mwETH",
+            "decimals": 18,
+            "balanceRaw": "2995035841467461394n",
+            "type": "underlying",
+            "blockNumber": 17776786,
+            "tokens": [
+              {
+                "address": "0x4200000000000000000000000000000000000006",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "2995035841467461394n",
+                "balance": 2.9950358414674616,
+                "price": 3336.46411744,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x4200000000000000000000000000000000000006/logo.png"
+              }
+            ],
+            "balance": 2.9950358414674616
+          }
+        ],
+        "blockNumber": 17776786
+      }
+    ]
+  },
+  "rpcResponses": {
+    "e42ccad52a11c734e4fe64de010d971d": {
+      "result": [
+        {
+          "address": "0xa0e430870c4604ccfc7b38ca7845b1ff653d0ff1",
+          "blockHash": "0x08a55d1f33c0e146fedb89451a4f360237190aad711ec53dc6b9a94916a2875a",
+          "blockNumber": "0x10f4092",
+          "data": "0x0000000000000000000000000000000000000000000000002990813abc3b2f12",
+          "logIndex": "0x8b",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x0000000000000000000000007c818d46acef870ea88137bf553594f4803872ca"
+          ],
+          "transactionHash": "0x6d9a6e5a7fa4222fe9c9936461849ccebc7abb2d1f49cf1f00bd0b98e62be95e",
+          "transactionIndex": "0x1e"
+        }
+      ]
+    },
+    "95cefd204452748e1791c531c87a9476": {
+      "result": "0x000000000000000000000000000000000000000000000001000000000000e5880000000000000000000000000000000000000000000000000000004daee037e00000000000000000000000000000000000000000000000000000000066a8ddd90000000000000000000000000000000000000000000000000000000066a8ddd9000000000000000000000000000000000000000000000001000000000000e588"
+    }
+  }
+}

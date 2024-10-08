@@ -1,0 +1,60 @@
+{
+  "blockNumber": 20862963,
+  "latency": "Latency: 4.075 seconds",
+  "aggregatedValues": ["USD2,641.23"],
+  "snapshot": [
+    {
+      "protocolId": "zerolend",
+      "name": "ZeroLend AToken",
+      "description": "ZeroLend defi adapter for yield-generating token",
+      "siteUrl": "https://app.zerolend.xyz/",
+      "iconUrl": "https://app.zerolend.xyz/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "a-token",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xFb932A75c5F69d03B0F6e59573FDe6976aF0D88C",
+          "name": "ZeroLend WETH",
+          "symbol": "z0WETH",
+          "decimals": 18,
+          "balanceRaw": "1016534419103751915n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "1016534419103751915n",
+              "balance": 1.016534419103752,
+              "price": 2598.273777,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "balance": 1.016534419103752
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "9e4c90ff586f34171ab76e7f0e14cdd3": {
+      "result": "0x0000000000000000000000000000000000000000000000000e1b74ab18a31eeb"
+    },
+    "61783211b732979498a33287546ce819": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5772617070656420457468657200000000000000000000000000000000000000"
+    },
+    "3142d9d670d9f3bbe1f590ed10159c68": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045745544800000000000000000000000000000000000000000000000000000000"
+    },
+    "52a91a2f9ed1eef93397c798125fd3cd": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "ccb9e6991c74731a168f743f9b2e6318": {
+      "result": "0x00000000000000000000000000000000000000000000000700000000000001780000000000000000000000000000000000000000000000000000003c7eeb26240000000000000000000000000000000000000000000000000000000066fa79dd0000000000000000000000000000000000000000000000000000000066fa79f30000000000000000000000000000000000000000000000070000000000000178"
+    }
+  }
+}

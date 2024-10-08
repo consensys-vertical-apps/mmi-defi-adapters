@@ -1,0 +1,161 @@
+{
+  "blockNumber": 20740544,
+  "latency": "Latency: 0.953 seconds",
+  "snapshot": [
+    {
+      "protocolId": "etherfi",
+      "name": "EtherFi eETH",
+      "description": "EtherFi adapter for eTH",
+      "siteUrl": "https://app.ether.fi/",
+      "iconUrl": "https://app.ether.fi/favicon/favicon-32x32.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "e-eth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
+          "name": "ether.fi ETH",
+          "symbol": "eETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.05683906570599717,
+          "performance": 0.004048203249169322,
+          "calculationData": {
+            "withdrawals": 9.36037746584,
+            "deposits": 23.400943664599996,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 14.097405264465992
+          }
+        }
+      ],
+      "fromBlock": 20690522,
+      "toBlock": 20740544
+    },
+    {
+      "protocolId": "etherfi",
+      "name": "EtherFi weETH",
+      "description": "EtherFi adapter for weETH",
+      "siteUrl": "https://app.ether.fi/",
+      "iconUrl": "https://app.ether.fi/favicon/favicon-32x32.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "we-eth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+          "name": "Wrapped eETH",
+          "symbol": "weETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.03789271047066123,
+          "performance": 0.004048203249168943,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 9.360377465839997,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 9.398270176310659
+          }
+        }
+      ],
+      "fromBlock": 20690522,
+      "toBlock": 20740544
+    }
+  ],
+  "rpcResponses": {
+    "948905cef5af9f037c19b29280621a65": {
+      "result": "0x000000000000000000000000000000000000000000000000001552046bbca5b4"
+    },
+    "2268d5d470035d1342e90673e754237e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "81314d8eb15ee526aaf02c73df275239": {
+      "result": "0x000000000000000000000000000000000000000000000000000d90a74663a3c9"
+    },
+    "fbbd19fb447591d9116992eb38b3a9a3": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "4a6aaf06e16c3a06a39e06513ed31929": {
+      "result": "0x0000000000000000000000000000000000000000000000000e8a90e91a0279c6"
+    },
+    "282e6493878bc37b679dfc57ee9775ed": {
+      "result": "0x0000000000000000000000000000000000000000000000060000000000005a3400000000000000000000000000000000000000000000000000000036b1d2782d0000000000000000000000000000000000000000000000000000000066e3f1230000000000000000000000000000000000000000000000000000000066e3f1230000000000000000000000000000000000000000000000060000000000005a34"
+    },
+    "6aa74306ea5224d433415344ff4269c6": {
+      "result": [
+        {
+          "address": "0x35fa164735182de50811e8e2e824cfb9b6118ac2",
+          "blockHash": "0x6f97388f91e03e29a9121331ccc696dcb9d09f120d8c6a77870176ee08ecbcc7",
+          "blockNumber": "0x13c2b63",
+          "data": "0x000000000000000000000000000000000000000000000000000e35fa931a0000",
+          "logIndex": "0x71",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x00000000000000000000000061be170a52a61b318accf8fc77153454b4bd5c78",
+            "0x000000000000000000000000cd5fe23c85820f7b72d0926fc9b05b43e359b7ee"
+          ],
+          "transactionHash": "0x81b852579507c8d8524f8800f4130428d99f5f8de92ce81ff6905d2fb2ccb190",
+          "transactionIndex": "0x30"
+        }
+      ]
+    },
+    "c9c5c10314f4b46e085b0d5e52e6183e": {
+      "result": [
+        {
+          "address": "0x35fa164735182de50811e8e2e824cfb9b6118ac2",
+          "blockHash": "0x2ab5fb04c656a5d6b7deabc154993da5254c1a8a42bbbe177a337f9f3d12446d",
+          "blockNumber": "0x13c2b5b",
+          "data": "0x000000000000000000000000000000000000000000000000002386f26fc0ffff",
+          "logIndex": "0xe9",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x00000000000000000000000061be170a52a61b318accf8fc77153454b4bd5c78"
+          ],
+          "transactionHash": "0x2612c8e0ca69c11796a17a54c08125e55f2949a2db5578f9804ae78a958a665c",
+          "transactionIndex": "0x30"
+        }
+      ]
+    },
+    "ca8315bd91d90c9013ec6afc63269a9c": {
+      "result": []
+    },
+    "88b64857178c95082b89f72907418d75": {
+      "result": [
+        {
+          "address": "0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee",
+          "blockHash": "0x6f97388f91e03e29a9121331ccc696dcb9d09f120d8c6a77870176ee08ecbcc7",
+          "blockNumber": "0x13c2b63",
+          "data": "0x000000000000000000000000000000000000000000000000000d90a74663a3c9",
+          "logIndex": "0x6e",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x00000000000000000000000061be170a52a61b318accf8fc77153454b4bd5c78"
+          ],
+          "transactionHash": "0x81b852579507c8d8524f8800f4130428d99f5f8de92ce81ff6905d2fb2ccb190",
+          "transactionIndex": "0x30"
+        }
+      ]
+    },
+    "3df5e55c0648af99e95e39a5befb0795": {
+      "result": "0x0000000000000000000000000000000000000000000000000e89d9be5d44fb1e"
+    },
+    "fc4c20a36dbea38313bbe2adf3735665": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000059b3000000000000000000000000000000000000000000000000000000367c0ca1e60000000000000000000000000000000000000000000000000000000066e044970000000000000000000000000000000000000000000000000000000066e0449700000000000000000000000000000000000000000000000600000000000059b3"
+    },
+    "c44e486647bf7365178d482573ecc77c": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000059b3000000000000000000000000000000000000000000000000000000367c0ca1e60000000000000000000000000000000000000000000000000000000066e044970000000000000000000000000000000000000000000000000000000066e0449700000000000000000000000000000000000000000000000600000000000059b3"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "blockNumber": 19184815,
+  "latency": "Latency: 3.163 seconds",
+  "snapshot": [
+    {
+      "protocolId": "rocket-pool",
+      "name": "RocketPool",
+      "description": "Rocket Pool rETH Adapter",
+      "siteUrl": "https://rocketpool.net",
+      "iconUrl": "https://rocketpool.net/files/reth-logo.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "reth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+          "name": "Rocket Pool ETH",
+          "symbol": "rETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 620833.5951970983,
+          "performance": 0.06324343119463094,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 9816570.408498079,
+            "endPositionValue": 10437404.003695177
+          }
+        }
+      ],
+      "fromBlock": 19134793,
+      "toBlock": 19184815
+    }
+  ],
+  "rpcResponses": {
+    "26a5ee6e93dee655f4603b1197343ebb": {
+      "result": "0x0000000000000000000000000000000000000000000000d4db7e538696cdaeb5"
+    },
+    "e935e3a33ac302efaa0ae3f05a32d606": {
+      "result": "0x0000000000000000000000000000000000000000000000d4db7e538696cdaeb5"
+    },
+    "b5d022bed2c3a1ab46a97afe92c1a593": {
+      "result": "0x0000000000000000000000000000000000000000000000000f3b974ef2973a9e"
+    },
+    "fd97d302ce2ba6fd2f305111fb0219fb": {
+      "result": "0x0000000000000000000000000000000000000000000000000f3981d53c5fc1c8"
+    },
+    "02990dc480f551d234fad88602b29818": {
+      "result": "0x0000000000000000000000000000000000000000000000060000000000002cb900000000000000000000000000000000000000000000000000000038629e06200000000000000000000000000000000000000000000000000000000065c507870000000000000000000000000000000000000000000000000000000065c507870000000000000000000000000000000000000000000000060000000000002cb9"
+    },
+    "abba9eb3e4d00b30e5d719b9161f03c7": {
+      "result": "0x0000000000000000000000000000000000000000000000060000000000002bd2000000000000000000000000000000000000000000000000000000350f481f250000000000000000000000000000000000000000000000000000000065bbc7c70000000000000000000000000000000000000000000000000000000065bbc7c70000000000000000000000000000000000000000000000060000000000002bd2"
+    },
+    "d90dee65358f6bccc858209dcabf3251": {
+      "result": []
+    },
+    "34ac523319e30f8c172bb1df1cadc833": {
+      "result": []
+    }
+  }
+}

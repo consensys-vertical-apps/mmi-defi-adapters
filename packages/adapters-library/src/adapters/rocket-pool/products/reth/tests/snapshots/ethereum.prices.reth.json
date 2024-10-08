@@ -1,0 +1,45 @@
+{
+  "latency": "Latency: 0.2 seconds",
+  "blockNumber": 19661887,
+  "snapshot": [
+    {
+      "protocolId": "rocket-pool",
+      "name": "RocketPool",
+      "description": "Rocket Pool rETH Adapter",
+      "siteUrl": "https://rocketpool.net",
+      "iconUrl": "https://rocketpool.net/files/reth-logo.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "reth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+          "name": "Rocket Pool ETH",
+          "decimals": 18,
+          "symbol": "rETH",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "1103700235881627599n",
+              "underlyingRate": 1.1037002358816277,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "26e9470ae0ddefed2aa186246ae2c181": {
+      "result": "0x0000000000000000000000000000000000000000000000000f512184523d3fcf"
+    }
+  }
+}

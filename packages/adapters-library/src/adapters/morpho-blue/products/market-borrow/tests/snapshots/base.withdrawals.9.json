@@ -1,0 +1,89 @@
+{
+  "aggregatedValues": ["USD14,966.06"],
+  "latency": "Latency: 3.365 seconds",
+  "snapshot": {
+    "protocolId": "morpho-blue",
+    "name": "MetaMorpho Vaults",
+    "description": "MetaMorpho Vaults adapter",
+    "siteUrl": "https://app.morpho.org/",
+    "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+    "positionType": "supply",
+    "chainId": 8453,
+    "productId": "vault",
+    "chainName": "base",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0xe63171dbdfaa63a89563444972f713fc277c15ffbd817fa2bfe83f145164363f",
+        "protocolToken": {
+          "address": "0xbeeF010f9cb27031ad51e3333f9aF9C6B1228183",
+          "name": "Steakhouse USDC",
+          "symbol": "steakUSDC",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xbeeF010f9cb27031ad51e3333f9aF9C6B1228183",
+            "name": "Steakhouse USDC",
+            "symbol": "steakUSDC",
+            "decimals": 18,
+            "balanceRaw": "14974202540007384270748n",
+            "type": "underlying",
+            "blockNumber": 17605195,
+            "tokens": [
+              {
+                "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "14974202540n",
+                "balance": 14974.20254,
+                "price": 0.99945595291145,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913/logo.png"
+              }
+            ],
+            "balance": 14974.202540007384
+          }
+        ],
+        "blockNumber": 17605195
+      }
+    ]
+  },
+  "rpcResponses": {
+    "0b45d59a3be83cbe3cdef8c201570710": {
+      "result": [
+        {
+          "address": "0xbeef010f9cb27031ad51e3333f9af9c6b1228183",
+          "blockHash": "0x498d143afdc98e64c4026b422f232c5be99ca8c324511ee1e0bd26ac62805e35",
+          "blockNumber": "0x10ca24b",
+          "data": "0x00000000000000000000000000000000000000000000032bc0ce31695429c79c",
+          "logIndex": "0xbe",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000d4f9fe0039da59e6ddb21bbb6e84e0c9e83d73ed",
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "transactionHash": "0xe63171dbdfaa63a89563444972f713fc277c15ffbd817fa2bfe83f145164363f",
+          "transactionIndex": "0x53"
+        }
+      ]
+    },
+    "b10ea911cf0dcc0093cb473077f3d7d7": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000855534420436f696e000000000000000000000000000000000000000000000000"
+    },
+    "84a4cfb381f5310b549727299062519f": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
+    },
+    "0ccb7bcfabe6a41d3059da1f4739649e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "4a2b34627abb897e602a0c62af463200": {
+      "result": "0x000000000000000000000000000000000000000000000001000000000000e3140000000000000000000000000000000000000000000000000000004b3c0b26480000000000000000000000000000000000000000000000000000000066a3a1170000000000000000000000000000000000000000000000000000000066a3a117000000000000000000000000000000000000000000000001000000000000e314"
+    },
+    "6c4c94bfef681548f712a294aa5941a6": {
+      "result": "0x000000000000000000000000000000000000000000ffd9d09261da2d49259a00"
+    }
+  }
+}

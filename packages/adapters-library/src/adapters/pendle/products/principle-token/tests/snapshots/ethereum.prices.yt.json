@@ -1,0 +1,45 @@
+{
+  "latency": "Latency: 0.141 seconds",
+  "blockNumber": 20572049,
+  "snapshot": [
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle Market adapter",
+      "siteUrl": "https://www.pendle.finance",
+      "iconUrl": "https://app.pendle.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "yield-token",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "baseRate": 1,
+          "type": "protocol",
+          "address": "0xD66b560f4e3e85f22C192d91dA847886d5C5Fd00",
+          "name": "YT-rswETH-26SEP2024",
+          "symbol": "YT-rswETH-26SEP2024",
+          "decimals": 18,
+          "tokens": [
+            {
+              "type": "underlying",
+              "underlyingRateRaw": "8089831469223860n",
+              "address": "0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9",
+              "name": "SY-rswETH",
+              "symbol": "SY-rswETH",
+              "decimals": 18,
+              "underlyingRate": 0.00808983146922386,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "3585a792dead97b7ec4a5384f9b324d6": {
+      "result": "0x000000000000000000000000000000000000000000000000001cbda8ab040fb4"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "blockNumber": 19074240,
+  "latency": "Latency: 3.238 seconds",
+  "aggregatedValues": ["USD127,716,164.58"],
+  "snapshot": [
+    {
+      "protocolId": "rocket-pool",
+      "name": "RocketPool",
+      "description": "Rocket Pool rETH Adapter",
+      "siteUrl": "https://rocketpool.net",
+      "iconUrl": "https://rocketpool.net/files/reth-logo.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "reth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+          "name": "Rocket Pool ETH",
+          "symbol": "rETH",
+          "decimals": 18,
+          "balanceRaw": "52652780907750255883486n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "57719483897631490065522n",
+              "balance": 57719.48389763149,
+              "price": 2212.70454888,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "balance": 52652.78090775025
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "d2373f06f0823f2749bb1a989172975d": {
+      "result": "0x000000000000000000000000000000000000000000000b26501ef535ab89f4de"
+    },
+    "391d38a0682346ba7aa15ae0ea219b59": {
+      "result": "0x0000000000000000000000000000000000000000000000000f369618bf707991"
+    },
+    "19ca41dfb638ec9b526562486dba0873": {
+      "result": "0x0000000000000000000000000000000000000000000000060000000000002a900000000000000000000000000000000000000000000000000000003384bf32680000000000000000000000000000000000000000000000000000000065b08a370000000000000000000000000000000000000000000000000000000065b08a370000000000000000000000000000000000000000000000060000000000002a90"
+    }
+  }
+}

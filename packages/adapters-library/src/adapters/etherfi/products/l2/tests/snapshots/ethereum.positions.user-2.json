@@ -1,0 +1,63 @@
+{
+  "blockNumber": 20751518,
+  "latency": "Latency: 0.492 seconds",
+  "aggregatedValues": ["USD1,068,865.37"],
+  "snapshot": [
+    {
+      "protocolId": "etherfi",
+      "name": "EtherFi Liquid",
+      "description": "EtherFi defi adapter for Liquid vaults",
+      "siteUrl": "https://app.ether.fi/",
+      "iconUrl": "https://app.ether.fi/favicon/favicon-32x32.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "liquid",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x7223442cad8e9cA474fC40109ab981608F8c4273",
+          "name": "King Karak LRT",
+          "symbol": "weETHk",
+          "decimals": 18,
+          "balanceRaw": "440147724479119600782n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "442516485473171000388n",
+              "balance": 442.516485473171,
+              "price": 2415.42497289,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "balance": 440.1477244791196
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "886b0def47c123253482d03e69fdc4aa": {
+      "result": "0x000000000000000000000000000000000000000000000017dc46d769426dac8e"
+    },
+    "fe79cb7451ecee833417930e7c7625a7": {
+      "result": "0x0000000000000000000000000000000000000000000000000df3d55dd7bb0786"
+    },
+    "61783211b732979498a33287546ce819": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5772617070656420457468657200000000000000000000000000000000000000"
+    },
+    "3142d9d670d9f3bbe1f590ed10159c68": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045745544800000000000000000000000000000000000000000000000000000000"
+    },
+    "52a91a2f9ed1eef93397c798125fd3cd": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "105ecb26a17a3402eee8a7fb6bdc99e6": {
+      "result": "0x0000000000000000000000000000000000000000000000060000000000005a6f000000000000000000000000000000000000000000000000000000383d0e04090000000000000000000000000000000000000000000000000000000066e5f83b0000000000000000000000000000000000000000000000000000000066e5f83b0000000000000000000000000000000000000000000000060000000000005a6f"
+    }
+  }
+}

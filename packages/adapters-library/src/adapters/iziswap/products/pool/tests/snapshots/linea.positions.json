@@ -1,0 +1,111 @@
+{
+  "blockNumber": 1119633,
+  "latency": "Latency: 6.281 seconds",
+  "aggregatedValues": [],
+  "snapshot": [
+    {
+      "protocolId": "iziswap",
+      "name": "IZiSwap",
+      "description": "IZiSwap defi adapter",
+      "siteUrl": "https://izumi.finance",
+      "iconUrl": "https://izumi.finance/assets/sidebar/logo.svg",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "pool",
+      "chainName": "linea",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c",
+          "tokenId": "20000",
+          "name": "USDC / WETH - 3000",
+          "symbol": "USDC / WETH - 3000",
+          "decimals": 18,
+          "balanceRaw": "176538376n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "18399995n",
+              "type": "underlying",
+              "balance": 18.399995,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "48936n",
+              "type": "underlying-claimable",
+              "balance": 0.048936,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "5082611659909362n",
+              "type": "underlying",
+              "balance": 0.005082611659909362,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "18868061829946n",
+              "type": "underlying-claimable",
+              "balance": 0.000018868061829946,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "balance": 1.76538376e-10
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "04d1a65ffdeb225b36c2cc585c244ae3": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+    },
+    "85985ca6d4b0d19928ad281f8d743e73": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000004e20"
+    },
+    "1dc679906f73314f8154362da4767ff2": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000003026400000000000000000000000000000000000000000000000000000000000310ec000000000000000000000000000000000000000000000000000000000a85c30800000000000000000000000000000000009810a5bf4f32a4f6fd049c406dad1a0000000000000000000000000010414709fda3095fff70a264834729aec8fc6600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a"
+    },
+    "30e2a76d16e750058f3acae24c59a1f3": {
+      "result": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff000000000000000000000000e5d7c2a44ffddf6b295a15c148167daaaf5cf34f0000000000000000000000000000000000000000000000000000000000000bb8"
+    },
+    "0eb7096c5052622cd89a58ed410711df": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
+    },
+    "367e89349853ccf3d8c11438d5561802": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
+    },
+    "39cfb4df870b5e94406462db547a7362": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "31a7efe382f0de555f50acc077e43dec": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5772617070656420457468657200000000000000000000000000000000000000"
+    },
+    "88f3d189b3e3ca76154424954f274b10": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045745544800000000000000000000000000000000000000000000000000000000"
+    },
+    "c7bcbf5449d2a8d9192c2794bf57c6f1": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "c52d8b90f4a15fed5f9a1b723749201f": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000118c2fb00000000000000000000000000000000000000000000000000120e9bbe8528f2"
+    },
+    "0c97262658b2eff12cf4e21d672e5bab": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000bf2800000000000000000000000000000000000000000000000000001129101f7b3a"
+    }
+  }
+}

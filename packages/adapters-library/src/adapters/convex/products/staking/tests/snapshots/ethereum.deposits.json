@@ -1,0 +1,156 @@
+{
+  "aggregatedValues": ["USD0.00"],
+  "latency": "Latency: 1.547 seconds",
+  "snapshot": {
+    "protocolId": "convex",
+    "name": "Convex",
+    "description": "Convex pool adapter",
+    "siteUrl": "https://www.convexfinance.com/",
+    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "pool",
+    "chainName": "ethereum",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x5f582f63ab541de7775da96d5c3269c25272ef7b114090be9d6e4c83b91fc65b",
+        "protocolToken": {
+          "address": "0x30D9410ED1D5DA1F6C8391af5338C93ab8d4035C",
+          "name": "Curve.fi DAI/USDC/USDT Convex Deposit",
+          "symbol": "cvx3Crv",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x30D9410ED1D5DA1F6C8391af5338C93ab8d4035C",
+            "name": "Curve.fi DAI/USDC/USDT Convex Deposit",
+            "symbol": "cvx3Crv",
+            "decimals": 18,
+            "balanceRaw": "20000000000000000000n",
+            "type": "underlying",
+            "blockNumber": 14443070,
+            "tokens": [
+              {
+                "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+                "name": "Curve.fi DAI/USDC/USDT",
+                "symbol": "3Crv",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "20000000000000000000n",
+                "tokens": [
+                  {
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "type": "underlying",
+                    "balanceRaw": "8894178088540712200n",
+                    "balance": 8.894178088540713,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  },
+                  {
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "type": "underlying",
+                    "balanceRaw": "8809320n",
+                    "balance": 8.80932,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "type": "underlying",
+                    "balanceRaw": "2708060n",
+                    "balance": 2.70806,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 20,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
+              }
+            ],
+            "balance": 20
+          }
+        ],
+        "blockNumber": 14443070
+      }
+    ]
+  },
+  "rpcResponses": {
+    "9f5e2d54f49e226e7f6330911415eebd": {
+      "result": [
+        {
+          "address": "0x30d9410ed1d5da1f6c8391af5338c93ab8d4035c",
+          "blockHash": "0x388de5654e85e9e5ba934c59d281594d203b9d63dad39e877d5b8112752b2755",
+          "blockNumber": "0xdc623e",
+          "data": "0x000000000000000000000000000000000000000000000001158e460913d00000",
+          "logIndex": "0x90",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000689440f2ff927e1f24c72f1087e1faf471ece1c8",
+            "0x000000000000000000000000df286de6d3de10a6ad6452d0ba94af7ad7b68f9b"
+          ],
+          "transactionHash": "0x5f582f63ab541de7775da96d5c3269c25272ef7b114090be9d6e4c83b91fc65b",
+          "transactionIndex": "0x4a"
+        }
+      ]
+    },
+    "8823c6d96b0600bbc0d90d996665cdcd": {
+      "result": "0x000000000000000000000000000000000000000004fbc5e82dc764aea3f52059"
+    },
+    "68f562ae6b46328bfed70441bc448374": {
+      "result": "0x00000000000000000000000000000000000000000000000000056d586339a31b"
+    },
+    "9a711e7189efbc96c2b5c8e9a9ef8535": {
+      "result": "0x0000000000000000000000000000000000000000000000000001ab18ed36a889"
+    },
+    "be2bb94c46366583461255680dccb2e1": {
+      "result": "0x00000000000000000000000000000000000000000b34c84ac6889fa1a79af9ad"
+    },
+    "a9b3aab5f8333322efecf9ac99d8c29c": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000e44616920537461626c65636f696e000000000000000000000000000000000000"
+    },
+    "d0514a085409fad02b77f27db7da90df": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000034441490000000000000000000000000000000000000000000000000000000000"
+    },
+    "52831d57ff0054e2d19574cf8a1deb2a": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "edac88f54a4e0bfbb63af436439a786e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000855534420436f696e000000000000000000000000000000000000000000000000"
+    },
+    "092d5af2b2884fa97e9381c15e7b7e12": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
+    },
+    "e9d846642c9d3de421ceb1c96b5fc79e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "bf1b903c0736701b426c1bb341a57628": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a5465746865722055534400000000000000000000000000000000000000000000"
+    },
+    "a573d348fef0220a864ce470e3a5a402": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553445400000000000000000000000000000000000000000000000000000000"
+    },
+    "4519c508c75b592c6abde2197270b07d": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "57efedba642489e98a279c2f1f01471b": {
+      "result": "0x00000000000000000000000000000000000000000000000500000000000053a4000000000000000000000000000000000000000000000000000000453991484f00000000000000000000000000000000000000000000000000000000623b2aef00000000000000000000000000000000000000000000000000000000623b2aef00000000000000000000000000000000000000000000000500000000000053a4"
+    },
+    "c787a25b593ca7fde8b35a1295aa3fd2": {
+      "result": "0x"
+    },
+    "304c158125bed38839e5f29f1a2449ad": {
+      "result": "0x"
+    },
+    "ae65a5e7cb0ec1d8e18bf0ab50d87ce1": {
+      "result": "0x"
+    }
+  }
+}
