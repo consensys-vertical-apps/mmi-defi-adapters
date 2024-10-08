@@ -624,13 +624,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       factoryAddress,
       this.provider,
     )
-    const allPairsLength = 1 ?? Number(await factoryContract.allPairsLength())
-
-    if (allPairsLength > this.MAX_FACTORY_POOL_COUNT) {
-      throw new Error(
-        `Factory job size exceeds the limit ${allPairsLength} > ${this.MAX_FACTORY_POOL_COUNT}`,
-      )
-    }
+    const allPairsLength = Number(await factoryContract.allPairsLength())
 
     // Define jobSize to limit how many pairs to process in one go
     const jobSize = Math.min(this.MAX_FACTORY_POOL_COUNT, allPairsLength)
@@ -680,8 +674,6 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
               { ...token0, address: getAddress(token0.address) },
               { ...token1, address: getAddress(token1.address) },
             ],
-            token0: getAddress(token0.address),
-            token1: getAddress(token1.address),
           }
 
           results.push(result)
