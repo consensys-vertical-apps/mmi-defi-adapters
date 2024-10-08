@@ -1,0 +1,45 @@
+{
+  "latency": "Latency: 0.189 seconds",
+  "blockNumber": 19661884,
+  "snapshot": [
+    {
+      "protocolId": "lido",
+      "name": "Lido wstEth",
+      "description": "Lido defi adapter for wstEth",
+      "siteUrl": "https://stake.lido.fi/wrap",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "wst-eth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+          "name": "Wrapped liquid staked Ether 2.0",
+          "decimals": 18,
+          "symbol": "wstETH",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+              "name": "Liquid staked Ether 2.0",
+              "symbol": "stETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "1163738796554130296n",
+              "underlyingRate": 1.1637387965541304,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "fdbbde855bf1cac02f48400d97cf1a55": {
+      "result": "0x00000000000000000000000000000000000000000000000010266e450bf31378"
+    }
+  }
+}
