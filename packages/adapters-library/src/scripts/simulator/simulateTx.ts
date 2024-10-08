@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process'
 import { JsonRpcProvider, TransactionRequest, ethers } from 'ethers'
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
-import { Chain, ChainName } from '../../core/constants/chains'
+import { Chain, ChainIdToChainNameMap } from '../../core/constants/chains'
 import { bigintJsonStringify } from '../../core/utils/bigintJson'
 import { DefiProvider } from '../../defiProvider'
 import {
@@ -93,7 +93,7 @@ export async function simulateTx({
     })
     console.log('Transaction mined')
 
-    const chainName = ChainName[chainId]
+    const chainName = ChainIdToChainNameMap[chainId]
     const forkDefiProvider = new DefiProvider({
       provider: {
         [chainName]: forkDetails.providerUrl,

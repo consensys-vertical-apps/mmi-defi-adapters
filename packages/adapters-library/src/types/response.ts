@@ -1,5 +1,5 @@
 import type { Protocol } from '../adapters/protocols'
-import type { Chain, ChainName } from '../core/constants/chains'
+import type { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
 import type {
   MovementsByBlock,
   ProfitsWithRange,
@@ -37,7 +37,7 @@ export type AdapterErrorResponse = {
 
 export type AdapterResponse<ProtocolResponse> =
   | (ProtocolDetails & {
-      chainName: (typeof ChainName)[keyof typeof ChainName]
+      chainName: (typeof ChainIdToChainNameMap)[keyof typeof ChainIdToChainNameMap]
     } & (
         | (ProtocolResponse & { success: true })
         | (AdapterErrorResponse & { success: false })

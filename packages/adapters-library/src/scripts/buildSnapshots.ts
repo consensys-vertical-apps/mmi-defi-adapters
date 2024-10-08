@@ -8,7 +8,7 @@ import {
 } from '../adapters/aggrigateValues'
 import { Protocol } from '../adapters/protocols'
 import type { GetTransactionParams } from '../adapters/supportedProtocols'
-import { Chain, ChainName } from '../core/constants/chains'
+import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
@@ -298,7 +298,7 @@ export function buildSnapshots(program: Command) {
           })()
 
           const filePath = `./packages/adapters-library/src/adapters/${protocolId}/tests/snapshots/${
-            ChainName[testCase.chainId]
+            ChainIdToChainNameMap[testCase.chainId]
           }.${testCase.method}${
             testCase.key ? `.${kebabCase(testCase.key)}` : ''
           }.json`

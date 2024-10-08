@@ -14,17 +14,30 @@ export const Chain = {
 } as const
 export type Chain = (typeof Chain)[keyof typeof Chain]
 
+export const ChainNames = {
+  ethereum: 'ethereum',
+  op: 'op',
+  bsc: 'bsc',
+  matic: 'matic',
+  ftm: 'ftm',
+  base: 'base',
+  arb: 'arb',
+  avax: 'avax',
+  linea: 'linea',
+} as const
+export type ChainNames = (typeof ChainNames)[keyof typeof ChainNames]
+
 /**
  * Chain name map
  */
-export const ChainName: Record<Chain, string> = {
-  [Chain.Ethereum]: 'ethereum',
-  [Chain.Optimism]: 'op',
-  [Chain.Bsc]: 'bsc',
-  [Chain.Polygon]: 'matic',
-  [Chain.Fantom]: 'ftm',
-  [Chain.Base]: 'base',
-  [Chain.Arbitrum]: 'arb',
-  [Chain.Avalanche]: 'avax',
-  [Chain.Linea]: 'linea',
-}
+export const ChainIdToChainNameMap: Record<Chain, string> = {
+  [Chain.Ethereum]: ChainNames.ethereum,
+  [Chain.Optimism]: ChainNames.op,
+  [Chain.Bsc]: ChainNames.bsc,
+  [Chain.Polygon]: ChainNames.matic,
+  [Chain.Fantom]: ChainNames.ftm,
+  [Chain.Base]: ChainNames.base,
+  [Chain.Arbitrum]: ChainNames.arb,
+  [Chain.Avalanche]: ChainNames.avax,
+  [Chain.Linea]: ChainNames.linea,
+} as const
