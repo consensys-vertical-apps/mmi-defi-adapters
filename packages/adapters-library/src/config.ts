@@ -4,11 +4,11 @@ import { cwd } from 'node:process'
 import Database from 'better-sqlite3'
 import type { Database as BetterSqlite3Database } from 'better-sqlite3'
 import { z } from 'zod'
-import { ChainNames } from './core/constants/chains'
+import { ChainName } from './core/constants/chains'
 import { logger } from './core/utils/logger'
 import { DeepPartial } from './types/deepPartial'
 
-const defaultProviders: Record<ChainNames, string> = {
+const providers: Record<ChainName, string> = {
   ethereum: parseStringEnv(
     process.env.DEFI_ADAPTERS_PROVIDER_ETHEREUM,
     'https://mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
@@ -47,7 +47,7 @@ const defaultProviders: Record<ChainNames, string> = {
   ),
 }
 
-const defaultMaxBatchSize: Record<ChainNames, number> = {
+const maxBatchSize: Record<ChainName, number> = {
   ethereum: parseNumberEnv(
     process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_ETHEREUM,
     100,
@@ -62,10 +62,7 @@ const defaultMaxBatchSize: Record<ChainNames, number> = {
   linea: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_LINEA, 100),
 }
 
-const defaultHasUnlimitedEthGethLogsBlockRangeLimit: Record<
-  ChainNames,
-  boolean
-> = {
+const hasUnlimitedEthGethLogsBlockRangeLimit: Record<ChainName, boolean> = {
   ethereum: true,
   op: true,
   bsc: false,
@@ -81,17 +78,17 @@ const ConfigSchema = z
   .object({
     provider: z
       .object({
-        [ChainNames.ethereum]: z.string(),
-        [ChainNames.op]: z.string(),
-        [ChainNames.bsc]: z.string(),
-        [ChainNames.matic]: z.string(),
-        [ChainNames.ftm]: z.string(),
-        [ChainNames.base]: z.string(),
-        [ChainNames.arb]: z.string(),
-        [ChainNames.avax]: z.string(),
-        [ChainNames.linea]: z.string(),
+        [ChainName.ethereum]: z.string(),
+        [ChainName.op]: z.string(),
+        [ChainName.bsc]: z.string(),
+        [ChainName.matic]: z.string(),
+        [ChainName.ftm]: z.string(),
+        [ChainName.base]: z.string(),
+        [ChainName.arb]: z.string(),
+        [ChainName.avax]: z.string(),
+        [ChainName.linea]: z.string(),
       })
-      .default(defaultProviders),
+      .default(providers),
     useMulticallInterceptor: z
       .boolean()
       .default(
@@ -135,30 +132,30 @@ const ConfigSchema = z
       .default(parseBooleanEnv(process.env.DEFI_ADAPTERS_USE_FAILOVER)),
     hasUnlimitedEthGethLogsBlockRangeLimit: z
       .object({
-        [ChainNames.ethereum]: z.boolean(),
-        [ChainNames.op]: z.boolean(),
-        [ChainNames.bsc]: z.boolean(),
-        [ChainNames.matic]: z.boolean(),
-        [ChainNames.ftm]: z.boolean(),
-        [ChainNames.base]: z.boolean(),
-        [ChainNames.arb]: z.boolean(),
-        [ChainNames.avax]: z.boolean(),
-        [ChainNames.linea]: z.boolean(),
+        [ChainName.ethereum]: z.boolean(),
+        [ChainName.op]: z.boolean(),
+        [ChainName.bsc]: z.boolean(),
+        [ChainName.matic]: z.boolean(),
+        [ChainName.ftm]: z.boolean(),
+        [ChainName.base]: z.boolean(),
+        [ChainName.arb]: z.boolean(),
+        [ChainName.avax]: z.boolean(),
+        [ChainName.linea]: z.boolean(),
       })
-      .default(defaultHasUnlimitedEthGethLogsBlockRangeLimit),
+      .default(hasUnlimitedEthGethLogsBlockRangeLimit),
     maxBatchSize: z
       .object({
-        [ChainNames.ethereum]: z.number(),
-        [ChainNames.op]: z.number(),
-        [ChainNames.bsc]: z.number(),
-        [ChainNames.matic]: z.number(),
-        [ChainNames.ftm]: z.number(),
-        [ChainNames.base]: z.number(),
-        [ChainNames.arb]: z.number(),
-        [ChainNames.avax]: z.number(),
-        [ChainNames.linea]: z.number(),
+        [ChainName.ethereum]: z.number(),
+        [ChainName.op]: z.number(),
+        [ChainName.bsc]: z.number(),
+        [ChainName.matic]: z.number(),
+        [ChainName.ftm]: z.number(),
+        [ChainName.base]: z.number(),
+        [ChainName.arb]: z.number(),
+        [ChainName.avax]: z.number(),
+        [ChainName.linea]: z.number(),
       })
-      .default(defaultMaxBatchSize),
+      .default(maxBatchSize),
   })
   .strict()
   .default({})

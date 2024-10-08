@@ -14,7 +14,7 @@ export const Chain = {
 } as const
 export type Chain = (typeof Chain)[keyof typeof Chain]
 
-export const ChainNames = {
+export const ChainName = {
   ethereum: 'ethereum',
   op: 'op',
   bsc: 'bsc',
@@ -25,21 +25,21 @@ export const ChainNames = {
   avax: 'avax',
   linea: 'linea',
 } as const
-export type ChainNames = (typeof ChainNames)[keyof typeof ChainNames]
+export type ChainName = (typeof ChainName)[keyof typeof ChainName]
 
 /**
  * Chain name map
  */
 export const ChainIdToChainNameMap = {
-  [Chain.Ethereum]: ChainNames.ethereum,
-  [Chain.Optimism]: ChainNames.op,
-  [Chain.Bsc]: ChainNames.bsc,
-  [Chain.Polygon]: ChainNames.matic,
-  [Chain.Fantom]: ChainNames.ftm,
-  [Chain.Base]: ChainNames.base,
-  [Chain.Arbitrum]: ChainNames.arb,
-  [Chain.Avalanche]: ChainNames.avax,
-  [Chain.Linea]: ChainNames.linea,
+  [Chain.Ethereum]: ChainName.ethereum,
+  [Chain.Optimism]: ChainName.op,
+  [Chain.Bsc]: ChainName.bsc,
+  [Chain.Polygon]: ChainName.matic,
+  [Chain.Fantom]: ChainName.ftm,
+  [Chain.Base]: ChainName.base,
+  [Chain.Arbitrum]: ChainName.arb,
+  [Chain.Avalanche]: ChainName.avax,
+  [Chain.Linea]: ChainName.linea,
 } as const
 export type ChainIdToChainNameMap =
   (typeof ChainIdToChainNameMap)[keyof typeof ChainIdToChainNameMap]
