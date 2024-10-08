@@ -30,7 +30,7 @@ export type ChainNames = (typeof ChainNames)[keyof typeof ChainNames]
 /**
  * Chain name map
  */
-export const ChainIdToChainNameMap: Record<Chain, string> = {
+export const ChainIdToChainNameMap = {
   [Chain.Ethereum]: ChainNames.ethereum,
   [Chain.Optimism]: ChainNames.op,
   [Chain.Bsc]: ChainNames.bsc,
@@ -41,3 +41,5 @@ export const ChainIdToChainNameMap: Record<Chain, string> = {
   [Chain.Avalanche]: ChainNames.avax,
   [Chain.Linea]: ChainNames.linea,
 } as const
+export type ChainIdToChainNameMap =
+  (typeof ChainIdToChainNameMap)[keyof typeof ChainIdToChainNameMap]

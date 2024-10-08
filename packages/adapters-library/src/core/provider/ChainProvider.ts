@@ -46,12 +46,6 @@ export class ChainProvider {
         ChainIdToChainNameMap[chainId]
       ]
 
-    if (hasUnlimitedGetLogsRange === undefined) {
-      throw new Error(
-        `hasUnlimitedEthGethLogsBlockRangeLimit is missing for ${ChainIdToChainNameMap[chainId]}`,
-      )
-    }
-
     if (!enableMulticallQueue) {
       logger.debug({ chainId }, 'Using standard provider')
       return new CustomJsonRpcProvider({
