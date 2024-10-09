@@ -1,6 +1,9 @@
 export { Protocol } from './adapters/protocols'
 
-export { Chain, ChainName } from './core/constants/chains'
+export {
+  Chain,
+  ChainIdToChainNameMap as ChainName,
+} from './core/constants/chains'
 export { TimePeriod } from './core/constants/timePeriod'
 export { DefiProvider } from './defiProvider'
 export { PositionType } from './types/adapter'

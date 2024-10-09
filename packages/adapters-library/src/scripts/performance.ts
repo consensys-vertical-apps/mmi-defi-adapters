@@ -1,5 +1,5 @@
 import { Command } from 'commander'
-import { Chain, ChainName } from '../core/constants/chains'
+import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
@@ -106,7 +106,7 @@ async function runPositions({
       const config = maxBatchSize
         ? {
             maxBatchSize: {
-              [ChainName[chainId]]: maxBatchSize,
+              [ChainIdToChainNameMap[chainId]]: maxBatchSize,
             },
           }
         : undefined
@@ -168,7 +168,7 @@ function hasPrices(token: Token): boolean {
 function printData(data: Partial<Record<Chain, RunData[]>>) {
   for (const [chainId, runsData] of Object.entries(data)) {
     console.log({
-      chain: ChainName[Number(chainId) as Chain],
+      chain: ChainIdToChainNameMap[Number(chainId) as Chain],
       avgTimeTaken: `${(
         runsData.reduce((acc, curr) => acc + curr.timeTaken, 0) /
         runsData.length /

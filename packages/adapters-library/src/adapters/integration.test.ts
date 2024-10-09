@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs'
 import path, { resolve } from 'node:path'
-import { Chain, ChainName } from '../core/constants/chains'
+import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
@@ -198,7 +198,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )
 
       for (const [productId, adapter] of adapters) {
-        it(`protocol token addresses are checksumed (${protocolId} # ${productId} # ${ChainName[chainId]})`, async () => {
+        it(`protocol token addresses are checksumed (${protocolId} # ${productId} # ${ChainIdToChainNameMap[chainId]})`, async () => {
           let protocolTokenAddresses: string[]
           try {
             protocolTokenAddresses = (await adapter.getProtocolTokens()).map(
@@ -540,7 +540,9 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
 }
 
 function testKey({ chainId, method, key }: TestCase) {
-  return `${ChainName[chainId]}.${method}${key ? `.${kebabCase(key)}` : ''}`
+  return `${ChainIdToChainNameMap[chainId]}.${method}${
+    key ? `.${kebabCase(key)}` : ''
+  }`
 }
 
 async function fetchSnapshot(testCase: TestCase, protocolId: Protocol) {
