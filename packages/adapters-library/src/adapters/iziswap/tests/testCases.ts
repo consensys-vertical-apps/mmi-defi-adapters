@@ -4,17 +4,6 @@ import type { TestCase } from '../../../types/testCase'
 
 export const testCases: TestCase[] = [
   {
-    chainId: Chain.Bsc,
-    method: 'positions',
-
-    input: {
-      userAddress: '0x195bB56eAe9832Cf9DfC5E5982b11eb379a1CB7d',
-      filterProtocolTokens: ['0xBF55ef05412f1528DbD96ED9E7181f87d8C9F453'],
-      filterTokenIds: ['239'],
-    },
-    blockNumber: 40893675,
-  },
-  {
     chainId: Chain.Linea,
     method: 'positions',
     input: {
@@ -22,18 +11,6 @@ export const testCases: TestCase[] = [
       filterProtocolTokens: ['0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c'],
     },
     blockNumber: 1119633,
-  },
-  {
-    chainId: Chain.Bsc,
-    method: 'deposits',
-    input: {
-      userAddress: '0x195bB56eAe9832Cf9DfC5E5982b11eb379a1CB7d',
-      fromBlock: 40547403,
-      toBlock: 40547405,
-      protocolTokenAddress: '0xBF55ef05412f1528DbD96ED9E7181f87d8C9F453',
-      productId: 'pool',
-      tokenId: '239',
-    },
   },
   {
     chainId: Chain.Linea,

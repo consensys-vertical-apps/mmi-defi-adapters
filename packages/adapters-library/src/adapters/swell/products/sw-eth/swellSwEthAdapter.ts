@@ -12,14 +12,10 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { SwEth__factory } from '../../contracts'
 
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
-
 const PROTOCOL_TOKEN_ADDRESS = getAddress(
   '0xf951E335afb289353dc249e82926178EaC7DEd78',
 )
-export class SwellSwEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class SwellSwEthAdapter extends SimplePoolAdapter {
   productId = 'sw-eth'
 
   adapterSettings = {
@@ -40,8 +36,8 @@ export class SwellSwEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     }
   }
 
-  @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     return [
       {
         address: PROTOCOL_TOKEN_ADDRESS,

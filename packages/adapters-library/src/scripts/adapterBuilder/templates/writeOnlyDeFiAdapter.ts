@@ -9,7 +9,6 @@ export function writeOnlyDeFiAdapter({
 }) {
   return `import { z } from 'zod'
   import { WriteOnlyDeFiAdapter } from '../../../../core/adapters/writeOnlyAdapter'
-  import { CacheToFile } from '../../../../core/decorators/cacheToFile'
   import {
     ProtocolDetails,
     PositionType,
@@ -40,18 +39,6 @@ export function writeOnlyDeFiAdapter({
         chainId: this.chainId,
         productId: this.productId,
       }
-    }
-  
-    /**
-     * Update me.
-     * Add logic to build protocol token metadata
-     * We need protocol token names, decimals, and also linked underlying tokens
-     */
-    @CacheToFile({ fileKey: 'protocol-token' })
-    async buildMetadata() {
-      throw new NotImplementedError()
-  
-      return {}
     }
   
     /**

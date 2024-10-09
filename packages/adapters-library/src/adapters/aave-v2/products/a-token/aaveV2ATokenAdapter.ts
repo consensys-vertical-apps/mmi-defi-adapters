@@ -1,23 +1,5 @@
-import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import { logger } from '../../../../core/utils/logger'
-import { Helpers } from '../../../../scripts/helpers'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
-import {
-  AssetType,
-  GetEventsInput,
-  GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
-  PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
-  ProtocolTokenTvl,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../../types/adapter'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import { AaveBasePoolAdapter } from '../../common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../contracts'
 
@@ -42,7 +24,7 @@ export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens() {
     return super.getProtocolTokens()
   }

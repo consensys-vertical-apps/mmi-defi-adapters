@@ -13,7 +13,10 @@ import { filterMapAsync } from '../core/utils/filters'
 import { getOnChainTokenMetadata } from '../core/utils/getTokenMetadata'
 import { logger } from '../core/utils/logger'
 import { nativeToken, nativeTokenAddresses } from '../core/utils/nativeTokens'
-import { JsonMetadata, ProtocolToken } from '../types/IProtocolAdapter'
+import {
+  AdditionalMetadataWithReservedFields,
+  ProtocolToken,
+} from '../types/IProtocolAdapter'
 import {
   GetPositionsInput,
   MovementsByBlock,
@@ -39,7 +42,9 @@ export class Helpers {
     public readonly allJsonRpcProviders: Record<Chain, CustomJsonRpcProvider>,
   ) {}
 
-  async getProtocolTokenByAddress<AdditionalMetadata extends JsonMetadata>({
+  async getProtocolTokenByAddress<
+    AdditionalMetadata extends AdditionalMetadataWithReservedFields,
+  >({
     protocolTokens,
     protocolTokenAddress,
   }: {
@@ -296,7 +301,7 @@ export class Helpers {
     filterProtocolTokenAddresses,
     blockNumber,
   }: {
-    protocolTokens: (Erc20Metadata & { underlyingTokens: Erc20Metadata[] })[]
+    protocolTokens: ProtocolToken[]
     filterProtocolTokenAddresses: string[] | undefined
     blockNumber: number | undefined
   }): Promise<ProtocolTokenTvl[]> {

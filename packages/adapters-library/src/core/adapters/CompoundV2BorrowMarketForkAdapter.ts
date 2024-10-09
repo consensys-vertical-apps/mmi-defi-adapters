@@ -6,9 +6,8 @@ import {
 } from '../../contracts'
 import { BorrowEvent, RepayBorrowEvent } from '../../contracts/CompoundV2Cerc20'
 import { Helpers } from '../../scripts/helpers'
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
 import {
-  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -21,18 +20,16 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../types/adapter'
-import { Erc20Metadata } from '../../types/erc20Metadata'
 import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
-import { IMetadataBuilder } from '../decorators/cacheToFile'
+import { CacheToDb } from '../decorators/cacheToDb'
 import { NotImplementedError } from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync, filterMapSync } from '../utils/filters'
-import { logger } from '../utils/logger'
-import { buildMetadata } from './compoundV2BuildMetadata'
+import { getProtocolTokens } from './compoundV2ProtocolTokens'
 
 export abstract class CompoundV2BorrowMarketForkAdapter
-  implements IProtocolAdapter, IMetadataBuilder
+  implements IProtocolAdapter
 {
   abstract productId: string
 
@@ -69,18 +66,13 @@ export abstract class CompoundV2BorrowMarketForkAdapter
 
   abstract getProtocolDetails(): ProtocolDetails
 
-  async buildMetadata() {
-    return await buildMetadata({
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
+    return await getProtocolTokens({
       chainId: this.chainId,
       provider: this.provider,
       contractAddresses: this.contractAddresses,
     })
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
   }
 
   async getPositions({
@@ -103,8 +95,10 @@ export abstract class CompoundV2BorrowMarketForkAdapter
         return undefined
       }
 
-      const { protocolToken, underlyingToken } =
-        await this.fetchPoolMetadata(poolContractAddress)
+      const {
+        underlyingTokens: [underlyingToken],
+        ...protocolToken
+      } = await this.getProtocolTokenByAddress(poolContractAddress)
 
       const poolContract = CompoundV2Cerc20__factory.connect(
         poolContractAddress,
@@ -128,7 +122,7 @@ export abstract class CompoundV2BorrowMarketForkAdapter
         type: TokenType.Protocol,
         tokens: [
           {
-            ...underlyingToken,
+            ...underlyingToken!,
             balanceRaw: borrowBalance,
             type: TokenType.Underlying,
           },
@@ -190,8 +184,10 @@ export abstract class CompoundV2BorrowMarketForkAdapter
   }: GetEventsInput & {
     extractAmount: (logs: LogDescription) => bigint | undefined
   }): Promise<MovementsByBlock[]> {
-    const { protocolToken, underlyingToken } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+    const {
+      underlyingTokens: [underlyingToken],
+      ...protocolToken
+    } = await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const cTokenContract = CompoundV2Cerc20__factory.connect(
       protocolTokenAddress,
@@ -258,7 +254,7 @@ export abstract class CompoundV2BorrowMarketForkAdapter
           },
           tokens: [
             {
-              ...underlyingToken,
+              ...underlyingToken!,
               balanceRaw: eventAmount,
               type: TokenType.Underlying,
               blockNumber: txReceipt.blockNumber,
@@ -280,22 +276,12 @@ export abstract class CompoundV2BorrowMarketForkAdapter
     throw new NotImplementedError()
   }
 
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
+  private async getProtocolTokenByAddress(
+    protocolTokenAddress: string,
+  ): Promise<ProtocolToken> {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
   }
 }

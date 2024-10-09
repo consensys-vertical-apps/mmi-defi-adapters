@@ -15,5 +15,5 @@
     "skipLibCheck": true,
     "types": ["node", "jest"]
   },
-  "include": ["src", "src/adapters/**/metadata/*.json"]
+  "include": ["src"]
 }

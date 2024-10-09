@@ -1,29 +1,18 @@
-import { getAddress } from 'ethers'
-
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
-  GetRewardPositionsInput,
   MovementsByBlock,
   PositionType,
   ProtocolDetails,
   ProtocolPosition,
-  TokenBalance,
   TokenType,
-  Underlying,
-  UnderlyingReward,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -32,17 +21,7 @@ import { ConvexFactory__factory } from '../../contracts'
 
 const PRICE_PEGGED_TO_ONE = 1
 
-export type ExtraRewardToken = {
-  token: Erc20Metadata
-  manager: string
-}
-
-export type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-  extraRewardTokens: ExtraRewardToken[]
-}
-
-export class ConvexPoolAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class ConvexPoolAdapter extends SimplePoolAdapter {
   productId = 'pool'
 
   adapterSettings = {
@@ -93,8 +72,8 @@ export class ConvexPoolAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     throw new NotImplementedError()
   }
 
-  @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const convexFactory = ConvexFactory__factory.connect(
       CONVEX_FACTORY_ADDRESS,
       this.provider,
@@ -102,7 +81,7 @@ export class ConvexPoolAdapter extends SimplePoolAdapter<AdditionalMetadata> {
 
     const pools = await convexFactory.poolLength()
 
-    const metadata: ProtocolToken<AdditionalMetadata>[] = []
+    const metadata: ProtocolToken[] = []
     await Promise.all(
       Array.from({ length: Number(pools) }, async (_, i) => {
         const convexData = await convexFactory.poolInfo(i)
@@ -115,7 +94,6 @@ export class ConvexPoolAdapter extends SimplePoolAdapter<AdditionalMetadata> {
         metadata.push({
           ...convexToken,
           underlyingTokens: [underlyingToken],
-          extraRewardTokens: [],
         })
       }),
     )

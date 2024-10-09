@@ -1,9 +1,8 @@
-import path from 'node:path'
 import Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
 import {
   IMetadataProvider,
-  SQLiteMetadataProvider,
+  buildMetadataProviders,
 } from './SQLiteMetadataProvider'
 import { Protocol } from './adapters/protocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
@@ -11,7 +10,7 @@ import { supportedProtocols } from './adapters/supportedProtocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { Chain, ChainName } from './core/constants/chains'
+import { Chain, ChainIdToChainNameMap } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import {
   NotSupportedError,
@@ -44,40 +43,7 @@ import {
   PricePerShareResponse,
   TotalValueLockResponse,
 } from './types/response'
-
-import { existsSync } from 'node:fs'
 import { IUnwrapCache, IUnwrapCacheProvider, UnwrapCache } from './unwrapCache'
-
-function buildMetadataProviders(): Record<Chain, IMetadataProvider> {
-  return Object.values(Chain).reduce(
-    (acc, chain) => {
-      acc[chain] = new SQLiteMetadataProvider(...dbParams(chain))
-      return acc
-    },
-    {} as Record<Chain, IMetadataProvider>,
-  )
-}
-
-const dbParams = (chainId: Chain): [string, Database.Options] => {
-  const dbPath = path.join(__dirname, '../../..', `${ChainName[chainId]}.db`)
-
-  if (
-    !(process.env.DEFI_ALLOW_DB_CREATION !== 'false') &&
-    !existsSync(dbPath)
-  ) {
-    logger.info(`Database file does not exist: ${dbPath}`)
-    throw new Error(`Database file does not exist: ${dbPath}`)
-  }
-
-  logger.info(`Database file exists: ${dbPath}`)
-
-  return [
-    dbPath,
-    {
-      fileMustExist: !(process.env.DEFI_ALLOW_DB_CREATION !== 'false'),
-    },
-  ]
-}
 
 export class DefiProvider {
   private parsedConfig
@@ -90,10 +56,16 @@ export class DefiProvider {
 
   constructor(
     config?: DeepPartial<IConfig>,
-    metadataProviders?: Record<Chain, IMetadataProvider>,
+    metadataProviderSettings?: Record<
+      Chain,
+      {
+        dbPath: string
+        options: Database.Options
+      }
+    >,
     unwrapCacheProvider?: IUnwrapCacheProvider,
   ) {
-    this.metadataProviders = metadataProviders ?? buildMetadataProviders()
+    this.metadataProviders = buildMetadataProviders(metadataProviderSettings)
     this.unwrapCache = new UnwrapCache(unwrapCacheProvider)
 
     this.parsedConfig = new Config(config)
@@ -235,7 +207,7 @@ export class DefiProvider {
           enrichTime: endTime - unwrapTime,
         },
         chainId: adapter.chainId,
-        chainName: ChainName[adapter.chainId],
+        chainName: ChainIdToChainNameMap[adapter.chainId],
         protocolId: adapter.protocolId,
         productId: adapter.productId,
         userAddress,
@@ -420,7 +392,7 @@ export class DefiProvider {
         endTime,
         timeTaken: endTime - startTime,
         chainId: adapter.chainId,
-        chainName: ChainName[adapter.chainId],
+        chainName: ChainIdToChainNameMap[adapter.chainId],
         protocolId: adapter.protocolId,
         productId: adapter.productId,
         timePeriod,
@@ -492,7 +464,7 @@ export class DefiProvider {
             endTime,
             timeTaken: endTime - startTime,
             chainId: adapter.chainId,
-            chainName: ChainName[adapter.chainId],
+            chainName: ChainIdToChainNameMap[adapter.chainId],
             protocolId: adapter.protocolId,
             productId: adapter.productId,
             protocolTokenAddress: getAddress(address),
@@ -948,14 +920,14 @@ export class DefiProvider {
 
       return {
         ...protocolDetails,
-        chainName: ChainName[adapter.chainId],
+        chainName: ChainIdToChainNameMap[adapter.chainId],
         success: true,
         ...adapterResult,
       }
     } catch (error) {
       return {
         ...protocolDetails,
-        chainName: ChainName[adapter.chainId],
+        chainName: ChainIdToChainNameMap[adapter.chainId],
         ...this.handleError(error),
       }
     }

@@ -1,17 +1,16 @@
 import { WeiPerEther, getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../../scripts/helpers'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
+import {
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -29,19 +28,12 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { Savings, Savings__factory } from '../../contracts'
 
-type AngleProtocolMetadata = {
-  protocolToken: Erc20Metadata
-  underlyingToken: Erc20Metadata
-}[]
-
 enum Stablecoin {
   stEUR = 'stEUR',
   stUSD = 'stUSD',
 }
 
-export class AngleProtocolSavingsAdapter
-  implements IProtocolAdapter, IMetadataBuilder
-{
+export class AngleProtocolSavingsAdapter implements IProtocolAdapter {
   productId = 'savings'
   protocolId: Protocol
   chainId: Chain
@@ -84,8 +76,8 @@ export class AngleProtocolSavingsAdapter
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-tokens' })
-  async buildMetadata() {
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const contractAddresses: Record<
       Stablecoin,
       Partial<Record<Chain, string>>
@@ -173,68 +165,63 @@ export class AngleProtocolSavingsAdapter
       }),
     )
 
-    const metadataObject: AngleProtocolMetadata = Array.from(
-      protocolTokens,
-    ).map(([key, protocolToken]) => ({
-      protocolToken,
-      underlyingToken: underlyingTokens.get(key)!,
+    return Array.from(protocolTokens).map(([key, protocolToken]) => ({
+      ...protocolToken,
+      underlyingTokens: [underlyingTokens.get(key)!],
     }))
-
-    return metadataObject
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    const metadata = await this.buildMetadata()
-    return metadata.map((m) => m.protocolToken)
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const tokens = await this.buildMetadata()
+    const tokens = await this.getProtocolTokens()
 
-    return filterMapAsync(tokens, async (token) => {
-      if (
-        input.protocolTokenAddresses &&
-        !input.protocolTokenAddresses.includes(token.protocolToken.address)
-      ) {
-        return undefined
-      }
+    return filterMapAsync(
+      tokens,
+      async ({ underlyingTokens: [underlyingToken], ...protocolToken }) => {
+        if (
+          input.protocolTokenAddresses &&
+          !input.protocolTokenAddresses.includes(protocolToken.address)
+        ) {
+          return undefined
+        }
 
-      const savingContract = Savings__factory.connect(
-        token.protocolToken.address,
-        this.provider,
-      )
-      const balance = await savingContract.balanceOf(input.userAddress, {
-        blockTag: input.blockNumber,
-      })
+        const savingContract = Savings__factory.connect(
+          protocolToken.address,
+          this.provider,
+        )
+        const balance = await savingContract.balanceOf(input.userAddress, {
+          blockTag: input.blockNumber,
+        })
 
-      if (balance === 0n) {
-        return undefined
-      }
+        if (balance === 0n) {
+          return undefined
+        }
 
-      const assetsBalance = await savingContract.convertToAssets(balance, {
-        blockTag: input.blockNumber,
-      })
+        const assetsBalance = await savingContract.convertToAssets(balance, {
+          blockTag: input.blockNumber,
+        })
 
-      return {
-        ...token.protocolToken,
-        type: TokenType.Protocol,
-        balanceRaw: balance,
-        tokens: [
-          {
-            ...token.underlyingToken,
-            type: TokenType.Underlying,
-            balanceRaw: assetsBalance,
-          },
-        ],
-      }
-    })
+        return {
+          ...protocolToken,
+          type: TokenType.Protocol,
+          balanceRaw: balance,
+          tokens: [
+            {
+              ...underlyingToken!,
+              type: TokenType.Underlying,
+              balanceRaw: assetsBalance,
+            },
+          ],
+        }
+      },
+    )
   }
 
   async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    const tokens = await this.buildMetadata()
-    const token = tokens.find(
-      (t) => t.protocolToken.address === input.protocolTokenAddress,
-    )!
+    const tokens = await this.getProtocolTokens()
+    const {
+      underlyingTokens: [underlyingToken],
+      ...protocolToken
+    } = tokens.find((t) => t.address === input.protocolTokenAddress)!
 
     const savingContract = Savings__factory.connect(
       input.protocolTokenAddress,
@@ -251,10 +238,10 @@ export class AngleProtocolSavingsAdapter
     return eventResults.map((event) => ({
       blockNumber: event.blockNumber,
       transactionHash: event.transactionHash,
-      protocolToken: token.protocolToken,
+      protocolToken: protocolToken,
       tokens: [
         {
-          ...token.underlyingToken,
+          ...underlyingToken!,
           type: TokenType.Underlying,
           balanceRaw: event.args?.assets,
         },
@@ -263,10 +250,11 @@ export class AngleProtocolSavingsAdapter
   }
 
   async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    const tokens = await this.buildMetadata()
-    const token = tokens.find(
-      (t) => t.protocolToken.address === input.protocolTokenAddress,
-    )!
+    const tokens = await this.getProtocolTokens()
+    const {
+      underlyingTokens: [underlyingToken],
+      ...protocolToken
+    } = tokens.find((t) => t.address === input.protocolTokenAddress)!
 
     const savingContract = Savings__factory.connect(
       input.protocolTokenAddress,
@@ -283,10 +271,10 @@ export class AngleProtocolSavingsAdapter
     return eventResults.map((event) => ({
       blockNumber: event.blockNumber,
       transactionHash: event.transactionHash,
-      protocolToken: token.protocolToken,
+      protocolToken: protocolToken,
       tokens: [
         {
-          ...token.underlyingToken,
+          ...underlyingToken!,
           type: TokenType.Underlying,
           balanceRaw: event.args?.assets,
         },
@@ -297,41 +285,44 @@ export class AngleProtocolSavingsAdapter
   async getTotalValueLocked(
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
-    const tokens = await this.buildMetadata()
+    const tokens = await this.getProtocolTokens()
 
     return await Promise.all(
-      tokens.map(async (token) => {
-        const saving = Savings__factory.connect(
-          token.protocolToken.address,
-          this.provider,
-        )
-        const totalValueLocked = await saving.totalAssets({
-          blockTag: input.blockNumber,
-        })
-        const totalSupply = await saving.totalSupply({
-          blockTag: input.blockNumber,
-        })
-        return {
-          ...token.protocolToken,
-          type: TokenType.Protocol,
-          totalSupplyRaw: totalSupply,
-          tokens: [
-            {
-              ...token.underlyingToken,
-              type: TokenType.Underlying,
-              totalSupplyRaw: totalValueLocked,
-            },
-          ],
-        }
-      }),
+      tokens.map(
+        async ({ underlyingTokens: [underlyingToken], ...protocolToken }) => {
+          const saving = Savings__factory.connect(
+            protocolToken.address,
+            this.provider,
+          )
+          const totalValueLocked = await saving.totalAssets({
+            blockTag: input.blockNumber,
+          })
+          const totalSupply = await saving.totalSupply({
+            blockTag: input.blockNumber,
+          })
+          return {
+            ...protocolToken,
+            type: TokenType.Protocol,
+            totalSupplyRaw: totalSupply,
+            tokens: [
+              {
+                ...underlyingToken!,
+                type: TokenType.Underlying,
+                totalSupplyRaw: totalValueLocked,
+              },
+            ],
+          }
+        },
+      ),
     )
   }
 
   async unwrap(input: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const tokens = await this.buildMetadata()
-    const token = tokens.find(
-      (t) => t.protocolToken.address === input.protocolTokenAddress,
-    )!
+    const tokens = await this.getProtocolTokens()
+    const {
+      underlyingTokens: [underlyingToken],
+      ...protocolToken
+    } = tokens.find((t) => t.address === input.protocolTokenAddress)!
 
     const savingsContract = Savings__factory.connect(
       input.protocolTokenAddress,
@@ -345,12 +336,12 @@ export class AngleProtocolSavingsAdapter
     )
 
     return {
-      ...token.protocolToken,
+      ...protocolToken,
       baseRate: 1,
       type: TokenType.Protocol,
       tokens: [
         {
-          ...token.underlyingToken,
+          ...underlyingToken!,
           type: TokenType.Underlying,
           underlyingRateRaw,
         },

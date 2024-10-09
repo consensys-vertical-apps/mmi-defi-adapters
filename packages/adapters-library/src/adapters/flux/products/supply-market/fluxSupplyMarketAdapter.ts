@@ -1,10 +1,5 @@
 import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import {
-  AssetType,
-  PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import { contractAddresses } from '../../common/contractAddresses'
 
 export class FluxSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
@@ -31,11 +26,6 @@ export class FluxSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
       chainId: this.chainId,
       productId: this.productId,
     }
-  }
-
-  @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
-    return await super.buildMetadata()
   }
 
   /**

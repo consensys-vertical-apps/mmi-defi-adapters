@@ -11,14 +11,10 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { RocketTokenRETH__factory } from '../../../rocket-pool/contracts'
 
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
-
 const PROTOCOL_TOKEN_ADDRESS = getAddress(
   '0xae78736Cd615f374D3085123A210448E74Fc6393',
 )
-export class RocketPoolRethAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class RocketPoolRethAdapter extends SimplePoolAdapter {
   productId = 'reth'
 
   adapterSettings = {
@@ -39,7 +35,7 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter<AdditionalMetadata>
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens() {
     return [
       {

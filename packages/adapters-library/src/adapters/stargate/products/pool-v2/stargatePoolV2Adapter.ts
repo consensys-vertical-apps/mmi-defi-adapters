@@ -2,7 +2,6 @@ import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { Helpers } from '../../../../scripts/helpers'
 import {
@@ -22,12 +21,9 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { staticChainDataV2 } from '../../common/staticChainData'
 import { StargatePoolNative__factory } from '../../contracts'
-
-type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
 export class StargatePoolV2Adapter implements IProtocolAdapter {
   productId = 'pool-v2'
@@ -73,8 +69,8 @@ export class StargatePoolV2Adapter implements IProtocolAdapter {
     }
   }
 
-  @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const { poolAddresses: pools } = staticChainDataV2[this.chainId]!
     return await Promise.all(
       Object.values(pools).map(async (poolAddress) => {
@@ -104,7 +100,7 @@ export class StargatePoolV2Adapter implements IProtocolAdapter {
 
   private async getProtocolTokenByAddress(
     protocolTokenAddress: string,
-  ): Promise<ProtocolToken<AdditionalMetadata>> {
+  ): Promise<ProtocolToken> {
     return this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,

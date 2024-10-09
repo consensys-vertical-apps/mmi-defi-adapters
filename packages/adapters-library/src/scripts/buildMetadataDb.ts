@@ -1,32 +1,25 @@
-import { promises as fs } from 'node:fs'
+import fs from 'node:fs'
 import path from 'node:path'
+import Database from 'better-sqlite3'
 import chalk from 'chalk'
 import { Command } from 'commander'
-import partition from 'lodash/partition'
-import { parse, print, types, visit } from 'recast'
 import { Protocol } from '../adapters/protocols'
 import { supportedProtocols } from '../adapters/supportedProtocols'
 import { AdaptersController } from '../core/adaptersController'
-import { Chain, ChainName } from '../core/constants/chains'
-import { IMetadataBuilder } from '../core/decorators/cacheToFile'
-import {
-  NotImplementedError,
-  ProviderMissingError,
-} from '../core/errors/errors'
+import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
+import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { pascalCase } from '../core/utils/caseConversion'
+import { filterMapSync } from '../core/utils/filters'
 import { logger } from '../core/utils/logger'
-import { writeAndLintFile } from '../core/utils/writeAndLintFile'
-import { Json } from '../types/json'
-import { getMetadataInvalidAddresses } from './addressValidation'
-import { multiChainFilter, multiProtocolFilter } from './commandFilters'
-import { sortEntries } from './utils/sortEntries'
-import n = types.namedTypes
-import b = types.builders
-
-import Database from 'better-sqlite3'
-import { ProtocolToken } from '../types/IProtocolAdapter'
+import {
+  AdditionalMetadataWithReservedFields,
+  Erc20ExtendedMetadata,
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../types/IProtocolAdapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
+import { getInvalidAddresses } from './addressValidation'
+import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
 export function buildMetadataDb(
   program: Command,
@@ -40,161 +33,162 @@ export function buildMetadataDb(
       'comma-separated protocols filter (e.g. stargate,aave-v2)',
     )
     .option(
+      '-pd, --products <products>',
+      'comma-separated product filter (e.g. voting-escrow,market-borrow)',
+    )
+    .option(
       '-c, --chains <chains>',
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
     )
     .showHelpAfterError()
-    .action(async ({ protocols, chains }) => {
-      const filterProtocolIds = multiProtocolFilter(protocols)
-      const filterChainIds = multiChainFilter(chains)
+    .action(
+      async ({
+        protocols,
+        products,
+        chains,
+      }: { protocols?: string; products?: string; chains?: string }) => {
+        const filterProtocolIds = multiProtocolFilter(protocols)
+        const filterProductIds = products?.split(',')
+        const filterChainIds = multiChainFilter(chains)
 
-      await createDatabases()
+        const dbConnections = createDatabases(filterChainIds)
 
-      for (const [protocolIdKey, supportedChains] of Object.entries(
-        supportedProtocols,
-      )) {
-        const protocolId = protocolIdKey as Protocol
-        if (filterProtocolIds && !filterProtocolIds.includes(protocolId)) {
-          continue
-        }
-
-        for (const [chainIdKey, _] of Object.entries(supportedChains)) {
-          const chainId = +chainIdKey as Chain
-          if (filterChainIds && !filterChainIds.includes(chainId)) {
-            continue
-          }
-
-          const provider = chainProviders[chainId]
-
-          if (!provider) {
-            logger.error({ chainId }, 'No provider found for chain')
-            throw new ProviderMissingError(chainId)
-          }
-
-          const chainProtocolAdapters =
-            adaptersController.fetchChainProtocolAdapters(chainId, protocolId)
-
-          for (const [_, adapter] of chainProtocolAdapters) {
-            if (
-              !(
-                typeof adapter.getProtocolTokens === 'function' &&
-                // private/secret param added at runtime
-                //@ts-ignore
-                adapter.getProtocolTokens.isCacheToDbDecorated
-              )
-            ) {
-              continue
-            }
-
-            // Start time tracking for getProtocolTokens
-            console.time(
-              `getProtocolTokens-${protocolId}-${adapter.productId}-${chainId}`,
-            )
-
-            const metadataDetails = (await adapter
-              .getProtocolTokens(true)
-              .catch((e) => {
-                if (!(e instanceof NotImplementedError)) {
-                  throw e
+        try {
+          await Promise.allSettled(
+            dbConnections.map(async ([chainId, db]) => {
+              for (const [protocolIdKey, supportedChains] of Object.entries(
+                supportedProtocols,
+              )) {
+                const protocolId = protocolIdKey as Protocol
+                if (
+                  (filterProtocolIds &&
+                    !filterProtocolIds.includes(protocolId)) ||
+                  !(chainId in supportedChains)
+                ) {
+                  continue
                 }
-                return undefined
-              })) as
-              | {
-                  metadata: ProtocolToken[]
-                  adapterDetails: {
-                    protocolId: Protocol
-                    productId: string
-                    chainId: Chain
+
+                const provider = chainProviders[chainId]
+
+                if (!provider) {
+                  logger.error({ chainId }, 'No provider found for chain')
+                  throw new ProviderMissingError(chainId)
+                }
+
+                const chainProtocolAdapters =
+                  adaptersController.fetchChainProtocolAdapters(
+                    chainId,
+                    protocolId,
+                  )
+
+                for (const [_, adapter] of chainProtocolAdapters) {
+                  if (
+                    !(
+                      typeof adapter.getProtocolTokens === 'function' &&
+                      // private/secret param added at runtime
+                      //@ts-ignore
+                      adapter.getProtocolTokens.isCacheToDbDecorated
+                    ) ||
+                    (filterProductIds &&
+                      !filterProductIds.includes(adapter.productId))
+                  ) {
+                    continue
+                  }
+
+                  const pools = await buildAdapterMetadata(adapter)
+
+                  if (pools) {
+                    await writeProtocolTokensToDb({
+                      protocolId: adapter.protocolId,
+                      productId: adapter.productId,
+                      chainId: adapter.chainId,
+                      pools,
+                      db,
+                    })
                   }
                 }
-              | undefined
-
-            // End time tracking for getProtocolTokens
-            console.timeEnd(
-              `getProtocolTokens-${protocolId}-${adapter.productId}-${chainId}`,
-            )
-
-            if (!metadataDetails) {
-              continue
-            }
-
-            const { metadata, adapterDetails } = metadataDetails
-
-            const invalidAddresses = getMetadataInvalidAddresses(metadata)
-
-            if (invalidAddresses.length > 0) {
-              console.error(chalk.yellow(invalidAddresses.join('\n')))
-
-              console.error(
-                chalk.red(
-                  '\n * The above addresses found in the metadata file are not in checksum format.',
-                ),
-              )
-              console.error(
-                chalk.green(
-                  '\n * Please ensure that addresses are in checksum format by wrapping them with getAddress from the ethers package.',
-                ),
-              )
-              console.error(
-                chalk.green(
-                  '\n * Please checksum your addresses inside the buildMetadata() method.',
-                ),
-              )
-              return
-            }
-
-            await writeProtocolTokensToDb({
-              ...adapterDetails,
-              metadata,
-            })
+              }
+            }),
+          )
+        } finally {
+          for (const [_, db] of Object.values(dbConnections)) {
+            db.close()
           }
         }
-      }
-    })
+      },
+    )
 }
+
+async function buildAdapterMetadata(adapter: IProtocolAdapter) {
+  // Start time tracking for getProtocolTokens
+  console.time(
+    `getProtocolTokens-${adapter.protocolId}-${adapter.productId}-${adapter.chainId}`,
+  )
+
+  const metadataDetails = await adapter.getProtocolTokens(true)
+
+  // End time tracking for getProtocolTokens
+  console.timeEnd(
+    `getProtocolTokens-${adapter.protocolId}-${adapter.productId}-${adapter.chainId}`,
+  )
+
+  const invalidAddresses = getInvalidAddresses(metadataDetails)
+
+  if (invalidAddresses.length > 0) {
+    console.error(chalk.yellow(invalidAddresses.join('\n')))
+
+    console.error(
+      chalk.red(
+        '\n * The above addresses found in the metadata file are not in checksum format.',
+      ),
+    )
+    console.error(
+      chalk.green(
+        '\n * Please ensure that addresses are in checksum format by wrapping them with getAddress from the ethers package.',
+      ),
+    )
+    console.error(
+      chalk.green(
+        '\n * Please checksum your addresses inside the buildMetadata() method.',
+      ),
+    )
+    return
+  }
+
+  return metadataDetails
+}
+
+type TokenTableName =
+  | 'underlying_tokens'
+  | 'reward_tokens'
+  | 'extra_reward_tokens'
 
 async function writeProtocolTokensToDb({
   protocolId,
   productId,
   chainId,
-  metadata,
+  pools,
+  db,
 }: {
   protocolId: Protocol
   productId: string
   chainId: Chain
-  metadata: ProtocolToken[] // Array of ProtocolToken objects
+  pools: ProtocolToken<
+    AdditionalMetadataWithReservedFields & { underlyingTokens: Erc20Metadata[] }
+  >[]
+  db: Database.Database
 }) {
   try {
-    const dbPath = path.resolve(`./${ChainName[chainId]}.db`)
+    db.prepare(`
+      INSERT OR IGNORE INTO adapters (protocol_id, product_id)
+      VALUES (?, ?);
+    `).run(protocolId, productId)
 
-    try {
-      await fs.access(dbPath)
-      logger.info(`Database file already exists: ${dbPath}`)
-    } catch {
-      logger.info(`Database file does not exist: ${dbPath}`)
-      throw `Database file does not exist: ${dbPath}`
-    }
-
-    const db = new Database(dbPath)
-
-    // // Enable performance optimizations
-    db.exec('PRAGMA synchronous = OFF;') // Reduce disk synchronization overhead
-    db.exec('PRAGMA journal_mode = WAL;') // Use Write-Ahead Logging for faster writes
-    db.exec('PRAGMA foreign_keys = OFF;') // Disable foreign key constraints temporarily for performance
-
-    // Step 1: Ensure adapter exists or create it
-    const insertOrIgnoreAdapterQuery = `
-    INSERT OR IGNORE INTO adapters (protocol_id, product_id)
-    VALUES (?, ?);
-  `
-    db.prepare(insertOrIgnoreAdapterQuery).run(protocolId, productId)
-
-    const getAdapterIdQuery = `
-    SELECT adapter_id FROM adapters WHERE protocol_id = ? AND product_id = ?;
-  `
     const adapter = db
-      .prepare(getAdapterIdQuery)
-      .get(protocolId, productId) as { adapter_id: string }
+      .prepare(`
+        SELECT adapter_id FROM adapters WHERE protocol_id = ? AND product_id = ?;
+      `)
+      .get(protocolId, productId) as { adapter_id: number | bigint } | undefined
 
     const adapterId = adapter?.adapter_id
 
@@ -202,185 +196,144 @@ async function writeProtocolTokensToDb({
       throw new Error('Failed to retrieve or create adapter')
     }
 
-    const insertPoolStmt = db.prepare(`
-      INSERT INTO pools (
-        adapter_id,
-        pool_address,
-        adapter_pool_id,
-        additional_data
-      ) VALUES (?, ?, ?, ?);
-    `)
-
-    // Define relatedTokenQueries for underlying_tokens, reward_tokens, extra_reward_tokens
-    const relatedTokenQueries: Record<string, string> = {
-      underlying_tokens: `
-        INSERT OR REPLACE INTO underlying_tokens (
-          pool_id,
-          token_address,
-          additional_data
-        ) VALUES (?, ?, ?);
-      `,
-      reward_tokens: `
-        INSERT OR REPLACE INTO reward_tokens (
-          pool_id,
-          token_address,
-          additional_data
-        ) VALUES (?, ?, ?);
-      `,
-      extra_reward_tokens: `
-        INSERT OR REPLACE INTO extra_reward_tokens (
-          pool_id,
-          token_address,
-          additional_data
-        ) VALUES (?, ?, ?);
-      `,
-    }
-
-    // Use a single transaction for all inserts to boost performance
-    db.exec('BEGIN TRANSACTION')
-
-    // Batch insert function
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    function batchInsert(query: string, data: any[][]) {
-      const stmt = db.prepare(query)
-      const batch = db.transaction((items) => {
-        for (const item of items) {
-          stmt.run(...item)
-        }
-      })
-      batch(data)
-    }
-
-    // Prepare data for tokens batch insert (pools + related tokens)
-
-    const tokenData: [string, string, string, number][] = []
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    const relatedTokenData: any[] = []
-
-    // Helper function to collect token data for batch insert
-    function collectTokenData(
-      poolId: number,
-      tokens: Erc20Metadata[] | undefined,
-      tableName: string,
-    ) {
-      if (!tokens || tokens.length === 0) return
-
-      tokens.forEach((token) => {
-        // Add token to be inserted into the tokens table
-        tokenData.push([
-          token.address,
-          token.name,
-          token.symbol,
-          token.decimals,
-        ])
-
-        // Add related token to the specific table (underlying_tokens, reward_tokens, etc.)
-        relatedTokenData.push({
-          tableName,
-          values: [
-            poolId,
-            token.address,
-            //@ts-ignore
-            // Todo: underlying token type not yet accepting additionalData
-            JSON.stringify(token.additionalData || {}),
-          ],
-        })
-      })
-    }
-
-    // Process each pool and collect token data
-    for (const pool of metadata) {
-      try {
-        const {
-          address,
-          tokenId,
-          underlyingTokens,
-          name,
-          symbol,
-          decimals,
-          // Todo: ProtocolToken type does not yet support rewardTokens and extraRewardTokens
-          //@ts-ignore
-          rewardTokens,
-          // Todo: ProtocolToken type does not yet support rewardTokens and extraRewardTokens
-          //@ts-ignore
-          extraRewardTokens,
-          ...additionalData
-        } = pool
-
-        // Add the main token data for pools
-        tokenData.push([address, pool.name, pool.symbol, pool.decimals])
-
-        // Insert pool data
-        const result = insertPoolStmt.run(
-          adapterId,
-          address,
-          tokenId || null,
-          JSON.stringify(additionalData),
-        )
-
-        const poolId = result.lastInsertRowid
-
-        if (!poolId) {
-          throw new Error('Failed to insert pool')
-        }
-
-        // Collect related token data
-        collectTokenData(
-          poolId as number,
-          underlyingTokens,
-          'underlying_tokens',
-        )
-        collectTokenData(poolId as number, rewardTokens, 'reward_tokens')
-        collectTokenData(
-          poolId as number,
-          extraRewardTokens,
-          'extra_reward_tokens',
-        )
-      } catch (error) {
-        console.error('Error saving pool to database:', pool, {
-          chainId,
-          productId,
-          protocolId,
-          adapterId,
-        })
-        throw error
-      }
-    }
-
-    // Batch insert all tokens into the tokens table
-    batchInsert(
-      `
+    const upsertTokenStmt = db.prepare(`
       INSERT OR REPLACE INTO tokens (
         token_address,
         token_name,
         token_symbol,
         token_decimals
       ) VALUES (?, ?, ?, ?);
-    `,
-      tokenData,
-    )
+    `)
+
+    const upsertPoolTokenStmts: Record<TokenTableName, Database.Statement> = {
+      underlying_tokens: db.prepare(`
+        INSERT OR REPLACE INTO underlying_tokens (
+          pool_id,
+          token_address,
+          additional_data
+        ) VALUES (?, ?, ?);
+      `),
+      reward_tokens: db.prepare(`
+        INSERT OR REPLACE INTO reward_tokens (
+          pool_id,
+          token_address,
+          additional_data
+        ) VALUES (?, ?, ?);
+      `),
+      extra_reward_tokens: db.prepare(`
+        INSERT OR REPLACE INTO extra_reward_tokens (
+          pool_id,
+          token_address,
+          additional_data
+        ) VALUES (?, ?, ?);
+      `),
+    }
+
+    // Use a single transaction for all inserts to boost performance
+    db.exec('BEGIN TRANSACTION')
+
+    const underlyingTokenData: [string, string, string, number][] = []
+    const poolTokenData: {
+      tableName: TokenTableName
+      values: [number | bigint, string, string]
+    }[] = []
+
+    // Process each pool and collect token data
+    for (const pool of pools) {
+      const {
+        address,
+        name,
+        symbol,
+        decimals,
+        tokenId,
+        underlyingTokens,
+        rewardTokens,
+        extraRewardTokens,
+        ...additionalData
+      } = pool
+
+      // Insert pool token
+      upsertTokenStmt.run([address, name, symbol, decimals])
+
+      // Insert pool
+      let poolId: number | bigint
+      const poolRowResult = db
+        .prepare(`
+          SELECT pool_id FROM pools WHERE adapter_id = ? AND pool_address = ? AND (adapter_pool_id = ? OR ? IS NULL)
+        `)
+        .get(adapterId, address, tokenId ?? null, tokenId ?? null) as
+        | { pool_id: number | bigint }
+        | undefined
+
+      if (poolRowResult) {
+        db.prepare(`
+          UPDATE pools SET additional_data = ? WHERE pool_id = ?
+        `).run(JSON.stringify(additionalData), poolRowResult.pool_id)
+
+        poolId = poolRowResult.pool_id
+      } else {
+        const insertResult = db
+          .prepare(`
+          INSERT INTO pools (
+            adapter_id,
+            pool_address,
+            adapter_pool_id,
+            additional_data
+          ) VALUES (?, ?, ?, ?)
+          RETURNING pool_id;
+        `)
+          .run(
+            adapterId,
+            address,
+            tokenId ?? null,
+            JSON.stringify(additionalData),
+          )
+
+        poolId = insertResult.lastInsertRowid
+      }
+
+      collectTokenData(
+        poolId,
+        underlyingTokens,
+        'underlying_tokens',
+        underlyingTokenData,
+        poolTokenData,
+      )
+      collectTokenData(
+        poolId,
+        rewardTokens,
+        'reward_tokens',
+        underlyingTokenData,
+        poolTokenData,
+      )
+      collectTokenData(
+        poolId,
+        extraRewardTokens,
+        'extra_reward_tokens',
+        underlyingTokenData,
+        poolTokenData,
+      )
+    }
+
+    for (const [address, name, symbol, decimals] of underlyingTokenData) {
+      upsertTokenStmt.run([address, name, symbol, decimals])
+    }
 
     // Batch insert related tokens directly into their respective tables
-    for (const { tableName, values } of relatedTokenData) {
-      const query = relatedTokenQueries[tableName]
-      if (query) {
-        batchInsert(query, [values])
-      }
+    for (const { tableName, values } of poolTokenData) {
+      const stmt = upsertPoolTokenStmts[tableName]
+      batchInsert(db, stmt, [values])
     }
 
     // Commit the transaction
     db.exec('COMMIT')
 
-    // Re-enable foreign key constraints after the transaction is complete
-    db.exec('PRAGMA foreign_keys = ON;')
-
     console.log(
       'All protocol tokens and their related tokens have been saved to the database successfully.',
-      { protocolId, productId, chainId, pools: metadata.length, adapterId },
+      { protocolId, productId, chainId, pools: pools.length, adapterId },
     )
-
-    db.close()
   } catch (error) {
+    db.exec('ROLLBACK')
     console.error('Error saving protocol tokens to database:', {
       error,
       protocolId,
@@ -388,6 +341,44 @@ async function writeProtocolTokensToDb({
       chainId,
     })
   }
+}
+
+// Helper function to collect token data for batch insert
+function collectTokenData(
+  poolId: number | bigint,
+  tokens: Erc20ExtendedMetadata[] | undefined,
+  tableName: TokenTableName,
+  tokenData: [string, string, string, number][],
+  poolTokenData: {
+    tableName: string
+    values: [number | bigint, string, string]
+  }[],
+) {
+  ;(tokens ?? []).forEach(
+    ({ address, name, symbol, decimals, ...additionalData }) => {
+      // Add token to be inserted into the tokens table
+      tokenData.push([address, name, symbol, decimals])
+
+      // Add related token to the specific table (underlying_tokens, reward_tokens, extra_reward_tokens)
+      poolTokenData.push({
+        tableName,
+        values: [poolId, address, JSON.stringify(additionalData)],
+      })
+    },
+  )
+}
+
+function batchInsert(
+  db: Database.Database,
+  stmt: Database.Statement,
+  data: unknown[][],
+) {
+  const batch = db.transaction((items) => {
+    for (const item of items) {
+      stmt.run(...item)
+    }
+  })
+  batch(data)
 }
 
 const createTableQueries = {
@@ -414,7 +405,7 @@ const createTableQueries = {
         additional_data TEXT,
         FOREIGN KEY (adapter_id) REFERENCES adapters(adapter_id),
         FOREIGN KEY (pool_address) REFERENCES tokens(token_address),
-        UNIQUE (pool_address, adapter_id)
+        UNIQUE (adapter_pool_id, pool_address, adapter_id)
     );`,
   underlying_tokens: `
     CREATE TABLE IF NOT EXISTS underlying_tokens (
@@ -445,23 +436,46 @@ const createTableQueries = {
     );`,
 }
 
-async function createDatabase(name: string) {
+/**
+ * Creates and returns database connections for each chain.
+ * @param filterChainIds - An optional array of chain IDs to filter the databases.
+ * @returns An array of [chainId, database] pairs.
+ */
+function createDatabases(
+  filterChainIds: Chain[] | undefined,
+): [Chain, Database.Database][] {
+  return filterMapSync(
+    Object.entries(ChainIdToChainNameMap),
+    ([chainIdKey, chainName]) => {
+      const chainId = +chainIdKey as Chain
+      if (filterChainIds && !filterChainIds.includes(chainId)) {
+        return
+      }
+
+      return [chainId, createDatabase(chainName)]
+    },
+  )
+}
+
+/**
+ * Creates a database and tables for a given chain.
+ * @param name - The name of the chain.
+ * @returns The database connection.
+ */
+function createDatabase(name: string) {
   try {
     const dbPath = path.resolve(`./${name}.db`)
 
-    try {
-      await fs.access(dbPath)
+    if (fs.existsSync(dbPath)) {
       logger.debug(`Database file already exists: ${dbPath}`)
-    } catch {
+    } else {
       logger.debug(`Database file does not exist: ${dbPath}`)
     }
 
     const db = new Database(dbPath)
 
     // Create each table and verify its creation
-    for (const [tableName, createTableQuery] of Object.entries(
-      createTableQueries,
-    )) {
+    for (const createTableQuery of Object.values(createTableQueries)) {
       db.exec(createTableQuery)
     }
 
@@ -470,17 +484,9 @@ async function createDatabase(name: string) {
       .all()
     logger.debug(`Tables in ${name} database:`, tables)
 
-    db.close()
-
-    // Check if database file exists, if not create it
+    return db
   } catch (error) {
     logger.error(`Failed to create database or tables for '${name}':`, error)
-  }
-}
-
-// Function to create databases for each chain
-function createDatabases() {
-  for (const [chain, name] of Object.entries(ChainName)) {
-    createDatabase(name)
+    throw error
   }
 }

@@ -23,7 +23,6 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { staticChainData } from '../../common/staticChainData'
 import {
@@ -31,7 +30,7 @@ import {
   StargateToken__factory,
 } from '../../contracts'
 
-type AdditionalMetadata = { poolId: number; underlyingTokens: Erc20Metadata[] }
+type AdditionalMetadata = { poolId: number }
 
 export class StargatePoolAdapter implements IProtocolAdapter {
   productId = 'pool'
@@ -157,7 +156,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const lpFactoryContract = StargateFactory__factory.connect(
       staticChainData[this.chainId]!.factoryAddress,

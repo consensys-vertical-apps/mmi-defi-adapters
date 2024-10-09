@@ -1,14 +1,18 @@
-import { getAddress } from 'ethers'
+import { ethers, getAddress } from 'ethers'
+import { TransferEvent } from '../../../../contracts/Erc20'
+import { Erc20__factory } from '../../../../contracts/factories/Erc20__factory'
 import { AdaptersController } from '../../../../core/adaptersController'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { logger } from '../../../../core/utils/logger'
+import { filterMapAsync } from '../../../../core/utils/filters'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../../scripts/helpers'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -25,23 +29,13 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import {
-  CurveStakingAdapterMetadata,
-  GaugeType,
-  queryCurveGauges,
-} from '../../../curve/common/getPoolData'
-import { Protocol } from '../../../protocols'
-
-import { TransferEvent } from '../../../../contracts/Erc20'
-import { Erc20__factory } from '../../../../contracts/factories/Erc20__factory'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   CrvMinter__factory,
   GaugeN__factory,
   GaugeSingle__factory,
 } from '../../../curve/contracts'
+import { Protocol } from '../../../protocols'
+import { getCurvePoolData } from '../../common/getPoolData'
 
 const CurveTokenAddresses = {
   [Chain.Ethereum]: getAddress('0xd533a949740bb3306d119cc777fa900ba034cd52'),
@@ -59,7 +53,20 @@ const CRV_TOKEN = {
     'https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg',
 }
 
-export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
+type AdditionalMetadata = {
+  gaugeType: GaugeType
+}
+
+enum GaugeType {
+  SINGLE = 'single',
+  DOUBLE = 'double',
+  N_GAUGE = 'n-gauge',
+  GAUGE_V4 = 'gauge-v4',
+  CHILD = 'child-chain',
+  REWARDS_ONLY = 'rewards-only',
+}
+
+export class CurveStakingAdapter implements IProtocolAdapter {
   productId = 'staking'
   protocolId: Protocol
   chainId: Chain
@@ -88,10 +95,6 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
     this.helpers = helpers
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -106,15 +109,47 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
-    return queryCurveGauges(this.chainId, this.provider)
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+    const pools = await getCurvePoolData(this.chainId, this.productId)
+
+    return await filterMapAsync(pools, async (pool) => {
+      if (!pool.gaugeAddress) {
+        return
+      }
+
+      const protocolToken = await getTokenMetadata(
+        pool.lpTokenAddress,
+        this.chainId,
+        this.provider,
+      )
+
+      return {
+        ...protocolToken,
+        address: getAddress(pool.gaugeAddress),
+        underlyingTokens: [protocolToken],
+        gaugeType: await this.resolveGaugeType(pool.gaugeAddress),
+      }
+    })
   }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
+  private async resolveGaugeType(gaugeAddress: string): Promise<GaugeType> {
+    let bytecode = await this.provider.getCode(gaugeAddress)
+    const minimalProxyMatch =
+      /0x363d3d373d3d3d363d73(.*)5af43d82803e903d91602b57fd5bf3/.exec(bytecode)
+    if (minimalProxyMatch)
+      bytecode = await this.provider.getCode(`0x${minimalProxyMatch[1]}`)
+
+    const doubleGaugeMethod = ethers.id('rewarded_token()').slice(2, 10)
+    const nGaugeMethod = ethers.id('reward_tokens(uint256)').slice(2, 10)
+    const gaugeV4Method = ethers
+      .id('claimable_reward_write(address,address)')
+      .slice(2, 10)
+
+    if (bytecode.includes(gaugeV4Method)) return GaugeType.GAUGE_V4
+    if (bytecode.includes(nGaugeMethod)) return GaugeType.N_GAUGE
+    if (bytecode.includes(doubleGaugeMethod)) return GaugeType.DOUBLE
+    return GaugeType.SINGLE
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
@@ -130,15 +165,14 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const [underlyingLpToken] =
-      await this.getUnderlyingTokens(protocolTokenAddress)
-
-    const protocolToken = await this.getProtocolToken(protocolTokenAddress)
+    const {
+      underlyingTokens: [underlyingToken],
+      ...protocolToken
+    } = await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     //// curve staking contracts dont have transfer events so use underlying lp token events instead
     const movements = await this.helpers.getErc20Movements({
-      protocolToken: underlyingLpToken!,
-
+      protocolToken: underlyingToken!,
       filter: {
         fromBlock,
         toBlock,
@@ -160,14 +194,14 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const [underlyingLpToken] =
-      await this.getUnderlyingTokens(protocolTokenAddress)
-
-    const protocolToken = await this.getProtocolToken(protocolTokenAddress)
+    const {
+      underlyingTokens: [underlyingToken],
+      ...protocolToken
+    } = await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     //// curve staking contracts dont have transfer events so use underlying lp token events instead
     const movements = await this.helpers.getErc20Movements({
-      protocolToken: underlyingLpToken!,
+      protocolToken: underlyingToken!,
 
       filter: {
         fromBlock,
@@ -202,57 +236,22 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
     tokenId,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    const { underlyingTokens, ...protocolToken } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+
     return this.helpers.unwrapOneToOne({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
-      underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress),
+      protocolToken,
+      underlyingTokens,
     })
   }
 
-  private async getProtocolToken(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
-  }
-  private async getUnderlyingTokens(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).underlyingTokens
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
-  }
-
-  async fetchGauge(
+  private async getProtocolTokenByAddress(
     protocolTokenAddress: string,
-  ): Promise<CurveStakingAdapterMetadata[Key]> {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
+  ): Promise<ProtocolToken<AdditionalMetadata>> {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
   }
 
   async getRewardPositions({
@@ -260,14 +259,13 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
     blockNumber,
     protocolTokenAddress,
   }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
-    const gauge = await this.fetchGauge(protocolTokenAddress)
-
-    const gaugeType = gauge.protocolToken.guageType
+    const { gaugeType, ...protocolToken } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     switch (gaugeType) {
       case GaugeType.SINGLE: {
         const contract = GaugeSingle__factory.connect(
-          gauge.protocolToken.address,
+          protocolToken.address,
           this.provider,
         )
 
@@ -297,7 +295,7 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
         const rewards: UnderlyingReward[] = []
 
         const contract = GaugeN__factory.connect(
-          gauge.protocolToken.address,
+          protocolToken.address,
           this.provider,
         )
 
@@ -377,13 +375,13 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
 
     const withdrawn = endBalance - startBalance
 
-    const protocolToken = await this.getProtocolToken(protocolTokenAddress)
+    const { underlyingTokens, gaugeType, ...protocolToken } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
-    const gauge = await this.fetchGauge(protocolTokenAddress)
     const extraRewardTokens: MovementsByBlock[] = []
-    if (gauge.protocolToken.guageType === GaugeType.N_GAUGE) {
+    if (gaugeType === GaugeType.N_GAUGE) {
       const contract = GaugeN__factory.connect(
-        gauge.protocolToken.address,
+        protocolToken.address,
         this.provider,
       )
 
@@ -457,5 +455,3 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
     ]
   }
 }
-
-type Key = keyof CurveStakingAdapterMetadata

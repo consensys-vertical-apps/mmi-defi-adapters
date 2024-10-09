@@ -1,9 +1,4 @@
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import {
-  AssetType,
-  PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import { MorphoBasePoolAdapter } from '../../common/morphoBasePoolAdapter'
 
 export class MorphoAaveV2OptimizerBorrowAdapter extends MorphoBasePoolAdapter {
@@ -25,10 +20,5 @@ export class MorphoAaveV2OptimizerBorrowAdapter extends MorphoBasePoolAdapter {
       chainId: this.chainId,
       productId: this.productId,
     }
-  }
-
-  @CacheToFile({ fileKey: 'optimizer-borrow' })
-  async buildMetadata() {
-    return super.buildMetadata()
   }
 }

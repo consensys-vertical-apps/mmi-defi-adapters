@@ -1,13 +1,12 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -22,7 +21,6 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import {
   BalancerRateProvider__factory,
@@ -34,15 +32,7 @@ import {
   xRenzoDeposit,
 } from './config'
 
-type Metadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
-  }
->
-
-export class RenzoEzEthAdapter implements IProtocolAdapter, IMetadataBuilder {
+export class RenzoEzEthAdapter implements IProtocolAdapter {
   productId = 'ez-eth'
   protocolId: Protocol
   chainId: Chain
@@ -84,25 +74,20 @@ export class RenzoEzEthAdapter implements IProtocolAdapter, IMetadataBuilder {
     }
   }
 
-  @CacheToFile({ fileKey: 'ez-eth' })
-  async buildMetadata(): Promise<Metadata> {
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const tokens = TokenAddresses[this.chainId]!
     const [protocolToken, underlyingToken] = await Promise.all([
       this.helpers.getTokenMetadata(tokens.protocolToken),
       this.helpers.getTokenMetadata(tokens.underlyingToken),
     ])
-    return {
-      [protocolToken.address]: {
-        protocolToken,
-        underlyingToken,
-      },
-    }
-  }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
+    return [
+      {
+        ...protocolToken,
+        underlyingTokens: [underlyingToken],
+      },
+    ]
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
@@ -119,7 +104,7 @@ export class RenzoEzEthAdapter implements IProtocolAdapter, IMetadataBuilder {
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -131,7 +116,7 @@ export class RenzoEzEthAdapter implements IProtocolAdapter, IMetadataBuilder {
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.deposits({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -167,17 +152,18 @@ export class RenzoEzEthAdapter implements IProtocolAdapter, IMetadataBuilder {
     tokenId,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const [protocolToken, underlyingToken] = await Promise.all([
-      this.getProtocolToken(protocolTokenAddress),
-      this.getUnderlyingToken(protocolTokenAddress),
-    ])
+    const {
+      underlyingTokens: [underlyingToken],
+      ...protocolToken
+    } = await this.getProtocolTokenByAddress(protocolTokenAddress)
+
     return {
       ...protocolToken,
       baseRate: 1,
       type: TokenType.Protocol,
       tokens: [
         {
-          ...underlyingToken,
+          ...underlyingToken!,
           type: TokenType.Underlying,
           underlyingRateRaw: await this.getExchangeRate(blockNumber),
         },
@@ -185,29 +171,10 @@ export class RenzoEzEthAdapter implements IProtocolAdapter, IMetadataBuilder {
     }
   }
 
-  private async getProtocolToken(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
-  }
-  private async getUnderlyingToken(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).underlyingToken
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
+  private async getProtocolTokenByAddress(protocolTokenAddress: string) {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
   }
 }

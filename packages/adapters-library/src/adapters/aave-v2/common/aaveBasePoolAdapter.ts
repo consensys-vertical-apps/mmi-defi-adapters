@@ -1,11 +1,8 @@
 import { getAddress } from 'ethers'
-import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
-import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
-import { logger } from '../../../core/utils/logger'
 import { Helpers } from '../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -21,12 +18,8 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
-  TokenBalance,
-  TokenType,
-  Underlying,
   UnwrapExchangeRate,
   UnwrapInput,
-  UnwrappedTokenExchangeRate,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'
@@ -34,8 +27,6 @@ import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
 } from '../contracts'
-
-type AdditionalMetadata = { underlyingTokens: Erc20Metadata[] }
 
 const protocolDataProviderContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
@@ -86,7 +77,7 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
 
   async getProtocolTokenByAddress(
     protocolTokenAddress: string,
-  ): Promise<ProtocolToken<AdditionalMetadata>> {
+  ): Promise<ProtocolToken> {
     return this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,
@@ -172,7 +163,7 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
       protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
@@ -181,7 +172,7 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
     const reserveTokens =
       await protocolDataProviderContract.getAllReservesTokens()
 
-    const metadataObject: ProtocolToken<AdditionalMetadata>[] = []
+    const metadataObject: ProtocolToken[] = []
 
     const promises = reserveTokens.map(async ({ tokenAddress }) => {
       const reserveConfigurationData =

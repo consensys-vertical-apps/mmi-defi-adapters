@@ -6,9 +6,11 @@ import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcPr
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { nativeTokenAddresses } from '../../../../core/utils/nativeTokens'
 import { Helpers } from '../../../../scripts/helpers'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
+import {
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -22,7 +24,6 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { ChainLink__factory, OneInchOracle__factory } from '../../contracts'
 import { priceAdapterConfig } from './priceV2Config'
@@ -82,8 +83,10 @@ export class PricesV2UsdAdapter implements IProtocolAdapter {
    * Update me.
    * Returning an array of your protocol tokens.
    */
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return [{ address: '', name: '', symbol: '', decimals: 0 }]
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
+    return [
+      { address: '', name: '', symbol: '', decimals: 0, underlyingTokens: [] },
+    ]
   }
 
   /**

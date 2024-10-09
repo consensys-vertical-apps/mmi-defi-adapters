@@ -13,7 +13,6 @@ import type {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
-  Underlying,
   UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -30,14 +29,20 @@ export type Json =
 
 export type JsonMetadata = Record<string, Json>
 
-export type ProtocolToken<
-  // biome-ignore lint/complexity/noBannedTypes: <explanation>
-  AdditionalMetadata extends JsonMetadata = {},
-> = Erc20Metadata & {
-  underlyingTokens?: Erc20Metadata[]
-  // rewardTokens?: Erc20Metadata[]
-  // extraRewardTokens?: Erc20Metadata[]
+export type Erc20ExtendedMetadata = Erc20Metadata & JsonMetadata
+
+export type AdditionalMetadataWithReservedFields = {
+  underlyingTokens?: Erc20ExtendedMetadata[]
+  rewardTokens?: Erc20ExtendedMetadata[]
+  extraRewardTokens?: Erc20ExtendedMetadata[]
   tokenId?: string
+} & JsonMetadata
+
+export type ProtocolToken<
+  AdditionalMetadata extends
+    AdditionalMetadataWithReservedFields = JsonMetadata,
+> = Erc20Metadata & {
+  underlyingTokens: Erc20ExtendedMetadata[]
 } & AdditionalMetadata
 
 export interface IProtocolAdapter {

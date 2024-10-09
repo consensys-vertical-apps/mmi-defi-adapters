@@ -6,9 +6,11 @@ import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcPr
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../../scripts/helpers'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
+import {
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -94,7 +96,7 @@ export class IZiSwapPoolAdapter implements IProtocolAdapter {
     }
   }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     throw new NotImplementedError()
   }
 

@@ -2,17 +2,13 @@ import { getAddress, parseEther } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetTotalValueLockedInput,
   PositionType,
   ProtocolDetails,
   ProtocolTokenTvl,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -25,14 +21,10 @@ import {
 
 const amount1 = parseEther('1')
 
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
-
 const PROTOCOL_TOKEN_ADDRESS = getAddress(
   '0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38',
 )
-export class StakeWiseOsEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
   productId = 'os-eth'
 
   adapterSettings = {
@@ -65,8 +57,8 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter<AdditionalMetadata>
     }
   }
 
-  @CacheToDb()
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     return [
       {
         name: 'StakeWise osETH',

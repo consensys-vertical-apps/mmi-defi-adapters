@@ -17,22 +17,18 @@ export function uniswapV2PoolForkAdapterTemplate({
     UniswapV2PoolForkPositionStrategy,
   } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
   import { Chain } from '../../../../core/constants/chains'
-  import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-  import { NotImplementedError } from '../../../../core/errors/errors'
   import {
     ProtocolDetails,
     PositionType,
   } from '../../../../types/adapter'
-  import { Protocol } from '../../../protocols'
   
   export class ${adapterClassName} extends UniswapV2PoolForkAdapter {
+    productId = '${productId}'
 
     protected PROTOCOL_TOKEN_PREFIX_OVERRIDE = {
-    name: 'Update with protocol name',
-    symbol: 'Update with protocol symbol',
-  }
-
-    productId = '${productId}'
+      name: 'Update with protocol name',
+      symbol: 'Update with protocol symbol',
+    }
   
     getProtocolDetails(): ProtocolDetails {
       return {
@@ -73,11 +69,6 @@ export function uniswapV2PoolForkAdapterTemplate({
       }
     }
   
-    @CacheToFile({ fileKey: 'protocol-token' })
-    async getProtocolTokens() {
-      return super.getProtocolTokens()
-    }
-
     /**
    * Retrieves transaction parameters for specific actions based on provided inputs.
    *

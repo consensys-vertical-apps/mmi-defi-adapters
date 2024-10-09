@@ -1,30 +1,19 @@
-import { getAddress } from 'ethers'
-
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
-  GetPositionsInput,
   GetPositionsInputWithTokenAddresses,
   GetRewardPositionsInput,
   MovementsByBlock,
   PositionType,
   ProtocolDetails,
   ProtocolPosition,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnderlyingReward,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
@@ -38,13 +27,11 @@ import { RewardPaidEvent } from '../../contracts/ConvexRewardFactorySidechain'
 
 const PRICE_PEGGED_TO_ONE = 1
 
-export type ExtraRewardToken = {
-  token: Erc20Metadata
+type ExtraRewardToken = Erc20Metadata & {
   manager: string
 }
 
-export type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
+type AdditionalMetadata = {
   extraRewardTokens: ExtraRewardToken[]
 }
 
@@ -93,7 +80,7 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
     ]
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const convexFactory = ConvexFactorySidechain__factory.connect(
       CONVEX_FACTORY_ADDRESS,
@@ -111,7 +98,6 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
           await Promise.all([
             getTokenMetadata(convexData.rewards, this.chainId, this.provider), // convex staking contract is missing name, symbol, decimal
             getTokenMetadata(convexData.lptoken, this.chainId, this.provider),
-
             this.getExtraRewardTokensMetadata(convexData.rewards),
           ])
 
@@ -150,8 +136,8 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
           )
 
           extraRewards.push({
+            ...rewardTokenMetadata,
             manager: rewardTokenMetadata.address,
-            token: rewardTokenMetadata,
           })
         }),
       )
@@ -199,6 +185,7 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
             balances.map(async (balance) => {
               return {
                 type: TokenType.UnderlyingClaimable,
+                // TODO - Use DB
                 ...(await getTokenMetadata(
                   balance.token,
                   this.chainId,
@@ -251,6 +238,7 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
           protocolToken,
           tokens: [
             {
+              // TODO - Use DB
               ...(await getTokenMetadata(
                 _rewardToken,
                 this.chainId,
@@ -287,6 +275,7 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
       balances.map(async (balance) => {
         return {
           type: TokenType.UnderlyingClaimable,
+          // TODO - Use DB
           ...(await getTokenMetadata(
             balance.token,
             this.chainId,

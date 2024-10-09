@@ -3,26 +3,17 @@ import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
-  GetPositionsInputWithTokenAddresses,
   GetRewardPositionsInput,
   MovementsByBlock,
   PositionType,
   ProtocolDetails,
-  ProtocolPosition,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnderlyingReward,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
@@ -37,18 +28,16 @@ import {
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardsFactory'
 
-export const CONVEX_TOKEN_ADDRESS = '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b'
+const CONVEX_TOKEN_ADDRESS = '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b'
 
 const PRICE_PEGGED_TO_ONE = 1
 
-export type ExtraRewardToken = {
-  token: Erc20Metadata
+type ExtraRewardToken = Erc20Metadata & {
   manager: string
 }
 
-export type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-  extraRewardTokens: ExtraRewardToken[]
+type AdditionalMetadata = {
+  extraRewardTokens?: ExtraRewardToken[]
 }
 
 export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> {
@@ -118,7 +107,7 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
     }
   }
 
-  @CacheToFile({ fileKey: 'metadata' })
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const convexFactory = ConvexFactory__factory.connect(
       CONVEX_FACTORY_ADDRESS,
@@ -226,7 +215,10 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
 
         return {
           type: TokenType.UnderlyingClaimable,
-          ...extraRewardToken.token,
+          address: extraRewardToken.address,
+          symbol: extraRewardToken.symbol,
+          name: extraRewardToken.name,
+          decimals: extraRewardToken.decimals,
           balanceRaw: balance,
         }
       },
@@ -323,8 +315,8 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
         protocolTokenAddress,
       })
 
-    const responsePromises = extraRewardTokens!.map(
-      async (extraRewardToken) => {
+    const responsePromises = (extraRewardTokens ?? []).map(
+      async (extraRewardToken: ExtraRewardToken) => {
         const extraRewardTracker = ConvexRewardTracker__factory.connect(
           extraRewardToken.manager,
           this.provider,
@@ -352,7 +344,10 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
             protocolToken: { name, address, decimals, symbol },
             tokens: [
               {
-                ...extraRewardToken.token,
+                address: extraRewardToken.address,
+                symbol: extraRewardToken.symbol,
+                name: extraRewardToken.name,
+                decimals: extraRewardToken.decimals,
                 balanceRaw: protocolTokenMovementValueRaw,
                 type: TokenType.Underlying,
               },
@@ -362,8 +357,6 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
         })
       },
     )
-
-    if (!responsePromises) return []
 
     const nestedResults = await Promise.all(responsePromises)
     const response: MovementsByBlock[] = nestedResults.flat()
@@ -403,7 +396,7 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
           )
 
           extraRewards.push({
-            token: rewardTokenMetadata,
+            ...rewardTokenMetadata,
             manager: extraRewardTokenManager,
           })
         }),

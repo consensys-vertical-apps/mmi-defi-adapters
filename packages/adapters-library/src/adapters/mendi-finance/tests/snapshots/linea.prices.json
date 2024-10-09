@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 0.226 seconds",
+  "latency": "Latency: 0.197 seconds",
   "blockNumber": 3717652,
   "snapshot": [
     {
@@ -17,8 +17,8 @@
         {
           "address": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
           "name": "Mendi USD Coin",
-          "decimals": 8,
           "symbol": "meUSDC",
+          "decimals": 8,
           "baseRate": 1,
           "type": "protocol",
           "tokens": [
@@ -48,7 +48,7 @@
       "chainName": "linea",
       "success": false,
       "error": {
-        "message": "Not Implemented (at MendiFinanceBorrowMarketAdapter.unwrapProtocolToken)",
+        "message": "Not Implemented (at MendiFinanceBorrowMarketAdapter.unwrap)",
         "details": {
           "name": "NotImplementedError"
         }

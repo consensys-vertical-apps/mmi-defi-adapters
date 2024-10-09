@@ -1,16 +1,14 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
+import {
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -23,21 +21,10 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 
-type Metadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-  }
->
-
-export class EthenaStakedUsdeAdapter
-  implements IProtocolAdapter, IMetadataBuilder
-{
-  productId = 'ethena'
+export class EthenaStakedUsdeAdapter implements IProtocolAdapter {
+  productId = 'staked-usde'
   protocolId: Protocol
   chainId: Chain
 
@@ -65,10 +52,6 @@ export class EthenaStakedUsdeAdapter
     this.helpers = helpers
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -83,27 +66,21 @@ export class EthenaStakedUsdeAdapter
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata(): Promise<Metadata> {
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const protocolToken = await this.helpers.getTokenMetadata(
       getAddress('0x9D39A5DE30e57443BfF2A8307A4256c8797A3497'),
     )
 
-    const underlyingTokens = await this.helpers.getTokenMetadata(
+    const underlyingToken = await this.helpers.getTokenMetadata(
       getAddress('0x4c9EDD5852cd905f086C759E8383e09bff1E68B3'),
     )
-    return {
-      [protocolToken.address]: {
-        protocolToken: protocolToken,
-        underlyingTokens: [underlyingTokens],
+    return [
+      {
+        ...protocolToken,
+        underlyingTokens: [underlyingToken],
       },
-    }
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
+    ]
   }
 
   async getPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
@@ -120,7 +97,7 @@ export class EthenaStakedUsdeAdapter
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -132,7 +109,7 @@ export class EthenaStakedUsdeAdapter
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.helpers.deposits({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
     })
   }
@@ -150,40 +127,26 @@ export class EthenaStakedUsdeAdapter
     })
   }
 
-  async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
-    return this.helpers.unwrapTokenAsRatio({
-      protocolToken: await this.getProtocolToken(_input.protocolTokenAddress),
-      underlyingTokens: await this.getUnderlyingTokens(
-        _input.protocolTokenAddress,
-      ),
+  async unwrap({
+    protocolTokenAddress,
+    blockNumber,
+  }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    const { underlyingTokens, ...protocolToken } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
-      blockNumber: _input.blockNumber,
+    return this.helpers.unwrapTokenAsRatio({
+      protocolToken,
+      underlyingTokens,
+      blockNumber,
     })
   }
 
-  private async getProtocolToken(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
-  }
-  private async getUnderlyingTokens(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).underlyingTokens
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
+  private async getProtocolTokenByAddress(
+    protocolTokenAddress: string,
+  ): Promise<ProtocolToken> {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
   }
 }

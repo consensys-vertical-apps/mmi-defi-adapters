@@ -5,7 +5,6 @@ import { DefiProvider } from '../defiProvider'
 import { copyAdapter } from './adapterBuilder/copyAdapter'
 import { newAdapterCommand } from './adapterBuilder/newAdapterCommand'
 import { blockAverage } from './blockAverage'
-import { buildMetadata } from './buildMetadata'
 import { buildMetadataDb } from './buildMetadataDb'
 import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
@@ -32,9 +31,8 @@ blockAverage(program, chainProviders)
 
 buildContractTypes(program)
 
-buildMetadata(program, chainProviders, adaptersController)
-
 buildMetadataDb(program, chainProviders, adaptersController)
+
 checkDbTotals(program, chainProviders, adaptersController)
 
 buildSnapshots(program)
@@ -61,6 +59,7 @@ program
         protocolId: newProtocolId,
         chainKeys: chainKeys.split(',') as (keyof typeof Chain)[],
         sourceProtocolId: sourceProtocolId,
+        defiProvider,
       })
     },
   )

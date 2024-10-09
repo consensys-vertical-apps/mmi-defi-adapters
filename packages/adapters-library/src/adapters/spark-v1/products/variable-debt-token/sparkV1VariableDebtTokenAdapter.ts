@@ -1,10 +1,5 @@
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import {
-  AssetType,
-  PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter'
 
 import { ProtocolDataProvider } from '../../contracts'
@@ -31,7 +26,7 @@ export class SparkV1VariableDebtTokenPoolAdapter extends SparkV1BasePoolAdapter 
     }
   }
 
-  @CacheToDb()
+  @CacheToDb
   async getProtocolTokens() {
     return super.getProtocolTokens()
   }

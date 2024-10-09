@@ -1,26 +1,16 @@
-import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   PositionType,
   ProtocolDetails,
-  TokenBalance,
   TokenType,
-  Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 
-type AdditionalMetadata = {
-  underlyingTokens: Erc20Metadata[]
-}
-
 const PROTOCOL_TOKEN_ADDRESS = '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84'
-export class LidoStEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class LidoStEthAdapter extends SimplePoolAdapter {
   productId = 'st-eth'
 
   adapterSettings = {
@@ -28,8 +18,8 @@ export class LidoStEthAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     includeInUnwrap: true,
   }
 
-  @CacheToDb()
-  async getProtocolTokens() {
+  @CacheToDb
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     return [
       {
         address: PROTOCOL_TOKEN_ADDRESS,
