@@ -32,6 +32,8 @@ import { filterMapAsync } from '../utils/filters'
 import { getTokenMetadata } from '../utils/getTokenMetadata'
 import { logger } from '../utils/logger'
 
+type AdditionalMetadata = { token0: string; token1: string }
+
 export type UniswapV2PoolForkPositionStrategy = { factoryAddress: string } & (
   | {
       type: 'graphql'
@@ -95,7 +97,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
   >
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken[]> {
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const factoryMetadata = this.chainMetadataSettings()[this.chainId]
 
     if (!factoryMetadata) {
@@ -116,7 +118,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       token1Address: string
     }[] = await this.graphQlPoolExtractionWithLimit(factoryMetadata)
 
-    return this.processPairsWithQueue(pairs)
+    return await this.processPairsWithQueue(pairs)
   }
 
   async processPairsWithQueue(
@@ -131,7 +133,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       concurrency: this.MAX_CONCURRENT_FACTORY_PROMISES,
     })
 
-    const results: ProtocolToken[] = []
+    const results: ProtocolToken<AdditionalMetadata>[] = []
 
     // Process each pair with concurrency control
     for (const pair of pairs) {
@@ -153,6 +155,8 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
           const result = {
             ...protocolTokenUpdated,
             underlyingTokens: [token0, token1],
+            token0: token0.address,
+            token1: token1.address,
           }
 
           results.push(result)
@@ -382,10 +386,8 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
     protocolTokenAddress,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const {
-      underlyingTokens: [token0, token1],
-      ...protocolToken
-    } = await this.fetchPoolMetadata(protocolTokenAddress)
+    const { token0, token1, underlyingTokens, ...protocolToken } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     const pairContract = UniswapV2Pair__factory.connect(
       protocolTokenAddress,
@@ -418,19 +420,19 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
         {
           type: TokenType.Underlying,
           underlyingRateRaw: pricePerShare0!,
-          ...token0!,
+          ...underlyingTokens.find((token) => token.address === token0)!,
         },
         {
           type: TokenType.Underlying,
           underlyingRateRaw: pricePerShare1!,
-          ...token1!,
+          ...underlyingTokens.find((token) => token.address === token1)!,
         },
       ],
     }
   }
 
   private async getProtocolToken(protocolTokenAddress: string) {
-    const { underlyingTokens, ...protocolToken } =
+    const { token0, token1, underlyingTokens, ...protocolToken } =
       await this.fetchPoolMetadata(protocolTokenAddress)
     return protocolToken
   }
@@ -619,18 +621,12 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
 
   private async factoryPoolExtraction(
     factoryAddress: string,
-  ): Promise<ProtocolToken[]> {
+  ): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const factoryContract = UniswapV2Factory__factory.connect(
       factoryAddress,
       this.provider,
     )
-    const allPairsLength = 1 ?? Number(await factoryContract.allPairsLength())
-
-    if (allPairsLength > this.MAX_FACTORY_POOL_COUNT) {
-      throw new Error(
-        `Factory job size exceeds the limit ${allPairsLength} > ${this.MAX_FACTORY_POOL_COUNT}`,
-      )
-    }
+    const allPairsLength = Number(await factoryContract.allPairsLength())
 
     // Define jobSize to limit how many pairs to process in one go
     const jobSize = Math.min(this.MAX_FACTORY_POOL_COUNT, allPairsLength)
@@ -643,7 +639,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       `Starting factoryPoolExtraction with jobSize: ${jobSize}, concurrency: ${concurrency}`,
     )
 
-    const results: ProtocolToken[] = []
+    const results: ProtocolToken<AdditionalMetadata>[] = []
 
     // Process pairs from startIndex to jobSize
     for (let index = 0; index < jobSize && index < allPairsLength; index++) {
@@ -674,14 +670,10 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
           // Construct the result and push to results array
           const result = {
             ...protocolTokenUpdated,
-            address: getAddress(protocolTokenUpdated.address),
-
-            underlyingTokens: [
-              { ...token0, address: getAddress(token0.address) },
-              { ...token1, address: getAddress(token1.address) },
-            ],
-            token0: getAddress(token0.address),
-            token1: getAddress(token1.address),
+            address: protocolTokenUpdated.address,
+            underlyingTokens: [token0, token1],
+            token0: token0.address,
+            token1: token1.address,
           }
 
           results.push(result)
