@@ -10,7 +10,7 @@ import { supportedProtocols } from './adapters/supportedProtocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { Chain, ChainName } from './core/constants/chains'
+import { Chain, ChainIdToChainNameMap } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import {
   NotSupportedError,
@@ -207,7 +207,7 @@ export class DefiProvider {
           enrichTime: endTime - unwrapTime,
         },
         chainId: adapter.chainId,
-        chainName: ChainName[adapter.chainId],
+        chainName: ChainIdToChainNameMap[adapter.chainId],
         protocolId: adapter.protocolId,
         productId: adapter.productId,
         userAddress,
@@ -392,7 +392,7 @@ export class DefiProvider {
         endTime,
         timeTaken: endTime - startTime,
         chainId: adapter.chainId,
-        chainName: ChainName[adapter.chainId],
+        chainName: ChainIdToChainNameMap[adapter.chainId],
         protocolId: adapter.protocolId,
         productId: adapter.productId,
         timePeriod,
@@ -464,7 +464,7 @@ export class DefiProvider {
             endTime,
             timeTaken: endTime - startTime,
             chainId: adapter.chainId,
-            chainName: ChainName[adapter.chainId],
+            chainName: ChainIdToChainNameMap[adapter.chainId],
             protocolId: adapter.protocolId,
             productId: adapter.productId,
             protocolTokenAddress: getAddress(address),
@@ -920,14 +920,14 @@ export class DefiProvider {
 
       return {
         ...protocolDetails,
-        chainName: ChainName[adapter.chainId],
+        chainName: ChainIdToChainNameMap[adapter.chainId],
         success: true,
         ...adapterResult,
       }
     } catch (error) {
       return {
         ...protocolDetails,
-        chainName: ChainName[adapter.chainId],
+        chainName: ChainIdToChainNameMap[adapter.chainId],
         ...this.handleError(error),
       }
     }

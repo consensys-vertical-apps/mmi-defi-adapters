@@ -37,7 +37,7 @@ export type AdapterErrorResponse = {
 
 export type AdapterResponse<ProtocolResponse> =
   | (ProtocolDetails & {
-      chainName: (typeof ChainName)[keyof typeof ChainName]
+      chainName: ChainName
     } & (
         | (ProtocolResponse & { success: true })
         | (AdapterErrorResponse & { success: false })

@@ -1,5 +1,5 @@
 import { Protocol } from '../adapters/protocols'
-import { Chain, ChainName } from '../core/constants/chains'
+import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
 import {
   chainFilter,
   multiChainFilter,
@@ -24,7 +24,7 @@ describe('chainFilter', () => {
 
   it.each(
     Object.values(Chain).map(
-      (chainId) => [ChainName[chainId], chainId] as [string, Chain],
+      (chainId) => [ChainIdToChainNameMap[chainId], chainId] as [string, Chain],
     ),
   )(
     'returns the correct chainId when any of its names is provided: %s',

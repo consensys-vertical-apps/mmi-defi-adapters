@@ -6,7 +6,7 @@ import { Command } from 'commander'
 import { Protocol } from '../adapters/protocols'
 import { supportedProtocols } from '../adapters/supportedProtocols'
 import { AdaptersController } from '../core/adaptersController'
-import { Chain, ChainName } from '../core/constants/chains'
+import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { filterMapSync } from '../core/utils/filters'
@@ -444,14 +444,17 @@ const createTableQueries = {
 function createDatabases(
   filterChainIds: Chain[] | undefined,
 ): [Chain, Database.Database][] {
-  return filterMapSync(Object.entries(ChainName), ([chainIdKey, chainName]) => {
-    const chainId = +chainIdKey as Chain
-    if (filterChainIds && !filterChainIds.includes(chainId)) {
-      return
-    }
+  return filterMapSync(
+    Object.entries(ChainIdToChainNameMap),
+    ([chainIdKey, chainName]) => {
+      const chainId = +chainIdKey as Chain
+      if (filterChainIds && !filterChainIds.includes(chainId)) {
+        return
+      }
 
-    return [chainId, createDatabase(chainName)]
-  })
+      return [chainId, createDatabase(chainName)]
+    },
+  )
 }
 
 /**

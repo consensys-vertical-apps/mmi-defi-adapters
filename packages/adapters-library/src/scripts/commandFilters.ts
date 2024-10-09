@@ -1,5 +1,5 @@
 import { Protocol } from '../adapters/protocols'
-import { Chain, ChainName } from '../core/constants/chains'
+import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
 import { filterMapSync } from '../core/utils/filters'
 
 export function chainFilter(filterInput?: string): Chain | undefined {
@@ -14,7 +14,7 @@ export function chainFilter(filterInput?: string): Chain | undefined {
         filterValues: [
           chainId.toString(),
           chainKey.toLowerCase(),
-          ChainName[chainId].toLowerCase(),
+          ChainIdToChainNameMap[chainId].toLowerCase(),
         ],
       }
     })
