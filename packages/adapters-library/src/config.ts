@@ -78,15 +78,15 @@ const ConfigSchema = z
   .object({
     provider: z
       .object({
-        [ChainName.ethereum]: z.string(),
-        [ChainName.op]: z.string(),
-        [ChainName.bsc]: z.string(),
-        [ChainName.matic]: z.string(),
-        [ChainName.ftm]: z.string(),
-        [ChainName.base]: z.string(),
-        [ChainName.arb]: z.string(),
-        [ChainName.avax]: z.string(),
-        [ChainName.linea]: z.string(),
+        [ChainName.ethereum]: z.string().default(providers.ethereum),
+        [ChainName.op]: z.string().default(providers.op),
+        [ChainName.bsc]: z.string().default(providers.bsc),
+        [ChainName.matic]: z.string().default(providers.matic),
+        [ChainName.ftm]: z.string().default(providers.ftm),
+        [ChainName.base]: z.string().default(providers.base),
+        [ChainName.arb]: z.string().default(providers.arb),
+        [ChainName.avax]: z.string().default(providers.avax),
+        [ChainName.linea]: z.string().default(providers.linea),
       })
       .default(providers),
     useMulticallInterceptor: z
@@ -132,28 +132,46 @@ const ConfigSchema = z
       .default(parseBooleanEnv(process.env.DEFI_ADAPTERS_USE_FAILOVER)),
     hasUnlimitedEthGethLogsBlockRangeLimit: z
       .object({
-        [ChainName.ethereum]: z.boolean(),
-        [ChainName.op]: z.boolean(),
-        [ChainName.bsc]: z.boolean(),
-        [ChainName.matic]: z.boolean(),
-        [ChainName.ftm]: z.boolean(),
-        [ChainName.base]: z.boolean(),
-        [ChainName.arb]: z.boolean(),
-        [ChainName.avax]: z.boolean(),
-        [ChainName.linea]: z.boolean(),
+        [ChainName.ethereum]: z
+          .boolean()
+          .default(hasUnlimitedEthGethLogsBlockRangeLimit.ethereum),
+        [ChainName.op]: z
+          .boolean()
+          .default(hasUnlimitedEthGethLogsBlockRangeLimit.op),
+        [ChainName.bsc]: z
+          .boolean()
+          .default(hasUnlimitedEthGethLogsBlockRangeLimit.bsc),
+        [ChainName.matic]: z
+          .boolean()
+          .default(hasUnlimitedEthGethLogsBlockRangeLimit.matic),
+        [ChainName.ftm]: z
+          .boolean()
+          .default(hasUnlimitedEthGethLogsBlockRangeLimit.ftm),
+        [ChainName.base]: z
+          .boolean()
+          .default(hasUnlimitedEthGethLogsBlockRangeLimit.base),
+        [ChainName.arb]: z
+          .boolean()
+          .default(hasUnlimitedEthGethLogsBlockRangeLimit.arb),
+        [ChainName.avax]: z
+          .boolean()
+          .default(hasUnlimitedEthGethLogsBlockRangeLimit.avax),
+        [ChainName.linea]: z
+          .boolean()
+          .default(hasUnlimitedEthGethLogsBlockRangeLimit.linea),
       })
       .default(hasUnlimitedEthGethLogsBlockRangeLimit),
     maxBatchSize: z
       .object({
-        [ChainName.ethereum]: z.number(),
-        [ChainName.op]: z.number(),
-        [ChainName.bsc]: z.number(),
-        [ChainName.matic]: z.number(),
-        [ChainName.ftm]: z.number(),
-        [ChainName.base]: z.number(),
-        [ChainName.arb]: z.number(),
-        [ChainName.avax]: z.number(),
-        [ChainName.linea]: z.number(),
+        [ChainName.ethereum]: z.number().default(maxBatchSize.ethereum),
+        [ChainName.op]: z.number().default(maxBatchSize.op),
+        [ChainName.bsc]: z.number().default(maxBatchSize.bsc),
+        [ChainName.matic]: z.number().default(maxBatchSize.matic),
+        [ChainName.ftm]: z.number().default(maxBatchSize.ftm),
+        [ChainName.base]: z.number().default(maxBatchSize.base),
+        [ChainName.arb]: z.number().default(maxBatchSize.arb),
+        [ChainName.avax]: z.number().default(maxBatchSize.avax),
+        [ChainName.linea]: z.number().default(maxBatchSize.linea),
       })
       .default(maxBatchSize),
   })
