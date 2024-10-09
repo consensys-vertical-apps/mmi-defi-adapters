@@ -16,8 +16,8 @@
       "tokens": [
         {
           "address": "0x06da0fd433C1A5d7a4faa01111c044910A184553",
-          "name": "SushiSwap LP Token",
-          "symbol": "SLP",
+          "name": "Sushiswap V2 WETH / USDT",
+          "symbol": "SUSHI-V2/WETH/USDT",
           "decimals": 18,
           "type": "protocol",
           "profit": 1568.5560921073957,
@@ -33,8 +33,8 @@
         },
         {
           "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
-          "name": "SushiSwap LP Token",
-          "symbol": "SLP",
+          "name": "Sushiswap V2 USDC / WETH",
+          "symbol": "SUSHI-V2/USDC/WETH",
           "decimals": 18,
           "type": "protocol",
           "profit": 1102.0192981122073,
@@ -50,8 +50,8 @@
         },
         {
           "address": "0x795065dCc9f64b5614C407a6EFDC400DA6221FB0",
-          "name": "SushiSwap LP Token",
-          "symbol": "SLP",
+          "name": "Sushiswap V2 SUSHI / WETH",
+          "symbol": "SUSHI-V2/SUSHI/WETH",
           "decimals": 18,
           "type": "protocol",
           "profit": -36.414400484507325,
