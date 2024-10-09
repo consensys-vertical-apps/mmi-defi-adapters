@@ -333,13 +333,13 @@ async function writeProtocolTokensToDb({
       { protocolId, productId, chainId, pools: pools.length, adapterId },
     )
   } catch (error) {
-    db.exec('ROLLBACK')
     console.error('Error saving protocol tokens to database:', {
       error,
       protocolId,
       productId,
       chainId,
     })
+    db.exec('ROLLBACK')
   }
 }
 
