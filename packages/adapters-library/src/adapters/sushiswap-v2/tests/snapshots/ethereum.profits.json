@@ -15,23 +15,6 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x06da0fd433C1A5d7a4faa01111c044910A184553",
-          "name": "Sushiswap V2 WETH / USDT",
-          "symbol": "SUSHI-V2/WETH/USDT",
-          "decimals": 18,
-          "type": "protocol",
-          "profit": 1568.5560921073957,
-          "performance": 0.07400075410738521,
-          "calculationData": {
-            "withdrawals": 397124.7411147566,
-            "deposits": 397136.35230133246,
-            "repays": 0,
-            "borrows": 0,
-            "startPositionValue": 21184.87675503628,
-            "endPositionValue": 22765.044033719547
-          }
-        },
-        {
           "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
           "name": "Sushiswap V2 USDC / WETH",
           "symbol": "SUSHI-V2/USDC/WETH",
@@ -63,6 +46,23 @@
             "borrows": 0,
             "startPositionValue": 323.20103485126293,
             "endPositionValue": 389.3372115027565
+          }
+        },
+        {
+          "address": "0x06da0fd433C1A5d7a4faa01111c044910A184553",
+          "name": "Sushiswap V2 WETH / USDT",
+          "symbol": "SUSHI-V2/WETH/USDT",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 1568.5560921073957,
+          "performance": 0.07400075410738521,
+          "calculationData": {
+            "withdrawals": 397124.7411147566,
+            "deposits": 397136.35230133246,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 21184.87675503628,
+            "endPositionValue": 22765.044033719547
           }
         }
       ],
