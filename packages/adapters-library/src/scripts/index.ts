@@ -35,7 +35,7 @@ buildMetadataDb(program, chainProviders, adaptersController)
 
 checkDbTotals(program, chainProviders, adaptersController)
 
-buildSnapshots(program)
+buildSnapshots(program, defiProvider)
 
 stressCommand(program, defiProvider)
 

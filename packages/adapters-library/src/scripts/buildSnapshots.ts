@@ -21,8 +21,9 @@ import { multiProtocolFilter } from './commandFilters'
 import { startRpcSnapshot } from './rpcInterceptor'
 import n = types.namedTypes
 import b = types.builders
+import { filterMapSync } from '../core/utils/filters'
 
-export function buildSnapshots(program: Command) {
+export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
   program
     .command('build-snapshots')
     .option(
@@ -30,21 +31,43 @@ export function buildSnapshots(program: Command) {
       'comma-separated protocols filter (e.g. stargate,aave-v2)',
     )
     .option(
+      '-pd, --products <products>',
+      'comma-separated protocols filter (e.g. stargate,aave-v2)',
+    )
+    .option(
       '-k, --key <test-key>',
       'test key must be used with protocols filter',
     )
     .showHelpAfterError()
-    .action(async ({ protocols, key }) => {
+    .action(async ({ protocols, products, key }) => {
       const filterProtocolIds = multiProtocolFilter(protocols)
+      const filterProductIds = (products as string | undefined)?.split(',')
 
-      for (const protocolId of Object.values(Protocol)) {
-        if (filterProtocolIds && !filterProtocolIds.includes(protocolId)) {
-          continue
-        }
+      const allProtocols = await defiProvider.getSupport({ filterProtocolIds })
+      const allProducts = Object.values(allProtocols).flatMap(
+        (protocolAdapters) =>
+          filterMapSync(protocolAdapters, (adapter) => {
+            if (
+              filterProductIds &&
+              !filterProductIds.includes(adapter.protocolDetails.productId)
+            ) {
+              return undefined
+            }
 
+            return {
+              protocolId: adapter.protocolDetails.protocolId,
+              productId: adapter.protocolDetails.productId,
+            }
+          }),
+      )
+
+      for (const { protocolId, productId } of allProducts) {
         const testCases: TestCase[] = (
           await import(
-            path.resolve(__dirname, `../adapters/${protocolId}/tests/testCases`)
+            path.resolve(
+              __dirname,
+              `../adapters/${protocolId}/products/${productId}/tests/testCases`,
+            )
           )
         ).testCases
 
@@ -53,6 +76,7 @@ export function buildSnapshots(program: Command) {
             continue
           }
 
+          // Recreate the provider for each test case to avoid cached data
           const defiProvider = new DefiProvider({
             useMulticallInterceptor: false,
           })
@@ -81,6 +105,7 @@ export function buildSnapshots(program: Command) {
                   ...testCase.input,
                   filterChainIds: [chainId],
                   filterProtocolIds: [protocolId],
+                  filterProductIds: [productId],
                   blockNumbers: {
                     [chainId]: blockNumber,
                   },
@@ -97,9 +122,19 @@ export function buildSnapshots(program: Command) {
                   snapshot,
                 }
 
-                await updateBlockNumber(protocolId, index, blockNumber)
+                await updateBlockNumber(
+                  protocolId,
+                  productId,
+                  index,
+                  blockNumber,
+                )
 
-                await updateFilters(protocolId, index, result.snapshot)
+                await updateFilters(
+                  protocolId,
+                  productId,
+                  index,
+                  result.snapshot,
+                )
 
                 return result
               }
@@ -118,6 +153,7 @@ export function buildSnapshots(program: Command) {
                   ...testCase.input,
                   filterChainIds: [chainId],
                   filterProtocolIds: [protocolId],
+                  filterProductIds: [productId],
                   toBlockNumbersOverride: {
                     [chainId]: blockNumber,
                   },
@@ -131,9 +167,19 @@ export function buildSnapshots(program: Command) {
                   snapshot,
                 }
 
-                await updateBlockNumber(protocolId, index, blockNumber)
+                await updateBlockNumber(
+                  protocolId,
+                  productId,
+                  index,
+                  blockNumber,
+                )
 
-                await updateFilters(protocolId, index, result.snapshot)
+                await updateFilters(
+                  protocolId,
+                  productId,
+                  index,
+                  result.snapshot,
+                )
 
                 return result
               }
@@ -233,6 +279,7 @@ export function buildSnapshots(program: Command) {
                 const snapshot = await defiProvider.unwrap({
                   filterChainIds: [chainId],
                   filterProtocolIds: [protocolId],
+                  filterProductIds: [productId],
                   blockNumbers: {
                     [chainId]: blockNumber,
                   },
@@ -247,7 +294,12 @@ export function buildSnapshots(program: Command) {
                   snapshot,
                 }
 
-                await updateBlockNumber(protocolId, index, blockNumber)
+                await updateBlockNumber(
+                  protocolId,
+                  productId,
+                  index,
+                  blockNumber,
+                )
 
                 return result
               }
@@ -261,9 +313,11 @@ export function buildSnapshots(program: Command) {
                   ))
 
                 const startTime = Date.now()
+
                 const snapshot = await defiProvider.getTotalValueLocked({
                   filterChainIds: [chainId],
                   filterProtocolIds: [protocolId],
+                  filterProductIds: [productId],
                   filterProtocolTokens: testCase.filterProtocolTokens,
                   blockNumbers: {
                     [chainId]: blockNumber,
@@ -278,7 +332,12 @@ export function buildSnapshots(program: Command) {
                   snapshot,
                 }
 
-                await updateBlockNumber(protocolId, index, blockNumber)
+                await updateBlockNumber(
+                  protocolId,
+                  productId,
+                  index,
+                  blockNumber,
+                )
 
                 return result
               }
@@ -297,7 +356,7 @@ export function buildSnapshots(program: Command) {
             }
           })()
 
-          const filePath = `./packages/adapters-library/src/adapters/${protocolId}/tests/snapshots/${
+          const filePath = `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}/tests/snapshots/${
             ChainName[testCase.chainId]
           }.${testCase.method}${
             testCase.key ? `.${kebabCase(testCase.key)}` : ''
@@ -335,11 +394,12 @@ async function getLatestStableBlock(
 
 async function updateBlockNumber(
   protocolId: Protocol,
+  productId: string,
   index: number,
   blockNumber: number,
 ) {
   const testCasesFile = path.resolve(
-    `./packages/adapters-library/src/adapters/${protocolId}/tests/testCases.ts`,
+    `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}/tests/testCases.ts`,
   )
   const contents = await fs.readFile(testCasesFile, 'utf-8')
   const ast = parse(contents, {
@@ -391,13 +451,10 @@ async function updateBlockNumber(
 
 /**
  * Updates filterProtocolToken and filterTokenId properties
- * @param protocolId
- * @param index
- * @param snapshot
- * @returns
  */
 async function updateFilters(
   protocolId: Protocol,
+  productId: string,
   index: number,
   snapshot: DefiPositionResponse[] | DefiProfitsResponse[],
 ) {
@@ -413,8 +470,6 @@ async function updateFilters(
     return
   }
 
-  // Also update tokenId if exists
-
   const protocolTokenIds = snapshot.flatMap((position) => {
     if (!position.success) {
       return []
@@ -426,7 +481,7 @@ async function updateFilters(
   })
 
   const testCasesFile = path.resolve(
-    `./packages/adapters-library/src/adapters/${protocolId}/tests/testCases.ts`,
+    `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}/tests/testCases.ts`,
   )
   const contents = await fs.readFile(testCasesFile, 'utf-8')
   const ast = parse(contents, {

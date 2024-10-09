@@ -129,7 +129,11 @@ function runProductTests(
       const allMocks = (
         await Promise.all(
           testCases.map(async (testCase) => {
-            const { rpcResponses } = await loadJsonFile(testCase, protocolId)
+            const { rpcResponses } = await loadJsonFile(
+              testCase,
+              protocolId,
+              productId,
+            )
 
             if (!rpcResponses) {
               return []
@@ -215,6 +219,7 @@ function runProductTests(
             const { snapshot, blockNumber, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
+              productId,
             )
 
             const response = await defiProvider.getPositions({
@@ -251,6 +256,7 @@ function runProductTests(
             const { snapshot, blockNumber, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
+              productId,
             )
 
             const response = await defiProvider.getProfits({
@@ -288,6 +294,7 @@ function runProductTests(
             const { snapshot, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
+              productId,
             )
 
             const response = await defiProvider.getDeposits({
@@ -321,6 +328,7 @@ function runProductTests(
             const { snapshot, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
+              productId,
             )
 
             const response = await defiProvider.getWithdrawals({
@@ -355,6 +363,7 @@ function runProductTests(
             const { snapshot, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
+              productId,
             )
 
             const response = await defiProvider.getRepays({
@@ -388,6 +397,7 @@ function runProductTests(
             const { snapshot, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
+              productId,
             )
 
             const response = await defiProvider.getBorrows({
@@ -423,6 +433,7 @@ function runProductTests(
             const { snapshot, blockNumber, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
+              productId,
             )
 
             const response = await defiProvider.unwrap({
@@ -455,6 +466,7 @@ function runProductTests(
             const { snapshot, blockNumber, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
+              productId,
             )
 
             const response = await defiProvider.getTotalValueLocked({
@@ -492,6 +504,7 @@ function runProductTests(
             const { snapshot, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
+              productId,
             )
 
             const inputs = {
@@ -519,10 +532,15 @@ function testKey({ chainId, method, key }: TestCase) {
   return `${ChainName[chainId]}.${method}${key ? `.${kebabCase(key)}` : ''}`
 }
 
-async function fetchSnapshot(testCase: TestCase, protocolId: Protocol) {
+async function fetchSnapshot(
+  testCase: TestCase,
+  protocolId: Protocol,
+  productId: string,
+) {
   const { snapshot, blockNumber, rpcResponses } = await loadJsonFile(
     testCase,
     protocolId,
+    productId,
   )
 
   return {
@@ -532,11 +550,17 @@ async function fetchSnapshot(testCase: TestCase, protocolId: Protocol) {
   }
 }
 
-async function loadJsonFile(testCase: TestCase, protocolId: Protocol) {
+async function loadJsonFile(
+  testCase: TestCase,
+  protocolId: Protocol,
+  productId: string,
+) {
   const expectedString = await fs.readFile(
     path.resolve(
       __dirname,
-      `./${protocolId}/tests/snapshots/${testKey(testCase)}.json`,
+      `./${protocolId}/products/${productId}/tests/snapshots/${testKey(
+        testCase,
+      )}.json`,
     ),
     'utf-8',
   )
