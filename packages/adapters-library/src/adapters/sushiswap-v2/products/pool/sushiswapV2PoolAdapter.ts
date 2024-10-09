@@ -36,23 +36,27 @@ export class SushiswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   > {
     return {
       [Chain.Ethereum]: {
-        type: 'factory',
-
+        type: 'graphql',
+        subgraphUrl:
+          'https://gateway.thegraph.com/api/ef04394e9642f71e97006a384fe00ae4/subgraphs/id/6NUtT5mGjZ1tSshKLf5Q3uEEJtjBZJo1TpL5MXsUBqrT',
         factoryAddress: '0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac',
       },
       [Chain.Bsc]: {
-        type: 'factory',
-
+        type: 'graphql',
+        subgraphUrl:
+          'https://gateway.thegraph.com/api/ef04394e9642f71e97006a384fe00ae4/subgraphs/id/GPRigpbNuPkxkwpSbDuYXbikodNJfurc1LCENLzboWer',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
       [Chain.Polygon]: {
-        type: 'factory',
-
+        type: 'graphql',
+        subgraphUrl:
+          'https://gateway.thegraph.com/api/ef04394e9642f71e97006a384fe00ae4/subgraphs/id/8NiXkxLRT3R22vpwLB4DXttpEf3X1LrKhe4T1tQ3jjbP',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
       [Chain.Fantom]: {
-        type: 'factory',
-
+        type: 'graphql',
+        subgraphUrl:
+          'https://gateway.thegraph.com/api/ef04394e9642f71e97006a384fe00ae4/subgraphs/id/3nozHyFKUhxnEvekFg5G57bxPC5V63eiWbwmgA35N5VK',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
       [Chain.Base]: {
@@ -60,13 +64,15 @@ export class SushiswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
         factoryAddress: '0x71524B4f93c58fcbF659783284E38825f0622859',
       },
       [Chain.Arbitrum]: {
-        type: 'factory',
-
+        type: 'graphql',
+        subgraphUrl:
+          'https://gateway.thegraph.com/api/ef04394e9642f71e97006a384fe00ae4/subgraphs/id/8nFDCAhdnJQEhQF3ZRnfWkJ6FkRsfAiiVabVn4eGoAZH',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
       [Chain.Avalanche]: {
-        type: 'factory',
-
+        type: 'graphql',
+        subgraphUrl:
+          'https://gateway.thegraph.com/api/ef04394e9642f71e97006a384fe00ae4/subgraphs/id/6VAhbtW5u2sPYkJKAcMsxgqTBu4a1rqmbiVQWgtNjrvT',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
     }

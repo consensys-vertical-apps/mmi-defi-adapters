@@ -53,7 +53,7 @@ export async function getTokenMetadata(
   }
 
   const errorMessage = 'Failed getting token metadata'
-  logger.error({ tokenAddress, chainId })
+  logger.error({ tokenAddress, chainId, errorMessage })
   throw new Error(errorMessage)
 }
 
