@@ -8,7 +8,6 @@ export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-    version: 3,
   }
 
   getProtocolDetails(): ProtocolDetails {

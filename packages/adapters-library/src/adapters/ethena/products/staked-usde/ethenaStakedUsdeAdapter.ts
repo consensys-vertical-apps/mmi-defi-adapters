@@ -60,7 +60,7 @@ export class EthenaStakedUsdeAdapter implements IProtocolAdapter {
       siteUrl: 'https://ethena.fi/',
       iconUrl:
         'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57e114b691db790c35207b2e685d4a43181e6061/logo.png',
-      positionType: PositionType.Supply,
+      positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
     }
