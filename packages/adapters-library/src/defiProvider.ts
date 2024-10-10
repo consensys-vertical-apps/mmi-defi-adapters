@@ -131,12 +131,12 @@ export class DefiProvider {
     const runner = async (
       adapter: IProtocolAdapter,
       provider: CustomJsonRpcProvider,
-      userTransferLogs?: Partial<Record<Chain, Promise<Log[]>>>,
+      userTransferLogs: Partial<Record<Chain, Promise<Log[]>>>,
     ) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
       const protocolTokenAddresses = await this.buildTokenFilter(
-        userTransferLogs!,
+        userTransferLogs,
         adapter,
         filterProtocolTokens,
       )
@@ -358,7 +358,7 @@ export class DefiProvider {
     const runner = async (
       adapter: IProtocolAdapter,
       provider: CustomJsonRpcProvider,
-      userTransferLogs?: Partial<Record<Chain, Promise<Log[]>>>,
+      userTransferLogs: Partial<Record<Chain, Promise<Log[]>>>,
     ) => {
       if (adapter.chainId === Chain.Bsc) {
         throw new NotSupportedError('Profits not supported on BSC')
@@ -371,7 +371,7 @@ export class DefiProvider {
         toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
 
       const protocolTokenAddresses = await this.buildTokenFilter(
-        userTransferLogs!,
+        userTransferLogs,
         adapter,
         filterProtocolTokens,
       )
