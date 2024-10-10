@@ -1,5 +1,5 @@
 import Database from 'better-sqlite3'
-import { getAddress } from 'ethers'
+import { getAddress, Log } from 'ethers'
 import {
   IMetadataProvider,
   buildMetadataProviders,
@@ -128,11 +128,15 @@ export class DefiProvider {
     const startGetPositions = Date.now()
     this.initAdapterControllerForUnwrapStage()
 
-    const runner = async (adapter: IProtocolAdapter) => {
+    const runner = async (
+      adapter: IProtocolAdapter,
+      provider: CustomJsonRpcProvider,
+      userTransferLogs?: Partial<Record<Chain, Promise<Log[]>>>,
+    ) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
       const protocolTokenAddresses = await this.buildTokenFilter(
-        userAddress,
+        userTransferLogs!,
         adapter,
         filterProtocolTokens,
       )
@@ -217,6 +221,12 @@ export class DefiProvider {
       return { tokens }
     }
 
+    const userTransferLogs = this.prefetchUserLogs({
+      userAddress,
+      filterProtocolIds,
+      filterChainIds,
+    })
+
     const result = (
       await this.runForAllProtocolsAndChains({
         runner,
@@ -245,7 +255,7 @@ export class DefiProvider {
   }
 
   private async buildTokenFilter(
-    userAddress: string,
+    userTransferLogs: Partial<Record<Chain, Promise<Log[]>>>,
     adapter: IProtocolAdapter,
     filterProtocolTokensOverride?: string[],
   ) {
@@ -263,10 +273,7 @@ export class DefiProvider {
         return undefined
       }
 
-      const transferLogs =
-        await this.chainProvider.providers[
-          adapter.chainId
-        ].getAllTransferLogsToAddress(userAddress)
+      const transferLogs = await userTransferLogs[adapter.chainId]!
 
       // no logs on this chain means nothing done on this chain
       if (transferLogs.length === 0) {
@@ -350,6 +357,7 @@ export class DefiProvider {
     const runner = async (
       adapter: IProtocolAdapter,
       provider: CustomJsonRpcProvider,
+      userTransferLogs?: Partial<Record<Chain, Promise<Log[]>>>,
     ) => {
       if (adapter.chainId === Chain.Bsc) {
         throw new NotSupportedError('Profits not supported on BSC')
@@ -362,7 +370,7 @@ export class DefiProvider {
         toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
 
       const protocolTokenAddresses = await this.buildTokenFilter(
-        userAddress,
+        userTransferLogs!,
         adapter,
         filterProtocolTokens,
       )
@@ -830,14 +838,17 @@ export class DefiProvider {
     runner,
     filterProtocolIds,
     filterChainIds,
+    userTransferLogs,
     method,
   }: {
     runner: (
       adapter: IProtocolAdapter,
       provider: CustomJsonRpcProvider,
+      userTransferLogs?: Partial<Record<Chain, Promise<Log[]>>>,
     ) => ReturnType
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
+    userTransferLogs?: Partial<Record<Chain, Promise<Log[]>>>
     method:
       | 'getPositions'
       | 'unwrap'
@@ -891,7 +902,12 @@ export class DefiProvider {
                   PositionType.Reward,
               )
               .map(([_, adapter]) =>
-                this.runTaskForAdapter(adapter, provider, runner),
+                this.runTaskForAdapter(
+                  adapter,
+                  provider,
+                  runner,
+                  userTransferLogs,
+                ),
               )
           })
       })
@@ -907,7 +923,9 @@ export class DefiProvider {
     runner: (
       adapter: IProtocolAdapter,
       provider: CustomJsonRpcProvider,
+      userTransferLogs?: Partial<Record<Chain, Promise<Log[]>>>,
     ) => ReturnType,
+    userTransferLogs?: Partial<Record<Chain, Promise<Log[]>>>,
   ): Promise<AdapterResponse<Awaited<ReturnType>>> {
     const protocolDetails = adapter.getProtocolDetails()
 
@@ -916,7 +934,7 @@ export class DefiProvider {
         throw new ProviderMissingError(adapter.chainId)
       }
 
-      const adapterResult = await runner(adapter, provider)
+      const adapterResult = await runner(adapter, provider, userTransferLogs)
 
       return {
         ...protocolDetails,
@@ -963,5 +981,51 @@ export class DefiProvider {
     this.adaptersControllerWithoutPrices.init()
 
     this.adaptersController.init()
+  }
+
+  private prefetchUserLogs({
+    userAddress,
+    filterProtocolIds,
+    filterChainIds,
+  }: {
+    userAddress: string
+    filterProtocolIds?: Protocol[]
+    filterChainIds?: Chain[]
+  }) {
+    const chains = [
+      ...new Set(
+        Object.entries(supportedProtocols)
+          .filter(
+            ([protocolIdKey, _]) =>
+              !filterProtocolIds ||
+              filterProtocolIds.includes(protocolIdKey as Protocol),
+          )
+          .flatMap(([_, supportedChains]) => {
+            return Object.entries(supportedChains)
+              .filter(([chainIdKey, _]) => {
+                return (
+                  !filterChainIds ||
+                  filterChainIds.includes(+chainIdKey as Chain)
+                )
+              })
+              .flatMap(([chainIdKey, _]) => {
+                const chainId = +chainIdKey as Chain
+
+                return chainId
+              })
+          }),
+      ),
+    ]
+
+    return chains.reduce(
+      (acc, chainId) => {
+        acc[chainId] =
+          this.chainProvider.providers[chainId].getAllTransferLogsToAddress(
+            userAddress,
+          )
+        return acc
+      },
+      {} as Partial<Record<Chain, Promise<Log[]>>>,
+    )
   }
 }
