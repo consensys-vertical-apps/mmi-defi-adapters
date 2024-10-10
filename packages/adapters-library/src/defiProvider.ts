@@ -4,6 +4,7 @@ import {
   IMetadataProvider,
   buildSqliteMetadataProviders,
 } from './SQLiteMetadataProvider'
+import { buildVoidMetadataProviders } from './VoidMetadataProvider'
 import { Protocol } from './adapters/protocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
 import { supportedProtocols } from './adapters/supportedProtocols'
@@ -44,7 +45,6 @@ import {
   TotalValueLockResponse,
 } from './types/response'
 import { IUnwrapCache, IUnwrapCacheProvider, UnwrapCache } from './unwrapCache'
-import { buildVoidMetadataProviders } from './VoidMetadataProvider'
 
 export class DefiProvider {
   private parsedConfig
