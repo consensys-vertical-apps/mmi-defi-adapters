@@ -229,7 +229,8 @@ export class DefiProvider {
 
     const result = (
       await this.runForAllProtocolsAndChains({
-        runner,
+        runner: (adapter, provider) =>
+          runner(adapter, provider, userTransferLogs),
         filterProtocolIds,
         filterChainIds,
         method: 'getPositions',
@@ -412,9 +413,16 @@ export class DefiProvider {
       return profits
     }
 
+    const userTransferLogs = this.prefetchUserLogs({
+      userAddress,
+      filterProtocolIds,
+      filterChainIds,
+    })
+
     const result = (
       await this.runForAllProtocolsAndChains({
-        runner,
+        runner: (adapter, provider) =>
+          runner(adapter, provider, userTransferLogs),
         filterProtocolIds,
         filterChainIds,
         method: 'getProfits',
@@ -582,7 +590,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, provider, runner)
   }
 
   async getTransactionParams(input: GetTransactionParams): Promise<
@@ -612,7 +620,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, provider, runner)
   }
 
   async getDeposits({
@@ -666,7 +674,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, provider, runner)
   }
   async getRepays({
     userAddress,
@@ -720,7 +728,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, provider, runner)
   }
   async getBorrows({
     userAddress,
@@ -774,7 +782,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, provider, runner)
   }
 
   async getTotalValueLocked({
@@ -838,24 +846,15 @@ export class DefiProvider {
     runner,
     filterProtocolIds,
     filterChainIds,
-    userTransferLogs,
     method,
   }: {
     runner: (
       adapter: IProtocolAdapter,
       provider: CustomJsonRpcProvider,
-      userTransferLogs?: Partial<Record<Chain, Promise<Log[]>>>,
     ) => ReturnType
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
-    userTransferLogs?: Partial<Record<Chain, Promise<Log[]>>>
-    method:
-      | 'getPositions'
-      | 'unwrap'
-      | 'getProfits'
-      | 'getWithdrawals'
-      | 'getDeposits'
-      | 'getTotalValueLocked'
+    method: 'getPositions' | 'unwrap' | 'getProfits' | 'getTotalValueLocked'
   }): Promise<AdapterResponse<Awaited<ReturnType>>[]> {
     const protocolPromises = Object.entries(supportedProtocols)
       .filter(
@@ -902,12 +901,7 @@ export class DefiProvider {
                   PositionType.Reward,
               )
               .map(([_, adapter]) =>
-                this.runTaskForAdapter(
-                  adapter,
-                  provider,
-                  runner,
-                  userTransferLogs,
-                ),
+                this.runTaskForAdapter(adapter, provider, runner),
               )
           })
       })
@@ -923,9 +917,7 @@ export class DefiProvider {
     runner: (
       adapter: IProtocolAdapter,
       provider: CustomJsonRpcProvider,
-      userTransferLogs?: Partial<Record<Chain, Promise<Log[]>>>,
     ) => ReturnType,
-    userTransferLogs?: Partial<Record<Chain, Promise<Log[]>>>,
   ): Promise<AdapterResponse<Awaited<ReturnType>>> {
     const protocolDetails = adapter.getProtocolDetails()
 
@@ -934,7 +926,7 @@ export class DefiProvider {
         throw new ProviderMissingError(adapter.chainId)
       }
 
-      const adapterResult = await runner(adapter, provider, userTransferLogs)
+      const adapterResult = await runner(adapter, provider)
 
       return {
         ...protocolDetails,
