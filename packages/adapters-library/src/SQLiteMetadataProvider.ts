@@ -233,7 +233,7 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
   }
 }
 
-export function buildMetadataProviders(
+export function buildSqliteMetadataProviders(
   metadataProviderSettings:
     | Record<Chain, { dbPath: string; options: Database.Options }>
     | undefined = defaultMetadataProviderSettings(),

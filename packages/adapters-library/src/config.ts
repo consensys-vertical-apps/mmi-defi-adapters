@@ -1,8 +1,3 @@
-import { existsSync } from 'node:fs'
-import path, { resolve } from 'node:path'
-import { cwd } from 'node:process'
-import Database from 'better-sqlite3'
-import type { Database as BetterSqlite3Database } from 'better-sqlite3'
 import { z } from 'zod'
 import { ChainName } from './core/constants/chains'
 import { logger } from './core/utils/logger'
@@ -174,6 +169,7 @@ const ConfigSchema = z
         [ChainName.linea]: z.number().default(maxBatchSize.linea),
       })
       .default(maxBatchSize),
+    useDatabase: z.boolean().default(true),
   })
   .strict()
   .default({})
