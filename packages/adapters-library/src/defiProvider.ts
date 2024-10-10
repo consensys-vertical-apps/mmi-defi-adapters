@@ -1,5 +1,5 @@
 import Database from 'better-sqlite3'
-import { getAddress } from 'ethers'
+import { getAddress, Log } from 'ethers'
 import {
   IMetadataProvider,
   buildSqliteMetadataProviders,
@@ -133,11 +133,15 @@ export class DefiProvider {
     const startGetPositions = Date.now()
     this.initAdapterControllerForUnwrapStage()
 
-    const runner = async (adapter: IProtocolAdapter) => {
+    const runner = async (
+      adapter: IProtocolAdapter,
+      provider: CustomJsonRpcProvider,
+      userTransferLogs: Partial<Record<Chain, Promise<Log[]>>>,
+    ) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
       const protocolTokenAddresses = await this.buildTokenFilter(
-        userAddress,
+        userTransferLogs,
         adapter,
         filterProtocolTokens,
       )
@@ -222,9 +226,16 @@ export class DefiProvider {
       return { tokens }
     }
 
+    const userTransferLogs = this.prefetchUserLogs({
+      userAddress,
+      filterProtocolIds,
+      filterChainIds,
+    })
+
     const result = (
       await this.runForAllProtocolsAndChains({
-        runner,
+        runner: (adapter, provider) =>
+          runner(adapter, provider, userTransferLogs),
         filterProtocolIds,
         filterChainIds,
         method: 'getPositions',
@@ -250,7 +261,7 @@ export class DefiProvider {
   }
 
   private async buildTokenFilter(
-    userAddress: string,
+    userTransferLogs: Partial<Record<Chain, Promise<Log[]>>>,
     adapter: IProtocolAdapter,
     filterProtocolTokensOverride?: string[],
   ) {
@@ -268,13 +279,10 @@ export class DefiProvider {
         return undefined
       }
 
-      const transferLogs =
-        await this.chainProvider.providers[
-          adapter.chainId
-        ].getAllTransferLogsToAddress(userAddress)
+      const transferLogs = await userTransferLogs[adapter.chainId]
 
       // no logs on this chain means nothing done on this chain
-      if (transferLogs.length === 0) {
+      if (!transferLogs || transferLogs.length === 0) {
         return []
       }
 
@@ -355,6 +363,7 @@ export class DefiProvider {
     const runner = async (
       adapter: IProtocolAdapter,
       provider: CustomJsonRpcProvider,
+      userTransferLogs: Partial<Record<Chain, Promise<Log[]>>>,
     ) => {
       if (adapter.chainId === Chain.Bsc) {
         throw new NotSupportedError('Profits not supported on BSC')
@@ -367,7 +376,7 @@ export class DefiProvider {
         toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
 
       const protocolTokenAddresses = await this.buildTokenFilter(
-        userAddress,
+        userTransferLogs,
         adapter,
         filterProtocolTokens,
       )
@@ -409,9 +418,16 @@ export class DefiProvider {
       return profits
     }
 
+    const userTransferLogs = this.prefetchUserLogs({
+      userAddress,
+      filterProtocolIds,
+      filterChainIds,
+    })
+
     const result = (
       await this.runForAllProtocolsAndChains({
-        runner,
+        runner: (adapter, provider) =>
+          runner(adapter, provider, userTransferLogs),
         filterProtocolIds,
         filterChainIds,
         method: 'getProfits',
@@ -579,7 +595,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, provider, runner)
   }
 
   async getTransactionParams(input: GetTransactionParams): Promise<
@@ -609,7 +625,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, provider, runner)
   }
 
   async getDeposits({
@@ -663,7 +679,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, provider, runner)
   }
   async getRepays({
     userAddress,
@@ -717,7 +733,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, provider, runner)
   }
   async getBorrows({
     userAddress,
@@ -771,7 +787,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, provider, runner)
   }
 
   async getTotalValueLocked({
@@ -843,13 +859,7 @@ export class DefiProvider {
     ) => ReturnType
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
-    method:
-      | 'getPositions'
-      | 'unwrap'
-      | 'getProfits'
-      | 'getWithdrawals'
-      | 'getDeposits'
-      | 'getTotalValueLocked'
+    method: 'getPositions' | 'unwrap' | 'getProfits' | 'getTotalValueLocked'
   }): Promise<AdapterResponse<Awaited<ReturnType>>[]> {
     const protocolPromises = Object.entries(supportedProtocols)
       .filter(
@@ -968,5 +978,47 @@ export class DefiProvider {
     this.adaptersControllerWithoutPrices.init()
 
     this.adaptersController.init()
+  }
+
+  private prefetchUserLogs({
+    userAddress,
+    filterProtocolIds,
+    filterChainIds,
+  }: {
+    userAddress: string
+    filterProtocolIds?: Protocol[]
+    filterChainIds?: Chain[]
+  }) {
+    const chains = [
+      ...new Set(
+        Object.entries(supportedProtocols)
+          .filter(
+            ([protocolIdKey, _]) =>
+              !filterProtocolIds ||
+              filterProtocolIds.includes(protocolIdKey as Protocol),
+          )
+          .flatMap(([_, supportedChains]) => {
+            return Object.entries(supportedChains)
+              .filter(([chainIdKey, _]) => {
+                return (
+                  !filterChainIds ||
+                  filterChainIds.includes(+chainIdKey as Chain)
+                )
+              })
+              .flatMap(([chainIdKey, _]) => +chainIdKey as Chain)
+          }),
+      ),
+    ]
+
+    return chains.reduce(
+      (acc, chainId) => {
+        acc[chainId] =
+          this.chainProvider.providers[chainId].getAllTransferLogsToAddress(
+            userAddress,
+          )
+        return acc
+      },
+      {} as Partial<Record<Chain, Promise<Log[]>>>,
+    )
   }
 }
