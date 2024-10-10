@@ -274,10 +274,10 @@ export class DefiProvider {
         return undefined
       }
 
-      const transferLogs = await userTransferLogs[adapter.chainId]!
+      const transferLogs = await userTransferLogs[adapter.chainId]
 
       // no logs on this chain means nothing done on this chain
-      if (transferLogs.length === 0) {
+      if (!transferLogs || transferLogs.length === 0) {
         return []
       }
 
