@@ -2,7 +2,7 @@ import Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
 import {
   IMetadataProvider,
-  buildMetadataProviders,
+  buildSqliteMetadataProviders,
 } from './SQLiteMetadataProvider'
 import { Protocol } from './adapters/protocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
@@ -44,6 +44,7 @@ import {
   TotalValueLockResponse,
 } from './types/response'
 import { IUnwrapCache, IUnwrapCacheProvider, UnwrapCache } from './unwrapCache'
+import { buildVoidMetadataProviders } from './VoidMetadataProvider'
 
 export class DefiProvider {
   private parsedConfig
@@ -65,10 +66,14 @@ export class DefiProvider {
     >,
     unwrapCacheProvider?: IUnwrapCacheProvider,
   ) {
-    this.metadataProviders = buildMetadataProviders(metadataProviderSettings)
+    this.parsedConfig = new Config(config)
+
+    this.metadataProviders = this.parsedConfig.values.useDatabase
+      ? buildSqliteMetadataProviders(metadataProviderSettings)
+      : buildVoidMetadataProviders()
+
     this.unwrapCache = new UnwrapCache(unwrapCacheProvider)
 
-    this.parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
 
     this.adaptersController = new AdaptersController({
