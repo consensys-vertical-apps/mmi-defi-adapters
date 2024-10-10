@@ -1000,11 +1000,7 @@ export class DefiProvider {
                   filterChainIds.includes(+chainIdKey as Chain)
                 )
               })
-              .flatMap(([chainIdKey, _]) => {
-                const chainId = +chainIdKey as Chain
-
-                return chainId
-              })
+              .flatMap(([chainIdKey, _]) => +chainIdKey as Chain)
           }),
       ),
     ]
