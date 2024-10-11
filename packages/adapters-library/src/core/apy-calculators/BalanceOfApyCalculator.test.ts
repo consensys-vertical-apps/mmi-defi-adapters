@@ -153,7 +153,15 @@ describe('BalanceOfApyCalculator', () => {
           adapter: mockAdapter,
         })
 
-        expect(result.apyPercent).toBeCloseTo(expectedApy, 1)
+        expect(result).toMatchObject({
+          apyPercent: expect.closeTo(expectedApy, 1),
+          period: {
+            blocknumberStart: blockNumber - 7146,
+            blocknumberEnd: blockNumber,
+          },
+          userAddress,
+          protocolTokenAddress,
+        })
       })
     },
   )
