@@ -1,6 +1,6 @@
 {
   "blockNumber": 19326319,
-  "latency": "Latency: 3.133 seconds",
+  "latency": "Latency: 3.639 seconds",
   "aggregatedValues": ["USD3,688.22"],
   "snapshot": [
     {
@@ -17,8 +17,8 @@
       "tokens": [
         {
           "address": "0x06da0fd433C1A5d7a4faa01111c044910A184553",
-          "name": "SushiSwap LP Token",
-          "symbol": "SLP",
+          "name": "Sushiswap V2 WETH / USDT",
+          "symbol": "SUSHI-V2/WETH/USDT",
           "decimals": 18,
           "balanceRaw": "18418269901676n",
           "type": "protocol",
