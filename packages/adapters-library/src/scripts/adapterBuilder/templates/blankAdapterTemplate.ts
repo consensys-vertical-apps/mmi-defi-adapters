@@ -41,7 +41,6 @@ export function blankAdapterTemplate() {
       helpers: Helpers
 
       adapterSettings = {
-        version: 2,
         enablePositionDetectionByProtocolTokenTransfer: Replacements.ENABLE_POSITION_DETECTION_BY_PROTOCOL_TOKEN_TRANSFER.placeholder,
         includeInUnwrap: Replacements.INCLUDE_IN_UNWRAP.placeholder,
       }
