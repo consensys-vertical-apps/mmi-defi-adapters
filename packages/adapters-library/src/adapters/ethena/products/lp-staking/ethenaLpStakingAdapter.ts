@@ -64,7 +64,7 @@ export class EthenaLpStakingAdapter implements IProtocolAdapter {
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'Ethena',
+      name: 'Ethena LP Staking',
       description: 'Ethena defi adapter',
       siteUrl: 'https://ethena.fi/',
       iconUrl:

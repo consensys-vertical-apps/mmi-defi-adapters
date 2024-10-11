@@ -23,6 +23,13 @@ import {
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
 
+const SUSDE_TOKEN_ADDRESS = getAddress(
+  '0x9D39A5DE30e57443BfF2A8307A4256c8797A3497',
+)
+const USDE_TOKEN_ADDRESS = getAddress(
+  '0x4c9EDD5852cd905f086C759E8383e09bff1E68B3',
+)
+
 export class EthenaStakedUsdeAdapter implements IProtocolAdapter {
   productId = 'staked-usde'
   protocolId: Protocol
@@ -55,7 +62,7 @@ export class EthenaStakedUsdeAdapter implements IProtocolAdapter {
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'Ethena',
+      name: 'Ethena sUSDe',
       description: 'Ethena defi adapter',
       siteUrl: 'https://ethena.fi/',
       iconUrl:
@@ -68,13 +75,12 @@ export class EthenaStakedUsdeAdapter implements IProtocolAdapter {
 
   @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
-    const protocolToken = await this.helpers.getTokenMetadata(
-      getAddress('0x9D39A5DE30e57443BfF2A8307A4256c8797A3497'),
-    )
+    const protocolToken =
+      await this.helpers.getTokenMetadata(SUSDE_TOKEN_ADDRESS)
 
-    const underlyingToken = await this.helpers.getTokenMetadata(
-      getAddress('0x4c9EDD5852cd905f086C759E8383e09bff1E68B3'),
-    )
+    const underlyingToken =
+      await this.helpers.getTokenMetadata(USDE_TOKEN_ADDRESS)
+
     return [
       {
         ...protocolToken,

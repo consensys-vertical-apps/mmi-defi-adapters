@@ -126,6 +126,8 @@ import { EtherFiL2Adapter } from './etherfi/products/l2/etherFiL2Adapter'
 
 import { EthenaLpStakingAdapter } from './ethena/products/lp-staking/ethenaLpStakingAdapter'
 
+import { EthenaStakedEnaAdapter } from './ethena/products/staked-ena/ethenaStakedEnaAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -304,7 +306,11 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Ethena]: {
-    [Chain.Ethereum]: [EthenaStakedUsdeAdapter, EthenaLpStakingAdapter],
+    [Chain.Ethereum]: [
+      EthenaStakedUsdeAdapter,
+      EthenaLpStakingAdapter,
+      EthenaStakedEnaAdapter,
+    ],
   },
 
   [Protocol.EtherFi]: {

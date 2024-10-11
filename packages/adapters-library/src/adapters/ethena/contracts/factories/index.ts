@@ -2,4 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 export { EthenaLpStaking__factory } from "./EthenaLpStaking__factory";
+export { StakedEna__factory } from "./StakedEna__factory";
 export { Susde__factory } from "./Susde__factory";
