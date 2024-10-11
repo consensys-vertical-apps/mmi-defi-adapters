@@ -36,10 +36,8 @@ export class PancakeswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   > {
     return {
       [Chain.Ethereum]: {
-        type: 'graphql',
+        type: 'factory',
         factoryAddress: '0x1097053Fd2ea711dad45caCcc45EfF7548fCB362',
-        subgraphUrl:
-          'https://api.thegraph.com/subgraphs/name/pancakeswap/exhange-eth',
       },
       [Chain.Bsc]: {
         type: 'graphql',

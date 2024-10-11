@@ -4,7 +4,10 @@ import { Erc20__factory } from '../contracts'
 import { TransferEvent } from '../contracts/Erc20'
 import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
 import { Chain } from '../core/constants/chains'
-import { MaxMovementLimitExceededError } from '../core/errors/errors'
+import {
+  MaxMovementLimitExceededError,
+  ProtocolTokenFilterRequiredError,
+} from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../core/utils/filters'
 import { getOnChainTokenMetadata } from '../core/utils/getTokenMetadata'
@@ -67,9 +70,7 @@ export class Helpers {
   }): Promise<ProtocolPosition[]> {
     // Otherwise we might overload the node
     if (!protocolTokenAddresses && protocolTokens.length > 1000) {
-      throw new Error(
-        'Too many tokens to fetch, protocolTokenAddresses must be provided',
-      )
+      throw new ProtocolTokenFilterRequiredError()
     }
 
     return filterMapAsync(protocolTokens, async (protocolToken) => {
