@@ -4,17 +4,16 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { logger } from '../../../../core/utils/logger'
+import { filterMapAsync } from '../../../../core/utils/filters'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
-  GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
@@ -23,27 +22,14 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  Underlying,
-  UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { EthenaLpStaking__factory } from '../../contracts'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-
-/**
- * Update me.
- * Add additional metadata or delete type
- */
-type AdditionalMetadata = {}
 
 const LP_STAKING_CONTRACT_ADDRESS = getAddress(
   '0x8707f238936c12c309bfc2B9959C35828AcFc512',
-)
-const USDDE_TOKEN_ADDRESS = getAddress(
-  '0x4c9EDD5852cd905f086C759E8383e09bff1E68B3',
 )
 
 export class EthenaLpStakingAdapter implements IProtocolAdapter {
@@ -75,10 +61,6 @@ export class EthenaLpStakingAdapter implements IProtocolAdapter {
     this.helpers = helpers
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -94,7 +76,7 @@ export class EthenaLpStakingAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const lpStakingContract = EthenaLpStaking__factory.connect(
       LP_STAKING_CONTRACT_ADDRESS,
       this.provider,
@@ -108,14 +90,13 @@ export class EthenaLpStakingAdapter implements IProtocolAdapter {
         async (lpToken) => {
           return {
             ...(await getTokenMetadata(lpToken, this.chainId, this.provider)),
+            underlyingTokens: [],
           }
         },
       ),
     )
 
-    console.log(JSON.stringify(lpTokens, null, 2))
-
-    throw new NotImplementedError()
+    return lpTokens
   }
 
   private async getProtocolTokenByAddress(protocolTokenAddress: string) {
@@ -128,47 +109,113 @@ export class EthenaLpStakingAdapter implements IProtocolAdapter {
   async getPositions({
     userAddress,
     blockNumber,
+    protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const lpStakingContract = EthenaLpStaking__factory.connect(
       LP_STAKING_CONTRACT_ADDRESS,
       this.provider,
     )
 
-    const userStake = await lpStakingContract.stakes(
-      userAddress,
-      USDDE_TOKEN_ADDRESS,
-      { blockTag: blockNumber },
+    const protocolTokens = await this.getProtocolTokens()
+
+    return await filterMapAsync(protocolTokens, async (protocolToken) => {
+      if (
+        protocolTokenAddresses &&
+        !protocolTokenAddresses.includes(protocolToken.address)
+      ) {
+        return undefined
+      }
+
+      const userStake = await lpStakingContract.stakes(
+        userAddress,
+        protocolToken.address,
+        { blockTag: blockNumber },
+      )
+
+      if (!userStake.stakedAmount) {
+        return undefined
+      }
+
+      return {
+        type: TokenType.Protocol,
+        address: protocolToken.address,
+        name: protocolToken.name,
+        symbol: protocolToken.symbol,
+        decimals: protocolToken.decimals,
+        balanceRaw: userStake.stakedAmount,
+      }
+    })
+  }
+
+  async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
+    return await this.getMovements({
+      ...input,
+      filterType: 'unstake',
+    })
+  }
+
+  async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
+    return await this.getMovements({
+      ...input,
+      filterType: 'stake',
+    })
+  }
+
+  private async getMovements({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+    filterType,
+  }: GetEventsInput & {
+    filterType: 'stake' | 'unstake'
+  }): Promise<MovementsByBlock[]> {
+    const protocolTokenPromise =
+      this.getProtocolTokenByAddress(protocolTokenAddress)
+
+    const lpStakingContract = EthenaLpStaking__factory.connect(
+      LP_STAKING_CONTRACT_ADDRESS,
+      this.provider,
     )
 
-    return [
-      {
-        ...(await getTokenMetadata(
-          USDDE_TOKEN_ADDRESS,
-          this.chainId,
-          this.provider,
-        )),
-        type: TokenType.Protocol,
-        balanceRaw: userStake.stakedAmount,
-      },
-    ]
-  }
+    const filter =
+      filterType === 'stake'
+        ? lpStakingContract.filters.Stake(userAddress, protocolTokenAddress)
+        : lpStakingContract.filters.Unstake(userAddress, protocolTokenAddress)
 
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
+    const events = await lpStakingContract.queryFilter(
+      filter,
+      fromBlock,
+      toBlock,
+    )
 
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
+    const protocolToken = await protocolTokenPromise
+
+    return events.map((event) => {
+      const { amount } = event.args!
+
+      return {
+        protocolToken: {
+          address: protocolToken.address,
+          name: protocolToken.name,
+          symbol: protocolToken.symbol,
+          decimals: protocolToken.decimals,
+        },
+        blockNumber: event.blockNumber,
+        transactionHash: event.transactionHash,
+        tokens: [
+          {
+            address: protocolToken.address,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
+            type: TokenType.Underlying,
+            blockNumber: event.blockNumber,
+            balanceRaw: amount,
+          },
+        ],
+      }
+    })
   }
 
   async getTotalValueLocked({
@@ -180,22 +227,30 @@ export class EthenaLpStakingAdapter implements IProtocolAdapter {
       this.provider,
     )
 
-    const stakeParameters = await lpStakingContract.stakeParametersByToken(
-      USDDE_TOKEN_ADDRESS,
-      { blockTag: blockNumber },
-    )
+    return await Promise.all(
+      (await this.getProtocolTokens())
+        .filter(
+          (protocolToken) =>
+            !protocolTokenAddresses ||
+            protocolTokenAddresses.includes(protocolToken.address),
+        )
+        .map(async (protocolToken) => {
+          const stakeParameters =
+            await lpStakingContract.stakeParametersByToken(
+              protocolToken.address,
+              { blockTag: blockNumber },
+            )
 
-    return [
-      {
-        ...(await getTokenMetadata(
-          USDDE_TOKEN_ADDRESS,
-          this.chainId,
-          this.provider,
-        )),
-        type: TokenType.Protocol,
-        totalSupplyRaw: stakeParameters.totalStaked,
-      },
-    ]
+          return {
+            type: TokenType.Protocol,
+            address: protocolToken.address,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
+            totalSupplyRaw: stakeParameters.totalStaked,
+          }
+        }),
+    )
   }
 
   async unwrap({
