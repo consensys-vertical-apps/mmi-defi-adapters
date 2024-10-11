@@ -33,7 +33,6 @@ export class EtherFiEEthAdapter implements IProtocolAdapter {
   helpers: Helpers
 
   adapterSettings = {
-    version: 2,
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
   }

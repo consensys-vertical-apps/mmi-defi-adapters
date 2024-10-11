@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs'
 import path from 'node:path'
 import Database, { Database as DbType } from 'better-sqlite3'
 import { Protocol } from './adapters/protocols'
-import { Chain, ChainName } from './core/constants/chains'
+import { Chain, ChainIdToChainNameMap } from './core/constants/chains'
 import { logger } from './core/utils/logger'
 import {
   AdditionalMetadataWithReservedFields,
@@ -233,7 +233,7 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
   }
 }
 
-export function buildMetadataProviders(
+export function buildSqliteMetadataProviders(
   metadataProviderSettings:
     | Record<Chain, { dbPath: string; options: Database.Options }>
     | undefined = defaultMetadataProviderSettings(),
@@ -260,7 +260,11 @@ function defaultMetadataProviderSettings() {
   return Object.values(Chain).reduce(
     (chainMetadataProvider, chainId) => {
       chainMetadataProvider[chainId] = {
-        dbPath: path.join(__dirname, '../../..', `${ChainName[chainId]}.db`),
+        dbPath: path.join(
+          __dirname,
+          '../../..',
+          `${ChainIdToChainNameMap[chainId]}.db`,
+        ),
         options: { fileMustExist: !allowDbCreation },
       }
 

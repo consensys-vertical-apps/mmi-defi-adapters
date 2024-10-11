@@ -46,7 +46,6 @@ export class StargateFarmV2Adapter implements IProtocolAdapter {
   helpers: Helpers
 
   adapterSettings = {
-    version: 2,
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
   }
