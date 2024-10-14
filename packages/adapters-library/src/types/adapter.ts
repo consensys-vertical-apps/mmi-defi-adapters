@@ -349,3 +349,13 @@ export interface ProtocolAdapterParams {
   adaptersController: AdaptersController
   helpers: Helpers
 }
+
+export type AggregatedFiatBalances = Record<
+  string,
+  {
+    protocolTokenMetadata: Erc20Metadata & { tokenId?: string }
+    usdRaw: bigint
+    hasTokensWithoutUSDPrices?: boolean
+    tokensWithoutUSDPrices?: Underlying[]
+  }
+>
