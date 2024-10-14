@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import { Chain, ChainName } from '../core/constants/chains'
+import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
@@ -30,6 +30,8 @@ const defiProviderWithMulticall = new DefiProvider({
 const filterProtocolId = protocolFilter(
   process.env.DEFI_ADAPTERS_TEST_FILTER_PROTOCOL,
 )
+
+const filterProductId = process.env.DEFI_ADAPTERS_TEST_FILTER_PRODUCT
 
 // @ts-ignore
 const normalizeNegativeZero = (obj) => {
@@ -94,8 +96,30 @@ const allTestCases = {
 runAllTests()
 
 function runAllTests() {
+  console.log('AAAAAAA', {
+    protocolFilter: process.env.DEFI_ADAPTERS_TEST_FILTER_PROTOCOL,
+    productFilter: process.env.DEFI_ADAPTERS_TEST_FILTER_PRODUCT,
+  })
+
   if (filterProtocolId) {
     const protocolTestCases = allTestCases[filterProtocolId]
+
+    if (filterProductId) {
+      const productTestCases = protocolTestCases[filterProductId]
+
+      if (!productTestCases) {
+        throw new Error(
+          `Test cases for product ${filterProductId} and protocol ${filterProtocolId} not found`,
+        )
+      }
+
+      describe(filterProtocolId, () => {
+        runProductTests(filterProtocolId, filterProductId, productTestCases)
+      })
+
+      return
+    }
+
     Object.entries(protocolTestCases).forEach(
       ([productId, productTestCases]) => {
         describe(filterProtocolId, () => {
@@ -103,6 +127,7 @@ function runAllTests() {
         })
       },
     )
+
     return
   }
 
@@ -178,7 +203,7 @@ function runProductTests(
         )
 
       for (const [productId, adapter] of adapters) {
-        it(`protocol token addresses are checksumed (${protocolId} # ${productId} # ${ChainName[chainId]})`, async () => {
+        it(`protocol token addresses are checksumed (${protocolId} # ${productId} # ${ChainIdToChainNameMap[chainId]})`, async () => {
           let protocolTokenAddresses: string[]
           try {
             protocolTokenAddresses = (await adapter.getProtocolTokens()).map(
@@ -225,6 +250,7 @@ function runProductTests(
             const response = await defiProvider.getPositions({
               ...testCase.input,
               filterProtocolIds: [protocolId],
+              filterProductIds: [productId],
               filterChainIds: [testCase.chainId],
               blockNumbers: { [testCase.chainId]: blockNumber },
             })
@@ -262,6 +288,7 @@ function runProductTests(
             const response = await defiProvider.getProfits({
               ...testCase.input,
               filterProtocolIds: [protocolId],
+              filterProductIds: [productId],
               filterChainIds: [testCase.chainId],
               toBlockNumbersOverride: { [testCase.chainId]: blockNumber },
             })
@@ -438,6 +465,7 @@ function runProductTests(
 
             const response = await defiProvider.unwrap({
               filterProtocolIds: [protocolId],
+              filterProductIds: [productId],
               filterChainIds: [testCase.chainId],
               filterProtocolToken: testCase.filterProtocolToken,
               blockNumbers: { [testCase.chainId]: blockNumber },
@@ -471,6 +499,7 @@ function runProductTests(
 
             const response = await defiProvider.getTotalValueLocked({
               filterProtocolIds: [protocolId],
+              filterProductIds: [productId],
               filterChainIds: [testCase.chainId],
               filterProtocolTokens: testCase.filterProtocolTokens,
               blockNumbers: { [testCase.chainId]: blockNumber },
@@ -529,7 +558,9 @@ function runProductTests(
 }
 
 function testKey({ chainId, method, key }: TestCase) {
-  return `${ChainName[chainId]}.${method}${key ? `.${kebabCase(key)}` : ''}`
+  return `${ChainIdToChainNameMap[chainId]}.${method}${
+    key ? `.${kebabCase(key)}` : ''
+  }`
 }
 
 async function fetchSnapshot(

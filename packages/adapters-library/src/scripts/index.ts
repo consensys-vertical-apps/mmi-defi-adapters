@@ -14,6 +14,8 @@ import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
+import { buildIntegrationTests } from './adapterBuilder/buildIntegrationTests'
+import { Protocol } from '../adapters/protocols'
 
 const program = new Command('mmi-adapters')
 
@@ -63,5 +65,32 @@ program
       })
     },
   )
+
+program.command('integration-test-restore').action(async () => {
+  const allProtocols = await defiProvider.getSupport()
+
+  for (const protocolProducts of Object.values(allProtocols)) {
+    for (const product of protocolProducts) {
+      const protocolId = product.protocolDetails.protocolId
+      const productId = product.protocolDetails.productId
+
+      if (protocolId !== Protocol.Lido) {
+        continue
+      }
+
+      console.log(
+        `Restoring integration tests for ${protocolId} and ${productId}`,
+      )
+
+      buildIntegrationTests({
+        protocolId,
+        protocolKey: Object.entries(Protocol).find(
+          ([_, value]) => value === protocolId,
+        )![0],
+        productId,
+      })
+    }
+  }
+})
 
 program.parseAsync()
