@@ -1,14 +1,14 @@
 {
-  "latency": "Latency: 0.347 seconds",
+  "latency": "Latency: 0.286 seconds",
   "blockNumber": 19776342,
   "snapshot": [
     {
       "protocolId": "ethena",
-      "name": "Ethena",
+      "name": "Ethena sUSDe",
       "description": "Ethena defi adapter",
       "siteUrl": "https://ethena.fi/",
       "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57e114b691db790c35207b2e685d4a43181e6061/logo.png",
-      "positionType": "supply",
+      "positionType": "stake",
       "chainId": 1,
       "productId": "staked-usde",
       "chainName": "ethereum",
