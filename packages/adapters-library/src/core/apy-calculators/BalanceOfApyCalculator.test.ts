@@ -18,7 +18,7 @@ describe('BalanceOfApyCalculator', () => {
   const testCases = [
     {
       description:
-        'Test Case 1 - Aave V2 - aEthWETH - Over 1 day - on 2024-10-13',
+        'Test Case 1 - aave-v3 - aEthWETH - Over 1 day - on 2024-10-13',
       userAddress: '0x1A0459cade0A33B9B054ba6F3942156Ea183c41F', // For information only. Isn't used by the tested code
       protocolTokenAddress: '0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8',
       blocknumberStart: 20735336,
@@ -55,7 +55,7 @@ describe('BalanceOfApyCalculator', () => {
     },
     {
       description:
-        'Test Case 2 - Lido - stETH -  Over 7 days - From 2024-07-20 to 2024-07-27',
+        'Test Case 2 - lido - stETH -  Over 7 days - From 2024-07-20 to 2024-07-27',
       userAddress: '0xEB9c1CE881F0bDB25EAc4D74FccbAcF4Dd81020a', // For information only. Isn't used by the tested code
       protocolTokenAddress: '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84',
       blocknumberStart: 20295271,
@@ -92,7 +92,7 @@ describe('BalanceOfApyCalculator', () => {
     },
     {
       description:
-        'Test Case 3 - Maker DAO - sDai - Over 1 Month - From 2024-09-03 to  2024-10-03',
+        'Test Case 3 - maker - sDai - Over 1 Month - From 2024-09-03 to  2024-10-03',
       userAddress: '0xdd8AA75dF331158BEAD8C17d05dD26F96EE08Dc7', // For information only. Isn't used by the tested code
       protocolTokenAddress: '0x83F20F44975D03b1b09e64809B757c47f942BEeA',
       blocknumberStart: 20667923,

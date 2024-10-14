@@ -1,7 +1,13 @@
 import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY'
 import { NotSupportedError } from '../errors/errors'
-import { ApyCalculation, ApyCalculator, EvmApyArgs } from './ApyCalculator'
-import { computeApr, computeApy } from './common'
+import {
+  ApyCalculator,
+  ApyInfo,
+  GetApyArgs,
+  VoidApyInfo,
+} from './ApyCalculator'
+import { VoidApyCalculator } from './VoidApyCalculator'
+import { computeApr, computeApy } from './helpers'
 
 /**
  * Calculates the APY of a position by calculating the fees as the difference of balance in
@@ -18,61 +24,71 @@ import { computeApr, computeApy } from './common'
  * - Lending (aToken, cToken, ...)
  * - LSTs
  */
-export class BalanceOfApyCalculator implements ApyCalculator<EvmApyArgs> {
-  public async getApy({
-    positionStart,
-    positionEnd,
-    blocknumberStart,
-    blocknumberEnd,
-    protocolTokenAddress,
-    chainId,
-  }: EvmApyArgs): Promise<ApyCalculation> {
-    // Duration in days of the period where we look at the fees earned. The APY and APR are then annualized based on this period.
-    const durationDays =
-      (blocknumberEnd - blocknumberStart) / AVERAGE_BLOCKS_PER_DAY[chainId]
-
-    // How many periods there is in a year
-    const frequency = 365 / durationDays
-
-    if (
-      positionStart.tokens?.[0]?.tokens?.length !== 1 ||
-      positionEnd.tokens?.[0]?.tokens?.length !== 1
-    )
-      throw new NotSupportedError(
-        'BalanceOfApyCalculator only supports APY calculations for products with exactly one underlying token, such as aTokens.',
-      )
-
-    const underlyingTokenStart = positionStart.tokens?.[0]?.tokens[0]!
-    const underlyingTokenEnd = positionEnd.tokens?.[0]?.tokens[0]!
-
-    const balanceStartWei = underlyingTokenStart.balanceRaw
-    const balanceEndWei = underlyingTokenEnd.balanceRaw
-
-    const interest = this.computeInterest(balanceStartWei, balanceEndWei)
-    const interestPercent = interest * 100
-
-    const apr = computeApr(interest, frequency)
-    const aprPercent = apr * 100
-
-    const apy = computeApy(apr, frequency)
-    const apyPercent = apy * 100
-
-    return {
-      apyPercent,
-      apy,
-      aprPercent,
-      apr,
-      period: {
+export class BalanceOfApyCalculator implements ApyCalculator {
+  public async getApy(args: GetApyArgs): Promise<ApyInfo | VoidApyInfo> {
+    try {
+      const {
+        positionStart,
+        positionEnd,
         blocknumberStart,
         blocknumberEnd,
-        interestPercent,
-        interest,
-      },
-      compounding: {
-        durationDays,
-        frequency,
-      },
-      protocolTokenAddress,
+        protocolTokenAddress,
+        chainId,
+      } = args
+
+      // Duration in days of the period where we look at the fees earned. The APY and APR are then annualized based on this period.
+      const durationDays =
+        (blocknumberEnd - blocknumberStart) / AVERAGE_BLOCKS_PER_DAY[chainId]
+
+      // How many periods there is in a year
+      const frequency = 365 / durationDays
+
+      if (
+        positionStart.tokens?.length !== 1 ||
+        positionEnd.tokens?.length !== 1
+      )
+        throw new NotSupportedError(
+          'BalanceOfApyCalculator only supports APY calculations for products with exactly one underlying token, such as aTokens.',
+        )
+
+      const underlyingTokenStart = positionStart.tokens[0]!
+      const underlyingTokenEnd = positionEnd.tokens[0]!
+
+      const balanceStartWei = underlyingTokenStart.balanceRaw
+      const balanceEndWei = underlyingTokenEnd.balanceRaw
+
+      const interest = this.computeInterest(balanceStartWei, balanceEndWei)
+      const interestPercent = interest * 100
+
+      const apr = computeApr(interest, frequency)
+      const aprPercent = apr * 100
+
+      const apy = computeApy(apr, frequency)
+      const apyPercent = apy * 100
+
+      return {
+        apyPercent,
+        apy,
+        aprPercent,
+        apr,
+        period: {
+          blocknumberStart,
+          blocknumberEnd,
+          interestPercent,
+          interest,
+        },
+        compounding: {
+          durationDays,
+          frequency,
+        },
+        protocolTokenAddress,
+      }
+    } catch (error) {
+      console.warn(
+        'Error encountered while calculating an APY. Defaulting to VoidApyCalculator.',
+        error,
+      )
+      return new VoidApyCalculator().getApy(args)
     }
   }
 

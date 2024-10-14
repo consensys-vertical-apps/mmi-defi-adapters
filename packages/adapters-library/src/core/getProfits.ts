@@ -12,6 +12,7 @@ import {
   TokenType,
 } from '../types/adapter'
 import { IUnwrapCache } from '../unwrapCache'
+import { createApyCalculatorFor } from './apy-calculators/helpers'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
 import { calculateDeFiAttributionPerformance } from './utils/calculateDeFiAttributionPerformance'
@@ -36,11 +37,10 @@ export async function getProfits({
   includeRawValues?: boolean
   unwrapCache: IUnwrapCache
 }): Promise<ProfitsWithRange> {
-  let endPositionValues: ReturnType<typeof aggregateFiatBalances>
-  let startPositionValues: ReturnType<typeof aggregateFiatBalances>
+  let endPositionValues: AggregatedFiatBalances
+  let startPositionValues: AggregatedFiatBalances
 
   let rawEndPositionValues: ProtocolPosition[]
-
   let rawStartPositionValues: ProtocolPosition[]
 
   if (protocolTokenAddresses ?? tokenIds) {
@@ -277,6 +277,20 @@ export async function getProfits({
           ]
         : undefined
 
+      const apyCalculator = await createApyCalculatorFor(adapter)
+      const apyInfo = await apyCalculator.getApy({
+        positionStart: rawStartPositionValues.find(
+          (item) => item.address === protocolTokenMetadata.address,
+        )!,
+        positionEnd: rawEndPositionValues.find(
+          (item) => item.address === protocolTokenMetadata.address,
+        )!,
+        blocknumberStart: fromBlock,
+        blocknumberEnd: toBlock,
+        protocolTokenAddress: protocolTokenMetadata.address,
+        chainId: adapter.chainId,
+      })
+
       return {
         ...protocolTokenMetadata,
         type: TokenType.Protocol,
@@ -287,6 +301,7 @@ export async function getProfits({
           deposit,
           startPositionValue,
         }),
+        apyInfo,
         calculationData: {
           withdrawals: withdrawal,
           deposits: deposit,
