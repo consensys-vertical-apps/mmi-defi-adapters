@@ -241,6 +241,9 @@ export class DefiProvider {
 
     logger.info({
       source: 'positions',
+      successfulResponses: result.filter((r) => r.success).length,
+      failedResponses: result.filter((r) => !r.success).length,
+      totalResponses: result.length,
       startTime: startGetPositions,
       endTime: endGetPositions,
       timeTaken: endGetPositions - startGetPositions,
