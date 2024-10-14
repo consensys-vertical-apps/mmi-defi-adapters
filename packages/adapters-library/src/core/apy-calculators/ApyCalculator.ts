@@ -1,4 +1,4 @@
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { ProtocolPosition } from '../../types/adapter'
 import { Chain } from '../constants/chains'
 
 /**
@@ -17,10 +17,9 @@ export interface ApyCalculation {
     interest: number
   }
   compounding: {
-    strategy: 'daily'
-    frequency: 365
+    durationDays: number
+    frequency: number
   }
-  userAddress: string
   protocolTokenAddress: string
 }
 
@@ -35,9 +34,10 @@ export interface ApyCalculator<TArgs> {
 }
 
 export type EvmApyArgs = {
-  userAddress: string
-  blockNumber: number
+  positionStart: ProtocolPosition
+  positionEnd: ProtocolPosition
+  blocknumberStart: number
+  blocknumberEnd: number
   protocolTokenAddress: string
   chainId: Chain
-  adapter: IProtocolAdapter
 }

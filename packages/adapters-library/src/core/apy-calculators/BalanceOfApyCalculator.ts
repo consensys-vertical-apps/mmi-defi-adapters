@@ -1,4 +1,5 @@
 import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY'
+import { NotSupportedError } from '../errors/errors'
 import { ApyCalculation, ApyCalculator, EvmApyArgs } from './ApyCalculator'
 import { computeApr, computeApy } from './common'
 
@@ -18,60 +19,42 @@ import { computeApr, computeApy } from './common'
  * - LSTs
  */
 export class BalanceOfApyCalculator implements ApyCalculator<EvmApyArgs> {
-  // Duration in days of the period where we look at the fees earned. The APY and APR are then annualized based on this period.
-  public static readonly PERIOD_DURATION_DAYS = 1
-
-  // How many periods there is in a year
-  public static readonly FREQUENCY = 365
-
   public async getApy({
-    userAddress,
-    blockNumber,
+    positionStart,
+    positionEnd,
+    blocknumberStart,
+    blocknumberEnd,
     protocolTokenAddress,
     chainId,
-    adapter,
   }: EvmApyArgs): Promise<ApyCalculation> {
-    const blocknumberEnd = blockNumber
-    const blocknumberStart =
-      blocknumberEnd -
-      AVERAGE_BLOCKS_PER_DAY[chainId] *
-        BalanceOfApyCalculator.PERIOD_DURATION_DAYS
+    // Duration in days of the period where we look at the fees earned. The APY and APR are then annualized based on this period.
+    const durationDays =
+      (blocknumberEnd - blocknumberStart) / AVERAGE_BLOCKS_PER_DAY[chainId]
 
-    const [positionsStart, positionsEnd] = await Promise.all([
-      adapter.getPositions({
-        userAddress,
-        blockNumber: blocknumberStart,
-        protocolTokenAddresses: [protocolTokenAddress],
-      }),
-      adapter.getPositions({
-        userAddress,
-        blockNumber: blocknumberEnd,
-        protocolTokenAddresses: [protocolTokenAddress],
-      }),
-    ])
+    // How many periods there is in a year
+    const frequency = 365 / durationDays
 
-    const balanceStartWei =
-      positionsStart?.[0]?.tokens?.[0]?.tokens?.[0]?.balanceRaw
-    const balanceEndWei =
-      positionsEnd?.[0]?.tokens?.[0]?.tokens?.[0]?.balanceRaw
-
-    const noBalanceErrorMessage = `Could not find an underlying token balance for userAddress ${userAddress} for protocolTokenAddress ${protocolTokenAddress} on chain ${chainId}`
-    if (!balanceStartWei)
-      throw new Error(
-        `${noBalanceErrorMessage} at block number ${blocknumberEnd}.`,
+    if (
+      positionStart.tokens?.[0]?.tokens?.length !== 1 ||
+      positionEnd.tokens?.[0]?.tokens?.length !== 1
+    )
+      throw new NotSupportedError(
+        'BalanceOfApyCalculator only supports APY calculations for products with exactly one underlying token, such as aTokens.',
       )
-    if (!balanceEndWei)
-      throw new Error(
-        `${noBalanceErrorMessage} at block number ${blocknumberStart}.`,
-      )
+
+    const underlyingTokenStart = positionStart.tokens?.[0]?.tokens[0]!
+    const underlyingTokenEnd = positionEnd.tokens?.[0]?.tokens[0]!
+
+    const balanceStartWei = underlyingTokenStart.balanceRaw
+    const balanceEndWei = underlyingTokenEnd.balanceRaw
 
     const interest = this.computeInterest(balanceStartWei, balanceEndWei)
     const interestPercent = interest * 100
 
-    const apr = computeApr(interest, BalanceOfApyCalculator.FREQUENCY)
+    const apr = computeApr(interest, frequency)
     const aprPercent = apr * 100
 
-    const apy = computeApy(apr, BalanceOfApyCalculator.FREQUENCY)
+    const apy = computeApy(apr, frequency)
     const apyPercent = apy * 100
 
     return {
@@ -86,10 +69,9 @@ export class BalanceOfApyCalculator implements ApyCalculator<EvmApyArgs> {
         interest,
       },
       compounding: {
-        strategy: 'daily',
-        frequency: BalanceOfApyCalculator.FREQUENCY,
+        durationDays,
+        frequency,
       },
-      userAddress,
       protocolTokenAddress,
     }
   }
