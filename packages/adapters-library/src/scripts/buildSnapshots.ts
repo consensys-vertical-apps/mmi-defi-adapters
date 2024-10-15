@@ -19,9 +19,9 @@ import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
 import { startRpcSnapshot } from './rpcInterceptor'
+import { filterMapSync } from '../core/utils/filters'
 import n = types.namedTypes
 import b = types.builders
-import { filterMapSync } from '../core/utils/filters'
 
 export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
   program
@@ -40,8 +40,6 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
     )
     .showHelpAfterError()
     .action(async ({ protocols, products, key }) => {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterProductIds = (products as string | undefined)?.split(',')
 
