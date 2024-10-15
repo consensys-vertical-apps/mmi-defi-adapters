@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 import { Command } from 'commander'
+import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
+import { buildIntegrationTests } from './adapterBuilder/buildIntegrationTests'
 import { copyAdapter } from './adapterBuilder/copyAdapter'
 import { newAdapterCommand } from './adapterBuilder/newAdapterCommand'
 import { blockAverage } from './blockAverage'
@@ -14,8 +16,6 @@ import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
-import { buildIntegrationTests } from './adapterBuilder/buildIntegrationTests'
-import { Protocol } from '../adapters/protocols'
 
 const program = new Command('mmi-adapters')
 
@@ -89,6 +89,8 @@ program.command('integration-test-restore').action(async () => {
         )![0],
         productId,
       })
+
+      await new Promise((resolve) => setTimeout(resolve, 1000))
     }
   }
 })

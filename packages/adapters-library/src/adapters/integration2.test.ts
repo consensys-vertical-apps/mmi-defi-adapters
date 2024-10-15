@@ -9,14 +9,93 @@ import { getInvalidAddresses } from '../scripts/addressValidation'
 import { protocolFilter } from '../scripts/commandFilters'
 import { RpcInterceptedResponse, startRpcMock } from '../scripts/rpcInterceptor'
 import { TestCase } from '../types/testCase'
+import { testCases as aaveV2ATokenTestCases } from './aave-v2/products/a-token/tests/testCases'
+import { testCases as aaveV2StableDebtTokenTestCases } from './aave-v2/products/stable-debt-token/tests/testCases'
+import { testCases as aaveV2VariableDebtTokenTestCases } from './aave-v2/products/variable-debt-token/tests/testCases'
+import { testCases as aaveV3ATokenTestCases } from './aave-v3/products/a-token/tests/testCases'
+import { testCases as aaveV3StableDebtTokenTestCases } from './aave-v3/products/stable-debt-token/tests/testCases'
+import { testCases as aaveV3VariableDebtTokenTestCases } from './aave-v3/products/variable-debt-token/tests/testCases'
+import { testCases as angleProtocolSavingsTestCases } from './angle-protocol/products/savings/tests/testCases'
+import { testCases as beefyCowTokenTestCases } from './beefy/products/cow-token/tests/testCases'
+import { testCases as beefyMooTokenTestCases } from './beefy/products/moo-token/tests/testCases'
+import { testCases as beefyRcowTokenTestCases } from './beefy/products/rcow-token/tests/testCases'
+import { testCases as beefyRmooTokenTestCases } from './beefy/products/rmoo-token/tests/testCases'
+import { testCases as carbonDeFiStrategiesTestCases } from './carbon-defi/products/strategies/tests/testCases'
+import { testCases as chimpExchangePoolTestCases } from './chimp-exchange/products/pool/tests/testCases'
+import { testCases as compoundV2BorrowMarketTestCases } from './compound-v2/products/borrow-market/tests/testCases'
+import { testCases as compoundV2SupplyMarketTestCases } from './compound-v2/products/supply-market/tests/testCases'
+import { testCases as convexCvxcrvWrapperTestCases } from './convex/products/cvxcrv-wrapper/tests/testCases'
+import { testCases as convexPoolTestCases } from './convex/products/pool/tests/testCases'
+import { testCases as convexSidechainStakingTestCases } from './convex/products/sidechain-staking/tests/testCases'
+import { testCases as convexStakingTestCases } from './convex/products/staking/tests/testCases'
+import { testCases as curvePoolTestCases } from './curve/products/pool/tests/testCases'
+import { testCases as curveStakingTestCases } from './curve/products/staking/tests/testCases'
+import { testCases as curveVotingEscrowTestCases } from './curve/products/voting-escrow/tests/testCases'
+import { testCases as deriPoolTestCases } from './deri/products/pool/tests/testCases'
+import { testCases as ethenaLpStakingTestCases } from './ethena/products/lp-staking/tests/testCases'
+import { testCases as ethenaStakedEnaTestCases } from './ethena/products/staked-ena/tests/testCases'
+import { testCases as ethenaStakedUsdeTestCases } from './ethena/products/staked-usde/tests/testCases'
+import { testCases as etherFiEEthTestCases } from './etherfi/products/e-eth/tests/testCases'
+import { testCases as etherFiL2TestCases } from './etherfi/products/l2/tests/testCases'
+import { testCases as etherFiLiquidTestCases } from './etherfi/products/liquid/tests/testCases'
+import { testCases as etherFiWeEthTestCases } from './etherfi/products/we-eth/tests/testCases'
+import { testCases as fluxBorrowMarketTestCases } from './flux/products/borrow-market/tests/testCases'
+import { testCases as fluxSupplyMarketTestCases } from './flux/products/supply-market/tests/testCases'
+import { testCases as gmxGlpTestCases } from './gmx/products/glp/tests/testCases'
+import { testCases as iZiSwapPoolTestCases } from './iziswap/products/pool/tests/testCases'
+import { testCases as lidoStEthTestCases } from './lido/products/st-eth/tests/testCases'
+import { testCases as lidoWstEthTestCases } from './lido/products/wst-eth/tests/testCases'
+import { testCases as lynexAlgebraTestCases } from './lynex/products/algebra/tests/testCases'
+import { testCases as lynexClassicTestCases } from './lynex/products/classic/tests/testCases'
+import { testCases as makerSDaiTestCases } from './maker/products/s-dai/tests/testCases'
+import { testCases as mendiFinanceBorrowMarketTestCases } from './mendi-finance/products/borrow-market/tests/testCases'
+import { testCases as mendiFinanceSupplyMarketTestCases } from './mendi-finance/products/supply-market/tests/testCases'
+import { testCases as morphoAaveV2OptimizerBorrowTestCases } from './morpho-aave-v2/products/optimizer-borrow/tests/testCases'
+import { testCases as morphoAaveV2OptimizerSupplyTestCases } from './morpho-aave-v2/products/optimizer-supply/tests/testCases'
+import { testCases as morphoAaveV3OptimizerBorrowTestCases } from './morpho-aave-v3/products/optimizer-borrow/tests/testCases'
+import { testCases as morphoAaveV3OptimizerSupplyTestCases } from './morpho-aave-v3/products/optimizer-supply/tests/testCases'
+import { testCases as morphoBlueMarketBorrowTestCases } from './morpho-blue/products/market-borrow/tests/testCases'
+import { testCases as morphoBlueMarketSupplyTestCases } from './morpho-blue/products/market-supply/tests/testCases'
+import { testCases as morphoBlueVaultTestCases } from './morpho-blue/products/vault/tests/testCases'
+import { testCases as morphoCompoundV2OptimizerBorrowTestCases } from './morpho-compound-v2/products/optimizer-borrow/tests/testCases'
+import { testCases as morphoCompoundV2OptimizerSupplyTestCases } from './morpho-compound-v2/products/optimizer-supply/tests/testCases'
+import { testCases as mountainProtocolUsdmTestCases } from './mountain-protocol/products/usdm/tests/testCases'
+import { testCases as mountainProtocolWusdmTestCases } from './mountain-protocol/products/wusdm/tests/testCases'
+import { testCases as pancakeswapV2PoolTestCases } from './pancakeswap-v2/products/pool/tests/testCases'
+import { testCases as pendleLpTokenTestCases } from './pendle/products/lp-token/tests/testCases'
+import { testCases as pendlePrincipleTokenTestCases } from './pendle/products/principle-token/tests/testCases'
+import { testCases as pendleStandardisedYieldTokenTestCases } from './pendle/products/standardised-yield-token/tests/testCases'
+import { testCases as pendleYieldTokenTestCases } from './pendle/products/yield-token/tests/testCases'
+import { testCases as pricesV2UsdTestCases } from './prices-v2/products/usd/tests/testCases'
 import { Protocol } from './protocols'
+import { testCases as quickswapV2PoolTestCases } from './quickswap-v2/products/pool/tests/testCases'
+import { testCases as renzoEzEthTestCases } from './renzo/products/ez-eth/tests/testCases'
+import { testCases as rocketPoolRethTestCases } from './rocket-pool/products/reth/tests/testCases'
+import { testCases as solvSolvBtcTestCases } from './solv/products/solv-btc/tests/testCases'
+import { testCases as solvYieldMarketTestCases } from './solv/products/yield-market/tests/testCases'
+import { testCases as sonneBorrowMarketTestCases } from './sonne/products/borrow-market/tests/testCases'
+import { testCases as sonneSupplyMarketTestCases } from './sonne/products/supply-market/tests/testCases'
+import { testCases as sparkV1SpTokenTestCases } from './spark-v1/products/sp-token/tests/testCases'
+import { testCases as sparkV1VariableDebtTokenTestCases } from './spark-v1/products/variable-debt-token/tests/testCases'
+import { testCases as stakeWiseOsEthTestCases } from './stakewise/products/os-eth/tests/testCases'
+import { testCases as stargateFarmV2TestCases } from './stargate/products/farm-v2/tests/testCases'
+import { testCases as stargateFarmTestCases } from './stargate/products/farm/tests/testCases'
+import { testCases as stargatePoolV2TestCases } from './stargate/products/pool-v2/tests/testCases'
+import { testCases as stargatePoolTestCases } from './stargate/products/pool/tests/testCases'
+import { testCases as stargateVotingEscrowTestCases } from './stargate/products/voting-escrow/tests/testCases'
 import {
   type GetTransactionParams,
   supportedProtocols,
 } from './supportedProtocols'
-
-import { testCases as lidoStEthTestCases } from './lido/products/st-eth/tests/testCases'
-import { testCases as lidoWstEthTestCases } from './lido/products/wst-eth/tests/testCases'
+import { testCases as sushiswapV2PoolTestCases } from './sushiswap-v2/products/pool/tests/testCases'
+import { testCases as swellSwEthTestCases } from './swell/products/sw-eth/tests/testCases'
+import { testCases as syncSwapPoolTestCases } from './syncswap/products/pool/tests/testCases'
+import { testCases as uniswapV2PoolTestCases } from './uniswap-v2/products/pool/tests/testCases'
+import { testCases as uniswapV3PoolTestCases } from './uniswap-v3/products/pool/tests/testCases'
+import { testCases as xfaiDexTestCases } from './xfai/products/dex/tests/testCases'
+import { testCases as zeroLendATokenTestCases } from './zerolend/products/a-token/tests/testCases'
+import { testCases as zeroLendStableDebtTokenTestCases } from './zerolend/products/stable-debt-token/tests/testCases'
+import { testCases as zeroLendVariableDebtTokenTestCases } from './zerolend/products/variable-debt-token/tests/testCases'
 
 const TEST_TIMEOUT = 300000
 
@@ -46,51 +125,172 @@ const normalizeNegativeZero = (obj) => {
 }
 
 const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
-  [Protocol.AaveV2]: {},
-  [Protocol.AaveV3]: {},
-  [Protocol.AngleProtocol]: {},
-  [Protocol.Beefy]: {},
-  [Protocol.CarbonDeFi]: {},
-  [Protocol.ChimpExchange]: {},
-  [Protocol.CompoundV2]: {},
-  [Protocol.Convex]: {},
-  [Protocol.Curve]: {},
-  [Protocol.Deri]: {},
-  [Protocol.Ethena]: {},
-  [Protocol.EtherFi]: {},
-  [Protocol.Flux]: {},
-  [Protocol.Gmx]: {},
-  [Protocol.IZiSwap]: {},
+  [Protocol.AaveV2]: {
+    ['a-token']: aaveV2ATokenTestCases,
+    ['stable-debt-token']: aaveV2StableDebtTokenTestCases,
+    ['variable-debt-token']: aaveV2VariableDebtTokenTestCases,
+  },
+  [Protocol.AaveV3]: {
+    ['a-token']: aaveV3ATokenTestCases,
+    ['stable-debt-token']: aaveV3StableDebtTokenTestCases,
+    ['variable-debt-token']: aaveV3VariableDebtTokenTestCases,
+  },
+  [Protocol.AngleProtocol]: {
+    ['savings']: angleProtocolSavingsTestCases,
+  },
+  [Protocol.Beefy]: {
+    ['cow-token']: beefyCowTokenTestCases,
+    ['moo-token']: beefyMooTokenTestCases,
+    ['rcow-token']: beefyRcowTokenTestCases,
+    ['rmoo-token']: beefyRmooTokenTestCases,
+  },
+  [Protocol.CarbonDeFi]: {
+    ['strategies']: carbonDeFiStrategiesTestCases,
+  },
+  [Protocol.ChimpExchange]: {
+    ['pool']: chimpExchangePoolTestCases,
+  },
+  [Protocol.CompoundV2]: {
+    ['borrow-market']: compoundV2BorrowMarketTestCases,
+    ['supply-market']: compoundV2SupplyMarketTestCases,
+  },
+  [Protocol.Convex]: {
+    ['cvxcrv-wrapper']: convexCvxcrvWrapperTestCases,
+    ['pool']: convexPoolTestCases,
+    ['sidechain-staking']: convexSidechainStakingTestCases,
+    ['staking']: convexStakingTestCases,
+  },
+  [Protocol.Curve]: {
+    ['pool']: curvePoolTestCases,
+    ['staking']: curveStakingTestCases,
+    ['voting-escrow']: curveVotingEscrowTestCases,
+  },
+  [Protocol.Deri]: {
+    ['pool']: deriPoolTestCases,
+  },
+  [Protocol.Ethena]: {
+    ['lp-staking']: ethenaLpStakingTestCases,
+    ['staked-ena']: ethenaStakedEnaTestCases,
+    ['staked-usde']: ethenaStakedUsdeTestCases,
+  },
+  [Protocol.EtherFi]: {
+    ['e-eth']: etherFiEEthTestCases,
+    ['l2']: etherFiL2TestCases,
+    ['liquid']: etherFiLiquidTestCases,
+    ['we-eth']: etherFiWeEthTestCases,
+  },
+  [Protocol.Flux]: {
+    ['borrow-market']: fluxBorrowMarketTestCases,
+    ['supply-market']: fluxSupplyMarketTestCases,
+  },
+  [Protocol.Gmx]: {
+    ['glp']: gmxGlpTestCases,
+  },
+  [Protocol.IZiSwap]: {
+    ['pool']: iZiSwapPoolTestCases,
+  },
   [Protocol.Lido]: {
     ['st-eth']: lidoStEthTestCases,
     ['wst-eth']: lidoWstEthTestCases,
   },
-  [Protocol.Lynex]: {},
-  [Protocol.Maker]: {},
-  [Protocol.MendiFinance]: {},
-  [Protocol.MorphoAaveV2]: {},
-  [Protocol.MorphoAaveV3]: {},
-  [Protocol.MorphoBlue]: {},
-  [Protocol.MorphoCompoundV2]: {},
-  [Protocol.MountainProtocol]: {},
-  [Protocol.PancakeswapV2]: {},
-  [Protocol.Pendle]: {},
-  [Protocol.PricesV2]: {},
-  [Protocol.QuickswapV2]: {},
-  [Protocol.Renzo]: {},
-  [Protocol.RocketPool]: {},
-  [Protocol.Solv]: {},
-  [Protocol.Sonne]: {},
-  [Protocol.SparkV1]: {},
-  [Protocol.StakeWise]: {},
-  [Protocol.Stargate]: {},
-  [Protocol.SushiswapV2]: {},
-  [Protocol.Swell]: {},
-  [Protocol.SyncSwap]: {},
-  [Protocol.UniswapV2]: {},
-  [Protocol.UniswapV3]: {},
-  [Protocol.Xfai]: {},
-  [Protocol.ZeroLend]: {},
+  [Protocol.Lynex]: {
+    ['algebra']: lynexAlgebraTestCases,
+    ['classic']: lynexClassicTestCases,
+  },
+  [Protocol.Maker]: {
+    ['s-dai']: makerSDaiTestCases,
+  },
+  [Protocol.MendiFinance]: {
+    ['borrow-market']: mendiFinanceBorrowMarketTestCases,
+    ['supply-market']: mendiFinanceSupplyMarketTestCases,
+  },
+  [Protocol.MorphoAaveV2]: {
+    ['optimizer-borrow']: morphoAaveV2OptimizerBorrowTestCases,
+    ['optimizer-supply']: morphoAaveV2OptimizerSupplyTestCases,
+  },
+  [Protocol.MorphoAaveV3]: {
+    ['optimizer-borrow']: morphoAaveV3OptimizerBorrowTestCases,
+    ['optimizer-supply']: morphoAaveV3OptimizerSupplyTestCases,
+  },
+  [Protocol.MorphoBlue]: {
+    ['market-borrow']: morphoBlueMarketBorrowTestCases,
+    ['market-supply']: morphoBlueMarketSupplyTestCases,
+    ['vault']: morphoBlueVaultTestCases,
+  },
+  [Protocol.MorphoCompoundV2]: {
+    ['optimizer-borrow']: morphoCompoundV2OptimizerBorrowTestCases,
+    ['optimizer-supply']: morphoCompoundV2OptimizerSupplyTestCases,
+  },
+  [Protocol.MountainProtocol]: {
+    ['usdm']: mountainProtocolUsdmTestCases,
+    ['wusdm']: mountainProtocolWusdmTestCases,
+  },
+  [Protocol.PancakeswapV2]: {
+    ['pool']: pancakeswapV2PoolTestCases,
+  },
+  [Protocol.Pendle]: {
+    ['lp-token']: pendleLpTokenTestCases,
+    ['principle-token']: pendlePrincipleTokenTestCases,
+    ['standardised-yield-token']: pendleStandardisedYieldTokenTestCases,
+    ['yield-token']: pendleYieldTokenTestCases,
+  },
+  [Protocol.PricesV2]: {
+    ['usd']: pricesV2UsdTestCases,
+  },
+  [Protocol.QuickswapV2]: {
+    ['pool']: quickswapV2PoolTestCases,
+  },
+  [Protocol.Renzo]: {
+    ['ez-eth']: renzoEzEthTestCases,
+  },
+  [Protocol.RocketPool]: {
+    ['reth']: rocketPoolRethTestCases,
+  },
+  [Protocol.Solv]: {
+    ['solv-btc']: solvSolvBtcTestCases,
+    ['yield-market']: solvYieldMarketTestCases,
+  },
+  [Protocol.Sonne]: {
+    ['borrow-market']: sonneBorrowMarketTestCases,
+    ['supply-market']: sonneSupplyMarketTestCases,
+  },
+  [Protocol.SparkV1]: {
+    ['sp-token']: sparkV1SpTokenTestCases,
+    ['variable-debt-token']: sparkV1VariableDebtTokenTestCases,
+  },
+  [Protocol.StakeWise]: {
+    ['os-eth']: stakeWiseOsEthTestCases,
+  },
+  [Protocol.Stargate]: {
+    ['farm']: stargateFarmTestCases,
+    ['farm-v2']: stargateFarmV2TestCases,
+    ['pool']: stargatePoolTestCases,
+    ['pool-v2']: stargatePoolV2TestCases,
+    ['voting-escrow']: stargateVotingEscrowTestCases,
+  },
+  [Protocol.SushiswapV2]: {
+    ['pool']: sushiswapV2PoolTestCases,
+  },
+  [Protocol.Swell]: {
+    ['sw-eth']: swellSwEthTestCases,
+  },
+  [Protocol.SyncSwap]: {
+    ['pool']: syncSwapPoolTestCases,
+  },
+  [Protocol.UniswapV2]: {
+    ['pool']: uniswapV2PoolTestCases,
+  },
+  [Protocol.UniswapV3]: {
+    ['pool']: uniswapV3PoolTestCases,
+  },
+  [Protocol.Xfai]: {
+    ['dex']: xfaiDexTestCases,
+  },
+  [Protocol.ZeroLend]: {
+    ['a-token']: zeroLendATokenTestCases,
+    ['stable-debt-token']: zeroLendStableDebtTokenTestCases,
+    ['variable-debt-token']: zeroLendVariableDebtTokenTestCases,
+  },
 }
 
 runAllTests()
