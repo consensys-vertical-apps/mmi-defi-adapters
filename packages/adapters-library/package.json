@@ -32,8 +32,7 @@
     "test:detect-errors": "jest src/tests/detect-errors.test.ts",
     "test:update:adapter-snapshot": "jest src/scripts/adapterBuilder/newAdapterCommand.test.ts -u",
     "test:tsc": "tsc --noEmit -p tsconfig.json",
-    "test:integration": "DEFI_ADAPTERS_TEST_FILTER_PROTOCOL=$npm_config_protocol jest --coverage --coverageDirectory='coverage/e2e/' src/adapters/integration.test.ts",
-    "test:integration2": "DEFI_ADAPTERS_TEST_FILTER_PROTOCOL=$npm_config_protocol DEFI_ADAPTERS_TEST_FILTER_PRODUCT=$npm_config_productid jest src/adapters/integration2.test.ts",
+    "test:integration": "DEFI_ADAPTERS_TEST_FILTER_PROTOCOL=$npm_config_protocol DEFI_ADAPTERS_TEST_FILTER_PRODUCT=$npm_config_productid jest --coverage --coverageDirectory='coverage/e2e/' src/adapters/integration.test.ts",
     "test:cov": "jest src --ci --coverage  --coverageDirectory='coverage/unit/' --testPathIgnorePatterns='src/adapters/integration.test.ts' --testPathIgnorePatterns='src/tests/detect-errors.test.ts'",
     "build-docs": "typedoc --plugin typedoc-plugin-markdown --plugin typedoc-plugin-mdn-links --theme markdown --hideBreadcrumbs false --hideInPageTOC false --readme none --gitRemote origin --gitRevision main --out ./docs --sort source-order --entryPoints src/types/ --entryPointStrategy expand --excludePrivate false"
   },

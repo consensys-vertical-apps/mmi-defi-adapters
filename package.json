@@ -39,7 +39,6 @@
     "test:update:adapter-snapshot": "npm run test:update:adapter-snapshot -w packages/adapters-library",
     "test:tsc": "npm run test:tsc -w packages/adapters-library",
     "test:integration": "npm run test:integration -w packages/adapters-library",
-    "test:integration2": "npm run test:integration2 -w packages/adapters-library",
     "test:cov": "npm run test:cov -w packages/adapters-library",
     "build-docs": "npm run build-docs -w packages/adapters-library",
     "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; patch-package",

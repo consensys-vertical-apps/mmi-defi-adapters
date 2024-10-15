@@ -29,7 +29,7 @@ export async function buildIntegrationTests({
   }
 
   const testsFile = path.resolve(
-    './packages/adapters-library/src/adapters/integration2.test.ts',
+    './packages/adapters-library/src/adapters/integration.test.ts',
   )
   const contents = await fs.readFile(testsFile, 'utf-8')
   const ast = parse(contents, {
