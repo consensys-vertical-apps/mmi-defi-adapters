@@ -296,11 +296,6 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
 runAllTests()
 
 function runAllTests() {
-  console.log('AAAAAAA', {
-    protocolFilter: process.env.DEFI_ADAPTERS_TEST_FILTER_PROTOCOL,
-    productFilter: process.env.DEFI_ADAPTERS_TEST_FILTER_PRODUCT,
-  })
-
   if (filterProtocolId) {
     const protocolTestCases = allTestCases[filterProtocolId]
 
