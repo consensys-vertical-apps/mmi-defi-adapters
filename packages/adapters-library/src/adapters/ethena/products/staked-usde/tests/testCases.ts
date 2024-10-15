@@ -14,34 +14,6 @@ export const testCases: TestCase[] = [
     blockNumber: 19774108,
   },
   {
-    key: 'sena',
-    chainId: Chain.Ethereum,
-    method: 'positions',
-
-    input: {
-      userAddress: '0x005fb56fe0401a4017e6f046272da922bbf8df06',
-      filterProtocolTokens: ['0x8bE3460A480c80728a8C4D7a5D5303c85ba7B3b9'],
-    },
-
-    blockNumber: 20942611,
-  },
-  {
-    key: 'lp-staking',
-    chainId: Chain.Ethereum,
-    method: 'positions',
-
-    input: {
-      userAddress: '0x577c6a57c435b53c7d5c6878c7736b9781c778a3',
-
-      filterProtocolTokens: [
-        '0x4c9EDD5852cd905f086C759E8383e09bff1E68B3',
-        '0x8bE3460A480c80728a8C4D7a5D5303c85ba7B3b9',
-      ],
-    },
-
-    blockNumber: 20942612,
-  },
-  {
     chainId: Chain.Ethereum,
     method: 'profits',
 

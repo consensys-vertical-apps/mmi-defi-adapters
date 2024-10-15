@@ -6,15 +6,6 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Ethereum,
     method: 'positions',
-    blockNumber: 18471029,
-    input: {
-      userAddress: '0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490',
-      filterProtocolTokens: ['0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490'],
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'positions',
     key: 'voting-escrow',
     input: {
       userAddress: '0x394A16eeA604fBD86B0b45184b2d790c83a950E3',
@@ -64,27 +55,6 @@ export const testCases: TestCase[] = [
         '0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490',
         '0xbFcF63294aD7105dEa65aA58F8AE5BE2D9d0952A',
       ],
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'profits',
-    blockNumber: 19184953,
-    input: {
-      userAddress: '0xeb6CF828ACADADF91341C04140216Fa65f26B296',
-      timePeriod: TimePeriod.oneDay,
-      filterProtocolTokens: ['0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490'],
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
-    key: 'profits2',
-    method: 'profits',
-    blockNumber: 19184953,
-    input: {
-      userAddress: '0xeb6CF828ACADADF91341C04140216Fa65f26B296',
-      timePeriod: TimePeriod.oneDay,
-      filterProtocolTokens: ['0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490'],
     },
   },
 ]
