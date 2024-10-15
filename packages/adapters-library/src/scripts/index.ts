@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander'
-import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
-import { buildIntegrationTests } from './adapterBuilder/buildIntegrationTests'
 import { copyAdapter } from './adapterBuilder/copyAdapter'
 import { newAdapterCommand } from './adapterBuilder/newAdapterCommand'
 import { blockAverage } from './blockAverage'
@@ -65,34 +63,5 @@ program
       })
     },
   )
-
-program.command('integration-test-restore').action(async () => {
-  const allProtocols = await defiProvider.getSupport()
-
-  for (const protocolProducts of Object.values(allProtocols)) {
-    for (const product of protocolProducts) {
-      const protocolId = product.protocolDetails.protocolId
-      const productId = product.protocolDetails.productId
-
-      // if (protocolId !== Protocol.AaveV2) {
-      //   continue
-      // }
-
-      console.log(
-        `Restoring integration tests for ${protocolId} and ${productId}`,
-      )
-
-      await buildIntegrationTests({
-        protocolId,
-        protocolKey: Object.entries(Protocol).find(
-          ([_, value]) => value === protocolId,
-        )![0],
-        productId,
-      })
-
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-    }
-  }
-})
 
 program.parseAsync()
