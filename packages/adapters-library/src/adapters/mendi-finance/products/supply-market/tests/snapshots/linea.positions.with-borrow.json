@@ -1,6 +1,6 @@
 {
   "blockNumber": 10441623,
-  "latency": "Latency: 0.79 seconds",
+  "latency": "Latency: 0.538 seconds",
   "aggregatedValues": [],
   "snapshot": [
     {
@@ -58,59 +58,9 @@
           "balance": 70.67776824
         }
       ]
-    },
-    {
-      "protocolId": "mendi-finance",
-      "name": "MendiFinance",
-      "description": "MendiFinance borrow adapter",
-      "siteUrl": "https://mendi.finance/:",
-      "iconUrl": "https://mendi.finance/mendi-token.svg",
-      "positionType": "borrow",
-      "chainId": 59144,
-      "productId": "borrow-market",
-      "chainName": "linea",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x8a90D208666Deec08123444F67Bf5B1836074a67",
-          "name": "Mendi Renzo Restaked ETH",
-          "symbol": "meezETH",
-          "decimals": 8,
-          "balanceRaw": "1n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
-              "name": "Renzo Restaked ETH",
-              "symbol": "ezETH",
-              "decimals": 18,
-              "balanceRaw": "1020010231992735136n",
-              "type": "underlying",
-              "tokens": [
-                {
-                  "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-                  "name": "Ethereum",
-                  "symbol": "ETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "balanceRaw": "1041478910919750938n",
-                  "balance": 1.0414789109197509,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
-                }
-              ],
-              "balance": 1.020010231992735,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x2416092f143378750bb29b79eD961ab195CcEea5/logo.png"
-            }
-          ],
-          "balance": 1e-8
-        }
-      ]
     }
   ],
   "rpcResponses": {
-    "b619b271c426aa65d96ff3753ff465d3": {
-      "result": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000002000000000000000000000000ad7f33984bed10518012013d4ab0458d37fee6f30000000000000000000000008a90d208666deec08123444f67bf5b1836074a67"
-    },
     "6e6e3ec704be89cb04628b6e6a51df11": {
       "result": "0x00000000000000000000000000000000000000000000000000000074deaebbae"
     },
@@ -120,20 +70,11 @@
     "8b56af249e289a7b42e06ac03ad9854e": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
-    "355353af0838d07f859e0d8d42314a9d": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    "b12e8d8b1f120bc9e85f2d604d021558": {
-      "result": "0x0000000000000000000000000000000000000000000000000e27cde6d930d5a0"
-    },
     "2942c4c5332a5d699514a6ead76a5117": {
       "result": "0x0000000000000000000000000000000000000000000000000000c4720b938be4"
     },
     "af3be61cdf5de107e2961511c8f56f14": {
       "result": "0x000000000000000000000000000000000000000000af8db2331867c743e7764a"
-    },
-    "fd93ba249cbeeeb3f4d9bbef5392e829": {
-      "result": "0x0000000000000000000000000000000000000000000000000e2b7d4db937ee34"
     }
   }
 }

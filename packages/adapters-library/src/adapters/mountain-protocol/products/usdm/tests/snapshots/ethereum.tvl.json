@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 4.452 seconds",
+  "latency": "Latency: 0.711 seconds",
   "blockNumber": 19661884,
   "snapshot": [
     {
@@ -37,68 +37,14 @@
           "totalSupply": 78394565.33896086
         }
       ]
-    },
-    {
-      "protocolId": "mountain-protocol",
-      "name": "Mountain Protocol wUSDM",
-      "description": "MountainProtocol defi adapter",
-      "siteUrl": "https://mountainprotocol.com/",
-      "iconUrl": "https://mountainprotocol.com/favicon.svg",
-      "positionType": "stake",
-      "chainId": 1,
-      "productId": "wusdm",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": [
-        {
-          "name": "Wrapped Mountain Protocol USD",
-          "address": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
-          "symbol": "wUSDM",
-          "decimals": 18,
-          "type": "protocol",
-          "totalSupplyRaw": "16293028255397073868651764n",
-          "tokens": [
-            {
-              "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
-              "name": "Mountain Protocol USD",
-              "symbol": "USDM",
-              "decimals": 18,
-              "totalSupplyRaw": "16706798212925583571299698n",
-              "type": "underlying",
-              "tokens": [
-                {
-                  "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-                  "name": "USD Coin",
-                  "symbol": "USDC",
-                  "decimals": 6,
-                  "type": "underlying",
-                  "totalSupplyRaw": "16706798212925n",
-                  "totalSupply": 16706798.212925,
-                  "price": 0.9996250225154266,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-                }
-              ],
-              "totalSupply": 16706798.212925583,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C/logo.png"
-            }
-          ],
-          "totalSupply": 16293028.255397074
-        }
-      ]
     }
   ],
   "rpcResponses": {
     "1780a81b35d1b114523ba8faec55baff": {
       "result": "0x00000000000000000000000000000000000000000040d8b1e70f588a6f7e8a17"
     },
-    "1eb73b04f58fb37bb722551074879f04": {
-      "result": "0x0000000000000000000000000000000000000000000d7a2ed4e0084144ad7cf4"
-    },
     "86cde6e544496917501df9ebc46d7dcc": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    "836f33a61b13604e5092414c96dd5cd8": {
-      "result": "0x0000000000000000000000000000000000000000000dd1cd588c053e7b542d72"
     },
     "edac88f54a4e0bfbb63af436439a786e": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000855534420436f696e000000000000000000000000000000000000000000000000"

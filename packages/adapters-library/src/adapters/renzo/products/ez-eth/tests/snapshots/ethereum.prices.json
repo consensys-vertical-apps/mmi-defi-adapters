@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 0.342 seconds",
+  "latency": "Latency: 0.274 seconds",
   "blockNumber": 20118664,
   "snapshot": [
     {
@@ -24,8 +24,8 @@
           "tokens": [
             {
               "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-              "symbol": "ETH",
               "name": "Ethereum",
+              "symbol": "ETH",
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1012168261412313896n",

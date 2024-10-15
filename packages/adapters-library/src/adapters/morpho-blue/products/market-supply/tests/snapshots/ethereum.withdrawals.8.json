@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD16,937.63"],
-  "latency": "Latency: 1.772 seconds",
+  "latency": "Latency: 0.37 seconds",
   "snapshot": {
     "protocolId": "morpho-blue",
     "name": "MorphoBlue Supply",

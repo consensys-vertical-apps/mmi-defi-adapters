@@ -40,6 +40,8 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
     )
     .showHelpAfterError()
     .action(async ({ protocols, products, key }) => {
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterProductIds = (products as string | undefined)?.split(',')
 

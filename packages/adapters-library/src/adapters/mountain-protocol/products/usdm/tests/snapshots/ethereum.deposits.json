@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD378.96"],
-  "latency": "Latency: 4.578 seconds",
+  "latency": "Latency: 1.863 seconds",
   "snapshot": {
     "protocolId": "mountain-protocol",
     "name": "Mountain Protocol wUSDM",

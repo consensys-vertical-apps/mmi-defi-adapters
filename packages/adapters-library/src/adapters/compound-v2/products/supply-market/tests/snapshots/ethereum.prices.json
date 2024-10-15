@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 0.195 seconds",
+  "latency": "Latency: 0.173 seconds",
   "blockNumber": 19661878,
   "snapshot": [
     {
@@ -35,24 +35,6 @@
           ]
         }
       ]
-    },
-    {
-      "protocolId": "compound-v2",
-      "name": "CompoundV2",
-      "description": "CompoundV2 borrow market adapter",
-      "siteUrl": "https:",
-      "iconUrl": "https://",
-      "positionType": "borrow",
-      "chainId": 1,
-      "productId": "borrow-market",
-      "chainName": "ethereum",
-      "success": false,
-      "error": {
-        "message": "Not Implemented (at CompoundV2BorrowMarketAdapter.unwrap)",
-        "details": {
-          "name": "NotImplementedError"
-        }
-      }
     }
   ],
   "rpcResponses": {

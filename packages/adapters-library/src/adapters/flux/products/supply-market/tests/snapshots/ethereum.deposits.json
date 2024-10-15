@@ -13,6 +13,7 @@
     "USD0.20",
     "USD10.10"
   ],
+  "latency": "Latency: 10.076 seconds",
   "snapshot": {
     "protocolId": "flux",
     "name": "Flux",

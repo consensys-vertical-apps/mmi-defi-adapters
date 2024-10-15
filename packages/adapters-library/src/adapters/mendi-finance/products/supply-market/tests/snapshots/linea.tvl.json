@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 0.442 seconds",
+  "latency": "Latency: 0.417 seconds",
   "blockNumber": 3717652,
   "snapshot": [
     {
@@ -36,24 +36,6 @@
           "totalSupply": 465968618.99916524
         }
       ]
-    },
-    {
-      "protocolId": "mendi-finance",
-      "name": "MendiFinance",
-      "description": "MendiFinance borrow adapter",
-      "siteUrl": "https://mendi.finance/:",
-      "iconUrl": "https://mendi.finance/mendi-token.svg",
-      "positionType": "borrow",
-      "chainId": 59144,
-      "productId": "borrow-market",
-      "chainName": "linea",
-      "success": false,
-      "error": {
-        "message": "Not Implemented (at MendiFinanceBorrowMarketAdapter.getTotalValueLocked)",
-        "details": {
-          "name": "NotImplementedError"
-        }
-      }
     }
   ],
   "rpcResponses": {

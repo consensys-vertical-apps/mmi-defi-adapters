@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD300,234.75", "USD199,906.76"],
-  "latency": "Latency: 3.712 seconds",
+  "latency": "Latency: 1.344 seconds",
   "snapshot": {
     "protocolId": "mountain-protocol",
     "name": "Mountain Protocol USDM",

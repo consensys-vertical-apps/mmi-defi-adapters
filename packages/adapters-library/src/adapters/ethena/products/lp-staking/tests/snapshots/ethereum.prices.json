@@ -1,48 +1,6 @@
 {
-  "latency": "Latency: 0.286 seconds",
+  "latency": "Latency: 0 seconds",
   "blockNumber": 19776342,
-  "snapshot": [
-    {
-      "protocolId": "ethena",
-      "name": "Ethena sUSDe",
-      "description": "Ethena defi adapter",
-      "siteUrl": "https://ethena.fi/",
-      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57e114b691db790c35207b2e685d4a43181e6061/logo.png",
-      "positionType": "stake",
-      "chainId": 1,
-      "productId": "staked-usde",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
-          "name": "Staked USDe",
-          "symbol": "sUSDe",
-          "decimals": 18,
-          "baseRate": 1,
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-              "name": "USDe",
-              "symbol": "USDe",
-              "decimals": 18,
-              "type": "underlying",
-              "underlyingRateRaw": "1056414480133840512n",
-              "underlyingRate": 1.0564144801338404,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4c9EDD5852cd905f086C759E8383e09bff1E68B3/logo.png"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "rpcResponses": {
-    "05221920bc7a66389a70b93f8973183d": {
-      "result": "0x000000000000000000000000000000000000000000ff5f289042d4544e5f4f40"
-    },
-    "69f0a4e430e905714a31905c5f1dedee": {
-      "result": "0x0000000000000000000000000000000000000000010dc74397669e229b318249"
-    }
-  }
+  "snapshot": [],
+  "rpcResponses": {}
 }

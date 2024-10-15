@@ -1,6 +1,6 @@
 {
   "aggregatedValues": [],
-  "latency": "Latency: 1.605 seconds",
+  "latency": "Latency: 0.642 seconds",
   "snapshot": {
     "protocolId": "chimp-exchange",
     "name": "ChimpExchange",

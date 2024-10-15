@@ -1,120 +1,8 @@
 {
   "blockNumber": 20633609,
-  "latency": "Latency: 4.759 seconds",
-  "aggregatedValues": [
-    "USD560.16",
-    "USD711,440.80",
-    "USD22,941,811.47",
-    "USD2,176,458.52"
-  ],
-  "snapshot": [
-    {
-      "protocolId": "morpho-blue",
-      "name": "MorphoBlue Supply",
-      "description": "Morpho Blue DeFi adapter on the supply side",
-      "siteUrl": "https://app.morpho.org/",
-      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
-      "positionType": "supply",
-      "chainId": 1,
-      "productId": "market-supply",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": [
-        {
-          "tokenId": "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
-          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-          "name": "Wrapped Ether",
-          "symbol": "WETH",
-          "decimals": 18,
-          "balanceRaw": "220090000000000000n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "balanceRaw": "220090000000000000n",
-              "type": "underlying",
-              "balance": 0.22009,
-              "price": 2545.142,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
-            }
-          ],
-          "balance": 0.22009
-        },
-        {
-          "tokenId": "0x3c83f77bde9541f8d3d82533b19bbc1f97eb2f1098bb991728acbfbede09cc5d",
-          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-          "name": "Wrapped Ether",
-          "symbol": "WETH",
-          "decimals": 18,
-          "balanceRaw": "279528922519038414335n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "balanceRaw": "279528922519038414335n",
-              "type": "underlying",
-              "balance": 279.5289225190384,
-              "price": 2545.142,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
-            }
-          ],
-          "balance": 279.5289225190384
-        },
-        {
-          "tokenId": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
-          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-          "name": "Wrapped Ether",
-          "symbol": "WETH",
-          "decimals": 18,
-          "balanceRaw": "9013961290913585388618n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "balanceRaw": "9013961290913585388618n",
-              "type": "underlying",
-              "balance": 9013.961290913585,
-              "price": 2545.142,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
-            }
-          ],
-          "balance": 9013.961290913585
-        },
-        {
-          "tokenId": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-          "name": "Wrapped Ether",
-          "symbol": "WETH",
-          "decimals": 18,
-          "balanceRaw": "855142276768602471653n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "balanceRaw": "855142276768602471653n",
-              "type": "underlying",
-              "balance": 855.1422767686025,
-              "price": 2545.142,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
-            }
-          ],
-          "balance": 855.1422767686025
-        }
-      ]
-    }
-  ],
+  "latency": "Latency: 0.493 seconds",
+  "aggregatedValues": [],
+  "snapshot": [],
   "rpcResponses": {
     "3d207484cd9231c40871f145c0c1bce7": {
       "result": "0x000000000000000000000000000000000000000000002e9b1a5191342aa8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
@@ -452,18 +340,6 @@
     },
     "129ab36c966e6b44eda2ca21cc0c340d": {
       "result": "0x0000000000000000000000000000000000000000000000000000000048556796"
-    },
-    "61783211b732979498a33287546ce819": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5772617070656420457468657200000000000000000000000000000000000000"
-    },
-    "3142d9d670d9f3bbe1f590ed10159c68": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045745544800000000000000000000000000000000000000000000000000000000"
-    },
-    "52a91a2f9ed1eef93397c798125fd3cd": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
-    },
-    "e0431bbd8a4db659408d821edbd07c92": {
-      "result": "0x00000000000000000000000000000000000000000000000600000000000057570000000000000000000000000000000000000000000000000000003b423a7dc00000000000000000000000000000000000000000000000000000000066d045970000000000000000000000000000000000000000000000000000000066d045970000000000000000000000000000000000000000000000060000000000005757"
     }
   }
 }

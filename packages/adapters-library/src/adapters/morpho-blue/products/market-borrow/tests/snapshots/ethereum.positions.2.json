@@ -1,12 +1,7 @@
 {
   "blockNumber": 19425631,
-  "latency": "Latency: 12.218 seconds",
+  "latency": "Latency: 3.95 seconds",
   "aggregatedValues": [
-    "USD8,785,762.33",
-    "USD1,973,272.82",
-    "USD966,810.69",
-    "USD1,425,064.67",
-    "USD6,633,411.87",
     "USD8,249,990.72",
     "USD1,472,692.65",
     "USD672,336.94",
@@ -14,195 +9,6 @@
     "USD5,306,695.11"
   ],
   "snapshot": [
-    {
-      "protocolId": "morpho-blue",
-      "name": "MorphoBlue Supply",
-      "description": "Morpho Blue DeFi adapter on the supply side",
-      "siteUrl": "https://app.morpho.org/",
-      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
-      "positionType": "supply",
-      "chainId": 1,
-      "productId": "market-supply",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": [
-        {
-          "tokenId": "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
-          "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-          "name": "Wrapped liquid staked Ether 2.0",
-          "symbol": "wstETH",
-          "decimals": 18,
-          "balanceRaw": "1870000000000000000000n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-              "name": "Wrapped liquid staked Ether 2.0",
-              "symbol": "wstETH",
-              "decimals": 18,
-              "balanceRaw": "1870000000000000000000n",
-              "type": "underlying",
-              "tokens": [
-                {
-                  "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
-                  "name": "Liquid staked Ether 2.0",
-                  "symbol": "stETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "balanceRaw": "2169359411365666885200n",
-                  "tokens": [
-                    {
-                      "address": "0x0000000000000000000000000000000000000000",
-                      "name": "Ethereum",
-                      "symbol": "ETH",
-                      "decimals": 18,
-                      "type": "underlying",
-                      "balanceRaw": "2169359411365666885200n",
-                      "balance": 2169.359411365667,
-                      "price": 4049.93395,
-                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-                    }
-                  ],
-                  "balance": 2169.359411365667,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
-                }
-              ],
-              "balance": 1870,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
-            }
-          ],
-          "balance": 1870
-        },
-        {
-          "tokenId": "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc",
-          "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-          "name": "Wrapped liquid staked Ether 2.0",
-          "symbol": "wstETH",
-          "decimals": 18,
-          "balanceRaw": "420000000000000000000n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-              "name": "Wrapped liquid staked Ether 2.0",
-              "symbol": "wstETH",
-              "decimals": 18,
-              "balanceRaw": "420000000000000000000n",
-              "type": "underlying",
-              "tokens": [
-                {
-                  "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
-                  "name": "Liquid staked Ether 2.0",
-                  "symbol": "stETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "balanceRaw": "487235803622235343200n",
-                  "tokens": [
-                    {
-                      "address": "0x0000000000000000000000000000000000000000",
-                      "name": "Ethereum",
-                      "symbol": "ETH",
-                      "decimals": 18,
-                      "type": "underlying",
-                      "balanceRaw": "487235803622235343200n",
-                      "balance": 487.2358036222353,
-                      "price": 4049.93395,
-                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-                    }
-                  ],
-                  "balance": 487.2358036222353,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
-                }
-              ],
-              "balance": 420,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
-            }
-          ],
-          "balance": 420
-        },
-        {
-          "tokenId": "0xa921ef34e2fc7a27ccc50ae7e4b154e16c9799d3387076c421423ef52ac4df99",
-          "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-          "name": "Wrapped BTC",
-          "symbol": "WBTC",
-          "decimals": 8,
-          "balanceRaw": "1322944059n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-              "name": "Wrapped BTC",
-              "symbol": "WBTC",
-              "decimals": 8,
-              "balanceRaw": "1322944059n",
-              "type": "underlying",
-              "balance": 13.22944059,
-              "price": 73080.23957347621,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
-            }
-          ],
-          "balance": 13.22944059
-        },
-        {
-          "tokenId": "0x3a85e619751152991742810df6ec69ce473daef99e28a64ab2340d7b7ccfee49",
-          "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-          "name": "Wrapped BTC",
-          "symbol": "WBTC",
-          "decimals": 8,
-          "balanceRaw": "1950000000n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-              "name": "Wrapped BTC",
-              "symbol": "WBTC",
-              "decimals": 8,
-              "balanceRaw": "1950000000n",
-              "type": "underlying",
-              "balance": 19.5,
-              "price": 73080.23957347621,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
-            }
-          ],
-          "balance": 19.5
-        },
-        {
-          "tokenId": "0x49bb2d114be9041a787432952927f6f144f05ad3e83196a7d062f374ee11d0ee",
-          "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
-          "name": "Renzo Restaked ETH",
-          "symbol": "ezETH",
-          "decimals": 18,
-          "balanceRaw": "1627402363063891377654n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
-              "name": "Renzo Restaked ETH",
-              "symbol": "ezETH",
-              "decimals": 18,
-              "balanceRaw": "1627402363063891377654n",
-              "type": "underlying",
-              "tokens": [
-                {
-                  "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-                  "name": "Ethereum",
-                  "symbol": "ETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "balanceRaw": "1637906187168145023868n",
-                  "balance": 1637.906187168145,
-                  "price": 4049.93395,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-                }
-              ],
-              "balance": 1627.4023630638915,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
-            }
-          ],
-          "balance": 1627.4023630638915
-        }
-      ]
-    },
     {
       "protocolId": "morpho-blue",
       "name": "MorphoBlue Borrow",
@@ -619,15 +425,6 @@
     "4519c508c75b592c6abde2197270b07d": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
     },
-    "6e580c726c06bfe378caded03a2f65b8": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b5772617070656420425443000000000000000000000000000000000000000000"
-    },
-    "06fe1375f7f9d25d9e4ae9ed62d73273": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045742544300000000000000000000000000000000000000000000000000000000"
-    },
-    "acb85a8fd030fb44224d41c635432c05": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000008"
-    },
     "8b6e22179ba8c66ef3b0ca69266446bd": {
       "result": "0x00000000000000000000000000000000000000000000000600000000000033b50000000000000000000000000000000000000000000000000000005e4b7cc9380000000000000000000000000000000000000000000000000000000065f178e30000000000000000000000000000000000000000000000000000000065f178e300000000000000000000000000000000000000000000000600000000000033b5"
     },
@@ -636,15 +433,6 @@
     },
     "adff83167188599b946e82fe72e0bbf0": {
       "result": "0x000000000000000000000000000000000000000000cc5f0e3578608765421fe7"
-    },
-    "c42c732f150f1cacfd6d1cf31fc828ee": {
-      "result": "0x0000000000000000000000000000000000000002470f11d63d17ba6746ebbfb5"
-    },
-    "9b60397fc3f15cc08cb22acc4c07a5f2": {
-      "result": "0x0000000000000000000000000000000000000000000000000df7a4e6120664cc"
-    },
-    "a77a0776946c216e96515f907ecf1ffc": {
-      "result": "0x00000000000000000000000000000000000000000000000010197362afe4c498"
     }
   }
 }

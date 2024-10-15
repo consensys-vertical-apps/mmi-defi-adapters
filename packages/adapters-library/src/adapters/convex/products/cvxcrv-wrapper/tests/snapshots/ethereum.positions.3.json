@@ -1,180 +1,8 @@
 {
   "blockNumber": 18634843,
-  "latency": "Latency: 10.43 seconds",
-  "aggregatedValues": ["USD147,541.36", "USD24,790.67", "USD154.56"],
+  "latency": "Latency: 1.973 seconds",
+  "aggregatedValues": ["USD154.56"],
   "snapshot": [
-    {
-      "protocolId": "convex",
-      "name": "Convex",
-      "description": "Convex pool adapter",
-      "siteUrl": "https://www.convexfinance.com/",
-      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
-      "positionType": "supply",
-      "chainId": 1,
-      "productId": "staking",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0xf34DFF761145FF0B05e917811d488B441F33a968",
-          "name": "Curve.fi cDAI/cUSDC Convex Deposit",
-          "symbol": "cvxcDAI+cUSDC",
-          "decimals": 18,
-          "balanceRaw": "128997493050015238077933n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
-              "name": "Curve DAO Token",
-              "symbol": "CRV",
-              "decimals": 18,
-              "type": "underlying-claimable",
-              "balanceRaw": "372044214451447016728n",
-              "balance": 372.04421445144703,
-              "price": 0.573965052493556,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
-            },
-            {
-              "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
-              "name": "Convex Token",
-              "symbol": "CVX",
-              "decimals": 18,
-              "type": "underlying-claimable",
-              "balanceRaw": "3348397930063023150n",
-              "balance": 3.3483979300630233,
-              "price": 3.7100032709602577,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
-            },
-            {
-              "address": "0x845838DF265Dcd2c412A1Dc9e959c7d08537f8a2",
-              "name": "Curve.fi cDAI/cUSDC",
-              "symbol": "cDAI+cUSDC",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "128997493050015238077933n",
-              "tokens": [
-                {
-                  "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
-                  "name": "Compound USD Coin",
-                  "symbol": "cUSDC",
-                  "decimals": 8,
-                  "type": "underlying",
-                  "balanceRaw": "403550943329222n",
-                  "tokens": [
-                    {
-                      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-                      "name": "USD Coin",
-                      "symbol": "USDC",
-                      "decimals": 6,
-                      "type": "underlying",
-                      "balanceRaw": "93635925380n",
-                      "balance": 93635.92538,
-                      "price": 1.008292872437544,
-                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-                    }
-                  ],
-                  "balance": 4035509.43329222,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x39AA39c021dfbaE8faC545936693aC917d5E7563/logo.png"
-                },
-                {
-                  "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
-                  "name": "Compound Dai",
-                  "symbol": "cDAI",
-                  "decimals": 8,
-                  "type": "underlying",
-                  "balanceRaw": "234816797172236n",
-                  "tokens": [
-                    {
-                      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-                      "name": "Dai Stablecoin",
-                      "symbol": "DAI",
-                      "decimals": 18,
-                      "type": "underlying",
-                      "balanceRaw": "52944683373471127878932n",
-                      "balance": 52944.683373471125,
-                      "price": 0.9992119774262888,
-                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
-                    }
-                  ],
-                  "balance": 2348167.97172236,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643/logo.png"
-                }
-              ],
-              "balance": 128997.49305001524,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x845838DF265Dcd2c412A1Dc9e959c7d08537f8a2/logo.png"
-            }
-          ],
-          "balance": 128997.49305001524
-        },
-        {
-          "address": "0x44D8FaB7CD8b7877D5F79974c2F501aF6E65AbBA",
-          "name": "Curve.fi Factory Plain Pool: crvUSD/USDC Convex Deposit",
-          "symbol": "cvxcrvUSDUSDC-f",
-          "decimals": 18,
-          "balanceRaw": "24451518302618481212814n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
-              "name": "Curve DAO Token",
-              "symbol": "CRV",
-              "decimals": 18,
-              "type": "underlying-claimable",
-              "balanceRaw": "413964457384170678506n",
-              "balance": 413.96445738417066,
-              "price": 0.573965052493556,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
-            },
-            {
-              "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
-              "name": "Convex Token",
-              "symbol": "CVX",
-              "decimals": 18,
-              "type": "underlying-claimable",
-              "balanceRaw": "3725680116457536106n",
-              "balance": 3.725680116457536,
-              "price": 3.7100032709602577,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
-            },
-            {
-              "address": "0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E",
-              "name": "Curve.fi Factory Plain Pool: crvUSD/USDC",
-              "symbol": "crvUSDUSDC-f",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "24451518302618481212814n",
-              "tokens": [
-                {
-                  "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-                  "name": "USD Coin",
-                  "symbol": "USDC",
-                  "decimals": 6,
-                  "type": "underlying",
-                  "balanceRaw": "5972087733n",
-                  "balance": 5972.087733,
-                  "price": 1.008292872437544,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-                },
-                {
-                  "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-                  "name": "Curve.Fi USD Stablecoin",
-                  "symbol": "crvUSD",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "balanceRaw": "18608637197791561008453n",
-                  "balance": 18608.637197791562,
-                  "price": 0.9951097106864479,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E/logo.png"
-                }
-              ],
-              "balance": 24451.518302618482,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E/logo.png"
-            }
-          ],
-          "balance": 24451.518302618482
-        }
-      ]
-    },
     {
       "protocolId": "convex",
       "name": "Convex",
@@ -269,29 +97,11 @@
     }
   ],
   "rpcResponses": {
-    "de76833f707f60f9effe5bbc7edbd7ea": {
-      "result": "0x000000000000000000000000000000000000000000001b50f7d616fa9f383ded"
-    },
-    "6623c0cc66aaee6baeec6fd8d21087fb": {
-      "result": "0x00000000000000000000000000000000000000000000052d84fb8a8908e63d8e"
-    },
     "a31639a56e6d4abf3ce09498e5980e96": {
       "result": "0x00000000000000000000000000000000000000000000015ae476d6edf4d18b60"
     },
     "53b1219432723fdfb1c231c064bb9449": {
       "result": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000003000000000000000000000000d533a949740bb3306d119cc777fa900ba034cd520000000000000000000000000000000000000000000000024ecb06c9c9287b290000000000000000000000004e3fbd56cd56c3e72c1403e103b45db9da5b9d2b00000000000000000000000000000000000000000000000046c9bae2779eb01c0000000000000000000000006c3f90f043a72fa612cbac8115ee7e52bde6e490000000000000000000000000000000000000000000000005d95fe0149347d2f5"
-    },
-    "bd3611757ff58c6b60ab7eb406694ebc": {
-      "result": "0x0000000000000000000000000000000000000000000000142b2691de6dc02d18"
-    },
-    "b58fa918698ef99d811ab4619e39f45e": {
-      "result": "0x00000000000000000000000000000000000000000000001670e930b694d2e8ea"
-    },
-    "e9aea5daac1890bdc22532bb5efb6ea7": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    "695a18aa1b69b9d393d6c16b66eb8c5c": {
-      "result": "0x000000000000000000000000d533a949740bb3306d119cc777fa900ba034cd52"
     },
     "b44052108f24ccf813ef30e04f6b0098": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000f43757276652044414f20546f6b656e0000000000000000000000000000000000"
@@ -332,9 +142,6 @@
     "051418aaca3a50c1cf727d7e9dbb1d92": {
       "result": "0x0000000000000000000000000000000000000000009d54c6eefed16df94685e1"
     },
-    "d1ae370886bd2df1e4131226b818d09c": {
-      "result": "0x0000000000000000000000004e3fbd56cd56c3e72c1403e103b45db9da5b9d2b"
-    },
     "a9b3aab5f8333322efecf9ac99d8c29c": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000e44616920537461626c65636f696e000000000000000000000000000000000000"
     },
@@ -370,45 +177,6 @@
     },
     "d78ec4bc6a663a159f04c3e2d7246a59": {
       "result": "0x0000000000000000000000000000000000000000019213c5de8668ded8aec713"
-    },
-    "ddb4da865975d57104568df4515299f2": {
-      "result": "0x00000000000000000000000000000000000000000052058849e2fe62a53adf27"
-    },
-    "1707ad3a32c81f628c92c999c2bff00f": {
-      "result": "0x0000000000000000000000000000000000000000000000000010f7db6917a921"
-    },
-    "f4ac36cf508513a04cfb08429ad96c99": {
-      "result": "0x0000000000000000000000000000000000000000000000000009df9694b71388"
-    },
-    "6d5e8afa7b170c0d8aa01be55ad7ce6c": {
-      "result": "0x000000000000000000000000000000000000000000000000000007e207e12b18"
-    },
-    "52440e8becdb64eee604c7e2dddc1c7e": {
-      "result": "0x0000000000000000000000000000000000000000001656f00a199505e777f524"
-    },
-    "976821e4e518245ef5b658a66d4fb5a1": {
-      "result": "0x00000000000000000000000000000000000000000001434b7da1f5a6e416c1f4"
-    },
-    "985ca878fdd2588f0f8b988c8c2e4fd7": {
-      "result": "0x0000000000000000000000000000000000000000001d5a9cfe46404a33eb84f2"
-    },
-    "493d64a947ee98d2e2c085285f991537": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001743757276652e46692055534420537461626c65636f696e000000000000000000"
-    },
-    "7f51d06f74c9ea07fc6bb171b39b7ba7": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000066372765553440000000000000000000000000000000000000000000000000000"
-    },
-    "3533bc2b767ab8c8f9fc6849e36a986f": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
-    },
-    "b6784a65ec9ed7ca298e3d7eadc74ed4": {
-      "result": "0x0000000000000000000000000000000000000000000000000001b8333f8e57a3"
-    },
-    "e639cb92474eb1557b8426f6421eb9d6": {
-      "result": "0x0000000000000000000000000000000000000000000000000000d309595398cf"
-    },
-    "ec5ea8f8d696490e940b10b9deb76573": {
-      "result": "0x000000000000000000000000000000000000000000ba819de21789a4a6352d22"
     }
   }
 }

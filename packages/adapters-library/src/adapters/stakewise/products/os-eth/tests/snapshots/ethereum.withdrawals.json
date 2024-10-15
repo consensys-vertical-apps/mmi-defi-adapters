@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD0.00"],
-  "latency": "Latency: 1.082 seconds",
+  "latency": "Latency: 0.465 seconds",
   "snapshot": {
     "name": "StakeWise",
     "siteUrl": "https://app.stakewise.io/",

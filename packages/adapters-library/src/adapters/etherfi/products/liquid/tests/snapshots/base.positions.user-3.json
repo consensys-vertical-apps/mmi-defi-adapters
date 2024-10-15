@@ -1,35 +1,7 @@
 {
   "blockNumber": 19840743,
-  "latency": "Latency: 0.523 seconds",
-  "aggregatedValues": ["USD0.00"],
-  "snapshot": [
-    {
-      "protocolId": "etherfi",
-      "name": "EtherFi L2 Native Restaking",
-      "description": "EtherFi defi adapter for L2 Native Restaking",
-      "siteUrl": "https://app.ether.fi/",
-      "iconUrl": "https://app.ether.fi/favicon/favicon-32x32.png",
-      "positionType": "stake",
-      "chainId": 8453,
-      "productId": "l2",
-      "chainName": "base",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A",
-          "name": "Wrapped eETH",
-          "symbol": "weETH",
-          "decimals": 18,
-          "balanceRaw": "105945989409829508831n",
-          "type": "protocol",
-          "balance": 105.94598940982951
-        }
-      ]
-    }
-  ],
-  "rpcResponses": {
-    "a48c97ac46b12b6640aa7375ad83f4d9": {
-      "result": "0x000000000000000000000000000000000000000000000005be4bc40ad62f56df"
-    }
-  }
+  "latency": "Latency: 0 seconds",
+  "aggregatedValues": [],
+  "snapshot": [],
+  "rpcResponses": {}
 }

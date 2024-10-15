@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 3.462 seconds",
+  "latency": "Latency: 1.706 seconds",
   "blockNumber": 19818582,
   "snapshot": [
     {
@@ -105,32 +105,6 @@
           "totalSupply": 1276144975.28371
         }
       ]
-    },
-    {
-      "protocolId": "aave-v3",
-      "name": "Aave v3 StableDebtToken",
-      "description": "Aave v3 defi adapter for stable interest-accruing token",
-      "siteUrl": "https://aave.com/",
-      "iconUrl": "https://aave.com/favicon.ico",
-      "positionType": "borrow",
-      "chainId": 1,
-      "productId": "stable-debt-token",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": []
-    },
-    {
-      "protocolId": "aave-v3",
-      "name": "Aave v3 VariableDebtToken",
-      "description": "Aave v3 defi adapter for variable interest-accruing token",
-      "siteUrl": "https://aave.com/",
-      "iconUrl": "https://aave.com/favicon.ico",
-      "positionType": "borrow",
-      "chainId": 1,
-      "productId": "variable-debt-token",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": []
     }
   ],
   "rpcResponses": {

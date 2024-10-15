@@ -1,41 +1,6 @@
 {
-  "latency": "Latency: 0.005 seconds",
+  "latency": "Latency: 0 seconds",
   "blockNumber": 20686564,
-  "snapshot": [
-    {
-      "protocolId": "mountain-protocol",
-      "name": "Mountain Protocol USDM",
-      "description": "MountainProtocol defi adapter",
-      "siteUrl": "https://mountainprotocol.com/",
-      "iconUrl": "https://mountainprotocol.com/favicon.svg",
-      "positionType": "stake",
-      "chainId": 1,
-      "productId": "usdm",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
-          "name": "Mountain Protocol USD",
-          "decimals": 18,
-          "symbol": "USDM",
-          "baseRate": 1,
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-              "name": "USD Coin",
-              "symbol": "USDC",
-              "decimals": 6,
-              "type": "underlying",
-              "underlyingRateRaw": "1000000n",
-              "underlyingRate": 1,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-            }
-          ]
-        }
-      ]
-    }
-  ],
+  "snapshot": [],
   "rpcResponses": {}
 }

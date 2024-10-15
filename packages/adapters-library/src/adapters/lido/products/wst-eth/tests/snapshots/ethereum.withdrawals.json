@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD116.79"],
-  "latency": "Latency: 0.33 seconds",
+  "latency": "Latency: 0.285 seconds",
   "snapshot": {
     "protocolId": "lido",
     "name": "Lido stEth",

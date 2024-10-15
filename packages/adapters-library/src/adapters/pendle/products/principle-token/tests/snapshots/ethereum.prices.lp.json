@@ -1,45 +1,6 @@
 {
-  "latency": "Latency: 0.162 seconds",
+  "latency": "Latency: 0 seconds",
   "blockNumber": 20572049,
-  "snapshot": [
-    {
-      "protocolId": "pendle",
-      "name": "Pendle",
-      "description": "Pendle defi adapter",
-      "siteUrl": "https:",
-      "iconUrl": "https://",
-      "positionType": "supply",
-      "chainId": 1,
-      "productId": "lp-token",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": [
-        {
-          "baseRate": 1,
-          "type": "protocol",
-          "address": "0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6",
-          "name": "PENDLE-LPT",
-          "symbol": "PENDLE-LPT",
-          "decimals": 18,
-          "tokens": [
-            {
-              "type": "underlying",
-              "underlyingRateRaw": "1971480255441696729n",
-              "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
-              "name": "rswETH",
-              "symbol": "rswETH",
-              "decimals": 18,
-              "underlyingRate": 1.9714802554416968,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0/logo.png"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "rpcResponses": {
-    "0de74011371cee5605bae937fc61604b": {
-      "result": "0x0000000000000000000000000000000000000000000000001b5c1ad8d34c77d9"
-    }
-  }
+  "snapshot": [],
+  "rpcResponses": {}
 }

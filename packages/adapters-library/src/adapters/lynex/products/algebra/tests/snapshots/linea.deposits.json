@@ -1,6 +1,6 @@
 {
   "aggregatedValues": [],
-  "latency": "Latency: 1.311 seconds",
+  "latency": "Latency: 0.598 seconds",
   "snapshot": {
     "protocolId": "lynex",
     "name": "Lynex Algebra",

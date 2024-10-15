@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD2,510.32", "USD5,972.09", "USD7,774.90"],
-  "latency": "Latency: 2.188 seconds",
+  "latency": "Latency: 0.616 seconds",
   "snapshot": {
     "protocolId": "rocket-pool",
     "name": "RocketPool",

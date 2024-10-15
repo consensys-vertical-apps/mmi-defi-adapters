@@ -1,17 +1,12 @@
 {
   "blockNumber": 19425631,
-  "latency": "Latency: 12.218 seconds",
+  "latency": "Latency: 2.489 seconds",
   "aggregatedValues": [
     "USD8,785,762.33",
     "USD1,973,272.82",
     "USD966,810.69",
     "USD1,425,064.67",
-    "USD6,633,411.87",
-    "USD8,249,990.72",
-    "USD1,472,692.65",
-    "USD672,336.94",
-    "USD976,963.07",
-    "USD5,306,695.11"
+    "USD6,633,411.87"
   ],
   "snapshot": [
     {
@@ -200,135 +195,6 @@
             }
           ],
           "balance": 1627.4023630638915
-        }
-      ]
-    },
-    {
-      "protocolId": "morpho-blue",
-      "name": "MorphoBlue Borrow",
-      "description": "Morpho Blue DeFi adapter on the borrow side",
-      "siteUrl": "https://app.morpho.org/",
-      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
-      "positionType": "borrow",
-      "chainId": 1,
-      "productId": "market-borrow",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": [
-        {
-          "tokenId": "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
-          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-          "name": "Wrapped Ether",
-          "symbol": "WETH",
-          "decimals": 18,
-          "balanceRaw": "2037067966876589047066n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "balanceRaw": "2037067966876589047066n",
-              "type": "underlying",
-              "balance": 2037.067966876589,
-              "price": 4049.93395,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
-            }
-          ],
-          "balance": 2037.067966876589
-        },
-        {
-          "tokenId": "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc",
-          "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-          "name": "USD Coin",
-          "symbol": "USDC",
-          "decimals": 6,
-          "balanceRaw": "1467992039488n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-              "name": "USD Coin",
-              "symbol": "USDC",
-              "decimals": 6,
-              "balanceRaw": "1467992039488n",
-              "type": "underlying",
-              "balance": 1467992.039488,
-              "price": 1.0032020677933149,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-            }
-          ],
-          "balance": 1467992.039488
-        },
-        {
-          "tokenId": "0xa921ef34e2fc7a27ccc50ae7e4b154e16c9799d3387076c421423ef52ac4df99",
-          "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-          "name": "Tether USD",
-          "symbol": "USDT",
-          "decimals": 6,
-          "balanceRaw": "671922906807n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-              "name": "Tether USD",
-              "symbol": "USDT",
-              "decimals": 6,
-              "balanceRaw": "671922906807n",
-              "type": "underlying",
-              "balance": 671922.906807,
-              "price": 1.0006161852474065,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
-            }
-          ],
-          "balance": 671922.906807
-        },
-        {
-          "tokenId": "0x3a85e619751152991742810df6ec69ce473daef99e28a64ab2340d7b7ccfee49",
-          "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-          "name": "USD Coin",
-          "symbol": "USDC",
-          "decimals": 6,
-          "balanceRaw": "973844751389n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-              "name": "USD Coin",
-              "symbol": "USDC",
-              "decimals": 6,
-              "balanceRaw": "973844751389n",
-              "type": "underlying",
-              "balance": 973844.751389,
-              "price": 1.0032020677933149,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-            }
-          ],
-          "balance": 973844.751389
-        },
-        {
-          "tokenId": "0x49bb2d114be9041a787432952927f6f144f05ad3e83196a7d062f374ee11d0ee",
-          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-          "name": "Wrapped Ether",
-          "symbol": "WETH",
-          "decimals": 18,
-          "balanceRaw": "1310316458702698662655n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "balanceRaw": "1310316458702698662655n",
-              "type": "underlying",
-              "balance": 1310.3164587026986,
-              "price": 4049.93395,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
-            }
-          ],
-          "balance": 1310.3164587026986
         }
       ]
     }
@@ -592,33 +458,6 @@
         "withdrawalsRoot": "0x4d1439f3982e942a16b6025bfd855687064ebcc8357acc7830574afddbe55c81"
       }
     },
-    "61783211b732979498a33287546ce819": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5772617070656420457468657200000000000000000000000000000000000000"
-    },
-    "3142d9d670d9f3bbe1f590ed10159c68": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045745544800000000000000000000000000000000000000000000000000000000"
-    },
-    "52a91a2f9ed1eef93397c798125fd3cd": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
-    },
-    "edac88f54a4e0bfbb63af436439a786e": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000855534420436f696e000000000000000000000000000000000000000000000000"
-    },
-    "092d5af2b2884fa97e9381c15e7b7e12": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
-    },
-    "e9d846642c9d3de421ceb1c96b5fc79e": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
-    },
-    "bf1b903c0736701b426c1bb341a57628": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a5465746865722055534400000000000000000000000000000000000000000000"
-    },
-    "a573d348fef0220a864ce470e3a5a402": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553445400000000000000000000000000000000000000000000000000000000"
-    },
-    "4519c508c75b592c6abde2197270b07d": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
-    },
     "6e580c726c06bfe378caded03a2f65b8": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b5772617070656420425443000000000000000000000000000000000000000000"
     },
@@ -630,12 +469,6 @@
     },
     "8b6e22179ba8c66ef3b0ca69266446bd": {
       "result": "0x00000000000000000000000000000000000000000000000600000000000033b50000000000000000000000000000000000000000000000000000005e4b7cc9380000000000000000000000000000000000000000000000000000000065f178e30000000000000000000000000000000000000000000000000000000065f178e300000000000000000000000000000000000000000000000600000000000033b5"
-    },
-    "4f526dfeaebdd61d6bc57aed6ef17e4e": {
-      "result": "0x000000000000000000000000000000000000000000cce6435c05a4678504326c"
-    },
-    "adff83167188599b946e82fe72e0bbf0": {
-      "result": "0x000000000000000000000000000000000000000000cc5f0e3578608765421fe7"
     },
     "c42c732f150f1cacfd6d1cf31fc828ee": {
       "result": "0x0000000000000000000000000000000000000002470f11d63d17ba6746ebbfb5"

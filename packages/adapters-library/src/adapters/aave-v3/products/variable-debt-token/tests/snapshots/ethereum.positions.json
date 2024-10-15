@@ -1,44 +1,8 @@
 {
   "blockNumber": 19818581,
-  "latency": "Latency: 3.81 seconds",
-  "aggregatedValues": ["USD20,673.12", "USD7,760.12"],
+  "latency": "Latency: 1.78 seconds",
+  "aggregatedValues": ["USD7,760.12"],
   "snapshot": [
-    {
-      "protocolId": "aave-v3",
-      "name": "Aave v3 AToken",
-      "description": "Aave v3 defi adapter for yield-generating token",
-      "siteUrl": "https://aave.com/",
-      "iconUrl": "https://aave.com/favicon.ico",
-      "positionType": "supply",
-      "chainId": 1,
-      "productId": "a-token",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8",
-          "name": "Aave Ethereum WETH",
-          "symbol": "aEthWETH",
-          "decimals": 18,
-          "balanceRaw": "6720014050643307510n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "6720014050643307510n",
-              "balance": 6.720014050643307,
-              "price": 3076.35,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
-            }
-          ],
-          "balance": 6.720014050643307
-        }
-      ]
-    },
     {
       "protocolId": "aave-v3",
       "name": "Aave v3 VariableDebtToken",
@@ -77,20 +41,8 @@
     }
   ],
   "rpcResponses": {
-    "0842c60c3995b7f71e4e75771b55fdd5": {
-      "result": "0x0000000000000000000000000000000000000000000000005d42492cc63a6bf6"
-    },
     "61eb7c5963342932fefdfa8ac0580e4b": {
       "result": "0x00000000000000000000000000000000000000000000000000000001cdf0d938"
-    },
-    "61783211b732979498a33287546ce819": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5772617070656420457468657200000000000000000000000000000000000000"
-    },
-    "3142d9d670d9f3bbe1f590ed10159c68": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045745544800000000000000000000000000000000000000000000000000000000"
-    },
-    "52a91a2f9ed1eef93397c798125fd3cd": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
     },
     "bf1b903c0736701b426c1bb341a57628": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a5465746865722055534400000000000000000000000000000000000000000000"

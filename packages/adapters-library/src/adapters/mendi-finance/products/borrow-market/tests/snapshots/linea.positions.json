@@ -1,106 +1,8 @@
 {
   "blockNumber": 1597881,
-  "latency": "Latency: 1.291 seconds",
+  "latency": "Latency: 0.636 seconds",
   "aggregatedValues": [],
   "snapshot": [
-    {
-      "protocolId": "mendi-finance",
-      "name": "MendiFinance",
-      "description": "MendiFinance supply adapter",
-      "siteUrl": "https://mendi.finance/:",
-      "iconUrl": "https://mendi.finance/mendi-token.svg",
-      "positionType": "supply",
-      "chainId": 59144,
-      "productId": "supply-market",
-      "chainName": "linea",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
-          "name": "Mendi USD Coin",
-          "symbol": "meUSDC",
-          "decimals": 8,
-          "balanceRaw": "494421527209981n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-              "name": "USDC",
-              "symbol": "USDC",
-              "decimals": 6,
-              "type": "underlying",
-              "balanceRaw": "100080805537n",
-              "balance": 100080.805537,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
-            }
-          ],
-          "balance": 4944215.27209981
-        },
-        {
-          "address": "0xf669C3C03D9fdF4339e19214A749E52616300E89",
-          "name": "Mendi USD Tether",
-          "symbol": "meUSDT",
-          "decimals": 8,
-          "balanceRaw": "281620495310021n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
-              "name": "Tether USD",
-              "symbol": "USDT",
-              "decimals": 6,
-              "type": "underlying",
-              "balanceRaw": "57154879523n",
-              "balance": 57154.879523,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
-            }
-          ],
-          "balance": 2816204.95310021
-        },
-        {
-          "address": "0xAd7f33984bed10518012013D4aB0458D37FEE6F3",
-          "name": "Mendi Wrapped Ether",
-          "symbol": "meWETH",
-          "decimals": 8,
-          "balanceRaw": "3919087897n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "804997187618818983n",
-              "balance": 0.804997187618819,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
-            }
-          ],
-          "balance": 39.19087897
-        },
-        {
-          "address": "0x9be5e24F05bBAfC28Da814bD59284878b388a40f",
-          "name": "Mendi Wrapped BTC",
-          "symbol": "meWBTC",
-          "decimals": 8,
-          "balanceRaw": "4982090632n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
-              "name": "Wrapped BTC",
-              "symbol": "WBTC",
-              "decimals": 8,
-              "type": "underlying",
-              "balanceRaw": "100141914n",
-              "balance": 1.00141914,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4/logo.png"
-            }
-          ],
-          "balance": 49.82090632
-        }
-      ]
-    },
     {
       "protocolId": "mendi-finance",
       "name": "MendiFinance",
@@ -183,18 +85,6 @@
     "97b18bbefc602ef7e475bd91d420cba5": {
       "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000040000000000000000000000009be5e24f05bbafc28da814bd59284878b388a40f000000000000000000000000333d8b480bdb25ea7be4dd87eeb359988ce1b30d000000000000000000000000ad7f33984bed10518012013d4ab0458d37fee6f3000000000000000000000000f669c3c03d9fdf4339e19214a749e52616300e89"
     },
-    "0e9d7a505f0be92a36cfcfb07df37278": {
-      "result": "0x0000000000000000000000000000000000000000000000000001c1ac7b7fa7fd"
-    },
-    "f44fc6a27d49fbb62c806df15d30a5f2": {
-      "result": "0x00000000000000000000000000000000000000000000000000010021e1959cc5"
-    },
-    "cc755de40fb6ef4cac554c2e45b6a4af": {
-      "result": "0x00000000000000000000000000000000000000000000000000000000e9988919"
-    },
-    "e3fbc1302574ffbbcb1f6342c8bf97e4": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000128f4ab88"
-    },
     "101b0c74af7a262e74ac853b62c562c0": {
       "result": "0x0000000000000000000000000000000000000000000000000000000002fe1f01"
     },
@@ -206,18 +96,6 @@
     },
     "4ddfa5c203cd9aebc68b19740f97be15": {
       "result": "0x0000000000000000000000000000000000000000000000000000000d527fad7a"
-    },
-    "84203c3409977070e9babdd0499b608b": {
-      "result": "0x0000000000000000000000000000000000000000000000000000b819ad6aba84"
-    },
-    "f4d103faee801f0124b2121b6fa84a5b": {
-      "result": "0x0000000000000000000000000000000000000000000000000000b8960107147f"
-    },
-    "601766e2bf80cce81faa5f5fa1259417": {
-      "result": "0x000000000000000000000000000000000000000000a9e809025e9c8cbfcf414a"
-    },
-    "e1974c1f5fe7edaee288290730958b5d": {
-      "result": "0x000000000000000000000000000000000000000000000000004769311424418a"
     }
   }
 }
