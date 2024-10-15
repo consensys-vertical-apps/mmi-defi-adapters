@@ -523,6 +523,7 @@ function runProductTests(
               ...testCase.input,
               protocolId: protocolId,
               chainId: testCase.chainId,
+              productId,
             })
 
             expect(response).toEqual(snapshot)
@@ -557,6 +558,7 @@ function runProductTests(
               ...testCase.input,
               chainId: testCase.chainId,
               protocolId,
+              productId,
             })
 
             expect(response).toEqual(snapshot)
@@ -592,6 +594,7 @@ function runProductTests(
               ...testCase.input,
               protocolId: protocolId,
               chainId: testCase.chainId,
+              productId,
             })
 
             expect(response).toEqual(snapshot)
@@ -626,6 +629,7 @@ function runProductTests(
               ...testCase.input,
               chainId: testCase.chainId,
               protocolId,
+              productId,
             })
 
             expect(response).toEqual(snapshot)
@@ -735,6 +739,7 @@ function runProductTests(
               ...testCase.input,
               protocolId,
               chainId: testCase.chainId,
+              productId,
             } as GetTransactionParams
 
             const response = await defiProvider.getTransactionParams(inputs)
