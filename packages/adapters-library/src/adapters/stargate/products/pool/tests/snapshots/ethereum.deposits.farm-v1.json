@@ -1,92 +1,22 @@
 {
-  "aggregatedValues": ["USD0.00"],
-  "latency": "Latency: 1.166 seconds",
+  "aggregatedValues": [],
+  "latency": "Latency: 0.148 seconds",
   "snapshot": {
     "protocolId": "stargate",
-    "name": "Stargate Farm",
+    "name": "Stargate Liquidity Pools",
     "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
     "siteUrl": "https://stargate.finance/",
     "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
-    "positionType": "stake",
+    "positionType": "supply",
     "chainId": 1,
-    "productId": "farm",
+    "productId": "pool",
     "chainName": "ethereum",
     "success": true,
-    "movements": [
-      {
-        "protocolToken": {
-          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
-          "name": "USD Coin-LP",
-          "symbol": "S*USDC",
-          "decimals": 6
-        },
-        "blockNumber": 20649377,
-        "transactionHash": "0x567d08d68b37066356d3dc4de82c765f128f18fa9239bba937057d234e7e99d3",
-        "tokens": [
-          {
-            "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
-            "name": "USD Coin-LP",
-            "symbol": "S*USDC",
-            "decimals": 6,
-            "type": "underlying",
-            "blockNumber": 20649377,
-            "balanceRaw": "0n",
-            "tokens": [
-              {
-                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-                "name": "USD Coin",
-                "symbol": "USDC",
-                "decimals": 6,
-                "type": "underlying",
-                "balanceRaw": "0n",
-                "balance": 0,
-                "price": 0.9990442222962387,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-              }
-            ],
-            "balance": 0
-          }
-        ]
-      }
-    ]
+    "movements": []
   },
   "rpcResponses": {
-    "1b67ca0fede0e7c08c5f2211e06f1b60": {
-      "result": [
-        {
-          "address": "0xb0d502e938ed5f4df2e681fe6e419ff29631d62b",
-          "blockHash": "0x1766bec4abd91ababe4b41bd72d07e1e6f76563b8d6aaef1ea1a2199306f306a",
-          "blockNumber": "0x13b15a1",
-          "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
-          "logIndex": "0x2c",
-          "removed": false,
-          "topics": [
-            "0x90890809c654f11d6e72a28fa60149770a0d11ec6c92319d6ceb2bb0a4ea1a15",
-            "0x000000000000000000000000be108eb162a86586f4a833df52123ab314e9af5c",
-            "0x0000000000000000000000000000000000000000000000000000000000000000"
-          ],
-          "transactionHash": "0x567d08d68b37066356d3dc4de82c765f128f18fa9239bba937057d234e7e99d3",
-          "transactionIndex": "0x14"
-        }
-      ]
-    },
-    "1dbd81b3eef85d06b6857a08f679d2bf": {
-      "result": "0x00000000000000000000000000000000000000000000000000000000000f4552"
-    },
-    "edac88f54a4e0bfbb63af436439a786e": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000855534420436f696e000000000000000000000000000000000000000000000000"
-    },
-    "092d5af2b2884fa97e9381c15e7b7e12": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
-    },
-    "e9d846642c9d3de421ceb1c96b5fc79e": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
-    },
-    "2cdc108bd0cd34b16b838c0ac806eccd": {
-      "result": "0x00000000000000000000000000000000000000000000000600000000000057b30000000000000000000000000000000000000000000000000000003ab05b2db20000000000000000000000000000000000000000000000000000000066d32ee70000000000000000000000000000000000000000000000000000000066d32ee700000000000000000000000000000000000000000000000600000000000057b3"
-    },
-    "158ff1abd04efefd44d8b1920ceaffbf": {
-      "result": "0x00000000000000000000000000000000000000000147d875f5f86209326abaad"
+    "f27f2cfc2ace68f785865eb47d020a02": {
+      "result": []
     }
   }
 }

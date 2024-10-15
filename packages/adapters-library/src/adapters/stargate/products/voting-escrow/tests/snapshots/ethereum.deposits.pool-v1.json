@@ -1,91 +1,22 @@
 {
-  "aggregatedValues": ["USD0.00"],
-  "latency": "Latency: 0.554 seconds",
+  "aggregatedValues": [],
+  "latency": "Latency: 0.143 seconds",
   "snapshot": {
     "protocolId": "stargate",
-    "name": "Stargate Liquidity Pools",
+    "name": "Stargate",
     "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
     "siteUrl": "https://stargate.finance/",
     "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
-    "positionType": "supply",
+    "positionType": "stake",
     "chainId": 1,
-    "productId": "pool",
+    "productId": "voting-escrow",
     "chainName": "ethereum",
     "success": true,
-    "movements": [
-      {
-        "transactionHash": "0x9990a410f11d9b44119203cf096e2f6b5aeff7e681316f45ffba6ef0abd66b16",
-        "protocolToken": {
-          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
-          "name": "USD Coin-LP",
-          "symbol": "S*USDC",
-          "decimals": 6
-        },
-        "tokens": [
-          {
-            "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
-            "name": "USD Coin-LP",
-            "symbol": "S*USDC",
-            "decimals": 6,
-            "balanceRaw": "599545110n",
-            "type": "underlying",
-            "blockNumber": 17719335,
-            "tokens": [
-              {
-                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-                "name": "USD Coin",
-                "symbol": "USDC",
-                "decimals": 6,
-                "type": "underlying",
-                "balanceRaw": "599999565n",
-                "balance": 599.999565,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-              }
-            ],
-            "balance": 599.54511
-          }
-        ],
-        "blockNumber": 17719335
-      }
-    ]
+    "movements": []
   },
   "rpcResponses": {
-    "5212ea3439df2ab4f14f2643b1831907": {
-      "result": [
-        {
-          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
-          "blockHash": "0x03f2b2f035db5d00b5da2340d88bebcdb5e07648eb9e713f2153ad93db4d18d0",
-          "blockNumber": "0x10e6027",
-          "data": "0x0000000000000000000000000000000000000000000000000000000023bc5516",
-          "logIndex": "0x89",
-          "removed": false,
-          "topics": [
-            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-            "0x0000000000000000000000000000000000000000000000000000000000000000",
-            "0x0000000000000000000000002c5d4a0943e9cf4c597a76464396b0bf84c24c45"
-          ],
-          "transactionHash": "0x9990a410f11d9b44119203cf096e2f6b5aeff7e681316f45ffba6ef0abd66b16",
-          "transactionIndex": "0x7d"
-        }
-      ]
-    },
-    "3d0651afd612947a17cb8ccb085cad2a": {
-      "result": "0x00000000000000000000000000000000000000000000000000000000000f4536"
-    },
-    "edac88f54a4e0bfbb63af436439a786e": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000855534420436f696e000000000000000000000000000000000000000000000000"
-    },
-    "092d5af2b2884fa97e9381c15e7b7e12": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
-    },
-    "e9d846642c9d3de421ceb1c96b5fc79e": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
-    },
-    "f89f6d993a8399765a17a2341781e527": {
-      "result": "0x0000000000000000000000000000000000000000000000060000000000000e590000000000000000000000000000000000000000000000000000002c477dfc800000000000000000000000000000000000000000000000000000000064b653870000000000000000000000000000000000000000000000000000000064b653870000000000000000000000000000000000000000000000060000000000000e59"
-    },
-    "b77252c8be1702264046cfaf34aab1e4": {
-      "result": "0x"
+    "e598b3ea21129907a2d3bed6d25f2f23": {
+      "result": []
     }
   }
 }

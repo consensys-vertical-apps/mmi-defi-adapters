@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD1,053.49"],
-  "latency": "Latency: 0.569 seconds",
+  "latency": "Latency: 0.688 seconds",
   "snapshot": {
     "protocolId": "pendle",
     "name": "Pendle",

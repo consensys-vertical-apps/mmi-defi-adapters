@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD544.89"],
-  "latency": "Latency: 0.654 seconds",
+  "latency": "Latency: 0.615 seconds",
   "snapshot": {
     "protocolId": "renzo",
     "name": "Renzo ezETH",

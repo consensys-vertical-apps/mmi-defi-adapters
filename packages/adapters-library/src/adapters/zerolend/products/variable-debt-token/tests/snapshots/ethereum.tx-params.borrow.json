@@ -1,18 +1,20 @@
 {
   "snapshot": {
     "protocolId": "zerolend",
-    "name": "ZeroLend AToken",
-    "description": "ZeroLend defi adapter for yield-generating token",
+    "name": "ZeroLend VariableDebtToken",
+    "description": "ZeroLend defi adapter for variable interest-accruing token",
     "siteUrl": "https://app.zerolend.xyz/",
     "iconUrl": "https://app.zerolend.xyz/favicon.ico",
-    "positionType": "supply",
+    "positionType": "borrow",
     "chainId": 1,
-    "productId": "a-token",
+    "productId": "variable-debt-token",
     "chainName": "ethereum",
-    "success": true,
-    "params": {
-      "to": "0xFD856E1a33225B86f70D686f9280435E3fF75FCF",
-      "data": "0xa415bcad000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000000000000000000000000000008ac7230489e80000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000005b541d54e79052b34188db9a43f7b00ea8e2c4b1"
+    "success": false,
+    "error": {
+      "message": "adapter.getTransactionParams is not a function",
+      "details": {
+        "name": "TypeError"
+      }
     }
   },
   "rpcResponses": {}

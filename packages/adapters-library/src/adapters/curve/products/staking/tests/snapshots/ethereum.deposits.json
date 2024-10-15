@@ -1,77 +1,23 @@
 {
-  "aggregatedValues": ["USD577.38"],
-  "latency": "Latency: 1.327 seconds",
+  "aggregatedValues": [],
+  "latency": "Latency: 0 seconds",
   "snapshot": {
     "protocolId": "curve",
-    "name": "Curve",
-    "description": "Curve defi adapter",
-    "siteUrl": "https:",
-    "iconUrl": "https://",
-    "positionType": "supply",
+    "name": "Curve staking",
+    "description": "Curve staking adapter",
+    "siteUrl": "https://curve.fi/",
+    "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
+    "positionType": "stake",
     "chainId": 1,
-    "productId": "voting-escrow",
+    "productId": "staking",
     "chainName": "ethereum",
-    "success": true,
-    "movements": [
-      {
-        "transactionHash": "0x8b72deef8aa2ad43010acec6026d59558318ab8a9a9ab63ad0e842a567d6b046",
-        "protocolToken": {
-          "address": "0x5f3b5DfEb7B28CDbD7FAba78963EE202a494e2A2",
-          "symbol": "veCRV",
-          "name": "Vote-escrowed CRV",
-          "decimals": 18
-        },
-        "tokens": [
-          {
-            "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
-            "symbol": "CRV",
-            "name": "Curve DAO Token",
-            "decimals": 18,
-            "balanceRaw": "2501000000000000000000n",
-            "type": "underlying",
-            "blockNumber": 19562098,
-            "price": 0.23086130688587256,
-            "balance": 2501
-          }
-        ],
-        "blockNumber": 19562098
+    "success": false,
+    "error": {
+      "message": "Protocol token 0xD533a949740bb3306d119CC777fa900bA034cd52 not found",
+      "details": {
+        "name": "Error"
       }
-    ]
-  },
-  "rpcResponses": {
-    "cb7189133ba39650e0c0c3fee259713d": {
-      "result": [
-        {
-          "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
-          "blockHash": "0x1869d7028d8848315c1f085409b250af41a9652653527f836c6573bcf7c55c45",
-          "blockNumber": "0x12a7e72",
-          "data": "0x0000000000000000000000000000000000000000000000879458e92253f40000",
-          "logIndex": "0xad",
-          "removed": false,
-          "topics": [
-            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-            "0x000000000000000000000000c42ceb990deb305520c4527f2a841506095a55d6",
-            "0x0000000000000000000000005f3b5dfeb7b28cdbd7faba78963ee202a494e2a2"
-          ],
-          "transactionHash": "0x8b72deef8aa2ad43010acec6026d59558318ab8a9a9ab63ad0e842a567d6b046",
-          "transactionIndex": "0x69"
-        }
-      ]
-    },
-    "b44052108f24ccf813ef30e04f6b0098": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000f43757276652044414f20546f6b656e0000000000000000000000000000000000"
-    },
-    "1719a46524b72e8d23ed4a23b9f03f22": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000034352560000000000000000000000000000000000000000000000000000000000"
-    },
-    "2201b2a8a8ad64265fa4a75ba8ac91a7": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
-    },
-    "acbfb28ce82fe7c453cd197cf2b4c4c0": {
-      "result": "0x00000000000000000000000000000000000000000000000600000000000038da000000000000000000000000000000000000000000000000000000507f696fc000000000000000000000000000000000000000000000000000000000660adc5700000000000000000000000000000000000000000000000000000000660adc5700000000000000000000000000000000000000000000000600000000000038da"
-    },
-    "64bc85d733a7191b02c13d08618e8bb0": {
-      "result": "0x00000000000000000000000000000000000000000000000000003cbb0c4eed03"
     }
-  }
+  },
+  "rpcResponses": {}
 }

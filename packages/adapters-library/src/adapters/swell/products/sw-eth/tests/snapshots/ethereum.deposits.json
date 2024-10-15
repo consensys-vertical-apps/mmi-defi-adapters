@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD5,272.65"],
-  "latency": "Latency: 0.487 seconds",
+  "latency": "Latency: 0.509 seconds",
   "snapshot": {
     "protocolId": "swell",
     "name": "Swell swETH",

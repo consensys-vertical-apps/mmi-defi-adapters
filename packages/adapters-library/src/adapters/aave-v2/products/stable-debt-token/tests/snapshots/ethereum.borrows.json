@@ -1,89 +1,23 @@
 {
-  "latency": "Latency: 0.383 seconds",
+  "latency": "Latency: 0 seconds",
   "snapshot": {
     "protocolId": "aave-v2",
-    "name": "Aave v2 VariableDebtToken",
-    "description": "Aave v2 defi adapter for variable interest-accruing token",
+    "name": "Aave v2 StableDebtToken",
+    "description": "Aave v2 defi adapter for stable interest-accruing token",
     "siteUrl": "https://aave.com/",
     "iconUrl": "https://aave.com/favicon.ico",
     "positionType": "borrow",
     "chainId": 1,
-    "productId": "variable-debt-token",
+    "productId": "stable-debt-token",
     "chainName": "ethereum",
-    "success": true,
-    "movements": [
-      {
-        "transactionHash": "0x430d933c94aa53c50ade8814018f999f450c5d779c619b8036f86560fff9b688",
-        "protocolToken": {
-          "address": "0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec",
-          "name": "Aave variable debt bearing USDT",
-          "symbol": "variableDebtUSDT",
-          "decimals": 6
-        },
-        "tokens": [
-          {
-            "address": "0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec",
-            "name": "Aave variable debt bearing USDT",
-            "symbol": "variableDebtUSDT",
-            "decimals": 6,
-            "balanceRaw": "250000000000n",
-            "type": "underlying",
-            "blockNumber": 19262682,
-            "tokens": [
-              {
-                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-                "name": "Tether USD",
-                "symbol": "USDT",
-                "decimals": 6,
-                "type": "underlying",
-                "balanceRaw": "250000000000n",
-                "balance": 250000,
-                "price": 1.002887931056342,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
-              }
-            ],
-            "balance": 250000
-          }
-        ],
-        "blockNumber": 19262682
+    "success": false,
+    "error": {
+      "message": "Protocol token 0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec not found",
+      "details": {
+        "name": "Error"
       }
-    ]
-  },
-  "aggregatedValues": ["USD250,721.98"],
-  "rpcResponses": {
-    "21c77fff60bc8b58eea88dfebdea7eb9": {
-      "result": [
-        {
-          "address": "0x531842cebbdd378f8ee36d171d6cc9c4fcf475ec",
-          "blockHash": "0xe074da08d888290e4dee2f9f37190620bcee455767796a58f6dbc0dcc9170bdc",
-          "blockNumber": "0x125ecda",
-          "data": "0x0000000000000000000000000000000000000000000000000000003a35294400",
-          "logIndex": "0xec",
-          "removed": false,
-          "topics": [
-            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-            "0x0000000000000000000000000000000000000000000000000000000000000000",
-            "0x00000000000000000000000047ab2ba28c381011fa1f25417c4c2b2c0d5b4781"
-          ],
-          "transactionHash": "0x430d933c94aa53c50ade8814018f999f450c5d779c619b8036f86560fff9b688",
-          "transactionIndex": "0x87"
-        }
-      ]
-    },
-    "bf1b903c0736701b426c1bb341a57628": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a5465746865722055534400000000000000000000000000000000000000000000"
-    },
-    "a573d348fef0220a864ce470e3a5a402": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553445400000000000000000000000000000000000000000000000000000000"
-    },
-    "4519c508c75b592c6abde2197270b07d": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
-    },
-    "7d8018a6ceaafc454d9c4ad21c76dd17": {
-      "result": "0x0000000000000000000000000000000000000000000000060000000000002e8900000000000000000000000000000000000000000000000000000043f7311d800000000000000000000000000000000000000000000000000000000065d3731f0000000000000000000000000000000000000000000000000000000065d3731f0000000000000000000000000000000000000000000000060000000000002e89"
-    },
-    "bc085b66e08a69970e7972193594ba7c": {
-      "result": "0x0000000000000000000000000000000000000000011c2fccdac4492b9827b233"
     }
-  }
+  },
+  "aggregatedValues": [],
+  "rpcResponses": {}
 }

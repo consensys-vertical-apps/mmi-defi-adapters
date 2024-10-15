@@ -1,14 +1,14 @@
 {
-  "latency": "Latency: 1.516 seconds",
+  "latency": "Latency: 1.218 seconds",
   "snapshot": {
     "protocolId": "morpho-compound-v2",
     "name": "MorphoCompoundV2",
-    "description": "MorphoCompoundV2 defi adapter on the borrow side",
+    "description": "MorphoCompoundV2 defi adapter on the supply side",
     "siteUrl": "https://compound.morpho.org/",
     "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
-    "positionType": "borrow",
+    "positionType": "supply",
     "chainId": 1,
-    "productId": "optimizer-borrow",
+    "productId": "optimizer-supply",
     "chainName": "ethereum",
     "success": true,
     "movements": [

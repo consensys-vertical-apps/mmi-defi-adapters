@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD150,183.90"],
-  "latency": "Latency: 1.798 seconds",
+  "latency": "Latency: 1.329 seconds",
   "snapshot": {
     "protocolId": "morpho-compound-v2",
     "name": "MorphoCompoundV2",

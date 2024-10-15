@@ -1,15 +1,15 @@
 {
   "aggregatedValues": ["USD93,991.53"],
-  "latency": "Latency: 1.327 seconds",
+  "latency": "Latency: 1.468 seconds",
   "snapshot": {
     "protocolId": "morpho-blue",
-    "name": "MorphoBlue Supply",
-    "description": "Morpho Blue DeFi adapter on the supply side",
+    "name": "MorphoBlue Borrow",
+    "description": "Morpho Blue DeFi adapter on the borrow side",
     "siteUrl": "https://app.morpho.org/",
     "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
-    "positionType": "supply",
+    "positionType": "borrow",
     "chainId": 1,
-    "productId": "market-supply",
+    "productId": "market-borrow",
     "chainName": "ethereum",
     "success": true,
     "movements": [

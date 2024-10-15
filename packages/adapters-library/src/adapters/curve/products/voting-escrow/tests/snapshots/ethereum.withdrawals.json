@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD157.11"],
-  "latency": "Latency: 0.988 seconds",
+  "latency": "Latency: 1.195 seconds",
   "snapshot": {
     "protocolId": "curve",
     "name": "Curve",

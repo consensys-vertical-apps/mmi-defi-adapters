@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD1.21", "USD0.10", "USD0.02", "USD11.38"],
-  "latency": "Latency: 6.888 seconds",
+  "latency": "Latency: 5.935 seconds",
   "snapshot": {
     "protocolId": "flux",
     "name": "Flux",

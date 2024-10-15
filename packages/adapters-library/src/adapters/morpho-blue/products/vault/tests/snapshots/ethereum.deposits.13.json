@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD299,928.61"],
-  "latency": "Latency: 0.404 seconds",
+  "latency": "Latency: 1.214 seconds",
   "snapshot": {
     "protocolId": "morpho-blue",
     "name": "MetaMorpho Vaults",

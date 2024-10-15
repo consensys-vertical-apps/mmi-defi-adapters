@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD1.64"],
-  "latency": "Latency: 0.367 seconds",
+  "latency": "Latency: 0.374 seconds",
   "snapshot": {
     "protocolId": "morpho-aave-v3",
     "name": "MorphoAaveV3",

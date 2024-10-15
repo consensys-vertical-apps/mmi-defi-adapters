@@ -1,14 +1,14 @@
 {
-  "latency": "Latency: 0.307 seconds",
+  "latency": "Latency: 0.365 seconds",
   "snapshot": {
     "protocolId": "morpho-blue",
-    "name": "MorphoBlue Borrow",
-    "description": "Morpho Blue DeFi adapter on the borrow side",
+    "name": "MorphoBlue Supply",
+    "description": "Morpho Blue DeFi adapter on the supply side",
     "siteUrl": "https://app.morpho.org/",
     "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
-    "positionType": "borrow",
+    "positionType": "supply",
     "chainId": 1,
-    "productId": "market-borrow",
+    "productId": "market-supply",
     "chainName": "ethereum",
     "success": true,
     "movements": [

@@ -1,104 +1,23 @@
 {
-  "aggregatedValues": ["USD378.96"],
-  "latency": "Latency: 1.863 seconds",
+  "aggregatedValues": [],
+  "latency": "Latency: 0 seconds",
   "snapshot": {
     "protocolId": "mountain-protocol",
-    "name": "Mountain Protocol wUSDM",
+    "name": "Mountain Protocol USDM",
     "description": "MountainProtocol defi adapter",
     "siteUrl": "https://mountainprotocol.com/",
     "iconUrl": "https://mountainprotocol.com/favicon.svg",
     "positionType": "stake",
     "chainId": 1,
-    "productId": "wusdm",
+    "productId": "usdm",
     "chainName": "ethereum",
-    "success": true,
-    "movements": [
-      {
-        "transactionHash": "0xdf22bce943dbef08098ae183c629c0cdf624a04dc623c4b2b6118943c2edefe0",
-        "protocolToken": {
-          "address": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
-          "name": "Wrapped Mountain Protocol USD",
-          "symbol": "wUSDM",
-          "decimals": 18
-        },
-        "tokens": [
-          {
-            "address": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
-            "name": "Wrapped Mountain Protocol USD",
-            "symbol": "wUSDM",
-            "decimals": 18,
-            "balanceRaw": "368038300000000000000n",
-            "type": "underlying",
-            "blockNumber": 19654044,
-            "tokens": [
-              {
-                "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
-                "name": "Mountain Protocol USD",
-                "symbol": "USDM",
-                "decimals": 18,
-                "type": "underlying",
-                "balanceRaw": "377384824744988459841n",
-                "tokens": [
-                  {
-                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-                    "name": "USD Coin",
-                    "symbol": "USDC",
-                    "decimals": 6,
-                    "type": "underlying",
-                    "balanceRaw": "377384824n",
-                    "balance": 377.384824,
-                    "price": 1.004186232295523,
-                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-                  }
-                ],
-                "balance": 377.38482474498846,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C/logo.png"
-              }
-            ],
-            "balance": 368.0383
-          }
-        ],
-        "blockNumber": 19654044
+    "success": false,
+    "error": {
+      "message": "Protocol token 0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812 not found",
+      "details": {
+        "name": "Error"
       }
-    ]
-  },
-  "rpcResponses": {
-    "40f281229c4933e1747a892bda997a81": {
-      "result": [
-        {
-          "address": "0x57f5e098cad7a3d1eed53991d4d66c45c9af7812",
-          "blockHash": "0xc5f2fa8faa711c0821db65c5c062650ba9b3873c9329f81eb604514b89be4c4c",
-          "blockNumber": "0x12be59c",
-          "data": "0x000000000000000000000000000000000000000000000013f38eb3e646a5c000",
-          "logIndex": "0x13b",
-          "removed": false,
-          "topics": [
-            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-            "0x0000000000000000000000003b95bc951ee0f553ba487327278cac44f29715e5",
-            "0x000000000000000000000000e00a02f34f6de0080434267e0ee2ab467fd16ce3"
-          ],
-          "transactionHash": "0xdf22bce943dbef08098ae183c629c0cdf624a04dc623c4b2b6118943c2edefe0",
-          "transactionIndex": "0x77"
-        }
-      ]
-    },
-    "10b43f2c24b37402a3bac7379dc716b0": {
-      "result": "0x0000000000000000000000000000000000000000000000000e3aefcb632aa2e9"
-    },
-    "edac88f54a4e0bfbb63af436439a786e": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000855534420436f696e000000000000000000000000000000000000000000000000"
-    },
-    "092d5af2b2884fa97e9381c15e7b7e12": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
-    },
-    "e9d846642c9d3de421ceb1c96b5fc79e": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
-    },
-    "a4752123e814ae42def72e5fa2b2685b": {
-      "result": "0x0000000000000000000000000000000000000000000000060000000000003bea00000000000000000000000000000000000000000000000000000047721a3c4000000000000000000000000000000000000000000000000000000000661bd70f00000000000000000000000000000000000000000000000000000000661bd70f0000000000000000000000000000000000000000000000060000000000003bea"
-    },
-    "7bc100b618af77572f1dbc5df004c0a7": {
-      "result": "0x0000000000000000000000000000000000000000010eb1a7bebd2d51016aa2a5"
     }
-  }
+  },
+  "rpcResponses": {}
 }

@@ -1,6 +1,6 @@
 {
   "aggregatedValues": [],
-  "latency": "Latency: 0.812 seconds",
+  "latency": "Latency: 1.367 seconds",
   "snapshot": {
     "protocolId": "syncswap",
     "name": "SyncSwap",

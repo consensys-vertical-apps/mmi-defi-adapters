@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD0.00"],
-  "latency": "Latency: 1.355 seconds",
+  "latency": "Latency: 0.988 seconds",
   "snapshot": {
     "protocolId": "stargate",
     "name": "Stargate Farm",

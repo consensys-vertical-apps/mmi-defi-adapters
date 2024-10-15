@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD10.30"],
-  "latency": "Latency: 0.641 seconds",
+  "latency": "Latency: 0.642 seconds",
   "snapshot": {
     "protocolId": "quickswap-v2",
     "name": "QuickswapV2",

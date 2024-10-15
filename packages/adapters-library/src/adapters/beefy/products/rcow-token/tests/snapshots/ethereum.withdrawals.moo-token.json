@@ -1,6 +1,6 @@
 {
-  "aggregatedValues": ["USD771.57"],
-  "latency": "Latency: 1.937 seconds",
+  "aggregatedValues": [],
+  "latency": "Latency: 0 seconds",
   "snapshot": {
     "protocolId": "beefy",
     "name": "Beefy",
@@ -9,149 +9,15 @@
     "iconUrl": "https://beefy.com/icons/icon-96x96.png",
     "positionType": "supply",
     "chainId": 1,
-    "productId": "moo-token",
+    "productId": "rcow-token",
     "chainName": "ethereum",
-    "success": true,
-    "movements": [
-      {
-        "transactionHash": "0x85ba8cdb74532ed11e372c2d168eab021a0a638a256268d177dbd5045225cd9d",
-        "protocolToken": {
-          "address": "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5",
-          "name": "Moo Curve crvUSD-sUSDe",
-          "symbol": "mooCurveCrvUSD-sUSDe",
-          "decimals": 18
-        },
-        "tokens": [
-          {
-            "address": "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5",
-            "name": "Moo Curve crvUSD-sUSDe",
-            "symbol": "mooCurveCrvUSD-sUSDe",
-            "decimals": 18,
-            "balanceRaw": "767237137923667859458n",
-            "type": "underlying",
-            "blockNumber": 20073464,
-            "tokens": [
-              {
-                "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-                "name": "Curve.Fi USD Stablecoin",
-                "symbol": "crvUSD",
-                "decimals": 18,
-                "type": "underlying",
-                "balanceRaw": "532755580856120954361n",
-                "balance": 532.7555808561209,
-                "price": 0.9979875711838956,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E/logo.png"
-              },
-              {
-                "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
-                "name": "Staked USDe",
-                "symbol": "sUSDe",
-                "decimals": 18,
-                "type": "underlying",
-                "balanceRaw": "222053032946031939529n",
-                "tokens": [
-                  {
-                    "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-                    "name": "USDe",
-                    "symbol": "USDe",
-                    "decimals": 18,
-                    "type": "underlying",
-                    "balanceRaw": "239328415042496997147n",
-                    "balance": 239.328415042497,
-                    "price": 1.0023341254023106,
-                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4c9EDD5852cd905f086C759E8383e09bff1E68B3/logo.png"
-                  }
-                ],
-                "balance": 222.05303294603195,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x9D39A5DE30e57443BfF2A8307A4256c8797A3497/logo.png"
-              }
-            ],
-            "balance": 767.2371379236679
-          }
-        ],
-        "blockNumber": 20073464
+    "success": false,
+    "error": {
+      "message": "Protocol token 0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5 not found",
+      "details": {
+        "name": "Error"
       }
-    ]
-  },
-  "rpcResponses": {
-    "8e9caaf5bade8575fa050085c7872da9": {
-      "result": [
-        {
-          "address": "0xbf7fc2a3d96d80f47b3b89be84afe10376ce96a5",
-          "blockHash": "0x10e549d4818d13ec168abea92c116eb0bf788797c581974f5397d2b769808ee2",
-          "blockNumber": "0x1324bf8",
-          "data": "0x000000000000000000000000000000000000000000000029978ddff1eb9b1802",
-          "logIndex": "0x13c",
-          "removed": false,
-          "topics": [
-            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-            "0x000000000000000000000000f2c929c22d491c2a2c4ec92ec6c2c11e6b861428",
-            "0x0000000000000000000000005cc9400ffb4da168cf271e912f589462c3a00d1f"
-          ],
-          "transactionHash": "0x85ba8cdb74532ed11e372c2d168eab021a0a638a256268d177dbd5045225cd9d",
-          "transactionIndex": "0x6f"
-        }
-      ]
-    },
-    "5ac321a75b5c89eb27147677b5d53599": {
-      "result": "0x00000000000000000000000000000000000000000000f4cb0762dc84c6966937"
-    },
-    "259ea348780e2aac132348ed0f72b6dd": {
-      "result": "0x00000000000000000000000000000000000000000000f3ea2bd6b9476863a92f"
-    },
-    "5f045f6642d6f2965df71a3ec5cad805": {
-      "result": "0x00000000000000000000000000000000000000000002e9cf1a034c4310545df3"
-    },
-    "c8fdab1eaf7134a5e90bac8f8106639f": {
-      "result": "0x000000000000000000000000f939e0a03fb07f59a73314e73794be0e57ac1b4e"
-    },
-    "9c2c490a00280cceefb1c0814fcc49d5": {
-      "result": "0x0000000000000000000000009d39a5de30e57443bff2a8307a4256c8797a3497"
-    },
-    "e9a845220d7ed30522b77804c6374e47": {
-      "error": {
-        "code": -32000,
-        "message": "execution reverted"
-      }
-    },
-    "760b52327bd88fefc9fa2306de5d6407": {
-      "result": "0x0000000000000000000000000000000000000000000204049f39c481ecc4de9b"
-    },
-    "62947493f07da1de2a2bcd575976fc8f": {
-      "result": "0x00000000000000000000000000000000000000000000d713aa37e254e507aa1a"
-    },
-    "493d64a947ee98d2e2c085285f991537": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001743757276652e46692055534420537461626c65636f696e000000000000000000"
-    },
-    "7f51d06f74c9ea07fc6bb171b39b7ba7": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000066372765553440000000000000000000000000000000000000000000000000000"
-    },
-    "3533bc2b767ab8c8f9fc6849e36a986f": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
-    },
-    "9de6f18a4198bc5e88bcabea6843282c": {
-      "result": "0x00000000000000000000000000000000000000000000000600000000000047100000000000000000000000000000000000000000000000000000005221000e10000000000000000000000000000000000000000000000000000000006669212f000000000000000000000000000000000000000000000000000000006669212f0000000000000000000000000000000000000000000000060000000000004710"
-    },
-    "5574eced00cba08de7b3ee923f4b7a88": {
-      "result": "0x000000000000000000000000000000000000000000000000000101514ab518b9"
-    },
-    "3d880ad5c4f82936e97d8a5315cba77c": {
-      "result": "0x000000000000000000000000000000000000000004b3a625bdef6a0103a627b5"
-    },
-    "2243c81183da1871adbd5bc2a7b8ac6c": {
-      "result": "0x000000000000000000000000000000000000000005114a81c61dde352ec35a10"
-    },
-    "d82681aad1f3b8ffa20adf85cb50c19f": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553446500000000000000000000000000000000000000000000000000000000"
-    },
-    "64734af67ba2769b23bb8001510602ab": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553446500000000000000000000000000000000000000000000000000000000"
-    },
-    "9cfae3f125ccffa0b322f783e179cad5": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
-    },
-    "2876f7896aed101ae1f0ee6d404e0c47": {
-      "result": "0x0000000000000000000000000000000000000000000000000001027030e6fb39"
     }
-  }
+  },
+  "rpcResponses": {}
 }

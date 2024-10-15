@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD0.00"],
-  "latency": "Latency: 0.543 seconds",
+  "latency": "Latency: 0.522 seconds",
   "snapshot": {
     "protocolId": "stargate",
     "name": "Stargate Liquidity Pools",

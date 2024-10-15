@@ -1,89 +1,23 @@
 {
-  "aggregatedValues": ["USD299,928.61"],
-  "latency": "Latency: 1.462 seconds",
+  "aggregatedValues": [],
+  "latency": "Latency: 0.003 seconds",
   "snapshot": {
     "protocolId": "morpho-blue",
-    "name": "MetaMorpho Vaults",
-    "description": "MetaMorpho Vaults adapter",
+    "name": "MorphoBlue Supply",
+    "description": "Morpho Blue DeFi adapter on the supply side",
     "siteUrl": "https://app.morpho.org/",
     "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
     "positionType": "supply",
     "chainId": 1,
-    "productId": "vault",
+    "productId": "market-supply",
     "chainName": "ethereum",
-    "success": true,
-    "movements": [
-      {
-        "transactionHash": "0x814bc6cbfa24f936c63f4208c5d9a9f91b397070b932851241d1807c9385fe14",
-        "protocolToken": {
-          "address": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
-          "name": " Usual Boosted USDC",
-          "symbol": "USUALUSDC+",
-          "decimals": 18
-        },
-        "tokens": [
-          {
-            "address": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
-            "name": " Usual Boosted USDC",
-            "symbol": "USUALUSDC+",
-            "decimals": 18,
-            "balanceRaw": "299458452104436044672839n",
-            "type": "underlying",
-            "blockNumber": 20417741,
-            "tokens": [
-              {
-                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-                "name": "USD Coin",
-                "symbol": "USDC",
-                "decimals": 6,
-                "type": "underlying",
-                "balanceRaw": "299458452104n",
-                "balance": 299458.452104,
-                "price": 1.0015700219341837,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-              }
-            ],
-            "balance": 299458.45210443606
-          }
-        ],
-        "blockNumber": 20417741
+    "success": false,
+    "error": {
+      "message": "Cannot read properties of undefined (reading 'toLowerCase')",
+      "details": {
+        "name": "TypeError"
       }
-    ]
-  },
-  "rpcResponses": {
-    "378759fe6ee0e5bdc789760d7743fee5": {
-      "result": [
-        {
-          "address": "0xd63070114470f685b75b74d60eec7c1113d33a3d",
-          "blockHash": "0xcf05db25ccd357346e30e79d5aa3638ca880f0a1e47547a3b29a8dd099255c6e",
-          "blockNumber": "0x1378ccd",
-          "data": "0x000000000000000000000000000000000000000000003f69acdb061b559a2f47",
-          "logIndex": "0x119",
-          "removed": false,
-          "topics": [
-            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-            "0x0000000000000000000000000000000000000000000000000000000000000000",
-            "0x000000000000000000000000da44d84f8de69febda4c4e0b89ff24077413f4b0"
-          ],
-          "transactionHash": "0x814bc6cbfa24f936c63f4208c5d9a9f91b397070b932851241d1807c9385fe14",
-          "transactionIndex": "0x7a"
-        }
-      ]
-    },
-    "edac88f54a4e0bfbb63af436439a786e": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000855534420436f696e000000000000000000000000000000000000000000000000"
-    },
-    "092d5af2b2884fa97e9381c15e7b7e12": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
-    },
-    "e9d846642c9d3de421ceb1c96b5fc79e": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
-    },
-    "63620172fcb5f42f84746bd25626d97f": {
-      "result": "0x0000000000000000000000000000000000000000000000060000000000004f5b0000000000000000000000000000000000000000000000000000004d70708a090000000000000000000000000000000000000000000000000000000066a88e5b0000000000000000000000000000000000000000000000000000000066a88e5b0000000000000000000000000000000000000000000000060000000000004f5b"
-    },
-    "64e0ff7f1b822656d1b8a8ff4a6ee96d": {
-      "result": "0x000000000000000000000000000000000000000000f917b57cd5e278e1316437"
     }
-  }
+  },
+  "rpcResponses": {}
 }

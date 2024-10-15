@@ -1,15 +1,15 @@
 {
   "aggregatedValues": ["USD1.64"],
-  "latency": "Latency: 0.359 seconds",
+  "latency": "Latency: 0.332 seconds",
   "snapshot": {
     "protocolId": "morpho-aave-v3",
     "name": "MorphoAaveV3",
-    "description": "MorphoAaveV3 DeFi adapter on the supply side",
+    "description": "MorphoAaveV3 DeFi adapter on the borrow side",
     "siteUrl": "https://aavev3.morpho.org/",
     "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
-    "positionType": "supply",
+    "positionType": "borrow",
     "chainId": 1,
-    "productId": "optimizer-supply",
+    "productId": "optimizer-borrow",
     "chainName": "ethereum",
     "success": true,
     "movements": [

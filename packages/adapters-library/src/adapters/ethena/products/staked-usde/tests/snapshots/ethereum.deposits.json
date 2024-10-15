@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD2,214.82"],
-  "latency": "Latency: 1.275 seconds",
+  "latency": "Latency: 1.32 seconds",
   "snapshot": {
     "protocolId": "ethena",
     "name": "Ethena sUSDe",

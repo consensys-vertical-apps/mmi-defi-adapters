@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD11.93"],
-  "latency": "Latency: 1.046 seconds",
+  "latency": "Latency: 1.308 seconds",
   "snapshot": {
     "protocolId": "angle-protocol",
     "name": "AngleProtocol",

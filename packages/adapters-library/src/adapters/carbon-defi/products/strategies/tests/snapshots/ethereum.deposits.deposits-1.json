@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD59.81"],
-  "latency": "Latency: 0.815 seconds",
+  "latency": "Latency: 0.857 seconds",
   "snapshot": {
     "protocolId": "carbon-defi",
     "name": "CarbonDeFi",

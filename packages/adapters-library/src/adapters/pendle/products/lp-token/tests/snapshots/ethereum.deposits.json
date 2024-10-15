@@ -1,119 +1,23 @@
 {
-  "aggregatedValues": ["USD1,053.49"],
-  "latency": "Latency: 0.615 seconds",
+  "aggregatedValues": [],
+  "latency": "Latency: 0 seconds",
   "snapshot": {
     "protocolId": "pendle",
     "name": "Pendle",
-    "description": "Pendle Market adapter",
-    "siteUrl": "https://www.pendle.finance",
-    "iconUrl": "https://app.pendle.finance/favicon.ico",
+    "description": "Pendle defi adapter",
+    "siteUrl": "https:",
+    "iconUrl": "https://",
     "positionType": "supply",
     "chainId": 1,
-    "productId": "principle-token",
+    "productId": "lp-token",
     "chainName": "ethereum",
-    "success": true,
-    "movements": [
-      {
-        "transactionHash": "0x1332461b414753d3daf1e1c7d5294a4684d0bb14da461bb1b03c0e06590810c1",
-        "protocolToken": {
-          "address": "0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966",
-          "name": "PT-weETH-27JUN2024",
-          "symbol": "PT-weETH-27JUN2024",
-          "decimals": 18
-        },
-        "tokens": [
-          {
-            "address": "0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966",
-            "name": "PT-weETH-27JUN2024",
-            "symbol": "PT-weETH-27JUN2024",
-            "decimals": 18,
-            "balanceRaw": "301719975687554067n",
-            "type": "underlying",
-            "blockNumber": 20089673,
-            "tokens": [
-              {
-                "address": "0xAC0047886a985071476a1186bE89222659970d65",
-                "name": "SY-weETH",
-                "symbol": "SY-weETH",
-                "decimals": 18,
-                "type": "underlying",
-                "balanceRaw": "288277569000252909n",
-                "tokens": [
-                  {
-                    "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-                    "name": "Wrapped eETH",
-                    "symbol": "weETH",
-                    "decimals": 18,
-                    "type": "underlying",
-                    "balanceRaw": "288277569000252909n",
-                    "tokens": [
-                      {
-                        "address": "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
-                        "name": "ether.fi ETH",
-                        "symbol": "eETH",
-                        "decimals": 18,
-                        "type": "underlying",
-                        "balanceRaw": "299990776514118357n",
-                        "tokens": [
-                          {
-                            "address": "0x0000000000000000000000000000000000000000",
-                            "name": "Ethereum",
-                            "symbol": "ETH",
-                            "decimals": 18,
-                            "type": "underlying",
-                            "balanceRaw": "299990776514118357n",
-                            "balance": 0.2999907765141184,
-                            "price": 3511.74,
-                            "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-                          }
-                        ],
-                        "balance": 0.2999907765141184,
-                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x35fA164735182de50811E8e2E824cFb9B6118ac2/logo.png"
-                      }
-                    ],
-                    "balance": 0.2882775690002529,
-                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
-                  }
-                ],
-                "balance": 0.2882775690002529,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xAC0047886a985071476a1186bE89222659970d65/logo.png"
-              }
-            ],
-            "balance": 0.30171997568755404
-          }
-        ],
-        "blockNumber": 20089673
+    "success": false,
+    "error": {
+      "message": "Protocol token 0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966 not found",
+      "details": {
+        "name": "Error"
       }
-    ]
-  },
-  "rpcResponses": {
-    "94adda600e0397191fe53fbdae35d0ee": {
-      "result": [
-        {
-          "address": "0xc69ad9bab1dee23f4605a82b3354f8e40d1e5966",
-          "blockHash": "0x038380dcabc9d490f2bdffb0387967d678da1b0b5fb05337ce514b2177bcf9a2",
-          "blockNumber": "0x1328b49",
-          "data": "0x000000000000000000000000000000000000000000000000042fecb8247f0413",
-          "logIndex": "0xb4",
-          "removed": false,
-          "topics": [
-            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-            "0x000000000000000000000000f32e58f92e60f4b0a37a69b95d642a471365eae8",
-            "0x000000000000000000000000117c99451cae094b3a7d56c9d3a97c96900b8e7a"
-          ],
-          "transactionHash": "0x1332461b414753d3daf1e1c7d5294a4684d0bb14da461bb1b03c0e06590810c1",
-          "transactionIndex": "0x4e"
-        }
-      ]
-    },
-    "d567914d80b9c9603b764fd3be554e38": {
-      "result": "0x0000000000000000000000000000000000000000000000000d426e5b3440fc88"
-    },
-    "6319f93485b55dd8c15a841a97206b3f": {
-      "result": "0x0000000000000000000000000000000000000000000000000e7111045df41da3"
-    },
-    "cbd4c098997a5612906a7a95304c858a": {
-      "result": "0x000000000000000000000000000000000000000000000006000000000000477200000000000000000000000000000000000000000000000000000051c399fd8000000000000000000000000000000000000000000000000000000000666c21b300000000000000000000000000000000000000000000000000000000666c21b30000000000000000000000000000000000000000000000060000000000004772"
     }
-  }
+  },
+  "rpcResponses": {}
 }

@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD3,765.99"],
-  "latency": "Latency: 1.8 seconds",
+  "latency": "Latency: 1.905 seconds",
   "snapshot": {
     "protocolId": "uniswap-v2",
     "name": "UniswapV2",

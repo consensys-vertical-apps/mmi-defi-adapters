@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD71.17", "USD48.13"],
-  "latency": "Latency: 1.784 seconds",
+  "latency": "Latency: 1.815 seconds",
   "snapshot": {
     "protocolId": "gmx",
     "name": "GMX",

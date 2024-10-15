@@ -1,92 +1,23 @@
 {
-  "aggregatedValues": ["USD116.79"],
-  "latency": "Latency: 0.465 seconds",
+  "aggregatedValues": [],
+  "latency": "Latency: 0 seconds",
   "snapshot": {
     "protocolId": "lido",
-    "name": "Lido wstEth",
-    "description": "Lido defi adapter for wstEth",
-    "siteUrl": "https://stake.lido.fi/wrap",
+    "name": "Lido stEth",
+    "description": "Lido defi adapter for stEth",
+    "siteUrl": "https://stake.lido.fi/",
     "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png",
     "positionType": "stake",
     "chainId": 1,
-    "productId": "wst-eth",
+    "productId": "st-eth",
     "chainName": "ethereum",
-    "success": true,
-    "movements": [
-      {
-        "transactionHash": "0x779025a8260db4601f74506e6af804edcb7344b606f9bad07c59e3706c82f144",
-        "protocolToken": {
-          "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-          "name": "Wrapped liquid staked Ether 2.0",
-          "symbol": "wstETH",
-          "decimals": 18
-        },
-        "tokens": [
-          {
-            "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-            "name": "Wrapped liquid staked Ether 2.0",
-            "symbol": "wstETH",
-            "decimals": 18,
-            "balanceRaw": "63685786697634575n",
-            "type": "underlying",
-            "blockNumber": 16738529,
-            "tokens": [
-              {
-                "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
-                "name": "Liquid staked Ether 2.0",
-                "symbol": "stETH",
-                "decimals": 18,
-                "type": "underlying",
-                "balanceRaw": "70819350317881833n",
-                "tokens": [
-                  {
-                    "address": "0x0000000000000000000000000000000000000000",
-                    "name": "Ethereum",
-                    "symbol": "ETH",
-                    "decimals": 18,
-                    "type": "underlying",
-                    "balanceRaw": "70819350317881833n",
-                    "balance": 0.07081935031788184,
-                    "price": 1649.1,
-                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-                  }
-                ],
-                "balance": 0.07081935031788184,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
-              }
-            ],
-            "balance": 0.06368578669763457
-          }
-        ],
-        "blockNumber": 16738529
+    "success": false,
+    "error": {
+      "message": "Protocol token 0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0 not found",
+      "details": {
+        "name": "Error"
       }
-    ]
-  },
-  "rpcResponses": {
-    "119e29ded257fe9f19cddf55f254b506": {
-      "result": [
-        {
-          "address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
-          "blockHash": "0x4b6d714758a5394eb173b63576a9c780ad248292b9ce5d18e9b39833d85fff65",
-          "blockNumber": "0xff68e1",
-          "data": "0x00000000000000000000000000000000000000000000000000e241e2b55a930f",
-          "logIndex": "0x7b",
-          "removed": false,
-          "topics": [
-            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-            "0x0000000000000000000000000000000000000000000000000000000000000000",
-            "0x00000000000000000000000092832b0f4435e1c4510bd601727356b738c99312"
-          ],
-          "transactionHash": "0x779025a8260db4601f74506e6af804edcb7344b606f9bad07c59e3706c82f144",
-          "transactionIndex": "0x37"
-        }
-      ]
-    },
-    "6c27450d69ec9d55266a9b91d85c07b1": {
-      "result": "0x0000000000000000000000000000000000000000000000000f6ea8e5d56645a6"
-    },
-    "24c9d9aca02109a6111ab130cd3de04d": {
-      "result": "0x000000000000000000000000000000000000000000000005000000000000a3e7000000000000000000000000000000000000000000000000000000266566e78000000000000000000000000000000000000000000000000000000000640020830000000000000000000000000000000000000000000000000000000064002083000000000000000000000000000000000000000000000005000000000000a3e7"
     }
-  }
+  },
+  "rpcResponses": {}
 }

@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD771.57"],
-  "latency": "Latency: 2.102 seconds",
+  "latency": "Latency: 2.118 seconds",
   "snapshot": {
     "protocolId": "beefy",
     "name": "Beefy",
