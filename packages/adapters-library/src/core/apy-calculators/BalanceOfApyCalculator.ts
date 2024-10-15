@@ -32,12 +32,17 @@ export class BalanceOfApyCalculator implements ApyCalculator {
         protocolTokenEnd,
         blocknumberStart,
         blocknumberEnd,
-        protocolTokenAddress,
         chainId,
+        deposits,
+        withdrawals,
+        borrows,
+        repays,
       } = args
 
-      console.log('protocolTokenStart', protocolTokenStart)
-      console.log('protocolTokenEnd', protocolTokenEnd)
+      if (deposits || withdrawals || borrows || repays)
+        throw new NotSupportedError(
+          'BalanceOfApyCalculator only supports APY calculations with no deposits/withdrawals/borrows/repays over the period.',
+        )
       // Duration in days of the period where we look at the fees earned. The APY and APR are then annualized based on this period.
       const durationDays =
         (blocknumberEnd - blocknumberStart) / AVERAGE_BLOCKS_PER_DAY[chainId]
@@ -56,14 +61,8 @@ export class BalanceOfApyCalculator implements ApyCalculator {
       const underlyingTokenStart = protocolTokenStart.tokens[0]!
       const underlyingTokenEnd = protocolTokenEnd.tokens[0]!
 
-      console.log('underlyingTokenStart', underlyingTokenStart)
-      console.log('underlyingTokenEnd', underlyingTokenEnd)
-
       const balanceStartWei = underlyingTokenStart.balanceRaw
       const balanceEndWei = underlyingTokenEnd.balanceRaw
-
-      console.log('balanceStartWei', balanceStartWei)
-      console.log('balanceEndWei', balanceEndWei)
 
       const interest = this.computeInterest(balanceStartWei, balanceEndWei)
       const interestPercent = interest * 100

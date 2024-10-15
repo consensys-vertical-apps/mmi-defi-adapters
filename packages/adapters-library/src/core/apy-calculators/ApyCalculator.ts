@@ -61,4 +61,8 @@ export type GetApyArgs = {
   blocknumberEnd: number
   protocolTokenAddress: string
   chainId: Chain
+  deposits: number
+  withdrawals: number
+  borrows: number
+  repays: number
 }

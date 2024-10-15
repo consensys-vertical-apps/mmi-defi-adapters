@@ -289,6 +289,10 @@ export async function getProfits({
         blocknumberEnd: toBlock,
         protocolTokenAddress: protocolTokenMetadata.address,
         chainId: adapter.chainId,
+        withdrawals: withdrawal,
+        deposits: deposit,
+        repays: repay,
+        borrows: borrow,
       })
 
       return {

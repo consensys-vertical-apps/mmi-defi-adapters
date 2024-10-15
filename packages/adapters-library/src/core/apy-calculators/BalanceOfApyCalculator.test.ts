@@ -105,47 +105,72 @@ describe('BalanceOfApyCalculator', () => {
     },
   ]
 
-  testCases.forEach(
-    ({
-      description,
-      protocolTokenAddress,
-      blocknumberStart,
-      blocknumberEnd,
-      protocolTokenStart,
-      protocolTokenEnd,
-      expectedApy,
-      expectedDurationDays,
-      expectedFrequency,
-    }) => {
-      it(description, async () => {
-        // Mock the adapter to return the start and end positions for each test case
-        mockAdapter.getPositions = jest
-          .fn()
-          .mockResolvedValueOnce(protocolTokenStart)
-          .mockResolvedValueOnce(protocolTokenEnd)
+  describe('when no withdraw/deposit/borrow/repay', () => {
+    testCases.forEach(
+      ({
+        description,
+        protocolTokenAddress,
+        blocknumberStart,
+        blocknumberEnd,
+        protocolTokenStart,
+        protocolTokenEnd,
+        expectedApy,
+        expectedDurationDays,
+        expectedFrequency,
+      }) => {
+        it(description, async () => {
+          // Mock the adapter to return the start and end positions for each test case
+          mockAdapter.getPositions = jest
+            .fn()
+            .mockResolvedValueOnce(protocolTokenStart)
+            .mockResolvedValueOnce(protocolTokenEnd)
 
-        const result = await calculator.getApy({
-          protocolTokenStart,
-          protocolTokenEnd,
-          blocknumberStart,
-          blocknumberEnd,
-          protocolTokenAddress,
-          chainId: Chain.Ethereum,
-        })
-
-        expect(result).toMatchObject({
-          apyPercent: expect.closeTo(expectedApy, 1),
-          apy: expect.closeTo(expectedApy / 100, 1),
-          period: {
+          const result = await calculator.getApy({
+            protocolTokenStart,
+            protocolTokenEnd,
             blocknumberStart,
             blocknumberEnd,
-          },
-          compounding: {
-            durationDays: expect.closeTo(expectedDurationDays, 2),
-            frequency: expect.closeTo(expectedFrequency, 2),
-          },
+            protocolTokenAddress,
+            chainId: Chain.Ethereum,
+            deposits: 0,
+            withdrawals: 0,
+            borrows: 0,
+            repays: 0,
+          })
+
+          expect(result).toMatchObject({
+            apyPercent: expect.closeTo(expectedApy, 1),
+            apy: expect.closeTo(expectedApy / 100, 1),
+            period: {
+              blocknumberStart,
+              blocknumberEnd,
+            },
+            compounding: {
+              durationDays: expect.closeTo(expectedDurationDays, 2),
+              frequency: expect.closeTo(expectedFrequency, 2),
+            },
+          })
         })
+      },
+    )
+  })
+
+  describe('when some deposits/withdrawals/borrows/repays', () => {
+    it('returns a void APY calculation', async () => {
+      const result = await calculator.getApy({
+        protocolTokenStart: testCases[0]?.protocolTokenStart!,
+        protocolTokenEnd: testCases[0]?.protocolTokenEnd!,
+        blocknumberStart: testCases[0]?.blocknumberStart!,
+        blocknumberEnd: testCases[0]?.blocknumberEnd!,
+        protocolTokenAddress: testCases[0]?.protocolTokenAddress!,
+        chainId: Chain.Ethereum,
+        deposits: 12341441,
+        withdrawals: 0,
+        borrows: 0,
+        repays: 0,
       })
-    },
-  )
+
+      expect(result).toBeUndefined()
+    })
+  })
 })
