@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD38,105.38"],
-  "latency": "Latency: 0.472 seconds",
+  "latency": "Latency: 0.487 seconds",
   "snapshot": {
     "protocolId": "compound-v2",
     "name": "CompoundV2",
