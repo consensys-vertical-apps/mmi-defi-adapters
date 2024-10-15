@@ -1,27 +1,15 @@
-import { ProtocolPosition, Underlying } from '../../types/adapter'
+import {
+  AggregatedFiatBalances,
+  ProtocolPosition,
+  Underlying,
+} from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { logger } from './logger'
 
 export function aggregateFiatBalances(
   topLevelTokens: (Underlying | ProtocolPosition)[],
-): Record<
-  string,
-  {
-    protocolTokenMetadata: Erc20Metadata & { tokenId?: string }
-    usdRaw: bigint
-    hasTokensWithoutUSDPrices?: boolean
-    tokensWithoutUSDPrices?: Underlying[]
-  }
-> {
-  const result: Record<
-    string,
-    {
-      protocolTokenMetadata: Erc20Metadata & { tokenId?: string }
-      usdRaw: bigint
-      hasTokensWithoutUSDPrices?: boolean
-      tokensWithoutUSDPrices?: Underlying[]
-    }
-  > = {}
+): AggregatedFiatBalances {
+  const result: AggregatedFiatBalances = {}
 
   const processToken = (
     currentToken: Underlying | ProtocolPosition,
