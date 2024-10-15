@@ -9,22 +9,23 @@ export class VoidApyCalculator implements ApyCalculator {
     blocknumberEnd,
     protocolTokenAddress,
   }: GetApyArgs): Promise<VoidApyInfo> {
-    return Promise.resolve({
-      apyPercent: null,
-      apy: null,
-      aprPercent: null,
-      apr: null,
-      period: {
-        blocknumberStart,
-        blocknumberEnd,
-        interestPercent: null,
-        interest: null,
-      },
-      compounding: {
-        durationDays: null,
-        frequency: null,
-      },
-      protocolTokenAddress,
-    })
+    return Promise.resolve(undefined as unknown as VoidApyInfo)
+    //     return Promise.resolve({
+    //       apyPercent: null,
+    //       apy: null,
+    //       aprPercent: null,
+    //       apr: null,
+    //       period: {
+    //         blocknumberStart,
+    //         blocknumberEnd,
+    //         interestPercent: null,
+    //         interest: null,
+    //       },
+    //       compounding: {
+    //         durationDays: null,
+    //         frequency: null,
+    //       },
+    //       protocolTokenAddress,
+    //     })
   }
 }
