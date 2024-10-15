@@ -23,29 +23,21 @@ describe('BalanceOfApyCalculator', () => {
       protocolTokenAddress: '0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8',
       blocknumberStart: 20735336,
       blocknumberEnd: 20742482,
-      positionStart: {
+      protocolTokenStart: {
+        symbol: 'aEthWETH',
         tokens: [
           {
-            symbol: 'aEthWETH',
-            tokens: [
-              {
-                symbol: 'WETH',
-                balanceRaw: 403022998786018909507n,
-              },
-            ],
+            symbol: 'WETH',
+            balanceRaw: 403022998786018909507n,
           },
         ],
       } as ProtocolPosition,
-      positionEnd: {
+      protocolTokenEnd: {
+        symbol: 'aEthWETH',
         tokens: [
           {
-            symbol: 'aEthWETH',
-            tokens: [
-              {
-                symbol: 'WETH',
-                balanceRaw: 403043295506130954963n,
-              },
-            ],
+            symbol: 'WETH',
+            balanceRaw: 403043295506130954963n,
           },
         ],
       } as ProtocolPosition,
@@ -60,29 +52,21 @@ describe('BalanceOfApyCalculator', () => {
       protocolTokenAddress: '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84',
       blocknumberStart: 20295271,
       blocknumberEnd: 20345293,
-      positionStart: {
+      protocolTokenStart: {
+        symbol: 'stETH',
         tokens: [
           {
-            symbol: 'stETH',
-            tokens: [
-              {
-                symbol: 'ETH',
-                balanceRaw: 10190943752353059000084n,
-              },
-            ],
+            symbol: 'ETH',
+            balanceRaw: 10190943752353059000084n,
           },
         ],
       } as ProtocolPosition,
-      positionEnd: {
+      protocolTokenEnd: {
+        symbol: 'stETH',
         tokens: [
           {
-            symbol: 'stETH',
-            tokens: [
-              {
-                symbol: 'ETH',
-                balanceRaw: 10196922393515038005396n,
-              },
-            ],
+            symbol: 'ETH',
+            balanceRaw: 10196922393515038005396n,
           },
         ],
       } as ProtocolPosition,
@@ -97,29 +81,21 @@ describe('BalanceOfApyCalculator', () => {
       protocolTokenAddress: '0x83F20F44975D03b1b09e64809B757c47f942BEeA',
       blocknumberStart: 20667923,
       blocknumberEnd: 20882303,
-      positionStart: {
+      protocolTokenStart: {
+        symbol: 'sDAI',
         tokens: [
           {
-            symbol: 'sDAI',
-            tokens: [
-              {
-                symbol: 'DAI',
-                balanceRaw: 1008365787787487546506534n,
-              },
-            ],
+            symbol: 'DAI',
+            balanceRaw: 1008365787787487546506534n,
           },
         ],
       } as ProtocolPosition,
-      positionEnd: {
+      protocolTokenEnd: {
+        symbol: 'sDAI',
         tokens: [
           {
-            symbol: 'sDAI',
-            tokens: [
-              {
-                symbol: 'DAI',
-                balanceRaw: 1013193991248053613158266n,
-              },
-            ],
+            symbol: 'DAI',
+            balanceRaw: 1013193991248053613158266n,
           },
         ],
       } as ProtocolPosition,
@@ -135,8 +111,8 @@ describe('BalanceOfApyCalculator', () => {
       protocolTokenAddress,
       blocknumberStart,
       blocknumberEnd,
-      positionStart,
-      positionEnd,
+      protocolTokenStart,
+      protocolTokenEnd,
       expectedApy,
       expectedDurationDays,
       expectedFrequency,
@@ -145,12 +121,12 @@ describe('BalanceOfApyCalculator', () => {
         // Mock the adapter to return the start and end positions for each test case
         mockAdapter.getPositions = jest
           .fn()
-          .mockResolvedValueOnce(positionStart)
-          .mockResolvedValueOnce(positionEnd)
+          .mockResolvedValueOnce(protocolTokenStart)
+          .mockResolvedValueOnce(protocolTokenEnd)
 
         const result = await calculator.getApy({
-          positionStart,
-          positionEnd,
+          protocolTokenStart,
+          protocolTokenEnd,
           blocknumberStart,
           blocknumberEnd,
           protocolTokenAddress,

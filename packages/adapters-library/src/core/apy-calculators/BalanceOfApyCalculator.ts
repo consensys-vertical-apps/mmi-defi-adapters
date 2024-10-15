@@ -28,14 +28,16 @@ export class BalanceOfApyCalculator implements ApyCalculator {
   public async getApy(args: GetApyArgs): Promise<ApyInfo | VoidApyInfo> {
     try {
       const {
-        positionStart,
-        positionEnd,
+        protocolTokenStart,
+        protocolTokenEnd,
         blocknumberStart,
         blocknumberEnd,
         protocolTokenAddress,
         chainId,
       } = args
 
+      console.log('protocolTokenStart', protocolTokenStart)
+      console.log('protocolTokenEnd', protocolTokenEnd)
       // Duration in days of the period where we look at the fees earned. The APY and APR are then annualized based on this period.
       const durationDays =
         (blocknumberEnd - blocknumberStart) / AVERAGE_BLOCKS_PER_DAY[chainId]
@@ -44,18 +46,24 @@ export class BalanceOfApyCalculator implements ApyCalculator {
       const frequency = 365 / durationDays
 
       if (
-        positionStart.tokens?.length !== 1 ||
-        positionEnd.tokens?.length !== 1
+        protocolTokenStart.tokens?.length !== 1 ||
+        protocolTokenEnd.tokens?.length !== 1
       )
         throw new NotSupportedError(
           'BalanceOfApyCalculator only supports APY calculations for products with exactly one underlying token, such as aTokens.',
         )
 
-      const underlyingTokenStart = positionStart.tokens[0]!
-      const underlyingTokenEnd = positionEnd.tokens[0]!
+      const underlyingTokenStart = protocolTokenStart.tokens[0]!
+      const underlyingTokenEnd = protocolTokenEnd.tokens[0]!
+
+      console.log('underlyingTokenStart', underlyingTokenStart)
+      console.log('underlyingTokenEnd', underlyingTokenEnd)
 
       const balanceStartWei = underlyingTokenStart.balanceRaw
       const balanceEndWei = underlyingTokenEnd.balanceRaw
+
+      console.log('balanceStartWei', balanceStartWei)
+      console.log('balanceEndWei', balanceEndWei)
 
       const interest = this.computeInterest(balanceStartWei, balanceEndWei)
       const interestPercent = interest * 100

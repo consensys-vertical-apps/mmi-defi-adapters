@@ -57,8 +57,8 @@ export interface ApyCalculator {
 }
 
 export type GetApyArgs = {
-  positionStart: ProtocolPosition
-  positionEnd: ProtocolPosition
+  protocolTokenStart: ProtocolPosition
+  protocolTokenEnd: ProtocolPosition
   blocknumberStart: number
   blocknumberEnd: number
   protocolTokenAddress: string

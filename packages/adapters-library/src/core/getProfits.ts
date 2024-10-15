@@ -279,10 +279,10 @@ export async function getProfits({
 
       const apyCalculator = await createApyCalculatorFor(adapter)
       const apyInfo = await apyCalculator.getApy({
-        positionStart: rawStartPositionValues.find(
+        protocolTokenStart: rawStartPositionValues.find(
           (item) => item.address === protocolTokenMetadata.address,
         )!,
-        positionEnd: rawEndPositionValues.find(
+        protocolTokenEnd: rawEndPositionValues.find(
           (item) => item.address === protocolTokenMetadata.address,
         )!,
         blocknumberStart: fromBlock,
