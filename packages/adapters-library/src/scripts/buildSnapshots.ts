@@ -13,13 +13,13 @@ import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
+import { filterMapSync } from '../core/utils/filters'
 import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import { DefiProvider } from '../defiProvider'
 import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
 import { startRpcSnapshot } from './rpcInterceptor'
-import { filterMapSync } from '../core/utils/filters'
 import n = types.namedTypes
 import b = types.builders
 

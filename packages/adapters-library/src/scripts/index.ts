@@ -8,13 +8,13 @@ import { blockAverage } from './blockAverage'
 import { buildMetadataDb } from './buildMetadataDb'
 import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
+import { checkBadSnapshots } from './checkBadSnapshots'
 import { checkDbTotals } from './checkDbTotals'
 import { checkMetadataType } from './checkMetadataType'
 import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
-import { checkBadSnapshots } from './checkBadSnapshots'
 
 const program = new Command('mmi-adapters')
 

@@ -1,15 +1,12 @@
 import { promises as fs } from 'node:fs'
-import { Command } from 'commander'
-import { types } from 'recast'
-import { DefiProvider } from '../defiProvider'
-import { multiProtocolFilter } from './commandFilters'
-import { filterMapSync } from '../core/utils/filters'
-import { Protocol } from '../adapters/protocols'
-import { Json } from '../types/json'
-import { TestCase } from '../types/testCase'
 import path from 'node:path'
+import { Command } from 'commander'
 import { ChainIdToChainNameMap } from '../core/constants/chains'
 import { kebabCase } from '../core/utils/caseConversion'
+import { filterMapSync } from '../core/utils/filters'
+import { DefiProvider } from '../defiProvider'
+import { TestCase } from '../types/testCase'
+import { multiProtocolFilter } from './commandFilters'
 
 type BadSnapshotDetails = {
   protocolId: string
