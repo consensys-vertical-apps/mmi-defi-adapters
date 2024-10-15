@@ -89,7 +89,6 @@ export class BalanceOfApyCalculator implements ApyCalculator {
           durationDays,
           frequency,
         },
-        protocolTokenAddress,
       }
     } catch (error) {
       console.warn(

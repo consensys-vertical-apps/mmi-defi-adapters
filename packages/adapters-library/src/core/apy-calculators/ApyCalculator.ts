@@ -20,7 +20,6 @@ export interface ApyInfo {
     durationDays: number
     frequency: number
   }
-  protocolTokenAddress: string
 }
 
 /**
@@ -43,7 +42,6 @@ export interface VoidApyInfo {
     durationDays: null
     frequency: null
   }
-  protocolTokenAddress: string
 }
 
 export interface ApyCalculator {

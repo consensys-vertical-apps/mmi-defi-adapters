@@ -144,7 +144,6 @@ describe('BalanceOfApyCalculator', () => {
             durationDays: expect.closeTo(expectedDurationDays, 2),
             frequency: expect.closeTo(expectedFrequency, 2),
           },
-          protocolTokenAddress,
         })
       })
     },
