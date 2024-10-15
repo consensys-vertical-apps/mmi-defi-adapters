@@ -34,7 +34,6 @@ export const testCases: TestCase[] = [
       fromBlock: 18640800,
       toBlock: 18640810,
       protocolTokenAddress: '0xf951E335afb289353dc249e82926178EaC7DEd78',
-      productId: 'sw-eth',
     },
   },
 ]

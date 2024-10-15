@@ -34,7 +34,6 @@ export const testCases: TestCase[] = [
       fromBlock: 750000,
       toBlock: 850000,
       protocolTokenAddress: '0x90d8053f7e29faaf5189bdce796a516e29f1f5d3',
-      productId: 'pool',
     },
   },
   {
@@ -45,7 +44,6 @@ export const testCases: TestCase[] = [
       fromBlock: 1340000,
       toBlock: 1498597,
       protocolTokenAddress: '0x90d8053f7e29faaf5189bdce796a516e29f1f5d3',
-      productId: 'pool',
     },
   },
 ]

@@ -55,7 +55,6 @@ export const testCases: TestCase[] = [
       fromBlock: 14443070 - 1,
       toBlock: 14443070 + 1,
       protocolTokenAddress: '0x30d9410ed1d5da1f6c8391af5338c93ab8d4035c',
-      productId: 'pool',
     },
   },
   {
@@ -67,7 +66,6 @@ export const testCases: TestCase[] = [
       fromBlock: 18596961 - 1,
       toBlock: 18596961 + 1,
       protocolTokenAddress: '0xf34dff761145ff0b05e917811d488b441f33a968',
-      productId: 'staking',
     },
   },
   {
@@ -79,7 +77,6 @@ export const testCases: TestCase[] = [
       fromBlock: 18157201 - 1,
       toBlock: 18157201 + 1,
       protocolTokenAddress: '0x22ee18aca7f3ee920d01f25da85840d12d98e8ca',
-      productId: 'staking',
     },
   },
   {
@@ -91,7 +88,6 @@ export const testCases: TestCase[] = [
       fromBlock: 18632773 - 1,
       toBlock: 18632773 + 1,
       protocolTokenAddress: '0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434',
-      productId: 'cvxcrv-wrapper',
     },
   },
   {

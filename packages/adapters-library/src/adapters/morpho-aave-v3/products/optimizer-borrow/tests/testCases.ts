@@ -59,7 +59,6 @@ export const testCases: TestCase[] = [
       fromBlock: 19223914 - 1,
       toBlock: 19223914 + 1,
       protocolTokenAddress: '0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8',
-      productId: 'optimizer-supply',
     },
   },
   {
@@ -70,7 +69,6 @@ export const testCases: TestCase[] = [
       fromBlock: 19025683 - 1,
       toBlock: 19025683 + 1,
       protocolTokenAddress: '0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8',
-      productId: 'optimizer-supply',
     },
   },
 ]

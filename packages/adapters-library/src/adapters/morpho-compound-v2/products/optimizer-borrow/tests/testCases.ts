@@ -49,7 +49,6 @@ export const testCases: TestCase[] = [
       fromBlock: 18802935 - 1,
       toBlock: 18802935 + 1,
       protocolTokenAddress: '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643',
-      productId: 'optimizer-supply',
     },
   },
   {
@@ -60,7 +59,6 @@ export const testCases: TestCase[] = [
       fromBlock: 18761091 - 1,
       toBlock: 18761091 + 1,
       protocolTokenAddress: '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643',
-      productId: 'optimizer-supply',
     },
   },
   {
@@ -71,7 +69,6 @@ export const testCases: TestCase[] = [
       fromBlock: 19045223 - 1,
       toBlock: 19045223 + 1,
       protocolTokenAddress: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
-      productId: 'optimizer-borrow',
     },
   },
   {
@@ -82,7 +79,6 @@ export const testCases: TestCase[] = [
       fromBlock: 18761149 - 1,
       toBlock: 18761149 + 1,
       protocolTokenAddress: '0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9',
-      productId: 'optimizer-borrow',
     },
   },
 ]

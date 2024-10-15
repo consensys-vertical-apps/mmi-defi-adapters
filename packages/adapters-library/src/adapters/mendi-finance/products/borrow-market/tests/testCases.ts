@@ -69,7 +69,6 @@ export const testCases: TestCase[] = [
     key: 'supply',
     chainId: Chain.Linea,
     input: {
-      productId: 'supply-market',
       action: WriteActions.Deposit,
       inputs: {
         asset: '0x176211869cA2b568f2A7D4EE941E073a821EE1ff',
@@ -82,7 +81,6 @@ export const testCases: TestCase[] = [
     key: 'withdraw',
     chainId: Chain.Linea,
     input: {
-      productId: 'supply-market',
       action: WriteActions.Withdraw,
       inputs: {
         asset: '0x176211869cA2b568f2A7D4EE941E073a821EE1ff',
@@ -95,7 +93,6 @@ export const testCases: TestCase[] = [
     key: 'borrow',
     chainId: Chain.Linea,
     input: {
-      productId: 'borrow-market',
       action: 'borrow',
       inputs: {
         asset: '0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D',
@@ -108,7 +105,6 @@ export const testCases: TestCase[] = [
     key: 'repay',
     chainId: Chain.Linea,
     input: {
-      productId: 'borrow-market',
       action: 'repay',
       inputs: {
         asset: '0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D',

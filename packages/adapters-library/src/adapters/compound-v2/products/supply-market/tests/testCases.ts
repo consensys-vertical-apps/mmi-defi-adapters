@@ -43,7 +43,6 @@ export const testCases: TestCase[] = [
       userAddress: '0x54C2778651e055C40D1af89C33276ec61DbDa73C',
       fromBlock: 19381542,
       toBlock: 19381542,
-      productId: 'supply-market',
       protocolTokenAddress: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
     },
   },
@@ -54,7 +53,6 @@ export const testCases: TestCase[] = [
       userAddress: '0xbEDba47B926b45938A1a8ADFe6189047DD4e9bbC',
       fromBlock: 19382067,
       toBlock: 19382067,
-      productId: 'supply-market',
       protocolTokenAddress: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
     },
   },
@@ -66,7 +64,6 @@ export const testCases: TestCase[] = [
       userAddress: '0xF0163f66Ec80DDA288E753E0A62c8Eb71cd38684',
       fromBlock: 19380990,
       toBlock: 19380990,
-      productId: 'borrow-market',
       protocolTokenAddress: '0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9',
     },
   },
@@ -78,7 +75,6 @@ export const testCases: TestCase[] = [
       userAddress: '0x2178e1d614FEFb2B304DB58f07116d89f948Fda1',
       fromBlock: 19380684,
       toBlock: 19380684,
-      productId: 'borrow-market',
       protocolTokenAddress: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
     },
   },
@@ -90,7 +86,6 @@ export const testCases: TestCase[] = [
       userAddress: '0x9C483fa4D84a218940BFA02652FCAF01EE8F44F2',
       fromBlock: 19383945,
       toBlock: 19383945,
-      productId: 'borrow-market',
       protocolTokenAddress: '0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9',
     },
   },
@@ -102,7 +97,6 @@ export const testCases: TestCase[] = [
       userAddress: '0x660a6d7eE594b207139999cDD8f03217D193C7fA',
       fromBlock: 19274060,
       toBlock: 19274060,
-      productId: 'borrow-market',
       protocolTokenAddress: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
     },
   },
@@ -117,7 +111,6 @@ export const testCases: TestCase[] = [
     key: 'supply',
     chainId: Chain.Ethereum,
     input: {
-      productId: 'supply-market',
       action: WriteActions.Deposit,
       inputs: {
         asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
@@ -130,7 +123,6 @@ export const testCases: TestCase[] = [
     key: 'withdraw',
     chainId: Chain.Ethereum,
     input: {
-      productId: 'supply-market',
       action: WriteActions.Withdraw,
       inputs: {
         asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
@@ -143,7 +135,6 @@ export const testCases: TestCase[] = [
     key: 'borrow',
     chainId: Chain.Ethereum,
     input: {
-      productId: 'borrow-market',
       action: 'borrow',
       inputs: {
         asset: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
@@ -156,7 +147,6 @@ export const testCases: TestCase[] = [
     key: 'repay',
     chainId: Chain.Ethereum,
     input: {
-      productId: 'borrow-market',
       action: 'repay',
       inputs: {
         asset: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',

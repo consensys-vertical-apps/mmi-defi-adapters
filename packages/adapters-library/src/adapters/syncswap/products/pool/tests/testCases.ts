@@ -21,7 +21,6 @@ export const testCases: TestCase[] = [
       fromBlock: 70000,
       toBlock: 72000,
       protocolTokenAddress: '0x7f72e0d8e9abf9133a92322b8b50bd8e0f9dcfcb',
-      productId: 'pool',
     },
   },
   {
@@ -33,7 +32,6 @@ export const testCases: TestCase[] = [
       fromBlock: 445595,
       toBlock: 445598,
       protocolTokenAddress: '0x7f72e0d8e9abf9133a92322b8b50bd8e0f9dcfcb',
-      productId: 'pool',
     },
   },
   {
@@ -44,7 +42,6 @@ export const testCases: TestCase[] = [
       fromBlock: 1149433,
       toBlock: 1150740,
       protocolTokenAddress: '0x8aebffb3964ec5cea0915080ddc1aca079583a4d',
-      productId: 'pool',
     },
   },
   {

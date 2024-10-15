@@ -190,6 +190,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                   ...testCase.input,
                   chainId: chainId,
                   protocolId: protocolId,
+                  productId: productId,
                 })
 
                 const aggregatedValues = getAggregatedValuesMovements(
@@ -212,6 +213,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                   ...testCase.input,
                   chainId: chainId,
                   protocolId: protocolId,
+                  productId: productId,
                 })
 
                 const aggregatedValues = getAggregatedValuesMovements(
@@ -234,6 +236,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                   ...testCase.input,
                   chainId: chainId,
                   protocolId: protocolId,
+                  productId: productId,
                 })
 
                 const endTime = Date.now()
@@ -250,6 +253,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                   ...testCase.input,
                   chainId: chainId,
                   protocolId: protocolId,
+                  productId: productId,
                 })
 
                 const aggregatedValues = getAggregatedValuesMovements(
@@ -347,6 +351,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                   ...testCase.input,
                   protocolId,
                   chainId,
+                  productId,
                 } as GetTransactionParams
 
                 return {

@@ -31,7 +31,6 @@ export const testCases: TestCase[] = [
       fromBlock: 19562097,
       toBlock: 19562099,
       protocolTokenAddress: '0xD533a949740bb3306d119CC777fa900bA034cd52',
-      productId: 'voting-escrow',
     },
   },
   {
@@ -42,7 +41,6 @@ export const testCases: TestCase[] = [
       fromBlock: 19564305,
       toBlock: 19564307,
       protocolTokenAddress: '0xD533a949740bb3306d119CC777fa900bA034cd52',
-      productId: 'voting-escrow',
     },
   },
   {

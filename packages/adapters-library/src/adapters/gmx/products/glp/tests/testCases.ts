@@ -38,7 +38,6 @@ export const testCases: TestCase[] = [
       fromBlock: 18480270,
       toBlock: 19377799,
       protocolTokenAddress: '0x01234181085565ed162a948b6a5e88758CD7c7b8',
-      productId: 'glp',
     },
   },
 ]

@@ -90,7 +90,6 @@ export const testCases: TestCase[] = [
       protocolTokenAddress: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
       tokenId:
         '0xB323495F7E4148BE5643A4EA4A8221EEF163E4BCCFDEDC2A6F4696BAACBC86CC',
-      productId: 'market-supply',
     },
     key: '6',
   },
@@ -104,7 +103,6 @@ export const testCases: TestCase[] = [
       protocolTokenAddress: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
       tokenId:
         '0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41',
-      productId: 'market-borrow',
     },
     key: '7',
   },
@@ -118,7 +116,6 @@ export const testCases: TestCase[] = [
       protocolTokenAddress: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
       tokenId:
         '0xC54D7ACF14DE29E0E5527CABD7A576506870346A78A11A6762E2CCA66322EC41',
-      productId: 'market-supply',
     },
     key: '8',
   },
@@ -130,7 +127,6 @@ export const testCases: TestCase[] = [
       fromBlock: 17605195 - 1,
       toBlock: 17605195 + 1,
       protocolTokenAddress: '0xbeef010f9cb27031ad51e3333f9af9c6b1228183',
-      productId: 'vault',
     },
     key: '9',
   },
@@ -144,7 +140,6 @@ export const testCases: TestCase[] = [
       protocolTokenAddress: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
       tokenId:
         '0x698fe98247a40c5771537b5786b2f3f9d78eb487b4ce4d75533cd0e94d88a115',
-      productId: 'market-borrow',
     },
     key: '10',
   },
@@ -176,7 +171,6 @@ export const testCases: TestCase[] = [
       fromBlock: 20417740,
       toBlock: 20417745,
       protocolTokenAddress: '0xd63070114470f685b75B74D60EEc7c1113d33a3D', // Usual vault
-      productId: 'vault',
     },
     key: '13',
   },
@@ -188,7 +182,6 @@ export const testCases: TestCase[] = [
       fromBlock: 17776688,
       toBlock: 17778933,
       protocolTokenAddress: '0xa0e430870c4604ccfc7b38ca7845b1ff653d0ff1', // mwETH Vault
-      productId: 'vault',
     },
     key: '14',
   },

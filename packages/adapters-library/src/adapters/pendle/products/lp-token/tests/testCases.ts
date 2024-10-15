@@ -65,7 +65,6 @@ export const testCases: TestCase[] = [
       fromBlock: 20089673,
       toBlock: 20089673,
       protocolTokenAddress: '0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966',
-      productId: 'principle-token',
     },
   },
   {

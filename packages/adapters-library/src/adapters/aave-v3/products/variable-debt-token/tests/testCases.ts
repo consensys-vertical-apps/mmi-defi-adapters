@@ -55,7 +55,6 @@ export const testCases: TestCase[] = [
     key: 'supply',
     chainId: Chain.Ethereum,
     input: {
-      productId: 'a-token',
       action: WriteActions.Deposit,
       inputs: {
         asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
@@ -70,7 +69,6 @@ export const testCases: TestCase[] = [
     key: 'borrow',
     chainId: Chain.Ethereum,
     input: {
-      productId: 'a-token',
       action: WriteActions.Borrow,
       inputs: {
         asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
@@ -86,7 +84,6 @@ export const testCases: TestCase[] = [
     key: 'withdraw',
     chainId: Chain.Ethereum,
     input: {
-      productId: 'a-token',
       action: WriteActions.Withdraw,
       inputs: {
         asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
@@ -100,7 +97,6 @@ export const testCases: TestCase[] = [
     key: 'repay',
     chainId: Chain.Ethereum,
     input: {
-      productId: 'a-token',
       action: WriteActions.Repay,
       inputs: {
         asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',

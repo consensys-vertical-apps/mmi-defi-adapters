@@ -52,7 +52,6 @@ export const testCases: TestCase[] = [
       fromBlock: 16690437,
       toBlock: 16740459,
       protocolTokenAddress: '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
-      productId: 'st-eth',
     },
   },
   {
@@ -87,7 +86,6 @@ export const testCases: TestCase[] = [
       fromBlock: 16738529 - 1,
       toBlock: 16738529 + 1,
       protocolTokenAddress: '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0',
-      productId: 'wst-eth',
     },
   },
 ]

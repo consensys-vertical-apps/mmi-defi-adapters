@@ -1,7 +1,6 @@
 import { Chain } from '../../../../../core/constants/chains'
 import { TimePeriod } from '../../../../../core/constants/timePeriod'
 import type { TestCase } from '../../../../../types/testCase'
-import { WriteActions } from '../../../../../types/writeActions'
 
 export const testCases: TestCase[] = [
   {
@@ -25,7 +24,6 @@ export const testCases: TestCase[] = [
       fromBlock: 225214170,
       toBlock: 225214210,
       protocolTokenAddress: '0xd849c2b7991060023e5d92b92c68f4077ae2c2ba',
-      productId: 'pool',
       tokenId:
         '452312848583266388373385778560718648249770263156390604487522901302855073939',
     },
@@ -38,7 +36,6 @@ export const testCases: TestCase[] = [
       fromBlock: 225236310,
       toBlock: 225236350,
       protocolTokenAddress: '0xd849c2b7991060023e5d92b92c68f4077ae2c2ba',
-      productId: 'pool',
       tokenId:
         '452312848583266388373385778560718648249770263156390604487522901302855073939',
     },

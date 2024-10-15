@@ -11,7 +11,6 @@ export const testCases: TestCase[] = [
       toBlock: 20068824,
       userAddress: '0xE582B5233e2b64AaC98076B13E3DfCf072D91cC8',
       protocolTokenAddress: '0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5',
-      productId: 'moo-token',
     },
   },
   {
@@ -34,7 +33,6 @@ export const testCases: TestCase[] = [
       toBlock: 20073564,
       userAddress: '0xf2c929c22d491c2a2c4ec92ec6c2c11e6b861428',
       protocolTokenAddress: '0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5',
-      productId: 'moo-token',
     },
   },
 

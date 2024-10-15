@@ -39,7 +39,6 @@ export const testCases: TestCase[] = [
       fromBlock: 20117400,
       toBlock: 20117500,
       protocolTokenAddress: '0xbf5495Efe5DB9ce00f80364C8B423567e58d2110',
-      productId: 'ez-eth',
     },
   },
   {
@@ -51,7 +50,6 @@ export const testCases: TestCase[] = [
       fromBlock: 20118200,
       toBlock: 20118300,
       protocolTokenAddress: '0xbf5495Efe5DB9ce00f80364C8B423567e58d2110',
-      productId: 'ez-eth',
     },
   },
   {

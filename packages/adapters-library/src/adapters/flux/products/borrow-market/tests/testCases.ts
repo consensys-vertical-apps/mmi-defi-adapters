@@ -37,7 +37,6 @@ export const testCases: TestCase[] = [
       fromBlock: 14535107,
       toBlock: 19321516,
       protocolTokenAddress: '0x465a5a630482f3abD6d3b84B39B29b07214d19e5',
-      productId: 'supply-market',
     },
   },
   {
@@ -48,7 +47,6 @@ export const testCases: TestCase[] = [
       fromBlock: 14535107,
       toBlock: 19321516,
       protocolTokenAddress: '0x465a5a630482f3abD6d3b84B39B29b07214d19e5',
-      productId: 'supply-market',
     },
   },
   {
@@ -59,7 +57,6 @@ export const testCases: TestCase[] = [
       fromBlock: 14535107,
       toBlock: 19321516,
       protocolTokenAddress: '0x465a5a630482f3abD6d3b84B39B29b07214d19e5',
-      productId: 'borrow-market',
     },
   },
   {
@@ -70,7 +67,6 @@ export const testCases: TestCase[] = [
       fromBlock: 14535107,
       toBlock: 19321516,
       protocolTokenAddress: '0x465a5a630482f3abD6d3b84B39B29b07214d19e5',
-      productId: 'borrow-market',
     },
   },
 ]

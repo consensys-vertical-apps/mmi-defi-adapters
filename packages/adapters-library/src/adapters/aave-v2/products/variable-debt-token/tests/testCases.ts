@@ -57,7 +57,6 @@ export const testCases: TestCase[] = [
       fromBlock: 19262682 - 1,
       toBlock: 19262682 + 1,
       protocolTokenAddress: '0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec',
-      productId: 'variable-debt-token',
     },
   },
 ]
