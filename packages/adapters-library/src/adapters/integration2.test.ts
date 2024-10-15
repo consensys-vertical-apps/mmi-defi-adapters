@@ -45,7 +45,7 @@ const normalizeNegativeZero = (obj) => {
   return obj
 }
 
-const allTestCases = {
+const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
   [Protocol.AaveV2]: {},
   [Protocol.AaveV3]: {},
   [Protocol.AngleProtocol]: {},
@@ -91,7 +91,7 @@ const allTestCases = {
   [Protocol.UniswapV3]: {},
   [Protocol.Xfai]: {},
   [Protocol.ZeroLend]: {},
-} as Record<Protocol, Record<string, TestCase[]>>
+}
 
 runAllTests()
 

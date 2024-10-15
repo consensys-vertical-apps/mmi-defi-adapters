@@ -74,15 +74,15 @@ program.command('integration-test-restore').action(async () => {
       const protocolId = product.protocolDetails.protocolId
       const productId = product.protocolDetails.productId
 
-      if (protocolId !== Protocol.Lido) {
-        continue
-      }
+      // if (protocolId !== Protocol.AaveV2) {
+      //   continue
+      // }
 
       console.log(
         `Restoring integration tests for ${protocolId} and ${productId}`,
       )
 
-      buildIntegrationTests({
+      await buildIntegrationTests({
         protocolId,
         protocolKey: Object.entries(Protocol).find(
           ([_, value]) => value === protocolId,

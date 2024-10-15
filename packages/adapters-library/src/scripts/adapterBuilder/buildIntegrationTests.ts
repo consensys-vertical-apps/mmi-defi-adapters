@@ -56,7 +56,11 @@ export async function buildIntegrationTests({
           n.ObjectProperty.check(property),
         )
       ) {
-        addTestCasesEntry(node.init.properties, protocolKey, productId)
+        addTestCasesEntry(
+          node.init.properties as n.ObjectProperty[],
+          protocolKey,
+          productId,
+        )
       }
 
       this.traverse(path)
@@ -82,7 +86,7 @@ function addTestCasesImport(
   if (
     importNodes.some(
       (node) =>
-        node.source.value ===
+        (node as n.ImportDeclaration).source.value ===
         `./${protocolId}/products/${productId}/tests/testCases`,
     )
   ) {
@@ -95,10 +99,7 @@ function addTestCasesImport(
     productId,
   )
 
-  // const newImportNodes = [...importNodes, newImportEntry]
-  // sortEntries(newImportNodes, (entry) => entry.source.value as string)
-
-  programNode.body = [...importNodes, newImportEntry, ...codeAfterImports]
+  programNode.body = [newImportEntry, ...importNodes, ...codeAfterImports]
 }
 
 // import { testCases as <protocolId><protocolId>TestCases } from './<protocolId>/products/<productId>/tests/testCases'
@@ -146,7 +147,8 @@ function addTestCasesEntry(
 
     sortEntries(
       protocolEntries,
-      (entry) => ((entry as n.ObjectProperty).value as n.Identifier).name,
+      (entry) =>
+        ((entry.key as n.MemberExpression).property as n.Identifier).name,
     )
   }
 
