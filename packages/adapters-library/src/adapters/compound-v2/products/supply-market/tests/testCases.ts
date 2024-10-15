@@ -57,50 +57,6 @@ export const testCases: TestCase[] = [
     },
   },
   {
-    key: 'erc20-borrow',
-    chainId: Chain.Ethereum,
-    method: 'borrows',
-    input: {
-      userAddress: '0xF0163f66Ec80DDA288E753E0A62c8Eb71cd38684',
-      fromBlock: 19380990,
-      toBlock: 19380990,
-      protocolTokenAddress: '0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9',
-    },
-  },
-  {
-    key: 'eth-borrow',
-    chainId: Chain.Ethereum,
-    method: 'borrows',
-    input: {
-      userAddress: '0x2178e1d614FEFb2B304DB58f07116d89f948Fda1',
-      fromBlock: 19380684,
-      toBlock: 19380684,
-      protocolTokenAddress: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
-    },
-  },
-  {
-    key: 'erc20-repay',
-    chainId: Chain.Ethereum,
-    method: 'repays',
-    input: {
-      userAddress: '0x9C483fa4D84a218940BFA02652FCAF01EE8F44F2',
-      fromBlock: 19383945,
-      toBlock: 19383945,
-      protocolTokenAddress: '0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9',
-    },
-  },
-  {
-    key: 'eth-repay',
-    chainId: Chain.Ethereum,
-    method: 'repays',
-    input: {
-      userAddress: '0x660a6d7eE594b207139999cDD8f03217D193C7fA',
-      fromBlock: 19274060,
-      toBlock: 19274060,
-      protocolTokenAddress: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
-    },
-  },
-  {
     chainId: Chain.Ethereum,
     method: 'prices',
     filterProtocolToken: '0x39AA39c021dfbaE8faC545936693aC917d5E7563',

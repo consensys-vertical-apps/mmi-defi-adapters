@@ -35,28 +35,4 @@ export const testCases: TestCase[] = [
       protocolTokenAddress: '0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5',
     },
   },
-
-  {
-    chainId: Chain.Arbitrum,
-    key: 'cow-token',
-    method: 'positions',
-    input: {
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-
-      filterProtocolTokens: ['0xA297024a99098d52aae466AC5F48520d514262bA'],
-    },
-    blockNumber: 228323745,
-  },
-
-  {
-    chainId: Chain.Arbitrum,
-    key: 'rmoo-token',
-    method: 'positions',
-    input: {
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-
-      filterProtocolTokens: ['0xA297024a99098d52aae466AC5F48520d514262bA'],
-    },
-    blockNumber: 236870450,
-  },
 ]

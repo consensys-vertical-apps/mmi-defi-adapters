@@ -37,26 +37,6 @@ export const testCases: TestCase[] = [
     blockNumber: 19383091,
   },
   {
-    chainId: Chain.Ethereum,
-    method: 'deposits',
-    input: {
-      userAddress: '0x54C2778651e055C40D1af89C33276ec61DbDa73C',
-      fromBlock: 19381542,
-      toBlock: 19381542,
-      protocolTokenAddress: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'withdrawals',
-    input: {
-      userAddress: '0xbEDba47B926b45938A1a8ADFe6189047DD4e9bbC',
-      fromBlock: 19382067,
-      toBlock: 19382067,
-      protocolTokenAddress: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
-    },
-  },
-  {
     key: 'erc20-borrow',
     chainId: Chain.Ethereum,
     method: 'borrows',
@@ -99,12 +79,6 @@ export const testCases: TestCase[] = [
       toBlock: 19274060,
       protocolTokenAddress: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
     },
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'prices',
-    filterProtocolToken: '0x39AA39c021dfbaE8faC545936693aC917d5E7563',
-    blockNumber: 19661878,
   },
   {
     method: 'tx-params',

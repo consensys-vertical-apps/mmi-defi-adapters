@@ -6,19 +6,6 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Ethereum,
     method: 'positions',
-    blockNumber: 18634843, // 14447312 + 1, // next block after deposit transaction
-    input: {
-      userAddress: '0xdf286De6d3de10A6aD6452d0BA94Af7AD7B68F9B',
-
-      filterProtocolTokens: [
-        '0x30D9410ED1D5DA1F6C8391af5338C93ab8d4035C',
-        '0x689440f2Ff927E1f24c72F1087E1FAF471eCe1c8',
-      ],
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'positions',
     key: '2',
     blockNumber: 18634843, // 14447312 + 1, // next block after deposit transaction
     input: {
@@ -45,38 +32,6 @@ export const testCases: TestCase[] = [
         '0x44D8FaB7CD8b7877D5F79974c2F501aF6E65AbBA',
         '0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434',
       ],
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'deposits',
-    input: {
-      userAddress: '0xdf286De6d3de10A6aD6452d0BA94Af7AD7B68F9B',
-      fromBlock: 14443070 - 1,
-      toBlock: 14443070 + 1,
-      protocolTokenAddress: '0x30d9410ed1d5da1f6c8391af5338c93ab8d4035c',
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'withdrawals',
-    key: '1',
-    input: {
-      userAddress: '0x8654A995426E775f3ef023cD6e1B5681e774FFa1',
-      fromBlock: 18596961 - 1,
-      toBlock: 18596961 + 1,
-      protocolTokenAddress: '0xf34dff761145ff0b05e917811d488b441f33a968',
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'withdrawals',
-    key: '2',
-    input: {
-      userAddress: '0xc692d583567cdA0fDE14Cd3D6136c2623202Ed68',
-      fromBlock: 18157201 - 1,
-      toBlock: 18157201 + 1,
-      protocolTokenAddress: '0x22ee18aca7f3ee920d01f25da85840d12d98e8ca',
     },
   },
   {
