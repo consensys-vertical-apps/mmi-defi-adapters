@@ -1,95 +1,27 @@
 {
-  "aggregatedValues": ["USD2,214.82"],
-  "latency": "Latency: 0.667 seconds",
+  "aggregatedValues": [],
+  "latency": "Latency: 0.175 seconds",
   "snapshot": {
     "protocolId": "ethena",
-    "name": "Ethena sUSDe",
+    "name": "Ethena LP Staking",
     "description": "Ethena defi adapter",
     "siteUrl": "https://ethena.fi/",
     "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57e114b691db790c35207b2e685d4a43181e6061/logo.png",
     "positionType": "stake",
     "chainId": 1,
-    "productId": "staked-usde",
+    "productId": "lp-staking",
     "chainName": "ethereum",
-    "success": true,
-    "movements": [
-      {
-        "transactionHash": "0xdc1441a209ae39844cd1930093f2be0231e0c8f10ca6c66fb409cda8be0db7ba",
-        "protocolToken": {
-          "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
-          "name": "Staked USDe",
-          "symbol": "sUSDe",
-          "decimals": 18
-        },
-        "tokens": [
-          {
-            "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
-            "name": "Staked USDe",
-            "symbol": "sUSDe",
-            "decimals": 18,
-            "balanceRaw": "2100862289939429413866n",
-            "type": "underlying",
-            "blockNumber": 19776211,
-            "tokens": [
-              {
-                "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-                "name": "USDe",
-                "symbol": "USDe",
-                "decimals": 18,
-                "type": "underlying",
-                "balanceRaw": "2219381349568012504027n",
-                "balance": 2219.3813495680124,
-                "price": 0.9979462818054942,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4c9EDD5852cd905f086C759E8383e09bff1E68B3/logo.png"
-              }
-            ],
-            "balance": 2100.8622899394295
-          }
-        ],
-        "blockNumber": 19776211
+    "success": false,
+    "error": {
+      "message": "Protocol token 0x9D39A5DE30e57443BfF2A8307A4256c8797A3497 not found",
+      "details": {
+        "name": "Error"
       }
-    ]
+    }
   },
   "rpcResponses": {
-    "a8f7f741fa93300d47dd72f240ff4a7d": {
-      "result": [
-        {
-          "address": "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
-          "blockHash": "0x2549914a5c2da3ab61944403f9ab83f8c33dfd84b4ece89ac3beec454725ea0c",
-          "blockNumber": "0x12dc2d3",
-          "data": "0x000000000000000000000000000000000000000000000071e35231dabd6553ea",
-          "logIndex": "0xb5",
-          "removed": false,
-          "topics": [
-            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-            "0x0000000000000000000000000000000000000000000000000000000000000000",
-            "0x0000000000000000000000003636bc1bb4f61b04aa73d974f068af0d0743fa01"
-          ],
-          "transactionHash": "0xdc1441a209ae39844cd1930093f2be0231e0c8f10ca6c66fb409cda8be0db7ba",
-          "transactionIndex": "0x6e"
-        }
-      ]
-    },
-    "17d52912336c926bb38f7d29e55ae37e": {
-      "result": "0x000000000000000000000000000000000000000000ff5b20894516a4cb7d48d5"
-    },
-    "05e8fa910d153f08223ad9bca239761b": {
-      "result": "0x0000000000000000000000000000000000000000010dc3016367156b6ad690c0"
-    },
-    "d82681aad1f3b8ffa20adf85cb50c19f": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553446500000000000000000000000000000000000000000000000000000000"
-    },
-    "64734af67ba2769b23bb8001510602ab": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553446500000000000000000000000000000000000000000000000000000000"
-    },
-    "9cfae3f125ccffa0b322f783e179cad5": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
-    },
-    "b24e80158213accd712f34990bc4f5ff": {
-      "result": "0x0000000000000000000000000000000000000000000000060000000000003fe8000000000000000000000000000000000000000000000000000000432bb39c000000000000000000000000000000000000000000000000000000000066325e9b0000000000000000000000000000000000000000000000000000000066325e9b0000000000000000000000000000000000000000000000060000000000003fe8"
-    },
-    "82801071a132fd1d346763e915268251": {
-      "result": "0x00000000000000000000000000000000000000000000000000013a9b3c7d722f"
+    "ed399d9785065ef4a75b45e6e56a6083": {
+      "result": []
     }
   }
 }

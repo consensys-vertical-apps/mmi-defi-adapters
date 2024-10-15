@@ -170,9 +170,6 @@ export class EthenaLpStakingAdapter implements IProtocolAdapter {
   }: GetEventsInput & {
     filterType: 'stake' | 'unstake'
   }): Promise<MovementsByBlock[]> {
-    const protocolTokenPromise =
-      this.getProtocolTokenByAddress(protocolTokenAddress)
-
     const lpStakingContract = EthenaLpStaking__factory.connect(
       LP_STAKING_CONTRACT_ADDRESS,
       this.provider,
@@ -189,7 +186,8 @@ export class EthenaLpStakingAdapter implements IProtocolAdapter {
       toBlock,
     )
 
-    const protocolToken = await protocolTokenPromise
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     return events.map((event) => {
       const { amount } = event.args!

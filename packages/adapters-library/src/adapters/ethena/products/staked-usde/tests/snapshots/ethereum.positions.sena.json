@@ -1,6 +1,6 @@
 {
   "blockNumber": 20942611,
-  "latency": "Latency: 0 seconds",
+  "latency": "Latency: 0.001 seconds",
   "aggregatedValues": [],
   "snapshot": [],
   "rpcResponses": {}
