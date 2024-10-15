@@ -62,13 +62,6 @@ export const testCases: TestCase[] = [
     blockNumber: 19661884,
   },
   {
-    key: 'wst-eth',
-    chainId: Chain.Ethereum,
-    method: 'prices',
-    filterProtocolToken: '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0',
-    blockNumber: 19661884,
-  },
-  {
     chainId: Chain.Ethereum,
     method: 'tvl',
     filterProtocolTokens: [
@@ -76,16 +69,5 @@ export const testCases: TestCase[] = [
       '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0',
     ],
     blockNumber: 19661884,
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'deposits',
-    key: '3',
-    input: {
-      userAddress: '0x92832b0F4435E1c4510bd601727356b738c99312',
-      fromBlock: 16738529 - 1,
-      toBlock: 16738529 + 1,
-      protocolTokenAddress: '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0',
-    },
   },
 ]

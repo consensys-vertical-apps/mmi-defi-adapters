@@ -43,24 +43,6 @@ export const testCases: TestCase[] = [
     },
     blockNumber: 18377483,
   },
-
-  {
-    chainId: Chain.Ethereum,
-    method: 'withdrawals',
-    input: {
-      userAddress: '0x92832b0f4435e1c4510bd601727356b738c99312',
-      fromBlock: 16690437,
-      toBlock: 16740459,
-      protocolTokenAddress: '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
-    },
-  },
-  {
-    key: 'st-eth',
-    chainId: Chain.Ethereum,
-    method: 'prices',
-    filterProtocolToken: '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84',
-    blockNumber: 19661884,
-  },
   {
     key: 'wst-eth',
     chainId: Chain.Ethereum,

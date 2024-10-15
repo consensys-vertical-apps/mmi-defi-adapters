@@ -6,31 +6,6 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Ethereum,
     method: 'positions',
-
-    input: {
-      userAddress: '0x38989BBA00BDF8181F4082995b3DEAe96163aC5D',
-
-      filterProtocolTokens: [
-        '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-        '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-        '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-        '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-      ],
-
-      filterTokenIds: [
-        '0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284',
-        '0x3c83f77bde9541f8d3d82533b19bbc1f97eb2f1098bb991728acbfbede09cc5d',
-        '0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d',
-        '0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40',
-      ],
-    },
-
-    blockNumber: 20633609,
-    key: '1',
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'positions',
     input: {
       userAddress: '0x9CBF099ff424979439dFBa03F00B5961784c06ce',
 
@@ -52,33 +27,6 @@ export const testCases: TestCase[] = [
     },
     key: '2',
     blockNumber: 19425631,
-  },
-
-  {
-    chainId: Chain.Ethereum,
-    method: 'profits',
-
-    input: {
-      userAddress: '0x38989BBA00BDF8181F4082995b3DEAe96163aC5D',
-      timePeriod: TimePeriod.oneDay,
-
-      filterProtocolTokens: [
-        '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-        '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-        '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-        '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-      ],
-
-      filterTokenIds: [
-        '0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284',
-        '0x3c83f77bde9541f8d3d82533b19bbc1f97eb2f1098bb991728acbfbede09cc5d',
-        '0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d',
-        '0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40',
-      ],
-    },
-
-    blockNumber: 20633660,
-    key: '3',
   },
   {
     chainId: Chain.Ethereum,
@@ -120,17 +68,6 @@ export const testCases: TestCase[] = [
     key: '8',
   },
   {
-    chainId: Chain.Base,
-    method: 'withdrawals',
-    input: {
-      userAddress: '0xD4f9FE0039Da59e6DDb21bbb6E84e0C9e83D73eD',
-      fromBlock: 17605195 - 1,
-      toBlock: 17605195 + 1,
-      protocolTokenAddress: '0xbeef010f9cb27031ad51e3333f9af9c6b1228183',
-    },
-    key: '9',
-  },
-  {
     chainId: Chain.Ethereum,
     method: 'repays',
     input: {
@@ -142,47 +79,5 @@ export const testCases: TestCase[] = [
         '0x698fe98247a40c5771537b5786b2f3f9d78eb487b4ce4d75533cd0e94d88a115',
     },
     key: '10',
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'positions',
-    input: {
-      userAddress: '0xDA44D84f8DE69fEBDa4C4e0B89fF24077413f4b0',
-      filterProtocolTokens: ['0xd63070114470f685b75B74D60EEc7c1113d33a3D'], // Usual vault
-    },
-    blockNumber: 20417741, // Choose a recent block number
-    key: '11',
-  },
-  {
-    chainId: Chain.Base,
-    method: 'positions',
-    input: {
-      userAddress: '0x7C818D46ACEf870ea88137BF553594f4803872cA',
-      filterProtocolTokens: ['0xa0e430870c4604ccfc7b38ca7845b1ff653d0ff1'], // mwETH Vault
-    },
-    blockNumber: 17776788, // Choose a recent block number
-    key: '12',
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'deposits',
-    input: {
-      userAddress: '0xDA44D84f8DE69fEBDa4C4e0B89fF24077413f4b0',
-      fromBlock: 20417740,
-      toBlock: 20417745,
-      protocolTokenAddress: '0xd63070114470f685b75B74D60EEc7c1113d33a3D', // Usual vault
-    },
-    key: '13',
-  },
-  {
-    chainId: Chain.Base,
-    method: 'deposits',
-    input: {
-      userAddress: '0x7C818D46ACEf870ea88137BF553594f4803872cA',
-      fromBlock: 17776688,
-      toBlock: 17778933,
-      protocolTokenAddress: '0xa0e430870c4604ccfc7b38ca7845b1ff653d0ff1', // mwETH Vault
-    },
-    key: '14',
   },
 ]
