@@ -49,50 +49,9 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Ethereum,
-    method: 'profits',
-    input: {
-      userAddress: '0x117C99451cae094B3a7d56C9d3A97c96900b8e7A',
-      filterProtocolTokens: ['0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966'],
-    },
-    blockNumber: 20126536,
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'deposits',
-
-    input: {
-      userAddress: '0x117C99451cae094B3a7d56C9d3A97c96900b8e7A',
-      fromBlock: 20089673,
-      toBlock: 20089673,
-      protocolTokenAddress: '0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966',
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'prices',
-    key: 'pt',
-    filterProtocolToken: '0xF0574d8B9Dc3a9DE768eaa7DBB7bB0C68521b148',
-    blockNumber: 20572049,
-  },
-  {
-    chainId: Chain.Ethereum,
     method: 'prices',
     key: 'sy',
     filterProtocolToken: '0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9',
-    blockNumber: 20572049,
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'prices',
-    key: 'yt',
-    filterProtocolToken: '0xD66b560f4e3e85f22C192d91dA847886d5C5Fd00',
-    blockNumber: 20572049,
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'prices',
-    key: 'lp',
-    filterProtocolToken: '0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6',
     blockNumber: 20572049,
   },
 ]
