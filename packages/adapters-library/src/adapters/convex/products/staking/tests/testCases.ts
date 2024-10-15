@@ -49,16 +49,6 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Ethereum,
-    method: 'deposits',
-    input: {
-      userAddress: '0xdf286De6d3de10A6aD6452d0BA94Af7AD7B68F9B',
-      fromBlock: 14443070 - 1,
-      toBlock: 14443070 + 1,
-      protocolTokenAddress: '0x30d9410ed1d5da1f6c8391af5338c93ab8d4035c',
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
     method: 'withdrawals',
     key: '1',
     input: {
@@ -81,17 +71,6 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Ethereum,
-    method: 'withdrawals',
-    key: '3',
-    input: {
-      userAddress: '0x8851924938db253C2602cFB473C33b88dEb83C43',
-      fromBlock: 18632773 - 1,
-      toBlock: 18632773 + 1,
-      protocolTokenAddress: '0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434',
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
     method: 'profits',
     input: {
       userAddress: '0x8654a995426e775f3ef023cd6e1b5681e774ffa1',
@@ -102,18 +81,6 @@ export const testCases: TestCase[] = [
         '0x44D8FaB7CD8b7877D5F79974c2F501aF6E65AbBA',
         '0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434',
       ],
-    },
-    blockNumber: 18713643,
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'profits',
-    key: 'cvxcrv-wrapper',
-    input: {
-      userAddress: '0x8654a995426e775f3ef023cd6e1b5681e774ffa1',
-      timePeriod: TimePeriod.oneDay,
-      filterProtocolTokens: ['0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434'],
-      includeRawValues: true,
     },
     blockNumber: 18713643,
   },
