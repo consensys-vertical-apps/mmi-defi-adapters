@@ -88,28 +88,4 @@ export const testCases: TestCase[] = [
       },
     },
   },
-  {
-    method: 'tx-params',
-    key: 'borrow',
-    chainId: Chain.Linea,
-    input: {
-      action: 'borrow',
-      inputs: {
-        asset: '0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D',
-        amount: '10000000000000000000',
-      },
-    },
-  },
-  {
-    method: 'tx-params',
-    key: 'repay',
-    chainId: Chain.Linea,
-    input: {
-      action: 'repay',
-      inputs: {
-        asset: '0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D',
-        amount: '10000000000000000000',
-      },
-    },
-  },
 ]

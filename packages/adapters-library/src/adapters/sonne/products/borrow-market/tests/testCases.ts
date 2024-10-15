@@ -48,12 +48,4 @@ export const testCases: TestCase[] = [
 
     blockNumber: 119518821,
   },
-  {
-    chainId: Chain.Optimism,
-    method: 'tvl',
-
-    filterProtocolTokens: ['0xf7B5965f5C117Eb1B5450187c9DcFccc3C317e8E'],
-
-    blockNumber: 119518821,
-  },
 ]

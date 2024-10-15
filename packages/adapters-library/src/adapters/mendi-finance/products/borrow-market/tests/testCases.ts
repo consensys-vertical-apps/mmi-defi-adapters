@@ -53,42 +53,6 @@ export const testCases: TestCase[] = [
     blockNumber: 1597881,
   },
   {
-    chainId: Chain.Linea,
-    method: 'prices',
-    filterProtocolToken: '0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D',
-    blockNumber: 3717652,
-  },
-  {
-    chainId: Chain.Linea,
-    method: 'tvl',
-    filterProtocolTokens: ['0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D'],
-    blockNumber: 3717652,
-  },
-  {
-    method: 'tx-params',
-    key: 'supply',
-    chainId: Chain.Linea,
-    input: {
-      action: WriteActions.Deposit,
-      inputs: {
-        asset: '0x176211869cA2b568f2A7D4EE941E073a821EE1ff',
-        amount: '10000000000000000000',
-      },
-    },
-  },
-  {
-    method: 'tx-params',
-    key: 'withdraw',
-    chainId: Chain.Linea,
-    input: {
-      action: WriteActions.Withdraw,
-      inputs: {
-        asset: '0x176211869cA2b568f2A7D4EE941E073a821EE1ff',
-        amount: '10000000000000000000',
-      },
-    },
-  },
-  {
     method: 'tx-params',
     key: 'borrow',
     chainId: Chain.Linea,
