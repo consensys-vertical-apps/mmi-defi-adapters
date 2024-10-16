@@ -1,6 +1,6 @@
 {
   "blockNumber": 18527822,
-  "latency": "Latency: 3.081 seconds",
+  "latency": "Latency: 1.827 seconds",
   "snapshot": [
     {
       "protocolId": "maker",
@@ -22,6 +22,22 @@
           "type": "protocol",
           "profit": 6074.280944331549,
           "performance": 0.0010842307404988702,
+          "apyInfo": {
+            "apyPercent": 4.840029257915934,
+            "apy": 0.04840029257915934,
+            "aprPercent": 4.726853197918395,
+            "apr": 0.04726853197918395,
+            "period": {
+              "blocknumberStart": 18520676,
+              "blocknumberEnd": 18527822,
+              "interestPercent": 0.012950282734022999,
+              "interest": 0.00012950282734023
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
