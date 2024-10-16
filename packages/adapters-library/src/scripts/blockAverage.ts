@@ -1,12 +1,12 @@
 import { promises as fs } from 'node:fs'
-import { Command } from 'commander'
+import type { Command } from 'commander'
 import EthDater from 'ethereum-block-by-date'
-import { ethers } from 'ethers'
+import type { ethers } from 'ethers'
 import { parse, print, types, visit } from 'recast'
-import { Chain } from '../core/constants/chains'
-import { ProviderMissingError } from '../core/errors/errors'
-import { writeAndLintFile } from '../core/utils/writeAndLintFile'
-import { multiChainFilter } from './commandFilters'
+import { Chain } from '../core/constants/chains.js'
+import { ProviderMissingError } from '../core/errors/errors.js'
+import { writeAndLintFile } from '../core/utils/writeAndLintFile.js'
+import { multiChainFilter } from './commandFilters.js'
 import n = types.namedTypes
 
 export function blockAverage(
@@ -98,7 +98,7 @@ async function updateAverages(
     './packages/adapters-library/src/core/constants/AVERAGE_BLOCKS_PER_DAY.ts'
   const contents = await fs.readFile(averageBlocksFile, 'utf-8')
   const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
+    parser: await import('recast/parsers/typescript.js'),
   })
 
   visit(ast, {

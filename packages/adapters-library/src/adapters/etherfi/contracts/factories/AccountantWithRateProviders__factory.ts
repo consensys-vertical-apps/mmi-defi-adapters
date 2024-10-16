@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   AccountantWithRateProviders,
   AccountantWithRateProvidersInterface,
-} from "../AccountantWithRateProviders";
+} from "../AccountantWithRateProviders.js";
 
 const _abi = [
   {

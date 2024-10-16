@@ -1,14 +1,14 @@
 import { spawn } from 'node:child_process'
-import { JsonRpcProvider, TransactionRequest, ethers } from 'ethers'
-import { Protocol } from '../../adapters/protocols'
-import { Erc20__factory } from '../../contracts'
-import { Chain, ChainIdToChainNameMap } from '../../core/constants/chains'
-import { bigintJsonStringify } from '../../core/utils/bigintJson'
-import { DefiProvider } from '../../defiProvider'
-import {
+import { JsonRpcProvider, type TransactionRequest, ethers } from 'ethers'
+import type { Protocol } from '../../adapters/protocols.js'
+import { Erc20__factory } from '../../contracts/index.js'
+import { Chain, ChainIdToChainNameMap } from '../../core/constants/chains.js'
+import { bigintJsonStringify } from '../../core/utils/bigintJson.js'
+import { DefiProvider } from '../../defiProvider.js'
+import type {
   DefiMovementsResponse,
   DisplayMovementsByBlock,
-} from '../../types/response'
+} from '../../types/response.js'
 
 export async function simulateTx({
   provider,

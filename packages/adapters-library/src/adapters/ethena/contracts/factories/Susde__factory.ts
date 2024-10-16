@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Susde, SusdeInterface } from "../Susde";
+import type { Susde, SusdeInterface } from "../Susde.js";
 
 const _abi = [
   {

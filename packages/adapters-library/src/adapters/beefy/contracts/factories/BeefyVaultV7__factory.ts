@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { BeefyVaultV7, BeefyVaultV7Interface } from "../BeefyVaultV7";
+import type { BeefyVaultV7, BeefyVaultV7Interface } from "../BeefyVaultV7.js";
 
 const _abi = [
   {

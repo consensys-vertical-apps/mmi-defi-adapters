@@ -1,26 +1,25 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import chalk from 'chalk'
-import { Command } from 'commander'
-import { prompt } from 'inquirer'
-import { Chain } from '../../core/constants/chains'
-import { lowerFirst, pascalCase } from '../../core/utils/caseConversion'
-import { logger } from '../../core/utils/logger'
-import { writeAndLintFile } from '../../core/utils/writeAndLintFile'
-import type { DefiProvider } from '../../defiProvider'
-import { addProtocol } from './addProtocol'
-import { buildIntegrationTests } from './buildIntegrationTests'
-import { exportAdapter } from './exportAdapter'
-import { newAdapterCliLogo } from './newAdapterCliLogo'
+import type { Command } from 'commander'
+import inquirer from 'inquirer'
+import { lowerFirst, pascalCase } from '../../core/utils/caseConversion.js'
+import { logger } from '../../core/utils/logger.js'
+import { writeAndLintFile } from '../../core/utils/writeAndLintFile.js'
+import type { DefiProvider } from '../../defiProvider.js'
+import { addProtocol } from './addProtocol.js'
+import { buildIntegrationTests } from './buildIntegrationTests.js'
+import { exportAdapter } from './exportAdapter.js'
+import { newAdapterCliLogo } from './newAdapterCliLogo.js'
 import {
-  BlankAdapterOutcomeOptions,
-  QuestionAnswers,
+  type BlankAdapterOutcomeOptions,
+  type QuestionAnswers,
   QuestionName,
   TemplateNames,
   Templates,
   getQuestionnaire,
-} from './questionnaire'
-import { Replacements } from './replacements'
+} from './questionnaire.js'
+import { Replacements } from './replacements.js'
 
 const colorBlue = chalk.rgb(0, 112, 243).bold
 const boldWhiteBg = chalk.bgWhite.bold
@@ -210,22 +209,22 @@ export function calculateAdapterOutcomes(
 async function welcome(defiProvider: DefiProvider) {
   showMessage(colorBlue(newAdapterCliLogo))
 
-  const listQuestionsAnswers = await prompt({
+  const listQuestionsAnswers = await inquirer.prompt({
     type: 'confirm',
     name: 'viewAllQuestions',
     message:
       'Would you like to view all questions? This will help you know what to look for in the protocol.',
-    prefix: chalk.blue('?'),
+    // prefix: chalk.blue('?'),
   })
 
   if (listQuestionsAnswers.viewAllQuestions) {
     displayAllQuestions(defiProvider)
 
-    const start = await prompt({
+    const start = await inquirer.prompt({
       type: 'confirm',
       name: 'start',
       message: 'Ready to answer the questions?',
-      prefix: bluePrefix,
+      // prefix: bluePrefix,
     })
 
     if (!start.start) {
@@ -292,13 +291,14 @@ async function askQuestion(
 
   // Step1: ask question and get answer
   const answer = (
-    await prompt([
+    await inquirer.prompt([
       {
         ...questionConfig,
-        prefix: chalk.blue('?'),
+        // prefix: chalk.blue('?'),
         pageSize: 9990,
       },
-    ])
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    ] as any)
   )[nextQuestionName]
 
   //@ts-ignore

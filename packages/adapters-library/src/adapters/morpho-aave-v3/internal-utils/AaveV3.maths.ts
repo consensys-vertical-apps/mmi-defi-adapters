@@ -1,9 +1,9 @@
 import { formatUnits, parseUnits } from 'ethers'
-import * as constants from 'evm-maths/lib/constants'
-import * as PercentMath from 'evm-maths/lib/percent'
-import * as RayMath from 'evm-maths/lib/ray'
-import * as WadMath from 'evm-maths/lib/wad'
-import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
+import * as constants from 'evm-maths/lib/constants.js'
+import * as PercentMath from 'evm-maths/lib/percent.js'
+import * as RayMath from 'evm-maths/lib/ray.js'
+import * as WadMath from 'evm-maths/lib/wad.js'
+import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR.js'
 
 export class MorphoAaveMath {
   /** Indexes are expressed in RAY */

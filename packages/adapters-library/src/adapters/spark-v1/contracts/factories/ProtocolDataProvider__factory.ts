@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   ProtocolDataProvider,
   ProtocolDataProviderInterface,
-} from "../ProtocolDataProvider";
+} from "../ProtocolDataProvider.js";
 
 const _abi = [
   {

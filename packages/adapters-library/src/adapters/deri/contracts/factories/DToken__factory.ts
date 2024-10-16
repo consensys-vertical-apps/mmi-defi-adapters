@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { DToken, DTokenInterface } from "../DToken";
+import type { DToken, DTokenInterface } from "../DToken.js";
 
 const _abi = [
   {

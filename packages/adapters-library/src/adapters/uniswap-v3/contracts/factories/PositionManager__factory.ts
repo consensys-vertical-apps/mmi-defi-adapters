@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   PositionManager,
   PositionManagerInterface,
-} from "../PositionManager";
+} from "../PositionManager.js";
 
 const _abi = [
   {

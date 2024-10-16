@@ -1,6 +1,9 @@
-import { TimePeriod } from '../core/constants/timePeriod'
-import { DefiProvider } from '../defiProvider'
-import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
+import { TimePeriod } from '../core/constants/timePeriod.js'
+import { DefiProvider } from '../defiProvider.js'
+import type {
+  DefiPositionResponse,
+  DefiProfitsResponse,
+} from '../types/response.js'
 
 describe('detect errors', () => {
   it.each([

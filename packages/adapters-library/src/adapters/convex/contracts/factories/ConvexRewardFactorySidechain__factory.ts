@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   ConvexRewardFactorySidechain,
   ConvexRewardFactorySidechainInterface,
-} from "../ConvexRewardFactorySidechain";
+} from "../ConvexRewardFactorySidechain.js";
 
 const _abi = [
   {

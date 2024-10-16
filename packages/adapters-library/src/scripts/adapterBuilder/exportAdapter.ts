@@ -1,11 +1,11 @@
 import { promises as fs } from 'node:fs'
 import * as path from 'node:path'
-import partition from 'lodash/partition'
+import { partition } from 'lodash-es'
 import { parse, print, types, visit } from 'recast'
-import { Chain } from '../../core/constants/chains'
-import { lowerFirst } from '../../core/utils/caseConversion'
-import { writeAndLintFile } from '../../core/utils/writeAndLintFile'
-import { sortEntries } from '../utils/sortEntries'
+import type { Chain } from '../../core/constants/chains.js'
+import { lowerFirst } from '../../core/utils/caseConversion.js'
+import { writeAndLintFile } from '../../core/utils/writeAndLintFile.js'
+import { sortEntries } from '../utils/sortEntries.js'
 import n = types.namedTypes
 import b = types.builders
 
@@ -30,7 +30,7 @@ export async function exportAdapter({
   )
   const contents = await fs.readFile(adaptersFile, 'utf-8')
   const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
+    parser: await import('recast/parsers/typescript.js'),
   })
 
   visit(ast, {
@@ -165,7 +165,7 @@ function addAdapterEntries(
 }
 
 /*
-import { <AdapterClassName> } from './<protocol-id>/products/<product-id>/<adapterClassName>'
+import { <AdapterClassName> } from './<protocol-id>/products/<product-id>/<adapterClassName>.js'
 */
 function buildImportAdapterEntry(
   protocolId: string,

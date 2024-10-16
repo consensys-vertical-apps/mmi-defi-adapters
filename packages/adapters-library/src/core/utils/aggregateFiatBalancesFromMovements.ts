@@ -1,10 +1,10 @@
-import {
+import type {
   AggregatedFiatBalances,
   MovementsByBlock,
   Underlying,
-} from '../../types/adapter'
-import { Erc20Metadata } from '../../types/erc20Metadata'
-import { logger } from './logger'
+} from '../../types/adapter.js'
+import type { Erc20Metadata } from '../../types/erc20Metadata.js'
+import { logger } from './logger.js'
 
 export function aggregateFiatBalancesFromMovements(
   movements: MovementsByBlock[],

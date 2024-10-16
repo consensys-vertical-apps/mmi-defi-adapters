@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   OpenFundShareDelegate,
   OpenFundShareDelegateInterface,
-} from "../OpenFundShareDelegate";
+} from "../OpenFundShareDelegate.js";
 
 const _abi = [
   {

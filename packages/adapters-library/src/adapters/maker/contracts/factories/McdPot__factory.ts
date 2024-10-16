@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { McdPot, McdPotInterface } from "../McdPot";
+import type { McdPot, McdPotInterface } from "../McdPot.js";
 
 const _abi = [
   {

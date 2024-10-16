@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { UniswapV2Pair, UniswapV2PairInterface } from "../UniswapV2Pair";
+import type { UniswapV2Pair, UniswapV2PairInterface } from "../UniswapV2Pair.js";
 
 const _abi = [
   {

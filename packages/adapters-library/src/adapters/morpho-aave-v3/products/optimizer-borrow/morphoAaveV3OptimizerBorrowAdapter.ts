@@ -1,5 +1,8 @@
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
-import { MorphoBasePoolAdapter } from '../../common/morphoBasePoolAdapter'
+import {
+  PositionType,
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import { MorphoBasePoolAdapter } from '../../common/morphoBasePoolAdapter.js'
 
 export class MorphoAaveV3OptimizerBorrowAdapter extends MorphoBasePoolAdapter {
   productId = 'optimizer-borrow'

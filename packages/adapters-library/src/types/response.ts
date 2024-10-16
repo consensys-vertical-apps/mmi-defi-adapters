@@ -1,5 +1,5 @@
-import type { Protocol } from '../adapters/protocols'
-import type { Chain, ChainName } from '../core/constants/chains'
+import type { Protocol } from '../adapters/protocols.js'
+import type { Chain, ChainName } from '../core/constants/chains.js'
 import type {
   MovementsByBlock,
   ProfitsWithRange,
@@ -13,8 +13,8 @@ import type {
   UnderlyingTokenTvl,
   UnwrapExchangeRate,
   UnwrappedTokenExchangeRate,
-} from './adapter'
-import { WriteActions } from './writeActions'
+} from './adapter.js'
+import type { WriteActions } from './writeActions.js'
 
 export type GetEventsRequestInput = {
   userAddress: string

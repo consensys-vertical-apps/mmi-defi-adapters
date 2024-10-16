@@ -1,25 +1,25 @@
 import { getAddress } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../../core/errors/errors'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import { NotImplementedError } from '../../../../core/errors/errors.js'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl.js'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata.js'
 import {
-  GetEventsInput,
-  GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
+  type GetEventsInput,
+  type GetPositionsInput,
+  type GetTotalValueLockedInput,
+  type MovementsByBlock,
   PositionType,
-  ProtocolDetails,
-  ProtocolPosition,
-  ProtocolTokenTvl,
+  type ProtocolDetails,
+  type ProtocolPosition,
+  type ProtocolTokenTvl,
   TokenType,
-  UnwrappedTokenExchangeRate,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { CvxcrvWrapper__factory } from '../../contracts'
-import { RewardPaidEvent } from '../../contracts/CvxcrvWrapper'
+  type UnwrappedTokenExchangeRate,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import type { RewardPaidEvent } from '../../contracts/CvxcrvWrapper.js'
+import { CvxcrvWrapper__factory } from '../../contracts/index.js'
 
 const CVXCRV_WRAPPER_ADDRESS = getAddress(
   '0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434',

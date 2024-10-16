@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { CvxMint, CvxMintInterface } from "../CvxMint";
+import type { CvxMint, CvxMintInterface } from "../CvxMint.js";
 
 const _abi = [
   {

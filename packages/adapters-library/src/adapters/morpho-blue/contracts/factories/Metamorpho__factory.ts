@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Metamorpho, MetamorphoInterface } from "../Metamorpho";
+import type { Metamorpho, MetamorphoInterface } from "../Metamorpho.js";
 
 const _abi = [
   {

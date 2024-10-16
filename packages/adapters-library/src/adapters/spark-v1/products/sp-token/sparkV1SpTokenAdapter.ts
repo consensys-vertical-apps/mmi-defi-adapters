@@ -1,18 +1,23 @@
 import { z } from 'zod'
-import { Chain } from '../../../../core/constants/chains'
+import { Chain } from '../../../../core/constants/chains.js'
 import {
-  WriteActionInputSchemas,
+  type WriteActionInputSchemas,
   WriteActions,
-} from '../../../../types/writeActions'
-import { GetTransactionParams } from '../../../supportedProtocols'
-import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
+} from '../../../../types/writeActions.js'
+import type { GetTransactionParams } from '../../../supportedProtocols.js'
+import {
+  PoolContract__factory,
+  type ProtocolDataProvider,
+} from '../../contracts/index.js'
 
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { Protocol } from '../../../protocols'
-import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import type { ProtocolToken } from '../../../../types/IProtocolAdapter.js'
+import {
+  PositionType,
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import type { Protocol } from '../../../protocols.js'
+import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter.js'
 
 export class SparkV1SpTokenAdapter extends SparkV1BasePoolAdapter {
   productId = 'sp-token'

@@ -1,40 +1,40 @@
-import Database from 'better-sqlite3'
+import type Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
 import {
-  IMetadataProvider,
+  type IMetadataProvider,
   buildSqliteMetadataProviders,
-} from './SQLiteMetadataProvider'
-import { buildVoidMetadataProviders } from './VoidMetadataProvider'
-import { Protocol } from './adapters/protocols'
-import type { GetTransactionParams } from './adapters/supportedProtocols'
-import { supportedProtocols } from './adapters/supportedProtocols'
-import { Config, IConfig } from './config'
-import { AdaptersController } from './core/adaptersController'
-import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { Chain, ChainIdToChainNameMap } from './core/constants/chains'
-import { TimePeriod } from './core/constants/timePeriod'
+} from './SQLiteMetadataProvider.js'
+import { buildVoidMetadataProviders } from './VoidMetadataProvider.js'
+import { Protocol } from './adapters/protocols.js'
+import type { GetTransactionParams } from './adapters/supportedProtocols.js'
+import { supportedProtocols } from './adapters/supportedProtocols.js'
+import { Config, type IConfig } from './config.js'
+import { AdaptersController } from './core/adaptersController.js'
+import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY.js'
+import { Chain, ChainIdToChainNameMap } from './core/constants/chains.js'
+import { TimePeriod } from './core/constants/timePeriod.js'
 import {
   NotSupportedError,
   NotSupportedUnlimitedGetLogsBlockRange,
   ProviderMissingError,
-} from './core/errors/errors'
-import { getProfits } from './core/getProfits'
-import { ChainProvider } from './core/provider/ChainProvider'
-import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
-import { filterMapAsync } from './core/utils/filters'
-import { logger } from './core/utils/logger'
-import { unwrap } from './core/utils/unwrap'
-import { count } from './metricsCount'
+} from './core/errors/errors.js'
+import { getProfits } from './core/getProfits.js'
+import { ChainProvider } from './core/provider/ChainProvider.js'
+import type { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider.js'
+import { filterMapAsync } from './core/utils/filters.js'
+import { logger } from './core/utils/logger.js'
+import { unwrap } from './core/utils/unwrap.js'
+import { count } from './metricsCount.js'
 import {
   enrichMovements,
   enrichPositionBalance,
   enrichTotalValueLocked,
   enrichUnwrappedTokenExchangeRates,
-} from './responseAdapters'
-import { IProtocolAdapter } from './types/IProtocolAdapter'
-import { PositionType } from './types/adapter'
-import { DeepPartial } from './types/deepPartial'
-import {
+} from './responseAdapters.js'
+import type { IProtocolAdapter } from './types/IProtocolAdapter.js'
+import { PositionType } from './types/adapter.js'
+import type { DeepPartial } from './types/deepPartial.js'
+import type {
   AdapterErrorResponse,
   AdapterResponse,
   DefiMovementsResponse,
@@ -43,8 +43,12 @@ import {
   GetEventsRequestInput,
   PricePerShareResponse,
   TotalValueLockResponse,
-} from './types/response'
-import { IUnwrapCache, IUnwrapCacheProvider, UnwrapCache } from './unwrapCache'
+} from './types/response.js'
+import {
+  type IUnwrapCache,
+  type IUnwrapCacheProvider,
+  UnwrapCache,
+} from './unwrapCache.js'
 
 export class DefiProvider {
   private parsedConfig

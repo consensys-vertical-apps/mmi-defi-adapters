@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   BeefyVaultConcLiq,
   BeefyVaultConcLiqInterface,
-} from "../BeefyVaultConcLiq";
+} from "../BeefyVaultConcLiq.js";
 
 const _abi = [
   {

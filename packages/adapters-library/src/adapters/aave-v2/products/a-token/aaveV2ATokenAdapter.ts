@@ -1,7 +1,10 @@
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
-import { AaveBasePoolAdapter } from '../../common/aaveBasePoolAdapter'
-import { ProtocolDataProvider } from '../../contracts'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import {
+  PositionType,
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import { AaveBasePoolAdapter } from '../../common/aaveBasePoolAdapter.js'
+import type { ProtocolDataProvider } from '../../contracts/index.js'
 
 export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'a-token'
@@ -24,7 +27,7 @@ export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens() {
+  override async getProtocolTokens() {
     return super.getProtocolTokens()
   }
 

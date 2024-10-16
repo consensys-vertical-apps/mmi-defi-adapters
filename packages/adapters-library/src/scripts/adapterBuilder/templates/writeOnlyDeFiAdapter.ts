@@ -8,18 +8,18 @@ export function writeOnlyDeFiAdapter({
   productId: string
 }) {
   return `import { z } from 'zod'
-  import { WriteOnlyDeFiAdapter } from '../../../../core/adapters/writeOnlyAdapter'
+  import { WriteOnlyDeFiAdapter } from '../../../../core/adapters/writeOnlyAdapter.js'
   import {
     ProtocolDetails,
     PositionType,
-  } from '../../../../types/adapter'
+  } from '../../../../types/adapter.js'
   import {
     WriteActions,
     WriteActionInputSchemas,
-  } from '../../../../types/writeActions'
-  import { Protocol } from '../../../protocols'
-  import { GetTransactionParams } from '../../../supportedProtocols'
-  import { NotImplementedError } from '../../../../core/errors/errors'
+  } from '../../../../types/writeActions.js'
+  import { Protocol } from '../../../protocols.js'
+  import { GetTransactionParams } from '../../../supportedProtocols.js'
+  import { NotImplementedError } from '../../../../core/errors/errors.js'
   
   export class ${adapterClassName} extends WriteOnlyDeFiAdapter {
     productId = '${productId}'

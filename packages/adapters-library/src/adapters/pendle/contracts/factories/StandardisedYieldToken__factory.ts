@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   StandardisedYieldToken,
   StandardisedYieldTokenInterface,
-} from "../StandardisedYieldToken";
+} from "../StandardisedYieldToken.js";
 
 const _abi = [
   {

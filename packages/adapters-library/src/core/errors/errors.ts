@@ -1,5 +1,5 @@
-import { Protocol } from '../../adapters/protocols'
-import { Chain, ChainIdToChainNameMap } from '../constants/chains'
+import type { Protocol } from '../../adapters/protocols.js'
+import { type Chain, ChainIdToChainNameMap } from '../constants/chains.js'
 
 class BaseError extends Error {
   constructor(message: string) {

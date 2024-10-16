@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Oracle, OracleInterface } from "../Oracle";
+import type { Oracle, OracleInterface } from "../Oracle.js";
 
 const _abi = [
   {

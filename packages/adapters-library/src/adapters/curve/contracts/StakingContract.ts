@@ -18,7 +18,7 @@ import type {
   TypedEventLog,
   TypedListener,
   TypedContractMethod,
-} from "./common";
+} from "./common.js";
 
 export interface StakingContractInterface extends Interface {
   getFunction(nameOrSignature: "claimable_tokens"): FunctionFragment;

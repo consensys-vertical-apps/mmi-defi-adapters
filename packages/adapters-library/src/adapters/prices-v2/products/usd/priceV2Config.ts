@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { Chain } from '../../../../core/constants/chains'
+import { Chain } from '../../../../core/constants/chains.js'
 
 const OneInchPriceOracleCommon = getAddress(
   '0x0AdDd25a91563696D8567Df78D5A01C9a991F9B8',

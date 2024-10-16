@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   MorphoCompoundLens,
   MorphoCompoundLensInterface,
-} from "../MorphoCompoundLens";
+} from "../MorphoCompoundLens.js";
 
 const _abi = [
   {

@@ -1,9 +1,9 @@
-import { Erc20__factory } from '../../contracts'
-import { TransferEvent } from '../../contracts/Erc20'
-import { MovementsByBlock, TokenType } from '../../types/adapter'
-import { Erc20Metadata } from '../../types/erc20Metadata'
-import { MaxMovementLimitExceededError } from '../errors/errors'
-import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
+import type { TransferEvent } from '../../contracts/Erc20.js'
+import { Erc20__factory } from '../../contracts/index.js'
+import { type MovementsByBlock, TokenType } from '../../types/adapter.js'
+import type { Erc20Metadata } from '../../types/erc20Metadata.js'
+import { MaxMovementLimitExceededError } from '../errors/errors.js'
+import type { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider.js'
 
 export async function getErc20Movements({
   erc20Token,

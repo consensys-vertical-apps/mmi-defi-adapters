@@ -1,6 +1,9 @@
-import { Chain } from '../core/constants/chains'
-import { PositionType } from '../types/adapter'
-import { DefiMovementsResponse, DefiPositionResponse } from '../types/response'
+import { Chain } from '../core/constants/chains.js'
+import { PositionType } from '../types/adapter.js'
+import type {
+  DefiMovementsResponse,
+  DefiPositionResponse,
+} from '../types/response.js'
 
 export function getAggregatedValues(
   response: DefiPositionResponse[],

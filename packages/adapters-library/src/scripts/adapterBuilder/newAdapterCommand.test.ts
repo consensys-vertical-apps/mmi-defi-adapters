@@ -1,7 +1,7 @@
-import { DefiProvider } from '../../defiProvider'
+import type { DefiProvider } from '../../defiProvider.js'
 
-import { calculateAdapterOutcomes, createCode } from './newAdapterCommand'
-import { QuestionAnswers } from './questionnaire'
+import { calculateAdapterOutcomes, createCode } from './newAdapterCommand.js'
+import { QuestionAnswers } from './questionnaire.js'
 
 function generateAllAnswers(): QuestionAnswers[] {
   const {

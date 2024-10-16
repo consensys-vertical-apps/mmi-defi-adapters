@@ -1,9 +1,12 @@
 import {
   UniswapV2PoolForkAdapter,
-  UniswapV2PoolForkPositionStrategy,
-} from '../../../../core/adapters/UniswapV2PoolForkAdapter'
-import { Chain } from '../../../../core/constants/chains'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+  type UniswapV2PoolForkPositionStrategy,
+} from '../../../../core/adapters/UniswapV2PoolForkAdapter.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import {
+  PositionType,
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
 
 export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   productId = 'pool'

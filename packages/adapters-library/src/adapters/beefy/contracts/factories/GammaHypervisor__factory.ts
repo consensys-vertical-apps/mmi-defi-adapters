@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   GammaHypervisor,
   GammaHypervisorInterface,
-} from "../GammaHypervisor";
+} from "../GammaHypervisor.js";
 
 const _abi = [
   {

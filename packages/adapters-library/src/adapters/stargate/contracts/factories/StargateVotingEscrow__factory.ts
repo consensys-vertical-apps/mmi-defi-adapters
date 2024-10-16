@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   StargateVotingEscrow,
   StargateVotingEscrowInterface,
-} from "../StargateVotingEscrow";
+} from "../StargateVotingEscrow.js";
 
 const _abi = [
   {

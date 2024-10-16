@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { MorphoAaveV3, MorphoAaveV3Interface } from "../MorphoAaveV3";
+import type { MorphoAaveV3, MorphoAaveV3Interface } from "../MorphoAaveV3.js";
 
 const _abi = [
   {

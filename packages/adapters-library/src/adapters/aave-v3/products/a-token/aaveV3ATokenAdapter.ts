@@ -1,16 +1,19 @@
 import { z } from 'zod'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
 import {
-  WriteActionInputSchemas,
+  PositionType,
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import {
+  type WriteActionInputSchemas,
   WriteActions,
-} from '../../../../types/writeActions'
-import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
-import { ProtocolDataProvider } from '../../../aave-v2/contracts'
-import { Protocol } from '../../../protocols'
-import { GetTransactionParams } from '../../../supportedProtocols'
-import { PoolContract__factory } from '../../contracts'
+} from '../../../../types/writeActions.js'
+import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter.js'
+import type { ProtocolDataProvider } from '../../../aave-v2/contracts/index.js'
+import type { Protocol } from '../../../protocols.js'
+import type { GetTransactionParams } from '../../../supportedProtocols.js'
+import { PoolContract__factory } from '../../contracts/index.js'
 
 export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'a-token'

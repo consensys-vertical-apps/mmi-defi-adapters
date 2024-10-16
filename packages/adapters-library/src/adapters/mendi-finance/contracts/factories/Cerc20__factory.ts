@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Cerc20, Cerc20Interface } from "../Cerc20";
+import type { Cerc20, Cerc20Interface } from "../Cerc20.js";
 
 const _abi = [
   {

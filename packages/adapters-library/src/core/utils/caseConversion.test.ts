@@ -1,4 +1,4 @@
-import { isKebabCase, isPascalCase, pascalCase } from './caseConversion'
+import { isKebabCase, isPascalCase, pascalCase } from './caseConversion.js'
 
 describe('caseConversion', () => {
   describe('pascalCase', () => {

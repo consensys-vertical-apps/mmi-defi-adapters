@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { PoolContract, PoolContractInterface } from "../PoolContract";
+import type { PoolContract, PoolContractInterface } from "../PoolContract.js";
 
 const _abi = [
   {

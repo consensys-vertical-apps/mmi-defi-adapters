@@ -1,13 +1,13 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import { Protocol } from '../../adapters/protocols'
-import { Chain } from '../../core/constants/chains'
-import { lowerFirst, pascalCase } from '../../core/utils/caseConversion'
-import { writeAndLintFile } from '../../core/utils/writeAndLintFile'
-import { DefiProvider } from '../../defiProvider'
-import { addProtocol } from './addProtocol'
-import { buildIntegrationTests } from './buildIntegrationTests'
-import { exportAdapter } from './exportAdapter'
+import { Protocol } from '../../adapters/protocols.js'
+import type { Chain } from '../../core/constants/chains.js'
+import { lowerFirst, pascalCase } from '../../core/utils/caseConversion.js'
+import { writeAndLintFile } from '../../core/utils/writeAndLintFile.js'
+import type { DefiProvider } from '../../defiProvider.js'
+import { addProtocol } from './addProtocol.js'
+import { buildIntegrationTests } from './buildIntegrationTests.js'
+import { exportAdapter } from './exportAdapter.js'
 
 export async function copyAdapter(data: {
   protocolKey: string

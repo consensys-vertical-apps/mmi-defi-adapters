@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Deployer, DeployerInterface } from "../Deployer";
+import type { Deployer, DeployerInterface } from "../Deployer.js";
 
 const _abi = [
   {

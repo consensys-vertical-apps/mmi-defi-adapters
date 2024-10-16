@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { ChainLink, ChainLinkInterface } from "../ChainLink";
+import type { ChainLink, ChainLinkInterface } from "../ChainLink.js";
 
 const _abi = [
   {

@@ -21,7 +21,7 @@ import type {
   TypedLogDescription,
   TypedListener,
   TypedContractMethod,
-} from "./common";
+} from "./common.js";
 
 export declare namespace IPool {
   export type TokenAmountStruct = { token: AddressLike; amount: BigNumberish };

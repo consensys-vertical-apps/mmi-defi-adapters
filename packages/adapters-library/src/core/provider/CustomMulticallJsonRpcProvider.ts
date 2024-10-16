@@ -1,18 +1,15 @@
 import {
-  FetchRequest,
-  Filter,
-  FilterByBlockHash,
-  JsonRpcApiProviderOptions,
-  Log,
-  TransactionRequest,
+  type FetchRequest,
+  type JsonRpcApiProviderOptions,
+  type TransactionRequest,
 } from 'ethers'
-import { count } from '../../metricsCount'
-import { Chain } from '../constants/chains'
+import { count } from '../../metricsCount.js'
+import type { Chain } from '../constants/chains.js'
 import {
   CustomJsonRpcProvider,
-  CustomJsonRpcProviderOptions,
-} from './CustomJsonRpcProvider'
-import { MulticallQueue } from './MulticallQueue'
+  type CustomJsonRpcProviderOptions,
+} from './CustomJsonRpcProvider.js'
+import { MulticallQueue } from './MulticallQueue.js'
 
 export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
   private multicallQueue: MulticallQueue
@@ -64,7 +61,7 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
     return result
   }
 
-  async call(transaction: TransactionRequest): Promise<string> {
+  override async call(transaction: TransactionRequest): Promise<string> {
     return transaction.from
       ? this.callSuper(transaction)
       : this.multicallQueue.queueCall(transaction)

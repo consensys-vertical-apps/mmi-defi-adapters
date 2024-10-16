@@ -1,14 +1,14 @@
 import { getAddress } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata.js'
 import {
   PositionType,
-  ProtocolDetails,
+  type ProtocolDetails,
   TokenType,
-  UnwrappedTokenExchangeRate,
-} from '../../../../types/adapter'
+  type UnwrappedTokenExchangeRate,
+} from '../../../../types/adapter.js'
 
 const PROTOCOL_TOKEN_ADDRESS = getAddress(
   '0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C',

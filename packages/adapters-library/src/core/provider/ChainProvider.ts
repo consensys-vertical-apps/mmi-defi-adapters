@@ -1,14 +1,14 @@
 import { FetchRequest, Network } from 'ethers'
-import { Config, IConfig } from '../../config'
-import { Multicall__factory } from '../../contracts'
-import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
-import { Chain, ChainIdToChainNameMap } from '../constants/chains'
-import { logger } from '../utils/logger'
+import { Config, type IConfig } from '../../config.js'
+import { Multicall__factory } from '../../contracts/index.js'
+import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS.js'
+import { Chain, ChainIdToChainNameMap } from '../constants/chains.js'
+import { logger } from '../utils/logger.js'
 import {
   CustomJsonRpcProvider,
-  CustomJsonRpcProviderOptions,
-} from './CustomJsonRpcProvider'
-import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
+  type CustomJsonRpcProviderOptions,
+} from './CustomJsonRpcProvider.js'
+import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider.js'
 
 export class ChainProvider {
   providers: Record<Chain, CustomJsonRpcProvider>

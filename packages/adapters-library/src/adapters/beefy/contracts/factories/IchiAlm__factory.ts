@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { IchiAlm, IchiAlmInterface } from "../IchiAlm";
+import type { IchiAlm, IchiAlmInterface } from "../IchiAlm.js";
 
 const _abi = [
   {

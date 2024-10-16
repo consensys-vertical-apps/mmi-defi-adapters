@@ -1,4 +1,7 @@
-import { BlankAdapterOutcomeOptions, QuestionAnswers } from './questionnaire'
+import type {
+  BlankAdapterOutcomeOptions,
+  QuestionAnswers,
+} from './questionnaire.js'
 
 export const Replacements = {
   GET_PROTOCOL_TOKENS: {

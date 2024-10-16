@@ -1,11 +1,11 @@
 import { ethers, getAddress, isError } from 'ethers'
-import { Erc20, Erc20__factory } from '../../contracts'
-import { Erc20Metadata } from '../../types/erc20Metadata'
-import { Chain } from '../constants/chains'
-import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
-import { extractErrorMessage } from './extractErrorMessage'
-import { logger } from './logger'
-import { nativeToken, nativeTokenAddresses } from './nativeTokens'
+import { type Erc20, Erc20__factory } from '../../contracts/index.js'
+import type { Erc20Metadata } from '../../types/erc20Metadata.js'
+import { Chain } from '../constants/chains.js'
+import type { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider.js'
+import { extractErrorMessage } from './extractErrorMessage.js'
+import { logger } from './logger.js'
+import { nativeToken, nativeTokenAddresses } from './nativeTokens.js'
 
 /**
  * This token does not implement decimals, name or symbol

@@ -1,6 +1,6 @@
 import { getAddress } from 'ethers'
-import { BeefyVaultConcLiq__factory } from '../../contracts'
-import { VaultBalanceBreakdownFetcher } from '../types'
+import { BeefyVaultConcLiq__factory } from '../../contracts/index.js'
+import type { VaultBalanceBreakdownFetcher } from '../types.js'
 
 export const fetchBeefyClmBalanceBreakdown: VaultBalanceBreakdownFetcher =
   async ({ underlyingLPTokenAddress, blockSpec }, provider) => {

@@ -1,8 +1,8 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { parse, print, types, visit } from 'recast'
-import { writeAndLintFile } from '../../core/utils/writeAndLintFile'
-import { sortEntries } from '../utils/sortEntries'
+import { writeAndLintFile } from '../../core/utils/writeAndLintFile.js'
+import { sortEntries } from '../utils/sortEntries.js'
 import n = types.namedTypes
 import b = types.builders
 
@@ -21,7 +21,7 @@ export async function addProtocol({
   )
   const contents = await fs.readFile(protocolsFile, 'utf-8')
   const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
+    parser: await import('recast/parsers/typescript.js'),
   })
 
   visit(ast, {

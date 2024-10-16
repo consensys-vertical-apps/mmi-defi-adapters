@@ -1,14 +1,17 @@
-import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter'
-import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
-import { Erc20Metadata } from '../../../types/erc20Metadata'
+import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter.js'
+import { getTokenMetadata } from '../../../core/utils/getTokenMetadata.js'
+import type { Erc20Metadata } from '../../../types/erc20Metadata.js'
 
 import {
-  ProtocolDataProvider,
+  type ProtocolDataProvider,
   ProtocolDataProvider__factory,
-} from '../contracts'
+} from '../contracts/index.js'
 
-import { ProtocolToken } from '../../../types/IProtocolAdapter'
-import { TokenType, UnwrappedTokenExchangeRate } from '../../../types/adapter'
+import type { ProtocolToken } from '../../../types/IProtocolAdapter.js'
+import {
+  TokenType,
+  type UnwrappedTokenExchangeRate,
+} from '../../../types/adapter.js'
 
 const PRICE_PEGGED_TO_ONE = 1
 const sparkEthereumProviderAddress =

@@ -1,48 +1,48 @@
 import { getAddress } from 'ethers'
-import { min } from 'evm-maths/lib/utils'
-import { AdaptersController } from '../../../core/adaptersController'
-import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
-import { Chain } from '../../../core/constants/chains'
-import { CacheToDb } from '../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../core/errors/errors'
-import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
-import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
-import { Helpers } from '../../../scripts/helpers'
-import {
+import { min } from 'evm-maths/lib/utils.js'
+import type { AdaptersController } from '../../../core/adaptersController.js'
+import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS.js'
+import { Chain } from '../../../core/constants/chains.js'
+import { CacheToDb } from '../../../core/decorators/cacheToDb.js'
+import { NotImplementedError } from '../../../core/errors/errors.js'
+import type { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider.js'
+import { getTokenMetadata } from '../../../core/utils/getTokenMetadata.js'
+import type { Helpers } from '../../../scripts/helpers.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../types/IProtocolAdapter'
+} from '../../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
-  GetEventsInput,
-  GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
+  type AdapterSettings,
+  type GetEventsInput,
+  type GetPositionsInput,
+  type GetTotalValueLockedInput,
+  type MovementsByBlock,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
-  ProtocolTokenTvl,
-  TokenBalance,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
+  type ProtocolTokenTvl,
+  type TokenBalance,
   TokenType,
-  Underlying,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../types/adapter'
-import { Erc20Metadata } from '../../../types/erc20Metadata'
+  type Underlying,
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../types/erc20Metadata.js'
+import type { SuppliedEvent } from '../../morpho-aave-v2/contracts/MorphoAaveV3.js'
+import type {
+  TypedContractEvent,
+  TypedDeferredTopicFilter,
+} from '../../morpho-aave-v2/contracts/common.js'
 import {
   AToken__factory,
   AaveV3Pool__factory,
   MorphoAaveV3__factory,
-} from '../../morpho-aave-v2/contracts'
-import { SuppliedEvent } from '../../morpho-aave-v2/contracts/MorphoAaveV3'
-import {
-  TypedContractEvent,
-  TypedDeferredTopicFilter,
-} from '../../morpho-aave-v2/contracts/common'
-import { Protocol } from '../../protocols'
-import { MorphoAaveMath } from '../internal-utils/AaveV3.maths'
-import P2PInterestRates from '../internal-utils/P2PInterestRates'
+} from '../../morpho-aave-v2/contracts/index.js'
+import { Protocol } from '../../protocols.js'
+import { MorphoAaveMath } from '../internal-utils/AaveV3.maths.js'
+import P2PInterestRates from '../internal-utils/P2PInterestRates.js'
 
 const morphoAaveV3ContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>

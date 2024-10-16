@@ -1,6 +1,6 @@
-import { Chain } from '../../../../../core/constants/chains'
-import { TimePeriod } from '../../../../../core/constants/timePeriod'
-import type { TestCase } from '../../../../../types/testCase'
+import { Chain } from '../../../../../core/constants/chains.js'
+import { TimePeriod } from '../../../../../core/constants/timePeriod.js'
+import type { TestCase } from '../../../../../types/testCase.js'
 
 const User2 = '0xd3363fA4E7EDdA471527d960D65EFBc6351cC094' // Has weETHk
 

@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { LpStaking, LpStakingInterface } from "../LpStaking";
+import type { LpStaking, LpStakingInterface } from "../LpStaking.js";
 
 const _abi = [
   {

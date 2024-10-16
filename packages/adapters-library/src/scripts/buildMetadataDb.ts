@@ -2,24 +2,24 @@ import fs from 'node:fs'
 import path from 'node:path'
 import Database from 'better-sqlite3'
 import chalk from 'chalk'
-import { Command } from 'commander'
-import { Protocol } from '../adapters/protocols'
-import { supportedProtocols } from '../adapters/supportedProtocols'
-import { AdaptersController } from '../core/adaptersController'
-import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
-import { ProviderMissingError } from '../core/errors/errors'
-import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { filterMapSync } from '../core/utils/filters'
-import { logger } from '../core/utils/logger'
-import {
+import type { Command } from 'commander'
+import type { Protocol } from '../adapters/protocols.js'
+import { supportedProtocols } from '../adapters/supportedProtocols.js'
+import type { AdaptersController } from '../core/adaptersController.js'
+import { type Chain, ChainIdToChainNameMap } from '../core/constants/chains.js'
+import { ProviderMissingError } from '../core/errors/errors.js'
+import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider.js'
+import { filterMapSync } from '../core/utils/filters.js'
+import { logger } from '../core/utils/logger.js'
+import type {
   AdditionalMetadataWithReservedFields,
   Erc20ExtendedMetadata,
   IProtocolAdapter,
   ProtocolToken,
-} from '../types/IProtocolAdapter'
-import { Erc20Metadata } from '../types/erc20Metadata'
-import { getInvalidAddresses } from './addressValidation'
-import { multiChainFilter, multiProtocolFilter } from './commandFilters'
+} from '../types/IProtocolAdapter.js'
+import type { Erc20Metadata } from '../types/erc20Metadata.js'
+import { getInvalidAddresses } from './addressValidation.js'
+import { multiChainFilter, multiProtocolFilter } from './commandFilters.js'
 
 export function buildMetadataDb(
   program: Command,

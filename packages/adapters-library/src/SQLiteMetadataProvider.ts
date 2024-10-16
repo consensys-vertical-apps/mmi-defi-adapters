@@ -1,13 +1,13 @@
 import { existsSync } from 'node:fs'
 import path from 'node:path'
-import Database, { Database as DbType } from 'better-sqlite3'
-import { Protocol } from './adapters/protocols'
-import { Chain, ChainIdToChainNameMap } from './core/constants/chains'
-import { logger } from './core/utils/logger'
-import {
+import Database from 'better-sqlite3'
+import type { Protocol } from './adapters/protocols.js'
+import { Chain, ChainIdToChainNameMap } from './core/constants/chains.js'
+import { logger } from './core/utils/logger.js'
+import type {
   AdditionalMetadataWithReservedFields,
   ProtocolToken,
-} from './types/IProtocolAdapter'
+} from './types/IProtocolAdapter.js'
 
 export type IMetadataProvider = {
   getMetadata: (input: {
@@ -260,11 +260,7 @@ function defaultMetadataProviderSettings() {
   return Object.values(Chain).reduce(
     (chainMetadataProvider, chainId) => {
       chainMetadataProvider[chainId] = {
-        dbPath: path.join(
-          __dirname,
-          '../../..',
-          `${ChainIdToChainNameMap[chainId]}.db`,
-        ),
+        dbPath: path.resolve(`${ChainIdToChainNameMap[chainId]}.db`),
         options: { fileMustExist: !allowDbCreation },
       }
 

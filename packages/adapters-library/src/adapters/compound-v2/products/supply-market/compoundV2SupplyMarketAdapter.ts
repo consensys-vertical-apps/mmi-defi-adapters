@@ -1,15 +1,18 @@
 import { z } from 'zod'
-import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
-import { Chain } from '../../../../core/constants/chains'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter.js'
+import type { Chain } from '../../../../core/constants/chains.js'
 import {
-  WriteActionInputSchemas,
+  PositionType,
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import {
+  type WriteActionInputSchemas,
   WriteActions,
-} from '../../../../types/writeActions'
-import { Protocol } from '../../../protocols'
-import { GetTransactionParams } from '../../../supportedProtocols'
-import { contractAddresses } from '../../common/contractAddresses'
-import { CUSDCv3__factory } from '../../contracts'
+} from '../../../../types/writeActions.js'
+import type { Protocol } from '../../../protocols.js'
+import type { GetTransactionParams } from '../../../supportedProtocols.js'
+import { contractAddresses } from '../../common/contractAddresses.js'
+import { CUSDCv3__factory } from '../../contracts/index.js'
 
 export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
   productId = 'supply-market'

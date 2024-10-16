@@ -1,5 +1,5 @@
-import { IMetadataProvider } from './SQLiteMetadataProvider'
-import { Chain } from './core/constants/chains'
+import type { IMetadataProvider } from './SQLiteMetadataProvider.js'
+import { Chain } from './core/constants/chains.js'
 
 export class VoidMetadataProvider implements IMetadataProvider {
   async getMetadata() {

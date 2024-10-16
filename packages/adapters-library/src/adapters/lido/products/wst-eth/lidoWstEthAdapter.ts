@@ -1,14 +1,14 @@
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import type { ProtocolToken } from '../../../../types/IProtocolAdapter.js'
 import {
   PositionType,
-  ProtocolDetails,
+  type ProtocolDetails,
   TokenType,
-  UnwrappedTokenExchangeRate,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { WstEthToken__factory } from '../../contracts'
+  type UnwrappedTokenExchangeRate,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import { WstEthToken__factory } from '../../contracts/index.js'
 
 const PROTOCOL_TOKEN_ADDRESS = '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0'
 export class LidoWstEthAdapter extends SimplePoolAdapter {

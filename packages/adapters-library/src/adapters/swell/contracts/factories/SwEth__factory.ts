@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { SwEth, SwEthInterface } from "../SwEth";
+import type { SwEth, SwEthInterface } from "../SwEth.js";
 
 const _abi = [
   {

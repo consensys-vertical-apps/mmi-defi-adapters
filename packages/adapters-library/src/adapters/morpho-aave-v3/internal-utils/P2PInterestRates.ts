@@ -1,8 +1,8 @@
-import * as constants from 'evm-maths/lib/constants'
-import * as PercentMath from 'evm-maths/lib/percent'
-import * as RayMath from 'evm-maths/lib/ray'
-import { min } from 'evm-maths/lib/utils'
-import { MorphoAaveMath } from './AaveV3.maths'
+import * as constants from 'evm-maths/lib/constants.js'
+import * as PercentMath from 'evm-maths/lib/percent.js'
+import * as RayMath from 'evm-maths/lib/ray.js'
+import { min } from 'evm-maths/lib/utils.js'
+import { MorphoAaveMath } from './AaveV3.maths.js'
 
 export interface MarketSideDelta {
   scaledDelta: bigint // The delta amount in pool unit.

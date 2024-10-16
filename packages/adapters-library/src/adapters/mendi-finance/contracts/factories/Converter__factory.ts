@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Converter, ConverterInterface } from "../Converter";
+import type { Converter, ConverterInterface } from "../Converter.js";
 
 const _abi = [
   {

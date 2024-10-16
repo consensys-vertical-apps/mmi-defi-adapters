@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Vault, VaultInterface } from "../Vault";
+import type { Vault, VaultInterface } from "../Vault.js";
 
 const _abi = [
   {

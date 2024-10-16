@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   OracleImplementation,
   OracleImplementationInterface,
-} from "../OracleImplementation";
+} from "../OracleImplementation.js";
 
 const _abi = [
   {

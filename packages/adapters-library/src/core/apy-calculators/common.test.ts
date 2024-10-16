@@ -1,4 +1,4 @@
-import { computeApr, computeApy } from './common'
+import { computeApr, computeApy } from './common.js'
 
 describe('computeApr', () => {
   it('computes correctly', () => {

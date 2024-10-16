@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Speed, SpeedInterface } from "../Speed";
+import type { Speed, SpeedInterface } from "../Speed.js";
 
 const _abi = [
   {

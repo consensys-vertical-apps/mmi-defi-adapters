@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   UniswapV2Factory,
   UniswapV2FactoryInterface,
-} from "../UniswapV2Factory";
+} from "../UniswapV2Factory.js";
 
 const _abi = [
   {

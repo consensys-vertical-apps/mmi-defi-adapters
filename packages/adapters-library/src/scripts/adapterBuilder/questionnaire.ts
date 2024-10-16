@@ -1,20 +1,20 @@
-import { Answers } from 'inquirer'
-import { Protocol } from '../../adapters/protocols'
-import { Chain } from '../../core/constants/chains'
+import type { Answers } from 'inquirer'
+import type { Protocol } from '../../adapters/protocols.js'
+import { Chain } from '../../core/constants/chains.js'
 import {
   isKebabCase,
   isPascalCase,
   kebabCase,
   pascalCase,
-} from '../../core/utils/caseConversion'
-import { DefiProvider } from '../../defiProvider'
+} from '../../core/utils/caseConversion.js'
+import type { DefiProvider } from '../../defiProvider.js'
 
-import { blankAdapterTemplate } from './templates/blankAdapterTemplate'
-import { compoundV2BorrowMarketForkAdapterTemplate } from './templates/compoundV2BorrowMarketForkAdapter'
-import { compoundV2SupplyMarketForkAdapterTemplate } from './templates/compoundV2SupplyMarketForkAdapter'
-import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
-import { votingEscrowAdapterTemplate } from './templates/votingEscrowAdapter'
-import { writeOnlyDeFiAdapter } from './templates/writeOnlyDeFiAdapter'
+import { blankAdapterTemplate } from './templates/blankAdapterTemplate.js'
+import { compoundV2BorrowMarketForkAdapterTemplate } from './templates/compoundV2BorrowMarketForkAdapter.js'
+import { compoundV2SupplyMarketForkAdapterTemplate } from './templates/compoundV2SupplyMarketForkAdapter.js'
+import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter.js'
+import { votingEscrowAdapterTemplate } from './templates/votingEscrowAdapter.js'
+import { writeOnlyDeFiAdapter } from './templates/writeOnlyDeFiAdapter.js'
 
 export const QuestionName = {
   ProtocolKey: 'protocolKey',

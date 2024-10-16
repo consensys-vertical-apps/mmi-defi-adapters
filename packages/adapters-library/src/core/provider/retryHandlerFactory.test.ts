@@ -1,4 +1,4 @@
-import { retryHandlerFactory } from './retryHandlerFactory'
+import { retryHandlerFactory } from './retryHandlerFactory.js'
 
 describe('retryHandlerFactory', () => {
   it('returns the result if the call is successful', async () => {

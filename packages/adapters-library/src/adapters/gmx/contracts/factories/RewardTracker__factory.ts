@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { RewardTracker, RewardTrackerInterface } from "../RewardTracker";
+import type { RewardTracker, RewardTrackerInterface } from "../RewardTracker.js";
 
 const _abi = [
   {

@@ -1,6 +1,9 @@
 import { getAddress } from 'ethers'
-import { BeefyVaultV7__factory, SolidlyPool__factory } from '../../contracts'
-import { VaultBalanceBreakdownFetcher } from '../types'
+import {
+  BeefyVaultV7__factory,
+  SolidlyPool__factory,
+} from '../../contracts/index.js'
+import type { VaultBalanceBreakdownFetcher } from '../types.js'
 
 export const fetchSolidlyBalanceBreakdown: VaultBalanceBreakdownFetcher =
   async (

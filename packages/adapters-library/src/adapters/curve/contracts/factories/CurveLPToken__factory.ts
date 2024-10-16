@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { CurveLPToken, CurveLPTokenInterface } from "../CurveLPToken";
+import type { CurveLPToken, CurveLPTokenInterface } from "../CurveLPToken.js";
 
 const _abi = [
   {

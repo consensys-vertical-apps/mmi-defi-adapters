@@ -17,7 +17,7 @@ import type {
   TypedEventLog,
   TypedListener,
   TypedContractMethod,
-} from "./common";
+} from "./common.js";
 
 export interface PendleSyTokenInterface extends Interface {
   getFunction(nameOrSignature: "yieldToken"): FunctionFragment;

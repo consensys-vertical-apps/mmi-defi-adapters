@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   StargatePoolNative,
   StargatePoolNativeInterface,
-} from "../StargatePoolNative";
+} from "../StargatePoolNative.js";
 
 const _abi = [
   {

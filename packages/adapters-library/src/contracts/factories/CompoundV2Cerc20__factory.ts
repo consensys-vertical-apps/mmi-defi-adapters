@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   CompoundV2Cerc20,
   CompoundV2Cerc20Interface,
-} from "../CompoundV2Cerc20";
+} from "../CompoundV2Cerc20.js";
 
 const _abi = [
   {

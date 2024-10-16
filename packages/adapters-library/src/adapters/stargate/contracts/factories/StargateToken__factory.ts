@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { StargateToken, StargateTokenInterface } from "../StargateToken";
+import type { StargateToken, StargateTokenInterface } from "../StargateToken.js";
 
 const _abi = [
   {

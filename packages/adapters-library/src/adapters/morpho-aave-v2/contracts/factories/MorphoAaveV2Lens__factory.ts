@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   MorphoAaveV2Lens,
   MorphoAaveV2LensInterface,
-} from "../MorphoAaveV2Lens";
+} from "../MorphoAaveV2Lens.js";
 
 const _abi = [
   {

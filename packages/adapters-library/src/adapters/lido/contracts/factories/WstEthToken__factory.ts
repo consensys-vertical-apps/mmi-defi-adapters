@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { WstEthToken, WstEthTokenInterface } from "../WstEthToken";
+import type { WstEthToken, WstEthTokenInterface } from "../WstEthToken.js";
 
 const _abi = [
   {

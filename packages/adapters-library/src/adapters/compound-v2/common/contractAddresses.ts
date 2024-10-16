@@ -1,4 +1,4 @@
-import { Chain } from '../../../core/constants/chains'
+import { Chain } from '../../../core/constants/chains.js'
 
 export const contractAddresses: Partial<
   Record<Chain, { comptrollerAddress: string; cUSDCv3Address: string }>

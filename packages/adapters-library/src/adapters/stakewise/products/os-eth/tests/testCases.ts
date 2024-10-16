@@ -1,5 +1,5 @@
-import { Chain } from '../../../../../core/constants/chains'
-import type { TestCase } from '../../../../../types/testCase'
+import { Chain } from '../../../../../core/constants/chains.js'
+import type { TestCase } from '../../../../../types/testCase.js'
 
 const userAddress = '0x96E9a50A3b8B4AE1fAB47f26C3F78E148563380A'
 const protocolTokenAddress = '0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38'

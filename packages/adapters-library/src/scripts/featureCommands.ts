@@ -1,19 +1,22 @@
-import { Command } from 'commander'
-import { Protocol } from '../adapters/protocols'
-import type { GetTransactionParams } from '../adapters/supportedProtocols'
-import { Chain } from '../core/constants/chains'
-import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { bigintJsonStringify } from '../core/utils/bigintJson'
-import { filterMapSync } from '../core/utils/filters'
-import { DefiProvider } from '../defiProvider'
-import { AdapterResponse, GetEventsRequestInput } from '../types/response'
+import type { Command } from 'commander'
+import { Protocol } from '../adapters/protocols.js'
+import type { GetTransactionParams } from '../adapters/supportedProtocols.js'
+import { Chain } from '../core/constants/chains.js'
+import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider.js'
+import { bigintJsonStringify } from '../core/utils/bigintJson.js'
+import { filterMapSync } from '../core/utils/filters.js'
+import type { DefiProvider } from '../defiProvider.js'
+import type {
+  AdapterResponse,
+  GetEventsRequestInput,
+} from '../types/response.js'
 import {
   chainFilter,
   multiChainFilter,
   multiProtocolFilter,
   protocolFilter,
-} from './commandFilters'
-import { simulateTx } from './simulator/simulateTx'
+} from './commandFilters.js'
+import { simulateTx } from './simulator/simulateTx.js'
 
 export function featureCommands(program: Command, defiProvider: DefiProvider) {
   addressCommand(

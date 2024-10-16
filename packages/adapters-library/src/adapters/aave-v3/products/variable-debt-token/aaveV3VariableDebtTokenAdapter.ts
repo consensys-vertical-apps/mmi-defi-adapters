@@ -1,7 +1,10 @@
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
-import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
-import { ProtocolDataProvider } from '../../../aave-v2/contracts'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import {
+  PositionType,
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter.js'
+import type { ProtocolDataProvider } from '../../../aave-v2/contracts/index.js'
 
 export class AaveV3VariableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'variable-debt-token'

@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { OneInchOracle, OneInchOracleInterface } from "../OneInchOracle";
+import type { OneInchOracle, OneInchOracleInterface } from "../OneInchOracle.js";
 
 const _abi = [
   {

@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { YieldToken, YieldTokenInterface } from "../YieldToken";
+import type { YieldToken, YieldTokenInterface } from "../YieldToken.js";
 
 const _abi = [
   {

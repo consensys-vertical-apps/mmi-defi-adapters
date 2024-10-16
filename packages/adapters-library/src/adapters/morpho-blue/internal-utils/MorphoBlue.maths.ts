@@ -1,7 +1,7 @@
-import * as constants from 'evm-maths/lib/constants'
-import * as PercentMath from 'evm-maths/lib/percent'
-import * as WadMath from 'evm-maths/lib/wad'
-import { MarketData } from './Blue'
+import * as constants from 'evm-maths/lib/constants.js'
+import * as PercentMath from 'evm-maths/lib/percent.js'
+import * as WadMath from 'evm-maths/lib/wad.js'
+import type { MarketData } from './Blue.js'
 
 export class MorphoBlueMath {
   pow10 = (exponant: bigint | number) => 10n ** BigInt(exponant)

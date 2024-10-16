@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { CurvePool, CurvePoolInterface } from "../CurvePool";
+import type { CurvePool, CurvePoolInterface } from "../CurvePool.js";
 
 const _abi = [
   {

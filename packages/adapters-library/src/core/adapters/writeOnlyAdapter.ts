@@ -1,7 +1,10 @@
-import { Protocol } from '../../adapters/protocols'
-import { Helpers } from '../../scripts/helpers'
-import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
-import {
+import type { Protocol } from '../../adapters/protocols.js'
+import type { Helpers } from '../../scripts/helpers.js'
+import type {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../types/IProtocolAdapter.js'
+import type {
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -12,12 +15,12 @@ import {
   ProtocolTokenTvl,
   UnwrapExchangeRate,
   UnwrapInput,
-} from '../../types/adapter'
-import { Erc20Metadata } from '../../types/erc20Metadata'
-import { AdaptersController } from '../adaptersController'
-import { Chain } from '../constants/chains'
-import { NotImplementedError } from '../errors/errors'
-import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
+} from '../../types/adapter.js'
+import type { Erc20Metadata } from '../../types/erc20Metadata.js'
+import type { AdaptersController } from '../adaptersController.js'
+import type { Chain } from '../constants/chains.js'
+import { NotImplementedError } from '../errors/errors.js'
+import type { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider.js'
 
 export type DeFiAssetsMetadata = Record<
   string,

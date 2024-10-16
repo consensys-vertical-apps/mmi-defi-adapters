@@ -1,4 +1,4 @@
-import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
+import type { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider.js'
 
 export enum BeefyProductType {
   COW_TOKEN = 'cow-token',

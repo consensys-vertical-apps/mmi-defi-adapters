@@ -17,7 +17,7 @@ import type {
   TypedEventLog,
   TypedListener,
   TypedContractMethod,
-} from "./common";
+} from "./common.js";
 
 export interface BalancerVaultInterface extends Interface {
   getFunction(nameOrSignature: "getPoolTokens"): FunctionFragment;
