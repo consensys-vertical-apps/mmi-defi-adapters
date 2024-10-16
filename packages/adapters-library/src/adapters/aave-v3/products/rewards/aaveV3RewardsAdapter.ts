@@ -185,7 +185,7 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     const addressFilter = await this.openPositions(userAddress)
 
     // Return empty array if no valid addresses are found
-    if  rrfdx(!addressFilter?.length) {
+    if (!addressFilter?.length) {
       return []
     }
 
