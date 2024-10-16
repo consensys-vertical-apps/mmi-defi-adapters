@@ -1,6 +1,6 @@
 {
   "blockNumber": 119518821,
-  "latency": "Latency: 9.882 seconds",
+  "latency": "Latency: 7.333 seconds",
   "snapshot": [
     {
       "protocolId": "sonne",
@@ -22,6 +22,22 @@
           "type": "protocol",
           "profit": -692.0388603761094,
           "performance": -0.002996338902654772,
+          "apyInfo": {
+            "apyPercent": 6.783879057390663,
+            "apy": 0.06783879057390663,
+            "aprPercent": 6.564268596947076,
+            "apr": 0.06564268596947076,
+            "period": {
+              "blocknumberStart": 119475621,
+              "blocknumberEnd": 119518821,
+              "interestPercent": 0.0179842975258824,
+              "interest": 0.000179842975258824
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
@@ -39,6 +55,22 @@
           "type": "protocol",
           "profit": -219.0862323823385,
           "performance": -0.0028949659526794945,
+          "apyInfo": {
+            "apyPercent": 13.373348135496354,
+            "apy": 0.13373348135496355,
+            "aprPercent": 12.553773613565042,
+            "apr": 0.12553773613565042,
+            "period": {
+              "blocknumberStart": 119475621,
+              "blocknumberEnd": 119518821,
+              "interestPercent": 0.0343939003111371,
+              "interest": 0.000343939003111371
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
@@ -73,6 +105,22 @@
           "type": "protocol",
           "profit": -73.92856939246849,
           "performance": -0.002037292737702481,
+          "apyInfo": {
+            "apyPercent": 9.465442120190627,
+            "apy": 0.09465442120190626,
+            "aprPercent": 9.044992163753893,
+            "apr": 0.09044992163753893,
+            "period": {
+              "blocknumberStart": 119475621,
+              "blocknumberEnd": 119518821,
+              "interestPercent": 0.0247808004486408,
+              "interest": 0.000247808004486408
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,

@@ -1,6 +1,6 @@
 {
   "blockNumber": 119518821,
-  "latency": "Latency: 5.745 seconds",
+  "latency": "Latency: 9.181 seconds",
   "snapshot": [
     {
       "protocolId": "sonne",
@@ -56,6 +56,22 @@
           "type": "protocol",
           "profit": 430.7371335571097,
           "performance": 0.0320517261940048,
+          "apyInfo": {
+            "apyPercent": 1.7798031078724241,
+            "apy": 0.01779803107872424,
+            "aprPercent": 1.764192702241375,
+            "apr": 0.01764192702241375,
+            "period": {
+              "blocknumberStart": 119475621,
+              "blocknumberEnd": 119518821,
+              "interestPercent": 0.004833404663675,
+              "interest": 0.00004833404663675
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
@@ -90,6 +106,22 @@
           "type": "protocol",
           "profit": 61.90689639504944,
           "performance": 0.01708203166620841,
+          "apyInfo": {
+            "apyPercent": 0.700806268330112,
+            "apy": 0.0070080626833011195,
+            "aprPercent": 0.6983687151152745,
+            "apr": 0.006983687151152745,
+            "period": {
+              "blocknumberStart": 119475621,
+              "blocknumberEnd": 119518821,
+              "interestPercent": 0.0019133389455213,
+              "interest": 0.000019133389455213
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
