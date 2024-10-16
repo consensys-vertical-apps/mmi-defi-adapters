@@ -28,10 +28,19 @@ export function blockAverage(
           return !filterChainIds || filterChainIds.includes(chainId)
         })
         .map(async (chainId) => {
-          const averageBlocksPerDay = await getAverageBlocksPerDay(
-            chainId,
-            chainProviders,
-          )
+          let averageBlocksPerDay: number
+
+          try {
+            averageBlocksPerDay = await getAverageBlocksPerDay(
+              chainId,
+              chainProviders,
+            )
+          } catch (e) {
+            console.error(
+              `Failed to fetch average blocks per day for chain ${chainId}`,
+            )
+            averageBlocksPerDay = 0
+          }
 
           return {
             chainId,
