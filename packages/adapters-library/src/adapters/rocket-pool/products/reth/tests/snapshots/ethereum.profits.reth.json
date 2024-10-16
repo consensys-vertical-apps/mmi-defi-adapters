@@ -1,6 +1,6 @@
 {
   "blockNumber": 19184815,
-  "latency": "Latency: 0.773 seconds",
+  "latency": "Latency: 0.683 seconds",
   "snapshot": [
     {
       "protocolId": "rocket-pool",
@@ -22,6 +22,22 @@
           "type": "protocol",
           "profit": 620833.5951970983,
           "performance": 0.06324343119463094,
+          "apyInfo": {
+            "apyPercent": 2.826393644126113,
+            "apy": 0.028263936441261128,
+            "aprPercent": 2.7879332085156783,
+            "apr": 0.027879332085156784,
+            "period": {
+              "blocknumberStart": 19134793,
+              "blocknumberEnd": 19184815,
+              "interestPercent": 0.05346721221810889,
+              "interest": 0.000534672122181089
+            },
+            "compounding": {
+              "durationDays": 7,
+              "frequency": 52.142857142857146
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
