@@ -8,7 +8,7 @@
       "name": "Aave v3 VariableDebtToken",
       "description": "Aave v3 defi adapter for variable interest-accruing token",
       "siteUrl": "https://aave.com/",
-      "iconUrl": "https://aave.com/favicon.ico",
+      "iconUrl": "https://cryptologos.cc/logos/aave-aave-logo.png",
       "positionType": "borrow",
       "chainId": 1,
       "productId": "variable-debt-token",
