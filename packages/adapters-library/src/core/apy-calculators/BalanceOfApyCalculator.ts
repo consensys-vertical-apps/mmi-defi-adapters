@@ -1,4 +1,3 @@
-import util from 'node:util'
 import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY'
 import { NotSupportedError } from '../errors/errors'
 import { collectLeafTokens } from '../utils/collectLeafTokens'
@@ -59,17 +58,6 @@ export class BalanceOfApyCalculator implements ApyCalculator {
         throw new NotSupportedError(
           'BalanceOfApyCalculator only supports APY calculations for products with exactly one underlying token, such as aTokens.',
         )
-
-      console.log('✅✅✅✅protocolTokenStart')
-
-      console.log(
-        util.inspect(protocolTokenStart, {
-          showHidden: false,
-          depth: null,
-          colors: true,
-        }),
-      )
-      console.log('💜💜💜💜protocolTokenEnd', JSON.stringify(protocolTokenEnd))
 
       const underlyingTokenStart = leafTokensStart[0]!
       const underlyingTokenEnd = leafTokensEnd[0]!

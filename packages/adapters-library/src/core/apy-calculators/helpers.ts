@@ -49,11 +49,20 @@ export const computeApy = (apr: number, frequency: number) => {
  */
 export const createApyCalculatorFor = async (
   adapter: IProtocolAdapter,
+  protocolTokenAddress: string,
 ): Promise<ApyCalculator> => {
   try {
     const protocolTokens = await adapter.getProtocolTokens()
 
-    if (protocolTokens[0]?.underlyingTokens.length === 1)
+    const protocolToken = protocolTokens.find(
+      (item) => item.address === protocolTokenAddress,
+    )
+    if (!protocolToken)
+      throw new Error(
+        `Adapter ${adapter.productId}/${adapter.productId} has no protocol token with address ${protocolTokenAddress}`,
+      )
+
+    if (protocolToken.underlyingTokens.length === 1)
       return new BalanceOfApyCalculator()
 
     return new VoidApyCalculator()

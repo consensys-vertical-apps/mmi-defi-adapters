@@ -277,17 +277,23 @@ export async function getProfits({
           ]
         : undefined
 
-      const apyCalculator = await createApyCalculatorFor(adapter)
+      const protocolTokenAddress = protocolTokenMetadata.address
+
+      const apyCalculator = await createApyCalculatorFor(
+        adapter,
+        protocolTokenAddress,
+      )
+
       const apyInfo = await apyCalculator.getApy({
         protocolTokenStart: rawStartPositionValues.find(
-          (item) => item.address === protocolTokenMetadata.address,
+          (item) => item.address === protocolTokenAddress,
         )!,
         protocolTokenEnd: rawEndPositionValues.find(
-          (item) => item.address === protocolTokenMetadata.address,
+          (item) => item.address === protocolTokenAddress,
         )!,
         blocknumberStart: fromBlock,
         blocknumberEnd: toBlock,
-        protocolTokenAddress: protocolTokenMetadata.address,
+        protocolTokenAddress,
         chainId: adapter.chainId,
         withdrawals: withdrawal,
         deposits: deposit,
