@@ -10,5 +10,5 @@ export const AVERAGE_BLOCKS_PER_DAY: Record<Chain, number> = {
   [Chain.Base]: 43200,
   [Chain.Arbitrum]: 320278,
   [Chain.Avalanche]: 41413,
-  [Chain.Linea]: 7187,
+  [Chain.Linea]: 42698,
 }
