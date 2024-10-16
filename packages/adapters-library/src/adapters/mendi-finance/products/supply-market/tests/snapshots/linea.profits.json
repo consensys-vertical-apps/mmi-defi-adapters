@@ -1,6 +1,6 @@
 {
   "blockNumber": 1597881,
-  "latency": "Latency: 1.869 seconds",
+  "latency": "Latency: 1.478 seconds",
   "snapshot": [
     {
       "protocolId": "mendi-finance",
@@ -37,7 +37,7 @@
                 "symbol": "USDC",
                 "decimals": 6,
                 "type": "underlying",
-                "balanceRaw": "100075861322n"
+                "balanceRaw": "100051140246n"
               },
               {
                 "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
@@ -73,7 +73,7 @@
                 "symbol": "USDT",
                 "decimals": 6,
                 "type": "underlying",
-                "balanceRaw": "57149247113n"
+                "balanceRaw": "57126717473n"
               },
               {
                 "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
@@ -109,7 +109,7 @@
                 "symbol": "WETH",
                 "decimals": 18,
                 "type": "underlying",
-                "balanceRaw": "804919682555621199n"
+                "balanceRaw": "804540569097525229n"
               },
               {
                 "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
@@ -145,7 +145,7 @@
                 "symbol": "WBTC",
                 "decimals": 8,
                 "type": "underlying",
-                "balanceRaw": "100138377n"
+                "balanceRaw": "100121089n"
               },
               {
                 "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
@@ -159,7 +159,7 @@
           }
         }
       ],
-      "fromBlock": 1590694,
+      "fromBlock": 1555183,
       "toBlock": 1597881
     }
   ],
@@ -176,16 +176,16 @@
     "e3fbc1302574ffbbcb1f6342c8bf97e4": {
       "result": "0x0000000000000000000000000000000000000000000000000000000128f4ab88"
     },
-    "340a748a04ea8b22dc20e3335fb744d2": {
+    "249486500f2a059ee5443dab528d5436": {
       "result": "0x0000000000000000000000000000000000000000000000000001c1ac7b7fa7fd"
     },
-    "3a3175c2c790cbac417d417394a3b1ce": {
+    "8c8b2b2247abe6f5872b2be755fb7efd": {
       "result": "0x00000000000000000000000000000000000000000000000000010021e1959cc5"
     },
-    "f6dd76d9e30a1a1ad3753ef885bfa995": {
+    "87fafc86bed81e9538039975beeed14b": {
       "result": "0x00000000000000000000000000000000000000000000000000000000e9988919"
     },
-    "66e07138af56f92a393160c9be45ac39": {
+    "f6e18060330d2dce5a44282124455332": {
       "result": "0x0000000000000000000000000000000000000000000000000000000128f4ab88"
     },
     "84203c3409977070e9babdd0499b608b": {
@@ -200,40 +200,40 @@
     "e1974c1f5fe7edaee288290730958b5d": {
       "result": "0x000000000000000000000000000000000000000000000000004769311424418a"
     },
-    "94d5ff1ce2a1f2d3fd3efc3b21b6dcea": {
-      "result": "0x0000000000000000000000000000000000000000000000000000b8178fa13f61"
+    "a02bc953127013dce5fac27d1534348d": {
+      "result": "0x0000000000000000000000000000000000000000000000000000b80d2b12ac62"
     },
-    "d2f5152f8c83f326a74b929f304b4f9b": {
-      "result": "0x0000000000000000000000000000000000000000000000000000b8922b290d46"
+    "5a845067a61b791253d4f8e7f50b9b7d": {
+      "result": "0x0000000000000000000000000000000000000000000000000000b87fbe380dcd"
     },
-    "6e13473da8a3fb35c0244f34540b3e67": {
-      "result": "0x000000000000000000000000000000000000000000a9e3d8ef0e5a67e9d14695"
+    "1bd72addd5c26362861ee9155c2487b9": {
+      "result": "0x000000000000000000000000000000000000000000a9cf5ce98418feaa4288ec"
     },
-    "793696296eb98acdd5af569b2ad5565e": {
-      "result": "0x0000000000000000000000000000000000000000000000000047688c08827396"
+    "24a070af93ef855b603dcdf0715816a2": {
+      "result": "0x0000000000000000000000000000000000000000000000000047656452302ab3"
     },
-    "0a7a755d8ab5ed806550ca6b69551bc6": {
+    "3612ac54a1f734c43abb766cc9d42238": {
       "result": []
     },
-    "beb189bab4c0a4236ef489b8d6584295": {
+    "020322c5cee9599390002acf473b8a57": {
       "result": []
     },
-    "50f7ab0f1f93033d8230201afea9e580": {
+    "7e70f68812f1a272449105ed00d02b0b": {
       "result": []
     },
-    "553e97fb230425bba4f42b4aed8912b3": {
+    "543cbaca1c8f067c2b38101c7462af7e": {
       "result": []
     },
-    "22ff51f06b08476ab331122b3bdaa1bf": {
+    "3b06ffff6bafa79173b6a8282337633b": {
       "result": []
     },
-    "d3cb3f3ce8d4862b2fac69e03a0931cd": {
+    "cc1e1c7caffba5e70cad8194d72760ab": {
       "result": []
     },
-    "f6a87102fa20e28caa6164d8c6eb97e5": {
+    "e9d1789a55cdca2edcdeab4119524847": {
       "result": []
     },
-    "7cc153afc31c7fa380c972a7b87d5a9e": {
+    "0abf93e5f73dd107fdf99af4d8fa705b": {
       "result": []
     }
   }

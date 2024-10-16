@@ -1,6 +1,6 @@
 {
   "blockNumber": 9527883,
-  "latency": "Latency: 0.367 seconds",
+  "latency": "Latency: 0.405 seconds",
   "snapshot": [
     {
       "protocolId": "etherfi",
@@ -51,7 +51,7 @@
           }
         }
       ],
-      "fromBlock": 9312273,
+      "fromBlock": 8246943,
       "toBlock": 9527883
     }
   ],
@@ -59,13 +59,13 @@
     "863e8ee3c8d1ea647523abeca136579e": {
       "result": "0x000000000000000000000000000000000000000000000002b5e3af16b1880000"
     },
-    "067b8e783e175e2f3000f535e47ae72b": {
+    "22e7b1954f79bc5f38b06986e6677c50": {
       "result": "0x000000000000000000000000000000000000000000000002b5e3af16b1880000"
     },
-    "dbe0d15fd2f041443e53d18c0a61ed1a": {
+    "dec39bf848fa374b4c57fe5637a75467": {
       "result": []
     },
-    "e1c2313d4b2ec523d9cb3046c3ab7f36": {
+    "11f3b4916cc72e15ba28487cbedf4d65": {
       "result": []
     }
   }
