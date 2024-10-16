@@ -1,0 +1,51 @@
+{
+  "blockNumber": 19088200,
+  "latency": "Latency: 0.745 seconds",
+  "aggregatedValues": ["USD431.67"],
+  "snapshot": [
+    {
+      "protocolId": "stargate",
+      "name": "Stargate Liquidity Pools V2",
+      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+      "siteUrl": "https://stargate.finance/",
+      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+      "positionType": "supply",
+      "chainId": 8453,
+      "productId": "pool-v2",
+      "chainName": "base",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x98fB8522d891F43B771e2d27367b41Ba138D0B80",
+          "name": "ETH-LP",
+          "symbol": "S*ETH",
+          "decimals": 18,
+          "balanceRaw": "170000000000000000n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "170000000000000000n",
+              "balance": 0.17,
+              "price": 2539.210057,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/info/logo.png"
+            }
+          ],
+          "balance": 0.17
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "174a7c1a7357c8dd51fd9ec7469ef48f": {
+      "result": "0x000000000000000000000000000000000000000000000000025bf6196bd10000"
+    },
+    "b32f1e82cb024fe712433c29ba6fe4c5": {
+      "result": "0x00000000000000000000000000000000000000000000000100000000000106c60000000000000000000000000000000000000000000000000000003b1edf10840000000000000000000000000000000000000000000000000000000066d0e3530000000000000000000000000000000000000000000000000000000066d0e35300000000000000000000000000000000000000000000000100000000000106c6"
+    }
+  }
+}

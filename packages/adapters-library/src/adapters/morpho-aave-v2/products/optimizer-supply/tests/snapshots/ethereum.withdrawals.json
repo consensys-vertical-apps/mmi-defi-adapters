@@ -1,0 +1,77 @@
+{
+  "aggregatedValues": ["USD501,950.11"],
+  "latency": "Latency: 0.936 seconds",
+  "snapshot": {
+    "protocolId": "morpho-aave-v2",
+    "name": "MorphoAaveV2",
+    "description": "MorphoAaveV2 defi adapter on the supply side",
+    "siteUrl": "https://aavev2.morpho.org/",
+    "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "optimizer-supply",
+    "chainName": "ethereum",
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+          "name": "Aave interest bearing USDC",
+          "symbol": "aUSDC",
+          "decimals": 6
+        },
+        "tokens": [
+          {
+            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "balanceRaw": "502000000000n",
+            "type": "underlying",
+            "price": 0.9999006207138289,
+            "balance": 502000
+          }
+        ],
+        "blockNumber": 19053555,
+        "transactionHash": "0x82c23287d2806fa875124c3fb08c7bd723d00689a09c3ecb993fff0f49cb7fb0"
+      }
+    ]
+  },
+  "rpcResponses": {
+    "3112b341386d884e4b2f9bc25398a13f": {
+      "result": [
+        {
+          "address": "0x777777c9898d384f785ee44acfe945efdff5f3e0",
+          "blockHash": "0x62f89476b62efbb491d3d11e622dc6b9b9f4a3036867672a6323eb4ce2353d00",
+          "blockNumber": "0x122bbf3",
+          "data": "0x00000000000000000000000000000000000000000000000000000074e1881c0000000000000000000000000000000000000000000000000000000009965edcfa000000000000000000000000000000000000000000000000000003c0bb71c996",
+          "logIndex": "0x54c",
+          "removed": false,
+          "topics": [
+            "0x378f9d375cd79e36c19c26a9e57791fe7cd5953b61986c01ebf980c0efb92801",
+            "0x0000000000000000000000004c09dd7c598b12c781c4b5d74d245a1784a2e148",
+            "0x0000000000000000000000004c09dd7c598b12c781c4b5d74d245a1784a2e148",
+            "0x000000000000000000000000bcca60bb61934080951369a648fb03df4f96263c"
+          ],
+          "transactionHash": "0x82c23287d2806fa875124c3fb08c7bd723d00689a09c3ecb993fff0f49cb7fb0",
+          "transactionIndex": "0x73"
+        }
+      ]
+    },
+    "edac88f54a4e0bfbb63af436439a786e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000855534420436f696e000000000000000000000000000000000000000000000000"
+    },
+    "092d5af2b2884fa97e9381c15e7b7e12": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
+    },
+    "e9d846642c9d3de421ceb1c96b5fc79e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "21c95a1dca5213f3f652ff650fd1177e": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000029f9000000000000000000000000000000000000000000000000000000398e7233290000000000000000000000000000000000000000000000000000000065acb1e30000000000000000000000000000000000000000000000000000000065acb1e300000000000000000000000000000000000000000000000600000000000029f9"
+    },
+    "3852860cee7aa2bdb9eaeca10d30b45e": {
+      "result": "0x0000000000000000000000000000000000000000014e952b7c2bd62b85ccd47a"
+    }
+  }
+}

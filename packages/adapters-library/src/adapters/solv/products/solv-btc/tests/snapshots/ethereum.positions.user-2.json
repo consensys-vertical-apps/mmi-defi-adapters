@@ -1,0 +1,75 @@
+{
+  "blockNumber": 20540523,
+  "latency": "Latency: 0.774 seconds",
+  "aggregatedValues": ["USD364.99"],
+  "snapshot": [
+    {
+      "protocolId": "solv",
+      "name": "Solv",
+      "description": "Solv defi adapter",
+      "siteUrl": "https://solv.finance/",
+      "iconUrl": "https://solv.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "solv-btc",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xd9D920AA40f578ab794426F5C90F6C731D159DEf",
+          "name": "SolvBTC Babylon",
+          "symbol": "SolvBTC.BBN",
+          "decimals": 18,
+          "balanceRaw": "6215687507000000n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7A56E1C57C7475CCf742a1832B028F0456652F97",
+              "name": "Solv BTC",
+              "symbol": "SolvBTC",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "6215687507000000n",
+              "tokens": [
+                {
+                  "address": "0xC96dE26018A54D51c097160568752c4E3BD6C364",
+                  "name": "Fire Bitcoin",
+                  "symbol": "FBTC",
+                  "decimals": 8,
+                  "type": "underlying",
+                  "balanceRaw": "621568n",
+                  "balance": 0.00621568,
+                  "price": 58721.36467842754,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC96dE26018A54D51c097160568752c4E3BD6C364/logo.png"
+                }
+              ],
+              "balance": 0.006215687507,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7A56E1C57C7475CCf742a1832B028F0456652F97/logo.png"
+            }
+          ],
+          "balance": 0.006215687507
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "3dc0b8c6f64253dc7c6e168edea3f2fa": {
+      "result": "0x0000000000000000000000000000000000000000000000000016152285e3bac0"
+    },
+    "7dccc055f1b76f0185f5fdc04e17349e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000c4669726520426974636f696e0000000000000000000000000000000000000000"
+    },
+    "f54d9ec857d921aabb51b255383b1d05": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000044642544300000000000000000000000000000000000000000000000000000000"
+    },
+    "cc1ca35cc99e7e496034a44ce95cd028": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000008"
+    },
+    "a0004e96bf14f17bfeb2bf67a251b7be": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000055000000000000000000000000000000000000000000000000000000003d1c5290500000000000000000000000000000000000000000000000000000000066bf22230000000000000000000000000000000000000000000000000000000066bf22230000000000000000000000000000000000000000000000060000000000005500"
+    },
+    "1710f5aaf0927445759400691e284925": {
+      "result": "0x0000000000000000000000000000000000000002d2e71956d6642059086643f5"
+    }
+  }
+}

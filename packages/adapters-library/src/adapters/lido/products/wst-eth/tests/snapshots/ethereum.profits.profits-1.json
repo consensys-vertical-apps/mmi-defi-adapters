@@ -1,0 +1,65 @@
+{
+  "blockNumber": 18377483,
+  "latency": "Latency: 0.685 seconds",
+  "snapshot": [
+    {
+      "protocolId": "lido",
+      "name": "Lido wstEth",
+      "description": "Lido defi adapter for wstEth",
+      "siteUrl": "https://stake.lido.fi/wrap",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "wst-eth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+          "name": "Wrapped liquid staked Ether 2.0",
+          "symbol": "wstETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 608092.4498438835,
+          "performance": 0.004292972565870958,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 141648342.84714648,
+            "endPositionValue": 142256435.29699036
+          }
+        }
+      ],
+      "fromBlock": 18327461,
+      "toBlock": 18377483
+    }
+  ],
+  "rpcResponses": {
+    "1b04657656af1daa35763856b55b46b3": {
+      "result": "0x0000000000000000000000000000000000000000000010b3a16049202009d2bc"
+    },
+    "5fd6ed1483f836f4d01d887e3146fb6a": {
+      "result": "0x0000000000000000000000000000000000000000000010b3a16049202009d2bc"
+    },
+    "9cca41a32a5d7cf6ea0910172ca6ed70": {
+      "result": "0x0000000000000000000000000000000000000000000000000fde014d75ba9c06"
+    },
+    "9b1edf3c027e8ed8506e4f273228a0a5": {
+      "result": "0x0000000000000000000000000000000000000000000000000fdb32ff63e2eae9"
+    },
+    "381a717139bf2631bc68e8400f91a99a": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000019b000000000000000000000000000000000000000000000000000000024baaf670000000000000000000000000000000000000000000000000000000000652fd5d300000000000000000000000000000000000000000000000000000000652fd5d300000000000000000000000000000000000000000000000600000000000019b0"
+    },
+    "30bf699e95c0a6fecf55d2c43f002af6": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000018c60000000000000000000000000000000000000000000000000000002498f6c6900000000000000000000000000000000000000000000000000000000065269b470000000000000000000000000000000000000000000000000000000065269b4700000000000000000000000000000000000000000000000600000000000018c6"
+    },
+    "ca96828635e7a5791389570a8248b08e": {
+      "result": []
+    },
+    "cbfbecb5d6e85e1a0b403b35eba64102": {
+      "result": []
+    }
+  }
+}

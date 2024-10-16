@@ -1,0 +1,97 @@
+{
+  "blockNumber": 19383091,
+  "latency": "Latency: 1.981 seconds",
+  "aggregatedValues": ["USD7,575.19", "USD116,358.67"],
+  "snapshot": [
+    {
+      "protocolId": "compound-v2",
+      "name": "CompoundV2",
+      "description": "CompoundV2 supply market adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "supply-market",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
+          "name": "Compound Ether",
+          "symbol": "cETH",
+          "decimals": 8,
+          "balanceRaw": "9953333018n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "2000011696849420194n",
+              "balance": 2.00001169684942,
+              "price": 3787.57469751,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "balance": 99.53333018
+        },
+        {
+          "address": "0xccF4429DB6322D5C611ee964527D42E5d685DD6a",
+          "name": "Compound Wrapped BTC",
+          "symbol": "cWBTC",
+          "decimals": 8,
+          "balanceRaw": "8681956829n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "type": "underlying",
+              "balanceRaw": "174311380n",
+              "balance": 1.7431138,
+              "price": 66753.34156996949,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
+            }
+          ],
+          "balance": 86.81956829
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "916151f92a42730108be44da26ef353c": {
+      "result": "0x000000000000000000000000000000000000000000000000000000025143cf1a"
+    },
+    "1f6fa9463ff23d55da20cac1a4107a31": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "8021d7b0bc380ce1ba02dde3abfcd895": {
+      "result": "0x00000000000000000000000000000000000000000000000000000002057c25dd"
+    },
+    "32015924d633c3b931b3541ddbfea065": {
+      "result": "0x000000000000000000000000000000000000000000a63677197c98fa17021924"
+    },
+    "ea15b40ba0a1190c58f8b74a7c3cd3a0": {
+      "result": "0x00000000000000000000000000000000000000000000000000475452df9ac07a"
+    },
+    "6e580c726c06bfe378caded03a2f65b8": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b5772617070656420425443000000000000000000000000000000000000000000"
+    },
+    "06fe1375f7f9d25d9e4ae9ed62d73273": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045742544300000000000000000000000000000000000000000000000000000000"
+    },
+    "acb85a8fd030fb44224d41c635432c05": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000008"
+    },
+    "ef1d9e75d76bcc64aa045d5f05ea0a03": {
+      "result": "0x0000000000000000000000000000000000000000000000060000000000003286000000000000000000000000000000000000000000000000000000582fb456370000000000000000000000000000000000000000000000000000000065e9a2070000000000000000000000000000000000000000000000000000000065e9a2070000000000000000000000000000000000000000000000060000000000003286"
+    },
+    "0fa8ae056bef2d80890d0ead44b8139f": {
+      "result": "0x00000000000000000000000000000000000000023978c4af5acb32b5cea81a35"
+    }
+  }
+}

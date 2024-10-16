@@ -1,0 +1,77 @@
+{
+  "aggregatedValues": ["USD1.64"],
+  "latency": "Latency: 0.332 seconds",
+  "snapshot": {
+    "protocolId": "morpho-aave-v3",
+    "name": "MorphoAaveV3",
+    "description": "MorphoAaveV3 DeFi adapter on the borrow side",
+    "siteUrl": "https://aavev3.morpho.org/",
+    "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+    "positionType": "borrow",
+    "chainId": 1,
+    "productId": "optimizer-borrow",
+    "chainName": "ethereum",
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8",
+          "name": "Aave Ethereum WETH",
+          "symbol": "aEthWETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            "name": "Wrapped Ether",
+            "symbol": "WETH",
+            "decimals": 18,
+            "balanceRaw": "645304542896973n",
+            "type": "underlying",
+            "price": 2542.80383827,
+            "balance": 0.000645304542896973
+          }
+        ],
+        "blockNumber": 19025683,
+        "transactionHash": "0xb7a653941d905d34ba4d0e147eafc1977e184958cbc381c204f35b5ab98c4727"
+      }
+    ]
+  },
+  "rpcResponses": {
+    "58e1950f9b5326649d249c11e8add409": {
+      "result": [
+        {
+          "address": "0x33333aea097c193e66081e930c33020272b33333",
+          "blockHash": "0x1abdefc2e9e2cad86ee9c638cf0d8a170996d89feb47777d9d250331b84df522",
+          "blockNumber": "0x1224f13",
+          "data": "0x00000000000000000000000000000000000000000000000000024ae6ac0d234d0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001edefdbc96c4ed",
+          "logIndex": "0xe2",
+          "removed": false,
+          "topics": [
+            "0x11adb3570ba55fd255b1f04252ca0071ae6639c86d4fd69e7c1bf1688afb493f",
+            "0x0000000000000000000000007f429edeff8afc7bb3a2cf7db832fc86f6fa99da",
+            "0x0000000000000000000000007f429edeff8afc7bb3a2cf7db832fc86f6fa99da",
+            "0x000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+          ],
+          "transactionHash": "0xb7a653941d905d34ba4d0e147eafc1977e184958cbc381c204f35b5ab98c4727",
+          "transactionIndex": "0x5f"
+        }
+      ]
+    },
+    "d09e88a7aff3519d51d5635ac74096b7": {
+      "result": []
+    },
+    "61783211b732979498a33287546ce819": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5772617070656420457468657200000000000000000000000000000000000000"
+    },
+    "3142d9d670d9f3bbe1f590ed10159c68": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045745544800000000000000000000000000000000000000000000000000000000"
+    },
+    "52a91a2f9ed1eef93397c798125fd3cd": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "0e85036ac2be5d2934e065643b34269e": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000029750000000000000000000000000000000000000000000000000000003b344abd530000000000000000000000000000000000000000000000000000000065a796070000000000000000000000000000000000000000000000000000000065a796070000000000000000000000000000000000000000000000060000000000002975"
+    }
+  }
+}

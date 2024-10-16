@@ -1,0 +1,344 @@
+{
+  "blockNumber": 19187227,
+  "latency": "Latency: 4.086 seconds",
+  "snapshot": [
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the supply side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "optimizer-supply",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+          "name": "Aave interest bearing USDC",
+          "symbol": "aUSDC",
+          "decimals": 6,
+          "type": "protocol",
+          "profit": -15078.312581355684,
+          "performance": -0.0030596289191265613,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 4928150.759426121,
+            "endPositionValue": 4913072.446844765
+          },
+          "rawValues": {
+            "rawEndPositionValues": [
+              {
+                "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+                "balance": 4919400.434189,
+                "balanceRaw": "4919400434189n",
+                "name": "Aave interest bearing USDC",
+                "symbol": "aUSDC",
+                "decimals": 6,
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balanceRaw": "4919400434189n",
+                    "type": "underlying",
+                    "balance": 4919400.434189,
+                    "price": 0.9987136669541563,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  }
+                ]
+              },
+              {
+                "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+                "balance": 1.218994,
+                "balanceRaw": "1218994n",
+                "name": "Aave interest bearing USDT",
+                "symbol": "aUSDT",
+                "decimals": 6,
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balanceRaw": "1218994n",
+                    "type": "underlying",
+                    "balance": 1.218994,
+                    "price": 0.9986580310121729,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ]
+              }
+            ],
+            "rawStartPositionValues": [
+              {
+                "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+                "balance": 4918501.512971,
+                "balanceRaw": "4918501512971n",
+                "name": "Aave interest bearing USDC",
+                "symbol": "aUSDC",
+                "decimals": 6,
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balanceRaw": "4918501512971n",
+                    "type": "underlying",
+                    "balance": 4918501.512971,
+                    "price": 1.0019618264688288,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  }
+                ]
+              },
+              {
+                "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+                "balance": 1.218824,
+                "balanceRaw": "1218824n",
+                "name": "Aave interest bearing USDT",
+                "symbol": "aUSDT",
+                "decimals": 6,
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balanceRaw": "1218824n",
+                    "type": "underlying",
+                    "balance": 1.218824,
+                    "price": 1.0018389750283287,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ]
+              }
+            ],
+            "rawWithdrawals": [],
+            "rawDeposits": [],
+            "rawRepays": [],
+            "rawBorrows": []
+          }
+        },
+        {
+          "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+          "name": "Aave interest bearing USDT",
+          "symbol": "aUSDT",
+          "decimals": 6,
+          "type": "protocol",
+          "profit": -0.003707239044275168,
+          "performance": -0.003036069226142919,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 1.221065386899928,
+            "endPositionValue": 1.2173581478556528
+          },
+          "rawValues": {
+            "rawEndPositionValues": [
+              {
+                "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+                "balance": 4919400.434189,
+                "balanceRaw": "4919400434189n",
+                "name": "Aave interest bearing USDC",
+                "symbol": "aUSDC",
+                "decimals": 6,
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balanceRaw": "4919400434189n",
+                    "type": "underlying",
+                    "balance": 4919400.434189,
+                    "price": 0.9987136669541563,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  }
+                ]
+              },
+              {
+                "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+                "balance": 1.218994,
+                "balanceRaw": "1218994n",
+                "name": "Aave interest bearing USDT",
+                "symbol": "aUSDT",
+                "decimals": 6,
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balanceRaw": "1218994n",
+                    "type": "underlying",
+                    "balance": 1.218994,
+                    "price": 0.9986580310121729,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ]
+              }
+            ],
+            "rawStartPositionValues": [
+              {
+                "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+                "balance": 4918501.512971,
+                "balanceRaw": "4918501512971n",
+                "name": "Aave interest bearing USDC",
+                "symbol": "aUSDC",
+                "decimals": 6,
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balanceRaw": "4918501512971n",
+                    "type": "underlying",
+                    "balance": 4918501.512971,
+                    "price": 1.0019618264688288,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  }
+                ]
+              },
+              {
+                "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+                "balance": 1.218824,
+                "balanceRaw": "1218824n",
+                "name": "Aave interest bearing USDT",
+                "symbol": "aUSDT",
+                "decimals": 6,
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balanceRaw": "1218824n",
+                    "type": "underlying",
+                    "balance": 1.218824,
+                    "price": 1.0018389750283287,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ]
+              }
+            ],
+            "rawWithdrawals": [],
+            "rawDeposits": [],
+            "rawRepays": [],
+            "rawBorrows": []
+          }
+        }
+      ],
+      "fromBlock": 19180081,
+      "toBlock": 19187227
+    }
+  ],
+  "rpcResponses": {
+    "95acca15b1a4f7ed98cb0f2e98377b19": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "68b55a445c6e01f1b914943f1c08e5bc": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "ed8f25e6375948718e17a2cfbedd21fe": {
+      "result": "0x000000000000000000000000000000000000000000000000000003f9d4af11280000000000000000000000000000000000000000000000000000007f8e6e78e500000000000000000000000000000000000000000000000000000479631d8a0d"
+    },
+    "2fd1eca4425c7562042fb2eedee95621": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000001299b2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001299b2"
+    },
+    "a26ac2825dfd56adaa48154b9abf0126": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "8d220b68613c53877b676b3c38fd281d": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "c860c76a680e66683a618c717b1d3248": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "1bf2eac736a40e5aac5192cf21b09cb3": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "cea7c3426c669e0d50dbe613a87acdbd": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "0deb120c0a6736ee1a9ac21feb686e5c": {
+      "result": "0x000000000000000000000000000000000000000000000000000003f9a43115220000000000000000000000000000000000000000000000000000007f895801e9000000000000000000000000000000000000000000000000000004792d89170b"
+    },
+    "6beee7607274e2b24d73a0744bda0934": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000012990800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000129908"
+    },
+    "98d9795570179006bdf2744d46d148fd": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "46f09620e466891615a6f415820ae367": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "bc5ea16abc6bac6ed2ea6ab1a6df553b": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "edac88f54a4e0bfbb63af436439a786e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000855534420436f696e000000000000000000000000000000000000000000000000"
+    },
+    "092d5af2b2884fa97e9381c15e7b7e12": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
+    },
+    "e9d846642c9d3de421ceb1c96b5fc79e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "bf1b903c0736701b426c1bb341a57628": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a5465746865722055534400000000000000000000000000000000000000000000"
+    },
+    "a573d348fef0220a864ce470e3a5a402": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553445400000000000000000000000000000000000000000000000000000000"
+    },
+    "4519c508c75b592c6abde2197270b07d": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "bd9172f91b90da0dd408aa0d3923b086": {
+      "result": "0x0000000000000000000000000000000000000000000000060000000000002cc2000000000000000000000000000000000000000000000000000000386a766bfc0000000000000000000000000000000000000000000000000000000065c577ef0000000000000000000000000000000000000000000000000000000065c577ef0000000000000000000000000000000000000000000000060000000000002cc2"
+    },
+    "c46ee94cf1c1b77e02877cfb8e1889d5": {
+      "result": "0x0000000000000000000000000000000000000000000000060000000000002ca300000000000000000000000000000000000000000000000000000038a2d746910000000000000000000000000000000000000000000000000000000065c4267b0000000000000000000000000000000000000000000000000000000065c4267b0000000000000000000000000000000000000000000000060000000000002ca3"
+    },
+    "9f46ec2e04f05b2893e2fd7190b9e18d": {
+      "result": "0x00000000000000000000000000000000000000000154f116e1b89a5b7f3166ce"
+    },
+    "86f767405066aec9b26bfc27ac46b055": {
+      "result": "0x00000000000000000000000000000000000000000154ec3a27446d0dc453b114"
+    },
+    "a29ca5b7e9534413ae3bab36998361fd": {
+      "result": "0x00000000000000000000000000000000000000000154b876aba103b86e17731a"
+    },
+    "ce2a1ef622ddf8479a63dd0f6a42473d": {
+      "result": "0x00000000000000000000000000000000000000000154adc4d5bde9c529dedc91"
+    },
+    "ae79a8af5231209a01d198fe3ed32b36": {
+      "result": []
+    },
+    "89b320acefe7e263b88eadb6aff352dc": {
+      "result": []
+    },
+    "6fb5aa144aa85491ba990eaf8fd89a77": {
+      "result": []
+    },
+    "d1a5680ad6b7fcee1ce94365a322d4bd": {
+      "result": []
+    }
+  }
+}

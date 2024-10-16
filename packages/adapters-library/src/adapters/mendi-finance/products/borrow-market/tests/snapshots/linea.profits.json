@@ -1,0 +1,168 @@
+{
+  "blockNumber": 1597881,
+  "latency": "Latency: 1.258 seconds",
+  "snapshot": [
+    {
+      "protocolId": "mendi-finance",
+      "name": "MendiFinance",
+      "description": "MendiFinance borrow adapter",
+      "siteUrl": "https://mendi.finance/:",
+      "iconUrl": "https://mendi.finance/mendi-token.svg",
+      "positionType": "borrow",
+      "chainId": 59144,
+      "productId": "borrow-market",
+      "chainName": "linea",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x9be5e24F05bBAfC28Da814bD59284878b388a40f",
+          "name": "Mendi Wrapped BTC",
+          "symbol": "meWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+                "name": "Wrapped BTC",
+                "symbol": "WBTC",
+                "decimals": 8,
+                "balanceRaw": "50201062n",
+                "type": "underlying"
+              },
+              {
+                "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+                "name": "Wrapped BTC",
+                "symbol": "WBTC",
+                "decimals": 8,
+                "balanceRaw": "50208513n",
+                "type": "underlying"
+              }
+            ]
+          }
+        },
+        {
+          "address": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
+          "name": "Mendi USD Coin",
+          "symbol": "meUSDC",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+                "name": "USDC",
+                "symbol": "USDC",
+                "decimals": 6,
+                "balanceRaw": "50076921310n",
+                "type": "underlying"
+              },
+              {
+                "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+                "name": "USDC",
+                "symbol": "USDC",
+                "decimals": 6,
+                "balanceRaw": "50080247370n",
+                "type": "underlying"
+              }
+            ]
+          }
+        },
+        {
+          "address": "0xf669C3C03D9fdF4339e19214A749E52616300E89",
+          "name": "Mendi USD Tether",
+          "symbol": "meUSDT",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+                "name": "Tether USD",
+                "symbol": "USDT",
+                "decimals": 6,
+                "balanceRaw": "57212196074n",
+                "type": "underlying"
+              },
+              {
+                "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+                "name": "Tether USD",
+                "symbol": "USDT",
+                "decimals": 6,
+                "balanceRaw": "57218674042n",
+                "type": "underlying"
+              }
+            ]
+          }
+        }
+      ],
+      "fromBlock": 1590694,
+      "toBlock": 1597881
+    }
+  ],
+  "rpcResponses": {
+    "97b18bbefc602ef7e475bd91d420cba5": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000040000000000000000000000009be5e24f05bbafc28da814bd59284878b388a40f000000000000000000000000333d8b480bdb25ea7be4dd87eeb359988ce1b30d000000000000000000000000ad7f33984bed10518012013d4ab0458d37fee6f3000000000000000000000000f669c3c03d9fdf4339e19214a749e52616300e89"
+    },
+    "101b0c74af7a262e74ac853b62c562c0": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000002fe1f01"
+    },
+    "1ad417faabb3b32db132c01d6f482798": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000ba903ee4a"
+    },
+    "7fcce73facd55c359bfbb76a30271759": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "4ddfa5c203cd9aebc68b19740f97be15": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000d527fad7a"
+    },
+    "5f3c9e7d764925308c1d4dc3bb5b66c6": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000002fe01e6"
+    },
+    "9985851516055bc48512d6e94dc0adff": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000ba8d12dde"
+    },
+    "422490cbc27d11b29190afb0bf7292c0": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "51494caa2579ccfff05cf861e4fc353b": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000d521cd4ea"
+    },
+    "f5ad7e38ca2aadb61d5584261770de18": {
+      "result": []
+    },
+    "bc8ded65bfdc82a31e096c9b34fecaa9": {
+      "result": []
+    },
+    "f72f8a1aa5958965167a3e4c4bbf6af1": {
+      "result": []
+    }
+  }
+}

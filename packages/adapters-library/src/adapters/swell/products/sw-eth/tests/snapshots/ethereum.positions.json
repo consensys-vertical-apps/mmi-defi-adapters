@@ -1,0 +1,54 @@
+{
+  "blockNumber": 18642232,
+  "latency": "Latency: 0.771 seconds",
+  "aggregatedValues": ["USD320,150.05"],
+  "snapshot": [
+    {
+      "protocolId": "swell",
+      "name": "Swell swETH",
+      "description": "Swell pool adapter",
+      "siteUrl": "https://app.swellnetwork.io/",
+      "iconUrl": "https://app.swellnetwork.io/logo.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "sw-eth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf951E335afb289353dc249e82926178EaC7DEd78",
+          "name": "Swell Ethereum",
+          "symbol": "SWETH",
+          "decimals": 18,
+          "balanceRaw": "145897464442693551980n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "152166344937197438373n",
+              "balance": 152.16634493719744,
+              "price": 2103.947794,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "balance": 145.89746444269355
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "203f07872453ee2ab6ed9ac84e2e0428": {
+      "result": "0x000000000000000000000000000000000000000000000007e8bbeae9a8ef076c"
+    },
+    "5479bbd85bd5a3099cca223988b90c79": {
+      "result": "0x0000000000000000000000000000000000000000000000000e795d9c1c823357"
+    },
+    "e5739e8c1f53642616981c8d45ff4c1a": {
+      "result": "0x000000000000000000000000000000000000000000000006000000000000200000000000000000000000000000000000000000000000000000000030fc818f08000000000000000000000000000000000000000000000000000000006560ab57000000000000000000000000000000000000000000000000000000006560ab570000000000000000000000000000000000000000000000060000000000002000"
+    }
+  }
+}

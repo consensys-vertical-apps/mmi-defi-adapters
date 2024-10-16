@@ -20,6 +20,7 @@
     "build-metadata-db": "npm run adapters-cli build-metadata-db --",
     "check-metadata-type": "npm run adapters-cli check-metadata-type --",
     "check-db-totals": "npm run adapters-cli check-db-totals --",
+    "check-bad-snapshots": "npm run adapters-cli check-bad-snapshots --",
     "build-types": "npm run adapters-cli build-types --",
     "new-adapter": "npm run adapters-cli new-adapter --",
     "build-snapshots": "npm run adapters-cli build-snapshots --",

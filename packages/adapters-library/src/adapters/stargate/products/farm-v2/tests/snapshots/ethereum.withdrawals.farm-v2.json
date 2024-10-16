@@ -1,0 +1,131 @@
+{
+  "aggregatedValues": ["USD22.23", "USD0.00"],
+  "latency": "Latency: 0.522 seconds",
+  "snapshot": {
+    "protocolId": "stargate",
+    "name": "Stargate Farm V2",
+    "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+    "siteUrl": "https://stargate.finance/",
+    "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+    "positionType": "stake",
+    "chainId": 1,
+    "productId": "farm-v2",
+    "chainName": "ethereum",
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0xfcb42A0e352a08AbD50b8EE68d01f581B6Dfd80A",
+          "name": "ETH-LP",
+          "symbol": "S*ETH",
+          "decimals": 18
+        },
+        "blockNumber": 20661895,
+        "transactionHash": "0x52069261183d3e64be7dbae388ea57ed2cc38e0fa34ad5c14bbef59b18aba37b",
+        "tokens": [
+          {
+            "address": "0xfcb42A0e352a08AbD50b8EE68d01f581B6Dfd80A",
+            "name": "ETH-LP",
+            "symbol": "S*ETH",
+            "decimals": 18,
+            "type": "underlying",
+            "blockNumber": 20661895,
+            "balanceRaw": "9000000000000000n",
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "9000000000000000n",
+                "balance": 0.009,
+                "price": 2470.34,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 0.009
+          }
+        ]
+      },
+      {
+        "protocolToken": {
+          "address": "0xfcb42A0e352a08AbD50b8EE68d01f581B6Dfd80A",
+          "name": "ETH-LP",
+          "symbol": "S*ETH",
+          "decimals": 18
+        },
+        "blockNumber": 20661895,
+        "transactionHash": "0x52069261183d3e64be7dbae388ea57ed2cc38e0fa34ad5c14bbef59b18aba37b",
+        "tokens": [
+          {
+            "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
+            "name": "StargateToken",
+            "symbol": "STG",
+            "decimals": 18,
+            "type": "underlying",
+            "blockNumber": 20661895,
+            "balanceRaw": "1573786114203981n",
+            "price": 0.2787105793227771,
+            "balance": 0.001573786114203981
+          }
+        ]
+      }
+    ]
+  },
+  "rpcResponses": {
+    "00f282b3b126691fb2ac5b46a730737e": {
+      "result": [
+        {
+          "address": "0xff551feddbedc0aee764139ccd9cb644bb04a6bd",
+          "blockHash": "0x9b40e800e8963b15a9b3d35ce859d6805fc2751389e8bdded91f7a5e34be8e3a",
+          "blockNumber": "0x13b4687",
+          "data": "0x000000000000000000000000000000000000000000000000001ff973cafa80000000000000000000000000000000000000000000000000000000000000000001",
+          "logIndex": "0xbc",
+          "removed": false,
+          "topics": [
+            "0x3b5f15635b488fe265654176726b3222080f3d6500a562f4664233b3ea2f0283",
+            "0x000000000000000000000000fcb42a0e352a08abd50b8ee68d01f581b6dfd80a",
+            "0x0000000000000000000000001ef1258341086d4a9566f797da15fcfdc92bb3b8",
+            "0x0000000000000000000000001ef1258341086d4a9566f797da15fcfdc92bb3b8"
+          ],
+          "transactionHash": "0x52069261183d3e64be7dbae388ea57ed2cc38e0fa34ad5c14bbef59b18aba37b",
+          "transactionIndex": "0x4f"
+        }
+      ]
+    },
+    "fd5249717952464822d437ae57f0e935": {
+      "result": [
+        {
+          "address": "0x5871a7f88b0f3f5143bf599fd45f8c0dc237e881",
+          "blockHash": "0x9b40e800e8963b15a9b3d35ce859d6805fc2751389e8bdded91f7a5e34be8e3a",
+          "blockNumber": "0x13b4687",
+          "data": "0x000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000001000000000000000000000000af5191b0de278c7286d6c7cc6ab6bb8a73ba2cd6000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000059759a24a214d",
+          "logIndex": "0xbd",
+          "removed": false,
+          "topics": [
+            "0xc53cb8bc1a7200a84d0b66a538905a245c4915aace7f1ce5dc4a0ba107ebc15c",
+            "0x0000000000000000000000001ef1258341086d4a9566f797da15fcfdc92bb3b8"
+          ],
+          "transactionHash": "0x52069261183d3e64be7dbae388ea57ed2cc38e0fa34ad5c14bbef59b18aba37b",
+          "transactionIndex": "0x4f"
+        }
+      ]
+    },
+    "0e52d7b9e3183300637a3122f14a7326": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5374617267617465546f6b656e00000000000000000000000000000000000000"
+    },
+    "809660d60c8e5a9dde2a90181531e177": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000035354470000000000000000000000000000000000000000000000000000000000"
+    },
+    "abbc0f52936a4241526d58af3b6530a2": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "111614d28c2640b7f94797e0e8dd469b": {
+      "result": "0x000000000000000000000000000000000000000000000006000000000000580800000000000000000000000000000000000000000000000000000039845fb2800000000000000000000000000000000000000000000000000000000066d57d930000000000000000000000000000000000000000000000000000000066d57d930000000000000000000000000000000000000000000000060000000000005808"
+    },
+    "ffc56a7705714c3b76877c21d0a237b3": {
+      "result": "0x0000000000000000000000000000000000000000000000000000669c98970452"
+    }
+  }
+}

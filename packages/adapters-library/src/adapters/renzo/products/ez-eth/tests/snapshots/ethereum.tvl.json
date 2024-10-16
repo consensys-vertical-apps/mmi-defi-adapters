@@ -1,0 +1,53 @@
+{
+  "latency": "Latency: 0.637 seconds",
+  "blockNumber": 20111277,
+  "snapshot": [
+    {
+      "protocolId": "renzo",
+      "name": "Renzo ezETH",
+      "description": "Renzo defi adapter for ezETH",
+      "siteUrl": "https://www.renzoprotocol.com/",
+      "iconUrl": "https://www.renzoprotocol.com/favicon.ico",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "ez-eth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+          "name": "Renzo Restaked ETH",
+          "symbol": "ezETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "1055968450139684274607990n",
+          "tokens": [
+            {
+              "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "1068802255239547326395011n",
+              "totalSupply": 1068802.2552395472,
+              "price": 3515.78125147,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "totalSupply": 1055968.4501396844
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "82619af42ca7bacc85fc72482fedb204": {
+      "result": "0x00000000000000000000000000000000000000000000df9c2a153169d3fe9776"
+    },
+    "bd5c88259279879ebb6f3c4e49b65a8e": {
+      "result": "0x0000000000000000000000000000000000000000000000000e0be4534931ca3b"
+    },
+    "1cf36bfb02446619a1fdc456bf28d6e3": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000047e600000000000000000000000000000000000000000000000000000051dbb0735b0000000000000000000000000000000000000000000000000000000066701627000000000000000000000000000000000000000000000000000000006670162700000000000000000000000000000000000000000000000600000000000047e6"
+    }
+  }
+}

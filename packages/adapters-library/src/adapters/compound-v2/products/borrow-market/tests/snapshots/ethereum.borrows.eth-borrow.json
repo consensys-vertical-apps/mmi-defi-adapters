@@ -1,0 +1,125 @@
+{
+  "latency": "Latency: 0.749 seconds",
+  "snapshot": {
+    "protocolId": "compound-v2",
+    "name": "CompoundV2",
+    "description": "CompoundV2 borrow market adapter",
+    "siteUrl": "https:",
+    "iconUrl": "https://",
+    "positionType": "borrow",
+    "chainId": 1,
+    "productId": "borrow-market",
+    "chainName": "ethereum",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x1041aed7c4f81213a924a9588c1715f82cec312f6fb076561f065b50643b8d95",
+        "protocolToken": {
+          "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
+          "name": "Compound Ether",
+          "symbol": "cETH",
+          "decimals": 8
+        },
+        "tokens": [
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "name": "Ethereum",
+            "symbol": "ETH",
+            "decimals": 18,
+            "balanceRaw": "150000000000000000000n",
+            "type": "underlying",
+            "blockNumber": 19380684,
+            "price": 3786.15,
+            "balance": 150
+          }
+        ],
+        "blockNumber": 19380684
+      }
+    ]
+  },
+  "aggregatedValues": ["USD567,922.50"],
+  "rpcResponses": {
+    "3282ae6aee7a484114bf4e1f72ae47e1": {
+      "result": [
+        {
+          "address": "0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b",
+          "blockHash": "0xf6d69e620a310cc1956da09bda928caf32bc99c05283a624cfc38f0925af3f4c",
+          "blockNumber": "0x127b9cc",
+          "data": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a9ae6cdb47a25fdd3d0a28716942a1",
+          "logIndex": "0xc0",
+          "removed": false,
+          "topics": [
+            "0x1fc3ecc087d8d2d15e23d0032af5a47059c3892d003d8e139fdcb6bb327c99a6",
+            "0x0000000000000000000000004ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+            "0x0000000000000000000000002178e1d614fefb2b304db58f07116d89f948fda1"
+          ],
+          "transactionHash": "0x1041aed7c4f81213a924a9588c1715f82cec312f6fb076561f065b50643b8d95",
+          "transactionIndex": "0x69"
+        }
+      ]
+    },
+    "a8fe74218051a7e9a551b48047d3ce09": {
+      "result": {
+        "blockHash": "0xf6d69e620a310cc1956da09bda928caf32bc99c05283a624cfc38f0925af3f4c",
+        "blockNumber": "0x127b9cc",
+        "contractAddress": null,
+        "cumulativeGasUsed": "0x792d78",
+        "effectiveGasPrice": "0xfca604350",
+        "from": "0x2178e1d614fefb2b304db58f07116d89f948fda1",
+        "gasUsed": "0x35748",
+        "logs": [
+          {
+            "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+            "blockHash": "0xf6d69e620a310cc1956da09bda928caf32bc99c05283a624cfc38f0925af3f4c",
+            "blockNumber": "0x127b9cc",
+            "data": "0x0000000000000000000000000000000000000000000000000021292e0ec8ef0b0000000000000000000000000000000000000000000000000fd4bccb2b6103d900000000000000000000000000000000000000000000009e8cba6c4391c125c1",
+            "logIndex": "0xbf",
+            "removed": false,
+            "topics": [
+              "0x875352fb3fadeb8c0be7cbbe8ff761b308fa7033470cd0287f02f3436fd76cb9"
+            ],
+            "transactionHash": "0x1041aed7c4f81213a924a9588c1715f82cec312f6fb076561f065b50643b8d95",
+            "transactionIndex": "0x69"
+          },
+          {
+            "address": "0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b",
+            "blockHash": "0xf6d69e620a310cc1956da09bda928caf32bc99c05283a624cfc38f0925af3f4c",
+            "blockNumber": "0x127b9cc",
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a9ae6cdb47a25fdd3d0a28716942a1",
+            "logIndex": "0xc0",
+            "removed": false,
+            "topics": [
+              "0x1fc3ecc087d8d2d15e23d0032af5a47059c3892d003d8e139fdcb6bb327c99a6",
+              "0x0000000000000000000000004ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+              "0x0000000000000000000000002178e1d614fefb2b304db58f07116d89f948fda1"
+            ],
+            "transactionHash": "0x1041aed7c4f81213a924a9588c1715f82cec312f6fb076561f065b50643b8d95",
+            "transactionIndex": "0x69"
+          },
+          {
+            "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+            "blockHash": "0xf6d69e620a310cc1956da09bda928caf32bc99c05283a624cfc38f0925af3f4c",
+            "blockNumber": "0x127b9cc",
+            "data": "0x0000000000000000000000002178e1d614fefb2b304db58f07116d89f948fda100000000000000000000000000000000000000000000000821ab0d441498000000000000000000000000000000000000000000000000000821ab0d44149800000000000000000000000000000000000000000000000000a6ae657987a65925c1",
+            "logIndex": "0xc1",
+            "removed": false,
+            "topics": [
+              "0x13ed6866d4e1ee6da46f845c46d7e54120883d75c5ea9a2dacc1c4ca8984ab80"
+            ],
+            "transactionHash": "0x1041aed7c4f81213a924a9588c1715f82cec312f6fb076561f065b50643b8d95",
+            "transactionIndex": "0x69"
+          }
+        ],
+        "logsBloom": "0x40000000200000000000000000000020000000000010000000000000000000000000000000008000000000001002004000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010002000000000000000000040000000000000000000000001000000000000000000000000000001000002000000000000000000800000200000000000000000000000000000000000000000001000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000004001000000000000000000004",
+        "status": "0x1",
+        "to": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+        "transactionHash": "0x1041aed7c4f81213a924a9588c1715f82cec312f6fb076561f065b50643b8d95",
+        "transactionIndex": "0x69",
+        "type": "0x2"
+      }
+    },
+    "4900143a417df2ea3c04d9849854ab4a": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000032730000000000000000000000000000000000000000000000000000005827366bc00000000000000000000000000000000000000000000000000000000065e936a30000000000000000000000000000000000000000000000000000000065e936a30000000000000000000000000000000000000000000000060000000000003273"
+    }
+  }
+}

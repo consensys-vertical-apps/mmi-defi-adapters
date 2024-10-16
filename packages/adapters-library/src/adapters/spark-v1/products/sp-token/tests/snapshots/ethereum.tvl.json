@@ -1,0 +1,117 @@
+{
+  "latency": "Latency: 0.399 seconds",
+  "blockNumber": 20112246,
+  "snapshot": [
+    {
+      "protocolId": "spark-v1",
+      "name": "SparkV1",
+      "description": "SparkV1 defi adapter",
+      "siteUrl": "https://spark.fi",
+      "iconUrl": "https://github.com/marsfoundation/spark-app/blob/main/packages/app/public/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "sp-token",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "name": "Spark WETH",
+          "address": "0x59cD1C87501baa753d0B5B5Ab5D8416A45cD71DB",
+          "symbol": "spWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "243133249923944625998155n",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "totalSupplyRaw": "88563368348047950177425n",
+              "type": "underlying",
+              "totalSupply": 88563.36834804795,
+              "price": 3526.96,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "totalSupply": 243133.24992394462
+        },
+        {
+          "name": "Spark wstETH",
+          "address": "0x12B54025C112Aa61fAce2CDB7118740875A566E9",
+          "symbol": "spwstETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "518540272499681259196516n",
+          "tokens": [
+            {
+              "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+              "name": "Wrapped liquid staked Ether 2.0",
+              "symbol": "wstETH",
+              "decimals": 18,
+              "totalSupplyRaw": "518492944686255490570005n",
+              "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                  "name": "Liquid staked Ether 2.0",
+                  "symbol": "stETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "totalSupplyRaw": "606673463745308430784010n",
+                  "tokens": [
+                    {
+                      "address": "0x0000000000000000000000000000000000000000",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "totalSupplyRaw": "606673463745308430784010n",
+                      "totalSupply": 606673.4637453085,
+                      "price": 3526.96,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
+                  "totalSupply": 606673.4637453085,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                }
+              ],
+              "totalSupply": 518492.9446862555,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
+            }
+          ],
+          "totalSupply": 518540.2724996813
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "9c8274cf0c6669fa067e962dee18e716": {
+      "result": "0x00000000000000000000000000000000000000000000337c47a6c6a92d20094b"
+    },
+    "956b9037eef167ef2a4703be35cbfef1": {
+      "result": "0x000000000000000000000000000000000000000000006dce1fdf1e59bd8c9064"
+    },
+    "661f92e2696e1248097be9dc1fac1aa4": {
+      "result": "0x0000000000000000000000000000000000000000000012c107a22bb6bfb36491"
+    },
+    "4784e30ac0347d8f7c23839f7f8bdcd0": {
+      "result": "0x000000000000000000000000000000000000000000006dcb8f10f2cb16a59715"
+    },
+    "61783211b732979498a33287546ce819": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5772617070656420457468657200000000000000000000000000000000000000"
+    },
+    "3142d9d670d9f3bbe1f590ed10159c68": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045745544800000000000000000000000000000000000000000000000000000000"
+    },
+    "52a91a2f9ed1eef93397c798125fd3cd": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "d447fc22a9a11533b1fe1b524da1a436": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000047ed000000000000000000000000000000000000000000000000000000521e51de000000000000000000000000000000000000000000000000000000000066704e730000000000000000000000000000000000000000000000000000000066704e7300000000000000000000000000000000000000000000000600000000000047ed"
+    },
+    "f6fb8aaaa59e9f4e5f65d3f459a6f1d9": {
+      "result": "0x000000000000000000000000000000000000000000000000103ced359949697d"
+    }
+  }
+}

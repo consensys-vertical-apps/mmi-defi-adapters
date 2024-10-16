@@ -1,0 +1,69 @@
+{
+  "latency": "Latency: 0.39 seconds",
+  "blockNumber": 8377125,
+  "snapshot": [
+    {
+      "protocolId": "chimp-exchange",
+      "name": "ChimpExchange",
+      "description": "ChimpExchange pool adapter",
+      "siteUrl": "https://app.chimp.exchange",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "pool",
+      "chainName": "linea",
+      "success": true,
+      "tokens": [
+        {
+          "name": "Chimp USDC-DAI-USDT Stable Pool",
+          "address": "0x90D8053f7E29FaAF5189BdcE796a516E29F1F5d3",
+          "symbol": "USDC-DAI-USDT",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "totalSupplyRaw": "1386304138n",
+              "type": "underlying",
+              "totalSupply": 1386.304138,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "totalSupplyRaw": "1277334512004014371395n",
+              "type": "underlying",
+              "totalSupply": 1277.3345120040144,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
+            },
+            {
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "totalSupplyRaw": "1304557619n",
+              "type": "underlying",
+              "totalSupply": 1304.557619,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "3706716469901839775314n",
+          "totalSupply": 3706.71646990184
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "b19ad953df14679c47f32e26be05f6f1": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000007b0e540000000000000000000000000000000000000000000000000000000000000004000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff0000000000000000000000004af15ec2a0bd43db75dd04e62faa3b8ef36b00d500000000000000000000000090d8053f7e29faaf5189bdce796a516e29f1f5d3000000000000000000000000a219439258ca9da29e9cc4ce5596924745e12b9300000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000052a1528a0000000000000000000000000000000000000000000000453e93cb0f323572430000000000000000000000000000000000007ffffffffff515d3fcd5fceb3400000000000000000000000000000000000000000000000000000000004dc1f833"
+    },
+    "ffca54a0b69dc806d4e59ea2ef4f3ab0": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000c8f1064e59a5133652"
+    }
+  }
+}

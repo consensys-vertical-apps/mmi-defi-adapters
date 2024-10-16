@@ -1,0 +1,66 @@
+{
+  "blockNumber": 19410813,
+  "latency": "Latency: 0.983 seconds",
+  "aggregatedValues": ["USD247,841.67"],
+  "snapshot": [
+    {
+      "protocolId": "angle-protocol",
+      "name": "AngleProtocol",
+      "description": "AngleProtocol defi adapter",
+      "siteUrl": "https://angle.money",
+      "iconUrl": "https://raw.githubusercontent.com/AngleProtocol/angle-assets/main/02%20-%20Logos/02%20-%20Logo%20Only/angle-only-fill-blue.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "savings",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x004626A008B1aCdC4c74ab51644093b155e59A23",
+          "name": "Staked EURA",
+          "symbol": "stEUR",
+          "decimals": 18,
+          "type": "protocol",
+          "balanceRaw": "222148088353651141086794n",
+          "tokens": [
+            {
+              "address": "0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8",
+              "name": "EURA (previously agEUR)",
+              "symbol": "EURA",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "226421642804526228805768n",
+              "balance": 226421.64280452623,
+              "price": 1.0946023838024783,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8/logo.png"
+            }
+          ],
+          "balance": 222148.08835365114
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "9da0ee989aea2eae2a34e29a82a5bbbd": {
+      "result": "0x000000000000000000000000000000000000000000002f0aac0836a14b6f8e4a"
+    },
+    "7bef95e89c83ef6f11c0b0d98aaa383c": {
+      "result": "0x000000000000000000000000000000000000000000002ff25783917066959888"
+    },
+    "a63a333c1762e087bb1f909f2827da0c": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001745555241202870726576696f75736c7920616745555229000000000000000000"
+    },
+    "0b6fa05d72a3845c906e2ebd82ae52b1": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000044555524100000000000000000000000000000000000000000000000000000000"
+    },
+    "a4f2867db523b91f5721bea416f7cb87": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "dfcb50818cb223343986fb1bf9e974c6": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000033480000000000000000000000000000000000000000000000000000005d638021ab0000000000000000000000000000000000000000000000000000000065eec6fb0000000000000000000000000000000000000000000000000000000065eec6fb0000000000000000000000000000000000000000000000060000000000003348"
+    },
+    "4556f36dd31429c1b654552a2ab37605": {
+      "result": "0x0000000000000000000000000000000000000000000000000000f8334e05f680"
+    }
+  }
+}

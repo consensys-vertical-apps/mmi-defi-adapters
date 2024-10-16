@@ -1,0 +1,77 @@
+{
+  "aggregatedValues": ["USD149,979.43"],
+  "latency": "Latency: 1.569 seconds",
+  "snapshot": {
+    "protocolId": "morpho-compound-v2",
+    "name": "MorphoCompoundV2",
+    "description": "MorphoCompoundV2 defi adapter on the borrow side",
+    "siteUrl": "https://compound.morpho.org/",
+    "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+    "positionType": "borrow",
+    "chainId": 1,
+    "productId": "optimizer-borrow",
+    "chainName": "ethereum",
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
+          "name": "Compound Dai",
+          "symbol": "cDAI",
+          "decimals": 8
+        },
+        "tokens": [
+          {
+            "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+            "name": "Dai Stablecoin",
+            "symbol": "DAI",
+            "decimals": 18,
+            "balanceRaw": "150026368804792743578597n",
+            "type": "underlying",
+            "price": 0.9996871223229131,
+            "balance": 150026.36880479276
+          }
+        ],
+        "blockNumber": 18761091,
+        "transactionHash": "0xa139db34dbe6c7de95235b50a710314f47ac86fb43290172dc4cfa29ade89c69"
+      }
+    ]
+  },
+  "rpcResponses": {
+    "c567579067a53917d23b254f09ddff20": {
+      "result": [
+        {
+          "address": "0x8888882f8f843896699869179fb6e4f7e3b58888",
+          "blockHash": "0xee98e7e7b9b7439ee7f9fb671f753c3f5b8d0460cbd4da759088e2ec04a3e1fc",
+          "blockNumber": "0x11e4583",
+          "data": "0x000000000000000000000000000000000000000000001fc4f21ca230b8d94be500000000000000000000000000000000000000000000000000025c13f67efcd40000000000000000000000000000000000000000000000000000000000000000",
+          "logIndex": "0x1a0",
+          "removed": false,
+          "topics": [
+            "0x11adb3570ba55fd255b1f04252ca0071ae6639c86d4fd69e7c1bf1688afb493f",
+            "0x000000000000000000000000c3fd2bcb524af31963b3e3bb670f28ba14718244",
+            "0x000000000000000000000000c3fd2bcb524af31963b3e3bb670f28ba14718244",
+            "0x0000000000000000000000005d3a536e4d6dbd6114cc1ead35777bab948e3643"
+          ],
+          "transactionHash": "0xa139db34dbe6c7de95235b50a710314f47ac86fb43290172dc4cfa29ade89c69",
+          "transactionIndex": "0x95"
+        }
+      ]
+    },
+    "a9b3aab5f8333322efecf9ac99d8c29c": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000e44616920537461626c65636f696e000000000000000000000000000000000000"
+    },
+    "d0514a085409fad02b77f27db7da90df": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000034441490000000000000000000000000000000000000000000000000000000000"
+    },
+    "52831d57ff0054e2d19574cf8a1deb2a": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "d5691e8f7324928653a9c2bafd6a1511": {
+      "result": "0x000000000000000000000000000000000000000000000006000000000000228d000000000000000000000000000000000000000000000000000000344bcc9c80000000000000000000000000000000000000000000000000000000006576a463000000000000000000000000000000000000000000000000000000006576a463000000000000000000000000000000000000000000000006000000000000228d"
+    },
+    "2d8e985153d52b3c0f60700850cd9023": {
+      "result": "0x000000000000000000000000000000000000000000000000000194cb87cb8c21"
+    }
+  }
+}

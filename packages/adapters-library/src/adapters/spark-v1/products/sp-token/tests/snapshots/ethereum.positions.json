@@ -1,0 +1,60 @@
+{
+  "blockNumber": 20112246,
+  "latency": "Latency: 0.847 seconds",
+  "aggregatedValues": ["USD239,349,702.78"],
+  "snapshot": [
+    {
+      "protocolId": "spark-v1",
+      "name": "SparkV1",
+      "description": "SparkV1 defi adapter",
+      "siteUrl": "https://spark.fi",
+      "iconUrl": "https://github.com/marsfoundation/spark-app/blob/main/packages/app/public/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "sp-token",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x59cD1C87501baa753d0B5B5Ab5D8416A45cD71DB",
+          "name": "Spark WETH",
+          "symbol": "spWETH",
+          "decimals": 18,
+          "balanceRaw": "67862891210720582963528n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "67862891210720582963528n",
+              "balance": 67862.89121072058,
+              "price": 3526.96,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "balance": 67862.89121072058
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "85aa0546c7e5fd385d08649c5bb23999": {
+      "result": "0x000000000000000000000000000000000000000000000e5edacde3249af61148"
+    },
+    "61783211b732979498a33287546ce819": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5772617070656420457468657200000000000000000000000000000000000000"
+    },
+    "3142d9d670d9f3bbe1f590ed10159c68": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045745544800000000000000000000000000000000000000000000000000000000"
+    },
+    "52a91a2f9ed1eef93397c798125fd3cd": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "d447fc22a9a11533b1fe1b524da1a436": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000047ed000000000000000000000000000000000000000000000000000000521e51de000000000000000000000000000000000000000000000000000000000066704e730000000000000000000000000000000000000000000000000000000066704e7300000000000000000000000000000000000000000000000600000000000047ed"
+    }
+  }
+}

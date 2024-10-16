@@ -1,0 +1,45 @@
+{
+  "latency": "Latency: 0.144 seconds",
+  "blockNumber": 19661887,
+  "snapshot": [
+    {
+      "name": "StakeWise",
+      "siteUrl": "https://app.stakewise.io/",
+      "iconUrl": "https://app.stakewise.io/osETH.svg",
+      "description": "StakeWise DeFi Adapter for osETH",
+      "positionType": "stake",
+      "protocolId": "stakewise",
+      "productId": "os-eth",
+      "chainId": 1,
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
+          "name": "Staked ETH",
+          "decimals": 18,
+          "symbol": "osETH",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "1013701417701048580n",
+              "underlyingRate": 1.0137014177010486,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "9f28246025faf34a50631ce3941335f2": {
+      "result": "0x0000000000000000000000000000000000000000000000000e1164118e618104"
+    }
+  }
+}

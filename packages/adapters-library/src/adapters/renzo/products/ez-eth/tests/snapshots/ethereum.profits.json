@@ -1,0 +1,81 @@
+{
+  "blockNumber": 20118663,
+  "latency": "Latency: 1.365 seconds",
+  "snapshot": [
+    {
+      "protocolId": "renzo",
+      "name": "Renzo ezETH",
+      "description": "Renzo defi adapter for ezETH",
+      "siteUrl": "https://www.renzoprotocol.com/",
+      "iconUrl": "https://www.renzoprotocol.com/favicon.ico",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "ez-eth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+          "name": "Renzo Restaked ETH",
+          "symbol": "ezETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -266853.9269013833,
+          "performance": -0.029978046741313415,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 8901644.900487328,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 8634790.973585945
+          }
+        }
+      ],
+      "fromBlock": 20068641,
+      "toBlock": 20118663
+    }
+  ],
+  "rpcResponses": {
+    "72e3d97cee93ced2dc3c75c3c4c72dcc": {
+      "result": "0x00000000000000000000000000000000000000000000008781023f88f12ce66f"
+    },
+    "abb24149d21552a51a9e704c21a864c2": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "5979ce9468c63e984c915cdd6cf70b68": {
+      "result": "0x0000000000000000000000000000000000000000000000000e0bf1abca67db28"
+    },
+    "556cd20dbbf9a17c88604a70e9f63886": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000048180000000000000000000000000000000000000000000000000000004f76a6eba60000000000000000000000000000000000000000000000000000000066717deb0000000000000000000000000000000000000000000000000000000066717deb0000000000000000000000000000000000000000000000060000000000004818"
+    },
+    "87e3d049ed6e67042a508545c62d8189": {
+      "result": []
+    },
+    "af2631948f4da5ba81856225fa5a5da4": {
+      "result": [
+        {
+          "address": "0xbf5495efe5db9ce00f80364c8b423567e58d2110",
+          "blockHash": "0xe9c56f1cf067f89219ea161726cb1a60ed8656e46fca1d68f0422c088df56e40",
+          "blockNumber": "0x132ddb3",
+          "data": "0x00000000000000000000000000000000000000000000008781023f88f12ce66f",
+          "logIndex": "0x274",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000755e68a80e668775af73175dc879b28bcc89871f",
+            "0x00000000000000000000000046896eb79d926712e1134fad5acbaaf53c1cbe74"
+          ],
+          "transactionHash": "0xa4fa9b1be0f6654e4ac668f35ccca948e59f29e8ff2feef733077f4b4499dddd",
+          "transactionIndex": "0xf9"
+        }
+      ]
+    },
+    "adf8af919489fdac130097b162f8f42d": {
+      "result": "0x0000000000000000000000000000000000000000000000000e0be3d489716208"
+    },
+    "5d4869c885f587b63ad3c6a87fb1c2d6": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000047e300000000000000000000000000000000000000000000000000000051eba59b900000000000000000000000000000000000000000000000000000000066700817000000000000000000000000000000000000000000000000000000006670081700000000000000000000000000000000000000000000000600000000000047e3"
+    }
+  }
+}

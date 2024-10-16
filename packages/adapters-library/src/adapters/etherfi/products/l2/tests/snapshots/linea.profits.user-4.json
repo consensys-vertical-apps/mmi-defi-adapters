@@ -1,0 +1,72 @@
+{
+  "blockNumber": 9527883,
+  "latency": "Latency: 0.367 seconds",
+  "snapshot": [
+    {
+      "protocolId": "etherfi",
+      "name": "EtherFi L2 Native Restaking",
+      "description": "EtherFi defi adapter for L2 Native Restaking",
+      "siteUrl": "https://app.ether.fi/",
+      "iconUrl": "https://app.ether.fi/favicon/favicon-32x32.png",
+      "positionType": "stake",
+      "chainId": 59144,
+      "productId": "l2",
+      "chainName": "linea",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+          "name": "Wrapped eETH",
+          "symbol": "weETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+                "name": "Wrapped eETH",
+                "symbol": "weETH",
+                "decimals": 18,
+                "balanceRaw": "50000000000000000000n",
+                "type": "protocol"
+              },
+              {
+                "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+                "name": "Wrapped eETH",
+                "symbol": "weETH",
+                "decimals": 18,
+                "balanceRaw": "50000000000000000000n",
+                "type": "protocol"
+              }
+            ]
+          }
+        }
+      ],
+      "fromBlock": 9312273,
+      "toBlock": 9527883
+    }
+  ],
+  "rpcResponses": {
+    "863e8ee3c8d1ea647523abeca136579e": {
+      "result": "0x000000000000000000000000000000000000000000000002b5e3af16b1880000"
+    },
+    "067b8e783e175e2f3000f535e47ae72b": {
+      "result": "0x000000000000000000000000000000000000000000000002b5e3af16b1880000"
+    },
+    "dbe0d15fd2f041443e53d18c0a61ed1a": {
+      "result": []
+    },
+    "e1c2313d4b2ec523d9cb3046c3ab7f36": {
+      "result": []
+    }
+  }
+}

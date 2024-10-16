@@ -1,0 +1,59 @@
+{
+  "latency": "Latency: 0.399 seconds",
+  "blockNumber": 8378969,
+  "snapshot": [
+    {
+      "protocolId": "xfai",
+      "name": "Xfai",
+      "description": "Xfai pool adapter",
+      "siteUrl": "https://xfai.com",
+      "iconUrl": "https://assets.xfai.com/favicon.png",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "dex",
+      "chainName": "linea",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xB694ce4c96fb60DB5ad8b25dfF567c59f7a49a4E",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "225191297460292n",
+          "tokens": [
+            {
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "0n",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "20176n",
+              "totalSupply": 2.0176e-14,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupply": 0.000225191297460292
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "09bd40d26b68ca6f36a32cb4ab3c1cb7": {
+      "result": "0x0000000000000000000000000000000000000000000000000000cccf6f4aa844"
+    },
+    "480a759f2423c0ec65ea9805baff4a69": {
+      "result": "0x00000000000000000000000000000000000000000000000000000002c6a1bc960000000000000000000000000000000000000000000000003f10c9d6debe4c75"
+    }
+  }
+}

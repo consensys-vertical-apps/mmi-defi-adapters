@@ -2,7 +2,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import partition from 'lodash/partition'
 import { parse, print, types, visit } from 'recast'
-import { lowerFirst } from '../../core/utils/caseConversion'
+import { lowerFirst, pascalCase } from '../../core/utils/caseConversion'
 import { writeAndLintFile } from '../../core/utils/writeAndLintFile'
 import { fileExists } from '../utils/fileExists'
 import { sortEntries } from '../utils/sortEntries'
@@ -22,13 +22,11 @@ export async function buildIntegrationTests({
   protocolKey: string
   productId: string
 }) {
-  const testCasesFilePath = `./packages/adapters-library/src/adapters/${protocolId}/tests/testCases.ts`
+  const testCasesFilePath = `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}/tests/testCases.ts`
 
-  if (await fileExists(testCasesFilePath)) {
-    return
+  if (!(await fileExists(testCasesFilePath))) {
+    await writeAndLintFile(testCasesFilePath, testCases(productId))
   }
-
-  await writeAndLintFile(testCasesFilePath, testCases(productId))
 
   const testsFile = path.resolve(
     './packages/adapters-library/src/adapters/integration.test.ts',
@@ -40,48 +38,28 @@ export async function buildIntegrationTests({
 
   visit(ast, {
     visitProgram(path) {
-      const programNode = path.value as n.Program
-
-      addTestCasesImport(programNode, protocolId, protocolKey)
+      const programNode = path.value
+      if (n.Program.check(programNode)) {
+        addTestCasesImport(programNode, protocolId, protocolKey, productId)
+      }
 
       this.traverse(path)
     },
     visitVariableDeclarator(path) {
       const node = path.node
-      if (!n.Identifier.check(node.id)) {
-        return false
-      }
 
       if (
-        node.id.name === 'protocolTestCases' &&
-        n.ObjectExpression.check(node.init)
-      ) {
-        if (
-          node.init.properties.some(
-            (property) =>
-              n.ObjectProperty.check(property) &&
-              n.MemberExpression.check(property.key) &&
-              n.Identifier.check(property.key.property) &&
-              property.key.property.name === protocolKey,
-          )
-        ) {
-          return false
-        }
-
-        const newEntry = b.objectProperty(
-          b.memberExpression(
-            b.identifier('Protocol'),
-            b.identifier(protocolKey),
-          ),
-          b.identifier(`${lowerFirst(protocolKey)}TestCases`),
+        n.Identifier.check(node.id) &&
+        node.id.name === 'allTestCases' &&
+        n.ObjectExpression.check(node.init) &&
+        node.init.properties.every((property) =>
+          n.ObjectProperty.check(property),
         )
-        newEntry.computed = true
-
-        node.init.properties.push(newEntry)
-
-        sortEntries(
-          node.init.properties,
-          (entry) => ((entry as n.ObjectProperty).value as n.Identifier).name,
+      ) {
+        addTestCasesEntry(
+          node.init.properties as n.ObjectProperty[],
+          protocolKey,
+          productId,
         )
       }
 
@@ -94,34 +72,119 @@ export async function buildIntegrationTests({
 
 /**
  * @description Adds a new entry to the imports for the test cases
- *
- * @param programNode AST node for the Protocol program
  */
 function addTestCasesImport(
   programNode: n.Program,
   protocolId: string,
   protocolKey: string,
+  productId: string,
 ) {
   const [importNodes, codeAfterImports] = partition(programNode.body, (node) =>
     n.ImportDeclaration.check(node),
   )
 
-  const newImportEntry = buildImportTestCasesEntry(protocolId, protocolKey)
+  if (
+    importNodes.some(
+      (node) =>
+        (node as n.ImportDeclaration).source.value ===
+        `./${protocolId}/products/${productId}/tests/testCases`,
+    )
+  ) {
+    return
+  }
 
-  programNode.body = [...importNodes, newImportEntry, ...codeAfterImports]
+  const newImportEntry = buildImportTestCasesEntry(
+    protocolId,
+    protocolKey,
+    productId,
+  )
+
+  programNode.body = [newImportEntry, ...importNodes, ...codeAfterImports]
 }
 
-/*
-  import { testCases as <protocolId>TestCases } from './<protocolId>/tests/testCases'
-  */
-function buildImportTestCasesEntry(protocolId: string, protocolKey: string) {
+// import { testCases as <protocolId><protocolId>TestCases } from './<protocolId>/products/<productId>/tests/testCases'
+function buildImportTestCasesEntry(
+  protocolId: string,
+  protocolKey: string,
+  productId: string,
+) {
   return b.importDeclaration(
     [
       b.importSpecifier(
         b.identifier('testCases'),
-        b.identifier(`${lowerFirst(protocolKey)}TestCases`),
+        productTestCaseIdentifier(protocolKey, productId),
       ),
     ],
-    b.literal(`./${protocolId}/tests/testCases`),
+    b.literal(`./${protocolId}/products/${productId}/tests/testCases`),
+  )
+}
+
+/**
+ * @description Adds a new entry to the allTestCases object
+ */
+function addTestCasesEntry(
+  protocolEntries: n.ObjectProperty[],
+  protocolKey: string,
+  productId: string,
+) {
+  if (
+    !protocolEntries.some(
+      (property) =>
+        n.ObjectProperty.check(property) &&
+        n.MemberExpression.check(property.key) &&
+        n.Identifier.check(property.key.property) &&
+        property.key.property.name === protocolKey,
+    )
+  ) {
+    // [Protocol.<ProtocolKey>]: {}
+    const newProtocolEntry = b.objectProperty(
+      b.memberExpression(b.identifier('Protocol'), b.identifier(protocolKey)),
+      b.objectExpression([]),
+    )
+    newProtocolEntry.computed = true
+
+    protocolEntries.push(newProtocolEntry)
+
+    sortEntries(
+      protocolEntries,
+      (entry) =>
+        ((entry.key as n.MemberExpression).property as n.Identifier).name,
+    )
+  }
+
+  const productEntries = (
+    protocolEntries.find(
+      (property) =>
+        n.ObjectProperty.check(property) &&
+        n.MemberExpression.check(property.key) &&
+        n.Identifier.check(property.key.property) &&
+        property.key.property.name === protocolKey,
+    )!.value as n.ObjectExpression
+  ).properties as n.ObjectProperty[]
+
+  if (
+    productEntries.some(
+      (property) => (property.key as n.Literal).value === productId,
+    )
+  ) {
+    return
+  }
+
+  const newProductEntry = b.objectProperty(
+    b.literal(productId),
+    productTestCaseIdentifier(protocolKey, productId),
+  )
+  newProductEntry.computed = true
+  productEntries.push(newProductEntry)
+
+  sortEntries(
+    productEntries,
+    (entry) => ((entry as n.ObjectProperty).value as n.Identifier).name,
+  )
+}
+
+function productTestCaseIdentifier(protocolKey: string, productId: string) {
+  return b.identifier(
+    `${lowerFirst(protocolKey)}${pascalCase(productId)}TestCases`,
   )
 }

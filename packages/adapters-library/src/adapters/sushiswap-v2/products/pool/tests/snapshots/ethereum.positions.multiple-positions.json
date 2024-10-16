@@ -1,0 +1,197 @@
+{
+  "blockNumber": 19326319,
+  "latency": "Latency: 2.763 seconds",
+  "aggregatedValues": ["USD15,711.10", "USD389.34", "USD22,765.04"],
+  "snapshot": [
+    {
+      "protocolId": "sushiswap-v2",
+      "name": "SushiswapV2",
+      "description": "SushiswapV2 pool adapter",
+      "siteUrl": "https://www.sushi.com/pool",
+      "iconUrl": "https://cryptologos.cc/logos/sushiswap-sushi-logo.svg",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+          "name": "Sushiswap V2 USDC / WETH",
+          "symbol": "SUSHI-V2/USDC/WETH",
+          "decimals": 18,
+          "balanceRaw": "75627703759563n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "7819533237n",
+              "balance": 7819.533237,
+              "price": 1.0066860902991404,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            },
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "2336101889433410215n",
+              "balance": 2.3361018894334102,
+              "price": 3355.71,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "balance": 0.000075627703759563
+        },
+        {
+          "address": "0x795065dCc9f64b5614C407a6EFDC400DA6221FB0",
+          "name": "Sushiswap V2 SUSHI / WETH",
+          "symbol": "SUSHI-V2/SUSHI/WETH",
+          "decimals": 18,
+          "balanceRaw": "1843730290034892330n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
+              "name": "SushiToken",
+              "symbol": "SUSHI",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "124439973794922842828n",
+              "balance": 124.43997379492285,
+              "price": 1.5649832990385413,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png"
+            },
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "57987946151755821n",
+              "balance": 0.05798794615175582,
+              "price": 3355.71,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "balance": 1.8437302900348924
+        },
+        {
+          "address": "0x06da0fd433C1A5d7a4faa01111c044910A184553",
+          "name": "Sushiswap V2 WETH / USDT",
+          "symbol": "SUSHI-V2/WETH/USDT",
+          "decimals": 18,
+          "balanceRaw": "113684365735485n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "3398589613624984224n",
+              "balance": 3.398589613624984,
+              "price": 3355.71,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "11330517435n",
+              "balance": 11330.517435,
+              "price": 1.002634076206428,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "balance": 0.000113684365735485
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "521df1c67b5ff60526724af3c3abfce6": {
+      "result": "0x000000000000000000000000000000000000000000000000000044c8726af2cb"
+    },
+    "4b34b55b1cd61c1bc74df8c0f7b5b4da": {
+      "result": "0x00000000000000000000000000000000000000000000000019963eee27285e2a"
+    },
+    "d968473da4fbcaac09c467dd3bbd40a2": {
+      "result": "0x00000000000000000000000000000000000000000000000000006765343c763d"
+    },
+    "1b5d1dff9445bf96ef8fca7657d7ccee": {
+      "result": "0x00000000000000000000000000000000000000000000000000fac7bbbb0bfcea"
+    },
+    "c104d337e244005d14cfa4be8d50ea2a": {
+      "result": "0x000000000000000000000000000000000000000000000000000006a34fda49b800000000000000000000000000000000000000000000007633ab069434e0d6a10000000000000000000000000000000000000000000000000000000065df3473"
+    },
+    "c4fb8660fe986a3edbd89bdea164847c": {
+      "result": "0x00000000000000000000000000000000000000000000073db15e75c846a9362a"
+    },
+    "189c1d794569a0462cbb279b4fb733c6": {
+      "result": "0x00000000000000000000000000000000000000000001e8b861ef41340dc7389500000000000000000000000000000000000000000000003a4d20de73163280da0000000000000000000000000000000000000000000000000000000065df30a7"
+    },
+    "762544bb31e5f92d79245f665c79adfc": {
+      "result": "0x000000000000000000000000000000000000000000000000004c718d256de429"
+    },
+    "bf24c8aa2c3c68fb200d1ec39b550686": {
+      "result": "0x000000000000000000000000000000000000000000000022dedd330bba635d47000000000000000000000000000000000000000000000000000001f34f3bd25e0000000000000000000000000000000000000000000000000000000065df3497"
+    },
+    "edac88f54a4e0bfbb63af436439a786e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000855534420436f696e000000000000000000000000000000000000000000000000"
+    },
+    "092d5af2b2884fa97e9381c15e7b7e12": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
+    },
+    "e9d846642c9d3de421ceb1c96b5fc79e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "61783211b732979498a33287546ce819": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5772617070656420457468657200000000000000000000000000000000000000"
+    },
+    "3142d9d670d9f3bbe1f590ed10159c68": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045745544800000000000000000000000000000000000000000000000000000000"
+    },
+    "52a91a2f9ed1eef93397c798125fd3cd": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "7d66f63d2db7e094bff495fb7f9ab99b": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a5375736869546f6b656e00000000000000000000000000000000000000000000"
+    },
+    "0d5ffbeb1fd640d46a2db769725fe9d6": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000055355534849000000000000000000000000000000000000000000000000000000"
+    },
+    "cb5374bdad31bf65486aab1252903637": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "bf1b903c0736701b426c1bb341a57628": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a5465746865722055534400000000000000000000000000000000000000000000"
+    },
+    "a573d348fef0220a864ce470e3a5a402": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553445400000000000000000000000000000000000000000000000000000000"
+    },
+    "4519c508c75b592c6abde2197270b07d": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "254c97519eea8b8ef3fb4e3183f99eeb": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000030430000000000000000000000000000000000000000000000000000004e21971ac00000000000000000000000000000000000000000000000000000000065df345b0000000000000000000000000000000000000000000000000000000065df345b0000000000000000000000000000000000000000000000060000000000003043"
+    },
+    "e6b63a8b4aaab638edafca161f68e800": {
+      "result": "0x000000000000000000000000000000000000000000f825c5df4763ee2e83f2a0"
+    },
+    "605d8d209a00a67169ec6e57c55ca37a": {
+      "result": "0x0000000000000000000000000000000000000000000000000001a827e59e4af9"
+    },
+    "c764bbbed0ff40fce2d4532edaedff96": {
+      "result": "0x000000000000000000000000000000000000000000f7261342350cb006272390"
+    }
+  }
+}
