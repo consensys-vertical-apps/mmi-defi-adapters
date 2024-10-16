@@ -1,4 +1,4 @@
-import { ProtocolPosition } from '../../types/adapter'
+import { TokenBalanceWithUnderlyings } from '../../types/adapter'
 import { Chain } from '../constants/chains'
 
 /**
@@ -55,8 +55,8 @@ export interface ApyCalculator {
 }
 
 export type GetApyArgs = {
-  protocolTokenStart: ProtocolPosition
-  protocolTokenEnd: ProtocolPosition
+  protocolTokenStart: TokenBalanceWithUnderlyings
+  protocolTokenEnd: TokenBalanceWithUnderlyings
   blocknumberStart: number
   blocknumberEnd: number
   protocolTokenAddress: string

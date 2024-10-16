@@ -5,7 +5,7 @@ import { Chain } from './core/constants/chains'
 import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
 import {
   MovementsByBlock,
-  TokenBalance,
+  TokenBalanceWithUnderlyings,
   TokenTvl,
   TokenType,
   Underlying,
@@ -20,9 +20,8 @@ import {
 } from './types/response'
 
 export function enrichPositionBalance<
-  PositionBalance extends TokenBalance & {
+  PositionBalance extends TokenBalanceWithUnderlyings & {
     type: TokenType
-    tokens?: Underlying[]
     priceRaw?: bigint
   },
 >(balance: PositionBalance, chainId: Chain): DisplayPosition<PositionBalance> {
@@ -89,35 +88,31 @@ export function enrichMovements(
   return {
     ...movementsByBlock,
 
-    tokens: movementsByBlock.tokens.reduce(
-      (accumulator, token) => {
-        return [
-          ...accumulator,
-          {
-            ...token,
-            price:
-              token.priceRaw || token.priceRaw === 0n
-                ? +formatUnits(
-                    token.priceRaw,
-                    priceAdapterConfig[
-                      chainId as keyof typeof priceAdapterConfig
-                    ].decimals,
-                  )
-                : undefined,
-            priceRaw: undefined,
-            balance: +formatUnits(token.balanceRaw, token.decimals),
-            ...(token.tokens
-              ? {
-                  tokens: token.tokens?.map((underlyingBalance) =>
-                    enrichPositionBalance(underlyingBalance, chainId),
-                  ),
-                }
-              : {}),
-          },
-        ]
-      },
-      [] as (Underlying & { balance: number })[],
-    ),
+    tokens: movementsByBlock.tokens.reduce((accumulator, token) => {
+      return [
+        ...accumulator,
+        {
+          ...token,
+          price:
+            token.priceRaw || token.priceRaw === 0n
+              ? +formatUnits(
+                  token.priceRaw,
+                  priceAdapterConfig[chainId as keyof typeof priceAdapterConfig]
+                    .decimals,
+                )
+              : undefined,
+          priceRaw: undefined,
+          balance: +formatUnits(token.balanceRaw, token.decimals),
+          ...(token.tokens
+            ? {
+                tokens: token.tokens?.map((underlyingBalance) =>
+                  enrichPositionBalance(underlyingBalance, chainId),
+                ),
+              }
+            : {}),
+        },
+      ]
+    }, [] as (Underlying & { balance: number })[]),
   }
 }
 
