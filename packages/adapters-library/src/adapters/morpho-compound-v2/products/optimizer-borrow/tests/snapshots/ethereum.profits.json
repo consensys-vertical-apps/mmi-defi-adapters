@@ -1,6 +1,6 @@
 {
   "blockNumber": 18802920,
-  "latency": "Latency: 1.646 seconds",
+  "latency": "Latency: 2.268 seconds",
   "snapshot": [
     {
       "protocolId": "morpho-compound-v2",
@@ -22,6 +22,22 @@
           "type": "protocol",
           "profit": 582.1297895496318,
           "performance": 0.011194010249271637,
+          "apyInfo": {
+            "apyPercent": 2.4985988441924345,
+            "apy": 0.024985988441924345,
+            "aprPercent": 2.467977701837072,
+            "apr": 0.024679777018370718,
+            "period": {
+              "blocknumberStart": 18795774,
+              "blocknumberEnd": 18802920,
+              "interestPercent": 0.0067615827447591,
+              "interest": 0.000067615827447591
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,

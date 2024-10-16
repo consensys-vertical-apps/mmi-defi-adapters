@@ -1,6 +1,6 @@
 {
   "blockNumber": 18802920,
-  "latency": "Latency: 6.282 seconds",
+  "latency": "Latency: 6.751 seconds",
   "snapshot": [
     {
       "protocolId": "morpho-compound-v2",
@@ -22,6 +22,22 @@
           "type": "protocol",
           "profit": -332.9285246650106,
           "performance": -0.0022152467582337325,
+          "apyInfo": {
+            "apyPercent": 4.390206441117495,
+            "apy": 0.043902064411174946,
+            "aprPercent": 4.296820595895278,
+            "apr": 0.04296820595895279,
+            "period": {
+              "blocknumberStart": 18795774,
+              "blocknumberEnd": 18802920,
+              "interestPercent": 0.011772111221630901,
+              "interest": 0.000117721112216309
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
@@ -137,6 +153,22 @@
           "type": "protocol",
           "profit": -368.1619430095452,
           "performance": -0.0032765392255463687,
+          "apyInfo": {
+            "apyPercent": 0.007631448861644685,
+            "apy": 0.00007631448861644685,
+            "aprPercent": 0.0076311584830115,
+            "apr": 0.000076311584830115,
+            "period": {
+              "blocknumberStart": 18795774,
+              "blocknumberEnd": 18802920,
+              "interestPercent": 0.0000209072835151,
+              "interest": 2.09072835151e-7
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
