@@ -20,6 +20,7 @@ import {
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { getInvalidAddresses } from './addressValidation'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
+import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
 
 export function buildMetadataDb(
   program: Command,
@@ -146,6 +147,31 @@ async function buildAdapterMetadata(adapter: IProtocolAdapter) {
       chalk.green(
         '\n * Please ensure that addresses are in checksum format by wrapping them with getAddress from the ethers package.',
       ),
+    )
+    console.error(
+      chalk.green(
+        '\n * Please checksum your addresses inside the buildMetadata() method.',
+      ),
+    )
+    return
+  }
+
+  const invalidPoolAddress = metadataDetails.find((pool) => {
+    if (pool.address === ZERO_ADDRESS) {
+      return true
+    }
+  })
+
+  if (invalidPoolAddress) {
+    console.error(chalk.yellow(ZERO_ADDRESS))
+
+    console.error(
+      chalk.red(
+        '\n * The above addresses found in the metadata file cannot be a pool address.',
+      ),
+    )
+    console.error(
+      chalk.green('\n * Please ensure that address pool address is correct'),
     )
     console.error(
       chalk.green(
