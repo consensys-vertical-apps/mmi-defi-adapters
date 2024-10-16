@@ -1,0 +1,80 @@
+{
+  "blockNumber": 10441623,
+  "latency": "Latency: 0.538 seconds",
+  "aggregatedValues": [],
+  "snapshot": [
+    {
+      "protocolId": "mendi-finance",
+      "name": "MendiFinance",
+      "description": "MendiFinance supply adapter",
+      "siteUrl": "https://mendi.finance/:",
+      "iconUrl": "https://mendi.finance/mendi-token.svg",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "supply-market",
+      "chainName": "linea",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf669C3C03D9fdF4339e19214A749E52616300E89",
+          "name": "Mendi USD Tether",
+          "symbol": "meUSDT",
+          "decimals": 8,
+          "balanceRaw": "501952199598n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "108416655n",
+              "balance": 108.416655,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            }
+          ],
+          "balance": 5019.52199598
+        },
+        {
+          "address": "0xAd7f33984bed10518012013D4aB0458D37FEE6F3",
+          "name": "Mendi Wrapped Ether",
+          "symbol": "meWETH",
+          "decimals": 8,
+          "balanceRaw": "7067776824n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "1500002469094071529n",
+              "balance": 1.5000024690940714,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "balance": 70.67776824
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "6e6e3ec704be89cb04628b6e6a51df11": {
+      "result": "0x00000000000000000000000000000000000000000000000000000074deaebbae"
+    },
+    "692efd5511ac69535c2108d427f03137": {
+      "result": "0x00000000000000000000000000000000000000000000000000000001a545b738"
+    },
+    "8b56af249e289a7b42e06ac03ad9854e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "2942c4c5332a5d699514a6ead76a5117": {
+      "result": "0x0000000000000000000000000000000000000000000000000000c4720b938be4"
+    },
+    "af3be61cdf5de107e2961511c8f56f14": {
+      "result": "0x000000000000000000000000000000000000000000af8db2331867c743e7764a"
+    }
+  }
+}

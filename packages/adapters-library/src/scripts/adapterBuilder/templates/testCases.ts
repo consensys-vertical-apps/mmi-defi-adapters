@@ -1,9 +1,9 @@
 export function testCases(productId: string) {
   return `
-import { Chain } from '../../../core/constants/chains'
-import { TimePeriod } from '../../../core/constants/timePeriod'
-import type { TestCase } from '../../../types/testCase'
-import { WriteActions } from '../../../types/writeActions'
+import { Chain } from '../../../../../core/constants/chains'
+import { TimePeriod } from '../../../../../core/constants/timePeriod'
+import type { TestCase } from '../../../../../types/testCase'
+import { WriteActions } from '../../../../../types/writeActions'
 
 export const testCases: TestCase[] = [
   // {

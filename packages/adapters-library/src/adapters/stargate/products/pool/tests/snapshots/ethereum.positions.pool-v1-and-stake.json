@@ -1,0 +1,66 @@
+{
+  "blockNumber": 18163124,
+  "latency": "Latency: 1.826 seconds",
+  "aggregatedValues": ["USD31,574.58"],
+  "snapshot": [
+    {
+      "protocolId": "stargate",
+      "name": "Stargate Liquidity Pools",
+      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+      "siteUrl": "https://stargate.finance/",
+      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6,
+          "balanceRaw": "31468548033n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "31492401192n",
+              "balance": 31492.401192,
+              "price": 1.0026095273277462,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
+          "balance": 31468.548033
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "fe5f6246e4734bb1bcb7531ef4dd980a": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000753abefc1"
+    },
+    "8bd8929913dff0ca890138e0dd86377b": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000f4536"
+    },
+    "edac88f54a4e0bfbb63af436439a786e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000855534420436f696e000000000000000000000000000000000000000000000000"
+    },
+    "092d5af2b2884fa97e9381c15e7b7e12": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
+    },
+    "e9d846642c9d3de421ceb1c96b5fc79e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "fcbcd9949040b93ce6197990667defed": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000015ef00000000000000000000000000000000000000000000000000000026c727518000000000000000000000000000000000000000000000000000000000650848c700000000000000000000000000000000000000000000000000000000650848c700000000000000000000000000000000000000000000000600000000000015ef"
+    },
+    "16a82717a49cb810d26c27a0b165f88e": {
+      "result": "0x000000000000000000000000000000000000000001f1f3ba7b255ee8ec60e34e"
+    }
+  }
+}

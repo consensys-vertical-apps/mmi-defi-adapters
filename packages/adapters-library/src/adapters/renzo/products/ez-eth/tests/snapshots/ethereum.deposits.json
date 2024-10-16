@@ -1,0 +1,80 @@
+{
+  "aggregatedValues": ["USD544.89"],
+  "latency": "Latency: 0.615 seconds",
+  "snapshot": {
+    "protocolId": "renzo",
+    "name": "Renzo ezETH",
+    "description": "Renzo defi adapter for ezETH",
+    "siteUrl": "https://www.renzoprotocol.com/",
+    "iconUrl": "https://www.renzoprotocol.com/favicon.ico",
+    "positionType": "stake",
+    "chainId": 1,
+    "productId": "ez-eth",
+    "chainName": "ethereum",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x4771ea9eee1fe63b5702371cccf767c44b9630bc0b61b9a8aeb9935448835cc6",
+        "protocolToken": {
+          "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+          "name": "Renzo Restaked ETH",
+          "symbol": "ezETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+            "name": "Renzo Restaked ETH",
+            "symbol": "ezETH",
+            "decimals": 18,
+            "balanceRaw": "156100995664536937n",
+            "type": "underlying",
+            "blockNumber": 20117433,
+            "tokens": [
+              {
+                "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "157999999999999999n",
+                "balance": 0.158,
+                "price": 3448.6757,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 0.15610099566453695
+          }
+        ],
+        "blockNumber": 20117433
+      }
+    ]
+  },
+  "rpcResponses": {
+    "decbc8e4d11f201e0d3f824d880659a4": {
+      "result": [
+        {
+          "address": "0xbf5495efe5db9ce00f80364c8b423567e58d2110",
+          "blockHash": "0x84f9945ee054aa98f26e499a029a3c206dcbf0d64dec6d18774714462b44b6b4",
+          "blockNumber": "0x132f7b9",
+          "data": "0x000000000000000000000000000000000000000000000000022a95074bab6569",
+          "logIndex": "0x61",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x000000000000000000000000755aebfbad32586cfefb0fc9619c6ed4a321cd15"
+          ],
+          "transactionHash": "0x4771ea9eee1fe63b5702371cccf767c44b9630bc0b61b9a8aeb9935448835cc6",
+          "transactionIndex": "0x19"
+        }
+      ]
+    },
+    "a677e1bd6fa1bccffe708d0be5029c8c": {
+      "result": "0x0000000000000000000000000000000000000000000000000e0beee9b769722f"
+    },
+    "89d922f19527477b49304b42d468296e": {
+      "result": "0x000000000000000000000000000000000000000000000006000000000000480f000000000000000000000000000000000000000000000000000000504bb5815000000000000000000000000000000000000000000000000000000000667136e700000000000000000000000000000000000000000000000000000000667136e7000000000000000000000000000000000000000000000006000000000000480f"
+    }
+  }
+}

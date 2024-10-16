@@ -1,0 +1,53 @@
+{
+  "latency": "Latency: 0.327 seconds",
+  "blockNumber": 19661884,
+  "snapshot": [
+    {
+      "protocolId": "lido",
+      "name": "Lido stEth",
+      "description": "Lido defi adapter for stEth",
+      "siteUrl": "https://stake.lido.fi/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "st-eth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "name": "Liquid staked Ether 2.0",
+          "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+          "symbol": "stETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "9391867043243646285936132n",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "7177864073643285936132n",
+              "type": "underlying",
+              "totalSupply": 7177.864073643286,
+              "price": 3148.07,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "totalSupply": 9391867.043243647
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "db6d866533322d59a338e18c2b1ee489": {
+      "result": "0x1851cdfe1065a59f804"
+    },
+    "b7486872f71f7e2d4944d62dba789c4b": {
+      "result": "0x00000000000000000000000000000000000000000007c4ce21f201df96b67604"
+    },
+    "4b61193a3a5b913ddfecd8a95b756749": {
+      "result": "0x0000000000000000000000000000000000000000000000060000000000003c47000000000000000000000000000000000000000000000000000000494bf59bc000000000000000000000000000000000000000000000000000000000661d451b00000000000000000000000000000000000000000000000000000000661d451b0000000000000000000000000000000000000000000000060000000000003c47"
+    }
+  }
+}

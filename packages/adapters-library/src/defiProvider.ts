@@ -118,6 +118,7 @@ export class DefiProvider {
   async getPositions({
     userAddress,
     filterProtocolIds,
+    filterProductIds,
     filterChainIds,
     blockNumbers,
     filterProtocolTokens,
@@ -125,6 +126,7 @@ export class DefiProvider {
   }: {
     userAddress: string
     filterProtocolIds?: Protocol[]
+    filterProductIds?: string[]
     filterChainIds?: Chain[]
     blockNumbers?: Partial<Record<Chain, number>>
     filterProtocolTokens?: string[]
@@ -226,6 +228,7 @@ export class DefiProvider {
       await this.runForAllProtocolsAndChains({
         runner,
         filterProtocolIds,
+        filterProductIds,
         filterChainIds,
         method: 'getPositions',
       })
@@ -238,6 +241,9 @@ export class DefiProvider {
 
     logger.info({
       source: 'positions',
+      successfulResponses: result.filter((r) => r.success).length,
+      failedResponses: result.filter((r) => !r.success).length,
+      totalResponses: result.length,
       startTime: startGetPositions,
       endTime: endGetPositions,
       timeTaken: endGetPositions - startGetPositions,
@@ -335,6 +341,7 @@ export class DefiProvider {
     userAddress,
     timePeriod = TimePeriod.sevenDays,
     filterProtocolIds,
+    filterProductIds,
     filterChainIds,
     toBlockNumbersOverride,
     filterProtocolTokens,
@@ -344,6 +351,7 @@ export class DefiProvider {
     userAddress: string
     timePeriod?: TimePeriod
     filterProtocolIds?: Protocol[]
+    filterProductIds?: string[]
     filterChainIds?: Chain[]
     toBlockNumbersOverride?: Partial<Record<Chain, number>>
     filterProtocolTokens?: string[]
@@ -413,6 +421,7 @@ export class DefiProvider {
       await this.runForAllProtocolsAndChains({
         runner,
         filterProtocolIds,
+        filterProductIds,
         filterChainIds,
         method: 'getProfits',
       })
@@ -427,11 +436,13 @@ export class DefiProvider {
 
   async unwrap({
     filterProtocolIds,
+    filterProductIds,
     filterChainIds,
     filterProtocolToken,
     blockNumbers,
   }: {
     filterProtocolIds?: Protocol[]
+    filterProductIds?: string[]
     filterChainIds?: Chain[]
     filterProtocolToken?: string
     blockNumbers?: Partial<Record<Chain, number>>
@@ -486,6 +497,7 @@ export class DefiProvider {
     const result = await this.runForAllProtocolsAndChains({
       runner,
       filterProtocolIds,
+      filterProductIds,
       filterChainIds,
       method: 'unwrap',
     })
@@ -665,6 +677,7 @@ export class DefiProvider {
 
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
+
   async getRepays({
     userAddress,
     fromBlock,
@@ -776,11 +789,13 @@ export class DefiProvider {
 
   async getTotalValueLocked({
     filterProtocolIds,
+    filterProductIds,
     filterChainIds,
     filterProtocolTokens,
     blockNumbers,
   }: {
     filterProtocolIds?: Protocol[]
+    filterProductIds?: string[]
     filterChainIds?: Chain[]
     filterProtocolTokens?: string[]
     blockNumbers?: Partial<Record<Chain, number>>
@@ -811,6 +826,7 @@ export class DefiProvider {
     return this.runForAllProtocolsAndChains({
       runner,
       filterProtocolIds,
+      filterProductIds,
       filterChainIds,
       method: 'getTotalValueLocked',
     })
@@ -827,6 +843,7 @@ export class DefiProvider {
    * Runs a specified method for all protocols and chains, based on the provided filters.
    * @param runner - The function to run for each protocol and chain.
    * @param filterProtocolIds - Optional. An array of protocols to filter by.
+   * @param filterProductIds - Optional. An array of products to filter by.
    * @param filterChainIds - Optional. An array of chains to filter by.
    * @param method - The method to run for each protocol and chain.
    * @returns A promise that resolves to an array of adapter responses.
@@ -834,6 +851,7 @@ export class DefiProvider {
   private async runForAllProtocolsAndChains<ReturnType extends object>({
     runner,
     filterProtocolIds,
+    filterProductIds,
     filterChainIds,
     method,
   }: {
@@ -842,6 +860,7 @@ export class DefiProvider {
       provider: CustomJsonRpcProvider,
     ) => ReturnType
     filterProtocolIds?: Protocol[]
+    filterProductIds?: string[]
     filterChainIds?: Chain[]
     method:
       | 'getPositions'
@@ -890,11 +909,14 @@ export class DefiProvider {
             }
 
             return Array.from(chainProtocolAdapters)
-              .filter(
-                ([_, adapter]) =>
-                  adapter.getProtocolDetails().positionType !==
-                  PositionType.Reward,
-              )
+              .filter(([_, adapter]) => {
+                const adapterDetails = adapter.getProtocolDetails()
+                return (
+                  adapterDetails.positionType !== PositionType.Reward &&
+                  (!filterProductIds ||
+                    filterProductIds.includes(adapter.productId))
+                )
+              })
               .map(([_, adapter]) =>
                 this.runTaskForAdapter(adapter, provider, runner),
               )

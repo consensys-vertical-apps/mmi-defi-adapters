@@ -1,0 +1,80 @@
+{
+  "aggregatedValues": ["USD0.00"],
+  "latency": "Latency: 0.58 seconds",
+  "snapshot": {
+    "name": "StakeWise",
+    "siteUrl": "https://app.stakewise.io/",
+    "iconUrl": "https://app.stakewise.io/osETH.svg",
+    "description": "StakeWise DeFi Adapter for osETH",
+    "positionType": "stake",
+    "protocolId": "stakewise",
+    "productId": "os-eth",
+    "chainId": 1,
+    "chainName": "ethereum",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x0c7ac7cd9bff94bbff40659462195ffdd343b88cec34189387d047998e56cdcd",
+        "protocolToken": {
+          "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
+          "name": "Staked ETH",
+          "symbol": "osETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
+            "name": "Staked ETH",
+            "symbol": "osETH",
+            "decimals": 18,
+            "balanceRaw": "1000000000000n",
+            "type": "underlying",
+            "blockNumber": 19261916,
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "1008198312106n",
+                "balance": 0.000001008198312106,
+                "price": 2918.27,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 0.000001
+          }
+        ],
+        "blockNumber": 19261916
+      }
+    ]
+  },
+  "rpcResponses": {
+    "b4c2685a00ae5fe453bc61027ff0292d": {
+      "result": [
+        {
+          "address": "0xf1c9acdc66974dfb6decb12aa385b9cd01190e38",
+          "blockHash": "0x8d5ea02e97f4de40a5d9fa2f2beb2bc62b2bc912e6c18434e3b88d139761ebcd",
+          "blockNumber": "0x125e9dc",
+          "data": "0x000000000000000000000000000000000000000000000000000000e8d4a51000",
+          "logIndex": "0xe6",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x00000000000000000000000096e9a50a3b8b4ae1fab47f26c3f78e148563380a",
+            "0x000000000000000000000000ec01cb780202595ce2fb11225aabfad201b54e0f"
+          ],
+          "transactionHash": "0x0c7ac7cd9bff94bbff40659462195ffdd343b88cec34189387d047998e56cdcd",
+          "transactionIndex": "0x9a"
+        }
+      ]
+    },
+    "8c68f2adeac8bce2b5814f0ae7d27672": {
+      "result": "0x0000000000000000000000000000000000000000000000000dfdd705f042954b"
+    },
+    "94202b0848495ad368bd9aff6c697622": {
+      "result": "0x0000000000000000000000000000000000000000000000060000000000002e8400000000000000000000000000000000000000000000000000000043f23ea2c00000000000000000000000000000000000000000000000000000000065d34fbb0000000000000000000000000000000000000000000000000000000065d34fbb0000000000000000000000000000000000000000000000060000000000002e84"
+    }
+  }
+}

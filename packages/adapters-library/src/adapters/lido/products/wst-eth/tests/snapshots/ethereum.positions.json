@@ -1,0 +1,66 @@
+{
+  "blockNumber": 18377483,
+  "latency": "Latency: 0.457 seconds",
+  "aggregatedValues": ["USD142,256,435.30"],
+  "snapshot": [
+    {
+      "protocolId": "lido",
+      "name": "Lido wstEth",
+      "description": "Lido defi adapter for wstEth",
+      "siteUrl": "https://stake.lido.fi/wrap",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "wst-eth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+          "name": "Wrapped liquid staked Ether 2.0",
+          "symbol": "wstETH",
+          "decimals": 18,
+          "balanceRaw": "78871459289748529074876n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+              "name": "Liquid staked Ether 2.0",
+              "symbol": "stETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "90177902840852853131608n",
+              "tokens": [
+                {
+                  "address": "0x0000000000000000000000000000000000000000",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "90177902840852853131608n",
+                  "balance": 90177.90284085285,
+                  "price": 1577.5088,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                }
+              ],
+              "balance": 90177.90284085285,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+            }
+          ],
+          "balance": 78871.45928974853
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "1b04657656af1daa35763856b55b46b3": {
+      "result": "0x0000000000000000000000000000000000000000000010b3a16049202009d2bc"
+    },
+    "9cca41a32a5d7cf6ea0910172ca6ed70": {
+      "result": "0x0000000000000000000000000000000000000000000000000fde014d75ba9c06"
+    },
+    "381a717139bf2631bc68e8400f91a99a": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000019b000000000000000000000000000000000000000000000000000000024baaf670000000000000000000000000000000000000000000000000000000000652fd5d300000000000000000000000000000000000000000000000000000000652fd5d300000000000000000000000000000000000000000000000600000000000019b0"
+    }
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "blockNumber": 18412988,
+  "latency": "Latency: 2.298 seconds",
+  "aggregatedValues": ["USD1,126.89", "USD535.22"],
+  "snapshot": [
+    {
+      "protocolId": "uniswap-v3",
+      "name": "UniswapV3",
+      "description": "UniswapV3 defi adapter",
+      "siteUrl": "https://uniswap.org/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+          "tokenId": "587543",
+          "name": "VGX / USDT - 1.0%",
+          "symbol": "VGX / USDT - 1.0%",
+          "decimals": 18,
+          "balanceRaw": "3051906688142n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d",
+              "name": "Voyager Token",
+              "symbol": "VGX",
+              "decimals": 8,
+              "balanceRaw": "137262192279n",
+              "type": "underlying",
+              "balance": 1372.62192279,
+              "price": 0.1024214812661522,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
+            },
+            {
+              "address": "0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d",
+              "name": "Voyager Token",
+              "symbol": "VGX",
+              "decimals": 8,
+              "balanceRaw": "59840960204n",
+              "type": "underlying-claimable",
+              "balance": 598.40960204,
+              "price": 0.1024214812661522,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "balanceRaw": "860865290n",
+              "type": "underlying",
+              "balance": 860.86529,
+              "price": 0.9993556525657175,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "balanceRaw": "64741188n",
+              "type": "underlying-claimable",
+              "balance": 64.741188,
+              "price": 0.9993556525657175,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "balance": 0.000003051906688142
+        },
+        {
+          "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+          "tokenId": "587789",
+          "name": "VGX / USDT - 1.0%",
+          "symbol": "VGX / USDT - 1.0%",
+          "decimals": 18,
+          "balanceRaw": "1824645007152n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d",
+              "name": "Voyager Token",
+              "symbol": "VGX",
+              "decimals": 8,
+              "balanceRaw": "522568969405n",
+              "type": "underlying",
+              "balance": 5225.68969405,
+              "price": 0.1024214812661522,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
+            },
+            {
+              "address": "0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d",
+              "name": "Voyager Token",
+              "symbol": "VGX",
+              "decimals": 8,
+              "balanceRaw": "0n",
+              "type": "underlying-claimable",
+              "balance": 0,
+              "price": 0.1024214812661522,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "balanceRaw": "0n",
+              "type": "underlying",
+              "balance": 0,
+              "price": 0.9993556525657175,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "balanceRaw": "0n",
+              "type": "underlying-claimable",
+              "balance": 0,
+              "price": 0.9993556525657175,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "balance": 0.000001824645007152
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "4431ebca9e7eee6ecc5ae0edbf16e140": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003c4b6e6e1ea3d4863700d7f76b36b7f3d3f13e3d000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec70000000000000000000000000000000000000000000000000000000000002710fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffef598fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffef660000000000000000000000000000000000000000000000000000002c693d0648e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "ade83e7d39399c263fdf5331420bbb89": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003c4b6e6e1ea3d4863700d7f76b36b7f3d3f13e3d000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec70000000000000000000000000000000000000000000000000000000000002710fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffef980fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffefa48000000000000000000000000000000000000000000000000000001a8d55147300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "56b8f373fa219552fc97d168155cf0ed": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d566f796167657220546f6b656e00000000000000000000000000000000000000"
+    },
+    "7fa0795366a077c38ba8da25e1e0fb05": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000035647580000000000000000000000000000000000000000000000000000000000"
+    },
+    "b013504919509569221d7b0c548ec173": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000008"
+    },
+    "bf1b903c0736701b426c1bb341a57628": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a5465746865722055534400000000000000000000000000000000000000000000"
+    },
+    "a573d348fef0220a864ce470e3a5a402": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553445400000000000000000000000000000000000000000000000000000000"
+    },
+    "4519c508c75b592c6abde2197270b07d": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "cd0625c21c4bd977b380b079a2bb51c7": {
+      "result": "0x0000000000000000000000000000000000000000000000000000001ff576d69700000000000000000000000000000000000000000000000000000000334fc30a"
+    },
+    "9883b89057a44f23b7cb1c1a5e1dd129": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000deecc96cc0000000000000000000000000000000000000000000000000000000003dbdf44"
+    },
+    "6ba69f616698080e231904e03237da9e": {
+      "result": "0x00000000000000000000000000000000000000000000000000000079ab89acbd0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "fc28a60f6d0e4515546728e4bdd4f266": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "a26afda31c0694dbc1a430709611445e": {
+      "result": "0x0000000000000000000000000000000000000000000000060000000000001a4e000000000000000000000000000000000000000000000000000000271002bf200000000000000000000000000000000000000000000000000000000065365f2b0000000000000000000000000000000000000000000000000000000065365f2b0000000000000000000000000000000000000000000000060000000000001a4e"
+    },
+    "8eb7af4f8a0eacfdab74e0a2601c165b": {
+      "result": "0x00000000000000000000000000000000000000000000814621458b652533855c"
+    },
+    "931fc0b1bc270cf07f1441d5220e910b": {
+      "result": "0x000000000000000000000000000000000000000001ecb8480b84e5db520f9c27"
+    }
+  }
+}

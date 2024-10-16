@@ -1,0 +1,65 @@
+{
+  "latency": "Latency: 0.406 seconds",
+  "blockNumber": 19661875,
+  "snapshot": [
+    {
+      "protocolId": "aave-v2",
+      "name": "Aave v2 VariableDebtToken",
+      "description": "Aave v2 defi adapter for variable interest-accruing token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "variable-debt-token",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "name": "Aave variable debt bearing USDT",
+          "address": "0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec",
+          "symbol": "variableDebtUSDT",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "129580258852985n",
+          "tokens": [
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "price": 1.001519665395309,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "totalSupply": 129580258.852985
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "b639a4abe07163e1c4e3e56de96b6b15": {
+      "result": "0x000000000000000000000000000000000000000000000000000075da414c8079"
+    },
+    "265963102ae3a61a555ed89e06d92f97": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "bf1b903c0736701b426c1bb341a57628": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a5465746865722055534400000000000000000000000000000000000000000000"
+    },
+    "a573d348fef0220a864ce470e3a5a402": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553445400000000000000000000000000000000000000000000000000000000"
+    },
+    "4519c508c75b592c6abde2197270b07d": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "2141252bc4d95a1fdb181d41e6d73fa2": {
+      "result": "0x0000000000000000000000000000000000000000000000060000000000003c47000000000000000000000000000000000000000000000000000000494bf59bc000000000000000000000000000000000000000000000000000000000661d451b00000000000000000000000000000000000000000000000000000000661d451b0000000000000000000000000000000000000000000000060000000000003c47"
+    },
+    "72424d188ea71849fcef0e61e864a73d": {
+      "result": "0x000000000000000000000000000000000000000001072845d4a76acbc4b017b1"
+    }
+  }
+}

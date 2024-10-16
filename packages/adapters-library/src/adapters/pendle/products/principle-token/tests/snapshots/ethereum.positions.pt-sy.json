@@ -1,0 +1,93 @@
+{
+  "blockNumber": 20572021,
+  "latency": "Latency: 0.698 seconds",
+  "aggregatedValues": ["USD11,089.47"],
+  "snapshot": [
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle Market adapter",
+      "siteUrl": "https://www.pendle.finance",
+      "iconUrl": "https://app.pendle.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "principle-token",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf99985822fb361117FCf3768D34a6353E6022F5F",
+          "name": "PT-stETH-25DEC2025",
+          "symbol": "PT-stETH-25DEC2025",
+          "decimals": 18,
+          "balanceRaw": "4484888964612528795n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xcbC72d92b2dc8187414F6734718563898740C0BC",
+              "name": "SY-stETH",
+              "symbol": "SY-stETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "3633294147958810669n",
+              "tokens": [
+                {
+                  "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+                  "name": "Wrapped liquid staked Ether 2.0",
+                  "symbol": "wstETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "3633294147958810669n",
+                  "tokens": [
+                    {
+                      "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                      "name": "Liquid staked Ether 2.0",
+                      "symbol": "stETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "balanceRaw": "4274469471244098123n",
+                      "tokens": [
+                        {
+                          "address": "0x0000000000000000000000000000000000000000",
+                          "name": "Ethereum",
+                          "symbol": "ETH",
+                          "decimals": 18,
+                          "type": "underlying",
+                          "balanceRaw": "4274469471244098123n",
+                          "balance": 4.274469471244098,
+                          "price": 2594.3492,
+                          "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                        }
+                      ],
+                      "balance": 4.274469471244098,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                    }
+                  ],
+                  "balance": 3.633294147958811,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
+                }
+              ],
+              "balance": 3.633294147958811,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xcbC72d92b2dc8187414F6734718563898740C0BC/logo.png"
+            }
+          ],
+          "balance": 4.484888964612529
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "32c5189e253f9e2b1255e908d43389b8": {
+      "result": "0x0000000000000000000000000000000000000000000000003e3d86c058cc9a9b"
+    },
+    "094ed71da9c25ad1821779623d37698c": {
+      "result": "0x0000000000000000000000000000000000000000000000000b3e1f042f4dc604"
+    },
+    "ac5c7a7dfabec04899e26665f9129cc7": {
+      "result": "0x0000000000000000000000000000000000000000000000001053ab35e955c8f7"
+    },
+    "d6512b66e4c47ef0e20cec2f6493bd0f": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000055be0000000000000000000000000000000000000000000000000000003c6786b8400000000000000000000000000000000000000000000000000000000066c4e6b30000000000000000000000000000000000000000000000000000000066c4e6b300000000000000000000000000000000000000000000000600000000000055be"
+    }
+  }
+}

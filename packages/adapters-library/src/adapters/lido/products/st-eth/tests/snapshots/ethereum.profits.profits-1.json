@@ -1,0 +1,59 @@
+{
+  "blockNumber": 18377483,
+  "latency": "Latency: 0.556 seconds",
+  "snapshot": [
+    {
+      "protocolId": "lido",
+      "name": "Lido stEth",
+      "description": "Lido defi adapter for stEth",
+      "siteUrl": "https://stake.lido.fi/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "st-eth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+          "name": "Liquid staked Ether 2.0",
+          "symbol": "stETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.033341907355143974,
+          "performance": 0.004292972565871138,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 7.7666248371140405,
+            "endPositionValue": 7.7999667444691845
+          }
+        }
+      ],
+      "fromBlock": 18327461,
+      "toBlock": 18377483
+    }
+  ],
+  "rpcResponses": {
+    "e15e0faa749fb679055f147f31bd71f8": {
+      "result": "0x000000000000000000000000000000000000000000000000001190fb59f3a956"
+    },
+    "a5c7eef5c35f8f65e2d786a6d25ff927": {
+      "result": "0x00000000000000000000000000000000000000000000000000118de02094b844"
+    },
+    "381a717139bf2631bc68e8400f91a99a": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000019b000000000000000000000000000000000000000000000000000000024baaf670000000000000000000000000000000000000000000000000000000000652fd5d300000000000000000000000000000000000000000000000000000000652fd5d300000000000000000000000000000000000000000000000600000000000019b0"
+    },
+    "30bf699e95c0a6fecf55d2c43f002af6": {
+      "result": "0x00000000000000000000000000000000000000000000000600000000000018c60000000000000000000000000000000000000000000000000000002498f6c6900000000000000000000000000000000000000000000000000000000065269b470000000000000000000000000000000000000000000000000000000065269b4700000000000000000000000000000000000000000000000600000000000018c6"
+    },
+    "264e382cf9afd40936ed7760f12a6eca": {
+      "result": []
+    },
+    "7f59742e330be39ee915bbcd51da5059": {
+      "result": []
+    }
+  }
+}

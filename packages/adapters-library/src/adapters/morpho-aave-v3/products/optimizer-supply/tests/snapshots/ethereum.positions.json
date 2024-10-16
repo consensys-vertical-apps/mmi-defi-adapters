@@ -1,0 +1,160 @@
+{
+  "blockNumber": 18761230,
+  "latency": "Latency: 0.896 seconds",
+  "aggregatedValues": ["USD444,867.58", "USD107,247,851.31"],
+  "snapshot": [
+    {
+      "protocolId": "morpho-aave-v3",
+      "name": "MorphoAaveV3",
+      "description": "MorphoAaveV3 DeFi adapter on the supply side",
+      "siteUrl": "https://aavev3.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "optimizer-supply",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8",
+          "balance": 198.0622316036882,
+          "balanceRaw": "198062231603688201347n",
+          "name": "Aave Ethereum WETH",
+          "symbol": "aEthWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "198062231603688201347n",
+              "type": "underlying",
+              "balance": 198.0622316036882,
+              "price": 2246.1,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x0B925eD163218f6662a35e0f0371Ac234f9E9371",
+          "balance": 41533.38761511767,
+          "balanceRaw": "41533387615117669604647n",
+          "name": "Aave Ethereum wstETH",
+          "symbol": "aEthwstETH",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+              "name": "Wrapped liquid staked Ether 2.0",
+              "symbol": "wstETH",
+              "decimals": 18,
+              "balanceRaw": "41533387615117669604647n",
+              "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                  "name": "Liquid staked Ether 2.0",
+                  "symbol": "stETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "47748475716788295995518n",
+                  "tokens": [
+                    {
+                      "address": "0x0000000000000000000000000000000000000000",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "balanceRaw": "47748475716788295995518n",
+                      "balance": 47748.47571678829,
+                      "price": 2246.1,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
+                  "balance": 47748.47571678829,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                }
+              ],
+              "balance": 41533.38761511767,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "cd630891cdab4f5572ef6711a193dec8": {
+      "result": "0x00000000000000000000000000000000000000000000000abcaa6643cefb5c83"
+    },
+    "c43c3d4cbba5a411a9f9c7b452496a3b": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "fd0578bd0f90f610e7595075b2eeb94f": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "04f6d91a28ebf1ebf12a9f4154c2424a": {
+      "result": "0x0000000000000000000000000000000000000000000008cb878a4ea181189d27"
+    },
+    "25ecb8864c76b4708782ffe34842b655": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "cbcf8bab6892a797de91dc2f49fcc20a": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "bcb8bae7456849eca0dd363cb6bfb861": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "889d2397c86f0cb623be90ce64b6fd6e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "06fdac21d13cff8956e87c35c2d82dc2": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "70146d1a8d0b277f30e0bc2d606ade31": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "9fc6f083e63fdafd61aba33f9b681e77": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "b32d68c549cd64fd59bc892913fe1a17": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "c1b45c17e60ae9c6317c9efec2f48858": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "2d502b4b7422f07fd4591851f0d357b6": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "580732de5d72732660cc8989bbf62bcd": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "0f991857d57a7653c09d55a9806b54a3": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "fe9bdc70c9b7061e72af0b1fe3eeca94": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "f611a3b66397f1d6f419df3a90a016ef": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "61783211b732979498a33287546ce819": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5772617070656420457468657200000000000000000000000000000000000000"
+    },
+    "3142d9d670d9f3bbe1f590ed10159c68": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045745544800000000000000000000000000000000000000000000000000000000"
+    },
+    "52a91a2f9ed1eef93397c798125fd3cd": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "2cad16a4833326ee329fee98d3b91ea9": {
+      "result": "0x000000000000000000000000000000000000000000000006000000000000228d000000000000000000000000000000000000000000000000000000344bcc9c80000000000000000000000000000000000000000000000000000000006576a463000000000000000000000000000000000000000000000000000000006576a463000000000000000000000000000000000000000000000006000000000000228d"
+    },
+    "a1aaa376f8c9b67009b13c0dda20d82d": {
+      "result": "0x0000000000000000000000000000000000000000000000000ff45830709ffe0e"
+    }
+  }
+}

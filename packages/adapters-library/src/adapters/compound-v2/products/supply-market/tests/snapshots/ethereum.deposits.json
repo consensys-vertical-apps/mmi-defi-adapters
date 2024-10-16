@@ -1,0 +1,80 @@
+{
+  "aggregatedValues": ["USD59,672.43"],
+  "latency": "Latency: 0.513 seconds",
+  "snapshot": {
+    "protocolId": "compound-v2",
+    "name": "CompoundV2",
+    "description": "CompoundV2 supply market adapter",
+    "siteUrl": "https:",
+    "iconUrl": "https://",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "supply-market",
+    "chainName": "ethereum",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x9bfacf8386d1b0da6b2c10b75ce10587e38bdffd3acb2f29d40aa8d66cb3c368",
+        "protocolToken": {
+          "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
+          "name": "Compound Ether",
+          "symbol": "cETH",
+          "decimals": 8
+        },
+        "tokens": [
+          {
+            "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
+            "name": "Compound Ether",
+            "symbol": "cETH",
+            "decimals": 8,
+            "balanceRaw": "78780191416n",
+            "type": "underlying",
+            "blockNumber": 19381542,
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "15829999999904794124n",
+                "balance": 15.829999999904794,
+                "price": 3769.57835942,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 787.80191416
+          }
+        ],
+        "blockNumber": 19381542
+      }
+    ]
+  },
+  "rpcResponses": {
+    "c62775d239da77f3bf8aa2aaa3559cce": {
+      "result": [
+        {
+          "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+          "blockHash": "0xf582c04b657f7c97ce4b6de68b8b9c2d3ff8b6184ebf2be88cd18171a289b49a",
+          "blockNumber": "0x127bd26",
+          "data": "0x0000000000000000000000000000000000000000000000000000001257aa52b8",
+          "logIndex": "0xc4",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000004ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+            "0x00000000000000000000000054c2778651e055c40d1af89c33276ec61dbda73c"
+          ],
+          "transactionHash": "0x9bfacf8386d1b0da6b2c10b75ce10587e38bdffd3acb2f29d40aa8d66cb3c368",
+          "transactionIndex": "0x39"
+        }
+      ]
+    },
+    "1c90dd60f06a6842141c6a0b1a792bb1": {
+      "result": "0x000000000000000000000000000000000000000000a6367426dc4275f48a2586"
+    },
+    "3bf3acda515998cd10c5419534b3b713": {
+      "result": "0x000000000000000000000000000000000000000000000006000000000000327c00000000000000000000000000000000000000000000000000000057c4701aa60000000000000000000000000000000000000000000000000000000065e95cfb0000000000000000000000000000000000000000000000000000000065e95cfb000000000000000000000000000000000000000000000006000000000000327c"
+    }
+  }
+}

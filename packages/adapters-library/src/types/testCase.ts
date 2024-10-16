@@ -33,7 +33,6 @@ export type TestCase = {
         fromBlock: number
         toBlock: number
         protocolTokenAddress: string
-        productId: string
         tokenId?: string
       }
     }
@@ -44,7 +43,6 @@ export type TestCase = {
         fromBlock: number
         toBlock: number
         protocolTokenAddress: string
-        productId: string
         tokenId?: string
       }
     }
@@ -55,7 +53,6 @@ export type TestCase = {
         fromBlock: number
         toBlock: number
         protocolTokenAddress: string
-        productId: string
         tokenId?: string
       }
     }
@@ -66,7 +63,6 @@ export type TestCase = {
         fromBlock: number
         toBlock: number
         protocolTokenAddress: string
-        productId: string
         tokenId?: string
       }
     }
@@ -83,6 +79,6 @@ export type TestCase = {
     }
   | {
       method: 'tx-params'
-      input: Omit<GetTransactionParams, 'protocolId' | 'chainId'>
+      input: Omit<GetTransactionParams, 'protocolId' | 'chainId' | 'productId'>
     }
 )

@@ -8,6 +8,7 @@ import { blockAverage } from './blockAverage'
 import { buildMetadataDb } from './buildMetadataDb'
 import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
+import { checkBadSnapshots } from './checkBadSnapshots'
 import { checkDbTotals } from './checkDbTotals'
 import { checkMetadataType } from './checkMetadataType'
 import { featureCommands } from './featureCommands'
@@ -35,7 +36,9 @@ buildMetadataDb(program, chainProviders, adaptersController)
 
 checkDbTotals(program, chainProviders, adaptersController)
 
-buildSnapshots(program)
+buildSnapshots(program, defiProvider)
+
+checkBadSnapshots(program, defiProvider)
 
 stressCommand(program, defiProvider)
 

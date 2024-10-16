@@ -1,0 +1,15 @@
+{
+  "snapshot": {
+    "protocolId": "compound-v2",
+    "name": "CompoundV2",
+    "description": "CompoundV2 borrow market adapter",
+    "siteUrl": "https:",
+    "iconUrl": "https://",
+    "positionType": "borrow",
+    "chainId": 1,
+    "productId": "borrow-market",
+    "chainName": "ethereum",
+    "success": true
+  },
+  "rpcResponses": {}
+}

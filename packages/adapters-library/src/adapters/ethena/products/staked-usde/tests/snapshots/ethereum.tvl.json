@@ -1,0 +1,65 @@
+{
+  "latency": "Latency: 0.515 seconds",
+  "blockNumber": 20942622,
+  "snapshot": [
+    {
+      "protocolId": "ethena",
+      "name": "Ethena sUSDe",
+      "description": "Ethena defi adapter",
+      "siteUrl": "https://ethena.fi/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57e114b691db790c35207b2e685d4a43181e6061/logo.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "staked-usde",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+          "name": "Staked USDe",
+          "symbol": "sUSDe",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "1147514407495956662053516271n",
+          "tokens": [
+            {
+              "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+              "name": "USDe",
+              "symbol": "USDe",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "1270305449935819214246558115n",
+              "totalSupply": 1270305449.9358191,
+              "price": 0.9964816893500329,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4c9EDD5852cd905f086C759E8383e09bff1E68B3/logo.png"
+            }
+          ],
+          "totalSupply": 1147514407.4959567
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "26252adcd226473bb60300b00a4761ab": {
+      "result": "0x000000000000000000000000000000000000000003b533a0ada3898d51ec33ef"
+    },
+    "e2c94275d68e8a7e76aaf70a40985d45": {
+      "result": "0x0000000000000000000000000000000000000000041ac5a46d51cf2608bbd8e3"
+    },
+    "d82681aad1f3b8ffa20adf85cb50c19f": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553446500000000000000000000000000000000000000000000000000000000"
+    },
+    "64734af67ba2769b23bb8001510602ab": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553446500000000000000000000000000000000000000000000000000000000"
+    },
+    "9cfae3f125ccffa0b322f783e179cad5": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "7c4e98a76d093c308f410e23386bcf8f": {
+      "result": "0x0000000000000000000000000000000000000000000000070000000000000312000000000000000000000000000000000000000000000000000000383999f6800000000000000000000000000000000000000000000000000000000067091cbb0000000000000000000000000000000000000000000000000000000067091ccf0000000000000000000000000000000000000000000000070000000000000312"
+    },
+    "1e22182881eb9ecdf20dfad7c0f3546a": {
+      "result": "0x0000000000000000000000000000000000000000000000000001774d255bf7de"
+    }
+  }
+}

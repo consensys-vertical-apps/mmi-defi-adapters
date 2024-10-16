@@ -1,0 +1,58 @@
+{
+  "latency": "Latency: 0.225 seconds",
+  "blockNumber": 3717681,
+  "snapshot": [
+    {
+      "protocolId": "xfai",
+      "name": "Xfai",
+      "description": "Xfai pool adapter",
+      "siteUrl": "https://xfai.com",
+      "iconUrl": "https://assets.xfai.com/favicon.png",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "dex",
+      "chainName": "linea",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xB694ce4c96fb60DB5ad8b25dfF567c59f7a49a4E",
+          "name": "Xfai Liquidity Token",
+          "decimals": 18,
+          "symbol": "XFAI-LP",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "underlying",
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "underlyingRateRaw": "0n",
+              "underlyingRate": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            },
+            {
+              "type": "underlying",
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "underlyingRateRaw": "81351092n",
+              "underlyingRate": 8.1351092e-11,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "bad934de88b7505e5bc03e1c94b79dc0": {
+      "result": "0x0000000000000000000000000000000000000000000000000000cb163fc5d9b3"
+    },
+    "37273e7330d01f4f89587ac43eafdbb5": {
+      "result": "0x00000000000000000000000000000000000000000000000000000002f79828aa000000000000000000000000000000000000000000000000384be6a8adbc372e"
+    }
+  }
+}
