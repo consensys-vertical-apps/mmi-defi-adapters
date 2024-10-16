@@ -1,19 +1,24 @@
 {
-  "latency": "Latency: 0 seconds",
+  "latency": "Latency: 0.001 seconds",
   "blockNumber": 19818582,
   "snapshot": [
     {
       "protocolId": "aave-v3",
-      "name": "Aave v3 VariableDebtToken",
-      "description": "Aave v3 defi adapter for variable interest-accruing token",
-      "siteUrl": "https://aave.com/",
-      "iconUrl": "https://aave.com/favicon.ico",
-      "positionType": "borrow",
+      "name": "AaveV3",
+      "description": "AaveV3 defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://cryptologos.cc/logos/aave-aave-logo.png",
+      "positionType": "supply",
       "chainId": 1,
-      "productId": "variable-debt-token",
+      "productId": "rewards",
       "chainName": "ethereum",
-      "success": true,
-      "tokens": []
+      "success": false,
+      "error": {
+        "message": "Not Implemented (at AaveV3RewardsAdapter.getTotalValueLocked)",
+        "details": {
+          "name": "NotImplementedError"
+        }
+      }
     }
   ],
   "rpcResponses": {}
