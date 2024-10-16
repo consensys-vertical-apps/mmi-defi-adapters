@@ -1,11 +1,11 @@
-import { Command } from 'commander'
-import { Protocol } from '../adapters/protocols'
-import { supportedProtocols } from '../adapters/supportedProtocols'
-import { AdaptersController } from '../core/adaptersController'
-import { Chain } from '../core/constants/chains'
-import { ProviderMissingError } from '../core/errors/errors'
-import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { logger } from '../core/utils/logger'
+import type { Command } from 'commander'
+import type { Protocol } from '../adapters/protocols.js'
+import { supportedProtocols } from '../adapters/supportedProtocols.js'
+import type { AdaptersController } from '../core/adaptersController.js'
+import type { Chain } from '../core/constants/chains.js'
+import { ProviderMissingError } from '../core/errors/errors.js'
+import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider.js'
+import { logger } from '../core/utils/logger.js'
 
 export function checkMetadataType(
   program: Command,

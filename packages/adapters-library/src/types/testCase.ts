@@ -1,6 +1,6 @@
-import type { GetTransactionParams } from '../adapters/supportedProtocols'
-import type { Chain } from '../core/constants/chains'
-import type { TimePeriod } from '../core/constants/timePeriod'
+import type { GetTransactionParams } from '../adapters/supportedProtocols.js'
+import type { Chain } from '../core/constants/chains.js'
+import type { TimePeriod } from '../core/constants/timePeriod.js'
 
 export type TestCase = {
   key?: string

@@ -1,31 +1,31 @@
 import { getAddress } from 'ethers'
-import { Erc20__factory } from '../../../../contracts'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../../core/errors/errors'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { Erc20__factory } from '../../../../contracts/index.js'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter.js'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import { NotImplementedError } from '../../../../core/errors/errors.js'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata.js'
 import {
-  GetEventsInput,
-  GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
+  type GetEventsInput,
+  type GetPositionsInput,
+  type GetTotalValueLockedInput,
+  type MovementsByBlock,
   PositionType,
-  ProtocolDetails,
-  ProtocolPosition,
-  ProtocolTokenTvl,
+  type ProtocolDetails,
+  type ProtocolPosition,
+  type ProtocolTokenTvl,
   TokenType,
-  UnwrapExchangeRate,
-  UnwrapInput,
-  UnwrappedTokenExchangeRate,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+  type UnwrappedTokenExchangeRate,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
 import {
   GlpManager__factory,
   RewardReader__factory,
   Vault__factory,
-} from '../../contracts'
+} from '../../contracts/index.js'
 
 type AdditionalMetadata = {
   glpRewardRouter: string

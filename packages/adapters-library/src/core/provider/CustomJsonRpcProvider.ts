@@ -1,18 +1,18 @@
 import {
-  FetchRequest,
-  Filter,
-  FilterByBlockHash,
-  JsonRpcApiProviderOptions,
+  type FetchRequest,
+  type Filter,
+  type FilterByBlockHash,
+  type JsonRpcApiProviderOptions,
   JsonRpcProvider,
-  Log,
-  TransactionRequest,
+  type Log,
+  type TransactionRequest,
   ethers,
 } from 'ethers'
-import { count } from '../../metricsCount'
-import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../constants/AVERAGE_BLOCKS_PER_10_MINS'
-import { Chain } from '../constants/chains'
-import { NotSupportedUnlimitedGetLogsBlockRange } from '../errors/errors'
-import { retryHandlerFactory } from './retryHandlerFactory'
+import { count } from '../../metricsCount.js'
+import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../constants/AVERAGE_BLOCKS_PER_10_MINS.js'
+import { Chain } from '../constants/chains.js'
+import { NotSupportedUnlimitedGetLogsBlockRange } from '../errors/errors.js'
+import { retryHandlerFactory } from './retryHandlerFactory.js'
 
 export type CustomJsonRpcProviderOptions = {
   rpcCallTimeoutInMs: number
@@ -93,7 +93,7 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
     return stableBlockNumber >= 0 ? stableBlockNumber : 0
   }
 
-  async call(transaction: TransactionRequest): Promise<string> {
+  override async call(transaction: TransactionRequest): Promise<string> {
     const key = JSON.stringify({
       ...transaction,
       chainId: transaction.chainId?.toString(), // JSON.stringify cannot serialize bigints by default
@@ -125,7 +125,9 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
     return (await entryPromise).result
   }
 
-  async getLogs(filter: Filter | FilterByBlockHash): Promise<Array<Log>> {
+  override async getLogs(
+    filter: Filter | FilterByBlockHash,
+  ): Promise<Array<Log>> {
     const startTime = Date.now()
     const key = JSON.stringify(filter)
 

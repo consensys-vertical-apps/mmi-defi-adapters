@@ -1,41 +1,41 @@
 import { ethers, getAddress } from 'ethers'
-import { TransferEvent } from '../../../../contracts/Erc20'
-import { Erc20__factory } from '../../../../contracts/factories/Erc20__factory'
-import { AdaptersController } from '../../../../core/adaptersController'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../../../../core/utils/filters'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { Helpers } from '../../../../scripts/helpers'
-import {
+import type { TransferEvent } from '../../../../contracts/Erc20.js'
+import { Erc20__factory } from '../../../../contracts/factories/Erc20__factory.js'
+import type { AdaptersController } from '../../../../core/adaptersController.js'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import type { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider.js'
+import { filterMapAsync } from '../../../../core/utils/filters.js'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata.js'
+import type { Helpers } from '../../../../scripts/helpers.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
+} from '../../../../types/IProtocolAdapter.js'
 import {
-  GetEventsInput,
-  GetPositionsInput,
-  GetRewardPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
+  type GetEventsInput,
+  type GetPositionsInput,
+  type GetRewardPositionsInput,
+  type GetTotalValueLockedInput,
+  type MovementsByBlock,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
-  ProtocolTokenTvl,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
+  type ProtocolTokenTvl,
   TokenType,
-  UnderlyingReward,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../../types/adapter'
+  type UnderlyingReward,
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../../types/adapter.js'
 import {
   CrvMinter__factory,
   GaugeN__factory,
   GaugeSingle__factory,
-} from '../../../curve/contracts'
-import { Protocol } from '../../../protocols'
-import { getCurvePoolData } from '../../common/getPoolData'
+} from '../../../curve/contracts/index.js'
+import type { Protocol } from '../../../protocols.js'
+import { getCurvePoolData } from '../../common/getPoolData.js'
 
 const CurveTokenAddresses = {
   [Chain.Ethereum]: getAddress('0xd533a949740bb3306d119cc777fa900ba034cd52'),

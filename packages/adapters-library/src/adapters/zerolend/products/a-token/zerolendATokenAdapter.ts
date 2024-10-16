@@ -1,14 +1,20 @@
 import { z } from 'zod'
-import { Chain } from '../../../../core/constants/chains'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import { Chain } from '../../../../core/constants/chains.js'
 import {
-  WriteActionInputSchemas,
+  PositionType,
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import {
+  type WriteActionInputSchemas,
   WriteActions,
-} from '../../../../types/writeActions'
-import { Protocol } from '../../../protocols'
-import { GetTransactionParams } from '../../../supportedProtocols'
-import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
-import { ZeroLendBasePoolAdapter } from '../common/zerolendBasePoolAdapter'
+} from '../../../../types/writeActions.js'
+import type { Protocol } from '../../../protocols.js'
+import type { GetTransactionParams } from '../../../supportedProtocols.js'
+import {
+  PoolContract__factory,
+  type ProtocolDataProvider,
+} from '../../contracts/index.js'
+import { ZeroLendBasePoolAdapter } from '../common/zerolendBasePoolAdapter.js'
 
 export class ZeroLendATokenPoolAdapter extends ZeroLendBasePoolAdapter {
   productId = 'a-token'

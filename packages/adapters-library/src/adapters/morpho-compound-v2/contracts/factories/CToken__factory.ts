@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { CToken, CTokenInterface } from "../CToken";
+import type { CToken, CTokenInterface } from "../CToken.js";
 
 const _abi = [
   {

@@ -1,20 +1,23 @@
 import { ZeroAddress, getAddress } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter.js'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata.js'
+import type { ProtocolToken } from '../../../../types/IProtocolAdapter.js'
 import {
-  GetTotalValueLockedInput,
+  type GetTotalValueLockedInput,
   PositionType,
-  ProtocolDetails,
-  ProtocolTokenTvl,
+  type ProtocolDetails,
+  type ProtocolTokenTvl,
   TokenType,
-  UnwrappedTokenExchangeRate,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { XfaiFactory__factory, XfaiPool__factory } from '../../contracts'
+  type UnwrappedTokenExchangeRate,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import {
+  XfaiFactory__factory,
+  XfaiPool__factory,
+} from '../../contracts/index.js'
 
 export class XfaiDexAdapter extends SimplePoolAdapter {
   productId = 'dex'

@@ -1,15 +1,15 @@
-import { Command } from 'commander'
+import type { Command } from 'commander'
 import { ethers } from 'ethers'
-import { Protocol } from '../adapters/protocols'
-import { Chain } from '../core/constants/chains'
-import { TimePeriod } from '../core/constants/timePeriod'
-import { DefiProvider } from '../defiProvider'
-import {
+import type { Protocol } from '../adapters/protocols.js'
+import type { Chain } from '../core/constants/chains.js'
+import { TimePeriod } from '../core/constants/timePeriod.js'
+import type { DefiProvider } from '../defiProvider.js'
+import type {
   AdapterResponse,
   DefiPositionResponse,
   DefiProfitsResponse,
-} from '../types/response'
-import { multiChainFilter, multiProtocolFilter } from './commandFilters'
+} from '../types/response.js'
+import { multiChainFilter, multiProtocolFilter } from './commandFilters.js'
 
 export function stressCommand(program: Command, defiProvider: DefiProvider) {
   program

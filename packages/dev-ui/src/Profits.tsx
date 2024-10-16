@@ -24,24 +24,24 @@ import {
 } from '@/components/ui/tooltip'
 import { DevTool } from '@hookform/devtools'
 import {
-  Chain,
+  type Chain,
   ChainName,
-  Protocol,
-  TimePeriod,
+  type Protocol,
+  type TimePeriod,
 } from '@metamask-institutional/defi-adapters'
-import { DefiProfitsResponse } from '@metamask-institutional/defi-adapters/dist/types/response'
+import type { DefiProfitsResponse } from '@metamask-institutional/defi-adapters/dist/types/response'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
-import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, type SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'
 import { JsonDisplay } from './JsonDisplay'
-import { provider } from './providerWrapper'
 import { useFiltersContext } from './filtersContext'
 import {
   chainOptions,
   protocolOptions,
   timePeriodOptions,
 } from './filtersOptions'
+import { provider } from './providerWrapper'
 
 type FormValues = {
   userAddress: string

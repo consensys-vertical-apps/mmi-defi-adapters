@@ -18,7 +18,7 @@ import type {
   TypedEventLog,
   TypedListener,
   TypedContractMethod,
-} from "./common";
+} from "./common.js";
 
 export interface CurvePoolInterface extends Interface {
   getFunction(nameOrSignature: "coins" | "balances"): FunctionFragment;

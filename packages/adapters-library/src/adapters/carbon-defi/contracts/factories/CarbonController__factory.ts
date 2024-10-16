@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   CarbonController,
   CarbonControllerInterface,
-} from "../CarbonController";
+} from "../CarbonController.js";
 
 const _abi = [
   {

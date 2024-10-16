@@ -1,12 +1,12 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import partition from 'lodash/partition'
+import { partition } from 'lodash-es'
 import { parse, print, types, visit } from 'recast'
-import { lowerFirst, pascalCase } from '../../core/utils/caseConversion'
-import { writeAndLintFile } from '../../core/utils/writeAndLintFile'
-import { fileExists } from '../utils/fileExists'
-import { sortEntries } from '../utils/sortEntries'
-import { testCases } from './templates/testCases'
+import { lowerFirst, pascalCase } from '../../core/utils/caseConversion.js'
+import { writeAndLintFile } from '../../core/utils/writeAndLintFile.js'
+import { fileExists } from '../utils/fileExists.js'
+import { sortEntries } from '../utils/sortEntries.js'
+import { testCases } from './templates/testCases.js'
 import n = types.namedTypes
 import b = types.builders
 
@@ -33,7 +33,7 @@ export async function buildIntegrationTests({
   )
   const contents = await fs.readFile(testsFile, 'utf-8')
   const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
+    parser: await import('recast/parsers/typescript.js'),
   })
 
   visit(ast, {
@@ -102,7 +102,7 @@ function addTestCasesImport(
   programNode.body = [newImportEntry, ...importNodes, ...codeAfterImports]
 }
 
-// import { testCases as <protocolId><protocolId>TestCases } from './<protocolId>/products/<productId>/tests/testCases'
+// import { testCases as <protocolId><protocolId>TestCases } from './<protocolId>/products/<productId>/tests/testCases.js'
 function buildImportTestCasesEntry(
   protocolId: string,
   protocolKey: string,

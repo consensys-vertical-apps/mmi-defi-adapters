@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { MetaRegistry, MetaRegistryInterface } from "../MetaRegistry";
+import type { MetaRegistry, MetaRegistryInterface } from "../MetaRegistry.js";
 
 const _abi = [
   {

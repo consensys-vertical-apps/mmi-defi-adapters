@@ -1,31 +1,34 @@
 import { getAddress } from 'ethers'
-import { IMetadataProvider } from '../SQLiteMetadataProvider'
-import { Erc20__factory } from '../contracts'
-import { TransferEvent } from '../contracts/Erc20'
-import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
-import { Chain } from '../core/constants/chains'
+import type { IMetadataProvider } from '../SQLiteMetadataProvider.js'
+import type { TransferEvent } from '../contracts/Erc20.js'
+import { Erc20__factory } from '../contracts/index.js'
+import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS.js'
+import { Chain } from '../core/constants/chains.js'
 import {
   MaxMovementLimitExceededError,
   ProtocolTokenFilterRequiredError,
-} from '../core/errors/errors'
-import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../core/utils/filters'
-import { getOnChainTokenMetadata } from '../core/utils/getTokenMetadata'
-import { logger } from '../core/utils/logger'
-import { nativeToken, nativeTokenAddresses } from '../core/utils/nativeTokens'
+} from '../core/errors/errors.js'
+import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider.js'
+import { filterMapAsync } from '../core/utils/filters.js'
+import { getOnChainTokenMetadata } from '../core/utils/getTokenMetadata.js'
+import { logger } from '../core/utils/logger.js'
 import {
+  nativeToken,
+  nativeTokenAddresses,
+} from '../core/utils/nativeTokens.js'
+import type {
   AdditionalMetadataWithReservedFields,
   ProtocolToken,
-} from '../types/IProtocolAdapter'
+} from '../types/IProtocolAdapter.js'
 import {
-  GetPositionsInput,
-  MovementsByBlock,
-  ProtocolPosition,
-  ProtocolTokenTvl,
+  type GetPositionsInput,
+  type MovementsByBlock,
+  type ProtocolPosition,
+  type ProtocolTokenTvl,
   TokenType,
-  UnwrapExchangeRate,
-} from '../types/adapter'
-import { Erc20Metadata } from '../types/erc20Metadata'
+  type UnwrapExchangeRate,
+} from '../types/adapter.js'
+import type { Erc20Metadata } from '../types/erc20Metadata.js'
 
 export const REAL_ESTATE_TOKEN_METADATA = {
   address: getAddress('0x6b8734ad31D42F5c05A86594314837C416ADA984'),

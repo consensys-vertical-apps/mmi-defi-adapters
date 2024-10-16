@@ -1,7 +1,7 @@
-import { Command } from 'commander'
-import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
-import { DefiProvider } from '../defiProvider'
-import { multiChainFilter, multiProtocolFilter } from './commandFilters'
+import type { Command } from 'commander'
+import { Chain, ChainIdToChainNameMap } from '../core/constants/chains.js'
+import { DefiProvider } from '../defiProvider.js'
+import { multiChainFilter, multiProtocolFilter } from './commandFilters.js'
 
 type RunData = {
   positions: number

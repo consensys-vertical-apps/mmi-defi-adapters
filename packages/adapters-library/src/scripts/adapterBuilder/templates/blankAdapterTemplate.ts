@@ -1,11 +1,11 @@
 export function blankAdapterTemplate() {
   return `import { getAddress } from 'ethers'
-    import { Protocol } from '../../../protocols'
-    import { AdaptersController } from '../../../../core/adaptersController'
-    import { Chain } from '../../../../core/constants/chains'
-    import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-    import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-    import { logger } from '../../../../core/utils/logger'
+    import { Protocol } from '../../../protocols.js'
+    import { AdaptersController } from '../../../../core/adaptersController.js'
+    import { Chain } from '../../../../core/constants/chains.js'
+    import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+    import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider.js'
+    import { logger } from '../../../../core/utils/logger.js'
     import {
       ProtocolAdapterParams,
       ProtocolDetails,
@@ -22,11 +22,11 @@ export function blankAdapterTemplate() {
       Underlying,
       GetRewardPositionsInput,
       UnderlyingReward,
-    } from '../../../../types/adapter'
-    import { Erc20Metadata } from '../../../../types/erc20Metadata'
-    import { IProtocolAdapter, ProtocolToken } from '../../../../types/IProtocolAdapter'
-    import { Helpers } from '../../../../scripts/helpers'
-    import { NotImplementedError } from '../../../../core/errors/errors'
+    } from '../../../../types/adapter.js'
+    import { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+    import { IProtocolAdapter, ProtocolToken } from '../../../../types/IProtocolAdapter.js'
+    import { Helpers } from '../../../../scripts/helpers.js'
+    import { NotImplementedError } from '../../../../core/errors/errors.js'
 
     /**
      * Update me.

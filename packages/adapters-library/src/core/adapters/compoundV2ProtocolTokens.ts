@@ -1,11 +1,11 @@
 import {
   CompoundV2Cerc20__factory,
   CompoundV2Comptroller__factory,
-} from '../../contracts'
-import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
-import { Chain } from '../constants/chains'
-import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
-import { getTokenMetadata } from '../utils/getTokenMetadata'
+} from '../../contracts/index.js'
+import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS.js'
+import type { Chain } from '../constants/chains.js'
+import type { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider.js'
+import { getTokenMetadata } from '../utils/getTokenMetadata.js'
 
 export async function getProtocolTokens({
   chainId,

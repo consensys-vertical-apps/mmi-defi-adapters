@@ -1,5 +1,5 @@
-import { ProtocolPosition, Underlying } from '../../types/adapter'
-import { Erc20Metadata } from '../../types/erc20Metadata'
+import type { ProtocolPosition, Underlying } from '../../types/adapter.js'
+import type { Erc20Metadata } from '../../types/erc20Metadata.js'
 
 export function formatProtocolTokenArrayToMap(
   tokens: ProtocolPosition[],

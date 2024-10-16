@@ -3,8 +3,8 @@ import {
   BeefyVaultV7__factory,
   PendleMarket__factory,
   PendleSyToken__factory,
-} from '../../contracts'
-import { VaultBalanceBreakdownFetcher } from '../types'
+} from '../../contracts/index.js'
+import type { VaultBalanceBreakdownFetcher } from '../types.js'
 
 const PENDLE_ROUTER_ADDRESS_ARBITRUM = getAddress(
   '0x00000000005BBB0EF59571E58418F9a4357b68A0',

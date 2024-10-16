@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { PendleMarket, PendleMarketInterface } from "../PendleMarket";
+import type { PendleMarket, PendleMarketInterface } from "../PendleMarket.js";
 
 const _abi = [
   {

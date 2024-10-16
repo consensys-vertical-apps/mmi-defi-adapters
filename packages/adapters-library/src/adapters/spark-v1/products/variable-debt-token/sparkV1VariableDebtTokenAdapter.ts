@@ -1,8 +1,11 @@
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
-import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import {
+  PositionType,
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter.js'
 
-import { ProtocolDataProvider } from '../../contracts'
+import type { ProtocolDataProvider } from '../../contracts/index.js'
 
 export class SparkV1VariableDebtTokenPoolAdapter extends SparkV1BasePoolAdapter {
   productId = 'variable-debt-token'

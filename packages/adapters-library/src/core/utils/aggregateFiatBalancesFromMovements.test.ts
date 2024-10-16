@@ -1,5 +1,5 @@
-import { MovementsByBlock, TokenType } from '../../types/adapter'
-import { aggregateFiatBalancesFromMovements } from './aggregateFiatBalancesFromMovements'
+import { type MovementsByBlock, TokenType } from '../../types/adapter.js'
+import { aggregateFiatBalancesFromMovements } from './aggregateFiatBalancesFromMovements.js'
 
 const balanceRaw = 2n * 10n ** 18n
 const priceRaw = BigInt(Math.pow(2, 18))

@@ -1,36 +1,39 @@
 import { getAddress } from 'ethers'
 import PQueue from 'p-queue'
-import { Protocol } from '../../adapters/protocols'
+import type { Protocol } from '../../adapters/protocols.js'
 import {
   UniswapV2Factory__factory,
   UniswapV2Pair__factory,
-} from '../../contracts'
-import { Helpers } from '../../scripts/helpers'
-import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
+} from '../../contracts/index.js'
+import type { Helpers } from '../../scripts/helpers.js'
+import type {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
-  GetEventsInput,
-  GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
-  ProtocolTokenTvl,
+  type AdapterSettings,
+  type GetEventsInput,
+  type GetPositionsInput,
+  type GetTotalValueLockedInput,
+  type MovementsByBlock,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
+  type ProtocolTokenTvl,
   TokenType,
-  UnwrapExchangeRate,
-  UnwrapInput,
-  UnwrappedTokenExchangeRate,
-} from '../../types/adapter'
-import { Erc20Metadata } from '../../types/erc20Metadata'
-import { AdaptersController } from '../adaptersController'
-import { Chain } from '../constants/chains'
-import { CacheToDb } from '../decorators/cacheToDb'
-import { NotImplementedError } from '../errors/errors'
-import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../utils/filters'
-import { getTokenMetadata } from '../utils/getTokenMetadata'
-import { logger } from '../utils/logger'
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+  type UnwrappedTokenExchangeRate,
+} from '../../types/adapter.js'
+import type { Erc20Metadata } from '../../types/erc20Metadata.js'
+import type { AdaptersController } from '../adaptersController.js'
+import type { Chain } from '../constants/chains.js'
+import { CacheToDb } from '../decorators/cacheToDb.js'
+import { NotImplementedError } from '../errors/errors.js'
+import type { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider.js'
+import { filterMapAsync } from '../utils/filters.js'
+import { getTokenMetadata } from '../utils/getTokenMetadata.js'
+import { logger } from '../utils/logger.js'
 
 type AdditionalMetadata = { token0: string; token1: string }
 
@@ -554,7 +557,8 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
         }),
       })
 
-      const gqlResponse = await response.json()
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      const gqlResponse = (await response.json()) as any
 
       if (gqlResponse.message) {
         console.error(

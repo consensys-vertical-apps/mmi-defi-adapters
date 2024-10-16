@@ -10,7 +10,7 @@
 
     "strict": true,
     "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
+    // "noImplicitOverride": true,
 
     "module": "NodeNext",
     "rootDir": "src",

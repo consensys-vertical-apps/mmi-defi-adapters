@@ -1,7 +1,7 @@
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
-import { ProtocolPosition } from '../../types/adapter'
-import { Chain } from '../constants/chains'
-import { BalanceOfApyCalculator } from './BalanceOfApyCalculator'
+import type { IProtocolAdapter } from '../../types/IProtocolAdapter.js'
+import type { ProtocolPosition } from '../../types/adapter.js'
+import { Chain } from '../constants/chains.js'
+import { BalanceOfApyCalculator } from './BalanceOfApyCalculator.js'
 
 describe('BalanceOfApyCalculator', () => {
   let calculator: BalanceOfApyCalculator

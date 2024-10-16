@@ -1,4 +1,4 @@
-import { extractErrorMessage } from './extractErrorMessage'
+import { extractErrorMessage } from './extractErrorMessage.js'
 
 describe('extractErrorMessage', () => {
   it('extracts message from Error instance', async () => {

@@ -1,22 +1,22 @@
 import {
   AbiCoder,
-  AddressLike,
-  BytesLike,
-  FetchRequest,
-  JsonRpcProvider,
+  type AddressLike,
+  type BytesLike,
+  type FetchRequest,
+  type JsonRpcProvider,
   Network,
-  TransactionRequest,
+  type TransactionRequest,
   ethers,
 } from 'ethers'
-import { Multicall, Multicall3 } from '../../contracts/Multicall'
-import { count } from '../../metricsCount'
-import { Chain } from '../constants/chains'
-import { MulticallError } from '../errors/errors'
-import { logger } from '../utils/logger'
+import type { Multicall, Multicall3 } from '../../contracts/Multicall.js'
+import { count } from '../../metricsCount.js'
+import type { Chain } from '../constants/chains.js'
+import { MulticallError } from '../errors/errors.js'
+import { logger } from '../utils/logger.js'
 
-import { Multicall__factory } from '../../contracts'
-import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
-import { CustomJsonRpcProvider } from './CustomJsonRpcProvider'
+import { Multicall__factory } from '../../contracts/index.js'
+import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS.js'
+import { CustomJsonRpcProvider } from './CustomJsonRpcProvider.js'
 
 interface PendingCall {
   callParams: {

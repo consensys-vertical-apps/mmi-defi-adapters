@@ -1,7 +1,7 @@
-import { Chain } from '../../../../../core/constants/chains'
-import { TimePeriod } from '../../../../../core/constants/timePeriod'
-import type { TestCase } from '../../../../../types/testCase'
-import { WriteActions } from '../../../../../types/writeActions'
+import { Chain } from '../../../../../core/constants/chains.js'
+import { TimePeriod } from '../../../../../core/constants/timePeriod.js'
+import type { TestCase } from '../../../../../types/testCase.js'
+import { WriteActions } from '../../../../../types/writeActions.js'
 
 export const testCases: TestCase[] = [
   {

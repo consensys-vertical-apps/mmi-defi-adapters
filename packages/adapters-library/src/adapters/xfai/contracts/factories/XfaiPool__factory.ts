@@ -8,8 +8,8 @@ import {
   Interface,
 } from "ethers";
 import type { Signer, ContractDeployTransaction, ContractRunner } from "ethers";
-import type { NonPayableOverrides } from "../common";
-import type { XfaiPool, XfaiPoolInterface } from "../XfaiPool";
+import type { NonPayableOverrides } from "../common.js";
+import type { XfaiPool, XfaiPoolInterface } from "../XfaiPool.js";
 
 const _abi = [
   {

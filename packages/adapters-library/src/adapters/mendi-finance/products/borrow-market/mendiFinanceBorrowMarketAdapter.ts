@@ -1,15 +1,18 @@
 import { z } from 'zod'
-import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
-import { Chain } from '../../../../core/constants/chains'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter.js'
+import type { Chain } from '../../../../core/constants/chains.js'
 import {
-  WriteActionInputSchemas,
+  PositionType,
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import {
+  type WriteActionInputSchemas,
   WriteActions,
-} from '../../../../types/writeActions'
-import { Protocol } from '../../../protocols'
-import { GetTransactionParams } from '../../../supportedProtocols'
-import { Cerc20__factory, Comptroller__factory } from '../../contracts'
-import { contractAddresses } from '../supply-market/mendiFinanceSupplyMarketAdapter'
+} from '../../../../types/writeActions.js'
+import type { Protocol } from '../../../protocols.js'
+import type { GetTransactionParams } from '../../../supportedProtocols.js'
+import { Cerc20__factory, Comptroller__factory } from '../../contracts/index.js'
+import { contractAddresses } from '../supply-market/mendiFinanceSupplyMarketAdapter.js'
 
 export class MendiFinanceBorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
   productId = 'borrow-market'

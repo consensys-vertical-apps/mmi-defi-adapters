@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { PendleSyToken, PendleSyTokenInterface } from "../PendleSyToken";
+import type { PendleSyToken, PendleSyTokenInterface } from "../PendleSyToken.js";
 
 const _abi = [
   {

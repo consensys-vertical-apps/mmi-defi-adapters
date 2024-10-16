@@ -8,13 +8,13 @@ export function votingEscrowAdapterTemplate({
   productId: string
 }) {
   return `
-  import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
-  import { NotImplementedError } from '../../../../core/errors/errors'
+  import { VotingEscrow } from '../../../../core/adapters/votingEscrow.js'
+  import { NotImplementedError } from '../../../../core/errors/errors.js'
   import {
     ProtocolDetails,
     PositionType,
     GetPositionsInput,
-  } from '../../../../types/adapter'
+  } from '../../../../types/adapter.js'
   
   export class ${adapterClassName} extends VotingEscrow {
 

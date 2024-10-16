@@ -1,4 +1,4 @@
-import { logger } from '../utils/logger'
+import { logger } from '../utils/logger.js'
 
 const TimeoutErrorMessage = 'Operation timed out'
 

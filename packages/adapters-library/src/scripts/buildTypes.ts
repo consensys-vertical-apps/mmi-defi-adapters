@@ -1,14 +1,14 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { Command } from 'commander'
+import type { Command } from 'commander'
 import { parse, print, types, visit } from 'recast'
 import { glob, runTypeChain } from 'typechain'
-import { Protocol } from '../adapters/protocols'
-import { lowerFirst, pascalCase } from '../core/utils/caseConversion'
-import { logger } from '../core/utils/logger'
-import { writeAndLintFile } from '../core/utils/writeAndLintFile'
-import { DefiProvider } from '../defiProvider'
-import { sortEntries } from './utils/sortEntries'
+import { Protocol } from '../adapters/protocols.js'
+import { lowerFirst, pascalCase } from '../core/utils/caseConversion.js'
+import { logger } from '../core/utils/logger.js'
+import { writeAndLintFile } from '../core/utils/writeAndLintFile.js'
+import { DefiProvider } from '../defiProvider.js'
+import { sortEntries } from './utils/sortEntries.js'
 import n = types.namedTypes
 import b = types.builders
 
@@ -136,7 +136,7 @@ async function addImportsAndSchemas(
   )
   const contents = fs.readFileSync(adaptersFile, 'utf-8')
   const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
+    parser: await import('recast/parsers/typescript.js'),
   })
 
   visit(ast, {

@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   OpenFundRedemptionConcrete,
   OpenFundRedemptionConcreteInterface,
-} from "../OpenFundRedemptionConcrete";
+} from "../OpenFundRedemptionConcrete.js";
 
 const _abi = [
   {

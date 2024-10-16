@@ -1,8 +1,8 @@
-import type { Protocol } from '../adapters/protocols'
-import type { GetTransactionParams } from '../adapters/supportedProtocols'
-import type { AdaptersController } from '../core/adaptersController'
-import type { Chain } from '../core/constants/chains'
-import { Helpers } from '../scripts/helpers'
+import type { Protocol } from '../adapters/protocols.js'
+import type { GetTransactionParams } from '../adapters/supportedProtocols.js'
+import type { AdaptersController } from '../core/adaptersController.js'
+import type { Chain } from '../core/constants/chains.js'
+import type { Helpers } from '../scripts/helpers.js'
 import type {
   AdapterSettings,
   GetEventsInput,
@@ -16,8 +16,8 @@ import type {
   UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
-} from './adapter'
-import type { Erc20Metadata } from './erc20Metadata'
+} from './adapter.js'
+import type { Erc20Metadata } from './erc20Metadata.js'
 
 export type Json =
   | null

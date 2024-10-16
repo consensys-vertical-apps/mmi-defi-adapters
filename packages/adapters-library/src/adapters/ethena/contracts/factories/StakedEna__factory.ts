@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { StakedEna, StakedEnaInterface } from "../StakedEna";
+import type { StakedEna, StakedEnaInterface } from "../StakedEna.js";
 
 const _abi = [
   {

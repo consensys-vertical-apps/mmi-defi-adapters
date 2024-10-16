@@ -1,23 +1,23 @@
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../../core/errors/errors'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import { NotImplementedError } from '../../../../core/errors/errors.js'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl.js'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata.js'
+import type { ProtocolToken } from '../../../../types/IProtocolAdapter.js'
 import {
-  GetEventsInput,
-  GetPositionsInput,
-  MovementsByBlock,
+  type GetEventsInput,
+  type GetPositionsInput,
+  type MovementsByBlock,
   PositionType,
-  ProtocolDetails,
-  ProtocolPosition,
+  type ProtocolDetails,
+  type ProtocolPosition,
   TokenType,
-  UnwrappedTokenExchangeRate,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
-import { ConvexFactory__factory } from '../../contracts'
+  type UnwrappedTokenExchangeRate,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import { CONVEX_FACTORY_ADDRESS } from '../../common/constants.js'
+import { ConvexFactory__factory } from '../../contracts/index.js'
 
 const PRICE_PEGGED_TO_ONE = 1
 

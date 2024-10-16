@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { GlpManager, GlpManagerInterface } from "../GlpManager";
+import type { GlpManager, GlpManagerInterface } from "../GlpManager.js";
 
 const _abi = [
   {

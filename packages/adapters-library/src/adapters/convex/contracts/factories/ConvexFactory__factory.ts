@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { ConvexFactory, ConvexFactoryInterface } from "../ConvexFactory";
+import type { ConvexFactory, ConvexFactoryInterface } from "../ConvexFactory.js";
 
 const _abi = [
   {

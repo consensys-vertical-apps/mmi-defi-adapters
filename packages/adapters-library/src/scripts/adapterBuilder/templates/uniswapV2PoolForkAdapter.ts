@@ -1,4 +1,4 @@
-import { Chain } from '../../../core/constants/chains'
+import type { Chain } from '../../../core/constants/chains.js'
 
 export function uniswapV2PoolForkAdapterTemplate({
   protocolKey,
@@ -15,12 +15,12 @@ export function uniswapV2PoolForkAdapterTemplate({
   import {
     UniswapV2PoolForkAdapter,
     UniswapV2PoolForkPositionStrategy,
-  } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
-  import { Chain } from '../../../../core/constants/chains'
+  } from '../../../../core/adapters/UniswapV2PoolForkAdapter.js'
+  import { Chain } from '../../../../core/constants/chains.js'
   import {
     ProtocolDetails,
     PositionType,
-  } from '../../../../types/adapter'
+  } from '../../../../types/adapter.js'
   
   export class ${adapterClassName} extends UniswapV2PoolForkAdapter {
     productId = '${productId}'

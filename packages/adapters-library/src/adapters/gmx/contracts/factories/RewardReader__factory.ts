@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { RewardReader, RewardReaderInterface } from "../RewardReader";
+import type { RewardReader, RewardReaderInterface } from "../RewardReader.js";
 
 const _abi = [
   {

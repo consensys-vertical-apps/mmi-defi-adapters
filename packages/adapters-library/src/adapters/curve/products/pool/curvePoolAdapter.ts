@@ -1,31 +1,31 @@
-import { Erc20__factory } from '../../../../contracts/factories/Erc20__factory'
-import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../../core/errors/errors'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { Helpers } from '../../../../scripts/helpers'
-import {
+import { Erc20__factory } from '../../../../contracts/factories/Erc20__factory.js'
+import type { AdaptersController } from '../../../../core/adaptersController.js'
+import type { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import { NotImplementedError } from '../../../../core/errors/errors.js'
+import type { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider.js'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata.js'
+import type { Helpers } from '../../../../scripts/helpers.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
+} from '../../../../types/IProtocolAdapter.js'
 import {
-  GetEventsInput,
-  GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
+  type GetEventsInput,
+  type GetPositionsInput,
+  type GetTotalValueLockedInput,
+  type MovementsByBlock,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
-  ProtocolTokenTvl,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
+  type ProtocolTokenTvl,
   TokenType,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../../types/adapter'
-import { Protocol } from '../../../protocols'
-import { getCurvePoolData } from '../../common/getPoolData'
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../../types/adapter.js'
+import type { Protocol } from '../../../protocols.js'
+import { getCurvePoolData } from '../../common/getPoolData.js'
 
 type AdditionalMetadata = {
   lpTokenManager: string

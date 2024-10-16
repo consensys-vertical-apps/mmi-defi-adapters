@@ -1,32 +1,32 @@
 import { getAddress } from 'ethers'
 
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import { filterMapAsync } from '../../../../core/utils/filters'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl.js'
+import { filterMapAsync } from '../../../../core/utils/filters.js'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata.js'
+import type { ProtocolToken } from '../../../../types/IProtocolAdapter.js'
 import {
-  GetEventsInput,
-  GetRewardPositionsInput,
-  MovementsByBlock,
+  type GetEventsInput,
+  type GetRewardPositionsInput,
+  type MovementsByBlock,
   PositionType,
-  ProtocolDetails,
+  type ProtocolDetails,
   TokenType,
-  UnderlyingReward,
-  UnwrappedTokenExchangeRate,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
-import { GetCVXMintAmount } from '../../common/cvxRewardFormula'
+  type UnderlyingReward,
+  type UnwrappedTokenExchangeRate,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import { CONVEX_FACTORY_ADDRESS } from '../../common/constants.js'
+import { GetCVXMintAmount } from '../../common/cvxRewardFormula.js'
+import type { RewardPaidEvent } from '../../contracts/ConvexRewardsFactory.js'
 import {
   ConvexFactory__factory,
   ConvexRewardTracker__factory,
   ConvexRewardsFactory__factory,
   CvxMint__factory,
-} from '../../contracts'
-import { RewardPaidEvent } from '../../contracts/ConvexRewardsFactory'
+} from '../../contracts/index.js'
 
 const CONVEX_TOKEN_ADDRESS = '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b'
 

@@ -1,11 +1,11 @@
-import { AVERAGE_BLOCKS_PER_10_MINUTES } from './core/constants/AVERAGE_BLOCKS_PER_10_MINS'
-import { Chain } from './core/constants/chains'
-import { IProtocolAdapter } from './types/IProtocolAdapter'
+import { AVERAGE_BLOCKS_PER_10_MINUTES } from './core/constants/AVERAGE_BLOCKS_PER_10_MINS.js'
+import { Chain } from './core/constants/chains.js'
+import type { IProtocolAdapter } from './types/IProtocolAdapter.js'
 import {
-  IUnwrapCacheProvider,
+  type IUnwrapCacheProvider,
   UnwrapCache,
   getTenMinuteKeyByBlock,
-} from './unwrapCache'
+} from './unwrapCache.js'
 
 describe('UnwrapCache', () => {
   describe('fetchWithCache', () => {

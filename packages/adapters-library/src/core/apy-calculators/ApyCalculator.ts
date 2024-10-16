@@ -1,5 +1,5 @@
-import { ProtocolPosition } from '../../types/adapter'
-import { Chain } from '../constants/chains'
+import type { ProtocolPosition } from '../../types/adapter.js'
+import type { Chain } from '../constants/chains.js'
 
 /**
  * Data structure than contains the calculated APY,

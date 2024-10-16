@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   OsEthController,
   OsEthControllerInterface,
-} from "../OsEthController";
+} from "../OsEthController.js";
 
 const _abi = [
   {

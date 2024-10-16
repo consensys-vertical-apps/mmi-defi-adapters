@@ -1,38 +1,41 @@
 import { getAddress } from 'ethers'
-import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../../core/errors/errors'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
-import { Helpers } from '../../../../scripts/helpers'
+import type { AdaptersController } from '../../../../core/adaptersController.js'
+import type { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import { NotImplementedError } from '../../../../core/errors/errors.js'
+import type { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider.js'
 import {
+  filterMapAsync,
+  filterMapSync,
+} from '../../../../core/utils/filters.js'
+import type { Helpers } from '../../../../scripts/helpers.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
+} from '../../../../types/IProtocolAdapter.js'
 import {
-  GetEventsInput,
-  GetPositionsInput,
-  GetRewardPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
+  type GetEventsInput,
+  type GetPositionsInput,
+  type GetRewardPositionsInput,
+  type GetTotalValueLockedInput,
+  type MovementsByBlock,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
-  ProtocolTokenTvl,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
+  type ProtocolTokenTvl,
   TokenType,
-  UnderlyingReward,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { Protocol } from '../../../protocols'
-import { staticChainDataV2 } from '../../common/staticChainData'
+  type UnderlyingReward,
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import type { Protocol } from '../../../protocols.js'
+import { staticChainDataV2 } from '../../common/staticChainData.js'
 import {
   StargateMultiRewarder__factory,
   StargateStaking__factory,
-} from '../../contracts'
+} from '../../contracts/index.js'
 
 type AdditionalMetadata = {
   rewarderAddress: string

@@ -1,21 +1,21 @@
 import { formatUnits } from 'ethers'
-import { priceAdapterConfig } from '../adapters/prices-v2/products/usd/priceV2Config'
-import { enrichMovements, enrichPositionBalance } from '../responseAdapters'
-import { IProtocolAdapter } from '../types/IProtocolAdapter'
+import { priceAdapterConfig } from '../adapters/prices-v2/products/usd/priceV2Config.js'
+import { enrichMovements, enrichPositionBalance } from '../responseAdapters.js'
+import type { IProtocolAdapter } from '../types/IProtocolAdapter.js'
 import {
-  AggregatedFiatBalances,
-  GetEventsInput,
-  MovementsByBlock,
+  type AggregatedFiatBalances,
+  type GetEventsInput,
+  type MovementsByBlock,
   PositionType,
-  ProfitsWithRange,
-  ProtocolPosition,
+  type ProfitsWithRange,
+  type ProtocolPosition,
   TokenType,
-} from '../types/adapter'
-import { IUnwrapCache } from '../unwrapCache'
-import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
-import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
-import { calculateDeFiAttributionPerformance } from './utils/calculateDeFiAttributionPerformance'
-import { unwrap } from './utils/unwrap'
+} from '../types/adapter.js'
+import type { IUnwrapCache } from '../unwrapCache.js'
+import { aggregateFiatBalances } from './utils/aggregateFiatBalances.js'
+import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements.js'
+import { calculateDeFiAttributionPerformance } from './utils/calculateDeFiAttributionPerformance.js'
+import { unwrap } from './utils/unwrap.js'
 
 export async function getProfits({
   adapter,

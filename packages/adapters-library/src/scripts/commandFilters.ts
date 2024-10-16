@@ -1,6 +1,6 @@
-import { Protocol } from '../adapters/protocols'
-import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
-import { filterMapSync } from '../core/utils/filters'
+import { Protocol } from '../adapters/protocols.js'
+import { Chain, ChainIdToChainNameMap } from '../core/constants/chains.js'
+import { filterMapSync } from '../core/utils/filters.js'
 
 export function chainFilter(filterInput?: string): Chain | undefined {
   if (!filterInput) {

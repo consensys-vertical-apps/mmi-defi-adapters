@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { AaveV3Pool, AaveV3PoolInterface } from "../AaveV3Pool";
+import type { AaveV3Pool, AaveV3PoolInterface } from "../AaveV3Pool.js";
 
 const _abi = [
   {

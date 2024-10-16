@@ -3,8 +3,8 @@ import {
   BeefyVaultV7__factory,
   CurvePool__factory,
   CurveToken__factory,
-} from '../../contracts'
-import { VaultBalanceBreakdownFetcher } from '../types'
+} from '../../contracts/index.js'
+import type { VaultBalanceBreakdownFetcher } from '../types.js'
 
 export const fetchCurveBalanceBreakdown: VaultBalanceBreakdownFetcher = async (
   { protocolTokenAddress, underlyingLPTokenAddress, blockSpec },

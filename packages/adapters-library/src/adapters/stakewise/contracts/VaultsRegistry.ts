@@ -20,7 +20,7 @@ import type {
   TypedLogDescription,
   TypedListener,
   TypedContractMethod,
-} from "./common";
+} from "./common.js";
 
 export interface VaultsRegistryInterface extends Interface {
   getFunction(

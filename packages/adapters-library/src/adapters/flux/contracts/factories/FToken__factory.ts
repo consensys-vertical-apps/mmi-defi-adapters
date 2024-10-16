@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { FToken, FTokenInterface } from "../FToken";
+import type { FToken, FTokenInterface } from "../FToken.js";
 
 const _abi = [
   {

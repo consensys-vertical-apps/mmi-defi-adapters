@@ -25,23 +25,23 @@ import {
 import { ExclamationTriangleIcon } from '@heroicons/react/24/solid'
 import { DevTool } from '@hookform/devtools'
 import {
-  Chain,
+  type Chain,
   ChainName,
-  DefiPositionResponse,
-  Protocol,
+  type DefiPositionResponse,
+  type Protocol,
 } from '@metamask-institutional/defi-adapters'
-import {
+import type {
   TokenType,
   Underlying,
 } from '@metamask-institutional/defi-adapters/dist/types/adapter'
-import { DisplayPosition } from '@metamask-institutional/defi-adapters/dist/types/response'
+import type { DisplayPosition } from '@metamask-institutional/defi-adapters/dist/types/response'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, type SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'
 import { JsonDisplay } from './JsonDisplay'
-import { provider } from './providerWrapper'
 import { useFiltersContext } from './filtersContext'
 import { chainOptions, protocolOptions } from './filtersOptions'
+import { provider } from './providerWrapper'
 
 type FormValues = {
   userAddress: string

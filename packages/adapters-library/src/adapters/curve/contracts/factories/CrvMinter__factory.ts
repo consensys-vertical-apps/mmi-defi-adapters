@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { CrvMinter, CrvMinterInterface } from "../CrvMinter";
+import type { CrvMinter, CrvMinterInterface } from "../CrvMinter.js";
 
 const _abi = [
   {

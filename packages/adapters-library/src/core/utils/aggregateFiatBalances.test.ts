@@ -1,5 +1,9 @@
-import { ProtocolPosition, TokenType, Underlying } from '../../types/adapter'
-import { aggregateFiatBalances } from './aggregateFiatBalances'
+import {
+  type ProtocolPosition,
+  TokenType,
+  type Underlying,
+} from '../../types/adapter.js'
+import { aggregateFiatBalances } from './aggregateFiatBalances.js'
 
 const balanceRaw = 2000000000000000000n
 const priceRaw = BigInt(Math.pow(2, 18))

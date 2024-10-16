@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { VotingEscrow, VotingEscrowInterface } from "../VotingEscrow";
+import type { VotingEscrow, VotingEscrowInterface } from "../VotingEscrow.js";
 
 const _abi = [
   {

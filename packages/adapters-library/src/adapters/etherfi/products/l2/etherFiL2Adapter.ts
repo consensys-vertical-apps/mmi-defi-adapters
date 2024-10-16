@@ -1,28 +1,28 @@
 import { getAddress } from 'ethers'
-import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../../core/errors/errors'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { Helpers } from '../../../../scripts/helpers'
-import {
+import type { AdaptersController } from '../../../../core/adaptersController.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import { NotImplementedError } from '../../../../core/errors/errors.js'
+import type { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider.js'
+import type { Helpers } from '../../../../scripts/helpers.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
+} from '../../../../types/IProtocolAdapter.js'
 import {
-  GetEventsInput,
-  GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
+  type GetEventsInput,
+  type GetPositionsInput,
+  type GetTotalValueLockedInput,
+  type MovementsByBlock,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
-  ProtocolTokenTvl,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../../types/adapter'
-import { Protocol } from '../../../protocols'
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
+  type ProtocolTokenTvl,
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../../types/adapter.js'
+import type { Protocol } from '../../../protocols.js'
 
 const CHAIN_TO_CONFIG: Partial<
   Record<

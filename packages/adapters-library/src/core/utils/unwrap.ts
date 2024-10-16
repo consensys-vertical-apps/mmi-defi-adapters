@@ -1,14 +1,14 @@
-import { Protocol } from '../../adapters/protocols'
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
-import { TokenType, UnderlyingTokenTypeMap } from '../../types/adapter'
-import { Erc20Metadata } from '../../types/erc20Metadata'
-import { IUnwrapCache } from '../../unwrapCache'
+import { Protocol } from '../../adapters/protocols.js'
+import type { IProtocolAdapter } from '../../types/IProtocolAdapter.js'
+import { TokenType, UnderlyingTokenTypeMap } from '../../types/adapter.js'
+import type { Erc20Metadata } from '../../types/erc20Metadata.js'
+import type { IUnwrapCache } from '../../unwrapCache.js'
 import {
   AdapterMissingError,
   NotImplementedError,
   ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
-} from '../errors/errors'
-import { logger } from './logger'
+} from '../errors/errors.js'
+import { logger } from './logger.js'
 
 type Token = Erc20Metadata & {
   tokens?: Token[]

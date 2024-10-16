@@ -1,37 +1,41 @@
-import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../../../../core/utils/filters'
-import { logger } from '../../../../core/utils/logger'
-import { Helpers } from '../../../../scripts/helpers'
-import {
+import type { AdaptersController } from '../../../../core/adaptersController.js'
+import type { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import type { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider.js'
+import { filterMapAsync } from '../../../../core/utils/filters.js'
+import { logger } from '../../../../core/utils/logger.js'
+import type { Helpers } from '../../../../scripts/helpers.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
+} from '../../../../types/IProtocolAdapter.js'
 import {
-  GetEventsInput,
-  GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
+  type GetEventsInput,
+  type GetPositionsInput,
+  type GetTotalValueLockedInput,
+  type MovementsByBlock,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
-  ProtocolTokenTvl,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
+  type ProtocolTokenTvl,
   TokenType,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { Protocol } from '../../../protocols'
-import { breakdownFetcherMap, chainIdMap, protocolMap } from '../../sdk/config'
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import type { Protocol } from '../../../protocols.js'
 import {
-  ApiClmManager,
-  ApiVault,
+  breakdownFetcherMap,
+  chainIdMap,
+  protocolMap,
+} from '../../sdk/config.js'
+import {
+  type ApiClmManager,
+  type ApiVault,
   BeefyProductType,
-  ProtocolUnwrapType,
-} from '../../sdk/types'
+  type ProtocolUnwrapType,
+} from '../../sdk/types.js'
 
 type AdditionalMetadata = {
   unwrapType: ProtocolUnwrapType

@@ -1,7 +1,11 @@
-import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY'
-import { NotSupportedError } from '../errors/errors'
-import { ApyCalculation, ApyCalculator, EvmApyArgs } from './ApyCalculator'
-import { computeApr, computeApy } from './common'
+import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY.js'
+import { NotSupportedError } from '../errors/errors.js'
+import type {
+  ApyCalculation,
+  ApyCalculator,
+  EvmApyArgs,
+} from './ApyCalculator.js'
+import { computeApr, computeApy } from './common.js'
 
 /**
  * Calculates the APY of a position by calculating the fees as the difference of balance in

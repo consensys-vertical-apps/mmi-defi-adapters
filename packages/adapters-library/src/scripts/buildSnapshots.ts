@@ -1,25 +1,28 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import { Command } from 'commander'
+import type { Command } from 'commander'
 import { parse, print, types, visit } from 'recast'
 import {
   getAggregatedValues,
   getAggregatedValuesMovements,
-} from '../adapters/aggrigateValues'
-import { Protocol } from '../adapters/protocols'
-import type { GetTransactionParams } from '../adapters/supportedProtocols'
-import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
-import { ProviderMissingError } from '../core/errors/errors'
-import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { bigintJsonStringify } from '../core/utils/bigintJson'
-import { kebabCase } from '../core/utils/caseConversion'
-import { filterMapSync } from '../core/utils/filters'
-import { writeAndLintFile } from '../core/utils/writeAndLintFile'
-import { DefiProvider } from '../defiProvider'
-import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
-import type { TestCase } from '../types/testCase'
-import { multiProtocolFilter } from './commandFilters'
-import { startRpcSnapshot } from './rpcInterceptor'
+} from '../adapters/aggrigateValues.js'
+import type { Protocol } from '../adapters/protocols.js'
+import type { GetTransactionParams } from '../adapters/supportedProtocols.js'
+import { type Chain, ChainIdToChainNameMap } from '../core/constants/chains.js'
+import { ProviderMissingError } from '../core/errors/errors.js'
+import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider.js'
+import { bigintJsonStringify } from '../core/utils/bigintJson.js'
+import { kebabCase } from '../core/utils/caseConversion.js'
+import { filterMapSync } from '../core/utils/filters.js'
+import { writeAndLintFile } from '../core/utils/writeAndLintFile.js'
+import { DefiProvider } from '../defiProvider.js'
+import type {
+  DefiPositionResponse,
+  DefiProfitsResponse,
+} from '../types/response.js'
+import type { TestCase } from '../types/testCase.js'
+import { multiProtocolFilter } from './commandFilters.js'
+import { startRpcSnapshot } from './rpcInterceptor.js'
 import n = types.namedTypes
 import b = types.builders
 
@@ -65,8 +68,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
         const testCases: TestCase[] = (
           await import(
             path.resolve(
-              __dirname,
-              `../adapters/${protocolId}/products/${productId}/tests/testCases`,
+              `packages/adapters-library/dist/adapters/${protocolId}/products/${productId}/tests/testCases.js`,
             )
           )
         ).testCases
@@ -408,7 +410,7 @@ async function updateBlockNumber(
   )
   const contents = await fs.readFile(testCasesFile, 'utf-8')
   const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
+    parser: await import('recast/parsers/typescript.js'),
   })
 
   visit(ast, {
@@ -490,7 +492,7 @@ async function updateFilters(
   )
   const contents = await fs.readFile(testCasesFile, 'utf-8')
   const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
+    parser: await import('recast/parsers/typescript.js'),
   })
 
   visit(ast, {

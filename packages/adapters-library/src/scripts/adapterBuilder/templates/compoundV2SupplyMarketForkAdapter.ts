@@ -8,9 +8,9 @@ export function compoundV2SupplyMarketForkAdapterTemplate({
   productId: string
 }) {
   return `
-  import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
-  import { Chain } from '../../../../core/constants/chains'
-  import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+  import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter.js'
+  import { Chain } from '../../../../core/constants/chains.js'
+  import { PositionType, ProtocolDetails } from '../../../../types/adapter.js'
   
   export class ${adapterClassName} extends CompoundV2SupplyMarketForkAdapter {
     productId = '${productId}'

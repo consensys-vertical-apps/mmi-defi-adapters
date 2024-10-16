@@ -1,47 +1,50 @@
 import { ZeroAddress } from 'ethers'
-import { Erc20__factory } from '../../../contracts/factories/Erc20__factory'
-import { AdaptersController } from '../../../core/adaptersController'
-import { Chain } from '../../../core/constants/chains'
-import { CacheToDb } from '../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../core/errors/errors'
-import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../../../core/utils/filters'
-import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
-import { logger } from '../../../core/utils/logger'
-import { Helpers } from '../../../scripts/helpers'
-import {
+import { Erc20__factory } from '../../../contracts/factories/Erc20__factory.js'
+import type { AdaptersController } from '../../../core/adaptersController.js'
+import { Chain } from '../../../core/constants/chains.js'
+import { CacheToDb } from '../../../core/decorators/cacheToDb.js'
+import { NotImplementedError } from '../../../core/errors/errors.js'
+import type { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider.js'
+import { filterMapAsync } from '../../../core/utils/filters.js'
+import { getTokenMetadata } from '../../../core/utils/getTokenMetadata.js'
+import { logger } from '../../../core/utils/logger.js'
+import type { Helpers } from '../../../scripts/helpers.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../types/IProtocolAdapter'
+} from '../../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
-  GetEventsInput,
-  GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
+  type AdapterSettings,
+  type GetEventsInput,
+  type GetPositionsInput,
+  type GetTotalValueLockedInput,
+  type MovementsByBlock,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
-  ProtocolTokenTvl,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
+  type ProtocolTokenTvl,
   TokenType,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../types/adapter'
-import { Erc20Metadata } from '../../../types/erc20Metadata'
-import { Protocol } from '../../protocols'
-import { MarketParamsStruct, MarketStruct } from '../contracts/AdaptiveCurveIrm'
-import { SupplyEvent } from '../contracts/MorphoBlue'
-import {
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../types/erc20Metadata.js'
+import { Protocol } from '../../protocols.js'
+import type {
+  MarketParamsStruct,
+  MarketStruct,
+} from '../contracts/AdaptiveCurveIrm.js'
+import type { SupplyEvent } from '../contracts/MorphoBlue.js'
+import type {
   TypedContractEvent,
   TypedDeferredTopicFilter,
-} from '../contracts/common'
+} from '../contracts/common.js'
 import {
   AdaptiveCurveIrm__factory,
   MorphoBlue__factory,
-} from '../contracts/factories'
-import { MarketData, MarketParams } from '../internal-utils/Blue'
-import { MorphoBlueMath } from '../internal-utils/MorphoBlue.maths'
+} from '../contracts/factories/index.js'
+import type { MarketData, MarketParams } from '../internal-utils/Blue.js'
+import { MorphoBlueMath } from '../internal-utils/MorphoBlue.maths.js'
 
 type AdditionalMetadata = {
   tokenId: string

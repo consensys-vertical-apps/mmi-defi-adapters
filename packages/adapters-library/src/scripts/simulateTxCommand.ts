@@ -1,8 +1,8 @@
-import { Command } from 'commander'
-import { Chain } from '../core/constants/chains'
-import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { chainFilter, protocolFilter } from './commandFilters'
-import { simulateTx } from './simulator/simulateTx'
+import type { Command } from 'commander'
+import type { Chain } from '../core/constants/chains.js'
+import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider.js'
+import { chainFilter, protocolFilter } from './commandFilters.js'
+import { simulateTx } from './simulator/simulateTx.js'
 
 export function simulateTxCommand(
   program: Command,

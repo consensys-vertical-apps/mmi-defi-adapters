@@ -1,11 +1,14 @@
-import { UniswapV2Pair__factory } from '../../../../contracts'
+import { UniswapV2Pair__factory } from '../../../../contracts/index.js'
 import {
   UniswapV2PoolForkAdapter,
-  UniswapV2PoolForkPositionStrategy,
-} from '../../../../core/adapters/UniswapV2PoolForkAdapter'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+  type UniswapV2PoolForkPositionStrategy,
+} from '../../../../core/adapters/UniswapV2PoolForkAdapter.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import {
+  PositionType,
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
 
 export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   productId = 'pool'

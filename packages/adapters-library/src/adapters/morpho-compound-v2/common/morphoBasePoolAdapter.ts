@@ -1,46 +1,46 @@
 import { getAddress } from 'ethers'
-import * as WadMath from 'evm-maths/lib/wad'
-import { AdaptersController } from '../../../core/adaptersController'
-import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
-import { Chain } from '../../../core/constants/chains'
-import { CacheToDb } from '../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../core/errors/errors'
-import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
-import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
-import { Helpers } from '../../../scripts/helpers'
-import {
+import * as WadMath from 'evm-maths/lib/wad.js'
+import type { AdaptersController } from '../../../core/adaptersController.js'
+import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS.js'
+import { Chain } from '../../../core/constants/chains.js'
+import { CacheToDb } from '../../../core/decorators/cacheToDb.js'
+import { NotImplementedError } from '../../../core/errors/errors.js'
+import type { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider.js'
+import { getTokenMetadata } from '../../../core/utils/getTokenMetadata.js'
+import type { Helpers } from '../../../scripts/helpers.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../types/IProtocolAdapter'
+} from '../../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
-  GetEventsInput,
-  GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
+  type AdapterSettings,
+  type GetEventsInput,
+  type GetPositionsInput,
+  type GetTotalValueLockedInput,
+  type MovementsByBlock,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
-  ProtocolTokenTvl,
-  TokenBalance,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
+  type ProtocolTokenTvl,
+  type TokenBalance,
   TokenType,
-  Underlying,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../types/adapter'
-import { Erc20Metadata } from '../../../types/erc20Metadata'
-import { Protocol } from '../../protocols'
+  type Underlying,
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../types/erc20Metadata.js'
+import { Protocol } from '../../protocols.js'
+import type { SuppliedEvent } from '../contracts/MorphoCompound.js'
+import type {
+  TypedContractEvent,
+  TypedDeferredTopicFilter,
+} from '../contracts/common.js'
 import {
   CToken__factory,
   MorphoCompoundLens__factory,
   MorphoCompound__factory,
-} from '../contracts'
-import { SuppliedEvent } from '../contracts/MorphoCompound'
-import {
-  TypedContractEvent,
-  TypedDeferredTopicFilter,
-} from '../contracts/common'
+} from '../contracts/index.js'
 
 const morphoCompoundV2ContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>

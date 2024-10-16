@@ -1,25 +1,28 @@
-import { Protocol } from '../../adapters/protocols'
-import { CompoundV2Cerc20__factory } from '../../contracts'
-import { Helpers } from '../../scripts/helpers'
-import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
+import type { Protocol } from '../../adapters/protocols.js'
+import { CompoundV2Cerc20__factory } from '../../contracts/index.js'
+import type { Helpers } from '../../scripts/helpers.js'
+import type {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../types/IProtocolAdapter.js'
 import {
-  GetEventsInput,
-  GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
-  ProtocolTokenTvl,
+  type GetEventsInput,
+  type GetPositionsInput,
+  type GetTotalValueLockedInput,
+  type MovementsByBlock,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
+  type ProtocolTokenTvl,
   TokenType,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../types/adapter'
-import { AdaptersController } from '../adaptersController'
-import { Chain } from '../constants/chains'
-import { CacheToDb } from '../decorators/cacheToDb'
-import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
-import { getProtocolTokens } from './compoundV2ProtocolTokens'
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../types/adapter.js'
+import type { AdaptersController } from '../adaptersController.js'
+import type { Chain } from '../constants/chains.js'
+import { CacheToDb } from '../decorators/cacheToDb.js'
+import type { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider.js'
+import { getProtocolTokens } from './compoundV2ProtocolTokens.js'
 
 export abstract class CompoundV2SupplyMarketForkAdapter
   implements IProtocolAdapter
