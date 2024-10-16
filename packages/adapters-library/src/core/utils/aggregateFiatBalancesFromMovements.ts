@@ -49,10 +49,19 @@ export function aggregateFiatBalancesFromMovements(
         `Unable to calculate profits, missing USD price for token movement: ${currentToken.address}`,
       )
 
+      const cleanCurrentToken: Underlying = {
+        address: currentToken.address,
+        name: currentToken.name,
+        symbol: currentToken.symbol,
+        decimals: currentToken.decimals,
+        balanceRaw: currentToken.balanceRaw,
+        type: currentToken.type,
+      }
+
       result[key]!.hasTokensWithoutUSDPrices = true
       result[key]!.tokensWithoutUSDPrices = result[key]!.tokensWithoutUSDPrices
-        ? [...result[key]!.tokensWithoutUSDPrices!, currentToken]
-        : [currentToken]
+        ? [...result[key]!.tokensWithoutUSDPrices!, cleanCurrentToken]
+        : [cleanCurrentToken]
     }
   }
 

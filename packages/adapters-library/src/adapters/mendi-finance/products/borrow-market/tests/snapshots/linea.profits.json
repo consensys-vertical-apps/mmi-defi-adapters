@@ -1,6 +1,6 @@
 {
   "blockNumber": 1597881,
-  "latency": "Latency: 1.258 seconds",
+  "latency": "Latency: 0.894 seconds",
   "snapshot": [
     {
       "protocolId": "mendi-finance",
@@ -36,7 +36,7 @@
                 "name": "Wrapped BTC",
                 "symbol": "WBTC",
                 "decimals": 8,
-                "balanceRaw": "50201062n",
+                "balanceRaw": "50164435n",
                 "type": "underlying"
               },
               {
@@ -72,7 +72,7 @@
                 "name": "USDC",
                 "symbol": "USDC",
                 "decimals": 6,
-                "balanceRaw": "50076921310n",
+                "balanceRaw": "50060538529n",
                 "type": "underlying"
               },
               {
@@ -108,7 +108,7 @@
                 "name": "Tether USD",
                 "symbol": "USDT",
                 "decimals": 6,
-                "balanceRaw": "57212196074n",
+                "balanceRaw": "57181023725n",
                 "type": "underlying"
               },
               {
@@ -123,7 +123,7 @@
           }
         }
       ],
-      "fromBlock": 1590694,
+      "fromBlock": 1555183,
       "toBlock": 1597881
     }
   ],
@@ -143,25 +143,25 @@
     "4ddfa5c203cd9aebc68b19740f97be15": {
       "result": "0x0000000000000000000000000000000000000000000000000000000d527fad7a"
     },
-    "5f3c9e7d764925308c1d4dc3bb5b66c6": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000002fe01e6"
+    "e7c9523eb9d46efa75e7029e9bfaf262": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000002fd72d3"
     },
-    "9985851516055bc48512d6e94dc0adff": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000ba8d12dde"
+    "6665fdcff34ccb2f5a9a74a8a8ba5365": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000ba7d732a1"
     },
-    "422490cbc27d11b29190afb0bf7292c0": {
+    "2c865a7534bab156d697f2d0084d5487": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
-    "51494caa2579ccfff05cf861e4fc353b": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000d521cd4ea"
+    "2da74b68bcba66ef97c5b341bf4dc343": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000d50412ded"
     },
-    "f5ad7e38ca2aadb61d5584261770de18": {
+    "31fe3434a228d0784373dc59763c0c5d": {
       "result": []
     },
-    "bc8ded65bfdc82a31e096c9b34fecaa9": {
+    "a89d02f1a2835f7cf4b2399227faeef0": {
       "result": []
     },
-    "f72f8a1aa5958965167a3e4c4bbf6af1": {
+    "bad8eac5c7be2f536e4a70a18584a9e7": {
       "result": []
     }
   }
