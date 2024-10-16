@@ -1,6 +1,6 @@
 {
   "blockNumber": 19070104,
-  "latency": "Latency: 8.401 seconds",
+  "latency": "Latency: 8.507 seconds",
   "snapshot": [
     {
       "protocolId": "morpho-aave-v2",
@@ -160,6 +160,22 @@
           "type": "protocol",
           "profit": 0.0016852304093175619,
           "performance": 0.001392061465911734,
+          "apyInfo": {
+            "apyPercent": 15.409940375682263,
+            "apy": 0.15409940375682263,
+            "aprPercent": 14.33484444546905,
+            "apr": 0.1433484444546905,
+            "period": {
+              "blocknumberStart": 19062958,
+              "blocknumberEnd": 19070104,
+              "interestPercent": 0.0392735464259426,
+              "interest": 0.000392735464259426
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,

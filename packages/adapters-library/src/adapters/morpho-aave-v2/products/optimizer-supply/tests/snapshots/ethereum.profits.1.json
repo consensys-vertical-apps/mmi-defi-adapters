@@ -1,6 +1,6 @@
 {
   "blockNumber": 19187227,
-  "latency": "Latency: 4.086 seconds",
+  "latency": "Latency: 7.028 seconds",
   "snapshot": [
     {
       "protocolId": "morpho-aave-v2",
@@ -22,6 +22,22 @@
           "type": "protocol",
           "profit": -15078.312581355684,
           "performance": -0.0030596289191265613,
+          "apyInfo": {
+            "apyPercent": 6.897739230120403,
+            "apy": 0.06897739230120403,
+            "aprPercent": 6.67085785588806,
+            "apr": 0.0667085785588806,
+            "period": {
+              "blocknumberStart": 19180081,
+              "blocknumberEnd": 19187227,
+              "interestPercent": 0.018276322892843998,
+              "interest": 0.00018276322892844
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
@@ -137,6 +153,22 @@
           "type": "protocol",
           "profit": -0.003707239044275168,
           "performance": -0.003036069226142919,
+          "apyInfo": {
+            "apyPercent": 5.222416824072185,
+            "apy": 0.05222416824072185,
+            "aprPercent": 5.09097293784827,
+            "apr": 0.0509097293784827,
+            "period": {
+              "blocknumberStart": 19180081,
+              "blocknumberEnd": 19187227,
+              "interestPercent": 0.013947871062598,
+              "interest": 0.00013947871062598
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
