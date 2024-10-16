@@ -1,5 +1,7 @@
+import util from 'node:util'
 import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY'
 import { NotSupportedError } from '../errors/errors'
+import { collectLeafTokens } from '../utils/collectLeafTokens'
 import {
   ApyCalculator,
   ApyInfo,
@@ -50,16 +52,27 @@ export class BalanceOfApyCalculator implements ApyCalculator {
       // How many periods there is in a year
       const frequency = 365 / durationDays
 
-      if (
-        protocolTokenStart.tokens?.length !== 1 ||
-        protocolTokenEnd.tokens?.length !== 1
-      )
+      const leafTokensStart = collectLeafTokens(protocolTokenStart)
+      const leafTokensEnd = collectLeafTokens(protocolTokenEnd)
+
+      if (leafTokensStart.length !== 1 || leafTokensEnd.length !== 1)
         throw new NotSupportedError(
           'BalanceOfApyCalculator only supports APY calculations for products with exactly one underlying token, such as aTokens.',
         )
 
-      const underlyingTokenStart = protocolTokenStart.tokens[0]!
-      const underlyingTokenEnd = protocolTokenEnd.tokens[0]!
+      console.log('✅✅✅✅protocolTokenStart')
+
+      console.log(
+        util.inspect(protocolTokenStart, {
+          showHidden: false,
+          depth: null,
+          colors: true,
+        }),
+      )
+      console.log('💜💜💜💜protocolTokenEnd', JSON.stringify(protocolTokenEnd))
+
+      const underlyingTokenStart = leafTokensStart[0]!
+      const underlyingTokenEnd = leafTokensEnd[0]!
 
       const balanceStartWei = underlyingTokenStart.balanceRaw
       const balanceEndWei = underlyingTokenEnd.balanceRaw
