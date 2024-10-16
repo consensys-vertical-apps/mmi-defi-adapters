@@ -35,7 +35,7 @@ import { useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'
 import { JsonDisplay } from './JsonDisplay'
-import { provider } from './defiProvider'
+import { provider } from './providerWrapper'
 import { useFiltersContext } from './filtersContext'
 import {
   chainOptions,

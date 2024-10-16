@@ -39,7 +39,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'
 import { JsonDisplay } from './JsonDisplay'
-import { provider } from './defiProvider'
+import { provider } from './providerWrapper'
 import { useFiltersContext } from './filtersContext'
 import { chainOptions, protocolOptions } from './filtersOptions'
 

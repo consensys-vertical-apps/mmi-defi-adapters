@@ -4,6 +4,7 @@
   "description": "Defi adapters for MMI Dashboard",
   "author": "MMI Team",
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },

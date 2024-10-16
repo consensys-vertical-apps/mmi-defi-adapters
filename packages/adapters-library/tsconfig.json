@@ -1,18 +1,29 @@
 {
   "compilerOptions": {
-    "incremental": true,
-    "target": "es2020",
-    "outDir": "dist",
-    "rootDir": "src",
-    "moduleResolution": "node",
-    "module": "commonjs",
-    "declaration": true,
-    "sourceMap": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2022",
     "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
     "strict": true,
     "noUncheckedIndexedAccess": true,
-    "skipLibCheck": true,
+    "noImplicitOverride": true,
+
+    "module": "NodeNext",
+    "rootDir": "src",
+    "outDir": "dist",
+    "sourceMap": true,
+
+    "declaration": true,
+
+    "composite": true,
+    "declarationMap": true,
+
+    "lib": ["es2022"],
+
     "types": ["node", "jest"]
   },
   "include": ["src"]
