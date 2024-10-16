@@ -1,6 +1,6 @@
 {
   "blockNumber": 20633660,
-  "latency": "Latency: 1.973 seconds",
+  "latency": "Latency: 1.91 seconds",
   "snapshot": [
     {
       "protocolId": "morpho-blue",
@@ -59,6 +59,22 @@
           "type": "protocol",
           "profit": 236645.05746164545,
           "performance": 0.010422517253792452,
+          "apyInfo": {
+            "apyPercent": 1.486081219904145,
+            "apy": 0.014860812199041451,
+            "aprPercent": 1.4751770346440813,
+            "apr": 0.014751770346440814,
+            "period": {
+              "blocknumberStart": 20626514,
+              "blocknumberEnd": 20633660,
+              "interestPercent": 0.0040415809168331,
+              "interest": 0.000040415809168331
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,

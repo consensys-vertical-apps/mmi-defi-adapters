@@ -117,12 +117,14 @@ export async function getProfits({
 
   const tokens = await Promise.all(
     Object.values(endPositionValues).map(async ({ protocolTokenMetadata }) => {
+      const { address, tokenId } = protocolTokenMetadata
+
       const getEventsInput: GetEventsInput = {
         userAddress,
-        protocolTokenAddress: protocolTokenMetadata.address,
+        protocolTokenAddress: address,
         fromBlock,
         toBlock,
-        tokenId: protocolTokenMetadata.tokenId,
+        tokenId,
       }
 
       const isBorrow =
@@ -221,7 +223,7 @@ export async function getProfits({
           : ({} as AggregatedFiatBalances),
       ])
 
-      const key = protocolTokenMetadata.tokenId ?? protocolTokenMetadata.address
+      const key = tokenId ?? address
 
       // Format units only if there is a price adapter for the chain
       const formatUnitsIfPossible = (value: bigint | undefined) => {
@@ -277,23 +279,22 @@ export async function getProfits({
           ]
         : undefined
 
-      const protocolTokenAddress = protocolTokenMetadata.address
+      const apyCalculator = await createApyCalculatorFor(adapter, address)
 
-      const apyCalculator = await createApyCalculatorFor(
-        adapter,
-        protocolTokenAddress,
-      )
+      const protocolTokenStart = rawStartPositionValues.find(
+        (item) => item.address === address && item.tokenId === tokenId,
+      )!
+
+      const protocolTokenEnd = rawEndPositionValues.find(
+        (item) => item.address === address && item.tokenId === tokenId,
+      )!
 
       const apyInfo = await apyCalculator.getApy({
-        protocolTokenStart: rawStartPositionValues.find(
-          (item) => item.address === protocolTokenAddress,
-        )!,
-        protocolTokenEnd: rawEndPositionValues.find(
-          (item) => item.address === protocolTokenAddress,
-        )!,
+        protocolTokenStart,
+        protocolTokenEnd,
         blocknumberStart: fromBlock,
         blocknumberEnd: toBlock,
-        protocolTokenAddress,
+        protocolTokenAddress: address,
         chainId: adapter.chainId,
         withdrawals: withdrawal,
         deposits: deposit,
