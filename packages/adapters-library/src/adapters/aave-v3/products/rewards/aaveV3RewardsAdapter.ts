@@ -135,7 +135,9 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     ]
   }
 
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
+    console.log('here')
     const rewardTokenAddresses = await this.incentivesContract.getRewardsList()
 
     const rewardTokens = await Promise.all(
