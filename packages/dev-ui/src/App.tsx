@@ -30,7 +30,7 @@ function App() {
           }, []),
         ),
       )
-        .sort((a, b) => a - b)
+        .sort()
         .map((value) => ({ value, label: value.toString() }))
 
       return {
