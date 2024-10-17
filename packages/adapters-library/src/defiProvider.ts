@@ -83,7 +83,6 @@ export class DefiProvider {
       providers: this.chainProvider.providers,
       supportedProtocols,
       metadataProviders: this.metadataProviders,
-      config: this.parsedConfig.values,
     })
   }
 

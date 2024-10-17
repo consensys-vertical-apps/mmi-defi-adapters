@@ -37,20 +37,15 @@ export class AdaptersController {
     | Promise<Map<Chain, Map<string, IProtocolAdapter>>>
     | undefined
 
-  config: IConfig
-
   constructor({
     providers,
     supportedProtocols,
     metadataProviders,
-    config,
   }: {
     providers: Record<Chain, CustomJsonRpcProvider>
     supportedProtocols: ISupportedProtocols
     metadataProviders: Record<Chain, IMetadataProvider>
-    config: IConfig
   }) {
-    this.config = config
     Object.entries(supportedProtocols).forEach(
       ([protocolIdKey, supportedChains]) => {
         const protocolId = protocolIdKey as Protocol
