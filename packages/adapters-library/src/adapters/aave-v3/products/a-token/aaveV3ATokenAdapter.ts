@@ -11,6 +11,7 @@ import { ProtocolDataProvider } from '../../../aave-v2/contracts'
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { PoolContract__factory } from '../../contracts'
+import { AAVE_ICON_URL } from '../rewards/aaveV3RewardsAdapter'
 
 export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'a-token'
@@ -26,7 +27,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
       name: 'Aave v3 AToken',
       description: 'Aave v3 defi adapter for yield-generating token',
       siteUrl: 'https://aave.com/',
-      iconUrl: 'https://aave.com/favicon.ico',
+      iconUrl: AAVE_ICON_URL,
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

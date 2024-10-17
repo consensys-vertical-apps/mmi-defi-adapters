@@ -27,6 +27,7 @@ import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
 } from '../contracts'
+import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 
 const protocolDataProviderContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
@@ -192,21 +193,19 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
           tokenAddress,
         )
 
-      const protocolTokenPromise = getTokenMetadata(
+      const protocolTokenPromise = this.helpers.getTokenMetadata(
         this.getReserveTokenAddress(reserveTokenAddresses),
-        this.chainId,
-        this.provider,
       )
-      const underlyingTokenPromise = getTokenMetadata(
-        tokenAddress,
-        this.chainId,
-        this.provider,
-      )
+      const underlyingTokenPromise = this.helpers.getTokenMetadata(tokenAddress)
 
       const [protocolToken, underlyingToken] = await Promise.all([
         protocolTokenPromise,
         underlyingTokenPromise,
       ])
+
+      if (protocolToken.address === ZERO_ADDRESS) {
+        return
+      }
 
       metadataObject.push({
         ...protocolToken,
