@@ -12,11 +12,11 @@ import {
   TokenType,
 } from '../types/adapter'
 import { IUnwrapPriceCache } from '../unwrapCache'
+import { createApyCalculatorFor } from './apy-calculators/helpers'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
 import { calculateDeFiAttributionPerformance } from './utils/calculateDeFiAttributionPerformance'
 import { unwrap } from './utils/unwrap'
-import { createApyCalculatorFor } from './apy-calculators/helpers'
 
 export async function getProfits({
   adapter,

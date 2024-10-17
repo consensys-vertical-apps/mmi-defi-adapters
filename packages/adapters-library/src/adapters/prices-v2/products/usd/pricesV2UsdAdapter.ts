@@ -13,9 +13,9 @@ import {
   UnwrapExchangeRate,
 } from '../../../../types/adapter'
 
+import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { ChainLink__factory, OneInchOracle__factory } from '../../contracts'
 import { priceAdapterConfig } from './priceV2Config'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 
 export const USD = 'USD'
 
@@ -192,6 +192,12 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
           ],
         }
       }
+    }
+
+    if (!priceAdapterConfig[this.chainId as keyof typeof priceAdapterConfig]) {
+      throw new Error(
+        `Onchain price adapter config not found for chain ${this.chainId}`,
+      )
     }
 
     const [erc20TokenPriceInEth, ethPriceUSD] = await Promise.all([
