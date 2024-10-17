@@ -1,12 +1,7 @@
 import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY'
 import { NotSupportedError } from '../errors/errors'
 import { collectLeafTokens } from '../utils/collectLeafTokens'
-import {
-  ApyCalculator,
-  ApyInfo,
-  GetApyArgs,
-  VoidApyInfo,
-} from './ApyCalculator'
+import { ApyCalculator, ApyInfo, GetApyArgs } from './ApyCalculator'
 import { VoidApyCalculator } from './VoidApyCalculator'
 import { computeApr, computeApy } from './helpers'
 
@@ -26,7 +21,7 @@ import { computeApr, computeApy } from './helpers'
  * - LSTs
  */
 export class BalanceOfApyCalculator implements ApyCalculator {
-  public async getApy(args: GetApyArgs): Promise<ApyInfo | VoidApyInfo> {
+  public async getApy(args: GetApyArgs): Promise<ApyInfo | undefined> {
     try {
       const {
         protocolTokenStart,
