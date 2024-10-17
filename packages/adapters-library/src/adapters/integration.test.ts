@@ -233,9 +233,6 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
     ['standardised-yield-token']: pendleStandardisedYieldTokenTestCases,
     ['yield-token']: pendleYieldTokenTestCases,
   },
-  [Protocol.PricesV2]: {
-    ['usd']: pricesV2UsdTestCases,
-  },
   [Protocol.QuickswapV2]: {
     ['pool']: quickswapV2PoolTestCases,
   },
