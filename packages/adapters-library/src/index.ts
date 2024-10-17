@@ -19,4 +19,4 @@ export {
   WriteActionInputs,
 } from './adapters/supportedProtocols'
 
-export type { IUnwrapCacheProvider } from './unwrapCache'
+export type { IUnwrapPriceCacheProvider as IUnwrapCacheProvider } from './unwrapCache'

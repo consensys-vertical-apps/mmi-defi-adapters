@@ -65,7 +65,6 @@ import { PancakeswapV2PoolAdapter } from './pancakeswap-v2/products/pool/pancake
 
 import { MountainProtocolUsdmAdapter } from './mountain-protocol/products/usdm/mountainProtocolUsdmAdapter'
 import { MountainProtocolWUsdmAdapter } from './mountain-protocol/products/wusdm/mountainProtocolWUsdmAdapter'
-import { PricesV2UsdAdapter } from './prices-v2/products/usd/pricesV2UsdAdapter'
 import { Protocol } from './protocols'
 import { QuickswapV2PoolAdapter } from './quickswap-v2/products/pool/quickswapV2PoolAdapter'
 import { RocketPoolRethAdapter } from './rocket-pool/products/reth/rocketPoolRethAdapter'
@@ -446,16 +445,6 @@ export const supportedProtocols: Record<
       PendleStandardisedYieldTokenAdapter,
       PendleLpTokenAdapter,
     ],
-  },
-
-  [Protocol.PricesV2]: {
-    [Chain.Ethereum]: [PricesV2UsdAdapter],
-    [Chain.Polygon]: [PricesV2UsdAdapter],
-    [Chain.Arbitrum]: [PricesV2UsdAdapter],
-    // [Chain.Bsc]: [PricesV2UsdAdapter],
-    [Chain.Optimism]: [PricesV2UsdAdapter],
-    [Chain.Avalanche]: [PricesV2UsdAdapter],
-    [Chain.Base]: [PricesV2UsdAdapter],
   },
 
   [Protocol.QuickswapV2]: {

@@ -66,7 +66,6 @@ import { testCases as pendleLpTokenTestCases } from './pendle/products/lp-token/
 import { testCases as pendlePrincipleTokenTestCases } from './pendle/products/principle-token/tests/testCases'
 import { testCases as pendleStandardisedYieldTokenTestCases } from './pendle/products/standardised-yield-token/tests/testCases'
 import { testCases as pendleYieldTokenTestCases } from './pendle/products/yield-token/tests/testCases'
-import { testCases as pricesV2UsdTestCases } from './prices-v2/products/usd/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as quickswapV2PoolTestCases } from './quickswap-v2/products/pool/tests/testCases'
 import { testCases as renzoEzEthTestCases } from './renzo/products/ez-eth/tests/testCases'
@@ -233,9 +232,6 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
     ['principle-token']: pendlePrincipleTokenTestCases,
     ['standardised-yield-token']: pendleStandardisedYieldTokenTestCases,
     ['yield-token']: pendleYieldTokenTestCases,
-  },
-  [Protocol.PricesV2]: {
-    ['usd']: pricesV2UsdTestCases,
   },
   [Protocol.QuickswapV2]: {
     ['pool']: quickswapV2PoolTestCases,
