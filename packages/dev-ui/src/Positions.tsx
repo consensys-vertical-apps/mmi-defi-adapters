@@ -24,24 +24,23 @@ import {
 } from '@/components/ui/tooltip'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/solid'
 import { DevTool } from '@hookform/devtools'
-import {
+import type {
   Chain,
-  ChainName,
   DefiPositionResponse,
   Protocol,
 } from '@metamask-institutional/defi-adapters'
-import {
+import type {
   TokenType,
   Underlying,
 } from '@metamask-institutional/defi-adapters/dist/types/adapter'
-import { DisplayPosition } from '@metamask-institutional/defi-adapters/dist/types/response'
+import type { DisplayPosition } from '@metamask-institutional/defi-adapters/dist/types/response'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'
 import { JsonDisplay } from './JsonDisplay'
+import { ChainIdToChainNameMap } from './chainIdToChainNameMap'
 import { provider } from './defiAdapterLibrary'
 import { useFiltersContext } from './filtersContext'
-import { chainOptions, protocolOptions } from './filtersOptions'
 
 type FormValues = {
   userAddress: string
@@ -111,7 +110,7 @@ export function Positions() {
           render={({ field }) => (
             <Select
               {...field}
-              options={protocolOptions}
+              options={filtersContext.protocolOptions}
               isMulti={true}
               placeholder="Protocol Filter"
             />
@@ -124,7 +123,7 @@ export function Positions() {
           render={({ field }) => (
             <Select
               {...field}
-              options={chainOptions}
+              options={filtersContext.chainOptions}
               isMulti={true}
               placeholder="Chain Filter"
             />
@@ -221,7 +220,9 @@ function PositionsDisplay({
                       {protocolId}
                     </div>
                   </CardTitle>
-                  <CardDescription>{ChainName[chainId]}</CardDescription>
+                  <CardDescription>
+                    {ChainIdToChainNameMap[chainId]}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   {positions.map((position, index) => {

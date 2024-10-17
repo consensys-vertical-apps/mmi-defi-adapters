@@ -3,6 +3,14 @@ import { useContext } from 'react'
 
 type FiltersContext = {
   userAddress: string
+  protocolOptions: {
+    value: string
+    label: string
+  }[]
+  chainOptions: {
+    value: number
+    label: string
+  }[]
   protocolIds?: {
     value: string
     label: string
