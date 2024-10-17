@@ -5,7 +5,7 @@ import { Chain } from './core/constants/chains'
 import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
 import {
   MovementsByBlock,
-  TokenBalance,
+  TokenBalanceWithUnderlyings,
   TokenTvl,
   TokenType,
   Underlying,
@@ -20,9 +20,8 @@ import {
 } from './types/response'
 
 export function enrichPositionBalance<
-  PositionBalance extends TokenBalance & {
+  PositionBalance extends TokenBalanceWithUnderlyings & {
     type: TokenType
-    tokens?: Underlying[]
     priceRaw?: bigint
   },
 >(balance: PositionBalance, chainId: Chain): DisplayPosition<PositionBalance> {

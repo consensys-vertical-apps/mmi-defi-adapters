@@ -1,11 +1,11 @@
-import { ProtocolPosition } from '../../types/adapter'
+import { TokenBalanceWithUnderlyings } from '../../types/adapter'
 import { Chain } from '../constants/chains'
 
 /**
  * Data structure than contains the calculated APY,
  * and attaches various useful contextual information.
  */
-export interface ApyCalculation {
+export interface ApyInfo {
   apyPercent: number
   apy: number
   aprPercent: number
@@ -20,24 +20,49 @@ export interface ApyCalculation {
     durationDays: number
     frequency: number
   }
-  protocolTokenAddress: string
 }
 
-export interface ApyCalculator<TArgs> {
+/**
+ * Whenever the APY calculation couldn't suceed.
+ * For instance when no appropriate adapter was found,
+ * or runtime error.
+ */
+export interface VoidApyInfo {
+  apyPercent: null
+  apy: null
+  aprPercent: null
+  apr: null
+  period: {
+    blocknumberStart: number
+    blocknumberEnd: number
+    interestPercent: null
+    interest: null
+  }
+  compounding: {
+    durationDays: null
+    frequency: null
+  }
+}
+
+export interface ApyCalculator {
   /**
    * Calculates the APY for a given user and protocol.
    *
-   * @param {TArgs} args - The arguments specific to the APY calculation.
-   * @returns {Promise<ApyCalculation>} A promise that resolves to an object representing the APY calculation.
+   * @param {GetApyArgs} args - The arguments specific to the APY calculation.
+   * @returns {Promise<ApyInfo>} A promise that resolves to an object representing the APY calculation.
    */
-  getApy(args: TArgs): Promise<ApyCalculation>
+  getApy(args: GetApyArgs): Promise<ApyInfo | VoidApyInfo>
 }
 
-export type EvmApyArgs = {
-  positionStart: ProtocolPosition
-  positionEnd: ProtocolPosition
+export type GetApyArgs = {
+  protocolTokenStart: TokenBalanceWithUnderlyings
+  protocolTokenEnd: TokenBalanceWithUnderlyings
   blocknumberStart: number
   blocknumberEnd: number
   protocolTokenAddress: string
   chainId: Chain
+  deposits: number
+  withdrawals: number
+  borrows: number
+  repays: number
 }

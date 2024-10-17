@@ -1,6 +1,6 @@
 {
   "blockNumber": 19321516,
-  "latency": "Latency: 3.719 seconds",
+  "latency": "Latency: 1.938 seconds",
   "snapshot": [
     {
       "protocolId": "flux",
@@ -22,6 +22,22 @@
           "type": "protocol",
           "profit": 0.000775009004830976,
           "performance": 0.007590308581632384,
+          "apyInfo": {
+            "apyPercent": 5.545953527202818,
+            "apy": 0.05545953527202818,
+            "aprPercent": 5.398024175260748,
+            "apr": 0.053980241752607475,
+            "period": {
+              "blocknumberStart": 19314370,
+              "blocknumberEnd": 19321516,
+              "interestPercent": 0.0147891073294815,
+              "interest": 0.000147891073294815
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,

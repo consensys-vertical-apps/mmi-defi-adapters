@@ -1,6 +1,6 @@
 {
   "blockNumber": 20751570,
-  "latency": "Latency: 0.696 seconds",
+  "latency": "Latency: 0.629 seconds",
   "snapshot": [
     {
       "protocolId": "etherfi",
@@ -22,6 +22,22 @@
           "type": "protocol",
           "profit": -69217.54148684256,
           "performance": -0.06081941903584899,
+          "apyInfo": {
+            "apyPercent": 2.4768227069637216,
+            "apy": 0.024768227069637216,
+            "aprPercent": 2.4491083916839784,
+            "apr": 0.024491083916839785,
+            "period": {
+              "blocknumberStart": 20537190,
+              "blocknumberEnd": 20751570,
+              "interestPercent": 0.2012965801384092,
+              "interest": 0.002012965801384092
+            },
+            "compounding": {
+              "durationDays": 30,
+              "frequency": 12.166666666666666
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,

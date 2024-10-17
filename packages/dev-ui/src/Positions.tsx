@@ -38,7 +38,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'
 import { JsonDisplay } from './JsonDisplay'
-import { provider } from './wrappedDefiProvider'
+import { provider } from './defiAdapterLibrary'
 import { useFiltersContext } from './filtersContext'
 
 type FormValues = {

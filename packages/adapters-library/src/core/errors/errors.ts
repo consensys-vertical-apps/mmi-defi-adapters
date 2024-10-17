@@ -151,3 +151,9 @@ export class ProtocolTokenFilterRequiredError extends BaseError {
     super(message)
   }
 }
+
+export class InvalidArgumentError extends BaseError {
+  constructor(message = 'Invalid argument') {
+    super(message)
+  }
+}

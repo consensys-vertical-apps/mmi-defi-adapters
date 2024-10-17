@@ -1,6 +1,6 @@
 {
-  "blockNumber": 1597881,
-  "latency": "Latency: 0.894 seconds",
+  "blockNumber": 10817930,
+  "latency": "Latency: 0.89 seconds",
   "snapshot": [
     {
       "protocolId": "mendi-finance",
@@ -22,6 +22,22 @@
           "type": "protocol",
           "profit": 0,
           "performance": 0,
+          "apyInfo": {
+            "apyPercent": 5.374290007988103,
+            "apy": 0.05374290007988103,
+            "aprPercent": 5.23522466496339,
+            "apr": 0.05235224664963389,
+            "period": {
+              "blocknumberStart": 10775232,
+              "blocknumberEnd": 10817930,
+              "interestPercent": 0.0143430812738723,
+              "interest": 0.000143430812738723
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
@@ -36,7 +52,7 @@
                 "name": "Wrapped BTC",
                 "symbol": "WBTC",
                 "decimals": 8,
-                "balanceRaw": "50164435n",
+                "balanceRaw": "115100791n",
                 "type": "underlying"
               },
               {
@@ -44,124 +60,46 @@
                 "name": "Wrapped BTC",
                 "symbol": "WBTC",
                 "decimals": 8,
-                "balanceRaw": "50208513n",
-                "type": "underlying"
-              }
-            ]
-          }
-        },
-        {
-          "address": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
-          "name": "Mendi USD Coin",
-          "symbol": "meUSDC",
-          "decimals": 8,
-          "type": "protocol",
-          "profit": 0,
-          "performance": 0,
-          "calculationData": {
-            "withdrawals": 0,
-            "deposits": 0,
-            "repays": 0,
-            "borrows": 0,
-            "startPositionValue": 0,
-            "endPositionValue": 0,
-            "hasTokensWithoutUSDPrices": true,
-            "tokensWithoutUSDPrices": [
-              {
-                "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-                "name": "USDC",
-                "symbol": "USDC",
-                "decimals": 6,
-                "balanceRaw": "50060538529n",
-                "type": "underlying"
-              },
-              {
-                "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-                "name": "USDC",
-                "symbol": "USDC",
-                "decimals": 6,
-                "balanceRaw": "50080247370n",
-                "type": "underlying"
-              }
-            ]
-          }
-        },
-        {
-          "address": "0xf669C3C03D9fdF4339e19214A749E52616300E89",
-          "name": "Mendi USD Tether",
-          "symbol": "meUSDT",
-          "decimals": 8,
-          "type": "protocol",
-          "profit": 0,
-          "performance": 0,
-          "calculationData": {
-            "withdrawals": 0,
-            "deposits": 0,
-            "repays": 0,
-            "borrows": 0,
-            "startPositionValue": 0,
-            "endPositionValue": 0,
-            "hasTokensWithoutUSDPrices": true,
-            "tokensWithoutUSDPrices": [
-              {
-                "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
-                "name": "Tether USD",
-                "symbol": "USDT",
-                "decimals": 6,
-                "balanceRaw": "57181023725n",
-                "type": "underlying"
-              },
-              {
-                "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
-                "name": "Tether USD",
-                "symbol": "USDT",
-                "decimals": 6,
-                "balanceRaw": "57218674042n",
+                "balanceRaw": "115117300n",
                 "type": "underlying"
               }
             ]
           }
         }
       ],
-      "fromBlock": 1555183,
-      "toBlock": 1597881
+      "fromBlock": 10775232,
+      "toBlock": 10817930
     }
   ],
   "rpcResponses": {
     "97b18bbefc602ef7e475bd91d420cba5": {
       "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000040000000000000000000000009be5e24f05bbafc28da814bd59284878b388a40f000000000000000000000000333d8b480bdb25ea7be4dd87eeb359988ce1b30d000000000000000000000000ad7f33984bed10518012013d4ab0458d37fee6f3000000000000000000000000f669c3c03d9fdf4339e19214a749e52616300e89"
     },
-    "101b0c74af7a262e74ac853b62c562c0": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000002fe1f01"
+    "ef0a3e8e144a07a6ed1d2fdf9d20114f": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000006dc8cf4"
     },
-    "1ad417faabb3b32db132c01d6f482798": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000ba903ee4a"
-    },
-    "7fcce73facd55c359bfbb76a30271759": {
+    "6db2dde03163b0bd43f486b88e7ec527": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
-    "4ddfa5c203cd9aebc68b19740f97be15": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000d527fad7a"
-    },
-    "e7c9523eb9d46efa75e7029e9bfaf262": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000002fd72d3"
-    },
-    "6665fdcff34ccb2f5a9a74a8a8ba5365": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000ba7d732a1"
-    },
-    "2c865a7534bab156d697f2d0084d5487": {
+    "fc7396820066544dd6074e8ff567804a": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
-    "2da74b68bcba66ef97c5b341bf4dc343": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000d50412ded"
+    "bb7d8136728650c88f47e705cb5486d6": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
-    "31fe3434a228d0784373dc59763c0c5d": {
-      "result": []
+    "47a8ba56aad6d3082c159e26f9b806f9": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000006dc4c77"
     },
-    "a89d02f1a2835f7cf4b2399227faeef0": {
-      "result": []
+    "f25c38c4510835af679b3181357558dd": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
-    "bad8eac5c7be2f536e4a70a18584a9e7": {
+    "14c7c4069aac831b5130138a848e4d20": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "2fedb30ebc8c10a53ff7756a64ab52f7": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "9038b2ef595131107e36388f4344969e": {
       "result": []
     }
   }

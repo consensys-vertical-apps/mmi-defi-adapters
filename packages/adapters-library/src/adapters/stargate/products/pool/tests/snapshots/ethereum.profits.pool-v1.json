@@ -1,6 +1,6 @@
 {
   "blockNumber": 18163965,
-  "latency": "Latency: 2.299 seconds",
+  "latency": "Latency: 2.591 seconds",
   "snapshot": [
     {
       "protocolId": "stargate",
@@ -22,6 +22,22 @@
           "type": "protocol",
           "profit": 0.00014044261456847007,
           "performance": 0.001411604354555205,
+          "apyInfo": {
+            "apyPercent": 0,
+            "apy": 0,
+            "aprPercent": 0,
+            "apr": 0,
+            "period": {
+              "blocknumberStart": 18156819,
+              "blocknumberEnd": 18163965,
+              "interestPercent": 0,
+              "interest": 0
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,

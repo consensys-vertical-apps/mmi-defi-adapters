@@ -1,3 +1,9 @@
+import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { InvalidArgumentError } from '../errors/errors'
+import { ApyCalculator } from './ApyCalculator'
+import { BalanceOfApyCalculator } from './BalanceOfApyCalculator'
+import { VoidApyCalculator } from './VoidApyCalculator'
+
 /**
  * Computes the Annual Percentage Rate (APR) given the interest earned and the frequency of compounding periods.
  *
@@ -29,8 +35,42 @@ export const computeApr = (interest: number, frequency: number) =>
  */
 export const computeApy = (apr: number, frequency: number) => {
   if (frequency === 0)
-    throw new Error(
+    throw new InvalidArgumentError(
       'Frequency cannot be 0 as it would result in division by zero.',
     )
   return Math.pow(1 + apr / frequency, frequency) - 1
+}
+
+/**
+ * Creates an appropriate APY calculator for a given protocol adapter.
+ *
+ * @param {IProtocolAdapter} adapter - The protocol adapter for which to create an APY calculator.
+ * @returns {ApyCalculator} - An instance of `ApyCalculator`
+ */
+export const createApyCalculatorFor = async (
+  adapter: IProtocolAdapter,
+  protocolTokenAddress: string,
+): Promise<ApyCalculator> => {
+  try {
+    const protocolTokens = await adapter.getProtocolTokens()
+
+    const protocolToken = protocolTokens.find(
+      (item) => item.address === protocolTokenAddress,
+    )
+    if (!protocolToken)
+      throw new Error(
+        `Adapter ${adapter.productId}/${adapter.productId} has no protocol token with address ${protocolTokenAddress}`,
+      )
+
+    if (protocolToken.underlyingTokens.length === 1)
+      return new BalanceOfApyCalculator()
+
+    return new VoidApyCalculator()
+  } catch (error) {
+    console.warn(
+      'Error encountered while creating an APY calculator. Defaulting to VoidApyCalculator.',
+      error,
+    )
+    return new VoidApyCalculator()
+  }
 }

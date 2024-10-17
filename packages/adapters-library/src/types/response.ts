@@ -6,7 +6,7 @@ import type {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
-  TokenBalance,
+  TokenBalanceWithUnderlyings,
   TokenTvl,
   TokenType,
   Underlying,
@@ -49,9 +49,8 @@ export type DefiPositionResponse = AdapterResponse<{
 }>
 
 export type DisplayPosition<
-  PositionBalance extends TokenBalance & {
+  PositionBalance extends TokenBalanceWithUnderlyings & {
     type: TokenType
-    tokens?: Underlying[]
   },
 > = Omit<PositionBalance, 'tokens'> & {
   balance: number
