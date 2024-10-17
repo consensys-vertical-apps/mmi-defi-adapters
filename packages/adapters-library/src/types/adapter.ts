@@ -205,15 +205,18 @@ export interface TokenBalance extends Erc20Metadata {
   balanceRaw: bigint
 }
 
+export interface TokenBalanceWithUnderlyings extends TokenBalance {
+  tokens?: Underlying[]
+}
+
 /**
  * Underlying token balances of a position
  * The underlying token may be a simple erc20 such as Dai.
  * Should the underlying token be another protocol token then we expect that to be resolved down into the underlying simple erc20 tokens
  */
-export interface Underlying extends TokenBalance {
+export interface Underlying extends TokenBalanceWithUnderlyings {
   type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimable
   priceRaw?: bigint
-  tokens?: Underlying[]
 }
 
 /**
@@ -227,18 +230,13 @@ export type UnderlyingReward = Omit<Underlying, 'type'> & {
 /**
  * User's position, includes balance of protocol token related underlying token balances
  */
-export interface ProtocolPosition extends TokenBalance {
+export interface ProtocolPosition extends TokenBalanceWithUnderlyings {
   type: typeof TokenType.Protocol | typeof TokenType.Reward
 
   /**
    * Used by NFT Defi Positions, e.g. uniswapV3
    */
   tokenId?: string
-
-  /**
-   * Underlying token balances
-   */
-  tokens?: Underlying[]
 }
 
 export interface UnwrappedTokenExchangeRate extends Erc20Metadata {

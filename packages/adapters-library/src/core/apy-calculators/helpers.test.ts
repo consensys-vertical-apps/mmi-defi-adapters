@@ -1,4 +1,4 @@
-import { computeApr, computeApy } from './common'
+import { computeApr, computeApy } from './helpers'
 
 describe('computeApr', () => {
   it('computes correctly', () => {

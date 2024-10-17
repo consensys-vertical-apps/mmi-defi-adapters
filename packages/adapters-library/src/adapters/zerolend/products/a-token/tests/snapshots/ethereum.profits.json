@@ -1,6 +1,6 @@
 {
   "blockNumber": 20862963,
-  "latency": "Latency: 0.591 seconds",
+  "latency": "Latency: 0.551 seconds",
   "snapshot": [
     {
       "protocolId": "zerolend",
@@ -22,6 +22,22 @@
           "type": "protocol",
           "profit": -51.91312509144291,
           "performance": -0.019276002651643715,
+          "apyInfo": {
+            "apyPercent": 2.1509067749117428,
+            "apy": 0.021509067749117428,
+            "aprPercent": 2.128163252962653,
+            "apr": 0.02128163252962653,
+            "period": {
+              "blocknumberStart": 20855817,
+              "blocknumberEnd": 20862963,
+              "interestPercent": 0.0058305842546922,
+              "interest": 0.000058305842546922
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,

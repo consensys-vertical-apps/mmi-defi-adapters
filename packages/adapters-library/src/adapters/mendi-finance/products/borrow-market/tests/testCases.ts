@@ -1,7 +1,6 @@
 import { Chain } from '../../../../../core/constants/chains'
 import { TimePeriod } from '../../../../../core/constants/timePeriod'
 import type { TestCase } from '../../../../../types/testCase'
-import { WriteActions } from '../../../../../types/writeActions'
 
 export const testCases: TestCase[] = [
   {
@@ -39,6 +38,7 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Linea,
     method: 'profits',
+
     input: {
       userAddress: '0x61e17C36c0f177c6A46F9Ae531E621D18c1aCD93',
       timePeriod: TimePeriod.oneDay,
@@ -50,7 +50,8 @@ export const testCases: TestCase[] = [
         '0x9be5e24F05bBAfC28Da814bD59284878b388a40f',
       ],
     },
-    blockNumber: 1597881,
+
+    blockNumber: 10817930,
   },
   {
     method: 'tx-params',

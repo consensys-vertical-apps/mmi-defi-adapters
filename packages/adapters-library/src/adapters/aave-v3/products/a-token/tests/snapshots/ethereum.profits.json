@@ -56,6 +56,22 @@
           "type": "protocol",
           "profit": -182.72534837614512,
           "performance": -0.00038421064953285546,
+          "apyInfo": {
+            "apyPercent": 4.471633647237616,
+            "apy": 0.04471633647237616,
+            "aprPercent": 4.374802177302003,
+            "apr": 0.04374802177302003,
+            "period": {
+              "blocknumberStart": 19811738,
+              "blocknumberEnd": 19818884,
+              "interestPercent": 0.0119857593898685,
+              "interest": 0.000119857593898685
+            },
+            "compounding": {
+              "durationDays": 1,
+              "frequency": 365
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,

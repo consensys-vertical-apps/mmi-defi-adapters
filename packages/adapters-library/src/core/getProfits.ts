@@ -12,6 +12,7 @@ import {
   TokenType,
 } from '../types/adapter'
 import { IUnwrapCache } from '../unwrapCache'
+import { createApyCalculatorFor } from './apy-calculators/helpers'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
 import { calculateDeFiAttributionPerformance } from './utils/calculateDeFiAttributionPerformance'
@@ -36,11 +37,10 @@ export async function getProfits({
   includeRawValues?: boolean
   unwrapCache: IUnwrapCache
 }): Promise<ProfitsWithRange> {
-  let endPositionValues: ReturnType<typeof aggregateFiatBalances>
-  let startPositionValues: ReturnType<typeof aggregateFiatBalances>
+  let endPositionValues: AggregatedFiatBalances
+  let startPositionValues: AggregatedFiatBalances
 
   let rawEndPositionValues: ProtocolPosition[]
-
   let rawStartPositionValues: ProtocolPosition[]
 
   if (protocolTokenAddresses ?? tokenIds) {
@@ -117,12 +117,14 @@ export async function getProfits({
 
   const tokens = await Promise.all(
     Object.values(endPositionValues).map(async ({ protocolTokenMetadata }) => {
+      const { address, tokenId } = protocolTokenMetadata
+
       const getEventsInput: GetEventsInput = {
         userAddress,
-        protocolTokenAddress: protocolTokenMetadata.address,
+        protocolTokenAddress: address,
         fromBlock,
         toBlock,
-        tokenId: protocolTokenMetadata.tokenId,
+        tokenId,
       }
 
       const isBorrow =
@@ -221,7 +223,7 @@ export async function getProfits({
           : ({} as AggregatedFiatBalances),
       ])
 
-      const key = protocolTokenMetadata.tokenId ?? protocolTokenMetadata.address
+      const key = tokenId ?? address
 
       // Format units only if there is a price adapter for the chain
       const formatUnitsIfPossible = (value: bigint | undefined) => {
@@ -277,6 +279,29 @@ export async function getProfits({
           ]
         : undefined
 
+      const apyCalculator = await createApyCalculatorFor(adapter, address)
+
+      const protocolTokenStart = rawStartPositionValues.find(
+        (item) => item.address === address && item.tokenId === tokenId,
+      )!
+
+      const protocolTokenEnd = rawEndPositionValues.find(
+        (item) => item.address === address && item.tokenId === tokenId,
+      )!
+
+      const apyInfo = await apyCalculator.getApy({
+        protocolTokenStart,
+        protocolTokenEnd,
+        blocknumberStart: fromBlock,
+        blocknumberEnd: toBlock,
+        protocolTokenAddress: address,
+        chainId: adapter.chainId,
+        withdrawals: withdrawal,
+        deposits: deposit,
+        repays: repay,
+        borrows: borrow,
+      })
+
       return {
         ...protocolTokenMetadata,
         type: TokenType.Protocol,
@@ -287,6 +312,7 @@ export async function getProfits({
           deposit,
           startPositionValue,
         }),
+        apyInfo,
         calculationData: {
           withdrawals: withdrawal,
           deposits: deposit,
