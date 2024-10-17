@@ -1,14 +1,50 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { Positions } from './Positions'
 import { Profits } from './Profits'
 import { FiltersContext } from './filtersContext'
-
-const queryClient = new QueryClient()
+import { provider } from './wrappedDefiProvider'
 
 function App() {
+  const { isPending, error, data } = useQuery({
+    queryKey: ['support'],
+    queryFn: async () => {
+      const support = (await provider.getSupport()) as Record<
+        string,
+        { chains: number[] }[]
+      >
+
+      const protocolOptions = Object.keys(support)
+        .sort()
+        .map((value) => ({
+          value,
+          label: value,
+        }))
+
+      const chainOptions = Array.from(
+        new Set(
+          Object.values(support).reduce<number[]>((previous, current) => {
+            previous.push(...current.flatMap((value) => value.chains))
+            return previous
+          }, []),
+        ),
+      )
+        .sort((a, b) => a - b)
+        .map((value) => ({ value, label: value.toString() }))
+
+      console.log('SUPPORT RESULTS', {
+        protocolOptions,
+        chainOptions,
+      })
+
+      return {
+        protocolOptions,
+        chainOptions,
+      }
+    },
+  })
+
   const [userAddress, setUserAddress] = useState(
     localStorage.getItem('defi-adapters:userAddress') || '',
   )
@@ -53,10 +89,20 @@ function App() {
       : undefined,
   )
 
+  if (isPending) {
+    return <div>Loading...</div>
+  }
+
+  if (error || !data) {
+    return <div>Error: {error?.message || 'Unknown error'}</div>
+  }
+
   return (
     <FiltersContext.Provider
       value={{
         userAddress,
+        protocolOptions: data.protocolOptions,
+        chainOptions: data.chainOptions,
         protocolIds,
         chainIds,
         setFilters: ({ userAddress, protocolIds, chainIds }) => {
@@ -84,26 +130,23 @@ function App() {
         },
       }}
     >
-      <QueryClientProvider client={queryClient}>
-        <div className="w-[70%] mx-auto">
-          <header className="text-center py-4">
-            <h1 className="text-2xl font-bold">DeFi Adapters Library</h1>
-          </header>
-          <Tabs defaultValue="positions" className="w-full">
-            <TabsList>
-              <TabsTrigger value="positions">Positions</TabsTrigger>
-              <TabsTrigger value="profits">Profits</TabsTrigger>
-            </TabsList>
-            <TabsContent value="positions">
-              <Positions />
-            </TabsContent>
-            <TabsContent value="profits">
-              <Profits />
-            </TabsContent>
-          </Tabs>
-        </div>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
+      <div className="w-[70%] mx-auto">
+        <header className="text-center py-4">
+          <h1 className="text-2xl font-bold">DeFi Adapters Library</h1>
+        </header>
+        <Tabs defaultValue="positions" className="w-full">
+          <TabsList>
+            <TabsTrigger value="positions">Positions</TabsTrigger>
+            <TabsTrigger value="profits">Profits</TabsTrigger>
+          </TabsList>
+          <TabsContent value="positions">
+            <Positions />
+          </TabsContent>
+          <TabsContent value="profits">
+            <Profits />
+          </TabsContent>
+        </Tabs>
+      </div>
     </FiltersContext.Provider>
   )
 }

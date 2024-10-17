@@ -40,14 +40,14 @@ const projectEnvs = envs.reduce(
 export default defineConfig({
   plugins: [react()],
   define: projectEnvs,
-  optimizeDeps: {
-    include: ['@metamask-institutional/defi-adapters'],
-  },
-  build: {
-    commonjsOptions: {
-      include: [/@metamask-institutional\/defi-adapters/, /node_modules/],
-    },
-  },
+  // optimizeDeps: {
+  //   include: ['@metamask-institutional/defi-adapters'],
+  // },
+  // build: {
+  //   commonjsOptions: {
+  //     include: [/@metamask-institutional\/defi-adapters/, /node_modules/],
+  //   },
+  // },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

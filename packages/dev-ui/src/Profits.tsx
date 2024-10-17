@@ -23,25 +23,25 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 import { DevTool } from '@hookform/devtools'
-import {
+import type {
   Chain,
-  ChainName,
   Protocol,
   TimePeriod,
 } from '@metamask-institutional/defi-adapters'
-import { DefiProfitsResponse } from '@metamask-institutional/defi-adapters/dist/types/response'
+import type { DefiProfitsResponse } from '@metamask-institutional/defi-adapters/dist/types/response'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'
 import { JsonDisplay } from './JsonDisplay'
-import { provider } from './defiProvider'
+import { provider } from './wrappedDefiProvider'
 import { useFiltersContext } from './filtersContext'
-import {
-  chainOptions,
-  protocolOptions,
-  timePeriodOptions,
-} from './filtersOptions'
+
+export const timePeriodOptions = [
+  { value: 1, label: '1 Day' },
+  { value: 7, label: '7 Days' },
+  { value: 30, label: '30 Days' },
+] as const
 
 type FormValues = {
   userAddress: string
@@ -156,7 +156,7 @@ export function Profits() {
           render={({ field }) => (
             <Select
               {...field}
-              options={protocolOptions}
+              options={filtersContext.protocolOptions}
               isMulti={true}
               placeholder="Protocol Filter"
             />
@@ -169,7 +169,7 @@ export function Profits() {
           render={({ field }) => (
             <Select
               {...field}
-              options={chainOptions}
+              options={filtersContext.chainOptions}
               isMulti={true}
               placeholder="Chain Filter"
             />
@@ -270,7 +270,7 @@ function ProfitsDisplay({
                       {protocolId}
                     </div>
                   </CardTitle>
-                  <CardDescription>{ChainName[chainId]}</CardDescription>
+                  <CardDescription>{chainId}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   {protocolProfits.map((profits, index) => {
