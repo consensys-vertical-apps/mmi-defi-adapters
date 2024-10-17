@@ -1,22 +1,36 @@
+import { IPricesAdapter } from './adapters/prices-v2/products/usd/pricesV2UsdAdapter'
 import { AVERAGE_BLOCKS_PER_10_MINUTES } from './core/constants/AVERAGE_BLOCKS_PER_10_MINS'
 import { Chain } from './core/constants/chains'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
-  IUnwrapCacheProvider,
-  UnwrapCache,
+  IUnwrapPriceCacheProvider,
+  UnwrapPriceCache,
   getTenMinuteKeyByBlock,
 } from './unwrapCache'
 
 describe('UnwrapCache', () => {
   describe('fetchWithCache', () => {
     const unwrapResult = {}
-    const mockAdapter = {
+    const mockUnwrapAdapter = {
       chainId: Chain.Ethereum,
       unwrap: jest.fn().mockResolvedValue(unwrapResult),
     } as unknown as IProtocolAdapter
+    const mockPriceAdapter = {
+      chainId: Chain.Ethereum,
+      getPrice: jest.fn().mockResolvedValue(unwrapResult),
+    } as unknown as IPricesAdapter
 
     const unwrapInput = {
       protocolTokenAddress: '0x123',
+      blockNumber: 123,
+    }
+    const priceInput = {
+      tokenMetadata: {
+        address: '0x123',
+        decimals: 18,
+        name: 'test',
+        symbol: 'test',
+      },
       blockNumber: 123,
     }
 
@@ -25,42 +39,86 @@ describe('UnwrapCache', () => {
     })
 
     it('returns immediatelly if there is no provider', async () => {
-      const unwrapCache = new UnwrapCache()
+      const unwrapCache = new UnwrapPriceCache()
 
-      const result = await unwrapCache.fetchWithCache(mockAdapter, unwrapInput)
+      const result = await unwrapCache.fetchUnwrapWithCache(
+        mockUnwrapAdapter,
+        unwrapInput,
+      )
 
       expect(result).toEqual(unwrapResult)
-      expect(mockAdapter.unwrap).toHaveBeenCalledWith(unwrapInput)
+      expect(mockUnwrapAdapter.unwrap).toHaveBeenCalledWith(unwrapInput)
     })
 
     it('misses cache if no value is provided', async () => {
       const unwrapCacheProvider = {
         getFromDb: jest.fn(),
         setToDb: jest.fn(),
-      } as IUnwrapCacheProvider
-      const unwrapCache = new UnwrapCache(unwrapCacheProvider)
+      } as IUnwrapPriceCacheProvider
+      const unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
 
-      const result = await unwrapCache.fetchWithCache(mockAdapter, unwrapInput)
+      const result = await unwrapCache.fetchUnwrapWithCache(
+        mockUnwrapAdapter,
+        unwrapInput,
+      )
 
       expect(result).toEqual(unwrapResult)
       expect(unwrapCacheProvider.getFromDb).toHaveBeenCalled()
       expect(unwrapCacheProvider.setToDb).toHaveBeenCalled()
-      expect(mockAdapter.unwrap).toHaveBeenCalledWith(unwrapInput)
+      expect(mockUnwrapAdapter.unwrap).toHaveBeenCalledWith(unwrapInput)
     })
 
     it('hits cache if a value is provided', async () => {
       const unwrapCacheProvider = {
         getFromDb: jest.fn().mockResolvedValueOnce({}),
         setToDb: jest.fn(),
-      } as IUnwrapCacheProvider
-      const unwrapCache = new UnwrapCache(unwrapCacheProvider)
+      } as IUnwrapPriceCacheProvider
+      const unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
 
-      const result = await unwrapCache.fetchWithCache(mockAdapter, unwrapInput)
+      const result = await unwrapCache.fetchUnwrapWithCache(
+        mockUnwrapAdapter,
+        unwrapInput,
+      )
 
       expect(result).toEqual(unwrapResult)
       expect(unwrapCacheProvider.getFromDb).toHaveBeenCalled()
       expect(unwrapCacheProvider.setToDb).not.toHaveBeenCalled()
-      expect(mockAdapter.unwrap).not.toHaveBeenCalledWith(unwrapInput)
+      expect(mockUnwrapAdapter.unwrap).not.toHaveBeenCalledWith(unwrapInput)
+    })
+    it('misses price cache if no value is provided', async () => {
+      const unwrapCacheProvider = {
+        getFromDb: jest.fn(),
+        setToDb: jest.fn(),
+      } as IUnwrapPriceCacheProvider
+      const unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
+
+      const result = await unwrapCache.fetchPriceWithCache(
+        mockPriceAdapter,
+        priceInput,
+      )
+
+      expect(result).toEqual(unwrapResult)
+      expect(unwrapCacheProvider.getFromDb).toHaveBeenCalled()
+      expect(unwrapCacheProvider.setToDb).toHaveBeenCalled()
+      expect(mockUnwrapAdapter.unwrap).toHaveBeenCalledWith(unwrapInput)
+    })
+
+    it('hits price cache if a value is provided', async () => {
+      const unwrapCacheProvider = {
+        getFromDb: jest.fn().mockResolvedValueOnce({}),
+        setToDb: jest.fn(),
+      } as IUnwrapPriceCacheProvider
+      const unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
+
+      const result = await unwrapCache.fetchPriceWithCache(
+        mockPriceAdapter,
+        priceInput,
+      )
+
+      expect(result).toEqual(unwrapResult)
+      expect(unwrapCacheProvider.getFromDb).toHaveBeenCalled()
+      expect(unwrapCacheProvider.setToDb).not.toHaveBeenCalled()
+      expect(mockUnwrapAdapter.unwrap).not.toHaveBeenCalledWith(unwrapInput)
     })
   })
 })

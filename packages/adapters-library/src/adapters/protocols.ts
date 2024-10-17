@@ -26,7 +26,6 @@ export const Protocol = {
   MountainProtocol: 'mountain-protocol',
   PancakeswapV2: 'pancakeswap-v2',
   Pendle: 'pendle',
-  PricesV2: 'prices-v2',
   QuickswapV2: 'quickswap-v2',
   Renzo: 'renzo',
   RocketPool: 'rocket-pool',
