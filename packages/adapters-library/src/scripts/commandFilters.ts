@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { Protocol } from '../adapters/protocols'
 import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
 import { filterMapSync } from '../core/utils/filters'
@@ -60,6 +61,18 @@ export function multiChainFilter(filterInput?: string): Chain[] | undefined {
   return filterMapSync(filterInput?.split(','), (filter) => {
     const cleanFilter = filter.trim()
     return cleanFilter ? chainFilter(cleanFilter) : undefined
+  })
+}
+export function multiProtocolTokenAddressFilter(
+  filterInput?: string,
+): string[] | undefined {
+  if (!filterInput) {
+    return
+  }
+
+  return filterMapSync(filterInput?.split(','), (filter) => {
+    const cleanFilter = filter.trim()
+    return cleanFilter ? getAddress(cleanFilter) : undefined
   })
 }
 

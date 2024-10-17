@@ -11,6 +11,7 @@ import {
   chainFilter,
   multiChainFilter,
   multiProtocolFilter,
+  multiProtocolTokenAddressFilter,
   protocolFilter,
 } from './commandFilters'
 import { simulateTx } from './simulator/simulateTx'
@@ -102,6 +103,7 @@ function addressCommand(
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
     includeRawValues?: boolean
+    filterProtocolTokens?: string[]
   }) => Promise<AdapterResponse<unknown>[]>,
   defaultAddress: string,
 ) {
@@ -120,10 +122,17 @@ function addressCommand(
       '-r, --raw <raw>',
       'true or false to include raw values, available on profits requests only (e.g. true)',
     )
+    .option(
+      '-t, --protocol-tokens <protocol-tokens>',
+      'comma-separated protocol token address filter (e.g. 0x030..., 0x393.., 0x332...)',
+    )
     .showHelpAfterError()
-    .action(async (userAddress, { protocols, chains, raw }) => {
+    .action(async (userAddress, { protocols, chains, raw, protocolTokens }) => {
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterChainIds = multiChainFilter(chains)
+
+      const filterProtocolTokens =
+        multiProtocolTokenAddressFilter(protocolTokens)
 
       const includeRawValues = raw === 'true'
 
@@ -132,6 +141,7 @@ function addressCommand(
         filterProtocolIds,
         filterChainIds,
         includeRawValues,
+        filterProtocolTokens,
       })
 
       printResponse(filterResponse(data))
