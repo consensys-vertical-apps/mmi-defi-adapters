@@ -21,29 +21,6 @@ export interface ApyInfo {
     frequency: number
   }
 }
-
-/**
- * Whenever the APY calculation couldn't suceed.
- * For instance when no appropriate adapter was found,
- * or runtime error.
- */
-export interface VoidApyInfo {
-  apyPercent: null
-  apy: null
-  aprPercent: null
-  apr: null
-  period: {
-    blocknumberStart: number
-    blocknumberEnd: number
-    interestPercent: null
-    interest: null
-  }
-  compounding: {
-    durationDays: null
-    frequency: null
-  }
-}
-
 export interface ApyCalculator {
   /**
    * Calculates the APY for a given user and protocol.
@@ -51,7 +28,7 @@ export interface ApyCalculator {
    * @param {GetApyArgs} args - The arguments specific to the APY calculation.
    * @returns {Promise<ApyInfo>} A promise that resolves to an object representing the APY calculation.
    */
-  getApy(args: GetApyArgs): Promise<ApyInfo | VoidApyInfo>
+  getApy(args: GetApyArgs): Promise<ApyInfo | null>
 }
 
 export type GetApyArgs = {
