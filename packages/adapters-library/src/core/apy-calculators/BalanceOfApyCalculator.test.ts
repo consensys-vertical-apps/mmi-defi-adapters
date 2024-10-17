@@ -170,7 +170,7 @@ describe('BalanceOfApyCalculator', () => {
         repays: 0,
       })
 
-      expect(result).toBeUndefined()
+      expect(result).toBeNull()
     })
   })
 })
