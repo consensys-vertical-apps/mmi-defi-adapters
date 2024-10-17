@@ -36,6 +36,7 @@ import Select from 'react-select'
 import { JsonDisplay } from './JsonDisplay'
 import { provider } from './defiAdapterLibrary'
 import { useFiltersContext } from './filtersContext'
+import { ChainIdToChainNameMap } from './chainIdToChainNameMap'
 
 export const timePeriodOptions = [
   { value: 1, label: '1 Day' },
@@ -270,7 +271,9 @@ function ProfitsDisplay({
                       {protocolId}
                     </div>
                   </CardTitle>
-                  <CardDescription>{chainId}</CardDescription>
+                  <CardDescription>
+                    {ChainIdToChainNameMap[chainId]}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   {protocolProfits.map((profits, index) => {

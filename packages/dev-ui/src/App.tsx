@@ -5,6 +5,8 @@ import { Positions } from './Positions'
 import { Profits } from './Profits'
 import { provider } from './defiAdapterLibrary'
 import { FiltersContext } from './filtersContext'
+import { ChainIdToChainNameMap } from './chainIdToChainNameMap'
+import { Chain } from '@metamask-institutional/defi-adapters'
 
 function App() {
   const { isPending, error, data } = useQuery({
@@ -19,7 +21,7 @@ function App() {
         .sort()
         .map((value) => ({
           value,
-          label: value,
+          label: ChainIdToChainNameMap[+value as unknown as Chain],
         }))
 
       const chainOptions = Array.from(
@@ -31,7 +33,10 @@ function App() {
         ),
       )
         .sort()
-        .map((value) => ({ value, label: value.toString() }))
+        .map((value) => ({
+          value,
+          label: ChainIdToChainNameMap[value as Chain],
+        }))
 
       return {
         protocolOptions,

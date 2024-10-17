@@ -40,6 +40,7 @@ import Select from 'react-select'
 import { JsonDisplay } from './JsonDisplay'
 import { provider } from './defiAdapterLibrary'
 import { useFiltersContext } from './filtersContext'
+import { ChainIdToChainNameMap } from './chainIdToChainNameMap'
 
 type FormValues = {
   userAddress: string
@@ -219,7 +220,9 @@ function PositionsDisplay({
                       {protocolId}
                     </div>
                   </CardTitle>
-                  <CardDescription>{chainId}</CardDescription>
+                  <CardDescription>
+                    {ChainIdToChainNameMap[chainId]}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   {positions.map((position, index) => {
