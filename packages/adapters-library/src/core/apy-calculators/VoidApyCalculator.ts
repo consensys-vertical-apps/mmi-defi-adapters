@@ -8,7 +8,7 @@ export class VoidApyCalculator implements ApyCalculator {
     blocknumberStart,
     blocknumberEnd,
     protocolTokenAddress,
-  }: GetApyArgs): Promise<null> {
-    return Promise.resolve(null)
+  }: GetApyArgs): Promise<undefined> {
+    return Promise.resolve(undefined)
   }
 }

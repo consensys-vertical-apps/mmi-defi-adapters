@@ -28,7 +28,7 @@ export interface ApyCalculator {
    * @param {GetApyArgs} args - The arguments specific to the APY calculation.
    * @returns {Promise<ApyInfo>} A promise that resolves to an object representing the APY calculation.
    */
-  getApy(args: GetApyArgs): Promise<ApyInfo | null>
+  getApy(args: GetApyArgs): Promise<ApyInfo | undefined>
 }
 
 export type GetApyArgs = {

@@ -21,7 +21,7 @@ import { computeApr, computeApy } from './helpers'
  * - LSTs
  */
 export class BalanceOfApyCalculator implements ApyCalculator {
-  public async getApy(args: GetApyArgs): Promise<ApyInfo | null> {
+  public async getApy(args: GetApyArgs): Promise<ApyInfo | undefined> {
     try {
       const {
         protocolTokenStart,
