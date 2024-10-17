@@ -3,8 +3,8 @@ import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { Positions } from './Positions'
 import { Profits } from './Profits'
+import { provider } from './defiAdapterLibrary'
 import { FiltersContext } from './filtersContext'
-import { provider } from './wrappedDefiProvider'
 
 function App() {
   const { isPending, error, data } = useQuery({
@@ -32,11 +32,6 @@ function App() {
       )
         .sort((a, b) => a - b)
         .map((value) => ({ value, label: value.toString() }))
-
-      console.log('SUPPORT RESULTS', {
-        protocolOptions,
-        chainOptions,
-      })
 
       return {
         protocolOptions,
