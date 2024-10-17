@@ -3,10 +3,7 @@ import { DefiProvider } from '../defiProvider'
 import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 
 describe('detect errors', () => {
-  it.each([
-    { enableUsdPricesOnPositions: false, enableFailover: false },
-    { enableUsdPricesOnPositions: true, enableFailover: true },
-  ])(
+  it.each([{ enableFailover: false }, { enableFailover: true }])(
     'does not return any adapter error with positions %s',
     async (config) => {
       const defiProvider = new DefiProvider(config)
@@ -19,22 +16,15 @@ describe('detect errors', () => {
     60000,
   )
 
-  it.each([
-    { enableUsdPricesOnPositions: false },
-    { enableUsdPricesOnPositions: true },
-  ])(
-    'does not return any adapter error with profits %s',
-    async (config) => {
-      const defiProvider = new DefiProvider(config)
-      const response = await defiProvider.getProfits({
-        userAddress: '0x117C99451cae094B3a7d56C9d3A97c96900b8e7A',
-        timePeriod: TimePeriod.oneDay,
-      })
+  it('does not return any adapter error with profits %s', async () => {
+    const defiProvider = new DefiProvider()
+    const response = await defiProvider.getProfits({
+      userAddress: '0x117C99451cae094B3a7d56C9d3A97c96900b8e7A',
+      timePeriod: TimePeriod.oneDay,
+    })
 
-      expect(filterErrors(response)).toEqual([])
-    },
-    60000,
-  )
+    expect(filterErrors(response)).toEqual([])
+  }, 60000)
 })
 
 function filterErrors(
