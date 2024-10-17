@@ -34,9 +34,9 @@ import { useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'
 import { JsonDisplay } from './JsonDisplay'
+import { ChainIdToChainNameMap } from './chainIdToChainNameMap'
 import { provider } from './defiAdapterLibrary'
 import { useFiltersContext } from './filtersContext'
-import { ChainIdToChainNameMap } from './chainIdToChainNameMap'
 
 export const timePeriodOptions = [
   { value: 1, label: '1 Day' },

@@ -38,9 +38,9 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'
 import { JsonDisplay } from './JsonDisplay'
+import { ChainIdToChainNameMap } from './chainIdToChainNameMap'
 import { provider } from './defiAdapterLibrary'
 import { useFiltersContext } from './filtersContext'
-import { ChainIdToChainNameMap } from './chainIdToChainNameMap'
 
 type FormValues = {
   userAddress: string

@@ -1,12 +1,12 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Chain } from '@metamask-institutional/defi-adapters'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { Positions } from './Positions'
 import { Profits } from './Profits'
+import { ChainIdToChainNameMap } from './chainIdToChainNameMap'
 import { provider } from './defiAdapterLibrary'
 import { FiltersContext } from './filtersContext'
-import { ChainIdToChainNameMap } from './chainIdToChainNameMap'
-import { Chain } from '@metamask-institutional/defi-adapters'
 
 function App() {
   const { isPending, error, data } = useQuery({
@@ -45,6 +45,35 @@ function App() {
     },
   })
 
+  if (isPending) {
+    return <div>Loading...</div>
+  }
+
+  if (error || !data) {
+    return <div>Error: {error?.message || 'Unknown error'}</div>
+  }
+
+  return (
+    <FilterWrapper
+      protocolOptions={data.protocolOptions}
+      chainOptions={data.chainOptions}
+    />
+  )
+}
+
+function FilterWrapper({
+  protocolOptions,
+  chainOptions,
+}: {
+  protocolOptions: {
+    value: string
+    label: string
+  }[]
+  chainOptions: {
+    value: number
+    label: string
+  }[]
+}) {
   const [userAddress, setUserAddress] = useState(
     localStorage.getItem('defi-adapters:userAddress') || '',
   )
@@ -89,20 +118,12 @@ function App() {
       : undefined,
   )
 
-  if (isPending) {
-    return <div>Loading...</div>
-  }
-
-  if (error || !data) {
-    return <div>Error: {error?.message || 'Unknown error'}</div>
-  }
-
   return (
     <FiltersContext.Provider
       value={{
         userAddress,
-        protocolOptions: data.protocolOptions,
-        chainOptions: data.chainOptions,
+        protocolOptions,
+        chainOptions,
         protocolIds,
         chainIds,
         setFilters: ({ userAddress, protocolIds, chainIds }) => {
