@@ -126,7 +126,6 @@ export class Helpers {
     underlyingTokens: Erc20Metadata[]
   }): UnwrapExchangeRate {
     if (underlyingTokens.length !== 1) {
-      console.log('unwrapOneToOne', protocolToken, underlyingTokens)
       throw new Error('Cannot map underlying token')
     }
     const underlyingToken = underlyingTokens[0]!

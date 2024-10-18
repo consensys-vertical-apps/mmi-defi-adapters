@@ -15,10 +15,8 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
-  GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
@@ -28,7 +26,6 @@ import {
   ProtocolTokenTvl,
   TokenType,
   Underlying,
-  UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
@@ -92,11 +89,14 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
       this.provider,
     )
 
+    /**
+     * Fake protocol token created to satisfy return type
+     */
     this.INCENTIVES_CONTRACT_DETAILS = {
       address: this.INCENTIVES_CONTRACT_ADDRESSES[this.chainId],
       name: 'Aave V3 Rewards',
       symbol: 'Rewards',
-      decimals: 18, // not used
+      decimals: 18,
     }
   }
 
@@ -113,6 +113,10 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     }
   }
 
+  /**
+   *
+   * AToken addresses required to query reward balances
+   */
   async getAaveTokenAddresses(): Promise<string[]> {
     const [aTokens, stableDebtTokens, variableDebtTokens] = await Promise.all([
       this.helpers.metadataProvider.getMetadata({
@@ -137,15 +141,11 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
 
   @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
-    console.log('here')
     const rewardTokenAddresses = await this.incentivesContract.getRewardsList()
 
     const rewardTokens = await Promise.all(
       rewardTokenAddresses.map((rewardToken) => {
-        return this.helpers.getTokenMetadata(rewardToken).catch((error) => {
-          console.log('oioi')
-          throw 'error'
-        })
+        return this.helpers.getTokenMetadata(rewardToken)
       }),
     )
 
@@ -160,6 +160,10 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     return ethers.id(eventSignature)
   }
 
+  /**
+   * Checks if the user has ever opened a position in AaveV3
+   * Return AToken addresses if found
+   */
   private async openPositions(userAddress: string): Promise<string[]> {
     const topic0 = this.detectPositionEventSignature()
     const topic1 = ethers.zeroPadValue(ZERO_ADDRESS, 32)
@@ -183,14 +187,15 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
     const { userAddress, blockNumber, protocolTokenAddresses } = input
 
-    // Use openPositions if no protocolTokenAddresses provided
+    // Check if user has ever opened a position in AaveV3
     const addressFilter = await this.openPositions(userAddress)
 
-    // Return empty array if no valid addresses are found
+    // Return empty array if user has never opened a AaveV3 position
     if (!addressFilter?.length) {
       return []
     }
 
+    // Fetch reward contract details
     const protocolTokens = await this.getProtocolTokens()
     const protocolToken = protocolTokens[0]
 
@@ -215,13 +220,17 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     return [
       {
         type: TokenType.Protocol,
-        balanceRaw: 0n,
+        balanceRaw: 1n, // choose 1 here as a zero value may cause the position to be ignored on UIs our adapters currently expecting a protocol token but on contract positions there is no token
         ...this.INCENTIVES_CONTRACT_DETAILS,
         tokens: underlyingTokens,
       },
     ]
   }
 
+  /**
+   *
+   * Fetches claimable underlying tokens for a user
+   */
   private async getClaimableUnderlyingTokens(
     userAddress: string,
     underlyingTokens: Erc20ExtendedMetadata[],
@@ -249,6 +258,9 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
       }))
   }
 
+  /**
+   * Rewards claimed by a user
+   */
   async getWithdrawals({
     fromBlock,
     toBlock,
@@ -353,9 +365,15 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
+    return [] // no deposits on a rewards contract
   }
 
+  /**
+   * I don't think TVL on a claimable rewards contract makes sense
+   * In this case the reward tokens are not held in the reward contract
+   * Reward contract has balance of 0
+   * It appears the reward contract might have approvals to spend the reward tokens from things like the Arbitrum DAO
+   */
   async getTotalValueLocked({
     protocolTokenAddresses,
     blockNumber,
