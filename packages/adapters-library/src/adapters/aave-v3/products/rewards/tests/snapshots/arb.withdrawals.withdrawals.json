@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD0.14"],
-  "latency": "Latency: 0.336 seconds",
+  "latency": "Latency: 0.432 seconds",
   "snapshot": {
     "protocolId": "aave-v3",
     "name": "AaveV3",
