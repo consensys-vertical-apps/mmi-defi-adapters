@@ -47,7 +47,7 @@ export interface GetSpotPriceByAddressInput {
   chainId: number
 }
 
-export type IPricesInput = {
+export type PricesInput = {
   blockNumber?: number
   tokenMetadata: Erc20Metadata
 }
@@ -65,7 +65,7 @@ export interface IPricesAdapter {
   getPrice({
     blockNumber,
     tokenMetadata,
-  }: IPricesInput): Promise<UnwrapExchangeRate>
+  }: PricesInput): Promise<UnwrapExchangeRate>
 }
 
 // Project details:

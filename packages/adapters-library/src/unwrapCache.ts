@@ -1,6 +1,6 @@
 import {
   IPricesAdapter,
-  IPricesInput,
+  PricesInput,
 } from './adapters/prices-v2/products/usd/pricesV2UsdAdapter'
 import { AVERAGE_BLOCKS_PER_10_MINUTES } from './core/constants/AVERAGE_BLOCKS_PER_10_MINS'
 import { Chain } from './core/constants/chains'
@@ -22,7 +22,7 @@ export interface IUnwrapPriceCache {
   ): Promise<UnwrapExchangeRate>
   fetchPriceWithCache(
     adapter: IPricesAdapter,
-    input: IPricesInput,
+    input: PricesInput,
   ): Promise<UnwrapExchangeRate>
 }
 
@@ -61,7 +61,7 @@ export class UnwrapPriceCache implements IUnwrapPriceCache {
   }
   async fetchPriceWithCache(
     adapter: IPricesAdapter,
-    input: IPricesInput,
+    input: PricesInput,
   ): Promise<UnwrapExchangeRate> {
     if (!this.unwrapCacheProvider) {
       return adapter.getPrice(input)

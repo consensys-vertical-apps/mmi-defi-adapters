@@ -100,7 +100,7 @@ describe('UnwrapCache', () => {
       expect(result).toEqual(unwrapResult)
       expect(unwrapCacheProvider.getFromDb).toHaveBeenCalled()
       expect(unwrapCacheProvider.setToDb).toHaveBeenCalled()
-      expect(mockUnwrapAdapter.unwrap).toHaveBeenCalledWith(priceInput)
+      expect(mockPriceAdapter.getPrice).toHaveBeenCalledWith(priceInput)
     })
 
     it('hits price cache if a value is provided', async () => {
