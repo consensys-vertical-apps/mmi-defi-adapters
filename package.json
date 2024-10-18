@@ -13,7 +13,6 @@
   },
   "scripts": {
     "dev": "nodemon",
-    "dev:ui": "npm run dev -w packages/dev-ui -- --force",
     "build": "npm run build -w packages/adapters-library",
     "build:watch": "npm run build:watch -w packages/adapters-library",
     "adapters-cli": "node --env-file=.env packages/adapters-library/dist/scripts/index.js",
