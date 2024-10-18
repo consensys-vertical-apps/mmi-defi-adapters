@@ -11,7 +11,7 @@ import {
   ProtocolPosition,
   TokenType,
 } from '../types/adapter'
-import { IUnwrapCache } from '../unwrapCache'
+import { IUnwrapPriceCache } from '../unwrapCache'
 import { createApyCalculatorFor } from './apy-calculators/helpers'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
@@ -35,7 +35,7 @@ export async function getProfits({
   protocolTokenAddresses?: string[]
   tokenIds?: string[]
   includeRawValues?: boolean
-  unwrapCache: IUnwrapCache
+  unwrapCache: IUnwrapPriceCache
 }): Promise<ProfitsWithRange> {
   let endPositionValues: AggregatedFiatBalances
   let startPositionValues: AggregatedFiatBalances
