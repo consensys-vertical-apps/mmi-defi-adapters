@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "latency": "Latency: 1.217 seconds",
+=======
+  "latency": "Latency: 0 seconds",
+>>>>>>> 00f1c336 (feat: tests)
   "blockNumber": 19818582,
   "snapshot": [
     {

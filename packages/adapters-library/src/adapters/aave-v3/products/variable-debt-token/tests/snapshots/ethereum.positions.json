@@ -1,6 +1,10 @@
 {
   "blockNumber": 19818581,
+<<<<<<< HEAD
   "latency": "Latency: 1.614 seconds",
+=======
+  "latency": "Latency: 0.554 seconds",
+>>>>>>> 00f1c336 (feat: tests)
   "aggregatedValues": ["USD7,760.12"],
   "snapshot": [
     {
