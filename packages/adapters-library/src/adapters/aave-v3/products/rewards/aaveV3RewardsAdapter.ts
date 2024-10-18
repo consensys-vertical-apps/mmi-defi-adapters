@@ -365,7 +365,7 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
       }),
     )
 
-    return movements.filter((movement) => movement !== undefined)
+    return movements.filter(Boolean)
   }
 
   async getDeposits({
