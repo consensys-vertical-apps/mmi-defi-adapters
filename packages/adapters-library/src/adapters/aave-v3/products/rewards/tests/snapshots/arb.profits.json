@@ -1,6 +1,6 @@
 {
   "blockNumber": 265042912,
-  "latency": "Latency: 1.594 seconds",
+  "latency": "Latency: 1.195 seconds",
   "snapshot": [
     {
       "protocolId": "aave-v3",
@@ -22,6 +22,22 @@
           "type": "protocol",
           "profit": -0.0000011220200710950008,
           "performance": -0.03744183035449675,
+          "apyInfo": {
+            "apyPercent": 0,
+            "apy": 0,
+            "aprPercent": 0,
+            "apr": 0,
+            "period": {
+              "blocknumberStart": 255434572,
+              "blocknumberEnd": 265042912,
+              "interestPercent": 0,
+              "interest": 0
+            },
+            "compounding": {
+              "durationDays": 30,
+              "frequency": 12.166666666666666
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
