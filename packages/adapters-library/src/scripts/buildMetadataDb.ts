@@ -163,7 +163,7 @@ async function buildAdapterMetadata(adapter: IProtocolAdapter) {
   })
 
   if (invalidPoolAddress) {
-    console.error(chalk.yellow(ZERO_ADDRESS))
+    console.error(chalk.yellow(invalidPoolAddress.address))
 
     console.error(
       chalk.red(
