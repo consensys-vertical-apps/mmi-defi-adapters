@@ -1,5 +1,6 @@
 import { ethers, getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
@@ -36,7 +37,6 @@ import {
   IncentivesContract__factory,
 } from '../../contracts'
 import { RewardsClaimedEvent } from '../../contracts/IncentivesContract'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 
 export const AAVE_ICON_URL = 'https://cryptologos.cc/logos/aave-aave-logo.png'
 

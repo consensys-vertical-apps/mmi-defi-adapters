@@ -1,5 +1,6 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../core/adaptersController'
+import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../core/constants/chains'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
@@ -27,7 +28,6 @@ import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
 } from '../contracts'
-import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 
 const protocolDataProviderContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>

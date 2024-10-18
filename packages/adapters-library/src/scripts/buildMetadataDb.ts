@@ -6,6 +6,7 @@ import { Command } from 'commander'
 import { Protocol } from '../adapters/protocols'
 import { supportedProtocols } from '../adapters/supportedProtocols'
 import { AdaptersController } from '../core/adaptersController'
+import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
 import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
@@ -20,7 +21,6 @@ import {
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { getInvalidAddresses } from './addressValidation'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
-import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
 
 export function buildMetadataDb(
   program: Command,
