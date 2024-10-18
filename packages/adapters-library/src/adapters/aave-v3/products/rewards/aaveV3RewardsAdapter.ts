@@ -185,7 +185,25 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    // Fetch reward contract details
+    const protocolTokens = await this.getProtocolTokens()
+    const protocolToken = protocolTokens[0]
+
     const { userAddress, blockNumber, protocolTokenAddresses } = input
+
+    // If no protocolToken is found throw an error
+    if (!protocolToken) {
+      throw new Error('No protocol token found')
+    }
+
+    // If protocolTokenAddresses are provided, check if this protocolToken is in the list
+    if (
+      protocolTokenAddresses &&
+      protocolTokenAddresses.length > 0 &&
+      !protocolTokenAddresses.includes(protocolToken.address)
+    ) {
+      return []
+    }
 
     // Check if user has ever opened a position in AaveV3
     const addressFilter = await this.openPositions(userAddress)
@@ -193,15 +211,6 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     // Return empty array if user has never opened a AaveV3 position
     if (!addressFilter?.length) {
       return []
-    }
-
-    // Fetch reward contract details
-    const protocolTokens = await this.getProtocolTokens()
-    const protocolToken = protocolTokens[0]
-
-    // If no protocolToken is found, return empty
-    if (!protocolToken) {
-      throw new Error('No protocol token found')
     }
 
     // Fetch and filter underlying tokens with non-zero rewards in parallel

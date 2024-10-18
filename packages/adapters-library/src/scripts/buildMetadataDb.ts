@@ -156,7 +156,9 @@ async function buildAdapterMetadata(adapter: IProtocolAdapter) {
     return
   }
 
-  const invalidPoolAddress = metadataDetails.find((pool) => pool.address === ZERO_ADDRESS)
+  const invalidPoolAddress = metadataDetails.find(
+    (pool) => pool.address === ZERO_ADDRESS,
+  )
 
   if (invalidPoolAddress) {
     console.error(chalk.yellow(invalidPoolAddress.address))
