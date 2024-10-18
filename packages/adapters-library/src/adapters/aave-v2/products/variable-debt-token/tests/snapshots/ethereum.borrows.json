@@ -1,11 +1,15 @@
 {
+<<<<<<< HEAD
   "latency": "Latency: 1.344 seconds",
+=======
+  "latency": "Latency: 0.361 seconds",
+>>>>>>> 4ef1bc79 (feat: aave)
   "snapshot": {
     "protocolId": "aave-v2",
     "name": "Aave v2 VariableDebtToken",
     "description": "Aave v2 defi adapter for variable interest-accruing token",
     "siteUrl": "https://aave.com/",
-    "iconUrl": "https://aave.com/favicon.ico",
+    "iconUrl": "https://cryptologos.cc/logos/aave-aave-logo.png",
     "positionType": "borrow",
     "chainId": 1,
     "productId": "variable-debt-token",

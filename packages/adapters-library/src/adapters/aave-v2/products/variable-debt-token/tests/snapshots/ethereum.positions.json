@@ -1,6 +1,10 @@
 {
   "blockNumber": 18183880,
+<<<<<<< HEAD
   "latency": "Latency: 2.825 seconds",
+=======
+  "latency": "Latency: 3.583 seconds",
+>>>>>>> 4ef1bc79 (feat: aave)
   "aggregatedValues": [
     "USD5,290,687.54",
     "USD79,821.48",
@@ -13,7 +17,7 @@
       "name": "Aave v2 VariableDebtToken",
       "description": "Aave v2 defi adapter for variable interest-accruing token",
       "siteUrl": "https://aave.com/",
-      "iconUrl": "https://aave.com/favicon.ico",
+      "iconUrl": "https://cryptologos.cc/logos/aave-aave-logo.png",
       "positionType": "borrow",
       "chainId": 1,
       "productId": "variable-debt-token",
