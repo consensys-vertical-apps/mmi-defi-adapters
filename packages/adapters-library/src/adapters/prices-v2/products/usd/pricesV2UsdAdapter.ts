@@ -144,6 +144,11 @@ export class PricesV2UsdAdapter implements IProtocolAdapter {
     blockNumber,
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    console.log({
+      blockNumber,
+      protocolTokenAddress,
+    })
+
     const [erc20TokenPriceInEth, ethPriceUSD, tokenMetadata] =
       await Promise.all([
         this.getTokenPriceInEth({

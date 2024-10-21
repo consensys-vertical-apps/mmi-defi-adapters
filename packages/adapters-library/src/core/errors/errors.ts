@@ -102,6 +102,13 @@ export class ProviderMissingError extends BaseError {
   }
 }
 
+export class TvlValidationError extends BaseError {
+  constructor(message: string) {
+    super(message)
+    this.name = 'TvlValidationError'
+  }
+}
+
 export class AdapterMissingError extends BaseError {
   chainId: Chain
   chainName: string
