@@ -212,5 +212,5 @@ function parseStringEnv(env: string | undefined, defaultValue: string): string {
   return env || defaultValue
 }
 function parseBooleanEnv(env: string | undefined): boolean {
-  return !!env && env !== 'false'
+  return env !== 'false'
 }
