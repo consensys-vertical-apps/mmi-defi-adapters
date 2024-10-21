@@ -208,9 +208,12 @@ export class Config {
 function parseNumberEnv(env: string | undefined, defaultValue: number): number {
   return env ? Number(env) : defaultValue
 }
+
 function parseStringEnv(env: string | undefined, defaultValue: string): string {
-  return env ?? defaultValue
+  // Uses defaultValue if empty string is passed
+  return env || defaultValue
 }
+
 function parseBooleanEnv(env: string | undefined): boolean {
   return env !== 'false'
 }
