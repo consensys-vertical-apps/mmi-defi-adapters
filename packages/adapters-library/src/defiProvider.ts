@@ -826,7 +826,7 @@ export class DefiProvider {
 
     if (adapter.protocolId !== protocolId || adapter.productId !== productId) {
       throw new TvlValidationError(
-        'Protocol address adapter does not match the provided protocolId and productId',
+        `Protocol address ${protocolAddress} adapter does not match the provided protocolId: ${protocolId} and productId ${productId}`,
       )
     }
 
@@ -1041,25 +1041,45 @@ export class DefiProvider {
   }): void {
     if (!filterProtocolTokens || filterProtocolTokens.length !== 1) {
       throw new TvlValidationError(
-        'One protocolToken must be provided for TVL, multiple tokens are not supported at this time',
+        `One protocolToken must be provided for TVL, multiple tokens are not supported at this time. Params: ${[
+          ...(filterProtocolIds ?? []),
+          ...(filterProductIds ?? []),
+          ...(filterChainIds ?? []),
+          ...(filterProtocolTokens ?? []),
+        ].join(', ')}`,
       )
     }
 
     if (!filterChainIds || filterChainIds.length !== 1) {
       throw new TvlValidationError(
-        'One chainId must be provided for TVL, multiple chains are not supported at this time',
+        `One chainId must be provided for TVL, multiple chains are not supported at this time. Params: ${[
+          ...(filterProtocolIds ?? []),
+          ...(filterProductIds ?? []),
+          ...(filterChainIds ?? []),
+          ...(filterProtocolTokens ?? []),
+        ].join(', ')}`,
       )
     }
 
     if (!filterProtocolIds || filterProtocolIds.length !== 1) {
       throw new TvlValidationError(
-        'One protocolId must be provided for TVL, multiple protocols are not supported at this time',
+        `One protocolId must be provided for TVL, multiple protocols are not supported at this time. Params: ${[
+          ...(filterProtocolIds ?? []),
+          ...(filterProductIds ?? []),
+          ...(filterChainIds ?? []),
+          ...(filterProtocolTokens ?? []),
+        ].join(', ')}`,
       )
     }
 
     if (!filterProductIds || filterProductIds.length !== 1) {
       throw new TvlValidationError(
-        'One productId must be provided for TVL, multiple products are not supported at this time',
+        `One productId must be provided for TVL, multiple products are not supported at this time. Params: ${[
+          ...(filterProtocolIds ?? []),
+          ...(filterProductIds ?? []),
+          ...(filterChainIds ?? []),
+          ...(filterProtocolTokens ?? []),
+        ].join(', ')}`,
       )
     }
   }

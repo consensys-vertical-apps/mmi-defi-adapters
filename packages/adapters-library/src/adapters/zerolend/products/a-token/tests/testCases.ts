@@ -30,11 +30,7 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Ethereum,
     method: 'tvl',
-    filterProtocolTokens: [
-      '0xFb932A75c5F69d03B0F6e59573FDe6976aF0D88C',
-      '0x84E55c6Bc5B7e9505d87b3Df6Ceff7753e15A0c5',
-      '0x68fD75cF5a91F49EFfAd0E857ef2E97e5d1f35e7',
-    ],
+    filterProtocolTokens: ['0xFb932A75c5F69d03B0F6e59573FDe6976aF0D88C'],
     blockNumber: 19818582,
   },
 
