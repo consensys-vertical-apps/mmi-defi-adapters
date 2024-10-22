@@ -339,7 +339,7 @@ const findByAddressAndTokenId =
  * @returns {Promise<MovementsByBlock[]>} A promise that resolves to the same array of movements with tokens unwrapped.
  */
 const unwrapMovements =
-  (adapter: IProtocolAdapter, unwrapCache: IUnwrapCache) =>
+  (adapter: IProtocolAdapter, unwrapCache: IUnwrapPriceCache) =>
   async (movementsByBlock: MovementsByBlock[]): Promise<MovementsByBlock[]> => {
     await Promise.all(
       movementsByBlock.map(async (positionMovements) => {
