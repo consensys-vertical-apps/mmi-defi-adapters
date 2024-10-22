@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 0.381 seconds",
+  "latency": "Latency: 1.071 seconds",
   "blockNumber": 19661875,
   "snapshot": [
     {
@@ -37,45 +37,6 @@
           "totalSupply": 129580258.852985
         }
       ]
-    },
-    {
-      "protocolId": "aave-v3",
-      "name": "Aave v3 VariableDebtToken",
-      "description": "Aave v3 defi adapter for variable interest-accruing token",
-      "siteUrl": "https://aave.com/",
-      "iconUrl": "https://aave.com/favicon.ico",
-      "positionType": "borrow",
-      "chainId": 1,
-      "productId": "variable-debt-token",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": []
-    },
-    {
-      "protocolId": "spark-v1",
-      "name": "Spark V1 VariableDebtToken",
-      "description": "Spark v1 defi adapter for variable interest-accruing token",
-      "siteUrl": "https://spark.fi",
-      "iconUrl": "https://github.com/marsfoundation/spark-app/blob/main/packages/app/public/favicon.ico",
-      "positionType": "borrow",
-      "chainId": 1,
-      "productId": "variable-debt-token",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": []
-    },
-    {
-      "protocolId": "zerolend",
-      "name": "ZeroLend VariableDebtToken",
-      "description": "ZeroLend defi adapter for variable interest-accruing token",
-      "siteUrl": "https://app.zerolend.xyz/",
-      "iconUrl": "https://app.zerolend.xyz/favicon.ico",
-      "positionType": "borrow",
-      "chainId": 1,
-      "productId": "variable-debt-token",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": []
     }
   ],
   "rpcResponses": {

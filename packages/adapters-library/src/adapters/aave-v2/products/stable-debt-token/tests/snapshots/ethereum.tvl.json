@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 0.375 seconds",
+  "latency": "Latency: 1.427 seconds",
   "blockNumber": 19661875,
   "snapshot": [
     {
@@ -37,32 +37,6 @@
           "totalSupply": 2760471.587366
         }
       ]
-    },
-    {
-      "protocolId": "aave-v3",
-      "name": "Aave v3 StableDebtToken",
-      "description": "Aave v3 defi adapter for stable interest-accruing token",
-      "siteUrl": "https://aave.com/",
-      "iconUrl": "https://aave.com/favicon.ico",
-      "positionType": "borrow",
-      "chainId": 1,
-      "productId": "stable-debt-token",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": []
-    },
-    {
-      "protocolId": "zerolend",
-      "name": "ZeroLend StableDebtToken",
-      "description": "ZeroLend defi adapter for stable interest-accruing token",
-      "siteUrl": "https://app.zerolend.xyz/",
-      "iconUrl": "https://app.zerolend.xyz/favicon.ico",
-      "positionType": "borrow",
-      "chainId": 1,
-      "productId": "stable-debt-token",
-      "chainName": "ethereum",
-      "success": true,
-      "tokens": []
     }
   ],
   "rpcResponses": {

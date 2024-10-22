@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 0.365 seconds",
+  "latency": "Latency: 1.344 seconds",
   "snapshot": {
     "protocolId": "aave-v2",
     "name": "Aave v2 VariableDebtToken",

@@ -1,6 +1,6 @@
 {
   "blockNumber": 19262683,
-  "latency": "Latency: 0.929 seconds",
+  "latency": "Latency: 3.405 seconds",
   "snapshot": [
     {
       "protocolId": "aave-v2",
