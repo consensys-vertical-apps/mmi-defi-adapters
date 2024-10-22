@@ -1,5 +1,6 @@
 import { sumBy } from 'lodash'
 import util from 'node:util'
+import { sumBy } from 'lodash'
 import { MovementsByBlock, Underlying } from '../../types/adapter'
 import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY'
 import { NotSupportedError } from '../errors/errors'
