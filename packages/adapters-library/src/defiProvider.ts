@@ -903,17 +903,24 @@ export class DefiProvider {
       | 'getDeposits'
       | 'getTotalValueLocked'
   }): Promise<AdapterResponse<Awaited<ReturnType>>[]> {
-    const protocolPromises = Object.entries(supportedProtocols).flatMap(
-      ([protocolIdKey, supportedChains]) => {
+    const protocolPromises = Object.entries(supportedProtocols)
+      .filter(
+        ([protocolIdKey, _]) =>
+          !filterProtocolIds ||
+          filterProtocolIds.includes(protocolIdKey as Protocol),
+      )
+      .flatMap(([protocolIdKey, supportedChains]) => {
         const protocolId = protocolIdKey as Protocol
 
         // Object.entries casts the numeric key as a string. This reverses it
         return Object.entries(supportedChains)
+
           .filter(([chainIdKey, _]) => {
             return (
               !filterChainIds || filterChainIds.includes(+chainIdKey as Chain)
             )
           })
+
           .flatMap(([chainIdKey, _]) => {
             const chainId = +chainIdKey as Chain
             const provider = this.chainProvider.providers[chainId]!
@@ -926,19 +933,16 @@ export class DefiProvider {
 
             return Array.from(chainProtocolAdapters)
               .filter(([_, adapter]) => {
-                const adapterDetails = adapter.getProtocolDetails()
                 return (
-                  adapterDetails.positionType !== PositionType.Reward &&
-                  (!filterProductIds ||
-                    filterProductIds.includes(adapter.productId))
+                  !filterProductIds ||
+                  filterProductIds.includes(adapter.productId)
                 )
               })
               .map(([_, adapter]) =>
                 this.runTaskForAdapter(adapter, provider, runner),
               )
           })
-      },
-    )
+      })
 
     const result = await Promise.all(protocolPromises)
 
