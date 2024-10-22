@@ -62,7 +62,6 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     [Chain.Base]: getAddress('0xf9cc4F0D883F1a1eb2c253bdb46c254Ca51E1F44'),
     [Chain.Polygon]: getAddress('0x929EC64c34a17401F460460D4B9390518E5B473e'),
     [Chain.Optimism]: getAddress('0x929EC64c34a17401F460460D4B9390518E5B473e'),
-    [Chain.Linea]: '', // not deployed on linea
   }
 
   private INCENTIVES_CONTRACT_DETAILS: Erc20Metadata
@@ -83,6 +82,10 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     this.protocolId = protocolId
     this.adaptersController = adaptersController
     this.helpers = helpers
+
+    if (this.chainId === Chain.Linea) {
+      throw new NotImplementedError()
+    }
 
     this.incentivesContract = IncentivesContract__factory.connect(
       this.INCENTIVES_CONTRACT_ADDRESSES[this.chainId],
