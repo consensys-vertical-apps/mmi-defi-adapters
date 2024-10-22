@@ -287,9 +287,16 @@ export class AngleProtocolSavingsAdapter implements IProtocolAdapter {
   ): Promise<ProtocolTokenTvl[]> {
     const tokens = await this.getProtocolTokens()
 
-    return await Promise.all(
+    const result = (await Promise.all(
       tokens.map(
         async ({ underlyingTokens: [underlyingToken], ...protocolToken }) => {
+          if (
+            input.protocolTokenAddresses &&
+            !input.protocolTokenAddresses.includes(protocolToken.address)
+          ) {
+            return undefined
+          }
+
           const saving = Savings__factory.connect(
             protocolToken.address,
             this.provider,
@@ -314,6 +321,10 @@ export class AngleProtocolSavingsAdapter implements IProtocolAdapter {
           }
         },
       ),
+    )) as ProtocolTokenTvl[]
+
+    return result.filter((result): result is ProtocolTokenTvl =>
+      Boolean(result),
     )
   }
 

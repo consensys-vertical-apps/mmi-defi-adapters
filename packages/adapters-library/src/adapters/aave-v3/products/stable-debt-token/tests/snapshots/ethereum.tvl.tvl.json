@@ -1,0 +1,56 @@
+{
+  "latency": "Latency: 0.332 seconds",
+  "blockNumber": 21020002,
+  "snapshot": [
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 StableDebtToken",
+      "description": "Aave v3 defi adapter for stable interest-accruing token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://cryptologos.cc/logos/aave-aave-logo.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "stable-debt-token",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "name": "Aave Ethereum Stable Debt LINK",
+          "address": "0x63B1129ca97D2b9F97f45670787Ac12a9dF1110a",
+          "symbol": "stableDebtEthLINK",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "0n",
+          "tokens": [
+            {
+              "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
+              "name": "ChainLink Token",
+              "symbol": "LINK",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "price": 12.015596688091865,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png"
+            }
+          ],
+          "totalSupply": 0
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "26cf4f5a4cc643ae0a8165518e134a9d": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "edd91ca8bf528e1bf875b3adff4163cb": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "efb64bb04a18c4f8dd65310fd1d326c4": {
+      "result": "0x000000000000000000000000000000000000000000000007000000000000046d0000000000000000000000000000000000000000000000000000003d58e4a27300000000000000000000000000000000000000000000000000000000671762db00000000000000000000000000000000000000000000000000000000671762f3000000000000000000000000000000000000000000000007000000000000046d"
+    },
+    "386747c9bc512ee44236c3f76779c3c2": {
+      "result": "0x0000000000000000000000000000000000000000000000000010338a5e13b4f8"
+    }
+  }
+}

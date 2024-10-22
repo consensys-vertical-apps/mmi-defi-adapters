@@ -1,0 +1,69 @@
+{
+  "aggregatedValues": ["USD0.14"],
+  "latency": "Latency: 0.465 seconds",
+  "snapshot": {
+    "protocolId": "aave-v3",
+    "name": "AaveV3",
+    "description": "AaveV3 defi adapter",
+    "siteUrl": "https:",
+    "iconUrl": "https://cryptologos.cc/logos/aave-aave-logo.png",
+    "positionType": "supply",
+    "chainId": 42161,
+    "productId": "rewards",
+    "chainName": "arb",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x8bab293ef63d167df9ed156b16e00d7273f33e279198e6cc1e0e6dabae7183d1",
+        "protocolToken": {
+          "address": "0x929EC64c34a17401F460460D4B9390518E5B473e",
+          "name": "Aave V3 Rewards",
+          "symbol": "Rewards",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+            "name": "Arbitrum",
+            "symbol": "ARB",
+            "decimals": 18,
+            "balanceRaw": "244217845617564773n",
+            "type": "underlying",
+            "blockNumber": 265042452,
+            "price": 0.560965338658737,
+            "balance": 0.24421784561756477
+          }
+        ],
+        "blockNumber": 265042452
+      }
+    ]
+  },
+  "rpcResponses": {
+    "87b17eaf8d3421e55f867a5918fba5f5": {
+      "result": [
+        {
+          "address": "0x929ec64c34a17401f460460d4b9390518e5b473e",
+          "blockHash": "0xd0dcfb2392e6c7e2fccc9aa4b5c8d03c6d283a3ee016451401bec5a2fb2e8819",
+          "blockNumber": "0xfcc3a14",
+          "data": "0x000000000000000000000000b43f7be1cbbb7c96aeaeaff4598044052a8a20970000000000000000000000000000000000000000000000000363a2d62fd89c65",
+          "logIndex": "0x9",
+          "removed": false,
+          "topics": [
+            "0xc052130bc4ef84580db505783484b067ea8b71b3bca78a7e12db7aea8658f004",
+            "0x000000000000000000000000b43f7be1cbbb7c96aeaeaff4598044052a8a2097",
+            "0x000000000000000000000000912ce59144191c1204e64559fe8253a0e49e6548",
+            "0x000000000000000000000000b43f7be1cbbb7c96aeaeaff4598044052a8a2097"
+          ],
+          "transactionHash": "0x8bab293ef63d167df9ed156b16e00d7273f33e279198e6cc1e0e6dabae7183d1",
+          "transactionIndex": "0x6"
+        }
+      ]
+    },
+    "78094462e4fe91f0a3921beeeee7aef0": {
+      "result": "0x00000000000000000000000000000000000000000000000100000000000aac470000000000000000000000000000000000000000000000000000003d88ea6df00000000000000000000000000000000000000000000000000000000067121d5d0000000000000000000000000000000000000000000000000000000067121d5d00000000000000000000000000000000000000000000000100000000000aac47"
+    },
+    "07be32978db3b0c47154037785b59182": {
+      "result": "0x0000000000000000000000000000000000000000000000000000c10b27d3e228"
+    }
+  }
+}

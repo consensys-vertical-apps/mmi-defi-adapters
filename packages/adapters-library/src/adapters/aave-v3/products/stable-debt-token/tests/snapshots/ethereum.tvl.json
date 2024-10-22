@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 0 seconds",
+  "latency": "Latency: 0.001 seconds",
   "blockNumber": 19818582,
   "snapshot": [
     {
@@ -7,7 +7,7 @@
       "name": "Aave v3 StableDebtToken",
       "description": "Aave v3 defi adapter for stable interest-accruing token",
       "siteUrl": "https://aave.com/",
-      "iconUrl": "https://aave.com/favicon.ico",
+      "iconUrl": "https://cryptologos.cc/logos/aave-aave-logo.png",
       "positionType": "borrow",
       "chainId": 1,
       "productId": "stable-debt-token",

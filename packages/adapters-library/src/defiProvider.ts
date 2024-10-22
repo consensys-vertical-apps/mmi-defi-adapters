@@ -14,9 +14,12 @@ import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainIdToChainNameMap } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import {
+  AdapterMissingError,
   NotSupportedError,
   NotSupportedUnlimitedGetLogsBlockRange,
+  ProtocolTokenFilterRequiredError,
   ProviderMissingError,
+  TvlValidationError,
 } from './core/errors/errors'
 import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
@@ -44,16 +47,19 @@ import {
   PricePerShareResponse,
   TotalValueLockResponse,
 } from './types/response'
-import { IUnwrapCache, IUnwrapCacheProvider, UnwrapCache } from './unwrapCache'
+import {
+  IUnwrapPriceCache,
+  IUnwrapPriceCacheProvider,
+  UnwrapPriceCache,
+} from './unwrapCache'
 
 export class DefiProvider {
   private parsedConfig
   chainProvider: ChainProvider
   adaptersController: AdaptersController
-  private adaptersControllerWithoutPrices: AdaptersController
 
   private metadataProviders: Record<Chain, IMetadataProvider>
-  private unwrapCache: IUnwrapCache
+  private unwrapCache: IUnwrapPriceCache
 
   constructor(
     config?: DeepPartial<IConfig>,
@@ -64,7 +70,7 @@ export class DefiProvider {
         options: Database.Options
       }
     >,
-    unwrapCacheProvider?: IUnwrapCacheProvider,
+    unwrapCacheProvider?: IUnwrapPriceCacheProvider,
   ) {
     this.parsedConfig = new Config(config)
 
@@ -72,22 +78,13 @@ export class DefiProvider {
       ? buildSqliteMetadataProviders(metadataProviderSettings)
       : buildVoidMetadataProviders()
 
-    this.unwrapCache = new UnwrapCache(unwrapCacheProvider)
+    this.unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
 
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
 
     this.adaptersController = new AdaptersController({
       providers: this.chainProvider.providers,
       supportedProtocols,
-      metadataProviders: this.metadataProviders,
-    })
-
-    const { [Protocol.PricesV2]: _, ...supportedProtocolsWithoutPrices } =
-      supportedProtocols
-
-    this.adaptersControllerWithoutPrices = new AdaptersController({
-      providers: this.chainProvider.providers,
-      supportedProtocols: supportedProtocolsWithoutPrices,
       metadataProviders: this.metadataProviders,
     })
   }
@@ -468,7 +465,7 @@ export class DefiProvider {
         protocolTokens.map(async (address) => {
           const startTime = Date.now()
 
-          const unwrap = await this.unwrapCache.fetchWithCache(adapter, {
+          const unwrap = await this.unwrapCache.fetchUnwrapWithCache(adapter, {
             protocolTokenAddress: getAddress(address),
             blockNumber,
           })
@@ -800,6 +797,36 @@ export class DefiProvider {
     filterProtocolTokens?: string[]
     blockNumbers?: Partial<Record<Chain, number>>
   }): Promise<TotalValueLockResponse[]> {
+    this.validateTvlInputs({
+      filterProtocolIds,
+      filterProductIds,
+      filterChainIds,
+      filterProtocolTokens,
+    })
+
+    const chainId = filterChainIds![0]!
+    const protocolAddress = filterProtocolTokens![0]!
+    const protocolId = filterProtocolIds![0]!
+    const productId = filterProductIds![0]!
+
+    const adapter = await this.adaptersController.fetchAdapter(
+      chainId,
+      protocolId,
+      productId,
+    )
+
+    if (!adapter) {
+      throw new TvlValidationError(
+        `No adapter found for protocol address: ${protocolAddress} on chain: ${chainId}`,
+      )
+    }
+
+    if (adapter.protocolId !== protocolId || adapter.productId !== productId) {
+      throw new TvlValidationError(
+        `Protocol address ${protocolAddress} adapter does not match the provided protocolId: ${protocolId} and productId ${productId}`,
+      )
+    }
+
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
@@ -807,6 +834,12 @@ export class DefiProvider {
         protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
         blockNumber,
       })
+
+      if (tokens.length > 1) {
+        throw new TvlValidationError(
+          'Total value locked should return maximum one protocol token, adapter incorrectly implemented',
+        )
+      }
 
       await unwrap(
         adapter,
@@ -823,13 +856,13 @@ export class DefiProvider {
       }
     }
 
-    return this.runForAllProtocolsAndChains({
-      runner,
-      filterProtocolIds,
-      filterProductIds,
-      filterChainIds,
-      method: 'getTotalValueLocked',
-    })
+    return [
+      await this.runTaskForAdapter(
+        adapter,
+        this.chainProvider.providers[chainId],
+        runner,
+      ),
+    ]
   }
 
   async getSupport(input?: {
@@ -873,48 +906,36 @@ export class DefiProvider {
     const protocolPromises = Object.entries(supportedProtocols)
       .filter(
         ([protocolIdKey, _]) =>
-          (!filterProtocolIds ||
-            filterProtocolIds.includes(protocolIdKey as Protocol)) &&
-          (method === 'unwrap' || protocolIdKey !== Protocol.PricesV2),
+          !filterProtocolIds ||
+          filterProtocolIds.includes(protocolIdKey as Protocol),
       )
       .flatMap(([protocolIdKey, supportedChains]) => {
         const protocolId = protocolIdKey as Protocol
 
         // Object.entries casts the numeric key as a string. This reverses it
         return Object.entries(supportedChains)
+
           .filter(([chainIdKey, _]) => {
             return (
               !filterChainIds || filterChainIds.includes(+chainIdKey as Chain)
             )
           })
+
           .flatMap(([chainIdKey, _]) => {
             const chainId = +chainIdKey as Chain
             const provider = this.chainProvider.providers[chainId]!
 
-            let chainProtocolAdapters =
+            const chainProtocolAdapters =
               this.adaptersController.fetchChainProtocolAdapters(
                 chainId,
                 protocolId,
               )
 
-            if (
-              method === 'getPositions' &&
-              !this.parsedConfig.values.enableUsdPricesOnPositions
-            ) {
-              chainProtocolAdapters =
-                this.adaptersControllerWithoutPrices.fetchChainProtocolAdapters(
-                  chainId,
-                  protocolId,
-                )
-            }
-
             return Array.from(chainProtocolAdapters)
               .filter(([_, adapter]) => {
-                const adapterDetails = adapter.getProtocolDetails()
                 return (
-                  adapterDetails.positionType !== PositionType.Reward &&
-                  (!filterProductIds ||
-                    filterProductIds.includes(adapter.productId))
+                  !filterProductIds ||
+                  filterProductIds.includes(adapter.productId)
                 )
               })
               .map(([_, adapter]) =>
@@ -987,8 +1008,62 @@ export class DefiProvider {
   }
 
   private initAdapterControllerForUnwrapStage() {
-    this.adaptersControllerWithoutPrices.init()
-
     this.adaptersController.init()
+  }
+
+  private validateTvlInputs({
+    filterProtocolIds,
+    filterProductIds,
+    filterChainIds,
+    filterProtocolTokens,
+  }: {
+    filterProtocolIds?: Protocol[]
+    filterProductIds?: string[]
+    filterChainIds?: Chain[]
+    filterProtocolTokens?: string[]
+  }): void {
+    if (!filterProtocolTokens || filterProtocolTokens.length !== 1) {
+      throw new TvlValidationError(
+        `One protocolToken must be provided for TVL, multiple tokens are not supported at this time. Params: ${[
+          ...(filterProtocolIds ?? []),
+          ...(filterProductIds ?? []),
+          ...(filterChainIds ?? []),
+          ...(filterProtocolTokens ?? []),
+        ].join(', ')}`,
+      )
+    }
+
+    if (!filterChainIds || filterChainIds.length !== 1) {
+      throw new TvlValidationError(
+        `One chainId must be provided for TVL, multiple chains are not supported at this time. Params: ${[
+          ...(filterProtocolIds ?? []),
+          ...(filterProductIds ?? []),
+          ...(filterChainIds ?? []),
+          ...(filterProtocolTokens ?? []),
+        ].join(', ')}`,
+      )
+    }
+
+    if (!filterProtocolIds || filterProtocolIds.length !== 1) {
+      throw new TvlValidationError(
+        `One protocolId must be provided for TVL, multiple protocols are not supported at this time. Params: ${[
+          ...(filterProtocolIds ?? []),
+          ...(filterProductIds ?? []),
+          ...(filterChainIds ?? []),
+          ...(filterProtocolTokens ?? []),
+        ].join(', ')}`,
+      )
+    }
+
+    if (!filterProductIds || filterProductIds.length !== 1) {
+      throw new TvlValidationError(
+        `One productId must be provided for TVL, multiple products are not supported at this time. Params: ${[
+          ...(filterProtocolIds ?? []),
+          ...(filterProductIds ?? []),
+          ...(filterChainIds ?? []),
+          ...(filterProtocolTokens ?? []),
+        ].join(', ')}`,
+      )
+    }
   }
 }

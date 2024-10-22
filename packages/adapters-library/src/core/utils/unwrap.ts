@@ -2,7 +2,7 @@ import { Protocol } from '../../adapters/protocols'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { TokenType, UnderlyingTokenTypeMap } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
-import { IUnwrapCache } from '../../unwrapCache'
+import { IUnwrapPriceCache } from '../../unwrapCache'
 import {
   AdapterMissingError,
   NotImplementedError,
@@ -21,7 +21,7 @@ export async function unwrap(
   blockNumber: number | undefined,
   tokens: Token[],
   fieldToUpdate: string,
-  unwrapCache: IUnwrapCache,
+  unwrapCache: IUnwrapPriceCache,
 ) {
   return await Promise.all(
     tokens.map(async (token) => {
@@ -35,7 +35,7 @@ async function unwrapToken(
   blockNumber: number | undefined,
   token: Token,
   fieldToUpdate: string,
-  unwrapCache: IUnwrapCache,
+  unwrapCache: IUnwrapPriceCache,
 ) {
   const underlyingProtocolTokenAdapter =
     await adapter.adaptersController.fetchTokenAdapter(
@@ -106,13 +106,16 @@ async function fetchUnwrapExchangeRates(
   underlyingProtocolTokenAdapter: IProtocolAdapter,
   underlyingProtocolTokenPosition: Token,
   blockNumber: number | undefined,
-  unwrapCache: IUnwrapCache,
+  unwrapCache: IUnwrapPriceCache,
 ) {
   try {
-    return await unwrapCache.fetchWithCache(underlyingProtocolTokenAdapter, {
-      protocolTokenAddress: underlyingProtocolTokenPosition.address,
-      blockNumber,
-    })
+    return await unwrapCache.fetchUnwrapWithCache(
+      underlyingProtocolTokenAdapter,
+      {
+        protocolTokenAddress: underlyingProtocolTokenPosition.address,
+        blockNumber,
+      },
+    )
   } catch (error) {
     if (
       !(
@@ -130,26 +133,19 @@ async function fetchPrice(
   adapter: IProtocolAdapter,
   token: Erc20Metadata & { priceRaw?: bigint },
   blockNumber: number | undefined,
-  unwrapCache: IUnwrapCache,
+  unwrapCache: IUnwrapPriceCache,
 ) {
-  let priceAdapter: IProtocolAdapter
-  try {
-    priceAdapter = adapter.adaptersController.fetchAdapter(
-      adapter.chainId,
-      Protocol.PricesV2,
-      'usd',
-    )
-  } catch (error) {
-    // price adapter not enabled or no price adapter for this chain
-    if (!(error instanceof AdapterMissingError)) {
-      throw error
-    }
-    return
+  const priceAdapter = adapter.adaptersController.priceAdapters.get(
+    adapter.chainId,
+  )
+
+  if (!priceAdapter) {
+    throw new Error(`Price adapter missing for chain ${adapter.chainId}`)
   }
 
   try {
-    const price = await unwrapCache.fetchWithCache(priceAdapter, {
-      protocolTokenAddress: token.address,
+    const price = await unwrapCache.fetchPriceWithCache(priceAdapter, {
+      tokenMetadata: token,
       blockNumber,
     })
 
