@@ -1,5 +1,6 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../core/adaptersController'
+import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../core/constants/chains'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
@@ -192,21 +193,19 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
           tokenAddress,
         )
 
-      const protocolTokenPromise = getTokenMetadata(
+      const protocolTokenPromise = this.helpers.getTokenMetadata(
         this.getReserveTokenAddress(reserveTokenAddresses),
-        this.chainId,
-        this.provider,
       )
-      const underlyingTokenPromise = getTokenMetadata(
-        tokenAddress,
-        this.chainId,
-        this.provider,
-      )
+      const underlyingTokenPromise = this.helpers.getTokenMetadata(tokenAddress)
 
       const [protocolToken, underlyingToken] = await Promise.all([
         protocolTokenPromise,
         underlyingTokenPromise,
       ])
+
+      if (protocolToken.address === ZERO_ADDRESS) {
+        return
+      }
 
       metadataObject.push({
         ...protocolToken,

@@ -1,6 +1,6 @@
 {
   "blockNumber": 18183880,
-  "latency": "Latency: 1.916 seconds",
+  "latency": "Latency: 0.758 seconds",
   "aggregatedValues": ["USD10,363,085.23", "USD1,296,164.67"],
   "snapshot": [
     {
@@ -8,7 +8,7 @@
       "name": "Aave v2 AToken",
       "description": "Aave v2 defi adapter for yield-generating token",
       "siteUrl": "https://aave.com/",
-      "iconUrl": "https://aave.com/favicon.ico",
+      "iconUrl": "https://cryptologos.cc/logos/aave-aave-logo.png",
       "positionType": "supply",
       "chainId": 1,
       "productId": "a-token",

@@ -6,6 +6,7 @@ import { Command } from 'commander'
 import { Protocol } from '../adapters/protocols'
 import { supportedProtocols } from '../adapters/supportedProtocols'
 import { AdaptersController } from '../core/adaptersController'
+import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
 import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
@@ -146,6 +147,29 @@ async function buildAdapterMetadata(adapter: IProtocolAdapter) {
       chalk.green(
         '\n * Please ensure that addresses are in checksum format by wrapping them with getAddress from the ethers package.',
       ),
+    )
+    console.error(
+      chalk.green(
+        '\n * Please checksum your addresses inside the buildMetadata() method.',
+      ),
+    )
+    return
+  }
+
+  const invalidPoolAddress = metadataDetails.find(
+    (pool) => pool.address === ZERO_ADDRESS,
+  )
+
+  if (invalidPoolAddress) {
+    console.error(chalk.yellow(invalidPoolAddress.address))
+
+    console.error(
+      chalk.red(
+        '\n * The above addresses found in the metadata file cannot be a pool address.',
+      ),
+    )
+    console.error(
+      chalk.green('\n * Please ensure that address pool address is correct'),
     )
     console.error(
       chalk.green(

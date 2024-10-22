@@ -127,6 +127,8 @@ import { EthenaLpStakingAdapter } from './ethena/products/lp-staking/ethenaLpSta
 
 import { EthenaStakedEnaAdapter } from './ethena/products/staked-ena/ethenaStakedEnaAdapter'
 
+import { AaveV3RewardsAdapter } from './aave-v3/products/rewards/aaveV3RewardsAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -156,26 +158,31 @@ export const supportedProtocols: Record<
       AaveV3ATokenPoolAdapter,
       AaveV3StableDebtTokenPoolAdapter,
       AaveV3VariableDebtTokenPoolAdapter,
+      AaveV3RewardsAdapter,
     ],
     [Chain.Polygon]: [
       AaveV3ATokenPoolAdapter,
       AaveV3StableDebtTokenPoolAdapter,
       AaveV3VariableDebtTokenPoolAdapter,
+      AaveV3RewardsAdapter,
     ],
     [Chain.Avalanche]: [
       AaveV3ATokenPoolAdapter,
       AaveV3StableDebtTokenPoolAdapter,
       AaveV3VariableDebtTokenPoolAdapter,
+      AaveV3RewardsAdapter,
     ],
     [Chain.Base]: [
       AaveV3ATokenPoolAdapter,
       AaveV3StableDebtTokenPoolAdapter,
       AaveV3VariableDebtTokenPoolAdapter,
+      AaveV3RewardsAdapter,
     ],
     [Chain.Arbitrum]: [
       AaveV3ATokenPoolAdapter,
       AaveV3StableDebtTokenPoolAdapter,
       AaveV3VariableDebtTokenPoolAdapter,
+      AaveV3RewardsAdapter,
     ],
     // [Chain.Fantom]: [
     //   AaveV3ATokenPoolAdapter,
@@ -186,6 +193,7 @@ export const supportedProtocols: Record<
       AaveV3ATokenPoolAdapter,
       AaveV3StableDebtTokenPoolAdapter,
       AaveV3VariableDebtTokenPoolAdapter,
+      AaveV3RewardsAdapter,
     ],
   },
 
