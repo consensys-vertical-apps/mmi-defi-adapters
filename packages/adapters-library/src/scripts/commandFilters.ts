@@ -88,3 +88,13 @@ export function multiProtocolFilter(
     return cleanFilter ? protocolFilter(cleanFilter) : undefined
   })
 }
+export function multiProductFilter(filterInput?: string): string[] | undefined {
+  if (!filterInput) {
+    return
+  }
+
+  return filterMapSync(filterInput?.split(','), (filter) => {
+    const cleanFilter = filter.trim()
+    return cleanFilter || undefined
+  })
+}

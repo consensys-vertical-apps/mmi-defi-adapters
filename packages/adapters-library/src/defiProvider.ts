@@ -14,9 +14,12 @@ import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainIdToChainNameMap } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import {
+  AdapterMissingError,
   NotSupportedError,
   NotSupportedUnlimitedGetLogsBlockRange,
+  ProtocolTokenFilterRequiredError,
   ProviderMissingError,
+  TvlValidationError,
 } from './core/errors/errors'
 import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
@@ -800,6 +803,36 @@ export class DefiProvider {
     filterProtocolTokens?: string[]
     blockNumbers?: Partial<Record<Chain, number>>
   }): Promise<TotalValueLockResponse[]> {
+    this.validateTvlInputs({
+      filterProtocolIds,
+      filterProductIds,
+      filterChainIds,
+      filterProtocolTokens,
+    })
+
+    const chainId = filterChainIds![0]!
+    const protocolAddress = filterProtocolTokens![0]!
+    const protocolId = filterProtocolIds![0]!
+    const productId = filterProductIds![0]!
+
+    const adapter = await this.adaptersController.fetchAdapter(
+      chainId,
+      protocolId,
+      productId,
+    )
+
+    if (!adapter) {
+      throw new TvlValidationError(
+        `No adapter found for protocol address: ${protocolAddress} on chain: ${chainId}`,
+      )
+    }
+
+    if (adapter.protocolId !== protocolId || adapter.productId !== productId) {
+      throw new TvlValidationError(
+        `Protocol address ${protocolAddress} adapter does not match the provided protocolId: ${protocolId} and productId ${productId}`,
+      )
+    }
+
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
@@ -807,6 +840,12 @@ export class DefiProvider {
         protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
         blockNumber,
       })
+
+      if (tokens.length > 1) {
+        throw new TvlValidationError(
+          'Total value locked should return maximum one protocol token, adapter incorrectly implemented',
+        )
+      }
 
       await unwrap(
         adapter,
@@ -823,13 +862,13 @@ export class DefiProvider {
       }
     }
 
-    return this.runForAllProtocolsAndChains({
-      runner,
-      filterProtocolIds,
-      filterProductIds,
-      filterChainIds,
-      method: 'getTotalValueLocked',
-    })
+    return [
+      await this.runTaskForAdapter(
+        adapter,
+        this.chainProvider.providers[chainId],
+        runner,
+      ),
+    ]
   }
 
   async getSupport(input?: {
@@ -990,5 +1029,61 @@ export class DefiProvider {
     this.adaptersControllerWithoutPrices.init()
 
     this.adaptersController.init()
+  }
+
+  private validateTvlInputs({
+    filterProtocolIds,
+    filterProductIds,
+    filterChainIds,
+    filterProtocolTokens,
+  }: {
+    filterProtocolIds?: Protocol[]
+    filterProductIds?: string[]
+    filterChainIds?: Chain[]
+    filterProtocolTokens?: string[]
+  }): void {
+    if (!filterProtocolTokens || filterProtocolTokens.length !== 1) {
+      throw new TvlValidationError(
+        `One protocolToken must be provided for TVL, multiple tokens are not supported at this time. Params: ${[
+          ...(filterProtocolIds ?? []),
+          ...(filterProductIds ?? []),
+          ...(filterChainIds ?? []),
+          ...(filterProtocolTokens ?? []),
+        ].join(', ')}`,
+      )
+    }
+
+    if (!filterChainIds || filterChainIds.length !== 1) {
+      throw new TvlValidationError(
+        `One chainId must be provided for TVL, multiple chains are not supported at this time. Params: ${[
+          ...(filterProtocolIds ?? []),
+          ...(filterProductIds ?? []),
+          ...(filterChainIds ?? []),
+          ...(filterProtocolTokens ?? []),
+        ].join(', ')}`,
+      )
+    }
+
+    if (!filterProtocolIds || filterProtocolIds.length !== 1) {
+      throw new TvlValidationError(
+        `One protocolId must be provided for TVL, multiple protocols are not supported at this time. Params: ${[
+          ...(filterProtocolIds ?? []),
+          ...(filterProductIds ?? []),
+          ...(filterChainIds ?? []),
+          ...(filterProtocolTokens ?? []),
+        ].join(', ')}`,
+      )
+    }
+
+    if (!filterProductIds || filterProductIds.length !== 1) {
+      throw new TvlValidationError(
+        `One productId must be provided for TVL, multiple products are not supported at this time. Params: ${[
+          ...(filterProtocolIds ?? []),
+          ...(filterProductIds ?? []),
+          ...(filterChainIds ?? []),
+          ...(filterProtocolTokens ?? []),
+        ].join(', ')}`,
+      )
+    }
   }
 }

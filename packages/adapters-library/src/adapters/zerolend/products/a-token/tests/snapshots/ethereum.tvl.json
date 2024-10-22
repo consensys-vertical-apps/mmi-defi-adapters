@@ -1,5 +1,5 @@
 {
-  "latency": "Latency: 0.693 seconds",
+  "latency": "Latency: 0.375 seconds",
   "blockNumber": 19818582,
   "snapshot": [
     {
@@ -35,86 +35,6 @@
             }
           ],
           "totalSupply": 1333.9752051566563
-        },
-        {
-          "name": "ZeroLend weETH",
-          "address": "0x84E55c6Bc5B7e9505d87b3Df6Ceff7753e15A0c5",
-          "symbol": "z0weETH",
-          "decimals": 18,
-          "type": "protocol",
-          "totalSupplyRaw": "185139638642323197050n",
-          "tokens": [
-            {
-              "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-              "name": "Wrapped eETH",
-              "symbol": "weETH",
-              "decimals": 18,
-              "totalSupplyRaw": "185139639066803975925n",
-              "type": "underlying",
-              "tokens": [
-                {
-                  "address": "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
-                  "name": "ether.fi ETH",
-                  "symbol": "eETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "totalSupplyRaw": "192145377998827475008n",
-                  "tokens": [
-                    {
-                      "address": "0x0000000000000000000000000000000000000000",
-                      "name": "Ethereum",
-                      "symbol": "ETH",
-                      "decimals": 18,
-                      "type": "underlying",
-                      "totalSupplyRaw": "192145377998827475008n",
-                      "totalSupply": 192.14537799882748,
-                      "price": 3076.35,
-                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-                    }
-                  ],
-                  "totalSupply": 192.14537799882748,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x35fA164735182de50811E8e2E824cFb9B6118ac2/logo.png"
-                }
-              ],
-              "totalSupply": 185.13963906680397,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
-            }
-          ],
-          "totalSupply": 185.1396386423232
-        },
-        {
-          "name": "ZeroLend ezETH",
-          "address": "0x68fD75cF5a91F49EFfAd0E857ef2E97e5d1f35e7",
-          "symbol": "z0ezETH",
-          "decimals": 18,
-          "type": "protocol",
-          "totalSupplyRaw": "1694256030540006250432n",
-          "tokens": [
-            {
-              "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
-              "name": "Renzo Restaked ETH",
-              "symbol": "ezETH",
-              "decimals": 18,
-              "totalSupplyRaw": "1694256032981808855870n",
-              "type": "underlying",
-              "tokens": [
-                {
-                  "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-                  "name": "Ethereum",
-                  "symbol": "ETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "totalSupplyRaw": "1709190593136846343806n",
-                  "totalSupply": 1709.1905931368462,
-                  "price": 3076.35,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-                }
-              ],
-              "totalSupply": 1694.2560329818089,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
-            }
-          ],
-          "totalSupply": 1694.2560305400063
         }
       ]
     }
@@ -123,20 +43,8 @@
     "8e39313b98ca53f7e1e8c0569783d82e": {
       "result": "0x000000000000000000000000000000000000000000000048509ff562ed56bca9"
     },
-    "8d0c3a19cfb631844006c537f58667f4": {
-      "result": "0x00000000000000000000000000000000000000000000000a0954206eefdb8c7a"
-    },
-    "edd452f87e94260784b8e6f12b490a75": {
-      "result": "0x00000000000000000000000000000000000000000000005bd8869339147157c0"
-    },
     "cdc56fcb437f78d294f1bbaf9e6879ee": {
       "result": "0x00000000000000000000000000000000000000000000000db1f634a6366680eb"
-    },
-    "7d79434ba92e45fce43204f8f48bdcb6": {
-      "result": "0x00000000000000000000000000000000000000000000000a095420d1c4e236f5"
-    },
-    "70e0485875056bcb2e68a326a0dfac14": {
-      "result": "0x00000000000000000000000000000000000000000000005bd88695719b383b3e"
     },
     "61783211b732979498a33287546ce819": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5772617070656420457468657200000000000000000000000000000000000000"
@@ -149,12 +57,6 @@
     },
     "24d793af4a3b4dbfa42af9ea469dae5c": {
       "result": "0x000000000000000000000000000000000000000000000006000000000000410300000000000000000000000000000000000000000000000000000047a07992c000000000000000000000000000000000000000000000000000000000663a24c700000000000000000000000000000000000000000000000000000000663a24c70000000000000000000000000000000000000000000000060000000000004103"
-    },
-    "41c56c9a9fa26768137f1a863cbb463c": {
-      "result": "0x0000000000000000000000000000000000000000000000000e6726405d524455"
-    },
-    "91c9eacc3153fe41ea4867f3e87ffcb3": {
-      "result": "0x0000000000000000000000000000000000000000000000000e0007bb9e9634e6"
     }
   }
 }

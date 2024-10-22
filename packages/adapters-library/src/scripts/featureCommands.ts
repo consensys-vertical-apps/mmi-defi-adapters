@@ -10,6 +10,7 @@ import { AdapterResponse, GetEventsRequestInput } from '../types/response'
 import {
   chainFilter,
   multiChainFilter,
+  multiProductFilter,
   multiProtocolFilter,
   multiProtocolTokenAddressFilter,
   protocolFilter,
@@ -65,6 +66,7 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
   )
 
   protocolCommand(program, 'unwrap', defiProvider.unwrap.bind(defiProvider))
+
   protocolCommand(
     program,
     'tvl',
@@ -323,6 +325,8 @@ function protocolCommand(
   feature: (input: {
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
+    filterProtocolTokens?: string[]
+    filterProductIds?: string[]
   }) => Promise<AdapterResponse<unknown>[]>,
 ) {
   program
@@ -335,14 +339,28 @@ function protocolCommand(
       '-c, --chains <chains>',
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
     )
+    .option(
+      '-t, --protocol-tokens <protocol-tokens>',
+      'comma-separated protocol token address filter (e.g. 0x030..., 0x393.., 0x332...)',
+    )
+    .option(
+      '-pd, --product-ids <product-ids>',
+      'comma-separated product id filter (e.g. reward, a-token, staking)',
+    )
     .showHelpAfterError()
-    .action(async ({ protocols, chains }) => {
+    .action(async ({ protocols, chains, protocolTokens, productIds }) => {
       const filterProtocolIds = multiProtocolFilter(protocols)
+      const filterProductIds = multiProductFilter(productIds)
       const filterChainIds = multiChainFilter(chains)
+
+      const filterProtocolTokens =
+        multiProtocolTokenAddressFilter(protocolTokens)
 
       const data = await feature({
         filterProtocolIds,
         filterChainIds,
+        filterProtocolTokens,
+        filterProductIds,
       })
 
       printResponse(filterResponse(data))
