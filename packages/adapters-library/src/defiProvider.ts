@@ -815,13 +815,16 @@ export class DefiProvider {
     const protocolId = filterProtocolIds![0]!
     const productId = filterProductIds![0]!
 
-    const adapter = await this.adaptersController.fetchTokenAdapter(
+    const adapter = await this.adaptersController.fetchAdapter(
       chainId,
-      protocolAddress,
+      protocolId,
+      productId,
     )
 
     if (!adapter) {
-      throw new AdapterMissingError(chainId, protocolId, productId)
+      throw new TvlValidationError(
+        `No adapter found for protocol address: ${protocolAddress} on chain: ${chainId}`,
+      )
     }
 
     if (adapter.protocolId !== protocolId || adapter.productId !== productId) {
