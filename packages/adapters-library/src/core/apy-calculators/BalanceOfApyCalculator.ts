@@ -1,3 +1,6 @@
+import { sumBy } from 'lodash'
+import util from 'node:util'
+import { MovementsByBlock, Underlying } from '../../types/adapter'
 import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY'
 import { NotSupportedError } from '../errors/errors'
 import { collectLeafTokens } from '../utils/collectLeafTokens'
@@ -29,16 +32,12 @@ export class BalanceOfApyCalculator implements ApyCalculator {
         blocknumberStart,
         blocknumberEnd,
         chainId,
-        deposits,
         withdrawals,
-        borrows,
+        deposits,
         repays,
+        borrows,
       } = args
 
-      if (deposits || withdrawals || borrows || repays)
-        throw new NotSupportedError(
-          'BalanceOfApyCalculator only supports APY calculations with no deposits/withdrawals/borrows/repays over the period.',
-        )
       // Duration in days of the period where we look at the fees earned. The APY and APR are then annualized based on this period.
       const durationDays =
         (blocknumberEnd - blocknumberStart) / AVERAGE_BLOCKS_PER_DAY[chainId]
@@ -60,7 +59,25 @@ export class BalanceOfApyCalculator implements ApyCalculator {
       const balanceStartWei = underlyingTokenStart.balanceRaw
       const balanceEndWei = underlyingTokenEnd.balanceRaw
 
-      const interest = this.computeInterest(balanceStartWei, balanceEndWei)
+      type Item = MovementsByBlock | Underlying
+      const leafWithdraws = withdrawals.flatMap(collectLeafTokens<Item>)
+      const leafDeposits = deposits.flatMap(collectLeafTokens<Item>)
+      const leafRepays = repays.flatMap(collectLeafTokens<Item>)
+      const leafBorrows = borrows.flatMap(collectLeafTokens<Item>)
+
+      const balanceWithdrawsWei = BigInt(sumBy(leafWithdraws, 'balanceRaw'))
+      const balanceDepositsWei = BigInt(sumBy(leafDeposits, 'balanceRaw'))
+      const balanceRepaysWei = BigInt(sumBy(leafRepays, 'balanceRaw'))
+      const balanceBorrowsWei = BigInt(sumBy(leafBorrows, 'balanceRaw'))
+
+      const interest = this.computeInterest(
+        balanceStartWei,
+        balanceEndWei +
+          balanceWithdrawsWei +
+          balanceRepaysWei -
+          balanceDepositsWei -
+          balanceBorrowsWei,
+      )
       const interestPercent = interest * 100
 
       const apr = computeApr(interest, frequency)

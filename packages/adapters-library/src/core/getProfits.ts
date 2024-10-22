@@ -9,6 +9,7 @@ import {
   PositionType,
   ProfitsWithRange,
   ProtocolPosition,
+  TokenBalanceWithUnderlyings,
   TokenType,
 } from '../types/adapter'
 import { IUnwrapCache } from '../unwrapCache'
@@ -132,96 +133,47 @@ export async function getProfits({
 
       // Borrow adapters only have: repays and borrows
       // All other types have withdrawals and deposits only
-      const [withdrawals, deposits, repays, borrows] = await Promise.all([
-        !isBorrow
-          ? adapter
-              .getWithdrawals(getEventsInput)
-              .then(async (result) => {
-                await Promise.all(
-                  result.map(async (positionMovements) => {
-                    return await unwrap(
-                      adapter,
-                      positionMovements.blockNumber,
-                      positionMovements.tokens,
-                      'balanceRaw',
-                      unwrapCache,
-                    )
-                  }),
-                )
-                return result
-              })
-              .then((result) => {
-                rawWithdrawals.push(...result)
-                return aggregateFiatBalancesFromMovements(result)
-              })
-          : ({} as AggregatedFiatBalances),
-        !isBorrow
-          ? adapter
-              .getDeposits(getEventsInput)
-              .then(async (result) => {
-                await Promise.all(
-                  result.map(async (positionMovements) => {
-                    return await unwrap(
-                      adapter,
-                      positionMovements.blockNumber,
-                      positionMovements.tokens,
-                      'balanceRaw',
-                      unwrapCache,
-                    )
-                  }),
-                )
-                return result
-              })
-              .then((result) => {
-                rawDeposits.push(...result)
-                return aggregateFiatBalancesFromMovements(result)
-              })
-          : ({} as AggregatedFiatBalances),
-        isBorrow
-          ? adapter
-              .getRepays?.(getEventsInput)
-              .then(async (result) => {
-                await Promise.all(
-                  result.map(async (positionMovements) => {
-                    return await unwrap(
-                      adapter,
-                      positionMovements.blockNumber,
-                      positionMovements.tokens,
-                      'balanceRaw',
-                      unwrapCache,
-                    )
-                  }),
-                )
-                return result
-              })
-              .then((result) => {
-                rawRepays.push(...result)
-                return aggregateFiatBalancesFromMovements(result)
-              })
-          : ({} as AggregatedFiatBalances),
-        isBorrow
-          ? adapter
-              .getBorrows?.(getEventsInput)
-              .then(async (result) => {
-                await Promise.all(
-                  result.map(async (positionMovements) => {
-                    return await unwrap(
-                      adapter,
-                      positionMovements.blockNumber,
-                      positionMovements.tokens,
-                      'balanceRaw',
-                      unwrapCache,
-                    )
-                  }),
-                )
-                return result
-              })
-              .then((result) => {
-                rawBorrows.push(...result)
-                return aggregateFiatBalancesFromMovements(result)
-              })
-          : ({} as AggregatedFiatBalances),
+      const [
+        withdrawalMovements,
+        depositMovements,
+        repayMovements,
+        borrowMovements,
+      ] = await Promise.all([
+        !isBorrow ? adapter.getWithdrawals(getEventsInput) : [],
+        !isBorrow ? adapter.getDeposits(getEventsInput) : [],
+        isBorrow ? adapter.getRepays?.(getEventsInput) ?? [] : [],
+        isBorrow ? adapter.getBorrows?.(getEventsInput) ?? [] : [],
       ])
+
+      const movementsUnwrapper = unwrapMovements(adapter, unwrapCache)
+
+      const [
+        withdrawalMovementsUnwrapped,
+        depositMovementsUnwrapped,
+        repayMovementsUnwrapped,
+        borrowMovementsUnwrapped,
+      ] = await Promise.all([
+        movementsUnwrapper(withdrawalMovements),
+        movementsUnwrapper(depositMovements),
+        movementsUnwrapper(repayMovements),
+        movementsUnwrapper(borrowMovements),
+      ])
+
+      rawWithdrawals.push(...withdrawalMovementsUnwrapped)
+      rawDeposits.push(...depositMovementsUnwrapped)
+      rawRepays.push(...repayMovementsUnwrapped)
+      rawBorrows.push(...borrowMovementsUnwrapped)
+
+      const withdrawals = aggregateFiatBalancesFromMovements(
+        withdrawalMovementsUnwrapped,
+      )
+      const deposits = aggregateFiatBalancesFromMovements(
+        depositMovementsUnwrapped,
+      )
+      const repays = aggregateFiatBalancesFromMovements(repayMovementsUnwrapped)
+      const borrows = aggregateFiatBalancesFromMovements(
+        borrowMovementsUnwrapped,
+      )
 
       const key = tokenId ?? address
 
@@ -281,13 +233,14 @@ export async function getProfits({
 
       const apyCalculator = await createApyCalculatorFor(adapter, address)
 
-      const protocolTokenStart = rawStartPositionValues.find(
-        (item) => item.address === address && item.tokenId === tokenId,
-      )!
+      // Function that finds the token with passed address and tokenId in any array of tokens
+      const tokenFinder = findByAddressAndTokenId<TokenBalanceWithUnderlyings>(
+        address,
+        tokenId,
+      )
 
-      const protocolTokenEnd = rawEndPositionValues.find(
-        (item) => item.address === address && item.tokenId === tokenId,
-      )!
+      const protocolTokenStart = tokenFinder(rawStartPositionValues)!
+      const protocolTokenEnd = tokenFinder(rawEndPositionValues)!
 
       const apyInfo = await apyCalculator.getApy({
         protocolTokenStart,
@@ -296,10 +249,10 @@ export async function getProfits({
         blocknumberEnd: toBlock,
         protocolTokenAddress: address,
         chainId: adapter.chainId,
-        withdrawals: withdrawal,
-        deposits: deposit,
-        repays: repay,
-        borrows: borrow,
+        withdrawals: withdrawalMovementsUnwrapped,
+        deposits: depositMovementsUnwrapped,
+        repays: repayMovementsUnwrapped,
+        borrows: borrowMovementsUnwrapped,
       })
 
       return {
@@ -353,3 +306,51 @@ export async function getProfits({
 
   return { tokens, fromBlock, toBlock }
 }
+
+type WithAddressAndTokenId = { address: string; tokenId?: string }
+
+/**
+ * Finds an item in an array of objects that match the provided address and tokenId.
+ *
+ * @template T - The type of objects in the array, which must include `address` and `tokenId` properties.
+ * @param {string} address - The address to match.
+ * @param {string} tokenId - The tokenId to match.
+ * @param {T[]} array - The array of objects to search through.
+ * @returns {T | undefined} The first object that matches the given address and tokenId, or `undefined` if no match is found.
+ */
+const findByAddressAndTokenId =
+  <T extends WithAddressAndTokenId>(address: string, tokenId?: string) =>
+  (array: T[]) =>
+    array.find((item) => item.address === address && item.tokenId === tokenId)
+
+/**
+ * Higher-order function that returns another function to unwrap token movements.
+ *
+ * The returned function accepts an array of movements by block and unwraps them
+ * using a provided protocol adapter and cache.
+ *
+ * @param {IProtocolAdapter} adapter - The protocol adapter used to interact with and unwrap token balances.
+ * @param {IUnwrapCache} unwrapCache - The cache used to store unwrapped token data to avoid redundant operations.
+ * @returns {(movementsByBlock: MovementsByBlock[]) => Promise<MovementsByBlock[]>}
+ *   A function that accepts an array of movements by block and returns a promise resolving to the unwrapped movements.
+ *
+ * @async
+ * @param {MovementsByBlock[]} movementsByBlock - The array of token movements by block number.
+ * @returns {Promise<MovementsByBlock[]>} A promise that resolves to the same array of movements with tokens unwrapped.
+ */
+const unwrapMovements =
+  (adapter: IProtocolAdapter, unwrapCache: IUnwrapCache) =>
+  async (movementsByBlock: MovementsByBlock[]): Promise<MovementsByBlock[]> => {
+    await Promise.all(
+      movementsByBlock.map(async (positionMovements) => {
+        return await unwrap(
+          adapter,
+          positionMovements.blockNumber,
+          positionMovements.tokens,
+          'balanceRaw',
+          unwrapCache,
+        )
+      }),
+    )
+    return movementsByBlock
+  }

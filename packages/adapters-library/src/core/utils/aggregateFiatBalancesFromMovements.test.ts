@@ -104,4 +104,8 @@ describe('aggregateFiatBalancesFromMovements', () => {
       },
     })
   })
+
+  it('returns empty object when passed empty array', () => {
+    expect(aggregateFiatBalancesFromMovements([])).toEqual({})
+  })
 })

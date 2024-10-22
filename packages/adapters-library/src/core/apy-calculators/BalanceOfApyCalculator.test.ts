@@ -132,10 +132,10 @@ describe('BalanceOfApyCalculator', () => {
             blocknumberEnd,
             protocolTokenAddress,
             chainId: Chain.Ethereum,
-            deposits: 0,
-            withdrawals: 0,
-            borrows: 0,
-            repays: 0,
+            deposits: [],
+            withdrawals: [],
+            borrows: [],
+            repays: [],
           })
 
           expect(result).toMatchObject({
@@ -155,22 +155,5 @@ describe('BalanceOfApyCalculator', () => {
     )
   })
 
-  describe('when some deposits/withdrawals/borrows/repays', () => {
-    it('returns a void APY calculation', async () => {
-      const result = await calculator.getApy({
-        protocolTokenStart: testCases[0]?.protocolTokenStart!,
-        protocolTokenEnd: testCases[0]?.protocolTokenEnd!,
-        blocknumberStart: testCases[0]?.blocknumberStart!,
-        blocknumberEnd: testCases[0]?.blocknumberEnd!,
-        protocolTokenAddress: testCases[0]?.protocolTokenAddress!,
-        chainId: Chain.Ethereum,
-        deposits: 12341441,
-        withdrawals: 0,
-        borrows: 0,
-        repays: 0,
-      })
-
-      expect(result).toBeUndefined()
-    })
-  })
+  describe('when some deposits/withdrawals/borrows/repays', () => {})
 })
