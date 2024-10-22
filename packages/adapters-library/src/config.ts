@@ -94,13 +94,6 @@ const ConfigSchema = z
       .default(
         parseBooleanEnv(process.env.DEFI_ADAPTERS_USE_GET_ALL_TRANSFER_LOGS),
       ),
-    enableUsdPricesOnPositions: z
-      .boolean()
-      .default(
-        parseBooleanEnv(
-          process.env.DEFI_ADAPTERS_ENABLE_USD_PRICES_FOR_POSITIONS,
-        ),
-      ),
     rpcCallTimeoutInMs: z
       .number()
       .default(

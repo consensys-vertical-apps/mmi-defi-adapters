@@ -98,7 +98,6 @@ export async function simulateTx({
       provider: {
         [chainName]: forkDetails.providerUrl,
       },
-      enableUsdPricesOnPositions: false,
       rpcGetLogsTimeoutInMs: 240000,
     })
 

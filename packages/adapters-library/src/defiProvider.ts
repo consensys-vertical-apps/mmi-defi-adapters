@@ -47,16 +47,19 @@ import {
   PricePerShareResponse,
   TotalValueLockResponse,
 } from './types/response'
-import { IUnwrapCache, IUnwrapCacheProvider, UnwrapCache } from './unwrapCache'
+import {
+  IUnwrapPriceCache,
+  IUnwrapPriceCacheProvider,
+  UnwrapPriceCache,
+} from './unwrapCache'
 
 export class DefiProvider {
   private parsedConfig
   chainProvider: ChainProvider
   adaptersController: AdaptersController
-  private adaptersControllerWithoutPrices: AdaptersController
 
   private metadataProviders: Record<Chain, IMetadataProvider>
-  private unwrapCache: IUnwrapCache
+  private unwrapCache: IUnwrapPriceCache
 
   constructor(
     config?: DeepPartial<IConfig>,
@@ -67,7 +70,7 @@ export class DefiProvider {
         options: Database.Options
       }
     >,
-    unwrapCacheProvider?: IUnwrapCacheProvider,
+    unwrapCacheProvider?: IUnwrapPriceCacheProvider,
   ) {
     this.parsedConfig = new Config(config)
 
@@ -75,22 +78,13 @@ export class DefiProvider {
       ? buildSqliteMetadataProviders(metadataProviderSettings)
       : buildVoidMetadataProviders()
 
-    this.unwrapCache = new UnwrapCache(unwrapCacheProvider)
+    this.unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
 
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
 
     this.adaptersController = new AdaptersController({
       providers: this.chainProvider.providers,
       supportedProtocols,
-      metadataProviders: this.metadataProviders,
-    })
-
-    const { [Protocol.PricesV2]: _, ...supportedProtocolsWithoutPrices } =
-      supportedProtocols
-
-    this.adaptersControllerWithoutPrices = new AdaptersController({
-      providers: this.chainProvider.providers,
-      supportedProtocols: supportedProtocolsWithoutPrices,
       metadataProviders: this.metadataProviders,
     })
   }
@@ -471,7 +465,7 @@ export class DefiProvider {
         protocolTokens.map(async (address) => {
           const startTime = Date.now()
 
-          const unwrap = await this.unwrapCache.fetchWithCache(adapter, {
+          const unwrap = await this.unwrapCache.fetchUnwrapWithCache(adapter, {
             protocolTokenAddress: getAddress(address),
             blockNumber,
           })
@@ -912,48 +906,36 @@ export class DefiProvider {
     const protocolPromises = Object.entries(supportedProtocols)
       .filter(
         ([protocolIdKey, _]) =>
-          (!filterProtocolIds ||
-            filterProtocolIds.includes(protocolIdKey as Protocol)) &&
-          (method === 'unwrap' || protocolIdKey !== Protocol.PricesV2),
+          !filterProtocolIds ||
+          filterProtocolIds.includes(protocolIdKey as Protocol),
       )
       .flatMap(([protocolIdKey, supportedChains]) => {
         const protocolId = protocolIdKey as Protocol
 
         // Object.entries casts the numeric key as a string. This reverses it
         return Object.entries(supportedChains)
+
           .filter(([chainIdKey, _]) => {
             return (
               !filterChainIds || filterChainIds.includes(+chainIdKey as Chain)
             )
           })
+
           .flatMap(([chainIdKey, _]) => {
             const chainId = +chainIdKey as Chain
             const provider = this.chainProvider.providers[chainId]!
 
-            let chainProtocolAdapters =
+            const chainProtocolAdapters =
               this.adaptersController.fetchChainProtocolAdapters(
                 chainId,
                 protocolId,
               )
 
-            if (
-              method === 'getPositions' &&
-              !this.parsedConfig.values.enableUsdPricesOnPositions
-            ) {
-              chainProtocolAdapters =
-                this.adaptersControllerWithoutPrices.fetchChainProtocolAdapters(
-                  chainId,
-                  protocolId,
-                )
-            }
-
             return Array.from(chainProtocolAdapters)
               .filter(([_, adapter]) => {
-                const adapterDetails = adapter.getProtocolDetails()
                 return (
-                  adapterDetails.positionType !== PositionType.Reward &&
-                  (!filterProductIds ||
-                    filterProductIds.includes(adapter.productId))
+                  !filterProductIds ||
+                  filterProductIds.includes(adapter.productId)
                 )
               })
               .map(([_, adapter]) =>
@@ -1026,8 +1008,6 @@ export class DefiProvider {
   }
 
   private initAdapterControllerForUnwrapStage() {
-    this.adaptersControllerWithoutPrices.init()
-
     this.adaptersController.init()
   }
 

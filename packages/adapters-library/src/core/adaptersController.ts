@@ -1,6 +1,11 @@
 import { IMetadataProvider } from '../SQLiteMetadataProvider'
+import {
+  IPricesAdapter,
+  PricesV2UsdAdapter,
+} from '../adapters/prices-v2/products/usd/pricesV2UsdAdapter'
 import { Protocol } from '../adapters/protocols'
 import { WriteActionInputs } from '../adapters/supportedProtocols'
+import { IConfig } from '../config'
 import { Helpers } from '../scripts/helpers'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { PositionType, ProtocolAdapterParams } from '../types/adapter'
@@ -13,9 +18,20 @@ import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 import { pascalCase } from './utils/caseConversion'
 import { logger } from './utils/logger'
 
+type ISupportedProtocols = Partial<
+  Record<
+    Protocol,
+    Partial<
+      Record<Chain, (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]>
+    >
+  >
+>
+
 export class AdaptersController {
   private adapters: Map<Chain, Map<Protocol, Map<string, IProtocolAdapter>>> =
     new Map()
+
+  priceAdapters: Map<Chain, IPricesAdapter> = new Map()
 
   private protocolTokens:
     | Promise<Map<Chain, Map<string, IProtocolAdapter>>>
@@ -27,19 +43,7 @@ export class AdaptersController {
     metadataProviders,
   }: {
     providers: Record<Chain, CustomJsonRpcProvider>
-    supportedProtocols: Partial<
-      Record<
-        Protocol,
-        Partial<
-          Record<
-            Chain,
-            (new (
-              input: ProtocolAdapterParams,
-            ) => IProtocolAdapter)[]
-          >
-        >
-      >
-    >
+    supportedProtocols: ISupportedProtocols
     metadataProviders: Record<Chain, IMetadataProvider>
   }) {
     Object.entries(supportedProtocols).forEach(
@@ -90,6 +94,24 @@ export class AdaptersController {
         )
       },
     )
+
+    Object.entries(Chain).forEach(([_, chainId]) => {
+      const chain = +chainId as Chain
+
+      const priceAdapter = new PricesV2UsdAdapter({
+        provider: providers[chain],
+        chainId: chain,
+        adaptersController: this,
+        helpers: new Helpers(
+          providers[chain],
+          chain,
+          metadataProviders[chain],
+          providers,
+        ),
+      })
+
+      this.priceAdapters.set(chain, priceAdapter)
+    })
   }
 
   async init() {
