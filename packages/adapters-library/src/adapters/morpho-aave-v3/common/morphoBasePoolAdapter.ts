@@ -348,6 +348,7 @@ export abstract class MorphoBasePoolAdapter implements IProtocolAdapter {
 
   async getTotalValueLocked({
     blockNumber,
+    protocolTokenAddresses,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
     const tokens = await this.getProtocolTokens()
 
@@ -360,6 +361,13 @@ export abstract class MorphoBasePoolAdapter implements IProtocolAdapter {
     const positionType = this.getProtocolDetails().positionType
     const result = await Promise.all(
       tokens.map(async (tokenMetadata) => {
+        if (
+          protocolTokenAddresses &&
+          !protocolTokenAddresses.includes(tokenMetadata.address)
+        ) {
+          return undefined
+        }
+
         let totalValueRaw: bigint
         const {
           underlyingTokens: [underlyingToken],
