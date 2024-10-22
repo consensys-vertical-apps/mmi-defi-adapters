@@ -279,6 +279,7 @@ export abstract class MorphoBasePoolAdapter implements IProtocolAdapter {
 
   async getTotalValueLocked({
     blockNumber,
+    protocolTokenAddresses,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
     const tokens = await this.getProtocolTokens()
     const lensContract = MorphoAaveV2Lens__factory.connect(
@@ -286,8 +287,15 @@ export abstract class MorphoBasePoolAdapter implements IProtocolAdapter {
       this.provider,
     )
     const positionType = this.getProtocolDetails().positionType
-    return Promise.all(
+    const result = await Promise.all(
       tokens.map(async (tokenMetadata) => {
+        if (
+          protocolTokenAddresses &&
+          !protocolTokenAddresses.includes(tokenMetadata.address)
+        ) {
+          return undefined
+        }
+
         let totalValueRaw: bigint
 
         if (positionType === PositionType.Supply) {
@@ -314,6 +322,10 @@ export abstract class MorphoBasePoolAdapter implements IProtocolAdapter {
           totalSupplyRaw: totalValueRaw !== undefined ? totalValueRaw : 0n,
         }
       }),
+    )
+
+    return result.filter((result): result is ProtocolTokenTvl =>
+      Boolean(result),
     )
   }
 

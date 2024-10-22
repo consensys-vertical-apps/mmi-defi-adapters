@@ -358,7 +358,7 @@ export abstract class MorphoBasePoolAdapter implements IProtocolAdapter {
 
     const pool = AaveV3Pool__factory.connect(this.poolAddress, this.provider)
     const positionType = this.getProtocolDetails().positionType
-    return Promise.all(
+    const result = await Promise.all(
       tokens.map(async (tokenMetadata) => {
         let totalValueRaw: bigint
         const {
@@ -511,6 +511,10 @@ export abstract class MorphoBasePoolAdapter implements IProtocolAdapter {
           totalSupplyRaw: totalValueRaw !== undefined ? totalValueRaw : 0n,
         }
       }),
+    )
+
+    return result.filter((result): result is ProtocolTokenTvl =>
+      Boolean(result),
     )
   }
 
