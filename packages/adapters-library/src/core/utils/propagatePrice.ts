@@ -1,11 +1,14 @@
-import { Underlying } from '@metamask-institutional/defi-sdk'
+import { Underlying } from '../../types/adapter'
 import { DisplayPosition } from '../../types/response'
 
-export function propagatePrice(token: DisplayPosition<Underlying>): number {
+export function propagatePrice(
+  token: DisplayPosition<Underlying>,
+): number | undefined {
   if (!token.tokens || token.tokens.length === 0) {
-    // Leaf node: Calculate value as balance * price
-    if (!token.price) {
-      throw new Error(`Price not defined for token at address ${token.address}`)
+    // Leaf node: If no price is defined, propagate undefined upwards
+    if (token.price === undefined) {
+      console.log(`Price is undefined for token at address ${token.address}`)
+      return undefined // No value to propagate
     }
 
     const value = token.balance * token.price
@@ -16,10 +19,18 @@ export function propagatePrice(token: DisplayPosition<Underlying>): number {
   }
 
   // Aggregate the value of the child tokens
-  let totalValue = 0
+  let totalValue: number | undefined = 0
+  let allChildrenHavePrice = true // Track if ALL child tokens have a defined price
+
   for (const childToken of token.tokens) {
     const childValue = propagatePrice(childToken) // Recursive call for child tokens
-    totalValue += childValue
+
+    if (childValue === undefined) {
+      allChildrenHavePrice = false // If any child is missing a price, mark false
+    } else {
+      totalValue = (totalValue ?? 0) + childValue // Only add defined child values
+    }
+
     console.log(
       `Token: ${token.address}, Child Token: ${childToken.address}, Child Value: ${childValue}`,
     )
@@ -28,11 +39,19 @@ export function propagatePrice(token: DisplayPosition<Underlying>): number {
   // Handle zero balance case: Assume a balance of 1 to prevent division by zero
   const adjustedBalance = token.balance === 0 ? 1 : token.balance
 
-  // Update the price field for the parent based on aggregated value of children
-  token.price = totalValue / adjustedBalance
-  console.log(
-    `Token: ${token.address}, Aggregated Value: ${totalValue}, Updated Price: ${token.price}`,
-  )
+  // If ALL child tokens have a defined price, update the parent token's price
+  if (allChildrenHavePrice && totalValue !== undefined) {
+    token.price = totalValue / adjustedBalance
+    console.log(
+      `Token: ${token.address}, Aggregated Value: ${totalValue}, Updated Price: ${token.price}`,
+    )
+  } else {
+    //@ts-ignore
+    token.price = undefined
+    console.log(
+      `Token: ${token.address} could not update price, one or more child tokens have undefined prices.`,
+    )
+  }
 
-  return totalValue // Return the total value for propagation up the chain
+  return allChildrenHavePrice ? totalValue : undefined // Return total value if all children have a price
 }

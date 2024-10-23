@@ -26,27 +26,6 @@ describe('calculateTokenPrice', () => {
     expect(result).toBe(200) // balance * price = 100 * 2
   })
 
-  it('should throw an error if price is undefined in a leaf token', () => {
-    const token = {
-      address: '0xParentToken',
-      balance: 100,
-      type: TokenType.Underlying,
-      tokens: [
-        {
-          address: '0xLeafToken',
-          price: undefined,
-          type: TokenType.Underlying,
-          decimals: 18,
-          balance: 100,
-        },
-      ],
-    } as unknown as DisplayPosition<Underlying>
-
-    expect(() => propagatePrice(token)).toThrow(
-      'Price not defined for token at address 0xLeafToken',
-    )
-  })
-
   it('should correctly calculate the aggregate price for a parent with multiple leaf tokens', () => {
     const token = {
       address: '0xParentToken',
@@ -115,8 +94,8 @@ describe('calculateTokenPrice', () => {
     } as unknown as DisplayPosition<Underlying>
 
     const result = propagatePrice(token)
-    expect(result).toBe(375) // (50 * 2) + (25 * 4) + ((10 * 10) + (15 * 5)) = 100 + 100 + 225 = 425
-    expect(token.price).toBe(3.75) // Aggregated value (425) / parent balance (100) = 4.25
+    expect(result).toBe(375) // (50 * 2) + (25 * 4) + (((10 * 10) + (15 * 5)) / 25) * 25 = 100 + 100 + 175 = 375
+    expect(token.price).toBe(3.75) // Aggregated value (375) / parent balance (100) = 3.75
   })
 
   it('should handle tokens with no balance gracefully', () => {
@@ -135,7 +114,7 @@ describe('calculateTokenPrice', () => {
 
     const result = propagatePrice(token)
     expect(result).toBe(100) // Child value (50 * 2) = 100
-    expect(token.price).toBe(100) // Division by zero case handled
+    expect(token.price).toBe(100) // Division by zero case handled by assuming balance of 1
   })
 
   it('should handle tokens with zero children', () => {
@@ -145,8 +124,72 @@ describe('calculateTokenPrice', () => {
       tokens: [],
     } as unknown as DisplayPosition<Underlying>
 
-    expect(() => propagatePrice(token)).toThrow(
-      'Price not defined for token at address 0xParentToken',
-    )
+    const result = propagatePrice(token)
+    expect(result).toBe(undefined) // Parent price cannot be calculated
+    expect(token.price).toBe(undefined) // Parent's price should be set to undefined
+  })
+
+  it('should propagate undefined if one child token is missing a price', () => {
+    const token = {
+      address: '0xParentToken',
+      balance: 100,
+      type: TokenType.Underlying,
+      tokens: [
+        {
+          address: '0xChildToken1',
+          price: 2,
+          type: TokenType.Underlying,
+          decimals: 18,
+          balance: 50,
+        },
+        {
+          address: '0xChildToken2',
+          price: undefined, // Missing price
+          type: TokenType.Underlying,
+          decimals: 18,
+          balance: 50,
+        },
+      ],
+    } as unknown as DisplayPosition<Underlying>
+
+    const result = propagatePrice(token)
+    expect(result).toBe(undefined) // Parent price cannot be calculated
+    expect(token.price).toBe(undefined) // Parent's price should be set to undefined
+  })
+
+  it('should propagate undefined if one nested child token is missing a price', () => {
+    const token = {
+      address: '0xParentToken',
+      balance: 100,
+      type: TokenType.Underlying,
+      tokens: [
+        {
+          address: '0xChildToken1',
+          price: 2,
+          type: TokenType.Underlying,
+          decimals: 18,
+          balance: 50,
+        },
+        {
+          address: '0xChildToken2',
+          type: TokenType.Underlying,
+          decimals: 18,
+          balance: 50,
+          tokens: [
+            {
+              address: '0xNestedChildToken2',
+              price: undefined, // Missing price
+              type: TokenType.Underlying,
+              decimals: 18,
+              balance: 50,
+            },
+          ],
+        },
+      ],
+    } as unknown as DisplayPosition<Underlying>
+
+    const result = propagatePrice(token)
+    expect(result).toBe(undefined) // Parent price cannot be calculated
+    expect(token.price).toBe(undefined) // Parent's price should be set to undefined
   })
 })
