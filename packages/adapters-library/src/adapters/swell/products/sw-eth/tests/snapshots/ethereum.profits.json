@@ -1,6 +1,6 @@
 {
   "blockNumber": 18642232,
-  "latency": "Latency: 1.004 seconds",
+  "latency": "Latency: 1.095 seconds",
   "snapshot": [
     {
       "protocolId": "swell",
@@ -22,6 +22,22 @@
           "type": "protocol",
           "profit": 22424.67918117778,
           "performance": 0.07532001535337463,
+          "apyInfo": {
+            "apyPercent": 3.698356994157659,
+            "apy": 0.03698356994157659,
+            "aprPercent": 3.632873480595621,
+            "apr": 0.03632873480595621,
+            "period": {
+              "blocknumberStart": 18592210,
+              "blocknumberEnd": 18642232,
+              "interestPercent": 0.06967154620320369,
+              "interest": 0.000696715462032037
+            },
+            "compounding": {
+              "durationDays": 7,
+              "frequency": 52.142857142857146
+            }
+          },
           "calculationData": {
             "withdrawals": 0,
             "deposits": 55574.05755429158,

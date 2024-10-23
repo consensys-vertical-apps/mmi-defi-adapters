@@ -1,5 +1,5 @@
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
-import { ProtocolPosition } from '../../types/adapter'
+import { TokenBalanceWithUnderlyings } from '../../types/adapter'
 import { Chain } from '../constants/chains'
 import { BalanceOfApyCalculator } from './BalanceOfApyCalculator'
 
@@ -31,7 +31,7 @@ describe('BalanceOfApyCalculator', () => {
             balanceRaw: 403022998786018909507n,
           },
         ],
-      } as ProtocolPosition,
+      } as TokenBalanceWithUnderlyings,
       protocolTokenEnd: {
         symbol: 'aEthWETH',
         tokens: [
@@ -40,7 +40,7 @@ describe('BalanceOfApyCalculator', () => {
             balanceRaw: 403043295506130954963n,
           },
         ],
-      } as ProtocolPosition,
+      } as TokenBalanceWithUnderlyings,
       expectedApy: 1.85, // Value from DefiLlama https://defillama.com/yields/pool/e880e828-ca59-4ec6-8d4f-27182a4dc23d
       expectedDurationDays: 1,
       expectedFrequency: 365,
@@ -60,7 +60,7 @@ describe('BalanceOfApyCalculator', () => {
             balanceRaw: 10190943752353059000084n,
           },
         ],
-      } as ProtocolPosition,
+      } as TokenBalanceWithUnderlyings,
       protocolTokenEnd: {
         symbol: 'stETH',
         tokens: [
@@ -69,7 +69,7 @@ describe('BalanceOfApyCalculator', () => {
             balanceRaw: 10196922393515038005396n,
           },
         ],
-      } as ProtocolPosition,
+      } as TokenBalanceWithUnderlyings,
       expectedApy: 3.1, // Value from DefiLlama https://defillama.com/yields/pool/747c1d2a-c668-4682-b9f9-296708a3dd90
       expectedDurationDays: 7,
       expectedFrequency: 52.14,
@@ -89,7 +89,7 @@ describe('BalanceOfApyCalculator', () => {
             balanceRaw: 1008365787787487546506534n,
           },
         ],
-      } as ProtocolPosition,
+      } as TokenBalanceWithUnderlyings,
       protocolTokenEnd: {
         symbol: 'sDAI',
         tokens: [
@@ -98,7 +98,7 @@ describe('BalanceOfApyCalculator', () => {
             balanceRaw: 1013193991248053613158266n,
           },
         ],
-      } as ProtocolPosition,
+      } as TokenBalanceWithUnderlyings,
       expectedApy: 6, // Value from DefiLlama https://defillama.com/yields/pool/c8a24fee-ec00-4f38-86c0-9f6daebc4225
       expectedDurationDays: 30,
       expectedFrequency: 365 / 30,
@@ -132,10 +132,10 @@ describe('BalanceOfApyCalculator', () => {
             blocknumberEnd,
             protocolTokenAddress,
             chainId: Chain.Ethereum,
-            deposits: 0,
-            withdrawals: 0,
-            borrows: 0,
-            repays: 0,
+            deposits: [],
+            withdrawals: [],
+            borrows: [],
+            repays: [],
           })
 
           expect(result).toMatchObject({
@@ -153,24 +153,5 @@ describe('BalanceOfApyCalculator', () => {
         })
       },
     )
-  })
-
-  describe('when some deposits/withdrawals/borrows/repays', () => {
-    it('returns a void APY calculation', async () => {
-      const result = await calculator.getApy({
-        protocolTokenStart: testCases[0]?.protocolTokenStart!,
-        protocolTokenEnd: testCases[0]?.protocolTokenEnd!,
-        blocknumberStart: testCases[0]?.blocknumberStart!,
-        blocknumberEnd: testCases[0]?.blocknumberEnd!,
-        protocolTokenAddress: testCases[0]?.protocolTokenAddress!,
-        chainId: Chain.Ethereum,
-        deposits: 12341441,
-        withdrawals: 0,
-        borrows: 0,
-        repays: 0,
-      })
-
-      expect(result).toBeUndefined()
-    })
   })
 })

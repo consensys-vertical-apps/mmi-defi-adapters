@@ -1,4 +1,7 @@
-import { TokenBalanceWithUnderlyings } from '../../types/adapter'
+import {
+  MovementsByBlock,
+  TokenBalanceWithUnderlyings,
+} from '../../types/adapter'
 import { Chain } from '../constants/chains'
 
 /**
@@ -38,8 +41,8 @@ export type GetApyArgs = {
   blocknumberEnd: number
   protocolTokenAddress: string
   chainId: Chain
-  deposits: number
-  withdrawals: number
-  borrows: number
-  repays: number
+  withdrawals: MovementsByBlock[]
+  deposits: MovementsByBlock[]
+  repays: MovementsByBlock[]
+  borrows: MovementsByBlock[]
 }
