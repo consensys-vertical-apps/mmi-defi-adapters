@@ -12,9 +12,7 @@ export function propagatePrice(
     }
 
     const value = token.balance * token.price
-    console.log(
-      `Token: ${token.address}, Balance: ${token.balance}, Price: ${token.price}, Value: ${value}`,
-    )
+
     return value
   }
 
@@ -30,10 +28,6 @@ export function propagatePrice(
     } else {
       totalValue = (totalValue ?? 0) + childValue // Only add defined child values
     }
-
-    console.log(
-      `Token: ${token.address}, Child Token: ${childToken.address}, Child Value: ${childValue}`,
-    )
   }
 
   // Handle zero balance case: Assume a balance of 1 to prevent division by zero
@@ -42,15 +36,9 @@ export function propagatePrice(
   // If ALL child tokens have a defined price, update the parent token's price
   if (allChildrenHavePrice && totalValue !== undefined) {
     token.price = totalValue / adjustedBalance
-    console.log(
-      `Token: ${token.address}, Aggregated Value: ${totalValue}, Updated Price: ${token.price}`,
-    )
   } else {
     //@ts-ignore
     token.price = undefined
-    console.log(
-      `Token: ${token.address} could not update price, one or more child tokens have undefined prices.`,
-    )
   }
 
   return allChildrenHavePrice ? totalValue : undefined // Return total value if all children have a price
