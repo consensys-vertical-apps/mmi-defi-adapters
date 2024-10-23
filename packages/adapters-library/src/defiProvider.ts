@@ -26,6 +26,7 @@ import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
+import { propagatePrice } from './core/utils/propagatePrice'
 import { unwrap } from './core/utils/unwrap'
 import { count } from './metricsCount'
 import {
@@ -52,7 +53,6 @@ import {
   IUnwrapPriceCacheProvider,
   UnwrapPriceCache,
 } from './unwrapCache'
-import { propagatePrice } from './core/utils/propagatePrice'
 
 export class DefiProvider {
   private parsedConfig
