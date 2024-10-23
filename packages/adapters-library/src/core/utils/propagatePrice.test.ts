@@ -1,8 +1,6 @@
-import { Underlying } from '@metamask-institutional/defi-sdk'
-
 import { DisplayPosition } from '../../types/response'
 
-import { TokenType } from '../../types/adapter'
+import { TokenType, Underlying } from '../../types/adapter'
 import { propagatePrice } from './propagatePrice'
 
 describe('calculateTokenPrice', () => {
