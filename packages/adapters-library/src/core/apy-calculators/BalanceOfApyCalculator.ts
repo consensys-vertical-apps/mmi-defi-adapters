@@ -1,4 +1,3 @@
-import { sumBy } from 'lodash'
 import util from 'node:util'
 import { sumBy } from 'lodash'
 import { MovementsByBlock, Underlying } from '../../types/adapter'
