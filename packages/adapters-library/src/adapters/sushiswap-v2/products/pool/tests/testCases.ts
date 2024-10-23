@@ -38,13 +38,9 @@ export const testCases: TestCase[] = [
 
     input: {
       userAddress: '0x1F14bE60172b40dAc0aD9cD72F6f0f2C245992e8',
-      timePeriod: TimePeriod.sevenDays,
+      timePeriod: TimePeriod.oneDay,
 
-      filterProtocolTokens: [
-        '0x397FF1542f962076d0BFE58eA045FfA2d347ACa0',
-        '0x795065dCc9f64b5614C407a6EFDC400DA6221FB0',
-        '0x06da0fd433C1A5d7a4faa01111c044910A184553',
-      ],
+      filterProtocolTokens: ['0x397FF1542f962076d0BFE58eA045FfA2d347ACa0'],
     },
 
     blockNumber: 19326319,
