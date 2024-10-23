@@ -52,6 +52,7 @@ import {
   IUnwrapPriceCacheProvider,
   UnwrapPriceCache,
 } from './unwrapCache'
+import { propagatePrice } from './core/utils/propagatePrice'
 
 export class DefiProvider {
   private parsedConfig
@@ -195,6 +196,10 @@ export class DefiProvider {
 
       const tokens = protocolPositions.map((protocolPosition) =>
         enrichPositionBalance(protocolPosition, adapter.chainId),
+      )
+
+      tokens.forEach((protocolPosition) =>
+        protocolPosition.tokens?.forEach((token) => propagatePrice(token)),
       )
 
       const endTime = Date.now()
