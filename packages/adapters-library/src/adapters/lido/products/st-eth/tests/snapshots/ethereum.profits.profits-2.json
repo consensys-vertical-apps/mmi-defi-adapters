@@ -1,6 +1,6 @@
 {
   "blockNumber": 16740459,
-  "latency": "Latency: 1.821 seconds",
+  "latency": "Latency: 0.644 seconds",
   "snapshot": [
     {
       "protocolId": "lido",
@@ -22,6 +22,22 @@
           "type": "protocol",
           "profit": -1.664e-15,
           "performance": 0,
+          "apyInfo": {
+            "apyPercent": 497237712236506300,
+            "apy": 4972377122365063,
+            "aprPercent": 5214.285714285715,
+            "apr": 52.142857142857146,
+            "period": {
+              "blocknumberStart": 16690437,
+              "blocknumberEnd": 16740459,
+              "interestPercent": 100,
+              "interest": 1
+            },
+            "compounding": {
+              "durationDays": 7,
+              "frequency": 52.142857142857146
+            }
+          },
           "calculationData": {
             "withdrawals": 116.78819060921893,
             "deposits": 116.78819060921893,
