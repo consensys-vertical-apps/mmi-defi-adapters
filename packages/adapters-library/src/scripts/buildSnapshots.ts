@@ -24,6 +24,18 @@ import n = types.namedTypes
 import b = types.builders
 
 export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
+  const allowedMethods = [
+    'positions',
+    'profits',
+    'deposits',
+    'withdrawals',
+    'repays',
+    'borrows',
+    'prices',
+    'tvl',
+    'tx-params',
+  ]
+
   program
     .command('build-snapshots')
     .option(
@@ -32,14 +44,27 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
     )
     .option(
       '-pd, --products <products>',
-      'comma-separated protocols filter (e.g. stargate,aave-v2)',
+      'comma-separated products filter (e.g. stargate,aave-v2)',
     )
     .option(
       '-k, --key <test-key>',
       'test key must be used with protocols filter',
     )
+    .option(
+      '-m, --method <method>',
+      `specify a method to run (allowed: ${allowedMethods.join(', ')})`,
+    )
     .showHelpAfterError()
-    .action(async ({ protocols, products, key }) => {
+    .action(async ({ protocols, products, key, method }) => {
+      // Validate method
+      if (method && !allowedMethods.includes(method)) {
+        throw new Error(
+          `Invalid method: ${method}. Allowed methods are: ${allowedMethods.join(
+            ', ',
+          )}.`,
+        )
+      }
+
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterProductIds = (products as string | undefined)?.split(',')
 
@@ -73,6 +98,10 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
         for (const [index, testCase] of testCases.entries()) {
           if (key && testCase.key !== key) {
+            continue
+          }
+
+          if (method && testCase.method !== method) {
             continue
           }
 

@@ -30,6 +30,7 @@ export function getAggregatedValues(
 
   return aggregatedValues
 }
+
 export function getAggregatedValuesMovements(
   response: DefiMovementsResponse,
   chainId: Chain,
@@ -65,17 +66,23 @@ type Token = {
   price?: number
   tokens?: Token[]
 }
-function extractMarketValue(tokens: Token[]): number {
+export function extractMarketValue(tokens: Token[]): number {
   if (!tokens) {
     return 0
   }
 
   let marketValue = 0
   for (const token of tokens) {
-    marketValue +=
-      token.tokens && token.tokens.length > 0
-        ? extractMarketValue(token.tokens)
-        : token.balance! * (token.price || 0)
+    if (token.price !== undefined) {
+      // If the token has a price, use it and skip further recursion
+      marketValue += token.balance! * token.price
+    } else if (token.tokens && token.tokens.length > 0) {
+      // Recursively calculate the market value of child tokens
+      marketValue += extractMarketValue(token.tokens)
+    } else {
+      // If no price and no child tokens, default to balance * 0 (or whatever default logic is needed)
+      marketValue += token.balance! * (token.price || 0)
+    }
   }
 
   return marketValue

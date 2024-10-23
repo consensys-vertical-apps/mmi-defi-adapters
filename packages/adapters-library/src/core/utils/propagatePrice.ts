@@ -37,6 +37,7 @@ export function propagatePrice(
   if (allChildrenHavePrice && totalValue !== undefined) {
     token.price = totalValue / adjustedBalance
   } else {
+    // If ANY child token is missing a price, set the parent token's price to undefined
     //@ts-ignore
     token.price = undefined
   }

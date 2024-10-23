@@ -1,6 +1,6 @@
 {
   "blockNumber": 19184953,
-  "latency": "Latency: 6.541 seconds",
+  "latency": "Latency: 4.018 seconds",
   "aggregatedValues": [
     "USD4.98",
     "USD13,660.11",
@@ -192,6 +192,7 @@
                 }
               ],
               "balance": 0.9259954479941531,
+              "price": 2658.1777966632744,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae78736Cd615f374D3085123A210448E74Fc6393/logo.png"
             },
             {
