@@ -1,13 +1,7 @@
 {
   "blockNumber": 119518821,
-  "latency": "Latency: 3.055 seconds",
-  "aggregatedValues": [
-    "USD133,075.83",
-    "USD11,479.96",
-    "USD13,869.55",
-    "USD537,904.17",
-    "USD3,686.00"
-  ],
+  "latency": "Latency: 0.821 seconds",
+  "aggregatedValues": ["USD133,075.83"],
   "snapshot": [
     {
       "protocolId": "sonne",
@@ -42,94 +36,6 @@
             }
           ],
           "balance": 2185.79171832
-        },
-        {
-          "address": "0x8cD6b19A07d754bF36AdEEE79EDF4F2134a8F571",
-          "name": "Sonne OP",
-          "symbol": "soOP",
-          "decimals": 8,
-          "balanceRaw": "19525653785146n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x4200000000000000000000000000000000000042",
-              "name": "Optimism",
-              "symbol": "OP",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "4279303295312441165501n",
-              "balance": 4279.303295312441,
-              "price": 2.6826700627658924,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000042/logo.png"
-            }
-          ],
-          "balance": 195256.53785146
-        },
-        {
-          "address": "0xD7dAabd899D1fAbbC3A9ac162568939CEc0393Cc",
-          "name": "Sonne Synthetix Network Token",
-          "symbol": "soSNX",
-          "decimals": 8,
-          "balanceRaw": "24275388303733n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4",
-              "name": "Synthetix Network Token",
-              "symbol": "SNX",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "5394820811382096578656n",
-              "balance": 5394.8208113820965,
-              "price": 2.570900862222286,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4/logo.png"
-            }
-          ],
-          "balance": 242753.88303733
-        },
-        {
-          "address": "0x33865E09A572d4F1CC4d75Afc9ABcc5D3d4d867D",
-          "name": "Sonne Wrapped Bitcoin",
-          "symbol": "soWBTC",
-          "decimals": 8,
-          "balanceRaw": "45641496344n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
-              "name": "Wrapped BTC",
-              "symbol": "WBTC",
-              "decimals": 8,
-              "type": "underlying",
-              "balanceRaw": "933034504n",
-              "balance": 9.33034504,
-              "price": 57651.04769709457,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x68f180fcCe6836688e9084f035309E29Bf0A2095/logo.png"
-            }
-          ],
-          "balance": 456.41496344
-        },
-        {
-          "address": "0x26AaB17f27CD1c8d06a0Ad8E4a1Af8B1032171d5",
-          "name": "Sonne Wrapped liquid staked Ether 2.0",
-          "symbol": "sowstETH",
-          "decimals": 8,
-          "balanceRaw": "5342732785n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
-              "name": "Wrapped liquid staked Ether 2.0",
-              "symbol": "wstETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "1084266879629912388n",
-              "balance": 1.0842668796299124,
-              "price": 3399.5332972209817,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb/logo.png"
-            }
-          ],
-          "balance": 53.42732785
         }
       ]
     }
@@ -138,59 +44,11 @@
     "20b63a3bbc41deb50744331cb51114e5": {
       "result": "0x00000000000000000000000000000000000000000000000000000032e45579f8"
     },
-    "799ef0efd0468eeeb93d13df3a9e5080": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    "d46021d0e13c538975d857a522fb2585": {
-      "result": "0x000000000000000000000000000000000000000000000000000011c22ba86a3a"
-    },
-    "542e3ccdc8e4946b832624e28d62f8c7": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    "abcaa0ec001d83dedce69c3a83837a42": {
-      "result": "0x000000000000000000000000000000000000000000000000000016140de58975"
-    },
-    "3fb5c32a0d5ded2f4387f2e62257f65b": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000aa071f718"
-    },
-    "a317d518b6c390d7ad92ffa6ab573cfe": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    "e74851a3ebffbefb0747efdeaa33ccf9": {
-      "result": "0x000000000000000000000000000000000000000000000000000000013e73a1f1"
-    },
-    "25b40d38aa2809fbc862ada06069e642": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
-    },
     "1f450ea8bf9ceca2da4f70a3efa7f5b9": {
       "result": "0x000000000000000000000000000000000000000000ac5fefa0349872a3de4483"
     },
-    "52df1b7f1bda6228995ba31476dc32b3": {
-      "result": "0x000000000000000000000000000000000000000000b54998cbd92785ef879178"
-    },
-    "b2ba0f7c7803eae0f8ad2758afc5dacf": {
-      "result": "0x000000000000000000000000000000000000000000b7d3ea95ee0902e227a8b9"
-    },
-    "2f4ffd71e59d40242853663de5eb5d67": {
-      "result": "0x0000000000000000000000000000000000000000000000000048a08265ee7616"
-    },
-    "e17431c955ba8b64f38906e85b5e0717": {
-      "result": "0x000000000000000000000000000000000000000000a7deb82f8522a2909e8980"
-    },
     "86e7eb61f5095e8bdf870f48d9f5f25b": {
       "result": "0x000000000000000000000000000000000000000000000001000000000002c5d40000000000000000000000000000000000000000000000000000004405f2617300000000000000000000000000000000000000000000000000000000663345050000000000000000000000000000000000000000000000000000000066334505000000000000000000000000000000000000000000000001000000000002c5d4"
-    },
-    "0a49f19c8d17700ad77edb0bbdbeed78": {
-      "result": "0x0000000000000000000000000000000000000000000000000003431f6e1747f3"
-    },
-    "68529ec34ae44cd4430d7aa3510070be": {
-      "result": "0x00000000000000000000000000000000000000000000000000032054260bd33b"
-    },
-    "f4590355b4f25806045c2d36ab5c2425": {
-      "result": "0x00000000000000000000000000000000000000027d9a6a340b306e81b792141f"
-    },
-    "9b5556a7251928934f919ea4f9320520": {
-      "result": "0x0000000000000000000000000000000000000000000000001025ec53288c57ab"
     }
   }
 }
