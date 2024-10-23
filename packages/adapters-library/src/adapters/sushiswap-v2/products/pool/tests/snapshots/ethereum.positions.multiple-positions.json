@@ -1,6 +1,6 @@
 {
   "blockNumber": 19326319,
-  "latency": "Latency: 4.118 seconds",
+  "latency": "Latency: 3.025 seconds",
   "aggregatedValues": ["USD15,711.10", "USD389.34", "USD22,765.04"],
   "snapshot": [
     {
@@ -118,9 +118,6 @@
     }
   ],
   "rpcResponses": {
-    "de719ee633ef8e6b29cc16c4cb3004e5": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
-    },
     "521df1c67b5ff60526724af3c3abfce6": {
       "result": "0x000000000000000000000000000000000000000000000000000044c8726af2cb"
     },

@@ -1,6 +1,6 @@
 {
   "blockNumber": 20572021,
-  "latency": "Latency: 0.698 seconds",
+  "latency": "Latency: 0.801 seconds",
   "aggregatedValues": ["USD11,089.47"],
   "snapshot": [
     {
@@ -60,14 +60,17 @@
                         }
                       ],
                       "balance": 4.274469471244098,
+                      "price": 2594.3492,
                       "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
                     }
                   ],
                   "balance": 3.633294147958811,
+                  "price": 3052.1796478759156,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
                 }
               ],
               "balance": 3.633294147958811,
+              "price": 3052.1796478759156,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xcbC72d92b2dc8187414F6734718563898740C0BC/logo.png"
             }
           ],

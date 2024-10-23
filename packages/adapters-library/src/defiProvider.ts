@@ -26,6 +26,7 @@ import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
+import { propagatePrice } from './core/utils/propagatePrice'
 import { unwrap } from './core/utils/unwrap'
 import { count } from './metricsCount'
 import {
@@ -195,6 +196,10 @@ export class DefiProvider {
 
       const tokens = protocolPositions.map((protocolPosition) =>
         enrichPositionBalance(protocolPosition, adapter.chainId),
+      )
+
+      tokens.forEach((protocolPosition) =>
+        protocolPosition.tokens?.forEach((token) => propagatePrice(token)),
       )
 
       const endTime = Date.now()

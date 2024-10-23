@@ -1,6 +1,6 @@
 {
   "blockNumber": 19425631,
-  "latency": "Latency: 2.489 seconds",
+  "latency": "Latency: 2.954 seconds",
   "aggregatedValues": [
     "USD8,785,762.33",
     "USD1,973,272.82",
@@ -59,10 +59,12 @@
                     }
                   ],
                   "balance": 2169.359411365667,
+                  "price": 4049.93395,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
                 }
               ],
               "balance": 1870,
+              "price": 4698.268625583866,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
             }
           ],
@@ -106,10 +108,12 @@
                     }
                   ],
                   "balance": 487.2358036222353,
+                  "price": 4049.93395,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
                 }
               ],
               "balance": 420,
+              "price": 4698.268625583866,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
             }
           ],
@@ -191,6 +195,7 @@
                 }
               ],
               "balance": 1627.4023630638915,
+              "price": 4076.073640349567,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
             }
           ],
@@ -457,15 +462,6 @@
         ],
         "withdrawalsRoot": "0x4d1439f3982e942a16b6025bfd855687064ebcc8357acc7830574afddbe55c81"
       }
-    },
-    "6e580c726c06bfe378caded03a2f65b8": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b5772617070656420425443000000000000000000000000000000000000000000"
-    },
-    "06fe1375f7f9d25d9e4ae9ed62d73273": {
-      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045742544300000000000000000000000000000000000000000000000000000000"
-    },
-    "acb85a8fd030fb44224d41c635432c05": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000008"
     },
     "8b6e22179ba8c66ef3b0ca69266446bd": {
       "result": "0x00000000000000000000000000000000000000000000000600000000000033b50000000000000000000000000000000000000000000000000000005e4b7cc9380000000000000000000000000000000000000000000000000000000065f178e30000000000000000000000000000000000000000000000000000000065f178e300000000000000000000000000000000000000000000000600000000000033b5"
