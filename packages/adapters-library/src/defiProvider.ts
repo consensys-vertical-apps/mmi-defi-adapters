@@ -36,7 +36,7 @@ import {
   enrichUnwrappedTokenExchangeRates,
 } from './responseAdapters'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
-import { PositionType } from './types/adapter'
+import { PositionType, TokenType } from './types/adapter'
 import { DeepPartial } from './types/deepPartial'
 import {
   AdapterErrorResponse,
@@ -434,6 +434,178 @@ export class DefiProvider {
 
     logger.debug(count, 'getPProfits')
     return result
+  }
+
+  async getProfitsV2({
+    userAddress,
+    timePeriod = TimePeriod.sevenDays,
+    filterProtocolIds,
+    filterProductIds,
+    filterChainIds,
+    toBlockNumbersOverride,
+    filterProtocolTokens,
+    includeRawValues = false,
+    filterTokenIds,
+  }: {
+    userAddress: string
+    timePeriod?: TimePeriod
+    filterProtocolIds?: Protocol[]
+    filterProductIds?: string[]
+    filterChainIds?: Chain[]
+    toBlockNumbersOverride?: Partial<Record<Chain, number>>
+    filterProtocolTokens?: string[]
+    filterTokenIds?: string[]
+    includeRawValues?: boolean
+  }): Promise<DefiProfitsResponse[]> {
+    validateInput(filterChainIds, toBlockNumbersOverride)
+
+    const fromAndToBlock = await this.calculateFromAndToBlock(
+      timePeriod,
+      toBlockNumbersOverride,
+    )
+
+    // Step 1: Get positions
+    const endPositions = await this.getPositions({
+      userAddress,
+      filterProtocolIds,
+      filterProductIds,
+      filterChainIds,
+      blockNumbers: toBlockNumbersOverride,
+      filterProtocolTokens,
+      filterTokenIds,
+    })
+
+    // Step 2: Filter successful positions
+    const validPositions = endPositions.filter((position) => position.success)
+
+    // Step 3: Fetch withdrawals, deposits, borrows, and repays, and calculate profit for each valid position
+    const profits = await Promise.all(
+      validPositions.map(async (position) => {
+        const { protocolId, chainId, productId, positionType, tokens } =
+          position
+        const { fromBlock, toBlock } = fromAndToBlock[chainId]
+
+        // Is it a borrow position?
+        const isBorrow = positionType === PositionType.Borrow
+        const profitModifier = isBorrow ? -1 : 1
+
+        // Prepare arrays to store raw values (optional)
+        const rawWithdrawals = []
+        const rawDeposits = []
+        const rawRepays = []
+        const rawBorrows = []
+        const rawStartPositionValues = []
+        const rawEndPositionValues = []
+
+        // Iterate through each token
+        const tokenProfits = await Promise.all(
+          tokens.map(async (token) => {
+            const protocolTokenAddress = token.address
+            const tokenId = token.tokenId
+
+            // Fetch data: withdrawals, deposits, repays, borrows, and start/end positions
+            const [withdrawals, deposits, repays, borrows, startPosition] =
+              await Promise.all([
+                this.getWithdrawals({
+                  userAddress,
+                  fromBlock,
+                  toBlock,
+                  protocolTokenAddress,
+                  protocolId,
+                  chainId,
+                  productId,
+                  tokenId,
+                }),
+                this.getDeposits({
+                  userAddress,
+                  fromBlock,
+                  toBlock,
+                  protocolTokenAddress,
+                  protocolId,
+                  chainId,
+                  productId,
+                  tokenId,
+                }),
+                isBorrow
+                  ? this.getRepays({
+                      userAddress,
+                      fromBlock,
+                      toBlock,
+                      protocolTokenAddress,
+                      protocolId,
+                      chainId,
+                      productId,
+                      tokenId,
+                    })
+                  : Promise.resolve(0),
+                isBorrow
+                  ? this.getBorrows({
+                      userAddress,
+                      fromBlock,
+                      toBlock,
+                      protocolTokenAddress,
+                      protocolId,
+                      chainId,
+                      productId,
+                      tokenId,
+                    })
+                  : Promise.resolve(0),
+                this.getPositions({
+                  userAddress,
+                  blockNumbers: { [chainId]: fromBlock },
+                  filterProtocolTokens: [protocolTokenAddress],
+                  filterTokenIds: tokenId ? [tokenId] : undefined,
+                  filterProductIds: [productId],
+                  filterChainIds: [chainId],
+                  filterProtocolIds: [protocolId],
+                }),
+              ])
+
+            const endPositionValue = token.value // Assuming `token.value` holds the end position value
+            const startPositionValue = startPosition[0]?.value || 0 // Assume the first position is the start
+
+            // Calculate profit
+            const profit =
+              (endPositionValue +
+                withdrawals -
+                deposits -
+                repays -
+                borrows -
+                startPositionValue) *
+              profitModifier
+
+            return {
+              ...token,
+              profit,
+              calculationData: {
+                withdrawals,
+                deposits,
+                repays,
+                borrows,
+                startPositionValue,
+                endPositionValue,
+              },
+            } as PositionProfits
+          }),
+        )
+
+        return {
+          fromBlock,
+          toBlock,
+          tokens: tokenProfits,
+          ...(includeRawValues && {
+            rawValues: {
+              rawEndPositionValues: endPositions,
+              rawStartPositionValues: startPosition,
+              rawWithdrawals: withdrawals,
+              rawDeposits: deposits,
+            },
+          }),
+        } as ProfitsWithRange
+      }),
+    )
+
+    return profits
   }
 
   async unwrap({
@@ -1068,6 +1240,58 @@ export class DefiProvider {
           ...(filterChainIds ?? []),
           ...(filterProtocolTokens ?? []),
         ].join(', ')}`,
+      )
+    }
+  }
+
+  async calculateFromAndToBlock(
+    timePeriod: TimePeriod,
+    toBlockNumbersOverride?: Partial<Record<Chain, number>>,
+  ): Promise<Record<Chain, { fromBlock: number; toBlock: number }>> {
+    // Get the toBlock object, either from the override or the default method
+    const toBlock =
+      toBlockNumbersOverride ?? (await this.getStableBlockNumbers())
+
+    // Create an object to store the updated fromBlock and toBlock for each chain
+    const result = {} as Record<Chain, { fromBlock: number; toBlock: number }>
+
+    // Iterate through each chain in toBlock and calculate the fromBlock
+    for (const chain in toBlock) {
+      const toBlockValue = toBlock[chain as unknown as Chain] // Current toBlock value for this chain
+      if (toBlockValue !== undefined) {
+        const fromBlock =
+          toBlockValue -
+          AVERAGE_BLOCKS_PER_DAY[chain as unknown as Chain] * timePeriod
+
+        // Store the fromBlock and toBlock in the result object
+        result[chain as unknown as Chain] = {
+          fromBlock,
+          toBlock: toBlockValue,
+        }
+      }
+    }
+
+    return result
+  }
+}
+
+function validateInput(
+  filterChainIds?: Chain[],
+  toBlockNumbersOverride?: Partial<Record<Chain, number>>,
+) {
+  if (toBlockNumbersOverride && filterChainIds) {
+    const overrideChainIds = Object.keys(
+      toBlockNumbersOverride,
+    ) as unknown as Chain[]
+
+    // Ensure all chainIds in filterChainIds are present in toBlockNumbersOverride
+    const allChainsMatch = filterChainIds.every((chainId) =>
+      overrideChainIds.includes(chainId),
+    )
+
+    if (!allChainsMatch) {
+      throw new Error(
+        'All chains in filterChainIds must be present in toBlockNumbersOverride',
       )
     }
   }
