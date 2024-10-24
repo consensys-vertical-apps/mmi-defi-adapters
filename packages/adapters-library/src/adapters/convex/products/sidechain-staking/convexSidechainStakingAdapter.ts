@@ -10,6 +10,7 @@ import {
   GetPositionsInputWithTokenAddresses,
   GetRewardPositionsInput,
   MovementsByBlock,
+  MovementsByBlockReward,
   PositionType,
   ProtocolDetails,
   ProtocolPosition,
@@ -207,7 +208,7 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
     protocolTokenAddress,
     fromBlock,
     toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
+  }: GetEventsInput): Promise<MovementsByBlockReward[]> {
     const protocolToken =
       await this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
@@ -245,7 +246,7 @@ export class ConvexSidechainStakingAdapter extends SimplePoolAdapter<AdditionalM
                 this.provider,
               )),
               balanceRaw: protocolTokenMovementValueRaw,
-              type: TokenType.Underlying,
+              type: TokenType.UnderlyingClaimable,
             },
           ],
           blockNumber: blockNumber,

@@ -15,6 +15,7 @@ export function blankAdapterTemplate() {
       ProtocolPosition,
       GetEventsInput,
       MovementsByBlock,
+      MovementsByBlockReward,
       GetTotalValueLockedInput,
       ProtocolTokenTvl,
       UnwrapInput,

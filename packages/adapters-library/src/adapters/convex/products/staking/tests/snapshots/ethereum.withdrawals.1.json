@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD522.62"],
-  "latency": "Latency: 2.127 seconds",
+  "latency": "Latency: 2.407 seconds",
   "snapshot": {
     "protocolId": "convex",
     "name": "Convex",
@@ -28,7 +28,7 @@
             "symbol": "CRV",
             "decimals": 18,
             "balanceRaw": "901431379832780966661n",
-            "type": "underlying",
+            "type": "underlying-claimable",
             "price": 0.5489303897600447,
             "balance": 901.431379832781
           },
@@ -38,7 +38,7 @@
             "symbol": "CVX",
             "decimals": 18,
             "balanceRaw": "8112882418495028699n",
-            "type": "underlying",
+            "type": "underlying-claimable",
             "price": 3.4260021072954094,
             "balance": 8.112882418495028
           }

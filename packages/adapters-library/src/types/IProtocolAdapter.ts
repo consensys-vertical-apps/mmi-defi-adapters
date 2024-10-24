@@ -10,6 +10,7 @@ import type {
   GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
+  MovementsByBlockReward,
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
@@ -165,7 +166,7 @@ export interface IProtocolAdapter {
     userAddress,
     protocolTokenAddress,
     tokenId,
-  }: GetEventsInput): Promise<MovementsByBlock[]>
+  }: GetEventsInput): Promise<MovementsByBlockReward[]>
 
   getExtraRewardPositions?(
     input: GetRewardPositionsInput,
@@ -175,5 +176,5 @@ export interface IProtocolAdapter {
     userAddress,
     protocolTokenAddress,
     tokenId,
-  }: GetEventsInput): Promise<MovementsByBlock[]>
+  }: GetEventsInput): Promise<MovementsByBlockReward[]>
 }

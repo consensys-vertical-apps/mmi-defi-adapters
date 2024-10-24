@@ -19,6 +19,7 @@ import {
   GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
+  MovementsByBlockReward,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -356,7 +357,7 @@ export class CurveStakingAdapter implements IProtocolAdapter {
     protocolTokenAddress,
     fromBlock,
     toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
+  }: GetEventsInput): Promise<MovementsByBlockReward[]> {
     const crvMinter = CrvMinter__factory.connect(
       this.minterAddress(),
       this.provider,
@@ -378,7 +379,7 @@ export class CurveStakingAdapter implements IProtocolAdapter {
     const { underlyingTokens, gaugeType, ...protocolToken } =
       await this.getProtocolTokenByAddress(protocolTokenAddress)
 
-    const extraRewardTokens: MovementsByBlock[] = []
+    const extraRewardTokens: MovementsByBlockReward[] = []
     if (gaugeType === GaugeType.N_GAUGE) {
       const contract = GaugeN__factory.connect(
         protocolToken.address,
@@ -422,7 +423,7 @@ export class CurveStakingAdapter implements IProtocolAdapter {
                 {
                   ...tokenMetadata,
                   balanceRaw: protocolTokenMovementValueRaw,
-                  type: TokenType.Underlying,
+                  type: TokenType.UnderlyingClaimable,
                 },
               ],
               blockNumber: blockNumber,
@@ -446,7 +447,7 @@ export class CurveStakingAdapter implements IProtocolAdapter {
                 this.chainId as keyof typeof CurveTokenAddresses
               ],
             balanceRaw: withdrawn,
-            type: TokenType.Underlying,
+            type: TokenType.UnderlyingClaimable,
           },
         ],
         blockNumber: toBlock,

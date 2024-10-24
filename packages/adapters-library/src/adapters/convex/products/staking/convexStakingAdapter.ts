@@ -11,6 +11,7 @@ import {
   GetEventsInput,
   GetRewardPositionsInput,
   MovementsByBlock,
+  MovementsByBlockReward,
   PositionType,
   ProtocolDetails,
   TokenType,
@@ -235,7 +236,7 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
     protocolTokenAddress,
     fromBlock,
     toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
+  }: GetEventsInput): Promise<MovementsByBlockReward[]> {
     const mainRewardTrackerContract = ConvexRewardsFactory__factory.connect(
       protocolTokenAddress,
       this.provider,
@@ -287,13 +288,13 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
           {
             ...crvToken,
             balanceRaw: protocolTokenMovementValueRaw,
-            type: TokenType.Underlying,
+            type: TokenType.UnderlyingClaimable,
           },
           {
             ...convexToken,
             balanceRaw: cvxReward,
 
-            type: TokenType.Underlying,
+            type: TokenType.UnderlyingClaimable,
           },
         ],
         blockNumber: blockNumber,
@@ -308,7 +309,7 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
     protocolTokenAddress,
     fromBlock,
     toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
+  }: GetEventsInput): Promise<MovementsByBlockReward[]> {
     const { name, symbol, decimals, address, extraRewardTokens } =
       await this.helpers.getProtocolTokenByAddress({
         protocolTokens: await this.getProtocolTokens(),
@@ -349,7 +350,7 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
                 name: extraRewardToken.name,
                 decimals: extraRewardToken.decimals,
                 balanceRaw: protocolTokenMovementValueRaw,
-                type: TokenType.Underlying,
+                type: TokenType.UnderlyingClaimable,
               },
             ],
             blockNumber: blockNumber,
@@ -359,7 +360,7 @@ export class ConvexStakingAdapter extends SimplePoolAdapter<AdditionalMetadata> 
     )
 
     const nestedResults = await Promise.all(responsePromises)
-    const response: MovementsByBlock[] = nestedResults.flat()
+    const response: MovementsByBlockReward[] = nestedResults.flat()
 
     return response
   }

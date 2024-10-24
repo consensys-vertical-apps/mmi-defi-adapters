@@ -269,6 +269,10 @@ export interface MovementsByBlock {
   transactionHash: string
 }
 
+export type MovementsByBlockReward = Omit<MovementsByBlock, 'tokens'> & {
+  tokens: UnderlyingReward[]
+}
+
 export interface TokenTvl extends Erc20Metadata {
   /**
    * Total underlying token locked in pool raw
