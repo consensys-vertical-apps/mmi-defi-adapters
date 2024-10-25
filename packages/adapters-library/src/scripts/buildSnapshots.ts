@@ -22,6 +22,7 @@ import { multiProtocolFilter } from './commandFilters'
 import { RpcInterceptedResponses, startRpcSnapshot } from './rpcInterceptor'
 import n = types.namedTypes
 import b = types.builders
+import { getPreviousLatency } from '../core/utils/readFile'
 
 export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
   const allowedMethods = [
@@ -54,8 +55,9 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
       '-m, --method <method>',
       `specify a method to run (allowed: ${allowedMethods.join(', ')})`,
     )
+    .option('-ul, --latency', 'update latency value')
     .showHelpAfterError()
-    .action(async ({ protocols, products, key, method }) => {
+    .action(async ({ protocols, products, key, method, latency }) => {
       // Validate method
       if (method && !allowedMethods.includes(method)) {
         throw new Error(
@@ -119,6 +121,14 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
           const chainId = testCase.chainId
 
+          const filePath = `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}/tests/snapshots/${
+            ChainIdToChainNameMap[testCase.chainId]
+          }.${testCase.method}${
+            testCase.key ? `.${kebabCase(testCase.key)}` : ''
+          }.json`
+
+          const previousLatency = await getPreviousLatency(filePath)
+
           const snapshotFileContent = await (async () => {
             switch (testCase.method) {
               case 'positions': {
@@ -147,7 +157,12 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
                 const result = {
                   blockNumber,
-                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
+                  latency: getLatency(
+                    endTime,
+                    startTime,
+                    latency,
+                    previousLatency,
+                  ),
                   aggregatedValues,
                   snapshot,
                 }
@@ -193,7 +208,12 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
                 const result = {
                   blockNumber,
-                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
+                  latency: getLatency(
+                    endTime,
+                    startTime,
+                    latency,
+                    previousLatency,
+                  ),
                   snapshot,
                 }
 
@@ -232,7 +252,12 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
                 return {
                   aggregatedValues,
-                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
+                  latency: getLatency(
+                    endTime,
+                    startTime,
+                    latency,
+                    previousLatency,
+                  ),
                   snapshot,
                 }
               }
@@ -255,7 +280,12 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
                 return {
                   aggregatedValues,
-                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
+                  latency: getLatency(
+                    endTime,
+                    startTime,
+                    latency,
+                    previousLatency,
+                  ),
                   snapshot: result,
                 }
               }
@@ -272,7 +302,12 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                 const endTime = Date.now()
 
                 return {
-                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
+                  latency: getLatency(
+                    endTime,
+                    startTime,
+                    latency,
+                    previousLatency,
+                  ),
                   snapshot,
                 }
               }
@@ -294,7 +329,12 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                 const endTime = Date.now()
 
                 return {
-                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
+                  latency: getLatency(
+                    endTime,
+                    startTime,
+                    latency,
+                    previousLatency,
+                  ),
                   snapshot: result,
                   aggregatedValues,
                 }
@@ -323,7 +363,12 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                 const endTime = Date.now()
 
                 const result = {
-                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
+                  latency: getLatency(
+                    endTime,
+                    startTime,
+                    latency,
+                    previousLatency,
+                  ),
                   blockNumber,
                   snapshot,
                 }
@@ -361,7 +406,12 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                 const endTime = Date.now()
 
                 const result = {
-                  latency: `Latency: ${(endTime - startTime) / 1000} seconds`,
+                  latency: getLatency(
+                    endTime,
+                    startTime,
+                    latency,
+                    previousLatency,
+                  ),
                   blockNumber,
                   snapshot,
                 }
@@ -390,12 +440,6 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
               }
             }
           })()
-
-          const filePath = `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}/tests/snapshots/${
-            ChainIdToChainNameMap[testCase.chainId]
-          }.${testCase.method}${
-            testCase.key ? `.${kebabCase(testCase.key)}` : ''
-          }.json`
 
           const rpcResponses = Object.entries(msw.interceptedResponses).reduce(
             (acc, [key, response]) => {
@@ -433,6 +477,19 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
       process.exit()
     })
+}
+
+function getLatency(
+  endTime: number,
+  startTime: number,
+  updateLatency: boolean,
+  previousLatency?: string,
+) {
+  if (updateLatency || !previousLatency) {
+    return `Latency: ${(endTime - startTime) / 1000} seconds`
+  }
+
+  return previousLatency
 }
 
 async function getLatestStableBlock(

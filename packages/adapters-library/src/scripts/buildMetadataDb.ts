@@ -55,62 +55,65 @@ export function buildMetadataDb(
         const dbConnections = createDatabases(filterChainIds)
 
         try {
-          await Promise.allSettled(
-            dbConnections.map(async ([chainId, db]) => {
-              for (const [protocolIdKey, supportedChains] of Object.entries(
-                supportedProtocols,
-              )) {
-                const protocolId = protocolIdKey as Protocol
+          for (const [chainId, db] of dbConnections) {
+            for (const [protocolIdKey, supportedChains] of Object.entries(
+              supportedProtocols,
+            )) {
+              const protocolId = protocolIdKey as Protocol
+              if (
+                (filterProtocolIds &&
+                  !filterProtocolIds.includes(protocolId)) ||
+                !(chainId in supportedChains)
+              ) {
+                continue
+              }
+
+              const provider = chainProviders[chainId]
+
+              if (!provider) {
+                logger.error({ chainId }, 'No provider found for chain')
+                throw new ProviderMissingError(chainId)
+              }
+
+              const chainProtocolAdapters =
+                adaptersController.fetchChainProtocolAdapters(
+                  chainId,
+                  protocolId,
+                )
+
+              for (const [_, adapter] of chainProtocolAdapters) {
                 if (
-                  (filterProtocolIds &&
-                    !filterProtocolIds.includes(protocolId)) ||
-                  !(chainId in supportedChains)
+                  !(
+                    typeof adapter.getProtocolTokens === 'function' &&
+                    // private/secret param added at runtime
+                    //@ts-ignore
+                    adapter.getProtocolTokens.isCacheToDbDecorated
+                  ) ||
+                  (filterProductIds &&
+                    !filterProductIds.includes(adapter.productId))
                 ) {
                   continue
                 }
 
-                const provider = chainProviders[chainId]
+                const pools = await buildAdapterMetadata(adapter)
 
-                if (!provider) {
-                  logger.error({ chainId }, 'No provider found for chain')
-                  throw new ProviderMissingError(chainId)
-                }
-
-                const chainProtocolAdapters =
-                  adaptersController.fetchChainProtocolAdapters(
-                    chainId,
-                    protocolId,
-                  )
-
-                for (const [_, adapter] of chainProtocolAdapters) {
-                  if (
-                    !(
-                      typeof adapter.getProtocolTokens === 'function' &&
-                      // private/secret param added at runtime
-                      //@ts-ignore
-                      adapter.getProtocolTokens.isCacheToDbDecorated
-                    ) ||
-                    (filterProductIds &&
-                      !filterProductIds.includes(adapter.productId))
-                  ) {
-                    continue
-                  }
-
-                  const pools = await buildAdapterMetadata(adapter)
-
-                  if (pools) {
-                    await writeProtocolTokensToDb({
-                      protocolId: adapter.protocolId,
-                      productId: adapter.productId,
-                      chainId: adapter.chainId,
-                      pools,
-                      db,
-                    })
-                  }
+                if (pools) {
+                  await writeProtocolTokensToDb({
+                    protocolId: adapter.protocolId,
+                    productId: adapter.productId,
+                    chainId: adapter.chainId,
+                    pools,
+                    db,
+                  })
                 }
               }
-            }),
-          )
+
+              // Log when the protocol for a chain is done
+              console.log(
+                `Finished building metadata for protocol ${protocolId} on chain ${chainId}`,
+              )
+            }
+          }
         } finally {
           for (const [_, db] of Object.values(dbConnections)) {
             db.close()
