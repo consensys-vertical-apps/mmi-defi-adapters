@@ -12,16 +12,23 @@ type RpcRequest = {
 type RpcResponse = {
   jsonrpc: string
   id: number
-  result?: unknown
+  result?: string
   error?: unknown
 }
 
 export type RpcInterceptedResponse = Record<
   string,
   {
-    result?: unknown
+    result?: string
     error?: unknown
-    request?: { method: string; params: unknown[] }
+    request?: {
+      method: string
+      params: unknown[]
+      startTime: number
+      endTime: number
+      timeTaken: number
+      estimatedGas: string | undefined
+    }
   }
 >
 
@@ -54,7 +61,9 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
   const server = setupServer(
     ...chainProviderUrls.map((url) =>
       http.post(url, async ({ request }) => {
+        const startTime = Date.now()
         const response = await fetch(bypass(request))
+        const endTime = Date.now()
 
         if (response.status !== 200) {
           console.warn('RPC request failed')
@@ -83,7 +92,7 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
           throw Error('Length mismatch in requests and responses')
         }
 
-        requests.forEach((request) => {
+        for (const [i, request] of requests.entries()) {
           const key = createKey(url, request)
 
           const { result, error } = responses.find(
@@ -92,13 +101,37 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
 
           interceptedRequests[key] = { result, error }
 
-          if (process.env.DEFI_ADAPTERS_SAVE_INTERCEPTED_REQUESTS === 'true') {
-            interceptedRequests[key]!.request = {
-              method: request.method,
-              params: request.params,
+          let estimatedGas: string | undefined
+          if (request.method === 'eth_call') {
+            const estimatedGasResponse = (await fetch(
+              bypass(
+                new Request(url, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    ...request,
+                    method: 'eth_estimateGas',
+                  }),
+                }),
+              ),
+            ).then((response) => response.json())) as RpcResponse
+
+            if (estimatedGasResponse.result) {
+              estimatedGas = BigInt(estimatedGasResponse.result).toString()
             }
           }
-        })
+
+          interceptedRequests[key]!.request = {
+            method: request.method,
+            params: request.params,
+            startTime,
+            endTime,
+            timeTaken: i === 0 ? endTime - startTime : 0,
+            estimatedGas,
+          }
+        }
 
         return createResponse(responseArrayBuffer)
       }),

@@ -15,6 +15,7 @@ import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
+import { buildScoreboard } from './buildScoreboard'
 
 const program = new Command('mmi-adapters')
 
@@ -45,6 +46,8 @@ stressCommand(program, defiProvider)
 simulateTxCommand(program, chainProviders)
 
 performance(program)
+
+buildScoreboard(program, defiProvider)
 
 program
   .command('copy-adapter')

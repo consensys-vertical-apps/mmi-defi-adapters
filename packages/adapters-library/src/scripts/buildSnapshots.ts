@@ -19,7 +19,7 @@ import { DefiProvider } from '../defiProvider'
 import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
-import { startRpcSnapshot } from './rpcInterceptor'
+import { RpcInterceptedResponse, startRpcSnapshot } from './rpcInterceptor'
 import n = types.namedTypes
 import b = types.builders
 
@@ -396,12 +396,25 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
             testCase.key ? `.${kebabCase(testCase.key)}` : ''
           }.json`
 
+          const rpcResponses = Object.entries(msw.interceptedRequests).reduce((acc, [key, response]) => {
+            if (process.env.DEFI_ADAPTERS_SAVE_INTERCEPTED_REQUESTS !== 'true') {
+              acc[key] = {
+                result: response.result,
+                error: response.error,
+              }
+            } else {
+
+              acc[key] = response
+            }
+            return acc
+          }, {} as RpcInterceptedResponse)
+
           await writeAndLintFile(
             filePath,
             bigintJsonStringify(
               {
                 ...snapshotFileContent,
-                rpcResponses: msw.interceptedRequests,
+                rpcResponses,
               },
               2,
             ),
