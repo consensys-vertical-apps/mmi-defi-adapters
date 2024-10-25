@@ -397,15 +397,16 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
           }.json`
 
           const rpcResponses = Object.entries(msw.interceptedRequests).reduce((acc, [key, response]) => {
-            if (process.env.DEFI_ADAPTERS_SAVE_INTERCEPTED_REQUESTS !== 'true') {
-              acc[key] = {
-                result: response.result,
-                error: response.error,
-              }
-            } else {
-
-              acc[key] = response
+            acc[key] = {
+              result: response.result,
+              error: response.error,
             }
+
+            if (process.env.DEFI_ADAPTERS_SAVE_INTERCEPTED_REQUESTS === 'true') {
+              acc[key]!.request = response.request
+              acc[key]!.metrics = response.metrics
+            }
+
             return acc
           }, {} as RpcInterceptedResponse)
 
