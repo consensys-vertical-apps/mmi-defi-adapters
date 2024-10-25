@@ -17,14 +17,14 @@
         "transactionHash": "0x779025a8260db4601f74506e6af804edcb7344b606f9bad07c59e3706c82f144",
         "protocolToken": {
           "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-          "name": "wstETH",
+          "name": "Wrapped liquid staked Ether 2.0",
           "symbol": "wstETH",
           "decimals": 18
         },
         "tokens": [
           {
             "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-            "name": "wstETH",
+            "name": "Wrapped liquid staked Ether 2.0",
             "symbol": "wstETH",
             "decimals": 18,
             "balanceRaw": "63685786697634575n",

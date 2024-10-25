@@ -25,7 +25,7 @@
           "tokens": [
             {
               "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-              "name": "wstETH",
+              "name": "Wrapped liquid staked Ether 2.0",
               "symbol": "wstETH",
               "decimals": 18,
               "type": "underlying",
@@ -95,7 +95,7 @@
           "tokens": [
             {
               "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-              "name": "weETH",
+              "name": "Wrapped eETH",
               "symbol": "weETH",
               "decimals": 18,
               "type": "underlying",

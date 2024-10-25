@@ -16,8 +16,8 @@
       "tokens": [
         {
           "address": "0xf951E335afb289353dc249e82926178EaC7DEd78",
-          "name": "swETH",
-          "symbol": "swETH",
+          "name": "Swell Ethereum",
+          "symbol": "SWETH",
           "decimals": 18,
           "type": "protocol",
           "profit": 22424.67918117778,
