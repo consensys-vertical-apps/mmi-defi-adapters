@@ -73,6 +73,7 @@ export function buildScoreboard(program: Command, defiProvider: DefiProvider) {
           // Recreate the provider for each test case to avoid cached data
           const defiProvider = new DefiProvider({
             useMulticallInterceptor: false,
+            disableEthersBatching: true,
           })
 
           const msw = startRpcSnapshot(
@@ -134,31 +135,31 @@ export function buildScoreboard(program: Command, defiProvider: DefiProvider) {
           for (const interceptedRpcRequest of Object.values(
             interceptedRpcRequests,
           )) {
-            const request = interceptedRpcRequest.request!
+            const metrics = interceptedRpcRequest.metrics!
             if (
               minStartTime === undefined ||
-              request.startTime < minStartTime
+              metrics.startTime < minStartTime
             ) {
-              minStartTime = request.startTime
+              minStartTime = metrics.startTime
             }
             if (
               maxStartTime === undefined ||
-              request.startTime > maxStartTime
+              metrics.startTime > maxStartTime
             ) {
-              maxStartTime = request.startTime
+              maxStartTime = metrics.startTime
             }
-            if (minEndTime === undefined || request.endTime < minEndTime) {
-              minEndTime = request.endTime
+            if (minEndTime === undefined || metrics.endTime < minEndTime) {
+              minEndTime = metrics.endTime
             }
-            if (maxEndTime === undefined || request.endTime > maxEndTime) {
-              maxEndTime = request.endTime
-            }
-
-            if (request.timeTaken > maxTakenTime) {
-              maxTakenTime = request.timeTaken
+            if (maxEndTime === undefined || metrics.endTime > maxEndTime) {
+              maxEndTime = metrics.endTime
             }
 
-            totalGas += BigInt(request.estimatedGas ?? 0)
+            if (metrics.timeTaken > maxTakenTime) {
+              maxTakenTime = metrics.timeTaken
+            }
+
+            totalGas += BigInt(metrics.estimatedGas ?? 0)
 
             totalCalls++
           }

@@ -24,6 +24,8 @@ export type RpcInterceptedResponse = Record<
     request?: {
       method: string
       params: unknown[]
+    }
+    metrics?: {
       startTime: number
       endTime: number
       timeTaken: number
@@ -99,7 +101,11 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
             (response) => response.id === request.id,
           )!
 
-          interceptedRequests[key] = { result, error }
+          interceptedRequests[key] = {
+            result,
+            error,
+            request: { method: request.method, params: request.params },
+          }
 
           let estimatedGas: string | undefined
           if (request.method === 'eth_call') {
@@ -123,9 +129,7 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
             }
           }
 
-          interceptedRequests[key]!.request = {
-            method: request.method,
-            params: request.params,
+          interceptedRequests[key]!.metrics = {
             startTime,
             endTime,
             timeTaken: i === 0 ? endTime - startTime : 0,

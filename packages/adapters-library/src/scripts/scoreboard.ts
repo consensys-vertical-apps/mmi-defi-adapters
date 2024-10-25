@@ -60,9 +60,7 @@ function extractValuesFromFiles(files: string[]) {
       rpcResponses: Record<
         string,
         {
-          request: {
-            method: string
-            params: unknown[]
+          metrics: {
             startTime: number
             endTime: number
             timeTaken: number
@@ -104,25 +102,25 @@ function extractValuesFromFiles(files: string[]) {
     let totalCalls = 0
     let maxTakenTime = 0
     let totalGas = 0n
-    for (const { request } of Object.values(jsonObject.rpcResponses)) {
-      if (minStartTime === undefined || request.startTime < minStartTime) {
-        minStartTime = request.startTime
+    for (const { metrics } of Object.values(jsonObject.rpcResponses)) {
+      if (minStartTime === undefined || metrics.startTime < minStartTime) {
+        minStartTime = metrics.startTime
       }
-      if (maxStartTime === undefined || request.startTime > maxStartTime) {
-        maxStartTime = request.startTime
+      if (maxStartTime === undefined || metrics.startTime > maxStartTime) {
+        maxStartTime = metrics.startTime
       }
-      if (minEndTime === undefined || request.endTime < minEndTime) {
-        minEndTime = request.endTime
+      if (minEndTime === undefined || metrics.endTime < minEndTime) {
+        minEndTime = metrics.endTime
       }
-      if (maxEndTime === undefined || request.endTime > maxEndTime) {
-        maxEndTime = request.endTime
-      }
-
-      if (request.timeTaken > maxTakenTime) {
-        maxTakenTime = request.timeTaken
+      if (maxEndTime === undefined || metrics.endTime > maxEndTime) {
+        maxEndTime = metrics.endTime
       }
 
-      totalGas += BigInt(request.estimatedGas ?? 0)
+      if (metrics.timeTaken > maxTakenTime) {
+        maxTakenTime = metrics.timeTaken
+      }
+
+      totalGas += BigInt(metrics.estimatedGas ?? 0)
 
       totalCalls++
     }
