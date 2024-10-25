@@ -19,7 +19,7 @@ import { DefiProvider } from '../defiProvider'
 import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
-import { RpcInterceptedResponse, startRpcSnapshot } from './rpcInterceptor'
+import { RpcInterceptedResponses, startRpcSnapshot } from './rpcInterceptor'
 import n = types.namedTypes
 import b = types.builders
 
@@ -108,6 +108,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
           // Recreate the provider for each test case to avoid cached data
           const defiProvider = new DefiProvider({
             useMulticallInterceptor: false,
+            disableEthersBatching: true,
           })
 
           const msw = startRpcSnapshot(
@@ -396,19 +397,24 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
             testCase.key ? `.${kebabCase(testCase.key)}` : ''
           }.json`
 
-          const rpcResponses = Object.entries(msw.interceptedRequests).reduce((acc, [key, response]) => {
-            acc[key] = {
-              result: response.result,
-              error: response.error,
-            }
+          const rpcResponses = Object.entries(msw.interceptedResponses).reduce(
+            (acc, [key, response]) => {
+              acc[key] = {
+                result: response.result,
+                error: response.error,
+              }
 
-            if (process.env.DEFI_ADAPTERS_SAVE_INTERCEPTED_REQUESTS === 'true') {
-              acc[key]!.request = response.request
-              acc[key]!.metrics = response.metrics
-            }
+              if (
+                process.env.DEFI_ADAPTERS_SAVE_INTERCEPTED_REQUESTS === 'true'
+              ) {
+                acc[key]!.request = response.request
+                acc[key]!.metrics = response.metrics
+              }
 
-            return acc
-          }, {} as RpcInterceptedResponse)
+              return acc
+            },
+            {} as RpcInterceptedResponses,
+          )
 
           await writeAndLintFile(
             filePath,

@@ -16,7 +16,7 @@ type RpcResponse = {
   error?: unknown
 }
 
-export type RpcInterceptedResponse = Record<
+export type RpcInterceptedResponses = Record<
   string,
   {
     result?: string
@@ -58,7 +58,7 @@ function createResponse(body: ArrayBuffer) {
 }
 
 export const startRpcSnapshot = (chainProviderUrls: string[]) => {
-  const interceptedRequests: RpcInterceptedResponse = {}
+  const interceptedResponses: RpcInterceptedResponses = {}
 
   const server = setupServer(
     ...chainProviderUrls.map((url) =>
@@ -101,7 +101,7 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
             (response) => response.id === request.id,
           )!
 
-          interceptedRequests[key] = {
+          interceptedResponses[key] = {
             result,
             error,
             request: { method: request.method, params: request.params },
@@ -129,7 +129,7 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
             }
           }
 
-          interceptedRequests[key]!.metrics = {
+          interceptedResponses[key]!.metrics = {
             startTime,
             endTime,
             timeTaken: i === 0 ? endTime - startTime : 0,
@@ -144,14 +144,14 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
 
   server.listen({ onUnhandledRequest: 'bypass' })
   return {
-    interceptedRequests,
+    interceptedResponses,
     stop: () => server.close(),
   }
 }
 
 export const startRpcMock = (
   // TODO When we use this for every test case, we can make this required and throw if an rpc request is not there
-  interceptedRequests: RpcInterceptedResponse | undefined,
+  interceptedResponses: RpcInterceptedResponses | undefined,
   chainProviderUrls: string[],
 ) => {
   const server = setupServer(
@@ -169,7 +169,7 @@ export const startRpcMock = (
           const responses = requests.map((request) => {
             const key = createKey(url, request)
 
-            const storedResponse = interceptedRequests?.[key]
+            const storedResponse = interceptedResponses?.[key]
             if (!storedResponse) {
               console.warn('RPC request not found in snapshot', {
                 url: new URL(url).origin,

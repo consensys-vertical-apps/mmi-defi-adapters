@@ -6,6 +6,7 @@ import { copyAdapter } from './adapterBuilder/copyAdapter'
 import { newAdapterCommand } from './adapterBuilder/newAdapterCommand'
 import { blockAverage } from './blockAverage'
 import { buildMetadataDb } from './buildMetadataDb'
+import { buildScoreboard } from './buildScoreboard'
 import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
 import { checkBadSnapshots } from './checkBadSnapshots'
@@ -15,7 +16,6 @@ import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
-import { buildScoreboard } from './buildScoreboard'
 
 const program = new Command('mmi-adapters')
 
