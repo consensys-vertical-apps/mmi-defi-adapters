@@ -35,7 +35,7 @@
             },
             {
               "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
-              "name": "Renzo Restaked ETH",
+              "name": "ezETH",
               "symbol": "ezETH",
               "decimals": 18,
               "type": "underlying",
@@ -59,7 +59,7 @@
             },
             {
               "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-              "name": "Wrapped eETH",
+              "name": "weETH",
               "symbol": "weETH",
               "decimals": 18,
               "type": "underlying",

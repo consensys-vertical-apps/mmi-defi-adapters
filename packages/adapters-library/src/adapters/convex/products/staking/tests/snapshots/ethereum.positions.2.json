@@ -92,7 +92,7 @@
               "type": "underlying-claimable",
               "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
               "symbol": "wstETH",
-              "name": "Wrapped liquid staked Ether 2.0",
+              "name": "wstETH",
               "decimals": 18,
               "balanceRaw": "27258448877792235n",
               "tokens": [
