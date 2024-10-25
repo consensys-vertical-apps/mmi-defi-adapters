@@ -1,6 +1,6 @@
 import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import { ZeroLendBasePoolAdapter } from '../../common/zerolendBasePoolAdapter'
 import { ProtocolDataProvider } from '../../contracts'
-import { ZeroLendBasePoolAdapter } from '../common/zerolendBasePoolAdapter'
 
 export class ZeroLendStableDebtTokenPoolAdapter extends ZeroLendBasePoolAdapter {
   productId = 'stable-debt-token'

@@ -7,8 +7,8 @@ import {
 } from '../../../../types/writeActions'
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
+import { ZeroLendBasePoolAdapter } from '../../common/zerolendBasePoolAdapter'
 import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
-import { ZeroLendBasePoolAdapter } from '../common/zerolendBasePoolAdapter'
 
 export class ZeroLendATokenPoolAdapter extends ZeroLendBasePoolAdapter {
   productId = 'a-token'
