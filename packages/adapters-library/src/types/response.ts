@@ -14,6 +14,7 @@ import type {
   UnwrapExchangeRate,
   UnwrappedTokenExchangeRate,
 } from './adapter'
+import { ProtocolToken } from './IProtocolAdapter'
 import { WriteActions } from './writeActions'
 
 export type GetEventsRequestInput = {
@@ -115,6 +116,7 @@ export type Support = Partial<
       chains: Chain[]
       protocolTokenAddresses?: Partial<Record<Chain, string[]>>
       writeActions?: WriteActions[]
+      protocolTokens?: Partial<Record<Chain, ProtocolToken[]>>
     }[]
   >
 >

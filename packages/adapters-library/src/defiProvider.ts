@@ -113,6 +113,7 @@ export class DefiProvider {
       )
   }
 
+  @ChecksumAddress
   async getPositions({
     userAddress,
     filterProtocolIds,
@@ -339,6 +340,7 @@ export class DefiProvider {
     }
   }
 
+  @ChecksumAddress
   async getProfits({
     userAddress,
     timePeriod = TimePeriod.sevenDays,
@@ -436,6 +438,7 @@ export class DefiProvider {
     return result
   }
 
+  @ChecksumAddress
   async unwrap({
     filterProtocolIds,
     filterProductIds,
@@ -449,6 +452,8 @@ export class DefiProvider {
     filterProtocolToken?: string
     blockNumbers?: Partial<Record<Chain, number>>
   }): Promise<PricePerShareResponse[]> {
+    console.log('unwrap', { filterProtocolToken })
+
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
@@ -513,6 +518,7 @@ export class DefiProvider {
     return filteredResult
   }
 
+  @ChecksumAddress
   async getWithdrawals({
     userAddress,
     fromBlock,
@@ -626,6 +632,7 @@ export class DefiProvider {
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
 
+  @ChecksumAddress
   async getDeposits({
     userAddress,
     fromBlock,
@@ -680,6 +687,7 @@ export class DefiProvider {
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
 
+  @ChecksumAddress
   async getRepays({
     userAddress,
     fromBlock,
@@ -734,6 +742,8 @@ export class DefiProvider {
 
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
+
+  @ChecksumAddress
   async getBorrows({
     userAddress,
     fromBlock,
@@ -789,6 +799,7 @@ export class DefiProvider {
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
 
+  @ChecksumAddress
   async getTotalValueLocked({
     filterProtocolIds,
     filterProductIds,
@@ -873,6 +884,7 @@ export class DefiProvider {
   async getSupport(input?: {
     filterChainIds?: Chain[] | undefined
     filterProtocolIds?: Protocol[] | undefined
+    includeProtocolTokens?: boolean
   }) {
     return await this.adaptersController.getSupport(input)
   }
@@ -1071,4 +1083,64 @@ export class DefiProvider {
       )
     }
   }
+}
+
+// Updated ChecksumAddress decorator
+export function ChecksumAddress(
+  // biome-ignore lint/suspicious/noExplicitAny: Decorator code
+  originalMethod: any,
+  _context: ClassMethodDecoratorContext,
+) {
+  // Define the replacement method that will process the input
+  async function replacementMethod(this: DefiProvider, ...args: unknown[]) {
+    const [params] = args as [
+      {
+        filterProtocolToken?: string
+        filterProtocolTokens?: string[]
+        protocolTokenAddress?: string
+      },
+    ]
+
+    // Check and convert filterProtocolToken if it's provided
+    if (params.filterProtocolToken) {
+      try {
+        params.filterProtocolToken = getAddress(params.filterProtocolToken)
+      } catch (error) {
+        throw new Error(`Invalid address format: ${params.filterProtocolToken}`)
+      }
+    }
+    // Check and convert filterProtocolToken if it's provided
+    if (params.protocolTokenAddress) {
+      try {
+        params.filterProtocolToken = getAddress(params.protocolTokenAddress)
+      } catch (error) {
+        throw new Error(
+          `Invalid address format: ${params.protocolTokenAddress}`,
+        )
+      }
+    }
+
+    // Check and convert each address in filterProtocolTokens if it's provided
+    if (
+      params.filterProtocolTokens &&
+      Array.isArray(params.filterProtocolTokens)
+    ) {
+      try {
+        params.filterProtocolTokens = params.filterProtocolTokens.map(
+          (token: string) => getAddress(token),
+        )
+      } catch (error) {
+        throw new Error(
+          `Invalid address format in filterProtocolTokens: ${
+            (error as { message: string }).message
+          }`,
+        )
+      }
+    }
+
+    // Call the original method with the modified arguments
+    return await originalMethod.call(this, ...args)
+  }
+
+  return replacementMethod
 }

@@ -233,9 +233,11 @@ export class AdaptersController {
   async getSupport({
     filterChainIds,
     filterProtocolIds,
+    includeProtocolTokens,
   }: {
     filterChainIds?: Chain[] | undefined
     filterProtocolIds?: Protocol[] | undefined
+    includeProtocolTokens?: boolean
   } = {}): Promise<Support> {
     const support: Support = {}
     for (const [chainId, protocols] of this.adapters.entries()) {
@@ -298,6 +300,22 @@ export class AdaptersController {
             }
 
             product.protocolTokenAddresses[chainId] = protocolTokenAddresses
+          }
+
+          if (!includeProtocolTokens) {
+            continue
+          }
+
+          const protocolTokens = await adapter
+            .getProtocolTokens()
+            .catch(() => undefined)
+
+          if (protocolTokens) {
+            if (!product.protocolTokens) {
+              product.protocolTokens = {}
+            }
+
+            product.protocolTokens[chainId] = protocolTokens
           }
         }
       }
