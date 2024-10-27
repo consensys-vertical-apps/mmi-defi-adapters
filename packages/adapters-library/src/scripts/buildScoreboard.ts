@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
-import { Command, Option } from 'commander'
+import { Command } from 'commander'
 import { Protocol } from '../adapters/protocols'
 import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
 import { filterMapSync } from '../core/utils/filters'
@@ -21,6 +21,7 @@ type ScoreboardEntry = {
   relativeMaxEndTime: number | undefined
   maxRpcRequestLatency: number
   totalGas: string
+  totalPools: number
 }
 
 export function buildScoreboard(program: Command, defiProvider: DefiProvider) {
@@ -34,25 +35,8 @@ export function buildScoreboard(program: Command, defiProvider: DefiProvider) {
       '-pd, --products <products>',
       'comma-separated products filter (e.g. stargate,aave-v2)',
     )
-    .option('-u, --update', 'whether to update the scoreboard.json file')
-    .addOption(
-      new Option(
-        '-s, --sort-by <field>',
-        'what field should be used to sort scoreboard',
-      )
-        .choices(['latency', 'totalGas', 'totalCalls'])
-        .default('latency'),
-    )
     .showHelpAfterError()
-    .action(async ({ protocols, products, update, sortBy }) => {
-      if (!update) {
-        const scoreboard = JSON.parse(
-          await readFile('./scoreboard.json', 'utf-8'),
-        ) as ScoreboardEntry[]
-        printScoreboard(scoreboard, sortBy)
-        return
-      }
-
+    .action(async ({ protocols, products }) => {
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterProductIds = (products as string | undefined)?.split(',')
 
@@ -74,7 +58,7 @@ export function buildScoreboard(program: Command, defiProvider: DefiProvider) {
           }),
       )
 
-      const metrics: ScoreboardEntry[] = []
+      const scoreboard: ScoreboardEntry[] = []
 
       for (const { protocolId, productId } of allProducts) {
         const testCases: TestCase[] = (
@@ -90,6 +74,14 @@ export function buildScoreboard(program: Command, defiProvider: DefiProvider) {
           if (testCase.method !== 'positions') {
             continue
           }
+
+          console.log(
+            `Running test case # Chain: ${
+              testCase.chainId
+            } - Protocol: ${protocolId} - Product: ${productId}${
+              testCase.key ? ` - Key:${testCase.key}` : ''
+            }`,
+          )
 
           // Recreate the provider for each test case to avoid cached data
           const defiProvider = new DefiProvider({
@@ -109,7 +101,7 @@ export function buildScoreboard(program: Command, defiProvider: DefiProvider) {
 
           const startTime = Date.now()
 
-          const firstRun = await defiProvider.getPositions({
+          const result = await defiProvider.getPositions({
             ...testCase.input,
             filterChainIds: [chainId],
             filterProtocolIds: [protocolId],
@@ -119,13 +111,29 @@ export function buildScoreboard(program: Command, defiProvider: DefiProvider) {
             },
           })
 
-          if (firstRun.some((x) => !x.success)) {
+          if (result.length === 0) {
+            console.error('Snapshot with no results', {
+              protocolId,
+              productId,
+              chainId,
+            })
+          }
+
+          if (result.some((x) => !x.success)) {
             console.error('Snapshot failed', { protocolId, productId, chainId })
+          }
+
+          if (result.length > 1) {
+            console.error('Snapshot with multiple results', {
+              protocolId,
+              productId,
+              chainId,
+            })
           }
 
           const endTime = Date.now()
 
-          metrics.push(
+          scoreboard.push(
             aggregateMetrics({
               interceptedResponses: msw.interceptedResponses,
               key: testCase.key,
@@ -133,6 +141,10 @@ export function buildScoreboard(program: Command, defiProvider: DefiProvider) {
               productId,
               chainId,
               latency: endTime - startTime,
+              totalPools: result.reduce(
+                (acc, x) => acc + (!x.success ? 0 : x.tokens.length),
+                0,
+              ),
             }),
           )
 
@@ -140,12 +152,16 @@ export function buildScoreboard(program: Command, defiProvider: DefiProvider) {
         }
       }
 
-      await writeAndLintFile(
-        './scoreboard.json',
-        JSON.stringify(metrics, null, 2),
+      const scoreboardHtml = await readFile('./scoreboard.html', 'utf-8')
+      const updatedHtml = scoreboardHtml.replace(
+        /\/\/ ### BEGIN DATA INSERT ###.*\/\/ ### END DATA INSERT ###/s,
+        `// ### BEGIN DATA INSERT ###\nconst data = ${JSON.stringify(
+          scoreboard,
+          null,
+          2,
+        )};\n// ### END DATA INSERT ###`,
       )
-
-      printScoreboard(metrics, sortBy)
+      await writeAndLintFile('./scoreboard.html', updatedHtml)
 
       process.exit()
     })
@@ -158,6 +174,7 @@ export function aggregateMetrics({
   productId,
   chainId,
   latency,
+  totalPools,
 }: {
   interceptedResponses: RpcInterceptedResponses
   key: string | undefined
@@ -165,7 +182,8 @@ export function aggregateMetrics({
   productId: string
   chainId: Chain
   latency: number
-}) {
+  totalPools: number
+}): ScoreboardEntry {
   if (Object.values(interceptedResponses).length === 0) {
     return {
       key: key,
@@ -178,6 +196,7 @@ export function aggregateMetrics({
       totalCalls: 0,
       maxRpcRequestLatency: 0,
       totalGas: '0',
+      totalPools,
     }
   }
 
@@ -223,17 +242,6 @@ export function aggregateMetrics({
     totalCalls,
     maxRpcRequestLatency: maxTakenTime / 1_000,
     totalGas: totalGas.toString(),
+    totalPools,
   }
-}
-
-function printScoreboard(
-  scoreboard: ScoreboardEntry[],
-  sortBy: 'latency' | 'totalGas' | 'totalCalls',
-) {
-  if (sortBy === 'latency' || sortBy === 'totalCalls') {
-    scoreboard.sort((a, b) => a[sortBy] - b[sortBy])
-  } else {
-    scoreboard.sort((a, b) => Number(BigInt(a[sortBy]) - BigInt(b[sortBy])))
-  }
-  console.log(JSON.stringify(scoreboard, null, 2))
 }

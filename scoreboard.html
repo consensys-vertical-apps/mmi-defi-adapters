@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        select {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Styles for multi-select elements */
+        select[multiple] {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        /* Styles for the container of the multi-select elements */
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .filter-container>div {
+            flex: 1;
+            min-width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Scoreboard</h1>
+    <div class="filter-container">
+        <div>
+            <label for="protocolIdFilter">Protocol Filter:</label>
+            <select id="protocolIdFilter" multiple></select>
+        </div>
+        <div>
+            <label for="chainFilter">Chain Filter:</label>
+            <select id="chainFilter" multiple></select>
+        </div>
+        <div>
+            <label for="negativeProtocolIdFilter">Negative Protocol Filter:</label>
+            <select id="negativeProtocolIdFilter" multiple></select>
+        </div>
+        <div>
+            <label for="negativeChainFilter">Negative Chain Filter:</label>
+            <select id="negativeChainFilter" multiple></select>
+        </div>
+    </div>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Chain</th>
+                <th>Protocol</th>
+                <th>Product & Key</th>
+                <th onclick="sortTable('latency')">Latency</th>
+                <th onclick="sortTable('totalCalls')">Total RPC Calls</th>
+                <th onclick="sortTable('maxRpcRequestLatency')">Max RPC Request Latency</th>
+                <th onclick="sortTable('totalGas')">Total Gas</th>
+                <th onclick="sortTable('totalPools')">Total Pools</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        // ### BEGIN DATA INSERT ###
+const data = [
+  {
+    "protocolId": "aave-v2",
+    "productId": "a-token",
+    "chain": "ethereum",
+    "latency": 1.152,
+    "relativeMaxStartTime": 0.649,
+    "relativeMaxEndTime": 0.825,
+    "totalCalls": 4,
+    "maxRpcRequestLatency": 0.493,
+    "totalGas": "5905681",
+    "totalPools": 2
+  },
+  {
+    "protocolId": "aave-v2",
+    "productId": "variable-debt-token",
+    "chain": "ethereum",
+    "latency": 1.583,
+    "relativeMaxStartTime": 0.703,
+    "relativeMaxEndTime": 1.309,
+    "totalCalls": 9,
+    "maxRpcRequestLatency": 0.608,
+    "totalGas": "22508066",
+    "totalPools": 4
+  },
+  {
+    "protocolId": "aave-v3",
+    "productId": "a-token",
+    "chain": "ethereum",
+    "latency": 0.647,
+    "relativeMaxStartTime": 0.284,
+    "relativeMaxEndTime": 0.409,
+    "totalCalls": 2,
+    "maxRpcRequestLatency": 0.133,
+    "totalGas": "81555",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "aave-v3",
+    "productId": "variable-debt-token",
+    "chain": "ethereum",
+    "latency": 2.056,
+    "relativeMaxStartTime": 0.341,
+    "relativeMaxEndTime": 0.553,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.212,
+    "totalGas": "7172089",
+    "totalPools": 1
+  },
+  {
+    "key": "reward",
+    "protocolId": "aave-v3",
+    "productId": "rewards",
+    "chain": "arb",
+    "latency": 2.105,
+    "relativeMaxStartTime": 1.651,
+    "relativeMaxEndTime": 1.924,
+    "totalCalls": 5,
+    "maxRpcRequestLatency": 0.6,
+    "totalGas": "1892197",
+    "totalPools": 1
+  },
+  {
+    "key": "positions",
+    "protocolId": "angle-protocol",
+    "productId": "savings",
+    "chain": "ethereum",
+    "latency": 1.536,
+    "relativeMaxStartTime": 1.146,
+    "relativeMaxEndTime": 1.309,
+    "totalCalls": 5,
+    "maxRpcRequestLatency": 0.521,
+    "totalGas": "3062600",
+    "totalPools": 1
+  },
+  {
+    "key": "positions-filter",
+    "protocolId": "angle-protocol",
+    "productId": "savings",
+    "chain": "ethereum",
+    "latency": 0.992,
+    "relativeMaxStartTime": 0.634,
+    "relativeMaxEndTime": 0.785,
+    "totalCalls": 4,
+    "maxRpcRequestLatency": 0.183,
+    "totalGas": "3030916",
+    "totalPools": 1
+  },
+  {
+    "key": "cow-token",
+    "protocolId": "beefy",
+    "productId": "cow-token",
+    "chain": "arb",
+    "latency": 2.026,
+    "relativeMaxStartTime": 1.625,
+    "relativeMaxEndTime": 1.853,
+    "totalCalls": 6,
+    "maxRpcRequestLatency": 0.691,
+    "totalGas": "1089573",
+    "totalPools": 1
+  },
+  {
+    "key": "moo-token",
+    "protocolId": "beefy",
+    "productId": "moo-token",
+    "chain": "ethereum",
+    "latency": 2.386,
+    "relativeMaxStartTime": 1.575,
+    "relativeMaxEndTime": 2.201,
+    "totalCalls": 12,
+    "maxRpcRequestLatency": 0.628,
+    "totalGas": "5536990",
+    "totalPools": 1
+  },
+  {
+    "key": "positions1",
+    "protocolId": "carbon-defi",
+    "productId": "strategies",
+    "chain": "ethereum",
+    "latency": 1.367,
+    "relativeMaxStartTime": 0.938,
+    "relativeMaxEndTime": 1.115,
+    "totalCalls": 7,
+    "maxRpcRequestLatency": 0.177,
+    "totalGas": "5066243",
+    "totalPools": 1
+  },
+  {
+    "key": "positions2",
+    "protocolId": "carbon-defi",
+    "productId": "strategies",
+    "chain": "ethereum",
+    "latency": 2.314,
+    "relativeMaxStartTime": 1.75,
+    "relativeMaxEndTime": 1.993,
+    "totalCalls": 16,
+    "maxRpcRequestLatency": 0.561,
+    "totalGas": "20270872",
+    "totalPools": 2
+  },
+  {
+    "key": "positions3",
+    "protocolId": "carbon-defi",
+    "productId": "strategies",
+    "chain": "ethereum",
+    "latency": 3.789,
+    "relativeMaxStartTime": 2.878,
+    "relativeMaxEndTime": 3.066,
+    "totalCalls": 48,
+    "maxRpcRequestLatency": 1.493,
+    "totalGas": "34433866",
+    "totalPools": 10
+  },
+  {
+    "key": "supply",
+    "protocolId": "compound-v2",
+    "productId": "supply-market",
+    "chain": "ethereum",
+    "latency": 1.006,
+    "relativeMaxStartTime": 0.556,
+    "relativeMaxEndTime": 0.729,
+    "totalCalls": 7,
+    "maxRpcRequestLatency": 0.173,
+    "totalGas": "6476829",
+    "totalPools": 2
+  },
+  {
+    "key": "supply",
+    "protocolId": "compound-v2",
+    "productId": "borrow-market",
+    "chain": "ethereum",
+    "latency": 1.155,
+    "relativeMaxStartTime": 0.646,
+    "relativeMaxEndTime": 0.831,
+    "totalCalls": 6,
+    "maxRpcRequestLatency": 0.185,
+    "totalGas": "8960804",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "convex",
+    "productId": "pool",
+    "chain": "ethereum",
+    "latency": 1.789,
+    "relativeMaxStartTime": 0.927,
+    "relativeMaxEndTime": 1.517,
+    "totalCalls": 9,
+    "maxRpcRequestLatency": 0.59,
+    "totalGas": "19318095",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "convex",
+    "productId": "staking",
+    "chain": "ethereum",
+    "latency": 3.557,
+    "relativeMaxStartTime": 3.078,
+    "relativeMaxEndTime": 3.262,
+    "totalCalls": 21,
+    "maxRpcRequestLatency": 0.561,
+    "totalGas": "24458055",
+    "totalPools": 1
+  },
+  {
+    "key": "2",
+    "protocolId": "convex",
+    "productId": "staking",
+    "chain": "ethereum",
+    "latency": 3.025,
+    "relativeMaxStartTime": 2.711,
+    "relativeMaxEndTime": 2.848,
+    "totalCalls": 30,
+    "maxRpcRequestLatency": 0.616,
+    "totalGas": "9564306",
+    "totalPools": 3
+  },
+  {
+    "key": "3",
+    "protocolId": "convex",
+    "productId": "staking",
+    "chain": "ethereum",
+    "latency": 3.588,
+    "relativeMaxStartTime": 3.19,
+    "relativeMaxEndTime": 3.345,
+    "totalCalls": 28,
+    "maxRpcRequestLatency": 0.183,
+    "totalGas": "22401535",
+    "totalPools": 2
+  },
+  {
+    "key": "2",
+    "protocolId": "convex",
+    "productId": "cvxcrv-wrapper",
+    "chain": "ethereum",
+    "latency": 1.585,
+    "relativeMaxStartTime": 1.097,
+    "relativeMaxEndTime": 1.271,
+    "totalCalls": 12,
+    "maxRpcRequestLatency": 0.175,
+    "totalGas": "24619010",
+    "totalPools": 1
+  },
+  {
+    "key": "3",
+    "protocolId": "convex",
+    "productId": "cvxcrv-wrapper",
+    "chain": "ethereum",
+    "latency": 2.024,
+    "relativeMaxStartTime": 1.492,
+    "relativeMaxEndTime": 1.686,
+    "totalCalls": 12,
+    "maxRpcRequestLatency": 0.194,
+    "totalGas": "24603259",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "curve",
+    "productId": "pool",
+    "chain": "ethereum",
+    "latency": 1.936,
+    "relativeMaxStartTime": 0.871,
+    "relativeMaxEndTime": 1.047,
+    "totalCalls": 9,
+    "maxRpcRequestLatency": 0.176,
+    "totalGas": "19313507",
+    "totalPools": 1
+  },
+  {
+    "key": "position2",
+    "protocolId": "curve",
+    "productId": "pool",
+    "chain": "ethereum",
+    "latency": 1.527,
+    "relativeMaxStartTime": 1.051,
+    "relativeMaxEndTime": 1.232,
+    "totalCalls": 9,
+    "maxRpcRequestLatency": 0.182,
+    "totalGas": "19317467",
+    "totalPools": 1
+  },
+  {
+    "key": "position2",
+    "protocolId": "curve",
+    "productId": "staking",
+    "chain": "ethereum",
+    "latency": 2.294,
+    "relativeMaxStartTime": 1.812,
+    "relativeMaxEndTime": 2,
+    "totalCalls": 11,
+    "maxRpcRequestLatency": 0.517,
+    "totalGas": "21887595",
+    "totalPools": 1
+  },
+  {
+    "key": "voting-escrow",
+    "protocolId": "curve",
+    "productId": "voting-escrow",
+    "chain": "ethereum",
+    "latency": 2.524,
+    "relativeMaxStartTime": 1.825,
+    "relativeMaxEndTime": 2.019,
+    "totalCalls": 11,
+    "maxRpcRequestLatency": 0.194,
+    "totalGas": "24770487",
+    "totalPools": 1
+  },
+  {
+    "key": "position2",
+    "protocolId": "curve",
+    "productId": "voting-escrow",
+    "chain": "ethereum",
+    "latency": 1.939,
+    "relativeMaxStartTime": 1.363,
+    "relativeMaxEndTime": 1.541,
+    "totalCalls": 11,
+    "maxRpcRequestLatency": 0.179,
+    "totalGas": "21783981",
+    "totalPools": 1
+  },
+  {
+    "key": "susde",
+    "protocolId": "ethena",
+    "productId": "staked-usde",
+    "chain": "ethereum",
+    "latency": 1.234,
+    "relativeMaxStartTime": 0.884,
+    "relativeMaxEndTime": 1.03,
+    "totalCalls": 5,
+    "maxRpcRequestLatency": 0.159,
+    "totalGas": "2768132",
+    "totalPools": 1
+  },
+  {
+    "key": "lp-staking",
+    "protocolId": "ethena",
+    "productId": "lp-staking",
+    "chain": "ethereum",
+    "latency": 0.664,
+    "relativeMaxStartTime": 0.291,
+    "relativeMaxEndTime": 0.457,
+    "totalCalls": 5,
+    "maxRpcRequestLatency": 0.166,
+    "totalGas": "5183903",
+    "totalPools": 2
+  },
+  {
+    "key": "sena",
+    "protocolId": "ethena",
+    "productId": "staked-ena",
+    "chain": "ethereum",
+    "latency": 0.743,
+    "relativeMaxStartTime": 0.414,
+    "relativeMaxEndTime": 0.56,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.146,
+    "totalGas": "2229616",
+    "totalPools": 1
+  },
+  {
+    "key": "user1",
+    "protocolId": "etherfi",
+    "productId": "e-eth",
+    "chain": "ethereum",
+    "latency": 0.671,
+    "relativeMaxStartTime": 0.329,
+    "relativeMaxEndTime": 0.454,
+    "totalCalls": 2,
+    "maxRpcRequestLatency": 0.149,
+    "totalGas": "86174",
+    "totalPools": 1
+  },
+  {
+    "key": "user1",
+    "protocolId": "etherfi",
+    "productId": "we-eth",
+    "chain": "ethereum",
+    "latency": 0.91,
+    "relativeMaxStartTime": 0.544,
+    "relativeMaxEndTime": 0.663,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.129,
+    "totalGas": "118505",
+    "totalPools": 1
+  },
+  {
+    "key": "user2",
+    "protocolId": "etherfi",
+    "productId": "liquid",
+    "chain": "ethereum",
+    "latency": 1.037,
+    "relativeMaxStartTime": 0.706,
+    "relativeMaxEndTime": 0.829,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.126,
+    "totalGas": "85287",
+    "totalPools": 1
+  },
+  {
+    "key": "user3",
+    "protocolId": "etherfi",
+    "productId": "l2",
+    "chain": "base",
+    "latency": 1.246,
+    "relativeMaxStartTime": 0,
+    "relativeMaxEndTime": 1.02,
+    "totalCalls": 1,
+    "maxRpcRequestLatency": 1.02,
+    "totalGas": "29413",
+    "totalPools": 1
+  },
+  {
+    "key": "user4",
+    "protocolId": "etherfi",
+    "productId": "l2",
+    "chain": "linea",
+    "latency": 1.122,
+    "relativeMaxStartTime": 0,
+    "relativeMaxEndTime": 0.897,
+    "totalCalls": 1,
+    "maxRpcRequestLatency": 0.897,
+    "totalGas": "29425",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "flux",
+    "productId": "supply-market",
+    "chain": "ethereum",
+    "latency": 1.427,
+    "relativeMaxStartTime": 0.551,
+    "relativeMaxEndTime": 1.109,
+    "totalCalls": 4,
+    "maxRpcRequestLatency": 0.558,
+    "totalGas": "8804596",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "flux",
+    "productId": "borrow-market",
+    "chain": "ethereum",
+    "latency": 1.153,
+    "relativeMaxStartTime": 0.632,
+    "relativeMaxEndTime": 0.817,
+    "totalCalls": 4,
+    "maxRpcRequestLatency": 0.185,
+    "totalGas": "8811813",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "lido",
+    "productId": "st-eth",
+    "chain": "ethereum",
+    "latency": 0.571,
+    "relativeMaxStartTime": 0.289,
+    "relativeMaxEndTime": 0.414,
+    "totalCalls": 2,
+    "maxRpcRequestLatency": 0.125,
+    "totalGas": "102973",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "lido",
+    "productId": "wst-eth",
+    "chain": "ethereum",
+    "latency": 0.798,
+    "relativeMaxStartTime": 0.516,
+    "relativeMaxEndTime": 0.649,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.133,
+    "totalGas": "130227",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "maker",
+    "productId": "s-dai",
+    "chain": "ethereum",
+    "latency": 1,
+    "relativeMaxStartTime": 0.6,
+    "relativeMaxEndTime": 0.761,
+    "totalCalls": 4,
+    "maxRpcRequestLatency": 0.161,
+    "totalGas": "5025097",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "morpho-aave-v2",
+    "productId": "optimizer-borrow",
+    "chain": "ethereum",
+    "latency": 1.182,
+    "relativeMaxStartTime": 0.791,
+    "relativeMaxEndTime": 0.925,
+    "totalCalls": 8,
+    "maxRpcRequestLatency": 0.65,
+    "totalGas": "757163",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "morpho-aave-v2",
+    "productId": "optimizer-supply",
+    "chain": "ethereum",
+    "latency": 0.83,
+    "relativeMaxStartTime": 0.336,
+    "relativeMaxEndTime": 0.52,
+    "totalCalls": 10,
+    "maxRpcRequestLatency": 0.185,
+    "totalGas": "14928295",
+    "totalPools": 2
+  },
+  {
+    "protocolId": "morpho-aave-v3",
+    "productId": "optimizer-supply",
+    "chain": "ethereum",
+    "latency": 1.574,
+    "relativeMaxStartTime": 1.265,
+    "relativeMaxEndTime": 1.395,
+    "totalCalls": 20,
+    "maxRpcRequestLatency": 1.086,
+    "totalGas": "1243609",
+    "totalPools": 2
+  },
+  {
+    "protocolId": "morpho-aave-v3",
+    "productId": "optimizer-borrow",
+    "chain": "ethereum",
+    "latency": 0.69,
+    "relativeMaxStartTime": 0.324,
+    "relativeMaxEndTime": 0.446,
+    "totalCalls": 2,
+    "maxRpcRequestLatency": 0.122,
+    "totalGas": "115286",
+    "totalPools": 1
+  },
+  {
+    "key": "1",
+    "protocolId": "morpho-blue",
+    "productId": "market-supply",
+    "chain": "ethereum",
+    "latency": 1.435,
+    "relativeMaxStartTime": 1.068,
+    "relativeMaxEndTime": 1.213,
+    "totalCalls": 17,
+    "maxRpcRequestLatency": 0.158,
+    "totalGas": "492435",
+    "totalPools": 4
+  },
+  {
+    "key": "2",
+    "protocolId": "morpho-blue",
+    "productId": "market-supply",
+    "chain": "ethereum",
+    "latency": 1.621,
+    "relativeMaxStartTime": 1.14,
+    "relativeMaxEndTime": 1.332,
+    "totalCalls": 25,
+    "maxRpcRequestLatency": 0.193,
+    "totalGas": "7252852",
+    "totalPools": 5
+  },
+  {
+    "key": "2",
+    "protocolId": "morpho-blue",
+    "productId": "market-borrow",
+    "chain": "ethereum",
+    "latency": 1.408,
+    "relativeMaxStartTime": 0.873,
+    "relativeMaxEndTime": 1.061,
+    "totalCalls": 24,
+    "maxRpcRequestLatency": 0.188,
+    "totalGas": "16568375",
+    "totalPools": 5
+  },
+  {
+    "key": "11",
+    "protocolId": "morpho-blue",
+    "productId": "vault",
+    "chain": "ethereum",
+    "latency": 0.98,
+    "relativeMaxStartTime": 0.458,
+    "relativeMaxEndTime": 0.652,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.209,
+    "totalGas": "9479880",
+    "totalPools": 1
+  },
+  {
+    "key": "12",
+    "protocolId": "morpho-blue",
+    "productId": "vault",
+    "chain": "base",
+    "latency": 1.179,
+    "relativeMaxStartTime": 0.903,
+    "relativeMaxEndTime": 1.021,
+    "totalCalls": 2,
+    "maxRpcRequestLatency": 0.691,
+    "totalGas": "61995",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "morpho-compound-v2",
+    "productId": "optimizer-supply",
+    "chain": "ethereum",
+    "latency": 1.192,
+    "relativeMaxStartTime": 0.323,
+    "relativeMaxEndTime": 0.898,
+    "totalCalls": 11,
+    "maxRpcRequestLatency": 0.575,
+    "totalGas": "12143439",
+    "totalPools": 2
+  },
+  {
+    "protocolId": "morpho-compound-v2",
+    "productId": "optimizer-borrow",
+    "chain": "ethereum",
+    "latency": 0.771,
+    "relativeMaxStartTime": 0.321,
+    "relativeMaxEndTime": 0.491,
+    "totalCalls": 10,
+    "maxRpcRequestLatency": 0.17,
+    "totalGas": "7497120",
+    "totalPools": 2
+  },
+  {
+    "protocolId": "mountain-protocol",
+    "productId": "usdm",
+    "chain": "ethereum",
+    "latency": 0.987,
+    "relativeMaxStartTime": 0.286,
+    "relativeMaxEndTime": 0.561,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.275,
+    "totalGas": "10299882",
+    "totalPools": 1
+  },
+  {
+    "key": "yt-lp",
+    "protocolId": "pendle",
+    "productId": "yield-token",
+    "chain": "ethereum",
+    "latency": 1.289,
+    "relativeMaxStartTime": 0.931,
+    "relativeMaxEndTime": 1.08,
+    "totalCalls": 12,
+    "maxRpcRequestLatency": 0.149,
+    "totalGas": "6325718",
+    "totalPools": 3
+  },
+  {
+    "key": "pt-sy",
+    "protocolId": "pendle",
+    "productId": "yield-token",
+    "chain": "ethereum",
+    "latency": 1.527,
+    "relativeMaxStartTime": 1.151,
+    "relativeMaxEndTime": 1.36,
+    "totalCalls": 18,
+    "maxRpcRequestLatency": 0.25,
+    "totalGas": "9003896",
+    "totalPools": 4
+  },
+  {
+    "key": "pt-sy",
+    "protocolId": "pendle",
+    "productId": "principle-token",
+    "chain": "ethereum",
+    "latency": 1.308,
+    "relativeMaxStartTime": 0.925,
+    "relativeMaxEndTime": 1.053,
+    "totalCalls": 4,
+    "maxRpcRequestLatency": 0.206,
+    "totalGas": "252457",
+    "totalPools": 1
+  },
+  {
+    "key": "yt-lp",
+    "protocolId": "pendle",
+    "productId": "standardised-yield-token",
+    "chain": "ethereum",
+    "latency": 0.975,
+    "relativeMaxStartTime": 0.621,
+    "relativeMaxEndTime": 0.765,
+    "totalCalls": 10,
+    "maxRpcRequestLatency": 0.15,
+    "totalGas": "7689696",
+    "totalPools": 3
+  },
+  {
+    "key": "pt-sy",
+    "protocolId": "pendle",
+    "productId": "standardised-yield-token",
+    "chain": "ethereum",
+    "latency": 0.937,
+    "relativeMaxStartTime": 0.584,
+    "relativeMaxEndTime": 0.728,
+    "totalCalls": 13,
+    "maxRpcRequestLatency": 0.145,
+    "totalGas": "5770879",
+    "totalPools": 4
+  },
+  {
+    "key": "yt-lp",
+    "protocolId": "pendle",
+    "productId": "lp-token",
+    "chain": "ethereum",
+    "latency": 1.838,
+    "relativeMaxStartTime": 1.502,
+    "relativeMaxEndTime": 1.647,
+    "totalCalls": 15,
+    "maxRpcRequestLatency": 0.177,
+    "totalGas": "8783484",
+    "totalPools": 2
+  },
+  {
+    "protocolId": "renzo",
+    "productId": "ez-eth",
+    "chain": "ethereum",
+    "latency": 0.886,
+    "relativeMaxStartTime": 0.626,
+    "relativeMaxEndTime": 0.749,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.127,
+    "totalGas": "748064",
+    "totalPools": 1
+  },
+  {
+    "key": "reth",
+    "protocolId": "rocket-pool",
+    "productId": "reth",
+    "chain": "ethereum",
+    "latency": 0.841,
+    "relativeMaxStartTime": 0.566,
+    "relativeMaxEndTime": 0.697,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.141,
+    "totalGas": "103447",
+    "totalPools": 1
+  },
+  {
+    "key": "user1",
+    "protocolId": "solv",
+    "productId": "solv-btc",
+    "chain": "ethereum",
+    "latency": 0.595,
+    "relativeMaxStartTime": 0.268,
+    "relativeMaxEndTime": 0.417,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.149,
+    "totalGas": "2361289",
+    "totalPools": 1
+  },
+  {
+    "key": "user2",
+    "protocolId": "solv",
+    "productId": "solv-btc",
+    "chain": "ethereum",
+    "latency": 0.674,
+    "relativeMaxStartTime": 0.329,
+    "relativeMaxEndTime": 0.473,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.144,
+    "totalGas": "2361311",
+    "totalPools": 1
+  },
+  {
+    "key": "user1",
+    "protocolId": "solv",
+    "productId": "solv-btc",
+    "chain": "arb",
+    "latency": 2.281,
+    "relativeMaxStartTime": 0.865,
+    "relativeMaxEndTime": 1.747,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.882,
+    "totalGas": "2131259",
+    "totalPools": 1
+  },
+  {
+    "key": "user2",
+    "protocolId": "solv",
+    "productId": "solv-btc",
+    "chain": "arb",
+    "latency": 1.153,
+    "relativeMaxStartTime": 0.456,
+    "relativeMaxEndTime": 0.943,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.487,
+    "totalGas": "2131259",
+    "totalPools": 1
+  },
+  {
+    "key": "user5",
+    "protocolId": "solv",
+    "productId": "yield-market",
+    "chain": "arb",
+    "latency": 4.124,
+    "relativeMaxStartTime": 3.111,
+    "relativeMaxEndTime": 3.602,
+    "totalCalls": 32,
+    "maxRpcRequestLatency": 0.554,
+    "totalGas": "4136941",
+    "totalPools": 5
+  },
+  {
+    "protocolId": "spark-v1",
+    "productId": "sp-token",
+    "chain": "ethereum",
+    "latency": 1.237,
+    "relativeMaxStartTime": 0.917,
+    "relativeMaxEndTime": 1.042,
+    "totalCalls": 2,
+    "maxRpcRequestLatency": 0.622,
+    "totalGas": "81978",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "stakewise",
+    "productId": "os-eth",
+    "chain": "ethereum",
+    "latency": 0.868,
+    "relativeMaxStartTime": 0.602,
+    "relativeMaxEndTime": 0.726,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.137,
+    "totalGas": "92720",
+    "totalPools": 1
+  },
+  {
+    "key": "pool-v1-and-stake",
+    "protocolId": "stargate",
+    "productId": "pool",
+    "chain": "ethereum",
+    "latency": 1.615,
+    "relativeMaxStartTime": 0.686,
+    "relativeMaxEndTime": 1.365,
+    "totalCalls": 4,
+    "maxRpcRequestLatency": 0.679,
+    "totalGas": "5555396",
+    "totalPools": 1
+  },
+  {
+    "key": "pool-v1-and-stake",
+    "protocolId": "stargate",
+    "productId": "voting-escrow",
+    "chain": "ethereum",
+    "latency": 1.446,
+    "relativeMaxStartTime": 0.557,
+    "relativeMaxEndTime": 1.099,
+    "totalCalls": 5,
+    "maxRpcRequestLatency": 0.542,
+    "totalGas": "8778246",
+    "totalPools": 1
+  },
+  {
+    "key": "farm-v1",
+    "protocolId": "stargate",
+    "productId": "farm",
+    "chain": "ethereum",
+    "latency": 1.329,
+    "relativeMaxStartTime": 0.842,
+    "relativeMaxEndTime": 1.031,
+    "totalCalls": 6,
+    "maxRpcRequestLatency": 0.189,
+    "totalGas": "10318141",
+    "totalPools": 1
+  },
+  {
+    "key": "pool-v2",
+    "protocolId": "stargate",
+    "productId": "pool-v2",
+    "chain": "ethereum",
+    "latency": 0.626,
+    "relativeMaxStartTime": 0.265,
+    "relativeMaxEndTime": 0.389,
+    "totalCalls": 2,
+    "maxRpcRequestLatency": 0.126,
+    "totalGas": "61484",
+    "totalPools": 1
+  },
+  {
+    "key": "pool-v2",
+    "protocolId": "stargate",
+    "productId": "pool-v2",
+    "chain": "base",
+    "latency": 1.27,
+    "relativeMaxStartTime": 0.975,
+    "relativeMaxEndTime": 1.097,
+    "totalCalls": 2,
+    "maxRpcRequestLatency": 0.792,
+    "totalGas": "61484",
+    "totalPools": 1
+  },
+  {
+    "key": "farm-v2",
+    "protocolId": "stargate",
+    "productId": "farm-v2",
+    "chain": "ethereum",
+    "latency": 1.655,
+    "relativeMaxStartTime": 0.614,
+    "relativeMaxEndTime": 0.804,
+    "totalCalls": 5,
+    "maxRpcRequestLatency": 0.19,
+    "totalGas": "10287331",
+    "totalPools": 1
+  },
+  {
+    "key": "single-position",
+    "protocolId": "sushiswap-v2",
+    "productId": "pool",
+    "chain": "ethereum",
+    "latency": 1.071,
+    "relativeMaxStartTime": 0.614,
+    "relativeMaxEndTime": 0.784,
+    "totalCalls": 5,
+    "maxRpcRequestLatency": 0.17,
+    "totalGas": "7132215",
+    "totalPools": 1
+  },
+  {
+    "key": "multiple-positions",
+    "protocolId": "sushiswap-v2",
+    "productId": "pool",
+    "chain": "ethereum",
+    "latency": 1.799,
+    "relativeMaxStartTime": 1.027,
+    "relativeMaxEndTime": 1.574,
+    "totalCalls": 13,
+    "maxRpcRequestLatency": 0.59,
+    "totalGas": "18465462",
+    "totalPools": 3
+  },
+  {
+    "protocolId": "swell",
+    "productId": "sw-eth",
+    "chain": "ethereum",
+    "latency": 1.061,
+    "relativeMaxStartTime": 0.655,
+    "relativeMaxEndTime": 0.841,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.186,
+    "totalGas": "100259",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "uniswap-v2",
+    "productId": "pool",
+    "chain": "ethereum",
+    "latency": 1.52,
+    "relativeMaxStartTime": 0.611,
+    "relativeMaxEndTime": 0.792,
+    "totalCalls": 9,
+    "maxRpcRequestLatency": 0.181,
+    "totalGas": "15836839",
+    "totalPools": 2
+  },
+  {
+    "protocolId": "uniswap-v3",
+    "productId": "pool",
+    "chain": "ethereum",
+    "latency": 1.651,
+    "relativeMaxStartTime": 1.309,
+    "relativeMaxEndTime": 1.449,
+    "totalCalls": 18,
+    "maxRpcRequestLatency": 0.785,
+    "totalGas": "5830977",
+    "totalPools": 2
+  },
+  {
+    "key": "2",
+    "protocolId": "uniswap-v3",
+    "productId": "pool",
+    "chain": "ethereum",
+    "latency": 1.637,
+    "relativeMaxStartTime": 1.013,
+    "relativeMaxEndTime": 1.173,
+    "totalCalls": 15,
+    "maxRpcRequestLatency": 0.167,
+    "totalGas": "9589434",
+    "totalPools": 2
+  },
+  {
+    "protocolId": "zerolend",
+    "productId": "a-token",
+    "chain": "ethereum",
+    "latency": 0.876,
+    "relativeMaxStartTime": 0.383,
+    "relativeMaxEndTime": 0.653,
+    "totalCalls": 2,
+    "maxRpcRequestLatency": 0.27,
+    "totalGas": "81885",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "quickswap-v2",
+    "productId": "pool",
+    "chain": "matic",
+    "latency": 10.008,
+    "totalCalls": 0,
+    "maxRpcRequestLatency": 0,
+    "totalGas": "0",
+    "totalPools": 0
+  },
+  {
+    "protocolId": "gmx",
+    "productId": "glp",
+    "chain": "avax",
+    "latency": 1.975,
+    "relativeMaxStartTime": 1.535,
+    "relativeMaxEndTime": 1.775,
+    "totalCalls": 16,
+    "maxRpcRequestLatency": 0.594,
+    "totalGas": "7161777",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "sonne",
+    "productId": "supply-market",
+    "chain": "op",
+    "latency": 1.614,
+    "relativeMaxStartTime": 1.302,
+    "relativeMaxEndTime": 1.423,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.803,
+    "totalGas": "141328",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "sonne",
+    "productId": "borrow-market",
+    "chain": "op",
+    "latency": 4.403,
+    "relativeMaxStartTime": 0.705,
+    "relativeMaxEndTime": 1.137,
+    "totalCalls": 4,
+    "maxRpcRequestLatency": 0.432,
+    "totalGas": "6064172",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "iziswap",
+    "productId": "pool",
+    "chain": "linea",
+    "latency": 3.109,
+    "relativeMaxStartTime": 2.233,
+    "relativeMaxEndTime": 2.935,
+    "totalCalls": 12,
+    "maxRpcRequestLatency": 0.941,
+    "totalGas": "732491",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "deri",
+    "productId": "pool",
+    "chain": "arb",
+    "latency": 1.826,
+    "relativeMaxStartTime": 1.521,
+    "relativeMaxEndTime": 1.642,
+    "totalCalls": 4,
+    "maxRpcRequestLatency": 0.6,
+    "totalGas": "223653",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "chimp-exchange",
+    "productId": "pool",
+    "chain": "linea",
+    "latency": 1.153,
+    "relativeMaxStartTime": 0.791,
+    "relativeMaxEndTime": 0.942,
+    "totalCalls": 3,
+    "maxRpcRequestLatency": 0.18,
+    "totalGas": "178883",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "lynex",
+    "productId": "algebra",
+    "chain": "linea",
+    "latency": 1.882,
+    "relativeMaxStartTime": 0.882,
+    "relativeMaxEndTime": 1.627,
+    "totalCalls": 27,
+    "maxRpcRequestLatency": 0.895,
+    "totalGas": "2543372",
+    "totalPools": 4
+  },
+  {
+    "protocolId": "mendi-finance",
+    "productId": "supply-market",
+    "chain": "linea",
+    "latency": 0.847,
+    "relativeMaxStartTime": 0.421,
+    "relativeMaxEndTime": 0.636,
+    "totalCalls": 8,
+    "maxRpcRequestLatency": 0.216,
+    "totalGas": "506646",
+    "totalPools": 4
+  },
+  {
+    "key": "with-borrow",
+    "protocolId": "mendi-finance",
+    "productId": "supply-market",
+    "chain": "linea",
+    "latency": 0.79,
+    "relativeMaxStartTime": 0.407,
+    "relativeMaxEndTime": 0.579,
+    "totalCalls": 5,
+    "maxRpcRequestLatency": 0.172,
+    "totalGas": "279433",
+    "totalPools": 2
+  },
+  {
+    "protocolId": "mendi-finance",
+    "productId": "borrow-market",
+    "chain": "linea",
+    "latency": 0.842,
+    "relativeMaxStartTime": 0.403,
+    "relativeMaxEndTime": 0.617,
+    "totalCalls": 5,
+    "maxRpcRequestLatency": 0.215,
+    "totalGas": "420969",
+    "totalPools": 3
+  },
+  {
+    "key": "with-borrow",
+    "protocolId": "mendi-finance",
+    "productId": "borrow-market",
+    "chain": "linea",
+    "latency": 1.201,
+    "relativeMaxStartTime": 0.853,
+    "relativeMaxEndTime": 1.007,
+    "totalCalls": 5,
+    "maxRpcRequestLatency": 0.194,
+    "totalGas": "347000",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "syncswap",
+    "productId": "pool",
+    "chain": "linea",
+    "latency": 1.719,
+    "relativeMaxStartTime": 0.844,
+    "relativeMaxEndTime": 1.5,
+    "totalCalls": 10,
+    "maxRpcRequestLatency": 0.656,
+    "totalGas": "467808",
+    "totalPools": 1
+  },
+  {
+    "protocolId": "xfai",
+    "productId": "dex",
+    "chain": "linea",
+    "latency": 1.39,
+    "relativeMaxStartTime": 0.475,
+    "relativeMaxEndTime": 1.158,
+    "totalCalls": 21,
+    "maxRpcRequestLatency": 0.683,
+    "totalGas": "517832",
+    "totalPools": 7
+  }
+];
+// ### END DATA INSERT ###
+
+        let currentSortColumn = '';
+        let currentSortOrder = 'asc';
+
+        function loadTableData(data) {
+            const tableBody = document.querySelector('#dataTable tbody');
+            tableBody.innerHTML = '';
+
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.chain}</td>
+                    <td>${item.protocolId}</td>
+                    <td>${item.productId}${item.key ? ` (${item.key})` : ''}</td>
+                    <td>${item.latency}</td>
+                    <td>${item.totalCalls}</td>
+                    <td>${item.maxRpcRequestLatency}</td>
+                    <td>${item.totalGas}</td>
+                    <td>${item.totalPools}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function sortTable(column) {
+            if (currentSortColumn === column) {
+                currentSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSortColumn = column;
+                currentSortOrder = 'asc';
+            }
+
+            const sortedData = [...data].sort((a, b) => {
+                const aValue = a[column];
+                const bValue = b[column];
+
+                if (typeof aValue === 'number' && typeof bValue === 'number') {
+                    return currentSortOrder === 'asc' ? aValue - bValue : bValue - aValue;
+                } else {
+                    const aValueNum = parseFloat(aValue);
+                    const bValueNum = parseFloat(bValue);
+
+                    if (!isNaN(aValueNum) && !isNaN(bValueNum)) {
+                        return currentSortOrder === 'asc' ? aValueNum - bValueNum : bValueNum - aValueNum;
+                    } else {
+                        if (aValue < bValue) return currentSortOrder === 'asc' ? -1 : 1;
+                        if (aValue > bValue) return currentSortOrder === 'asc' ? 1 : -1;
+                        return 0;
+                    }
+                }
+            });
+
+            loadTableData(sortedData);
+        }
+
+        function loadFilters() {
+            const protocolIdFilter = document.getElementById('protocolIdFilter');
+            const chainFilter = document.getElementById('chainFilter');
+            const negativeprotocolIdFilter = document.getElementById('negativeProtocolIdFilter');
+            const negativeChainFilter = document.getElementById('negativeChainFilter');
+
+            const protocolIds = [...new Set(data.map(item => item.protocolId))].sort();
+            const chains = [...new Set(data.map(item => item.chain))].sort();
+
+            protocolIds.forEach(id => {
+                const option = document.createElement('option');
+                option.value = id;
+                option.textContent = id;
+                protocolIdFilter.appendChild(option);
+                negativeprotocolIdFilter.appendChild(option.cloneNode(true));
+            });
+
+            chains.forEach(id => {
+                const option = document.createElement('option');
+                option.value = id;
+                option.textContent = id;
+                chainFilter.appendChild(option);
+                negativeChainFilter.appendChild(option.cloneNode(true));
+            });
+        }
+
+        function filterData() {
+            const protocolIdFilter = Array.from(document.getElementById('protocolIdFilter').selectedOptions).map(option => option.value);
+            const chainFilter = Array.from(document.getElementById('chainFilter').selectedOptions).map(option => option.value);
+            const negativeProtocolIdFilter = Array.from(document.getElementById('negativeProtocolIdFilter').selectedOptions).map(option => option.value);
+            const negativeChainFilter = Array.from(document.getElementById('negativeChainFilter').selectedOptions).map(option => option.value);
+
+            const filteredData = data.filter(item => {
+                const protocolMatch = protocolIdFilter.length === 0 || protocolIdFilter.includes(item.protocolId);
+                const chainMatch = chainFilter.length === 0 || chainFilter.includes(item.chain);
+                const negativeProtocolMatch = negativeProtocolIdFilter.length === 0 || !negativeProtocolIdFilter.includes(item.protocolId);
+                const negativeChainMatch = negativeChainFilter.length === 0 || !negativeChainFilter.includes(item.chain);
+                return protocolMatch && chainMatch && negativeProtocolMatch && negativeChainMatch;
+            });
+
+            loadTableData(filteredData);
+        }
+
+        document.getElementById('protocolIdFilter').addEventListener('change', filterData);
+        document.getElementById('chainFilter').addEventListener('change', filterData);
+        document.getElementById('negativeProtocolIdFilter').addEventListener('change', filterData);
+        document.getElementById('negativeChainFilter').addEventListener('change', filterData);
+
+        loadFilters();
+        loadTableData(data);
+    </script>
+</body>
+
+</html>
