@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortable Table with Filters</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        select {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sortable Table with Filters</h1>
+    <div>
+        <label for="protocolIdFilter">Protocol ID Filter:</label>
+        <select id="protocolIdFilter" multiple></select>
+    </div>
+    <div>
+        <label for="chainFilter">Chain Filter:</label>
+        <select id="chainFilter" multiple></select>
+    </div>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Chain</th>
+                <th>Protocol Id</th>
+                <th>Product Id</th>
+                <th onclick="sortTable('latency')">Latency</th>
+                <th onclick="sortTable('totalCalls')">Total Calls</th>
+                <th onclick="sortTable('maxRpcRequestLatency')">Max RPC Request Latency</th>
+                <th onclick="sortTable('totalGas')">Total Gas</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        // ### BEGIN DATA INSERT ###
+        const data = [
+            {
+                protocolId: 'aave-v2',
+                productId: 'a-token',
+                chain: 'ethereum',
+                latency: 1.552,
+                relativeMaxStartTime: 1.036,
+                relativeMaxEndTime: 1.215,
+                totalCalls: 4,
+                maxRpcRequestLatency: 0.514,
+                totalGas: '5905681',
+            },
+            {
+                protocolId: 'aave-v2',
+                productId: 'variable-debt-token',
+                chain: 'ethereum',
+                latency: 1.578,
+                relativeMaxStartTime: 0.726,
+                relativeMaxEndTime: 1.312,
+                totalCalls: 9,
+                maxRpcRequestLatency: 0.586,
+                totalGas: '22508066',
+            },
+            {
+                protocolId: 'aave-v3',
+                productId: 'a-token',
+                chain: 'ethereum',
+                latency: 0.641,
+                relativeMaxStartTime: 0.296,
+                relativeMaxEndTime: 0.482,
+                totalCalls: 2,
+                maxRpcRequestLatency: 0.186,
+                totalGas: '81555',
+            },
+            {
+                protocolId: 'aave-v3',
+                productId: 'variable-debt-token',
+                chain: 'ethereum',
+                latency: 0.881,
+                relativeMaxStartTime: 0.414,
+                relativeMaxEndTime: 0.595,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.188,
+                totalGas: '7172089',
+            },
+            {
+                key: 'reward',
+                protocolId: 'aave-v3',
+                productId: 'rewards',
+                chain: 'arb',
+                latency: 2.821,
+                relativeMaxStartTime: 1.987,
+                relativeMaxEndTime: 2.342,
+                totalCalls: 5,
+                maxRpcRequestLatency: 0.744,
+                totalGas: '1892197',
+            },
+            {
+                key: 'positions',
+                protocolId: 'angle-protocol',
+                productId: 'savings',
+                chain: 'ethereum',
+                latency: 0.989,
+                relativeMaxStartTime: 0.655,
+                relativeMaxEndTime: 0.796,
+                totalCalls: 5,
+                maxRpcRequestLatency: 0.141,
+                totalGas: '3062600',
+            },
+            {
+                key: 'positions-filter',
+                protocolId: 'angle-protocol',
+                productId: 'savings',
+                chain: 'ethereum',
+                latency: 1.066,
+                relativeMaxStartTime: 0.71,
+                relativeMaxEndTime: 0.86,
+                totalCalls: 4,
+                maxRpcRequestLatency: 0.186,
+                totalGas: '3030916',
+            },
+            {
+                key: 'cow-token',
+                protocolId: 'beefy',
+                productId: 'cow-token',
+                chain: 'arb',
+                latency: 1.632,
+                relativeMaxStartTime: 0.998,
+                relativeMaxEndTime: 1.263,
+                totalCalls: 6,
+                maxRpcRequestLatency: 0.505,
+                totalGas: '1089573',
+            },
+            {
+                key: 'moo-token',
+                protocolId: 'beefy',
+                productId: 'moo-token',
+                chain: 'ethereum',
+                latency: 2.199,
+                relativeMaxStartTime: 1.542,
+                relativeMaxEndTime: 1.687,
+                totalCalls: 12,
+                maxRpcRequestLatency: 0.567,
+                totalGas: '5536990',
+            },
+            {
+                key: 'positions1',
+                protocolId: 'carbon-defi',
+                productId: 'strategies',
+                chain: 'ethereum',
+                latency: 1.366,
+                relativeMaxStartTime: 0.962,
+                relativeMaxEndTime: 1.12,
+                totalCalls: 7,
+                maxRpcRequestLatency: 0.16,
+                totalGas: '5066243',
+            },
+            {
+                key: 'positions2',
+                protocolId: 'carbon-defi',
+                productId: 'strategies',
+                chain: 'ethereum',
+                latency: 2.457,
+                relativeMaxStartTime: 1.787,
+                relativeMaxEndTime: 1.974,
+                totalCalls: 16,
+                maxRpcRequestLatency: 0.542,
+                totalGas: '20270872',
+            },
+            {
+                key: 'positions3',
+                protocolId: 'carbon-defi',
+                productId: 'strategies',
+                chain: 'ethereum',
+                latency: 3.389,
+                relativeMaxStartTime: 2.304,
+                relativeMaxEndTime: 2.713,
+                totalCalls: 48,
+                maxRpcRequestLatency: 1,
+                totalGas: '34433866',
+            },
+            {
+                key: 'supply',
+                protocolId: 'compound-v2',
+                productId: 'supply-market',
+                chain: 'ethereum',
+                latency: 1.092,
+                relativeMaxStartTime: 0.553,
+                relativeMaxEndTime: 0.815,
+                totalCalls: 7,
+                maxRpcRequestLatency: 0.262,
+                totalGas: '6476829',
+            },
+            {
+                key: 'supply',
+                protocolId: 'compound-v2',
+                productId: 'borrow-market',
+                chain: 'ethereum',
+                latency: 1.659,
+                relativeMaxStartTime: 0.631,
+                relativeMaxEndTime: 0.814,
+                totalCalls: 6,
+                maxRpcRequestLatency: 0.183,
+                totalGas: '8960804',
+            },
+            {
+                protocolId: 'convex',
+                productId: 'pool',
+                chain: 'ethereum',
+                latency: 1.73,
+                relativeMaxStartTime: 0.902,
+                relativeMaxEndTime: 1.46,
+                totalCalls: 9,
+                maxRpcRequestLatency: 0.558,
+                totalGas: '19318095',
+            },
+            {
+                protocolId: 'convex',
+                productId: 'staking',
+                chain: 'ethereum',
+                latency: 3.868,
+                relativeMaxStartTime: 3.35,
+                relativeMaxEndTime: 3.59,
+                totalCalls: 21,
+                maxRpcRequestLatency: 0.564,
+                totalGas: '24458055',
+            },
+            {
+                key: '2',
+                protocolId: 'convex',
+                productId: 'staking',
+                chain: 'ethereum',
+                latency: 3.35,
+                relativeMaxStartTime: 2.94,
+                relativeMaxEndTime: 3.163,
+                totalCalls: 30,
+                maxRpcRequestLatency: 0.591,
+                totalGas: '9564306',
+            },
+            {
+                key: '3',
+                protocolId: 'convex',
+                productId: 'staking',
+                chain: 'ethereum',
+                latency: 3.284,
+                relativeMaxStartTime: 2.888,
+                relativeMaxEndTime: 3.042,
+                totalCalls: 28,
+                maxRpcRequestLatency: 0.173,
+                totalGas: '22401535',
+            },
+            {
+                key: '2',
+                protocolId: 'convex',
+                productId: 'cvxcrv-wrapper',
+                chain: 'ethereum',
+                latency: 1.69,
+                relativeMaxStartTime: 1.199,
+                relativeMaxEndTime: 1.373,
+                totalCalls: 12,
+                maxRpcRequestLatency: 0.175,
+                totalGas: '24619010',
+            },
+            {
+                key: '3',
+                protocolId: 'convex',
+                productId: 'cvxcrv-wrapper',
+                chain: 'ethereum',
+                latency: 1.611,
+                relativeMaxStartTime: 1.129,
+                relativeMaxEndTime: 1.307,
+                totalCalls: 12,
+                maxRpcRequestLatency: 0.179,
+                totalGas: '24603259',
+            },
+            {
+                protocolId: 'curve',
+                productId: 'pool',
+                chain: 'ethereum',
+                latency: 1.664,
+                relativeMaxStartTime: 0.873,
+                relativeMaxEndTime: 1.056,
+                totalCalls: 9,
+                maxRpcRequestLatency: 0.184,
+                totalGas: '19313507',
+            },
+            {
+                key: 'position2',
+                protocolId: 'curve',
+                productId: 'pool',
+                chain: 'ethereum',
+                latency: 1.335,
+                relativeMaxStartTime: 0.866,
+                relativeMaxEndTime: 1.044,
+                totalCalls: 9,
+                maxRpcRequestLatency: 0.178,
+                totalGas: '19317467',
+            },
+            {
+                key: 'position2',
+                protocolId: 'curve',
+                productId: 'staking',
+                chain: 'ethereum',
+                latency: 2.191,
+                relativeMaxStartTime: 1.722,
+                relativeMaxEndTime: 1.897,
+                totalCalls: 11,
+                maxRpcRequestLatency: 0.521,
+                totalGas: '21887595',
+            },
+            {
+                key: 'voting-escrow',
+                protocolId: 'curve',
+                productId: 'voting-escrow',
+                chain: 'ethereum',
+                latency: 2.872,
+                relativeMaxStartTime: 1.855,
+                relativeMaxEndTime: 2.448,
+                totalCalls: 11,
+                maxRpcRequestLatency: 0.594,
+                totalGas: '24770487',
+            },
+            {
+                key: 'position2',
+                protocolId: 'curve',
+                productId: 'voting-escrow',
+                chain: 'ethereum',
+                latency: 2.153,
+                relativeMaxStartTime: 1.668,
+                relativeMaxEndTime: 1.857,
+                totalCalls: 11,
+                maxRpcRequestLatency: 0.308,
+                totalGas: '21783981',
+            },
+            {
+                key: 'susde',
+                protocolId: 'ethena',
+                productId: 'staked-usde',
+                chain: 'ethereum',
+                latency: 1.686,
+                relativeMaxStartTime: 1.307,
+                relativeMaxEndTime: 1.487,
+                totalCalls: 5,
+                maxRpcRequestLatency: 0.273,
+                totalGas: '2768132',
+            },
+            {
+                key: 'lp-staking',
+                protocolId: 'ethena',
+                productId: 'lp-staking',
+                chain: 'ethereum',
+                latency: 0.725,
+                relativeMaxStartTime: 0.358,
+                relativeMaxEndTime: 0.531,
+                totalCalls: 5,
+                maxRpcRequestLatency: 0.173,
+                totalGas: '5183903',
+            },
+            {
+                key: 'sena',
+                protocolId: 'ethena',
+                productId: 'staked-ena',
+                chain: 'ethereum',
+                latency: 0.653,
+                relativeMaxStartTime: 0.316,
+                relativeMaxEndTime: 0.466,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.15,
+                totalGas: '2229616',
+            },
+            {
+                key: 'user1',
+                protocolId: 'etherfi',
+                productId: 'e-eth',
+                chain: 'ethereum',
+                latency: 0.64,
+                relativeMaxStartTime: 0.29,
+                relativeMaxEndTime: 0.412,
+                totalCalls: 2,
+                maxRpcRequestLatency: 0.126,
+                totalGas: '86174',
+            },
+            {
+                key: 'user1',
+                protocolId: 'etherfi',
+                productId: 'we-eth',
+                chain: 'ethereum',
+                latency: 0.888,
+                relativeMaxStartTime: 0.591,
+                relativeMaxEndTime: 0.718,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.129,
+                totalGas: '118505',
+            },
+            {
+                key: 'user2',
+                protocolId: 'etherfi',
+                productId: 'liquid',
+                chain: 'ethereum',
+                latency: 0.935,
+                relativeMaxStartTime: 0.616,
+                relativeMaxEndTime: 0.743,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.127,
+                totalGas: '85287',
+            },
+            {
+                key: 'user3',
+                protocolId: 'etherfi',
+                productId: 'l2',
+                chain: 'base',
+                latency: 0.806,
+                relativeMaxStartTime: 0,
+                relativeMaxEndTime: 0.654,
+                totalCalls: 1,
+                maxRpcRequestLatency: 0.654,
+                totalGas: '29413',
+            },
+            {
+                key: 'user4',
+                protocolId: 'etherfi',
+                productId: 'l2',
+                chain: 'linea',
+                latency: 0.92,
+                relativeMaxStartTime: 0,
+                relativeMaxEndTime: 0.68,
+                totalCalls: 1,
+                maxRpcRequestLatency: 0.68,
+                totalGas: '29425',
+            },
+            {
+                protocolId: 'flux',
+                productId: 'supply-market',
+                chain: 'ethereum',
+                latency: 2.754,
+                relativeMaxStartTime: 0.6,
+                relativeMaxEndTime: 2.439,
+                totalCalls: 4,
+                maxRpcRequestLatency: 1.839,
+                totalGas: '8804596',
+            },
+            {
+                protocolId: 'flux',
+                productId: 'borrow-market',
+                chain: 'ethereum',
+                latency: 1.34,
+                relativeMaxStartTime: 0.729,
+                relativeMaxEndTime: 0.962,
+                totalCalls: 4,
+                maxRpcRequestLatency: 0.233,
+                totalGas: '8811813',
+            },
+            {
+                protocolId: 'lido',
+                productId: 'st-eth',
+                chain: 'ethereum',
+                latency: 0.61,
+                relativeMaxStartTime: 0.312,
+                relativeMaxEndTime: 0.43,
+                totalCalls: 2,
+                maxRpcRequestLatency: 0.122,
+                totalGas: '102973',
+            },
+            {
+                protocolId: 'lido',
+                productId: 'wst-eth',
+                chain: 'ethereum',
+                latency: 1.03,
+                relativeMaxStartTime: 0.71,
+                relativeMaxEndTime: 0.828,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.126,
+                totalGas: '130227',
+            },
+            {
+                protocolId: 'maker',
+                productId: 's-dai',
+                chain: 'ethereum',
+                latency: 1.373,
+                relativeMaxStartTime: 0.672,
+                relativeMaxEndTime: 0.851,
+                totalCalls: 4,
+                maxRpcRequestLatency: 0.181,
+                totalGas: '5025097',
+            },
+            {
+                protocolId: 'morpho-aave-v2',
+                productId: 'optimizer-borrow',
+                chain: 'ethereum',
+                latency: 1.477,
+                relativeMaxStartTime: 1.198,
+                relativeMaxEndTime: 1.322,
+                totalCalls: 8,
+                maxRpcRequestLatency: 1.049,
+                totalGas: '757163',
+            },
+            {
+                protocolId: 'morpho-aave-v2',
+                productId: 'optimizer-supply',
+                chain: 'ethereum',
+                latency: 1.237,
+                relativeMaxStartTime: 0.32,
+                relativeMaxEndTime: 0.961,
+                totalCalls: 10,
+                maxRpcRequestLatency: 0.641,
+                totalGas: '14928295',
+            },
+            {
+                protocolId: 'morpho-aave-v3',
+                productId: 'optimizer-supply',
+                chain: 'ethereum',
+                latency: 1.363,
+                relativeMaxStartTime: 1.006,
+                relativeMaxEndTime: 1.144,
+                totalCalls: 20,
+                maxRpcRequestLatency: 0.865,
+                totalGas: '1243609',
+            },
+            {
+                protocolId: 'morpho-aave-v3',
+                productId: 'optimizer-borrow',
+                chain: 'ethereum',
+                latency: 0.624,
+                relativeMaxStartTime: 0.287,
+                relativeMaxEndTime: 0.415,
+                totalCalls: 2,
+                maxRpcRequestLatency: 0.128,
+                totalGas: '115286',
+            },
+            {
+                key: '1',
+                protocolId: 'morpho-blue',
+                productId: 'market-supply',
+                chain: 'ethereum',
+                latency: 1.054,
+                relativeMaxStartTime: 0.764,
+                relativeMaxEndTime: 0.887,
+                totalCalls: 17,
+                maxRpcRequestLatency: 0.159,
+                totalGas: '492435',
+            },
+            {
+                key: '2',
+                protocolId: 'morpho-blue',
+                productId: 'market-supply',
+                chain: 'ethereum',
+                latency: 1.216,
+                relativeMaxStartTime: 0.753,
+                relativeMaxEndTime: 1.029,
+                totalCalls: 25,
+                maxRpcRequestLatency: 0.277,
+                totalGas: '7252852',
+            },
+            {
+                key: '2',
+                protocolId: 'morpho-blue',
+                productId: 'market-borrow',
+                chain: 'ethereum',
+                latency: 1.821,
+                relativeMaxStartTime: 1.062,
+                relativeMaxEndTime: 1.508,
+                totalCalls: 24,
+                maxRpcRequestLatency: 0.446,
+                totalGas: '16568375',
+            },
+            {
+                key: '11',
+                protocolId: 'morpho-blue',
+                productId: 'vault',
+                chain: 'ethereum',
+                latency: 1.533,
+                relativeMaxStartTime: 0.341,
+                relativeMaxEndTime: 1.119,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.778,
+                totalGas: '9479880',
+            },
+            {
+                key: '12',
+                protocolId: 'morpho-blue',
+                productId: 'vault',
+                chain: 'base',
+                latency: 1.14,
+                relativeMaxStartTime: 0.855,
+                relativeMaxEndTime: 0.974,
+                totalCalls: 2,
+                maxRpcRequestLatency: 0.583,
+                totalGas: '61995',
+            },
+            {
+                protocolId: 'morpho-compound-v2',
+                productId: 'optimizer-supply',
+                chain: 'ethereum',
+                latency: 1.425,
+                relativeMaxStartTime: 0.829,
+                relativeMaxEndTime: 1.138,
+                totalCalls: 11,
+                maxRpcRequestLatency: 0.644,
+                totalGas: '12143439',
+            },
+            {
+                protocolId: 'morpho-compound-v2',
+                productId: 'optimizer-borrow',
+                chain: 'ethereum',
+                latency: 0.802,
+                relativeMaxStartTime: 0.321,
+                relativeMaxEndTime: 0.514,
+                totalCalls: 10,
+                maxRpcRequestLatency: 0.193,
+                totalGas: '7497120',
+            },
+            {
+                protocolId: 'mountain-protocol',
+                productId: 'usdm',
+                chain: 'ethereum',
+                latency: 1.93,
+                relativeMaxStartTime: 0.316,
+                relativeMaxEndTime: 0.995,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.679,
+                totalGas: '10299882',
+            },
+            {
+                key: 'yt-lp',
+                protocolId: 'pendle',
+                productId: 'yield-token',
+                chain: 'ethereum',
+                latency: 1.302,
+                relativeMaxStartTime: 0.893,
+                relativeMaxEndTime: 1.031,
+                totalCalls: 12,
+                maxRpcRequestLatency: 0.139,
+                totalGas: '6325718',
+            },
+            {
+                key: 'pt-sy',
+                protocolId: 'pendle',
+                productId: 'yield-token',
+                chain: 'ethereum',
+                latency: 1.569,
+                relativeMaxStartTime: 1.222,
+                relativeMaxEndTime: 1.374,
+                totalCalls: 18,
+                maxRpcRequestLatency: 0.168,
+                totalGas: '9003896',
+            },
+            {
+                key: 'pt-sy',
+                protocolId: 'pendle',
+                productId: 'principle-token',
+                chain: 'ethereum',
+                latency: 1.297,
+                relativeMaxStartTime: 1,
+                relativeMaxEndTime: 1.119,
+                totalCalls: 4,
+                maxRpcRequestLatency: 0.175,
+                totalGas: '252457',
+            },
+            {
+                key: 'yt-lp',
+                protocolId: 'pendle',
+                productId: 'standardised-yield-token',
+                chain: 'ethereum',
+                latency: 1.345,
+                relativeMaxStartTime: 0.586,
+                relativeMaxEndTime: 0.735,
+                totalCalls: 10,
+                maxRpcRequestLatency: 0.149,
+                totalGas: '7689696',
+            },
+            {
+                key: 'pt-sy',
+                protocolId: 'pendle',
+                productId: 'standardised-yield-token',
+                chain: 'ethereum',
+                latency: 1.568,
+                relativeMaxStartTime: 1.221,
+                relativeMaxEndTime: 1.372,
+                totalCalls: 13,
+                maxRpcRequestLatency: 0.153,
+                totalGas: '5770879',
+            },
+            {
+                key: 'yt-lp',
+                protocolId: 'pendle',
+                productId: 'lp-token',
+                chain: 'ethereum',
+                latency: 2.007,
+                relativeMaxStartTime: 1.539,
+                relativeMaxEndTime: 1.679,
+                totalCalls: 15,
+                maxRpcRequestLatency: 0.209,
+                totalGas: '8783484',
+            },
+            {
+                protocolId: 'renzo',
+                productId: 'ez-eth',
+                chain: 'ethereum',
+                latency: 0.979,
+                relativeMaxStartTime: 0.678,
+                relativeMaxEndTime: 0.802,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.159,
+                totalGas: '748064',
+            },
+            {
+                key: 'reth',
+                protocolId: 'rocket-pool',
+                productId: 'reth',
+                chain: 'ethereum',
+                latency: 1.019,
+                relativeMaxStartTime: 0.703,
+                relativeMaxEndTime: 0.822,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.174,
+                totalGas: '103447',
+            },
+            {
+                key: 'user1',
+                protocolId: 'solv',
+                productId: 'solv-btc',
+                chain: 'ethereum',
+                latency: 0.667,
+                relativeMaxStartTime: 0.344,
+                relativeMaxEndTime: 0.491,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.147,
+                totalGas: '2361289',
+            },
+            {
+                key: 'user2',
+                protocolId: 'solv',
+                productId: 'solv-btc',
+                chain: 'ethereum',
+                latency: 0.664,
+                relativeMaxStartTime: 0.322,
+                relativeMaxEndTime: 0.465,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.143,
+                totalGas: '2361311',
+            },
+            {
+                key: 'user1',
+                protocolId: 'solv',
+                productId: 'solv-btc',
+                chain: 'arb',
+                latency: 2.102,
+                relativeMaxStartTime: 1.118,
+                relativeMaxEndTime: 1.881,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.891,
+                totalGas: '2131259',
+            },
+            {
+                key: 'user2',
+                protocolId: 'solv',
+                productId: 'solv-btc',
+                chain: 'arb',
+                latency: 1.109,
+                relativeMaxStartTime: 0.386,
+                relativeMaxEndTime: 0.83,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.444,
+                totalGas: '2131259',
+            },
+            {
+                key: 'user5',
+                protocolId: 'solv',
+                productId: 'yield-market',
+                chain: 'arb',
+                latency: 3.771,
+                relativeMaxStartTime: 3.182,
+                relativeMaxEndTime: 3.585,
+                totalCalls: 32,
+                maxRpcRequestLatency: 0.521,
+                totalGas: '4275733',
+            },
+            {
+                protocolId: 'spark-v1',
+                productId: 'sp-token',
+                chain: 'ethereum',
+                latency: 1.189,
+                relativeMaxStartTime: 0.861,
+                relativeMaxEndTime: 0.98,
+                totalCalls: 2,
+                maxRpcRequestLatency: 0.699,
+                totalGas: '81978',
+            },
+            {
+                protocolId: 'stakewise',
+                productId: 'os-eth',
+                chain: 'ethereum',
+                latency: 0.975,
+                relativeMaxStartTime: 0.564,
+                relativeMaxEndTime: 0.756,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.192,
+                totalGas: '92720',
+            },
+            {
+                key: 'pool-v1-and-stake',
+                protocolId: 'stargate',
+                productId: 'pool',
+                chain: 'ethereum',
+                latency: 1.89,
+                relativeMaxStartTime: 0.623,
+                relativeMaxEndTime: 1.636,
+                totalCalls: 4,
+                maxRpcRequestLatency: 1.013,
+                totalGas: '5555396',
+            },
+            {
+                key: 'pool-v1-and-stake',
+                protocolId: 'stargate',
+                productId: 'voting-escrow',
+                chain: 'ethereum',
+                latency: 1.722,
+                relativeMaxStartTime: 0.69,
+                relativeMaxEndTime: 1.231,
+                totalCalls: 5,
+                maxRpcRequestLatency: 0.541,
+                totalGas: '8778246',
+            },
+            {
+                key: 'farm-v1',
+                protocolId: 'stargate',
+                productId: 'farm',
+                chain: 'ethereum',
+                latency: 1.726,
+                relativeMaxStartTime: 0.899,
+                relativeMaxEndTime: 1.098,
+                totalCalls: 6,
+                maxRpcRequestLatency: 0.2,
+                totalGas: '10318141',
+            },
+            {
+                key: 'pool-v2',
+                protocolId: 'stargate',
+                productId: 'pool-v2',
+                chain: 'ethereum',
+                latency: 0.624,
+                relativeMaxStartTime: 0.314,
+                relativeMaxEndTime: 0.478,
+                totalCalls: 2,
+                maxRpcRequestLatency: 0.164,
+                totalGas: '61484',
+            },
+            {
+                key: 'pool-v2',
+                protocolId: 'stargate',
+                productId: 'pool-v2',
+                chain: 'base',
+                latency: 1.276,
+                relativeMaxStartTime: 0.987,
+                relativeMaxEndTime: 1.137,
+                totalCalls: 2,
+                maxRpcRequestLatency: 0.775,
+                totalGas: '61484',
+            },
+            {
+                key: 'farm-v2',
+                protocolId: 'stargate',
+                productId: 'farm-v2',
+                chain: 'ethereum',
+                latency: 1.823,
+                relativeMaxStartTime: 0.589,
+                relativeMaxEndTime: 0.997,
+                totalCalls: 5,
+                maxRpcRequestLatency: 0.408,
+                totalGas: '10287331',
+            },
+            {
+                key: 'single-position',
+                protocolId: 'sushiswap-v2',
+                productId: 'pool',
+                chain: 'ethereum',
+                latency: 1.152,
+                relativeMaxStartTime: 0.583,
+                relativeMaxEndTime: 0.842,
+                totalCalls: 5,
+                maxRpcRequestLatency: 0.259,
+                totalGas: '7132215',
+            },
+            {
+                key: 'multiple-positions',
+                protocolId: 'sushiswap-v2',
+                productId: 'pool',
+                chain: 'ethereum',
+                latency: 1.856,
+                relativeMaxStartTime: 1.394,
+                relativeMaxEndTime: 1.57,
+                totalCalls: 13,
+                maxRpcRequestLatency: 0.563,
+                totalGas: '18465462',
+            },
+            {
+                protocolId: 'swell',
+                productId: 'sw-eth',
+                chain: 'ethereum',
+                latency: 0.879,
+                relativeMaxStartTime: 0.605,
+                relativeMaxEndTime: 0.746,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.179,
+                totalGas: '100259',
+            },
+            {
+                protocolId: 'uniswap-v2',
+                productId: 'pool',
+                chain: 'ethereum',
+                latency: 1.766,
+                relativeMaxStartTime: 0.662,
+                relativeMaxEndTime: 1.342,
+                totalCalls: 9,
+                maxRpcRequestLatency: 0.681,
+                totalGas: '15836839',
+            },
+            {
+                protocolId: 'uniswap-v3',
+                productId: 'pool',
+                chain: 'ethereum',
+                latency: 1.897,
+                relativeMaxStartTime: 1.235,
+                relativeMaxEndTime: 1.468,
+                totalCalls: 18,
+                maxRpcRequestLatency: 0.74,
+                totalGas: '5830977',
+            },
+            {
+                key: '2',
+                protocolId: 'uniswap-v3',
+                productId: 'pool',
+                chain: 'ethereum',
+                latency: 1.144,
+                relativeMaxStartTime: 0.684,
+                relativeMaxEndTime: 0.966,
+                totalCalls: 15,
+                maxRpcRequestLatency: 0.282,
+                totalGas: '9589434',
+            },
+            {
+                protocolId: 'zerolend',
+                productId: 'a-token',
+                chain: 'ethereum',
+                latency: 0.615,
+                relativeMaxStartTime: 0.325,
+                relativeMaxEndTime: 0.445,
+                totalCalls: 2,
+                maxRpcRequestLatency: 0.134,
+                totalGas: '81885',
+            },
+            {
+                protocolId: 'quickswap-v2',
+                productId: 'pool',
+                chain: 'matic',
+                latency: 2.467,
+                relativeMaxStartTime: 1.459,
+                relativeMaxEndTime: 1.595,
+                totalCalls: 5,
+                maxRpcRequestLatency: 0.635,
+                totalGas: '5264394',
+            },
+            {
+                protocolId: 'gmx',
+                productId: 'glp',
+                chain: 'avax',
+                latency: 2.181,
+                relativeMaxStartTime: 1.714,
+                relativeMaxEndTime: 1.939,
+                totalCalls: 16,
+                maxRpcRequestLatency: 0.621,
+                totalGas: '7161777',
+            },
+            {
+                protocolId: 'sonne',
+                productId: 'supply-market',
+                chain: 'op',
+                latency: 1.46,
+                relativeMaxStartTime: 1.057,
+                relativeMaxEndTime: 1.183,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.547,
+                totalGas: '141328',
+            },
+            {
+                protocolId: 'sonne',
+                productId: 'borrow-market',
+                chain: 'op',
+                latency: 8.131,
+                relativeMaxStartTime: 0.753,
+                relativeMaxEndTime: 4.881,
+                totalCalls: 4,
+                maxRpcRequestLatency: 4.128,
+                totalGas: '6064172',
+            },
+            {
+                protocolId: 'iziswap',
+                productId: 'pool',
+                chain: 'linea',
+                latency: 2.91,
+                relativeMaxStartTime: 2.039,
+                relativeMaxEndTime: 2.709,
+                totalCalls: 12,
+                maxRpcRequestLatency: 0.693,
+                totalGas: '732491',
+            },
+            {
+                protocolId: 'deri',
+                productId: 'pool',
+                chain: 'arb',
+                latency: 1.885,
+                relativeMaxStartTime: 1.597,
+                relativeMaxEndTime: 1.72,
+                totalCalls: 4,
+                maxRpcRequestLatency: 0.805,
+                totalGas: '223653',
+            },
+            {
+                protocolId: 'chimp-exchange',
+                productId: 'pool',
+                chain: 'linea',
+                latency: 1.136,
+                relativeMaxStartTime: 0.789,
+                relativeMaxEndTime: 0.948,
+                totalCalls: 3,
+                maxRpcRequestLatency: 0.22,
+                totalGas: '178883',
+            },
+            {
+                protocolId: 'lynex',
+                productId: 'algebra',
+                chain: 'linea',
+                latency: 1.751,
+                relativeMaxStartTime: 0.5,
+                relativeMaxEndTime: 1.498,
+                totalCalls: 27,
+                maxRpcRequestLatency: 0.998,
+                totalGas: '2543372',
+            },
+            {
+                protocolId: 'mendi-finance',
+                productId: 'supply-market',
+                chain: 'linea',
+                latency: 0.767,
+                relativeMaxStartTime: 0.388,
+                relativeMaxEndTime: 0.547,
+                totalCalls: 8,
+                maxRpcRequestLatency: 0.183,
+                totalGas: '506646',
+            },
+            {
+                key: 'with-borrow',
+                protocolId: 'mendi-finance',
+                productId: 'supply-market',
+                chain: 'linea',
+                latency: 0.749,
+                relativeMaxStartTime: 0.403,
+                relativeMaxEndTime: 0.568,
+                totalCalls: 5,
+                maxRpcRequestLatency: 0.194,
+                totalGas: '279433',
+            },
+            {
+                protocolId: 'mendi-finance',
+                productId: 'borrow-market',
+                chain: 'linea',
+                latency: 0.823,
+                relativeMaxStartTime: 0.389,
+                relativeMaxEndTime: 0.572,
+                totalCalls: 5,
+                maxRpcRequestLatency: 0.183,
+                totalGas: '420969',
+            },
+            {
+                key: 'with-borrow',
+                protocolId: 'mendi-finance',
+                productId: 'borrow-market',
+                chain: 'linea',
+                latency: 1.257,
+                relativeMaxStartTime: 0.898,
+                relativeMaxEndTime: 1.055,
+                totalCalls: 5,
+                maxRpcRequestLatency: 0.215,
+                totalGas: '347000',
+            },
+            {
+                protocolId: 'syncswap',
+                productId: 'pool',
+                chain: 'linea',
+                latency: 1.377,
+                relativeMaxStartTime: 0.483,
+                relativeMaxEndTime: 1.161,
+                totalCalls: 10,
+                maxRpcRequestLatency: 0.678,
+                totalGas: '467808',
+            },
+            {
+                protocolId: 'xfai',
+                productId: 'dex',
+                chain: 'linea',
+                latency: 1.416,
+                relativeMaxStartTime: 0.482,
+                relativeMaxEndTime: 1.178,
+                totalCalls: 21,
+                maxRpcRequestLatency: 0.697,
+                totalGas: '517832',
+            },
+        ];
+        // ### END DATA INSERT ###
+
+        let currentSortColumn = '';
+        let currentSortOrder = 'asc';
+
+        function loadTableData(data) {
+            const tableBody = document.querySelector('#dataTable tbody');
+            tableBody.innerHTML = '';
+
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.chain}</td>
+                    <td>${item.protocolId}</td>
+                    <td>${item.productId}${item.key ? ' - ' + item.key : ''}</td>
+                    <td>${item.latency}</td>
+                    <td>${item.totalCalls}</td>
+                    <td>${item.maxRpcRequestLatency}</td>
+                    <td>${item.totalGas}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function sortTable(column) {
+            if (currentSortColumn === column) {
+                currentSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSortColumn = column;
+                currentSortOrder = 'asc';
+            }
+
+            const sortedData = [...data].sort((a, b) => {
+                if (a[column] < b[column]) return currentSortOrder === 'asc' ? -1 : 1;
+                if (a[column] > b[column]) return currentSortOrder === 'asc' ? 1 : -1;
+                return 0;
+            });
+
+            loadTableData(sortedData);
+        }
+
+        function loadFilters() {
+            const protocolIdFilter = document.getElementById('protocolIdFilter');
+            const chainFilter = document.getElementById('chainFilter');
+
+            const protocolIds = [...new Set(data.map(item => item.protocolId))];
+            const chains = [...new Set(data.map(item => item.chain))];
+
+            protocolIds.forEach(id => {
+                const option = document.createElement('option');
+                option.value = id;
+                option.textContent = id;
+                protocolIdFilter.appendChild(option);
+            });
+
+            chains.forEach(id => {
+                const option = document.createElement('option');
+                option.value = id;
+                option.textContent = id;
+                chainFilter.appendChild(option);
+            });
+        }
+
+        function filterData() {
+            const protocolIdFilter = Array.from(document.getElementById('protocolIdFilter').selectedOptions).map(option => option.value);
+            const chainFilter = Array.from(document.getElementById('chainFilter').selectedOptions).map(option => option.value);
+
+            const filteredData = data.filter(item => {
+                const protocolMatch = protocolIdFilter.length === 0 || protocolIdFilter.includes(item.protocolId);
+                const chainMatch = chainFilter.length === 0 || chainFilter.includes(item.chain);
+                return protocolMatch && chainMatch;
+            });
+
+            loadTableData(filteredData);
+        }
+
+        document.getElementById('protocolIdFilter').addEventListener('change', filterData);
+        document.getElementById('chainFilter').addEventListener('change', filterData);
+
+        loadFilters();
+        loadTableData(data);
+    </script>
+</body>
+
+</html>
