@@ -58,27 +58,63 @@
         tr:hover {
             background-color: #f1f1f1;
         }
+
+        /* Styles for multi-select elements */
+        select[multiple] {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        /* Styles for the container of the multi-select elements */
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .filter-container>div {
+            flex: 1;
+            min-width: 200px;
+        }
     </style>
 </head>
 
 <body>
     <h1>Sortable Table with Filters</h1>
-    <div>
-        <label for="protocolIdFilter">Protocol ID Filter:</label>
-        <select id="protocolIdFilter" multiple></select>
-    </div>
-    <div>
-        <label for="chainFilter">Chain Filter:</label>
-        <select id="chainFilter" multiple></select>
+    <div class="filter-container">
+        <div>
+            <label for="protocolIdFilter">Protocol Filter:</label>
+            <select id="protocolIdFilter" multiple></select>
+        </div>
+        <div>
+            <label for="chainFilter">Chain Filter:</label>
+            <select id="chainFilter" multiple></select>
+        </div>
+        <div>
+            <label for="negativeProtocolIdFilter">Negative Protocol Filter:</label>
+            <select id="negativeProtocolIdFilter" multiple></select>
+        </div>
+        <div>
+            <label for="negativeChainFilter">Negative Chain Filter:</label>
+            <select id="negativeChainFilter" multiple></select>
+        </div>
     </div>
     <table id="dataTable">
         <thead>
             <tr>
                 <th>Chain</th>
-                <th>Protocol Id</th>
-                <th>Product Id</th>
+                <th>Protocol</th>
+                <th>Product & Key</th>
                 <th onclick="sortTable('latency')">Latency</th>
-                <th onclick="sortTable('totalCalls')">Total Calls</th>
+                <th onclick="sortTable('totalCalls')">Total RPC Calls</th>
                 <th onclick="sortTable('maxRpcRequestLatency')">Max RPC Request Latency</th>
                 <th onclick="sortTable('totalGas')">Total Gas</th>
             </tr>
@@ -1170,7 +1206,7 @@
                 row.innerHTML = `
                     <td>${item.chain}</td>
                     <td>${item.protocolId}</td>
-                    <td>${item.productId}${item.key ? ' - ' + item.key : ''}</td>
+                    <td>${item.productId}${item.key ? ` (${item.key})` : ''}</td>
                     <td>${item.latency}</td>
                     <td>${item.totalCalls}</td>
                     <td>${item.maxRpcRequestLatency}</td>
@@ -1200,15 +1236,18 @@
         function loadFilters() {
             const protocolIdFilter = document.getElementById('protocolIdFilter');
             const chainFilter = document.getElementById('chainFilter');
+            const negativeprotocolIdFilter = document.getElementById('negativeProtocolIdFilter');
+            const negativeChainFilter = document.getElementById('negativeChainFilter');
 
-            const protocolIds = [...new Set(data.map(item => item.protocolId))];
-            const chains = [...new Set(data.map(item => item.chain))];
+            const protocolIds = [...new Set(data.map(item => item.protocolId))].sort();
+            const chains = [...new Set(data.map(item => item.chain))].sort();
 
             protocolIds.forEach(id => {
                 const option = document.createElement('option');
                 option.value = id;
                 option.textContent = id;
                 protocolIdFilter.appendChild(option);
+                negativeprotocolIdFilter.appendChild(option.cloneNode(true));
             });
 
             chains.forEach(id => {
@@ -1216,17 +1255,22 @@
                 option.value = id;
                 option.textContent = id;
                 chainFilter.appendChild(option);
+                negativeChainFilter.appendChild(option.cloneNode(true));
             });
         }
 
         function filterData() {
             const protocolIdFilter = Array.from(document.getElementById('protocolIdFilter').selectedOptions).map(option => option.value);
             const chainFilter = Array.from(document.getElementById('chainFilter').selectedOptions).map(option => option.value);
+            const negativeProtocolIdFilter = Array.from(document.getElementById('negativeProtocolIdFilter').selectedOptions).map(option => option.value);
+            const negativeChainFilter = Array.from(document.getElementById('negativeChainFilter').selectedOptions).map(option => option.value);
 
             const filteredData = data.filter(item => {
                 const protocolMatch = protocolIdFilter.length === 0 || protocolIdFilter.includes(item.protocolId);
                 const chainMatch = chainFilter.length === 0 || chainFilter.includes(item.chain);
-                return protocolMatch && chainMatch;
+                const negativeProtocolMatch = negativeProtocolIdFilter.length === 0 || !negativeProtocolIdFilter.includes(item.protocolId);
+                const negativeChainMatch = negativeChainFilter.length === 0 || !negativeChainFilter.includes(item.chain);
+                return protocolMatch && chainMatch && negativeProtocolMatch && negativeChainMatch;
             });
 
             loadTableData(filteredData);
@@ -1234,6 +1278,8 @@
 
         document.getElementById('protocolIdFilter').addEventListener('change', filterData);
         document.getElementById('chainFilter').addEventListener('change', filterData);
+        document.getElementById('negativeProtocolIdFilter').addEventListener('change', filterData);
+        document.getElementById('negativeChainFilter').addEventListener('change', filterData);
 
         loadFilters();
         loadTableData(data);
