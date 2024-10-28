@@ -168,7 +168,12 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
       const pool = poolsMap[poolId]!
 
       // Handle underlyingTokens
-      if (row.underlying_token_address) {
+      if (
+        row.underlying_token_address &&
+        !pool.underlyingTokens.some(
+          (token) => token.address === row.underlying_token_address,
+        )
+      ) {
         const underlyingAdditionalData = row.underlying_additional_data
           ? JSON.parse(row.underlying_additional_data)
           : {}
@@ -183,7 +188,12 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
       }
 
       // Handle rewardTokens only if it exists
-      if (row.reward_token_address) {
+      if (
+        row.reward_token_address &&
+        !pool.rewardTokens?.some(
+          (token) => token.address === row.reward_token_address,
+        )
+      ) {
         const rewardAdditionalData = row.reward_additional_data
           ? JSON.parse(row.reward_additional_data)
           : {}
@@ -202,7 +212,12 @@ export class SQLiteMetadataProvider implements IMetadataProvider {
       }
 
       // Handle extraRewardTokens only if it exists
-      if (row.extra_reward_token_address) {
+      if (
+        row.extra_reward_token_address &&
+        !pool.extraRewardTokens?.some(
+          (token) => token.address === row.extra_reward_token_address,
+        )
+      ) {
         const extraRewardAdditionalData = row.extra_reward_additional_data
           ? JSON.parse(row.extra_reward_additional_data)
           : {}

@@ -113,6 +113,7 @@ function addressCommand(
   feature: (input: {
     userAddress: string
     filterProtocolIds?: Protocol[]
+    filterProductIds?: string[]
     filterChainIds?: Chain[]
     includeRawValues?: boolean
     filterProtocolTokens?: string[]
@@ -139,15 +140,24 @@ function addressCommand(
       '-t, --protocol-tokens <protocol-tokens>',
       'comma-separated protocol token address filter (e.g. 0x030..., 0x393.., 0x332...)',
     )
+    .option(
+      '-pd, --product-ids <product-ids>',
+      'comma-separated product id filter (e.g. reward, a-token, staking)',
+    )
     .showHelpAfterError()
-    .action(async (userAddress, { protocols, chains, raw, protocolTokens }) => {
-      const filterProtocolIds = multiProtocolFilter(protocols)
-      const filterChainIds = multiChainFilter(chains)
+    .action(
+      async (
+        userAddress,
+        { protocols, productIds, chains, raw, protocolTokens },
+      ) => {
+        const filterProtocolIds = multiProtocolFilter(protocols)
+        const filterProductIds = multiProductFilter(productIds)
+        const filterChainIds = multiChainFilter(chains)
 
-      const filterProtocolTokens =
-        multiProtocolTokenAddressFilter(protocolTokens)
+        const filterProtocolTokens =
+          multiProtocolTokenAddressFilter(protocolTokens)
 
-      const includeRawValues = raw === 'true'
+        const includeRawValues = raw === 'true'
 
       const msw = startRpcSnapshot(
         Object.values(defiProvider.chainProvider.providers).map(
@@ -159,6 +169,7 @@ function addressCommand(
       const data = await feature({
         userAddress,
         filterProtocolIds,
+        filterProductIds,
         filterChainIds,
         includeRawValues,
         filterProtocolTokens,
