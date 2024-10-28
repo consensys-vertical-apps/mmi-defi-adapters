@@ -35,9 +35,8 @@ import {
   enrichTotalValueLocked,
   enrichUnwrappedTokenExchangeRates,
 } from './responseAdapters'
-import { ChecksumAddress } from './scripts/checksumAddress'
+import { ChecksumAddress } from './core/decorators/checksumAddress'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
-import { PositionType } from './types/adapter'
 import { DeepPartial } from './types/deepPartial'
 import {
   AdapterErrorResponse,

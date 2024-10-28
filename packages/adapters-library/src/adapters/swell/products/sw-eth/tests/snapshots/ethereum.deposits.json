@@ -17,15 +17,15 @@
         "transactionHash": "0x1d8129408e609055e9faae1d4deeeeb37a13cdbfb9dad65af0fbfb0718af5af8",
         "protocolToken": {
           "address": "0xf951E335afb289353dc249e82926178EaC7DEd78",
-          "name": "Swell Ethereum",
-          "symbol": "SWETH",
+          "name": "swETH",
+          "symbol": "swETH",
           "decimals": 18
         },
         "tokens": [
           {
             "address": "0xf951E335afb289353dc249e82926178EaC7DEd78",
-            "name": "Swell Ethereum",
-            "symbol": "SWETH",
+            "name": "swETH",
+            "symbol": "swETH",
             "decimals": 18,
             "balanceRaw": "2397006126796776282n",
             "type": "underlying",

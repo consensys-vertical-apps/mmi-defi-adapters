@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { DefiProvider } from '../defiProvider'
+import { DefiProvider } from '../../defiProvider'
 
 // Regex to check if a string is a valid Ethereum address format
 const isEthereumAddress = (address: string) =>
