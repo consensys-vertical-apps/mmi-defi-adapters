@@ -16,7 +16,7 @@
       "tokens": [
         {
           "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
-          "name": "Savings Dai",
+          "name": "sDAI",
           "decimals": 18,
           "symbol": "sDAI",
           "baseRate": 1,

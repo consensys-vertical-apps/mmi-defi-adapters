@@ -29,12 +29,10 @@ export async function fetchAllMarkets(chainId: Chain) {
       skip += data.limit
       total = data.total
 
-      // Check if we've fetched all markets
-      if (allMarkets.length >= total) {
+      // If the results fetched are fewer than the limit, we know we have all the data.
+      if (data?.results?.length < limit) {
         hasMore = false
       }
-    } else {
-      hasMore = false
     }
   }
 

@@ -1,0 +1,45 @@
+{
+  "latency": "Latency: 0.001 seconds",
+  "blockNumber": 21057297,
+  "snapshot": [
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "lp-token",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "baseRate": 1,
+          "type": "protocol",
+          "address": "0xf8208fB52BA80075aF09840A683143C22DC5B4dd",
+          "name": "PENDLE-LPT",
+          "symbol": "PENDLE-LPT",
+          "decimals": 18,
+          "tokens": [
+            {
+              "type": "underlying",
+              "underlyingRateRaw": "1990819786307620265n",
+              "address": "0xF469fBD2abcd6B9de8E169d128226C0Fc90a012e",
+              "name": "pumpBTC",
+              "symbol": "pumpBTC",
+              "decimals": 8,
+              "underlyingRate": 19908197863.076202,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xF469fBD2abcd6B9de8E169d128226C0Fc90a012e/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "abdd05df41bbcaf9d27dac1284208caf": {
+      "result": "0x0000000000000000000000000000000000000000000000001ba0d00c3eaf4da9"
+    }
+  }
+}

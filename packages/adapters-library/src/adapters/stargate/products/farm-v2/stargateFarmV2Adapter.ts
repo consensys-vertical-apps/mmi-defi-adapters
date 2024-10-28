@@ -16,6 +16,7 @@ import {
   GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
+  MovementsByBlockReward,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -301,7 +302,7 @@ export class StargateFarmV2Adapter implements IProtocolAdapter {
     protocolTokenAddress,
     fromBlock,
     toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
+  }: GetEventsInput): Promise<MovementsByBlockReward[]> {
     const { rewardTokens, rewarderAddress, address, symbol, name, decimals } =
       await this.getProtocolTokenByAddress(protocolTokenAddress)
 
@@ -346,7 +347,7 @@ export class StargateFarmV2Adapter implements IProtocolAdapter {
             name: rewardToken.name,
             symbol: rewardToken.symbol,
             decimals: rewardToken.decimals,
-            type: TokenType.Underlying,
+            type: TokenType.UnderlyingClaimable,
             blockNumber: event.blockNumber,
             balanceRaw: rewardAmount,
           }
