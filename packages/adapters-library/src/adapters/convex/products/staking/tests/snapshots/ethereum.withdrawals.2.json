@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD60.01", "USD34.27"],
-  "latency": "Latency: 2.763 seconds",
+  "latency": "Latency: 2.97 seconds",
   "snapshot": {
     "protocolId": "convex",
     "name": "Convex",
@@ -28,7 +28,7 @@
             "symbol": "CRV",
             "decimals": 18,
             "balanceRaw": "129438019542780103652n",
-            "type": "underlying",
+            "type": "underlying-claimable",
             "price": 0.4349770841494624,
             "balance": 129.4380195427801
           },
@@ -38,7 +38,7 @@
             "symbol": "CVX",
             "decimals": 18,
             "balanceRaw": "1423818214970581140n",
-            "type": "underlying",
+            "type": "underlying-claimable",
             "price": 2.6072235934622503,
             "balance": 1.4238182149705811
           }
@@ -60,7 +60,7 @@
             "name": "Synthetix Network Token",
             "decimals": 18,
             "balanceRaw": "15995934878803391102n",
-            "type": "underlying",
+            "type": "underlying-claimable",
             "price": 2.14247402070486,
             "balance": 15.995934878803391
           }

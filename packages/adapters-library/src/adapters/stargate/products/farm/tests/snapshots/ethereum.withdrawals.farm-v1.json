@@ -1,6 +1,6 @@
 {
   "aggregatedValues": ["USD8,061.17"],
-  "latency": "Latency: 0.981 seconds",
+  "latency": "Latency: 0.983 seconds",
   "snapshot": {
     "protocolId": "stargate",
     "name": "Stargate Farm",
@@ -28,7 +28,7 @@
             "name": "StargateToken",
             "symbol": "STG",
             "decimals": 18,
-            "type": "underlying",
+            "type": "underlying-claimable",
             "blockNumber": 20661441,
             "balanceRaw": "29168188478059884180158n",
             "price": 0.27636857144740007,

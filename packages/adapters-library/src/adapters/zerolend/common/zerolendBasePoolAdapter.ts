@@ -1,14 +1,14 @@
 import { getAddress } from 'ethers'
-import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { Helpers } from '../../../../scripts/helpers'
+import { AdaptersController } from '../../../core/adaptersController'
+import { Chain } from '../../../core/constants/chains'
+import { CacheToDb } from '../../../core/decorators/cacheToDb'
+import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
+import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
+import { Helpers } from '../../../scripts/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
+} from '../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
   GetEventsInput,
@@ -21,13 +21,13 @@ import {
   ProtocolTokenTvl,
   UnwrapExchangeRate,
   UnwrapInput,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { Protocol } from '../../../protocols'
+} from '../../../types/adapter'
+import { Erc20Metadata } from '../../../types/erc20Metadata'
+import { Protocol } from '../../protocols'
 import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
-} from '../../contracts'
+} from '../contracts'
 
 const protocolDataProviderContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
