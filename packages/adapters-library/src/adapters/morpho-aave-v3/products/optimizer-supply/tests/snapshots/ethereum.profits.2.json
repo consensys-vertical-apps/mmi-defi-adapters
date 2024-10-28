@@ -59,7 +59,7 @@
                 "tokens": [
                   {
                     "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-                    "name": "Wrapped liquid staked Ether 2.0",
+                    "name": "wstETH",
                     "symbol": "wstETH",
                     "decimals": 18,
                     "balanceRaw": "11460239545396423301803n",
@@ -107,7 +107,7 @@
                 "tokens": [
                   {
                     "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-                    "name": "Wrapped liquid staked Ether 2.0",
+                    "name": "wstETH",
                     "symbol": "wstETH",
                     "decimals": 18,
                     "balanceRaw": "12704239081407891882848n",
@@ -154,7 +154,7 @@
                 "tokens": [
                   {
                     "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-                    "name": "Wrapped liquid staked Ether 2.0",
+                    "name": "wstETH",
                     "symbol": "wstETH",
                     "decimals": 18,
                     "balanceRaw": "500000000000000000000n",
@@ -200,7 +200,7 @@
                 "tokens": [
                   {
                     "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-                    "name": "Wrapped liquid staked Ether 2.0",
+                    "name": "wstETH",
                     "symbol": "wstETH",
                     "decimals": 18,
                     "balanceRaw": "744000000000000000000n",

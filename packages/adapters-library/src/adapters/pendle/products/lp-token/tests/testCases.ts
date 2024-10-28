@@ -27,8 +27,18 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Ethereum,
     method: 'prices',
-    key: 'lp',
-    filterProtocolToken: '0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6',
-    blockNumber: 20572049,
+    key: 'lp-price',
+    filterProtocolToken: '0xf8208fb52ba80075af09840a683143c22dc5b4dd',
+    blockNumber: 21057297,
+  },
+  {
+    chainId: Chain.Ethereum,
+    method: 'positions',
+    key: 'lp-pump-bts',
+    input: {
+      userAddress: '0x117C99451cae094B3a7d56C9d3A97c96900b8e7A',
+      filterProtocolTokens: ['0xf8208fB52BA80075aF09840A683143C22DC5B4dd'],
+    },
+    blockNumber: 21057127,
   },
 ]

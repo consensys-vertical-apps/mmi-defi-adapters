@@ -1,5 +1,6 @@
 import type { Protocol } from '../adapters/protocols'
 import type { Chain, ChainName } from '../core/constants/chains'
+import { ProtocolToken } from './IProtocolAdapter'
 import type {
   MovementsByBlock,
   ProfitsWithRange,
@@ -115,6 +116,7 @@ export type Support = Partial<
       chains: Chain[]
       protocolTokenAddresses?: Partial<Record<Chain, string[]>>
       writeActions?: WriteActions[]
+      protocolTokens?: Partial<Record<Chain, ProtocolToken[]>>
     }[]
   >
 >

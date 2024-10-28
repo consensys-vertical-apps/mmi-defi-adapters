@@ -19,7 +19,7 @@
           "type": "protocol",
           "address": "0x38EA452219524Bb87e18dE1C24D3bB59510BD783",
           "symbol": "S*USDT",
-          "name": "Tether USD-LP",
+          "name": "S*USDT",
           "decimals": 6,
           "balanceRaw": "1000000000n",
           "tokens": [

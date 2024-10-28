@@ -35,8 +35,8 @@ import {
   enrichTotalValueLocked,
   enrichUnwrappedTokenExchangeRates,
 } from './responseAdapters'
+import { ChecksumAddress } from './core/decorators/checksumAddress'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
-import { PositionType } from './types/adapter'
 import { DeepPartial } from './types/deepPartial'
 import {
   AdapterErrorResponse,
@@ -113,6 +113,7 @@ export class DefiProvider {
       )
   }
 
+  @ChecksumAddress
   async getPositions({
     userAddress,
     filterProtocolIds,
@@ -339,6 +340,7 @@ export class DefiProvider {
     }
   }
 
+  @ChecksumAddress
   async getProfits({
     userAddress,
     timePeriod = TimePeriod.sevenDays,
@@ -436,6 +438,7 @@ export class DefiProvider {
     return result
   }
 
+  @ChecksumAddress
   async unwrap({
     filterProtocolIds,
     filterProductIds,
@@ -513,6 +516,7 @@ export class DefiProvider {
     return filteredResult
   }
 
+  @ChecksumAddress
   async getWithdrawals({
     userAddress,
     fromBlock,
@@ -626,6 +630,7 @@ export class DefiProvider {
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
 
+  @ChecksumAddress
   async getDeposits({
     userAddress,
     fromBlock,
@@ -680,6 +685,7 @@ export class DefiProvider {
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
 
+  @ChecksumAddress
   async getRepays({
     userAddress,
     fromBlock,
@@ -734,6 +740,8 @@ export class DefiProvider {
 
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
+
+  @ChecksumAddress
   async getBorrows({
     userAddress,
     fromBlock,
@@ -789,6 +797,7 @@ export class DefiProvider {
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
 
+  @ChecksumAddress
   async getTotalValueLocked({
     filterProtocolIds,
     filterProductIds,
@@ -873,6 +882,7 @@ export class DefiProvider {
   async getSupport(input?: {
     filterChainIds?: Chain[] | undefined
     filterProtocolIds?: Protocol[] | undefined
+    includeProtocolTokens?: boolean
   }) {
     return await this.adaptersController.getSupport(input)
   }
