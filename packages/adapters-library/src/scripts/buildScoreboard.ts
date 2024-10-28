@@ -16,12 +16,15 @@ type ScoreboardEntry = {
   productId: string
   chain: string
   latency: number
+  totalPools: number
+} & RpcMetrics
+
+type RpcMetrics = {
   totalCalls: number
   relativeMaxStartTime: number | undefined
   relativeMaxEndTime: number | undefined
   maxRpcRequestLatency: number
   totalGas: string
-  totalPools: number
 }
 
 export function buildScoreboard(program: Command, defiProvider: DefiProvider) {
@@ -167,7 +170,7 @@ export function buildScoreboard(program: Command, defiProvider: DefiProvider) {
     })
 }
 
-export function aggregateMetrics({
+function aggregateMetrics({
   interceptedResponses,
   key,
   protocolId,
@@ -184,19 +187,29 @@ export function aggregateMetrics({
   latency: number
   totalPools: number
 }): ScoreboardEntry {
+  const rpcMetrics = extractRpcMetrics(interceptedResponses)
+
+  return {
+    key: key,
+    protocolId: protocolId,
+    productId: productId,
+    chain: ChainIdToChainNameMap[chainId],
+    latency: latency / 1_000,
+    totalPools,
+    ...rpcMetrics,
+  }
+}
+
+export function extractRpcMetrics(
+  interceptedResponses: RpcInterceptedResponses,
+): RpcMetrics {
   if (Object.values(interceptedResponses).length === 0) {
     return {
-      key: key,
-      protocolId: protocolId,
-      productId: productId,
-      chain: ChainIdToChainNameMap[chainId],
-      latency: latency / 1_000,
       relativeMaxStartTime: undefined,
       relativeMaxEndTime: undefined,
       totalCalls: 0,
       maxRpcRequestLatency: 0,
       totalGas: '0',
-      totalPools,
     }
   }
 
@@ -232,16 +245,10 @@ export function aggregateMetrics({
   }
 
   return {
-    key: key,
-    protocolId: protocolId,
-    productId: productId,
-    chain: ChainIdToChainNameMap[chainId],
-    latency: latency / 1_000,
     relativeMaxStartTime: (maxStartTime! - minStartTime!) / 1_000,
     relativeMaxEndTime: (maxEndTime! - minStartTime!) / 1_000,
     totalCalls,
     maxRpcRequestLatency: maxTakenTime / 1_000,
     totalGas: totalGas.toString(),
-    totalPools,
   }
 }
