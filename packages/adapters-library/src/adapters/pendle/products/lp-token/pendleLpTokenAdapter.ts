@@ -5,6 +5,7 @@ import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -34,7 +35,6 @@ import {
   LiquidityProviderToken__factory,
   RouterStatic__factory,
 } from '../../contracts'
-import { logger } from '../../../../core/utils/logger'
 
 type AdditionalMetadata = {
   marketAddress: string
@@ -158,15 +158,11 @@ export class PendleLpTokenAdapter implements IProtocolAdapter {
     blockNumber,
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    logger.info('Unwrap', protocolTokenAddress)
-
     const {
       underlyingTokens: [underlyingToken],
       marketAddress,
       ...protocolToken
     } = await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    logger.info('Unwrap', underlyingToken, protocolToken)
 
     const oracle = RouterStatic__factory.connect(
       PENDLE_ROUTER_STATIC_CONTRACT,

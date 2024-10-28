@@ -35,6 +35,7 @@ import {
   enrichTotalValueLocked,
   enrichUnwrappedTokenExchangeRates,
 } from './responseAdapters'
+import { ChecksumAddress } from './scripts/checksumAddress'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import { PositionType } from './types/adapter'
 import { DeepPartial } from './types/deepPartial'
@@ -53,7 +54,6 @@ import {
   IUnwrapPriceCacheProvider,
   UnwrapPriceCache,
 } from './unwrapCache'
-import { ChecksumAddress } from './scripts/checksumAddress'
 
 export class DefiProvider {
   private parsedConfig
@@ -453,8 +453,6 @@ export class DefiProvider {
     filterProtocolToken?: string
     blockNumbers?: Partial<Record<Chain, number>>
   }): Promise<PricePerShareResponse[]> {
-    console.log('unwrap', { filterProtocolToken })
-
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 

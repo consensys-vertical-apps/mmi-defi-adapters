@@ -1,5 +1,6 @@
 import type { Protocol } from '../adapters/protocols'
 import type { Chain, ChainName } from '../core/constants/chains'
+import { ProtocolToken } from './IProtocolAdapter'
 import type {
   MovementsByBlock,
   ProfitsWithRange,
@@ -14,7 +15,6 @@ import type {
   UnwrapExchangeRate,
   UnwrappedTokenExchangeRate,
 } from './adapter'
-import { ProtocolToken } from './IProtocolAdapter'
 import { WriteActions } from './writeActions'
 
 export type GetEventsRequestInput = {
