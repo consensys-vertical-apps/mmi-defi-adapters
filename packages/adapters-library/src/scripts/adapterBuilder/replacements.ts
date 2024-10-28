@@ -363,7 +363,7 @@ export const Replacements = {
             `async getRewardWithdrawals({
                   userAddress,
                   protocolTokenAddress,
-                }: GetEventsInput): Promise<MovementsByBlock[]> {
+                }: GetEventsInput): Promise<MovementsByBlockReward[]> {
                   throw new NotImplementedError()
                 }`,
           )
@@ -417,7 +417,7 @@ export const Replacements = {
             `async getExtraRewardWithdrawals({
                   userAddress,
                   protocolTokenAddress,
-                }: GetEventsInput): Promise<MovementsByBlock[]> {
+                }: GetEventsInput): Promise<MovementsByBlockReward[]> {
                   throw new NotImplementedError()
                 }`,
           )
