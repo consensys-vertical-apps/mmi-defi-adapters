@@ -53,6 +53,7 @@ import {
   IUnwrapPriceCacheProvider,
   UnwrapPriceCache,
 } from './unwrapCache'
+import { ChecksumAddress } from './scripts/checksumAddress'
 
 export class DefiProvider {
   private parsedConfig
@@ -1083,64 +1084,4 @@ export class DefiProvider {
       )
     }
   }
-}
-
-// Updated ChecksumAddress decorator
-export function ChecksumAddress(
-  // biome-ignore lint/suspicious/noExplicitAny: Decorator code
-  originalMethod: any,
-  _context: ClassMethodDecoratorContext,
-) {
-  // Define the replacement method that will process the input
-  async function replacementMethod(this: DefiProvider, ...args: unknown[]) {
-    const [params] = args as [
-      {
-        filterProtocolToken?: string
-        filterProtocolTokens?: string[]
-        protocolTokenAddress?: string
-      },
-    ]
-
-    // Check and convert filterProtocolToken if it's provided
-    if (params.filterProtocolToken) {
-      try {
-        params.filterProtocolToken = getAddress(params.filterProtocolToken)
-      } catch (error) {
-        throw new Error(`Invalid address format: ${params.filterProtocolToken}`)
-      }
-    }
-    // Check and convert filterProtocolToken if it's provided
-    if (params.protocolTokenAddress) {
-      try {
-        params.filterProtocolToken = getAddress(params.protocolTokenAddress)
-      } catch (error) {
-        throw new Error(
-          `Invalid address format: ${params.protocolTokenAddress}`,
-        )
-      }
-    }
-
-    // Check and convert each address in filterProtocolTokens if it's provided
-    if (
-      params.filterProtocolTokens &&
-      Array.isArray(params.filterProtocolTokens)
-    ) {
-      try {
-        params.filterProtocolTokens = params.filterProtocolTokens.map(
-          (token: string) => getAddress(token),
-        )
-      } catch (error) {
-        throw new Error(
-          `Invalid address format in filterProtocolTokens: ${
-            (error as { message: string }).message
-          }`,
-        )
-      }
-    }
-
-    // Call the original method with the modified arguments
-    return await originalMethod.call(this, ...args)
-  }
-
-  return replacementMethod
 }
