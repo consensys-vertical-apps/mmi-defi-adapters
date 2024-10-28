@@ -176,18 +176,6 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
     const metadataObject: ProtocolToken[] = []
 
     const promises = reserveTokens.map(async ({ tokenAddress }) => {
-      const reserveConfigurationData =
-        await protocolDataProviderContract.getReserveConfigurationData(
-          tokenAddress,
-        )
-
-      if (
-        !reserveConfigurationData.isActive ||
-        reserveConfigurationData.isFrozen
-      ) {
-        return
-      }
-
       const reserveTokenAddresses =
         await protocolDataProviderContract.getReserveTokensAddresses(
           tokenAddress,
