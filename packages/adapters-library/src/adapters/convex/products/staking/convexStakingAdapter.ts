@@ -266,10 +266,8 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
     blockNumber,
     protocolTokenAddress,
   }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
-    const { rewardTokens } = this.helpers.getProtocolTokenByAddress({
-      protocolTokens: await this.getProtocolTokens(),
-      protocolTokenAddress,
-    })
+    const { rewardTokens } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const crvRewardMetadata = rewardTokens.find(
       (token) => token.address === CRV_TOKEN_ADDRESS,
@@ -288,20 +286,12 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
       this.provider,
     )
 
-    // const [crvRewardBalance, cvxSupply] = await Promise.all([
-    //   rewardManager.earned(userAddress, {blockTag: blockNumber}),
-    //   cvxTokenContract.totalSupply({ blockTag: blockNumber }),
-    // ])
-
-    const crvRewardBalance = await rewardManager.earned(userAddress, {
-      blockTag: blockNumber,
-    })
+    const [crvRewardBalance, cvxSupply] = await Promise.all([
+      rewardManager.earned(userAddress, { blockTag: blockNumber }),
+      cvxTokenContract.totalSupply({ blockTag: blockNumber }),
+    ])
 
     if (crvRewardBalance === 0n) return []
-
-    const cvxSupply = await cvxTokenContract.totalSupply({
-      blockTag: blockNumber,
-    })
 
     const cvxBalance = GetCVXMintAmount(crvRewardBalance, cvxSupply)
 
@@ -324,10 +314,8 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
     blockNumber,
     protocolTokenAddress,
   }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
-    const { extraRewardTokens } = await this.helpers.getProtocolTokenByAddress({
-      protocolTokens: await this.getProtocolTokens(),
-      protocolTokenAddress,
-    })
+    const { extraRewardTokens } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     // If extraRewards is empty or undefined, skip this protocolToken
     if (!extraRewardTokens || extraRewardTokens.length === 0) return []
@@ -369,10 +357,8 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlockReward[]> {
-    const { rewardTokens } = await this.helpers.getProtocolTokenByAddress({
-      protocolTokens: await this.getProtocolTokens(),
-      protocolTokenAddress,
-    })
+    const { rewardTokens } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const mainRewardTrackerContract = ConvexRewardsFactory__factory.connect(
       protocolTokenAddress,
@@ -456,10 +442,7 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlockReward[]> {
     const { name, symbol, decimals, address, extraRewardTokens } =
-      await this.helpers.getProtocolTokenByAddress({
-        protocolTokens: await this.getProtocolTokens(),
-        protocolTokenAddress,
-      })
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const responsePromises = (extraRewardTokens ?? []).map(
       async (extraRewardToken: ExtraRewardToken) => {
