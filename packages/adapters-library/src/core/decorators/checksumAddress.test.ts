@@ -1,6 +1,6 @@
 import { getAddress } from 'ethers'
-import { ChecksumAddress } from './checksumAddress'
 import { DefiProvider } from '../../defiProvider'
+import { ChecksumAddress } from './checksumAddress'
 
 // Mock the getAddress function from ethers to simplify testing
 jest.mock('ethers', () => ({
