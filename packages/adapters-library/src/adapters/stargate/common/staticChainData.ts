@@ -169,3 +169,24 @@ export const staticChainDataV2: Partial<
     ),
   },
 }
+
+/**
+ * On some chains, it appears they had two visions of V1 farm
+ */
+export const staticChainDataDepreciated: Partial<
+  Record<
+    Chain,
+    {
+      factoryAddress: string
+      lpStakingAddress: string
+      lpStakingType: 'LpStaking' | 'LpStakingTime'
+      lpStakingTimeMetisAddress?: string
+    }
+  >
+> = {
+  [Chain.Arbitrum]: {
+    factoryAddress: getAddress('0x55bDb4164D28FBaF0898e0eF14a589ac09Ac9970'), // this might be wrong
+    lpStakingAddress: getAddress('0xea8dfee1898a7e0a59f7527f076106d7e44c2176'),
+    lpStakingType: 'LpStaking',
+  },
+}

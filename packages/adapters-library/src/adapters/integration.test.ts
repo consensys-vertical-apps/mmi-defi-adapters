@@ -82,6 +82,7 @@ import { testCases as sparkV1VariableDebtTokenTestCases } from './spark-v1/produ
 import { testCases as stakeWiseOsEthTestCases } from './stakewise/products/os-eth/tests/testCases'
 import { testCases as stargateFarmV2TestCases } from './stargate/products/farm-v2/tests/testCases'
 import { testCases as stargateFarmTestCases } from './stargate/products/farm/tests/testCases'
+import { testCases as stargateFarmDeprecatedTestCases } from './stargate/products/farm-deprecated/tests/testCases'
 import { testCases as stargatePoolV2TestCases } from './stargate/products/pool-v2/tests/testCases'
 import { testCases as stargatePoolTestCases } from './stargate/products/pool/tests/testCases'
 import { testCases as stargateVotingEscrowTestCases } from './stargate/products/voting-escrow/tests/testCases'
@@ -262,6 +263,7 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
   },
   [Protocol.Stargate]: {
     ['farm']: stargateFarmTestCases,
+    ['farm-deprecated']: stargateFarmDeprecatedTestCases,
     ['farm-v2']: stargateFarmV2TestCases,
     ['pool']: stargatePoolTestCases,
     ['pool-v2']: stargatePoolV2TestCases,
