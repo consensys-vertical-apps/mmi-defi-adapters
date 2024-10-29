@@ -98,6 +98,8 @@ import { testCases as xfaiDexTestCases } from './xfai/products/dex/tests/testCas
 import { testCases as zeroLendATokenTestCases } from './zerolend/products/a-token/tests/testCases'
 import { testCases as zeroLendStableDebtTokenTestCases } from './zerolend/products/stable-debt-token/tests/testCases'
 import { testCases as zeroLendVariableDebtTokenTestCases } from './zerolend/products/variable-debt-token/tests/testCases'
+import { IProtocolAdapter } from '../types/IProtocolAdapter'
+import { AdapterMissingError } from '../core/errors/errors'
 
 const TEST_TIMEOUT = 300000
 
@@ -390,38 +392,46 @@ function runProductTests(
     ) as Chain[]
 
     for (const chainId of protocolChains) {
-      const adapters =
-        defiProvider.adaptersController.fetchChainProtocolAdapters(
+      let adapter: IProtocolAdapter
+
+      try {
+        adapter = defiProvider.adaptersController.fetchAdapter(
           chainId,
           protocolId,
+          productId,
         )
+      } catch (error) {
+        if (error instanceof AdapterMissingError) {
+          continue
+        }
 
-      for (const [productId, adapter] of adapters) {
-        it(`protocol token addresses are checksumed (${protocolId} # ${productId} # ${ChainIdToChainNameMap[chainId]})`, async () => {
-          let protocolTokenAddresses: string[]
-          try {
-            protocolTokenAddresses = (await adapter.getProtocolTokens()).map(
-              (x) => x.address,
-            )
-          } catch (error) {
-            // Skip if adapter does not have protocol tokens
-            expect(true).toBeTruthy()
-            return
-          }
-
-          const invalidAddresses = getInvalidAddresses(protocolTokenAddresses)
-
-          if (invalidAddresses.length > 0) {
-            throw new Error(
-              `Invalid protocol token addresses found:\n${invalidAddresses.join(
-                '\n',
-              )}`,
-            )
-          }
-
-          expect(true).toBeTruthy()
-        })
+        throw error
       }
+
+      it(`protocol token addresses are checksumed (${protocolId} # ${productId} # ${ChainIdToChainNameMap[chainId]})`, async () => {
+        let protocolTokenAddresses: string[]
+        try {
+          protocolTokenAddresses = (await adapter.getProtocolTokens()).map(
+            (x) => x.address,
+          )
+        } catch (error) {
+          // Skip if adapter does not have protocol tokens
+          expect(true).toBeTruthy()
+          return
+        }
+
+        const invalidAddresses = getInvalidAddresses(protocolTokenAddresses)
+
+        if (invalidAddresses.length > 0) {
+          throw new Error(
+            `Invalid protocol token addresses found:\n${invalidAddresses.join(
+              '\n',
+            )}`,
+          )
+        }
+
+        expect(true).toBeTruthy()
+      })
     }
 
     const positionsTestCases = testCases.filter(
