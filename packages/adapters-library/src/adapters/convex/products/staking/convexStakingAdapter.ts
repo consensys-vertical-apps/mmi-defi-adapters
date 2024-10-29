@@ -4,7 +4,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import { filterMapAsync } from '../../../../core/utils/filters'
+import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../../scripts/helpers'
 import {
@@ -52,6 +52,7 @@ type ExtraRewardToken = Erc20Metadata & {
 }
 
 type AdditionalMetadata = {
+  poolId: number
   rewardTokens: Erc20Metadata[]
   extraRewardTokens?: ExtraRewardToken[]
 }
@@ -129,6 +130,7 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
         metadata.push({
           ...convexToken,
           address: getAddress(convexData.crvRewards),
+          poolId: i,
           underlyingTokens: [underlyingToken],
           rewardTokens: [crvToken, minterToken],
           extraRewardTokens,
@@ -189,9 +191,41 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    const protocolTokens = await this.getProtocolTokens()
+
+    if (input.protocolTokenAddresses) {
+      return await this.helpers.getBalanceOfTokens({
+        ...input,
+        protocolTokens,
+      })
+    }
+
+    const convexFactory = ConvexFactory__factory.connect(
+      CONVEX_FACTORY_ADDRESS,
+      this.provider,
+    )
+
+    const depositedFilter = convexFactory.filters.Deposited(
+      input.userAddress,
+      undefined,
+      undefined,
+    )
+
+    const userDepositedEvents = await convexFactory.queryFilter(depositedFilter)
+
+    const protocolTokenAddresses = filterMapSync(
+      userDepositedEvents,
+      (event) => {
+        return protocolTokens.find(
+          (pool) => pool.poolId === Number(event.args?.poolid),
+        )?.address
+      },
+    )
+
     return await this.helpers.getBalanceOfTokens({
       ...input,
-      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddresses,
+      protocolTokens,
     })
   }
 
