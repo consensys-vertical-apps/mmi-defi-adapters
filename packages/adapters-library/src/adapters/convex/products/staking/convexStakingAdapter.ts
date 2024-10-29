@@ -189,26 +189,10 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const positions = await this.helpers.getBalanceOfTokens({
+    return await this.helpers.getBalanceOfTokens({
       ...input,
       protocolTokens: await this.getProtocolTokens(),
     })
-
-    for (const position of positions) {
-      this.getRewardPositions({
-        userAddress: input.userAddress,
-        blockNumber: input.blockNumber,
-        protocolTokenAddress: position.address,
-      }).catch()
-
-      this.getExtraRewardPositions({
-        userAddress: input.userAddress,
-        blockNumber: input.blockNumber,
-        protocolTokenAddress: position.address,
-      }).catch()
-    }
-
-    return positions
   }
 
   async unwrap({
