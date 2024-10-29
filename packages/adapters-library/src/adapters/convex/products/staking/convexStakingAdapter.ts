@@ -266,7 +266,7 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
     blockNumber,
     protocolTokenAddress,
   }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
-    const { rewardTokens } = await this.helpers.getProtocolTokenByAddress({
+    const { rewardTokens } = this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,
     })
