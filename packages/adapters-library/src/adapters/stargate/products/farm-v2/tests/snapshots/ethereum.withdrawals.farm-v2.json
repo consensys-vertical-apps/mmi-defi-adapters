@@ -63,7 +63,7 @@
             "name": "StargateToken",
             "symbol": "STG",
             "decimals": 18,
-            "type": "underlying",
+            "type": "underlying-claimable",
             "blockNumber": 20661895,
             "balanceRaw": "1573786114203981n",
             "price": 0.2787105793227771,
