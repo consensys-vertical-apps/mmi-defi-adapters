@@ -12,16 +12,25 @@ type RpcRequest = {
 type RpcResponse = {
   jsonrpc: string
   id: number
-  result?: unknown
+  result?: string
   error?: unknown
 }
 
-export type RpcInterceptedResponse = Record<
+export type RpcInterceptedResponses = Record<
   string,
   {
-    result?: unknown
+    result?: string
     error?: unknown
-    request?: { method: string; params: unknown[] }
+    request?: {
+      method: string
+      params: unknown[]
+    }
+    metrics?: {
+      startTime: number
+      endTime: number
+      timeTaken: number
+      estimatedGas: string | undefined
+    }
   }
 >
 
@@ -49,12 +58,14 @@ function createResponse(body: ArrayBuffer) {
 }
 
 export const startRpcSnapshot = (chainProviderUrls: string[]) => {
-  const interceptedRequests: RpcInterceptedResponse = {}
+  const interceptedResponses: RpcInterceptedResponses = {}
 
   const server = setupServer(
     ...chainProviderUrls.map((url) =>
       http.post(url, async ({ request }) => {
+        const startTime = Date.now()
         const response = await fetch(bypass(request))
+        const endTime = Date.now()
 
         if (response.status !== 200) {
           console.warn('RPC request failed')
@@ -83,22 +94,48 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
           throw Error('Length mismatch in requests and responses')
         }
 
-        requests.forEach((request) => {
+        for (const [i, request] of requests.entries()) {
           const key = createKey(url, request)
 
           const { result, error } = responses.find(
             (response) => response.id === request.id,
           )!
 
-          interceptedRequests[key] = { result, error }
+          interceptedResponses[key] = {
+            result,
+            error,
+            request: { method: request.method, params: request.params },
+          }
 
-          if (process.env.DEFI_ADAPTERS_SAVE_INTERCEPTED_REQUESTS === 'true') {
-            interceptedRequests[key]!.request = {
-              method: request.method,
-              params: request.params,
+          let estimatedGas: string | undefined
+          if (request.method === 'eth_call') {
+            const estimatedGasResponse = (await fetch(
+              bypass(
+                new Request(url, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    ...request,
+                    method: 'eth_estimateGas',
+                  }),
+                }),
+              ),
+            ).then((response) => response.json())) as RpcResponse
+
+            if (estimatedGasResponse.result) {
+              estimatedGas = BigInt(estimatedGasResponse.result).toString()
             }
           }
-        })
+
+          interceptedResponses[key]!.metrics = {
+            startTime,
+            endTime,
+            timeTaken: i === 0 ? endTime - startTime : 0,
+            estimatedGas,
+          }
+        }
 
         return createResponse(responseArrayBuffer)
       }),
@@ -107,14 +144,14 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
 
   server.listen({ onUnhandledRequest: 'bypass' })
   return {
-    interceptedRequests,
+    interceptedResponses,
     stop: () => server.close(),
   }
 }
 
 export const startRpcMock = (
   // TODO When we use this for every test case, we can make this required and throw if an rpc request is not there
-  interceptedRequests: RpcInterceptedResponse | undefined,
+  interceptedResponses: RpcInterceptedResponses | undefined,
   chainProviderUrls: string[],
 ) => {
   const server = setupServer(
@@ -132,7 +169,7 @@ export const startRpcMock = (
           const responses = requests.map((request) => {
             const key = createKey(url, request)
 
-            const storedResponse = interceptedRequests?.[key]
+            const storedResponse = interceptedResponses?.[key]
             if (!storedResponse) {
               console.warn('RPC request not found in snapshot', {
                 url: new URL(url).origin,

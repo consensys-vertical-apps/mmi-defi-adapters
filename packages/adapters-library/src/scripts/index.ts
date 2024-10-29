@@ -6,6 +6,7 @@ import { copyAdapter } from './adapterBuilder/copyAdapter'
 import { newAdapterCommand } from './adapterBuilder/newAdapterCommand'
 import { blockAverage } from './blockAverage'
 import { buildMetadataDb } from './buildMetadataDb'
+import { buildScoreboard } from './buildScoreboard'
 import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
 import { checkBadSnapshots } from './checkBadSnapshots'
@@ -45,6 +46,8 @@ stressCommand(program, defiProvider)
 simulateTxCommand(program, chainProviders)
 
 performance(program)
+
+buildScoreboard(program, defiProvider)
 
 program
   .command('copy-adapter')

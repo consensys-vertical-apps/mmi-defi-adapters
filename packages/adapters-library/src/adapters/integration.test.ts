@@ -7,7 +7,10 @@ import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { getInvalidAddresses } from '../scripts/addressValidation'
 import { protocolFilter } from '../scripts/commandFilters'
-import { RpcInterceptedResponse, startRpcMock } from '../scripts/rpcInterceptor'
+import {
+  RpcInterceptedResponses,
+  startRpcMock,
+} from '../scripts/rpcInterceptor'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2ATokenTestCases } from './aave-v2/products/a-token/tests/testCases'
 import { testCases as aaveV2StableDebtTokenTestCases } from './aave-v2/products/stable-debt-token/tests/testCases'
@@ -366,7 +369,7 @@ function runProductTests(
         .reduce((acc, x) => {
           acc[x.key] = x.responses
           return acc
-        }, {} as RpcInterceptedResponse)
+        }, {} as RpcInterceptedResponses)
 
       const chainUrls = Object.values(defiProvider.chainProvider.providers).map(
         (rpcProvider) => rpcProvider._getConnection().url,
@@ -797,7 +800,7 @@ async function loadJsonFile(
   ) as {
     snapshot: unknown
     blockNumber?: number
-    rpcResponses?: RpcInterceptedResponse
+    rpcResponses?: RpcInterceptedResponses
   }
 
   return {

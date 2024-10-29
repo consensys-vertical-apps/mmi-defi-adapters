@@ -7,6 +7,7 @@ import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { filterMapSync } from '../core/utils/filters'
 import { DefiProvider } from '../defiProvider'
 import { AdapterResponse, GetEventsRequestInput } from '../types/response'
+import { extractRpcMetrics } from './buildScoreboard'
 import {
   chainFilter,
   multiChainFilter,
@@ -15,6 +16,7 @@ import {
   multiProtocolTokenAddressFilter,
   protocolFilter,
 } from './commandFilters'
+import { startRpcSnapshot } from './rpcInterceptor'
 import { simulateTx } from './simulator/simulateTx'
 
 export function featureCommands(program: Command, defiProvider: DefiProvider) {
@@ -23,12 +25,14 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
     'positions',
     defiProvider.getPositions.bind(defiProvider),
     '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
+    defiProvider,
   )
   addressCommand(
     program,
     'profits',
     defiProvider.getProfits.bind(defiProvider),
     '0xCEadFdCCd0E8E370D985c49Ed3117b2572243A4a',
+    defiProvider,
   )
 
   transactionParamsCommand(
@@ -114,6 +118,7 @@ function addressCommand(
     filterProtocolTokens?: string[]
   }) => Promise<AdapterResponse<unknown>[]>,
   defaultAddress: string,
+  defiProvider: DefiProvider,
 ) {
   program
     .command(commandName)
@@ -144,6 +149,13 @@ function addressCommand(
 
       const includeRawValues = raw === 'true'
 
+      const msw = startRpcSnapshot(
+        Object.values(defiProvider.chainProvider.providers).map(
+          (provider) => provider._getConnection().url,
+        ),
+      )
+
+      const startTime = Date.now()
       const data = await feature({
         userAddress,
         filterProtocolIds,
@@ -151,8 +163,24 @@ function addressCommand(
         includeRawValues,
         filterProtocolTokens,
       })
+      const endTime = Date.now()
+
+      msw.stop()
 
       printResponse(filterResponse(data))
+
+      const rpcMetrics = extractRpcMetrics(msw.interceptedResponses)
+
+      console.log('\nMetrics:')
+      console.log(
+        JSON.stringify(
+          { latency: (endTime - startTime) / 1_000, ...rpcMetrics },
+          null,
+          2,
+        ),
+      )
+
+      process.exit(0)
     })
 }
 
