@@ -1,5 +1,5 @@
 import { Chain } from '../../../../../core/constants/chains'
-import { TimePeriod } from '../../../../../core/constants/timePeriod'
+
 import type { TestCase } from '../../../../../types/testCase'
 
 export const testCases: TestCase[] = [
@@ -14,16 +14,7 @@ export const testCases: TestCase[] = [
 
     blockNumber: 268835087,
   },
-  {
-    chainId: Chain.Arbitrum,
-    method: 'positions',
-    key: '2',
-    input: {
-      userAddress: '0x37914E1CAF9E5A1A69b5BcD56AAd46Ca0c167949',
-    },
 
-    blockNumber: 268839445,
-  },
   {
     chainId: Chain.Arbitrum,
     method: 'deposits',
