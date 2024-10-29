@@ -8,32 +8,32 @@ import { filterMapAsync } from '../../../core/utils/filters'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../scripts/helpers'
 import {
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  PositionType,
-  GetPositionsInput,
-  ProtocolPosition,
-  TokenType,
-  GetRewardPositionsInput,
-  UnderlyingReward,
-  GetEventsInput,
-  MovementsByBlock,
-  MovementsByBlockReward,
-  GetTotalValueLockedInput,
-  ProtocolTokenTvl,
-  UnwrapInput,
-  UnwrapExchangeRate,
-} from '../../../types/adapter'
-import {
   IProtocolAdapter,
   ProtocolToken,
 } from '../../../types/IProtocolAdapter'
+import {
+  GetEventsInput,
+  GetPositionsInput,
+  GetRewardPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
+  MovementsByBlockReward,
+  PositionType,
+  ProtocolAdapterParams,
+  ProtocolDetails,
+  ProtocolPosition,
+  ProtocolTokenTvl,
+  TokenType,
+  UnderlyingReward,
+  UnwrapExchangeRate,
+  UnwrapInput,
+} from '../../../types/adapter'
 import { Protocol } from '../../protocols'
 import {
-  LpStaking__factory,
-  LpStakingTime__factory,
   LpStaking,
   LpStakingTime,
+  LpStakingTime__factory,
+  LpStaking__factory,
 } from '../contracts'
 import { AdditionalMetadata } from '../products/farm/stargateFarmAdapter'
 
