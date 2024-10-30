@@ -1,6 +1,7 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
+import { AdapterMissingError } from '../core/errors/errors'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
@@ -11,6 +12,7 @@ import {
   RpcInterceptedResponses,
   startRpcMock,
 } from '../scripts/rpcInterceptor'
+import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2ATokenTestCases } from './aave-v2/products/a-token/tests/testCases'
 import { testCases as aaveV2StableDebtTokenTestCases } from './aave-v2/products/stable-debt-token/tests/testCases'
@@ -99,8 +101,6 @@ import { testCases as xfaiDexTestCases } from './xfai/products/dex/tests/testCas
 import { testCases as zeroLendATokenTestCases } from './zerolend/products/a-token/tests/testCases'
 import { testCases as zeroLendStableDebtTokenTestCases } from './zerolend/products/stable-debt-token/tests/testCases'
 import { testCases as zeroLendVariableDebtTokenTestCases } from './zerolend/products/variable-debt-token/tests/testCases'
-import { IProtocolAdapter } from '../types/IProtocolAdapter'
-import { AdapterMissingError } from '../core/errors/errors'
 
 const TEST_TIMEOUT = 300000
 
