@@ -15,10 +15,8 @@ import { Chain, ChainIdToChainNameMap } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { ChecksumAddress } from './core/decorators/checksumAddress'
 import {
-  AdapterMissingError,
   NotSupportedError,
   NotSupportedUnlimitedGetLogsBlockRange,
-  ProtocolTokenFilterRequiredError,
   ProviderMissingError,
   TvlValidationError,
 } from './core/errors/errors'
