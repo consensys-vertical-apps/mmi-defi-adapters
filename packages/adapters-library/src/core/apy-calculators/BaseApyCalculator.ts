@@ -7,7 +7,10 @@ import { computeApr, computeApy } from './helpers'
  * An abstract APY calculator that handles logic that is common to all APY calculators.
  * All APY calculators must extend this class, and implement the `computeInterest` method.
  */
-export abstract class AbstractApyCalculator implements ApyCalculator {
+export abstract class BaseApyCalculator implements ApyCalculator {
+  /**
+   * Handles the common logic for all APY calculations.
+   */
   public async getApy(args: GetApyArgs): Promise<ApyInfo | undefined> {
     try {
       const { blocknumberStart, blocknumberEnd, chainId } = args
@@ -57,5 +60,5 @@ export abstract class AbstractApyCalculator implements ApyCalculator {
   /**
    * Implement this method in the extending class.
    */
-  public abstract computeInterest(args: GetApyArgs): number
+  protected abstract computeInterest(args: GetApyArgs): number
 }

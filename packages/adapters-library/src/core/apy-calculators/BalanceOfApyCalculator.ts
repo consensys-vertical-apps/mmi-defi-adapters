@@ -2,8 +2,8 @@ import { sumBy } from 'lodash'
 import { MovementsByBlock, Underlying } from '../../types/adapter'
 import { NotSupportedError } from '../errors/errors'
 import { collectLeafTokens } from '../utils/collectLeafTokens'
-import { AbstractApyCalculator } from './AbstractApyCalculator'
 import { GetApyArgs } from './ApyCalculator'
+import { BaseApyCalculator } from './BaseApyCalculator'
 
 /**
  * Calculates the APY of a position by calculating the fees/interest earned as the difference of balance in
@@ -20,7 +20,7 @@ import { GetApyArgs } from './ApyCalculator'
  * - Lending (aToken, cToken, ...)
  * - LSTs
  */
-export class BalanceOfApyCalculator extends AbstractApyCalculator {
+export class BalanceOfApyCalculator extends BaseApyCalculator {
   public computeInterest(args: GetApyArgs): number {
     const {
       protocolTokenStart,

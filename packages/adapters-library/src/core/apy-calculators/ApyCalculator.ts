@@ -33,8 +33,6 @@ export interface ApyCalculator {
    * @returns {Promise<ApyInfo>} A promise that resolves to an object representing the APY calculation.
    */
   getApy(args: GetApyArgs): Promise<ApyInfo | undefined>
-
-  computeInterest(args: GetApyArgs): number
 }
 
 export type GetApyArgs = {

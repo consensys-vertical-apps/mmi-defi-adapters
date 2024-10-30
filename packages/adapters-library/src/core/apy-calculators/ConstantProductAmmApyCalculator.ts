@@ -1,7 +1,7 @@
 import { NotSupportedError } from '../errors/errors'
 import { collectLeafTokens } from '../utils/collectLeafTokens'
-import { AbstractApyCalculator } from './AbstractApyCalculator'
 import { GetApyArgs } from './ApyCalculator'
+import { BaseApyCalculator } from './BaseApyCalculator'
 
 /**
  * Calculates the APY of a position in a constant product AMM like Uniswap V2.
@@ -16,7 +16,7 @@ import { GetApyArgs } from './ApyCalculator'
  * Compatible protocols / products are:
  * - Constant Product AMMs (Uniswap V2, SushiSwap, ...)
  */
-export class ConstantProductAmmApyCalculator extends AbstractApyCalculator {
+export class ConstantProductAmmApyCalculator extends BaseApyCalculator {
   /**
    * Computes the interest earned by a constant product AMM position over a period.
    * The calculation is done by:
