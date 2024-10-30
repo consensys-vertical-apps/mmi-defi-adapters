@@ -1,0 +1,74 @@
+{
+  "blockNumber": 268835087,
+  "latency": "Latency: 1.113 seconds",
+  "aggregatedValues": ["USD0.10"],
+  "snapshot": [
+    {
+      "protocolId": "stargate",
+      "name": "Stargate Farm",
+      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+      "siteUrl": "https://stargate.finance/",
+      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+      "positionType": "stake",
+      "chainId": 42161,
+      "productId": "farm-deprecated",
+      "chainName": "arb",
+      "success": true,
+      "tokens": [
+        {
+          "type": "protocol",
+          "address": "0x892785f33CdeE22A30AEF750F285E18c18040c3e",
+          "symbol": "S*USDC",
+          "name": "USD Coin (Arb1)-LP",
+          "decimals": 6,
+          "balanceRaw": "99839n",
+          "tokens": [
+            {
+              "address": "0x6694340fc020c5E6B96567843da2df01b2CE1eb6",
+              "name": "StargateToken",
+              "symbol": "STG",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "4391127433063997n",
+              "balance": 0.004391127433063997,
+              "price": 0.2711738388613975,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x6694340fc020c5E6B96567843da2df01b2CE1eb6/logo.png"
+            },
+            {
+              "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+              "name": "USD Coin (Arb1)",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "100023n",
+              "balance": 0.100023,
+              "price": 1.0000208339191483,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo.png"
+            }
+          ],
+          "balance": 0.099839
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "fe8c4051a628d9b405e85f57f35f479e": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000185ff000000000000000000000000000000000000000000000000001bf0f00d6e458d"
+    },
+    "70f0c5a7f7642a63b3321c70ff4aa6b5": {
+      "result": "0x000000000000000000000000000000000000000000000000000f99b506cfae3d"
+    },
+    "d7d26179bcd13ecc6c08ee52a1eca4a6": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000f4976"
+    },
+    "bb8f8461d96e3bab1b192bbaa80f83b9": {
+      "result": "0x00000000000000000000000000000000000000000000000100000000000ac4e40000000000000000000000000000000000000000000000000000003d044a8e40000000000000000000000000000000000000000000000000000000006720a4df000000000000000000000000000000000000000000000000000000006720a4df00000000000000000000000000000000000000000000000100000000000ac4e4"
+    },
+    "583e7ee75d4106a029945ad5a87b6c13": {
+      "result": "0x00000000000000000000000000000000000000000000000000005e1c55edbbe8"
+    },
+    "e2186e10cf50979d5d680175ab66ad19": {
+      "result": "0x0000000000000000000000000000000000000000013ba56428aa85e29a4014a1"
+    }
+  }
+}

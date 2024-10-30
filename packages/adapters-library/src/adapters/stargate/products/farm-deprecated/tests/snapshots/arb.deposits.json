@@ -1,0 +1,82 @@
+{
+  "aggregatedValues": ["USD0.00"],
+  "latency": "Latency: 0.651 seconds",
+  "snapshot": {
+    "protocolId": "stargate",
+    "name": "Stargate Farm",
+    "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+    "siteUrl": "https://stargate.finance/",
+    "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+    "positionType": "stake",
+    "chainId": 42161,
+    "productId": "farm-deprecated",
+    "chainName": "arb",
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0x892785f33CdeE22A30AEF750F285E18c18040c3e",
+          "name": "USD Coin (Arb1)-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "blockNumber": 81518984,
+        "transactionHash": "0x9264631afa3d011b941d976a733627646a30de2b5cd9cbd5b90ea07003c2aa80",
+        "tokens": [
+          {
+            "address": "0x892785f33CdeE22A30AEF750F285E18c18040c3e",
+            "name": "USD Coin (Arb1)-LP",
+            "symbol": "S*USDC",
+            "decimals": 6,
+            "type": "underlying",
+            "blockNumber": 81518984,
+            "balanceRaw": "0n",
+            "tokens": [
+              {
+                "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+                "name": "USD Coin (Arb1)",
+                "symbol": "USDC",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "0n",
+                "balance": 0,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo.png"
+              }
+            ],
+            "balance": 0
+          }
+        ]
+      }
+    ]
+  },
+  "rpcResponses": {
+    "9a1d13676f8dcbd6b6fb2652d4462f5f": {
+      "result": [
+        {
+          "address": "0xea8dfee1898a7e0a59f7527f076106d7e44c2176",
+          "blockHash": "0x9bbc0fcba7eda4509a17981ba5fe16a6050ddb5bf483bcf519efa78d3a0b3d28",
+          "blockNumber": "0x4dbe188",
+          "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "logIndex": "0x2",
+          "removed": false,
+          "topics": [
+            "0x90890809c654f11d6e72a28fa60149770a0d11ec6c92319d6ceb2bb0a4ea1a15",
+            "0x00000000000000000000000037914e1caf9e5a1a69b5bcd56aad46ca0c167949",
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "transactionHash": "0x9264631afa3d011b941d976a733627646a30de2b5cd9cbd5b90ea07003c2aa80",
+          "transactionIndex": "0x1"
+        }
+      ]
+    },
+    "d1195f045c7d3c29383bf91dd24ad1df": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000f4889"
+    },
+    "aa8d6779b7358a2cba66a099e1d8d594": {
+      "result": "0x000000000000000000000000000000000000000000000001000000000005bcf100000000000000000000000000000000000000000000000000000030575af91000000000000000000000000000000000000000000000000000000000643db09800000000000000000000000000000000000000000000000000000000643db098000000000000000000000000000000000000000000000001000000000005bcf1"
+    },
+    "0c367e94877364d3845acfd14f7a9aad": {
+      "result": "0x"
+    }
+  }
+}
