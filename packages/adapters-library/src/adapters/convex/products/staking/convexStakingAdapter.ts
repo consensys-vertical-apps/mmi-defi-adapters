@@ -200,7 +200,7 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
       })
     }
 
-    const protocolTokenAddresses = await this.getUserProtocolTokensByEvents({
+    const protocolTokenAddresses = await this.openPositions({
       protocolTokens,
       userAddress: input.userAddress,
       blockNumber: input.blockNumber,
@@ -213,7 +213,7 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
     })
   }
 
-  private async getUserProtocolTokensByEvents({
+  private async openPositions({
     protocolTokens,
     userAddress,
     blockNumber,
@@ -221,7 +221,7 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
     protocolTokens: ProtocolToken<AdditionalMetadata>[]
     userAddress: string
     blockNumber?: number
-  }) {
+  }): Promise<string[]> {
     const convexFactory = ConvexFactory__factory.connect(
       CONVEX_FACTORY_ADDRESS,
       this.provider,
@@ -247,7 +247,7 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
         )?.address,
     )
 
-    return protocolTokenAddresses
+    return [...new Set(protocolTokenAddresses)]
   }
 
   async unwrap({
