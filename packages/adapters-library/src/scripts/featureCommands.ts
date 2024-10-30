@@ -88,10 +88,10 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
     )
     .option(
-      '-pt, --protocolTokens [includeProtocolTokens]',
+      '-pt, --includeProtocolTokens [includeProtocolTokens]',
       'include full protocol token data',
+      false,
     )
-
     .showHelpAfterError()
     .action(async ({ protocols, chains, includeProtocolTokens }) => {
       const filterProtocolIds = multiProtocolFilter(protocols)
