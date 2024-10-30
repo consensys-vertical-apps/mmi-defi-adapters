@@ -200,33 +200,54 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
       })
     }
 
-    const convexFactory = ConvexFactory__factory.connect(
-      CONVEX_FACTORY_ADDRESS,
-      this.provider,
-    )
-
-    const depositedFilter = convexFactory.filters.Deposited(
-      input.userAddress,
-      undefined,
-      undefined,
-    )
-
-    const userDepositedEvents = await convexFactory.queryFilter(depositedFilter)
-
-    const protocolTokenAddresses = filterMapSync(
-      userDepositedEvents,
-      (event) => {
-        return protocolTokens.find(
-          (pool) => pool.poolId === Number(event.args?.poolid),
-        )?.address
-      },
-    )
+    const protocolTokenAddresses = await this.getUserProtocolTokensByEvents({
+      protocolTokens,
+      userAddress: input.userAddress,
+      blockNumber: input.blockNumber,
+    })
 
     return await this.helpers.getBalanceOfTokens({
       ...input,
       protocolTokenAddresses,
       protocolTokens,
     })
+  }
+
+  private async getUserProtocolTokensByEvents({
+    protocolTokens,
+    userAddress,
+    blockNumber,
+  }: {
+    protocolTokens: ProtocolToken<AdditionalMetadata>[]
+    userAddress: string
+    blockNumber?: number
+  }) {
+    const convexFactory = ConvexFactory__factory.connect(
+      CONVEX_FACTORY_ADDRESS,
+      this.provider,
+    )
+
+    const depositedFilter = convexFactory.filters.Deposited(
+      userAddress,
+      undefined,
+      undefined,
+    )
+
+    const userDepositedEvents = await convexFactory.queryFilter(
+      depositedFilter,
+      undefined,
+      blockNumber,
+    )
+
+    const protocolTokenAddresses = filterMapSync(
+      userDepositedEvents,
+      (event) =>
+        protocolTokens.find(
+          (pool) => pool.poolId === Number(event.args?.poolid),
+        )?.address,
+    )
+
+    return protocolTokenAddresses
   }
 
   async unwrap({
