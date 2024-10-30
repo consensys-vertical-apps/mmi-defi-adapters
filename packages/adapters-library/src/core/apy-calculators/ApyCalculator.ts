@@ -24,6 +24,7 @@ export interface ApyInfo {
     frequency: number
   }
 }
+
 export interface ApyCalculator {
   /**
    * Calculates the APY for a given user and protocol.
@@ -32,6 +33,8 @@ export interface ApyCalculator {
    * @returns {Promise<ApyInfo>} A promise that resolves to an object representing the APY calculation.
    */
   getApy(args: GetApyArgs): Promise<ApyInfo | undefined>
+
+  computeInterest(args: GetApyArgs): number
 }
 
 export type GetApyArgs = {

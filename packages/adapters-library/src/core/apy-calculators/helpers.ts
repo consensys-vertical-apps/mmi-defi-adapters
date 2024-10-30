@@ -2,6 +2,7 @@ import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { InvalidArgumentError } from '../errors/errors'
 import { ApyCalculator } from './ApyCalculator'
 import { BalanceOfApyCalculator } from './BalanceOfApyCalculator'
+import { ConstantProductAmmApyCalculator } from './ConstantProductAmmApyCalculator'
 import { VoidApyCalculator } from './VoidApyCalculator'
 
 /**
@@ -64,6 +65,9 @@ export const createApyCalculatorFor = async (
 
     if (protocolToken.underlyingTokens.length === 1)
       return new BalanceOfApyCalculator()
+
+    if (protocolToken.underlyingTokens.length === 2)
+      return new ConstantProductAmmApyCalculator()
 
     return new VoidApyCalculator()
   } catch (error) {

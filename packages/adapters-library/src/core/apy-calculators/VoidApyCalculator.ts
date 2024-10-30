@@ -11,4 +11,8 @@ export class VoidApyCalculator implements ApyCalculator {
   }: GetApyArgs): Promise<undefined> {
     return Promise.resolve(undefined)
   }
+
+  computeInterest(args: GetApyArgs): number {
+    throw new Error('Method not implemented.')
+  }
 }

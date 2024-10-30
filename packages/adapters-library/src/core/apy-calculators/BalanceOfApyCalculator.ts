@@ -1,15 +1,12 @@
-import util from 'node:util'
 import { sumBy } from 'lodash'
 import { MovementsByBlock, Underlying } from '../../types/adapter'
-import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY'
 import { NotSupportedError } from '../errors/errors'
 import { collectLeafTokens } from '../utils/collectLeafTokens'
-import { ApyCalculator, ApyInfo, GetApyArgs } from './ApyCalculator'
-import { VoidApyCalculator } from './VoidApyCalculator'
-import { computeApr, computeApy } from './helpers'
+import { AbstractApyCalculator } from './AbstractApyCalculator'
+import { GetApyArgs } from './ApyCalculator'
 
 /**
- * Calculates the APY of a position by calculating the fees as the difference of balance in
+ * Calculates the APY of a position by calculating the fees/interest earned as the difference of balance in
  * the underlying token between a given day and the day before.
  *
  * Is compatible with ANY DeFi protocol where the position is tracked by a single amount in wei (for instance the balanceOf an ERC20),
@@ -23,98 +20,47 @@ import { computeApr, computeApy } from './helpers'
  * - Lending (aToken, cToken, ...)
  * - LSTs
  */
-export class BalanceOfApyCalculator implements ApyCalculator {
-  public async getApy(args: GetApyArgs): Promise<ApyInfo | undefined> {
-    try {
-      const {
-        protocolTokenStart,
-        protocolTokenEnd,
-        blocknumberStart,
-        blocknumberEnd,
-        chainId,
-        withdrawals,
-        deposits,
-        repays,
-        borrows,
-      } = args
+export class BalanceOfApyCalculator extends AbstractApyCalculator {
+  public computeInterest(args: GetApyArgs): number {
+    const {
+      protocolTokenStart,
+      protocolTokenEnd,
+      withdrawals,
+      deposits,
+      repays,
+      borrows,
+    } = args
 
-      // Duration in days of the period where we look at the fees earned. The APY and APR are then annualized based on this period.
-      const durationDays =
-        (blocknumberEnd - blocknumberStart) / AVERAGE_BLOCKS_PER_DAY[chainId]
+    const leafTokensStart = collectLeafTokens(protocolTokenStart)
+    const leafTokensEnd = collectLeafTokens(protocolTokenEnd)
 
-      // How many periods there is in a year
-      const frequency = 365 / durationDays
-
-      const leafTokensStart = collectLeafTokens(protocolTokenStart)
-      const leafTokensEnd = collectLeafTokens(protocolTokenEnd)
-
-      if (leafTokensStart.length !== 1 || leafTokensEnd.length !== 1)
-        throw new NotSupportedError(
-          'BalanceOfApyCalculator only supports APY calculations for products with exactly one underlying token, such as aTokens.',
-        )
-
-      const underlyingTokenStart = leafTokensStart[0]!
-      const underlyingTokenEnd = leafTokensEnd[0]!
-
-      const balanceStartWei = underlyingTokenStart.balanceRaw
-      const balanceEndWei = underlyingTokenEnd.balanceRaw
-
-      type Item = MovementsByBlock | Underlying
-      const leafWithdraws = withdrawals.flatMap(collectLeafTokens<Item>)
-      const leafDeposits = deposits.flatMap(collectLeafTokens<Item>)
-      const leafRepays = repays.flatMap(collectLeafTokens<Item>)
-      const leafBorrows = borrows.flatMap(collectLeafTokens<Item>)
-
-      const balanceWithdrawsWei = BigInt(sumBy(leafWithdraws, 'balanceRaw'))
-      const balanceDepositsWei = BigInt(sumBy(leafDeposits, 'balanceRaw'))
-      const balanceRepaysWei = BigInt(sumBy(leafRepays, 'balanceRaw'))
-      const balanceBorrowsWei = BigInt(sumBy(leafBorrows, 'balanceRaw'))
-
-      const interest = this.computeInterest(
-        balanceStartWei,
-        balanceEndWei +
-          balanceWithdrawsWei +
-          balanceRepaysWei -
-          balanceDepositsWei -
-          balanceBorrowsWei,
+    if (leafTokensStart.length !== 1 || leafTokensEnd.length !== 1)
+      throw new NotSupportedError(
+        'BalanceOfApyCalculator only supports APY calculations for products with exactly one underlying token, such as aTokens.',
       )
-      const interestPercent = interest * 100
 
-      const apr = computeApr(interest, frequency)
-      const aprPercent = apr * 100
+    const underlyingTokenStart = leafTokensStart[0]!
+    const underlyingTokenEnd = leafTokensEnd[0]!
 
-      const apy = computeApy(apr, frequency)
-      const apyPercent = apy * 100
+    type Item = MovementsByBlock | Underlying
+    const leafWithdraws = withdrawals.flatMap(collectLeafTokens<Item>)
+    const leafDeposits = deposits.flatMap(collectLeafTokens<Item>)
+    const leafRepays = repays.flatMap(collectLeafTokens<Item>)
+    const leafBorrows = borrows.flatMap(collectLeafTokens<Item>)
 
-      return {
-        apyPercent,
-        apy,
-        aprPercent,
-        apr,
-        period: {
-          blocknumberStart,
-          blocknumberEnd,
-          interestPercent,
-          interest,
-        },
-        compounding: {
-          durationDays,
-          frequency,
-        },
-      }
-    } catch (error) {
-      console.warn(
-        'Error encountered while calculating an APY. Defaulting to VoidApyCalculator.',
-        error,
-      )
-      return new VoidApyCalculator().getApy(args)
-    }
-  }
+    const balanceWithdrawsWei = BigInt(sumBy(leafWithdraws, 'balanceRaw'))
+    const balanceDepositsWei = BigInt(sumBy(leafDeposits, 'balanceRaw'))
+    const balanceRepaysWei = BigInt(sumBy(leafRepays, 'balanceRaw'))
+    const balanceBorrowsWei = BigInt(sumBy(leafBorrows, 'balanceRaw'))
 
-  protected computeInterest(
-    balanceStartWei: bigint,
-    balanceEndWei: bigint,
-  ): number {
+    const balanceStartWei = underlyingTokenStart.balanceRaw
+    const balanceEndWei =
+      underlyingTokenEnd.balanceRaw +
+      balanceWithdrawsWei +
+      balanceRepaysWei -
+      balanceDepositsWei -
+      balanceBorrowsWei
+
     if (!balanceEndWei && balanceEndWei !== 0n)
       throw new Error('Argument balanceEndWei must be defined')
 
