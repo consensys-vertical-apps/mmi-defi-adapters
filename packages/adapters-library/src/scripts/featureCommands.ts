@@ -159,40 +159,41 @@ function addressCommand(
 
         const includeRawValues = raw === 'true'
 
-      const msw = startRpcSnapshot(
-        Object.values(defiProvider.chainProvider.providers).map(
-          (provider) => provider._getConnection().url,
-        ),
-      )
+        const msw = startRpcSnapshot(
+          Object.values(defiProvider.chainProvider.providers).map(
+            (provider) => provider._getConnection().url,
+          ),
+        )
 
-      const startTime = Date.now()
-      const data = await feature({
-        userAddress,
-        filterProtocolIds,
-        filterProductIds,
-        filterChainIds,
-        includeRawValues,
-        filterProtocolTokens,
-      })
-      const endTime = Date.now()
+        const startTime = Date.now()
+        const data = await feature({
+          userAddress,
+          filterProtocolIds,
+          filterProductIds,
+          filterChainIds,
+          includeRawValues,
+          filterProtocolTokens,
+        })
+        const endTime = Date.now()
 
-      msw.stop()
+        msw.stop()
 
-      printResponse(filterResponse(data))
+        printResponse(filterResponse(data))
 
-      const rpcMetrics = extractRpcMetrics(msw.interceptedResponses)
+        const rpcMetrics = extractRpcMetrics(msw.interceptedResponses)
 
-      console.log('\nMetrics:')
-      console.log(
-        JSON.stringify(
-          { latency: (endTime - startTime) / 1_000, ...rpcMetrics },
-          null,
-          2,
-        ),
-      )
+        console.log('\nMetrics:')
+        console.log(
+          JSON.stringify(
+            { latency: (endTime - startTime) / 1_000, ...rpcMetrics },
+            null,
+            2,
+          ),
+        )
 
-      process.exit(0)
-    })
+        process.exit(0)
+      },
+    )
 }
 
 function transactionParamsCommand(
