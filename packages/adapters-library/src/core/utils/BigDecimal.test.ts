@@ -154,5 +154,43 @@ describe('BigDecimal', () => {
         expect(bd3.divide(bd4).toString()).toBe('4.565')
       })
     })
+
+    describe('sqrt', () => {
+      it('should calculate square root', () => {
+        const bd = new BigDecimal('100')
+        expect(bd.sqrt().toString()).toBe('10.000000000000000000')
+      })
+
+      it('should calculate square root', () => {
+        const bd = new BigDecimal('612215.4954944949')
+        expect(bd.sqrt().toString()).toBe('782.442007751689479802')
+      })
+
+      it('should calculate square root (2)', () => {
+        const bd = new BigDecimal(
+          '291473102639493918970613087983.272171596191834415',
+        )
+        expect(bd.sqrt().toString()).toBe('539882489658160.629411929003938638')
+      })
+
+      it('should yield a number that, when multiplied by itself, yields the original number', () => {
+        const original = '684687486483454128848448578.87785759488484'
+        const bd = new BigDecimal(original)
+        const sqrt = bd.sqrt()
+        const squared = sqrt.multiply(sqrt)
+        const diff = squared.subtract(bd)
+        expect(Number(diff)).toBeCloseTo(0)
+      })
+
+      it('should throw error if trying to calculate square root of negative number', () => {
+        const bd = new BigDecimal('-100')
+        expect(() => bd.sqrt()).toThrow()
+      })
+
+      it('should handle zero', () => {
+        const bd = new BigDecimal('0')
+        expect(bd.sqrt().toString()).toBe('0.000000000000000000')
+      })
+    })
   })
 })

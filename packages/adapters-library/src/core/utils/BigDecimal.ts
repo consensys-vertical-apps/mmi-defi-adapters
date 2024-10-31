@@ -131,6 +131,52 @@ export class BigDecimal {
   }
 
   /**
+   * Calculates the square root of this BigDecimal.
+   * Uses the Newton-Raphson method for approximation.
+   *
+   * @returns A new BigDecimal representing the square root
+   * @throws Error if trying to calculate square root of a negative number
+   * @example
+   * const bd = new BigDecimal('100')
+   * bd.sqrt().toString() // Returns '10.000000000000000000'
+   */
+  public sqrt(): BigDecimal {
+    if (this.bigint < 0n) {
+      throw new Error('Cannot calculate square root of negative number')
+    }
+
+    if (this.bigint === 0n) {
+      return Object.assign(Object.create(BigDecimal.prototype), {
+        bigint: 0n,
+        decimals: this.decimals,
+      })
+    }
+
+    // Scale the number up by decimals * 2 to maintain precision during sqrt
+    const scaledInput = this.bigint * BigInt(10n ** BigInt(this.decimals))
+
+    // Initial guess - a rough approximation
+    let guess = BigInt(
+      Math.floor(Math.sqrt(Number(scaledInput) / 10 ** this.decimals)) *
+        10 ** (this.decimals / 2),
+    )
+
+    // Newton's method iteration
+    let iterations = 0
+    let lastGuess = 0n
+    while (guess !== lastGuess) {
+      iterations++
+      lastGuess = guess
+      guess = (guess + scaledInput / guess) / 2n
+    }
+
+    return Object.assign(Object.create(BigDecimal.prototype), {
+      bigint: guess,
+      decimals: this.decimals,
+    })
+  }
+
+  /**
    * Converts the BigDecimal to a string representation with the configured number of decimal places.
    *
    * @example

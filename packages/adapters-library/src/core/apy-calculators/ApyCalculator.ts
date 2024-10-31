@@ -1,7 +1,4 @@
-import {
-  MovementsByBlock,
-  TokenBalanceWithUnderlyings,
-} from '../../types/adapter'
+import { MovementsByBlock, Underlying } from '../../types/adapter'
 import { Chain } from '../constants/chains'
 
 /**
@@ -36,8 +33,8 @@ export interface ApyCalculator {
 }
 
 export type GetApyArgs = {
-  protocolTokenStart: TokenBalanceWithUnderlyings
-  protocolTokenEnd: TokenBalanceWithUnderlyings
+  protocolTokenStart: Underlying
+  protocolTokenEnd: Underlying
   blocknumberStart: number
   blocknumberEnd: number
   protocolTokenAddress: string
