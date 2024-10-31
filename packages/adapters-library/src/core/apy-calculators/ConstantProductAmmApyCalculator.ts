@@ -1,4 +1,5 @@
 import { NotSupportedError } from '../errors/errors'
+import { BigDecimal } from '../utils/BigDecimal'
 import { collectLeafTokens } from '../utils/collectLeafTokens'
 import { GetApyArgs } from './ApyCalculator'
 import { BaseApyCalculator } from './BaseApyCalculator'
@@ -35,6 +36,7 @@ export class ConstantProductAmmApyCalculator extends BaseApyCalculator {
    * @throws If any of the required balance parameters are zero or undefined
    */
   public computeInterest(args: GetApyArgs): number {
+    const BIG_DECIMAL_PRECISION = 32
     const {
       protocolTokenStart,
       protocolTokenEnd,
@@ -57,43 +59,71 @@ export class ConstantProductAmmApyCalculator extends BaseApyCalculator {
     const token0End = leafTokensEnd[0]!
     const token1End = leafTokensEnd[1]!
 
-    const balanceToken0StartWei = token0Start.balanceRaw
-    const balanceToken1StartWei = token1Start.balanceRaw
-    const balanceToken0EndWei = token0End.balanceRaw
-    const balanceToken1EndWei = token1End.balanceRaw
+    const balanceToken0StartWei = BigDecimal.fromBigInt(
+      token0Start.balanceRaw,
+      BIG_DECIMAL_PRECISION,
+    )
+    const balanceToken1StartWei = BigDecimal.fromBigInt(
+      token1Start.balanceRaw,
+      BIG_DECIMAL_PRECISION,
+    )
+    const balanceToken0EndWei = BigDecimal.fromBigInt(
+      token0End.balanceRaw,
+      BIG_DECIMAL_PRECISION,
+    )
+    const balanceToken1EndWei = BigDecimal.fromBigInt(
+      token1End.balanceRaw,
+      BIG_DECIMAL_PRECISION,
+    )
 
-    if (balanceToken0StartWei === 0n)
+
+    if (balanceToken0StartWei.isZero())
       throw new Error(
-        'Argument balanceToken0StartWei cannot be equal to zero as it would lead to division by zero',
+        'Balance of token0 cannot be zero at start of period as it would lead to division by zero.',
       )
 
-    if (balanceToken0EndWei === 0n)
+    if (balanceToken0EndWei.isZero())
       throw new Error(
-        'Argument balanceToken0EndWei cannot be equal to zero as it would lead to division by zero',
+        'Balance of token0 cannot be zero at end of period as it would lead to division by zero.',
       )
 
     if (!balanceToken1StartWei)
-      throw new Error('Argument balanceToken1StartWei must be defined')
+      throw new Error(
+        'Balance of token1 cannot be undefined at start of period.',
+      )
 
     if (!balanceToken1EndWei)
-      throw new Error('Argument balanceToken1EndWei must be defined')
+      throw new Error('Balance of token1 cannot be undefined at end of period.')
 
-    const priceStart = balanceToken1StartWei / balanceToken0StartWei // Price of token0 in terms of token1
-    const priceEnd = balanceToken1EndWei / balanceToken0EndWei // Price of token0 in terms of token1
+    const priceStart = balanceToken1StartWei.divide(balanceToken0StartWei) // Price of token0 in terms of token1
+    const priceEnd = balanceToken1EndWei.divide(balanceToken0EndWei) // Price of token0 in terms of token1
 
-    const initialValue =
-      balanceToken0StartWei * priceStart + balanceToken1StartWei // In terms of TokenB
-    const adjustedValue =
-      balanceToken0StartWei * priceEnd + balanceToken1StartWei // In terms of TokenB
-    const finalValue = balanceToken0EndWei * priceEnd + balanceToken1EndWei // In terms of TokenB
+    // Calculate initial value in terms of token1
+    const initialValue = balanceToken0StartWei
+      .multiply(priceStart)
+      .add(balanceToken1StartWei)
+    console.log('initialValue', initialValue)
 
-    const feesWei = finalValue - adjustedValue // In terms of TokenB
+    // Calculate what the value would be with original balances at new price in terms of token1
+    const adjustedValue = balanceToken0StartWei
+      .multiply(priceEnd)
+      .add(balanceToken1StartWei)
 
-    // Multiply by a large constant (e.g., 1e18) to retain precision
+    // Calculate actual final value in terms of token1
+    const finalValue = balanceToken0EndWei
+      .multiply(priceEnd)
+      .add(balanceToken1EndWei)
+
+    // Fees in token0 and token1 generated through trading, interms of token1
+    const feesWei = finalValue.subtract(adjustedValue)
+
+    // Before any division, we multiply by a large constant (e.g., 1e18) to retain precision
     const precisionFactor = 10n ** 18n
 
     // Scale up the fees to retain precision
-    const interestScaled = (feesWei * precisionFactor) / initialValue
+    const interestScaled = feesWei
+      .multiply(BigDecimal.fromBigInt(precisionFactor, BIG_DECIMAL_PRECISION))
+      .divide(initialValue)
 
     return Number(interestScaled) / Number(precisionFactor)
   }
