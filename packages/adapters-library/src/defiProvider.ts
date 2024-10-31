@@ -198,7 +198,9 @@ export class DefiProvider {
       )
 
       tokens.forEach((protocolPosition) =>
-        protocolPosition.tokens?.forEach((token) => propagatePrice(token)),
+        protocolPosition.tokens?.forEach((token) =>
+          propagatePrice(token, adapter.chainId),
+        ),
       )
 
       const endTime = Date.now()

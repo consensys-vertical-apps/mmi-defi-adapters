@@ -1,13 +1,19 @@
 import { Underlying } from '../../types/adapter'
 import { DisplayPosition } from '../../types/response'
+import { Chain } from '../constants/chains'
+import { logger } from './logger'
 
 export function propagatePrice(
   token: DisplayPosition<Underlying>,
+  chainId: Chain,
 ): number | undefined {
   if (!token.tokens || token.tokens.length === 0) {
     // Leaf node: If no price is defined, propagate undefined upwards
     if (token.price === undefined) {
-      console.log(`Price is undefined for token at address ${token.address}`)
+      logger.warn(
+        { tokenAddress: token.address, chainId },
+        'Price is undefined for token',
+      )
       return undefined // No value to propagate
     }
 
@@ -21,7 +27,7 @@ export function propagatePrice(
   let allChildrenHavePrice = true // Track if ALL child tokens have a defined price
 
   for (const childToken of token.tokens) {
-    const childValue = propagatePrice(childToken) // Recursive call for child tokens
+    const childValue = propagatePrice(childToken, chainId) // Recursive call for child tokens
 
     if (childValue === undefined) {
       allChildrenHavePrice = false // If any child is missing a price, mark false
