@@ -1,5 +1,6 @@
 import type { Protocol } from '../adapters/protocols'
 import type { AdaptersController } from '../core/adaptersController'
+import { ApyInfo } from '../core/apy-calculators/ApyCalculator'
 import type { Chain } from '../core/constants/chains'
 import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { Helpers } from '../scripts/helpers'
@@ -326,6 +327,8 @@ export interface UnderlyingProfitValues extends Erc20Metadata {
    * Numbers used to calculate profit value
    */
   calculationData: CalculationData
+
+  apyInfo?: ApyInfo
 }
 
 export interface PositionProfits extends Erc20Metadata, UnderlyingProfitValues {
