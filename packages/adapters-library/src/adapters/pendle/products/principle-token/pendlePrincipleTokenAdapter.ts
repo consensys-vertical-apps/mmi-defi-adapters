@@ -78,29 +78,22 @@ export class PendlePrincipleTokenAdapter implements IProtocolAdapter {
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const resp = await fetchAllMarkets(this.chainId)
 
-    return resp.results.map((value) => {
-      const marketAddress = getAddress(value.address)
+    return await Promise.all(
+      resp.results.map(async (value) => {
+        const marketAddress = getAddress(value.address)
 
-      const pt: Erc20Metadata = {
-        address: getAddress(value.pt.address),
-        name: value.pt.name,
-        symbol: value.pt.symbol,
-        decimals: value.pt.decimals,
-      }
+        const [pt, sy] = await Promise.all([
+          this.helpers.getTokenMetadata(value.pt.address),
+          this.helpers.getTokenMetadata(value.sy.address), // TODO: Check if decimals need to be underlyingAsset.decimals
+        ])
 
-      const sy: Erc20Metadata = {
-        address: getAddress(value.sy.address),
-        name: value.sy.name,
-        symbol: value.sy.symbol,
-        decimals: value.underlyingAsset.decimals,
-      }
-
-      return {
-        ...pt,
-        underlyingTokens: [sy],
-        marketAddress,
-      }
-    })
+        return {
+          ...pt,
+          underlyingTokens: [sy],
+          marketAddress,
+        }
+      }),
+    )
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
