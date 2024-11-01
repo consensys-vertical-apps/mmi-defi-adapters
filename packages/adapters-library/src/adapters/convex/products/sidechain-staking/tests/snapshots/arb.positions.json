@@ -1,0 +1,117 @@
+{
+  "blockNumber": 269553632,
+  "latency": "Latency: 2.351 seconds",
+  "aggregatedValues": ["USD1,321.23"],
+  "snapshot": [
+    {
+      "protocolId": "convex",
+      "name": "Convex",
+      "description": "Convex pool adapter",
+      "siteUrl": "https://www.convexfinance.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "sidechain-staking",
+      "chainName": "arb",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xd2D8BEB901f90163bE4667A85cDDEbB7177eb3E3",
+          "name": "Curve.fi Factory Plain Pool: frxETH/WETH Convex Deposit",
+          "symbol": "cvxfrxETHWETH-f",
+          "decimals": 18,
+          "balanceRaw": "499249772396019793n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "underlying-claimable",
+              "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+              "name": "Curve DAO Token",
+              "symbol": "CRV",
+              "decimals": 18,
+              "balanceRaw": "15687467914649272389n",
+              "balance": 15.687467914649272,
+              "price": 0.2529437867143213,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978/logo.png"
+            },
+            {
+              "type": "underlying-claimable",
+              "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+              "name": "Convex Token",
+              "symbol": "CVX",
+              "decimals": 18,
+              "balanceRaw": "0n",
+              "balance": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaAFcFD42c9954C6689ef1901e03db742520829c5/logo.png"
+            },
+            {
+              "address": "0x1DeB3b1cA6afca0FF9C5cE9301950dC98Ac0D523",
+              "name": "Curve.fi Factory Plain Pool: frxETH/WETH",
+              "symbol": "frxETHWETH-f",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "499249772396019793n",
+              "tokens": [
+                {
+                  "address": "0x178412e79c25968a32e89b11f63B33F733770c2A",
+                  "name": "Frax Ether",
+                  "symbol": "frxETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "424662658145092047n",
+                  "balance": 0.424662658145092,
+                  "price": 2618.5417673068127,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x178412e79c25968a32e89b11f63B33F733770c2A/logo.png"
+                },
+                {
+                  "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+                  "name": "Wrapped Ether",
+                  "symbol": "WETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "78033480555428710n",
+                  "balance": 0.0780334805554287,
+                  "price": 2630.5152,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
+                }
+              ],
+              "balance": 0.4992497723960198,
+              "price": 2638.4892631128205,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x1DeB3b1cA6afca0FF9C5cE9301950dC98Ac0D523/logo.png"
+            }
+          ],
+          "balance": 0.4992497723960198
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "762522fd65e8327de4686f330e5aaee8": {
+      "result": "0x00000000000000000000000000000000000000000000000006edb105d9dc0051"
+    },
+    "59ac32e547e028a4814f9a2994f03da5": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000200000000000000000000000011cdb42b0eb46d95f990bedd4695a6e3fa034978000000000000000000000000000000000000000000000000d9b514f3de020045000000000000000000000000aafcfd42c9954c6689ef1901e03db742520829c50000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "2e3bfaee9f80fc8c4898662fbe79269f": {
+      "result": "0x00000000000000000000000000000000000000000000000100000000000acaed0000000000000000000000000000000000000000000000000000003d3f17a8000000000000000000000000000000000000000000000000000000000067236959000000000000000000000000000000000000000000000000000000006723695900000000000000000000000000000000000000000000000100000000000acaed"
+    },
+    "b88d992b11e52176ee04b878cca2b55a": {
+      "result": "0x000000000000000000000000000000000000000000000019de4e8fd46377dcf6"
+    },
+    "c1f05dae0d7df840729b25437cd29666": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "213615ba15bd6fbb3878c7f76bc77df7": {
+      "result": "0x000000000000000000000000000000000000000000000004c0e02bb41572c96a"
+    },
+    "d6dec5706ab53ccd01125587f9aedd06": {
+      "result": "0x000000000000000000000000000000000000000000000000000057746a1d3d66"
+    },
+    "5f8cb407521c7b4392c202353e7b4f4d": {
+      "result": "0x00000000000000000000000000000000000000000000001e76afca7f62e11ea9"
+    },
+    "f302cee1a03f087e574d2b64432a5dcf": {
+      "result": "0x0000000000000000000000000000000000000000000000000dd08aea166fbce1"
+    }
+  }
+}

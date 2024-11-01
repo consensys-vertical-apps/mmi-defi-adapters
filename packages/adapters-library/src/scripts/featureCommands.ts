@@ -113,6 +113,7 @@ function addressCommand(
   feature: (input: {
     userAddress: string
     filterProtocolIds?: Protocol[]
+    filterProductIds?: string[]
     filterChainIds?: Chain[]
     includeRawValues?: boolean
     filterProtocolTokens?: string[]
@@ -139,49 +140,60 @@ function addressCommand(
       '-t, --protocol-tokens <protocol-tokens>',
       'comma-separated protocol token address filter (e.g. 0x030..., 0x393.., 0x332...)',
     )
+    .option(
+      '-pd, --product-ids <product-ids>',
+      'comma-separated product id filter (e.g. reward, a-token, staking)',
+    )
     .showHelpAfterError()
-    .action(async (userAddress, { protocols, chains, raw, protocolTokens }) => {
-      const filterProtocolIds = multiProtocolFilter(protocols)
-      const filterChainIds = multiChainFilter(chains)
-
-      const filterProtocolTokens =
-        multiProtocolTokenAddressFilter(protocolTokens)
-
-      const includeRawValues = raw === 'true'
-
-      const msw = startRpcSnapshot(
-        Object.values(defiProvider.chainProvider.providers).map(
-          (provider) => provider._getConnection().url,
-        ),
-      )
-
-      const startTime = Date.now()
-      const data = await feature({
+    .action(
+      async (
         userAddress,
-        filterProtocolIds,
-        filterChainIds,
-        includeRawValues,
-        filterProtocolTokens,
-      })
-      const endTime = Date.now()
+        { protocols, productIds, chains, raw, protocolTokens },
+      ) => {
+        const filterProtocolIds = multiProtocolFilter(protocols)
+        const filterProductIds = multiProductFilter(productIds)
+        const filterChainIds = multiChainFilter(chains)
 
-      msw.stop()
+        const filterProtocolTokens =
+          multiProtocolTokenAddressFilter(protocolTokens)
 
-      printResponse(filterResponse(data))
+        const includeRawValues = raw === 'true'
 
-      const rpcMetrics = extractRpcMetrics(msw.interceptedResponses)
+        const msw = startRpcSnapshot(
+          Object.values(defiProvider.chainProvider.providers).map(
+            (provider) => provider._getConnection().url,
+          ),
+        )
 
-      console.log('\nMetrics:')
-      console.log(
-        JSON.stringify(
-          { latency: (endTime - startTime) / 1_000, ...rpcMetrics },
-          null,
-          2,
-        ),
-      )
+        const startTime = Date.now()
+        const data = await feature({
+          userAddress,
+          filterProtocolIds,
+          filterProductIds,
+          filterChainIds,
+          includeRawValues,
+          filterProtocolTokens,
+        })
+        const endTime = Date.now()
 
-      process.exit(0)
-    })
+        msw.stop()
+
+        printResponse(filterResponse(data))
+
+        const rpcMetrics = extractRpcMetrics(msw.interceptedResponses)
+
+        console.log('\nMetrics:')
+        console.log(
+          JSON.stringify(
+            { latency: (endTime - startTime) / 1_000, ...rpcMetrics },
+            null,
+            2,
+          ),
+        )
+
+        process.exit(0)
+      },
+    )
 }
 
 function transactionParamsCommand(

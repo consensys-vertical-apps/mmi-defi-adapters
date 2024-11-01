@@ -15,10 +15,8 @@ import { Chain, ChainIdToChainNameMap } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { ChecksumAddress } from './core/decorators/checksumAddress'
 import {
-  AdapterMissingError,
   NotSupportedError,
   NotSupportedUnlimitedGetLogsBlockRange,
-  ProtocolTokenFilterRequiredError,
   ProviderMissingError,
   TvlValidationError,
 } from './core/errors/errors'
@@ -200,7 +198,9 @@ export class DefiProvider {
       )
 
       tokens.forEach((protocolPosition) =>
-        protocolPosition.tokens?.forEach((token) => propagatePrice(token)),
+        protocolPosition.tokens?.forEach((token) =>
+          propagatePrice(token, adapter.chainId),
+        ),
       )
 
       const endTime = Date.now()
