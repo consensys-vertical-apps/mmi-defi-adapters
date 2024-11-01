@@ -1,9 +1,12 @@
 import { DisplayPosition } from '../../types/response'
 
 import { TokenType, Underlying } from '../../types/adapter'
+import { Chain } from '../constants/chains'
 import { propagatePrice } from './propagatePrice'
 
 describe('calculateTokenPrice', () => {
+  const chainId = Chain.Ethereum
+
   it('should correctly calculate the price for a leaf node token', () => {
     const token = {
       address: '0xParentToken',
@@ -20,7 +23,7 @@ describe('calculateTokenPrice', () => {
       ],
     } as unknown as DisplayPosition<Underlying>
 
-    const result = propagatePrice(token)
+    const result = propagatePrice(token, chainId)
     expect(result).toBe(200) // balance * price = 100 * 2
   })
 
@@ -47,7 +50,7 @@ describe('calculateTokenPrice', () => {
       ],
     } as unknown as DisplayPosition<Underlying>
 
-    const result = propagatePrice(token)
+    const result = propagatePrice(token, chainId)
     expect(result).toBe(250) // (50 * 2) + (50 * 3) = 100 + 150 = 250
     expect(token.price).toBe(2.5) // Aggregated value (250) / parent balance (100) = 2.5
   })
@@ -91,7 +94,7 @@ describe('calculateTokenPrice', () => {
       ],
     } as unknown as DisplayPosition<Underlying>
 
-    const result = propagatePrice(token)
+    const result = propagatePrice(token, chainId)
     expect(result).toBe(375) // (50 * 2) + (25 * 4) + (((10 * 10) + (15 * 5)) / 25) * 25 = 100 + 100 + 175 = 375
     expect(token.price).toBe(3.75) // Aggregated value (375) / parent balance (100) = 3.75
   })
@@ -110,7 +113,7 @@ describe('calculateTokenPrice', () => {
       ],
     } as unknown as DisplayPosition<Underlying>
 
-    const result = propagatePrice(token)
+    const result = propagatePrice(token, chainId)
     expect(result).toBe(100) // Child value (50 * 2) = 100
     expect(token.price).toBe(100) // Division by zero case handled by assuming balance of 1
   })
@@ -122,7 +125,7 @@ describe('calculateTokenPrice', () => {
       tokens: [],
     } as unknown as DisplayPosition<Underlying>
 
-    const result = propagatePrice(token)
+    const result = propagatePrice(token, chainId)
     expect(result).toBe(undefined) // Parent price cannot be calculated
     expect(token.price).toBe(undefined) // Parent's price should be set to undefined
   })
@@ -150,7 +153,7 @@ describe('calculateTokenPrice', () => {
       ],
     } as unknown as DisplayPosition<Underlying>
 
-    const result = propagatePrice(token)
+    const result = propagatePrice(token, chainId)
     expect(result).toBe(undefined) // Parent price cannot be calculated
     expect(token.price).toBe(undefined) // Parent's price should be set to undefined
   })
@@ -186,7 +189,7 @@ describe('calculateTokenPrice', () => {
       ],
     } as unknown as DisplayPosition<Underlying>
 
-    const result = propagatePrice(token)
+    const result = propagatePrice(token, chainId)
     expect(result).toBe(undefined) // Parent price cannot be calculated
     expect(token.price).toBe(undefined) // Parent's price should be set to undefined
   })

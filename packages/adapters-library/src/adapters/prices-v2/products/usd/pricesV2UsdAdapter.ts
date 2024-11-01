@@ -13,6 +13,7 @@ import {
   UnwrapExchangeRate,
 } from '../../../../types/adapter'
 
+import { logger } from '../../../../core/utils/logger'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { ChainLink__factory, OneInchOracle__factory } from '../../contracts'
 import { priceAdapterConfig } from './priceV2Config'
@@ -130,7 +131,7 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
       const data: SpotPrice = await response.json()
       return data
     } catch (error) {
-      console.error('Failed to fetch spot price:', error)
+      logger.error(error, 'Failed to fetch spot price')
       return null
     }
   }

@@ -163,6 +163,7 @@ const ConfigSchema = z
       })
       .default(maxBatchSize),
     useDatabase: z.boolean().default(true),
+    disableEthersBatching: z.boolean().default(false),
   })
   .strict()
   .default({})

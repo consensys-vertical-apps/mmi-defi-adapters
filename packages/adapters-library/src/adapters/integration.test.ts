@@ -1,13 +1,18 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
+import { AdapterMissingError } from '../core/errors/errors'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { getInvalidAddresses } from '../scripts/addressValidation'
 import { protocolFilter } from '../scripts/commandFilters'
-import { RpcInterceptedResponse, startRpcMock } from '../scripts/rpcInterceptor'
+import {
+  RpcInterceptedResponses,
+  startRpcMock,
+} from '../scripts/rpcInterceptor'
+import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2ATokenTestCases } from './aave-v2/products/a-token/tests/testCases'
 import { testCases as aaveV2StableDebtTokenTestCases } from './aave-v2/products/stable-debt-token/tests/testCases'
@@ -77,6 +82,7 @@ import { testCases as sonneSupplyMarketTestCases } from './sonne/products/supply
 import { testCases as sparkV1SpTokenTestCases } from './spark-v1/products/sp-token/tests/testCases'
 import { testCases as sparkV1VariableDebtTokenTestCases } from './spark-v1/products/variable-debt-token/tests/testCases'
 import { testCases as stakeWiseOsEthTestCases } from './stakewise/products/os-eth/tests/testCases'
+import { testCases as stargateFarmDeprecatedTestCases } from './stargate/products/farm-deprecated/tests/testCases'
 import { testCases as stargateFarmV2TestCases } from './stargate/products/farm-v2/tests/testCases'
 import { testCases as stargateFarmTestCases } from './stargate/products/farm/tests/testCases'
 import { testCases as stargatePoolV2TestCases } from './stargate/products/pool-v2/tests/testCases'
@@ -259,6 +265,7 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
   },
   [Protocol.Stargate]: {
     ['farm']: stargateFarmTestCases,
+    ['farm-deprecated']: stargateFarmDeprecatedTestCases,
     ['farm-v2']: stargateFarmV2TestCases,
     ['pool']: stargatePoolTestCases,
     ['pool-v2']: stargatePoolV2TestCases,
@@ -366,7 +373,7 @@ function runProductTests(
         .reduce((acc, x) => {
           acc[x.key] = x.responses
           return acc
-        }, {} as RpcInterceptedResponse)
+        }, {} as RpcInterceptedResponses)
 
       const chainUrls = Object.values(defiProvider.chainProvider.providers).map(
         (rpcProvider) => rpcProvider._getConnection().url,
@@ -387,38 +394,46 @@ function runProductTests(
     ) as Chain[]
 
     for (const chainId of protocolChains) {
-      const adapters =
-        defiProvider.adaptersController.fetchChainProtocolAdapters(
+      let adapter: IProtocolAdapter
+
+      try {
+        adapter = defiProvider.adaptersController.fetchAdapter(
           chainId,
           protocolId,
+          productId,
         )
+      } catch (error) {
+        if (error instanceof AdapterMissingError) {
+          continue
+        }
 
-      for (const [productId, adapter] of adapters) {
-        it(`protocol token addresses are checksumed (${protocolId} # ${productId} # ${ChainIdToChainNameMap[chainId]})`, async () => {
-          let protocolTokenAddresses: string[]
-          try {
-            protocolTokenAddresses = (await adapter.getProtocolTokens()).map(
-              (x) => x.address,
-            )
-          } catch (error) {
-            // Skip if adapter does not have protocol tokens
-            expect(true).toBeTruthy()
-            return
-          }
-
-          const invalidAddresses = getInvalidAddresses(protocolTokenAddresses)
-
-          if (invalidAddresses.length > 0) {
-            throw new Error(
-              `Invalid protocol token addresses found:\n${invalidAddresses.join(
-                '\n',
-              )}`,
-            )
-          }
-
-          expect(true).toBeTruthy()
-        })
+        throw error
       }
+
+      it(`protocol token addresses are checksumed (${protocolId} # ${productId} # ${ChainIdToChainNameMap[chainId]})`, async () => {
+        let protocolTokenAddresses: string[]
+        try {
+          protocolTokenAddresses = (await adapter.getProtocolTokens()).map(
+            (x) => x.address,
+          )
+        } catch (error) {
+          // Skip if adapter does not have protocol tokens
+          expect(true).toBeTruthy()
+          return
+        }
+
+        const invalidAddresses = getInvalidAddresses(protocolTokenAddresses)
+
+        if (invalidAddresses.length > 0) {
+          throw new Error(
+            `Invalid protocol token addresses found:\n${invalidAddresses.join(
+              '\n',
+            )}`,
+          )
+        }
+
+        expect(true).toBeTruthy()
+      })
     }
 
     const positionsTestCases = testCases.filter(
@@ -797,7 +812,7 @@ async function loadJsonFile(
   ) as {
     snapshot: unknown
     blockNumber?: number
-    rpcResponses?: RpcInterceptedResponse
+    rpcResponses?: RpcInterceptedResponses
   }
 
   return {

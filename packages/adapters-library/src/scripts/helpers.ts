@@ -42,7 +42,7 @@ export class Helpers {
     public readonly allJsonRpcProviders: Record<Chain, CustomJsonRpcProvider>,
   ) {}
 
-  async getProtocolTokenByAddress<
+  getProtocolTokenByAddress<
     AdditionalMetadata extends AdditionalMetadataWithReservedFields,
   >({
     protocolTokens,
@@ -50,7 +50,7 @@ export class Helpers {
   }: {
     protocolTokens: ProtocolToken<AdditionalMetadata>[]
     protocolTokenAddress: string
-  }): Promise<ProtocolToken<AdditionalMetadata>> {
+  }): ProtocolToken<AdditionalMetadata> {
     const protocolToken = protocolTokens.find(
       (token) => token.address === protocolTokenAddress,
     )

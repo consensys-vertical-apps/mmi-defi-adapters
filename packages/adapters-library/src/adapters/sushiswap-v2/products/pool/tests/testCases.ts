@@ -45,4 +45,18 @@ export const testCases: TestCase[] = [
 
     blockNumber: 19326319,
   },
+  {
+    chainId: Chain.Ethereum,
+    method: 'profits',
+
+    input: {
+      userAddress: '0xF53E3170B2ea4355bff8a67472172Cd434d54EF2',
+      timePeriod: TimePeriod.oneDay,
+
+      filterProtocolTokens: ['0x397FF1542f962076d0BFE58eA045FfA2d347ACa0'],
+    },
+
+    blockNumber: 18173111,
+    key: 'for-apy',
+  },
 ]

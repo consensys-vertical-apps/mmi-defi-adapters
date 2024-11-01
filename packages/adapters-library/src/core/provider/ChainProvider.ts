@@ -54,6 +54,7 @@ export class ChainProvider {
         customOptions,
         jsonRpcProviderOptions: {
           staticNetwork: Network.from(chainId),
+          batchMaxCount: this.config.disableEthersBatching ? 1 : undefined,
         },
         hasUnlimitedGetLogsRange,
       })

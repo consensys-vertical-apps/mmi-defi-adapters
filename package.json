@@ -23,6 +23,7 @@
     "build-types": "npm run adapters-cli build-types --",
     "new-adapter": "npm run adapters-cli new-adapter --",
     "build-snapshots": "npm run adapters-cli build-snapshots --",
+    "build-scoreboard": "npm run adapters-cli build-scoreboard --",
     "positions": "npm run adapters-cli positions --",
     "profits": "npm run adapters-cli profits --",
     "unwrap": "npm run adapters-cli unwrap --",

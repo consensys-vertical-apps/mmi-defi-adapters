@@ -9,8 +9,8 @@ import {
   PositionType,
   ProfitsWithRange,
   ProtocolPosition,
-  TokenBalanceWithUnderlyings,
   TokenType,
+  Underlying,
 } from '../types/adapter'
 import { IUnwrapPriceCache } from '../unwrapCache'
 import { createApyCalculatorFor } from './apy-calculators/helpers'
@@ -234,13 +234,14 @@ export async function getProfits({
       const apyCalculator = await createApyCalculatorFor(adapter, address)
 
       // Function that finds the token with passed address and tokenId in any array of tokens
-      const tokenFinder = findByAddressAndTokenId<TokenBalanceWithUnderlyings>(
-        address,
-        tokenId,
-      )
+      const tokenFinder = findByAddressAndTokenId<Underlying>(address, tokenId)
 
-      const protocolTokenStart = tokenFinder(rawStartPositionValues)!
-      const protocolTokenEnd = tokenFinder(rawEndPositionValues)!
+      const protocolTokenStart = tokenFinder(
+        rawStartPositionValues as unknown as Underlying[],
+      )!
+      const protocolTokenEnd = tokenFinder(
+        rawEndPositionValues as unknown as Underlying[],
+      )!
 
       const apyInfo = await apyCalculator.getApy({
         protocolTokenStart,

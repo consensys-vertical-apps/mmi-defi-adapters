@@ -128,6 +128,7 @@ import { EthenaLpStakingAdapter } from './ethena/products/lp-staking/ethenaLpSta
 import { EthenaStakedEnaAdapter } from './ethena/products/staked-ena/ethenaStakedEnaAdapter'
 
 import { AaveV3RewardsAdapter } from './aave-v3/products/rewards/aaveV3RewardsAdapter'
+import { StargateFarmDeprecatedAdapter } from './stargate/products/farm-deprecated/stargateFarmDeprecatedAdapter'
 
 export const supportedProtocols: Record<
   Protocol,
@@ -532,6 +533,7 @@ export const supportedProtocols: Record<
       StargateFarmAdapter,
       StargatePoolV2Adapter,
       StargateFarmV2Adapter,
+      StargateFarmDeprecatedAdapter,
     ],
     [Chain.Avalanche]: [
       StargatePoolAdapter,
