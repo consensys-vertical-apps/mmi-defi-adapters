@@ -5,7 +5,6 @@ import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -166,11 +165,8 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
 
           const rewardToken = await extraRewardTrackerContract.rewardToken()
 
-          const rewardTokenMetadata = await getTokenMetadata(
-            rewardToken,
-            this.chainId,
-            this.provider,
-          )
+          const rewardTokenMetadata =
+            await this.helpers.getTokenMetadata(rewardToken)
 
           extraRewards.push({
             ...rewardTokenMetadata,

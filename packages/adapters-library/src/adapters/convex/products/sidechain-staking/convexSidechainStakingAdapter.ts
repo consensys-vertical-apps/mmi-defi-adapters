@@ -3,7 +3,8 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import { filterMapSync } from '../../../../core/utils/filters'
+import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
+import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -35,13 +36,9 @@ import {
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardFactorySidechain'
 
-type ExtraRewardToken = Erc20Metadata & {
-  manager: string
-}
-
 type AdditionalMetadata = {
   poolId: number
-  extraRewardTokens: ExtraRewardToken[]
+  extraRewardTokens: Erc20Metadata[]
 }
 
 export class ConvexSidechainStakingAdapter implements IProtocolAdapter {
@@ -105,7 +102,7 @@ export class ConvexSidechainStakingAdapter implements IProtocolAdapter {
 
         const [convexToken, underlyingToken, extraRewardTokens] =
           await Promise.all([
-            this.helpers.getTokenMetadata(convexData.rewards), // convex staking contract is missing name, symbol, decimal
+            this.helpers.getTokenMetadata(convexData.rewards),
             this.helpers.getTokenMetadata(convexData.lptoken),
             this.getExtraRewardTokensMetadata(convexData.rewards),
           ])
@@ -124,8 +121,8 @@ export class ConvexSidechainStakingAdapter implements IProtocolAdapter {
 
   private async getExtraRewardTokensMetadata(
     rewards: string,
-  ): Promise<ExtraRewardToken[]> {
-    const extraRewards: ExtraRewardToken[] = []
+  ): Promise<Erc20Metadata[]> {
+    const extraRewards: Erc20Metadata[] = []
 
     const rewardFactory = ConvexRewardFactorySidechain__factory.connect(
       rewards,
@@ -142,10 +139,7 @@ export class ConvexSidechainStakingAdapter implements IProtocolAdapter {
           const rewardTokenMetadata =
             await this.helpers.getTokenMetadata(rewardToken)
 
-          extraRewards.push({
-            ...rewardTokenMetadata,
-            manager: rewardTokenMetadata.address,
-          })
+          extraRewards.push(rewardTokenMetadata)
         }),
       )
     }
@@ -270,6 +264,51 @@ export class ConvexSidechainStakingAdapter implements IProtocolAdapter {
     })
   }
 
+  async getExtraRewardPositions({
+    userAddress,
+    blockNumber,
+    protocolTokenAddress,
+  }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
+    const { extraRewardTokens } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+
+    const extraRewardTokenContract =
+      ConvexRewardFactorySidechain__factory.connect(
+        protocolTokenAddress,
+        this.provider,
+      )
+
+    const balances = await extraRewardTokenContract.earned.staticCall(
+      userAddress,
+      { blockTag: blockNumber },
+    )
+
+    return await filterMapAsync(balances, async (balance) => {
+      const tokenMetadata = extraRewardTokens.find(
+        (token) => token.address.toLowerCase() === balance.token.toLowerCase(),
+      )
+
+      if (!tokenMetadata) {
+        logger.warn(
+          {
+            tokenAddress: balance.token,
+            chainId: this.chainId,
+            protocolId: this.protocolId,
+            productId: this.productId,
+          },
+          'Token metadata not found for reward',
+        )
+        return undefined
+      }
+
+      return {
+        type: TokenType.UnderlyingClaimable,
+        ...tokenMetadata,
+        balanceRaw: balance.amount,
+      }
+    })
+  }
+
   async getExtraRewardWithdrawals({
     userAddress,
     protocolTokenAddress,
@@ -293,57 +332,46 @@ export class ConvexSidechainStakingAdapter implements IProtocolAdapter {
         toBlock,
       )
 
-    return await Promise.all(
-      eventResults.map(async (event) => {
-        const {
-          blockNumber,
-          args: { _rewardAmount: protocolTokenMovementValueRaw, _rewardToken },
-          transactionHash,
-        } = event
+    return await filterMapAsync(eventResults, async (event) => {
+      const {
+        blockNumber,
+        args: {
+          _rewardAmount: protocolTokenMovementValueRaw,
+          _rewardToken: rewardTokenAddress,
+        },
+        transactionHash,
+      } = event
 
-        return {
-          transactionHash: transactionHash,
-          protocolToken: { name, address, decimals, symbol },
-          tokens: [
-            {
-              // TODO - Use DB
-              ...(await this.helpers.getTokenMetadata(_rewardToken)),
-              balanceRaw: protocolTokenMovementValueRaw,
-              type: TokenType.UnderlyingClaimable,
-            },
-          ],
-          blockNumber: blockNumber,
-        }
-      }),
-    )
-  }
-
-  async getExtraRewardPositions({
-    userAddress,
-    blockNumber,
-    protocolTokenAddress,
-    tokenId,
-  }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
-    const extraRewardTokenContract =
-      ConvexRewardFactorySidechain__factory.connect(
-        protocolTokenAddress,
-        this.provider,
+      const tokenMetadata = extraRewardTokens.find(
+        (token) =>
+          token.address.toLowerCase() === rewardTokenAddress.toLowerCase(),
       )
 
-    const balances = await extraRewardTokenContract.earned.staticCall(
-      userAddress,
-      { blockTag: blockNumber },
-    )
+      if (!tokenMetadata) {
+        logger.warn(
+          {
+            tokenAddress: rewardTokenAddress,
+            chainId: this.chainId,
+            protocolId: this.protocolId,
+            productId: this.productId,
+          },
+          'Token metadata not found for reward',
+        )
+        return undefined
+      }
 
-    return await Promise.all(
-      balances.map(async (balance) => {
-        return {
-          type: TokenType.UnderlyingClaimable,
-          // TODO - Use DB
-          ...(await this.helpers.getTokenMetadata(balance.token)),
-          balanceRaw: balance.amount,
-        }
-      }),
-    )
+      return {
+        transactionHash: transactionHash,
+        protocolToken: { name, address, decimals, symbol },
+        tokens: [
+          {
+            ...tokenMetadata,
+            balanceRaw: protocolTokenMovementValueRaw,
+            type: TokenType.UnderlyingClaimable,
+          },
+        ],
+        blockNumber: blockNumber,
+      }
+    })
   }
 }
