@@ -46,4 +46,17 @@ export const testCases: TestCase[] = [
       protocolTokenAddress: '0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852',
     },
   },
+  {
+    chainId: Chain.Ethereum,
+    method: 'profits',
+
+    input: {
+      userAddress: '0x69D69c4B9DCfcD4f411f935f77F855A51c348F99',
+      timePeriod: TimePeriod.oneDay,
+      filterProtocolTokens: ['0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852'], // WETH - USDT
+    },
+
+    key: 'for-apy',
+    blockNumber: 20909681,
+  },
 ]
