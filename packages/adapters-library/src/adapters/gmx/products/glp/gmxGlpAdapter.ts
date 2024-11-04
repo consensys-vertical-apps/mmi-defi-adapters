@@ -12,6 +12,7 @@ import {
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
+  ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
@@ -26,6 +27,14 @@ import {
   RewardReader__factory,
   Vault__factory,
 } from '../../contracts'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
+import { AdaptersController } from '../../../../core/adaptersController'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { Helpers } from '../../../../scripts/helpers'
+import { Protocol } from '../../../protocols'
 
 type AdditionalMetadata = {
   glpRewardRouter: string
@@ -35,12 +44,33 @@ type AdditionalMetadata = {
   stakedTokenAddress: string
 }
 
-export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+export class GmxGlpAdapter implements IProtocolAdapter {
   productId = 'glp'
+  protocolId: Protocol
+  chainId: Chain
+  helpers: Helpers
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
+  }
+
+  private provider: CustomJsonRpcProvider
+
+  adaptersController: AdaptersController
+
+  constructor({
+    provider,
+    chainId,
+    protocolId,
+    adaptersController,
+    helpers,
+  }: ProtocolAdapterParams) {
+    this.provider = provider
+    this.chainId = chainId
+    this.protocolId = protocolId
+    this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -48,7 +78,7 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
       protocolId: this.protocolId,
       name: 'GMX',
       description: 'GMX Liquidity Provider Token adapter',
-      siteUrl: 'https://https://app.gmx.io',
+      siteUrl: 'https://app.gmx.io',
       iconUrl:
         'https://gmx.io//static/media/ic_gmx_40.72a1053e8344ef876100ac72aff70ead.svg',
       positionType: PositionType.Supply,
@@ -58,7 +88,7 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   }
 
   @CacheToDb
-  async getProtocolTokens() {
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const glpAddresses: Partial<
       Record<
         Chain,
@@ -373,10 +403,8 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getProtocolTokenMovements({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
-
+    return await this.helpers.getErc20Movements({
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: {
         fromBlock,
         toBlock,
@@ -392,10 +420,8 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getProtocolTokenMovements({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
-
+    return await this.helpers.getErc20Movements({
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: {
         fromBlock,
         toBlock,
@@ -405,10 +431,12 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     })
   }
 
-  protected unwrapProtocolToken(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnwrappedTokenExchangeRate[]> {
-    throw new NotImplementedError()
+  private async getProtocolTokenByAddress(
+    protocolTokenAddress: string,
+  ): Promise<ProtocolToken<AdditionalMetadata>> {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
   }
 }
