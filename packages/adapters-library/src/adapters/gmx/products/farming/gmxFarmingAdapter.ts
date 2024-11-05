@@ -1,45 +1,36 @@
-import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
-  MovementsByBlockReward,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  Underlying,
   UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import {
-  RewardReader__factory,
-  RewardRouter__factory,
-  RewardTracker__factory,
-} from '../../contracts'
+import { RewardRouter__factory, RewardTracker__factory } from '../../contracts'
 import { filterMapAsync } from '../../../../core/utils/filters'
 
 type RewardTokenMetadata = Erc20Metadata & {
-  rewardTracker: string
+  rewardTrackerAddress: string
 }
 
 type AdditionalMetadata = {
@@ -110,8 +101,7 @@ export class GmxFarmingAdapter implements IProtocolAdapter {
 
   @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
-    // GMX Farming
-    // esGMX Farming
+    // GMX & esGMX Farming
     const rewardRouter = RewardRouter__factory.connect(
       contractAddresses[this.chainId]!.rewardRouter,
       this.provider,
@@ -149,7 +139,7 @@ export class GmxFarmingAdapter implements IProtocolAdapter {
           ...(await this.helpers.getTokenMetadata(
             await trackerContract.rewardToken(),
           )),
-          rewardTracker: trackerAddress,
+          rewardTrackerAddress: trackerAddress,
         }
       }),
     )
@@ -179,7 +169,7 @@ export class GmxFarmingAdapter implements IProtocolAdapter {
             ...(await this.helpers.getTokenMetadata(
               await trackerContract.rewardToken(),
             )),
-            rewardTracker: trackerAddress,
+            rewardTrackerAddress: trackerAddress,
           }
         },
       ),
@@ -196,7 +186,7 @@ export class GmxFarmingAdapter implements IProtocolAdapter {
         ...esGmxMetadata,
         stakedTokenTrackerAddress: stakedGmxTrackerAddress,
         underlyingTokens: [],
-        rewardTokens: gmxRewardTokens,
+        rewardTokens: [],
       },
       {
         ...glpMetadata,
@@ -207,32 +197,11 @@ export class GmxFarmingAdapter implements IProtocolAdapter {
     ]
   }
 
-  private async getProtocolTokenByAddress(protocolTokenAddress: string) {
-    return this.helpers.getProtocolTokenByAddress({
-      protocolTokens: await this.getProtocolTokens(),
-      protocolTokenAddress,
-    })
-  }
-
-  // When GMX or esGMX is staked, the following stakes happen internally
-  // IRewardTracker(stakedGmxTracker).stakeForAccount(_fundingAccount, _account, _token, _amount);
-  // IRewardTracker(bonusGmxTracker).stakeForAccount(_account, _account, stakedGmxTracker, _amount);
-  // IRewardTracker(extendedGmxTracker).stakeForAccount(_account, _account, bonusGmxTracker, _amount);
-  // IRewardTracker(feeGmxTracker).stakeForAccount(_account, _account, extendedGmxTracker, _amount);
-
-  // When GLP is stakes, the following stakes happen internally
-  // IRewardTracker(feeGlpTracker).stakeForAccount(account, account, glp, glpAmount);
-  // IRewardTracker(stakedGlpTracker).stakeForAccount(account, account, feeGlpTracker, glpAmount);
   async getPositions({
     userAddress,
     protocolTokenAddresses,
     blockNumber,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const rewardReader = RewardReader__factory.connect(
-      contractAddresses[this.chainId]!.rewardReader,
-      this.provider,
-    )
-
     return await filterMapAsync(
       await this.getProtocolTokens(),
       async (protocolToken) => {
@@ -260,11 +229,60 @@ export class GmxFarmingAdapter implements IProtocolAdapter {
 
         return {
           address: protocolToken.address,
-          name: protocolToken.name,
+          name: `Staked ${protocolToken.name}`,
           symbol: protocolToken.symbol,
           decimals: protocolToken.decimals,
-          balanceRaw: amountStaked,
-          type: TokenType.Protocol,
+          balanceRaw: 0n,
+          type: TokenType.Protocol, // TODO Should be a contract position
+          tokens: [
+            {
+              address: protocolToken.address,
+              name: protocolToken.name,
+              symbol: protocolToken.symbol,
+              decimals: protocolToken.decimals,
+              balanceRaw: amountStaked,
+              type: TokenType.Underlying,
+            },
+          ],
+        }
+      },
+    )
+  }
+
+  async getRewardPositions({
+    userAddress,
+    protocolTokenAddress,
+    blockNumber,
+  }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
+    const protocolToken = this.helpers.getProtocolTokenByAddress({
+      protocolTokenAddress,
+      protocolTokens: await this.getProtocolTokens(),
+    })
+
+    if (!protocolToken.rewardTokens) {
+      return []
+    }
+
+    return await filterMapAsync(
+      protocolToken.rewardTokens,
+      async ({ rewardTrackerAddress, ...rewardTokenMetadata }) => {
+        const rewardTracker = RewardTracker__factory.connect(
+          rewardTrackerAddress,
+          this.provider,
+        )
+
+        const rewardBalance = await rewardTracker.claimable(userAddress, {
+          blockTag: blockNumber,
+        })
+
+        if (rewardBalance === 0n) {
+          return undefined
+        }
+
+        return {
+          ...rewardTokenMetadata,
+          type: TokenType.UnderlyingClaimable,
+          balanceRaw: rewardBalance,
         }
       },
     )
