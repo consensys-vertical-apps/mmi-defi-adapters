@@ -6,3 +6,4 @@ export { RewardReader__factory } from "./RewardReader__factory";
 export { RewardRouter__factory } from "./RewardRouter__factory";
 export { RewardTracker__factory } from "./RewardTracker__factory";
 export { Vault__factory } from "./Vault__factory";
+export { Vester__factory } from "./Vester__factory";

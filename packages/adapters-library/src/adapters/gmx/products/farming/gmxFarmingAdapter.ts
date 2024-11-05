@@ -39,20 +39,15 @@ type AdditionalMetadata = {
 }
 
 const contractAddresses: Partial<
-  Record<
-    Chain,
-    { rewardRouter: string; glpRewardRouter: string; rewardReader: string }
-  >
+  Record<Chain, { rewardRouter: string; glpRewardRouter: string }>
 > = {
   [Chain.Arbitrum]: {
     rewardRouter: '0x5e4766f932ce00aa4a1a82d3da85adf15c5694a1',
     glpRewardRouter: '0xB95DB5B167D75e6d04227CfFFA61069348d271F5',
-    rewardReader: '0x8BFb8e82Ee4569aee78D03235ff465Bd436D40E0',
   },
   [Chain.Avalanche]: {
     rewardRouter: '0x091eD806490Cc58Fd514441499e58984cCce0630',
     glpRewardRouter: '0xB70B91CE0771d3f4c81D87660f71Da31d48eB3B3',
-    rewardReader: '0x04Fc11Bd28763872d143637a7c768bD96E44c1b6',
   },
 }
 

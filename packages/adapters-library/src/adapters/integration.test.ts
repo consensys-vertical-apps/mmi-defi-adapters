@@ -48,6 +48,7 @@ import { testCases as fluxBorrowMarketTestCases } from './flux/products/borrow-m
 import { testCases as fluxSupplyMarketTestCases } from './flux/products/supply-market/tests/testCases'
 import { testCases as gmxFarmingTestCases } from './gmx/products/farming/tests/testCases'
 import { testCases as gmxGlpTestCases } from './gmx/products/glp/tests/testCases'
+import { testCases as gmxVestingTestCases } from './gmx/products/vesting/tests/testCases'
 import { testCases as iZiSwapPoolTestCases } from './iziswap/products/pool/tests/testCases'
 import { testCases as lidoStEthTestCases } from './lido/products/st-eth/tests/testCases'
 import { testCases as lidoWstEthTestCases } from './lido/products/wst-eth/tests/testCases'
@@ -192,6 +193,7 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
   [Protocol.Gmx]: {
     ['farming']: gmxFarmingTestCases,
     ['glp']: gmxGlpTestCases,
+    ['vesting']: gmxVestingTestCases,
   },
   [Protocol.IZiSwap]: {
     ['pool']: iZiSwapPoolTestCases,

@@ -132,6 +132,8 @@ import { StargateFarmDeprecatedAdapter } from './stargate/products/farm-deprecat
 
 import { GmxFarmingAdapter } from './gmx/products/farming/gmxFarmingAdapter'
 
+import { GmxVestingAdapter } from './gmx/products/vesting/gmxVestingAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -339,8 +341,8 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Gmx]: {
-    [Chain.Arbitrum]: [GmxGlpAdapter, GmxFarmingAdapter],
-    [Chain.Avalanche]: [GmxGlpAdapter, GmxFarmingAdapter],
+    [Chain.Arbitrum]: [GmxGlpAdapter, GmxFarmingAdapter, GmxVestingAdapter],
+    [Chain.Avalanche]: [GmxGlpAdapter, GmxFarmingAdapter, GmxVestingAdapter],
   },
 
   [Protocol.IZiSwap]: {
