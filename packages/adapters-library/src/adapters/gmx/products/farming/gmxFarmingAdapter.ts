@@ -28,23 +28,15 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { RewardRouter__factory, RewardTracker__factory } from '../../contracts'
 import { filterMapAsync } from '../../../../core/utils/filters'
+import { contractAddresses } from '../../common/contractAddresses'
 
 type RewardTokenMetadata = Erc20Metadata & {
   rewardTrackerAddress: string
 }
 
 type AdditionalMetadata = {
+  positionContractAddress: string
   rewardTokens: RewardTokenMetadata[]
-  stakedTokenTrackerAddress: string
-}
-
-const contractAddresses: Partial<Record<Chain, { rewardRouter: string }>> = {
-  [Chain.Arbitrum]: {
-    rewardRouter: '0x5e4766f932ce00aa4a1a82d3da85adf15c5694a1',
-  },
-  [Chain.Avalanche]: {
-    rewardRouter: '0x091eD806490Cc58Fd514441499e58984cCce0630',
-  },
 }
 
 export class GmxFarmingAdapter implements IProtocolAdapter {
@@ -98,19 +90,24 @@ export class GmxFarmingAdapter implements IProtocolAdapter {
     )
 
     const [
-      gmxMetadata,
-      esGmxMetadata,
+      gmxAddress,
+      esGmxAddress,
       stakedGmxTrackerAddress,
       feeGmxTrackerAddress,
       bonusGmxTrackerAddress,
       extendedGmxTrackerAddress,
     ] = await Promise.all([
-      this.helpers.getTokenMetadata(await rewardRouter.gmx()),
-      this.helpers.getTokenMetadata(await rewardRouter.esGmx()),
+      rewardRouter.gmx(),
+      rewardRouter.esGmx(),
       rewardRouter.stakedGmxTracker(),
       rewardRouter.feeGmxTracker(),
       rewardRouter.bonusGmxTracker(),
       rewardRouter.extendedGmxTracker(),
+    ])
+
+    const [gmxMetadata, esGmxMetadata] = await Promise.all([
+      this.helpers.getTokenMetadata(gmxAddress),
+      this.helpers.getTokenMetadata(esGmxAddress),
     ])
 
     const gmxRewardTokens = await Promise.all(
@@ -125,10 +122,12 @@ export class GmxFarmingAdapter implements IProtocolAdapter {
           this.provider,
         )
 
+        const rewardTokenMetadata = await this.helpers.getTokenMetadata(
+          await trackerContract.rewardToken(),
+        )
+
         return {
-          ...(await this.helpers.getTokenMetadata(
-            await trackerContract.rewardToken(),
-          )),
+          ...rewardTokenMetadata,
           rewardTrackerAddress: trackerAddress,
         }
       }),
@@ -137,13 +136,13 @@ export class GmxFarmingAdapter implements IProtocolAdapter {
     return [
       {
         ...gmxMetadata,
-        stakedTokenTrackerAddress: stakedGmxTrackerAddress,
+        positionContractAddress: stakedGmxTrackerAddress,
         underlyingTokens: [],
         rewardTokens: gmxRewardTokens,
       },
       {
         ...esGmxMetadata,
-        stakedTokenTrackerAddress: stakedGmxTrackerAddress,
+        positionContractAddress: stakedGmxTrackerAddress,
         underlyingTokens: [],
         rewardTokens: [],
       },
@@ -166,7 +165,7 @@ export class GmxFarmingAdapter implements IProtocolAdapter {
         }
 
         const stakedRewardTraker = RewardTracker__factory.connect(
-          protocolToken.stakedTokenTrackerAddress,
+          protocolToken.positionContractAddress,
           this.provider,
         )
 

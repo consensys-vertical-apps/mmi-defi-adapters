@@ -26,19 +26,11 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
+import { contractAddresses } from '../../common/contractAddresses'
 import { RewardRouter__factory, Vester__factory } from '../../contracts'
 
 type AdditionalMetadata = {
   rewardTokens: Erc20Metadata[]
-}
-
-const contractAddresses: Partial<Record<Chain, { rewardRouter: string }>> = {
-  [Chain.Arbitrum]: {
-    rewardRouter: '0x5e4766f932ce00aa4a1a82d3da85adf15c5694a1',
-  },
-  [Chain.Avalanche]: {
-    rewardRouter: '0x091eD806490Cc58Fd514441499e58984cCce0630',
-  },
 }
 
 export class GmxVestingAdapter implements IProtocolAdapter {
