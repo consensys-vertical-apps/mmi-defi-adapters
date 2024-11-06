@@ -1,8 +1,16 @@
 import { Erc20__factory } from '../../../../contracts'
+import { AdaptersController } from '../../../../core/adaptersController'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../../core/utils/filters'
+import { Helpers } from '../../../../scripts/helpers'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -20,22 +28,14 @@ import {
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { Protocol } from '../../../protocols'
+import { contractAddresses } from '../../common/contractAddresses'
 import {
   GlpManager__factory,
   RewardRouter__factory,
   RewardTracker__factory,
   Vault__factory,
 } from '../../contracts'
-import {
-  IProtocolAdapter,
-  ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
-import { AdaptersController } from '../../../../core/adaptersController'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { Helpers } from '../../../../scripts/helpers'
-import { Protocol } from '../../../protocols'
-import { filterMapAsync } from '../../../../core/utils/filters'
-import { contractAddresses } from '../../common/contractAddresses'
 
 type RewardTokenMetadata = Erc20Metadata & {
   rewardTrackerAddress: string

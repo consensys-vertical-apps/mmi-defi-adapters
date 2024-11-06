@@ -3,6 +3,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../../core/utils/filters'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -26,9 +27,8 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import { RewardRouter__factory, RewardTracker__factory } from '../../contracts'
-import { filterMapAsync } from '../../../../core/utils/filters'
 import { contractAddresses } from '../../common/contractAddresses'
+import { RewardRouter__factory, RewardTracker__factory } from '../../contracts'
 
 type RewardTokenMetadata = Erc20Metadata & {
   rewardTrackerAddress: string
