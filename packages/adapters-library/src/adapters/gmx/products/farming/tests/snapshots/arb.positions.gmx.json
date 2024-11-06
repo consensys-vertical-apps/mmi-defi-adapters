@@ -1,7 +1,7 @@
 {
   "blockNumber": 271425317,
-  "latency": "Latency: 1.447 seconds",
-  "aggregatedValues": ["USD753,619.14", "USD23.59"],
+  "latency": "Latency: 2.04 seconds",
+  "aggregatedValues": ["USD753,619.14"],
   "snapshot": [
     {
       "protocolId": "gmx",
@@ -47,28 +47,6 @@
             }
           ],
           "balance": 0
-        },
-        {
-          "address": "0xf42Ae1D54fd613C9bb14810b0588FaAa09a426cA",
-          "name": "Staked Escrowed GMX",
-          "symbol": "esGMX",
-          "decimals": 18,
-          "balanceRaw": "0n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xf42Ae1D54fd613C9bb14810b0588FaAa09a426cA",
-              "name": "Escrowed GMX",
-              "symbol": "esGMX",
-              "decimals": 18,
-              "balanceRaw": "14541553720158005370n",
-              "type": "underlying",
-              "balance": 14.541553720158005,
-              "price": 1.6223461117474816,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf42Ae1D54fd613C9bb14810b0588FaAa09a426cA/logo.png"
-            }
-          ],
-          "balance": 0
         }
       ]
     }
@@ -77,16 +55,13 @@
     "49edb6383e0577c448e1523171b1d06b": {
       "result": "0x0000000000000000000000000000000000000000000007ca5e1fb76442ceb8f4"
     },
-    "fc60e15d6653ba892853f17e4fc60649": {
-      "result": "0x000000000000000000000000000000000000000000000000c9cdfa106447287a"
-    },
-    "a76d5e435a841ced4403898f821fa958": {
+    "43a66ae092e193f13dccbfc0c14a815b": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
     "8fdce33ac7f7cd7702e62e635d8692c6": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
-    "43a66ae092e193f13dccbfc0c14a815b": {
+    "a76d5e435a841ced4403898f821fa958": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
     "f253fd55b796630b612f5eeb0146ac4e": {
@@ -94,9 +69,6 @@
     },
     "dbf9c75f7dc79abe16b0894927d1b66e": {
       "result": "0x00000000000000000000000000000000000000000000000100000000000ada1300000000000000000000000000000000000000000000000000000038447c697300000000000000000000000000000000000000000000000000000000672a95fb00000000000000000000000000000000000000000000000000000000672a95fb00000000000000000000000000000000000000000000000100000000000ada13"
-    },
-    "ccad31bea5bdec159c1071f72249e81f": {
-      "result": "0x0000000000000000000000000000000000000000000000000002628e8603d5b2"
     },
     "f08367e3e4df5f87042e414114aff1d0": {
       "result": "0x000000000000000000000000000000000000000000000000001e0e1992429f9a"
