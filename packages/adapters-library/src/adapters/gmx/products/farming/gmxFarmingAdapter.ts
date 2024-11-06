@@ -38,16 +38,12 @@ type AdditionalMetadata = {
   stakedTokenTrackerAddress: string
 }
 
-const contractAddresses: Partial<
-  Record<Chain, { rewardRouter: string; glpRewardRouter: string }>
-> = {
+const contractAddresses: Partial<Record<Chain, { rewardRouter: string }>> = {
   [Chain.Arbitrum]: {
     rewardRouter: '0x5e4766f932ce00aa4a1a82d3da85adf15c5694a1',
-    glpRewardRouter: '0xB95DB5B167D75e6d04227CfFFA61069348d271F5',
   },
   [Chain.Avalanche]: {
     rewardRouter: '0x091eD806490Cc58Fd514441499e58984cCce0630',
-    glpRewardRouter: '0xB70B91CE0771d3f4c81D87660f71Da31d48eB3B3',
   },
 }
 
@@ -96,7 +92,6 @@ export class GmxFarmingAdapter implements IProtocolAdapter {
 
   @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
-    // GMX & esGMX Farming
     const rewardRouter = RewardRouter__factory.connect(
       contractAddresses[this.chainId]!.rewardRouter,
       this.provider,
@@ -139,37 +134,6 @@ export class GmxFarmingAdapter implements IProtocolAdapter {
       }),
     )
 
-    // GLP Farming
-    const glpRewardRouter = RewardRouter__factory.connect(
-      contractAddresses[this.chainId]!.glpRewardRouter,
-      this.provider,
-    )
-
-    const [glpMetadata, stakedGlpTrackerAddress, feeGlpTrackerAddress] =
-      await Promise.all([
-        this.helpers.getTokenMetadata(await glpRewardRouter.glp()),
-        glpRewardRouter.stakedGlpTracker(),
-        glpRewardRouter.feeGlpTracker(),
-      ])
-
-    const glpRewardTokens = await Promise.all(
-      [stakedGlpTrackerAddress, feeGlpTrackerAddress].map(
-        async (trackerAddress) => {
-          const trackerContract = RewardTracker__factory.connect(
-            trackerAddress,
-            this.provider,
-          )
-
-          return {
-            ...(await this.helpers.getTokenMetadata(
-              await trackerContract.rewardToken(),
-            )),
-            rewardTrackerAddress: trackerAddress,
-          }
-        },
-      ),
-    )
-
     return [
       {
         ...gmxMetadata,
@@ -182,12 +146,6 @@ export class GmxFarmingAdapter implements IProtocolAdapter {
         stakedTokenTrackerAddress: stakedGmxTrackerAddress,
         underlyingTokens: [],
         rewardTokens: [],
-      },
-      {
-        ...glpMetadata,
-        stakedTokenTrackerAddress: stakedGlpTrackerAddress,
-        underlyingTokens: [],
-        rewardTokens: glpRewardTokens,
       },
     ]
   }
