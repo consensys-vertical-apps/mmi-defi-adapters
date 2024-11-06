@@ -1,0 +1,77 @@
+{
+  "blockNumber": 271425317,
+  "latency": "Latency: 2.04 seconds",
+  "aggregatedValues": ["USD753,619.14"],
+  "snapshot": [
+    {
+      "protocolId": "gmx",
+      "name": "GMX",
+      "description": "GMX Farming",
+      "siteUrl": "https://app.gmx.io",
+      "iconUrl": "https://gmx.io//static/media/ic_gmx_40.72a1053e8344ef876100ac72aff70ead.svg",
+      "positionType": "stake",
+      "chainId": 42161,
+      "productId": "farming",
+      "chainName": "arb",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
+          "name": "Staked GMX",
+          "symbol": "GMX",
+          "decimals": 18,
+          "balanceRaw": "0n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
+              "name": "GMX",
+              "symbol": "GMX",
+              "decimals": 18,
+              "balanceRaw": "36789590024181934635252n",
+              "type": "underlying",
+              "balance": 36789.59002418193,
+              "price": 20.444444183761483,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a/logo.png"
+            },
+            {
+              "address": "0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
+              "name": "GMX",
+              "symbol": "GMX",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "72216090681756692253n",
+              "balance": 72.2160906817567,
+              "price": 20.444444183761483,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a/logo.png"
+            }
+          ],
+          "balance": 0
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "49edb6383e0577c448e1523171b1d06b": {
+      "result": "0x0000000000000000000000000000000000000000000007ca5e1fb76442ceb8f4"
+    },
+    "43a66ae092e193f13dccbfc0c14a815b": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "8fdce33ac7f7cd7702e62e635d8692c6": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "a76d5e435a841ced4403898f821fa958": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "f253fd55b796630b612f5eeb0146ac4e": {
+      "result": "0x000000000000000000000000000000000000000000000003ea3317db99812f1d"
+    },
+    "dbf9c75f7dc79abe16b0894927d1b66e": {
+      "result": "0x00000000000000000000000000000000000000000000000100000000000ada1300000000000000000000000000000000000000000000000000000038447c697300000000000000000000000000000000000000000000000000000000672a95fb00000000000000000000000000000000000000000000000000000000672a95fb00000000000000000000000000000000000000000000000100000000000ada13"
+    },
+    "f08367e3e4df5f87042e414114aff1d0": {
+      "result": "0x000000000000000000000000000000000000000000000000001e0e1992429f9a"
+    }
+  }
+}

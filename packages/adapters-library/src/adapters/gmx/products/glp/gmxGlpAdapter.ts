@@ -1,46 +1,79 @@
-import { getAddress } from 'ethers'
 import { Erc20__factory } from '../../../../contracts'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { AdaptersController } from '../../../../core/adaptersController'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../../core/utils/filters'
+import { Helpers } from '../../../../scripts/helpers'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
+  GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
+  ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
+  UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
-  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { Protocol } from '../../../protocols'
+import { contractAddresses } from '../../common/contractAddresses'
 import {
   GlpManager__factory,
-  RewardReader__factory,
+  RewardRouter__factory,
+  RewardTracker__factory,
   Vault__factory,
 } from '../../contracts'
 
-type AdditionalMetadata = {
-  glpRewardRouter: string
-  vaultAddress: string
-  rewardReaderAddress: string
-  feeTokenAddress: string
-  stakedTokenAddress: string
+type RewardTokenMetadata = Erc20Metadata & {
+  rewardTrackerAddress: string
 }
 
-export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
+type AdditionalMetadata = {
+  vaultAddress: string
+  positionContractAddress: string
+  rewardTokens: RewardTokenMetadata[]
+}
+
+export class GmxGlpAdapter implements IProtocolAdapter {
   productId = 'glp'
+  protocolId: Protocol
+  chainId: Chain
+  helpers: Helpers
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
+  }
+
+  private provider: CustomJsonRpcProvider
+
+  adaptersController: AdaptersController
+
+  constructor({
+    provider,
+    chainId,
+    protocolId,
+    adaptersController,
+    helpers,
+  }: ProtocolAdapterParams) {
+    this.provider = provider
+    this.chainId = chainId
+    this.protocolId = protocolId
+    this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -48,79 +81,44 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
       protocolId: this.protocolId,
       name: 'GMX',
       description: 'GMX Liquidity Provider Token adapter',
-      siteUrl: 'https://https://app.gmx.io',
+      siteUrl: 'https://app.gmx.io',
       iconUrl:
         'https://gmx.io//static/media/ic_gmx_40.72a1053e8344ef876100ac72aff70ead.svg',
-      positionType: PositionType.Supply,
+      positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
     }
   }
 
   @CacheToDb
-  async getProtocolTokens() {
-    const glpAddresses: Partial<
-      Record<
-        Chain,
-        {
-          glpRewardRouter: string
-          glpManagerContractAddress: string
-          rewardReaderAddress: string
-          feeTokenAddress: string
-          stakedTokenAddress: string
-        }
-      >
-    > = {
-      [Chain.Arbitrum]: {
-        glpRewardRouter: getAddress(
-          '0xB95DB5B167D75e6d04227CfFFA61069348d271F5',
-        ),
-        glpManagerContractAddress: getAddress(
-          '0x3963FfC9dff443c2A94f21b129D429891E32ec18',
-        ),
-        rewardReaderAddress: getAddress(
-          '0x8BFb8e82Ee4569aee78D03235ff465Bd436D40E0',
-        ),
-        feeTokenAddress: getAddress(
-          '0x4e971a87900b931fF39d1Aad67697F49835400b6',
-        ),
-        stakedTokenAddress: getAddress(
-          '0x1aDDD80E6039594eE970E5872D247bf0414C8903',
-        ),
-      },
-      [Chain.Avalanche]: {
-        glpRewardRouter: getAddress(
-          '0xB70B91CE0771d3f4c81D87660f71Da31d48eB3B3',
-        ),
-        glpManagerContractAddress: getAddress(
-          '0xD152c7F25db7F4B95b7658323c5F33d176818EE4',
-        ),
-        rewardReaderAddress: getAddress(
-          '0x04Fc11Bd28763872d143637a7c768bD96E44c1b6',
-        ),
-        feeTokenAddress: getAddress(
-          '0xd2D1162512F927a7e282Ef43a362659E4F2a728F',
-        ),
-        stakedTokenAddress: getAddress(
-          '0x9e295B5B976a184B14aD8cd72413aD846C299660',
-        ),
-      },
-    }
-
-    const {
-      glpRewardRouter,
-      glpManagerContractAddress,
-      rewardReaderAddress,
-      feeTokenAddress,
-      stakedTokenAddress,
-    } = glpAddresses[this.chainId]!
-
-    const glpManagerContract = GlpManager__factory.connect(
-      glpManagerContractAddress,
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+    const rewardRouter = RewardRouter__factory.connect(
+      contractAddresses[this.chainId]!.glpRewardRouter,
       this.provider,
     )
 
-    const vaultAddress = getAddress(await glpManagerContract.vault())
+    const [
+      glpAddress,
+      glpManagerAddress,
+      stakedGlpTrackerAddress,
+      feeGlpTrackerAddress,
+    ] = await Promise.all([
+      rewardRouter.glp(),
+      rewardRouter.glpManager(),
+      rewardRouter.stakedGlpTracker(),
+      rewardRouter.feeGlpTracker(),
+    ])
+
+    const glpManagerContract = GlpManager__factory.connect(
+      glpManagerAddress,
+      this.provider,
+    )
+
+    const [vaultAddress, glpMetadata] = await Promise.all([
+      glpManagerContract.vault(),
+      this.helpers.getTokenMetadata(glpAddress),
+    ])
+
     const vaultContract = Vault__factory.connect(vaultAddress, this.provider)
 
     const allWhitelistedTokensLength =
@@ -132,10 +130,8 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
           const underlyingTokenAddress =
             await vaultContract.allWhitelistedTokens(index)
 
-          const underlyingToken = await getTokenMetadata(
+          const underlyingToken = await this.helpers.getTokenMetadata(
             underlyingTokenAddress,
-            this.chainId,
-            this.provider,
           )
 
           return underlyingToken
@@ -143,21 +139,33 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
       ),
     )
 
-    const protocolToken = await getTokenMetadata(
-      await glpManagerContract.glp(),
-      this.chainId,
-      this.provider,
+    const rewardTokens = await Promise.all(
+      [stakedGlpTrackerAddress, feeGlpTrackerAddress].map(
+        async (trackerAddress) => {
+          const trackerContract = RewardTracker__factory.connect(
+            trackerAddress,
+            this.provider,
+          )
+
+          const rewardTokenMetadata = await this.helpers.getTokenMetadata(
+            await trackerContract.rewardToken(),
+          )
+
+          return {
+            ...rewardTokenMetadata,
+            rewardTrackerAddress: trackerAddress,
+          }
+        },
+      ),
     )
 
     return [
       {
-        glpRewardRouter,
+        ...glpMetadata,
         vaultAddress,
-        rewardReaderAddress,
-        feeTokenAddress,
-        stakedTokenAddress,
-        ...protocolToken,
+        positionContractAddress: feeGlpTrackerAddress,
         underlyingTokens,
+        rewardTokens,
       },
     ]
   }
@@ -167,15 +175,7 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     blockNumber,
     protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const {
-      glpRewardRouter,
-      vaultAddress,
-      stakedTokenAddress,
-      rewardReaderAddress,
-      feeTokenAddress: positionContractAddress,
-      underlyingTokens,
-      ...protocolToken
-    } = (await this.getProtocolTokens())[0]!
+    const protocolToken = (await this.getProtocolTokens())[0]!
 
     if (
       protocolTokenAddresses &&
@@ -184,144 +184,78 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
       return []
     }
 
-    const rewardReaderContract = RewardReader__factory.connect(
-      rewardReaderAddress,
+    const positionContract = RewardTracker__factory.connect(
+      protocolToken.positionContractAddress,
       this.provider,
     )
 
-    const [[protocolTokenBalance], unwrappedTokenExchangeRates] =
-      await Promise.all([
-        rewardReaderContract.getDepositBalances(
-          userAddress,
-          [protocolToken.address],
-          [positionContractAddress],
-          { blockTag: blockNumber },
-        ),
-        this.unwrap({
-          protocolTokenAddress: protocolToken.address,
-          blockNumber,
-        }),
-      ])
+    const amountStaked = await positionContract.depositBalances(
+      userAddress,
+      protocolToken.address,
+      { blockTag: blockNumber },
+    )
 
-    if (!protocolTokenBalance || protocolTokenBalance === 0n) {
+    if (amountStaked === 0n) {
       return []
     }
 
-    const underlyingTokenBalances = underlyingTokens.map((underlyingToken) => {
-      const unwrappedTokenExchangeRate =
-        unwrappedTokenExchangeRates.tokens?.find(
-          (tokenRate) => tokenRate.address === underlyingToken.address,
-        )
-
-      const underlyingBalanceRaw =
-        (protocolTokenBalance * unwrappedTokenExchangeRate!.underlyingRateRaw) /
-        10n ** BigInt(protocolToken.decimals)
-
-      return {
-        ...underlyingToken,
-        type: TokenType.Underlying,
-        balanceRaw: underlyingBalanceRaw,
-      }
-    })
-
     return [
       {
-        ...protocolToken,
+        address: protocolToken.address,
+        name: protocolToken.name,
+        symbol: protocolToken.symbol,
+        decimals: protocolToken.decimals,
+        balanceRaw: amountStaked,
         type: TokenType.Protocol,
-        balanceRaw: protocolTokenBalance,
-        tokens: underlyingTokenBalances,
       },
     ]
-
-    // PRELIMINARY CODE FOR REWARDS
-    // const {
-    //   rewardReaderAddress,
-    //   feeTokenAddress,
-    //   stakedTokenAddress,
-    //   protocolToken,
-    // } = await this.buildMetadata()
-
-    // const rewardReaderContract = RewardReader__factory.connect(
-    //   rewardReaderAddress,
-    //   this.provider,
-    // )
-
-    // const feeTokenContract = RewardTracker__factory.connect(
-    //   feeTokenAddress,
-    //   this.provider,
-    // )
-
-    // const stakedTokenContract = RewardTracker__factory.connect(
-    //   stakedTokenAddress,
-    //   this.provider,
-    // )
-
-    // const [feeTokenRewardAddress, stakedTokenRewardAddress] = await Promise.all(
-    //   [feeTokenContract.rewardToken(), stakedTokenContract.rewardToken()],
-    // )
-
-    // const [
-    //   feeTokenMetadata,
-    //   feeTokenRewardMetadata,
-    //   stakedTokenMetadata,
-    //   stakedTokenRewardMetadata,
-    //   stakingInfo,
-    // ] = await Promise.all([
-    //   getTokenMetadata(feeTokenAddress, this.chainId, this.provider),
-    //   getTokenMetadata(feeTokenRewardAddress, this.chainId, this.provider),
-    //   getTokenMetadata(stakedTokenAddress, this.chainId, this.provider),
-    //   getTokenMetadata(stakedTokenRewardAddress, this.chainId, this.provider),
-    //   rewardReaderContract.getStakingInfo(
-    //     userAddress,
-    //     [feeTokenAddress, stakedTokenAddress],
-    //     { blockTag: blockNumber },
-    //   ),
-    // ])
-
-    // return [
-    //   {
-    //     ...protocolToken,
-    //     type: TokenType.Protocol,
-    //     tokens: [
-    //       {
-    //         ...feeTokenMetadata,
-    //         type: TokenType.Reward,
-    //         balanceRaw: 0n,
-    //         tokens: [
-    //           {
-    //             ...feeTokenRewardMetadata,
-    //             type: TokenType.Underlying,
-    //             balanceRaw: stakingInfo[0]!,
-    //           },
-    //         ],
-    //       },
-    //       {
-    //         ...stakedTokenMetadata,
-    //         type: TokenType.Reward,
-    //         balanceRaw: 0n,
-    //         tokens: [
-    //           {
-    //             ...stakedTokenRewardMetadata,
-    //             type: TokenType.Underlying,
-    //             balanceRaw: stakingInfo[5]!,
-    //           },
-    //         ],
-    //       },
-    //     ],
-    //   },
-    // ]
   }
 
-  async unwrap({ blockNumber }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const {
-      glpRewardRouter,
-      vaultAddress,
-      stakedTokenAddress,
-      rewardReaderAddress,
-      feeTokenAddress: positionContractAddress,
-      underlyingTokens,
-      ...protocolToken
-    } = (await this.getProtocolTokens())[0]!
+  async getRewardPositions({
+    userAddress,
+    protocolTokenAddress,
+    blockNumber,
+  }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
+    const protocolToken = this.helpers.getProtocolTokenByAddress({
+      protocolTokenAddress,
+      protocolTokens: await this.getProtocolTokens(),
+    })
+
+    if (!protocolToken.rewardTokens) {
+      return []
+    }
+
+    return await filterMapAsync(
+      protocolToken.rewardTokens,
+      async ({ rewardTrackerAddress, ...rewardTokenMetadata }) => {
+        const rewardTracker = RewardTracker__factory.connect(
+          rewardTrackerAddress,
+          this.provider,
+        )
+
+        const rewardBalance = await rewardTracker.claimable(userAddress, {
+          blockTag: blockNumber,
+        })
+
+        if (rewardBalance === 0n) {
+          return undefined
+        }
+
+        return {
+          ...rewardTokenMetadata,
+          type: TokenType.UnderlyingClaimable,
+          balanceRaw: rewardBalance,
+        }
+      },
+    )
+  }
+
+  async unwrap({
+    protocolTokenAddress,
+    blockNumber,
+  }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    const { vaultAddress, underlyingTokens, ...protocolToken } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const vaultContract = Vault__factory.connect(vaultAddress, this.provider)
 
@@ -354,7 +288,10 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     )
 
     return {
-      ...protocolToken,
+      address: protocolToken.address,
+      name: protocolToken.name,
+      symbol: protocolToken.symbol,
+      decimals: protocolToken.decimals,
       type: TokenType.Protocol,
       baseRate: 1,
       tokens: unwrappedTokenExchangeRates,
@@ -373,10 +310,8 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getProtocolTokenMovements({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
-
+    return await this.helpers.getErc20Movements({
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: {
         fromBlock,
         toBlock,
@@ -392,10 +327,8 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getProtocolTokenMovements({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
-
+    return await this.helpers.getErc20Movements({
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
       filter: {
         fromBlock,
         toBlock,
@@ -405,10 +338,12 @@ export class GmxGlpAdapter extends SimplePoolAdapter<AdditionalMetadata> {
     })
   }
 
-  protected unwrapProtocolToken(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnwrappedTokenExchangeRate[]> {
-    throw new NotImplementedError()
+  private async getProtocolTokenByAddress(
+    protocolTokenAddress: string,
+  ): Promise<ProtocolToken<AdditionalMetadata>> {
+    return this.helpers.getProtocolTokenByAddress({
+      protocolTokens: await this.getProtocolTokens(),
+      protocolTokenAddress,
+    })
   }
 }

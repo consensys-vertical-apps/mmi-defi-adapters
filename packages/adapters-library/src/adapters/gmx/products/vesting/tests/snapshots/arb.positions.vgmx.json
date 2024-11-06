@@ -1,0 +1,71 @@
+{
+  "blockNumber": 271347253,
+  "latency": "Latency: 1.027 seconds",
+  "aggregatedValues": ["USD10,955.17"],
+  "snapshot": [
+    {
+      "protocolId": "gmx",
+      "name": "GMX",
+      "description": "GMX Vesting",
+      "siteUrl": "https://app.gmx.io",
+      "iconUrl": "https://gmx.io//static/media/ic_gmx_40.72a1053e8344ef876100ac72aff70ead.svg",
+      "positionType": "stake",
+      "chainId": 42161,
+      "productId": "vesting",
+      "chainName": "arb",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x199070DDfd1CFb69173aa2F7e20906F26B363004",
+          "name": "Vested GMX",
+          "symbol": "vGMX",
+          "decimals": 18,
+          "balanceRaw": "2158728073146740300802n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
+              "name": "GMX",
+              "symbol": "GMX",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "354651814616225951122n",
+              "balance": 354.651814616226,
+              "price": 20.822359256090817,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a/logo.png"
+            },
+            {
+              "address": "0xf42Ae1D54fd613C9bb14810b0588FaAa09a426cA",
+              "name": "Escrowed GMX",
+              "symbol": "esGMX",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "2158728073146740300802n",
+              "balance": 2158.7280731467404,
+              "price": 1.653976473018331,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf42Ae1D54fd613C9bb14810b0588FaAa09a426cA/logo.png"
+            }
+          ],
+          "balance": 2158.7280731467404
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "a0d289de4fd781f0e229e3f26f36d693": {
+      "result": "0x000000000000000000000000000000000000000000000075065ec1186eecdc02"
+    },
+    "44c084eeb58914778af2adcd18683406": {
+      "result": "0x00000000000000000000000000000000000000000000001339c85a5e1bd62d92"
+    },
+    "12da632ba5dd66e0ccdbdb568cdb9aa9": {
+      "result": "0x00000000000000000000000000000000000000000000000100000000000ad948000000000000000000000000000000000000000000000000000000395d535c0000000000000000000000000000000000000000000000000000000000672a496d00000000000000000000000000000000000000000000000000000000672a496d00000000000000000000000000000000000000000000000100000000000ad948"
+    },
+    "a966b192f99f43f45a4b79b0efea58e4": {
+      "result": "0x0000000000000000000000000000000000000000000000000002628e8603d5b2"
+    },
+    "c2a4bb9fedec2c04ee2380df0594cc2d": {
+      "result": "0x000000000000000000000000000000000000000000000000001e0676f0ca54d8"
+    }
+  }
+}

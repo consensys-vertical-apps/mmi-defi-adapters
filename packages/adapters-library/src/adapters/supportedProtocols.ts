@@ -130,6 +130,10 @@ import { EthenaStakedEnaAdapter } from './ethena/products/staked-ena/ethenaStake
 import { AaveV3RewardsAdapter } from './aave-v3/products/rewards/aaveV3RewardsAdapter'
 import { StargateFarmDeprecatedAdapter } from './stargate/products/farm-deprecated/stargateFarmDeprecatedAdapter'
 
+import { GmxFarmingAdapter } from './gmx/products/farming/gmxFarmingAdapter'
+
+import { GmxVestingAdapter } from './gmx/products/vesting/gmxVestingAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -337,8 +341,8 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Gmx]: {
-    [Chain.Arbitrum]: [GmxGlpAdapter],
-    [Chain.Avalanche]: [GmxGlpAdapter],
+    [Chain.Arbitrum]: [GmxGlpAdapter, GmxFarmingAdapter, GmxVestingAdapter],
+    [Chain.Avalanche]: [GmxGlpAdapter, GmxFarmingAdapter, GmxVestingAdapter],
   },
 
   [Protocol.IZiSwap]: {
