@@ -1,31 +1,25 @@
-import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
-import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
-  MovementsByBlockReward,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  Underlying,
   UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -33,6 +27,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { StakeToken__factory } from '../../contracts'
+import { AAVE_ICON_URL } from '../rewards/aaveV3RewardsAdapter'
 
 type AdditionalMetadata = {
   rewardTokens: Erc20Metadata[]
@@ -67,18 +62,14 @@ export class AaveV3StakingAdapter implements IProtocolAdapter {
     this.helpers = helpers
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'AaveV3',
-      description: 'AaveV3 defi adapter',
-      siteUrl: 'https:',
-      iconUrl: 'https://',
-      positionType: PositionType.Supply,
+      name: 'Aave v3 Staking',
+      description: 'AaveV3 defi adapter for Safety Module staking',
+      siteUrl: 'https://app.aave.com/staking/',
+      iconUrl: AAVE_ICON_URL,
+      positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
     }
