@@ -3,6 +3,8 @@
 /* eslint-disable */
 export type { IncentivesContract } from "./IncentivesContract";
 export type { PoolContract } from "./PoolContract";
+export type { StakeToken } from "./StakeToken";
 export * as factories from "./factories";
 export { IncentivesContract__factory } from "./factories/IncentivesContract__factory";
 export { PoolContract__factory } from "./factories/PoolContract__factory";
+export { StakeToken__factory } from "./factories/StakeToken__factory";

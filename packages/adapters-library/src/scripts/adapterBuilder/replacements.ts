@@ -13,11 +13,9 @@ export const Replacements = {
           return adapterCode.replace(
             regex,
             `
-            const protocolToken = await this.helpers.getTokenMetadata(getAddress('0x'))
+            const protocolToken = await this.helpers.getTokenMetadata('0x')
 
-            const underlyingToken = await this.helpers.getTokenMetadata(
-              getAddress('0x')
-            )
+            const underlyingToken = await this.helpers.getTokenMetadata('0x')
 
             return [
               {
@@ -32,7 +30,7 @@ export const Replacements = {
           return adapterCode.replace(
             regex,
             `
-            const protocolToken = await this.helpers.getTokenMetadata(getAddress('0x'))
+            const protocolToken = await this.helpers.getTokenMetadata('0x')
 
             const underlyingTokens = await Promise.all(
               [
@@ -40,7 +38,7 @@ export const Replacements = {
                 '0x',
                 // Ideally fetched on-chain
               ].map(async (address) =>
-                this.helpers.getTokenMetadata(getAddress(address)),
+                this.helpers.getTokenMetadata(address),
               ),
             )
 
@@ -63,14 +61,14 @@ export const Replacements = {
                 '0x',
                 // Ideally fetched on-chain from factory contract
               ].map(async (address) =>
-                this.helpers.getTokenMetadata(getAddress(address)),
+                this.helpers.getTokenMetadata(address),
               ),
             )
 
             return await Promise.all(
               protocolTokens.map(async (protocolToken) => {
                 const underlyingToken = await this.helpers.getTokenMetadata(
-                  getAddress('0x'), // Ideally fetched on-chain
+                  '0x', // Ideally fetched on-chain
                 )
 
                 return {
@@ -92,7 +90,7 @@ export const Replacements = {
                 '0x',
                 // Ideally fetched on-chain from factory contract
               ].map(async (address) =>
-                this.helpers.getTokenMetadata(getAddress(address)),
+                this.helpers.getTokenMetadata(address),
               ),
             )
 
@@ -104,7 +102,7 @@ export const Replacements = {
                     '0x',
                     // Ideally fetched on-chain
                   ].map(async (address) =>
-                    this.helpers.getTokenMetadata(getAddress(address)),
+                    this.helpers.getTokenMetadata(address),
                   ),
                 )
 

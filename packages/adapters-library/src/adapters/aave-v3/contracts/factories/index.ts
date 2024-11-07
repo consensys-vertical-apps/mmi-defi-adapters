@@ -3,3 +3,4 @@
 /* eslint-disable */
 export { IncentivesContract__factory } from "./IncentivesContract__factory";
 export { PoolContract__factory } from "./PoolContract__factory";
+export { StakeToken__factory } from "./StakeToken__factory";
