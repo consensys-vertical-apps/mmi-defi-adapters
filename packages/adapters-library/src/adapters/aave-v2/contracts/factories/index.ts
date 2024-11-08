@@ -2,3 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 export { ProtocolDataProvider__factory } from "./ProtocolDataProvider__factory";
+export { StakedTokenIncentivesController__factory } from "./StakedTokenIncentivesController__factory";
