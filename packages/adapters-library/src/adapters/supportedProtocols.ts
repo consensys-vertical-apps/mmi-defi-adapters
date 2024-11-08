@@ -136,6 +136,8 @@ import { GmxVestingAdapter } from './gmx/products/vesting/gmxVestingAdapter'
 
 import { AaveV3StakingAdapter } from './aave-v3/products/staking/aaveV3StakingAdapter'
 
+import { AaveV2RewardsAdapter } from './aave-v2/products/rewards/aaveV2RewardsAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -147,6 +149,7 @@ export const supportedProtocols: Record<
       AaveV2ATokenPoolAdapter,
       AaveV2StableDebtTokenPoolAdapter,
       AaveV2VariableDebtTokenPoolAdapter,
+      AaveV2RewardsAdapter,
     ],
     [Chain.Polygon]: [
       AaveV2ATokenPoolAdapter,
