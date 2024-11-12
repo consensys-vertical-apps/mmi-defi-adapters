@@ -1,0 +1,70 @@
+{
+  "blockNumber": 21143202,
+  "latency": "Latency: 1.813 seconds",
+  "aggregatedValues": ["USD88.37"],
+  "snapshot": [
+    {
+      "protocolId": "aave-v2",
+      "name": "Aave v2 Reward",
+      "description": "Aave v2 defi adapter for rewards",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://cryptologos.cc/logos/aave-aave-logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "rewards",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xd784927Ff2f95ba542BfC824c8a8a98F3495f6b5",
+          "name": "Aave v2 Rewards",
+          "symbol": "Rewards",
+          "decimals": 18,
+          "type": "protocol",
+          "balanceRaw": "484007380433762915n",
+          "tokens": [
+            {
+              "address": "0x4da27a545c0c5B758a6BA100e3a049001de870f5",
+              "name": "Staked Aave",
+              "symbol": "stkAAVE",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "484007380433762915n",
+              "tokens": [
+                {
+                  "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+                  "name": "Aave Token",
+                  "symbol": "AAVE",
+                  "decimals": 18,
+                  "type": "underlying-claimable",
+                  "balanceRaw": "484007380433762915n",
+                  "balance": 0.4840073804337629,
+                  "price": 182.58831074981887,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
+                }
+              ],
+              "balance": 0.4840073804337629,
+              "price": 182.58831074981887,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4da27a545c0c5B758a6BA100e3a049001de870f5/logo.png"
+            }
+          ],
+          "balance": 0.4840073804337629
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "e2542edd3bb17e3f089d5e2fe65827d3": {
+      "result": "0x00000000000000000000000000000000000000000000000006b78a25eb6bfa63"
+    },
+    "036f5df494d83a21caf9e17028f5a1fc": {
+      "result": "0x0000000000000000000000000000000000000000000000070000000000000715000000000000000000000000000000000000000000000000000000445230f70000000000000000000000000000000000000000000000000000000000672e077f00000000000000000000000000000000000000000000000000000000672e078f0000000000000000000000000000000000000000000000070000000000000715"
+    },
+    "1f070e1856ecf2f8cc6644edb928fdc6": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "196732da8bfdd6c3046895100b601f3d": {
+      "result": "0x00000000000000000000000000000000000000000000000000dd1079a7d2514a"
+    }
+  }
+}

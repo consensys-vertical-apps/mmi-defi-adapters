@@ -2,5 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { ProtocolDataProvider } from "./ProtocolDataProvider";
+export type { StakedTokenIncentivesController } from "./StakedTokenIncentivesController";
 export * as factories from "./factories";
 export { ProtocolDataProvider__factory } from "./factories/ProtocolDataProvider__factory";
+export { StakedTokenIncentivesController__factory } from "./factories/StakedTokenIncentivesController__factory";

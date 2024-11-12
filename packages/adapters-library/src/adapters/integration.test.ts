@@ -15,10 +15,12 @@ import {
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2ATokenTestCases } from './aave-v2/products/a-token/tests/testCases'
+import { testCases as aaveV2RewardsTestCases } from './aave-v2/products/rewards/tests/testCases'
 import { testCases as aaveV2StableDebtTokenTestCases } from './aave-v2/products/stable-debt-token/tests/testCases'
 import { testCases as aaveV2VariableDebtTokenTestCases } from './aave-v2/products/variable-debt-token/tests/testCases'
 import { testCases as aaveV3ATokenTestCases } from './aave-v3/products/a-token/tests/testCases'
 import { testCases as aaveV3StableDebtTokenTestCases } from './aave-v3/products/stable-debt-token/tests/testCases'
+import { testCases as aaveV3StakingTestCases } from './aave-v3/products/staking/tests/testCases'
 import { testCases as aaveV3VariableDebtTokenTestCases } from './aave-v3/products/variable-debt-token/tests/testCases'
 import { testCases as angleProtocolSavingsTestCases } from './angle-protocol/products/savings/tests/testCases'
 import { testCases as beefyCowTokenTestCases } from './beefy/products/cow-token/tests/testCases'
@@ -46,7 +48,9 @@ import { testCases as etherFiLiquidTestCases } from './etherfi/products/liquid/t
 import { testCases as etherFiWeEthTestCases } from './etherfi/products/we-eth/tests/testCases'
 import { testCases as fluxBorrowMarketTestCases } from './flux/products/borrow-market/tests/testCases'
 import { testCases as fluxSupplyMarketTestCases } from './flux/products/supply-market/tests/testCases'
+import { testCases as gmxFarmingTestCases } from './gmx/products/farming/tests/testCases'
 import { testCases as gmxGlpTestCases } from './gmx/products/glp/tests/testCases'
+import { testCases as gmxVestingTestCases } from './gmx/products/vesting/tests/testCases'
 import { testCases as iZiSwapPoolTestCases } from './iziswap/products/pool/tests/testCases'
 import { testCases as lidoStEthTestCases } from './lido/products/st-eth/tests/testCases'
 import { testCases as lidoWstEthTestCases } from './lido/products/wst-eth/tests/testCases'
@@ -132,12 +136,14 @@ const normalizeNegativeZero = (obj) => {
 const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
   [Protocol.AaveV2]: {
     ['a-token']: aaveV2ATokenTestCases,
+    ['rewards']: aaveV2RewardsTestCases,
     ['stable-debt-token']: aaveV2StableDebtTokenTestCases,
     ['variable-debt-token']: aaveV2VariableDebtTokenTestCases,
   },
   [Protocol.AaveV3]: {
     ['a-token']: aaveV3ATokenTestCases,
     ['stable-debt-token']: aaveV3StableDebtTokenTestCases,
+    ['staking']: aaveV3StakingTestCases,
     ['variable-debt-token']: aaveV3VariableDebtTokenTestCases,
   },
   [Protocol.AngleProtocol]: {
@@ -189,7 +195,9 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
     ['supply-market']: fluxSupplyMarketTestCases,
   },
   [Protocol.Gmx]: {
+    ['farming']: gmxFarmingTestCases,
     ['glp']: gmxGlpTestCases,
+    ['vesting']: gmxVestingTestCases,
   },
   [Protocol.IZiSwap]: {
     ['pool']: iZiSwapPoolTestCases,

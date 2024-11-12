@@ -25,7 +25,7 @@ export async function buildIntegrationTests({
   const testCasesFilePath = `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}/tests/testCases.ts`
 
   if (!(await fileExists(testCasesFilePath))) {
-    await writeAndLintFile(testCasesFilePath, testCases(productId))
+    await writeAndLintFile(testCasesFilePath, testCases())
   }
 
   const testsFile = path.resolve(

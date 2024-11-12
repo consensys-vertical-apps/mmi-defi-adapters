@@ -130,6 +130,14 @@ import { EthenaStakedEnaAdapter } from './ethena/products/staked-ena/ethenaStake
 import { AaveV3RewardsAdapter } from './aave-v3/products/rewards/aaveV3RewardsAdapter'
 import { StargateFarmDeprecatedAdapter } from './stargate/products/farm-deprecated/stargateFarmDeprecatedAdapter'
 
+import { GmxFarmingAdapter } from './gmx/products/farming/gmxFarmingAdapter'
+
+import { GmxVestingAdapter } from './gmx/products/vesting/gmxVestingAdapter'
+
+import { AaveV3StakingAdapter } from './aave-v3/products/staking/aaveV3StakingAdapter'
+
+import { AaveV2RewardsAdapter } from './aave-v2/products/rewards/aaveV2RewardsAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -141,6 +149,7 @@ export const supportedProtocols: Record<
       AaveV2ATokenPoolAdapter,
       AaveV2StableDebtTokenPoolAdapter,
       AaveV2VariableDebtTokenPoolAdapter,
+      AaveV2RewardsAdapter,
     ],
     [Chain.Polygon]: [
       AaveV2ATokenPoolAdapter,
@@ -160,6 +169,7 @@ export const supportedProtocols: Record<
       AaveV3StableDebtTokenPoolAdapter,
       AaveV3VariableDebtTokenPoolAdapter,
       AaveV3RewardsAdapter,
+      AaveV3StakingAdapter,
     ],
     [Chain.Polygon]: [
       AaveV3ATokenPoolAdapter,
@@ -337,8 +347,8 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Gmx]: {
-    [Chain.Arbitrum]: [GmxGlpAdapter],
-    [Chain.Avalanche]: [GmxGlpAdapter],
+    [Chain.Arbitrum]: [GmxGlpAdapter, GmxFarmingAdapter, GmxVestingAdapter],
+    [Chain.Avalanche]: [GmxGlpAdapter, GmxFarmingAdapter, GmxVestingAdapter],
   },
 
   [Protocol.IZiSwap]: {

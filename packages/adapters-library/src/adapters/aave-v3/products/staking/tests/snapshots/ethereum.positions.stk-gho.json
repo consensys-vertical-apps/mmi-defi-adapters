@@ -1,0 +1,71 @@
+{
+  "blockNumber": 21136131,
+  "latency": "Latency: 1.787 seconds",
+  "aggregatedValues": ["USD389,150.47"],
+  "snapshot": [
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 Staking",
+      "description": "AaveV3 defi adapter for Safety Module staking",
+      "siteUrl": "https://app.aave.com/staking/",
+      "iconUrl": "https://cryptologos.cc/logos/aave-aave-logo.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "staking",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x1a88Df1cFe15Af22B3c4c783D4e6F7F9e0C1885d",
+          "name": "stk GHO",
+          "symbol": "stkGHO",
+          "decimals": 18,
+          "balanceRaw": "386984197341887736805015n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+              "name": "Aave Token",
+              "symbol": "AAVE",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "11644419193456656219n",
+              "balance": 11.644419193456656,
+              "price": 182.98103348656943,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
+            },
+            {
+              "address": "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
+              "name": "Gho Token",
+              "symbol": "GHO",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "386984197341887736805015n",
+              "balance": 386984.19734188775,
+              "price": 1.0000918951901496,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f/logo.png"
+            }
+          ],
+          "balance": 386984.19734188775
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "2d9e20727fe7076c64cdb0e9eefb83d5": {
+      "result": "0x0000000000000000000000000000000000000000000051f27493604bd37b7697"
+    },
+    "386fb807616c3892bc7920d682f3f37a": {
+      "result": "0x000000000000000000000000000000000000000000000000a199498fc9b97f5b"
+    },
+    "731ce42c7bf681cde66ce61e5f845885": {
+      "result": "0x00000000000000000000000000000000000000000000000700000000000006e90000000000000000000000000000000000000000000000000000004190af6cd000000000000000000000000000000000000000000000000000000000672cb65400000000000000000000000000000000000000000000000000000000672cb66300000000000000000000000000000000000000000000000700000000000006e9"
+    },
+    "a527f1dc81f463bf406299c2a6112af0": {
+      "result": "0x00000000000000000000000000000000000000000000000000014300d9716556"
+    },
+    "540e67fcfa7c02400c79a292fc5da6ca": {
+      "result": "0x00000000000000000000000000000000000000000000000000e6da0cd3b408b2"
+    }
+  }
+}
