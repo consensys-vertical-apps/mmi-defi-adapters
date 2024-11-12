@@ -190,6 +190,7 @@ export class PendleYieldTokenAdapter implements IProtocolAdapter {
     const {
       underlyingTokens: [underlyingToken],
       marketAddress,
+      expiry,
       ...protocolToken
     } = await this.getProtocolTokenByAddress(protocolTokenAddress)
 
