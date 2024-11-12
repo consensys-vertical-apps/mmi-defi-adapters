@@ -81,7 +81,7 @@ export class PendleYieldTokenAdapter implements IProtocolAdapter {
 
   async isExpiredAtBlock(
     expiry: string,
-    blockNumber?: number,
+    blockNumber: number | undefined,
   ): Promise<boolean> {
     let comparisonDate: Date
 
@@ -132,7 +132,9 @@ export class PendleYieldTokenAdapter implements IProtocolAdapter {
     const tokens = await filterMapAsync(
       await this.getProtocolTokens(),
       async (protocolToken) => {
-        if (await this.isExpiredAtBlock(protocolToken.expiry)) {
+        if (
+          await this.isExpiredAtBlock(protocolToken.expiry, input.blockNumber)
+        ) {
           return undefined
         }
 
