@@ -1,9 +1,7 @@
 {
   "blockNumber": 20751518,
   "latency": "Latency: 0.409 seconds",
-  "aggregatedValues": [
-    "USD1,068,865.37"
-  ],
+  "aggregatedValues": ["USD1,068,865.37"],
   "snapshot": [
     {
       "protocolId": "etherfi",

@@ -106,7 +106,7 @@
           "tokens": [
             {
               "address": "0x253008ba4aE2f3E6488DC998a5321D4EB1a0c905",
-              "name": "SY pufETH",
+              "name": "SY Puffer ETH",
               "symbol": "SY pufETH",
               "decimals": 18,
               "type": "underlying",
@@ -141,7 +141,7 @@
           "tokens": [
             {
               "address": "0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9",
-              "name": "SY-rswETH",
+              "name": "SY rswETH",
               "symbol": "SY-rswETH",
               "decimals": 18,
               "type": "underlying",

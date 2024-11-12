@@ -18,7 +18,7 @@
           "baseRate": 1,
           "type": "protocol",
           "address": "0xf8208fB52BA80075aF09840A683143C22DC5B4dd",
-          "name": "PENDLE-LPT",
+          "name": "Pendle Market",
           "symbol": "PENDLE-LPT",
           "decimals": 18,
           "tokens": [

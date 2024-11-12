@@ -17,7 +17,7 @@
       "tokens": [
         {
           "address": "0xA54FC268101c8b97DE19eF3141d34751a11996B2",
-          "name": "PENDLE-LPT",
+          "name": "Pendle Market",
           "symbol": "PENDLE-LPT",
           "decimals": 18,
           "balanceRaw": "16820168574096565605n",
@@ -50,7 +50,7 @@
         },
         {
           "address": "0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6",
-          "name": "PENDLE-LPT",
+          "name": "Pendle Market",
           "symbol": "PENDLE-LPT",
           "decimals": 18,
           "balanceRaw": "60693468569135036750n",

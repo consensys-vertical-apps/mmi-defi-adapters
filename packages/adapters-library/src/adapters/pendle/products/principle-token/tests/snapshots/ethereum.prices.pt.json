@@ -18,7 +18,7 @@
           "baseRate": 1,
           "type": "protocol",
           "address": "0xF0574d8B9Dc3a9DE768eaa7DBB7bB0C68521b148",
-          "name": "PT-rswETH-26SEP2024",
+          "name": "PT rswETH 26SEP2024",
           "symbol": "PT-rswETH-26SEP2024",
           "decimals": 18,
           "tokens": [
@@ -26,7 +26,7 @@
               "type": "underlying",
               "underlyingRateRaw": "975262482310168247n",
               "address": "0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9",
-              "name": "SY-rswETH",
+              "name": "SY rswETH",
               "symbol": "SY-rswETH",
               "decimals": 18,
               "underlyingRate": 0.9752624823101682,
