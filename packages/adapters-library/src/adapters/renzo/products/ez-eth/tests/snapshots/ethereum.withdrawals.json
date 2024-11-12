@@ -17,14 +17,14 @@
         "transactionHash": "0x3c1554801014cd6d56c1f95b4007d7ee424c5259d4c4bfd1ff9464bc7631e726",
         "protocolToken": {
           "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
-          "name": "ezETH",
+          "name": "Renzo Restaked ETH",
           "symbol": "ezETH",
           "decimals": 18
         },
         "tokens": [
           {
             "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
-            "name": "ezETH",
+            "name": "Renzo Restaked ETH",
             "symbol": "ezETH",
             "decimals": 18,
             "balanceRaw": "2267764738252909312n",
