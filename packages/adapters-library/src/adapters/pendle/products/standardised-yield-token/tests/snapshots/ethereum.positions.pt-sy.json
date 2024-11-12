@@ -17,7 +17,7 @@
       "tokens": [
         {
           "address": "0xcbC72d92b2dc8187414F6734718563898740C0BC",
-          "name": "SY-stETH",
+          "name": "SY stETH",
           "symbol": "SY-stETH",
           "decimals": 18,
           "balanceRaw": "283748506312827456n",
@@ -65,7 +65,7 @@
         },
         {
           "address": "0x253008ba4aE2f3E6488DC998a5321D4EB1a0c905",
-          "name": "SY pufETH",
+          "name": "SY Puffer ETH",
           "symbol": "SY pufETH",
           "decimals": 18,
           "balanceRaw": "618983117134711107n",
@@ -87,7 +87,7 @@
         },
         {
           "address": "0xD7DF7E085214743530afF339aFC420c7c720BFa7",
-          "name": "SY-zs-weETH",
+          "name": "SY Zircuit Ether.fi weETH",
           "symbol": "SY-zs-weETH",
           "decimals": 18,
           "balanceRaw": "334265716886494658n",
@@ -95,7 +95,7 @@
           "tokens": [
             {
               "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-              "name": "weETH",
+              "name": "Wrapped eETH",
               "symbol": "weETH",
               "decimals": 18,
               "type": "underlying",
@@ -135,7 +135,7 @@
         },
         {
           "address": "0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9",
-          "name": "SY-rswETH",
+          "name": "SY rswETH",
           "symbol": "SY-rswETH",
           "decimals": 18,
           "balanceRaw": "237531096783559785n",

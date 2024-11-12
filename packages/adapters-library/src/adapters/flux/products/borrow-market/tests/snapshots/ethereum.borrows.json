@@ -16,7 +16,7 @@
         "transactionHash": "0x635de742e30c1db4ba80730667e99d9dc276fc072afc6cf3e1b7b76c2d2cbe8e",
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
-          "name": "fUSDC",
+          "name": "Flux USDC",
           "symbol": "fUSDC",
           "decimals": 8
         },
@@ -39,7 +39,7 @@
         "transactionHash": "0x3cbad0364620c2591fd908a4b0fe9bbf7dda877f82829e7ee4ea992abfd0e2c3",
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
-          "name": "fUSDC",
+          "name": "Flux USDC",
           "symbol": "fUSDC",
           "decimals": 8
         },
@@ -62,7 +62,7 @@
         "transactionHash": "0xf8607128306c74d91b9f6497dc774e1066b0751de459db1cca353816b09f63a3",
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
-          "name": "fUSDC",
+          "name": "Flux USDC",
           "symbol": "fUSDC",
           "decimals": 8
         },
@@ -85,7 +85,7 @@
         "transactionHash": "0x18bcfaa29194f4b27048d4abd4f54d4e42d5d90cc57d1be3f7e07addb38513af",
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
-          "name": "fUSDC",
+          "name": "Flux USDC",
           "symbol": "fUSDC",
           "decimals": 8
         },
@@ -108,7 +108,7 @@
         "transactionHash": "0xfdf55791033e15c53be84a6639f385b458c1418fcc436358726bde3352079cdf",
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
-          "name": "fUSDC",
+          "name": "Flux USDC",
           "symbol": "fUSDC",
           "decimals": 8
         },

@@ -16,7 +16,7 @@
       "tokens": [
         {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
-          "name": "fUSDC",
+          "name": "Flux USDC",
           "symbol": "fUSDC",
           "decimals": 8,
           "type": "protocol",

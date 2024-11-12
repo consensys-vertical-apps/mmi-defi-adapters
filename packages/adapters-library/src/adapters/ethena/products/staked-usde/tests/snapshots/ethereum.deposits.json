@@ -17,14 +17,14 @@
         "transactionHash": "0xdc1441a209ae39844cd1930093f2be0231e0c8f10ca6c66fb409cda8be0db7ba",
         "protocolToken": {
           "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
-          "name": "sUSDe",
+          "name": "Staked USDe",
           "symbol": "sUSDe",
           "decimals": 18
         },
         "tokens": [
           {
             "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
-            "name": "sUSDe",
+            "name": "Staked USDe",
             "symbol": "sUSDe",
             "decimals": 18,
             "balanceRaw": "2100862289939429413866n",

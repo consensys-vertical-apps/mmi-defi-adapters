@@ -17,7 +17,7 @@
       "tokens": [
         {
           "address": "0xf99985822fb361117FCf3768D34a6353E6022F5F",
-          "name": "PT-stETH-25DEC2025",
+          "name": "PT stETH 25DEC2025",
           "symbol": "PT-stETH-25DEC2025",
           "decimals": 18,
           "balanceRaw": "4484888964612528795n",
@@ -25,7 +25,7 @@
           "tokens": [
             {
               "address": "0xcbC72d92b2dc8187414F6734718563898740C0BC",
-              "name": "SY-stETH",
+              "name": "SY stETH",
               "symbol": "SY-stETH",
               "decimals": 18,
               "type": "underlying",

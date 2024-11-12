@@ -1,9 +1,9 @@
-import { getAddress } from 'ethers'
+import { Block, getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../../../../core/utils/filters'
+import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../../scripts/helpers'
 import {
@@ -34,6 +34,7 @@ import { RouterStatic__factory, YieldToken__factory } from '../../contracts'
 
 type AdditionalMetadata = {
   marketAddress: string
+  expiry: string
 }
 
 export class PendleYieldTokenAdapter implements IProtocolAdapter {
@@ -78,39 +79,72 @@ export class PendleYieldTokenAdapter implements IProtocolAdapter {
     }
   }
 
+  async isExpiredAtBlock(
+    expiry: string,
+    blockNumber: number | undefined,
+  ): Promise<boolean> {
+    let comparisonDate: Date
+
+    if (blockNumber) {
+      // Get the block details if a block number is provided
+      const block = await this.provider.getBlock(blockNumber)
+
+      if (!block) {
+        throw new Error(`Block ${blockNumber} not found`)
+      }
+
+      comparisonDate = new Date(block.timestamp * 1000) // Convert seconds to milliseconds
+    } else {
+      // If no block number is provided, use today's date
+      comparisonDate = new Date()
+    }
+
+    const expiryDate = new Date(expiry)
+
+    // Compare the expiry date with either the block date or today's date
+    return comparisonDate > expiryDate
+  }
+
   @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const resp = await fetchAllMarkets(this.chainId)
 
-    return resp.results.map((value) => {
-      const marketAddress = getAddress(value.address)
+    return await Promise.all(
+      resp.results.map(async (value) => {
+        const marketAddress = getAddress(value.address)
 
-      const yt: Erc20Metadata = {
-        address: getAddress(value.yt.address),
-        name: value.yt.name,
-        symbol: value.yt.symbol,
-        decimals: value.yt.decimals,
-      }
+        const [yt, sy] = await Promise.all([
+          this.helpers.getTokenMetadata(value.yt.address),
+          this.helpers.getTokenMetadata(value.sy.address), // TODO: Check if decimals need to be underlyingAsset.decimals
+        ])
 
-      const sy: Erc20Metadata = {
-        address: getAddress(value.sy.address),
-        name: value.sy.name,
-        symbol: value.sy.symbol,
-        decimals: value.underlyingAsset.decimals,
-      }
-
-      return {
-        ...yt,
-        underlyingTokens: [sy],
-        marketAddress,
-      }
-    })
+        return {
+          ...yt,
+          underlyingTokens: [sy],
+          marketAddress,
+          expiry: value.expiry,
+        }
+      }),
+    )
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    const tokens = await filterMapAsync(
+      await this.getProtocolTokens(),
+      async (protocolToken) => {
+        if (
+          await this.isExpiredAtBlock(protocolToken.expiry, input.blockNumber)
+        ) {
+          return undefined
+        }
+
+        return protocolToken
+      },
+    )
+
     return this.helpers.getBalanceOfTokens({
       ...input,
-      protocolTokens: await this.getProtocolTokens(),
+      protocolTokens: tokens,
     })
   }
 
@@ -158,6 +192,7 @@ export class PendleYieldTokenAdapter implements IProtocolAdapter {
     const {
       underlyingTokens: [underlyingToken],
       marketAddress,
+      expiry,
       ...protocolToken
     } = await this.getProtocolTokenByAddress(protocolTokenAddress)
 
