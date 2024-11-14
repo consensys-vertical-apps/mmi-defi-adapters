@@ -17,11 +17,23 @@
       "tokens": [
         {
           "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
-          "name": "Wrapped eETH",
+          "name": "Staked Wrapped eETH",
           "symbol": "weETH",
           "decimals": 18,
           "balanceRaw": "50000000000000000000n",
           "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+              "name": "Wrapped eETH",
+              "symbol": "weETH",
+              "decimals": 18,
+              "balanceRaw": "50000000000000000000n",
+              "type": "underlying",
+              "balance": 50,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6/logo.png"
+            }
+          ],
           "balance": 50
         }
       ]

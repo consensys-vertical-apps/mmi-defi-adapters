@@ -1,7 +1,7 @@
 {
   "blockNumber": 20942612,
   "latency": "Latency: 0.874 seconds",
-  "aggregatedValues": ["USD0.00", "USD26.46"],
+  "aggregatedValues": ["USD502.73", "USD26.46"],
   "snapshot": [
     {
       "protocolId": "ethena",
@@ -18,31 +18,56 @@
         {
           "type": "protocol",
           "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-          "name": "USDe",
+          "name": "Staked USDe",
           "symbol": "USDe",
           "decimals": 18,
           "balanceRaw": "504573311798605226351n",
-          "balance": 504.57331179860523,
-          "price": 0.9963372471146176
+          "tokens": [
+            {
+              "type": "underlying",
+              "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+              "name": "USDe",
+              "symbol": "USDe",
+              "decimals": 18,
+              "balanceRaw": "504573311798605226351n",
+              "balance": 504.57331179860523,
+              "price": 0.9963372471146176,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4c9EDD5852cd905f086C759E8383e09bff1E68B3/logo.png"
+            }
+          ],
+          "balance": 504.57331179860523
         },
         {
           "type": "protocol",
           "address": "0x8bE3460A480c80728a8C4D7a5D5303c85ba7B3b9",
-          "name": "Staked ENA",
+          "name": "Staked Staked ENA",
           "symbol": "sENA",
           "decimals": 18,
           "balanceRaw": "94650000000000000000n",
           "tokens": [
             {
-              "address": "0x57e114B691Db790C35207b2e685D4A43181e6061",
-              "name": "ENA",
-              "symbol": "ENA",
-              "decimals": 18,
               "type": "underlying",
+              "address": "0x8bE3460A480c80728a8C4D7a5D5303c85ba7B3b9",
+              "name": "Staked ENA",
+              "symbol": "sENA",
+              "decimals": 18,
               "balanceRaw": "94650000000000000000n",
+              "tokens": [
+                {
+                  "address": "0x57e114B691Db790C35207b2e685D4A43181e6061",
+                  "name": "ENA",
+                  "symbol": "ENA",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "94650000000000000000n",
+                  "balance": 94.65,
+                  "price": 0.279581317692225,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57e114B691Db790C35207b2e685D4A43181e6061/logo.png"
+                }
+              ],
               "balance": 94.65,
               "price": 0.279581317692225,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57e114B691Db790C35207b2e685D4A43181e6061/logo.png"
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8bE3460A480c80728a8C4D7a5D5303c85ba7B3b9/logo.png"
             }
           ],
           "balance": 94.65

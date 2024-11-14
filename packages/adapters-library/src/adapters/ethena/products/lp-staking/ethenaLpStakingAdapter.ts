@@ -137,12 +137,22 @@ export class EthenaLpStakingAdapter implements IProtocolAdapter {
       }
 
       return {
-        type: TokenType.Protocol,
+        type: TokenType.Protocol, // TODO: Should be a contract position
         address: protocolToken.address,
-        name: protocolToken.name,
+        name: `Staked ${protocolToken.name}`,
         symbol: protocolToken.symbol,
         decimals: protocolToken.decimals,
         balanceRaw: userStake.stakedAmount,
+        tokens: [
+          {
+            type: TokenType.Underlying,
+            address: protocolToken.address,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
+            balanceRaw: userStake.stakedAmount,
+          },
+        ],
       }
     })
   }
