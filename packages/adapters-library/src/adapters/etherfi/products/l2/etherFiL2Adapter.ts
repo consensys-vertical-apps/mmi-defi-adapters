@@ -130,7 +130,7 @@ export class EtherFiL2Adapter implements IProtocolAdapter {
 
     return balances.map((protocolTokenBalance) => {
       return {
-        ...protocolTokenBalance,
+        ...protocolTokenBalance, // TODO: Should be a contract position
         name: `Staked ${protocolTokenBalance.name}`,
         tokens: [
           {
