@@ -52,6 +52,7 @@ import { testCases as fluxSupplyMarketTestCases } from './flux/products/supply-m
 import { testCases as gmxFarmingTestCases } from './gmx/products/farming/tests/testCases'
 import { testCases as gmxGlpTestCases } from './gmx/products/glp/tests/testCases'
 import { testCases as gmxVestingTestCases } from './gmx/products/vesting/tests/testCases'
+import { testCases as gmxV2PoolTestCases } from './gmx2/products/pool/tests/testCases'
 import { testCases as iZiSwapPoolTestCases } from './iziswap/products/pool/tests/testCases'
 import { testCases as lidoStEthTestCases } from './lido/products/st-eth/tests/testCases'
 import { testCases as lidoWstEthTestCases } from './lido/products/wst-eth/tests/testCases'
@@ -141,137 +142,174 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
     ['stable-debt-token']: aaveV2StableDebtTokenTestCases,
     ['variable-debt-token']: aaveV2VariableDebtTokenTestCases,
   },
+
   [Protocol.AaveV3]: {
     ['a-token']: aaveV3ATokenTestCases,
     ['stable-debt-token']: aaveV3StableDebtTokenTestCases,
     ['staking']: aaveV3StakingTestCases,
     ['variable-debt-token']: aaveV3VariableDebtTokenTestCases,
   },
+
   [Protocol.AngleProtocol]: {
     ['savings']: angleProtocolSavingsTestCases,
   },
+
   [Protocol.Beefy]: {
     ['cow-token']: beefyCowTokenTestCases,
     ['moo-token']: beefyMooTokenTestCases,
     ['rcow-token']: beefyRcowTokenTestCases,
     ['rmoo-token']: beefyRmooTokenTestCases,
   },
+
   [Protocol.CarbonDeFi]: {
     ['strategies']: carbonDeFiStrategiesTestCases,
   },
+
   [Protocol.ChimpExchange]: {
     ['pool']: chimpExchangePoolTestCases,
   },
+
   [Protocol.CompoundV2]: {
     ['borrow-market']: compoundV2BorrowMarketTestCases,
     ['supply-market']: compoundV2SupplyMarketTestCases,
   },
+
   [Protocol.Convex]: {
     ['cvxcrv-wrapper']: convexCvxcrvWrapperTestCases,
     ['pool']: convexPoolTestCases,
     ['sidechain-staking']: convexSidechainStakingTestCases,
     ['staking']: convexStakingTestCases,
   },
+
   [Protocol.Curve]: {
     ['pool']: curvePoolTestCases,
     ['staking']: curveStakingTestCases,
     ['voting-escrow']: curveVotingEscrowTestCases,
   },
+
   [Protocol.Deri]: {
     ['pool']: deriPoolTestCases,
   },
+
   [Protocol.Ethena]: {
     ['lp-staking']: ethenaLpStakingTestCases,
     ['staked-ena']: ethenaStakedEnaTestCases,
     ['staked-usde']: ethenaStakedUsdeTestCases,
   },
+
   [Protocol.EtherFi]: {
     ['e-eth']: etherFiEEthTestCases,
     ['l2']: etherFiL2TestCases,
     ['liquid']: etherFiLiquidTestCases,
     ['we-eth']: etherFiWeEthTestCases,
   },
+
   [Protocol.Flux]: {
     ['borrow-market']: fluxBorrowMarketTestCases,
     ['supply-market']: fluxSupplyMarketTestCases,
   },
+
   [Protocol.Gmx]: {
     ['farming']: gmxFarmingTestCases,
     ['glp']: gmxGlpTestCases,
     ['vesting']: gmxVestingTestCases,
   },
+
+  [Protocol.GmxV2]: {
+    ['pool']: gmxV2PoolTestCases,
+  },
+
   [Protocol.IZiSwap]: {
     ['pool']: iZiSwapPoolTestCases,
   },
+
   [Protocol.Lido]: {
     ['st-eth']: lidoStEthTestCases,
     ['wst-eth']: lidoWstEthTestCases,
   },
+
   [Protocol.Lynex]: {
     ['algebra']: lynexAlgebraTestCases,
     ['classic']: lynexClassicTestCases,
   },
+
   [Protocol.Maker]: {
     ['s-dai']: makerSDaiTestCases,
   },
+
   [Protocol.MendiFinance]: {
     ['borrow-market']: mendiFinanceBorrowMarketTestCases,
     ['supply-market']: mendiFinanceSupplyMarketTestCases,
   },
+
   [Protocol.MorphoAaveV2]: {
     ['optimizer-borrow']: morphoAaveV2OptimizerBorrowTestCases,
     ['optimizer-supply']: morphoAaveV2OptimizerSupplyTestCases,
   },
+
   [Protocol.MorphoAaveV3]: {
     ['optimizer-borrow']: morphoAaveV3OptimizerBorrowTestCases,
     ['optimizer-supply']: morphoAaveV3OptimizerSupplyTestCases,
   },
+
   [Protocol.MorphoBlue]: {
     ['market-borrow']: morphoBlueMarketBorrowTestCases,
     ['market-supply']: morphoBlueMarketSupplyTestCases,
     ['vault']: morphoBlueVaultTestCases,
   },
+
   [Protocol.MorphoCompoundV2]: {
     ['optimizer-borrow']: morphoCompoundV2OptimizerBorrowTestCases,
     ['optimizer-supply']: morphoCompoundV2OptimizerSupplyTestCases,
   },
+
   [Protocol.MountainProtocol]: {
     ['usdm']: mountainProtocolUsdmTestCases,
     ['wusdm']: mountainProtocolWusdmTestCases,
   },
+
   [Protocol.PancakeswapV2]: {
     ['pool']: pancakeswapV2PoolTestCases,
   },
+
   [Protocol.Pendle]: {
     ['lp-token']: pendleLpTokenTestCases,
     ['principle-token']: pendlePrincipleTokenTestCases,
     ['standardised-yield-token']: pendleStandardisedYieldTokenTestCases,
     ['yield-token']: pendleYieldTokenTestCases,
   },
+
   [Protocol.QuickswapV2]: {
     ['pool']: quickswapV2PoolTestCases,
   },
+
   [Protocol.Renzo]: {
     ['ez-eth']: renzoEzEthTestCases,
   },
+
   [Protocol.RocketPool]: {
     ['reth']: rocketPoolRethTestCases,
   },
+
   [Protocol.Solv]: {
     ['solv-btc']: solvSolvBtcTestCases,
     ['yield-market']: solvYieldMarketTestCases,
   },
+
   [Protocol.Sonne]: {
     ['borrow-market']: sonneBorrowMarketTestCases,
     ['supply-market']: sonneSupplyMarketTestCases,
   },
+
   [Protocol.SparkV1]: {
     ['sp-token']: sparkV1SpTokenTestCases,
     ['variable-debt-token']: sparkV1VariableDebtTokenTestCases,
   },
+
   [Protocol.StakeWise]: {
     ['os-eth']: stakeWiseOsEthTestCases,
   },
+
   [Protocol.Stargate]: {
     ['farm']: stargateFarmTestCases,
     ['farm-deprecated']: stargateFarmDeprecatedTestCases,
@@ -280,24 +318,31 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
     ['pool-v2']: stargatePoolV2TestCases,
     ['voting-escrow']: stargateVotingEscrowTestCases,
   },
+
   [Protocol.SushiswapV2]: {
     ['pool']: sushiswapV2PoolTestCases,
   },
+
   [Protocol.Swell]: {
     ['sw-eth']: swellSwEthTestCases,
   },
+
   [Protocol.SyncSwap]: {
     ['pool']: syncSwapPoolTestCases,
   },
+
   [Protocol.UniswapV2]: {
     ['pool']: uniswapV2PoolTestCases,
   },
+
   [Protocol.UniswapV3]: {
     ['pool']: uniswapV3PoolTestCases,
   },
+
   [Protocol.Xfai]: {
     ['dex']: xfaiDexTestCases,
   },
+
   [Protocol.ZeroLend]: {
     ['a-token']: zeroLendATokenTestCases,
     ['stable-debt-token']: zeroLendStableDebtTokenTestCases,
