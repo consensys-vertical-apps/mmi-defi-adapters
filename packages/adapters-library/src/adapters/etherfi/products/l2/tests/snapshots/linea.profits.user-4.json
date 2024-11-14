@@ -16,7 +16,7 @@
       "tokens": [
         {
           "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
-          "name": "Wrapped eETH",
+          "name": "Staked Wrapped eETH",
           "symbol": "weETH",
           "decimals": 18,
           "type": "protocol",
@@ -53,7 +53,7 @@
                 "symbol": "weETH",
                 "decimals": 18,
                 "balanceRaw": "50000000000000000000n",
-                "type": "protocol"
+                "type": "underlying"
               },
               {
                 "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
@@ -61,7 +61,7 @@
                 "symbol": "weETH",
                 "decimals": 18,
                 "balanceRaw": "50000000000000000000n",
-                "type": "protocol"
+                "type": "underlying"
               }
             ]
           }

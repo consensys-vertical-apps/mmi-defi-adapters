@@ -1,3 +1,4 @@
+import assert from 'node:assert'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
@@ -470,6 +471,15 @@ function runProductTests(
             })
 
             expect(response).toEqual(snapshot)
+
+            for (const positions of response) {
+              expect(positions.success).toBe(true)
+              assert(positions.success)
+
+              for (const position of positions.tokens) {
+                expect(position.tokens).toBeDefined()
+              }
+            }
           },
           TEST_TIMEOUT,
         )

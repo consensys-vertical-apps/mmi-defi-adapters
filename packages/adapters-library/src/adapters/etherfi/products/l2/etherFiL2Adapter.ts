@@ -19,6 +19,7 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
+  TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
@@ -122,9 +123,22 @@ export class EtherFiL2Adapter implements IProtocolAdapter {
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    return this.helpers.getBalanceOfTokens({
+    const balances = await this.helpers.getBalanceOfTokens({
       ...input,
       protocolTokens: await this.getProtocolTokens(),
+    })
+
+    return balances.map((protocolTokenBalance) => {
+      return {
+        ...protocolTokenBalance, // TODO: Should be a contract position
+        name: `Staked ${protocolTokenBalance.name}`,
+        tokens: [
+          {
+            ...protocolTokenBalance,
+            type: TokenType.Underlying,
+          },
+        ],
+      }
     })
   }
 
