@@ -138,6 +138,10 @@ import { AaveV3StakingAdapter } from './aave-v3/products/staking/aaveV3StakingAd
 
 import { AaveV2RewardsAdapter } from './aave-v2/products/rewards/aaveV2RewardsAdapter'
 
+import { CompoundV3LendingAdapter } from './compound-v3/products/lending/compoundV3LendingAdapter'
+
+import { CompoundV3BorrowAdapter } from './compound-v3/products/borrow/compoundV3BorrowAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -289,6 +293,14 @@ export const supportedProtocols: Record<
       CompoundV2SupplyMarketAdapter,
       CompoundV2BorrowMarketAdapter,
     ],
+  },
+
+  [Protocol.CompoundV3]: {
+    [Chain.Ethereum]: [CompoundV3LendingAdapter, CompoundV3BorrowAdapter],
+    [Chain.Optimism]: [CompoundV3LendingAdapter, CompoundV3BorrowAdapter],
+    [Chain.Polygon]: [CompoundV3LendingAdapter, CompoundV3BorrowAdapter],
+    [Chain.Base]: [CompoundV3LendingAdapter, CompoundV3BorrowAdapter],
+    [Chain.Arbitrum]: [CompoundV3LendingAdapter, CompoundV3BorrowAdapter],
   },
 
   [Protocol.Convex]: {

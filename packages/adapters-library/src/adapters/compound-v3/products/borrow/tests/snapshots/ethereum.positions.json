@@ -1,0 +1,66 @@
+{
+  "blockNumber": 21180052,
+  "latency": "Latency: 1.614 seconds",
+  "aggregatedValues": ["USD269,387.61"],
+  "snapshot": [
+    {
+      "protocolId": "compound-v3",
+      "name": "CompoundV3",
+      "description": "CompoundV3 defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "borrow",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "balanceRaw": "1n",
+          "address": "0xc3d688B66703497DAA19211EEdff47f25384cdc3",
+          "name": "cUSDCv3",
+          "symbol": "cUSDCv3",
+          "decimals": 6,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "267261033994n",
+              "type": "underlying",
+              "balance": 267261.033994,
+              "price": 1.0079569334544718,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
+          "balance": 0.000001
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "8aaa56c722124bb18d21436da8e373c8": {
+      "result": "0x0000000000000000000000000000000000000000000000000000003e39ffbe0a"
+    },
+    "8a4bd26f5a527e3ea0b9cb0fccf86f0d": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "3bf15ad65b56bdd4e221719aa0af1fbd": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "3389a837a8daa3b6035cfb65af9e3963": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "dbde04d0446b38117a3cd9b3df891333": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "47eaa52ae2cfd926fd683ab71baa98ee": {
+      "result": "0x000000000000000000000000000000000000000000000007000000000000088f0000000000000000000000000000000000000000000000000000004c74cb6040000000000000000000000000000000000000000000000000000000006734d7a5000000000000000000000000000000000000000000000000000000006734d7bb000000000000000000000000000000000000000000000007000000000000088f"
+    },
+    "9d3893a9623d5f914c52288d172eff7e": {
+      "result": "0x000000000000000000000000000000000000000000fde76e7380ac85ec316b66"
+    }
+  }
+}

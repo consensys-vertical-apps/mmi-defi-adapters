@@ -7,6 +7,7 @@ export const Protocol = {
   CarbonDeFi: 'carbon-defi',
   ChimpExchange: 'chimp-exchange',
   CompoundV2: 'compound-v2',
+  CompoundV3: 'compound-v3',
   Convex: 'convex',
   Curve: 'curve',
   Deri: 'deri',
