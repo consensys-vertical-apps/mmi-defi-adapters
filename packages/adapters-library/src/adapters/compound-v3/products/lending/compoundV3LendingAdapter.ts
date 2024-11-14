@@ -70,13 +70,6 @@ export const addresses = {
 }
 
 
-
-/**
- * Update me.
- * Add additional metadata or delete type
- */
-type AdditionalMetadata = {}
-
 export class CompoundV3LendingAdapter implements IProtocolAdapter {
   productId = 'lending'
   protocolId: Protocol
@@ -106,10 +99,6 @@ export class CompoundV3LendingAdapter implements IProtocolAdapter {
     this.helpers = helpers
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -124,9 +113,9 @@ export class CompoundV3LendingAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
 
-    const protocolTokens: ProtocolToken<AdditionalMetadata>[] = []
+    const protocolTokens: ProtocolToken[] = []
 
     const chainAddresses = addresses[this.chainId as keyof typeof addresses]
 
@@ -140,7 +129,7 @@ export class CompoundV3LendingAdapter implements IProtocolAdapter {
       const baseTokenDetails = await this.helpers.getTokenMetadata(baseToken)
 
 
-      const protocolToken: ProtocolToken<AdditionalMetadata> = {
+      const protocolToken: ProtocolToken = {
         ...baseTokenDetails,
         address: compoundAddress,
         symbol: compoundName,

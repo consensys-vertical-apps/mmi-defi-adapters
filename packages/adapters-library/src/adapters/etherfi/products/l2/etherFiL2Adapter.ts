@@ -78,10 +78,6 @@ export class EtherFiL2Adapter implements IProtocolAdapter {
     this.helpers = helpers
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,

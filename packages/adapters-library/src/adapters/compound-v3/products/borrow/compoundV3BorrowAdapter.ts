@@ -65,10 +65,6 @@ export class CompoundV3BorrowAdapter implements IProtocolAdapter {
     this.helpers = helpers
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
