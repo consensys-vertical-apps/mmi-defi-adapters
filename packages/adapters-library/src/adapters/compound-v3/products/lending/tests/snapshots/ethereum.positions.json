@@ -1,0 +1,82 @@
+{
+  "blockNumber": 21174465,
+  "latency": "Latency: 2.384 seconds",
+  "aggregatedValues": ["USD40,019.65", "USD61,620.12"],
+  "snapshot": [
+    {
+      "protocolId": "compound-v3",
+      "name": "CompoundV3",
+      "description": "CompoundV3 defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "lending",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xc3d688B66703497DAA19211EEdff47f25384cdc3",
+          "name": "cUSDCv3",
+          "symbol": "cUSDCv3",
+          "decimals": 6,
+          "balanceRaw": "40004476410n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "40004476410n",
+              "balance": 40004.47641,
+              "price": 1.0003792203921145,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
+          "balance": 40004.47641
+        },
+        {
+          "address": "0x3Afdc9BCA9213A35503b077a6072F3D0d5AB0840",
+          "name": "cUSDTv3",
+          "symbol": "cUSDTv3",
+          "decimals": 6,
+          "balanceRaw": "61470360302n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "61470360302n",
+              "balance": 61470.360302,
+              "price": 1.0024362420434805,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "balance": 61470.360302
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "1ca2ed362ae3bc941b02ded1ce07710c": {
+      "result": "0x000000000000000000000000000000000000000000000000000000095073ddfa"
+    },
+    "8ce39873c01fcbbb01d801b9a0af0837": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000e4feb42ee"
+    },
+    "541122ba252584e47f8ac10c7faabf4f": {
+      "result": "0x000000000000000000000000000000000000000000000007000000000000084a0000000000000000000000000000000000000000000000000000004c77e78477000000000000000000000000000000000000000000000000000000006733cb63000000000000000000000000000000000000000000000000000000006733cb77000000000000000000000000000000000000000000000007000000000000084a"
+    },
+    "4b254a68d0dbcc2c6c47e703489a553b": {
+      "result": "0x000000000000000000000000000000000000000000fc79271e3ac398a615b7ab"
+    },
+    "6dc06887ac331024ac1b858f1bb9a6e6": {
+      "result": "0x000000000000000000000000000000000000000000fbf4862d1cd803d4027b7f"
+    }
+  }
+}
