@@ -4,6 +4,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../../core/utils/filters'
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
@@ -31,10 +32,8 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import { addresses } from '../lending/compoundV3LendingAdapter'
 import { CompoundV3__factory } from '../../contracts'
-import { filterMapAsync } from '../../../../core/utils/filters'
-
+import { addresses } from '../lending/compoundV3LendingAdapter'
 
 export class CompoundV3BorrowAdapter implements IProtocolAdapter {
   productId = 'borrow'
@@ -80,40 +79,35 @@ export class CompoundV3BorrowAdapter implements IProtocolAdapter {
 
   @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
-
     const protocolTokens: ProtocolToken[] = []
 
     const chainAddresses = addresses[this.chainId as keyof typeof addresses]
 
-    for (const [compoundName, compoundAddress] of Object.entries(chainAddresses)) {
-
-
-      const compoundFactory = CompoundV3__factory.connect(compoundAddress, this.provider)
+    for (const [compoundName, compoundAddress] of Object.entries(
+      chainAddresses,
+    )) {
+      const compoundFactory = CompoundV3__factory.connect(
+        compoundAddress,
+        this.provider,
+      )
 
       const baseToken = await compoundFactory.baseToken()
 
       const baseTokenDetails = await this.helpers.getTokenMetadata(baseToken)
-
 
       const protocolToken: ProtocolToken = {
         ...baseTokenDetails,
         address: compoundAddress,
         symbol: compoundName,
         name: compoundName,
-        underlyingTokens: [
-          baseTokenDetails,
-        ],
+        underlyingTokens: [baseTokenDetails],
       }
 
       protocolTokens.push(protocolToken)
     }
 
-
     return protocolTokens
   }
-
-
-
 
   private async getProtocolTokenByAddress(protocolTokenAddress: string) {
     return this.helpers.getProtocolTokenByAddress({
@@ -123,31 +117,39 @@ export class CompoundV3BorrowAdapter implements IProtocolAdapter {
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const protocolTokens = await this.getProtocolTokens();
-    const result = await filterMapAsync(protocolTokens, async ({ underlyingTokens, ...protocolToken }) => {
-      const compoundFactory = CompoundV3__factory.connect(protocolToken.address, this.provider);
-      const userBalance = await compoundFactory.borrowBalanceOf(input.userAddress);
+    const protocolTokens = await this.getProtocolTokens()
+    const result = await filterMapAsync(
+      protocolTokens,
+      async ({ underlyingTokens, ...protocolToken }) => {
+        const compoundFactory = CompoundV3__factory.connect(
+          protocolToken.address,
+          this.provider,
+        )
+        const userBalance = await compoundFactory.borrowBalanceOf(
+          input.userAddress,
+        )
 
+        if (userBalance > 0) {
+          return {
+            balanceRaw: 1n,
+            ...protocolToken,
+            type: TokenType.Protocol,
+            tokens: [
+              {
+                ...underlyingTokens[0]!,
+                balanceRaw: userBalance,
+                type: TokenType.Underlying,
+              },
+            ],
+          } as ProtocolPosition
+        }
 
-      if (userBalance > 0) {
-        return {
-          balanceRaw: 1n,
-          ...protocolToken,
-          type: TokenType.Protocol,
-          tokens: [{
-            ...underlyingTokens[0]!,
-            balanceRaw: userBalance,
-            type: TokenType.Underlying
-          }]
-        } as ProtocolPosition;
-      }
+        return undefined
+      },
+    )
 
-      return undefined;
-    });
-
-    return result;
+    return result
   }
-
 
   async getWithdrawals({
     protocolTokenAddress,
