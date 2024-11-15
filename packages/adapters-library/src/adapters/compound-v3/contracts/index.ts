@@ -2,5 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { CompoundV3 } from "./CompoundV3";
+export type { Rewards } from "./Rewards";
 export * as factories from "./factories";
 export { CompoundV3__factory } from "./factories/CompoundV3__factory";
+export { Rewards__factory } from "./factories/Rewards__factory";

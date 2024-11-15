@@ -2,3 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 export { CompoundV3__factory } from "./CompoundV3__factory";
+export { Rewards__factory } from "./Rewards__factory";

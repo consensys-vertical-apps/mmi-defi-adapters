@@ -8,7 +8,6 @@ import type { Erc20Metadata } from './erc20Metadata'
 
 export const TokenType = {
   Protocol: 'protocol',
-  Reward: 'claimable',
   Underlying: 'underlying',
   UnderlyingClaimable: 'underlying-claimable',
 } as const

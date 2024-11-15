@@ -1,7 +1,7 @@
 {
-  "blockNumber": 21174465,
-  "latency": "Latency: 2.384 seconds",
-  "aggregatedValues": ["USD40,019.65", "USD61,620.12"],
+  "blockNumber": 21189685,
+  "latency": "Latency: 1.976 seconds",
+  "aggregatedValues": ["USD39,893.27", "USD61,445.85"],
   "snapshot": [
     {
       "protocolId": "compound-v3",
@@ -20,63 +20,97 @@
           "name": "cUSDCv3",
           "symbol": "cUSDCv3",
           "decimals": 6,
-          "balanceRaw": "40004476410n",
+          "balanceRaw": "40030116705n",
           "type": "protocol",
           "tokens": [
+            {
+              "balanceRaw": "15735000000000000n",
+              "type": "underlying-claimable",
+              "address": "0xc00e94Cb662C3520282E6f5717214004A7f26888",
+              "name": "Compound",
+              "symbol": "COMP",
+              "decimals": 18,
+              "balance": 0.015735,
+              "price": 45.690591916576615,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xc00e94Cb662C3520282E6f5717214004A7f26888/logo.png"
+            },
             {
               "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "40004476410n",
-              "balance": 40004.47641,
-              "price": 1.0003792203921145,
+              "balanceRaw": "40030116705n",
+              "balance": 40030.116705,
+              "price": 0.9965633582081325,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ],
-          "balance": 40004.47641
+          "balance": 40030.116705
         },
         {
           "address": "0x3Afdc9BCA9213A35503b077a6072F3D0d5AB0840",
           "name": "cUSDTv3",
           "symbol": "cUSDTv3",
           "decimals": 6,
-          "balanceRaw": "61470360302n",
+          "balanceRaw": "61513467419n",
           "type": "protocol",
           "tokens": [
+            {
+              "balanceRaw": "298705000000000000n",
+              "type": "underlying-claimable",
+              "address": "0xc00e94Cb662C3520282E6f5717214004A7f26888",
+              "name": "Compound",
+              "symbol": "COMP",
+              "decimals": 18,
+              "balance": 0.298705,
+              "price": 45.690591916576615,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xc00e94Cb662C3520282E6f5717214004A7f26888/logo.png"
+            },
             {
               "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "61470360302n",
-              "balance": 61470.360302,
-              "price": 1.0024362420434805,
+              "balanceRaw": "61513467419n",
+              "balance": 61513.467419,
+              "price": 0.9986788468005181,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
-          "balance": 61470.360302
+          "balance": 61513.467419
         }
       ]
     }
   ],
   "rpcResponses": {
-    "1ca2ed362ae3bc941b02ded1ce07710c": {
-      "result": "0x000000000000000000000000000000000000000000000000000000095073ddfa"
+    "0c43f9d0b645e67747b811d8ee94cfc6": {
+      "result": "0x1435466"
     },
-    "8ce39873c01fcbbb01d801b9a0af0837": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000e4feb42ee"
+    "2a5671c5e549479ec7e035dad331c211": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000951fb1b61"
     },
-    "541122ba252584e47f8ac10c7faabf4f": {
-      "result": "0x000000000000000000000000000000000000000000000007000000000000084a0000000000000000000000000000000000000000000000000000004c77e78477000000000000000000000000000000000000000000000000000000006733cb63000000000000000000000000000000000000000000000000000000006733cb77000000000000000000000000000000000000000000000007000000000000084a"
+    "c045e8f3420bf2e2c753c163e4df5272": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000e527d061b"
     },
-    "4b254a68d0dbcc2c6c47e703489a553b": {
-      "result": "0x000000000000000000000000000000000000000000fc79271e3ac398a615b7ab"
+    "54a4acb23b1ab543e70082be6cb09d4c": {
+      "result": "0x000000000000000000000000c00e94cb662c3520282e6f5717214004a7f268880000000000000000000000000000000000000000000000000425369d69a21000"
     },
-    "6dc06887ac331024ac1b858f1bb9a6e6": {
-      "result": "0x000000000000000000000000000000000000000000fbf4862d1cd803d4027b7f"
+    "ca74ea9287f4b688090196c27f7d2239": {
+      "result": "0x000000000000000000000000c00e94cb662c3520282e6f5717214004a7f268880000000000000000000000000000000000000000000000000037e6e62d8a7000"
+    },
+    "bcfc9bbbbed4b06a25b6575bc983be20": {
+      "result": "0x00000000000000000000000000000000000000000000000700000000000008f5000000000000000000000000000000000000000000000000000000473d2c6e400000000000000000000000000000000000000000000000000000000067369db30000000000000000000000000000000000000000000000000000000067369dc300000000000000000000000000000000000000000000000700000000000008f5"
+    },
+    "aadbf0a22554dcbbd99b5ed717deda59": {
+      "result": "0x00000000000000000000000000000000000000000000000000350d8e5a1d5b33"
+    },
+    "87a707798427480ebc15aa41bd66ce26": {
+      "result": "0x0000000000000000000000000000000000000000010dfd9d216f5b2758c858cd"
+    },
+    "4038a50a7778159eae949e162a68e15d": {
+      "result": "0x0000000000000000000000000000000000000000010d6b33ed19bdd6fd66306d"
     }
   }
 }

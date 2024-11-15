@@ -23,6 +23,7 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
+  TokenType,
   Underlying,
   UnderlyingReward,
   UnwrapExchangeRate,
@@ -30,7 +31,7 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import { CompoundV3__factory } from '../../contracts'
+import { CompoundV3__factory, Rewards__factory } from '../../contracts'
 
 export const addresses = {
   [Chain.Ethereum]: {
@@ -64,6 +65,18 @@ export const addresses = {
     cUSDTv3: '0x995E394b8B2437aC8Ce61Ee0bC610D617962B214',
     cWETHv3: '0xE36A30D249f7761327fd973001A32010b521b6Fd',
   },
+}
+
+const rewardAddresses = {
+  [Chain.Ethereum]: '0x1B0e765F6224C21223AeA2af16c1C46E38885a40',
+  [Chain.Polygon]: '0x45939657d1CA34A8FA39A924B71D28Fe8431e581',
+  [Chain.Arbitrum]: '0x88730d254A2f7e6AC8388c3198aFd694bA9f7fae',
+  [Chain.Base]: '0x123964802e6ABabBE1Bc9547D72Ef1B69B00A6b1',
+  [Chain.Optimism]: '0x443EA0340cb75a160F31A440722dec7b5bc3C2E9',
+}
+
+type AdditionalMetadata = {
+  rewardTokens: Erc20Metadata[]
 }
 
 export class CompoundV3LendingAdapter implements IProtocolAdapter {
@@ -109,8 +122,8 @@ export class CompoundV3LendingAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken[]> {
-    const protocolTokens: ProtocolToken[] = []
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+    const protocolTokens: ProtocolToken<AdditionalMetadata>[] = []
 
     const chainAddresses = addresses[this.chainId as keyof typeof addresses]
 
@@ -126,12 +139,24 @@ export class CompoundV3LendingAdapter implements IProtocolAdapter {
 
       const baseTokenDetails = await this.helpers.getTokenMetadata(baseToken)
 
-      const protocolToken: ProtocolToken = {
+      const rewardContract = await Rewards__factory.connect(
+        rewardAddresses[this.chainId as keyof typeof rewardAddresses],
+        this.provider,
+      )
+
+      const rewardConfig = await rewardContract.rewardConfig(compoundAddress)
+
+      const rewardToken = await this.helpers.getTokenMetadata(
+        rewardConfig.token,
+      )
+
+      const protocolToken = {
         ...baseTokenDetails,
         address: compoundAddress,
         symbol: compoundName,
         name: compoundName,
         underlyingTokens: [baseTokenDetails],
+        rewardTokens: [rewardToken],
       }
 
       protocolTokens.push(protocolToken)
@@ -198,14 +223,34 @@ export class CompoundV3LendingAdapter implements IProtocolAdapter {
     })
   }
 
-  // async getRewardPositions({
-  //   userAddress,
-  //   protocolTokenAddress,
-  //   blockNumber,
-  //   tokenId,
-  // }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
-  //   throw new NotImplementedError()
-  // }
+  async getRewardPositions({
+    userAddress,
+    protocolTokenAddress,
+    blockNumber,
+    tokenId,
+  }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
+    const rewardContract = await Rewards__factory.connect(
+      rewardAddresses[this.chainId as keyof typeof rewardAddresses],
+      this.provider,
+    )
+
+    const [rewardBalance, { rewardTokens }] = await Promise.all([
+      rewardContract.getRewardOwed.staticCall(
+        protocolTokenAddress,
+        userAddress,
+        { blockTag: blockNumber },
+      ),
+      this.getProtocolTokenByAddress(protocolTokenAddress),
+    ])
+
+    return [
+      {
+        balanceRaw: rewardBalance.owed,
+        type: TokenType.UnderlyingClaimable,
+        ...rewardTokens[0],
+      },
+    ]
+  }
 
   // async getRewardWithdrawals({
   //   userAddress,
