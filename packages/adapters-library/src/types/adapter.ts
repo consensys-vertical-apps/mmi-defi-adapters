@@ -15,11 +15,10 @@ export type TokenType = (typeof TokenType)[keyof typeof TokenType]
 
 export const UnderlyingTokenTypeMap: {
   [key in TokenType]:
-    | typeof TokenType.Underlying
-    | typeof TokenType.UnderlyingClaimable
+  | typeof TokenType.Underlying
+  | typeof TokenType.UnderlyingClaimable
 } = {
   [TokenType.UnderlyingClaimable]: TokenType.UnderlyingClaimable,
-  [TokenType.Reward]: TokenType.UnderlyingClaimable,
   [TokenType.Underlying]: TokenType.Underlying,
   [TokenType.Protocol]: TokenType.Underlying,
 } as const
@@ -231,7 +230,7 @@ export type UnderlyingReward = Omit<Underlying, 'type'> & {
  * User's position, includes balance of protocol token related underlying token balances
  */
 export interface ProtocolPosition extends TokenBalanceWithUnderlyings {
-  type: typeof TokenType.Protocol | typeof TokenType.Reward
+  type: typeof TokenType.Protocol
 
   /**
    * Used by NFT Defi Positions, e.g. uniswapV3

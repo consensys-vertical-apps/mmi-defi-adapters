@@ -243,11 +243,16 @@ export class CompoundV3LendingAdapter implements IProtocolAdapter {
       this.getProtocolTokenByAddress(protocolTokenAddress),
     ])
 
+    const rewardToken = rewardTokens[0]
+    if (!rewardToken) {
+      return []
+    }
+
     return [
       {
         balanceRaw: rewardBalance.owed,
         type: TokenType.UnderlyingClaimable,
-        ...rewardTokens[0],
+        ...rewardToken,
       },
     ]
   }
