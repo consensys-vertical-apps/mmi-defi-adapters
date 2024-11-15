@@ -256,11 +256,4 @@ export class CompoundV3LendingAdapter implements IProtocolAdapter {
       },
     ]
   }
-
-  // async getRewardWithdrawals({
-  //   userAddress,
-  //   protocolTokenAddress,
-  // }: GetEventsInput): Promise<MovementsByBlockReward[]> {
-  //   throw new NotImplementedError()
-  // }
 }
