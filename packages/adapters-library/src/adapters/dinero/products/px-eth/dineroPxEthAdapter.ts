@@ -34,12 +34,12 @@ import { Protocol } from '../../../protocols'
 type AdditionalMetadata = {}
 
 const PX_ETH_DEPLOYMENTS: Partial<Record<Chain, string>> = {
-  [Chain.Ethereum]: '0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6',
-  [Chain.Optimism]: '0x300d2c875c6fb8ce4bf5480b4d34b7c9ea8a33a4',
-  [Chain.Arbitrum]: '0x300d2c875c6fb8ce4bf5480b4d34b7c9ea8a33a4',
-  [Chain.Bsc]: '0x300d2c875c6fb8ce4bf5480b4d34b7c9ea8a33a4',
-  [Chain.Base]: '0x58adE43A276ddF3e101941571eDe398a32492Ed7',
-  [Chain.Linea]: '0x58adE43A276ddF3e101941571eDe398a32492Ed7',
+  [Chain.Ethereum]: getAddress('0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6'),
+  [Chain.Optimism]: getAddress('0x300d2c875c6fb8ce4bf5480b4d34b7c9ea8a33a4'),
+  [Chain.Arbitrum]: getAddress('0x300d2c875c6fb8ce4bf5480b4d34b7c9ea8a33a4'),
+  [Chain.Bsc]: getAddress('0x300d2c875c6fb8ce4bf5480b4d34b7c9ea8a33a4'),
+  [Chain.Base]: getAddress('0x58adE43A276ddF3e101941571eDe398a32492Ed7'),
+  [Chain.Linea]: getAddress('0x58adE43A276ddF3e101941571eDe398a32492Ed7'),
 }
 
 export class DineroPxEthAdapter implements IProtocolAdapter {
