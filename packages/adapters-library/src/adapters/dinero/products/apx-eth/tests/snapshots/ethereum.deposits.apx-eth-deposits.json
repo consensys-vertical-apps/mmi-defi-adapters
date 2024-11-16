@@ -1,0 +1,95 @@
+{
+  "aggregatedValues": ["USD46,271.63"],
+  "latency": "Latency: 1.282 seconds",
+  "snapshot": {
+    "protocolId": "dinero",
+    "name": "Dinero",
+    "description": "Dinero defi adapter for Autocompounding Pirex Ether (apxETH)",
+    "siteUrl": "https://dinero.xyz/",
+    "iconUrl": "https://dinero.xyz/images/eye.png",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "apx-eth",
+    "chainName": "ethereum",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x4226fa18c401c2a7f6a0db03346d9fb676ffccff4547dbc235f76b8b403d5a0f",
+        "protocolToken": {
+          "address": "0x9Ba021B0a9b958B5E75cE9f6dff97C7eE52cb3E6",
+          "name": "Autocompounding Pirex Ether",
+          "symbol": "apxETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x9Ba021B0a9b958B5E75cE9f6dff97C7eE52cb3E6",
+            "name": "Autocompounding Pirex Ether",
+            "symbol": "apxETH",
+            "decimals": 18,
+            "balanceRaw": "16621785528888300428n",
+            "type": "underlying",
+            "blockNumber": 21023794,
+            "tokens": [
+              {
+                "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+                "name": "Pirex Ether",
+                "symbol": "pxETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "17573735570606811364n",
+                "tokens": [
+                  {
+                    "address": "0x0000000000000000000000000000000000000000",
+                    "name": "Ethereum",
+                    "symbol": "ETH",
+                    "decimals": 18,
+                    "type": "underlying",
+                    "balanceRaw": "17573735570606811364n",
+                    "balance": 17.57373557060681,
+                    "price": 2632.99919198,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                  }
+                ],
+                "balance": 17.57373557060681,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6/logo.png"
+              }
+            ],
+            "balance": 16.6217855288883
+          }
+        ],
+        "blockNumber": 21023794
+      }
+    ]
+  },
+  "rpcResponses": {
+    "47ea6120c775f75bce43c2ad5c40e5fc": {
+      "result": [
+        {
+          "address": "0x9ba021b0a9b958b5e75ce9f6dff97c7ee52cb3e6",
+          "blockHash": "0x5d1032babc4d23e9f4bf7ea8e6731176276bbaf4902f5a1efd95a5110811dcc0",
+          "blockNumber": "0x140cc32",
+          "data": "0x000000000000000000000000000000000000000000000000e6ac71df5e1d938c",
+          "logIndex": "0x64",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000007bfee91193d9df2ac0bfe90191d40f23c773c060",
+            "0x000000000000000000000000a5ccbd739e7f5662b95d269ee9a48a37cbfb88bc"
+          ],
+          "transactionHash": "0x4226fa18c401c2a7f6a0db03346d9fb676ffccff4547dbc235f76b8b403d5a0f",
+          "transactionIndex": "0x33"
+        }
+      ]
+    },
+    "ab387c35223676598edb0f06e6dcd9c1": {
+      "result": "0x000000000000000000000000000000000000000000000209286f5afae1b3a2d8"
+    },
+    "3559684b23683c6ceffa13c85456290e": {
+      "result": "0x000000000000000000000000000000000000000000000227015b9ad826c921b3"
+    },
+    "e0fa64826ae08e688a1740997ee6c96b": {
+      "result": "0x00000000000000000000000000000000000000000000000700000000000004800000000000000000000000000000000000000000000000000000003d4de5ed5e00000000000000000000000000000000000000000000000000000000671817a600000000000000000000000000000000000000000000000000000000671817bf0000000000000000000000000000000000000000000000070000000000000480"
+    }
+  }
+}

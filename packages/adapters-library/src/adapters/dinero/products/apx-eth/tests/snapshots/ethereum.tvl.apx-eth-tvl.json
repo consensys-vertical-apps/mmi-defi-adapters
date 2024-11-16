@@ -1,0 +1,65 @@
+{
+  "latency": "Latency: 1.116 seconds",
+  "blockNumber": 21202764,
+  "snapshot": [
+    {
+      "protocolId": "dinero",
+      "name": "Dinero",
+      "description": "Dinero defi adapter for Autocompounding Pirex Ether (apxETH)",
+      "siteUrl": "https://dinero.xyz/",
+      "iconUrl": "https://dinero.xyz/images/eye.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "apx-eth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x9Ba021B0a9b958B5E75cE9f6dff97C7eE52cb3E6",
+          "name": "Autocompounding Pirex Ether",
+          "symbol": "apxETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "11520479538757900340846n",
+          "tokens": [
+            {
+              "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+              "name": "Pirex Ether",
+              "symbol": "pxETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "12224705412489020570726n",
+              "tokens": [
+                {
+                  "address": "0x0000000000000000000000000000000000000000",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "totalSupplyRaw": "12224705412489020570726n",
+                  "totalSupply": 12224.70541248902,
+                  "price": 3154.481754,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                }
+              ],
+              "totalSupply": 12224.70541248902,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6/logo.png"
+            }
+          ],
+          "totalSupply": 11520.4795387579
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "6a055f3643735630455199ca6988ba21": {
+      "result": "0x00000000000000000000000000000000000000000000027086c53e623cae8e6e"
+    },
+    "0415b81860e4b537136dcdeb23261b09": {
+      "result": "0x000000000000000000000000000000000000000000000296b3de2364c3133c07"
+    },
+    "2c3a0be107372f1aba571de708183d07": {
+      "result": "0x000000000000000000000000000000000000000000000007000000000000095300000000000000000000000000000000000000000000000000000049722d2b28000000000000000000000000000000000000000000000000000000006738ff71000000000000000000000000000000000000000000000000000000006738ff830000000000000000000000000000000000000000000000070000000000000953"
+    }
+  }
+}

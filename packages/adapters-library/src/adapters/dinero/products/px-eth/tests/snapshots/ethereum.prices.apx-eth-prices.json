@@ -1,0 +1,41 @@
+{
+  "latency": "Latency: 0 seconds",
+  "blockNumber": 21202764,
+  "snapshot": [
+    {
+      "protocolId": "dinero",
+      "name": "Dinero",
+      "description": "Dinero defi adapter for Pirex Ether (pxETH)",
+      "siteUrl": "https://dinero.xyz/",
+      "iconUrl": "https://dinero.xyz/images/eye.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "px-eth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+          "name": "Pirex Ether",
+          "symbol": "pxETH",
+          "decimals": 18,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "1000000000000000000n",
+              "underlyingRate": 1,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {}
+}

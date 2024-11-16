@@ -42,6 +42,8 @@ import { testCases as curvePoolTestCases } from './curve/products/pool/tests/tes
 import { testCases as curveStakingTestCases } from './curve/products/staking/tests/testCases'
 import { testCases as curveVotingEscrowTestCases } from './curve/products/voting-escrow/tests/testCases'
 import { testCases as deriPoolTestCases } from './deri/products/pool/tests/testCases'
+import { testCases as dineroApxEthTestCases } from './dinero/products/apx-eth/tests/testCases'
+import { testCases as dineroPxEthTestCases } from './dinero/products/px-eth/tests/testCases'
 import { testCases as ethenaLpStakingTestCases } from './ethena/products/lp-staking/tests/testCases'
 import { testCases as ethenaStakedEnaTestCases } from './ethena/products/staked-ena/tests/testCases'
 import { testCases as ethenaStakedUsdeTestCases } from './ethena/products/staked-usde/tests/testCases'
@@ -195,6 +197,11 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
 
   [Protocol.Deri]: {
     ['pool']: deriPoolTestCases,
+  },
+
+  [Protocol.Dinero]: {
+    ['apx-eth']: dineroApxEthTestCases,
+    ['px-eth']: dineroPxEthTestCases,
   },
 
   [Protocol.Ethena]: {

@@ -1,0 +1,48 @@
+{
+  "latency": "Latency: 0.714 seconds",
+  "blockNumber": 21202764,
+  "snapshot": [
+    {
+      "protocolId": "dinero",
+      "name": "Dinero",
+      "description": "Dinero defi adapter for Autocompounding Pirex Ether (apxETH)",
+      "siteUrl": "https://dinero.xyz/",
+      "iconUrl": "https://dinero.xyz/images/eye.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "apx-eth",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x9Ba021B0a9b958B5E75cE9f6dff97C7eE52cb3E6",
+          "name": "Autocompounding Pirex Ether",
+          "symbol": "apxETH",
+          "decimals": 18,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+              "name": "Pirex Ether",
+              "symbol": "pxETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "1061128173646064000n",
+              "underlyingRate": 1.061128173646064,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "6a055f3643735630455199ca6988ba21": {
+      "result": "0x00000000000000000000000000000000000000000000027086c53e623cae8e6e"
+    },
+    "0415b81860e4b537136dcdeb23261b09": {
+      "result": "0x000000000000000000000000000000000000000000000296b3de2364c3133c07"
+    }
+  }
+}

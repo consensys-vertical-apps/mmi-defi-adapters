@@ -11,6 +11,7 @@ export const Protocol = {
   Convex: 'convex',
   Curve: 'curve',
   Deri: 'deri',
+  Dinero: 'dinero',
   Ethena: 'ethena',
   EtherFi: 'etherfi',
   Flux: 'flux',
