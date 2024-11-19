@@ -140,8 +140,8 @@ import { AaveV2RewardsAdapter } from './aave-v2/products/rewards/aaveV2RewardsAd
 
 import { CompoundV3LendingAdapter } from './compound-v3/products/lending/compoundV3LendingAdapter'
 
-import { CompoundV3BorrowAdapter } from './compound-v3/products/borrow/compoundV3BorrowAdapter'
 import { BalancerV2VestingAdapter } from './balancer-v2/products/vesting/balancerV2VestingAdapter'
+import { CompoundV3BorrowAdapter } from './compound-v3/products/borrow/compoundV3BorrowAdapter'
 
 export const supportedProtocols: Record<
   Protocol,
@@ -225,7 +225,6 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.BalancerV2]: { [Chain.Ethereum]: [BalancerV2VestingAdapter] },
-
 
   [Protocol.Beefy]: {
     [Chain.Ethereum]: [
@@ -686,7 +685,7 @@ export const GetTransactionParamsSchema = z.union([
       action: z.literal('withdraw'),
       inputs:
         WriteActionInputs['CompoundV2SupplyMarketWriteActionInputs'][
-        'withdraw'
+          'withdraw'
         ],
     }),
   ]),
@@ -746,7 +745,7 @@ export const GetTransactionParamsSchema = z.union([
       action: z.literal('deposit'),
       inputs:
         WriteActionInputs['MendiFinanceSupplyMarketWriteActionInputs'][
-        'deposit'
+          'deposit'
         ],
     }),
     z.object({
@@ -756,7 +755,7 @@ export const GetTransactionParamsSchema = z.union([
       action: z.literal('withdraw'),
       inputs:
         WriteActionInputs['MendiFinanceSupplyMarketWriteActionInputs'][
-        'withdraw'
+          'withdraw'
         ],
     }),
   ]),
@@ -768,7 +767,7 @@ export const GetTransactionParamsSchema = z.union([
       action: z.literal('borrow'),
       inputs:
         WriteActionInputs['MendiFinanceBorrowMarketWriteActionInputs'][
-        'borrow'
+          'borrow'
         ],
     }),
     z.object({

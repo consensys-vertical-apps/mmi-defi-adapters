@@ -145,8 +145,9 @@ export abstract class VotingEscrow implements IProtocolAdapter {
       blockNumber: input.blockNumber,
     })
 
-    const nameWithUnlockTime = `${protocolToken!.name
-      } - Unlock time ${unixTimestampToDateString(end)}`
+    const nameWithUnlockTime = `${
+      protocolToken!.name
+    } - Unlock time ${unixTimestampToDateString(end)}`
 
     const tokens = [unwrappedToken]
 

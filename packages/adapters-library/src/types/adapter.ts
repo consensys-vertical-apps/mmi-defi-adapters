@@ -15,8 +15,8 @@ export type TokenType = (typeof TokenType)[keyof typeof TokenType]
 
 export const UnderlyingTokenTypeMap: {
   [key in TokenType]:
-  | typeof TokenType.Underlying
-  | typeof TokenType.UnderlyingClaimable
+    | typeof TokenType.Underlying
+    | typeof TokenType.UnderlyingClaimable
 } = {
   [TokenType.UnderlyingClaimable]: TokenType.UnderlyingClaimable,
   [TokenType.Underlying]: TokenType.Underlying,
