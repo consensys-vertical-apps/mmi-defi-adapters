@@ -16,6 +16,6 @@ export const testCases: TestCase[] = [
       ],
     },
 
-    blockNumber: 21174465,
+    blockNumber: 21189685,
   },
 ]

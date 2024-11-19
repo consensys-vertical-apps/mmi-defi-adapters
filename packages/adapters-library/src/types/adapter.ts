@@ -8,7 +8,6 @@ import type { Erc20Metadata } from './erc20Metadata'
 
 export const TokenType = {
   Protocol: 'protocol',
-  Reward: 'claimable',
   Underlying: 'underlying',
   UnderlyingClaimable: 'underlying-claimable',
 } as const
@@ -20,7 +19,6 @@ export const UnderlyingTokenTypeMap: {
     | typeof TokenType.UnderlyingClaimable
 } = {
   [TokenType.UnderlyingClaimable]: TokenType.UnderlyingClaimable,
-  [TokenType.Reward]: TokenType.UnderlyingClaimable,
   [TokenType.Underlying]: TokenType.Underlying,
   [TokenType.Protocol]: TokenType.Underlying,
 } as const
@@ -232,7 +230,7 @@ export type UnderlyingReward = Omit<Underlying, 'type'> & {
  * User's position, includes balance of protocol token related underlying token balances
  */
 export interface ProtocolPosition extends TokenBalanceWithUnderlyings {
-  type: typeof TokenType.Protocol | typeof TokenType.Reward
+  type: typeof TokenType.Protocol
 
   /**
    * Used by NFT Defi Positions, e.g. uniswapV3
