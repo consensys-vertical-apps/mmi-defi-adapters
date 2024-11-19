@@ -15,6 +15,7 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Ethereum,
     method: 'positions',
+    key: '2',
     input: {
       userAddress: '0x891ca7e61d3868B9eDbF20dDd045Fc7D579E77d5',
       filterProtocolTokens: ['0xC128a9954e6c874eA3d62ce62B468bA073093F25'],
