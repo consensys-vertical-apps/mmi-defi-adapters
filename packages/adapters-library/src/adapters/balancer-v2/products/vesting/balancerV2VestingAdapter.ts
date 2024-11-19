@@ -54,11 +54,6 @@ export class BalancerV2VestingAdapter extends VotingEscrow {
     blockNumber,
   }: GetPositionsInput): Promise<{ amount: bigint; end: bigint }> {
 
-
-    const oioi = await this.getProtocolTokens()
-
-    console.log(oioi, 'oioi')
-
     const votingEscrow = VotingEscrow__factory.connect(
       this.addresses.veToken,
       this.provider,
