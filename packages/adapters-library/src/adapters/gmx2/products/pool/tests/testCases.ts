@@ -1,21 +1,31 @@
 import { Chain } from '../../../../../core/constants/chains'
-import { TimePeriod } from '../../../../../core/constants/timePeriod'
 import type { TestCase } from '../../../../../types/testCase'
 
 export const testCases: TestCase[] = [
-  // {
-  //   chainId: Chain.Ethereum,
-  //   method: 'positions',
-  //   input: {
-  //     userAddress: '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
-  //   },
-  // },
-  // {
-  //   chainId: Chain.Ethereum,
-  //   method: 'profits',
-  //   input: {
-  //     userAddress: '0xCEadFdCCd0E8E370D985c49Ed3117b2572243A4a',
-  //     timePeriod: TimePeriod.oneDay,
-  //   },
-  // },
+  {
+    key: 'gmx-usdc',
+    chainId: Chain.Arbitrum,
+    method: 'positions',
+
+    input: {
+      userAddress: '0x7a8FEaAdBA4360697228aA9b2a5EBaa769F68905',
+
+      filterProtocolTokens: ['0x55391D178Ce46e7AC8eaAEa50A72D1A5a8A622Da'],
+    },
+
+    blockNumber: 276402599,
+  },
+  {
+    key: 'weth',
+    chainId: Chain.Arbitrum,
+    method: 'positions',
+
+    input: {
+      userAddress: '0x7a8FEaAdBA4360697228aA9b2a5EBaa769F68905',
+
+      filterProtocolTokens: ['0x450bb6774Dd8a756274E0ab4107953259d2ac541'],
+    },
+
+    blockNumber: 276402599,
+  },
 ]

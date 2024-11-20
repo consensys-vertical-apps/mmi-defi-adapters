@@ -1,0 +1,57 @@
+{
+  "blockNumber": 276402599,
+  "latency": "Latency: 0.864 seconds",
+  "aggregatedValues": ["USD5,965.23"],
+  "snapshot": [
+    {
+      "protocolId": "gmx2",
+      "name": "GMX V2",
+      "description": "GM V2 Pool adapter",
+      "siteUrl": "https://app.gmx.io/#/pools",
+      "iconUrl": "https://gmx.io//static/media/ic_gmx_40.72a1053e8344ef876100ac72aff70ead.svg",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "pool",
+      "chainName": "arb",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x450bb6774Dd8a756274E0ab4107953259d2ac541",
+          "name": "GMX Market WETH/WETH",
+          "symbol": "GM/WETH/WETH",
+          "decimals": 18,
+          "balanceRaw": "6650776162878807091647n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "1908532383200974967n",
+              "type": "underlying",
+              "balance": 1.908532383200975,
+              "price": 3125.56,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
+            }
+          ],
+          "balance": 6650.776162878807
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "e3e060f21e29ca51392c458f91c28ecc": {
+      "result": "0x0000000000000000000000000000000000000000000001688a0f72d0e2cc29bf"
+    },
+    "05bbc27bff13a4e192355d81101c395a": {
+      "result": "0x000000000000000000000000000000000000000000343a0c61bf0ad50bd97159"
+    },
+    "221d4f0b32601fbd3f2ee7e8203abe3a": {
+      "result": "0x0000000000000000000000000000000000000000000003d6335326dbdab382dd"
+    },
+    "c31c2b2ca89ee86c80f8248487137aec": {
+      "result": "0x00000000000000000000000000000000000000000000000100000000000b1c2e00000000000000000000000000000000000000000000000000000048c5ca130000000000000000000000000000000000000000000000000000000000673daef000000000000000000000000000000000000000000000000000000000673daef000000000000000000000000000000000000000000000000100000000000b1c2e"
+    }
+  }
+}

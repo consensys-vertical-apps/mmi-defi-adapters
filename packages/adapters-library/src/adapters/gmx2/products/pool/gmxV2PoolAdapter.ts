@@ -1,7 +1,10 @@
 import { AbiCoder, getBytes, keccak256 } from 'ethers'
+import { mulDivHalfUp } from 'evm-maths/lib/utils'
+import { Erc20__factory } from '../../../../contracts'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
+import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { Helpers } from '../../../../scripts/helpers'
 import {
@@ -25,8 +28,6 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { DataStore__factory, Reader__factory } from '../../contracts'
-import { Erc20__factory } from '../../../../contracts'
-import { mulDivHalfUp } from 'evm-maths/lib/utils'
 
 const contractAddresses: Partial<
   Record<Chain, { dataStore: string; reader: string }>
@@ -204,12 +205,16 @@ export class GmxV2PoolAdapter implements IProtocolAdapter {
           ),
         ])
 
-        const marketTokenShare =
-          Number(position.balanceRaw) / Number(marketTokenTotalSupply)
-
-        const longTokenShare = Number(longTokenPoolAmountRaw) * marketTokenShare
-        const shortTokenShare =
-          Number(shortTokenPoolAmountRaw) * marketTokenShare
+        const longTokenShare = mulDivHalfUp(
+          longTokenPoolAmountRaw,
+          position.balanceRaw,
+          marketTokenTotalSupply,
+        )
+        const shortTokenShare = mulDivHalfUp(
+          shortTokenPoolAmountRaw,
+          position.balanceRaw,
+          marketTokenTotalSupply,
+        )
 
         // if the longToken and shortToken are the same, only return one token
         if (longToken.address === shortToken.address) {
@@ -221,7 +226,7 @@ export class GmxV2PoolAdapter implements IProtocolAdapter {
                 name: longToken.name,
                 symbol: longToken.symbol,
                 decimals: longToken.decimals,
-                balanceRaw: BigInt(Math.round(longTokenShare)),
+                balanceRaw: longTokenShare,
                 type: TokenType.Underlying,
               },
             ],
@@ -236,7 +241,7 @@ export class GmxV2PoolAdapter implements IProtocolAdapter {
               name: longToken.name,
               symbol: longToken.symbol,
               decimals: longToken.decimals,
-              balanceRaw: BigInt(Math.round(longTokenShare)),
+              balanceRaw: longTokenShare,
               type: TokenType.Underlying,
             },
             {
@@ -244,7 +249,7 @@ export class GmxV2PoolAdapter implements IProtocolAdapter {
               name: shortToken.name,
               symbol: shortToken.symbol,
               decimals: shortToken.decimals,
-              balanceRaw: BigInt(Math.round(shortTokenShare)),
+              balanceRaw: shortTokenShare,
               type: TokenType.Underlying,
             },
           ],
@@ -294,67 +299,7 @@ export class GmxV2PoolAdapter implements IProtocolAdapter {
     protocolTokenAddress,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const { underlyingTokens, ...protocolToken } =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    const reader = Reader__factory.connect(
-      contractAddresses[this.chainId]!.reader,
-      this.provider,
-    )
-
-    const {
-      marketToken: marketTokenAddress,
-      longToken: longTokenAddress,
-      shortToken: shortTokenAddress,
-    } = await reader.getMarket(
-      contractAddresses[this.chainId]!.dataStore,
-      protocolToken.address,
-    )
-
-    const marketToken = Erc20__factory.connect(
-      marketTokenAddress,
-      this.provider,
-    )
-    const longToken = Erc20__factory.connect(longTokenAddress, this.provider)
-    const shortToken = Erc20__factory.connect(shortTokenAddress, this.provider)
-    const dataStore = DataStore__factory.connect(
-      contractAddresses[this.chainId]!.dataStore,
-      this.provider,
-    )
-
-    const [
-      marketTokenTotalSupply,
-      longTokenDecimals,
-      longTokenPoolAmountRaw,
-      shortTokenDecimals,
-      shortTokenPoolAmountRaw,
-    ] = await Promise.all([
-      marketToken.totalSupply(),
-      longToken.decimals(),
-      dataStore.getUint(
-        this.hashPoolAmount(marketTokenAddress, longTokenAddress),
-      ),
-      shortToken.decimals(),
-      dataStore.getUint(
-        this.hashPoolAmount(marketTokenAddress, shortTokenAddress),
-      ),
-    ])
-
-    return {
-      ...protocolToken,
-      type: TokenType.Protocol,
-      baseRate: 1,
-      tokens: underlyingTokens?.map((token, i) => {
-        return {
-          ...token,
-          type: TokenType.Underlying,
-          underlyingRateRaw:
-            (10 ** protocolToken.decimals * i === 0
-              ? longTokenPoolAmountRaw
-              : shortTokenPoolAmountRaw) / marketTokenTotalSupply,
-        }
-      }),
-    }
+    throw new NotImplementedError()
   }
 
   private hashString(value: string) {
