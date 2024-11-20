@@ -1,46 +1,30 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { logger } from '../../../../core/utils/logger'
+import { nativeToken } from '../../../../core/utils/nativeTokens'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
-  GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
-  MovementsByBlockReward,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
-  Underlying,
-  UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-
-type AdditionalMetadata = {}
-
-const PX_ETH_DEPLOYMENTS: Partial<Record<Chain, string>> = {
-  [Chain.Ethereum]: getAddress('0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6'),
-  [Chain.Optimism]: getAddress('0x300d2c875c6fb8ce4bf5480b4d34b7c9ea8a33a4'),
-  [Chain.Arbitrum]: getAddress('0x300d2c875c6fb8ce4bf5480b4d34b7c9ea8a33a4'),
-  [Chain.Bsc]: getAddress('0x300d2c875c6fb8ce4bf5480b4d34b7c9ea8a33a4'),
-  [Chain.Base]: getAddress('0x58adE43A276ddF3e101941571eDe398a32492Ed7'),
-  [Chain.Linea]: getAddress('0x58adE43A276ddF3e101941571eDe398a32492Ed7'),
-}
+import { PX_ETH_DEPLOYMENTS } from '../../common/deploymentAddresses'
 
 export class DineroPxEthAdapter implements IProtocolAdapter {
   productId = 'px-eth'
@@ -85,19 +69,16 @@ export class DineroPxEthAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     return [
       {
-        address: `${PX_ETH_DEPLOYMENTS[this.chainId]}`,
-        name: 'Pirex Ether',
-        symbol: 'pxETH',
-        decimals: 18,
+        ...(await this.helpers.getTokenMetadata(
+          PX_ETH_DEPLOYMENTS[this.chainId]!,
+        )),
         underlyingTokens: [
           {
-            address: '0x0000000000000000000000000000000000000000',
-            symbol: 'ETH',
-            name: 'Ethereum',
-            decimals: 18,
+            ...nativeToken[this.chainId],
+            address: ZERO_ADDRESS,
           },
         ],
       },
