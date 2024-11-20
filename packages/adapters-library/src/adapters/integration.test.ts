@@ -24,6 +24,7 @@ import { testCases as aaveV3StableDebtTokenTestCases } from './aave-v3/products/
 import { testCases as aaveV3StakingTestCases } from './aave-v3/products/staking/tests/testCases'
 import { testCases as aaveV3VariableDebtTokenTestCases } from './aave-v3/products/variable-debt-token/tests/testCases'
 import { testCases as angleProtocolSavingsTestCases } from './angle-protocol/products/savings/tests/testCases'
+import { testCases as balancerV2VestingTestCases } from './balancer-v2/products/vesting/tests/testCases'
 import { testCases as beefyCowTokenTestCases } from './beefy/products/cow-token/tests/testCases'
 import { testCases as beefyMooTokenTestCases } from './beefy/products/moo-token/tests/testCases'
 import { testCases as beefyRcowTokenTestCases } from './beefy/products/rcow-token/tests/testCases'
@@ -155,6 +156,10 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
 
   [Protocol.AngleProtocol]: {
     ['savings']: angleProtocolSavingsTestCases,
+  },
+
+  [Protocol.BalancerV2]: {
+    ['vesting']: balancerV2VestingTestCases,
   },
 
   [Protocol.Beefy]: {
