@@ -2,4 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export { DataStore__factory } from "./DataStore__factory";
+export { EventEmitter__factory } from "./EventEmitter__factory";
+export { Oracle__factory } from "./Oracle__factory";
 export { Reader__factory } from "./Reader__factory";

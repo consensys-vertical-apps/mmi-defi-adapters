@@ -2,7 +2,11 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { DataStore } from "./DataStore";
+export type { EventEmitter } from "./EventEmitter";
+export type { Oracle } from "./Oracle";
 export type { Reader } from "./Reader";
 export * as factories from "./factories";
 export { DataStore__factory } from "./factories/DataStore__factory";
+export { EventEmitter__factory } from "./factories/EventEmitter__factory";
+export { Oracle__factory } from "./factories/Oracle__factory";
 export { Reader__factory } from "./factories/Reader__factory";

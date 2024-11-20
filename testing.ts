@@ -54,4 +54,4 @@ async function getAddressCount(setKey: string) {
   return count
 }
 
-getAddressCount(MARKET_LIST).then(console.log).catch(console.error)
+// getAddressCount(MARKET_LIST).then(console.log).catch(console.error)
