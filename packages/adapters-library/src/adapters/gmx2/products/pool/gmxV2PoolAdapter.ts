@@ -101,6 +101,8 @@ export class GmxV2PoolAdapter implements IProtocolAdapter {
       contractAddresses[this.chainId]!.dataStore,
       this.provider,
     )
+
+    // This is where the number of markets is stored
     const totalMarkets = await dataStore.getAddressCount(
       this.hashString(MARKET_LIST_DATASTORE_KEY),
     )
@@ -161,6 +163,16 @@ export class GmxV2PoolAdapter implements IProtocolAdapter {
     })
   }
 
+  /**
+   * There are two ways of fetching underlying balances
+   * First and official way is to use Reader.getWithdrawalAmountOut
+   * This way requires passing market prices, which can be fetched by:
+   * - Their API https://arbitrum-api.gmxinfra2.io/prices/tickers
+   * - searching for the latest EventLog1 with topic1 = 'OraclePriceUpdate' and topic2 = toBytes32(marketToken)
+   * - somehow signing a valid payload for the chainlink oracle to fetch the price
+   *
+   * The second way is to get the user balance share of the market token and apply it to the underlying total amounts
+   */
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
     const protocolTokens = await this.getProtocolTokens()
 
