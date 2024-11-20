@@ -143,6 +143,10 @@ import { CompoundV3LendingAdapter } from './compound-v3/products/lending/compoun
 import { BalancerV2VestingAdapter } from './balancer-v2/products/vesting/balancerV2VestingAdapter'
 import { CompoundV3BorrowAdapter } from './compound-v3/products/borrow/compoundV3BorrowAdapter'
 
+import { DineroPxEthAdapter } from './dinero/products/px-eth/dineroPxEthAdapter'
+
+import { DineroApxEthAdapter } from './dinero/products/apx-eth/dineroApxEthAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -336,6 +340,15 @@ export const supportedProtocols: Record<
     // [Chain.Bsc]: [DeriPoolAdapter], Disabled until we can support getting all logs for BSC
     [Chain.Arbitrum]: [DeriPoolAdapter],
     [Chain.Linea]: [DeriPoolAdapter],
+  },
+
+  [Protocol.Dinero]: {
+    [Chain.Ethereum]: [DineroPxEthAdapter, DineroApxEthAdapter],
+    // [Chain.Optimism]: [DineroPxEthAdapter, DineroApxEthAdapter],
+    // [Chain.Bsc]: [DineroPxEthAdapter, DineroApxEthAdapter],
+    // [Chain.Base]: [DineroPxEthAdapter, DineroApxEthAdapter],
+    // [Chain.Arbitrum]: [DineroPxEthAdapter, DineroApxEthAdapter],
+    // [Chain.Linea]: [DineroPxEthAdapter, DineroApxEthAdapter],
   },
 
   [Protocol.Ethena]: {
