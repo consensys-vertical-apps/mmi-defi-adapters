@@ -138,7 +138,7 @@ import { AaveV3StakingAdapter } from './aave-v3/products/staking/aaveV3StakingAd
 
 import { AaveV2RewardsAdapter } from './aave-v2/products/rewards/aaveV2RewardsAdapter'
 
-import { GmxV2PoolAdapter } from './gmx2/products/pool/gmxV2PoolAdapter'
+import { GmxV2PoolAdapter } from './gmx-v2/products/pool/gmxV2PoolAdapter'
 
 export const supportedProtocols: Record<
   Protocol,

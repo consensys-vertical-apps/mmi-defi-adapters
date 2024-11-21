@@ -1,10 +1,12 @@
 {
   "blockNumber": 276402599,
   "latency": "Latency: 1.825 seconds",
-  "aggregatedValues": ["USD593.11"],
+  "aggregatedValues": [
+    "USD593.11"
+  ],
   "snapshot": [
     {
-      "protocolId": "gmx2",
+      "protocolId": "gmx-v2",
       "name": "GMX V2",
       "description": "GM V2 Pool adapter",
       "siteUrl": "https://app.gmx.io/#/pools",

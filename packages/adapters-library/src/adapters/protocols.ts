@@ -14,7 +14,7 @@ export const Protocol = {
   EtherFi: 'etherfi',
   Flux: 'flux',
   Gmx: 'gmx',
-  GmxV2: 'gmx2',
+  GmxV2: 'gmx-v2',
   IZiSwap: 'iziswap',
   Lido: 'lido',
   Lynex: 'lynex',
