@@ -160,7 +160,6 @@ function PositionsDisplay({
   chainIds: number[] | undefined
 }) {
   const { isPending, error, data, isFetching, isRefetching } = useQuery({
-    staleTime: 60000,
     queryKey: [
       'positions',
       userAddress,
