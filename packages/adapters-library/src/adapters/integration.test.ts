@@ -235,7 +235,7 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
   },
 
   [Protocol.GmxV2]: {
-    ['pool']: gmxV2GmPoolTestCases,
+    ['gm-pool']: gmxV2GmPoolTestCases,
   },
 
   [Protocol.IZiSwap]: {
