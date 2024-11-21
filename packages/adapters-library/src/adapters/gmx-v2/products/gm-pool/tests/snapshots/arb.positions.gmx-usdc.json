@@ -13,7 +13,7 @@
       "iconUrl": "https://gmx.io//static/media/ic_gmx_40.72a1053e8344ef876100ac72aff70ead.svg",
       "positionType": "supply",
       "chainId": 42161,
-      "productId": "pool",
+      "productId": "gm-pool",
       "chainName": "arb",
       "success": true,
       "tokens": [

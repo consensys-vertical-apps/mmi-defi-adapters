@@ -138,7 +138,7 @@ import { AaveV3StakingAdapter } from './aave-v3/products/staking/aaveV3StakingAd
 
 import { AaveV2RewardsAdapter } from './aave-v2/products/rewards/aaveV2RewardsAdapter'
 
-import { GmxV2PoolAdapter } from './gmx-v2/products/pool/gmxV2PoolAdapter'
+import { GmxV2GmPoolAdapter } from './gmx-v2/products/gm-pool/gmxV2PoolAdapter'
 
 export const supportedProtocols: Record<
   Protocol,
@@ -354,8 +354,8 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.GmxV2]: {
-    [Chain.Arbitrum]: [GmxV2PoolAdapter],
-    [Chain.Avalanche]: [GmxV2PoolAdapter],
+    [Chain.Arbitrum]: [GmxV2GmPoolAdapter],
+    [Chain.Avalanche]: [GmxV2GmPoolAdapter],
   },
 
   [Protocol.IZiSwap]: {

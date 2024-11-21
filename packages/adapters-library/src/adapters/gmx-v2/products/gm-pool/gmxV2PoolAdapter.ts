@@ -52,8 +52,8 @@ type AdditionalMetadata = {
   underlyingTokens: UnderlyingTokenMetadata[]
 }
 
-export class GmxV2PoolAdapter implements IProtocolAdapter {
-  productId = 'pool'
+export class GmxV2GmPoolAdapter implements IProtocolAdapter {
+  productId = 'gm-pool'
   protocolId: Protocol
   chainId: Chain
   helpers: Helpers
