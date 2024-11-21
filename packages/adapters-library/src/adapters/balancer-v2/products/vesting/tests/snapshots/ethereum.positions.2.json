@@ -1,0 +1,69 @@
+{
+  "blockNumber": 21194060,
+  "latency": "Latency: 1.406 seconds",
+  "aggregatedValues": ["USD0.00"],
+  "snapshot": [
+    {
+      "protocolId": "balancer-v2",
+      "name": "BalancerV2",
+      "description": "BalancerV2 defi adapter",
+      "siteUrl": "",
+      "iconUrl": "",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "vesting",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "type": "protocol",
+          "balanceRaw": "1701982822546843636967n",
+          "address": "0xC128a9954e6c874eA3d62ce62B468bA073093F25",
+          "symbol": "veBAL",
+          "name": "Vote Escrowed Balancer BPT - Unlock time 06/11/2025",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x5c6Ee304399DBdB9C8Ef030aB642B10820DB8F56",
+              "name": "Balancer 80 BAL 20 WETH",
+              "symbol": "B-80BAL-20WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "1701982822546843636967n",
+              "balance": 1701.9828225468436,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5c6Ee304399DBdB9C8Ef030aB642B10820DB8F56/logo.png"
+            },
+            {
+              "address": "0xA13a9247ea42D743238089903570127DdA72fE44",
+              "name": "Balancer Aave Boosted StablePool",
+              "symbol": "bb-a-USD",
+              "decimals": 18,
+              "balanceRaw": "38777247945780920724n",
+              "type": "underlying-claimable",
+              "balance": 38.77724794578092,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA13a9247ea42D743238089903570127DdA72fE44/logo.png"
+            }
+          ],
+          "balance": 1701.9828225468436
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "a8ba6f41343842b48531f8605a78eaed": {
+      "result": "0x00000000000000000000000000000000000000000000005c43c1a79d695014e700000000000000000000000000000000000000000000000000000000690be500"
+    },
+    "bf6836bbd7b90f8f17a9d3c202ae8672": {
+      "result": "0x0000000000000000000000000000000000000000000000021a24758e57848194"
+    },
+    "c6443e715cde299579704a591e917756": {
+      "result": "0x000000000000000000000000000000000000000000000007000000000000091b000000000000000000000000000000000000000000000000000000468eb5f48000000000000000000000000000000000000000000000000000000000673766e100000000000000000000000000000000000000000000000000000000673766f3000000000000000000000000000000000000000000000007000000000000091b"
+    },
+    "66d35b4400a89c2cfef0d0d7d3a4aaf0": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "2b4dbedeed86ea18cd4013d4b65e9ce5": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  }
+}

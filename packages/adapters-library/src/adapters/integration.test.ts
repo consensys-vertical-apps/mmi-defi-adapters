@@ -24,6 +24,7 @@ import { testCases as aaveV3StableDebtTokenTestCases } from './aave-v3/products/
 import { testCases as aaveV3StakingTestCases } from './aave-v3/products/staking/tests/testCases'
 import { testCases as aaveV3VariableDebtTokenTestCases } from './aave-v3/products/variable-debt-token/tests/testCases'
 import { testCases as angleProtocolSavingsTestCases } from './angle-protocol/products/savings/tests/testCases'
+import { testCases as balancerV2VestingTestCases } from './balancer-v2/products/vesting/tests/testCases'
 import { testCases as beefyCowTokenTestCases } from './beefy/products/cow-token/tests/testCases'
 import { testCases as beefyMooTokenTestCases } from './beefy/products/moo-token/tests/testCases'
 import { testCases as beefyRcowTokenTestCases } from './beefy/products/rcow-token/tests/testCases'
@@ -32,6 +33,8 @@ import { testCases as carbonDeFiStrategiesTestCases } from './carbon-defi/produc
 import { testCases as chimpExchangePoolTestCases } from './chimp-exchange/products/pool/tests/testCases'
 import { testCases as compoundV2BorrowMarketTestCases } from './compound-v2/products/borrow-market/tests/testCases'
 import { testCases as compoundV2SupplyMarketTestCases } from './compound-v2/products/supply-market/tests/testCases'
+import { testCases as compoundV3BorrowTestCases } from './compound-v3/products/borrow/tests/testCases'
+import { testCases as compoundV3LendingTestCases } from './compound-v3/products/lending/tests/testCases'
 import { testCases as convexCvxcrvWrapperTestCases } from './convex/products/cvxcrv-wrapper/tests/testCases'
 import { testCases as convexPoolTestCases } from './convex/products/pool/tests/testCases'
 import { testCases as convexSidechainStakingTestCases } from './convex/products/sidechain-staking/tests/testCases'
@@ -40,6 +43,8 @@ import { testCases as curvePoolTestCases } from './curve/products/pool/tests/tes
 import { testCases as curveStakingTestCases } from './curve/products/staking/tests/testCases'
 import { testCases as curveVotingEscrowTestCases } from './curve/products/voting-escrow/tests/testCases'
 import { testCases as deriPoolTestCases } from './deri/products/pool/tests/testCases'
+import { testCases as dineroApxEthTestCases } from './dinero/products/apx-eth/tests/testCases'
+import { testCases as dineroPxEthTestCases } from './dinero/products/px-eth/tests/testCases'
 import { testCases as ethenaLpStakingTestCases } from './ethena/products/lp-staking/tests/testCases'
 import { testCases as ethenaStakedEnaTestCases } from './ethena/products/staked-ena/tests/testCases'
 import { testCases as ethenaStakedUsdeTestCases } from './ethena/products/staked-usde/tests/testCases'
@@ -154,6 +159,10 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
     ['savings']: angleProtocolSavingsTestCases,
   },
 
+  [Protocol.BalancerV2]: {
+    ['vesting']: balancerV2VestingTestCases,
+  },
+
   [Protocol.Beefy]: {
     ['cow-token']: beefyCowTokenTestCases,
     ['moo-token']: beefyMooTokenTestCases,
@@ -174,6 +183,11 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
     ['supply-market']: compoundV2SupplyMarketTestCases,
   },
 
+  [Protocol.CompoundV3]: {
+    ['borrow']: compoundV3BorrowTestCases,
+    ['lending']: compoundV3LendingTestCases,
+  },
+
   [Protocol.Convex]: {
     ['cvxcrv-wrapper']: convexCvxcrvWrapperTestCases,
     ['pool']: convexPoolTestCases,
@@ -189,6 +203,11 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
 
   [Protocol.Deri]: {
     ['pool']: deriPoolTestCases,
+  },
+
+  [Protocol.Dinero]: {
+    ['apx-eth']: dineroApxEthTestCases,
+    ['px-eth']: dineroPxEthTestCases,
   },
 
   [Protocol.Ethena]: {
@@ -216,7 +235,7 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
   },
 
   [Protocol.GmxV2]: {
-    ['pool']: gmxV2PoolTestCases,
+    ['pool']: gmxV2GmPoolTestCases,
   },
 
   [Protocol.IZiSwap]: {
