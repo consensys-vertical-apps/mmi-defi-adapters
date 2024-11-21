@@ -4,6 +4,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../../core/utils/filters'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -25,12 +26,11 @@ import {
 } from '../../../../types/adapter'
 import { AAVE_ICON_URL } from '../../../aave-v3/products/rewards/aaveV3RewardsAdapter'
 import { Protocol } from '../../../protocols'
+import { protocolDataProviderContractAddresses } from '../../common/aaveBasePoolAdapter'
 import {
   ProtocolDataProvider__factory,
   StakedTokenIncentivesController__factory,
 } from '../../contracts'
-import { protocolDataProviderContractAddresses } from '../../common/aaveBasePoolAdapter'
-import { filterMapAsync } from '../../../../core/utils/filters'
 
 type AdditionalMetadata = {
   reserveTokensWithEmissions: string[]
