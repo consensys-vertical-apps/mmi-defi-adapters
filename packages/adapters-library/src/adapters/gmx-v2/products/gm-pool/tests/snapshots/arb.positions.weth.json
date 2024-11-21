@@ -1,9 +1,7 @@
 {
   "blockNumber": 276402599,
   "latency": "Latency: 0.864 seconds",
-  "aggregatedValues": [
-    "USD5,965.23"
-  ],
+  "aggregatedValues": ["USD5,965.23"],
   "snapshot": [
     {
       "protocolId": "gmx-v2",
