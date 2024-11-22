@@ -1,0 +1,126 @@
+{
+  "blockNumber": 21242515,
+  "latency": "Latency: 2.019 seconds",
+  "aggregatedValues": ["USD1.06"],
+  "snapshot": [
+    {
+      "protocolId": "balancer-v2",
+      "name": "BalancerV2",
+      "description": "BalancerV2 defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xF94A7Df264A2ec8bCEef2cFE54d7cA3f6C6DFC7a",
+          "name": "LP Element Yield Token yvCrvTriCrypto-15AUG21",
+          "symbol": "LPeYyvCrvTriCrypto-15AUG21",
+          "decimals": 18,
+          "balanceRaw": "9057684980067892n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xC080f19D9E7CCB6ef2096DFa08570e0057490940",
+              "name": "Element Yield Token yvCrvTriCrypto-15AUG21",
+              "symbol": "eYyvCrvTriCrypto-15AUG21",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "41456718331961478n",
+              "balance": 0.041456718331961476,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC080f19D9E7CCB6ef2096DFa08570e0057490940/logo.png"
+            },
+            {
+              "address": "0xcA3d75aC011BF5aD07a98d02f18225F9bD9A6BDF",
+              "name": "Curve.fi USD-BTC-ETH",
+              "symbol": "crvTricrypto",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "497002878241071n",
+              "tokens": [
+                {
+                  "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+                  "name": "Wrapped BTC",
+                  "symbol": "WBTC",
+                  "decimals": 8,
+                  "type": "underlying",
+                  "balanceRaw": "361n",
+                  "balance": 0.00000361,
+                  "price": 98192.7124360222,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
+                },
+                {
+                  "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                  "name": "Wrapped Ether",
+                  "symbol": "WETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "105251523546384n",
+                  "balance": 0.000105251523546384,
+                  "price": 3355.18731844,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                },
+                {
+                  "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                  "name": "Tether USD",
+                  "symbol": "USDT",
+                  "decimals": 6,
+                  "type": "underlying",
+                  "balanceRaw": "357708n",
+                  "balance": 0.357708,
+                  "price": 0.9978590699168287,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                }
+              ],
+              "balance": 0.000497002878241071,
+              "price": 2141.9522657347734,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xcA3d75aC011BF5aD07a98d02f18225F9bD9A6BDF/logo.png"
+            }
+          ],
+          "balance": 0.009057684980067891
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "0c43f9d0b645e67747b811d8ee94cfc6": {
+      "result": "0x14422c4"
+    },
+    "8720b5d69ad45a29bb970f9bb4b06008": {
+      "result": "0x00000000000000000000000000000000000000000000000000202dea9fb96e34"
+    },
+    "49c14a27e2f4a37f93625e6aaf077b0f": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000000000000000de4d950000000000000000000000000000000000000000000000000000000000000002000000000000000000000000c080f19d9e7ccb6ef2096dfa08570e0057490940000000000000000000000000ca3d75ac011bf5ad07a98d02f18225f9bd9a6bdf000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000002b7653aab3ccff10000000000000000000000000000000000000000000000000008563408a66b5e"
+    },
+    "6ada7fbe0acf1c8810fdc0909208c30b": {
+      "result": "0x0000000000000000000000000000000000000000000000000097ef072074d7c8"
+    },
+    "c186a1e53978ca00fbf94453139643f6": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000746d2c1"
+    },
+    "160ecf3b98fdcd9674702fefa6773a6a": {
+      "result": "0x0000000000000000000000000000000000000000000000000000001c2714ce9f"
+    },
+    "0c42b53469ed066749d2ed56773696b8": {
+      "result": "0x0000000000000000000000000000000000000000000000070000000000000a710000000000000000000000000000000000000000000000000000004e1e798e440000000000000000000000000000000000000000000000000000000067404f6e0000000000000000000000000000000000000000000000000000000067404f830000000000000000000000000000000000000000000000070000000000000a71"
+    },
+    "dd053d50c2ad8f7f8619aef234271e01": {
+      "result": "0x000000000000000000000000000000000000000000000001edbda4ba47e311f1"
+    },
+    "a74d239b15735a4622bee6d6f304c79f": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "5c404d8a8d7ec85853b925339c98ec4c": {
+      "result": "0x00000000000000000000000000000000000000000000000928f6f0368ec9f07a"
+    },
+    "ec2b4bc9864926496a0275d1bf7fc6d9": {
+      "result": "0x000000000000000000000000000000000000000000f602903a9b596019674a8c"
+    },
+    "7d4fb28a7fa9a44c6984497c298f5cb1": {
+      "result": "0x0000000000000000000000000000000000000003b1a22f984a82b28846288be4"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
   "blockNumber": 21194060,
   "latency": "Latency: 1.406 seconds",
-  "aggregatedValues": ["USD0.00"],
+  "aggregatedValues": ["USD12,456.74"],
   "snapshot": [
     {
       "protocolId": "balancer-v2",
@@ -30,7 +30,32 @@
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "1701982822546843636967n",
+              "tokens": [
+                {
+                  "address": "0xba100000625a3754423978a60c9317c58a424e3D",
+                  "name": "Balancer",
+                  "symbol": "BAL",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "4997873722602253320026n",
+                  "balance": 4997.873722602253,
+                  "price": 1.9891983270229328,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xba100000625a3754423978a60c9317c58a424e3D/logo.png"
+                },
+                {
+                  "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                  "name": "Wrapped Ether",
+                  "symbol": "WETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "829908610100734941n",
+                  "balance": 0.8299086101007349,
+                  "price": 3030.42,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                }
+              ],
               "balance": 1701.9828225468436,
+              "price": 7.318953830129447,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5c6Ee304399DBdB9C8Ef030aB642B10820DB8F56/logo.png"
             },
             {
@@ -40,6 +65,89 @@
               "decimals": 18,
               "balanceRaw": "38777247945780920724n",
               "type": "underlying-claimable",
+              "tokens": [
+                {
+                  "address": "0x2F4eb100552ef93840d5aDC30560E5513DFfFACb",
+                  "name": "Balancer Aave Boosted Pool (USDT)",
+                  "symbol": "bb-a-USDT",
+                  "decimals": 18,
+                  "type": "underlying-claimable",
+                  "balanceRaw": "6205112700482805n",
+                  "tokens": [
+                    {
+                      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                      "name": "Tether USD",
+                      "symbol": "USDT",
+                      "decimals": 6,
+                      "type": "underlying-claimable",
+                      "balanceRaw": "207n",
+                      "balance": 0.000207,
+                      "price": 1.0008536154033802,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                    }
+                  ],
+                  "balance": 0.006205112700482805,
+                  "price": 0.033388063744979164,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2F4eb100552ef93840d5aDC30560E5513DFfFACb/logo.png"
+                },
+                {
+                  "address": "0x82698aeCc9E28e9Bb27608Bd52cF57f704BD1B83",
+                  "name": "Balancer Aave Boosted Pool (USDC)",
+                  "symbol": "bb-a-USDC",
+                  "decimals": 18,
+                  "type": "underlying-claimable",
+                  "balanceRaw": "206081456561585777n",
+                  "tokens": [
+                    {
+                      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                      "name": "USD Coin",
+                      "symbol": "USDC",
+                      "decimals": 6,
+                      "type": "underlying-claimable",
+                      "balanceRaw": "1132n",
+                      "balance": 0.001132,
+                      "price": 0.9980242251289676,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                    }
+                  ],
+                  "balance": 0.20608145656158577,
+                  "price": 0.005482120719135983,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x82698aeCc9E28e9Bb27608Bd52cF57f704BD1B83/logo.png"
+                },
+                {
+                  "address": "0xae37D54Ae477268B9997d4161B96b8200755935c",
+                  "name": "Balancer Aave Boosted Pool (DAI)",
+                  "symbol": "bb-a-DAI",
+                  "decimals": 18,
+                  "type": "underlying-claimable",
+                  "balanceRaw": "11060680065919043n",
+                  "tokens": [
+                    {
+                      "address": "0x02d60b84491589974263d922D9cC7a3152618Ef6",
+                      "name": "Wrapped aDAI",
+                      "symbol": "aDAI",
+                      "decimals": 18,
+                      "type": "underlying-claimable",
+                      "balanceRaw": "3900727379537168n",
+                      "balance": 0.003900727379537168,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x02d60b84491589974263d922D9cC7a3152618Ef6/logo.png"
+                    },
+                    {
+                      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                      "name": "Dai Stablecoin",
+                      "symbol": "DAI",
+                      "decimals": 18,
+                      "type": "underlying-claimable",
+                      "balanceRaw": "1842116307873866n",
+                      "balance": 0.001842116307873866,
+                      "price": 1.0018234601798133,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                    }
+                  ],
+                  "balance": 0.011060680065919043,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae37D54Ae477268B9997d4161B96b8200755935c/logo.png"
+                }
+              ],
               "balance": 38.77724794578092,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA13a9247ea42D743238089903570127DdA72fE44/logo.png"
             }
@@ -56,14 +164,53 @@
     "bf6836bbd7b90f8f17a9d3c202ae8672": {
       "result": "0x0000000000000000000000000000000000000000000000021a24758e57848194"
     },
+    "4ca6d8a684aff7ccf023da7b98cc25ff": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000013a06d700000000000000000000000000000000000000000000000000000000000000040000000000000000000000002f4eb100552ef93840d5adc30560e5513dfffacb00000000000000000000000082698aecc9e28e9bb27608bd52cf57f704bd1b83000000000000000000000000a13a9247ea42d743238089903570127dda72fe44000000000000000000000000ae37d54ae477268b9997d4161b96b8200755935c0000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000002b9f68e2ecd7b615900000000000000000000000000000000000000000000005a8c7118d6e57755620000000000000000000000000000000000007fffffd0f8754e606b6e684a43e6000000000000000000000000000000000000000000000004dc2071eba086ae7c"
+    },
+    "9db6c854e60fc9e7ca90fb819d2de104": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000014363f60000000000000000000000000000000000000000000000000000000000000002000000000000000000000000ba100000625a3754423978a60c9317c58a424e3d000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc20000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000106df8fa48b283db01e7c20000000000000000000000000000000000000000000000b2cb19d1b8f0a8ee7a"
+    },
+    "ebb7019bd684748441d7baaa40860cd9": {
+      "result": "0x0000000000000000000000000000000000007fffffd13b035a68314a0ce6e2dc"
+    },
+    "5e41d8306257bacd879bb10edc27625e": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000129f25900000000000000000000000000000000000000000000000000000000000000030000000000000000000000002f4eb100552ef93840d5adc30560e5513dfffacb000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7000000000000000000000000f8fd466f12e236f4c96f7cce6c79eadb819abf580000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000fffffffed91de12dc1e09196d1380000000000000000000000000000000000000000000000000000000001fd15d20000000000000000000000000000000000000000000000000000000000000001"
+    },
+    "4407192925b018b26ad5e70c748eeca2": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000129f253000000000000000000000000000000000000000000000000000000000000000300000000000000000000000082698aecc9e28e9bb27608bd52cf57f704bd1b83000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48000000000000000000000000d093fa4fb80d09bb30817fdcd442d4d02ed3e5de0000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000fffffffd94fae72039445e1de3cb00000000000000000000000000000000000000000000000000000000018c3a3d0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "3678fdfc18e413506faa5bb1f9e7c3ac": {
+      "result": "0x00000000000000000000000000000000000000000005984ec60ec4b265675dfb"
+    },
+    "389cf0b39a800c194a558a0058ad9202": {
+      "result": "0x000000000000000000000000000000000000fffffffed953d9d44330871e147c"
+    },
+    "41f526774015f3f2913fc0a82c62850f": {
+      "result": "0x000000000000000000000000000000000000fffffffd95fb0bce8530b2e6658d"
+    },
     "c6443e715cde299579704a591e917756": {
       "result": "0x000000000000000000000000000000000000000000000007000000000000091b000000000000000000000000000000000000000000000000000000468eb5f48000000000000000000000000000000000000000000000000000000000673766e100000000000000000000000000000000000000000000000000000000673766f3000000000000000000000000000000000000000000000007000000000000091b"
     },
-    "66d35b4400a89c2cfef0d0d7d3a4aaf0": {
+    "9d2356243d2c5505071069eb1d34f317": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000e00000000000000000000000000000000000000000000000000000000001302543000000000000000000000000000000000000000000000000000000000000000300000000000000000000000002d60b84491589974263d922d9cc7a3152618ef60000000000000000000000006b175474e89094c44da98b954eedeac495271d0f000000000000000000000000ae37d54ae477268b9997d4161b96b8200755935c0000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000011501becd2f9fb7af00000000000000000000000000000000000000000000000082d0f9edbe79b020c000000000000000000000000000000000000ffffffff7f21eac65caffbeb0746"
+    },
+    "c13137e44f1b0bcb25f0648c86b0fca6": {
+      "result": "0x00000000000000000000000000000000000000000111312b5e15454c2981df1c"
+    },
+    "3182ca43df14aa9748799332af11b483": {
+      "result": "0x000000000000000000000000000000000000000001106b756889c9941c794b46"
+    },
+    "1ab3f4b8cb83198de71ad236d9fecc91": {
+      "result": "0x0000000000000000000000000000000000000000000000000002550063766b07"
+    },
+    "033bb2e6a6bf6a2eeab042ff37ce8e5a": {
+      "result": "0x000000000000000000000000000000000000ffffffff7f530235e799206feb42"
+    },
+    "9467b33f4797a01ca227761c60465bee": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
-    "2b4dbedeed86ea18cd4013d4b65e9ce5": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    "5e398386ac6704d741e9ed398f89fa1c": {
+      "result": "0x00000000000000000000000000000000000000000000000000012cab3ec95e3b"
     }
   }
 }

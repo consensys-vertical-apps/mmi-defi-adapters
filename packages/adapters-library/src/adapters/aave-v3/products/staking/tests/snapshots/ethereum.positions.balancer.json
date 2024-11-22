@@ -1,0 +1,127 @@
+{
+  "blockNumber": 21242553,
+  "latency": "Latency: 1.348 seconds",
+  "aggregatedValues": ["USD32,336.74"],
+  "snapshot": [
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 Staking",
+      "description": "AaveV3 defi adapter for Safety Module staking",
+      "siteUrl": "https://app.aave.com/staking/",
+      "iconUrl": "https://cryptologos.cc/logos/aave-aave-logo.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "staking",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x9eDA81C21C273a82BE9Bbc19B6A6182212068101",
+          "name": "stk AAVE/wstETH BPTv2",
+          "symbol": "stkAAVEwstETHBPTv2",
+          "decimals": 18,
+          "balanceRaw": "118250823086463634117n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+              "name": "Aave Token",
+              "symbol": "AAVE",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "7777681187680516561n",
+              "balance": 7.777681187680517,
+              "price": 167.3870419762617,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
+            },
+            {
+              "address": "0x3de27EFa2F1AA663Ae5D458857e731c129069F29",
+              "name": "20wstETH-80AAVE",
+              "symbol": "20wstETH-80AAVE",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "118250823086463634117n",
+              "tokens": [
+                {
+                  "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+                  "name": "Wrapped liquid staked Ether 2.0",
+                  "symbol": "wstETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "1560485369944729344n",
+                  "tokens": [
+                    {
+                      "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                      "name": "Liquid staked Ether 2.0",
+                      "symbol": "stETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "balanceRaw": "1849988014447007917n",
+                      "tokens": [
+                        {
+                          "address": "0x0000000000000000000000000000000000000000",
+                          "name": "Ethereum",
+                          "symbol": "ETH",
+                          "decimals": 18,
+                          "type": "underlying",
+                          "balanceRaw": "1849988014447007917n",
+                          "balance": 1.849988014447008,
+                          "price": 3355.18731844,
+                          "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                        }
+                      ],
+                      "balance": 1.849988014447008,
+                      "price": 3355.18731844,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                    }
+                  ],
+                  "balance": 1.5604853699447294,
+                  "price": 3977.644677026638,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
+                },
+                {
+                  "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+                  "name": "Aave Token",
+                  "symbol": "AAVE",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "148325701175047379579n",
+                  "balance": 148.32570117504739,
+                  "price": 167.3870419762617,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
+                }
+              ],
+              "balance": 118.25082308646364,
+              "price": 262.4493926050086,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3de27EFa2F1AA663Ae5D458857e731c129069F29/logo.png"
+            }
+          ],
+          "balance": 118.25082308646364
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "2a4a76da00ae8ee3368c30f346a18885": {
+      "result": "0x000000000000000000000000000000000000000000000006690f5113d239cac5"
+    },
+    "c25e17a310b1ab43ebb26feeaf3349d2": {
+      "result": "0x0000000000000000000000000000000000000000000000006befdfd50fef79d1"
+    },
+    "f2d29032925dd2bf29690579d56fc1b5": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000144222600000000000000000000000000000000000000000000000000000000000000020000000000000000000000007f39c581f595b53c5cb19bd0b3f8da6c935e2ca00000000000000000000000007fc66500c84a76ad7e9c93437bfc5ac33e2ddae9000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000021960e18180975e1eba00000000000000000000000000000000000000000000c7865c4003e43f2b002e"
+    },
+    "24a809892e37742af0794fefd75ad9b3": {
+      "result": "0x0000000000000000000000000000000000000000000000070000000000000a710000000000000000000000000000000000000000000000000000004e1e798e440000000000000000000000000000000000000000000000000000000067404f6e0000000000000000000000000000000000000000000000000000000067404f830000000000000000000000000000000000000000000000070000000000000a71"
+    },
+    "e3b4cf2e00e3e822480389de2ddb9ed0": {
+      "result": "0x00000000000000000000000000000000000000000000000000b13dcf0c7f236d"
+    },
+    "0ab38632cd9b7d8e1e70494758322fc6": {
+      "result": "0x000000000000000000000000000000000000000000009f1196a1e00389c7a976"
+    },
+    "9d9c7d9010ce43f607934a08e6859fbe": {
+      "result": "0x0000000000000000000000000000000000000000000000001073d0f95a090429"
+    }
+  }
+}
