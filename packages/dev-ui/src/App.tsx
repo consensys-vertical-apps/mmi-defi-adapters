@@ -21,7 +21,7 @@ function App() {
         .sort()
         .map((value) => ({
           value,
-          label: ChainIdToChainNameMap[+value as unknown as Chain],
+          label: value,
         }))
 
       const chainOptions = Array.from(

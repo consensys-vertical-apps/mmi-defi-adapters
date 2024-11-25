@@ -75,8 +75,12 @@ export function Positions() {
       queryKey: [
         'positions',
         data.userAddress,
-        data.protocolIds?.length ? data.protocolIds.join(',') : null,
-        data.chainIds?.length ? data.chainIds.join(',') : null,
+        data.protocolIds?.length
+          ? data.protocolIds.map((v) => v.value).join(',')
+          : null,
+        data.chainIds?.length
+          ? data.chainIds.map((v) => v.value).join(',')
+          : null,
       ],
     })
   }
@@ -160,7 +164,6 @@ function PositionsDisplay({
   chainIds: number[] | undefined
 }) {
   const { isPending, error, data, isFetching, isRefetching } = useQuery({
-    staleTime: 60000,
     queryKey: [
       'positions',
       userAddress,
