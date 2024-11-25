@@ -110,8 +110,12 @@ export function Profits() {
         'profits',
         data.userAddress,
         data.timePeriod,
-        data.protocolIds?.length ? data.protocolIds.join(',') : null,
-        data.chainIds?.length ? data.chainIds.join(',') : null,
+        data.protocolIds?.length
+          ? data.protocolIds.map((v) => v.value).join(',')
+          : null,
+        data.chainIds?.length
+          ? data.chainIds.map((v) => v.value).join(',')
+          : null,
       ],
     })
   }

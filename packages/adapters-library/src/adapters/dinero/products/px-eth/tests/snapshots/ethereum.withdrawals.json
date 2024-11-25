@@ -1,0 +1,349 @@
+{
+  "aggregatedValues": [
+    "USD227,128.17",
+    "USD277,042.92",
+    "USD1,392.18",
+    "USD318,404.51",
+    "USD20,754.79",
+    "USD159,252.51"
+  ],
+  "latency": "Latency: 0.854 seconds",
+  "snapshot": {
+    "protocolId": "dinero",
+    "name": "Dinero",
+    "description": "Dinero defi adapter for Pirex Ether (pxETH)",
+    "siteUrl": "https://dinero.xyz/",
+    "iconUrl": "https://dinero.xyz/images/eye.png",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "px-eth",
+    "chainName": "ethereum",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x499414a9f796711a4af7a85204aaf78cba67a32742e9395a13e7c9e76f11156c",
+        "protocolToken": {
+          "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+          "name": "Pirex Ether",
+          "symbol": "pxETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+            "name": "Pirex Ether",
+            "symbol": "pxETH",
+            "decimals": 18,
+            "balanceRaw": "90000000000000000000n",
+            "type": "underlying",
+            "blockNumber": 21087397,
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "90000000000000000000n",
+                "balance": 90,
+                "price": 2523.6463,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 90
+          }
+        ],
+        "blockNumber": 21087397
+      },
+      {
+        "transactionHash": "0xca8d1b765fd1bfb6a65d6bd62e3e2be44563701056fec7b4f1c44aa5fc7f040a",
+        "protocolToken": {
+          "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+          "name": "Pirex Ether",
+          "symbol": "pxETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+            "name": "Pirex Ether",
+            "symbol": "pxETH",
+            "decimals": 18,
+            "balanceRaw": "109778823162299999998n",
+            "type": "underlying",
+            "blockNumber": 21087408,
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "109778823162299999998n",
+                "balance": 109.7788231623,
+                "price": 2523.6463,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 109.7788231623
+          }
+        ],
+        "blockNumber": 21087408
+      },
+      {
+        "transactionHash": "0x4d4e7d341cac4efd304af860dea263d5d0f1921511215bf2ed13d16fb36f314a",
+        "protocolToken": {
+          "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+          "name": "Pirex Ether",
+          "symbol": "pxETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+            "name": "Pirex Ether",
+            "symbol": "pxETH",
+            "decimals": 18,
+            "balanceRaw": "551652386464158230n",
+            "type": "underlying",
+            "blockNumber": 21087428,
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "551652386464158230n",
+                "balance": 0.5516523864641583,
+                "price": 2523.6463,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 0.5516523864641583
+          }
+        ],
+        "blockNumber": 21087428
+      },
+      {
+        "transactionHash": "0xc0f5fafea425a2b2e92dc3a068545d4555293205bc1492883343020b67b1f9e9",
+        "protocolToken": {
+          "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+          "name": "Pirex Ether",
+          "symbol": "pxETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+            "name": "Pirex Ether",
+            "symbol": "pxETH",
+            "decimals": 18,
+            "balanceRaw": "112890592165112056289n",
+            "type": "underlying",
+            "blockNumber": 21134902,
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "112890592165112056289n",
+                "balance": 112.89059216511205,
+                "price": 2820.4698,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 112.89059216511205
+          }
+        ],
+        "blockNumber": 21134902
+      },
+      {
+        "transactionHash": "0x898d11c016105c52d151fb4d5a6c82acea248e6060b8eacbc582164fbd52347d",
+        "protocolToken": {
+          "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+          "name": "Pirex Ether",
+          "symbol": "pxETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+            "name": "Pirex Ether",
+            "symbol": "pxETH",
+            "decimals": 18,
+            "balanceRaw": "7358630288349999057n",
+            "type": "underlying",
+            "blockNumber": 21134912,
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "7358630288349999057n",
+                "balance": 7.358630288349999,
+                "price": 2820.4698,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 7.358630288349999
+          }
+        ],
+        "blockNumber": 21134912
+      },
+      {
+        "transactionHash": "0xeb3ffd44ff8dcc6a48f5f06acd9b4e9a9ef87e8f07c403222466ecbbde9c8010",
+        "protocolToken": {
+          "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+          "name": "Pirex Ether",
+          "symbol": "pxETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+            "name": "Pirex Ether",
+            "symbol": "pxETH",
+            "decimals": 18,
+            "balanceRaw": "51693832666649999998n",
+            "type": "underlying",
+            "blockNumber": 21193685,
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "51693832666649999998n",
+                "balance": 51.69383266665,
+                "price": 3080.6869,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 51.69383266665
+          }
+        ],
+        "blockNumber": 21193685
+      }
+    ]
+  },
+  "rpcResponses": {
+    "ff56b54db29dd6ea8d8e2054336f5935": {
+      "result": [
+        {
+          "address": "0x04c154b66cb340f3ae24111cc767e0184ed00cc6",
+          "blockHash": "0xaa742e58b18170b317fa6e5344636ecdc28e8390e1acdda163b931d6bd3acf70",
+          "blockNumber": "0x141c4a5",
+          "data": "0x000000000000000000000000000000000000000000000004e1003b28d9280000",
+          "logIndex": "0x5b",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000f9f7aca75cf438ce22184331a66591a02df3a216",
+            "0x000000000000000000000000b28ca7e465c452ce4252598e0bc96aeba553cf82"
+          ],
+          "transactionHash": "0x499414a9f796711a4af7a85204aaf78cba67a32742e9395a13e7c9e76f11156c",
+          "transactionIndex": "0xc"
+        },
+        {
+          "address": "0x04c154b66cb340f3ae24111cc767e0184ed00cc6",
+          "blockHash": "0x3bf32c389679ca878dc566edd56d3281386065b35662118ec15e8be0e20eb269",
+          "blockNumber": "0x141c4b0",
+          "data": "0x000000000000000000000000000000000000000000000005f37cba087150e6fe",
+          "logIndex": "0x11b",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000f9f7aca75cf438ce22184331a66591a02df3a216",
+            "0x0000000000000000000000006ac8bab8b775a03b8b72b2940251432442f61b94"
+          ],
+          "transactionHash": "0xca8d1b765fd1bfb6a65d6bd62e3e2be44563701056fec7b4f1c44aa5fc7f040a",
+          "transactionIndex": "0x70"
+        },
+        {
+          "address": "0x04c154b66cb340f3ae24111cc767e0184ed00cc6",
+          "blockHash": "0x59d338035d0ee5ccde4bb714ee74d58786753b404569dda4609c632d8d4859f0",
+          "blockNumber": "0x141c4c4",
+          "data": "0x00000000000000000000000000000000000000000000000007a7dcec36b15216",
+          "logIndex": "0x1c",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000f9f7aca75cf438ce22184331a66591a02df3a216",
+            "0x000000000000000000000000e2ed1dac3a9547bc6057e32bf8133b5268d7d987"
+          ],
+          "transactionHash": "0x4d4e7d341cac4efd304af860dea263d5d0f1921511215bf2ed13d16fb36f314a",
+          "transactionIndex": "0x7"
+        },
+        {
+          "address": "0x04c154b66cb340f3ae24111cc767e0184ed00cc6",
+          "blockHash": "0x53edbdce751b8cf455cb9b8945cf34394c261aabd05f12943e784baf24649956",
+          "blockNumber": "0x1427e36",
+          "data": "0x0000000000000000000000000000000000000000000000061eabf374450009e1",
+          "logIndex": "0x17",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000f9f7aca75cf438ce22184331a66591a02df3a216",
+            "0x0000000000000000000000006ac8bab8b775a03b8b72b2940251432442f61b94"
+          ],
+          "transactionHash": "0xc0f5fafea425a2b2e92dc3a068545d4555293205bc1492883343020b67b1f9e9",
+          "transactionIndex": "0x7"
+        },
+        {
+          "address": "0x04c154b66cb340f3ae24111cc767e0184ed00cc6",
+          "blockHash": "0x46a6f4c28863c3e32c585808206ca68196914858bdf5632c31f9d4aee31b9b05",
+          "blockNumber": "0x1427e40",
+          "data": "0x000000000000000000000000000000000000000000000000661f1b4272882fd1",
+          "logIndex": "0x24",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000f9f7aca75cf438ce22184331a66591a02df3a216",
+            "0x0000000000000000000000006ac8bab8b775a03b8b72b2940251432442f61b94"
+          ],
+          "transactionHash": "0x898d11c016105c52d151fb4d5a6c82acea248e6060b8eacbc582164fbd52347d",
+          "transactionIndex": "0xb"
+        },
+        {
+          "address": "0x04c154b66cb340f3ae24111cc767e0184ed00cc6",
+          "blockHash": "0x9dea156563f5e117bb4e0b3cb983e66bd3b3817e0a1f9b9cde43cf8bde292b23",
+          "blockNumber": "0x14363d5",
+          "data": "0x000000000000000000000000000000000000000000000002cd6562ecb6283a7e",
+          "logIndex": "0x37",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000f9f7aca75cf438ce22184331a66591a02df3a216",
+            "0x0000000000000000000000006ac8bab8b775a03b8b72b2940251432442f61b94"
+          ],
+          "transactionHash": "0xeb3ffd44ff8dcc6a48f5f06acd9b4e9a9ef87e8f07c403222466ecbbde9c8010",
+          "transactionIndex": "0xe"
+        }
+      ]
+    },
+    "e60ae0203cea0df6c5943d445c84a20c": {
+      "result": "0x00000000000000000000000000000000000000000000000700000000000005c20000000000000000000000000000000000000000000000000000003ac21aa7f0000000000000000000000000000000000000000000000000000000006723c7aa000000000000000000000000000000000000000000000000000000006723c7bb00000000000000000000000000000000000000000000000700000000000005c2"
+    },
+    "625b99caee624ef3919ca1130919b55f": {
+      "result": "0x00000000000000000000000000000000000000000000000700000000000005c20000000000000000000000000000000000000000000000000000003ac21aa7f0000000000000000000000000000000000000000000000000000000006723c7aa000000000000000000000000000000000000000000000000000000006723c7bb00000000000000000000000000000000000000000000000700000000000005c2"
+    },
+    "251f3d9c948bee114bd5a06aff8edd49": {
+      "result": "0x00000000000000000000000000000000000000000000000700000000000005c20000000000000000000000000000000000000000000000000000003ac21aa7f0000000000000000000000000000000000000000000000000000000006723c7aa000000000000000000000000000000000000000000000000000000006723c7bb00000000000000000000000000000000000000000000000700000000000005c2"
+    },
+    "870a8457bf8a3b3294d6cdaebec9d576": {
+      "result": "0x000000000000000000000000000000000000000000000007000000000000091400000000000000000000000000000000000000000000000000000047ba532850000000000000000000000000000000000000000000000000000000006737581b000000000000000000000000000000000000000000000000000000006737582f0000000000000000000000000000000000000000000000070000000000000914"
+    },
+    "0800acc520e17f0087b1b88bf7e043c0": {
+      "result": "0x00000000000000000000000000000000000000000000000700000000000006e500000000000000000000000000000000000000000000000000000041ab4f5fa000000000000000000000000000000000000000000000000000000000672c81ca00000000000000000000000000000000000000000000000000000000672c81d700000000000000000000000000000000000000000000000700000000000006e5"
+    },
+    "aa7454c34272e013bb673280a13b260a": {
+      "result": "0x00000000000000000000000000000000000000000000000700000000000006e500000000000000000000000000000000000000000000000000000041ab4f5fa000000000000000000000000000000000000000000000000000000000672c81ca00000000000000000000000000000000000000000000000000000000672c81d700000000000000000000000000000000000000000000000700000000000006e5"
+    }
+  }
+}
