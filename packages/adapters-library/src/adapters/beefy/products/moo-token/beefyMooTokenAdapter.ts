@@ -170,60 +170,25 @@ export class BeefyMooTokenAdapter implements IProtocolAdapter {
     protocolTokenAddress,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    throw new NotImplementedError()
+    const {
+      underlyingTokens,
+      unwrapType,
+      underlyingLPToken,
+      ...protocolToken
+    } = await this.getProtocolTokenByAddress(protocolTokenAddress)
 
-    // const {
-    //   underlyingTokens,
-    //   unwrapType,
-    //   underlyingLPToken,
-    //   ...protocolToken
-    // } = await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    // const vaultBalanceBreakdown = await breakdownFetcherMap[unwrapType](
-    //   {
-    //     protocolTokenAddress,
-    //     underlyingLPTokenAddress: underlyingLPToken.address,
-    //     blockSpec: { blockTag: blockNumber },
-    //   },
-    //   this.provider,
-    // )
-
-    // return {
-    //   ...protocolToken,
-    //   baseRate: 1,
-    //   type: TokenType['Protocol'],
-    //   tokens: vaultBalanceBreakdown.balances.map((balance) => {
-    //     const token = underlyingTokens.find(
-    //       (token) => token.address === balance.tokenAddress,
-    //     )
-    //     if (!token) {
-    //       logger.error(
-    //         {
-    //           productId: this.productId,
-    //           tokenAddress: balance.tokenAddress,
-    //           protocolTokenAddress,
-    //           protocol: this.protocolId,
-    //           chainId: this.chainId,
-    //           product: this.productId,
-    //         },
-    //         'Token not found',
-    //       )
-    //       throw new Error('Token not found')
-    //     }
-
-    //     const underlyingRateRaw =
-    //       vaultBalanceBreakdown.vaultTotalSupply === 0n
-    //         ? 0n
-    //         : (balance.vaultBalance * 10n ** BigInt(protocolToken.decimals)) /
-    //           vaultBalanceBreakdown.vaultTotalSupply
-
-    //     return {
-    //       ...token,
-    //       underlyingRateRaw,
-    //       type: TokenType['Underlying'],
-    //     }
-    //   }),
-    // }
+    return {
+      ...protocolToken,
+      baseRate: 1,
+      type: TokenType['Protocol'],
+      tokens: [
+        {
+          ...underlyingLPToken,
+          underlyingRateRaw: BigInt(10 ** underlyingLPToken.decimals),
+          type: TokenType['Underlying'],
+        },
+      ],
+    }
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
