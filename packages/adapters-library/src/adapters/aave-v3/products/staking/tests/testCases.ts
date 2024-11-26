@@ -14,4 +14,16 @@ export const testCases: TestCase[] = [
 
     blockNumber: 21136131,
   },
+  {
+    key: 'balancer',
+    chainId: Chain.Ethereum,
+    method: 'positions',
+
+    input: {
+      userAddress: '0x9EDCE78578a8128287e65e6e293f1DaedD57451D',
+      filterProtocolTokens: ['0x9eDA81C21C273a82BE9Bbc19B6A6182212068101'],
+    },
+
+    blockNumber: 21242553,
+  },
 ]

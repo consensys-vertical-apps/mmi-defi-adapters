@@ -1,0 +1,130 @@
+{
+  "blockNumber": 21270797,
+  "latency": "Latency: 1.14 seconds",
+  "aggregatedValues": ["USD34,118.72"],
+  "snapshot": [
+    {
+      "protocolId": "balancer-v2",
+      "name": "BalancerV2",
+      "description": "BalancerV2 defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x848a5564158d84b8A8fb68ab5D004Fae11619A54",
+          "name": "Balancer weETH/ezETH/rswETH",
+          "symbol": "weETH/ezETH/rswETH",
+          "decimals": 18,
+          "balanceRaw": "9939726460812312625n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+              "name": "Renzo Restaked ETH",
+              "symbol": "ezETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "2739128808273259048n",
+              "tokens": [
+                {
+                  "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "2815885481033622954n",
+                  "balance": 2.815885481033623,
+                  "price": 3362.61634367,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                }
+              ],
+              "balance": 2.739128808273259,
+              "price": 3456.844567450552,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
+            },
+            {
+              "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+              "name": "Wrapped eETH",
+              "symbol": "weETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "2364281494507876913n",
+              "tokens": [
+                {
+                  "address": "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
+                  "name": "ether.fi ETH",
+                  "symbol": "eETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "2491338496030385848n",
+                  "tokens": [
+                    {
+                      "address": "0x0000000000000000000000000000000000000000",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "balanceRaw": "2491338496030385848n",
+                      "balance": 2.491338496030386,
+                      "price": 3362.61634367,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
+                  "balance": 2.491338496030386,
+                  "price": 3362.61634367,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x35fA164735182de50811E8e2E824cFb9B6118ac2/logo.png"
+                }
+              ],
+              "balance": 2.364281494507877,
+              "price": 3543.324077029907,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
+            },
+            {
+              "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
+              "name": "rswETH",
+              "symbol": "rswETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "4738135039710413701n",
+              "balance": 4.738135039710413,
+              "price": 3434.3820248325205,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0/logo.png"
+            }
+          ],
+          "balance": 9.939726460812313
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "0c43f9d0b645e67747b811d8ee94cfc6": {
+      "result": "0x144913e"
+    },
+    "abaa1cb183efcbff52d9b4a9c311a109": {
+      "result": "0x00000000000000000000000000000000000000000000000089f1008d9d44c031"
+    },
+    "a7505c9a3ed0fe2baa2e8a0aeb4a2a8d": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000001448fea0000000000000000000000000000000000000000000000000000000000000004000000000000000000000000848a5564158d84b8a8fb68ab5d004fae11619a54000000000000000000000000bf5495efe5db9ce00f80364c8b423567e58d2110000000000000000000000000cd5fe23c85820f7b72d0926fc9b05b43e359b7ee000000000000000000000000fae103dc9cf190ed75350761e95403b7b8afa6c0000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000080000000002326c24027875f0820000000000000000000000000000000000000000000000018a7de49a4617c299a00000000000000000000000000000000000000000000001548184575a643d6a200000000000000000000000000000000000000000000002aa63f2fda826c9bba"
+    },
+    "2809757f3e3a29be8e452a2f90bd2350": {
+      "result": "0x00000000000000000000000000000000000080000000007c9f35fa3aeb6fd4c9"
+    },
+    "c62829d7d15f3c02bb5c6eff3c2b7c10": {
+      "result": "0x0000000000000000000000000000000000000000000000070000000000000b530000000000000000000000000000000000000000000000000000004e4ac1593f00000000000000000000000000000000000000000000000000000000674583e500000000000000000000000000000000000000000000000000000000674584070000000000000000000000000000000000000000000000070000000000000b53"
+    },
+    "0fd58d9c8421b060754813e1a47b088f": {
+      "result": "0x0000000000000000000000000000000000000000000000000e9fa3250ffe7b19"
+    },
+    "05acfb7b16379a0af9cb457b875d7389": {
+      "result": "0x0000000000000000000000000000000000000000000000000e2c8955529d22b4"
+    },
+    "573ff543f960839adbd097ee8ea4bf0a": {
+      "result": "0x0000000000000000000000000000000000000000000000000e4444d466db902d"
+    }
+  }
+}
