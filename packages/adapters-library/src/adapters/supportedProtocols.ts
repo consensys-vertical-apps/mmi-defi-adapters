@@ -149,6 +149,8 @@ import { DineroPxEthAdapter } from './dinero/products/px-eth/dineroPxEthAdapter'
 import { BalancerV2PoolAdapter } from './balancer-v2/products/pool/balancerV2PoolAdapter'
 import { DineroApxEthAdapter } from './dinero/products/apx-eth/dineroApxEthAdapter'
 
+import { BalancerV2FarmingAdapter } from './balancer-v2/products/farming/balancerV2FarmingAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -231,7 +233,11 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.BalancerV2]: {
-    [Chain.Ethereum]: [BalancerV2VestingAdapter, BalancerV2PoolAdapter],
+    [Chain.Ethereum]: [
+      BalancerV2VestingAdapter,
+      BalancerV2PoolAdapter,
+      BalancerV2FarmingAdapter,
+    ],
     [Chain.Optimism]: [BalancerV2PoolAdapter],
     [Chain.Avalanche]: [BalancerV2PoolAdapter],
     [Chain.Polygon]: [BalancerV2PoolAdapter],
