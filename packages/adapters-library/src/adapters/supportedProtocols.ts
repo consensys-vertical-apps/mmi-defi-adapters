@@ -233,7 +233,11 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.BalancerV2]: {
-    [Chain.Ethereum]: [BalancerV2VestingAdapter, BalancerV2PoolAdapter, BalancerV2FarmingAdapter],
+    [Chain.Ethereum]: [
+      BalancerV2VestingAdapter,
+      BalancerV2PoolAdapter,
+      BalancerV2FarmingAdapter,
+    ],
     [Chain.Optimism]: [BalancerV2PoolAdapter],
     [Chain.Avalanche]: [BalancerV2PoolAdapter],
     [Chain.Polygon]: [BalancerV2PoolAdapter],
