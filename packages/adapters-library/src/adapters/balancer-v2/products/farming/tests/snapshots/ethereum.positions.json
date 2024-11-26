@@ -1,0 +1,70 @@
+{
+  "blockNumber": 21271033,
+  "latency": "Latency: 0.405 seconds",
+  "aggregatedValues": ["USD76.85"],
+  "snapshot": [
+    {
+      "protocolId": "balancer-v2",
+      "name": "BalancerV2",
+      "description": "BalancerV2 defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "farming",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x275dF57d2B23d53e20322b4bb71Bf1dCb21D0A00",
+          "name": "Balancer 50WETH-50AURA Gauge Deposit",
+          "symbol": "50WETH-50AURA-gauge",
+          "decimals": 18,
+          "balanceRaw": "170391182246230452284n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xba100000625a3754423978a60c9317c58a424e3D",
+              "name": "Balancer",
+              "symbol": "BAL",
+              "decimals": 18,
+              "balanceRaw": "29788762905686532196n",
+              "type": "underlying-claimable",
+              "balance": 29.788762905686532,
+              "price": 2.5798840674916845,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xba100000625a3754423978a60c9317c58a424e3D/logo.png"
+            },
+            {
+              "address": "0xCfCA23cA9CA720B6E98E3Eb9B6aa0fFC4a5C08B9",
+              "name": "50WETH-50AURA",
+              "symbol": "50WETH-50AURA",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "170391182246230452284n",
+              "balance": 170.39118224623044,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCfCA23cA9CA720B6E98E3Eb9B6aa0fFC4a5C08B9/logo.png"
+            }
+          ],
+          "balance": 170.39118224623044
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "ed331133a76a6ca503449fe0ada6f413": {
+      "result": "0x0000000000000000000000000000000000000000000000093ca7157b5569683c"
+    },
+    "b78c48807cadbc5932042b4389d5c0e3": {
+      "result": "0x0000000000000000000000000000000000000000000000019d66f208fbc76064"
+    },
+    "0cc6e4e0a57f49307ffdbe6ef1e3d36d": {
+      "result": "0x0000000000000000000000000000000000000000000000070000000000000b540000000000000000000000000000000000000000000000000000004eb6f5c8500000000000000000000000000000000000000000000000000000000067458f260000000000000000000000000000000000000000000000000000000067458f3b0000000000000000000000000000000000000000000000070000000000000b54"
+    },
+    "7fe9f316f253a19e5c56e57eac8ebe40": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "a566d830ca28eb1bbf1eecb2ffcddd1f": {
+      "result": "0x0000000000000000000000000000000000000000000000000002b60a54e724ae"
+    }
+  }
+}

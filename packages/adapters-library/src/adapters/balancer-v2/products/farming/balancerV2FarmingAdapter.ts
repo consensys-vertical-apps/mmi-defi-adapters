@@ -23,6 +23,7 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
+  TokenType,
   Underlying,
   UnderlyingReward,
   UnwrapExchangeRate,
@@ -30,7 +31,15 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import { FarmingToken__factory, Farming__factory } from '../../contracts'
+import {
+  BalMinter__factory,
+  FarmingToken__factory,
+  Farming__factory,
+} from '../../contracts'
+
+type AdditionalMetadata = {
+  rewardTokens: Erc20Metadata[]
+}
 
 export class BalancerV2FarmingAdapter implements IProtocolAdapter {
   productId = 'farming'
@@ -79,8 +88,11 @@ export class BalancerV2FarmingAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken[]> {
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const farmingAddress = '0xC128468b7Ce63eA702C1f104D55A2566b13D3ABD'
+    const balancerToken = await this.helpers.getTokenMetadata(
+      '0xba100000625a3754423978a60c9317c58a424e3d',
+    )
 
     const farmingContract = Farming__factory.connect(
       farmingAddress,
@@ -89,27 +101,39 @@ export class BalancerV2FarmingAdapter implements IProtocolAdapter {
 
     const count = await farmingContract.n_gauges()
 
-    const protocolTokens: ProtocolToken[] = []
+    const protocolTokens: ProtocolToken<AdditionalMetadata>[] = []
 
-    for (let i = 0; i < Number(count); i++) {
-      try {
-        const gaugeAddress = await farmingContract.gauges(i)
-        const gaugeContract = FarmingToken__factory.connect(
-          gaugeAddress,
-          this.provider,
-        )
+    await Promise.all(
+      Array.from({ length: Number(count) }, async (_, i) => {
+        try {
+          const gaugeAddress = await farmingContract.gauges(i)
+          const gaugeContract = FarmingToken__factory.connect(
+            gaugeAddress,
+            this.provider,
+          )
 
-        const protocolToken = await this.helpers.getTokenMetadata(gaugeAddress)
-        const underlyingTokenAddress = await gaugeContract.lp_token()
-        const underlyingToken = await this.helpers.getTokenMetadata(
-          underlyingTokenAddress,
-        )
-        protocolTokens.push({
-          ...protocolToken,
-          underlyingTokens: [underlyingToken],
-        })
-      } catch (error) {}
-    }
+          const protocolToken =
+            await this.helpers.getTokenMetadata(gaugeAddress)
+          const underlyingTokenAddress = await gaugeContract.lp_token()
+          const underlyingToken = await this.helpers.getTokenMetadata(
+            underlyingTokenAddress,
+          )
+          protocolTokens.push({
+            ...protocolToken,
+            underlyingTokens: [underlyingToken],
+            rewardTokens: [balancerToken],
+          })
+        } catch (error) {
+          logger.debug(
+            `Failed to process gauge at index ${i}: ${
+              (error as Error).message
+            }`,
+          )
+        }
+      }),
+    )
+
+    console.log(protocolTokens)
 
     return protocolTokens
   }
@@ -184,13 +208,25 @@ export class BalancerV2FarmingAdapter implements IProtocolAdapter {
     blockNumber,
     tokenId,
   }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
-    throw new NotImplementedError()
-  }
+    const balancerMinter = BalMinter__factory.connect(
+      '0x239e55F427D44C3cc793f49bFB507ebe76638a2b',
+      this.provider,
+    )
 
-  async getRewardWithdrawals({
-    userAddress,
-    protocolTokenAddress,
-  }: GetEventsInput): Promise<MovementsByBlockReward[]> {
-    throw new NotImplementedError()
+    const { rewardTokens } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+
+    if (!rewardTokens || rewardTokens.length === 0) {
+      return []
+    }
+
+    const balanceRaw = await balancerMinter.mint.staticCall(
+      protocolTokenAddress,
+      { blockTag: blockNumber, from: userAddress },
+    )
+
+    return [
+      { ...rewardTokens[0]!, balanceRaw, type: TokenType.UnderlyingClaimable },
+    ]
   }
 }
