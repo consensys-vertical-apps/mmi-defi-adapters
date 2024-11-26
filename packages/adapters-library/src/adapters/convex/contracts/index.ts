@@ -7,6 +7,7 @@ export type { ConvexRewardFactorySidechain } from "./ConvexRewardFactorySidechai
 export type { ConvexRewardPool } from "./ConvexRewardPool";
 export type { ConvexRewardTracker } from "./ConvexRewardTracker";
 export type { ConvexRewardsFactory } from "./ConvexRewardsFactory";
+export type { CvxLockerV2 } from "./CvxLockerV2";
 export type { CvxMint } from "./CvxMint";
 export type { CvxcrvWrapper } from "./CvxcrvWrapper";
 export * as factories from "./factories";
@@ -16,5 +17,6 @@ export { ConvexRewardFactorySidechain__factory } from "./factories/ConvexRewardF
 export { ConvexRewardPool__factory } from "./factories/ConvexRewardPool__factory";
 export { ConvexRewardTracker__factory } from "./factories/ConvexRewardTracker__factory";
 export { ConvexRewardsFactory__factory } from "./factories/ConvexRewardsFactory__factory";
+export { CvxLockerV2__factory } from "./factories/CvxLockerV2__factory";
 export { CvxMint__factory } from "./factories/CvxMint__factory";
 export { CvxcrvWrapper__factory } from "./factories/CvxcrvWrapper__factory";

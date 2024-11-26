@@ -68,7 +68,7 @@ export class ConvexStakedCvxAdapter implements IProtocolAdapter {
     return {
       protocolId: this.protocolId,
       name: 'Convex',
-      description: 'Convex adapter for CVX staking',
+      description: 'Convex adapter for staked CVX',
       siteUrl: 'https://curve.convexfinance.com/stake',
       iconUrl: buildTrustAssetIconUrl(
         Chain.Ethereum,
@@ -82,15 +82,14 @@ export class ConvexStakedCvxAdapter implements IProtocolAdapter {
 
   @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
-    const [underlyingToken, rewardToken] = await Promise.all([
-      this.helpers.getTokenMetadata(
-        '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b',
-      ),
-      this.helpers.getTokenMetadata(
-        '0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7',
-      ),
-    ])
     const poolAddress = getAddress('0xCF50b810E57Ac33B91dCF525C6ddd9881B139332')
+    const cvxTokenAddress = '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b'
+    const crvCvxTokenAddress = '0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7'
+
+    const [underlyingToken, rewardToken] = await Promise.all([
+      this.helpers.getTokenMetadata(cvxTokenAddress),
+      this.helpers.getTokenMetadata(crvCvxTokenAddress),
+    ])
 
     return [
       {
@@ -140,25 +139,18 @@ export class ConvexStakedCvxAdapter implements IProtocolAdapter {
     protocolTokenAddresses,
     blockNumber,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = await this.getProtocolTokens()
-
-    return await this.helpers.tvl({
-      protocolTokens,
-      filterProtocolTokenAddresses: protocolTokenAddresses,
-      blockNumber,
-    })
+    throw new NotImplementedError()
   }
 
   async unwrap({
     protocolTokenAddress,
-    tokenId,
-    blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    const { underlyingTokens, ...protocolToken } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+
     return this.helpers.unwrapOneToOne({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      underlyingTokens: (
-        await this.getProtocolTokenByAddress(protocolTokenAddress)
-      ).underlyingTokens,
+      protocolToken,
+      underlyingTokens,
     })
   }
 
@@ -167,14 +159,15 @@ export class ConvexStakedCvxAdapter implements IProtocolAdapter {
     protocolTokenAddress,
     blockNumber,
   }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
-    const { address, rewardTokens } = this.helpers.getProtocolTokenByAddress({
-      protocolTokens: await this.getProtocolTokens(),
-      protocolTokenAddress,
-    })
+    const { address, rewardTokens } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
-    const contract = ConvexRewardPool__factory.connect(address, this.provider)
+    const stakerContract = ConvexRewardPool__factory.connect(
+      address,
+      this.provider,
+    )
 
-    const rewardsBalance = await contract.earned(userAddress, {
+    const rewardsBalance = await stakerContract.earned(userAddress, {
       blockTag: blockNumber,
     })
 

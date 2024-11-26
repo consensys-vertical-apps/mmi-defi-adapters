@@ -87,20 +87,20 @@ export class ConvexCvxcrvWrapperAdapter implements IProtocolAdapter {
 
   @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
-    const contract = CvxcrvWrapper__factory.connect(
+    const cvxcrvContract = CvxcrvWrapper__factory.connect(
       CVXCRV_WRAPPER_ADDRESS,
       this.provider,
     )
 
     const [underlyingTokenAddress, rewardTokensLength] = await Promise.all([
-      contract.cvxCrv(),
-      contract.rewardLength(),
+      cvxcrvContract.cvxCrv(),
+      cvxcrvContract.rewardLength(),
     ])
 
     const rewardTokens = Array.from(
       { length: Number(rewardTokensLength) },
       async (_, i) => {
-        const rewardTokenAddress = await contract.rewards(i)
+        const rewardTokenAddress = await cvxcrvContract.rewards(i)
 
         return await this.helpers.getTokenMetadata(
           rewardTokenAddress.reward_token,
@@ -122,42 +122,11 @@ export class ConvexCvxcrvWrapperAdapter implements IProtocolAdapter {
     ]
   }
 
-  async getPositions({
-    userAddress,
-    blockNumber,
-    protocolTokenAddresses,
-  }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const { name, address, symbol, decimals } = (
-      await this.getProtocolTokens()
-    )[0]!
-
-    if (protocolTokenAddresses && !protocolTokenAddresses.includes(address)) {
-      return []
-    }
-
-    const contract = CvxcrvWrapper__factory.connect(
-      CVXCRV_WRAPPER_ADDRESS,
-      this.provider,
-    )
-
-    const lpTokenBalance = await contract.balanceOf(userAddress, {
-      blockTag: blockNumber,
+  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    return this.helpers.getBalanceOfTokens({
+      ...input,
+      protocolTokens: await this.getProtocolTokens(),
     })
-
-    if (lpTokenBalance === 0n) {
-      return []
-    }
-
-    return [
-      {
-        name,
-        address,
-        symbol,
-        decimals,
-        balanceRaw: lpTokenBalance,
-        type: TokenType.Protocol,
-      },
-    ]
   }
 
   async getWithdrawals({
@@ -188,6 +157,12 @@ export class ConvexCvxcrvWrapperAdapter implements IProtocolAdapter {
       }),
       filter: { fromBlock, toBlock, userAddress },
     })
+  }
+
+  async getTotalValueLocked(
+    _input: GetTotalValueLockedInput,
+  ): Promise<ProtocolTokenTvl[]> {
+    throw new NotImplementedError()
   }
 
   async unwrap({
@@ -228,12 +203,12 @@ export class ConvexCvxcrvWrapperAdapter implements IProtocolAdapter {
       protocolTokenAddress,
     })
 
-    const contract = CvxcrvWrapper__factory.connect(
+    const cvxcrvContract = CvxcrvWrapper__factory.connect(
       CVXCRV_WRAPPER_ADDRESS,
       this.provider,
     )
 
-    const extraRewards = await contract.earned.staticCall(userAddress, {
+    const extraRewards = await cvxcrvContract.earned.staticCall(userAddress, {
       blockTag: blockNumber,
     })
 
@@ -248,12 +223,6 @@ export class ConvexCvxcrvWrapperAdapter implements IProtocolAdapter {
         type: TokenType.UnderlyingClaimable,
       }
     })
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
   }
 
   async getRewardWithdrawals({

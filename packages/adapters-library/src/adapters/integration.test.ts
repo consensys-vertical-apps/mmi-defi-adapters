@@ -37,6 +37,7 @@ import { testCases as compoundV2SupplyMarketTestCases } from './compound-v2/prod
 import { testCases as compoundV3BorrowTestCases } from './compound-v3/products/borrow/tests/testCases'
 import { testCases as compoundV3LendingTestCases } from './compound-v3/products/lending/tests/testCases'
 import { testCases as convexCvxcrvWrapperTestCases } from './convex/products/cvxcrv-wrapper/tests/testCases'
+import { testCases as convexLockedCvxTestCases } from './convex/products/locked-cvx/tests/testCases'
 import { testCases as convexPoolTestCases } from './convex/products/pool/tests/testCases'
 import { testCases as convexSidechainStakingTestCases } from './convex/products/sidechain-staking/tests/testCases'
 import { testCases as convexStakedCvxTestCases } from './convex/products/staked-cvx/tests/testCases'
@@ -193,6 +194,7 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
 
   [Protocol.Convex]: {
     ['cvxcrv-wrapper']: convexCvxcrvWrapperTestCases,
+    ['locked-cvx']: convexLockedCvxTestCases,
     ['pool']: convexPoolTestCases,
     ['sidechain-staking']: convexSidechainStakingTestCases,
     ['staked-cvx']: convexStakedCvxTestCases,

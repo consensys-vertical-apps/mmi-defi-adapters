@@ -151,6 +151,8 @@ import { DineroApxEthAdapter } from './dinero/products/apx-eth/dineroApxEthAdapt
 
 import { ConvexStakedCvxAdapter } from './convex/products/staked-cvx/convexStakedCvxAdapter'
 
+import { ConvexLockedCvxAdapter } from './convex/products/locked-cvx/convexLockedCvxAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -327,6 +329,7 @@ export const supportedProtocols: Record<
       ConvexStakedCvxAdapter,
       ConvexStakingAdapter,
       ConvexCvxcrvWrapperAdapter,
+      ConvexLockedCvxAdapter,
     ],
 
     [Chain.Polygon]: [ConvexSidechainStakingAdapter],

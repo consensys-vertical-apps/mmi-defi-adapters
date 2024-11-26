@@ -7,5 +7,6 @@ export { ConvexRewardFactorySidechain__factory } from "./ConvexRewardFactorySide
 export { ConvexRewardPool__factory } from "./ConvexRewardPool__factory";
 export { ConvexRewardTracker__factory } from "./ConvexRewardTracker__factory";
 export { ConvexRewardsFactory__factory } from "./ConvexRewardsFactory__factory";
+export { CvxLockerV2__factory } from "./CvxLockerV2__factory";
 export { CvxMint__factory } from "./CvxMint__factory";
 export { CvxcrvWrapper__factory } from "./CvxcrvWrapper__factory";
