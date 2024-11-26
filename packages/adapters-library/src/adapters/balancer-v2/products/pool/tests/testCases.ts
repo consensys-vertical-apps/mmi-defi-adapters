@@ -26,4 +26,16 @@ export const testCases: TestCase[] = [
 
     blockNumber: 21242486,
   },
+  {
+    chainId: Chain.Ethereum,
+    method: 'positions',
+    key: '3',
+
+    input: {
+      userAddress: '0xDB2a2f53e2bC952Abde8Aa1cC32F09dFF35F7C42',
+      filterProtocolTokens: ['0x848a5564158d84b8A8fb68ab5D004Fae11619A54'],
+    },
+
+    blockNumber: 21270797,
+  },
 ]

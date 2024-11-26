@@ -145,8 +145,8 @@ import { CompoundV3BorrowAdapter } from './compound-v3/products/borrow/compoundV
 
 import { DineroPxEthAdapter } from './dinero/products/px-eth/dineroPxEthAdapter'
 
-import { DineroApxEthAdapter } from './dinero/products/apx-eth/dineroApxEthAdapter'
 import { BalancerV2PoolAdapter } from './balancer-v2/products/pool/balancerV2PoolAdapter'
+import { DineroApxEthAdapter } from './dinero/products/apx-eth/dineroApxEthAdapter'
 
 export const supportedProtocols: Record<
   Protocol,
