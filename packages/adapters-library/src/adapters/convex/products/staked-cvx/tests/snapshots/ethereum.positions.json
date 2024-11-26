@@ -1,12 +1,12 @@
 {
   "blockNumber": 21272742,
-  "latency": "Latency: 1.637 seconds",
+  "latency": "Latency: 1.922 seconds",
   "aggregatedValues": ["USD1,759.86"],
   "snapshot": [
     {
       "protocolId": "convex",
       "name": "Convex",
-      "description": "Convex adapter for CVX staking",
+      "description": "Convex adapter for staked CVX",
       "siteUrl": "https://curve.convexfinance.com/stake",
       "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
       "positionType": "stake",
@@ -61,11 +61,11 @@
     "29576888e6d75a5cff9ef77cf1578117": {
       "result": "0x0000000000000000000000000000000000000000000000070000000000000b6a0000000000000000000000000000000000000000000000000000004dcafbee70000000000000000000000000000000000000000000000000000000006745e515000000000000000000000000000000000000000000000000000000006745e5270000000000000000000000000000000000000000000000070000000000000b6a"
     },
-    "e2a5949447a88cdcc67a0ac41f90f269": {
-      "result": "0x00000000000000000000000000000000000000000000000000006d59db557d8d"
-    },
     "967a096d3e7948e11463933e19cebd69": {
       "result": "0x000000000000000000000000000000000000000000000000000334edb4c6466f"
+    },
+    "e2a5949447a88cdcc67a0ac41f90f269": {
+      "result": "0x00000000000000000000000000000000000000000000000000006d59db557d8d"
     }
   }
 }
