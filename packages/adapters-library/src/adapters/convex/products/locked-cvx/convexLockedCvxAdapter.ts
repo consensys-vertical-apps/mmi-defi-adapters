@@ -1,17 +1,16 @@
-import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { logger } from '../../../../core/utils/logger'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
   GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
@@ -24,16 +23,13 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  Underlying,
   UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { CvxLockerV2__factory } from '../../contracts'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 
 type AdditionalMetadata = {
   rewardTokens: Erc20Metadata[]

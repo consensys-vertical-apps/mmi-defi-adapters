@@ -4,6 +4,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -28,7 +29,6 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { ConvexRewardPool__factory } from '../../contracts'
 
 type AdditionalMetadata = {
