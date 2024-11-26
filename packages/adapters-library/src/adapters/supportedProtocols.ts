@@ -139,6 +139,7 @@ import { AaveV3StakingAdapter } from './aave-v3/products/staking/aaveV3StakingAd
 import { AaveV2RewardsAdapter } from './aave-v2/products/rewards/aaveV2RewardsAdapter'
 
 import { CompoundV3LendingAdapter } from './compound-v3/products/lending/compoundV3LendingAdapter'
+import { GmxV2GmPoolAdapter } from './gmx-v2/products/gm-pool/gmxV2PoolAdapter'
 
 import { BalancerV2VestingAdapter } from './balancer-v2/products/vesting/balancerV2VestingAdapter'
 import { CompoundV3BorrowAdapter } from './compound-v3/products/borrow/compoundV3BorrowAdapter'
@@ -385,6 +386,11 @@ export const supportedProtocols: Record<
   [Protocol.Gmx]: {
     [Chain.Arbitrum]: [GmxGlpAdapter, GmxFarmingAdapter, GmxVestingAdapter],
     [Chain.Avalanche]: [GmxGlpAdapter, GmxFarmingAdapter, GmxVestingAdapter],
+  },
+
+  [Protocol.GmxV2]: {
+    [Chain.Arbitrum]: [GmxV2GmPoolAdapter],
+    [Chain.Avalanche]: [GmxV2GmPoolAdapter],
   },
 
   [Protocol.IZiSwap]: {
