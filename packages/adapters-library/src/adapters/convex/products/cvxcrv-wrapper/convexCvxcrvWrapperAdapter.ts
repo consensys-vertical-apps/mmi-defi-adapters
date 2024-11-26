@@ -73,13 +73,13 @@ export class ConvexCvxcrvWrapperAdapter implements IProtocolAdapter {
     return {
       protocolId: this.protocolId,
       name: 'Convex',
-      description: 'Convex pool adapter',
-      siteUrl: 'https://www.convexfinance.com/',
+      description: 'Convex adapter for CvxCrv staking',
+      siteUrl: 'https://curve.convexfinance.com/stake',
       iconUrl: buildTrustAssetIconUrl(
         Chain.Ethereum,
         '0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B',
       ),
-      positionType: PositionType.Supply,
+      positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
     }

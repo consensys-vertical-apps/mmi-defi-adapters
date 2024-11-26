@@ -1,0 +1,71 @@
+{
+  "blockNumber": 21272742,
+  "latency": "Latency: 1.637 seconds",
+  "aggregatedValues": ["USD1,759.86"],
+  "snapshot": [
+    {
+      "protocolId": "convex",
+      "name": "Convex",
+      "description": "Convex adapter for CVX staking",
+      "siteUrl": "https://curve.convexfinance.com/stake",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "staked-cvx",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xCF50b810E57Ac33B91dCF525C6ddd9881B139332",
+          "name": "Staked CVX",
+          "symbol": "stkCVX",
+          "decimals": 18,
+          "balanceRaw": "583432417997989221589n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7",
+              "name": "Convex CRV",
+              "symbol": "cvxCRV",
+              "decimals": 18,
+              "balanceRaw": "836845191800414016n",
+              "type": "underlying-claimable",
+              "balance": 0.8368451918004141,
+              "price": 0.4017190783239156,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7/logo.png"
+            },
+            {
+              "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+              "name": "Convex Token",
+              "symbol": "CVX",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "583432417997989221589n",
+              "balance": 583.4324179979892,
+              "price": 3.015817388126183,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
+            }
+          ],
+          "balance": 583.4324179979892
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "bf9079ed1418f800e2594c2f60ca9113": {
+      "result": "0x00000000000000000000000000000000000000000000001fa0c05503015e14d5"
+    },
+    "d5d004cc56b002375ec661dfaf2408e9": {
+      "result": "0x0000000000000000000000000000000000000000000000000b9d1244a541df40"
+    },
+    "29576888e6d75a5cff9ef77cf1578117": {
+      "result": "0x0000000000000000000000000000000000000000000000070000000000000b6a0000000000000000000000000000000000000000000000000000004dcafbee70000000000000000000000000000000000000000000000000000000006745e515000000000000000000000000000000000000000000000000000000006745e5270000000000000000000000000000000000000000000000070000000000000b6a"
+    },
+    "e2a5949447a88cdcc67a0ac41f90f269": {
+      "result": "0x00000000000000000000000000000000000000000000000000006d59db557d8d"
+    },
+    "967a096d3e7948e11463933e19cebd69": {
+      "result": "0x000000000000000000000000000000000000000000000000000334edb4c6466f"
+    }
+  }
+}

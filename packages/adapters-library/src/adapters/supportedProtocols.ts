@@ -149,6 +149,8 @@ import { DineroPxEthAdapter } from './dinero/products/px-eth/dineroPxEthAdapter'
 import { BalancerV2PoolAdapter } from './balancer-v2/products/pool/balancerV2PoolAdapter'
 import { DineroApxEthAdapter } from './dinero/products/apx-eth/dineroApxEthAdapter'
 
+import { ConvexStakedCvxAdapter } from './convex/products/staked-cvx/convexStakedCvxAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -322,6 +324,7 @@ export const supportedProtocols: Record<
   [Protocol.Convex]: {
     [Chain.Ethereum]: [
       ConvexPoolAdapter,
+      ConvexStakedCvxAdapter,
       ConvexStakingAdapter,
       ConvexCvxcrvWrapperAdapter,
     ],
