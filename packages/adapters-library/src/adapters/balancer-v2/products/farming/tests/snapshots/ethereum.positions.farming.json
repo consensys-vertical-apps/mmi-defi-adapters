@@ -1,0 +1,101 @@
+{
+  "blockNumber": 21271033,
+  "latency": "Latency: 0 seconds",
+  "aggregatedValues": ["USD6,052.64"],
+  "snapshot": [
+    {
+      "protocolId": "balancer-v2",
+      "name": "BalancerV2",
+      "description": "BalancerV2 defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "farming",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x275dF57d2B23d53e20322b4bb71Bf1dCb21D0A00",
+          "name": "Balancer 50WETH-50AURA Gauge Deposit",
+          "symbol": "50WETH-50AURA-gauge",
+          "decimals": 18,
+          "balanceRaw": "170391182246230452284n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xba100000625a3754423978a60c9317c58a424e3D",
+              "name": "Balancer",
+              "symbol": "BAL",
+              "decimals": 18,
+              "balanceRaw": "29788762905686532196n",
+              "type": "underlying-claimable",
+              "balance": 29.788762905686532,
+              "price": 2.5798840674916845,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xba100000625a3754423978a60c9317c58a424e3D/logo.png"
+            },
+            {
+              "address": "0xCfCA23cA9CA720B6E98E3Eb9B6aa0fFC4a5C08B9",
+              "name": "50WETH-50AURA",
+              "symbol": "50WETH-50AURA",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "170391182246230452284n",
+              "tokens": [
+                {
+                  "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                  "name": "Wrapped Ether",
+                  "symbol": "WETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "939867335472840601n",
+                  "balance": 0.9398673354728406,
+                  "price": 3380.7701,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                },
+                {
+                  "address": "0xC0c293ce456fF0ED870ADd98a0828Dd4d2903DBF",
+                  "name": "Aura",
+                  "symbol": "AURA",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "9333765961857726899106n",
+                  "balance": 9333.765961857727,
+                  "price": 0.2998053258820348,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC0c293ce456fF0ED870ADd98a0828Dd4d2903DBF/logo.png"
+                }
+              ],
+              "balance": 170.39118224623044,
+              "price": 35.070994008358376,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCfCA23cA9CA720B6E98E3Eb9B6aa0fFC4a5C08B9/logo.png"
+            }
+          ],
+          "balance": 170.39118224623044
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "ed331133a76a6ca503449fe0ada6f413": {
+      "result": "0x0000000000000000000000000000000000000000000000093ca7157b5569683c"
+    },
+    "b78c48807cadbc5932042b4389d5c0e3": {
+      "result": "0x0000000000000000000000000000000000000000000000019d66f208fbc76064"
+    },
+    "0cc6e4e0a57f49307ffdbe6ef1e3d36d": {
+      "result": "0x0000000000000000000000000000000000000000000000070000000000000b540000000000000000000000000000000000000000000000000000004eb6f5c8500000000000000000000000000000000000000000000000000000000067458f260000000000000000000000000000000000000000000000000000000067458f3b0000000000000000000000000000000000000000000000070000000000000b54"
+    },
+    "406de85044aa6e1963df504a7ea46b46": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000014491e40000000000000000000000000000000000000000000000000000000000000002000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000c0c293ce456ff0ed870add98a0828dd4d2903dbf0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000017cee2d8eb53876fb8000000000000000000000000000000000000000000039b954b62b2dab3d86dc8"
+    },
+    "a566d830ca28eb1bbf1eecb2ffcddd1f": {
+      "result": "0x0000000000000000000000000000000000000000000000000002b60a54e724ae"
+    },
+    "470fa70a21cbbe35d6db0bba8d331d8f": {
+      "result": "0x0000000000000000000000000000000000000000000010dc3efacd8770eb22ed"
+    },
+    "52e2c3c7267df53713965ef464917c60": {
+      "result": "0x000000000000000000000000000000000000000000000000000050a753ce1ad4"
+    }
+  }
+}

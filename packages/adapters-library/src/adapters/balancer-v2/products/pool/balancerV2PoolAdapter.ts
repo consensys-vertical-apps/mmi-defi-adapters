@@ -32,7 +32,7 @@ import { filterMapAsync } from '../../../../core/utils/filters'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Vault__factory } from '../../contracts'
 
-const vaultAAddress = '0xBA12222222228d8Ba445958a75a0704d566BF2C8'
+const vaultAddress = '0xBA12222222228d8Ba445958a75a0704d566BF2C8'
 
 type AdditionalMetadata = { poolId: string }
 
@@ -84,7 +84,7 @@ export class BalancerV2PoolAdapter implements IProtocolAdapter {
 
   @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
-    const vault = Vault__factory.connect(vaultAAddress, this.provider)
+    const vault = Vault__factory.connect(vaultAddress, this.provider)
 
     const filter = await vault.filters.PoolRegistered()
 
@@ -191,7 +191,7 @@ export class BalancerV2PoolAdapter implements IProtocolAdapter {
       await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     // Connect to Vault contract
-    const vault = Vault__factory.connect(vaultAAddress, this.provider)
+    const vault = Vault__factory.connect(vaultAddress, this.provider)
 
     // Fetch underlying token balances from the pool
     const tokenData = await vault.getPoolTokens(poolId, {
