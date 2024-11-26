@@ -29,7 +29,7 @@ import {
   ProtocolDataProvider__factory,
 } from '../contracts'
 
-const protocolDataProviderContractAddresses: Partial<
+export const protocolDataProviderContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
 > = {
   [Protocol.AaveV2]: {

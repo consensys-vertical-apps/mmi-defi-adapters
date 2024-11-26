@@ -1,6 +1,7 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
+import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { logger } from '../../../../core/utils/logger'
@@ -176,50 +177,17 @@ export class BeefyMooTokenAdapter implements IProtocolAdapter {
       ...protocolToken
     } = await this.getProtocolTokenByAddress(protocolTokenAddress)
 
-    const vaultBalanceBreakdown = await breakdownFetcherMap[unwrapType](
-      {
-        protocolTokenAddress,
-        underlyingLPTokenAddress: underlyingLPToken.address,
-        blockSpec: { blockTag: blockNumber },
-      },
-      this.provider,
-    )
-
     return {
       ...protocolToken,
       baseRate: 1,
       type: TokenType['Protocol'],
-      tokens: vaultBalanceBreakdown.balances.map((balance) => {
-        const token = underlyingTokens.find(
-          (token) => token.address === balance.tokenAddress,
-        )
-        if (!token) {
-          logger.error(
-            {
-              productId: this.productId,
-              tokenAddress: balance.tokenAddress,
-              protocolTokenAddress,
-              protocol: this.protocolId,
-              chainId: this.chainId,
-              product: this.productId,
-            },
-            'Token not found',
-          )
-          throw new Error('Token not found')
-        }
-
-        const underlyingRateRaw =
-          vaultBalanceBreakdown.vaultTotalSupply === 0n
-            ? 0n
-            : (balance.vaultBalance * 10n ** BigInt(protocolToken.decimals)) /
-              vaultBalanceBreakdown.vaultTotalSupply
-
-        return {
-          ...token,
-          underlyingRateRaw,
+      tokens: [
+        {
+          ...underlyingLPToken,
+          underlyingRateRaw: BigInt(10 ** underlyingLPToken.decimals),
           type: TokenType['Underlying'],
-        }
-      }),
+        },
+      ],
     }
   }
 

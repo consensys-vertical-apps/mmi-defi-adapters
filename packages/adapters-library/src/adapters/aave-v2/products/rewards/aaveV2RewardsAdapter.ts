@@ -4,6 +4,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../../core/utils/filters'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -25,7 +26,15 @@ import {
 } from '../../../../types/adapter'
 import { AAVE_ICON_URL } from '../../../aave-v3/products/rewards/aaveV3RewardsAdapter'
 import { Protocol } from '../../../protocols'
-import { StakedTokenIncentivesController__factory } from '../../contracts'
+import { protocolDataProviderContractAddresses } from '../../common/aaveBasePoolAdapter'
+import {
+  ProtocolDataProvider__factory,
+  StakedTokenIncentivesController__factory,
+} from '../../contracts'
+
+type AdditionalMetadata = {
+  reserveTokensWithEmissions: string[]
+}
 
 export class AaveV2RewardsAdapter implements IProtocolAdapter {
   productId = 'rewards'
@@ -70,16 +79,58 @@ export class AaveV2RewardsAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken[]> {
-    const stakedTokensIncentiveControllerAddress = getAddress(
-      '0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5',
-    )
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+    const stakedTokensIncentiveControllerAddresses: Partial<
+      Record<Chain, string>
+    > = {
+      [Chain.Ethereum]: getAddress(
+        '0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5',
+      ),
+      [Chain.Polygon]: getAddress('0x357D51124f59836DeD84c8a1730D72B749d8BC23'),
+      [Chain.Avalanche]: getAddress(
+        '0x01D83Fe6A10D2f2B7AF17034343746188272cAc9',
+      ),
+    }
+    const stakedTokensIncentiveControllerAddress =
+      stakedTokensIncentiveControllerAddresses[this.chainId]!
 
     const stakedTokensIncentiveController =
       StakedTokenIncentivesController__factory.connect(
         stakedTokensIncentiveControllerAddress,
         this.provider,
       )
+
+    const protocolDataProvider = ProtocolDataProvider__factory.connect(
+      protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!,
+      this.provider,
+    )
+
+    const reserveTokens = await protocolDataProvider.getAllReservesTokens()
+
+    const reserveTokensWithEmissions = (
+      await Promise.all(
+        reserveTokens.map(async ({ tokenAddress }) => {
+          const reserveTokenAddresses =
+            await protocolDataProvider.getReserveTokensAddresses(tokenAddress)
+
+          const reserveTokensWithEmissions = await filterMapAsync(
+            reserveTokenAddresses,
+            async (reserveTokenAddress) => {
+              const assetDetails =
+                await stakedTokensIncentiveController.assets(
+                  reserveTokenAddress,
+                )
+
+              return assetDetails.emissionPerSecond
+                ? reserveTokenAddress
+                : undefined
+            },
+          )
+
+          return reserveTokensWithEmissions
+        }),
+      )
+    ).flat()
 
     const rewardTokenAddress =
       await stakedTokensIncentiveController.REWARD_TOKEN()
@@ -88,11 +139,12 @@ export class AaveV2RewardsAdapter implements IProtocolAdapter {
 
     return [
       {
-        ...rewardToken,
+        address: stakedTokensIncentiveControllerAddress,
         name: 'Aave v2 Rewards',
         symbol: 'Rewards',
-        address: stakedTokensIncentiveControllerAddress,
+        decimals: rewardToken.decimals,
         underlyingTokens: [rewardToken],
+        reserveTokensWithEmissions,
       },
     ]
   }
@@ -102,7 +154,7 @@ export class AaveV2RewardsAdapter implements IProtocolAdapter {
     blockNumber,
     protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const { underlyingTokens, ...protocolToken } = (
+    const { underlyingTokens, reserveTokensWithEmissions, ...protocolToken } = (
       await this.getProtocolTokens()
     )[0]!
 
@@ -120,10 +172,15 @@ export class AaveV2RewardsAdapter implements IProtocolAdapter {
       )
 
     const rewardAmount =
-      await stakedTokensIncentiveController.getUserUnclaimedRewards(
+      await stakedTokensIncentiveController.getRewardsBalance(
+        reserveTokensWithEmissions,
         userAddress,
         { blockTag: blockNumber },
       )
+
+    if (!rewardAmount) {
+      return []
+    }
 
     return [
       {
