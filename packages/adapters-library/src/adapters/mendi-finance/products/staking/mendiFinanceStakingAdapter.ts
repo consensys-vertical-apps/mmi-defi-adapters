@@ -34,7 +34,6 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { SMendi__factory } from '../../contracts'
 
-
 type AdditionalMetadata = { rewardTokens: Erc20Metadata[] }
 
 const S_MENDI_ADDRESS = '0x150b1e51738cdf0ccfe472594c62d7d6074921ca'
