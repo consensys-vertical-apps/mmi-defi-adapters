@@ -151,6 +151,8 @@ import { DineroApxEthAdapter } from './dinero/products/apx-eth/dineroApxEthAdapt
 
 import { BalancerV2FarmingAdapter } from './balancer-v2/products/farming/balancerV2FarmingAdapter'
 
+import { MendiFinanceStakingAdapter } from './mendi-finance/products/staking/mendiFinanceStakingAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -422,6 +424,7 @@ export const supportedProtocols: Record<
     [Chain.Linea]: [
       MendiFinanceSupplyMarketAdapter,
       MendiFinanceBorrowMarketAdapter,
+      MendiFinanceStakingAdapter,
     ],
   },
 
