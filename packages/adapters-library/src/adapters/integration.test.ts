@@ -67,6 +67,7 @@ import { testCases as lynexAlgebraTestCases } from './lynex/products/algebra/tes
 import { testCases as lynexClassicTestCases } from './lynex/products/classic/tests/testCases'
 import { testCases as makerSDaiTestCases } from './maker/products/s-dai/tests/testCases'
 import { testCases as mendiFinanceBorrowMarketTestCases } from './mendi-finance/products/borrow-market/tests/testCases'
+import { testCases as mendiFinanceStakingTestCases } from './mendi-finance/products/staking/tests/testCases'
 import { testCases as mendiFinanceSupplyMarketTestCases } from './mendi-finance/products/supply-market/tests/testCases'
 import { testCases as morphoAaveV2OptimizerBorrowTestCases } from './morpho-aave-v2/products/optimizer-borrow/tests/testCases'
 import { testCases as morphoAaveV2OptimizerSupplyTestCases } from './morpho-aave-v2/products/optimizer-supply/tests/testCases'
@@ -262,6 +263,7 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
 
   [Protocol.MendiFinance]: {
     ['borrow-market']: mendiFinanceBorrowMarketTestCases,
+    ['staking']: mendiFinanceStakingTestCases,
     ['supply-market']: mendiFinanceSupplyMarketTestCases,
   },
 
