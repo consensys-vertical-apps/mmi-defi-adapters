@@ -153,6 +153,8 @@ import { BalancerV2FarmingAdapter } from './balancer-v2/products/farming/balance
 
 import { MendiFinanceStakingAdapter } from './mendi-finance/products/staking/mendiFinanceStakingAdapter'
 
+import { QuickswapV2DQuickAdapter } from './quickswap-v2/products/d-quick/quickswapV2DQuickAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -518,7 +520,7 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.QuickswapV2]: {
-    [Chain.Polygon]: [QuickswapV2PoolAdapter],
+    [Chain.Polygon]: [QuickswapV2PoolAdapter, QuickswapV2DQuickAdapter],
   },
 
   [Protocol.Renzo]: {

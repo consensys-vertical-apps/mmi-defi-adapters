@@ -86,6 +86,7 @@ import { testCases as pendlePrincipleTokenTestCases } from './pendle/products/pr
 import { testCases as pendleStandardisedYieldTokenTestCases } from './pendle/products/standardised-yield-token/tests/testCases'
 import { testCases as pendleYieldTokenTestCases } from './pendle/products/yield-token/tests/testCases'
 import { Protocol } from './protocols'
+import { testCases as quickswapV2DQuickTestCases } from './quickswap-v2/products/d-quick/tests/testCases'
 import { testCases as quickswapV2PoolTestCases } from './quickswap-v2/products/pool/tests/testCases'
 import { testCases as renzoEzEthTestCases } from './renzo/products/ez-eth/tests/testCases'
 import { testCases as rocketPoolRethTestCases } from './rocket-pool/products/reth/tests/testCases'
@@ -305,6 +306,7 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
   },
 
   [Protocol.QuickswapV2]: {
+    ['d-quick']: quickswapV2DQuickTestCases,
     ['pool']: quickswapV2PoolTestCases,
   },
 
