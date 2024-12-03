@@ -1,0 +1,60 @@
+{
+  "blockNumber": 12844441,
+  "latency": "Latency: 0.419 seconds",
+  "aggregatedValues": [],
+  "snapshot": [
+    {
+      "protocolId": "zerolend",
+      "name": "Zerolend",
+      "description": "Zerolend defi adapter",
+      "siteUrl": "",
+      "iconUrl": "",
+      "positionType": "stake",
+      "chainId": 59144,
+      "productId": "vesting",
+      "chainName": "linea",
+      "success": true,
+      "tokens": [
+        {
+          "type": "protocol",
+          "balanceRaw": "2855886050501284774212n",
+          "address": "0xf374229a18ff691406f99CCBD93e8a3f16B68888",
+          "symbol": "ZEROvp",
+          "name": "ZERO Voting Power - Unlock time 04/09/2025",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7",
+              "name": "ZeroLend",
+              "symbol": "ZERO",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "2855886050501284774212n",
+              "balance": 2855.886050501285,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7/logo.png"
+            },
+            {
+              "address": "0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7",
+              "name": "ZeroLend",
+              "symbol": "ZERO",
+              "decimals": 18,
+              "balanceRaw": "56847709082345108240n",
+              "type": "underlying-claimable",
+              "balance": 56.847709082345105,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7/logo.png"
+            }
+          ],
+          "balance": 2855.886050501285
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "261f792c24ca629152145913c78beaac": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000094b6000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000009ad1616fcc525ec1440000000000000000000000000000000000000000000000000000000068b8d6800000000000000000000000000000000000000000000000000000000066db4d5900000000000000000000000000000000000000000000002668def9bc98c2c5ce"
+    },
+    "295842b540051b301001be7509abed13": {
+      "result": "0x00000000000000000000000000000000000000000000000314eba237e3ed7310"
+    }
+  }
+}
