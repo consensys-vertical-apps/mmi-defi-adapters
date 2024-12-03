@@ -11,9 +11,7 @@ export const testCases: TestCase[] = [
     input: {
       userAddress: '0x67e5cc743aF5B1b4446c44fCCDc3aAe21f844AcF',
 
-      filterProtocolTokens: [
-        '0xf374229a18ff691406f99CCBD93e8a3f16B68888',
-      ],
+      filterProtocolTokens: ['0xf374229a18ff691406f99CCBD93e8a3f16B68888'],
     },
 
     blockNumber: 12844440,

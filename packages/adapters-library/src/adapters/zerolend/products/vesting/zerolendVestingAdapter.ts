@@ -7,7 +7,10 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { unixTimestampToDateString } from '../../../../core/utils/unixTimestampToDateString'
 import { Helpers } from '../../../../scripts/helpers'
-import { IProtocolAdapter, ProtocolToken } from '../../../../types/IProtocolAdapter'
+import {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -25,33 +28,32 @@ import {
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
 
-import { Vesting__factory } from '../../contracts'
 import { getAddress } from 'ethers'
+import { Vesting__factory } from '../../contracts'
 
 type AdditionalMetadata = {
   rewardTokens: Erc20Metadata[]
 }
 
 export class ZerolendVestingAdapter implements IProtocolAdapter {
-  readonly productId = 'vesting';
+  readonly productId = 'vesting'
 
-  readonly protocolId: Protocol;
-  readonly chainId: Chain;
-  readonly helpers: Helpers;
-  readonly provider: CustomJsonRpcProvider;
-  readonly adaptersController: AdaptersController;
+  readonly protocolId: Protocol
+  readonly chainId: Chain
+  readonly helpers: Helpers
+  readonly provider: CustomJsonRpcProvider
+  readonly adaptersController: AdaptersController
 
   readonly adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
-  };
+  }
 
   private readonly addresses = {
     veToken: getAddress('0xf374229a18ff691406f99ccbd93e8a3f16b68888'),
     underlyingToken: getAddress('0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7'),
     rewardToken: getAddress('0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7'),
-
-  };
+  }
 
   constructor({
     provider,
@@ -60,11 +62,11 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
     adaptersController,
     helpers,
   }: ProtocolAdapterParams) {
-    this.provider = provider;
-    this.chainId = chainId;
-    this.protocolId = protocolId;
-    this.adaptersController = adaptersController;
-    this.helpers = helpers;
+    this.provider = provider
+    this.chainId = chainId
+    this.protocolId = protocolId
+    this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -77,7 +79,7 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
-    };
+    }
   }
 
   @CacheToDb
@@ -90,7 +92,7 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
       this.helpers.getTokenMetadata(this.addresses.veToken),
       this.helpers.getTokenMetadata(this.addresses.underlyingToken),
       this.helpers.getTokenMetadata(this.addresses.rewardToken),
-    ]);
+    ])
 
     return [
       {
@@ -98,7 +100,7 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
         underlyingTokens: [underlyingTokenMetadata],
         rewardTokens: [rewardTokenMetadata],
       },
-    ];
+    ]
   }
 
   async getRewardBalance({
@@ -108,8 +110,8 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
     const veTokenContract = Vesting__factory.connect(
       this.addresses.veToken,
       this.provider,
-    );
-    return veTokenContract.earned(userAddress, { blockTag: blockNumber });
+    )
+    return veTokenContract.earned(userAddress, { blockTag: blockNumber })
   }
 
   async getLockedDetails({
@@ -119,56 +121,56 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
     const veTokenContract = Vesting__factory.connect(
       this.addresses.veToken,
       this.provider,
-    );
+    )
     const nftDetails = await veTokenContract.getLockedNftDetails(userAddress, {
       blockTag: blockNumber,
-    });
+    })
 
-    if (nftDetails[0].length === 0) return [];
+    if (nftDetails[0].length === 0) return []
 
     return nftDetails[1].map((nft) => ({
       amount: nft.amount,
       end: nft.end,
-    }));
+    }))
   }
 
   async getRewardPosition(input: GetPositionsInput): Promise<Underlying> {
-    const balance = await this.getRewardBalance(input);
+    const balance = await this.getRewardBalance(input)
 
     const {
       rewardTokens: [rewardToken],
-    } = (await this.getProtocolTokens())[0]!;
+    } = (await this.getProtocolTokens())[0]!
 
     return {
       ...rewardToken!,
       balanceRaw: balance,
       type: TokenType.UnderlyingClaimable,
-    };
+    }
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
     const [lockedDetails, [protocolToken]] = await Promise.all([
       this.getLockedDetails(input),
       this.getProtocolTokens(),
-    ]);
+    ])
 
     if (lockedDetails.length === 0 || !protocolToken) {
-      return [];
+      return []
     }
 
-    const rewardPosition = await this.getRewardPosition(input);
+    const rewardPosition = await this.getRewardPosition(input)
 
     const positions = await Promise.all(
       lockedDetails.map(({ amount, end }) =>
         this.buildPositions({ amount, end }, protocolToken, input),
       ),
-    );
+    )
 
     if (rewardPosition.balanceRaw > 0n) {
-      positions[0]?.tokens.push(rewardPosition);
+      positions[0]?.tokens.push(rewardPosition)
     }
 
-    return positions;
+    return positions
   }
 
   private async buildPositions(
@@ -180,11 +182,13 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
       protocolTokenBalance: amount,
       protocolTokenAddress: this.addresses.veToken,
       blockNumber: input.blockNumber,
-    });
+    })
 
-    const nameWithUnlockTime = `${protocolToken!.name} - Unlock time ${unixTimestampToDateString(end)}`;
+    const nameWithUnlockTime = `${
+      protocolToken!.name
+    } - Unlock time ${unixTimestampToDateString(end)}`
 
-    const tokens = [unwrappedToken];
+    const tokens = [unwrappedToken]
 
     return {
       type: TokenType.Protocol,
@@ -194,15 +198,14 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
       name: nameWithUnlockTime,
       decimals: protocolToken.decimals,
       tokens,
-    };
+    }
   }
 
   async unwrap({
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const protocolToken = await this.getProtocolTokenByAddress(
-      protocolTokenAddress,
-    );
+    const protocolToken =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     return {
       address: protocolToken.address,
@@ -218,22 +221,22 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
           underlyingRateRaw: BigInt(1) * BigInt(10 ** 18),
         },
       ],
-    };
+    }
   }
 
   async unwrappedBalance(
     input: UnwrapInput & { protocolTokenBalance: bigint },
   ): Promise<Underlying> {
-    const { tokens } = await this.unwrap(input);
+    const { tokens } = await this.unwrap(input)
 
-    const { underlyingRateRaw, ...underlyingTokenMetadata } = tokens![0]!;
+    const { underlyingRateRaw, ...underlyingTokenMetadata } = tokens![0]!
 
     return {
       ...underlyingTokenMetadata,
       balanceRaw:
         (input.protocolTokenBalance * underlyingRateRaw) /
         10n ** BigInt(underlyingTokenMetadata.decimals),
-    };
+    }
   }
 
   private async getProtocolTokenByAddress(
@@ -242,7 +245,7 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
     return this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,
-    });
+    })
   }
 
   async getWithdrawals({
@@ -251,7 +254,7 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError();
+    throw new NotImplementedError()
   }
 
   async getDeposits({
@@ -260,14 +263,13 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError();
+    throw new NotImplementedError()
   }
 
   async getTotalValueLocked({
     protocolTokenAddresses,
     blockNumber,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError();
+    throw new NotImplementedError()
   }
 }
-
