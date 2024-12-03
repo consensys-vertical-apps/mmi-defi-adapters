@@ -1,5 +1,3 @@
-import { Erc20Metadata } from '@metamask-institutional/defi-sdk'
-import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
@@ -30,6 +28,7 @@ import { Protocol } from '../../../protocols'
 
 import { getAddress } from 'ethers'
 import { Vesting__factory } from '../../contracts'
+import { Erc20Metadata } from '../../../../types/erc20Metadata'
 
 type AdditionalMetadata = {
   rewardTokens: Erc20Metadata[]
