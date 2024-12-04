@@ -22,6 +22,7 @@ export const testCases: TestCase[] = [
 
     input: {
       userAddress: '0xb83F1688C0b7ebb155a830ae78F71527Ef55e759',
+      filterProtocolTokens: ['0x8164Cc65827dcFe994AB23944CBC90e0aa80bFcb'],
     },
 
     blockNumber: 21330297,

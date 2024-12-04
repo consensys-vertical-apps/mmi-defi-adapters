@@ -30,7 +30,7 @@ import {
   ProtocolDataProvider__factory,
 } from '../contracts'
 
-export const protocolContractAddresses: Partial<
+export const protocolDataProviderContractAddresses: Partial<
   Record<
     Protocol,
     Partial<
@@ -39,7 +39,6 @@ export const protocolContractAddresses: Partial<
         {
           marketLabel?: string
           protocolDataProvider: string
-          incentivesController: string
         }[]
       >
     >
@@ -51,9 +50,6 @@ export const protocolContractAddresses: Partial<
         protocolDataProvider: getAddress(
           '0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d',
         ),
-        incentivesController: getAddress(
-          '0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5',
-        ),
       },
     ],
     [Chain.Polygon]: [
@@ -61,18 +57,12 @@ export const protocolContractAddresses: Partial<
         protocolDataProvider: getAddress(
           '0x7551b5D2763519d4e37e8B81929D336De671d46d',
         ),
-        incentivesController: getAddress(
-          '0x357D51124f59836DeD84c8a1730D72B749d8BC23',
-        ),
       },
     ],
     [Chain.Avalanche]: [
       {
         protocolDataProvider: getAddress(
           '0x65285E9dfab318f57051ab2b139ccCf232945451',
-        ),
-        incentivesController: getAddress(
-          '0x01D83Fe6A10D2f2B7AF17034343746188272cAc9',
         ),
       },
     ],
@@ -83,26 +73,17 @@ export const protocolContractAddresses: Partial<
         protocolDataProvider: getAddress(
           '0x41393e5e337606dc3821075Af65AeE84D7688CBD',
         ),
-        incentivesController: getAddress(
-          '0x8164Cc65827dcFe994AB23944CBC90e0aa80bFcb',
-        ),
       },
       {
         marketLabel: 'Lido Market',
         protocolDataProvider: getAddress(
           '0x08795CFE08C7a81dCDFf482BbAAF474B240f31cD',
         ),
-        incentivesController: getAddress(
-          '0x8164Cc65827dcFe994AB23944CBC90e0aa80bFcb',
-        ),
       },
       {
         marketLabel: 'EtherFi Market',
         protocolDataProvider: getAddress(
           '0xE7d490885A68f00d9886508DF281D67263ed5758',
-        ),
-        incentivesController: getAddress(
-          '0x8164Cc65827dcFe994AB23944CBC90e0aa80bFcb',
         ),
       },
     ],
@@ -111,18 +92,12 @@ export const protocolContractAddresses: Partial<
         protocolDataProvider: getAddress(
           '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
         ),
-        incentivesController: getAddress(
-          '0x929EC64c34a17401F460460D4B9390518E5B473e',
-        ),
       },
     ],
     [Chain.Arbitrum]: [
       {
         protocolDataProvider: getAddress(
           '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
-        ),
-        incentivesController: getAddress(
-          '0x929EC64c34a17401F460460D4B9390518E5B473e',
         ),
       },
     ],
@@ -131,18 +106,12 @@ export const protocolContractAddresses: Partial<
         protocolDataProvider: getAddress(
           '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
         ),
-        incentivesController: getAddress(
-          '0x929EC64c34a17401F460460D4B9390518E5B473e',
-        ),
       },
     ],
     [Chain.Fantom]: [
       {
         protocolDataProvider: getAddress(
           '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
-        ),
-        incentivesController: getAddress(
-          '0x929EC64c34a17401F460460D4B9390518E5B473e',
         ),
       },
     ],
@@ -151,9 +120,6 @@ export const protocolContractAddresses: Partial<
         protocolDataProvider: getAddress(
           '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
         ),
-        incentivesController: getAddress(
-          '0x929EC64c34a17401F460460D4B9390518E5B473e',
-        ),
       },
     ],
     [Chain.Base]: [
@@ -161,18 +127,12 @@ export const protocolContractAddresses: Partial<
         protocolDataProvider: getAddress(
           '0x2d8A3C5677189723C4cB8873CfC9C8976FDF38Ac',
         ),
-        incentivesController: getAddress(
-          '0xf9cc4F0D883F1a1eb2c253bdb46c254Ca51E1F44',
-        ),
       },
     ],
     [Chain.Bsc]: [
       {
         protocolDataProvider: getAddress(
           '0x23dF2a19384231aFD114b036C14b6b03324D79BC',
-        ),
-        incentivesController: getAddress(
-          '0xC206C2764A9dBF27d599613b8F9A63ACd1160ab4',
         ),
       },
     ],
@@ -297,7 +257,7 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
 
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const dataProviderEntry =
-      protocolContractAddresses[this.protocolId]![this.chainId]!
+      protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!
 
     const factories = Array.isArray(dataProviderEntry)
       ? dataProviderEntry

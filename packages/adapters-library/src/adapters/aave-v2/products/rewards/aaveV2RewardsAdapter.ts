@@ -26,7 +26,7 @@ import {
 } from '../../../../types/adapter'
 import { AAVE_ICON_URL } from '../../../aave-v3/products/rewards/aaveV3RewardsAdapter'
 import { Protocol } from '../../../protocols'
-import { protocolContractAddresses } from '../../common/aaveBasePoolAdapter'
+import { protocolDataProviderContractAddresses } from '../../common/aaveBasePoolAdapter'
 import {
   ProtocolDataProvider__factory,
   StakedTokenIncentivesController__factory,
@@ -80,19 +80,29 @@ export class AaveV2RewardsAdapter implements IProtocolAdapter {
 
   @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
-    const {
-      protocolDataProvider: protocolDataProviderAddress,
-      incentivesController: incentivesControllerAddress,
-    } = protocolContractAddresses[this.protocolId]![this.chainId]![0]!
+    const stakedTokensIncentiveControllerAddresses: Partial<
+      Record<Chain, string>
+    > = {
+      [Chain.Ethereum]: getAddress(
+        '0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5',
+      ),
+      [Chain.Polygon]: getAddress('0x357D51124f59836DeD84c8a1730D72B749d8BC23'),
+      [Chain.Avalanche]: getAddress(
+        '0x01D83Fe6A10D2f2B7AF17034343746188272cAc9',
+      ),
+    }
+    const stakedTokensIncentiveControllerAddress =
+      stakedTokensIncentiveControllerAddresses[this.chainId]!
 
     const stakedTokensIncentiveController =
       StakedTokenIncentivesController__factory.connect(
-        incentivesControllerAddress,
+        stakedTokensIncentiveControllerAddress,
         this.provider,
       )
 
     const protocolDataProvider = ProtocolDataProvider__factory.connect(
-      protocolDataProviderAddress,
+      protocolDataProviderContractAddresses[this.protocolId]![this.chainId]![0]!
+        .protocolDataProvider,
       this.provider,
     )
 
@@ -130,7 +140,7 @@ export class AaveV2RewardsAdapter implements IProtocolAdapter {
 
     return [
       {
-        address: incentivesControllerAddress,
+        address: stakedTokensIncentiveControllerAddress,
         name: 'Aave v2 Rewards',
         symbol: 'Rewards',
         decimals: rewardToken.decimals,
