@@ -12,7 +12,6 @@ import { filterMapAsync } from '../../../../core/utils/filters'
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
-  Erc20ExtendedMetadata,
   IProtocolAdapter,
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
@@ -27,7 +26,6 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  Underlying,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
