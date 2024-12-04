@@ -8,6 +8,7 @@ import {
   NotImplementedError,
 } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../../core/utils/filters'
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
@@ -37,7 +38,6 @@ import {
   IncentivesContract__factory,
 } from '../../contracts'
 import { RewardsClaimedEvent } from '../../contracts/IncentivesContract'
-import { filterMapAsync } from '../../../../core/utils/filters'
 
 export const AAVE_ICON_URL = 'https://cryptologos.cc/logos/aave-aave-logo.png'
 
