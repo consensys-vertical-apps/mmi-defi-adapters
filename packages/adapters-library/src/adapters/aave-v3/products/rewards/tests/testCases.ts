@@ -1,7 +1,6 @@
 import { Chain } from '../../../../../core/constants/chains'
 import { TimePeriod } from '../../../../../core/constants/timePeriod'
 import type { TestCase } from '../../../../../types/testCase'
-import { WriteActions } from '../../../../../types/writeActions'
 
 export const testCases: TestCase[] = [
   {
@@ -15,6 +14,17 @@ export const testCases: TestCase[] = [
     },
 
     blockNumber: 264107941,
+  },
+  {
+    key: 'lido-market',
+    chainId: Chain.Ethereum,
+    method: 'positions',
+
+    input: {
+      userAddress: '0xb83F1688C0b7ebb155a830ae78F71527Ef55e759',
+    },
+
+    blockNumber: 21330297,
   },
   {
     chainId: Chain.Arbitrum,

@@ -131,7 +131,7 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
 
   /**
    * Checks if the user has ever opened a position in AaveV3
-   * Return AToken addresses if found
+   * Return IncentiveController addresses if found
    */
   private async openPositions(userAddress: string): Promise<string[]> {
     const topic0 = this.detectPositionEventSignature()
