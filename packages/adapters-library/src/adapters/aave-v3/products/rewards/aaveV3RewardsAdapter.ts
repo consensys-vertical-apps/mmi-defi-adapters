@@ -33,10 +33,13 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import {
-  IncentivesContract,
+  ATokenInstance__factory,
   IncentivesContract__factory,
+  PoolContract__factory,
 } from '../../contracts'
 import { RewardsClaimedEvent } from '../../contracts/IncentivesContract'
+import { protocolContractAddresses } from '../../../aave-v2/common/aaveBasePoolAdapter'
+import { filterMapAsync } from '../../../../core/utils/filters'
 
 export const AAVE_ICON_URL = 'https://cryptologos.cc/logos/aave-aave-logo.png'
 
@@ -46,25 +49,10 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
   chainId: Chain
   helpers: Helpers
 
-  private incentivesContract: IncentivesContract
-
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
   }
-
-  private INCENTIVES_CONTRACT_ADDRESSES = {
-    [Chain.Arbitrum]: getAddress('0x929EC64c34a17401F460460D4B9390518E5B473e'),
-    [Chain.Ethereum]: getAddress('0x8164Cc65827dcFe994AB23944CBC90e0aa80bFcb'),
-    [Chain.Fantom]: getAddress('0x929EC64c34a17401F460460D4B9390518E5B473e'),
-    [Chain.Avalanche]: getAddress('0x929EC64c34a17401F460460D4B9390518E5B473e'),
-    [Chain.Bsc]: getAddress('0xC206C2764A9dBF27d599613b8F9A63ACd1160ab4'),
-    [Chain.Base]: getAddress('0xf9cc4F0D883F1a1eb2c253bdb46c254Ca51E1F44'),
-    [Chain.Polygon]: getAddress('0x929EC64c34a17401F460460D4B9390518E5B473e'),
-    [Chain.Optimism]: getAddress('0x929EC64c34a17401F460460D4B9390518E5B473e'),
-  }
-
-  private INCENTIVES_CONTRACT_DETAILS: Erc20Metadata
 
   private provider: CustomJsonRpcProvider
 
@@ -86,21 +74,6 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     if (this.chainId === Chain.Linea) {
       throw new NotImplementedError()
     }
-
-    this.incentivesContract = IncentivesContract__factory.connect(
-      this.INCENTIVES_CONTRACT_ADDRESSES[this.chainId],
-      this.provider,
-    )
-
-    /**
-     * Fake protocol token created to satisfy return type
-     */
-    this.INCENTIVES_CONTRACT_DETAILS = {
-      address: this.INCENTIVES_CONTRACT_ADDRESSES[this.chainId],
-      name: 'Aave V3 Rewards',
-      symbol: 'Rewards',
-      decimals: 18,
-    }
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -116,45 +89,38 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     }
   }
 
-  /**
-   *
-   * AToken addresses required to query reward balances
-   */
-  async getAaveTokenAddresses(): Promise<string[]> {
-    const [aTokens, stableDebtTokens, variableDebtTokens] = await Promise.all([
-      this.helpers.metadataProvider.getMetadata({
-        protocolId: Protocol.AaveV3,
-        productId: 'a-token',
-      }),
-      this.helpers.metadataProvider.getMetadata({
-        protocolId: Protocol.AaveV3,
-        productId: 'stable-debt-token',
-      }),
-      this.helpers.metadataProvider.getMetadata({
-        protocolId: Protocol.AaveV3,
-        productId: 'variable-debt-token',
-      }),
-    ])
-    return [
-      ...aTokens.map((token) => token.address),
-      ...stableDebtTokens.map((token) => token.address),
-      ...variableDebtTokens.map((token) => token.address),
-    ]
-  }
-
   @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
-    const rewardTokenAddresses = await this.incentivesContract.getRewardsList()
+    return await Promise.all(
+      protocolContractAddresses[this.protocolId]![this.chainId]!.map(
+        async ({
+          incentivesController: incentivesControllerAddress,
+          marketLabel,
+        }) => {
+          const incentivesController = IncentivesContract__factory.connect(
+            incentivesControllerAddress,
+            this.provider,
+          )
 
-    const rewardTokens = await Promise.all(
-      rewardTokenAddresses.map((rewardToken) => {
-        return this.helpers.getTokenMetadata(rewardToken)
-      }),
+          const rewardTokenAddresses =
+            await incentivesController.getRewardsList()
+
+          const rewardTokens = await Promise.all(
+            rewardTokenAddresses.map((rewardToken) => {
+              return this.helpers.getTokenMetadata(rewardToken)
+            }),
+          )
+
+          return {
+            address: incentivesControllerAddress,
+            name: `Aave V3 Rewards${marketLabel ? ` (${marketLabel})` : ''}`,
+            symbol: 'Rewards',
+            decimals: 18,
+            underlyingTokens: rewardTokens,
+          }
+        },
+      ),
     )
-
-    return [
-      { ...this.INCENTIVES_CONTRACT_DETAILS, underlyingTokens: rewardTokens },
-    ]
   }
 
   private detectPositionEventSignature(
@@ -178,96 +144,101 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
       toBlock: 'latest',
     })
 
-    const aTokenAddresses = await this.getAaveTokenAddresses()
+    const aTokenAddresses = (
+      await this.helpers.metadataProvider.getMetadata({
+        protocolId: Protocol.AaveV3,
+        productId: 'a-token',
+      })
+    ).map((token) => token.address)
 
     const filteredLogs = logs
       .filter((log) => aTokenAddresses.includes(log.address))
       .map((log) => log.address)
 
-    return [...new Set(filteredLogs)]
+    const incentivesControllerAddresses = await Promise.all(
+      filteredLogs.map(async (address) => {
+        const aToken = ATokenInstance__factory.connect(address, this.provider)
+        return getAddress(await aToken.getIncentivesController())
+      }),
+    )
+
+    return [...new Set(incentivesControllerAddresses)]
   }
 
-  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    // Fetch reward contract details
+  async getPositions({
+    userAddress,
+    blockNumber,
+    protocolTokenAddresses,
+  }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const protocolTokens = await this.getProtocolTokens()
-    const protocolToken = protocolTokens[0]
 
-    const { userAddress, blockNumber, protocolTokenAddresses } = input
-
-    // If no protocolToken is found throw an error
-    if (!protocolToken) {
-      throw new Error('No protocol token found')
-    }
-
-    // If protocolTokenAddresses are provided, check if this protocolToken is in the list
     if (
       protocolTokenAddresses &&
       protocolTokenAddresses.length > 0 &&
-      !protocolTokenAddresses.includes(protocolToken.address)
+      !protocolTokenAddresses.some((protocolTokenAddress) =>
+        protocolTokens.some(
+          (protocolToken) => protocolToken.address === protocolTokenAddress,
+        ),
+      )
     ) {
       return []
     }
 
     // Check if user has ever opened a position in AaveV3
-    const addressFilter = await this.openPositions(userAddress)
+    // Return the incentive controller addresses for those positions
+    const incentiveControllerAddresses = await this.openPositions(userAddress)
 
-    // Return empty array if user has never opened a AaveV3 position
-    if (!addressFilter?.length) {
+    if (!incentiveControllerAddresses?.length) {
       return []
     }
 
-    // Fetch and filter underlying tokens with non-zero rewards in parallel
-    const underlyingTokens = await this.getClaimableUnderlyingTokens(
-      userAddress,
-      protocolToken.underlyingTokens,
-      blockNumber,
-    )
+    return await filterMapAsync(
+      incentiveControllerAddresses,
+      async (incentiveControllerAddress) => {
+        const { underlyingTokens, ...protocolToken } = protocolTokens.find(
+          (protocolToken) =>
+            protocolToken.address === incentiveControllerAddress,
+        )!
 
-    // If no claimable underlying tokens are found, return empty
-    if (underlyingTokens.length === 0) {
-      return []
-    }
+        const incentivesContract = IncentivesContract__factory.connect(
+          protocolToken.address,
+          this.provider,
+        )
 
-    // Return the final ProtocolPosition object
-    return [
-      {
-        type: TokenType.Protocol,
-        balanceRaw: 1n, // choose 1 here as a zero value may cause the position to be ignored on UIs our adapters currently expecting a protocol token but on contract positions there is no token
-        ...this.INCENTIVES_CONTRACT_DETAILS,
-        tokens: underlyingTokens,
+        const underlyingTokensWithRewards = await filterMapAsync(
+          underlyingTokens,
+          async (underlyingToken) => {
+            const rewardBalance =
+              await incentivesContract.getUserAccruedRewards(
+                userAddress,
+                underlyingToken.address,
+                { blockTag: blockNumber },
+              )
+
+            if (!rewardBalance) {
+              return undefined
+            }
+
+            return {
+              ...underlyingToken,
+              type: TokenType.UnderlyingClaimable,
+              balanceRaw: rewardBalance,
+            }
+          },
+        )
+
+        if (underlyingTokensWithRewards.length === 0) {
+          return undefined
+        }
+
+        return {
+          ...protocolToken,
+          type: TokenType.Protocol,
+          balanceRaw: 1n, // choose 1 here as a zero value may cause the position to be ignored on UIs our adapters currently expecting a protocol token but on contract positions there is no token
+          tokens: underlyingTokensWithRewards,
+        }
       },
-    ]
-  }
-
-  /**
-   *
-   * Fetches claimable underlying tokens for a user
-   */
-  private async getClaimableUnderlyingTokens(
-    userAddress: string,
-    underlyingTokens: Erc20ExtendedMetadata[],
-    blockNumber?: number,
-  ): Promise<Underlying[]> {
-    const tokenRewards = await Promise.all(
-      underlyingTokens.map(async (underlying) => {
-        const rewardBalance =
-          await this.incentivesContract.getUserAccruedRewards(
-            userAddress,
-            underlying.address,
-            { blockTag: blockNumber },
-          )
-        return { rewardBalance, underlying }
-      }),
     )
-
-    // Filter out tokens with zero rewards
-    return tokenRewards
-      .filter(({ rewardBalance }) => rewardBalance > 0n)
-      .map(({ rewardBalance, underlying }) => ({
-        ...underlying,
-        type: TokenType.UnderlyingClaimable,
-        balanceRaw: rewardBalance,
-      }))
   }
 
   /**
@@ -278,22 +249,31 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolTokens = (await this.getProtocolTokens())[0]
+    const protocolTokens = await this.getProtocolTokens()
 
     if (!protocolTokens) {
       throw new Error('No protocol tokens found')
     }
 
-    return this.getClaimedRewards({
-      rewardTokens: protocolTokens.underlyingTokens,
-      filter: { fromBlock, toBlock, userAddress },
-    })
+    return (
+      await Promise.all(
+        protocolTokens.map(async (incentivesPool) => {
+          return await this.getClaimedRewards({
+            incentivesPool,
+            rewardTokens: incentivesPool.underlyingTokens,
+            filter: { fromBlock, toBlock, userAddress },
+          })
+        }),
+      )
+    ).flat()
   }
 
-  async getClaimedRewards({
+  private async getClaimedRewards({
+    incentivesPool,
     rewardTokens,
     filter: { fromBlock, toBlock, userAddress },
   }: {
+    incentivesPool: ProtocolToken
     rewardTokens: Erc20Metadata[]
     filter: {
       fromBlock: number
@@ -303,8 +283,9 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
       to?: string
     }
   }): Promise<MovementsByBlock[]> {
+    const { underlyingTokens, ...protocolToken } = incentivesPool
     const protocolTokenContract = IncentivesContract__factory.connect(
-      this.INCENTIVES_CONTRACT_DETAILS.address,
+      protocolToken.address,
       this.provider,
     )
 
@@ -349,9 +330,7 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
 
         return {
           transactionHash,
-          protocolToken: {
-            ...this.INCENTIVES_CONTRACT_DETAILS,
-          },
+          protocolToken,
           tokens: [
             {
               address: rewardToken.address,
