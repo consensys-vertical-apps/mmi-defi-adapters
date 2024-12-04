@@ -31,12 +31,6 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 
-/**
- * Update me.
- * Add additional metadata or delete type
- */
-type AdditionalMetadata = {}
-
 export class QuickswapV2DQuickAdapter implements IProtocolAdapter {
   productId = 'd-quick'
   protocolId: Protocol
@@ -84,10 +78,14 @@ export class QuickswapV2DQuickAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
-    const protocolToken = await this.helpers.getTokenMetadata('0x958d208Cdf087843e9AD98d23823d32E17d723A1')
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
+    const protocolToken = await this.helpers.getTokenMetadata(
+      '0x958d208Cdf087843e9AD98d23823d32E17d723A1',
+    )
 
-    const underlyingToken = await this.helpers.getTokenMetadata('0xB5C064F955D8e7F38fE0460C556a72987494eE17')
+    const underlyingToken = await this.helpers.getTokenMetadata(
+      '0xB5C064F955D8e7F38fE0460C556a72987494eE17',
+    )
 
     return [
       {
