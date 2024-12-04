@@ -3,6 +3,7 @@ import { AdaptersController } from '../../../core/adaptersController'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../core/constants/chains'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../core/utils/filters'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../scripts/helpers'
 import {
@@ -28,7 +29,6 @@ import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
 } from '../contracts'
-import { filterMapAsync } from '../../../core/utils/filters'
 
 export const protocolContractAddresses: Partial<
   Record<

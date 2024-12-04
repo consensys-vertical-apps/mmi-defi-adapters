@@ -8,6 +8,7 @@ import {
   NotImplementedError,
 } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../../core/utils/filters'
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
@@ -31,6 +32,7 @@ import {
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { protocolContractAddresses } from '../../../aave-v2/common/aaveBasePoolAdapter'
 import { Protocol } from '../../../protocols'
 import {
   ATokenInstance__factory,
@@ -38,8 +40,6 @@ import {
   PoolContract__factory,
 } from '../../contracts'
 import { RewardsClaimedEvent } from '../../contracts/IncentivesContract'
-import { protocolContractAddresses } from '../../../aave-v2/common/aaveBasePoolAdapter'
-import { filterMapAsync } from '../../../../core/utils/filters'
 
 export const AAVE_ICON_URL = 'https://cryptologos.cc/logos/aave-aave-logo.png'
 
