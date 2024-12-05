@@ -1,0 +1,146 @@
+{
+  "blockNumber": 21330297,
+  "latency": "Latency: 1.428 seconds",
+  "aggregatedValues": ["USD241.56"],
+  "snapshot": [
+    {
+      "protocolId": "aave-v3",
+      "name": "AaveV3",
+      "description": "AaveV3 defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://cryptologos.cc/logos/aave-aave-logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "rewards",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "type": "protocol",
+          "balanceRaw": "1n",
+          "address": "0x8164Cc65827dcFe994AB23944CBC90e0aa80bFcb",
+          "name": "Aave V3 Rewards",
+          "symbol": "Rewards",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0xfA1fDbBD71B0aA16162D76914d69cD8CB3Ef92da",
+              "name": "Aave Ethereum Lido WETH",
+              "symbol": "aEthLidoWETH",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "63565426583012635n",
+              "tokens": [
+                {
+                  "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                  "name": "Wrapped Ether",
+                  "symbol": "WETH",
+                  "decimals": 18,
+                  "type": "underlying-claimable",
+                  "balanceRaw": "63565426583012635n",
+                  "balance": 0.06356542658301263,
+                  "price": 3800.11,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                }
+              ],
+              "balance": 0.06356542658301263,
+              "price": 3800.11,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xfA1fDbBD71B0aA16162D76914d69cD8CB3Ef92da/logo.png"
+            }
+          ],
+          "balance": 1e-18
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "722d93233a3a8540be9aab386f5dcb9c": {
+      "result": [
+        {
+          "address": "0xfa1fdbbd71b0aa16162d76914d69cd8cb3ef92da",
+          "blockHash": "0x44c72601129623d0313890319574a2de831f1416f7b35b1f634f5beb1d930b24",
+          "blockNumber": "0x140741e",
+          "data": "0x0000000000000000000000000000000000000000000000000003afa3fe1bed2c",
+          "logIndex": "0x18f",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x000000000000000000000000b83f1688c0b7ebb155a830ae78f71527ef55e759"
+          ],
+          "transactionHash": "0xf6aa2474714ed7ffe649e32a58fc695d44e6d339f92a18ed4eeb7a2752236afa",
+          "transactionIndex": "0x59"
+        },
+        {
+          "address": "0xfa1fdbbd71b0aa16162d76914d69cd8cb3ef92da",
+          "blockHash": "0xbe5c31be384dcd6105e678a3c6f2eb12d7e3634069d801ec39d43d4a1e3d162f",
+          "blockNumber": "0x1408fe9",
+          "data": "0x0000000000000000000000000000000000000000000000070c23778c146a7389",
+          "logIndex": "0x1a7",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x000000000000000000000000b83f1688c0b7ebb155a830ae78f71527ef55e759"
+          ],
+          "transactionHash": "0x85a372f5e6fef92a70b497deff9d5c2abb59c80cf5fb02431dce35e952637b0a",
+          "transactionIndex": "0xa2"
+        },
+        {
+          "address": "0xfa1fdbbd71b0aa16162d76914d69cd8cb3ef92da",
+          "blockHash": "0x2c207e0c4899c54697ecff37d075ffc13f482e898d61002bf8c95d8288996b0b",
+          "blockNumber": "0x141a9bc",
+          "data": "0x000000000000000000000000000000000000000000000000013898b4c41d2f27",
+          "logIndex": "0x5b",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x000000000000000000000000b83f1688c0b7ebb155a830ae78f71527ef55e759"
+          ],
+          "transactionHash": "0xc36dc3a31caf4947aa4fed76e58e4455914c165b2bab5a866de0f3feb1161206",
+          "transactionIndex": "0x12"
+        },
+        {
+          "address": "0xfa1fdbbd71b0aa16162d76914d69cd8cb3ef92da",
+          "blockHash": "0x69144a80479073a074fba45de763695609a624cdc2477b1a67c83540e91e196c",
+          "blockNumber": "0x141bfbc",
+          "data": "0x000000000000000000000000000000000000000000000000000f53509a16cfc7",
+          "logIndex": "0x30",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x000000000000000000000000b83f1688c0b7ebb155a830ae78f71527ef55e759"
+          ],
+          "transactionHash": "0x1ffbad7e5bb9708850bd73266f869fd5a1939c1400659b0131fcfbe1f5e0a5cc",
+          "transactionIndex": "0xe"
+        },
+        {
+          "address": "0xfa1fdbbd71b0aa16162d76914d69cd8cb3ef92da",
+          "blockHash": "0x28cce89a182748a46a8abfdf7783b8dfd4a32228fa9750ad2d2a2fee09b14b41",
+          "blockNumber": "0x143dffa",
+          "data": "0x0000000000000000000000000000000000000000000000000193127a3ac823ba",
+          "logIndex": "0x243",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x000000000000000000000000b83f1688c0b7ebb155a830ae78f71527ef55e759"
+          ],
+          "transactionHash": "0x441b624cd6404ce43b8342b2d21ca959cfc074600ed13b981733e490ffd0adad",
+          "transactionIndex": "0x145"
+        }
+      ]
+    },
+    "69057aaddf713aa03377f33446bbf2a4": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000500000000000000000000000030d20208d987713f46dfd34ef128bb16c404d10f000000000000000000000000fa1fdbbd71b0aa16162d76914d69cd8cb3ef92da0000000000000000000000007f39c581f595b53c5cb19bd0b3f8da6c935e2ca000000000000000000000000032a6268f9ba3642dda7892add74f1d34469a4259000000000000000000000000c035a7cf15375ce2706766804551791ad035e0c20000000000000000000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e1d46b2f7a051b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "a0ebca2cf82553427fb4b4845f4200fa": {
+      "result": "0x0000000000000000000000000000000000000000000000070000000000000cca000000000000000000000000000000000000000000000000000000587a6bb0c00000000000000000000000000000000000000000000000000000000067508006000000000000000000000000000000000000000000000000000000006750801b0000000000000000000000000000000000000000000000070000000000000cca"
+    },
+    "f1f64dce24280cbd215071f3c34f1d6a": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  }
+}

@@ -101,7 +101,8 @@ export class AaveV2RewardsAdapter implements IProtocolAdapter {
       )
 
     const protocolDataProvider = ProtocolDataProvider__factory.connect(
-      protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!,
+      protocolDataProviderContractAddresses[this.protocolId]![this.chainId]![0]!
+        .protocolDataProvider,
       this.provider,
     )
 
