@@ -20,6 +20,18 @@ export const testCases: TestCase[] = [
     blockNumber: 19818581,
   },
   {
+    key: 'lido-market',
+    chainId: Chain.Ethereum,
+    method: 'positions',
+
+    input: {
+      userAddress: '0xb83F1688C0b7ebb155a830ae78F71527Ef55e759',
+      filterProtocolTokens: ['0xfA1fDbBD71B0aA16162D76914d69cD8CB3Ef92da'],
+    },
+
+    blockNumber: 21330292,
+  },
+  {
     chainId: Chain.Ethereum,
     method: 'profits',
 

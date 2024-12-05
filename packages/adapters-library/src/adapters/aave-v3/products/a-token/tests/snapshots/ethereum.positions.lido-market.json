@@ -1,0 +1,51 @@
+{
+  "blockNumber": 21330292,
+  "latency": "Latency: 1.038 seconds",
+  "aggregatedValues": ["USD422,914.82"],
+  "snapshot": [
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 AToken",
+      "description": "Aave v3 defi adapter for yield-generating token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://cryptologos.cc/logos/aave-aave-logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "a-token",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xfA1fDbBD71B0aA16162D76914d69cD8CB3Ef92da",
+          "name": "Aave Ethereum Lido WETH",
+          "symbol": "aEthLidoWETH",
+          "decimals": 18,
+          "balanceRaw": "111290153207368083227n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "111290153207368083227n",
+              "balance": 111.29015320736808,
+              "price": 3800.11,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "balance": 111.29015320736808
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "c73cfc074e1255e7715b9bbaec5d84f5": {
+      "result": "0x00000000000000000000000000000000000000000000000608760cb39bf9671b"
+    },
+    "2e8c205a0104fe2340d426989c7c3da7": {
+      "result": "0x0000000000000000000000000000000000000000000000070000000000000cca000000000000000000000000000000000000000000000000000000587a6bb0c00000000000000000000000000000000000000000000000000000000067508006000000000000000000000000000000000000000000000000000000006750801b0000000000000000000000000000000000000000000000070000000000000cca"
+    }
+  }
+}

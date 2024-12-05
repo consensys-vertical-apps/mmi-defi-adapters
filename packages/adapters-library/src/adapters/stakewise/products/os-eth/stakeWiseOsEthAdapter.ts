@@ -59,20 +59,15 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
 
   @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
+    const [protocolToken, underlyingToken] = await Promise.all([
+      this.helpers.getTokenMetadata(PROTOCOL_TOKEN_ADDRESS),
+      this.helpers.getTokenMetadata(ZERO_ADDRESS),
+    ])
+
     return [
       {
-        name: 'StakeWise osETH',
-        symbol: 'osETH',
-        decimals: 18,
-        address: PROTOCOL_TOKEN_ADDRESS,
-        underlyingTokens: [
-          {
-            address: ZERO_ADDRESS,
-            name: 'Ethereum',
-            symbol: 'ETH',
-            decimals: 18,
-          },
-        ],
+        ...protocolToken,
+        underlyingTokens: [underlyingToken],
       },
     ]
   }
