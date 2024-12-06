@@ -44,7 +44,6 @@ export const Protocol = {
   UniswapV2: 'uniswap-v2',
   UniswapV3: 'uniswap-v3',
   Xfai: 'xfai',
-  Zerolend: 'zerolend',
   ZeroLend: 'zerolend',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
