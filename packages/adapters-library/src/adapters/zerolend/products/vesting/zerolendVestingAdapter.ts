@@ -102,7 +102,7 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
     ]
   }
 
-  async getRewardBalance({
+  private async getRewardBalance({
     userAddress,
     blockNumber,
   }: GetPositionsInput): Promise<bigint> {
@@ -113,7 +113,7 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
     return veTokenContract.earned(userAddress, { blockTag: blockNumber })
   }
 
-  async getLockedDetails({
+  private async getLockedDetails({
     userAddress,
     blockNumber,
   }: GetPositionsInput): Promise<{ amount: bigint; end: bigint }[]> {
@@ -133,7 +133,9 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
     }))
   }
 
-  async getRewardPosition(input: GetPositionsInput): Promise<Underlying> {
+  private async getRewardPosition(
+    input: GetPositionsInput,
+  ): Promise<Underlying> {
     const balance = await this.getRewardBalance(input)
 
     const {
@@ -179,7 +181,7 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
   ) {
     const unwrappedToken = await this.unwrappedBalance({
       protocolTokenBalance: amount,
-      protocolTokenAddress: this.addresses.veToken,
+      protocolTokenAddress: protocolToken.address,
       blockNumber: input.blockNumber,
     })
 
