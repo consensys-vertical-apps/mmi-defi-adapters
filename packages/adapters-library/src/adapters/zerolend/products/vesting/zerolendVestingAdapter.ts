@@ -27,8 +27,8 @@ import {
 import { Protocol } from '../../../protocols'
 
 import { getAddress } from 'ethers'
-import { Vesting__factory } from '../../contracts'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { Vesting__factory } from '../../contracts'
 
 type AdditionalMetadata = {
   rewardTokens: Erc20Metadata[]
