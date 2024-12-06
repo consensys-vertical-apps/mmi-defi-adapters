@@ -146,10 +146,13 @@ import { CompoundV3BorrowAdapter } from './compound-v3/products/borrow/compoundV
 
 import { DineroPxEthAdapter } from './dinero/products/px-eth/dineroPxEthAdapter'
 
+import { BalancerV2FarmingAdapter } from './balancer-v2/products/farming/balancerV2FarmingAdapter'
 import { BalancerV2PoolAdapter } from './balancer-v2/products/pool/balancerV2PoolAdapter'
 import { DineroApxEthAdapter } from './dinero/products/apx-eth/dineroApxEthAdapter'
 
-import { BalancerV2FarmingAdapter } from './balancer-v2/products/farming/balancerV2FarmingAdapter'
+import { ConvexStakedCvxAdapter } from './convex/products/staked-cvx/convexStakedCvxAdapter'
+
+import { ConvexLockedCvxAdapter } from './convex/products/locked-cvx/convexLockedCvxAdapter'
 
 import { MendiFinanceStakingAdapter } from './mendi-finance/products/staking/mendiFinanceStakingAdapter'
 
@@ -336,8 +339,10 @@ export const supportedProtocols: Record<
   [Protocol.Convex]: {
     [Chain.Ethereum]: [
       ConvexPoolAdapter,
+      ConvexStakedCvxAdapter,
       ConvexStakingAdapter,
       ConvexCvxcrvWrapperAdapter,
+      ConvexLockedCvxAdapter,
     ],
 
     [Chain.Polygon]: [ConvexSidechainStakingAdapter],
