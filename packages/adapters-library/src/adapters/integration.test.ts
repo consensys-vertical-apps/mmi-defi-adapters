@@ -69,6 +69,7 @@ import { testCases as lynexAlgebraTestCases } from './lynex/products/algebra/tes
 import { testCases as lynexClassicTestCases } from './lynex/products/classic/tests/testCases'
 import { testCases as makerSDaiTestCases } from './maker/products/s-dai/tests/testCases'
 import { testCases as mendiFinanceBorrowMarketTestCases } from './mendi-finance/products/borrow-market/tests/testCases'
+import { testCases as mendiFinanceStakingTestCases } from './mendi-finance/products/staking/tests/testCases'
 import { testCases as mendiFinanceSupplyMarketTestCases } from './mendi-finance/products/supply-market/tests/testCases'
 import { testCases as morphoAaveV2OptimizerBorrowTestCases } from './morpho-aave-v2/products/optimizer-borrow/tests/testCases'
 import { testCases as morphoAaveV2OptimizerSupplyTestCases } from './morpho-aave-v2/products/optimizer-supply/tests/testCases'
@@ -87,7 +88,9 @@ import { testCases as pendlePrincipleTokenTestCases } from './pendle/products/pr
 import { testCases as pendleStandardisedYieldTokenTestCases } from './pendle/products/standardised-yield-token/tests/testCases'
 import { testCases as pendleYieldTokenTestCases } from './pendle/products/yield-token/tests/testCases'
 import { Protocol } from './protocols'
+import { testCases as quickswapV2DQuickTestCases } from './quickswap-v2/products/d-quick/tests/testCases'
 import { testCases as quickswapV2PoolTestCases } from './quickswap-v2/products/pool/tests/testCases'
+import { testCases as quickswapV3PoolTestCases } from './quickswap-v3/products/pool/tests/testCases'
 import { testCases as renzoEzEthTestCases } from './renzo/products/ez-eth/tests/testCases'
 import { testCases as rocketPoolRethTestCases } from './rocket-pool/products/reth/tests/testCases'
 import { testCases as solvSolvBtcTestCases } from './solv/products/solv-btc/tests/testCases'
@@ -116,6 +119,7 @@ import { testCases as xfaiDexTestCases } from './xfai/products/dex/tests/testCas
 import { testCases as zeroLendATokenTestCases } from './zerolend/products/a-token/tests/testCases'
 import { testCases as zeroLendStableDebtTokenTestCases } from './zerolend/products/stable-debt-token/tests/testCases'
 import { testCases as zeroLendVariableDebtTokenTestCases } from './zerolend/products/variable-debt-token/tests/testCases'
+import { testCases as zerolendVestingTestCases } from './zerolend/products/vesting/tests/testCases'
 
 const TEST_TIMEOUT = 300000
 
@@ -266,6 +270,7 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
 
   [Protocol.MendiFinance]: {
     ['borrow-market']: mendiFinanceBorrowMarketTestCases,
+    ['staking']: mendiFinanceStakingTestCases,
     ['supply-market']: mendiFinanceSupplyMarketTestCases,
   },
 
@@ -307,7 +312,12 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
   },
 
   [Protocol.QuickswapV2]: {
+    ['d-quick']: quickswapV2DQuickTestCases,
     ['pool']: quickswapV2PoolTestCases,
+  },
+
+  [Protocol.QuickswapV3]: {
+    ['pool']: quickswapV3PoolTestCases,
   },
 
   [Protocol.Renzo]: {
@@ -371,6 +381,7 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
   },
 
   [Protocol.ZeroLend]: {
+    ['vesting']: zerolendVestingTestCases,
     ['a-token']: zeroLendATokenTestCases,
     ['stable-debt-token']: zeroLendStableDebtTokenTestCases,
     ['variable-debt-token']: zeroLendVariableDebtTokenTestCases,

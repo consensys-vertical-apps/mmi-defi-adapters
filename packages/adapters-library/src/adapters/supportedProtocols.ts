@@ -154,6 +154,14 @@ import { ConvexStakedCvxAdapter } from './convex/products/staked-cvx/convexStake
 
 import { ConvexLockedCvxAdapter } from './convex/products/locked-cvx/convexLockedCvxAdapter'
 
+import { MendiFinanceStakingAdapter } from './mendi-finance/products/staking/mendiFinanceStakingAdapter'
+
+import { QuickswapV2DQuickAdapter } from './quickswap-v2/products/d-quick/quickswapV2DQuickAdapter'
+
+import { QuickswapV3PoolAdapter } from './quickswap-v3/products/pool/quickswapV3PoolAdapter'
+
+import { ZerolendVestingAdapter } from './zerolend/products/vesting/zerolendVestingAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -427,6 +435,7 @@ export const supportedProtocols: Record<
     [Chain.Linea]: [
       MendiFinanceSupplyMarketAdapter,
       MendiFinanceBorrowMarketAdapter,
+      MendiFinanceStakingAdapter,
     ],
   },
 
@@ -520,7 +529,11 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.QuickswapV2]: {
-    [Chain.Polygon]: [QuickswapV2PoolAdapter],
+    [Chain.Polygon]: [QuickswapV2PoolAdapter, QuickswapV2DQuickAdapter],
+  },
+
+  [Protocol.QuickswapV3]: {
+    [Chain.Polygon]: [QuickswapV3PoolAdapter],
   },
 
   [Protocol.Renzo]: {
@@ -660,6 +673,7 @@ export const supportedProtocols: Record<
       ZeroLendVariableDebtTokenPoolAdapter,
     ],
     [Chain.Linea]: [
+      ZerolendVestingAdapter,
       ZeroLendATokenPoolAdapter,
       ZeroLendStableDebtTokenPoolAdapter,
       ZeroLendVariableDebtTokenPoolAdapter,

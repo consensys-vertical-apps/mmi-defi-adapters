@@ -3,7 +3,7 @@ import { AdaptersController } from '../../../core/adaptersController'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../core/constants/chains'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
-import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
+import { filterMapAsync } from '../../../core/utils/filters'
 import { Helpers } from '../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -30,21 +30,111 @@ import {
 } from '../contracts'
 
 export const protocolDataProviderContractAddresses: Partial<
-  Record<Protocol, Partial<Record<Chain, string>>>
+  Record<
+    Protocol,
+    Partial<
+      Record<
+        Chain,
+        {
+          marketLabel?: string
+          protocolDataProvider: string
+        }[]
+      >
+    >
+  >
 > = {
   [Protocol.AaveV2]: {
-    [Chain.Ethereum]: getAddress('0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d'),
-    [Chain.Polygon]: getAddress('0x7551b5D2763519d4e37e8B81929D336De671d46d'),
-    [Chain.Avalanche]: getAddress('0x65285E9dfab318f57051ab2b139ccCf232945451'),
+    [Chain.Ethereum]: [
+      {
+        protocolDataProvider: getAddress(
+          '0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d',
+        ),
+      },
+    ],
+    [Chain.Polygon]: [
+      {
+        protocolDataProvider: getAddress(
+          '0x7551b5D2763519d4e37e8B81929D336De671d46d',
+        ),
+      },
+    ],
+    [Chain.Avalanche]: [
+      {
+        protocolDataProvider: getAddress(
+          '0x65285E9dfab318f57051ab2b139ccCf232945451',
+        ),
+      },
+    ],
   },
   [Protocol.AaveV3]: {
-    [Chain.Ethereum]: getAddress('0x7B4EB56E7CD4b454BA8ff71E4518426369a138a3'),
-    [Chain.Optimism]: getAddress('0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654'),
-    [Chain.Arbitrum]: getAddress('0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654'),
-    [Chain.Polygon]: getAddress('0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654'),
-    [Chain.Fantom]: getAddress('0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654'),
-    [Chain.Avalanche]: getAddress('0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654'),
-    [Chain.Base]: getAddress('0x2d8A3C5677189723C4cB8873CfC9C8976FDF38Ac'),
+    [Chain.Ethereum]: [
+      {
+        protocolDataProvider: getAddress(
+          '0x41393e5e337606dc3821075Af65AeE84D7688CBD',
+        ),
+      },
+      {
+        marketLabel: 'Lido Market',
+        protocolDataProvider: getAddress(
+          '0x08795CFE08C7a81dCDFf482BbAAF474B240f31cD',
+        ),
+      },
+      {
+        marketLabel: 'EtherFi Market',
+        protocolDataProvider: getAddress(
+          '0xE7d490885A68f00d9886508DF281D67263ed5758',
+        ),
+      },
+    ],
+    [Chain.Optimism]: [
+      {
+        protocolDataProvider: getAddress(
+          '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
+        ),
+      },
+    ],
+    [Chain.Arbitrum]: [
+      {
+        protocolDataProvider: getAddress(
+          '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
+        ),
+      },
+    ],
+    [Chain.Polygon]: [
+      {
+        protocolDataProvider: getAddress(
+          '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
+        ),
+      },
+    ],
+    [Chain.Fantom]: [
+      {
+        protocolDataProvider: getAddress(
+          '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
+        ),
+      },
+    ],
+    [Chain.Avalanche]: [
+      {
+        protocolDataProvider: getAddress(
+          '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
+        ),
+      },
+    ],
+    [Chain.Base]: [
+      {
+        protocolDataProvider: getAddress(
+          '0x2d8A3C5677189723C4cB8873CfC9C8976FDF38Ac',
+        ),
+      },
+    ],
+    [Chain.Bsc]: [
+      {
+        protocolDataProvider: getAddress(
+          '0x23dF2a19384231aFD114b036C14b6b03324D79BC',
+        ),
+      },
+    ],
   },
 }
 
@@ -165,45 +255,56 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
   }
 
   async getProtocolTokens(): Promise<ProtocolToken[]> {
-    const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
-      protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!,
-      this.provider,
-    )
+    const dataProviderEntry =
+      protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!
 
-    const reserveTokens =
-      await protocolDataProviderContract.getAllReservesTokens()
+    const factories = Array.isArray(dataProviderEntry)
+      ? dataProviderEntry
+      : [{ protocolDataProvider: dataProviderEntry, marketLabel: undefined }]
 
-    const metadataObject: ProtocolToken[] = []
+    return (
+      await Promise.all(
+        factories.map(async ({ protocolDataProvider, marketLabel }) => {
+          const protocolDataProviderContract =
+            ProtocolDataProvider__factory.connect(
+              protocolDataProvider,
+              this.provider,
+            )
 
-    const promises = reserveTokens.map(async ({ tokenAddress }) => {
-      const reserveTokenAddresses =
-        await protocolDataProviderContract.getReserveTokensAddresses(
-          tokenAddress,
-        )
+          const reserveTokens =
+            await protocolDataProviderContract.getAllReservesTokens()
 
-      const protocolTokenPromise = this.helpers.getTokenMetadata(
-        this.getReserveTokenAddress(reserveTokenAddresses),
+          return await filterMapAsync(
+            reserveTokens,
+            async ({ tokenAddress }) => {
+              const reserveTokenAddresses =
+                await protocolDataProviderContract.getReserveTokensAddresses(
+                  tokenAddress,
+                )
+
+              const [protocolToken, underlyingToken] = await Promise.all([
+                this.helpers.getTokenMetadata(
+                  this.getReserveTokenAddress(reserveTokenAddresses),
+                ),
+                this.helpers.getTokenMetadata(tokenAddress),
+              ])
+
+              if (protocolToken.address === ZERO_ADDRESS) {
+                return undefined
+              }
+
+              return {
+                ...protocolToken,
+                name: `${protocolToken.name}${
+                  marketLabel ? ` (${marketLabel})` : ''
+                }`,
+                underlyingTokens: [underlyingToken],
+              }
+            },
+          )
+        }),
       )
-      const underlyingTokenPromise = this.helpers.getTokenMetadata(tokenAddress)
-
-      const [protocolToken, underlyingToken] = await Promise.all([
-        protocolTokenPromise,
-        underlyingTokenPromise,
-      ])
-
-      if (protocolToken.address === ZERO_ADDRESS) {
-        return
-      }
-
-      metadataObject.push({
-        ...protocolToken,
-        underlyingTokens: [underlyingToken],
-      })
-    })
-
-    await Promise.all(promises)
-
-    return metadataObject
+    ).flat()
   }
 
   protected async getProtocolToken(

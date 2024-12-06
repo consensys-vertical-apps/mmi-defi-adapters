@@ -8,10 +8,10 @@ import {
   NotImplementedError,
 } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../../core/utils/filters'
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
-  Erc20ExtendedMetadata,
   IProtocolAdapter,
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
@@ -26,7 +26,6 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  Underlying,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
@@ -116,32 +115,6 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     }
   }
 
-  /**
-   *
-   * AToken addresses required to query reward balances
-   */
-  async getAaveTokenAddresses(): Promise<string[]> {
-    const [aTokens, stableDebtTokens, variableDebtTokens] = await Promise.all([
-      this.helpers.metadataProvider.getMetadata({
-        protocolId: Protocol.AaveV3,
-        productId: 'a-token',
-      }),
-      this.helpers.metadataProvider.getMetadata({
-        protocolId: Protocol.AaveV3,
-        productId: 'stable-debt-token',
-      }),
-      this.helpers.metadataProvider.getMetadata({
-        protocolId: Protocol.AaveV3,
-        productId: 'variable-debt-token',
-      }),
-    ])
-    return [
-      ...aTokens.map((token) => token.address),
-      ...stableDebtTokens.map((token) => token.address),
-      ...variableDebtTokens.map((token) => token.address),
-    ]
-  }
-
   @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const rewardTokenAddresses = await this.incentivesContract.getRewardsList()
@@ -178,7 +151,12 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
       toBlock: 'latest',
     })
 
-    const aTokenAddresses = await this.getAaveTokenAddresses()
+    const aTokenAddresses = (
+      await this.helpers.metadataProvider.getMetadata({
+        protocolId: Protocol.AaveV3,
+        productId: 'a-token',
+      })
+    ).map((token) => token.address)
 
     const filteredLogs = logs
       .filter((log) => aTokenAddresses.includes(log.address))
@@ -187,19 +165,18 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     return [...new Set(filteredLogs)]
   }
 
-  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    // Fetch reward contract details
+  async getPositions({
+    userAddress,
+    blockNumber,
+    protocolTokenAddresses,
+  }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const protocolTokens = await this.getProtocolTokens()
     const protocolToken = protocolTokens[0]
 
-    const { userAddress, blockNumber, protocolTokenAddresses } = input
-
-    // If no protocolToken is found throw an error
     if (!protocolToken) {
       throw new Error('No protocol token found')
     }
 
-    // If protocolTokenAddresses are provided, check if this protocolToken is in the list
     if (
       protocolTokenAddresses &&
       protocolTokenAddresses.length > 0 &&
@@ -208,27 +185,41 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
       return []
     }
 
-    // Check if user has ever opened a position in AaveV3
     const addressFilter = await this.openPositions(userAddress)
 
-    // Return empty array if user has never opened a AaveV3 position
-    if (!addressFilter?.length) {
+    if (!addressFilter.length) {
       return []
     }
 
-    // Fetch and filter underlying tokens with non-zero rewards in parallel
-    const underlyingTokens = await this.getClaimableUnderlyingTokens(
+    const userRewards = await this.incentivesContract.getAllUserRewards(
+      addressFilter,
       userAddress,
-      protocolToken.underlyingTokens,
-      blockNumber,
+      { blockTag: blockNumber },
     )
 
-    // If no claimable underlying tokens are found, return empty
+    const underlyingTokens = await filterMapAsync(
+      userRewards.unclaimedAmounts,
+      async (unclaimedAmount, i) => {
+        if (!unclaimedAmount) {
+          return undefined
+        }
+
+        const underlying = protocolToken.underlyingTokens.find(
+          (underlying) => underlying.address === userRewards.rewardsList[i],
+        )!
+
+        return {
+          ...underlying,
+          type: TokenType.UnderlyingClaimable,
+          balanceRaw: unclaimedAmount,
+        }
+      },
+    )
+
     if (underlyingTokens.length === 0) {
       return []
     }
 
-    // Return the final ProtocolPosition object
     return [
       {
         type: TokenType.Protocol,
@@ -237,37 +228,6 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
         tokens: underlyingTokens,
       },
     ]
-  }
-
-  /**
-   *
-   * Fetches claimable underlying tokens for a user
-   */
-  private async getClaimableUnderlyingTokens(
-    userAddress: string,
-    underlyingTokens: Erc20ExtendedMetadata[],
-    blockNumber?: number,
-  ): Promise<Underlying[]> {
-    const tokenRewards = await Promise.all(
-      underlyingTokens.map(async (underlying) => {
-        const rewardBalance =
-          await this.incentivesContract.getUserAccruedRewards(
-            userAddress,
-            underlying.address,
-            { blockTag: blockNumber },
-          )
-        return { rewardBalance, underlying }
-      }),
-    )
-
-    // Filter out tokens with zero rewards
-    return tokenRewards
-      .filter(({ rewardBalance }) => rewardBalance > 0n)
-      .map(({ rewardBalance, underlying }) => ({
-        ...underlying,
-        type: TokenType.UnderlyingClaimable,
-        balanceRaw: rewardBalance,
-      }))
   }
 
   /**

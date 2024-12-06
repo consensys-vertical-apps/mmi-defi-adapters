@@ -5,6 +5,7 @@ export { Cerc20__factory } from "./Cerc20__factory";
 export { Comptroller__factory } from "./Comptroller__factory";
 export { Converter__factory } from "./Converter__factory";
 export { Oracle__factory } from "./Oracle__factory";
+export { SMendi__factory } from "./SMendi__factory";
 export { Speed__factory } from "./Speed__factory";
 export { Token__factory } from "./Token__factory";
 export { Velocore__factory } from "./Velocore__factory";

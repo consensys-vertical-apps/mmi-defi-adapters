@@ -17,7 +17,7 @@
       "tokens": [
         {
           "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
-          "name": "StakeWise osETH",
+          "name": "Staked ETH",
           "symbol": "osETH",
           "decimals": 18,
           "balanceRaw": "100000000000000n",
