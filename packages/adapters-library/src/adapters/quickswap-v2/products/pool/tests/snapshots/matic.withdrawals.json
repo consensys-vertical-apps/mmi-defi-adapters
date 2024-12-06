@@ -1,5 +1,5 @@
 {
-  "aggregatedValues": [],
+  "aggregatedValues": ["USD7,909.79"],
   "latency": "Latency: 0.971 seconds",
   "snapshot": {
     "protocolId": "quickswap-v2",
@@ -11,13 +11,55 @@
     "chainId": 137,
     "productId": "pool",
     "chainName": "matic",
-    "success": false,
-    "error": {
-      "message": "Operation timed out",
-      "details": {
-        "name": "Error"
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x8fe19c1f926e81542e0e662d67f9002cb89ee6692428b01a91d43c2c5b8b28b9",
+        "protocolToken": {
+          "address": "0xadbF1854e5883eB8aa7BAf50705338739e558E5b",
+          "name": "Quickswap V2 WPOL / WETH",
+          "symbol": "QUICK/WPOL/WETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xadbF1854e5883eB8aa7BAf50705338739e558E5b",
+            "name": "Quickswap V2 WPOL / WETH",
+            "symbol": "QUICK/WPOL/WETH",
+            "decimals": 18,
+            "balanceRaw": "42625034302711288984n",
+            "type": "underlying",
+            "blockNumber": 54168036,
+            "tokens": [
+              {
+                "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                "name": "Wrapped Polygon Ecosystem Token",
+                "symbol": "WPOL",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "3678047323991860065563n",
+                "balance": 3678.04732399186,
+                "price": 1.075803143350445,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo.png"
+              },
+              {
+                "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "1149485366845094341n",
+                "balance": 1.1494853668450944,
+                "price": 3438.87,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619/logo.png"
+              }
+            ],
+            "balance": 42.62503430271129
+          }
+        ],
+        "blockNumber": 54168036
       }
-    }
+    ]
   },
   "rpcResponses": {
     "13064cc381f6fee2ae0df262b87c944c": {
@@ -39,29 +81,17 @@
         }
       ]
     },
-    "54b94a088c93c02ab766dc6e0052ce2b": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000c447261676f6e20515549434b0000000000000000000000000000000000000000"
-    },
-    "1a6cba2f712eb03d550088b6e5256608": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000664515549434b0000000000000000000000000000000000000000000000000000"
-    },
-    "df2e402a0e9021892e5489ddd141d858": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
-    },
-    "6e23381abc6c331e1890521436aec7a3": {
-      "result": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000009517569636b537761700000000000000000000000000000000000000000000000"
-    },
-    "91a8a265314fc5d58d4c169d055252be": {
-      "result": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000005515549434b000000000000000000000000000000000000000000000000000000"
-    },
-    "fbd62bb4d59f735945937c77e97ec140": {
-      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
-    },
     "ef7a3e3dda278304a3e35f05af1f5c34": {
       "result": "0x000000000000000000000000000000000000000000000351811f30dd2ee3b4fe"
     },
     "75e1a1b7335f1e2f58845ce977957152": {
       "result": "0x000000000000000000000000000000000000000000011e56666e4efcbb72252c000000000000000000000000000000000000000000000016e8adfd834bc0804a0000000000000000000000000000000000000000000000000000000065e2cf42"
+    },
+    "b8e3d2b01f84baf7ef0ec988b05c6ab5": {
+      "result": "0x0000000000000000000000000000000000000000000000020000000000720eff00000000000000000000000000000000000000000000000000000050114331c00000000000000000000000000000000000000000000000000000000065e2cf420000000000000000000000000000000000000000000000000000000065e2cf420000000000000000000000000000000000000000000000020000000000720eff"
+    },
+    "4a8137ffc00e7e6aacfe7cf9c72d8e80": {
+      "result": "0x00000000000000000000000000000000000000000000000000011c85dca8829c"
     }
   }
 }
