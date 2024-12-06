@@ -153,6 +153,8 @@ import { BalancerV2FarmingAdapter } from './balancer-v2/products/farming/balance
 
 import { MendiFinanceStakingAdapter } from './mendi-finance/products/staking/mendiFinanceStakingAdapter'
 
+import { ZerolendVestingAdapter } from './zerolend/products/vesting/zerolendVestingAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -658,6 +660,7 @@ export const supportedProtocols: Record<
       ZeroLendVariableDebtTokenPoolAdapter,
     ],
     [Chain.Linea]: [
+      ZerolendVestingAdapter,
       ZeroLendATokenPoolAdapter,
       ZeroLendStableDebtTokenPoolAdapter,
       ZeroLendVariableDebtTokenPoolAdapter,
