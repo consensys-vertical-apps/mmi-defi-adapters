@@ -1,11 +1,10 @@
-import { formatUnits, getAddress } from 'ethers'
+import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -30,6 +29,7 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { PositionManager__factory } from '../../contracts'
 
+// A deadline value needs to be passed to the call, so a stub is generated here
 const deadline = Math.floor(Date.now() - 1000) + 60 * 10
 
 const positionManagerCommonAddress = getAddress(
@@ -42,7 +42,7 @@ const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
   },
 }
 
-export const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)
+export const maxUint128 = 2n ** 128n - 1n
 
 export class QuickswapV3PoolAdapter implements IProtocolAdapter {
   adapterSettings = {
