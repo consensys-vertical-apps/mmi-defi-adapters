@@ -1,0 +1,102 @@
+{
+  "blockNumber": 12844440,
+  "latency": "Latency: 0.547 seconds",
+  "aggregatedValues": [],
+  "snapshot": [
+    {
+      "protocolId": "zerolend",
+      "name": "Zerolend",
+      "description": "Zerolend defi adapter",
+      "siteUrl": "",
+      "iconUrl": "",
+      "positionType": "stake",
+      "chainId": 59144,
+      "productId": "vesting",
+      "chainName": "linea",
+      "success": true,
+      "tokens": [
+        {
+          "type": "protocol",
+          "balanceRaw": "350209440000000000000000n",
+          "address": "0xf374229a18ff691406f99CCBD93e8a3f16B68888",
+          "symbol": "ZEROvp",
+          "name": "ZERO Voting Power - Unlock time 04/05/2028",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7",
+              "name": "ZeroLend",
+              "symbol": "ZERO",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "350209440000000000000000n",
+              "balance": 350209.44,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7/logo.png"
+            },
+            {
+              "address": "0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7",
+              "name": "ZeroLend",
+              "symbol": "ZERO",
+              "decimals": 18,
+              "balanceRaw": "8869731892121608319827n",
+              "type": "underlying-claimable",
+              "balance": 8869.731892121608,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7/logo.png"
+            }
+          ],
+          "balance": 350209.44
+        },
+        {
+          "type": "protocol",
+          "balanceRaw": "25384939480532833206655n",
+          "address": "0xf374229a18ff691406f99CCBD93e8a3f16B68888",
+          "symbol": "ZEROvp",
+          "name": "ZERO Voting Power - Unlock time 17/08/2028",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7",
+              "name": "ZeroLend",
+              "symbol": "ZERO",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "25384939480532833206655n",
+              "balance": 25384.939480532834,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7/logo.png"
+            }
+          ],
+          "balance": 25384.939480532834
+        },
+        {
+          "type": "protocol",
+          "balanceRaw": "411712271113939483990425n",
+          "address": "0xf374229a18ff691406f99CCBD93e8a3f16B68888",
+          "symbol": "ZEROvp",
+          "name": "ZERO Voting Power - Unlock time 24/08/2028",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7",
+              "name": "ZeroLend",
+              "symbol": "ZERO",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "411712271113939483990425n",
+              "balance": 411712.27111393947,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7/logo.png"
+            }
+          ],
+          "balance": 411712.27111393947
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "fa40435a0d78ca8ed0aad2305a9a644f": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000000000300000000000000000000000000000000000000000000000000000000000004c100000000000000000000000000000000000000000000000000000000000091ae00000000000000000000000000000000000000000000000000000000000091da0000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000004a28e44beedd3c900000000000000000000000000000000000000000000000000000000000006dbb9a00000000000000000000000000000000000000000000000000000000006638985d000000000000000000000000000000000000000000004a17279a89a85db9878f0000000000000000000000000000000000000000000005601ecdba5efc8b017f000000000000000000000000000000000000000000000000000000006e4607800000000000000000000000000000000000000000000000000000000066c89ef000000000000000000000000000000000000000000000055ad51be4ff42f1c5be00000000000000000000000000000000000000000000572ef789510701999999000000000000000000000000000000000000000000000000000000006e4f42000000000000000000000000000000000000000000000000000000000066cb0cb50000000000000000000000000000000000000000000057280cd495893995e167"
+    },
+    "8d290ba0584f6c1b33eb3f9f8551dcba": {
+      "result": "0x0000000000000000000000000000000000000000000001e0d441d207edd2f353"
+    }
+  }
+}

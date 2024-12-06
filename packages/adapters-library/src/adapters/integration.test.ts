@@ -117,6 +117,7 @@ import { testCases as xfaiDexTestCases } from './xfai/products/dex/tests/testCas
 import { testCases as zeroLendATokenTestCases } from './zerolend/products/a-token/tests/testCases'
 import { testCases as zeroLendStableDebtTokenTestCases } from './zerolend/products/stable-debt-token/tests/testCases'
 import { testCases as zeroLendVariableDebtTokenTestCases } from './zerolend/products/variable-debt-token/tests/testCases'
+import { testCases as zerolendVestingTestCases } from './zerolend/products/vesting/tests/testCases'
 
 const TEST_TIMEOUT = 300000
 
@@ -376,6 +377,7 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
   },
 
   [Protocol.ZeroLend]: {
+    ['vesting']: zerolendVestingTestCases,
     ['a-token']: zeroLendATokenTestCases,
     ['stable-debt-token']: zeroLendStableDebtTokenTestCases,
     ['variable-debt-token']: zeroLendVariableDebtTokenTestCases,

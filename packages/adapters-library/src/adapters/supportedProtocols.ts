@@ -157,6 +157,8 @@ import { QuickswapV2DQuickAdapter } from './quickswap-v2/products/d-quick/quicks
 
 import { QuickswapV3PoolAdapter } from './quickswap-v3/products/pool/quickswapV3PoolAdapter'
 
+import { ZerolendVestingAdapter } from './zerolend/products/vesting/zerolendVestingAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -666,6 +668,7 @@ export const supportedProtocols: Record<
       ZeroLendVariableDebtTokenPoolAdapter,
     ],
     [Chain.Linea]: [
+      ZerolendVestingAdapter,
       ZeroLendATokenPoolAdapter,
       ZeroLendStableDebtTokenPoolAdapter,
       ZeroLendVariableDebtTokenPoolAdapter,
