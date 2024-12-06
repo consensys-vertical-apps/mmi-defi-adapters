@@ -153,6 +153,8 @@ import { BalancerV2FarmingAdapter } from './balancer-v2/products/farming/balance
 
 import { MendiFinanceStakingAdapter } from './mendi-finance/products/staking/mendiFinanceStakingAdapter'
 
+import { JitoJitosolAdapter } from './jito/products/jitosol/jitoJitosolAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -406,6 +408,10 @@ export const supportedProtocols: Record<
     [Chain.Base]: [IZiSwapPoolAdapter],
     [Chain.Arbitrum]: [IZiSwapPoolAdapter],
     [Chain.Linea]: [IZiSwapPoolAdapter],
+  },
+
+  [Protocol.Jito]: {
+    // [Chain.Ethereum]: [JitoJitosolAdapter],
   },
 
   [Protocol.Lido]: {

@@ -98,10 +98,10 @@ export function Positions() {
               value: true,
               message: 'User Address is required',
             },
-            pattern: {
-              value: /^0x[a-fA-F0-9]{40}$/,
-              message: 'Invalid Ethereum Address',
-            },
+            // pattern: {
+            //   value: /^0x[a-fA-F0-9]{40}$/,
+            //   message: 'Invalid Ethereum Address',
+            // },
           })}
           placeholder="User Address"
           className="border border-gray-300 rounded"

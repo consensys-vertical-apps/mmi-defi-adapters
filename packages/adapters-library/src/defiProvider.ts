@@ -51,6 +51,9 @@ import {
   IUnwrapPriceCacheProvider,
   UnwrapPriceCache,
 } from './unwrapCache'
+import { PublicKey } from '@solana/web3.js'
+import { JitoJitosolAdapter } from './adapters/jito/products/jitosol/jitoJitosolAdapter'
+import { Helpers } from './scripts/helpers'
 
 export class DefiProvider {
   private parsedConfig
@@ -129,6 +132,36 @@ export class DefiProvider {
     filterProtocolTokens?: string[]
     filterTokenIds?: string[]
   }): Promise<DefiPositionResponse[]> {
+    if (this.isValidSolanaAddress(userAddress)) {
+      const jitoSolAdapter = new JitoJitosolAdapter({
+        provider: {} as CustomJsonRpcProvider,
+        chainId: Chain.Ethereum,
+        protocolId: Protocol.Jito,
+        adaptersController: {} as AdaptersController,
+        helpers: {} as Helpers,
+      })
+
+      const positions = await jitoSolAdapter.getPositions({
+        userAddress,
+        protocolTokenAddresses: filterProtocolTokens,
+      })
+
+      const tokens = positions.map((protocolPosition) =>
+        enrichPositionBalance(protocolPosition, Chain.Ethereum),
+      )
+
+      const protocolDetails = jitoSolAdapter.getProtocolDetails()
+
+      return [
+        {
+          ...protocolDetails,
+          chainName: ChainIdToChainNameMap[Chain.Ethereum],
+          success: true,
+          tokens,
+        },
+      ]
+    }
+
     const startGetPositions = Date.now()
     this.initAdapterControllerForUnwrapStage()
 
@@ -1079,6 +1112,15 @@ export class DefiProvider {
           ...(filterProtocolTokens ?? []),
         ].join(', ')}`,
       )
+    }
+  }
+
+  private isValidSolanaAddress(address: string) {
+    try {
+      new PublicKey(address)
+      return true
+    } catch (error) {
+      return false
     }
   }
 }
