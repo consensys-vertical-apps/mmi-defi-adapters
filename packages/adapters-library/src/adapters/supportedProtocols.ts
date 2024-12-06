@@ -161,6 +161,7 @@ import { QuickswapV2DQuickAdapter } from './quickswap-v2/products/d-quick/quicks
 import { QuickswapV3PoolAdapter } from './quickswap-v3/products/pool/quickswapV3PoolAdapter'
 
 import { ZerolendVestingAdapter } from './zerolend/products/vesting/zerolendVestingAdapter'
+import { JitoJitosolAdapter } from './jito/products/jitosol/jitoJitosolAdapter'
 
 export const supportedProtocols: Record<
   Protocol,
@@ -417,6 +418,10 @@ export const supportedProtocols: Record<
     [Chain.Base]: [IZiSwapPoolAdapter],
     [Chain.Arbitrum]: [IZiSwapPoolAdapter],
     [Chain.Linea]: [IZiSwapPoolAdapter],
+  },
+
+  [Protocol.Jito]: {
+    // [Chain.Ethereum]: [JitoJitosolAdapter],
   },
 
   [Protocol.Lido]: {
