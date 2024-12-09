@@ -10,9 +10,26 @@ export const testCases: TestCase[] = [
     input: {
       userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
 
-      filterProtocolTokens: ['0x5dA90BA82bED0AB701E6762D2bF44E08634d9776'],
+      filterProtocolTokens: ['0x4D75a9342113c106F48117d81e2952A5828d1B5F'],
     },
 
-    blockNumber: 21270814,
+    blockNumber: 21342510,
+  },
+  {
+    chainId: Chain.Linea,
+    key: 'eth',
+    method: 'positions',
+
+    input: {
+      userAddress: '0x3130d2b8cbf0798bb1cbf2a4f527dbae953ff27f',
+
+      filterProtocolTokens: [
+        '0x3289Cc896E661e3a252609efA4380875F0ce66Ec',
+        '0x3d80b49fc4DC9E450efAc1BD34cdEB2F303c2E81',
+        '0xE7e6a718218d737945E6f039c161D3C3c550CBA8',
+      ],
+    },
+
+    blockNumber: 12929711,
   },
 ]

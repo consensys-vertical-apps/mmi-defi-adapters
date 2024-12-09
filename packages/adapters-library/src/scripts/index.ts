@@ -12,6 +12,7 @@ import { buildContractTypes } from './buildTypes'
 import { checkBadSnapshots } from './checkBadSnapshots'
 import { checkDbTotals } from './checkDbTotals'
 import { checkMetadataType } from './checkMetadataType'
+import { deleteAdapterMetadata } from './deleteAdapterMetadata'
 import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
@@ -34,6 +35,8 @@ blockAverage(program, chainProviders)
 buildContractTypes(program)
 
 buildMetadataDb(program, chainProviders, adaptersController)
+
+deleteAdapterMetadata(program, chainProviders, adaptersController)
 
 checkDbTotals(program, chainProviders, adaptersController)
 
