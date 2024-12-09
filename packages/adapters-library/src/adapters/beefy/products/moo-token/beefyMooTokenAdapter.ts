@@ -33,7 +33,6 @@ import {
   ApiClmManager,
   ApiVault,
   BeefyProductType,
-  ProtocolUnwrapType,
 } from '../../sdk/types'
 
 export class BeefyMooTokenAdapter implements IProtocolAdapter {
@@ -82,16 +81,6 @@ export class BeefyMooTokenAdapter implements IProtocolAdapter {
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const chain = chainIdMap[this.chainId]
 
-    const cowTokenAddresses = await fetch(
-      `https://api.beefy.finance/cow-vaults/${chain}`,
-    )
-      .then((res) => res.json())
-      .then((res) =>
-        (res as ApiClmManager[]).map((r) =>
-          r.earnedTokenAddress.toLocaleLowerCase(),
-        ),
-      )
-      .then((res) => new Set(res))
 
     const vaults = await fetch(`https://api.beefy.finance/vaults/${chain}`)
       .then((res) => res.json())
@@ -108,11 +97,7 @@ export class BeefyMooTokenAdapter implements IProtocolAdapter {
 
     // for each vault, get the latest breakdown to get the token list
     return await filterMapAsync(vaults, async (vault) => {
-      if (
-        vault.earnedTokenAddress !==
-        '0x4D75a9342113c106F48117d81e2952A5828d1B5F'
-      )
-        return
+
       try {
         const [protocolToken, underlyingToken] = await Promise.all([
           this.helpers.getTokenMetadata(vault.earnedTokenAddress),

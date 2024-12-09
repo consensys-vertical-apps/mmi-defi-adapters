@@ -1,7 +1,88 @@
 {
   "blockNumber": 21342510,
   "latency": "Latency: 1.601 seconds",
-  "aggregatedValues": [],
-  "snapshot": [],
-  "rpcResponses": {}
+  "aggregatedValues": ["USD2.91"],
+  "snapshot": [
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "moo-token",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4D75a9342113c106F48117d81e2952A5828d1B5F",
+          "name": "Moo Aura Gyro GYD-USDC",
+          "symbol": "mooAuraGyroGYD-USDC",
+          "decimals": 18,
+          "balanceRaw": "5257076158446163091n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xC2AA60465BfFa1A88f5bA471a59cA0435c3ec5c1",
+              "name": "Gyroscope ECLP GYD/USDC",
+              "symbol": "ECLP-GYD-USDC",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "5494825011180244949n",
+              "tokens": [
+                {
+                  "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                  "name": "USD Coin",
+                  "symbol": "USDC",
+                  "decimals": 6,
+                  "type": "underlying",
+                  "balanceRaw": "2910432n",
+                  "balance": 2.910432,
+                  "price": 0.9984879963186358,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                },
+                {
+                  "address": "0xe07F9D810a48ab5c3c914BA3cA53AF14E4491e8A",
+                  "name": "Gyro Dollar",
+                  "symbol": "GYD",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "2599931548269010542n",
+                  "balance": 2.5999315482690104,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xe07F9D810a48ab5c3c914BA3cA53AF14E4491e8A/logo.png"
+                }
+              ],
+              "balance": 5.494825011180245,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC2AA60465BfFa1A88f5bA471a59cA0435c3ec5c1/logo.png"
+            }
+          ],
+          "balance": 5.257076158446163
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "1bfa629d23b0f32e6d09e788bdd27470": {
+      "result": "0x00000000000000000000000000000000000000000000000048f4e2e9b55bd493"
+    },
+    "62a33e2be51d78c85b5970042dcd3fcb": {
+      "result": "0x0000000000000000000000000000000000000000000000000e81622e7cc2c406"
+    },
+    "ceded32450a0f27bcf0de7ed943a4459": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000145a59d0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48000000000000000000000000e07f9d810a48ab5c3c914ba3ca53af14e4491e8a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000075fa0b52ea000000000000000000000000000000000000000000005fda1df49298377f55f8"
+    },
+    "dfd71fdf93d343cb048ef0e1b50ae702": {
+      "result": "0x00000000000000000000000000000000000000000000ca9414942b5696881c00"
+    },
+    "7dcf710f1acb5589bca7c939a2a8bcb1": {
+      "result": "0x0000000000000000000000000000000000000000000000070000000000000d3900000000000000000000000000000000000000000000000000000059f660f937000000000000000000000000000000000000000000000000000000006752c0f2000000000000000000000000000000000000000000000000000000006752c0ff0000000000000000000000000000000000000000000000070000000000000d39"
+    },
+    "39b304f4388d1e0fae86d568b5be4a5a": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "186b7efde4b895c3e75eda93da5c047c": {
+      "result": "0x000000000000000000000000000000000000000000d5c207247f81108989ddcb"
+    }
+  }
 }
