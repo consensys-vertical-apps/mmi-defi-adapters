@@ -48,26 +48,28 @@ export function deleteAdapterMetadata(
         products,
         chains,
       }: { protocols: string; products: string; chains: string }) => {
-
         console.log('Starting deletion process...')
         console.log('Protocols:', protocols)
         console.log('Products:', products)
         console.log('Chains:', chains)
 
         const filterProtocolIds = multiProtocolFilter(protocols)!
-        if (!protocols || filterProtocolIds && filterProtocolIds.length !== 1) {
+        if (
+          !protocols ||
+          (filterProtocolIds && filterProtocolIds.length !== 1)
+        ) {
           throw new Error('One protocol must be supplied at a time')
         }
         const protocolId = filterProtocolIds.pop()!
 
         const filterProductIds = products?.split(',')
-        if (!products || filterProductIds && filterProductIds.length !== 1) {
+        if (!products || (filterProductIds && filterProductIds.length !== 1)) {
           throw new Error('One product must be supplied at a time')
         }
         const productId = filterProductIds?.pop()!
 
         const filterChainIds = multiChainFilter(chains)!
-        if (!chains || filterChainIds && filterChainIds.length !== 1) {
+        if (!chains || (filterChainIds && filterChainIds.length !== 1)) {
           throw new Error('One chain must be supplied at a time')
         }
         const chainId = filterChainIds.pop()!
