@@ -2,14 +2,14 @@ import { Command } from 'commander'
 import { Protocol } from '../adapters/protocols'
 import { supportedProtocols } from '../adapters/supportedProtocols'
 import { AdaptersController } from '../core/adaptersController'
-import { Chain } from '../core/constants/chains'
+import { Chain, EvmChain } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { logger } from '../core/utils/logger'
 
 export function checkDbTotals(
   program: Command,
-  chainProviders: Record<Chain, CustomJsonRpcProvider>,
+  chainProviders: Record<EvmChain, CustomJsonRpcProvider>,
   adaptersController: AdaptersController,
 ) {
   program
@@ -26,6 +26,10 @@ export function checkDbTotals(
 
         for (const [chainIdKey, _] of Object.entries(supportedChains)) {
           const chainId = +chainIdKey as Chain
+
+          if (chainId === Chain.Solana) {
+            continue
+          }
 
           const provider = chainProviders[chainId]
 

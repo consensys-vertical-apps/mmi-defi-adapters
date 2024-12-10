@@ -40,6 +40,10 @@ const providers: Record<ChainName, string> = {
     process.env.DEFI_ADAPTERS_PROVIDER_LINEA,
     'https://linea-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
   ),
+  solana: parseStringEnv(
+    process.env.DEFI_ADAPTERS_PROVIDER_SOLANA,
+    'https://api.mainnet-beta.solana.com',
+  ),
 }
 
 const maxBatchSize: Record<ChainName, number> = {
@@ -55,6 +59,7 @@ const maxBatchSize: Record<ChainName, number> = {
   arb: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_ARBITRUM, 5),
   avax: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_AVALANCHE, 100),
   linea: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_LINEA, 100),
+  solana: 1,
 }
 
 const hasUnlimitedEthGethLogsBlockRangeLimit: Record<ChainName, boolean> = {
@@ -67,6 +72,7 @@ const hasUnlimitedEthGethLogsBlockRangeLimit: Record<ChainName, boolean> = {
   arb: true,
   avax: true,
   linea: true,
+  solana: false,
 }
 
 const ConfigSchema = z
@@ -82,6 +88,7 @@ const ConfigSchema = z
         [ChainName.arb]: z.string().default(providers.arb),
         [ChainName.avax]: z.string().default(providers.avax),
         [ChainName.linea]: z.string().default(providers.linea),
+        [ChainName.solana]: z.string().default(providers.solana),
       })
       .default(providers),
     useMulticallInterceptor: z
@@ -147,6 +154,9 @@ const ConfigSchema = z
         [ChainName.linea]: z
           .boolean()
           .default(hasUnlimitedEthGethLogsBlockRangeLimit.linea),
+        [ChainName.solana]: z
+          .boolean()
+          .default(hasUnlimitedEthGethLogsBlockRangeLimit.solana),
       })
       .default(hasUnlimitedEthGethLogsBlockRangeLimit),
     maxBatchSize: z
@@ -160,6 +170,7 @@ const ConfigSchema = z
         [ChainName.arb]: z.number().default(maxBatchSize.arb),
         [ChainName.avax]: z.number().default(maxBatchSize.avax),
         [ChainName.linea]: z.number().default(maxBatchSize.linea),
+        [ChainName.solana]: z.number().default(maxBatchSize.solana),
       })
       .default(maxBatchSize),
     useDatabase: z.boolean().default(true),

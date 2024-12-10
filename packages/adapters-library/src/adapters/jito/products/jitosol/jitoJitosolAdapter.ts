@@ -2,7 +2,6 @@ import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { Helpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
@@ -14,10 +13,10 @@ import {
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
-  ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
+  SolanaProtocolAdapterParams,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -27,13 +26,9 @@ import { Protocol } from '../../../protocols'
 import { Connection, PublicKey } from '@solana/web3.js'
 import { getStakePoolAccount } from '@solana/spl-stake-pool'
 import { AccountLayout } from '@solana/spl-token'
+import { nativeToken } from '../../../../core/utils/nativeTokens'
 
-const SOL_TOKEN: Erc20Metadata = {
-  address: 'So11111111111111111111111111111111111111112',
-  name: 'Solana',
-  symbol: 'SOL',
-  decimals: 9,
-}
+const SOL_TOKEN: Erc20Metadata = nativeToken[Chain.Solana]
 
 // Address can be extracted from stake pool account
 // decimals can be extracted using getMint
@@ -48,12 +43,10 @@ const JITOSOL_TOKEN: Erc20Metadata = {
 const JITO_STAKE_POOL = new PublicKey(
   'Jito4APyf642JPZPx3hGc6WWJ8zPKtRbRs4P815Awbb',
 )
-const connection = new Connection('https://api.mainnet-beta.solana.com')
-
 export class JitoJitosolAdapter implements IProtocolAdapter {
   productId = 'jitosol'
   protocolId: Protocol
-  chainId: Chain
+  chainId = Chain.Solana
   helpers: Helpers
 
   adapterSettings = {
@@ -61,22 +54,19 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
     includeInUnwrap: false,
   }
 
-  private provider: CustomJsonRpcProvider
+  private provider: Connection
 
   adaptersController: AdaptersController
 
   constructor({
     provider,
-    chainId,
     protocolId,
     adaptersController,
-    helpers,
-  }: ProtocolAdapterParams) {
+  }: SolanaProtocolAdapterParams) {
     this.provider = provider
-    this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
-    this.helpers = helpers
+    this.helpers = {} as Helpers
   }
 
   /**
@@ -134,7 +124,7 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
   }
 
   private async getTokenAccounts(userAddress: string) {
-    const tokenAccounts = await connection.getTokenAccountsByOwner(
+    const tokenAccounts = await this.provider.getTokenAccountsByOwner(
       new PublicKey(userAddress),
       {
         mint: new PublicKey(JITOSOL_TOKEN.address),
@@ -187,7 +177,7 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
       account: {
         data: { totalLamports, poolTokenSupply },
       },
-    } = await getStakePoolAccount(connection, JITO_STAKE_POOL)
+    } = await getStakePoolAccount(this.provider, JITO_STAKE_POOL)
 
     const underlyingRateRaw =
       (BigInt(totalLamports.toString()) *

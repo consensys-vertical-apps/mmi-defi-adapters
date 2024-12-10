@@ -10,7 +10,7 @@ import {
 } from 'ethers'
 import { Multicall, Multicall3 } from '../../contracts/Multicall'
 import { count } from '../../metricsCount'
-import { Chain } from '../constants/chains'
+import { Chain, EvmChain } from '../constants/chains'
 import { MulticallError } from '../errors/errors'
 import { logger } from '../utils/logger'
 
@@ -31,7 +31,7 @@ const LATEST = 'latest'
 type PendingCallsMap = Record<string | typeof LATEST, PendingCall[]>
 
 export class MulticallQueue {
-  private chainId: Chain
+  private chainId: EvmChain
   private pendingCalls: PendingCallsMap = {}
   // private multicallContract: Multicall
   private flushTimeoutMs: number
@@ -52,7 +52,7 @@ export class MulticallQueue {
     flushTimeoutMs: number
     maxBatchSize: number
 
-    chainId: Chain
+    chainId: EvmChain
   }) {
     this.flushTimeoutMs = flushTimeoutMs
     this.maxBatchSize = maxBatchSize

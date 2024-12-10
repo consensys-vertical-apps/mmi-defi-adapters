@@ -1,13 +1,10 @@
 import {
   FetchRequest,
-  Filter,
-  FilterByBlockHash,
   JsonRpcApiProviderOptions,
-  Log,
   TransactionRequest,
 } from 'ethers'
 import { count } from '../../metricsCount'
-import { Chain } from '../constants/chains'
+import { EvmChain } from '../constants/chains'
 import {
   CustomJsonRpcProvider,
   CustomJsonRpcProviderOptions,
@@ -26,7 +23,7 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
     maxBatchSize,
   }: {
     fetchRequest: FetchRequest
-    chainId: Chain
+    chainId: EvmChain
     customOptions: CustomJsonRpcProviderOptions
     jsonRpcProviderOptions?: JsonRpcApiProviderOptions
     hasUnlimitedGetLogsRange: boolean

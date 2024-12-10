@@ -1,4 +1,4 @@
-import { Chain } from '../../../core/constants/chains'
+import { Chain, EvmChain } from '../../../core/constants/chains'
 import {
   ApiPlatformId,
   ApiStrategyTypeId,
@@ -28,6 +28,7 @@ export const chainIdMap: Record<Chain, string> = {
   [Chain.Linea]: 'linea',
   [Chain.Optimism]: 'optimism',
   [Chain.Polygon]: 'polygon',
+  [Chain.Solana]: 'solana', // TODO - This is easier than using EvmChain and fixing everywhere, but it's not correct
 }
 
 export const protocolMap: Record<
