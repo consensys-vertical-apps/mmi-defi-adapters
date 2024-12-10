@@ -3,7 +3,7 @@ import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Erc20__factory } from '../contracts'
 import { TransferEvent } from '../contracts/Erc20'
 import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
-import { Chain } from '../core/constants/chains'
+import { Chain, EvmChain } from '../core/constants/chains'
 import {
   MaxMovementLimitExceededError,
   ProtocolTokenFilterRequiredError,
@@ -37,9 +37,12 @@ export const REAL_ESTATE_TOKEN_METADATA = {
 export class Helpers {
   constructor(
     public readonly provider: CustomJsonRpcProvider,
-    public readonly chainId: Chain,
+    public readonly chainId: EvmChain,
     public readonly metadataProvider: IMetadataProvider,
-    public readonly allJsonRpcProviders: Record<Chain, CustomJsonRpcProvider>,
+    public readonly allJsonRpcProviders: Record<
+      EvmChain,
+      CustomJsonRpcProvider
+    >,
   ) {}
 
   getProtocolTokenByAddress<

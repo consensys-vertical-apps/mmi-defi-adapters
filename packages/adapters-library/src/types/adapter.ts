@@ -1,3 +1,4 @@
+import { Connection } from '@solana/web3.js'
 import type { Protocol } from '../adapters/protocols'
 import type { AdaptersController } from '../core/adaptersController'
 import { ApyInfo } from '../core/apy-calculators/ApyCalculator'
@@ -351,6 +352,12 @@ export interface ProtocolAdapterParams {
   protocolId: Protocol
   adaptersController: AdaptersController
   helpers: Helpers
+}
+
+export interface SolanaProtocolAdapterParams {
+  provider: Connection
+  protocolId: Protocol
+  adaptersController: AdaptersController
 }
 
 export type AggregatedFiatBalances = Record<

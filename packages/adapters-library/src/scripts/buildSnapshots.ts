@@ -121,6 +121,11 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
           const chainId = testCase.chainId
 
+          // TODO Add Solana support for snapshots
+          if (chainId === Chain.Solana) {
+            continue
+          }
+
           const filePath = `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}/tests/snapshots/${
             ChainIdToChainNameMap[testCase.chainId]
           }.${testCase.method}${

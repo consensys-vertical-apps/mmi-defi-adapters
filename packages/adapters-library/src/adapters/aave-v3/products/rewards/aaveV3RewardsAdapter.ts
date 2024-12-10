@@ -82,7 +82,7 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     this.adaptersController = adaptersController
     this.helpers = helpers
 
-    if (this.chainId === Chain.Linea) {
+    if (this.chainId === Chain.Linea || this.chainId === Chain.Solana) {
       throw new NotImplementedError()
     }
 

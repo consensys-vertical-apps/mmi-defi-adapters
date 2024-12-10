@@ -7,7 +7,11 @@ import { Protocol } from '../adapters/protocols'
 import { supportedProtocols } from '../adapters/supportedProtocols'
 import { AdaptersController } from '../core/adaptersController'
 import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
-import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
+import {
+  Chain,
+  ChainIdToChainNameMap,
+  EvmChain,
+} from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { filterMapSync } from '../core/utils/filters'
@@ -24,7 +28,7 @@ import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
 export function buildMetadataDb(
   program: Command,
-  chainProviders: Record<Chain, CustomJsonRpcProvider>,
+  chainProviders: Record<EvmChain, CustomJsonRpcProvider>,
   adaptersController: AdaptersController,
 ) {
   program
@@ -65,6 +69,10 @@ export function buildMetadataDb(
                   !filterProtocolIds.includes(protocolId)) ||
                 !(chainId in supportedChains)
               ) {
+                continue
+              }
+
+              if (chainId === Chain.Solana) {
                 continue
               }
 

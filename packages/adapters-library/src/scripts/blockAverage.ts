@@ -3,7 +3,7 @@ import { Command } from 'commander'
 import EthDater from 'ethereum-block-by-date'
 import { ethers } from 'ethers'
 import { parse, print, types, visit } from 'recast'
-import { Chain } from '../core/constants/chains'
+import { Chain, EvmChain } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import { multiChainFilter } from './commandFilters'
@@ -11,7 +11,7 @@ import n = types.namedTypes
 
 export function blockAverage(
   program: Command,
-  chainProviders: Record<Chain, ethers.JsonRpcApiProvider>,
+  chainProviders: Record<EvmChain, ethers.JsonRpcApiProvider>,
 ) {
   program
     .command('block-average')
@@ -23,7 +23,7 @@ export function blockAverage(
     .action(async ({ chains: chainFilterInput }) => {
       const filterChainIds = multiChainFilter(chainFilterInput)
 
-      const averageBlocksPerDayMap = await Object.values(Chain)
+      const averageBlocksPerDayMap = await Object.values(EvmChain)
         .filter((chainId) => {
           return !filterChainIds || filterChainIds.includes(chainId)
         })
@@ -63,8 +63,8 @@ export function blockAverage(
 }
 
 async function getAverageBlocksPerDay(
-  chainId: Chain,
-  chainProviders: Record<Chain, ethers.JsonRpcApiProvider>,
+  chainId: EvmChain,
+  chainProviders: Record<EvmChain, ethers.JsonRpcApiProvider>,
 ) {
   const provider = chainProviders[chainId]
 

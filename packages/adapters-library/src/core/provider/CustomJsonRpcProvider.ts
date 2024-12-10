@@ -10,7 +10,7 @@ import {
 } from 'ethers'
 import { count } from '../../metricsCount'
 import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../constants/AVERAGE_BLOCKS_PER_10_MINS'
-import { Chain } from '../constants/chains'
+import { Chain, EvmChain } from '../constants/chains'
 import { NotSupportedUnlimitedGetLogsBlockRange } from '../errors/errors'
 import { retryHandlerFactory } from './retryHandlerFactory'
 
@@ -26,7 +26,7 @@ type CacheEntryCalls = { result: string; timestamp: number }
 type CacheEntryLogs = { result: Array<Log>; timestamp: number }
 
 export class CustomJsonRpcProvider extends JsonRpcProvider {
-  chainId: Chain
+  chainId: EvmChain
 
   private hasUnlimitedGetLogsRange: boolean
 
@@ -51,7 +51,7 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
     hasUnlimitedGetLogsRange,
   }: {
     fetchRequest: FetchRequest
-    chainId: Chain
+    chainId: EvmChain
     customOptions: CustomJsonRpcProviderOptions
     jsonRpcProviderOptions?: JsonRpcApiProviderOptions
     hasUnlimitedGetLogsRange: boolean
