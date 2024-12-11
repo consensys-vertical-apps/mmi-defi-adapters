@@ -25,10 +25,20 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { Connection, PublicKey } from '@solana/web3.js'
 import { getStakePoolAccount } from '@solana/spl-stake-pool'
-import { AccountLayout } from '@solana/spl-token'
+import { AccountLayout, getMint } from '@solana/spl-token'
 import { nativeToken } from '../../../../core/utils/nativeTokens'
+import { Metaplex } from '@metaplex-foundation/js'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 
 const SOL_TOKEN: Erc20Metadata = nativeToken[Chain.Solana]
+
+const JITOSOL_TOKEN_ADDRESS = new PublicKey(
+  'J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn',
+)
+
+const JITO_STAKE_POOL = new PublicKey(
+  'Jito4APyf642JPZPx3hGc6WWJ8zPKtRbRs4P815Awbb',
+)
 
 // Address can be extracted from stake pool account
 // decimals can be extracted using getMint
@@ -40,9 +50,10 @@ const JITOSOL_TOKEN: Erc20Metadata = {
   decimals: 9,
 }
 
-const JITO_STAKE_POOL = new PublicKey(
-  'Jito4APyf642JPZPx3hGc6WWJ8zPKtRbRs4P815Awbb',
-)
+type AdditionalMetadata = {
+  stakePool: string
+}
+
 export class JitoJitosolAdapter implements IProtocolAdapter {
   productId = 'jitosol'
   protocolId: Protocol
@@ -69,17 +80,16 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
     this.helpers = {} as Helpers
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
       name: 'Jito',
       description: 'Jito defi adapter',
-      siteUrl: 'https:',
-      iconUrl: 'https://',
+      siteUrl: 'https://www.jito.network/staking/',
+      iconUrl: buildTrustAssetIconUrl(
+        Chain.Solana,
+        JITOSOL_TOKEN_ADDRESS.toString(),
+      ),
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
@@ -87,8 +97,37 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken[]> {
-    throw new NotImplementedError()
+  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+    const metaplex = Metaplex.make(this.provider)
+
+    const metadataAccount = metaplex
+      .nfts()
+      .pdas()
+      .metadata({ mint: JITOSOL_TOKEN_ADDRESS })
+
+    const metadataAccountInfo =
+      await this.provider.getAccountInfo(metadataAccount)
+
+    if (!metadataAccountInfo) {
+      throw new Error('Metadata not found for token')
+    }
+
+    const token = await metaplex
+      .nfts()
+      .findByMint({ mintAddress: JITOSOL_TOKEN_ADDRESS })
+
+    const mintInfo = await getMint(this.provider, JITOSOL_TOKEN_ADDRESS)
+
+    return [
+      {
+        address: JITOSOL_TOKEN_ADDRESS.toString(),
+        name: token.name,
+        symbol: token.symbol,
+        decimals: mintInfo.decimals,
+        stakePool: JITO_STAKE_POOL.toString(),
+        underlyingTokens: [nativeToken[Chain.Solana]],
+      },
+    ]
   }
 
   async getPositions({
@@ -167,17 +206,20 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
     throw new NotImplementedError()
   }
 
-  async unwrap({
-    protocolTokenAddress,
-    blockNumber,
-  }: UnwrapInput): Promise<UnwrapExchangeRate> {
+  async unwrap(input: UnwrapInput): Promise<UnwrapExchangeRate> {
+    const {
+      stakePool,
+      underlyingTokens: [underlyingToken],
+      ...protocolToken
+    } = (await this.getProtocolTokens())[0]!
+
     // totalLamports is the total amount of SOL units in the pool
     // poolTokenSupply is the total amount of JitoSOL tokens in circulation
     const {
       account: {
         data: { totalLamports, poolTokenSupply },
       },
-    } = await getStakePoolAccount(this.provider, JITO_STAKE_POOL)
+    } = await getStakePoolAccount(this.provider, new PublicKey(stakePool))
 
     const underlyingRateRaw =
       (BigInt(totalLamports.toString()) *
@@ -185,12 +227,12 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
       BigInt(poolTokenSupply.toString())
 
     return {
-      ...JITOSOL_TOKEN,
+      ...protocolToken,
       baseRate: 1,
       type: TokenType.Protocol,
       tokens: [
         {
-          ...SOL_TOKEN,
+          ...underlyingToken!,
           type: TokenType.Underlying,
           underlyingRateRaw,
         },

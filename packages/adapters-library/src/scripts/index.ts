@@ -33,7 +33,12 @@ blockAverage(program, chainProviders)
 
 buildContractTypes(program)
 
-buildMetadataDb(program, chainProviders, adaptersController)
+buildMetadataDb(
+  program,
+  chainProviders,
+  defiProvider.chainProvider.solanaProvider,
+  adaptersController,
+)
 
 checkDbTotals(program, chainProviders, adaptersController)
 
