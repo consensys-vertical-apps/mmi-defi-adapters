@@ -1,4 +1,5 @@
 import { getAddress } from 'ethers'
+import { E_ADDRESS } from '../constants/E_ADDRESS'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { Chain } from '../constants/chains'
 
@@ -7,6 +8,13 @@ const ETH = {
   name: 'Ethereum',
   decimals: 18,
 }
+
+export const nativeTokenAddresses = [
+  ZERO_ADDRESS,
+  E_ADDRESS,
+  getAddress('0x4200000000000000000000000000000000000006'), // WETH on Optimism
+  getAddress('0x0000000000000000000000000000000000001010'), // native token on polygon matic
+]
 
 export const nativeToken = {
   [Chain.Ethereum]: ETH,
@@ -34,11 +42,3 @@ export const nativeToken = {
     decimals: 9,
   },
 } as const
-
-export const nativeTokenAddresses = [
-  ZERO_ADDRESS,
-  getAddress('0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'),
-  getAddress('0x4200000000000000000000000000000000000006'),
-  getAddress('0x0000000000000000000000000000000000001010'), // native token on polygon matic
-  nativeToken[Chain.Solana].address,
-]

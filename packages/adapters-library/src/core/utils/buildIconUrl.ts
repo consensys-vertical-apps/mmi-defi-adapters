@@ -1,7 +1,9 @@
 import { getAddress } from 'ethers'
+import { E_ADDRESS } from '../constants/E_ADDRESS'
+import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { Chain } from '../constants/chains'
 import { logger } from './logger'
-import { nativeTokenAddresses } from './nativeTokens'
+import { nativeToken } from './nativeTokens'
 
 // names are here https://github.com/trustwallet/assets/tree/master/blockchains
 const chainNameMap: Record<Chain, string> = {
@@ -29,7 +31,11 @@ export function buildTrustAssetIconUrl(
 
     const chainName = chainNameMap[chainId]
 
-    if (nativeTokenAddresses.includes(address)) {
+    if (
+      [ZERO_ADDRESS, E_ADDRESS, nativeToken[Chain.Solana].address].includes(
+        address,
+      )
+    ) {
       return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/${chainName}/info/logo.png`
     }
 
