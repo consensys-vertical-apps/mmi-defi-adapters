@@ -25,10 +25,12 @@ import {
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { getInvalidAddresses } from './addressValidation'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
+import { Connection } from '@solana/web3.js'
 
 export function buildMetadataDb(
   program: Command,
   chainProviders: Record<EvmChain, CustomJsonRpcProvider>,
+  solanaProvider: Connection,
   adaptersController: AdaptersController,
 ) {
   program
@@ -72,13 +74,10 @@ export function buildMetadataDb(
                 continue
               }
 
-              if (chainId === Chain.Solana) {
-                continue
-              }
-
-              const provider = chainProviders[chainId]
-
-              if (!provider) {
+              if (
+                (chainId !== Chain.Solana && !chainProviders[chainId]) ||
+                (chainId === Chain.Solana && !solanaProvider)
+              ) {
                 logger.error({ chainId }, 'No provider found for chain')
                 throw new ProviderMissingError(chainId)
               }
