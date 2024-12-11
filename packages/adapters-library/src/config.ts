@@ -59,7 +59,7 @@ const maxBatchSize: Record<ChainName, number> = {
   arb: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_ARBITRUM, 5),
   avax: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_AVALANCHE, 100),
   linea: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_LINEA, 100),
-  solana: 1,
+  solana: 1, // TODO Not relevant, find a way to remove this
 }
 
 const hasUnlimitedEthGethLogsBlockRangeLimit: Record<ChainName, boolean> = {
@@ -72,7 +72,7 @@ const hasUnlimitedEthGethLogsBlockRangeLimit: Record<ChainName, boolean> = {
   arb: true,
   avax: true,
   linea: true,
-  solana: false,
+  solana: false, // TODO Not relevant, find a way to remove this
 }
 
 const ConfigSchema = z
