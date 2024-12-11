@@ -20,11 +20,12 @@ const evmProviders = Object.values(Chain).reduce(
 
 const solanaProvider = jest.fn() as unknown as Connection
 
+const protocolIdMock = 'protocol-mock' as Protocol
 class MockProtocolAdapter {
+  chainId = Chain.Ethereum
+  protocolId = protocolIdMock
   productId = 'example-pool'
 }
-
-const protocolIdMock = 'protocol-mock' as Protocol
 
 const supportedProtocols = {
   [protocolIdMock]: {
