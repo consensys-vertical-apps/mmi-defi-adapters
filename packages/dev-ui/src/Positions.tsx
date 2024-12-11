@@ -100,7 +100,7 @@ export function Positions() {
             },
             pattern: {
               value: /^(0x[a-fA-F0-9]{40}|[1-9A-HJ-NP-Za-km-z]{32,44})$/,
-              message: 'Invalid Ethereum Address or other accepted format',
+              message: 'Invalid address format',
             },
           })}
           placeholder="User Address"

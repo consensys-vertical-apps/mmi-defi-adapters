@@ -6,10 +6,12 @@ import { Chain, EvmChain } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { logger } from '../core/utils/logger'
+import { Connection } from '@solana/web3.js'
 
 export function checkDbTotals(
   program: Command,
   chainProviders: Record<EvmChain, CustomJsonRpcProvider>,
+  solanaProvider: Connection,
   adaptersController: AdaptersController,
 ) {
   program
@@ -27,13 +29,10 @@ export function checkDbTotals(
         for (const [chainIdKey, _] of Object.entries(supportedChains)) {
           const chainId = +chainIdKey as Chain
 
-          if (chainId === Chain.Solana) {
-            continue
-          }
-
-          const provider = chainProviders[chainId]
-
-          if (!provider) {
+          if (
+            (chainId !== Chain.Solana && !chainProviders[chainId]) ||
+            (chainId === Chain.Solana && !solanaProvider)
+          ) {
             logger.error({ chainId }, 'No provider found for chain')
             throw new ProviderMissingError(chainId)
           }
@@ -57,7 +56,6 @@ export function checkDbTotals(
                 protocolId,
                 totalNumberOfPools,
               })
-              //@ts-ignore
             }
           }
         }
