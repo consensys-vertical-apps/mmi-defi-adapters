@@ -33,7 +33,7 @@ const JITO_STAKE_POOL = new PublicKey(
   'Jito4APyf642JPZPx3hGc6WWJ8zPKtRbRs4P815Awbb',
 )
 
-// TODOL Can be extracted from stake pool address
+// TODO Can be extracted from stake pool address
 const JITOSOL_TOKEN_ADDRESS = new PublicKey(
   'J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn',
 )
