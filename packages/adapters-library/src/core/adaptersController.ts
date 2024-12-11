@@ -10,7 +10,7 @@ import {
   SolanaChainAdapters,
   WriteActionInputs,
 } from '../adapters/supportedProtocols'
-import { Helpers } from '../scripts/helpers'
+import { Helpers, SolanaHelpers } from '../scripts/helpers'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import {
   PositionType,
@@ -89,6 +89,10 @@ export class AdaptersController {
                     provider,
                     protocolId,
                     adaptersController: this,
+                    helpers: new SolanaHelpers(
+                      provider,
+                      metadataProviders[chainId],
+                    ),
                   })
 
                   const productId = adapter.productId

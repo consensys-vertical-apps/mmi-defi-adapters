@@ -2,7 +2,7 @@ import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { Helpers } from '../../../../scripts/helpers'
+import { Helpers, SolanaHelpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,
@@ -21,7 +21,6 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { Connection, PublicKey } from '@solana/web3.js'
 import { getStakePoolAccount } from '@solana/spl-stake-pool'
@@ -30,25 +29,14 @@ import { nativeToken } from '../../../../core/utils/nativeTokens'
 import { Metaplex } from '@metaplex-foundation/js'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 
-const SOL_TOKEN: Erc20Metadata = nativeToken[Chain.Solana]
-
-const JITOSOL_TOKEN_ADDRESS = new PublicKey(
-  'J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn',
-)
-
 const JITO_STAKE_POOL = new PublicKey(
   'Jito4APyf642JPZPx3hGc6WWJ8zPKtRbRs4P815Awbb',
 )
 
-// Address can be extracted from stake pool account
-// decimals can be extracted using getMint
-// Metadata is also uploaded as a file on-chain
-const JITOSOL_TOKEN: Erc20Metadata = {
-  address: 'J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn',
-  name: 'Jito SOL',
-  symbol: 'JitoSOL',
-  decimals: 9,
-}
+// TODOL Can be extracted from stake pool address
+const JITOSOL_TOKEN_ADDRESS = new PublicKey(
+  'J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn',
+)
 
 type AdditionalMetadata = {
   stakePool: string
@@ -58,11 +46,11 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
   productId = 'jitosol'
   protocolId: Protocol
   chainId = Chain.Solana
-  helpers: Helpers
+  helpers: SolanaHelpers
 
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
-    includeInUnwrap: false,
+    includeInUnwrap: true,
   }
 
   private provider: Connection
@@ -73,11 +61,12 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
     provider,
     protocolId,
     adaptersController,
+    helpers,
   }: SolanaProtocolAdapterParams) {
     this.provider = provider
     this.protocolId = protocolId
     this.adaptersController = adaptersController
-    this.helpers = {} as Helpers
+    this.helpers = helpers
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -134,43 +123,18 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
     userAddress,
     blockNumber,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const userBalance = await this.getTokenAccounts(userAddress)
+    const { stakePool, underlyingTokens, ...protocolToken } = (
+      await this.getProtocolTokens()
+    )[0]!
 
-    // TODO Once unwrap works for Solana tokens, we can remove this and just return JitoSol balance
-    const unwrapResult = await this.unwrap({
-      protocolTokenAddress: JITOSOL_TOKEN.address,
-      blockNumber,
-    })
-
-    const underlyingRate = unwrapResult.tokens![0]!
-
-    return [
-      {
-        ...JITOSOL_TOKEN,
-        type: TokenType.Protocol,
-        balanceRaw: userBalance,
-        tokens: [
-          {
-            ...SOL_TOKEN,
-            type: TokenType.Underlying,
-            balanceRaw:
-              (userBalance * underlyingRate.underlyingRateRaw) /
-              10n ** BigInt(underlyingRate.decimals),
-          },
-        ],
-      },
-    ]
-  }
-
-  private async getTokenAccounts(userAddress: string) {
     const tokenAccounts = await this.provider.getTokenAccountsByOwner(
       new PublicKey(userAddress),
       {
-        mint: new PublicKey(JITOSOL_TOKEN.address),
+        mint: new PublicKey(protocolToken.address),
       },
     )
 
-    const totalBalance = tokenAccounts.value.reduce((total, accountInfo) => {
+    const userBalance = tokenAccounts.value.reduce((total, accountInfo) => {
       const accountData = AccountLayout.decode(
         Uint8Array.from(accountInfo.account.data),
       )
@@ -178,7 +142,30 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
       return total + accountData.amount
     }, 0n)
 
-    return totalBalance
+    // TODO Once unwrap works for Solana tokens, we can remove this and just return JitoSol balance
+    // const unwrapResult = await this.unwrap({
+    //   protocolTokenAddress: protocolToken.address,
+    //   blockNumber,
+    // })
+
+    // const underlyingRate = unwrapResult.tokens![0]!
+
+    return [
+      {
+        ...protocolToken,
+        type: TokenType.Protocol,
+        balanceRaw: userBalance,
+        // tokens: [
+        //   {
+        //     ...underlyingTokens[0]!,
+        //     type: TokenType.Underlying,
+        //     balanceRaw:
+        //       (userBalance * underlyingRate.underlyingRateRaw) /
+        //       10n ** BigInt(underlyingRate.decimals),
+        //   },
+        // ],
+      },
+    ]
   }
 
   async getWithdrawals({
@@ -223,7 +210,7 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
 
     const underlyingRateRaw =
       (BigInt(totalLamports.toString()) *
-        10n ** BigInt(JITOSOL_TOKEN.decimals)) /
+        10n ** BigInt(protocolToken.decimals)) /
       BigInt(poolTokenSupply.toString())
 
     return {

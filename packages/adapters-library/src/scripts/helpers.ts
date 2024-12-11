@@ -26,12 +26,24 @@ import {
   UnwrapExchangeRate,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
+import { Connection } from '@solana/web3.js'
 
 export const REAL_ESTATE_TOKEN_METADATA = {
   address: getAddress('0x6b8734ad31D42F5c05A86594314837C416ADA984'),
   name: 'Real Estate USD (REUSD)',
   symbol: 'Real Estate USD (REUSD)',
   decimals: 18,
+}
+
+export interface IHelpers {
+  readonly metadataProvider: IMetadataProvider
+}
+
+export class SolanaHelpers {
+  constructor(
+    public readonly provider: Connection,
+    public readonly metadataProvider: IMetadataProvider,
+  ) {}
 }
 
 export class Helpers {
