@@ -142,28 +142,11 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
       return total + accountData.amount
     }, 0n)
 
-    // TODO Once unwrap works for Solana tokens, we can remove this and just return JitoSol balance
-    // const unwrapResult = await this.unwrap({
-    //   protocolTokenAddress: protocolToken.address,
-    //   blockNumber,
-    // })
-
-    // const underlyingRate = unwrapResult.tokens![0]!
-
     return [
       {
         ...protocolToken,
         type: TokenType.Protocol,
         balanceRaw: userBalance,
-        // tokens: [
-        //   {
-        //     ...underlyingTokens[0]!,
-        //     type: TokenType.Underlying,
-        //     balanceRaw:
-        //       (userBalance * underlyingRate.underlyingRateRaw) /
-        //       10n ** BigInt(underlyingRate.decimals),
-        //   },
-        // ],
       },
     ]
   }

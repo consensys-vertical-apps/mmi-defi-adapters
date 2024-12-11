@@ -26,6 +26,7 @@ import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 import { pascalCase } from './utils/caseConversion'
 import { logger } from './utils/logger'
 import { PricesSolanaUsdAdapter } from '../adapters/prices-solana/products/usd/pricesSolanaUsdAdapter'
+import { chain } from 'lodash'
 
 type ISupportedProtocols = Partial<
   Record<Protocol, EvmChainAdapters | SolanaChainAdapters>
@@ -60,25 +61,8 @@ export class AdaptersController {
           ([chainIdKey, adapterClasses]) => {
             const chainId = +chainIdKey as Chain
 
-            // let adapters: IProtocolAdapter[]
-
+            let adapters: IProtocolAdapter[]
             if (chainId === Chain.Solana) {
-              const provider = solanaProvider
-
-              // adapters = adapterClasses.map(
-              //   (
-              //     solanaAdapterClass: new (
-              //       input: SolanaProtocolAdapterParams,
-              //     ) => IProtocolAdapter,
-              //   ): IProtocolAdapter => {
-              //     return new solanaAdapterClass({
-              //       provider,
-              //       protocolId,
-              //       adaptersController: this,
-              //     })
-              //   },
-              // )
-
               adapterClasses.forEach(
                 (
                   solanaAdapterClass: new (
@@ -86,61 +70,22 @@ export class AdaptersController {
                   ) => IProtocolAdapter,
                 ) => {
                   const adapter = new solanaAdapterClass({
-                    provider,
+                    provider: solanaProvider,
                     protocolId,
                     adaptersController: this,
                     helpers: new SolanaHelpers(
-                      provider,
+                      solanaProvider,
                       metadataProviders[chainId],
                     ),
                   })
 
-                  const productId = adapter.productId
-
-                  if (!this.adapters.has(chainId)) {
-                    this.adapters.set(chainId, new Map())
-                  }
-
-                  const chainAdapters = this.adapters.get(chainId)!
-
-                  if (!chainAdapters.has(protocolId)) {
-                    chainAdapters.set(protocolId, new Map())
-                  }
-
-                  const protocolAdapters = chainAdapters.get(protocolId)!
-
-                  if (protocolAdapters.has(productId)) {
-                    throw new Error('Duplicated adapter')
-                  }
-
-                  protocolAdapters.set(productId, adapter)
+                  this.mapAdapter(adapter)
                 },
               )
             } else {
               const provider = providers[chainId]!
 
-              // adapterClasses.forEach(
-              //   (
-              //     evmAdapterClass: new (
-              //       input: ProtocolAdapterParams,
-              //     ) => IProtocolAdapter,
-              //   ): IProtocolAdapter => {
-              //     return new evmAdapterClass({
-              //       provider,
-              //       chainId,
-              //       protocolId,
-              //       adaptersController: this,
-              //       helpers: new Helpers(
-              //         provider,
-              //         chainId,
-              //         metadataProviders[chainId],
-              //         providers,
-              //       ),
-              //     })
-              //   },
-              // )
-
-              adapterClasses.forEach(
+              adapters = adapterClasses.forEach(
                 (
                   evmAdapterClass: new (
                     input: ProtocolAdapterParams,
@@ -159,25 +104,7 @@ export class AdaptersController {
                     ),
                   })
 
-                  const productId = adapter.productId
-
-                  if (!this.adapters.has(chainId)) {
-                    this.adapters.set(chainId, new Map())
-                  }
-
-                  const chainAdapters = this.adapters.get(chainId)!
-
-                  if (!chainAdapters.has(protocolId)) {
-                    chainAdapters.set(protocolId, new Map())
-                  }
-
-                  const protocolAdapters = chainAdapters.get(protocolId)!
-
-                  if (protocolAdapters.has(productId)) {
-                    throw new Error('Duplicated adapter')
-                  }
-
-                  protocolAdapters.set(productId, adapter)
+                  this.mapAdapter(adapter)
                 },
               )
             }
@@ -211,6 +138,30 @@ export class AdaptersController {
         adaptersController: this,
       }),
     )
+  }
+
+  private mapAdapter(adapter: IProtocolAdapter) {
+    const chainId = adapter.chainId
+    const protocolId = adapter.protocolId
+    const productId = adapter.productId
+
+    if (!this.adapters.has(chainId)) {
+      this.adapters.set(chainId, new Map())
+    }
+
+    const chainAdapters = this.adapters.get(chainId)!
+
+    if (!chainAdapters.has(protocolId)) {
+      chainAdapters.set(protocolId, new Map())
+    }
+
+    const protocolAdapters = chainAdapters.get(protocolId)!
+
+    if (protocolAdapters.has(productId)) {
+      throw new Error('Duplicated adapter')
+    }
+
+    protocolAdapters.set(productId, adapter)
   }
 
   async init() {
