@@ -1,8 +1,8 @@
-import { Chain } from './core/constants/chains'
+import { Chain, EvmChain } from './core/constants/chains'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { DefiProvider } from './defiProvider'
 
-const mockChainBlockNumbers = Object.values(Chain).reduce(
+const mockChainBlockNumbers = Object.values(EvmChain).reduce(
   (accumulator, chainId) => {
     return {
       ...accumulator,
@@ -18,7 +18,7 @@ describe('DefiProvider', () => {
   beforeEach(() => {
     defiProvider = new DefiProvider()
 
-    defiProvider.chainProvider.providers = Object.values(Chain).reduce(
+    defiProvider.chainProvider.providers = Object.values(EvmChain).reduce(
       (accumulator, chainId) => {
         return {
           ...accumulator,
@@ -30,7 +30,7 @@ describe('DefiProvider', () => {
           },
         }
       },
-      {} as Record<Chain, CustomJsonRpcProvider>,
+      {} as Record<EvmChain, CustomJsonRpcProvider>,
     )
   })
 
@@ -39,7 +39,7 @@ describe('DefiProvider', () => {
       const result = await defiProvider.getStableBlockNumbers()
 
       expect(result).toEqual(mockChainBlockNumbers)
-      Object.values(Chain).forEach((chainId) => {
+      Object.values(EvmChain).forEach((chainId) => {
         expect(
           defiProvider.chainProvider.providers[chainId].getStableBlockNumber,
         ).toHaveBeenCalled()
