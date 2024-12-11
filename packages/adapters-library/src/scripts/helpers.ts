@@ -1,3 +1,4 @@
+import { Connection } from '@solana/web3.js'
 import { getAddress } from 'ethers'
 import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Erc20__factory } from '../contracts'
@@ -26,7 +27,6 @@ import {
   UnwrapExchangeRate,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
-import { Connection } from '@solana/web3.js'
 
 export const REAL_ESTATE_TOKEN_METADATA = {
   address: getAddress('0x6b8734ad31D42F5c05A86594314837C416ADA984'),

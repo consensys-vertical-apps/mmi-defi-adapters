@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { Connection } from '@solana/web3.js'
 import Database from 'better-sqlite3'
 import chalk from 'chalk'
 import { Command } from 'commander'
@@ -25,7 +26,6 @@ import {
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { getInvalidAddresses } from './addressValidation'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
-import { Connection } from '@solana/web3.js'
 
 export function buildMetadataDb(
   program: Command,

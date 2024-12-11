@@ -1,3 +1,4 @@
+import { Connection } from '@solana/web3.js'
 import { Command } from 'commander'
 import { Protocol } from '../adapters/protocols'
 import { supportedProtocols } from '../adapters/supportedProtocols'
@@ -6,7 +7,6 @@ import { Chain, EvmChain } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { logger } from '../core/utils/logger'
-import { Connection } from '@solana/web3.js'
 
 export function checkMetadataType(
   program: Command,

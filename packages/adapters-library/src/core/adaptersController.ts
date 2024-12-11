@@ -1,5 +1,7 @@
 import { Connection } from '@solana/web3.js'
+import { chain } from 'lodash'
 import { IMetadataProvider } from '../SQLiteMetadataProvider'
+import { PricesSolanaUsdAdapter } from '../adapters/prices-solana/products/usd/pricesSolanaUsdAdapter'
 import {
   IPricesAdapter,
   PricesV2UsdAdapter,
@@ -25,8 +27,6 @@ import { AdapterMissingError, NotImplementedError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 import { pascalCase } from './utils/caseConversion'
 import { logger } from './utils/logger'
-import { PricesSolanaUsdAdapter } from '../adapters/prices-solana/products/usd/pricesSolanaUsdAdapter'
-import { chain } from 'lodash'
 
 type ISupportedProtocols = Partial<
   Record<Protocol, EvmChainAdapters | SolanaChainAdapters>
