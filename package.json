@@ -53,11 +53,5 @@
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.0",
     "typescript": "^5.4.5"
-  },
-  "dependencies": {
-    "@metaplex-foundation/js": "^0.20.1",
-    "@solana/spl-stake-pool": "^1.1.8",
-    "@solana/spl-token": "^0.4.9",
-    "@solana/web3.js": "^1.95.8"
   }
 }

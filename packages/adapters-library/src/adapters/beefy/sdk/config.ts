@@ -1,4 +1,4 @@
-import { Chain, EvmChain } from '../../../core/constants/chains'
+import { Chain } from '../../../core/constants/chains'
 import {
   ApiPlatformId,
   ApiStrategyTypeId,
@@ -18,7 +18,7 @@ import { fetchIchiBalanceBreakdown } from './unwrap/ichi'
 import { fetchPendleEquilibriaBalanceBreakdown } from './unwrap/pendle_equilibria'
 import { fetchSolidlyBalanceBreakdown } from './unwrap/solidly'
 
-export const chainIdMap: Record<Chain, string> = {
+export const chainIdMap: Partial<Record<Chain, string>> = {
   [Chain.Arbitrum]: 'arbitrum',
   [Chain.Avalanche]: 'avax',
   [Chain.Base]: 'base',
@@ -28,7 +28,6 @@ export const chainIdMap: Record<Chain, string> = {
   [Chain.Linea]: 'linea',
   [Chain.Optimism]: 'optimism',
   [Chain.Polygon]: 'polygon',
-  [Chain.Solana]: 'solana', // TODO - This is easier than using EvmChain and fixing everywhere, but it's not correct
 }
 
 export const protocolMap: Record<
