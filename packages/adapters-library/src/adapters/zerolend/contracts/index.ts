@@ -3,6 +3,8 @@
 /* eslint-disable */
 export type { PoolContract } from "./PoolContract";
 export type { ProtocolDataProvider } from "./ProtocolDataProvider";
+export type { Vesting } from "./Vesting";
 export * as factories from "./factories";
 export { PoolContract__factory } from "./factories/PoolContract__factory";
 export { ProtocolDataProvider__factory } from "./factories/ProtocolDataProvider__factory";
+export { Vesting__factory } from "./factories/Vesting__factory";

@@ -32,6 +32,7 @@ export const Protocol = {
   PancakeswapV2: 'pancakeswap-v2',
   Pendle: 'pendle',
   QuickswapV2: 'quickswap-v2',
+  QuickswapV3: 'quickswap-v3',
   Renzo: 'renzo',
   RocketPool: 'rocket-pool',
   Solv: 'solv',

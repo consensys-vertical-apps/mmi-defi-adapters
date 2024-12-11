@@ -38,8 +38,10 @@ import { testCases as compoundV2SupplyMarketTestCases } from './compound-v2/prod
 import { testCases as compoundV3BorrowTestCases } from './compound-v3/products/borrow/tests/testCases'
 import { testCases as compoundV3LendingTestCases } from './compound-v3/products/lending/tests/testCases'
 import { testCases as convexCvxcrvWrapperTestCases } from './convex/products/cvxcrv-wrapper/tests/testCases'
+import { testCases as convexLockedCvxTestCases } from './convex/products/locked-cvx/tests/testCases'
 import { testCases as convexPoolTestCases } from './convex/products/pool/tests/testCases'
 import { testCases as convexSidechainStakingTestCases } from './convex/products/sidechain-staking/tests/testCases'
+import { testCases as convexStakedCvxTestCases } from './convex/products/staked-cvx/tests/testCases'
 import { testCases as convexStakingTestCases } from './convex/products/staking/tests/testCases'
 import { testCases as curvePoolTestCases } from './curve/products/pool/tests/testCases'
 import { testCases as curveStakingTestCases } from './curve/products/staking/tests/testCases'
@@ -87,7 +89,9 @@ import { testCases as pendlePrincipleTokenTestCases } from './pendle/products/pr
 import { testCases as pendleStandardisedYieldTokenTestCases } from './pendle/products/standardised-yield-token/tests/testCases'
 import { testCases as pendleYieldTokenTestCases } from './pendle/products/yield-token/tests/testCases'
 import { Protocol } from './protocols'
+import { testCases as quickswapV2DQuickTestCases } from './quickswap-v2/products/d-quick/tests/testCases'
 import { testCases as quickswapV2PoolTestCases } from './quickswap-v2/products/pool/tests/testCases'
+import { testCases as quickswapV3PoolTestCases } from './quickswap-v3/products/pool/tests/testCases'
 import { testCases as renzoEzEthTestCases } from './renzo/products/ez-eth/tests/testCases'
 import { testCases as rocketPoolRethTestCases } from './rocket-pool/products/reth/tests/testCases'
 import { testCases as solvSolvBtcTestCases } from './solv/products/solv-btc/tests/testCases'
@@ -116,6 +120,7 @@ import { testCases as xfaiDexTestCases } from './xfai/products/dex/tests/testCas
 import { testCases as zeroLendATokenTestCases } from './zerolend/products/a-token/tests/testCases'
 import { testCases as zeroLendStableDebtTokenTestCases } from './zerolend/products/stable-debt-token/tests/testCases'
 import { testCases as zeroLendVariableDebtTokenTestCases } from './zerolend/products/variable-debt-token/tests/testCases'
+import { testCases as zerolendVestingTestCases } from './zerolend/products/vesting/tests/testCases'
 
 const TEST_TIMEOUT = 300000
 
@@ -196,8 +201,10 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
 
   [Protocol.Convex]: {
     ['cvxcrv-wrapper']: convexCvxcrvWrapperTestCases,
+    ['locked-cvx']: convexLockedCvxTestCases,
     ['pool']: convexPoolTestCases,
     ['sidechain-staking']: convexSidechainStakingTestCases,
+    ['staked-cvx']: convexStakedCvxTestCases,
     ['staking']: convexStakingTestCases,
   },
 
@@ -310,7 +317,12 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
   },
 
   [Protocol.QuickswapV2]: {
+    ['d-quick']: quickswapV2DQuickTestCases,
     ['pool']: quickswapV2PoolTestCases,
+  },
+
+  [Protocol.QuickswapV3]: {
+    ['pool']: quickswapV3PoolTestCases,
   },
 
   [Protocol.Renzo]: {
@@ -374,6 +386,7 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
   },
 
   [Protocol.ZeroLend]: {
+    ['vesting']: zerolendVestingTestCases,
     ['a-token']: zeroLendATokenTestCases,
     ['stable-debt-token']: zeroLendStableDebtTokenTestCases,
     ['variable-debt-token']: zeroLendVariableDebtTokenTestCases,

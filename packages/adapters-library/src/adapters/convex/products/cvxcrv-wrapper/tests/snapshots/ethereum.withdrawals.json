@@ -1,13 +1,13 @@
 {
   "aggregatedValues": ["USD1,452.75", "USD1,466.56", "USD1,717.95"],
-  "latency": "Latency: 3.879 seconds",
+  "latency": "Latency: 2.046 seconds",
   "snapshot": {
     "protocolId": "convex",
     "name": "Convex",
-    "description": "Convex pool adapter",
-    "siteUrl": "https://www.convexfinance.com/",
+    "description": "Convex adapter for CvxCrv staking",
+    "siteUrl": "https://curve.convexfinance.com/stake",
     "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
-    "positionType": "supply",
+    "positionType": "stake",
     "chainId": 1,
     "productId": "cvxcrv-wrapper",
     "chainName": "ethereum",
@@ -18,8 +18,8 @@
         "protocolToken": {
           "address": "0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434",
           "name": "Staked CvxCrv",
-          "decimals": 18,
-          "symbol": "stkCvxCrv"
+          "symbol": "stkCvxCrv",
+          "decimals": 18
         },
         "tokens": [
           {
@@ -28,7 +28,7 @@
             "symbol": "CVX",
             "decimals": 18,
             "balanceRaw": "390488348790686281236n",
-            "type": "underlying",
+            "type": "underlying-claimable",
             "price": 3.7203442715200805,
             "balance": 390.4883487906863
           }
@@ -40,8 +40,8 @@
         "protocolToken": {
           "address": "0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434",
           "name": "Staked CvxCrv",
-          "decimals": 18,
-          "symbol": "stkCvxCrv"
+          "symbol": "stkCvxCrv",
+          "decimals": 18
         },
         "tokens": [
           {
@@ -50,14 +50,14 @@
             "symbol": "3Crv",
             "decimals": 18,
             "balanceRaw": "1419767977106002257650n",
-            "type": "underlying",
+            "type": "underlying-claimable",
             "tokens": [
               {
                 "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
                 "name": "Dai Stablecoin",
                 "symbol": "DAI",
                 "decimals": 18,
-                "type": "underlying",
+                "type": "underlying-claimable",
                 "balanceRaw": "505337769590995686281n",
                 "balance": 505.33776959099566,
                 "price": 1.0009450637066941,
@@ -68,7 +68,7 @@
                 "name": "USD Coin",
                 "symbol": "USDC",
                 "decimals": 6,
-                "type": "underlying",
+                "type": "underlying-claimable",
                 "balanceRaw": "562763371n",
                 "balance": 562.763371,
                 "price": 1.0104338264413466,
@@ -79,7 +79,7 @@
                 "name": "Tether USD",
                 "symbol": "USDT",
                 "decimals": 6,
-                "type": "underlying",
+                "type": "underlying-claimable",
                 "balanceRaw": "391532254n",
                 "balance": 391.532254,
                 "price": 1.0014741928231874,
@@ -96,8 +96,8 @@
         "protocolToken": {
           "address": "0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434",
           "name": "Staked CvxCrv",
-          "decimals": 18,
-          "symbol": "stkCvxCrv"
+          "symbol": "stkCvxCrv",
+          "decimals": 18
         },
         "tokens": [
           {
@@ -106,7 +106,7 @@
             "symbol": "CRV",
             "decimals": 18,
             "balanceRaw": "2955753991471436954276n",
-            "type": "underlying",
+            "type": "underlying-claimable",
             "price": 0.5812210635848514,
             "balance": 2955.753991471437
           }
@@ -116,6 +116,9 @@
     ]
   },
   "rpcResponses": {
+    "8178642864e572f7299cc38e3a5ae6b4": {
+      "result": []
+    },
     "5e427aa7674921b0e56c12820e6b047d": {
       "result": [
         {
@@ -129,25 +132,6 @@
             "0x7fe1dfb5fd2a01640e1b559e082ce63e369d4d61e01dc0caec9521e55a8d1e4f",
             "0x0000000000000000000000008851924938db253c2602cfb473c33b88deb83c43",
             "0x0000000000000000000000004e3fbd56cd56c3e72c1403e103b45db9da5b9d2b"
-          ],
-          "transactionHash": "0xaa707b5056fd3de39bdfcae1164eeffadde064000302ffce2b5b0aa2b601ee5b",
-          "transactionIndex": "0x82"
-        }
-      ]
-    },
-    "95ec269ea97f45d17120ba0634adefcb": {
-      "result": [
-        {
-          "address": "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434",
-          "blockHash": "0x743875b4c3285d6ceb875bdabb872db59484f3080fbc9c5356410ca6a3f80750",
-          "blockNumber": "0x11c5045",
-          "data": "0x00000000000000000000000000000000000000000000004cf73d1cecbe31a6f20000000000000000000000008851924938db253c2602cfb473c33b88deb83c43",
-          "logIndex": "0x148",
-          "removed": false,
-          "topics": [
-            "0x7fe1dfb5fd2a01640e1b559e082ce63e369d4d61e01dc0caec9521e55a8d1e4f",
-            "0x0000000000000000000000008851924938db253c2602cfb473c33b88deb83c43",
-            "0x0000000000000000000000006c3f90f043a72fa612cbac8115ee7e52bde6e490"
           ],
           "transactionHash": "0xaa707b5056fd3de39bdfcae1164eeffadde064000302ffce2b5b0aa2b601ee5b",
           "transactionIndex": "0x82"
@@ -173,20 +157,30 @@
         }
       ]
     },
-    "8178642864e572f7299cc38e3a5ae6b4": {
+    "95ec269ea97f45d17120ba0634adefcb": {
+      "result": [
+        {
+          "address": "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434",
+          "blockHash": "0x743875b4c3285d6ceb875bdabb872db59484f3080fbc9c5356410ca6a3f80750",
+          "blockNumber": "0x11c5045",
+          "data": "0x00000000000000000000000000000000000000000000004cf73d1cecbe31a6f20000000000000000000000008851924938db253c2602cfb473c33b88deb83c43",
+          "logIndex": "0x148",
+          "removed": false,
+          "topics": [
+            "0x7fe1dfb5fd2a01640e1b559e082ce63e369d4d61e01dc0caec9521e55a8d1e4f",
+            "0x0000000000000000000000008851924938db253c2602cfb473c33b88deb83c43",
+            "0x0000000000000000000000006c3f90f043a72fa612cbac8115ee7e52bde6e490"
+          ],
+          "transactionHash": "0xaa707b5056fd3de39bdfcae1164eeffadde064000302ffce2b5b0aa2b601ee5b",
+          "transactionIndex": "0x82"
+        }
+      ]
+    },
+    "bf01b3bfab06b77755a64bd3f92a8fb9": {
       "result": []
     },
     "efd3103c41c4c4baa433ed70c649b27e": {
       "result": "0x0000000000000000000000000000000000000000000000060000000000001fce000000000000000000000000000000000000000000000000000000300d84108800000000000000000000000000000000000000000000000000000000655ee95700000000000000000000000000000000000000000000000000000000655ee9570000000000000000000000000000000000000000000000060000000000001fce"
-    },
-    "24c62d7393ef9094e7f4f99eeb309794": {
-      "result": "0x0000000000000000000000000000000000000000000000000006677994161333"
-    },
-    "1ceeb61cac431ebceee32c08e7b44871": {
-      "result": "0x00000000000000000000000000000000000000000000000000010021a9e7ca53"
-    },
-    "ef99b7fac4d434b67eeca1bcb341acb7": {
-      "result": "0x00000000000000000000000000000000000000000037f0a139d1d9515f9be1f8"
     },
     "1851bf5ebb89ebbc013268e406d6d958": {
       "result": "0x0000000000000000000000000000000000000000000000000000447f0844fc78"
@@ -194,17 +188,26 @@
     "4f5eecbf326342179ed112207c4a3074": {
       "result": "0x00000000000000000000000000000000000000000000000000002fa7ad067e65"
     },
+    "ef99b7fac4d434b67eeca1bcb341acb7": {
+      "result": "0x00000000000000000000000000000000000000000037f0a139d1d9515f9be1f8"
+    },
+    "1ceeb61cac431ebceee32c08e7b44871": {
+      "result": "0x00000000000000000000000000000000000000000000000000010021a9e7ca53"
+    },
+    "24c62d7393ef9094e7f4f99eeb309794": {
+      "result": "0x0000000000000000000000000000000000000000000000000006677994161333"
+    },
     "85dd91a18a853e9d1129c6fa8f525efa": {
       "result": "0x0000000000000000000000000000000000000000009d2a6b4d16c4e2ae8c0081"
+    },
+    "5bccf33cefa81bb3c2a944b2df589238": {
+      "result": "0x0000000000000000000000000000000000000000019162aa348c40a1848f54f0"
     },
     "5c169a9cbd8673900f1cb10ac1b3c71d": {
       "result": "0x0000000000000000000000000000000000000000000000000001b918417f0ee1"
     },
     "c608ac87668f844bc42318c0bac53f51": {
       "result": "0x00000000000000000000000000000000000000000194f9f42c8ed0d87835a283"
-    },
-    "5bccf33cefa81bb3c2a944b2df589238": {
-      "result": "0x0000000000000000000000000000000000000000019162aa348c40a1848f54f0"
     }
   }
 }

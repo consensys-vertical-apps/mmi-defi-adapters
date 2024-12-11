@@ -1,0 +1,115 @@
+{
+  "blockNumber": 65031322,
+  "latency": "Latency: 2.306 seconds",
+  "aggregatedValues": ["USD5.73"],
+  "snapshot": [
+    {
+      "protocolId": "quickswap-v3",
+      "name": "QuickswapV3",
+      "description": "Quickswap v3 defi adapter",
+      "siteUrl": "https://uniswap.org/",
+      "iconUrl": "",
+      "positionType": "supply",
+      "chainId": 137,
+      "productId": "pool",
+      "chainName": "matic",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x8eF88E4c7CfbbaC1C163f7eddd4B578792201de6",
+          "tokenId": "144215",
+          "name": "GEMS / USDC",
+          "symbol": "GEMS / USDC",
+          "decimals": 18,
+          "balanceRaw": "3212n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x25eFae7B0b2866CaFB14E8eaD333a42eeb2A0b80",
+              "name": "GEMS",
+              "symbol": "GEMS",
+              "decimals": 6,
+              "balanceRaw": "2n",
+              "type": "underlying",
+              "balance": 0.000002,
+              "price": 1144423.0093633893,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x25eFae7B0b2866CaFB14E8eaD333a42eeb2A0b80/logo.png"
+            },
+            {
+              "address": "0x25eFae7B0b2866CaFB14E8eaD333a42eeb2A0b80",
+              "name": "GEMS",
+              "symbol": "GEMS",
+              "decimals": 6,
+              "balanceRaw": "0n",
+              "type": "underlying-claimable",
+              "balance": 0,
+              "price": 1144423.0093633893,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x25eFae7B0b2866CaFB14E8eaD333a42eeb2A0b80/logo.png"
+            },
+            {
+              "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "3440306n",
+              "type": "underlying",
+              "balance": 3.440306,
+              "price": 1.0003426788674818,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359/logo.png"
+            },
+            {
+              "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "0n",
+              "type": "underlying-claimable",
+              "balance": 0,
+              "price": 1.0003426788674818,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359/logo.png"
+            }
+          ],
+          "balance": 3.212e-15
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "e0177b5ba064aa61c19a0ab79c2f5808": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000025efae7b0b2866cafb14e8ead333a42eeb2a0b800000000000000000000000003c499c542cef5e3811e1192ce70d8cc03d5c3359fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff2764c00000000000000000000000000000000000000000000000000000000000d89b40000000000000000000000000000000000000000000000000000000000000c8c000000000000000000000000000000000005b6ea650746919b0086c6889e4eac00000000000000000000000000000012369ae9583bff214b3a49aaa6260b1df900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "d46b056e05901c95f53af44265a0c092": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000447454d5300000000000000000000000000000000000000000000000000000000"
+    },
+    "6fe8357c30f76dbce60551e0bc30ef32": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
+    },
+    "6e0197cbbdb3f4d59424e743e9f94726": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "1698537ad7769ae9ce61e1fa7ae923a7": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "4c2395972cf16e9aea457d32ae224db9": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000855534420436f696e000000000000000000000000000000000000000000000000"
+    },
+    "41d815735fd2625d265ec17d75294456": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "b1e8b757056982dae9b12b81414dee86": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000447454d5300000000000000000000000000000000000000000000000000000000"
+    },
+    "6a466efce69f37f55f5c16e96368da95": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000347eb2"
+    },
+    "d0763441238c30f980d1abb9a13d42c3": {
+      "result": "0x000000000000000000000000000000000000000000000003000000000016ade4000000000000000000000000000000000000000000000000000000540b7d168000000000000000000000000000000000000000000000000000000000674ef01600000000000000000000000000000000000000000000000000000000674ef01b000000000000000000000000000000000000000000000003000000000016ade4"
+    },
+    "094ae249554f8da54594523c3d01017f": {
+      "result": "0x0000000000000000000000000000000000000fa19ed22c324c8ba6d59855959f"
+    },
+    "56bfa0a22ea83d15e0f5bd3be2c87d23": {
+      "result": "0x000000000000000000000000000000000000000000e53bc4ee03d8c2ea23b506"
+    }
+  }
+}

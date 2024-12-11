@@ -1,0 +1,98 @@
+{
+  "blockNumber": 21273095,
+  "latency": "Latency: 1.789 seconds",
+  "aggregatedValues": ["USD1,936.75"],
+  "snapshot": [
+    {
+      "protocolId": "convex",
+      "name": "Convex",
+      "description": "Convex adapter for locked CVX",
+      "siteUrl": "https://www.convexfinance.com/lock-cvx",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "locked-cvx",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x72a19342e8F1838460eBFCCEf09F6585e32db86E",
+          "name": "Vote Locked Convex Token",
+          "symbol": "vlCVX",
+          "decimals": 18,
+          "balanceRaw": "642495533988128010088n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7",
+              "name": "Convex CRV",
+              "symbol": "cvxCRV",
+              "decimals": 18,
+              "balanceRaw": "0n",
+              "type": "underlying-claimable",
+              "balance": 0,
+              "price": 0.39765488866761867,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7/logo.png"
+            },
+            {
+              "address": "0xFEEf77d3f69374f66429C91d732A244f074bdf74",
+              "name": "Convex FXS",
+              "symbol": "cvxFXS",
+              "decimals": 18,
+              "balanceRaw": "0n",
+              "type": "underlying-claimable",
+              "balance": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFEEf77d3f69374f66429C91d732A244f074bdf74/logo.png"
+            },
+            {
+              "address": "0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0",
+              "name": "Frax Share",
+              "symbol": "FXS",
+              "decimals": 18,
+              "balanceRaw": "123281007046588n",
+              "type": "underlying-claimable",
+              "balance": 0.000123281007046588,
+              "price": 2.8441785283102745,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0/logo.png"
+            },
+            {
+              "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+              "name": "Convex Token",
+              "symbol": "CVX",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "642495533988128010088n",
+              "balance": 642.495533988128,
+              "price": 3.0144127736062183,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
+            }
+          ],
+          "balance": 642.495533988128
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "680776ba36c1ed0eb788b93bfdc8d4ff": {
+      "result": "0x000000000000000000000000000000000000000000000022d46aac133148af680000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000022d46aac133148af6800000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000022d46aac133148af68000000000000000000000000000000000000000000000022d46aac133148af680000000000000000000000000000000000000000000000000000000067db5a80"
+    },
+    "1e349af021cc7529a074748ddeae8510": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000300000000000000000000000062b9c7356a2dc64a1969e19c23e4f579f9810aa70000000000000000000000000000000000000000000000000000000000000000000000000000000000000000feef77d3f69374f66429c91d732a244f074bdf7400000000000000000000000000000000000000000000000000000000000000000000000000000000000000003432b6a60d23ca0dfca7761b7ab56459d9c964d00000000000000000000000000000000000000000000000000000701f98a1efbc"
+    },
+    "8decdd4d5dd9662f41ec3a7b8d687406": {
+      "result": "0x0000000000000000000000000000000000000000000000070000000000000b6d0000000000000000000000000000000000000000000000000000004d426f5729000000000000000000000000000000000000000000000000000000006745f507000000000000000000000000000000000000000000000000000000006745f5170000000000000000000000000000000000000000000000070000000000000b6d"
+    },
+    "74b454a221faf3a1887e3da413c6244d": {
+      "result": "0x00000000000000000000000000000000000000000000000000006cfdf4adc271"
+    },
+    "2f00f49da1382c8b6e68a907c05e358b": {
+      "result": "0x00000000000000000000000000000000000000000000000000030b8d5dc5ae06"
+    },
+    "3a725292c97b69e92733f7972c77f830": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "1557311753a42b0c1672c25173c0424d": {
+      "result": "0x00000000000000000000000000000000000000000000000000033a3610feae62"
+    }
+  }
+}

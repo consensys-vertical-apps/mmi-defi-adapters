@@ -149,12 +149,21 @@ import { CompoundV3BorrowAdapter } from './compound-v3/products/borrow/compoundV
 
 import { DineroPxEthAdapter } from './dinero/products/px-eth/dineroPxEthAdapter'
 
+import { BalancerV2FarmingAdapter } from './balancer-v2/products/farming/balancerV2FarmingAdapter'
 import { BalancerV2PoolAdapter } from './balancer-v2/products/pool/balancerV2PoolAdapter'
 import { DineroApxEthAdapter } from './dinero/products/apx-eth/dineroApxEthAdapter'
 
-import { BalancerV2FarmingAdapter } from './balancer-v2/products/farming/balancerV2FarmingAdapter'
+import { ConvexStakedCvxAdapter } from './convex/products/staked-cvx/convexStakedCvxAdapter'
+
+import { ConvexLockedCvxAdapter } from './convex/products/locked-cvx/convexLockedCvxAdapter'
 
 import { MendiFinanceStakingAdapter } from './mendi-finance/products/staking/mendiFinanceStakingAdapter'
+
+import { QuickswapV2DQuickAdapter } from './quickswap-v2/products/d-quick/quickswapV2DQuickAdapter'
+
+import { QuickswapV3PoolAdapter } from './quickswap-v3/products/pool/quickswapV3PoolAdapter'
+
+import { ZerolendVestingAdapter } from './zerolend/products/vesting/zerolendVestingAdapter'
 
 import { JitoJitosolAdapter } from './jito/products/jitosol/jitoJitosolAdapter'
 
@@ -346,8 +355,10 @@ export const supportedProtocols: Record<
   [Protocol.Convex]: {
     [Chain.Ethereum]: [
       ConvexPoolAdapter,
+      ConvexStakedCvxAdapter,
       ConvexStakingAdapter,
       ConvexCvxcrvWrapperAdapter,
+      ConvexLockedCvxAdapter,
     ],
 
     [Chain.Polygon]: [ConvexSidechainStakingAdapter],
@@ -538,7 +549,11 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.QuickswapV2]: {
-    [Chain.Polygon]: [QuickswapV2PoolAdapter],
+    [Chain.Polygon]: [QuickswapV2PoolAdapter, QuickswapV2DQuickAdapter],
+  },
+
+  [Protocol.QuickswapV3]: {
+    [Chain.Polygon]: [QuickswapV3PoolAdapter],
   },
 
   [Protocol.Renzo]: {
@@ -678,6 +693,7 @@ export const supportedProtocols: Record<
       ZeroLendVariableDebtTokenPoolAdapter,
     ],
     [Chain.Linea]: [
+      ZerolendVestingAdapter,
       ZeroLendATokenPoolAdapter,
       ZeroLendStableDebtTokenPoolAdapter,
       ZeroLendVariableDebtTokenPoolAdapter,
