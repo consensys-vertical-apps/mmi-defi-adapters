@@ -8,13 +8,6 @@ const ETH = {
   decimals: 18,
 }
 
-export const nativeTokenAddresses = [
-  ZERO_ADDRESS,
-  getAddress('0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'),
-  getAddress('0x4200000000000000000000000000000000000006'),
-  getAddress('0x0000000000000000000000000000000000001010'), // native token on polygon matic
-]
-
 export const nativeToken = {
   [Chain.Ethereum]: ETH,
   [Chain.Optimism]: ETH,
@@ -41,3 +34,11 @@ export const nativeToken = {
     decimals: 9,
   },
 } as const
+
+export const nativeTokenAddresses = [
+  ZERO_ADDRESS,
+  getAddress('0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'),
+  getAddress('0x4200000000000000000000000000000000000006'),
+  getAddress('0x0000000000000000000000000000000000001010'), // native token on polygon matic
+  nativeToken[Chain.Solana].address,
+]
