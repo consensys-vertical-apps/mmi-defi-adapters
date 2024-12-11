@@ -25,7 +25,7 @@ export const Chain = {
 } as const
 export type Chain = (typeof Chain)[keyof typeof Chain]
 
-export const EvmChainName = {
+export const ChainName = {
   ethereum: 'ethereum',
   op: 'op',
   bsc: 'bsc',
@@ -35,18 +35,7 @@ export const EvmChainName = {
   arb: 'arb',
   avax: 'avax',
   linea: 'linea',
-} as const
-export type EvmChainName = (typeof EvmChainName)[keyof typeof EvmChainName]
-
-export const SolanaChainName = {
   solana: 'solana',
-} as const
-export type SolanaChainName =
-  (typeof SolanaChainName)[keyof typeof SolanaChainName]
-
-export const ChainName = {
-  ...EvmChainName,
-  ...SolanaChainName,
 } as const
 export type ChainName = (typeof ChainName)[keyof typeof ChainName]
 
