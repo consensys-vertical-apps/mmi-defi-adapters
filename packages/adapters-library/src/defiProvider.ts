@@ -1,3 +1,4 @@
+import { PublicKey } from '@solana/web3.js'
 import Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
 import {
@@ -5,6 +6,7 @@ import {
   buildSqliteMetadataProviders,
 } from './SQLiteMetadataProvider'
 import { buildVoidMetadataProviders } from './VoidMetadataProvider'
+import { JitoJitosolAdapter } from './adapters/jito/products/jitosol/jitoJitosolAdapter'
 import { Protocol } from './adapters/protocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
 import { supportedProtocols } from './adapters/supportedProtocols'
@@ -49,8 +51,6 @@ import {
   IUnwrapPriceCacheProvider,
   UnwrapPriceCache,
 } from './unwrapCache'
-import { PublicKey } from '@solana/web3.js'
-import { JitoJitosolAdapter } from './adapters/jito/products/jitosol/jitoJitosolAdapter'
 
 export class DefiProvider {
   private parsedConfig
