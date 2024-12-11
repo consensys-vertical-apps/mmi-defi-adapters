@@ -1,7 +1,6 @@
 import { getAddress } from 'ethers'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { Chain } from '../constants/chains'
-import { Erc20Metadata } from '../../types/erc20Metadata'
 
 const ETH = {
   symbol: 'ETH',

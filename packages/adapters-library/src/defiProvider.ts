@@ -130,38 +130,18 @@ export class DefiProvider {
     filterProtocolTokens?: string[]
     filterTokenIds?: string[]
   }): Promise<DefiPositionResponse[]> {
-    // if (this.isValidSolanaAddress(userAddress)) {
-    //   const jitoSolAdapter = new JitoJitosolAdapter({
-    //     provider: this.chainProvider.solanaProvider,
-    //     protocolId: Protocol.Jito,
-    //     adaptersController: {} as AdaptersController,
-    //   })
-
-    //   const positions = await jitoSolAdapter.getPositions({
-    //     userAddress,
-    //     protocolTokenAddresses: filterProtocolTokens,
-    //   })
-
-    //   const tokens = positions.map((protocolPosition) =>
-    //     enrichPositionBalance(protocolPosition, Chain.Ethereum),
-    //   )
-
-    //   const protocolDetails = jitoSolAdapter.getProtocolDetails()
-
-    //   return [
-    //     {
-    //       ...protocolDetails,
-    //       chainName: ChainIdToChainNameMap[Chain.Ethereum],
-    //       success: true,
-    //       tokens,
-    //     },
-    //   ]
-    // }
-
     const startGetPositions = Date.now()
     this.initAdapterControllerForUnwrapStage()
 
     const runner = async (adapter: IProtocolAdapter) => {
+      const isSolanaAddress = this.isSolanaAddress(userAddress)
+      if (
+        (adapter.chainId === Chain.Solana && !isSolanaAddress) ||
+        (adapter.chainId !== Chain.Solana && isSolanaAddress)
+      ) {
+        return { tokens: [] }
+      }
+
       const blockNumber = blockNumbers?.[adapter.chainId]
 
       const protocolTokenAddresses = await this.buildTokenFilter(
@@ -568,6 +548,10 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
+      if (adapter.chainId === Chain.Solana) {
+        throw new NotSupportedError('Withdrawals not supported on Solana')
+      }
+
       const positionsMovementsPromises = [
         adapter.getWithdrawals({
           protocolTokenAddress: getAddress(protocolTokenAddress),
@@ -679,6 +663,10 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
+      if (adapter.chainId === Chain.Solana) {
+        throw new NotSupportedError('Deposits not supported on Solana')
+      }
+
       const positionsMovements = await adapter.getDeposits({
         protocolTokenAddress: getAddress(protocolTokenAddress),
         fromBlock,
@@ -732,6 +720,10 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
+      if (adapter.chainId === Chain.Solana) {
+        throw new NotSupportedError('Repays not supported on Solana')
+      }
+
       const positionsMovements =
         (await adapter.getRepays?.({
           protocolTokenAddress: getAddress(protocolTokenAddress),
@@ -786,6 +778,10 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
+      if (adapter.chainId === Chain.Solana) {
+        throw new NotSupportedError('Borrows not supported on Solana')
+      }
+
       const positionsMovements =
         (await adapter.getBorrows?.({
           protocolTokenAddress: getAddress(protocolTokenAddress),
@@ -1073,7 +1069,7 @@ export class DefiProvider {
     }
   }
 
-  private isValidSolanaAddress(address: string) {
+  private isSolanaAddress(address: string) {
     try {
       new PublicKey(address)
       return true
