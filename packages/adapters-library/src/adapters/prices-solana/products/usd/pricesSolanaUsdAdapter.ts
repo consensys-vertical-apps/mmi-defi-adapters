@@ -39,6 +39,7 @@ export class PricesSolanaUsdAdapter implements IPricesAdapter {
     blockNumber: number
     tokenMetadata: Erc20Metadata
   }): Promise<UnwrapExchangeRate> {
+    // TODO Implement price fetching
     throw new Error('Error fetching price')
   }
 }
