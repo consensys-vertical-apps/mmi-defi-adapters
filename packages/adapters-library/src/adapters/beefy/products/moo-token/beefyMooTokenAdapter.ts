@@ -138,9 +138,8 @@ export class BeefyMooTokenAdapter implements IProtocolAdapter {
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
   ): Promise<UnwrappedTokenExchangeRate[]> {
-    const [underlyingToken] = await this.getUnderlyingTokens(
-      protocolTokenMetadata.address,
-    )
+    const { underlyingTokens: [underlyingToken] } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const wstEthContract = BeefyVaultV7__factory.connect(
       protocolTokenMetadata.address,
