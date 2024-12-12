@@ -2,7 +2,7 @@ import type { Protocol } from '../adapters/protocols'
 import type { GetTransactionParams } from '../adapters/supportedProtocols'
 import type { AdaptersController } from '../core/adaptersController'
 import type { Chain } from '../core/constants/chains'
-import { Helpers } from '../scripts/helpers'
+import { IHelpers } from '../scripts/helpers'
 import type {
   AdapterSettings,
   GetEventsInput,
@@ -49,7 +49,7 @@ export type ProtocolToken<
 export interface IProtocolAdapter {
   adapterSettings: AdapterSettings
 
-  helpers: Helpers
+  helpers: IHelpers
 
   /**
    * Unique identifier of the protocol.

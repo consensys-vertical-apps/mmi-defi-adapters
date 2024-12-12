@@ -1,3 +1,4 @@
+import { Connection } from '@solana/web3.js'
 import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Protocol } from '../adapters/protocols'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
@@ -7,7 +8,7 @@ import { Chain } from './constants/chains'
 import { AdapterMissingError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 
-const providers = Object.values(Chain).reduce(
+const evmProviders = Object.values(Chain).reduce(
   (accumulator, current) => {
     return {
       ...accumulator,
@@ -17,11 +18,14 @@ const providers = Object.values(Chain).reduce(
   {} as Record<Chain, CustomJsonRpcProvider>,
 )
 
-class MockProtocolAdapter {
-  productId = 'example-pool'
-}
+const solanaProvider = jest.fn() as unknown as Connection
 
 const protocolIdMock = 'protocol-mock' as Protocol
+class MockProtocolAdapter {
+  chainId = Chain.Ethereum
+  protocolId = protocolIdMock
+  productId = 'example-pool'
+}
 
 const supportedProtocols = {
   [protocolIdMock]: {
@@ -39,7 +43,8 @@ describe('AdaptersController', () => {
 
   beforeEach(() => {
     adaptersController = new AdaptersController({
-      providers,
+      evmProviders,
+      solanaProvider,
       supportedProtocols,
       metadataProviders: {} as unknown as Record<Chain, IMetadataProvider>,
     })
@@ -53,7 +58,8 @@ describe('AdaptersController', () => {
     it('throws an error if there are adapters with duplicate productId for the same protocol and chain', () => {
       const codeThatThrows = () =>
         new AdaptersController({
-          providers,
+          evmProviders,
+          solanaProvider,
           supportedProtocols: {
             [protocolIdMock]: {
               [Chain.Ethereum]: [MockProtocolAdapter, MockProtocolAdapter],

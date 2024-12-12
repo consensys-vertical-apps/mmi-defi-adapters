@@ -21,11 +21,12 @@ const program = new Command('mmi-adapters')
 
 const defiProvider = new DefiProvider()
 const chainProviders = defiProvider.chainProvider.providers
+const solanaProvider = defiProvider.chainProvider.solanaProvider
 const adaptersController = defiProvider.adaptersController
 
 featureCommands(program, defiProvider)
 
-checkMetadataType(program, chainProviders, adaptersController)
+checkMetadataType(program, chainProviders, solanaProvider, adaptersController)
 
 newAdapterCommand(program, defiProvider)
 
@@ -33,9 +34,9 @@ blockAverage(program, chainProviders)
 
 buildContractTypes(program)
 
-buildMetadataDb(program, chainProviders, adaptersController)
+buildMetadataDb(program, chainProviders, solanaProvider, adaptersController)
 
-checkDbTotals(program, chainProviders, adaptersController)
+checkDbTotals(program, chainProviders, solanaProvider, adaptersController)
 
 buildSnapshots(program, defiProvider)
 

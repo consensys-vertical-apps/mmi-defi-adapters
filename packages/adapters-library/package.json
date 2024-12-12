@@ -64,6 +64,10 @@
     "typedoc-plugin-mdn-links": "^3.1.0"
   },
   "dependencies": {
+    "@metaplex-foundation/js": "^0.20.1",
+    "@solana/spl-stake-pool": "^1.1.8",
+    "@solana/spl-token": "^0.4.9",
+    "@solana/web3.js": "^1.95.8",
     "better-sqlite3": "^11.2.1",
     "ethers": "^6.7.1",
     "evm-maths": "^6.0.0",

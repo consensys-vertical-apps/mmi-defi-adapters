@@ -1,11 +1,12 @@
 import { getAddress } from 'ethers'
 import { E_ADDRESS } from '../constants/E_ADDRESS'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
-import { Chain, ChainIdToChainNameMap } from '../constants/chains'
+import { Chain } from '../constants/chains'
 import { logger } from './logger'
+import { nativeToken } from './nativeTokens'
 
 // names are here https://github.com/trustwallet/assets/tree/master/blockchains
-const chainNameMap: Record<string, string> = {
+const chainNameMap: Record<Chain, string> = {
   [Chain.Avalanche]: 'avalanchec',
   [Chain.Polygon]: 'polygon',
   [Chain.Optimism]: 'optimism',
@@ -15,6 +16,7 @@ const chainNameMap: Record<string, string> = {
   [Chain.Fantom]: 'fantom',
   [Chain.Base]: 'base',
   [Chain.Linea]: 'linea',
+  [Chain.Solana]: 'solana',
 }
 
 export function buildTrustAssetIconUrl(
@@ -22,15 +24,22 @@ export function buildTrustAssetIconUrl(
   smartContractAddress: string,
 ) {
   try {
-    const checksumAddress = getAddress(smartContractAddress)
+    const address =
+      chainId === Chain.Solana
+        ? smartContractAddress
+        : getAddress(smartContractAddress)
 
     const chainName = chainNameMap[chainId]
 
-    if (checksumAddress === ZERO_ADDRESS || checksumAddress === E_ADDRESS) {
+    if (
+      [ZERO_ADDRESS, E_ADDRESS, nativeToken[Chain.Solana].address].includes(
+        address,
+      )
+    ) {
       return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/${chainName}/info/logo.png`
     }
 
-    return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/${chainName}/assets/${checksumAddress}/logo.png`
+    return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/${chainName}/assets/${address}/logo.png`
   } catch (error) {
     logger.error(`Error while building icon for ${smartContractAddress}`)
     return ''

@@ -1,30 +1,35 @@
+import { Connection } from '@solana/web3.js'
+import { chain } from 'lodash'
 import { IMetadataProvider } from '../SQLiteMetadataProvider'
+import { PricesSolanaUsdAdapter } from '../adapters/prices-solana/products/usd/pricesSolanaUsdAdapter'
 import {
   IPricesAdapter,
   PricesV2UsdAdapter,
 } from '../adapters/prices-v2/products/usd/pricesV2UsdAdapter'
 import { Protocol } from '../adapters/protocols'
-import { WriteActionInputs } from '../adapters/supportedProtocols'
-import { IConfig } from '../config'
-import { Helpers } from '../scripts/helpers'
+import {
+  EvmChainAdapters,
+  SolanaChainAdapters,
+  WriteActionInputs,
+} from '../adapters/supportedProtocols'
+import { Helpers, SolanaHelpers } from '../scripts/helpers'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
-import { PositionType, ProtocolAdapterParams } from '../types/adapter'
+import {
+  PositionType,
+  ProtocolAdapterParams,
+  SolanaProtocolAdapterParams,
+} from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { Support } from '../types/response'
 import { WriteActions } from '../types/writeActions'
-import { Chain } from './constants/chains'
+import { Chain, EvmChain } from './constants/chains'
 import { AdapterMissingError, NotImplementedError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 import { pascalCase } from './utils/caseConversion'
 import { logger } from './utils/logger'
 
 type ISupportedProtocols = Partial<
-  Record<
-    Protocol,
-    Partial<
-      Record<Chain, (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]>
-    >
-  >
+  Record<Protocol, EvmChainAdapters | SolanaChainAdapters>
 >
 
 export class AdaptersController {
@@ -38,11 +43,13 @@ export class AdaptersController {
     | undefined
 
   constructor({
-    providers,
+    evmProviders: providers,
+    solanaProvider,
     supportedProtocols,
     metadataProviders,
   }: {
-    providers: Record<Chain, CustomJsonRpcProvider>
+    evmProviders: Record<EvmChain, CustomJsonRpcProvider>
+    solanaProvider: Connection
     supportedProtocols: ISupportedProtocols
     metadataProviders: Record<Chain, IMetadataProvider>
   }) {
@@ -54,49 +61,60 @@ export class AdaptersController {
           ([chainIdKey, adapterClasses]) => {
             const chainId = +chainIdKey as Chain
 
-            const provider = providers[chainId]!
+            let adapters: IProtocolAdapter[]
+            if (chainId === Chain.Solana) {
+              adapterClasses.forEach(
+                (
+                  solanaAdapterClass: new (
+                    input: SolanaProtocolAdapterParams,
+                  ) => IProtocolAdapter,
+                ) => {
+                  const adapter = new solanaAdapterClass({
+                    provider: solanaProvider,
+                    protocolId,
+                    adaptersController: this,
+                    helpers: new SolanaHelpers(
+                      solanaProvider,
+                      metadataProviders[chainId],
+                    ),
+                  })
 
-            adapterClasses.forEach((adapterClass) => {
-              const adapter = new adapterClass({
-                provider,
-                chainId,
-                protocolId,
-                adaptersController: this,
-                helpers: new Helpers(
-                  provider,
-                  chainId,
-                  metadataProviders[chainId],
-                  providers,
-                ),
-              })
+                  this.mapAdapter(adapter)
+                },
+              )
+            } else {
+              const provider = providers[chainId]!
 
-              const productId = adapter.productId
+              adapters = adapterClasses.forEach(
+                (
+                  evmAdapterClass: new (
+                    input: ProtocolAdapterParams,
+                  ) => IProtocolAdapter,
+                ) => {
+                  const adapter = new evmAdapterClass({
+                    provider,
+                    chainId,
+                    protocolId,
+                    adaptersController: this,
+                    helpers: new Helpers(
+                      provider,
+                      chainId,
+                      metadataProviders[chainId],
+                      providers,
+                    ),
+                  })
 
-              if (!this.adapters.has(chainId)) {
-                this.adapters.set(chainId, new Map())
-              }
-
-              const chainAdapters = this.adapters.get(chainId)!
-
-              if (!chainAdapters.has(protocolId)) {
-                chainAdapters.set(protocolId, new Map())
-              }
-
-              const protocolAdapters = chainAdapters.get(protocolId)!
-
-              if (protocolAdapters.has(productId)) {
-                throw new Error('Duplicated adapter')
-              }
-
-              protocolAdapters.set(productId, adapter)
-            })
+                  this.mapAdapter(adapter)
+                },
+              )
+            }
           },
         )
       },
     )
 
-    Object.entries(Chain).forEach(([_, chainId]) => {
-      const chain = +chainId as Chain
+    Object.entries(EvmChain).forEach(([_, chainId]) => {
+      const chain = +chainId as EvmChain
 
       const priceAdapter = new PricesV2UsdAdapter({
         provider: providers[chain],
@@ -112,6 +130,38 @@ export class AdaptersController {
 
       this.priceAdapters.set(chain, priceAdapter)
     })
+
+    this.priceAdapters.set(
+      Chain.Solana,
+      new PricesSolanaUsdAdapter({
+        provider: solanaProvider,
+        adaptersController: this,
+      }),
+    )
+  }
+
+  private mapAdapter(adapter: IProtocolAdapter) {
+    const chainId = adapter.chainId
+    const protocolId = adapter.protocolId
+    const productId = adapter.productId
+
+    if (!this.adapters.has(chainId)) {
+      this.adapters.set(chainId, new Map())
+    }
+
+    const chainAdapters = this.adapters.get(chainId)!
+
+    if (!chainAdapters.has(protocolId)) {
+      chainAdapters.set(protocolId, new Map())
+    }
+
+    const protocolAdapters = chainAdapters.get(protocolId)!
+
+    if (protocolAdapters.has(productId)) {
+      throw new Error('Duplicated adapter')
+    }
+
+    protocolAdapters.set(productId, adapter)
   }
 
   async init() {

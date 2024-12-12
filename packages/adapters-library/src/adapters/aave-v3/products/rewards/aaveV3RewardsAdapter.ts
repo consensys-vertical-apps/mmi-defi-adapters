@@ -52,7 +52,7 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     includeInUnwrap: false,
   }
 
-  private INCENTIVES_CONTRACT_ADDRESSES = {
+  private INCENTIVES_CONTRACT_ADDRESSES: Partial<Record<Chain, string>> = {
     [Chain.Arbitrum]: getAddress('0x929EC64c34a17401F460460D4B9390518E5B473e'),
     [Chain.Ethereum]: getAddress('0x8164Cc65827dcFe994AB23944CBC90e0aa80bFcb'),
     [Chain.Fantom]: getAddress('0x929EC64c34a17401F460460D4B9390518E5B473e'),
@@ -82,12 +82,15 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     this.adaptersController = adaptersController
     this.helpers = helpers
 
-    if (this.chainId === Chain.Linea) {
+    const incentivesContractAddress =
+      this.INCENTIVES_CONTRACT_ADDRESSES[this.chainId]
+
+    if (!incentivesContractAddress) {
       throw new NotImplementedError()
     }
 
     this.incentivesContract = IncentivesContract__factory.connect(
-      this.INCENTIVES_CONTRACT_ADDRESSES[this.chainId],
+      incentivesContractAddress,
       this.provider,
     )
 
@@ -95,7 +98,7 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
      * Fake protocol token created to satisfy return type
      */
     this.INCENTIVES_CONTRACT_DETAILS = {
-      address: this.INCENTIVES_CONTRACT_ADDRESSES[this.chainId],
+      address: incentivesContractAddress,
       name: 'Aave V3 Rewards',
       symbol: 'Rewards',
       decimals: 18,
