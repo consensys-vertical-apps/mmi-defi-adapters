@@ -89,18 +89,6 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
     const metaplex = Metaplex.make(this.provider)
 
-    const metadataAccount = metaplex
-      .nfts()
-      .pdas()
-      .metadata({ mint: JITOSOL_TOKEN_ADDRESS })
-
-    const metadataAccountInfo =
-      await this.provider.getAccountInfo(metadataAccount)
-
-    if (!metadataAccountInfo) {
-      throw new Error('Metadata not found for token')
-    }
-
     const token = await metaplex
       .nfts()
       .findByMint({ mintAddress: JITOSOL_TOKEN_ADDRESS })
