@@ -170,7 +170,6 @@ export class BeefyMooTokenAdapter implements IProtocolAdapter {
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    console.log('getPositions', await this.getProtocolTokens(), this.chainId)
 
     return this.helpers.getBalanceOfTokens({
       ...input,
