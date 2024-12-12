@@ -125,6 +125,31 @@ export function deleteAdapterMetadata(
   `,
           [protocolId, productId],
         )
+        
+                // Deleting rows in extra_reward_tokens
+        checkAndDelete(
+          db,
+          `
+  SELECT * FROM extra_reward_tokens
+  WHERE pool_id IN (
+      SELECT p.pool_id
+      FROM adapters a
+      JOIN pools p ON p.adapter_id = a.adapter_id
+      WHERE a.protocol_id = ? AND a.product_id = ?
+  )
+  `,
+          `
+  DELETE FROM extra_reward_tokens
+  WHERE pool_id IN (
+      SELECT p.pool_id
+      FROM adapters a
+      JOIN pools p ON p.adapter_id = a.adapter_id
+      WHERE a.protocol_id = ? AND a.product_id = ?
+  )
+  `,
+          [protocolId, productId],
+        )
+        
 
         // Deleting rows in pools
         checkAndDelete(
