@@ -78,28 +78,24 @@ export function deleteAdapterMetadata(
           verbose: console.log,
         })
 
+        const poolIds = await getPoolIds(db, protocolId, productId)
+
         // Deleting rows in underlying_tokens
         checkAndDelete(
           db,
           `
   SELECT * FROM underlying_tokens
   WHERE pool_id IN (
-      SELECT p.pool_id
-      FROM adapters a
-      JOIN pools p ON p.adapter_id = a.adapter_id
-      WHERE a.protocol_id = ? AND a.product_id = ?
+      ?
   )
   `,
           `
   DELETE FROM underlying_tokens
   WHERE pool_id IN (
-      SELECT p.pool_id
-      FROM adapters a
-      JOIN pools p ON p.adapter_id = a.adapter_id
-      WHERE a.protocol_id = ? AND a.product_id = ?
+     ?
   )
   `,
-          [protocolId, productId],
+          [poolIds],
         )
 
         // Deleting rows in reward_tokens
@@ -108,71 +104,52 @@ export function deleteAdapterMetadata(
           `
   SELECT * FROM reward_tokens
   WHERE pool_id IN (
-      SELECT p.pool_id
-      FROM adapters a
-      JOIN pools p ON p.adapter_id = a.adapter_id
-      WHERE a.protocol_id = ? AND a.product_id = ?
+      ?
   )
   `,
           `
   DELETE FROM reward_tokens
   WHERE pool_id IN (
-      SELECT p.pool_id
-      FROM adapters a
-      JOIN pools p ON p.adapter_id = a.adapter_id
-      WHERE a.protocol_id = ? AND a.product_id = ?
+      ?
   )
   `,
-          [protocolId, productId],
+          [poolIds],
         )
-        
-                // Deleting rows in extra_reward_tokens
+
+        // Deleting rows in extra_reward_tokens
         checkAndDelete(
           db,
           `
   SELECT * FROM extra_reward_tokens
   WHERE pool_id IN (
-      SELECT p.pool_id
-      FROM adapters a
-      JOIN pools p ON p.adapter_id = a.adapter_id
-      WHERE a.protocol_id = ? AND a.product_id = ?
+      ?
   )
   `,
           `
   DELETE FROM extra_reward_tokens
   WHERE pool_id IN (
-      SELECT p.pool_id
-      FROM adapters a
-      JOIN pools p ON p.adapter_id = a.adapter_id
-      WHERE a.protocol_id = ? AND a.product_id = ?
+      ?
   )
   `,
-          [protocolId, productId],
+          [poolIds],
         )
-        
 
         // Deleting rows in pools
         checkAndDelete(
           db,
           `
   SELECT * FROM pools
-  WHERE pool_address IN (
-      SELECT p.pool_address
-      FROM adapters a
-      JOIN pools p ON p.adapter_id = a.adapter_id
-      WHERE a.protocol_id = ? AND a.product_id = ?
+  WHERE pool_id IN (
+      ?
   )
   `,
           `
   DELETE FROM pools
-  WHERE pool_address IN (
-      SELECT p.pool_address
-      FROM adapters a
-      JOIN pools p ON p.adapter_id = a.adapter_id
-      WHERE a.protocol_id = ? AND a.product_id = ?
+  WHERE pool_id IN (
+      ?
   )
   `,
-          [protocolId, productId],
+          [poolIds],
         )
 
         // Deleting rows in tokens
@@ -215,7 +192,8 @@ const checkAndDelete = (
   db: DatabaseType,
   selectQuery: string,
   deleteQuery: string,
-  params: [Protocol, string] | [],
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  params: any[] | [],
 ) => {
   // Count rows before deletion
   const rowsBefore = db.prepare(selectQuery).all(...params)
@@ -229,4 +207,21 @@ const checkAndDelete = (
   const rowsAfter = db.prepare(selectQuery).all(...params)
   console.log(`Rows remaining after deletion (${rowsAfter.length}):`)
   console.table(rowsAfter)
+}
+
+const getPoolIds = (
+  db: DatabaseType,
+  protocolId: string,
+  productId: string,
+): string[] => {
+  const query = `
+    SELECT p.pool_id
+    FROM adapters a
+    JOIN pools p ON p.adapter_id = a.adapter_id
+    WHERE a.protocol_id = ? AND a.product_id = ?
+  `
+  const rows = db.prepare(query).all(protocolId, productId) as {
+    pool_id: string
+  }[]
+  return rows.map((row) => row.pool_id)
 }

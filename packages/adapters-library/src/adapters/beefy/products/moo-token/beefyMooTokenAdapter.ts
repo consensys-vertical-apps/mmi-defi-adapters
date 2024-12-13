@@ -29,11 +29,7 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { BeefyVaultV7__factory } from '../../contracts'
 import { chainIdMap } from '../../sdk/config'
-import {
-  ApiClmManager,
-  ApiVault,
-  BeefyProductType,
-} from '../../sdk/types'
+import { ApiClmManager, ApiVault, BeefyProductType } from '../../sdk/types'
 
 export class BeefyMooTokenAdapter implements IProtocolAdapter {
   productId = BeefyProductType.MOO_TOKEN
@@ -81,7 +77,6 @@ export class BeefyMooTokenAdapter implements IProtocolAdapter {
   async getProtocolTokens(): Promise<ProtocolToken[]> {
     const chain = chainIdMap[this.chainId]
 
-
     const vaults = await fetch(`https://api.beefy.finance/vaults/${chain}`)
       .then((res) => res.json())
       .then((res) =>
@@ -97,7 +92,6 @@ export class BeefyMooTokenAdapter implements IProtocolAdapter {
 
     // for each vault, get the latest breakdown to get the token list
     return await filterMapAsync(vaults, async (vault) => {
-
       try {
         const [protocolToken, underlyingToken] = await Promise.all([
           this.helpers.getTokenMetadata(vault.earnedTokenAddress),
@@ -138,8 +132,9 @@ export class BeefyMooTokenAdapter implements IProtocolAdapter {
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
   ): Promise<UnwrappedTokenExchangeRate[]> {
-    const { underlyingTokens: [underlyingToken] } =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
+    const {
+      underlyingTokens: [underlyingToken],
+    } = await this.getProtocolTokenByAddress(protocolTokenMetadata.address)
 
     const wstEthContract = BeefyVaultV7__factory.connect(
       protocolTokenMetadata.address,
@@ -169,7 +164,6 @@ export class BeefyMooTokenAdapter implements IProtocolAdapter {
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-
     return this.helpers.getBalanceOfTokens({
       ...input,
       protocolTokens: await this.getProtocolTokens(),
