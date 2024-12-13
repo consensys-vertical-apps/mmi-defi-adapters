@@ -163,8 +163,8 @@ import { QuickswapV2DQuickAdapter } from './quickswap-v2/products/d-quick/quicks
 
 import { QuickswapV3PoolAdapter } from './quickswap-v3/products/pool/quickswapV3PoolAdapter'
 
-import { ZerolendVestingAdapter } from './zerolend/products/vesting/zerolendVestingAdapter'
 import { JitoJitosolAdapter } from './jito/products/jitosol/jitoJitosolAdapter'
+import { ZerolendVestingAdapter } from './zerolend/products/vesting/zerolendVestingAdapter'
 
 export type EvmChainAdapters = Partial<
   Record<EvmChain, (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]>
