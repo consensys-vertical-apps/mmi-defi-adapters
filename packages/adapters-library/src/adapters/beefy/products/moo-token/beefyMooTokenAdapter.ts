@@ -23,21 +23,13 @@ import {
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import { breakdownFetcherMap, chainIdMap, protocolMap } from '../../sdk/config'
-import {
-  ApiClmManager,
-  ApiVault,
-  BeefyProductType,
-  ProtocolUnwrapType,
-} from '../../sdk/types'
-
-type AdditionalMetadata = {
-  unwrapType: ProtocolUnwrapType
-  underlyingLPToken: Erc20Metadata
-}
+import { BeefyVaultV7__factory } from '../../contracts'
+import { chainIdMap } from '../../sdk/config'
+import { ApiClmManager, ApiVault, BeefyProductType } from '../../sdk/types'
 
 export class BeefyMooTokenAdapter implements IProtocolAdapter {
   productId = BeefyProductType.MOO_TOKEN
@@ -82,19 +74,8 @@ export class BeefyMooTokenAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const chain = chainIdMap[this.chainId]
-
-    const cowTokenAddresses = await fetch(
-      `https://api.beefy.finance/cow-vaults/${chain}`,
-    )
-      .then((res) => res.json())
-      .then((res) =>
-        (res as ApiClmManager[]).map((r) =>
-          r.earnedTokenAddress.toLocaleLowerCase(),
-        ),
-      )
-      .then((res) => new Set(res))
 
     const vaults = await fetch(`https://api.beefy.finance/vaults/${chain}`)
       .then((res) => res.json())
@@ -111,84 +92,75 @@ export class BeefyMooTokenAdapter implements IProtocolAdapter {
 
     // for each vault, get the latest breakdown to get the token list
     return await filterMapAsync(vaults, async (vault) => {
-      const platformConfig = protocolMap[vault.platformId]
-      const protocolType =
-        vault.tokenAddress &&
-        cowTokenAddresses.has(vault.tokenAddress.toLocaleLowerCase())
-          ? 'beefy_clm'
-          : typeof platformConfig === 'string' || !platformConfig
-            ? platformConfig
-            : platformConfig[vault.strategyTypeId || 'default']
+      try {
+        const [protocolToken, underlyingToken] = await Promise.all([
+          this.helpers.getTokenMetadata(vault.earnedTokenAddress),
+          this.helpers.getTokenMetadata(vault.tokenAddress),
+        ])
 
-      if (!protocolType) {
-        logger.debug(
-          {
-            productId: this.productId,
-            vaultId: vault.id,
-            platformId: vault.platformId,
-            vaultAddress: vault.earnedTokenAddress,
-            poolAddress: vault.tokenAddress,
-            strategyTypeId: vault.strategyTypeId,
-            chain,
-          },
-          'Protocol type not found',
-        )
-        return undefined
-      }
-
-      // test that we can indeed fetch the breakdown, otherwise we don't include the vault
-      // in the list
-      const [protocolToken, underlyingToken, breakdown] = await Promise.all([
-        this.helpers.getTokenMetadata(vault.earnedTokenAddress),
-        this.helpers.getTokenMetadata(vault.tokenAddress),
-        breakdownFetcherMap[protocolType](
-          {
-            protocolTokenAddress: vault.earnedTokenAddress,
-            underlyingLPTokenAddress: vault.tokenAddress,
-            blockSpec: { blockTag: undefined },
-          },
-          this.provider,
-        ),
-      ])
-
-      const breakdownTokenMetadata = await Promise.all(
-        breakdown.balances.map((balance) =>
-          this.helpers.getTokenMetadata(balance.tokenAddress),
-        ),
-      )
-
-      return {
-        ...protocolToken,
-        underlyingTokens: breakdownTokenMetadata,
-        underlyingLPToken: underlyingToken,
-        unwrapType: protocolType,
+        return {
+          ...protocolToken,
+          underlyingTokens: [underlyingToken],
+        }
+      } catch (error) {
+        return
       }
     })
   }
 
   async unwrap({
-    protocolTokenAddress,
     blockNumber,
+    protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const {
-      underlyingTokens,
-      unwrapType,
-      underlyingLPToken,
-      ...protocolToken
-    } = await this.getProtocolTokenByAddress(protocolTokenAddress)
+    const protocolTokenMetadata =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+
+    const underlyingTokenConversionRate = await this.unwrapProtocolToken(
+      protocolTokenMetadata,
+      blockNumber,
+    )
 
     return {
-      ...protocolToken,
+      ...protocolTokenMetadata,
       baseRate: 1,
-      type: TokenType['Protocol'],
-      tokens: [
-        {
-          ...underlyingLPToken,
-          underlyingRateRaw: BigInt(10 ** underlyingLPToken.decimals),
-          type: TokenType['Underlying'],
-        },
-      ],
+      type: TokenType.Protocol,
+      tokens: underlyingTokenConversionRate,
     }
+  }
+
+  protected async unwrapProtocolToken(
+    protocolTokenMetadata: Erc20Metadata,
+    blockNumber?: number | undefined,
+  ): Promise<UnwrappedTokenExchangeRate[]> {
+    const {
+      underlyingTokens: [underlyingToken],
+    } = await this.getProtocolTokenByAddress(protocolTokenMetadata.address)
+
+    const wstEthContract = BeefyVaultV7__factory.connect(
+      protocolTokenMetadata.address,
+      this.provider,
+    )
+
+    const pricePerShareRaw = await wstEthContract.getPricePerFullShare({
+      blockTag: blockNumber,
+    })
+
+    return [
+      {
+        ...underlyingToken!,
+        type: TokenType.Underlying,
+        underlyingRateRaw: pricePerShareRaw,
+      },
+    ]
+  }
+
+  protected async getUnderlyingTokens(
+    protocolTokenAddress: string,
+  ): Promise<Erc20Metadata[]> {
+    const { underlyingTokens } =
+      await this.getProtocolTokenByAddress(protocolTokenAddress)
+
+    return underlyingTokens
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
@@ -237,7 +209,7 @@ export class BeefyMooTokenAdapter implements IProtocolAdapter {
 
   private async getProtocolTokenByAddress(
     protocolTokenAddress: string,
-  ): Promise<ProtocolToken<AdditionalMetadata>> {
+  ): Promise<ProtocolToken> {
     return this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,
