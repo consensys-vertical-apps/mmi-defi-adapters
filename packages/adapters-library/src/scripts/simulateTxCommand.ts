@@ -1,12 +1,12 @@
 import { Command } from 'commander'
-import { Chain } from '../core/constants/chains'
+import { Chain, EvmChain } from '../core/constants/chains'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { chainFilter, protocolFilter } from './commandFilters'
 import { simulateTx } from './simulator/simulateTx'
 
 export function simulateTxCommand(
   program: Command,
-  chainProviders: Record<Chain, CustomJsonRpcProvider>,
+  chainProviders: Record<EvmChain, CustomJsonRpcProvider>,
 ) {
   program
     .command('simulate')
@@ -37,6 +37,9 @@ export function simulateTxCommand(
         }
         if (!chainId) {
           throw new Error('Chain could not be parsed from input')
+        }
+        if (chainId === Chain.Solana) {
+          throw new Error('Solana is not supported')
         }
 
         const provider = chainProviders[chainId]

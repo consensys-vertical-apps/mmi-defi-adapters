@@ -1,8 +1,7 @@
+import { Connection } from '@solana/web3.js'
 import { FetchRequest, Network } from 'ethers'
-import { Config, IConfig } from '../../config'
-import { Multicall__factory } from '../../contracts'
-import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
-import { Chain, ChainIdToChainNameMap } from '../constants/chains'
+import { IConfig } from '../../config'
+import { Chain, ChainIdToChainNameMap, EvmChain } from '../constants/chains'
 import { logger } from '../utils/logger'
 import {
   CustomJsonRpcProvider,
@@ -11,16 +10,60 @@ import {
 import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
 
 export class ChainProvider {
-  providers: Record<Chain, CustomJsonRpcProvider>
+  providers: Record<EvmChain, CustomJsonRpcProvider>
+  solanaProvider: Connection
 
   private config: IConfig
 
   constructor(config: IConfig) {
     this.config = config
-    this.providers = this.initializeProviders(this.config)
+    this.providers = this.initializeEvmProviders(this.config)
+    this.solanaProvider = new Connection(config.provider.solana)
   }
 
-  private provider({
+  private initializeEvmProviders(config: IConfig) {
+    const commonProviderSettings = {
+      enableMulticallQueue: config.useMulticallInterceptor,
+      customOptions: {
+        rpcCallTimeoutInMs: config.rpcCallTimeoutInMs,
+        rpcCallRetries: config.rpcCallRetries,
+        rpcGetLogsTimeoutInMs: config.rpcGetLogsTimeoutInMs,
+        rpcGetLogsRetries: config.rpcGetLogsRetries,
+      },
+      enableFailover: config.enableFailover,
+    }
+
+    const chains = Object.values(Chain) as EvmChain[]
+
+    return chains.reduce(
+      (providers, chainId) => {
+        const chainName = ChainIdToChainNameMap[chainId]
+
+        // Throw an error if the provider URL is missing for this chain
+        const providerUrl = config.provider[chainName]
+        if (!providerUrl) {
+          throw new Error(`Provider URL is missing for ${chainName}`)
+        }
+
+        const maxBatchSize = config.maxBatchSize[chainName]
+        if (!maxBatchSize) {
+          throw new Error(`Max batch size is missing for ${chainName}`)
+        }
+
+        providers[chainId] = this.buildEvmProvider({
+          ...commonProviderSettings,
+          url: providerUrl,
+          chainId,
+          maxBatchSize,
+        })
+
+        return providers
+      },
+      {} as Record<Chain, CustomJsonRpcProvider>,
+    )
+  }
+
+  private buildEvmProvider({
     url,
     chainId,
     enableMulticallQueue,
@@ -29,7 +72,7 @@ export class ChainProvider {
     maxBatchSize,
   }: {
     url: string
-    chainId: Chain
+    chainId: EvmChain
     enableMulticallQueue: boolean
     customOptions: CustomJsonRpcProviderOptions
     enableFailover: boolean
@@ -72,47 +115,5 @@ export class ChainProvider {
       hasUnlimitedGetLogsRange,
       maxBatchSize,
     })
-  }
-
-  private initializeProviders(config: IConfig) {
-    const commonProviderSettings = {
-      enableMulticallQueue: config.useMulticallInterceptor,
-      customOptions: {
-        rpcCallTimeoutInMs: config.rpcCallTimeoutInMs,
-        rpcCallRetries: config.rpcCallRetries,
-        rpcGetLogsTimeoutInMs: config.rpcGetLogsTimeoutInMs,
-        rpcGetLogsRetries: config.rpcGetLogsRetries,
-      },
-      enableFailover: config.enableFailover,
-    }
-
-    const chains = Object.values(Chain) as Chain[]
-
-    return chains.reduce(
-      (providers, chainId) => {
-        const chainName = ChainIdToChainNameMap[chainId]
-
-        // Throw an error if the provider URL is missing for this chain
-        const providerUrl = config.provider[chainName]
-        if (!providerUrl) {
-          throw new Error(`Provider URL is missing for ${chainName}`)
-        }
-
-        const maxBatchSize = config.maxBatchSize[chainName]
-        if (!maxBatchSize) {
-          throw new Error(`Max batch size is missing for ${chainName}`)
-        }
-
-        providers[chainId] = this.provider({
-          ...commonProviderSettings,
-          url: providerUrl,
-          chainId,
-          maxBatchSize,
-        })
-
-        return providers
-      },
-      {} as Record<Chain, CustomJsonRpcProvider>,
-    )
   }
 }

@@ -1,9 +1,10 @@
+import { Connection } from '@solana/web3.js'
 import type { Protocol } from '../adapters/protocols'
 import type { AdaptersController } from '../core/adaptersController'
 import { ApyInfo } from '../core/apy-calculators/ApyCalculator'
 import type { Chain } from '../core/constants/chains'
 import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { Helpers } from '../scripts/helpers'
+import { Helpers, SolanaHelpers } from '../scripts/helpers'
 import type { Erc20Metadata } from './erc20Metadata'
 
 export const TokenType = {
@@ -351,6 +352,13 @@ export interface ProtocolAdapterParams {
   protocolId: Protocol
   adaptersController: AdaptersController
   helpers: Helpers
+}
+
+export interface SolanaProtocolAdapterParams {
+  provider: Connection
+  protocolId: Protocol
+  adaptersController: AdaptersController
+  helpers: SolanaHelpers
 }
 
 export type AggregatedFiatBalances = Record<

@@ -1,7 +1,7 @@
 import { Command } from 'commander'
 import { Protocol } from '../adapters/protocols'
 import type { GetTransactionParams } from '../adapters/supportedProtocols'
-import { Chain } from '../core/constants/chains'
+import { Chain, EvmChain } from '../core/constants/chains'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { filterMapSync } from '../core/utils/filters'
@@ -204,7 +204,7 @@ function transactionParamsCommand(
       params: { to: string; data: string }
     }>
   >,
-  chainProviders: Record<Chain, CustomJsonRpcProvider>,
+  chainProviders: Record<EvmChain, CustomJsonRpcProvider>,
 ) {
   program
     .command(commandName)
@@ -269,6 +269,9 @@ function transactionParamsCommand(
         }
         if (!chainId) {
           throw new Error('Chain could not be parsed from input')
+        }
+        if (chainId === Chain.Solana) {
+          throw new Error('Solana is not supported')
         }
 
         const data = await feature({

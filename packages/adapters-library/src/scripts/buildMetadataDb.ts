@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { Connection } from '@solana/web3.js'
 import Database from 'better-sqlite3'
 import chalk from 'chalk'
 import { Command } from 'commander'
@@ -7,7 +8,11 @@ import { Protocol } from '../adapters/protocols'
 import { supportedProtocols } from '../adapters/supportedProtocols'
 import { AdaptersController } from '../core/adaptersController'
 import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
-import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
+import {
+  Chain,
+  ChainIdToChainNameMap,
+  EvmChain,
+} from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { filterMapSync } from '../core/utils/filters'
@@ -24,7 +29,8 @@ import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
 export function buildMetadataDb(
   program: Command,
-  chainProviders: Record<Chain, CustomJsonRpcProvider>,
+  chainProviders: Record<EvmChain, CustomJsonRpcProvider>,
+  solanaProvider: Connection,
   adaptersController: AdaptersController,
 ) {
   program
@@ -68,9 +74,10 @@ export function buildMetadataDb(
                 continue
               }
 
-              const provider = chainProviders[chainId]
-
-              if (!provider) {
+              if (
+                (chainId !== Chain.Solana && !chainProviders[chainId]) ||
+                (chainId === Chain.Solana && !solanaProvider)
+              ) {
                 logger.error({ chainId }, 'No provider found for chain')
                 throw new ProviderMissingError(chainId)
               }

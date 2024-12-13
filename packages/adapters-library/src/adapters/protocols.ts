@@ -19,6 +19,7 @@ export const Protocol = {
   Gmx: 'gmx',
   GmxV2: 'gmx-v2',
   IZiSwap: 'iziswap',
+  Jito: 'jito',
   Lido: 'lido',
   Lynex: 'lynex',
   Maker: 'maker',

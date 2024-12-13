@@ -1,3 +1,4 @@
+import { PublicKey } from '@solana/web3.js'
 import Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
 import {
@@ -5,6 +6,7 @@ import {
   buildSqliteMetadataProviders,
 } from './SQLiteMetadataProvider'
 import { buildVoidMetadataProviders } from './VoidMetadataProvider'
+import { JitoJitosolAdapter } from './adapters/jito/products/jitosol/jitoJitosolAdapter'
 import { Protocol } from './adapters/protocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
 import { supportedProtocols } from './adapters/supportedProtocols'
@@ -17,12 +19,10 @@ import { ChecksumAddress } from './core/decorators/checksumAddress'
 import {
   NotSupportedError,
   NotSupportedUnlimitedGetLogsBlockRange,
-  ProviderMissingError,
   TvlValidationError,
 } from './core/errors/errors'
 import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
-import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
 import { propagatePrice } from './core/utils/propagatePrice'
@@ -82,7 +82,8 @@ export class DefiProvider {
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
 
     this.adaptersController = new AdaptersController({
-      providers: this.chainProvider.providers,
+      evmProviders: this.chainProvider.providers,
+      solanaProvider: this.chainProvider.solanaProvider,
       supportedProtocols,
       metadataProviders: this.metadataProviders,
     })
@@ -133,6 +134,14 @@ export class DefiProvider {
     this.initAdapterControllerForUnwrapStage()
 
     const runner = async (adapter: IProtocolAdapter) => {
+      const isSolanaAddress = this.isSolanaAddress(userAddress)
+      if (
+        (adapter.chainId === Chain.Solana && !isSolanaAddress) ||
+        (adapter.chainId !== Chain.Solana && isSolanaAddress)
+      ) {
+        return { tokens: [] }
+      }
+
       const blockNumber = blockNumbers?.[adapter.chainId]
 
       const protocolTokenAddresses = await this.buildTokenFilter(
@@ -233,7 +242,6 @@ export class DefiProvider {
         filterProtocolIds,
         filterProductIds,
         filterChainIds,
-        method: 'getPositions',
       })
     ).filter(
       (result) =>
@@ -263,6 +271,10 @@ export class DefiProvider {
     adapter: IProtocolAdapter,
     filterProtocolTokensOverride?: string[],
   ) {
+    if (adapter.chainId === Chain.Solana) {
+      return undefined
+    }
+
     try {
       // we use the overrides if provided
       if (
@@ -364,13 +376,12 @@ export class DefiProvider {
   }): Promise<DefiProfitsResponse[]> {
     this.initAdapterControllerForUnwrapStage()
 
-    const runner = async (
-      adapter: IProtocolAdapter,
-      provider: CustomJsonRpcProvider,
-    ) => {
-      if (adapter.chainId === Chain.Bsc) {
-        throw new NotSupportedError('Profits not supported on BSC')
+    const runner = async (adapter: IProtocolAdapter) => {
+      if (adapter.chainId === Chain.Solana) {
+        throw new NotSupportedError('Profits not supported on Solana')
       }
+
+      const provider = this.chainProvider.providers[adapter.chainId]
 
       const toBlock =
         toBlockNumbersOverride?.[adapter.chainId] ??
@@ -427,7 +438,6 @@ export class DefiProvider {
         filterProtocolIds,
         filterProductIds,
         filterChainIds,
-        method: 'getProfits',
       })
     ).filter(
       (result) =>
@@ -504,7 +514,6 @@ export class DefiProvider {
       filterProtocolIds,
       filterProductIds,
       filterChainIds,
-      method: 'unwrap',
     })
 
     // remove empty tokens this happens with filterProtocolToken is applied
@@ -527,8 +536,6 @@ export class DefiProvider {
     productId,
     tokenId,
   }: GetEventsRequestInput): Promise<DefiMovementsResponse> {
-    const provider = this.chainProvider.providers[chainId]
-
     let adapter: IProtocolAdapter
     try {
       adapter = this.adaptersController.fetchAdapter(
@@ -541,6 +548,10 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
+      if (adapter.chainId === Chain.Solana) {
+        throw new NotSupportedError('Withdrawals not supported on Solana')
+      }
+
       const positionsMovementsPromises = [
         adapter.getWithdrawals({
           protocolTokenAddress: getAddress(protocolTokenAddress),
@@ -597,7 +608,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, runner)
   }
 
   async getTransactionParams(input: GetTransactionParams): Promise<
@@ -607,7 +618,6 @@ export class DefiProvider {
   > {
     const { protocolId, chainId, productId } = input
 
-    const provider = this.chainProvider.providers[chainId]
     let adapter: IProtocolAdapter
     try {
       adapter = this.adaptersController.fetchAdapter(
@@ -627,7 +637,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, runner)
   }
 
   @ChecksumAddress
@@ -641,8 +651,6 @@ export class DefiProvider {
     productId,
     tokenId,
   }: GetEventsRequestInput): Promise<DefiMovementsResponse> {
-    const provider = this.chainProvider.providers[chainId]
-
     let adapter: IProtocolAdapter
     try {
       adapter = this.adaptersController.fetchAdapter(
@@ -655,6 +663,10 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
+      if (adapter.chainId === Chain.Solana) {
+        throw new NotSupportedError('Deposits not supported on Solana')
+      }
+
       const positionsMovements = await adapter.getDeposits({
         protocolTokenAddress: getAddress(protocolTokenAddress),
         fromBlock,
@@ -682,7 +694,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, runner)
   }
 
   @ChecksumAddress
@@ -696,8 +708,6 @@ export class DefiProvider {
     productId,
     tokenId,
   }: GetEventsRequestInput): Promise<DefiMovementsResponse> {
-    const provider = this.chainProvider.providers[chainId]
-
     let adapter: IProtocolAdapter
     try {
       adapter = this.adaptersController.fetchAdapter(
@@ -710,6 +720,10 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
+      if (adapter.chainId === Chain.Solana) {
+        throw new NotSupportedError('Repays not supported on Solana')
+      }
+
       const positionsMovements =
         (await adapter.getRepays?.({
           protocolTokenAddress: getAddress(protocolTokenAddress),
@@ -738,7 +752,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, runner)
   }
 
   @ChecksumAddress
@@ -752,8 +766,6 @@ export class DefiProvider {
     productId,
     tokenId,
   }: GetEventsRequestInput): Promise<DefiMovementsResponse> {
-    const provider = this.chainProvider.providers[chainId]
-
     let adapter: IProtocolAdapter
     try {
       adapter = this.adaptersController.fetchAdapter(
@@ -766,6 +778,10 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
+      if (adapter.chainId === Chain.Solana) {
+        throw new NotSupportedError('Borrows not supported on Solana')
+      }
+
       const positionsMovements =
         (await adapter.getBorrows?.({
           protocolTokenAddress: getAddress(protocolTokenAddress),
@@ -794,7 +810,7 @@ export class DefiProvider {
       }
     }
 
-    return this.runTaskForAdapter(adapter, provider!, runner)
+    return this.runTaskForAdapter(adapter, runner)
   }
 
   @ChecksumAddress
@@ -823,7 +839,7 @@ export class DefiProvider {
     const protocolId = filterProtocolIds![0]!
     const productId = filterProductIds![0]!
 
-    const adapter = await this.adaptersController.fetchAdapter(
+    const adapter = this.adaptersController.fetchAdapter(
       chainId,
       protocolId,
       productId,
@@ -870,13 +886,7 @@ export class DefiProvider {
       }
     }
 
-    return [
-      await this.runTaskForAdapter(
-        adapter,
-        this.chainProvider.providers[chainId],
-        runner,
-      ),
-    ]
+    return [await this.runTaskForAdapter(adapter, runner)]
   }
 
   async getSupport(input?: {
@@ -893,7 +903,6 @@ export class DefiProvider {
    * @param filterProtocolIds - Optional. An array of protocols to filter by.
    * @param filterProductIds - Optional. An array of products to filter by.
    * @param filterChainIds - Optional. An array of chains to filter by.
-   * @param method - The method to run for each protocol and chain.
    * @returns A promise that resolves to an array of adapter responses.
    */
   private async runForAllProtocolsAndChains<ReturnType extends object>({
@@ -901,22 +910,11 @@ export class DefiProvider {
     filterProtocolIds,
     filterProductIds,
     filterChainIds,
-    method,
   }: {
-    runner: (
-      adapter: IProtocolAdapter,
-      provider: CustomJsonRpcProvider,
-    ) => ReturnType
+    runner: (adapter: IProtocolAdapter) => ReturnType
     filterProtocolIds?: Protocol[]
     filterProductIds?: string[]
     filterChainIds?: Chain[]
-    method:
-      | 'getPositions'
-      | 'unwrap'
-      | 'getProfits'
-      | 'getWithdrawals'
-      | 'getDeposits'
-      | 'getTotalValueLocked'
   }): Promise<AdapterResponse<Awaited<ReturnType>>[]> {
     const protocolPromises = Object.entries(supportedProtocols)
       .filter(
@@ -938,7 +936,6 @@ export class DefiProvider {
 
           .flatMap(([chainIdKey, _]) => {
             const chainId = +chainIdKey as Chain
-            const provider = this.chainProvider.providers[chainId]!
 
             const chainProtocolAdapters =
               this.adaptersController.fetchChainProtocolAdapters(
@@ -953,9 +950,7 @@ export class DefiProvider {
                   filterProductIds.includes(adapter.productId)
                 )
               })
-              .map(([_, adapter]) =>
-                this.runTaskForAdapter(adapter, provider, runner),
-              )
+              .map(([_, adapter]) => this.runTaskForAdapter(adapter, runner))
           })
       })
 
@@ -966,20 +961,12 @@ export class DefiProvider {
 
   private async runTaskForAdapter<ReturnType>(
     adapter: IProtocolAdapter,
-    provider: CustomJsonRpcProvider,
-    runner: (
-      adapter: IProtocolAdapter,
-      provider: CustomJsonRpcProvider,
-    ) => ReturnType,
+    runner: (adapter: IProtocolAdapter) => ReturnType,
   ): Promise<AdapterResponse<Awaited<ReturnType>>> {
     const protocolDetails = adapter.getProtocolDetails()
 
     try {
-      if (!provider) {
-        throw new ProviderMissingError(adapter.chainId)
-      }
-
-      const adapterResult = await runner(adapter, provider)
+      const adapterResult = await runner(adapter)
 
       return {
         ...protocolDetails,
@@ -1079,6 +1066,15 @@ export class DefiProvider {
           ...(filterProtocolTokens ?? []),
         ].join(', ')}`,
       )
+    }
+  }
+
+  private isSolanaAddress(address: string) {
+    try {
+      new PublicKey(address)
+      return true
+    } catch (error) {
+      return false
     }
   }
 }

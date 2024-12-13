@@ -63,6 +63,7 @@ import { testCases as gmxFarmingTestCases } from './gmx/products/farming/tests/t
 import { testCases as gmxGlpTestCases } from './gmx/products/glp/tests/testCases'
 import { testCases as gmxVestingTestCases } from './gmx/products/vesting/tests/testCases'
 import { testCases as iZiSwapPoolTestCases } from './iziswap/products/pool/tests/testCases'
+import { testCases as jitoJitosolTestCases } from './jito/products/jitosol/tests/testCases'
 import { testCases as lidoStEthTestCases } from './lido/products/st-eth/tests/testCases'
 import { testCases as lidoWstEthTestCases } from './lido/products/wst-eth/tests/testCases'
 import { testCases as lynexAlgebraTestCases } from './lynex/products/algebra/tests/testCases'
@@ -252,6 +253,10 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
 
   [Protocol.IZiSwap]: {
     ['pool']: iZiSwapPoolTestCases,
+  },
+
+  [Protocol.Jito]: {
+    ['jitosol']: jitoJitosolTestCases,
   },
 
   [Protocol.Lido]: {
