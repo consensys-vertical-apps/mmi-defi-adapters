@@ -91,19 +91,25 @@ export class RaydiumConcentratedLiquidityAdapter implements IProtocolAdapter {
     const tokenAccounts = await this.provider.getParsedTokenAccountsByOwner(
       new PublicKey(input.userAddress),
       {
-        programId: TOKEN_2022_PROGRAM_ID,
+        programId: TOKEN_2022_PROGRAM_ID, // Raydium uses the SPL Token 2022 program
       },
     )
 
+    //
     return filterMapAsync(tokenAccounts.value, async ({ account }) => {
       const parsedInfo = account.data.parsed.info
       const mintAddress = parsedInfo.mint
       const decimals = parsedInfo.tokenAmount.decimals
       const balance = parsedInfo.tokenAmount.uiAmount
 
+      // Check if the token is a NFT
       if (!(decimals === 0 && balance === 1)) return undefined
 
-      return this.getPosition(mintAddress, input.userAddress)
+      const position = await this.getPosition(mintAddress, input.userAddress)
+
+      if (!position) return undefined
+
+      return position
     })
   }
 
@@ -135,7 +141,7 @@ export class RaydiumConcentratedLiquidityAdapter implements IProtocolAdapter {
   private async getPosition(
     positionNftMint: string,
     owner: string,
-  ): Promise<ProtocolPosition> {
+  ): Promise<ProtocolPosition | undefined> {
     const raydium = await Raydium.load({
       owner: new PublicKey(owner),
       connection: this.provider,
@@ -152,7 +158,9 @@ export class RaydiumConcentratedLiquidityAdapter implements IProtocolAdapter {
 
     const pos = await raydium.connection.getAccountInfo(positionPubKey)
 
-    const position = PositionInfoLayout.decode(pos!.data)
+    if (!pos) return undefined
+
+    const position = PositionInfoLayout.decode(pos.data)
 
     let poolInfo: ApiV3PoolInfoConcentratedItem
 
