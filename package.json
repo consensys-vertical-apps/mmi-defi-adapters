@@ -53,10 +53,5 @@
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.0",
     "typescript": "^5.4.5"
-  },
-  "dependencies": {
-    "@raydium-io/raydium-sdk-v2": "^0.1.94-alpha",
-    "bn.js": "^5.2.1",
-    "decimal.js": "^10.4.3"
   }
 }
