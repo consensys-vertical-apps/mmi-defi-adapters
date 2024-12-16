@@ -106,8 +106,6 @@ export class RaydiumConcentratedLiquidityAdapter implements IProtocolAdapter {
 
       const position = await this.getPosition(mintAddress, input.userAddress)
 
-      if (!position) return undefined
-
       return position
     })
   }
