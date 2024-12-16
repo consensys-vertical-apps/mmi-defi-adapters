@@ -33,6 +33,7 @@ export const Protocol = {
   Pendle: 'pendle',
   QuickswapV2: 'quickswap-v2',
   QuickswapV3: 'quickswap-v3',
+  Raydium: 'raydium',
   Renzo: 'renzo',
   RocketPool: 'rocket-pool',
   Solv: 'solv',

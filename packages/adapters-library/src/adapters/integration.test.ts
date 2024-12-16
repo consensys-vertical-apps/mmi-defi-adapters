@@ -92,6 +92,7 @@ import { Protocol } from './protocols'
 import { testCases as quickswapV2DQuickTestCases } from './quickswap-v2/products/d-quick/tests/testCases'
 import { testCases as quickswapV2PoolTestCases } from './quickswap-v2/products/pool/tests/testCases'
 import { testCases as quickswapV3PoolTestCases } from './quickswap-v3/products/pool/tests/testCases'
+import { testCases as raydiumConcentratedLiquidityTestCases } from './raydium/products/concentrated-liquidity/tests/testCases'
 import { testCases as renzoEzEthTestCases } from './renzo/products/ez-eth/tests/testCases'
 import { testCases as rocketPoolRethTestCases } from './rocket-pool/products/reth/tests/testCases'
 import { testCases as solvSolvBtcTestCases } from './solv/products/solv-btc/tests/testCases'
@@ -323,6 +324,10 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
 
   [Protocol.QuickswapV3]: {
     ['pool']: quickswapV3PoolTestCases,
+  },
+
+  [Protocol.Raydium]: {
+    ['concentrated-liquidity']: raydiumConcentratedLiquidityTestCases,
   },
 
   [Protocol.Renzo]: {

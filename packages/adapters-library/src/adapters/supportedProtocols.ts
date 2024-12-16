@@ -166,6 +166,8 @@ import { QuickswapV3PoolAdapter } from './quickswap-v3/products/pool/quickswapV3
 import { JitoJitosolAdapter } from './jito/products/jitosol/jitoJitosolAdapter'
 import { ZerolendVestingAdapter } from './zerolend/products/vesting/zerolendVestingAdapter'
 
+import { RaydiumConcentratedLiquidityAdapter } from './raydium/products/concentrated-liquidity/raydiumConcentratedLiquidityAdapter'
+
 export type EvmChainAdapters = Partial<
   Record<EvmChain, (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]>
 >
@@ -553,6 +555,10 @@ export const supportedProtocols: Record<
 
   [Protocol.QuickswapV3]: {
     [Chain.Polygon]: [QuickswapV3PoolAdapter],
+  },
+
+  [Protocol.Raydium]: {
+    [Chain.Solana]: [RaydiumConcentratedLiquidityAdapter],
   },
 
   [Protocol.Renzo]: {
