@@ -38,6 +38,8 @@ import {
 } from '../../../../types/adapter'
 
 import { Protocol } from '../../../protocols'
+import { TOKEN_2022_PROGRAM_ID } from '@solana/spl-token'
+import { filterMapAsync } from '../../../../core/utils/filters'
 
 export class RaydiumConcentratedLiquidityAdapter implements IProtocolAdapter {
   productId = 'concentrated-liquidity'
@@ -86,17 +88,23 @@ export class RaydiumConcentratedLiquidityAdapter implements IProtocolAdapter {
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    await this.getPosition(
-      '3fPEQGSTnhw9Prw3kfqSsFgFyDpANPYL4aBAZxwT7JgM',
-      input.userAddress,
+    const tokenAccounts = await this.provider.getParsedTokenAccountsByOwner(
+      new PublicKey(input.userAddress),
+      {
+        programId: TOKEN_2022_PROGRAM_ID,
+      },
     )
 
-    return [
-      await this.getPosition(
-        '3fPEQGSTnhw9Prw3kfqSsFgFyDpANPYL4aBAZxwT7JgM',
-        input.userAddress,
-      ),
-    ]
+    return filterMapAsync(tokenAccounts.value, async ({ account }) => {
+      const parsedInfo = account.data.parsed.info
+      const mintAddress = parsedInfo.mint
+      const decimals = parsedInfo.tokenAmount.decimals
+      const balance = parsedInfo.tokenAmount.uiAmount
+
+      if (!(decimals === 0 && balance === 1)) return undefined
+
+      return this.getPosition(mintAddress, input.userAddress)
+    })
   }
 
   async getWithdrawals({
