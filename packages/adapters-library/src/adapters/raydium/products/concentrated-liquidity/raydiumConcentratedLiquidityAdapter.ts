@@ -95,7 +95,6 @@ export class RaydiumConcentratedLiquidityAdapter implements IProtocolAdapter {
       },
     )
 
-    //
     return filterMapAsync(tokenAccounts.value, async ({ account }) => {
       const parsedInfo = account.data.parsed.info
       const mintAddress = parsedInfo.mint
