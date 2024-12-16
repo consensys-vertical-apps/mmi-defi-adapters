@@ -10,7 +10,6 @@ import {
   getPdaPersonalPositionAddress,
 } from '@raydium-io/raydium-sdk-v2'
 import { Connection, PublicKey } from '@solana/web3.js'
-import BN from 'bn.js'
 
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
@@ -250,7 +249,7 @@ export class RaydiumConcentratedLiquidityAdapter implements IProtocolAdapter {
     )
 
     if (
-      tokenFees.tokenFeeAmountA.gte(new BN(0)) &&
+      tokenFees.tokenFeeAmountA.toNumber() >= 0 &&
       tokenFees.tokenFeeAmountA.lt(U64_IGNORE_RANGE)
     ) {
       const feeA: Underlying = {
@@ -266,7 +265,7 @@ export class RaydiumConcentratedLiquidityAdapter implements IProtocolAdapter {
     }
 
     if (
-      tokenFees.tokenFeeAmountB.gte(new BN(0)) &&
+      tokenFees.tokenFeeAmountB.toNumber() >= 0 &&
       tokenFees.tokenFeeAmountB.lt(U64_IGNORE_RANGE)
     ) {
       const feeB: Underlying = {
@@ -282,7 +281,7 @@ export class RaydiumConcentratedLiquidityAdapter implements IProtocolAdapter {
     }
 
     const rewardInfos = rewards.map((r) =>
-      r.gte(new BN(0)) && r.lt(U64_IGNORE_RANGE) ? r : new BN(0),
+      r.toNumber() >= 0 && r < U64_IGNORE_RANGE ? r.toNumber() : 0,
     )
 
     rewardInfos.map((r, idx) => {
@@ -295,7 +294,7 @@ export class RaydiumConcentratedLiquidityAdapter implements IProtocolAdapter {
 
       underlying.push({
         name: rewardMint.symbol,
-        balanceRaw: BigInt(r.toNumber()),
+        balanceRaw: BigInt(r),
         address: rewardMint.address,
         decimals: rewardMint.decimals,
         symbol: rewardMint.symbol,
