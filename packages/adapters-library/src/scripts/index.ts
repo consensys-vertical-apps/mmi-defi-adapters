@@ -17,7 +17,6 @@ import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
-import { indexer } from './indexer-spike'
 
 const program = new Command('mmi-adapters')
 
@@ -37,7 +36,6 @@ blockAverage(program, chainProviders)
 buildContractTypes(program)
 
 buildMetadataDb(program, chainProviders, solanaProvider, adaptersController)
-indexer(program, defiProvider)
 
 deleteAdapterMetadata(program, chainProviders, adaptersController)
 

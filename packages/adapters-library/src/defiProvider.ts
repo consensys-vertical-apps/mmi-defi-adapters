@@ -57,7 +57,7 @@ export class DefiProvider {
   chainProvider: ChainProvider
   adaptersController: AdaptersController
 
-  metadataProviders: Record<Chain, IMetadataProvider>
+  private metadataProviders: Record<Chain, IMetadataProvider>
   private unwrapCache: IUnwrapPriceCache
 
   constructor(

@@ -10,8 +10,6 @@ import {
 } from './types/IProtocolAdapter'
 
 export type IMetadataProvider = {
-  allTokens: Promise<Map<string, ProtocolToken[]>>
-
   getMetadata: (input: {
     protocolId: Protocol
     productId: string
