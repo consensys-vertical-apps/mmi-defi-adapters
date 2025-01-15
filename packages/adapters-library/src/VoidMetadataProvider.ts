@@ -1,7 +1,10 @@
 import { IMetadataProvider } from './SQLiteMetadataProvider'
 import { Chain } from './core/constants/chains'
+import { ProtocolToken } from './types/IProtocolAdapter'
 
 export class VoidMetadataProvider implements IMetadataProvider {
+  allTokens: Promise<Map<string, ProtocolToken[]>> = Promise.resolve(new Map())
+
   async getMetadata() {
     return []
   }

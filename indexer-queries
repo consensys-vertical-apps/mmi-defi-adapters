@@ -1,0 +1,23 @@
+-- SQLite
+
+SELECT COUNT(*) FROM logs;
+SELECT COUNT(*) FROM block_processing;
+
+SELECT * FROM logs LIMIT 5;
+
+SELECT * FROM logs WHERE LOWER(contract_address) = LOWER('e6a7b46A6288D6f939674C4652cf1C2BB9746e2E');
+SELECT * FROM logs WHERE LOWER(address) = LOWER('e6a7b46A6288D6f939674C4652cf1C2BB9746e2E');
+
+SELECT * FROM block_processing;
+
+SELECT page_count * page_size / 1024 / 1024 / 1024 AS size_in_gb
+FROM pragma_page_count(), pragma_page_size();
+
+SELECT SUM(pgsize) AS size_in_bytes, SUM(pgsize) / 1024 / 1024 / 1024 AS size_in_gb
+FROM dbstat
+WHERE name = 'logs';
+
+SELECT LOWER(contract_address) AS contract_address, LOWER(address) AS address, COUNT(*)
+FROM logs
+GROUP BY LOWER(contract_address), LOWER(address)
+HAVING COUNT(*) > 1;

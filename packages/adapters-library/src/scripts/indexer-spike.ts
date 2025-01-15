@@ -1,240 +1,22 @@
+import { fork } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
-import { Connection } from '@solana/web3.js'
-import Database from 'better-sqlite3'
-import chalk from 'chalk'
-import { Command } from 'commander'
-import { Protocol } from '../adapters/protocols'
-import { supportedProtocols } from '../adapters/supportedProtocols'
-import { AdaptersController } from '../core/adaptersController'
-import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
-import {
-  Chain,
-  ChainIdToChainNameMap,
-  EvmChain,
-} from '../core/constants/chains'
-import { ProviderMissingError } from '../core/errors/errors'
-import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { filterMapSync } from '../core/utils/filters'
-import { logger } from '../core/utils/logger'
-import {
-  AdditionalMetadataWithReservedFields,
-  Erc20ExtendedMetadata,
-  IProtocolAdapter,
-  ProtocolToken,
-} from '../types/IProtocolAdapter'
-import { Erc20Metadata } from '../types/erc20Metadata'
-import { getInvalidAddresses } from './addressValidation'
-import { multiChainFilter, multiProtocolFilter } from './commandFilters'
-import erc20Tokens from './coingecko-tokens.json'
+import Database, { Database as DatabaseType } from 'better-sqlite3'
 import { ethers, getAddress } from 'ethers'
+import { Command } from 'commander'
 import { DefiProvider } from '../defiProvider'
+import erc20Tokens from './coingecko-tokens.json'
+import { Chain, EvmChain } from '../core/constants/chains'
 
-export function indexer(program: Command, defiProvider: DefiProvider) {
-  program
-    .command('indexer')
-    .showHelpAfterError()
-    .action(async () => {
-      // Fetch the latest block number
-      const latestBlock =
-        await defiProvider.chainProvider.providers[1].getBlockNumber()
-      console.log(`Latest block: ${latestBlock}`)
-
-      // Define the chunk size and earliest block to process
-      const CHUNK_SIZE = 1000
-      const EARLIEST_BLOCK = latestBlock - 10000 // Define your earliest block limit
-
-      const db = createDatabase('index')
-
-      // Prepare ERC20 token addresses to ignore
-      let erc20TokenAddressesToIgnore: string[] = []
-
-      // Add tokens from CoinGecko's ERC20 token list
-      erc20Tokens.forEach((token) => {
-        const ethereumAddress = token.platforms?.ethereum
-        if (!ethereumAddress) return
-        const formattedAddress = getAddress(ethereumAddress)
-        erc20TokenAddressesToIgnore.push(formattedAddress)
-      })
-
-      // Remove any addresses that overlap with DeFi tokens
-      const protocolTokens = Array.from(
-        await (await defiProvider.metadataProviders[1].allTokens).values(),
-      )
-      const defiTokenAddresses = protocolTokens
-        .flat()
-        .map((token) => token.address)
-
-      const initialLength = erc20TokenAddressesToIgnore.length
-      erc20TokenAddressesToIgnore = erc20TokenAddressesToIgnore.filter(
-        (address) => !defiTokenAddresses.includes(address),
-      )
-
-      const removedCount = initialLength - erc20TokenAddressesToIgnore.length
-
-      console.log(
-        `${removedCount} addresses were removed because they are defi tokens`,
-      )
-
-      // Save log to the database
-      const saveLog = (log: {
-        address: string
-        data: string
-        topics: string[]
-      }) => {
-        const contractAddress = getAddress(log.address)
-
-        // Filter: Ignore ERC20 token addresses
-        if (erc20TokenAddressesToIgnore.includes(contractAddress)) return
-
-        // Filter: Ignore NFT transfer events (data === '0x')
-        if (log.data === '0x') return
-
-        // Filter: Ignore events with only topic0
-        if (log.topics.length < 2) return
-
-        // Helper function to validate and format Ethereum addresses
-        const formatAddress = (topic: string): string | null => {
-          try {
-            // Ensure the topic starts with the Ethereum address padding prefix
-            if (!topic.startsWith('0x000000000000000000000000')) {
-              return null
-            }
-
-            // Remove leading zeros and validate the address
-            const trimmedAddress = topic.replace(
-              /^0x000000000000000000000000/,
-              '0x',
-            )
-            return getAddress(trimmedAddress) // Returns checksummed address
-          } catch {
-            return null // Return null if the address is invalid
-          }
-        }
-
-        // Format topics
-        const formattedTopics = log.topics.map(formatAddress)
-
-        // Insert log into the database
-        formattedTopics.forEach((topic) => {
-          // Filter: Ignore invalid or null topics
-          if (topic === null) return
-
-          // Filter: 0 address
-          if (topic === '0000000000000000000000000000000000000000') return
-
-          const insertStmt = db.prepare(`
-          INSERT OR IGNORE INTO logs (contract_address, address)
-          VALUES (?, ?)
-        `)
-          insertStmt.run(
-            contractAddress.replace(/^0x/, ''),
-            topic.replace(/^0x/, ''),
-          )
-        })
-      }
-
-      // Fetch and process logs for a block range
-      const processBlockRange = async (
-        rangeStart: number,
-        rangeEnd: number,
-      ) => {
-        const promises = []
-        for (
-          let blockNumber = rangeStart;
-          blockNumber >= rangeEnd;
-          blockNumber--
-        ) {
-          promises.push(
-            (async (blockNumber) => {
-              const receipts =
-                await defiProvider.chainProvider.providers[1].send(
-                  'eth_getBlockReceipts',
-                  [ethers.toBeHex(blockNumber)],
-                )
-              console.log(`Processing block: ${blockNumber}`)
-              for (const receipt of receipts) {
-                for (const log of receipt.logs) {
-                  saveLog(log)
-                }
-              }
-            })(blockNumber),
-          )
-        }
-        await Promise.all(promises)
-      }
-
-      // Insert block ranges into the block_processing table
-      const insertBlockRanges = (
-        startBlock: number,
-        endBlock: number,
-        chunkSize: number,
-      ) => {
-        const insertStmt = db.prepare(`
-          INSERT OR IGNORE INTO block_processing (block_range_start, block_range_end, status)
-          VALUES (?, ?, 'pending')
-        `)
-
-        for (let i = startBlock; i > endBlock; i -= chunkSize) {
-          const rangeStart = i
-          const rangeEnd = Math.max(i - chunkSize + 1, endBlock)
-          insertStmt.run(rangeStart, rangeEnd)
-        }
-      }
-
-      // Main processing logic
-      const startTime = Date.now()
-      try {
-        // Insert block ranges into the database
-        insertBlockRanges(latestBlock, EARLIEST_BLOCK, CHUNK_SIZE)
-
-        // Select and process pending block ranges
-        const selectStmt = db.prepare(`
-          SELECT block_range_start, block_range_end
-          FROM block_processing
-          WHERE status = 'pending'
-          ORDER BY block_range_start DESC
-          LIMIT 1
-        `)
-
-        const updateStmt = db.prepare(`
-          UPDATE block_processing
-          SET status = ?
-          WHERE block_range_start = ? AND block_range_end = ?
-        `)
-
-        while (true) {
-          const range = selectStmt.get()
-          if (!range) {
-            console.log('No more pending block ranges.')
-            break
-          }
-
-          const { block_range_start: rangeStart, block_range_end: rangeEnd } =
-            range as { block_range_start: number; block_range_end: number }
-          console.log(`Processing block range: ${rangeStart} to ${rangeEnd}`)
-
-          try {
-            updateStmt.run('in_progress', rangeStart, rangeEnd)
-            await processBlockRange(rangeStart, rangeEnd)
-            updateStmt.run('completed', rangeStart, rangeEnd)
-            console.log(`Completed block range: ${rangeStart} to ${rangeEnd}`)
-          } catch (error) {
-            console.error(
-              `Error processing block range: ${rangeStart} to ${rangeEnd}`,
-              error,
-            )
-            updateStmt.run('failed', rangeStart, rangeEnd)
-          }
-        }
-      } finally {
-        db.close()
-        const endTime = Date.now()
-        const timeTaken = (endTime - startTime) / 1000
-        console.log(`Total time taken: ${timeTaken} seconds`)
-      }
-    })
-}
+const CHUNK_SIZE_PER_CHILD_PROCESS = 200 // Number of blocks per chunk
+const MAX_CONCURRENT_INFURA_REQUESTS_PER_CHILD_PROCESS = 50
+const MAX_CONCURRENT_PROCESSES = 15 // Maximum child processes
+const TOTAL_BLOCKS = 1000000 // Total blocks to process
+const CHAIN_ID: EvmChain = 42161 // Ethereum Mainnet
+const COINGECKO_CHAINNAME: 'arbitrum-one' | 'ethereum' = 'arbitrum-one'
+const DELETE_DB = false
+const LATEST_BLOCK_OVERRIDE = 295006391
+const PROCESS_ONLY_FAILED_RANGES = false
 
 const createTableQueries = {
   logs: `
@@ -253,35 +35,468 @@ const createTableQueries = {
 }
 
 /**
- * Creates a database and tables for a given chain.
- * @param name - The name of the chain.
- * @returns The database connection.
+ * Creates a database and ensures required tables exist.
  */
 function createDatabase(name: string) {
-  try {
-    const dbPath = path.resolve(`./${name}.db`)
+  const dbPath = path.resolve(`./${name}.db`)
+  const db = new Database(dbPath)
 
-    if (fs.existsSync(dbPath)) {
-      logger.debug(`Database file already exists: ${dbPath}`)
-    } else {
-      logger.debug(`Database file does not exist: ${dbPath}`)
-    }
+  // Apply performance settings
+  // Set the journal mode to Write-Ahead Logging (WAL) for better concurrency
+  // Default: DELETE
+  db.pragma('journal_mode = WAL')
 
-    const db = new Database(dbPath)
+  // Set synchronous mode to OFF for maximum speed at the cost of durability
+  // Default: FULL
+  db.pragma('synchronous = OFF')
 
-    // Create each table and verify its creation
-    for (const createTableQuery of Object.values(createTableQueries)) {
+  // Set cache size to ~40 MB (negative value means size in KB)
+  // Default: -2000 (2 MB)
+  db.pragma('cache_size = -10000')
+
+  // Set locking mode to NORMAL (default)
+  // Default: NORMAL
+  db.pragma('locking_mode = NORMAL')
+
+  // Set memory-mapped I/O size to 256 MB for faster access
+  // Default: 0 (disabled)
+  db.pragma('mmap_size = 268435456')
+
+  // Set page size to 64 KB for better performance with large databases
+  // Default: 4096 (4 KB)
+  db.pragma('page_size = 65536')
+
+  // Apply page size changes and reclaim unused space
+  db.exec('VACUUM')
+
+  // Create tables if they don't exist
+  for (const [tableName, createTableQuery] of Object.entries(
+    createTableQueries,
+  )) {
+    const tableExists = db
+      .prepare(`SELECT name FROM sqlite_master WHERE type='table' AND name=?`)
+      .get(tableName)
+    if (!tableExists) {
       db.exec(createTableQuery)
     }
-
-    const tables = db
-      .prepare(`SELECT name FROM sqlite_master WHERE type='table';`)
-      .all()
-    logger.debug(`Tables in ${name} database:`, tables)
-
-    return db
-  } catch (error) {
-    logger.error(`Failed to create database or tables for '${name}':`, error)
-    throw error
   }
+
+  return db
+}
+
+/**
+ * Pre-creates block ranges for processing and inserts them into the `block_processing` table.
+ */
+function createBlockRanges(
+  db: DatabaseType,
+  latestBlock: number,
+  earliestBlock: number,
+) {
+  const insertStmt = db.prepare(`
+    INSERT INTO block_processing (block_range_start, block_range_end, status)
+    VALUES (?, ?, 'pending')
+    ON CONFLICT(block_range_start, block_range_end) DO NOTHING
+  `)
+
+  for (
+    let i = latestBlock;
+    i > earliestBlock;
+    i -= CHUNK_SIZE_PER_CHILD_PROCESS
+  ) {
+    const block_range_start = i
+    const block_range_end = Math.max(
+      i - CHUNK_SIZE_PER_CHILD_PROCESS + 1,
+      earliestBlock,
+    )
+    insertStmt.run(block_range_start, block_range_end)
+  }
+}
+
+export function indexer(program: Command, defiProvider: DefiProvider) {
+  program
+    .command('indexer')
+    .showHelpAfterError()
+    .action(async () => {
+      if (DELETE_DB) {
+        const dbPath = path.resolve('./index.db')
+        if (fs.existsSync(dbPath)) {
+          fs.unlinkSync(dbPath)
+          console.log('Deleted existing database file: index.db')
+        }
+      }
+
+      const db = createDatabase('index')
+
+      let latestBlock: number
+
+      if (LATEST_BLOCK_OVERRIDE) {
+        latestBlock = LATEST_BLOCK_OVERRIDE
+      } else {
+        latestBlock =
+          await defiProvider.chainProvider.providers[CHAIN_ID].getBlockNumber()
+      }
+
+      const earliestBlock = latestBlock - TOTAL_BLOCKS
+
+      // console.log(`Processing blocks from ${earliestBlock} to ${latestBlock}`)
+
+      // Pre-create block ranges if needed
+
+      if (!PROCESS_ONLY_FAILED_RANGES) {
+        createBlockRanges(db, latestBlock, earliestBlock)
+      }
+
+      const activeProcesses = new Set()
+
+      const getNextRange = (): {
+        block_range_start: number
+        block_range_end: number
+      } | null => {
+        try {
+          const stmt = db.prepare(`
+    SELECT block_range_start, block_range_end
+    FROM block_processing
+    WHERE status = '${PROCESS_ONLY_FAILED_RANGES ? 'failed' : 'pending'}'
+    ORDER BY block_range_start DESC
+    LIMIT 1
+  `)
+
+          const range = stmt.get() as {
+            block_range_start: number
+            block_range_end: number
+          }
+
+          if (range) {
+            const updateStmt = db.prepare(`
+      UPDATE block_processing
+      SET status = 'in_progress'
+      WHERE block_range_start = ? AND block_range_end = ?
+    `)
+            executeWithRetry(() =>
+              updateStmt.run(range.block_range_start, range.block_range_end),
+            )
+          }
+
+          return range
+        } catch (error) {
+          console.error('Error getting next range:', error)
+          throw error
+        }
+      }
+
+      // Update the status of a block range
+      const updateRangeStatusWithRetry = (
+        block_range_start: number,
+        block_range_end: number,
+        status: 'pending' | 'in_progress' | 'failed', // complete status is set with logs insert
+      ) => {
+        const stmt = db.prepare(`
+          UPDATE block_processing
+          SET status = ?
+          WHERE block_range_start = ? AND block_range_end = ?
+        `)
+
+        executeWithRetry(() =>
+          stmt.run(status, block_range_start, block_range_end),
+        )
+      }
+
+      // Process a block range in a child process
+      const processRange = (
+        range: {
+          block_range_start: number
+          block_range_end: number
+        },
+        erc20TokenAddressesToIgnore: string[],
+      ) =>
+        new Promise<void>((resolve, reject) => {
+          const child = fork(__filename) // Fork the current file as a child process
+
+          child.send({ range, erc20TokenAddressesToIgnore }) // Send the block range to the child process
+
+          child.on('message', (message) => {
+            console.log(
+              `Child process completed range: ${range.block_range_start}-${range.block_range_end}`,
+            )
+            resolve()
+          })
+
+          child.on('error', (err) => {
+            console.error(
+              `Error in child process for range: ${range.block_range_start}-${range.block_range_end}:`,
+              err,
+            )
+            updateRangeStatusWithRetry(
+              range.block_range_start,
+              range.block_range_end,
+              'failed',
+            )
+
+            resolve()
+          })
+
+          child.on('exit', (code) => {
+            if (code !== 0) {
+              console.error(`Child process exited with code ${code}`)
+              updateRangeStatusWithRetry(
+                range.block_range_start,
+                range.block_range_end,
+                'failed',
+              )
+              resolve()
+            }
+          })
+        })
+
+      // Process block ranges with limited concurrency
+      const processRanges = async () => {
+        // used to know when all child processes have finished
+        const promises: Promise<void>[] = []
+
+        const defiProvider = new DefiProvider()
+
+        let erc20TokenAddressesToIgnore: string[] = []
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        erc20Tokens.forEach((token: any) => {
+          const ethereumAddress = token.platforms?.[COINGECKO_CHAINNAME]
+          if (!ethereumAddress) return
+          const formattedAddress = getAddress(ethereumAddress)
+          erc20TokenAddressesToIgnore.push(formattedAddress)
+        })
+
+        // Remove any addresses that overlap with DeFi tokens
+        const protocolTokens = Array.from(
+          await (
+            await defiProvider.metadataProviders[CHAIN_ID].allTokens
+          ).values(),
+        )
+        const defiTokenAddresses = protocolTokens
+          .flat()
+          .map((token) => token.address)
+
+        const initialLength = erc20TokenAddressesToIgnore.length
+        erc20TokenAddressesToIgnore = erc20TokenAddressesToIgnore.filter(
+          (address) => !defiTokenAddresses.includes(address),
+        )
+
+        const removedCount = initialLength - erc20TokenAddressesToIgnore.length
+
+        console.log(
+          `${removedCount} addresses were removed because they are defi tokens`,
+        )
+
+        while (true) {
+          if (activeProcesses.size >= MAX_CONCURRENT_PROCESSES) {
+            await Promise.race(activeProcesses)
+          }
+
+          const range = getNextRange() as {
+            block_range_start: number
+            block_range_end: number
+          }
+
+          // console.log('Processing range:', range)
+          if (!range) {
+            console.log(
+              'No more pending block ranges to start processing. Curently processing:',
+              activeProcesses.size,
+            )
+            break
+          }
+
+          const promise = processRange(range, erc20TokenAddressesToIgnore)
+          activeProcesses.add(promise)
+          promises.push(promise)
+
+          promise.finally(() => activeProcesses.delete(promise))
+        }
+
+        await Promise.all(promises)
+      }
+
+      const startTime = Date.now()
+      await processRanges()
+      const endTime = Date.now()
+
+      console.log(
+        `Completed processing in ${(endTime - startTime) / 1000} seconds.`,
+      )
+    })
+}
+
+// Child process logic
+if (process.send) {
+  process.on(
+    'message',
+    async ({
+      range,
+      erc20TokenAddressesToIgnore,
+    }: {
+      range: { block_range_start: number; block_range_end: number }
+      erc20TokenAddressesToIgnore: string[]
+    }) => {
+      const erc20TokenAddressesToIgnoreSet = new Set(
+        erc20TokenAddressesToIgnore,
+      )
+
+      const defiProvider = new DefiProvider()
+
+      const { block_range_start, block_range_end } = range
+      const db = createDatabase('index')
+
+      // Update the status of a block range
+      const updateRangeStatusWithRetry = (
+        block_range_start: number,
+        block_range_end: number,
+        status: 'pending' | 'in_progress' | 'failed' | 'completed', // complete status is set with logs insert
+      ) => {
+        const stmt = db.prepare(`
+                      UPDATE block_processing
+                      SET status = ?
+                      WHERE block_range_start = ? AND block_range_end = ?
+                    `)
+
+        executeWithRetry(() =>
+          stmt.run(status, block_range_start, block_range_end),
+        )
+      }
+
+      try {
+        async function processInChunks(
+          blockRangeStart: number,
+          blockRangeEnd: number,
+        ) {
+          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+          const receipts: any[] = []
+          const chunkSize = MAX_CONCURRENT_INFURA_REQUESTS_PER_CHILD_PROCESS
+
+          // Create an array of block numbers
+          const blockNumbers = []
+          for (
+            let blockNumber = blockRangeStart;
+            blockNumber >= blockRangeEnd;
+            blockNumber--
+          ) {
+            blockNumbers.push(blockNumber)
+          }
+
+          // Function to process a single chunk
+          const processChunk = async (chunk: number[]) => {
+            const chunkPromises = chunk.map((blockNumber) =>
+              defiProvider.chainProvider.providers[CHAIN_ID].send(
+                'eth_getBlockReceipts',
+                [ethers.toBeHex(blockNumber)],
+              ),
+            )
+            const chunkReceipts = await Promise.all(chunkPromises)
+            receipts.push(...chunkReceipts)
+          }
+
+          // Split block numbers into chunks and process each chunk sequentially
+          for (let i = 0; i < blockNumbers.length; i += chunkSize) {
+            const chunk = blockNumbers.slice(i, i + chunkSize)
+            await processChunk(chunk) // Wait for the current chunk to finish
+          }
+
+          return receipts
+        }
+
+        // Call the function
+        const receipts = await processInChunks(
+          block_range_start,
+          block_range_end,
+        )
+
+        const logsToInsert: [string, string][] = []
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        receipts.flat().forEach((receipt: any) => {
+          receipt.logs.forEach(
+            (log: { address: string; data: string; topics: string[] }) => {
+              if (erc20TokenAddressesToIgnoreSet.has(log.address.toLowerCase()))
+                return
+
+              log.topics.forEach((topic) => {
+                if (topic.startsWith('0x000000000000000000000000')) {
+                  logsToInsert.push([log.address.slice(2), topic.slice(-40)])
+                }
+              })
+            },
+          )
+        })
+
+        const insertLogs = (logs: [string, string][]) => {
+          const transaction = db.transaction((logs: [string, string][]) => {
+            logs.forEach(([contract, address]) => {
+              db.prepare(
+                'INSERT OR IGNORE INTO logs (contract_address, address) VALUES (?, ?)',
+              ).run(contract, address)
+            })
+            const stmt = db.prepare(`
+              UPDATE block_processing
+              SET status = ?
+              WHERE block_range_start = ? AND block_range_end = ?
+            `)
+            stmt.run('completed', block_range_start, block_range_end)
+          })
+          executeWithRetry(() => transaction(logs))
+        }
+
+        if (logsToInsert.length > 0) {
+          insertLogs(logsToInsert)
+        } else {
+          updateRangeStatusWithRetry(
+            range.block_range_start,
+            range.block_range_end,
+            'completed',
+          )
+        }
+
+        process.send?.({
+          block_range_start,
+          block_range_end,
+          status: 'completed',
+        })
+      } catch (error) {
+        updateRangeStatusWithRetry(
+          range.block_range_start,
+          range.block_range_end,
+          'failed',
+        )
+        console.error(
+          `Error processing range ${block_range_start}-${block_range_end}:`,
+          error,
+        )
+      } finally {
+        db.close()
+        process.exit()
+      }
+    },
+  )
+}
+
+const executeWithRetry = (operation: () => void, retries = 5, delay = 100) => {
+  let attempt = 0
+
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  const tryOperation = async (): Promise<any> => {
+    try {
+      operation()
+    } catch (error) {
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      if (
+        error instanceof Error &&
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        (error as any).code === 'SQLITE_BUSY' &&
+        attempt < retries
+      ) {
+        attempt++
+        console.warn(`Retrying due to SQLITE_BUSY... Attempt ${attempt}`)
+        await new Promise((resolve) => setTimeout(resolve, delay * attempt))
+        return tryOperation()
+      }
+      throw error // Re-throw error if retries are exhausted or not SQLITE_BUSY
+    }
+  }
+
+  return tryOperation()
 }
