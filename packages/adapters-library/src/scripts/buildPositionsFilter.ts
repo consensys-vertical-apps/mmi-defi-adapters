@@ -1,3 +1,4 @@
+import { EventEmitter } from 'node:events'
 import path from 'node:path'
 import Database, { Database as DatabaseType } from 'better-sqlite3'
 import { Command } from 'commander'
@@ -9,7 +10,6 @@ import {
 } from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
 import { multiChainFilter } from './commandFilters'
-import { EventEmitter } from 'node:events'
 
 const dbs = {
   logs: `
