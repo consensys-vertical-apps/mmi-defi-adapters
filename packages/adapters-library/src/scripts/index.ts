@@ -6,6 +6,7 @@ import { copyAdapter } from './adapterBuilder/copyAdapter'
 import { newAdapterCommand } from './adapterBuilder/newAdapterCommand'
 import { blockAverage } from './blockAverage'
 import { buildMetadataDb } from './buildMetadataDb'
+import { indexer } from './buildPositionsFilter'
 import { buildScoreboard } from './buildScoreboard'
 import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
@@ -24,6 +25,8 @@ const defiProvider = new DefiProvider()
 const chainProviders = defiProvider.chainProvider.providers
 const solanaProvider = defiProvider.chainProvider.solanaProvider
 const adaptersController = defiProvider.adaptersController
+
+indexer(program, defiProvider)
 
 featureCommands(program, defiProvider)
 
