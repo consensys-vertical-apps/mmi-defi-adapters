@@ -117,6 +117,7 @@ export type Support = Partial<
       protocolTokenAddresses?: Partial<Record<Chain, string[]>>
       writeActions?: WriteActions[]
       protocolTokens?: Partial<Record<Chain, ProtocolToken[]>>
+      includeInEventProcessing: boolean
     }[]
   >
 >

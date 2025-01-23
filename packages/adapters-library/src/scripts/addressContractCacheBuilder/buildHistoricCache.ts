@@ -2,52 +2,16 @@ import Database from 'better-sqlite3'
 import { ChainIdToChainNameMap, EvmChain } from '../../core/constants/chains'
 import { DefiProvider } from '../../defiProvider'
 import {
-  createDatabases,
+  completeJobs,
+  createDatabase,
   fetchNextPoolsToProcess,
-  insertUserPools,
+  insertContractEntries,
+  insertLogs,
 } from './db-queries'
 import { fetchEvents } from './fetchEvents'
-import { JsonRpcProvider, Network } from 'ethers'
+import { getAddress, JsonRpcProvider, Network } from 'ethers'
 
 const POOL_BATCH_SIZE = 100
-
-// TODO: This script should not be responsible for inserting the contract entries
-async function insertContractEntries(
-  defiProvider: DefiProvider,
-  chainId: EvmChain,
-  db: Database.Database,
-) {
-  const provider = defiProvider.chainProvider.providers[chainId]
-
-  const currentBlockNumber = await provider.getBlockNumber()
-
-  const defiPoolAddresses = await defiProvider.getSupport({
-    filterChainIds: [chainId],
-  })
-
-  const protocolTokenAddresses = new Set<string>()
-  for (const pools of Object.values(defiPoolAddresses || {})) {
-    for (const pool of pools) {
-      for (const address of pool.protocolTokenAddresses?.[chainId] || []) {
-        protocolTokenAddresses.add(address.slice(2))
-      }
-    }
-  }
-
-  const stmt = db.prepare(
-    'INSERT OR IGNORE INTO history_jobs (contract_address, block_number) VALUES (?, ?)',
-  )
-
-  const transaction = db.transaction(
-    (contractAddresses: string[], currentBlockNumber: number) => {
-      contractAddresses.forEach((address) => {
-        stmt.run(address, currentBlockNumber)
-      })
-    },
-  )
-
-  transaction(Array.from(protocolTokenAddresses), currentBlockNumber)
-}
 
 export async function buildHistoricCache(
   defiProvider: DefiProvider,
@@ -61,15 +25,13 @@ export async function buildHistoricCache(
     staticNetwork: Network.from(chainId),
   })
 
-  const db = createDatabases(`${ChainIdToChainNameMap[chainId]}_index`)
+  const db = createDatabase(`${ChainIdToChainNameMap[chainId]}_index`)
 
+  // TODO: This script should not be responsible for inserting the contract entries
+  // TODO: The script should just be responsible for picking up existing DB entries and processing them
   if (initialize) {
-    // TODO: This script should not be responsible for inserting the contract entries
-    // TODO: The script should just be responsible for picking up existing DB entries and processing them
     await insertContractEntries(defiProvider, chainId, db)
   }
-
-  console.log(`${new Date().toISOString()}: Building historic cache`)
 
   while (true) {
     const pendingPools = fetchNextPoolsToProcess(db)
@@ -83,23 +45,23 @@ export async function buildHistoricCache(
 
     const { poolAddresses, targetBlockNumber } = pendingPools
 
-    console.log(`${new Date().toISOString()}`, {
+    console.log(`${new Date().toISOString()}: Pending pools need processing`, {
       pools: poolAddresses.length,
       targetBlockNumber,
     })
 
-    let poolsProcessedInBatch = 0
+    let poolsAlreadyProcessed = 0
     for (let i = 0; i < poolAddresses.length; i += POOL_BATCH_SIZE) {
       const contractAddresses = poolAddresses.slice(i, i + POOL_BATCH_SIZE)
-      console.log(
-        `${new Date().toISOString()}: Processing batch ${
-          i / POOL_BATCH_SIZE + 1
-        } with ${contractAddresses.length} pools (${
-          poolAddresses.length
-        } total)`,
-      )
+      console.log(`${new Date().toISOString()}: Processing batch`, {
+        batchIndex: i / POOL_BATCH_SIZE + 1,
+        totalBatches: Math.ceil(poolAddresses.length / POOL_BATCH_SIZE),
+        batchSize: contractAddresses.length,
+        totalPools: poolAddresses.length,
+        poolsAlreadyProcessed,
+      })
 
-      let counter = 0
+      let logsAlreadyProcessed = 0
       for await (const { logs, fromBlock, toBlock, depth } of fetchEvents({
         provider,
         contractAddresses,
@@ -107,40 +69,42 @@ export async function buildHistoricCache(
         fromBlock: 0,
         toBlock: targetBlockNumber,
       })) {
-        counter += logs.length
-        console.log(
-          `${new Date().toISOString()}: Logs fetched: ${
-            logs.length
-          } - from ${fromBlock} to ${toBlock} - ${counter} total - depth ${depth}`,
-        )
+        logsAlreadyProcessed += logs.length
+        console.log(`${new Date().toISOString()}: Logs fetched`, {
+          logs: logs.length,
+          fromBlock,
+          toBlock,
+          depth,
+          logsAlreadyProcessed,
+        })
 
         const logsToInsert: [string, string][] = []
         for (const log of logs) {
-          const contractAddress = log.address.slice(2)
+          const contractAddress = getAddress(log.address.toLowerCase()).slice(2)
 
           for (const topic of log.topics) {
             if (
-              topic.startsWith('0x000000000000000000000000') &&
+              topic.startsWith('0x000000000000000000000000') && // Not an address if it is does not start with 0x000000000000000000000000
               topic !==
-                '0x0000000000000000000000000000000000000000000000000000000000000000'
+                '0x0000000000000000000000000000000000000000000000000000000000000000' // Skip the zero address
             ) {
-              logsToInsert.push([contractAddress, topic.slice(-40)])
+              const topicAddress = getAddress(
+                `0x${topic.slice(-40).toLowerCase()}`,
+              ).slice(2)
+
+              logsToInsert.push([contractAddress, topicAddress])
             }
           }
         }
 
-        insertUserPools(db, logsToInsert, contractAddresses)
+        insertLogs(db, logsToInsert)
 
-        poolsProcessedInBatch += contractAddresses.length
-
-        // console.log(
-        //   `${new Date().toISOString()}: Processed ${
-        //     contractAddresses.length
-        //   } pools (${poolsProcessedInBatch} total) with ${
-        //     logsToInsert.length
-        //   } entries`,
-        // )
+        logsAlreadyProcessed += logs.length
       }
+
+      completeJobs(db, contractAddresses)
+
+      poolsAlreadyProcessed += contractAddresses.length
     }
 
     await new Promise((resolve) => setTimeout(resolve, 5000))

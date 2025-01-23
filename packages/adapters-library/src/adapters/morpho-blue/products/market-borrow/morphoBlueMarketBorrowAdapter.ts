@@ -7,6 +7,7 @@ export class MorphoBlueMarketBorrowAdapter extends MorphoBluePoolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
+    includeInEventProcessing: false,
   }
 
   getProtocolDetails(): ProtocolDetails {

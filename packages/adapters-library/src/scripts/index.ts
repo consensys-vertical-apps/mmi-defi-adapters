@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander'
-import { Chain } from '../core/constants/chains'
+import { Chain, EvmChain } from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
 import { copyAdapter } from './adapterBuilder/copyAdapter'
 import { newAdapterCommand } from './adapterBuilder/newAdapterCommand'
@@ -91,19 +91,23 @@ program
       initialize: boolean
       chains: string
     }) => {
-      const filterChainIds = multiChainFilter(chains)
+      const filterChainIds = (
+        multiChainFilter(chains) ?? [Chain.Ethereum]
+      ).filter((chainId) => chainId !== Chain.Solana) as EvmChain[]
 
-      console.log('Building historic cache', { filterChainIds, initialize })
+      console.log(`${new Date().toISOString()}: Building historic cache`, {
+        filterChainIds,
+        initialize,
+      })
 
       await Promise.all(
-        (filterChainIds ?? [Chain.Ethereum]).map((chainId) => {
-          if (chainId === Chain.Solana) {
-            return
-          }
-
-          return buildHistoricCache(defiProvider, chainId, initialize)
-        }),
+        filterChainIds.map((chainId) =>
+          buildHistoricCache(defiProvider, chainId, initialize),
+        ),
       )
+
+      console.log('Finished')
+      process.exit(0)
     },
   )
 
