@@ -178,7 +178,7 @@ export type SolanaChainAdapters = Partial<
     ) => IProtocolAdapter)[]
   >
 >
-
+// @ts-ignore
 export const supportedProtocols: Record<
   Protocol,
   EvmChainAdapters | SolanaChainAdapters
@@ -458,39 +458,39 @@ export const supportedProtocols: Record<
     ],
   },
 
-  [Protocol.MorphoAaveV2]: {
-    [Chain.Ethereum]: [
-      MorphoAaveV2OptimizerBorrowAdapter,
-      MorphoAaveV2OptimizerSupplyAdapter,
-    ],
-  },
+  // [Protocol.MorphoAaveV2]: {
+  //   [Chain.Ethereum]: [
+  //     MorphoAaveV2OptimizerBorrowAdapter,
+  //     MorphoAaveV2OptimizerSupplyAdapter,
+  //   ],
+  // },
 
-  [Protocol.MorphoAaveV3]: {
-    [Chain.Ethereum]: [
-      MorphoAaveV3OptimizerSupplyAdapter,
-      MorphoAaveV3OptimizerBorrowAdapter,
-    ],
-  },
+  // [Protocol.MorphoAaveV3]: {
+  //   [Chain.Ethereum]: [
+  //     MorphoAaveV3OptimizerSupplyAdapter,
+  //     MorphoAaveV3OptimizerBorrowAdapter,
+  //   ],
+  // },
 
-  [Protocol.MorphoBlue]: {
-    [Chain.Ethereum]: [
-      MorphoBlueMarketSupplyAdapter,
-      MorphoBlueMarketBorrowAdapter,
-      MorphoBlueVaultAdapter,
-    ],
-    [Chain.Base]: [
-      MorphoBlueMarketSupplyAdapter,
-      MorphoBlueMarketBorrowAdapter,
-      MorphoBlueVaultAdapter,
-    ],
-  },
+  // [Protocol.MorphoBlue]: {
+  //   [Chain.Ethereum]: [
+  //     MorphoBlueMarketSupplyAdapter,
+  //     MorphoBlueMarketBorrowAdapter,
+  //     MorphoBlueVaultAdapter,
+  //   ],
+  //   [Chain.Base]: [
+  //     MorphoBlueMarketSupplyAdapter,
+  //     MorphoBlueMarketBorrowAdapter,
+  //     MorphoBlueVaultAdapter,
+  //   ],
+  // },
 
-  [Protocol.MorphoCompoundV2]: {
-    [Chain.Ethereum]: [
-      MorphoCompoundV2OptimizerSupplyAdapter,
-      MorphoCompoundV2OptimizerBorrowAdapter,
-    ],
-  },
+  // [Protocol.MorphoCompoundV2]: {
+  //   [Chain.Ethereum]: [
+  //     MorphoCompoundV2OptimizerSupplyAdapter,
+  //     MorphoCompoundV2OptimizerBorrowAdapter,
+  //   ],
+  // },
 
   [Protocol.MountainProtocol]: {
     [Chain.Ethereum]: [
