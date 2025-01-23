@@ -17,6 +17,8 @@ import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
+import { buildHistoricCache } from './addressContractCacheBuilder/buildHistoricCache'
+import { multiChainFilter } from './commandFilters'
 
 const program = new Command('mmi-adapters')
 
@@ -71,6 +73,37 @@ program
         sourceProtocolId: sourceProtocolId,
         defiProvider,
       })
+    },
+  )
+
+program
+  .command('build-historic-cache')
+  .option(
+    '-c, --chains <chains>',
+    'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
+  )
+  .option('-i, --initialize', 'Initialize the DB')
+  .action(
+    async ({
+      initialize,
+      chains,
+    }: {
+      initialize: boolean
+      chains: string
+    }) => {
+      const filterChainIds = multiChainFilter(chains)
+
+      console.log('Building historic cache', { filterChainIds, initialize })
+
+      await Promise.all(
+        (filterChainIds ?? [Chain.Ethereum]).map((chainId) => {
+          if (chainId === Chain.Solana) {
+            return
+          }
+
+          return buildHistoricCache(defiProvider, chainId, initialize)
+        }),
+      )
     },
   )
 
