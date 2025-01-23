@@ -3,6 +3,8 @@ import path from 'node:path'
 import Database, { Database as DatabaseType } from 'better-sqlite3'
 import { Command } from 'commander'
 import { Provider, ethers, getAddress } from 'ethers'
+import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../core/constants/AVERAGE_BLOCKS_PER_10_MINS'
+import { AVERAGE_BLOCKS_PER_DAY } from '../core/constants/AVERAGE_BLOCKS_PER_DAY'
 import {
   Chain,
   ChainIdToChainNameMap,
@@ -11,8 +13,6 @@ import {
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { DefiProvider } from '../defiProvider'
 import { multiChainFilter } from './commandFilters'
-import { AVERAGE_BLOCKS_PER_DAY } from '../core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../core/constants/AVERAGE_BLOCKS_PER_10_MINS'
 
 /**
  * Indexer command.
@@ -155,13 +155,26 @@ export function indexer(program: Command, defiProvider: DefiProvider) {
 
             const blockNumberEmitter = new EventEmitter()
             let newBlockMinedNumber: number = latestBlockNumber
-            provider.on('block', (blockNumber) => {
-              newBlockMinedNumber = blockNumber
-              blockNumberEmitter.emit('newBlock', blockNumber)
-              console.log('New block mined:', blockNumber, chainName)
-            })
+            const setupBlockListener = () => {
+              provider.on('block', (blockNumber) => {
+                newBlockMinedNumber = blockNumber
+                blockNumberEmitter.emit('newBlock', blockNumber)
+                console.log('New block mined:', blockNumber, chainName)
+              })
 
-            // Function to wait until the condition is met
+              provider.on('error', (error) => {
+                console.error('Error with provider:', error)
+                // Attempt to reconnect after a delay
+                setTimeout(() => {
+                  console.log('Reconnecting to provider...')
+                  setupBlockListener()
+                }, 5000) // 5 seconds delay before reconnecting
+              })
+            }
+
+            // Initial setup
+            setupBlockListener()
+            // Function to wait until block is mined
             const waitForNewBlock = (
               latestBlockNumber: number,
             ): Promise<number> => {
