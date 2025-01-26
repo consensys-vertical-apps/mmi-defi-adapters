@@ -73,13 +73,13 @@ export async function buildHistoricCache(
             fromBlock: 0,
             toBlock: targetBlockNumber,
           })) {
-            // console.log(`${new Date().toISOString()}: Logs fetched`, {
-            //   logs: logs.length,
-            //   fromBlock,
-            //   toBlock,
-            //   depth,
-            //   batchIndex: i / POOL_BATCH_SIZE + 1,
-            // })
+            console.log(`${new Date().toISOString()}: Logs fetched`, {
+              logs: logs.length,
+              fromBlock,
+              toBlock,
+              depth,
+              batchIndex: i / POOL_BATCH_SIZE + 1,
+            })
 
             const logsToInsert: [string, string][] = []
             for (const log of logs) {
