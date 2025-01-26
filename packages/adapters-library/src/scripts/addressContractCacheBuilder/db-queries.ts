@@ -43,6 +43,37 @@ export function createDatabase(chainName: string): Database.Database {
     createTable(db, table)
   }
 
+  // Function to close the database connection
+  const closeDatabase = () => {
+    try {
+      db.close()
+      console.log('Database connection closed.')
+    } catch (err) {
+      console.error(
+        'Error closing database:',
+        err instanceof Error ? err.message : err,
+      )
+    }
+  }
+
+  // Handle termination signals
+  process.on('SIGINT', () => {
+    console.log('Received SIGINT. Closing database connection...')
+    closeDatabase()
+    process.exit(0)
+  })
+
+  process.on('SIGTERM', () => {
+    console.log('Received SIGTERM. Closing database connection...')
+    closeDatabase()
+    process.exit(0)
+  })
+
+  // Ensure to close the connection at the end of the program
+  process.on('exit', () => {
+    closeDatabase()
+  })
+
   return db
 }
 
