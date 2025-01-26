@@ -18,7 +18,7 @@ import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
 import { buildHistoricCache } from './addressContractCacheBuilder/buildHistoricCache'
-import { multiChainFilter } from './commandFilters'
+import { chainFilter, multiChainFilter } from './commandFilters'
 
 const program = new Command('mmi-adapters')
 
@@ -78,33 +78,32 @@ program
 
 program
   .command('build-historic-cache')
-  .option(
-    '-c, --chains <chains>',
-    'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
-  )
+  .argument('[chain]', 'Chain to build cache for')
   .option('-i, --initialize', 'Initialize the DB')
   .action(
-    async ({
-      initialize,
-      chains,
-    }: {
-      initialize: boolean
-      chains: string
-    }) => {
-      const filterChainIds = (
-        multiChainFilter(chains) ?? [Chain.Ethereum]
-      ).filter((chainId) => chainId !== Chain.Solana) as EvmChain[]
+    async (
+      chain,
+      {
+        initialize,
+      }: {
+        initialize: boolean
+      },
+    ) => {
+      const chainId = chainFilter(chain)
+      if (!chainId) {
+        throw new Error('Chain is required')
+      }
+
+      if (chainId === Chain.Solana) {
+        throw new Error('Solana is not supported')
+      }
 
       console.log(`${new Date().toISOString()}: Building historic cache`, {
-        filterChainIds,
+        chainId,
         initialize,
       })
 
-      await Promise.all(
-        filterChainIds.map((chainId) =>
-          buildHistoricCache(defiProvider, chainId, initialize),
-        ),
-      )
+      await buildHistoricCache(defiProvider, chainId, initialize)
 
       console.log('Finished')
       process.exit(0)
