@@ -80,7 +80,7 @@ export function createDatabase(chainName: string): Database.Database {
 export function fetchNextPoolsToProcess(db: Database.Database) {
   const unfinishedPools = db
     .prepare(`
-        SELECT 	contract_address, block_number, status
+        SELECT 	'0x' || contract_address as contract_address, block_number, status
         FROM 	history_jobs
         WHERE 	status <> 'completed'
         `)
