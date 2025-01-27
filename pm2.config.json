@@ -1,0 +1,49 @@
+{
+  "apps": [
+    {
+      "name": "Ethereum",
+      "script": "npm",
+      "args": ["run", "adapters-cli", "build-historic-cache", "ethereum", "--", "-i"]
+    },
+    {
+      "name": "Optimism",
+      "script": "npm", 
+      "args": ["run", "adapters-cli", "build-historic-cache", "optimism", "--", "-i"]
+    },
+    {
+      "name": "Bsc",
+      "script": "npm",
+      "args": ["run", "adapters-cli", "build-historic-cache", "bsc", "--", "-i"]
+    },
+    {
+      "name": "Polygon",
+      "script": "npm",
+      "args": ["run", "adapters-cli", "build-historic-cache", "polygon", "--", "-i"]
+    },
+    {
+      "name": "Fantom",
+      "script": "npm",
+      "args": ["run", "adapters-cli", "build-historic-cache", "fantom", "--", "-i"]
+    },
+    {
+      "name": "Base",
+      "script": "npm",
+      "args": ["run", "adapters-cli", "build-historic-cache", "base", "--", "-i"]
+    },
+    {
+      "name": "Arbitrum",
+      "script": "npm",
+      "args": ["run", "adapters-cli", "build-historic-cache", "arbitrum", "--", "-i"]
+    },
+    {
+      "name": "Avalanche",
+      "script": "npm",
+      "args": ["run", "adapters-cli", "build-historic-cache", "avalanche", "--", "-i"]
+    },
+    {
+      "name": "Linea",
+      "script": "npm",
+      "args": ["run", "adapters-cli", "build-historic-cache", "linea", "--", "-i"]
+    }
+  ]
+}

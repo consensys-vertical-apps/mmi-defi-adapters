@@ -13,7 +13,7 @@ import { supportedProtocols } from './adapters/supportedProtocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { Chain, ChainIdToChainNameMap } from './core/constants/chains'
+import { Chain, ChainIdToChainNameMap, EvmChain } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { ChecksumAddress } from './core/decorators/checksumAddress'
 import {
@@ -51,6 +51,12 @@ import {
   IUnwrapPriceCacheProvider,
   UnwrapPriceCache,
 } from './unwrapCache'
+import {
+  buildCachePoolFilter,
+  buildProviderPoolFilter,
+  PoolFilter,
+} from './tokenFilter'
+import path from 'node:path'
 
 export class DefiProvider {
   private parsedConfig
@@ -59,6 +65,7 @@ export class DefiProvider {
 
   private metadataProviders: Record<Chain, IMetadataProvider>
   private unwrapCache: IUnwrapPriceCache
+  private poolFilter: PoolFilter
 
   constructor(
     config?: DeepPartial<IConfig>,
@@ -70,16 +77,41 @@ export class DefiProvider {
       }
     >,
     unwrapCacheProvider?: IUnwrapPriceCacheProvider,
+    poolFilter?: PoolFilter,
   ) {
     this.parsedConfig = new Config(config)
+
+    this.chainProvider = new ChainProvider(this.parsedConfig.values)
 
     this.metadataProviders = this.parsedConfig.values.useDatabase
       ? buildSqliteMetadataProviders(metadataProviderSettings)
       : buildVoidMetadataProviders()
 
-    this.unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
+    this.poolFilter =
+      poolFilter ?? buildProviderPoolFilter(this.chainProvider.providers)
 
-    this.chainProvider = new ChainProvider(this.parsedConfig.values)
+    // this.poolFilter = buildCachePoolFilter(
+    //   Object.values(EvmChain).reduce(
+    //     (acc, chainId) => {
+    //       if (chainId !== EvmChain.Ethereum) {
+    //         return acc
+    //       }
+
+    //       acc[chainId] = new Database(
+    //         path.resolve(
+    //           `./${ChainIdToChainNameMap[chainId]}_index_history.db`,
+    //         ),
+    //         {
+    //           readonly: true,
+    //         },
+    //       )
+    //       return acc
+    //     },
+    //     {} as Record<EvmChain, Database.Database>,
+    //   ),
+    // )
+
+    this.unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
 
     this.adaptersController = new AdaptersController({
       evmProviders: this.chainProvider.providers,
@@ -119,7 +151,7 @@ export class DefiProvider {
     filterProductIds,
     filterChainIds,
     blockNumbers,
-    filterProtocolTokens,
+    filterProtocolTokens, // TODO: Use this
     filterTokenIds,
   }: {
     userAddress: string
@@ -144,13 +176,44 @@ export class DefiProvider {
 
       const blockNumber = blockNumbers?.[adapter.chainId]
 
-      const protocolTokenAddresses = await this.buildTokenFilter(
-        userAddress,
-        adapter,
-        filterProtocolTokens,
-      )
+      const poolFilterAddresses =
+        adapter.chainId === Chain.Solana ||
+        adapter.adapterSettings.includeInEventProcessing === false
+          ? undefined
+          : await this.poolFilter(
+              userAddress,
+              adapter.chainId,
+              adapter.adapterSettings,
+            )
 
-      // no transfers so we return
+      const protocolTokenAddresses = !poolFilterAddresses
+        ? undefined
+        : await filterMapAsync(poolFilterAddresses, async (address) => {
+            const isAdapterToken =
+              await this.adaptersController.isTokenBelongToAdapter(
+                address,
+                adapter.protocolId,
+                adapter.productId,
+                adapter.chainId,
+              )
+            if (isAdapterToken) {
+              return address
+            }
+
+            return undefined
+          })
+
+      if (adapter.protocolId === Protocol.CompoundV2) {
+        console.log({
+          productId: adapter.productId,
+          protocolTokenAddresses,
+          poolFilterAddresses,
+          userAddress,
+          chainId: adapter.chainId,
+          adapterSettings: adapter.adapterSettings,
+        })
+      }
+
       if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
         return { tokens: [] }
       }

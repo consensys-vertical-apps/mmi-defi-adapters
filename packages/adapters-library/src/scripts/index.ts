@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander'
-import { Chain } from '../core/constants/chains'
+import { Chain, EvmChain } from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
 import { copyAdapter } from './adapterBuilder/copyAdapter'
 import { newAdapterCommand } from './adapterBuilder/newAdapterCommand'
@@ -17,6 +17,8 @@ import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
+import { buildHistoricCache } from './addressContractCacheBuilder/buildHistoricCache'
+import { chainFilter, multiChainFilter } from './commandFilters'
 
 const program = new Command('mmi-adapters')
 
@@ -71,6 +73,40 @@ program
         sourceProtocolId: sourceProtocolId,
         defiProvider,
       })
+    },
+  )
+
+program
+  .command('build-historic-cache')
+  .argument('[chain]', 'Chain to build cache for')
+  .option('-i, --initialize', 'Initialize the DB')
+  .action(
+    async (
+      chain,
+      {
+        initialize,
+      }: {
+        initialize: boolean
+      },
+    ) => {
+      const chainId = chainFilter(chain)
+      if (!chainId) {
+        throw new Error('Chain is required')
+      }
+
+      if (chainId === Chain.Solana) {
+        throw new Error('Solana is not supported')
+      }
+
+      console.log(`${new Date().toISOString()}: Building historic cache`, {
+        chainId,
+        initialize,
+      })
+
+      await buildHistoricCache(defiProvider, chainId, initialize)
+
+      console.log('Finished')
+      process.exit(0)
     },
   )
 

@@ -109,6 +109,7 @@ export type AdapterSettings = {
   enablePositionDetectionByProtocolTokenTransfer: boolean
   includeInUnwrap: boolean
   version?: number
+  includeInEventProcessing?: boolean
 }
 
 export type ProtocolDetails = {
