@@ -1,9 +1,9 @@
-import Database from 'better-sqlite3'
 import { ChainIdToChainNameMap, EvmChain } from '../../core/constants/chains'
 import { DefiProvider } from '../../defiProvider'
 import {
   completeJobs,
   createDatabase,
+  failJobs,
   fetchNextPoolsToProcess,
   insertContractEntries,
   insertLogs,
@@ -11,7 +11,17 @@ import {
 import { fetchEvents } from './fetchEvents'
 import { getAddress, JsonRpcProvider, Network } from 'ethers'
 
-const POOL_BATCH_SIZE = 50
+const MAX_BATCH_SIZE: Record<EvmChain, number> = {
+  [EvmChain.Ethereum]: 25,
+  [EvmChain.Optimism]: 10,
+  [EvmChain.Bsc]: 10,
+  [EvmChain.Polygon]: 5,
+  [EvmChain.Fantom]: 10,
+  [EvmChain.Base]: 10,
+  [EvmChain.Arbitrum]: 10,
+  [EvmChain.Avalanche]: 10,
+  [EvmChain.Linea]: 10,
+}
 
 export async function buildHistoricCache(
   defiProvider: DefiProvider,
@@ -34,84 +44,84 @@ export async function buildHistoricCache(
   }
 
   while (true) {
-    const pendingPools = fetchNextPoolsToProcess(db)
+    const unfinishedPools = fetchNextPoolsToProcess(db)
 
-    if (!pendingPools) {
+    console.log(`${new Date().toISOString()}: Pending pools need processing`, {
+      pools: unfinishedPools.length,
+    })
+
+    const nextBatch = getNextBatch(unfinishedPools, MAX_BATCH_SIZE[chainId])
+
+    if (!nextBatch) {
       console.log(`${new Date().toISOString()}: No pending pools`)
 
       await new Promise((resolve) => setTimeout(resolve, 30000))
       continue
     }
 
-    const { poolAddresses, targetBlockNumber } = pendingPools
+    const { poolAddresses, targetBlockNumber, batchSize } = nextBatch
 
-    console.log(`${new Date().toISOString()}: Pending pools need processing`, {
-      pools: poolAddresses.length,
-      targetBlockNumber,
-    })
-
-    for (let i = 0; i < poolAddresses.length; i += POOL_BATCH_SIZE) {
-      const contractAddresses = poolAddresses.slice(i, i + POOL_BATCH_SIZE)
+    for (let i = 0; i < poolAddresses.length; i += batchSize) {
+      const contractAddresses = poolAddresses.slice(i, i + batchSize)
 
       console.log(`${new Date().toISOString()}: Pools batch started`, {
-        batchIndex: i / POOL_BATCH_SIZE + 1,
-        totalBatches: Math.ceil(poolAddresses.length / POOL_BATCH_SIZE),
+        batchIndex: i / batchSize + 1,
+        totalBatches: Math.ceil(poolAddresses.length / batchSize),
         batchSize: contractAddresses.length,
         totalPools: poolAddresses.length,
       })
 
       try {
-        for await (const { logs, fromBlock, toBlock, depth } of fetchEvents({
-          provider,
-          contractAddresses,
-          topics: [null, null, null, null],
-          fromBlock: 0,
-          toBlock: targetBlockNumber,
-        })) {
-          console.log(`${new Date().toISOString()}: Logs fetched`, {
-            logs: logs.length,
-            fromBlock,
-            toBlock,
-            depth,
-            batchIndex: i / POOL_BATCH_SIZE + 1,
-          })
+        const ranges = splitRange(0, targetBlockNumber, 10)
+        const concurrentRanges = ranges.map(async ({ from, to }) => {
+          for await (const logs of fetchEvents({
+            provider,
+            contractAddresses,
+            topics: [null, null, null, null],
+            fromBlock: from,
+            toBlock: to,
+          })) {
+            const logsToInsert: [string, string][] = []
+            for (const log of logs) {
+              const contractAddress = getAddress(
+                log.address.toLowerCase(),
+              ).slice(2)
 
-          const logsToInsert: [string, string][] = []
-          for (const log of logs) {
-            const contractAddress = getAddress(log.address.toLowerCase()).slice(
-              2,
-            )
+              for (const topic of log.topics) {
+                if (
+                  topic.startsWith('0x000000000000000000000000') && // Not an address if it is does not start with 0x000000000000000000000000
+                  topic !==
+                    '0x0000000000000000000000000000000000000000000000000000000000000000' // Skip the zero address
+                ) {
+                  const topicAddress = getAddress(
+                    `0x${topic.slice(-40).toLowerCase()}`,
+                  ).slice(2)
 
-            for (const topic of log.topics) {
-              if (
-                topic.startsWith('0x000000000000000000000000') && // Not an address if it is does not start with 0x000000000000000000000000
-                topic !==
-                  '0x0000000000000000000000000000000000000000000000000000000000000000' // Skip the zero address
-              ) {
-                const topicAddress = getAddress(
-                  `0x${topic.slice(-40).toLowerCase()}`,
-                ).slice(2)
-
-                logsToInsert.push([contractAddress, topicAddress])
+                  logsToInsert.push([contractAddress, topicAddress])
+                }
               }
             }
-          }
 
-          insertLogs(db, logsToInsert)
-        }
+            insertLogs(db, logsToInsert)
+          }
+        })
+
+        await Promise.all(concurrentRanges)
 
         completeJobs(db, contractAddresses)
 
         console.log(`${new Date().toISOString()}: Pools batch ended`, {
-          batchIndex: i / POOL_BATCH_SIZE + 1,
-          totalBatches: Math.ceil(poolAddresses.length / POOL_BATCH_SIZE),
+          batchIndex: i / batchSize + 1,
+          totalBatches: Math.ceil(poolAddresses.length / batchSize),
           batchSize: contractAddresses.length,
           totalPools: poolAddresses.length,
         })
       } catch (error) {
+        failJobs(db, contractAddresses)
+
         console.error(`${new Date().toISOString()}: Pools batch failed`, {
-          batchIndex: i / POOL_BATCH_SIZE + 1,
-          totalBatches: Math.ceil(poolAddresses.length / POOL_BATCH_SIZE),
+          batchIndex: i / batchSize + 1,
+          totalBatches: Math.ceil(poolAddresses.length / batchSize),
           batchSize: contractAddresses.length,
           totalPools: poolAddresses.length,
           error,
@@ -119,11 +129,6 @@ export async function buildHistoricCache(
       }
 
       logMemoryUsage()
-
-      // Hint to garbage collector
-      // if (global.gc) {
-      //   global.gc()
-      // }
     }
 
     // console.log(`${new Date().toISOString()}: Loop completed`, {
@@ -148,4 +153,77 @@ function logMemoryUsage() {
   )
 
   console.log(memoryUsageLog)
+}
+
+function splitRange(
+  from: number,
+  to: number,
+  chunks: number,
+): { from: number; to: number }[] {
+  const totalSize = to - from + 1
+  const rangeSize = Math.floor(totalSize / chunks)
+  const remainder = totalSize % chunks
+  const ranges: { from: number; to: number }[] = []
+
+  for (let i = 0; i < chunks; i++) {
+    const start = from + i * rangeSize + Math.min(i, remainder)
+    const end = start + rangeSize - 1 + (i < remainder ? 1 : 0)
+    ranges.push({ from: start, to: Math.min(end, to) })
+  }
+
+  return ranges
+}
+
+function getNextBatch(
+  unfinishedPools: {
+    contract_address: string
+    block_number: number
+    status: 'pending' | 'failed'
+  }[],
+  maxBatchSize: number,
+):
+  | {
+      poolAddresses: string[]
+      targetBlockNumber: number
+      batchSize: number
+    }
+  | undefined {
+  if (unfinishedPools.length === 0) {
+    return undefined
+  }
+
+  const pendingPools = unfinishedPools.filter(
+    (pool) => pool.status === 'pending',
+  )
+
+  if (pendingPools.length > 0) {
+    const batchSize =
+      pendingPools.length <= maxBatchSize * 10
+        ? 1
+        : pendingPools.length >= maxBatchSize * 100
+          ? maxBatchSize
+          : Math.max(
+              1,
+              Math.floor(
+                (pendingPools.length - maxBatchSize * 10) /
+                  ((maxBatchSize * 100 - maxBatchSize * 10) / maxBatchSize),
+              ),
+            )
+
+    return {
+      poolAddresses: pendingPools.map((pool) => pool.contract_address),
+      targetBlockNumber: Math.max(
+        ...pendingPools.map((pool) => pool.block_number),
+      ),
+      batchSize,
+    }
+  }
+
+  const failedPools = unfinishedPools.filter((pool) => pool.status === 'failed')
+  const { contract_address, block_number } = failedPools[0]!
+  return {
+    poolAddresses: [contract_address],
+    targetBlockNumber: block_number,
+    batchSize: 1,
+  }
 }

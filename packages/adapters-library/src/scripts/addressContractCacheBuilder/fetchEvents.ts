@@ -14,11 +14,7 @@ export async function* fetchEvents({
   fromBlock: number
   toBlock: number
   depth?: number
-}): AsyncGenerator<
-  { logs: Log[]; fromBlock: number; toBlock: number; depth: number },
-  void,
-  unknown
-> {
+}): AsyncGenerator<Log[], void, unknown> {
   const ranges: { fromBlock: number; toBlock: number; depth: number }[] = []
 
   ranges.push({ fromBlock, toBlock, depth })
@@ -34,7 +30,14 @@ export async function* fetchEvents({
         topics,
       })
 
-      yield { logs, fromBlock, toBlock, depth }
+      // console.log(`${new Date().toISOString()}: Logs fetched`, {
+      //   logs: logs.length,
+      //   fromBlock,
+      //   toBlock,
+      //   depth,
+      // })
+
+      yield logs
     } catch (error) {
       if (
         !isError(error, 'UNKNOWN_ERROR') ||

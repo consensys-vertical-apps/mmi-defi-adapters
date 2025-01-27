@@ -14,7 +14,7 @@ const tables = {
       CREATE TABLE IF NOT EXISTS history_jobs (
         contract_address VARCHAR(40) NOT NULL,
         block_number INTEGER NOT NULL,
-        status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'completed')),
+        status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'completed', 'failed')),
         PRIMARY KEY (contract_address)
       );`,
 }
@@ -77,31 +77,20 @@ export function createDatabase(chainName: string): Database.Database {
   return db
 }
 
-export function fetchNextPoolsToProcess(db: Database.Database):
-  | {
-      poolAddresses: string[]
-      targetBlockNumber: number
-    }
-  | undefined {
-  const pendingPools = db
+export function fetchNextPoolsToProcess(db: Database.Database) {
+  const unfinishedPools = db
     .prepare(`
-        SELECT 	contract_address, block_number
+        SELECT 	contract_address, block_number, status
         FROM 	history_jobs
         WHERE 	status <> 'completed'
         `)
     .all() as {
     contract_address: string
     block_number: number
+    status: 'pending' | 'failed'
   }[]
 
-  if (pendingPools.length === 0) {
-    return undefined
-  }
-
-  return {
-    poolAddresses: pendingPools.map((pool) => `0x${pool.contract_address}`),
-    targetBlockNumber: pendingPools[0]!.block_number,
-  }
+  return unfinishedPools
 }
 
 export function insertLogs(
@@ -125,6 +114,18 @@ export function completeJobs(
 ) {
   const jobStmt = db.prepare(
     `UPDATE history_jobs SET status = 'completed' WHERE contract_address = ?`,
+  )
+
+  db.transaction(() => {
+    for (const contractAddress of contractAddresses) {
+      jobStmt.run(contractAddress.slice(2))
+    }
+  })()
+}
+
+export function failJobs(db: Database.Database, contractAddresses: string[]) {
+  const jobStmt = db.prepare(
+    `UPDATE history_jobs SET status = 'failed' WHERE contract_address = ?`,
   )
 
   db.transaction(() => {
