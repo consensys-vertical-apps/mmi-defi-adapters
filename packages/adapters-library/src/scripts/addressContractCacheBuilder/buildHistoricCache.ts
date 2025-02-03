@@ -11,8 +11,11 @@ import {
 import { fetchEvents } from './fetchEvents'
 import { getAddress, JsonRpcProvider, Network } from 'ethers'
 
+const CONCURRENT_BATCHES = 10
+const MAX_RANGE_SIZE = 1000
+
 const MAX_BATCH_SIZE: Record<EvmChain, number> = {
-  [EvmChain.Ethereum]: 25,
+  [EvmChain.Ethereum]: 10,
   [EvmChain.Optimism]: 10,
   [EvmChain.Bsc]: 10,
   [EvmChain.Polygon]: 5,
@@ -77,7 +80,12 @@ export async function buildHistoricCache(
       })
 
       try {
-        const ranges = splitRange(0, targetBlockNumber, 10)
+        const chunkSize =
+          chainId === EvmChain.Bsc || chainId === EvmChain.Fantom
+            ? MAX_RANGE_SIZE
+            : CONCURRENT_BATCHES
+
+        const ranges = splitRange(0, targetBlockNumber, chunkSize)
         const concurrentRanges = ranges.map(async ({ from, to }) => {
           for await (const logs of fetchEvents({
             provider,
@@ -145,7 +153,7 @@ export async function buildHistoricCache(
     //   totalPools: poolAddresses.length,
     // })
 
-    await new Promise((resolve) => setTimeout(resolve, 10000))
+    await new Promise((resolve) => setTimeout(resolve, 5000))
   }
 }
 
