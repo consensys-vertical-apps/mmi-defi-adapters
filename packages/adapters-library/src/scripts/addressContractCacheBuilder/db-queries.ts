@@ -174,7 +174,7 @@ export async function insertContractEntries(
 
         const event =
           adapterSupport.userEvent === 'Transfer'
-            ? 'Transfer#2'
+            ? '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef#2'
             : `${adapterSupport.userEvent.topic0}#${adapterSupport.userEvent.userAddressIndex}`
 
         protocolTokenEntries.add(`${address.slice(2)}#${event}`)
