@@ -9,7 +9,11 @@ import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
 
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AdapterSettings,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter'
@@ -17,9 +21,10 @@ import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter'
 export class SparkV1SpTokenAdapter extends SparkV1BasePoolAdapter {
   productId = 'sp-token'
 
-  adapterSettings = {
+  adapterSettings: AdapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   getProtocolDetails(): ProtocolDetails {

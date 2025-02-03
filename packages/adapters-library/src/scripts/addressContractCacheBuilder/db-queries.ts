@@ -13,9 +13,11 @@ const tables = {
   history_jobs: `
       CREATE TABLE IF NOT EXISTS history_jobs (
         contract_address VARCHAR(40) NOT NULL,
+        topic_0 TEXT NOT NULL,
+        user_address_index INTEGER NOT NULL CHECK (user_address_index IN (1, 2, 3)),
         block_number INTEGER NOT NULL,
         status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'completed', 'failed')),
-        PRIMARY KEY (contract_address)
+        PRIMARY KEY (contract_address, topic_0, user_address_index)
       );`,
 }
 
@@ -80,12 +82,14 @@ export function createDatabase(chainName: string): Database.Database {
 export function fetchNextPoolsToProcess(db: Database.Database) {
   const unfinishedPools = db
     .prepare(`
-        SELECT 	'0x' || contract_address as contract_address, block_number, status
+        SELECT 	'0x' || contract_address as contract_address, topic_0, user_address_index, block_number, status
         FROM 	history_jobs
         WHERE 	status <> 'completed'
         `)
     .all() as {
     contract_address: string
+    topic_0: string
+    user_address_index: number
     block_number: number
     status: 'pending' | 'failed'
   }[]
@@ -111,31 +115,37 @@ export function insertLogs(
 export function completeJobs(
   db: Database.Database,
   contractAddresses: string[],
+  topic0: string,
+  userAddressIndex: number,
 ) {
   const jobStmt = db.prepare(
-    `UPDATE history_jobs SET status = 'completed' WHERE contract_address = ?`,
+    `UPDATE history_jobs SET status = 'completed' WHERE contract_address = ? AND topic_0 = ? AND user_address_index = ?`,
   )
 
   db.transaction(() => {
     for (const contractAddress of contractAddresses) {
-      jobStmt.run(contractAddress.slice(2))
+      jobStmt.run(contractAddress.slice(2), topic0, userAddressIndex)
     }
   })()
 }
 
-export function failJobs(db: Database.Database, contractAddresses: string[]) {
+export function failJobs(
+  db: Database.Database,
+  contractAddresses: string[],
+  topic0: string,
+  userAddressIndex: number,
+) {
   const jobStmt = db.prepare(
-    `UPDATE history_jobs SET status = 'failed' WHERE contract_address = ?`,
+    `UPDATE history_jobs SET status = 'failed' WHERE contract_address = ? AND topic_0 = ? AND user_address_index = ?`,
   )
 
   db.transaction(() => {
     for (const contractAddress of contractAddresses) {
-      jobStmt.run(contractAddress.slice(2))
+      jobStmt.run(contractAddress.slice(2), topic0, userAddressIndex)
     }
   })()
 }
 
-// TODO: This script should not be responsible for inserting the contract entries
 export async function insertContractEntries(
   defiProvider: DefiProvider,
   chainId: EvmChain,
@@ -149,31 +159,42 @@ export async function insertContractEntries(
     filterChainIds: [chainId],
   })
 
-  const protocolTokenAddresses = new Set<string>()
+  const protocolTokenEntries = new Set<string>()
   for (const adapterSupportArray of Object.values(defiPoolAddresses || {})) {
     for (const adapterSupport of adapterSupportArray) {
-      if (!adapterSupport.includeInEventProcessing) {
+      if (!adapterSupport.userEvent) {
         continue
       }
 
       for (const address of adapterSupport.protocolTokenAddresses?.[chainId] ||
         []) {
-        protocolTokenAddresses.add(address.slice(2))
+        if (!adapterSupport.userEvent) {
+          continue
+        }
+
+        const event =
+          adapterSupport.userEvent === 'Transfer'
+            ? 'Transfer#2'
+            : `${adapterSupport.userEvent.topic0}#${adapterSupport.userEvent.userAddressIndex}`
+
+        protocolTokenEntries.add(`${address.slice(2)}#${event}`)
       }
     }
   }
 
   const stmt = db.prepare(
-    'INSERT OR IGNORE INTO history_jobs (contract_address, block_number) VALUES (?, ?)',
+    'INSERT OR IGNORE INTO history_jobs (contract_address, topic_0, user_address_index, block_number) VALUES (?, ?, ?, ?)',
   )
 
   const transaction = db.transaction(
-    (contractAddresses: string[], currentBlockNumber: number) => {
-      contractAddresses.forEach((address) => {
-        stmt.run(address, currentBlockNumber)
+    (protocolTokenEntries: string[], currentBlockNumber: number) => {
+      protocolTokenEntries.forEach((protocolTokenEntry) => {
+        const [address, topic0, userAddressIndex] =
+          protocolTokenEntry.split('#')
+        stmt.run(address, topic0, userAddressIndex, currentBlockNumber)
       })
     },
   )
 
-  transaction(Array.from(protocolTokenAddresses), currentBlockNumber)
+  transaction(Array.from(protocolTokenEntries), currentBlockNumber)
 }

@@ -175,6 +175,9 @@ const ConfigSchema = z
       .default(maxBatchSize),
     useDatabase: z.boolean().default(true),
     disableEthersBatching: z.boolean().default(false),
+    usePositionsCache: z
+      .boolean()
+      .default(process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE === 'true'),
   })
   .strict()
   .default({})

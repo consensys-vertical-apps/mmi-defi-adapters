@@ -1,7 +1,11 @@
 import { z } from 'zod'
 import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AdapterSettings,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 import {
   WriteActionInputSchemas,
   WriteActions,
@@ -10,14 +14,10 @@ import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { contractAddresses } from '../../common/contractAddresses'
 import { CUSDCv3__factory } from '../../contracts'
+import { f } from 'msw/lib/core/HttpResponse-B58aIqZM'
 
 export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
   productId = 'borrow-market'
-
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
-    includeInUnwrap: false,
-  }
 
   contractAddresses: Partial<
     Record<Chain, { comptrollerAddress: string; cUSDCv3Address: string }>

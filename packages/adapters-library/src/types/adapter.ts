@@ -109,7 +109,13 @@ export type AdapterSettings = {
   enablePositionDetectionByProtocolTokenTransfer: boolean
   includeInUnwrap: boolean
   version?: number
-  includeInEventProcessing?: boolean
+  userEvent:
+    | {
+        topic0: `0x${string}`
+        userAddressIndex: 1 | 2 | 3
+      }
+    | 'Transfer'
+    | false
 }
 
 export type ProtocolDetails = {

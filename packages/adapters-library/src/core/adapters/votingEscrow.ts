@@ -3,6 +3,7 @@ import { Erc20__factory } from '../../contracts'
 import { Helpers } from '../../scripts/helpers'
 import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -39,9 +40,10 @@ export abstract class VotingEscrow implements IProtocolAdapter {
 
   adaptersController: AdaptersController
 
-  adapterSettings = {
+  adapterSettings: AdapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
+    userEvent: false,
   }
 
   constructor({

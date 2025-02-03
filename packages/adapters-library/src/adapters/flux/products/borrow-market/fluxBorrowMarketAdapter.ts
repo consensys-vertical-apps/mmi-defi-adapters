@@ -1,14 +1,13 @@
 import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AdapterSettings,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 import { contractAddresses } from '../../common/contractAddresses'
 
 export class FluxBorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
   productId = 'borrow-market'
-
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
-    includeInUnwrap: false,
-  }
 
   contractAddresses = contractAddresses
 

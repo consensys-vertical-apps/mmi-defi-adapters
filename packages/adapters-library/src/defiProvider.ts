@@ -87,29 +87,44 @@ export class DefiProvider {
       ? buildSqliteMetadataProviders(metadataProviderSettings)
       : buildVoidMetadataProviders()
 
-    this.poolFilter =
-      poolFilter ?? buildProviderPoolFilter(this.chainProvider.providers)
+    this.poolFilter = (() => {
+      if (poolFilter) {
+        return poolFilter
+      }
 
-    // this.poolFilter = buildCachePoolFilter(
-    //   Object.values(EvmChain).reduce(
-    //     (acc, chainId) => {
-    //       if (chainId !== EvmChain.Ethereum) {
-    //         return acc
-    //       }
+      console.log(
+        'this.parsedConfig.values.usePositionsCache',
+        this.parsedConfig.values.usePositionsCache,
+      )
+      if (this.parsedConfig.values.usePositionsCache) {
+        logger.info('Filter: Using positions cache')
+        return buildCachePoolFilter(
+          Object.values(EvmChain).reduce(
+            (acc, chainId) => {
+              if (chainId !== EvmChain.Ethereum) {
+                return acc
+              }
 
-    //       acc[chainId] = new Database(
-    //         path.resolve(
-    //           `./${ChainIdToChainNameMap[chainId]}_index_history.db`,
-    //         ),
-    //         {
-    //           readonly: true,
-    //         },
-    //       )
-    //       return acc
-    //     },
-    //     {} as Record<EvmChain, Database.Database>,
-    //   ),
-    // )
+              acc[chainId] = new Database(
+                path.join(
+                  __dirname,
+                  '../../..',
+                  `${ChainIdToChainNameMap[chainId]}_index_history.db`,
+                ),
+                {
+                  readonly: true,
+                },
+              )
+              return acc
+            },
+            {} as Record<EvmChain, Database.Database>,
+          ),
+        )
+      }
+
+      logger.info('Filter: Using provider pool filter')
+      return buildProviderPoolFilter(this.chainProvider.providers)
+    })()
 
     this.unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
 
@@ -178,7 +193,7 @@ export class DefiProvider {
 
       const poolFilterAddresses =
         adapter.chainId === Chain.Solana ||
-        adapter.adapterSettings.includeInEventProcessing === false
+        adapter.adapterSettings.userEvent === false
           ? undefined
           : await this.poolFilter(
               userAddress,

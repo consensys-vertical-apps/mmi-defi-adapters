@@ -6,10 +6,6 @@ import { ProtocolDataProvider } from '../../contracts'
 
 export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'a-token'
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
-    includeInUnwrap: true,
-  }
 
   getProtocolDetails(): ProtocolDetails {
     return {

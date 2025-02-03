@@ -1,7 +1,11 @@
 import { z } from 'zod'
 import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AdapterSettings,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 import {
   WriteActionInputSchemas,
   WriteActions,
@@ -13,11 +17,6 @@ import { CUSDCv3__factory } from '../../contracts'
 
 export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
   productId = 'supply-market'
-
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
-    includeInUnwrap: true,
-  }
 
   contractAddresses: Partial<
     Record<Chain, { comptrollerAddress: string; cUSDCv3Address: string }>

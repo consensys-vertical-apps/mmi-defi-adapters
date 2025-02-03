@@ -7,11 +7,6 @@ import { AAVE_ICON_URL } from '../rewards/aaveV3RewardsAdapter'
 export class AaveV3VariableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'variable-debt-token'
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
-    includeInUnwrap: true,
-  }
-
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,

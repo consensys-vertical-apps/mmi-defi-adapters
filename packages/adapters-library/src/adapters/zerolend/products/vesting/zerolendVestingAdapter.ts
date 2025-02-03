@@ -10,6 +10,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -43,9 +44,10 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
   readonly provider: CustomJsonRpcProvider
   readonly adaptersController: AdaptersController
 
-  readonly adapterSettings = {
+  readonly adapterSettings: AdapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
+    userEvent: false,
   }
 
   private readonly addresses = {

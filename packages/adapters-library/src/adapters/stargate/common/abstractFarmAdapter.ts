@@ -12,6 +12,7 @@ import {
   ProtocolToken,
 } from '../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
@@ -50,9 +51,10 @@ export abstract class AbstractStargateFarmAdapter implements IProtocolAdapter {
     lpStakingTimeMetisAddress?: string
   }
 
-  adapterSettings = {
+  adapterSettings: AdapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
+    userEvent: false,
   }
 
   private provider: CustomJsonRpcProvider

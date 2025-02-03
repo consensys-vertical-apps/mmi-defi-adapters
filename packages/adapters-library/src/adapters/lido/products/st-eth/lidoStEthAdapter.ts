@@ -2,6 +2,7 @@ import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   PositionType,
   ProtocolDetails,
   TokenType,
@@ -13,9 +14,10 @@ const PROTOCOL_TOKEN_ADDRESS = '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84'
 export class LidoStEthAdapter extends SimplePoolAdapter {
   productId = 'st-eth'
 
-  adapterSettings = {
+  adapterSettings: AdapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   @CacheToDb

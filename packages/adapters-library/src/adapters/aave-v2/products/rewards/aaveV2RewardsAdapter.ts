@@ -11,6 +11,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -45,7 +46,12 @@ export class AaveV2RewardsAdapter implements IProtocolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
-  }
+    userEvent: {
+      topic0:
+        '0x2468f9268c60ad90e2d49edb0032c8a001e733ae888b3ab8e982edf535be1a76',
+      userAddressIndex: 1,
+    },
+  } satisfies AdapterSettings
 
   private provider: CustomJsonRpcProvider
 

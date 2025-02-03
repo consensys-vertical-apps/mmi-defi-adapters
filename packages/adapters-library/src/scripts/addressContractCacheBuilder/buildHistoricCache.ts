@@ -37,8 +37,7 @@ export async function buildHistoricCache(
 
   const db = createDatabase(`${ChainIdToChainNameMap[chainId]}_index`)
 
-  // TODO: This script should not be responsible for inserting the contract entries
-  // TODO: The script should just be responsible for picking up existing DB entries and processing them
+  // TODO: This script should be called within the process managing script 1 and script 2
   if (initialize) {
     await insertContractEntries(defiProvider, chainId, db)
   }
@@ -59,7 +58,13 @@ export async function buildHistoricCache(
       continue
     }
 
-    const { poolAddresses, targetBlockNumber, batchSize } = nextBatch
+    const {
+      poolAddresses,
+      topic0,
+      userAddressIndex,
+      targetBlockNumber,
+      batchSize,
+    } = nextBatch
 
     for (let i = 0; i < poolAddresses.length; i += batchSize) {
       const contractAddresses = poolAddresses.slice(i, i + batchSize)
@@ -77,7 +82,7 @@ export async function buildHistoricCache(
           for await (const logs of fetchEvents({
             provider,
             contractAddresses,
-            topics: [null, null, null, null],
+            topics: [topic0, null, null, null],
             fromBlock: from,
             toBlock: to,
           })) {
@@ -87,18 +92,18 @@ export async function buildHistoricCache(
                 log.address.toLowerCase(),
               ).slice(2)
 
-              for (const topic of log.topics) {
-                if (
-                  topic.startsWith('0x000000000000000000000000') && // Not an address if it is does not start with 0x000000000000000000000000
-                  topic !==
-                    '0x0000000000000000000000000000000000000000000000000000000000000000' // Skip the zero address
-                ) {
-                  const topicAddress = getAddress(
-                    `0x${topic.slice(-40).toLowerCase()}`,
-                  ).slice(2)
+              const topic = log.topics[userAddressIndex]!
 
-                  logsToInsert.push([contractAddress, topicAddress])
-                }
+              if (
+                topic.startsWith('0x000000000000000000000000') && // Not an address if it is does not start with 0x000000000000000000000000
+                topic !==
+                  '0x0000000000000000000000000000000000000000000000000000000000000000' // Skip the zero address
+              ) {
+                const topicAddress = getAddress(
+                  `0x${topic.slice(-40).toLowerCase()}`,
+                ).slice(2)
+
+                logsToInsert.push([contractAddress, topicAddress])
               }
             }
 
@@ -108,7 +113,7 @@ export async function buildHistoricCache(
 
         await Promise.all(concurrentRanges)
 
-        completeJobs(db, contractAddresses)
+        completeJobs(db, contractAddresses, topic0, userAddressIndex)
 
         console.log(`${new Date().toISOString()}: Pools batch ended`, {
           batchIndex: i / batchSize + 1,
@@ -117,7 +122,7 @@ export async function buildHistoricCache(
           totalPools: poolAddresses.length,
         })
       } catch (error) {
-        failJobs(db, contractAddresses)
+        failJobs(db, contractAddresses, topic0, userAddressIndex)
 
         console.error(`${new Date().toISOString()}: Pools batch failed`, {
           batchIndex: i / batchSize + 1,
@@ -177,6 +182,8 @@ function splitRange(
 function getNextBatch(
   unfinishedPools: {
     contract_address: string
+    topic_0: string
+    user_address_index: number
     block_number: number
     status: 'pending' | 'failed'
   }[],
@@ -184,6 +191,8 @@ function getNextBatch(
 ):
   | {
       poolAddresses: string[]
+      topic0: string
+      userAddressIndex: number
       targetBlockNumber: number
       batchSize: number
     }
@@ -197,32 +206,56 @@ function getNextBatch(
   )
 
   if (pendingPools.length > 0) {
+    // Group pools by topic_0 and user_address_index
+    const groupedPools = pendingPools.reduce(
+      (acc, pool) => {
+        const key = `${pool.topic_0}#${pool.user_address_index}`
+        if (!acc[key]) {
+          acc[key] = []
+        }
+        acc[key]!.push(pool)
+        return acc
+      },
+      {} as Record<string, typeof pendingPools>,
+    )
+
+    // Find group with most entries
+    const largestGroup = Object.values(groupedPools).reduce(
+      (max, group) => (group.length > max.length ? group : max),
+      [] as typeof pendingPools,
+    )
+
     const batchSize =
-      pendingPools.length <= maxBatchSize * 10
+      largestGroup.length <= maxBatchSize * 10
         ? 1
-        : pendingPools.length >= maxBatchSize * 100
+        : largestGroup.length >= maxBatchSize * 100
           ? maxBatchSize
           : Math.max(
               1,
               Math.floor(
-                (pendingPools.length - maxBatchSize * 10) /
+                (largestGroup.length - maxBatchSize * 10) /
                   ((maxBatchSize * 100 - maxBatchSize * 10) / maxBatchSize),
               ),
             )
 
     return {
-      poolAddresses: pendingPools.map((pool) => pool.contract_address),
+      poolAddresses: largestGroup.map((pool) => pool.contract_address),
+      topic0: largestGroup[0]!.topic_0,
+      userAddressIndex: largestGroup[0]!.user_address_index,
       targetBlockNumber: Math.max(
-        ...pendingPools.map((pool) => pool.block_number),
+        ...largestGroup.map((pool) => pool.block_number),
       ),
       batchSize,
     }
   }
 
   const failedPools = unfinishedPools.filter((pool) => pool.status === 'failed')
-  const { contract_address, block_number } = failedPools[0]!
+  const { contract_address, topic_0, user_address_index, block_number } =
+    failedPools[0]!
   return {
     poolAddresses: [contract_address],
+    topic0: topic_0,
+    userAddressIndex: user_address_index,
     targetBlockNumber: block_number,
     batchSize: 1,
   }

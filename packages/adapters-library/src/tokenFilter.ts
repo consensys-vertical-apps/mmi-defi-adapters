@@ -42,7 +42,7 @@ export function buildCachePoolFilter(
     adapterSettings: AdapterSettings,
   ): Promise<string[] | undefined> => {
     const db = dbs[chainId]
-    if (!db || adapterSettings.includeInEventProcessing === false) {
+    if (!db || adapterSettings.userEvent === false) {
       return undefined
     }
 

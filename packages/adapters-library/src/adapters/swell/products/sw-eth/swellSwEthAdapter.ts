@@ -4,6 +4,7 @@ import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   PositionType,
   ProtocolDetails,
   TokenType,
@@ -18,9 +19,10 @@ const PROTOCOL_TOKEN_ADDRESS = getAddress(
 export class SwellSwEthAdapter extends SimplePoolAdapter {
   productId = 'sw-eth'
 
-  adapterSettings = {
+  adapterSettings: AdapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   getProtocolDetails(): ProtocolDetails {

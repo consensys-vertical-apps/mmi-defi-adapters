@@ -14,6 +14,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
@@ -73,9 +74,10 @@ export class CurveStakingAdapter implements IProtocolAdapter {
   chainId: Chain
   helpers: Helpers
 
-  adapterSettings = {
+  adapterSettings: AdapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false, // Looks like most the staking tokens actually have the events apart from 0xbFcF63294aD7105dEa65aA58F8AE5BE2D9d0952A
     includeInUnwrap: true,
+    userEvent: false,
   }
 
   private provider: CustomJsonRpcProvider

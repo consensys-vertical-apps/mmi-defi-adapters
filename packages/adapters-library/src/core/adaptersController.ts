@@ -333,8 +333,7 @@ export class AdaptersController {
                   productWriteActions,
                 ) as WriteActions[],
               }),
-              includeInEventProcessing:
-                adapter.adapterSettings.includeInEventProcessing ?? true,
+              userEvent: adapter.adapterSettings.userEvent,
             }
 
             support[protocolId]!.push(product)

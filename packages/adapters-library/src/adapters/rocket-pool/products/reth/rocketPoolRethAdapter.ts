@@ -3,6 +3,7 @@ import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import {
+  AdapterSettings,
   PositionType,
   ProtocolDetails,
   TokenType,
@@ -17,9 +18,10 @@ const PROTOCOL_TOKEN_ADDRESS = getAddress(
 export class RocketPoolRethAdapter extends SimplePoolAdapter {
   productId = 'reth'
 
-  adapterSettings = {
+  adapterSettings: AdapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   getProtocolDetails(): ProtocolDetails {

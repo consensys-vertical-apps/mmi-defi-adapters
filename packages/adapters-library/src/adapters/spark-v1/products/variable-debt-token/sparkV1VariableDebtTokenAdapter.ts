@@ -1,5 +1,9 @@
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AdapterSettings,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter'
 
 import { ProtocolDataProvider } from '../../contracts'
@@ -7,9 +11,10 @@ import { ProtocolDataProvider } from '../../contracts'
 export class SparkV1VariableDebtTokenPoolAdapter extends SparkV1BasePoolAdapter {
   productId = 'variable-debt-token'
 
-  adapterSettings = {
+  adapterSettings: AdapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   getProtocolDetails(): ProtocolDetails {

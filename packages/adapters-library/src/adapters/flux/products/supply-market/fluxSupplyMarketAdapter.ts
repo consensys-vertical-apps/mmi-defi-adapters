@@ -1,15 +1,14 @@
 import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AdapterSettings,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 import { contractAddresses } from '../../common/contractAddresses'
 
 export class FluxSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
   // Expected blocks per year
   static readonly EXPECTED_BLOCKS_PER_YEAR = 2628000
-
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
-    includeInUnwrap: true,
-  }
 
   productId = 'supply-market'
 

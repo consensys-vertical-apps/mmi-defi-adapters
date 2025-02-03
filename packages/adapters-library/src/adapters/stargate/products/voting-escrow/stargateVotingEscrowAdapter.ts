@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
 import {
+  AdapterSettings,
   GetPositionsInput,
   PositionType,
   ProtocolDetails,
@@ -10,9 +11,10 @@ import { FeeDistributor__factory, VotingEscrow__factory } from '../../contracts'
 export class StargateVotingEscrowAdapter extends VotingEscrow {
   productId = 'voting-escrow'
 
-  adapterSettings = {
+  adapterSettings: AdapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
+    userEvent: false,
   }
 
   getProtocolDetails(): ProtocolDetails {

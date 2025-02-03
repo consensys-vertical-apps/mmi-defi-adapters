@@ -1,13 +1,18 @@
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AdapterSettings,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 import { ZeroLendBasePoolAdapter } from '../../common/zerolendBasePoolAdapter'
 import { ProtocolDataProvider } from '../../contracts'
 
 export class ZeroLendStableDebtTokenPoolAdapter extends ZeroLendBasePoolAdapter {
   productId = 'stable-debt-token'
 
-  adapterSettings = {
+  adapterSettings: AdapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   getProtocolDetails(): ProtocolDetails {

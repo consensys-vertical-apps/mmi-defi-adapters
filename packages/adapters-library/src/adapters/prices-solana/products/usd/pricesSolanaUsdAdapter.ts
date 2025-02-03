@@ -2,7 +2,7 @@ import { Connection } from '@solana/web3.js'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { Helpers } from '../../../../scripts/helpers'
-import { UnwrapExchangeRate } from '../../../../types/adapter'
+import { AdapterSettings, UnwrapExchangeRate } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IPricesAdapter } from '../../../prices-v2/products/usd/pricesV2UsdAdapter'
 
@@ -11,9 +11,10 @@ export class PricesSolanaUsdAdapter implements IPricesAdapter {
   chainId = Chain.Solana
   helpers: Helpers
 
-  adapterSettings = {
+  adapterSettings: AdapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
+    userEvent: false,
   }
 
   private provider: Connection

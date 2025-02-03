@@ -11,6 +11,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -42,7 +43,8 @@ export class AngleProtocolSavingsAdapter implements IProtocolAdapter {
   adapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
-  }
+    userEvent: 'Transfer',
+  } satisfies AdapterSettings
 
   private provider: CustomJsonRpcProvider
 

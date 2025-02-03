@@ -1,6 +1,10 @@
 import { z } from 'zod'
 import { Chain } from '../../../../core/constants/chains'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AdapterSettings,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 import {
   WriteActionInputSchemas,
   WriteActions,
@@ -13,9 +17,10 @@ import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
 export class ZeroLendATokenPoolAdapter extends ZeroLendBasePoolAdapter {
   productId = 'a-token'
 
-  adapterSettings = {
+  adapterSettings: AdapterSettings = {
     enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   getProtocolDetails(): ProtocolDetails {

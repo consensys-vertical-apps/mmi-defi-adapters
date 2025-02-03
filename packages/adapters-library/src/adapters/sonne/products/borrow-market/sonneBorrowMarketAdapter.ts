@@ -1,14 +1,13 @@
 import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AdapterSettings,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 
 export class SonneBorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
   productId = 'borrow-market'
-
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
-    includeInUnwrap: false,
-  }
 
   contractAddresses: Partial<Record<Chain, { comptrollerAddress: string }>> = {
     [Chain.Optimism]: {

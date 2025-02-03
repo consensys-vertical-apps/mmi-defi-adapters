@@ -19,6 +19,7 @@ import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
 import { buildHistoricCache } from './addressContractCacheBuilder/buildHistoricCache'
 import { chainFilter, multiChainFilter } from './commandFilters'
+import { detectEvents } from './detectEvents'
 
 const program = new Command('mmi-adapters')
 
@@ -54,6 +55,8 @@ simulateTxCommand(program, chainProviders)
 performance(program)
 
 buildScoreboard(program, defiProvider)
+
+detectEvents(program, defiProvider)
 
 program
   .command('copy-adapter')

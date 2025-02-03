@@ -15,6 +15,7 @@ import {
   GetPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
+  PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
@@ -28,6 +29,7 @@ import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
 } from '../contracts'
+import { AAVE_ICON_URL } from '../../aave-v3/products/rewards/aaveV3RewardsAdapter'
 
 export const protocolDataProviderContractAddresses: Partial<
   Record<
@@ -162,7 +164,11 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
     this.helpers = helpers
   }
 
-  abstract adapterSettings: AdapterSettings
+  adapterSettings: AdapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+    userEvent: 'Transfer',
+  }
 
   abstract getProtocolDetails(): ProtocolDetails
 
