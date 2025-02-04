@@ -92,10 +92,6 @@ export class DefiProvider {
         return poolFilter
       }
 
-      console.log(
-        'this.parsedConfig.values.usePositionsCache',
-        this.parsedConfig.values.usePositionsCache,
-      )
       if (this.parsedConfig.values.usePositionsCache) {
         logger.info('Filter: Using positions cache')
         return buildCachePoolFilter(
