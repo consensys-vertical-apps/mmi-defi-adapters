@@ -9,7 +9,6 @@ export class MorphoBlueMarketBorrowAdapter extends MorphoBluePoolAdapter {
   productId = 'market-borrow'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

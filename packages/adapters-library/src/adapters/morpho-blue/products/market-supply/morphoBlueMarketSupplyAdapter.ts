@@ -9,7 +9,6 @@ export class MorphoBlueMarketSupplyAdapter extends MorphoBluePoolAdapter {
   productId = 'market-supply'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

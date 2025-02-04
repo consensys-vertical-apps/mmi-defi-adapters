@@ -78,7 +78,6 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
   helpers: Helpers
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

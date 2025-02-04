@@ -13,7 +13,6 @@ export class LynexClassicAdapter extends UniswapV2PoolForkAdapter {
   productId = 'classic'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

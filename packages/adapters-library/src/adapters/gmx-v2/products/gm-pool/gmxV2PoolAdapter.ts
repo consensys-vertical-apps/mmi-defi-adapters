@@ -60,7 +60,6 @@ export class GmxV2GmPoolAdapter implements IProtocolAdapter {
   helpers: Helpers
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: false,
     userEvent: 'Transfer',
   }

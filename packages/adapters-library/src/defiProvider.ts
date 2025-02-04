@@ -214,16 +214,13 @@ export class DefiProvider {
             return undefined
           })
 
-      if (adapter.protocolId === Protocol.CompoundV2) {
-        console.log({
-          productId: adapter.productId,
-          protocolTokenAddresses,
-          poolFilterAddresses,
-          userAddress,
-          chainId: adapter.chainId,
-          adapterSettings: adapter.adapterSettings,
-        })
-      }
+      console.log('ADDRESS FILTER', {
+        chainId: adapter.chainId,
+        protocolId: adapter.protocolId,
+        productId: adapter.productId,
+        userAddress,
+        protocolTokenAddresses,
+      })
 
       if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
         return { tokens: [] }
@@ -375,8 +372,7 @@ export class DefiProvider {
 
       // we cant use the logs for this adapter
       if (
-        !adapter.adapterSettings
-          .enablePositionDetectionByProtocolTokenTransfer ||
+        adapter.adapterSettings.userEvent !== 'Transfer' ||
         !adapter.adapterSettings.includeInUnwrap
       ) {
         return undefined

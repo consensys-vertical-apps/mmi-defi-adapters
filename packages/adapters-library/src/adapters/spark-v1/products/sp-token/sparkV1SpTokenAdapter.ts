@@ -22,7 +22,6 @@ export class SparkV1SpTokenAdapter extends SparkV1BasePoolAdapter {
   productId = 'sp-token'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

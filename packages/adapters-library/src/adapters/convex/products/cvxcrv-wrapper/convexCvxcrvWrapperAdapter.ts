@@ -48,7 +48,6 @@ export class ConvexCvxcrvWrapperAdapter implements IProtocolAdapter {
   helpers: Helpers
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
     userEvent: false,
   }

@@ -34,7 +34,6 @@ export class DineroPxEthAdapter implements IProtocolAdapter {
   helpers: Helpers
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

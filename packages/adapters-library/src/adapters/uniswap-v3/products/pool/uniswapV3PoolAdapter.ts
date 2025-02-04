@@ -66,7 +66,6 @@ export const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)
 
 export class UniswapV3PoolAdapter implements IProtocolAdapter {
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

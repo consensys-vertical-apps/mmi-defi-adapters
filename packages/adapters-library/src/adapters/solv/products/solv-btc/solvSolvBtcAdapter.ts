@@ -32,7 +32,6 @@ export class SolvSolvBtcAdapter implements IProtocolAdapter {
   helpers: Helpers
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

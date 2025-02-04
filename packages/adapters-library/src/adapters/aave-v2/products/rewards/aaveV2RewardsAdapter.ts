@@ -44,7 +44,6 @@ export class AaveV2RewardsAdapter implements IProtocolAdapter {
   helpers: Helpers
 
   adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: {
       topic0:

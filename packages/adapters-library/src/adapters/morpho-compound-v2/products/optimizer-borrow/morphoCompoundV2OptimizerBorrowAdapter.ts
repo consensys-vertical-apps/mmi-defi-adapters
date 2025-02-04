@@ -9,7 +9,6 @@ export class MorphoCompoundV2OptimizerBorrowAdapter extends MorphoBasePoolAdapte
   productId = 'optimizer-borrow'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

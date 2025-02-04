@@ -37,7 +37,6 @@ export class EthenaStakedUsdeAdapter implements IProtocolAdapter {
   chainId: Chain
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

@@ -8,7 +8,6 @@ import { MorphoBasePoolAdapter } from '../../common/morphoBasePoolAdapter'
 export class MorphoAaveV3OptimizerSupplyAdapter extends MorphoBasePoolAdapter {
   productId = 'optimizer-supply'
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

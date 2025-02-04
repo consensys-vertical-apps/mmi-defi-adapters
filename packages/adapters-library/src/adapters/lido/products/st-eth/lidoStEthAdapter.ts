@@ -15,7 +15,6 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
   productId = 'st-eth'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

@@ -49,7 +49,6 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
   private incentivesContract: IncentivesContract
 
   adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: {
       topic0:

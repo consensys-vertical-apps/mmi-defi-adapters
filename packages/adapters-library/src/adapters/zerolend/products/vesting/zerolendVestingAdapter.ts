@@ -45,7 +45,6 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
   readonly adaptersController: AdaptersController
 
   readonly adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

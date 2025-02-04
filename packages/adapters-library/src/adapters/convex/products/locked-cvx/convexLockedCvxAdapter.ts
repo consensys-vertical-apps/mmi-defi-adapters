@@ -43,7 +43,6 @@ export class ConvexLockedCvxAdapter implements IProtocolAdapter {
   helpers: Helpers
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
     userEvent: {
       topic0:

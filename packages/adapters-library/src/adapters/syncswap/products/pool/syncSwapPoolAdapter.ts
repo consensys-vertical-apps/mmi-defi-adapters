@@ -94,7 +94,6 @@ export class SyncSwapPoolAdapter implements IProtocolAdapter {
   }
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

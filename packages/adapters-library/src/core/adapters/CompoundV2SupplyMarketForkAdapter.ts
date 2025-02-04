@@ -28,7 +28,6 @@ export abstract class CompoundV2SupplyMarketForkAdapter
   abstract productId: string
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

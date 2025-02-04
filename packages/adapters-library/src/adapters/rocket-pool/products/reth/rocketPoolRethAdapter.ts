@@ -19,7 +19,6 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter {
   productId = 'reth'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

@@ -12,7 +12,6 @@ export class StargateVotingEscrowAdapter extends VotingEscrow {
   productId = 'voting-escrow'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
     userEvent: false,
   }

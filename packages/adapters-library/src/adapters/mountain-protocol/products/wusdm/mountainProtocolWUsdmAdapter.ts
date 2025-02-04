@@ -31,7 +31,6 @@ export class MountainProtocolWUsdmAdapter extends SimplePoolAdapter {
   productId = 'wusdm'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

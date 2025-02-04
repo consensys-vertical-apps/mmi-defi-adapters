@@ -35,7 +35,6 @@ export abstract class CompoundV2BorrowMarketForkAdapter
   abstract productId: string
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

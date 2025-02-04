@@ -21,7 +21,7 @@ export function buildProviderPoolFilter(
 
     if (
       !provider ||
-      !adapterSettings.enablePositionDetectionByProtocolTokenTransfer ||
+      adapterSettings.userEvent !== 'Transfer' ||
       !adapterSettings.includeInUnwrap
     ) {
       return undefined

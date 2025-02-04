@@ -18,7 +18,6 @@ export class ZeroLendATokenPoolAdapter extends ZeroLendBasePoolAdapter {
   productId = 'a-token'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

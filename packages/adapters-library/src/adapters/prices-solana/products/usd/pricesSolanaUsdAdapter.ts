@@ -12,7 +12,6 @@ export class PricesSolanaUsdAdapter implements IPricesAdapter {
   helpers: Helpers
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

@@ -41,7 +41,6 @@ export abstract class VotingEscrow implements IProtocolAdapter {
   adaptersController: AdaptersController
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

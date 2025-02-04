@@ -13,7 +13,6 @@ export class PancakeswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   productId = 'pool'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

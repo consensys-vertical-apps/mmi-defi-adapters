@@ -85,7 +85,6 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       this.chainMetadataSettings()[this.chainId]!.type !== 'logs'
 
     this.adapterSettings = {
-      enablePositionDetectionByProtocolTokenTransfer: this.metadataBased,
       includeInUnwrap: this.metadataBased,
       userEvent: this.metadataBased ? 'Transfer' : false,
     }

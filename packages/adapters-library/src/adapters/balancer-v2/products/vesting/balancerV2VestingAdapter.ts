@@ -14,7 +14,6 @@ export class BalancerV2VestingAdapter extends VotingEscrow {
   productId = 'vesting'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: {
       topic0:

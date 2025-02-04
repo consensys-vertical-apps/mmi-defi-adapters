@@ -29,7 +29,6 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
   productId = 'os-eth'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false, // this might be able to be true but im not too sure just incase leaving as false
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

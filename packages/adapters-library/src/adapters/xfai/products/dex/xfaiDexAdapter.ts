@@ -21,7 +21,6 @@ export class XfaiDexAdapter extends SimplePoolAdapter {
   productId = 'dex'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false, // might be true but contracts not verified
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

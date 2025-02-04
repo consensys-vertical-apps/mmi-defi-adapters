@@ -41,7 +41,6 @@ export class AngleProtocolSavingsAdapter implements IProtocolAdapter {
   helpers: Helpers
 
   adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   } satisfies AdapterSettings

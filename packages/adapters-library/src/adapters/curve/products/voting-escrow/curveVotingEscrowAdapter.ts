@@ -13,7 +13,6 @@ export class CurveVotingEscrowAdapter extends VotingEscrow {
   productId = 'voting-escrow'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

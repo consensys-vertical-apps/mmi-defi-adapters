@@ -9,7 +9,6 @@ export class MorphoCompoundV2OptimizerSupplyAdapter extends MorphoBasePoolAdapte
   productId = 'optimizer-supply'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

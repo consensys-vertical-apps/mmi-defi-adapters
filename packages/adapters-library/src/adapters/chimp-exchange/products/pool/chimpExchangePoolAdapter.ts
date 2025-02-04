@@ -40,7 +40,6 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
   productId = 'pool'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

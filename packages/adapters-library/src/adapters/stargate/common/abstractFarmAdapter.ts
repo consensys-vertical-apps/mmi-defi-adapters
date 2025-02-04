@@ -52,7 +52,6 @@ export abstract class AbstractStargateFarmAdapter implements IProtocolAdapter {
   }
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

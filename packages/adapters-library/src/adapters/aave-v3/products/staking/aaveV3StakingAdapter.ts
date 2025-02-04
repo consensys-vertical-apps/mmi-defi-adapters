@@ -41,7 +41,6 @@ export class AaveV3StakingAdapter implements IProtocolAdapter {
   helpers: Helpers
 
   adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: {
       topic0:

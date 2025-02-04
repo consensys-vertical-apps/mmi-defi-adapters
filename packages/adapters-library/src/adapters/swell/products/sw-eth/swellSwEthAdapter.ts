@@ -20,7 +20,6 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
   productId = 'sw-eth'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

@@ -20,7 +20,6 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   }
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

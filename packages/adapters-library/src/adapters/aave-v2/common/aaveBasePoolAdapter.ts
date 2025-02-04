@@ -165,7 +165,6 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
   }
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

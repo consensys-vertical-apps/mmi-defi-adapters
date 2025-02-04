@@ -25,7 +25,6 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
   productId = 's-dai'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

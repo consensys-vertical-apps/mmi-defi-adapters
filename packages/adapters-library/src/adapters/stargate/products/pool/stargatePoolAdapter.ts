@@ -42,7 +42,6 @@ export class StargatePoolAdapter implements IProtocolAdapter {
   adaptersController: AdaptersController
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

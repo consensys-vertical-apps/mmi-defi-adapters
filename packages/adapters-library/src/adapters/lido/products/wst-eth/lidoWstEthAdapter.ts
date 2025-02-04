@@ -16,7 +16,6 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
   productId = 'wst-eth'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

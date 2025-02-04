@@ -75,7 +75,6 @@ export class CurveStakingAdapter implements IProtocolAdapter {
   helpers: Helpers
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false, // Looks like most the staking tokens actually have the events apart from 0xbFcF63294aD7105dEa65aA58F8AE5BE2D9d0952A
     includeInUnwrap: true,
     userEvent: false,
   }

@@ -10,7 +10,6 @@ export class ZeroLendStableDebtTokenPoolAdapter extends ZeroLendBasePoolAdapter 
   productId = 'stable-debt-token'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

@@ -12,7 +12,6 @@ export class SparkV1VariableDebtTokenPoolAdapter extends SparkV1BasePoolAdapter 
   productId = 'variable-debt-token'
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
     includeInUnwrap: true,
     userEvent: 'Transfer',
   }

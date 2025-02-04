@@ -47,7 +47,6 @@ export const maxUint128 = 2n ** 128n - 1n
 
 export class QuickswapV3PoolAdapter implements IProtocolAdapter {
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: false,
     userEvent: false,
   }

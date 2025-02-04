@@ -50,7 +50,6 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
   helpers: SolanaHelpers
 
   adapterSettings: AdapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
     includeInUnwrap: true,
     userEvent: false,
   }
