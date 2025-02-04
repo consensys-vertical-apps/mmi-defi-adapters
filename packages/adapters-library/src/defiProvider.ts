@@ -197,30 +197,25 @@ export class DefiProvider {
               adapter.adapterSettings,
             )
 
+      console.log(
+        'POOL FILTER ADDRESSES',
+        poolFilterAddresses,
+        (await adapter.getProtocolTokens())[0]!.address,
+      )
+
       const protocolTokenAddresses = !poolFilterAddresses
         ? undefined
         : await filterMapAsync(poolFilterAddresses, async (address) => {
-            const isAdapterToken =
-              await this.adaptersController.isTokenBelongToAdapter(
-                address,
-                adapter.protocolId,
-                adapter.productId,
-                adapter.chainId,
-              )
-            if (isAdapterToken) {
-              return address
+            try {
+              const protocolTokens = await adapter.getProtocolTokens()
+
+              return protocolTokens.some((token) => token.address === address)
+                ? address
+                : undefined
+            } catch (error) {
+              return undefined
             }
-
-            return undefined
           })
-
-      console.log('ADDRESS FILTER', {
-        chainId: adapter.chainId,
-        protocolId: adapter.protocolId,
-        productId: adapter.productId,
-        userAddress,
-        protocolTokenAddresses,
-      })
 
       if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
         return { tokens: [] }

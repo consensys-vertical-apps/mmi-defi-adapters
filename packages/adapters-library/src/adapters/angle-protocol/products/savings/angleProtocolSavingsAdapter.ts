@@ -40,10 +40,10 @@ export class AngleProtocolSavingsAdapter implements IProtocolAdapter {
   chainId: Chain
   helpers: Helpers
 
-  adapterSettings = {
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
     userEvent: 'Transfer',
-  } satisfies AdapterSettings
+  }
 
   private provider: CustomJsonRpcProvider
 
