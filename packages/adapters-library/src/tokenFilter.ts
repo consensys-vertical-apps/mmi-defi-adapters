@@ -32,30 +32,3 @@ export function buildProviderPoolFilter(
     return Array.from(new Set(transferLogs.map((log) => log.address)))
   }
 }
-
-export function buildCachePoolFilter(
-  dbs: Partial<Record<EvmChain, Database>>,
-): PoolFilter {
-  return async (
-    userAddress: string,
-    chainId: EvmChain,
-    adapterSettings: AdapterSettings,
-  ): Promise<string[] | undefined> => {
-    const db = dbs[chainId]
-    if (!db || adapterSettings.userEvent === false) {
-      return undefined
-    }
-
-    const pendingPools = db
-      .prepare(`
-        SELECT 	contract_address
-        FROM 	history_logs
-        WHERE 	address = ?
-        `)
-      .all(userAddress.slice(2)) as {
-      contract_address: string
-    }[]
-
-    return pendingPools.map((pool) => `0x${pool.contract_address}`)
-  }
-}

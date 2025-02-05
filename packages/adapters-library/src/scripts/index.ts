@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 import { Command } from 'commander'
-import { Chain, EvmChain } from '../core/constants/chains'
+import {
+  Chain,
+  ChainIdToChainNameMap,
+  EvmChain,
+} from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
 import { copyAdapter } from './adapterBuilder/copyAdapter'
 import { newAdapterCommand } from './adapterBuilder/newAdapterCommand'
@@ -18,12 +22,58 @@ import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
 import { buildHistoricCache } from './addressContractCacheBuilder/buildHistoricCache'
-import { chainFilter, multiChainFilter } from './commandFilters'
+import { chainFilter } from './commandFilters'
 import { detectEvents } from './detectEvents'
+import Database from 'better-sqlite3'
+import path from 'node:path'
+import {
+  buildCachePoolFilter,
+  setCloseDatabaseHandlers,
+} from './addressContractCacheBuilder/db-queries'
 
 const program = new Command('mmi-adapters')
 
-const defiProvider = new DefiProvider()
+const cachePoolFilter =
+  process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE === 'true'
+    ? buildCachePoolFilter(
+        Object.values(EvmChain).reduce(
+          (acc, chainId) => {
+            const db = new Database(
+              path.join(
+                __dirname,
+                '../../../../',
+                `databases/${ChainIdToChainNameMap[chainId]}_index_history.db`,
+              ),
+              {
+                readonly: true,
+                fileMustExist: true,
+                timeout: 5000,
+              },
+            )
+
+            setCloseDatabaseHandlers(db)
+
+            acc[chainId] = db
+
+            return acc
+          },
+          {} as Record<EvmChain, Database.Database>,
+        ),
+      )
+    : undefined
+
+if (cachePoolFilter) {
+  console.log('Using DB positions cache')
+} else {
+  console.log('Using provider positions cache')
+}
+
+const defiProvider = new DefiProvider(
+  undefined,
+  undefined,
+  undefined,
+  cachePoolFilter,
+)
 const chainProviders = defiProvider.chainProvider.providers
 const solanaProvider = defiProvider.chainProvider.solanaProvider
 const adaptersController = defiProvider.adaptersController

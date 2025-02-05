@@ -498,7 +498,7 @@ function createDatabases(
  */
 function createDatabase(name: string) {
   try {
-    const dbPath = path.resolve(`./${name}.db`)
+    const dbPath = path.resolve(`./databases/${name}.db`)
 
     if (fs.existsSync(dbPath)) {
       logger.debug(`Database file already exists: ${dbPath}`)

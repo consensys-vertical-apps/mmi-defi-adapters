@@ -6,14 +6,13 @@ import {
   buildSqliteMetadataProviders,
 } from './SQLiteMetadataProvider'
 import { buildVoidMetadataProviders } from './VoidMetadataProvider'
-import { JitoJitosolAdapter } from './adapters/jito/products/jitosol/jitoJitosolAdapter'
 import { Protocol } from './adapters/protocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
 import { supportedProtocols } from './adapters/supportedProtocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { Chain, ChainIdToChainNameMap, EvmChain } from './core/constants/chains'
+import { Chain, ChainIdToChainNameMap } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { ChecksumAddress } from './core/decorators/checksumAddress'
 import {
@@ -51,12 +50,7 @@ import {
   IUnwrapPriceCacheProvider,
   UnwrapPriceCache,
 } from './unwrapCache'
-import {
-  buildCachePoolFilter,
-  buildProviderPoolFilter,
-  PoolFilter,
-} from './tokenFilter'
-import path from 'node:path'
+import { buildProviderPoolFilter, PoolFilter } from './tokenFilter'
 
 export class DefiProvider {
   private parsedConfig
@@ -87,40 +81,8 @@ export class DefiProvider {
       ? buildSqliteMetadataProviders(metadataProviderSettings)
       : buildVoidMetadataProviders()
 
-    this.poolFilter = (() => {
-      if (poolFilter) {
-        return poolFilter
-      }
-
-      if (this.parsedConfig.values.usePositionsCache) {
-        logger.info('Filter: Using positions cache')
-        return buildCachePoolFilter(
-          Object.values(EvmChain).reduce(
-            (acc, chainId) => {
-              if (chainId !== EvmChain.Ethereum) {
-                return acc
-              }
-
-              acc[chainId] = new Database(
-                path.join(
-                  __dirname,
-                  '../../..',
-                  `${ChainIdToChainNameMap[chainId]}_index_history.db`,
-                ),
-                {
-                  readonly: true,
-                },
-              )
-              return acc
-            },
-            {} as Record<EvmChain, Database.Database>,
-          ),
-        )
-      }
-
-      logger.info('Filter: Using provider pool filter')
-      return buildProviderPoolFilter(this.chainProvider.providers)
-    })()
+    this.poolFilter =
+      poolFilter ?? buildProviderPoolFilter(this.chainProvider.providers)
 
     this.unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
 
@@ -196,12 +158,6 @@ export class DefiProvider {
               adapter.chainId,
               adapter.adapterSettings,
             )
-
-      console.log(
-        'POOL FILTER ADDRESSES',
-        poolFilterAddresses,
-        (await adapter.getProtocolTokens())[0]!.address,
-      )
 
       const protocolTokenAddresses = !poolFilterAddresses
         ? undefined

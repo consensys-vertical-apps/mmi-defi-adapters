@@ -1,7 +1,9 @@
-import Database from 'better-sqlite3'
+import Database, { Database as DatabaseType } from 'better-sqlite3'
 import path from 'node:path'
 import { DefiProvider } from '../../defiProvider'
 import { EvmChain } from '../../core/constants/chains'
+import { PoolFilter } from '../../tokenFilter'
+import { AdapterSettings } from '../../types/adapter'
 
 const tables = {
   history_logs: `
@@ -22,13 +24,19 @@ const tables = {
 }
 
 function createDb(chainName: string, dbName: string) {
-  const dbPath = path.resolve(`./${chainName}_${dbName}.db`)
-  const db = new Database(dbPath)
+  const dbPath = path.resolve(`./databases/${chainName}_${dbName}.db`)
+  const db = new Database(dbPath, {
+    fileMustExist: false,
+    timeout: 5000,
+  })
   db.pragma('journal_mode = WAL')
+
+  setCloseDatabaseHandlers(db)
+
   return db
 }
 
-function createTable(db: Database.Database, dbTable: string) {
+function createTable(db: DatabaseType, dbTable: string) {
   const tableExists = db
     .prepare(`SELECT name FROM sqlite_master WHERE type='table' AND name=?`)
     .get(dbTable)
@@ -38,27 +46,19 @@ function createTable(db: Database.Database, dbTable: string) {
   }
 }
 
-export function createDatabase(chainName: string): Database.Database {
+export function createDatabase(chainName: string): DatabaseType {
   const db = createDb(chainName, 'history')
 
   for (const table of Object.values(tables)) {
     createTable(db, table)
   }
 
-  // Function to close the database connection
-  const closeDatabase = () => {
-    try {
-      db.close()
-      console.log('Database connection closed.')
-    } catch (err) {
-      console.error(
-        'Error closing database:',
-        err instanceof Error ? err.message : err,
-      )
-    }
-  }
+  return db
+}
 
-  // Handle termination signals
+export function setCloseDatabaseHandlers(db: DatabaseType) {
+  const closeDatabase = () => db.close()
+
   process.on('SIGINT', () => {
     console.log('Received SIGINT. Closing database connection...')
     closeDatabase()
@@ -71,15 +71,12 @@ export function createDatabase(chainName: string): Database.Database {
     process.exit(0)
   })
 
-  // Ensure to close the connection at the end of the program
   process.on('exit', () => {
     closeDatabase()
   })
-
-  return db
 }
 
-export function fetchNextPoolsToProcess(db: Database.Database) {
+export function fetchNextPoolsToProcess(db: DatabaseType) {
   const unfinishedPools = db
     .prepare(`
         SELECT 	'0x' || contract_address as contract_address, topic_0, user_address_index, block_number, status
@@ -97,10 +94,7 @@ export function fetchNextPoolsToProcess(db: Database.Database) {
   return unfinishedPools
 }
 
-export function insertLogs(
-  db: Database.Database,
-  logsToInsert: [string, string][],
-) {
+export function insertLogs(db: DatabaseType, logsToInsert: [string, string][]) {
   const logEntryStmt = db.prepare(
     'INSERT OR IGNORE INTO history_logs (address, contract_address) VALUES (?, ?)',
   )
@@ -113,7 +107,7 @@ export function insertLogs(
 }
 
 export function completeJobs(
-  db: Database.Database,
+  db: DatabaseType,
   contractAddresses: string[],
   topic0: string,
   userAddressIndex: number,
@@ -130,7 +124,7 @@ export function completeJobs(
 }
 
 export function failJobs(
-  db: Database.Database,
+  db: DatabaseType,
   contractAddresses: string[],
   topic0: string,
   userAddressIndex: number,
@@ -149,7 +143,7 @@ export function failJobs(
 export async function insertContractEntries(
   defiProvider: DefiProvider,
   chainId: EvmChain,
-  db: Database.Database,
+  db: DatabaseType,
 ) {
   const provider = defiProvider.chainProvider.providers[chainId]
 
@@ -197,4 +191,31 @@ export async function insertContractEntries(
   )
 
   transaction(Array.from(protocolTokenEntries), currentBlockNumber)
+}
+
+export function buildCachePoolFilter(
+  dbs: Partial<Record<EvmChain, DatabaseType>>,
+): PoolFilter {
+  return async (
+    userAddress: string,
+    chainId: EvmChain,
+    adapterSettings: AdapterSettings,
+  ): Promise<string[] | undefined> => {
+    const db = dbs[chainId]
+    if (!db || adapterSettings.userEvent === false) {
+      return undefined
+    }
+
+    const pendingPools = db
+      .prepare(`
+        SELECT 	contract_address
+        FROM 	history_logs
+        WHERE 	address = ?
+        `)
+      .all(userAddress.slice(2)) as {
+      contract_address: string
+    }[]
+
+    return pendingPools.map((pool) => `0x${pool.contract_address}`)
+  }
 }
