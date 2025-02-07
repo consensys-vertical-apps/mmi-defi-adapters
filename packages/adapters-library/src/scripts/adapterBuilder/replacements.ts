@@ -438,7 +438,7 @@ export const Replacements = {
 
       switch (true) {
         case answers.erc20Event:
-          return updatedTemplate.replace(regexDetectionSetting, `'Transfer`)
+          return updatedTemplate.replace(regexDetectionSetting, `'Transfer'`)
 
         default:
           return updatedTemplate.replace(regexDetectionSetting, 'false')
