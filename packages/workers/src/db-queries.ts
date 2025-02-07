@@ -1,9 +1,9 @@
-import Database, { type Database as DatabaseType } from 'better-sqlite3'
 import path from 'node:path'
 import type { DefiProvider } from '@metamask-institutional/defi-adapters'
 import type { EvmChain } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
 import type { PoolFilter } from '@metamask-institutional/defi-adapters/dist/tokenFilter.js'
 import type { AdapterSettings } from '@metamask-institutional/defi-adapters/dist/types/adapter.js'
+import Database, { type Database as DatabaseType } from 'better-sqlite3'
 
 const tables = {
   history_logs: `

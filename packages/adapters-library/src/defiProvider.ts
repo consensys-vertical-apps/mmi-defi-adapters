@@ -33,6 +33,7 @@ import {
   enrichTotalValueLocked,
   enrichUnwrappedTokenExchangeRates,
 } from './responseAdapters'
+import { PoolFilter, buildProviderPoolFilter } from './tokenFilter'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import { DeepPartial } from './types/deepPartial'
 import {
@@ -50,7 +51,6 @@ import {
   IUnwrapPriceCacheProvider,
   UnwrapPriceCache,
 } from './unwrapCache'
-import { buildProviderPoolFilter, PoolFilter } from './tokenFilter'
 
 export class DefiProvider {
   private parsedConfig

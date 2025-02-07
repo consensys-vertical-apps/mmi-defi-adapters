@@ -1,12 +1,12 @@
+import fs from 'node:fs'
 import path from 'node:path'
 import { Command } from 'commander'
+import { ethers } from 'ethers'
 import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
 import { filterMapSync } from '../core/utils/filters'
 import { DefiProvider } from '../defiProvider'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
-import { ethers } from 'ethers'
-import fs from 'node:fs'
 export function detectEvents(program: Command, defiProvider: DefiProvider) {
   program
     .command('detect-events')

@@ -1,7 +1,7 @@
-import { getAddress } from 'ethers'
 import { Chain, Protocol } from '@metamask-institutional/defi-adapters'
 import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
 import { filterMapSync } from '@metamask-institutional/defi-adapters/dist/core/utils/filters.js'
+import { getAddress } from 'ethers'
 
 export function chainFilter(filterInput?: string): Chain | undefined {
   if (!filterInput) {

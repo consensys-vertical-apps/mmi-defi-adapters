@@ -1,8 +1,9 @@
 import type { DefiProvider } from '@metamask-institutional/defi-adapters'
 import {
-  EvmChain,
   ChainIdToChainNameMap,
+  EvmChain,
 } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
+import { JsonRpcProvider, Network, getAddress } from 'ethers'
 import {
   completeJobs,
   createDatabase,
@@ -12,7 +13,6 @@ import {
   insertLogs,
 } from './db-queries.js'
 import { fetchEvents } from './fetch-events.js'
-import { getAddress, JsonRpcProvider, Network } from 'ethers'
 
 const CONCURRENT_BATCHES = 10
 const MAX_RANGE_SIZE = 1000

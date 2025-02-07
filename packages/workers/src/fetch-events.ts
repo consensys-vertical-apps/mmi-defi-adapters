@@ -1,4 +1,4 @@
-import { isError, type Log, type JsonRpcProvider } from 'ethers'
+import { type JsonRpcProvider, type Log, isError } from 'ethers'
 
 export async function* fetchEvents({
   provider,

@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+import path from 'node:path'
+import Database from 'better-sqlite3'
+import { Database as DatabaseType } from 'better-sqlite3'
 import { Command } from 'commander'
 import {
   Chain,
@@ -6,6 +9,8 @@ import {
   EvmChain,
 } from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
+import { PoolFilter } from '../tokenFilter'
+import { AdapterSettings } from '../types/adapter'
 import { copyAdapter } from './adapterBuilder/copyAdapter'
 import { newAdapterCommand } from './adapterBuilder/newAdapterCommand'
 import { blockAverage } from './blockAverage'
@@ -17,16 +22,11 @@ import { checkBadSnapshots } from './checkBadSnapshots'
 import { checkDbTotals } from './checkDbTotals'
 import { checkMetadataType } from './checkMetadataType'
 import { deleteAdapterMetadata } from './deleteAdapterMetadata'
+import { detectEvents } from './detectEvents'
 import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
-import { detectEvents } from './detectEvents'
-import Database from 'better-sqlite3'
-import path from 'node:path'
-import { PoolFilter } from '../tokenFilter'
-import { AdapterSettings } from '../types/adapter'
-import { Database as DatabaseType } from 'better-sqlite3'
 
 const program = new Command('mmi-adapters')
 

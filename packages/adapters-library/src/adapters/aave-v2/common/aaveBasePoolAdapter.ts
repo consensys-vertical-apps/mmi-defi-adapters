@@ -24,12 +24,12 @@ import {
   UnwrapInput,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
+import { AAVE_ICON_URL } from '../../aave-v3/products/rewards/aaveV3RewardsAdapter'
 import { Protocol } from '../../protocols'
 import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
 } from '../contracts'
-import { AAVE_ICON_URL } from '../../aave-v3/products/rewards/aaveV3RewardsAdapter'
 
 export const protocolDataProviderContractAddresses: Partial<
   Record<

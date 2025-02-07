@@ -1,9 +1,10 @@
 #!/usr/bin/env node
+import path from 'node:path'
+import { DefiProvider } from '@metamask-institutional/defi-adapters'
 import {
   Chain,
   ChainIdToChainNameMap,
 } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
-import { DefiProvider } from '@metamask-institutional/defi-adapters'
 import { EvmChain } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
 import {
   buildCachePoolFilter,
@@ -12,7 +13,6 @@ import {
 } from '@metamask-institutional/workers'
 import Database from 'better-sqlite3'
 import { Command } from 'commander'
-import path from 'node:path'
 import { chainFilter } from './commandFilters.js'
 
 const program = new Command('mmi-adapters')

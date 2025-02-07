@@ -1,6 +1,6 @@
 import { type Database } from 'better-sqlite3'
-import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { EvmChain } from './core/constants/chains'
+import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { AdapterSettings } from './types/adapter'
 
 export type PoolFilter = (
