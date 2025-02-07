@@ -7,6 +7,7 @@ export function blankAdapterTemplate() {
     import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
     import { logger } from '../../../../core/utils/logger'
     import {
+      AdapterSettings,
       ProtocolAdapterParams,
       ProtocolDetails,
       PositionType,
@@ -41,7 +42,7 @@ export function blankAdapterTemplate() {
       chainId: Chain
       helpers: Helpers
 
-      adapterSettings = {
+      adapterSettings: AdapterSettings = {
         includeInUnwrap: Replacements.INCLUDE_IN_UNWRAP.placeholder,
         userEvent: Replacements.ENABLE_POSITION_DETECTION_BY_PROTOCOL_TOKEN_TRANSFER.placeholder,
       }
