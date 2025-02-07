@@ -8,7 +8,7 @@ describe('detect errors', () => {
     async (config) => {
       const defiProvider = new DefiProvider(config)
       const response = await defiProvider.getPositions({
-        userAddress: '0xaa62cf7caaf0c7e50deaa9d5d0b907472f00b258',
+        userAddress: '0x6372baD16935878713e5e1DD92EC3f7A3C48107E',
       })
 
       expect(filterErrors(response)).toEqual([])
@@ -19,7 +19,7 @@ describe('detect errors', () => {
   it('does not return any adapter error with profits %s', async () => {
     const defiProvider = new DefiProvider()
     const response = await defiProvider.getProfits({
-      userAddress: '0x117C99451cae094B3a7d56C9d3A97c96900b8e7A',
+      userAddress: '0x6372baD16935878713e5e1DD92EC3f7A3C48107E',
       timePeriod: TimePeriod.oneDay,
     })
 
