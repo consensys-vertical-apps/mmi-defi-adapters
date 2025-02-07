@@ -149,29 +149,11 @@ export class DefiProvider {
 
       const blockNumber = blockNumbers?.[adapter.chainId]
 
-      const poolFilterAddresses =
-        adapter.chainId === Chain.Solana ||
-        adapter.adapterSettings.userEvent === false
-          ? undefined
-          : await this.poolFilter(
-              userAddress,
-              adapter.chainId,
-              adapter.adapterSettings,
-            )
-
-      const protocolTokenAddresses = !poolFilterAddresses
-        ? undefined
-        : await filterMapAsync(poolFilterAddresses, async (address) => {
-            try {
-              const protocolTokens = await adapter.getProtocolTokens()
-
-              return protocolTokens.some((token) => token.address === address)
-                ? address
-                : undefined
-            } catch (error) {
-              return undefined
-            }
-          })
+      const protocolTokenAddresses = await this.getProtocolTokensFilter(
+        userAddress,
+        filterProtocolTokens,
+        adapter,
+      )
 
       if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
         return { tokens: [] }
@@ -1097,5 +1079,41 @@ export class DefiProvider {
     } catch (error) {
       return false
     }
+  }
+
+  private async getProtocolTokensFilter(
+    userAddress: string,
+    filterProtocolTokens: string[] | undefined,
+    adapter: IProtocolAdapter,
+  ): Promise<string[] | undefined> {
+    if (filterProtocolTokens) {
+      return filterProtocolTokens
+    }
+
+    const poolFilterAddresses =
+      adapter.chainId === Chain.Solana ||
+      adapter.adapterSettings.userEvent === false
+        ? undefined
+        : await this.poolFilter(
+            userAddress,
+            adapter.chainId,
+            adapter.adapterSettings,
+          )
+
+    if (!poolFilterAddresses) {
+      return undefined
+    }
+
+    return await filterMapAsync(poolFilterAddresses, async (address) => {
+      try {
+        const protocolTokens = await adapter.getProtocolTokens()
+
+        return protocolTokens.some((token) => token.address === address)
+          ? address
+          : undefined
+      } catch (error) {
+        return undefined
+      }
+    })
   }
 }
