@@ -1,12 +1,12 @@
 import path from 'node:path'
 import {
+  ChainName,
   DefiProvider,
   EvmChain,
-  ChainName,
 } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, Network } from 'ethers'
-import { createDatabase, insertContractEntries } from './db-queries.js'
 import { buildHistoricCache } from './build-historic-cache.js'
+import { createDatabase, insertContractEntries } from './db-queries.js'
 
 const chainIdInput = process.argv[2]
 

@@ -8,8 +8,8 @@ import {
   insertContractEntries,
 } from '@metamask-institutional/workers'
 import { Command } from 'commander'
-import { chainFilter } from './command-filters.js'
 import { JsonRpcProvider, Network } from 'ethers'
+import { chainFilter } from './command-filters.js'
 
 const program = new Command('mmi-adapters')
 

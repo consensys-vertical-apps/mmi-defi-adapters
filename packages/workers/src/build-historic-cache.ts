@@ -1,4 +1,5 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
+import type Database from 'better-sqlite3'
 import { JsonRpcProvider, getAddress } from 'ethers'
 import {
   completeJobs,
@@ -7,7 +8,6 @@ import {
   insertLogs,
 } from './db-queries.js'
 import { fetchEvents } from './fetch-events.js'
-import type Database from 'better-sqlite3'
 
 const CONCURRENT_BATCHES = 10
 const MAX_RANGE_SIZE = 1000
