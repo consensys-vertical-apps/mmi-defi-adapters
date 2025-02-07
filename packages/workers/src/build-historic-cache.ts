@@ -1,18 +1,13 @@
-import type { DefiProvider } from '@metamask-institutional/defi-adapters'
-import {
-  ChainIdToChainNameMap,
-  EvmChain,
-} from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
-import { JsonRpcProvider, Network, getAddress } from 'ethers'
+import { EvmChain } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
+import { JsonRpcProvider, getAddress } from 'ethers'
 import {
   completeJobs,
-  createDatabase,
   failJobs,
   fetchNextPoolsToProcess,
-  insertContractEntries,
   insertLogs,
 } from './db-queries.js'
 import { fetchEvents } from './fetch-events.js'
+import type Database from 'better-sqlite3'
 
 const CONCURRENT_BATCHES = 10
 const MAX_RANGE_SIZE = 1000
@@ -30,22 +25,10 @@ const MAX_BATCH_SIZE: Record<EvmChain, number> = {
 }
 
 export async function buildHistoricCache(
-  defiProvider: DefiProvider,
+  provider: JsonRpcProvider,
   chainId: EvmChain,
+  db: Database.Database,
 ) {
-  const providerUrl =
-    defiProvider.chainProvider.providers[chainId]._getConnection().url
-
-  const provider = new JsonRpcProvider(providerUrl, chainId, {
-    staticNetwork: Network.from(chainId),
-  })
-
-  const db = createDatabase(`${ChainIdToChainNameMap[chainId]}_index`)
-
-  // TODO: This script should be called periodicallywithin the process managing script 1 and script 2
-  // TODO: Even better, entries should be added whenever a new pool is added to the metadata DB
-  await insertContractEntries(defiProvider, chainId, db)
-
   while (true) {
     const unfinishedPools = fetchNextPoolsToProcess(db)
 

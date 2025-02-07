@@ -5,7 +5,7 @@ import {
   multiChainFilter,
   multiProtocolFilter,
   protocolFilter,
-} from './commandFilters.js'
+} from './command-filters.js'
 
 describe('chainFilter', () => {
   it.each(Object.values(Chain).map((chainId) => [chainId]))(

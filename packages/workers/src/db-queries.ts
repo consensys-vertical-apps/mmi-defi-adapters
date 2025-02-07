@@ -23,12 +23,8 @@ const tables = {
       );`,
 }
 
-function createDb(chainName: string, dbName: string) {
-  const dbPath = path.resolve(`./databases/${chainName}_${dbName}.db`)
-  const db = new Database(dbPath, {
-    fileMustExist: false,
-    timeout: 5000,
-  })
+function createDb(dbPath: string, dbOptions: Database.Options) {
+  const db = new Database(dbPath, dbOptions)
   db.pragma('journal_mode = WAL')
 
   setCloseDatabaseHandlers(db)
@@ -46,8 +42,13 @@ function createTable(db: DatabaseType, dbTable: string) {
   }
 }
 
-export function createDatabase(chainName: string): DatabaseType {
-  const db = createDb(chainName, 'history')
+export function createDatabase(
+  dbDirPath: string,
+  chainName: string,
+  dbOptions: Database.Options,
+): DatabaseType {
+  const dbPath = path.resolve(dbDirPath, `${chainName}_index_history.db`)
+  const db = createDb(dbPath, dbOptions)
 
   for (const table of Object.values(tables)) {
     createTable(db, table)

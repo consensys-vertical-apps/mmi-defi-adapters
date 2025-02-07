@@ -1,90 +1,58 @@
 #!/usr/bin/env node
 import path from 'node:path'
-import { DefiProvider } from '@metamask-institutional/defi-adapters'
+import { ChainName, DefiProvider } from '@metamask-institutional/defi-adapters'
+import { Chain } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
 import {
-  Chain,
-  ChainIdToChainNameMap,
-} from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
-import { EvmChain } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
-import {
-  buildCachePoolFilter,
   buildHistoricCache,
-  setCloseDatabaseHandlers,
+  createDatabase,
+  insertContractEntries,
 } from '@metamask-institutional/workers'
-import Database from 'better-sqlite3'
 import { Command } from 'commander'
-import { chainFilter } from './commandFilters.js'
+import { chainFilter } from './command-filters.js'
+import { JsonRpcProvider, Network } from 'ethers'
 
 const program = new Command('mmi-adapters')
-
-const cachePoolFilter =
-  process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE === 'true'
-    ? buildCachePoolFilter(
-        Object.values(EvmChain).reduce(
-          (acc, chainId) => {
-            const db = new Database(
-              path.join(
-                __dirname,
-                '../../../../',
-                `databases/${ChainIdToChainNameMap[chainId]}_index_history.db`,
-              ),
-              {
-                readonly: true,
-                fileMustExist: true,
-                timeout: 5000,
-              },
-            )
-
-            setCloseDatabaseHandlers(db)
-
-            acc[chainId] = db
-
-            return acc
-          },
-          {} as Record<EvmChain, Database.Database>,
-        ),
-      )
-    : undefined
-
-const defiProvider = new DefiProvider(
-  undefined,
-  undefined,
-  undefined,
-  cachePoolFilter,
-)
 
 program
   .command('build-historic-cache')
   .argument('[chain]', 'Chain to build cache for')
-  .option('-i, --initialize', 'Initialize the DB')
-  .action(
-    async (
-      chain,
-      {
-        initialize,
-      }: {
-        initialize: boolean
-      },
-    ) => {
-      const chainId = chainFilter(chain)
-      if (!chainId) {
-        throw new Error('Chain is required')
-      }
+  .action(async (chain) => {
+    const chainId = chainFilter(chain)
+    if (!chainId) {
+      throw new Error('Chain is required')
+    }
 
-      if (chainId === Chain.Solana) {
-        throw new Error('Solana is not supported')
-      }
+    if (chainId === Chain.Solana) {
+      throw new Error('Solana is not supported')
+    }
 
-      console.log(`${new Date().toISOString()}: Building historic cache`, {
-        chainId,
-        initialize,
-      })
+    const defiProvider = new DefiProvider()
 
-      await buildHistoricCache(defiProvider, chainId)
+    const providerUrl =
+      defiProvider.chainProvider.providers[chainId]._getConnection().url
 
-      console.log('Finished')
-      process.exit(0)
-    },
-  )
+    const provider = new JsonRpcProvider(providerUrl, chainId, {
+      staticNetwork: Network.from(chainId),
+    })
+
+    const dbDirPath =
+      process.env.DB_DIR_PATH ||
+      path.resolve(import.meta.dirname, '../../../databases')
+
+    const db = createDatabase(dbDirPath, ChainName[chainId], {
+      fileMustExist: false,
+      readonly: false,
+      timeout: 5000,
+    })
+
+    console.log(`${new Date().toISOString()}: Building historic cache`, {
+      chainId,
+    })
+
+    // TODO: Have parameters to determine what pools to insert
+    await insertContractEntries(defiProvider, chainId, db)
+
+    await buildHistoricCache(provider, chainId, db)
+  })
 
 program.parseAsync()

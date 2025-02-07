@@ -12,4 +12,4 @@ COPY . .
 
 RUN npm run build
 
-CMD ["npm", "run", "start", "-w", "packages/dev-backend"]
+CMD ["node", "packages/workers/dist/runner.js"]

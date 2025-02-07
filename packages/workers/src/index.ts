@@ -1,2 +1,6 @@
 export { buildHistoricCache } from './build-historic-cache.js'
-export { buildCachePoolFilter, setCloseDatabaseHandlers } from './db-queries.js'
+export {
+  buildCachePoolFilter,
+  createDatabase,
+  insertContractEntries,
+} from './db-queries.js'
