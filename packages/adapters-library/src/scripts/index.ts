@@ -59,12 +59,6 @@ const cachePoolFilter =
       )
     : undefined
 
-if (cachePoolFilter) {
-  console.log('Using DB positions cache')
-} else {
-  console.log('Using provider positions cache')
-}
-
 const defiProvider = new DefiProvider(
   undefined,
   undefined,
