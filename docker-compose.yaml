@@ -7,13 +7,33 @@ services:
       - "3000:3000"
     volumes:
       - sqlite_data:/app/databases
-
+    environment:
+      - DEFI_ADAPTERS_PROVIDER_ETHEREUM
+      - DEFI_ADAPTERS_PROVIDER_OPTIMISM
+      - DEFI_ADAPTERS_PROVIDER_BSC
+      - DEFI_ADAPTERS_PROVIDER_POLYGON
+      - DEFI_ADAPTERS_PROVIDER_FANTOM
+      - DEFI_ADAPTERS_PROVIDER_BASE
+      - DEFI_ADAPTERS_PROVIDER_ARBITRUM
+      - DEFI_ADAPTERS_PROVIDER_AVALANCHE
+      - DEFI_ADAPTERS_PROVIDER_LINEA
+      - DEFI_ADAPTERS_USE_POSITIONS_CACHE
   workers:
     build:
       context: .
       dockerfile: Dockerfile.workers
     volumes:
       - sqlite_data:/app/databases
+    environment:
+      - DEFI_ADAPTERS_PROVIDER_ETHEREUM
+      - DEFI_ADAPTERS_PROVIDER_OPTIMISM
+      - DEFI_ADAPTERS_PROVIDER_BSC
+      - DEFI_ADAPTERS_PROVIDER_POLYGON
+      - DEFI_ADAPTERS_PROVIDER_FANTOM
+      - DEFI_ADAPTERS_PROVIDER_BASE
+      - DEFI_ADAPTERS_PROVIDER_ARBITRUM
+      - DEFI_ADAPTERS_PROVIDER_AVALANCHE
+      - DEFI_ADAPTERS_PROVIDER_LINEA
 
 volumes:
   sqlite_data:

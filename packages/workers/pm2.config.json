@@ -2,48 +2,48 @@
   "apps": [
     {
       "name": "Ethereum",
-      "script": "npm",
-      "args": ["run", "start", "--", "1"]
+      "script": "node",
+      "args": ["packages/workers/dist/runner.js", "1"]
     },
     {
       "name": "Optimism",
-      "script": "npm",
-      "args": ["run", "start", "--", "10"]
+      "script": "node",
+      "args": ["packages/workers/dist/runner.js", "10"]
     },
     {
       "name": "Bsc",
-      "script": "npm",
-      "args": ["run", "start", "--", "56"]
+      "script": "node",
+      "args": ["packages/workers/dist/runner.js", "56"]
     },
     {
       "name": "Polygon",
-      "script": "npm",
-      "args": ["run", "start", "--", "137"]
+      "script": "node",
+      "args": ["packages/workers/dist/runner.js", "137"]
     },
     {
       "name": "Fantom",
-      "script": "npm",
-      "args": ["run", "start", "--", "250"]
+      "script": "node",
+      "args": ["packages/workers/dist/runner.js", "250"]
     },
     {
       "name": "Base",
-      "script": "npm",
-      "args": ["run", "start", "--", "8453"]
+      "script": "node",
+      "args": ["packages/workers/dist/runner.js", "8453"]
     },
     {
       "name": "Arbitrum",
-      "script": "npm",
-      "args": ["run", "start", "--", "42161"]
+      "script": "node",
+      "args": ["packages/workers/dist/runner.js", "42161"]
     },
     {
       "name": "Avalanche",
-      "script": "npm",
-      "args": ["run", "start", "--", "43114"]
+      "script": "node",
+      "args": ["packages/workers/dist/runner.js", "43114"]
     },
     {
       "name": "Linea",
-      "script": "npm",
-      "args": ["run", "start", "--", "59144"]
+      "script": "node",
+      "args": ["packages/workers/dist/runner.js", "59144"]
     }
   ]
 }
