@@ -1,0 +1,23 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "3000:3000"
+    volumes:
+      - sqlite_data:/app/databases
+  # workers:
+  #     build:
+  #         context: .
+  #         dockerfile: Dockerfile.workers
+  #   volumes:
+  #     - sqlite_data:/app/databases
+
+volumes:
+  sqlite_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/databases

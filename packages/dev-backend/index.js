@@ -35,6 +35,16 @@ app.post('/positions', async (req, res) => {
   }
 })
 
+app.get('/positions/:userAddress', async (req, res) => {
+  try {
+    res.send(await defiProvider.getPositions({
+      userAddress: req.params.userAddress
+    }))
+  } catch (error) {
+    res.status(500).send({ error: error.message })
+  }
+})
+
 app.post('/profits', async (req, res) => {
   try {
     res.send(await defiProvider.getProfits(req.body))

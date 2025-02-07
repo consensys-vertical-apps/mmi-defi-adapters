@@ -1,0 +1,49 @@
+{
+  "apps": [
+    {
+      "name": "Ethereum",
+      "script": "npm",
+      "args": ["run", "start", "--", "1"]
+    },
+    {
+      "name": "Optimism",
+      "script": "npm",
+      "args": ["run", "start", "--", "10"]
+    },
+    {
+      "name": "Bsc",
+      "script": "npm",
+      "args": ["run", "start", "--", "56"]
+    },
+    {
+      "name": "Polygon",
+      "script": "npm",
+      "args": ["run", "start", "--", "137"]
+    },
+    {
+      "name": "Fantom",
+      "script": "npm",
+      "args": ["run", "start", "--", "250"]
+    },
+    {
+      "name": "Base",
+      "script": "npm",
+      "args": ["run", "start", "--", "8453"]
+    },
+    {
+      "name": "Arbitrum",
+      "script": "npm",
+      "args": ["run", "start", "--", "42161"]
+    },
+    {
+      "name": "Avalanche",
+      "script": "npm",
+      "args": ["run", "start", "--", "43114"]
+    },
+    {
+      "name": "Linea",
+      "script": "npm",
+      "args": ["run", "start", "--", "59144"]
+    }
+  ]
+}

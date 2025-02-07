@@ -21,15 +21,12 @@ import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
-import { buildHistoricCache } from './addressContractCacheBuilder/buildHistoricCache'
-import { chainFilter } from './commandFilters'
 import { detectEvents } from './detectEvents'
 import Database from 'better-sqlite3'
 import path from 'node:path'
-import {
-  buildCachePoolFilter,
-  setCloseDatabaseHandlers,
-} from './addressContractCacheBuilder/db-queries'
+import { PoolFilter } from '../tokenFilter'
+import { AdapterSettings } from '../types/adapter'
+import { Database as DatabaseType } from 'better-sqlite3'
 
 const program = new Command('mmi-adapters')
 
@@ -129,38 +126,51 @@ program
     },
   )
 
-program
-  .command('build-historic-cache')
-  .argument('[chain]', 'Chain to build cache for')
-  .option('-i, --initialize', 'Initialize the DB')
-  .action(
-    async (
-      chain,
-      {
-        initialize,
-      }: {
-        initialize: boolean
-      },
-    ) => {
-      const chainId = chainFilter(chain)
-      if (!chainId) {
-        throw new Error('Chain is required')
-      }
-
-      if (chainId === Chain.Solana) {
-        throw new Error('Solana is not supported')
-      }
-
-      console.log(`${new Date().toISOString()}: Building historic cache`, {
-        chainId,
-        initialize,
-      })
-
-      await buildHistoricCache(defiProvider, chainId, initialize)
-
-      console.log('Finished')
-      process.exit(0)
-    },
-  )
-
 program.parseAsync()
+
+function buildCachePoolFilter(
+  dbs: Partial<Record<EvmChain, DatabaseType>>,
+): PoolFilter {
+  return async (
+    userAddress: string,
+    chainId: EvmChain,
+    adapterSettings: AdapterSettings,
+  ): Promise<string[] | undefined> => {
+    const db = dbs[chainId]
+    if (!db || adapterSettings.userEvent === false) {
+      return undefined
+    }
+
+    const pendingPools = db
+      .prepare(`
+        SELECT 	contract_address
+        FROM 	history_logs
+        WHERE 	address = ?
+        `)
+      .all(userAddress.slice(2)) as {
+      contract_address: string
+    }[]
+
+    return pendingPools.map((pool) => `0x${pool.contract_address}`)
+  }
+}
+
+function setCloseDatabaseHandlers(db: DatabaseType) {
+  const closeDatabase = () => db.close()
+
+  process.on('SIGINT', () => {
+    console.log('Received SIGINT. Closing database connection...')
+    closeDatabase()
+    process.exit(0)
+  })
+
+  process.on('SIGTERM', () => {
+    console.log('Received SIGTERM. Closing database connection...')
+    closeDatabase()
+    process.exit(0)
+  })
+
+  process.on('exit', () => {
+    closeDatabase()
+  })
+}
