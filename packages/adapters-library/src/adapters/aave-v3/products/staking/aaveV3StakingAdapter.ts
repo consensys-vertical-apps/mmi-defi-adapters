@@ -9,6 +9,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
@@ -39,9 +40,13 @@ export class AaveV3StakingAdapter implements IProtocolAdapter {
   chainId: Chain
   helpers: Helpers
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: {
+      topic0:
+        '0x6c86f3fd5118b3aa8bb4f389a617046de0a3d3d477de1a1673d227f802f616dc',
+      userAddressIndex: 2,
+    },
   }
 
   private provider: CustomJsonRpcProvider

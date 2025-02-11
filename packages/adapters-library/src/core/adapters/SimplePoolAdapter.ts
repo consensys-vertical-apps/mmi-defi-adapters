@@ -7,6 +7,7 @@ import {
   ProtocolToken,
 } from '../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -37,10 +38,7 @@ export abstract class SimplePoolAdapter<
 
   helpers: Helpers
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
-    includeInUnwrap: true,
-  }
+  abstract adapterSettings: AdapterSettings
 
   protected provider: CustomJsonRpcProvider
 

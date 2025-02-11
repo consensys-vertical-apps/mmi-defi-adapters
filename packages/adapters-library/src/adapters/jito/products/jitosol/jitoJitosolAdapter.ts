@@ -14,6 +14,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -48,9 +49,9 @@ export class JitoJitosolAdapter implements IProtocolAdapter {
   chainId = Chain.Solana
   helpers: SolanaHelpers
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: false,
   }
 
   private provider: Connection

@@ -16,6 +16,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -47,9 +48,13 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
 
   private incentivesContract: IncentivesContract
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
+    userEvent: {
+      topic0:
+        '0x3303facd24627943a92e9dc87cfbb34b15c49b726eec3ad3487c16be9ab8efe8',
+      userAddressIndex: 3,
+    },
   }
 
   private INCENTIVES_CONTRACT_ADDRESSES: Partial<Record<Chain, string>> = {

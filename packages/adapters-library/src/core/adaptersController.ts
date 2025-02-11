@@ -333,6 +333,7 @@ export class AdaptersController {
                   productWriteActions,
                 ) as WriteActions[],
               }),
+              userEvent: adapter.adapterSettings.userEvent,
             }
 
             support[protocolId]!.push(product)

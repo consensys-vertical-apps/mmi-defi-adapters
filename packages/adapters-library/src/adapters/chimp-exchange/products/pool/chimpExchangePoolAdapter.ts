@@ -6,6 +6,7 @@ import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
@@ -38,9 +39,9 @@ const poolDataQueryContractAddresses: Partial<Record<Chain, string>> = {
 export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetadata> {
   productId = 'pool'
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   getProtocolDetails(): ProtocolDetails {

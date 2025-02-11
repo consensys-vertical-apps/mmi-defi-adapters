@@ -1,12 +1,16 @@
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AdapterSettings,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 import { MorphoBasePoolAdapter } from '../../common/morphoBasePoolAdapter'
 
 export class MorphoAaveV2OptimizerBorrowAdapter extends MorphoBasePoolAdapter {
   productId = 'optimizer-borrow'
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
+    userEvent: false,
   }
 
   getProtocolDetails(): ProtocolDetails {

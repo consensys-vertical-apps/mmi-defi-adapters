@@ -6,7 +6,6 @@ import {
   buildSqliteMetadataProviders,
 } from './SQLiteMetadataProvider'
 import { buildVoidMetadataProviders } from './VoidMetadataProvider'
-import { JitoJitosolAdapter } from './adapters/jito/products/jitosol/jitoJitosolAdapter'
 import { Protocol } from './adapters/protocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
 import { supportedProtocols } from './adapters/supportedProtocols'
@@ -34,6 +33,7 @@ import {
   enrichTotalValueLocked,
   enrichUnwrappedTokenExchangeRates,
 } from './responseAdapters'
+import { PoolFilter, buildProviderPoolFilter } from './tokenFilter'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import { DeepPartial } from './types/deepPartial'
 import {
@@ -59,6 +59,7 @@ export class DefiProvider {
 
   private metadataProviders: Record<Chain, IMetadataProvider>
   private unwrapCache: IUnwrapPriceCache
+  private poolFilter: PoolFilter
 
   constructor(
     config?: DeepPartial<IConfig>,
@@ -70,16 +71,20 @@ export class DefiProvider {
       }
     >,
     unwrapCacheProvider?: IUnwrapPriceCacheProvider,
+    poolFilter?: PoolFilter,
   ) {
     this.parsedConfig = new Config(config)
+
+    this.chainProvider = new ChainProvider(this.parsedConfig.values)
 
     this.metadataProviders = this.parsedConfig.values.useDatabase
       ? buildSqliteMetadataProviders(metadataProviderSettings)
       : buildVoidMetadataProviders()
 
-    this.unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
+    this.poolFilter =
+      poolFilter ?? buildProviderPoolFilter(this.chainProvider.providers)
 
-    this.chainProvider = new ChainProvider(this.parsedConfig.values)
+    this.unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
 
     this.adaptersController = new AdaptersController({
       evmProviders: this.chainProvider.providers,
@@ -119,7 +124,7 @@ export class DefiProvider {
     filterProductIds,
     filterChainIds,
     blockNumbers,
-    filterProtocolTokens,
+    filterProtocolTokens, // TODO: Use this
     filterTokenIds,
   }: {
     userAddress: string
@@ -144,13 +149,12 @@ export class DefiProvider {
 
       const blockNumber = blockNumbers?.[adapter.chainId]
 
-      const protocolTokenAddresses = await this.buildTokenFilter(
+      const protocolTokenAddresses = await this.getProtocolTokensFilter(
         userAddress,
-        adapter,
         filterProtocolTokens,
+        adapter,
       )
 
-      // no transfers so we return
       if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
         return { tokens: [] }
       }
@@ -301,8 +305,7 @@ export class DefiProvider {
 
       // we cant use the logs for this adapter
       if (
-        !adapter.adapterSettings
-          .enablePositionDetectionByProtocolTokenTransfer ||
+        adapter.adapterSettings.userEvent !== 'Transfer' ||
         !adapter.adapterSettings.includeInUnwrap
       ) {
         return undefined
@@ -1076,5 +1079,41 @@ export class DefiProvider {
     } catch (error) {
       return false
     }
+  }
+
+  private async getProtocolTokensFilter(
+    userAddress: string,
+    filterProtocolTokens: string[] | undefined,
+    adapter: IProtocolAdapter,
+  ): Promise<string[] | undefined> {
+    if (filterProtocolTokens) {
+      return filterProtocolTokens
+    }
+
+    const poolFilterAddresses =
+      adapter.chainId === Chain.Solana ||
+      adapter.adapterSettings.userEvent === false
+        ? undefined
+        : await this.poolFilter(
+            userAddress,
+            adapter.chainId,
+            adapter.adapterSettings,
+          )
+
+    if (!poolFilterAddresses) {
+      return undefined
+    }
+
+    return await filterMapAsync(poolFilterAddresses, async (address) => {
+      try {
+        const protocolTokens = await adapter.getProtocolTokens()
+
+        return protocolTokens.some((token) => token.address === address)
+          ? address
+          : undefined
+      } catch (error) {
+        return undefined
+      }
+    })
   }
 }

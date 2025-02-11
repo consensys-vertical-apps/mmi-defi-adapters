@@ -1,6 +1,6 @@
 import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import {
+  AdapterSettings,
   GetPositionsInput,
   PositionType,
   ProtocolDetails,
@@ -12,6 +12,15 @@ import {
 
 export class BalancerV2VestingAdapter extends VotingEscrow {
   productId = 'vesting'
+
+  adapterSettings: AdapterSettings = {
+    includeInUnwrap: false,
+    userEvent: {
+      topic0:
+        '0x4566dfc29f6f11d13a418c26a02bef7c28bae749d4de47e4e6a7cddea6730d59',
+      userAddressIndex: 1,
+    },
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {

@@ -1,8 +1,6 @@
-import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
@@ -11,20 +9,18 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
-  AssetType,
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
-  MovementsByBlockReward,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  Underlying,
   UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -47,9 +43,9 @@ export class BalancerV2FarmingAdapter implements IProtocolAdapter {
   chainId: Chain
   helpers: Helpers
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   private provider: CustomJsonRpcProvider

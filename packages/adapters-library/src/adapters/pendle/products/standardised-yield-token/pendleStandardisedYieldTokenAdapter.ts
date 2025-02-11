@@ -11,6 +11,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
@@ -26,7 +27,6 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
 import { StandardisedYieldToken__factory } from '../../contracts'
@@ -41,9 +41,9 @@ export class PendleStandardisedYieldTokenAdapter implements IProtocolAdapter {
   chainId: Chain
   helpers: Helpers
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   private provider: CustomJsonRpcProvider

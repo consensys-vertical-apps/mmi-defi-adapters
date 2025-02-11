@@ -117,6 +117,10 @@ export type Support = Partial<
       protocolTokenAddresses?: Partial<Record<Chain, string[]>>
       writeActions?: WriteActions[]
       protocolTokens?: Partial<Record<Chain, ProtocolToken[]>>
+      userEvent:
+        | false
+        | 'Transfer'
+        | { topic0: `0x${string}`; userAddressIndex: 1 | 2 | 3 }
     }[]
   >
 >

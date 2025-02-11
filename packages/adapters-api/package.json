@@ -1,0 +1,20 @@
+{
+    "name": "@metamask-institutional/adapters-api",
+    "version": "1.0.0",
+    "description": "Defi adapters api",
+    "author": "MMI Team",
+    "license": "MIT",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon index.js",
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "@metamask-institutional/defi-adapters": "*",
+        "express": "^5.0.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.7"
+    }
+}

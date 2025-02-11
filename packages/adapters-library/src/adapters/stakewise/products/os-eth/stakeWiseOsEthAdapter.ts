@@ -4,6 +4,7 @@ import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetTotalValueLockedInput,
   PositionType,
   ProtocolDetails,
@@ -27,9 +28,9 @@ const PROTOCOL_TOKEN_ADDRESS = getAddress(
 export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
   productId = 'os-eth'
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false, // this might be able to be true but im not too sure just incase leaving as false
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   private async getVaultsRegistryAddress(): Promise<string> {

@@ -10,7 +10,7 @@ const config = {
     '!src/**/*.test.ts',
     '!src/scripts/**',
   ],
-  setupFiles: ['dotenv/config'],
+  setupFiles: ['<rootDir>/jest.setup.js'],
 }
 
 module.exports = config

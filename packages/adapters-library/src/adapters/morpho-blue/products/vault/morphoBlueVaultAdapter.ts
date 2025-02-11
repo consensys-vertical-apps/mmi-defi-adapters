@@ -10,6 +10,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -45,9 +46,9 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
   chainId: Chain
   helpers: Helpers
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   private provider: CustomJsonRpcProvider

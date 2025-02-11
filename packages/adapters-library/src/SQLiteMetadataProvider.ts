@@ -277,7 +277,7 @@ function defaultMetadataProviderSettings() {
       chainMetadataProvider[chainId] = {
         dbPath: path.join(
           __dirname,
-          '../../..',
+          '../../../databases',
           `${ChainIdToChainNameMap[chainId]}.db`,
         ),
         options: { fileMustExist: !allowDbCreation },

@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
 import {
+  AdapterSettings,
   AssetType,
   GetPositionsInput,
   PositionType,
@@ -11,9 +12,9 @@ import { FeeDistributor__factory, VotingEscrow__factory } from '../../contracts'
 export class CurveVotingEscrowAdapter extends VotingEscrow {
   productId = 'voting-escrow'
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
+    userEvent: false,
   }
 
   getProtocolDetails(): ProtocolDetails {

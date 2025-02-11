@@ -15,6 +15,7 @@ import {
   GetPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
+  PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
@@ -23,6 +24,7 @@ import {
   UnwrapInput,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
+import { AAVE_ICON_URL } from '../../aave-v3/products/rewards/aaveV3RewardsAdapter'
 import { Protocol } from '../../protocols'
 import {
   ProtocolDataProvider,
@@ -162,7 +164,10 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
     this.helpers = helpers
   }
 
-  abstract adapterSettings: AdapterSettings
+  adapterSettings: AdapterSettings = {
+    includeInUnwrap: true,
+    userEvent: 'Transfer',
+  }
 
   abstract getProtocolDetails(): ProtocolDetails
 

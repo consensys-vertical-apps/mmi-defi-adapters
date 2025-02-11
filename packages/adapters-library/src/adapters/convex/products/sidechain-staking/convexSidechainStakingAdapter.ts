@@ -11,6 +11,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
@@ -47,9 +48,13 @@ export class ConvexSidechainStakingAdapter implements IProtocolAdapter {
   chainId: Chain
   helpers: Helpers
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: {
+      topic0:
+        '0x9e71bc8eea02a63969f509818f2dafb9254532904319f9dbda79b67bd34a5f3d',
+      userAddressIndex: 1,
+    },
   }
 
   private provider: CustomJsonRpcProvider

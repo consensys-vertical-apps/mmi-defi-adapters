@@ -11,6 +11,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
@@ -46,9 +47,9 @@ export class StargateFarmV2Adapter implements IProtocolAdapter {
   chainId: Chain
   helpers: Helpers
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
+    userEvent: false,
   }
 
   private provider: CustomJsonRpcProvider

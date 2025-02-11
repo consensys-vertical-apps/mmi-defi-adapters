@@ -4,6 +4,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
+  AdapterSettings,
   PositionType,
   ProtocolDetails,
   TokenType,
@@ -16,9 +17,9 @@ const PROTOCOL_TOKEN_ADDRESS = getAddress(
 export class MountainProtocolUsdmAdapter extends SimplePoolAdapter {
   productId = 'usdm'
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   getProtocolDetails(): ProtocolDetails {

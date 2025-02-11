@@ -3,14 +3,18 @@ import {
   UniswapV2PoolForkPositionStrategy,
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AdapterSettings,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 
 export class LynexClassicAdapter extends UniswapV2PoolForkAdapter {
   productId = 'classic'
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   protected PROTOCOL_TOKEN_PREFIX_OVERRIDE = {

@@ -8,6 +8,7 @@ import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Helpers } from '../../../../scripts/helpers'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -105,9 +106,9 @@ export class DeriPoolAdapter implements IProtocolAdapter {
 
   helpers: Helpers
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
+    userEvent: 'Transfer',
   }
 
   adaptersController: AdaptersController

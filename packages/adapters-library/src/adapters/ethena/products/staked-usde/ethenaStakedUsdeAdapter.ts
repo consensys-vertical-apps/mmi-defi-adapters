@@ -9,6 +9,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -35,9 +36,9 @@ export class EthenaStakedUsdeAdapter implements IProtocolAdapter {
   protocolId: Protocol
   chainId: Chain
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   private provider: CustomJsonRpcProvider

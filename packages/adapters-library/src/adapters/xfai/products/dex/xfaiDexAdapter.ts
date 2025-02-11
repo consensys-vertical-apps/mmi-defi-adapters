@@ -6,6 +6,7 @@ import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetTotalValueLockedInput,
   PositionType,
   ProtocolDetails,
@@ -19,9 +20,9 @@ import { XfaiFactory__factory, XfaiPool__factory } from '../../contracts'
 export class XfaiDexAdapter extends SimplePoolAdapter {
   productId = 'dex'
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false, // might be true but contracts not verified
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   getProtocolDetails(): ProtocolDetails {

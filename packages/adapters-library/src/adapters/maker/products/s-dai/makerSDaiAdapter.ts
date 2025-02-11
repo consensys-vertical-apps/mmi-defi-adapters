@@ -5,6 +5,7 @@ import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetTotalValueLockedInput,
   PositionType,
   ProtocolDetails,
@@ -23,9 +24,9 @@ const PROTOCOL_TOKEN_ADDRESS = getAddress(
 export class MakerSDaiAdapter extends SimplePoolAdapter {
   productId = 's-dai'
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   getProtocolDetails(): ProtocolDetails {

@@ -13,9 +13,10 @@
   },
   "scripts": {
     "dev": "nodemon",
-    "build": "npm run build -w packages/adapters-library",
-    "build:watch": "npm run build:watch -w packages/adapters-library",
+    "build": "npm run build -w packages/adapters-library -w packages/workers -w packages/adapters-cli",
+    "build:watch": "npm run build:watch -w packages/adapters-library -w packages/workers -w packages/adapters-cli",
     "adapters-cli": "node --env-file=.env packages/adapters-library/dist/scripts/index.js",
+    "cli": "node --env-file=.env packages/adapters-cli/dist/index.js",
     "build-metadata-db": "npm run adapters-cli build-metadata-db --",
     "delete-adapter-metadata": "npm run adapters-cli delete-adapter-metadata --",
     "check-metadata-type": "npm run adapters-cli check-metadata-type --",
@@ -52,6 +53,7 @@
     "@types/node": "^20.12.10",
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.0",
+    "patch-package": "^8.0.0",
     "typescript": "^5.4.5"
   }
 }

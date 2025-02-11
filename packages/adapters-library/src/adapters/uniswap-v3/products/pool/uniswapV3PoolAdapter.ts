@@ -11,6 +11,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -64,9 +65,9 @@ const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
 export const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)
 
 export class UniswapV3PoolAdapter implements IProtocolAdapter {
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
+    userEvent: false,
   }
 
   productId = 'pool'

@@ -12,6 +12,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   AssetType,
   GetEventsInput,
   GetPositionsInput,
@@ -43,9 +44,9 @@ export class MendiFinanceStakingAdapter implements IProtocolAdapter {
   chainId: Chain
   helpers: Helpers
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   private provider: CustomJsonRpcProvider

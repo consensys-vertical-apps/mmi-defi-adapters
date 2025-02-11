@@ -13,6 +13,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   AssetType,
   GetEventsInput,
   GetPositionsInput,
@@ -92,9 +93,9 @@ export class SyncSwapPoolAdapter implements IProtocolAdapter {
     this.helpers = helpers
   }
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
+    userEvent: false,
   }
 
   unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {

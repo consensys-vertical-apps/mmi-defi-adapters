@@ -136,3 +136,5 @@ dist
 
 *db-shm
 *db-wal
+
+databases/*_index_history.db

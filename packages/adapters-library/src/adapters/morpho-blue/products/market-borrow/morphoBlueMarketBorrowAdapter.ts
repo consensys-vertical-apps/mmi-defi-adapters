@@ -1,12 +1,16 @@
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AdapterSettings,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 import { MorphoBluePoolAdapter } from '../../common/morphoBluePoolAdapter'
 
 export class MorphoBlueMarketBorrowAdapter extends MorphoBluePoolAdapter {
   productId = 'market-borrow'
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
+    userEvent: false,
   }
 
   getProtocolDetails(): ProtocolDetails {

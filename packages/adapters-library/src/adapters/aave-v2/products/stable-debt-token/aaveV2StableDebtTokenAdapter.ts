@@ -7,11 +7,6 @@ import { ProtocolDataProvider } from '../../contracts'
 export class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'stable-debt-token'
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
-    includeInUnwrap: true,
-  }
-
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,

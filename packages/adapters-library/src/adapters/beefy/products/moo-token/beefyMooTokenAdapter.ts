@@ -11,6 +11,7 @@ import {
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -29,7 +30,7 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { BeefyVaultV7__factory } from '../../contracts'
 import { chainIdMap } from '../../sdk/config'
-import { ApiClmManager, ApiVault, BeefyProductType } from '../../sdk/types'
+import { ApiVault, BeefyProductType } from '../../sdk/types'
 
 export class BeefyMooTokenAdapter implements IProtocolAdapter {
   productId = BeefyProductType.MOO_TOKEN
@@ -37,9 +38,9 @@ export class BeefyMooTokenAdapter implements IProtocolAdapter {
   chainId: Chain
   helpers: Helpers
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
+    userEvent: 'Transfer',
   }
 
   protected provider: CustomJsonRpcProvider

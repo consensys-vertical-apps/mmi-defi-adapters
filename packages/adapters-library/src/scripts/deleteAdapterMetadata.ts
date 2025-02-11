@@ -78,11 +78,11 @@ export function deleteAdapterMetadata(
         }
         const chainId = filterChainIds.pop()!
 
-        const db = new Database(`./${ChainIdToChainNameMap[chainId]}.db`, {
-          verbose: console.log,
-        })
+        const db = new Database(
+          `./databases/${ChainIdToChainNameMap[chainId]}.db`,
+        )
 
-        const poolIds = await getPoolIds(db, protocolId, productId)
+        const poolIds = getPoolIds(db, protocolId, productId)
 
         // Deleting rows in underlying_tokens
         checkAndDelete(

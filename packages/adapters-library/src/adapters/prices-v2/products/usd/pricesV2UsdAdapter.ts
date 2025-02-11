@@ -77,9 +77,9 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
   chainId: Chain
   helpers: Helpers
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
+  adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
+    userEvent: false,
   }
 
   private provider: CustomJsonRpcProvider

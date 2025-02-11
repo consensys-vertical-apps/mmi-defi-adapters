@@ -105,10 +105,33 @@ export type GetEventsInput = {
   tokenId?: string
 }
 
+/**
+ * Settings that control adapter behavior
+ * @property {boolean} includeInUnwrap - Whether this adapter's tokens should be included in unwrap operations
+ * @property {number} [version] - Optional version number for the adapter
+ * @property {object|string|false} userEvent - Configuration for tracking user events:
+ *   - If object: Contains topic0 hash and userAddressIndex for custom events
+ *   - If "Transfer": Uses standard ERC20/721 Transfer events
+ *   - If false: User events are not tracked
+ */
 export type AdapterSettings = {
-  enablePositionDetectionByProtocolTokenTransfer: boolean
   includeInUnwrap: boolean
   version?: number
+  userEvent:
+    | {
+        /**
+         * The keccak256 hash of the event signature to track
+         * Must be a hex string starting with "0x"
+         */
+        topic0: `0x${string}`
+        /**
+         * The index of the user address that would have acquired a position (1-3)
+         * For example, in Transfer(address from, address to, uint256 value) userAddressIndex is 2
+         */
+        userAddressIndex: 1 | 2 | 3
+      }
+    | 'Transfer'
+    | false
 }
 
 export type ProtocolDetails = {

@@ -85,8 +85,8 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       this.chainMetadataSettings()[this.chainId]!.type !== 'logs'
 
     this.adapterSettings = {
-      enablePositionDetectionByProtocolTokenTransfer: this.metadataBased,
       includeInUnwrap: this.metadataBased,
+      userEvent: this.metadataBased ? 'Transfer' : false,
     }
   }
 
@@ -182,10 +182,7 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    if (
-      input.protocolTokenAddresses &&
-      input.protocolTokenAddresses.length === 0
-    ) {
+    if (!input.protocolTokenAddresses) {
       throw new Error(
         'No protocol token address filter provided, must be provided for this adapter due to the large number of pools',
       )
