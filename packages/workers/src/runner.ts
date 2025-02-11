@@ -7,18 +7,18 @@ import {
 import { JsonRpcProvider, Network } from 'ethers'
 import { buildHistoricCache } from './build-historic-cache.js'
 import { createDatabase, insertContractEntries } from './db-queries.js'
-
+import { logger } from './logger.js'
 const chainIdInput = process.argv[2]
 
 if (!chainIdInput) {
-  console.error('Chain ID is required')
+  logger.error('Chain ID is required')
   process.exit(1)
 }
 
 const chainId = Number.parseInt(chainIdInput, 10) as EvmChain
 
 if (!Object.values(EvmChain).includes(chainId)) {
-  console.error('Invalid chain ID')
+  logger.error({ chainIdInput }, 'Invalid chain ID')
   process.exit(1)
 }
 

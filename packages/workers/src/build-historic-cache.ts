@@ -4,15 +4,15 @@ import { JsonRpcProvider, getAddress } from 'ethers'
 import {
   completeJobs,
   failJobs,
-  fetchNextPoolsToProcess,
+  fetchNextPoolsToProcess as fetchAllUnfinishedPools,
   insertLogs,
 } from './db-queries.js'
 import { fetchEvents } from './fetch-events.js'
+import { logger } from './logger.js'
 
-const CONCURRENT_BATCHES = 10
-const MAX_RANGE_SIZE = 1000
+const MaxConcurrentBatches = 10
 
-const MAX_BATCH_SIZE: Record<EvmChain, number> = {
+const MaxContractsPerCall: Record<EvmChain, number> = {
   [EvmChain.Ethereum]: 10,
   [EvmChain.Optimism]: 10,
   [EvmChain.Bsc]: 10,
@@ -24,23 +24,45 @@ const MAX_BATCH_SIZE: Record<EvmChain, number> = {
   [EvmChain.Linea]: 10,
 }
 
+/**
+ * This function continuously processes pending pools to build a historic cache.
+ *
+ * Steps:
+ * 1. Fetch the next set of pools that need processing from the database.
+ *    a. First all the pending pools are fetched.
+ *    b. The pools are grouped by topic_0 and user_address_index.
+ *    c. The group with the most entries is selected and the maximum block number is used as target.
+ *    d. An optimal batch size is calculated.
+ * 2. If no pools are pending, wait for 30 seconds before checking again.
+ * 3. Process the group of pools in the batches returned in step 1:
+ *    a. Split the block range into smaller ranges for concurrent processing.
+ *    b. Fetch events for each concurrent range and inset logs.
+ *    c. When all ranges have completed, mark the jobs as complete in the database.
+ * 4. If an error occurs, mark the jobs as failed.
+ * 5. Log memory usage after processing each batch.
+ * 6. Wait for 5 seconds before processing the next batch.
+ */
 export async function buildHistoricCache(
   provider: JsonRpcProvider,
   chainId: EvmChain,
   db: Database.Database,
 ) {
   while (true) {
-    const unfinishedPools = fetchNextPoolsToProcess(db)
+    const unfinishedPools = fetchAllUnfinishedPools(db)
 
-    console.log(`${new Date().toISOString()}: Pending pools need processing`, {
-      pools: unfinishedPools.length,
-    })
+    logger.info(
+      {
+        pools: unfinishedPools.length,
+      },
+      'Pending pools need processing',
+    )
 
-    const nextBatch = getNextBatch(unfinishedPools, MAX_BATCH_SIZE[chainId])
+    const nextPoolGroup = getNextPoolGroup(
+      unfinishedPools,
+      MaxContractsPerCall[chainId],
+    )
 
-    if (!nextBatch) {
-      console.log(`${new Date().toISOString()}: No pending pools`)
-
+    if (!nextPoolGroup) {
       await new Promise((resolve) => setTimeout(resolve, 30000))
       continue
     }
@@ -51,30 +73,28 @@ export async function buildHistoricCache(
       userAddressIndex,
       targetBlockNumber,
       batchSize,
-    } = nextBatch
+    } = nextPoolGroup
 
     for (let i = 0; i < poolAddresses.length; i += batchSize) {
       const contractAddresses = poolAddresses.slice(i, i + batchSize)
 
-      console.log(`${new Date().toISOString()}: Pools batch started`, {
-        batchIndex: i / batchSize + 1,
-        totalBatches: Math.ceil(poolAddresses.length / batchSize),
-        batchSize: contractAddresses.length,
-        totalPools: poolAddresses.length,
-      })
+      logger.info(
+        {
+          batchIndex: i / batchSize + 1,
+          totalBatches: Math.ceil(poolAddresses.length / batchSize),
+          batchSize: contractAddresses.length,
+          totalPools: poolAddresses.length,
+        },
+        'Pool group processing started',
+      )
 
       try {
-        const chunkSize =
-          chainId === EvmChain.Bsc || chainId === EvmChain.Fantom
-            ? MAX_RANGE_SIZE
-            : CONCURRENT_BATCHES
-
-        const ranges = splitRange(0, targetBlockNumber, chunkSize)
+        const ranges = splitRange(0, targetBlockNumber, MaxConcurrentBatches)
         const concurrentRanges = ranges.map(async ({ from, to }) => {
           for await (const logs of fetchEvents({
             provider,
             contractAddresses,
-            topics: [topic0, null, null, null],
+            topic0,
             fromBlock: from,
             toBlock: to,
           })) {
@@ -107,49 +127,35 @@ export async function buildHistoricCache(
 
         completeJobs(db, contractAddresses, topic0, userAddressIndex)
 
-        console.log(`${new Date().toISOString()}: Pools batch ended`, {
-          batchIndex: i / batchSize + 1,
-          totalBatches: Math.ceil(poolAddresses.length / batchSize),
-          batchSize: contractAddresses.length,
-          totalPools: poolAddresses.length,
-        })
+        logger.info(
+          {
+            batchIndex: i / batchSize + 1,
+            totalBatches: Math.ceil(poolAddresses.length / batchSize),
+            batchSize: contractAddresses.length,
+            totalPools: poolAddresses.length,
+          },
+          'Pool group processing ended',
+        )
       } catch (error) {
         failJobs(db, contractAddresses, topic0, userAddressIndex)
 
-        console.error(`${new Date().toISOString()}: Pools batch failed`, {
-          batchIndex: i / batchSize + 1,
-          totalBatches: Math.ceil(poolAddresses.length / batchSize),
-          batchSize: contractAddresses.length,
-          totalPools: poolAddresses.length,
-          error,
-        })
+        logger.error(
+          {
+            batchIndex: i / batchSize + 1,
+            totalBatches: Math.ceil(poolAddresses.length / batchSize),
+            batchSize: contractAddresses.length,
+            totalPools: poolAddresses.length,
+            error: error instanceof Error ? error.message : error,
+          },
+          'Pools batch failed',
+        )
       }
 
-      logMemoryUsage()
+      logger.info(process.memoryUsage(), 'Memory usage')
     }
-
-    // console.log(`${new Date().toISOString()}: Loop completed`, {
-    //   succesfulBatches: results.filter(
-    //     (result) => result.status === 'fulfilled',
-    //   ).length,
-    //   failedBatches: results.filter((result) => result.status === 'rejected')
-    //     .length,
-    //   totalPools: poolAddresses.length,
-    // })
 
     await new Promise((resolve) => setTimeout(resolve, 5000))
   }
-}
-
-function logMemoryUsage() {
-  const used = process.memoryUsage()
-  const memoryUsageLog = Object.entries(used).reduce(
-    (acc, [key, value]) =>
-      `${acc} [${key}: ${Math.round(value / 1024 / 1024)} MB]`,
-    'Memory usage:',
-  )
-
-  console.log(memoryUsageLog)
 }
 
 function splitRange(
@@ -171,7 +177,7 @@ function splitRange(
   return ranges
 }
 
-function getNextBatch(
+function getNextPoolGroup(
   unfinishedPools: {
     contract_address: string
     topic_0: string

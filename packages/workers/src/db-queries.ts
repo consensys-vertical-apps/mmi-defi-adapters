@@ -4,6 +4,7 @@ import type { EvmChain } from '@metamask-institutional/defi-adapters/dist/core/c
 import type { PoolFilter } from '@metamask-institutional/defi-adapters/dist/tokenFilter.js'
 import type { AdapterSettings } from '@metamask-institutional/defi-adapters/dist/types/adapter.js'
 import Database, { type Database as DatabaseType } from 'better-sqlite3'
+import { logger } from './logger.js'
 
 const tables = {
   history_logs: `
@@ -61,13 +62,13 @@ export function setCloseDatabaseHandlers(db: DatabaseType) {
   const closeDatabase = () => db.close()
 
   process.on('SIGINT', () => {
-    console.log('Received SIGINT. Closing database connection...')
+    logger.info('Received SIGINT. Closing database connection...')
     closeDatabase()
     process.exit(0)
   })
 
   process.on('SIGTERM', () => {
-    console.log('Received SIGTERM. Closing database connection...')
+    logger.info('Received SIGTERM. Closing database connection...')
     closeDatabase()
     process.exit(0)
   })

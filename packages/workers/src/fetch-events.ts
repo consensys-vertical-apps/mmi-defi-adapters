@@ -1,16 +1,17 @@
 import { type JsonRpcProvider, type Log, isError } from 'ethers'
+import { logger } from './logger.js'
 
 export async function* fetchEvents({
   provider,
   contractAddresses,
-  topics,
+  topic0,
   fromBlock,
   toBlock,
   depth = 0,
 }: {
   provider: JsonRpcProvider
   contractAddresses: string[]
-  topics: [string | null, string | null, string | null, string | null]
+  topic0: string // Some providers (BSC) behave erratically when passing null for topic filters
   fromBlock: number
   toBlock: number
   depth?: number
@@ -27,15 +28,8 @@ export async function* fetchEvents({
         address: contractAddresses,
         fromBlock,
         toBlock,
-        topics,
+        topics: [topic0],
       })
-
-      // console.log(`${new Date().toISOString()}: Logs fetched`, {
-      //   logs: logs.length,
-      //   fromBlock,
-      //   toBlock,
-      //   depth,
-      // })
 
       yield logs
     } catch (error) {
@@ -44,7 +38,12 @@ export async function* fetchEvents({
         !error.message.includes('"code": -32005') ||
         toBlock - fromBlock <= 1
       ) {
-        console.error('ERROR', error)
+        logger.error(
+          {
+            error: error instanceof Error ? error.message : error,
+          },
+          'Error fetching events',
+        )
         throw error
       }
 
