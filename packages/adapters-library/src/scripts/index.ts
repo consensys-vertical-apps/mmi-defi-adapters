@@ -22,7 +22,6 @@ import { checkBadSnapshots } from './checkBadSnapshots'
 import { checkDbTotals } from './checkDbTotals'
 import { checkMetadataType } from './checkMetadataType'
 import { deleteAdapterMetadata } from './deleteAdapterMetadata'
-import { detectEvents } from './detectEvents'
 import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
@@ -96,8 +95,6 @@ simulateTxCommand(program, chainProviders)
 performance(program)
 
 buildScoreboard(program, defiProvider)
-
-detectEvents(program, defiProvider)
 
 program
   .command('copy-adapter')
