@@ -10,9 +10,11 @@
         "dev": "nodemon index.js",
         "start": "node index.js"
     },
-    "devDependencies": {
+    "dependencies": {
         "@metamask-institutional/defi-adapters": "*",
-        "express": "^5.0.1",
+        "express": "^5.0.1"
+    },
+    "devDependencies": {
         "nodemon": "^3.1.7"
     }
 }
