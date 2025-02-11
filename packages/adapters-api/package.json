@@ -1,7 +1,7 @@
 {
-    "name": "dev-backend",
+    "name": "@metamask-institutional/adapters-api",
     "version": "1.0.0",
-    "description": "Defi adapters backend for dev-ui",
+    "description": "Defi adapters api",
     "author": "MMI Team",
     "license": "MIT",
     "private": true,

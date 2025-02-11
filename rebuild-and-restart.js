@@ -7,7 +7,7 @@ const libraryProcess = exec('npm run build', (error) => {
   }
 
   console.log('Starting backend dev server...')
-  const beProcess = exec('npm run dev -w packages/dev-backend')
+  const beProcess = exec('npm run dev -w packages/adapters-api')
   beProcess.stdout.on('data', (data) => {
     console.log(data)
   })

@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package*.json ./
 COPY packages/adapters-library/package*.json ./packages/adapters-library/
-COPY packages/dev-backend/package*.json ./packages/dev-backend/
+COPY packages/adapters-api/package*.json ./packages/adapters-api/
 COPY packages/workers/package*.json ./packages/workers/
 
 RUN npm ci
@@ -13,4 +13,4 @@ COPY . .
 
 RUN npm run build
 
-CMD ["node", "packages/dev-backend/index.js"]
+CMD ["node", "packages/adapters-api/index.js"]
