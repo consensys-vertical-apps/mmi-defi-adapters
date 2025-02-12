@@ -6,7 +6,7 @@ import { copyAdapter } from './adapterBuilder/copyAdapter'
 import { newAdapterCommand } from './adapterBuilder/newAdapterCommand'
 import { blockAverage } from './blockAverage'
 import { buildMetadataDb } from './buildMetadataDb'
-import { indexer } from './buildPositionsFilter'
+
 import { buildScoreboard } from './buildScoreboard'
 import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
@@ -14,10 +14,12 @@ import { checkBadSnapshots } from './checkBadSnapshots'
 import { checkDbTotals } from './checkDbTotals'
 import { checkMetadataType } from './checkMetadataType'
 import { deleteAdapterMetadata } from './deleteAdapterMetadata'
+import { indexerEth2Staking } from './eth2StakingIndex'
 import { featureCommands } from './featureCommands'
 import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
+import { indexer } from './positionIndexer'
 
 const program = new Command('mmi-adapters')
 
@@ -27,6 +29,8 @@ const solanaProvider = defiProvider.chainProvider.solanaProvider
 const adaptersController = defiProvider.adaptersController
 
 indexer(program, defiProvider)
+
+indexerEth2Staking(program, defiProvider)
 
 featureCommands(program, defiProvider)
 
