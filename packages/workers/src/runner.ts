@@ -26,7 +26,7 @@ const dbDirPath =
   process.env.DB_DIR_PATH ||
   path.resolve(import.meta.dirname, '../../../databases')
 
-const db = createDatabase(dbDirPath, ChainName[chainId], {
+const db = createDatabase(dbDirPath, `${ChainName[chainId]}_index_history`, {
   fileMustExist: false,
   readonly: false,
   timeout: 5000,

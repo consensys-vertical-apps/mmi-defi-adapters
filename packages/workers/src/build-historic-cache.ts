@@ -3,6 +3,7 @@ import type Database from 'better-sqlite3'
 import { JsonRpcProvider, getAddress } from 'ethers'
 import {
   completeJobs,
+  createHistoryTables,
   failJobs,
   fetchNextPoolsToProcess as fetchAllUnfinishedPools,
   insertLogs,
@@ -47,6 +48,7 @@ export async function buildHistoricCache(
   chainId: EvmChain,
   db: Database.Database,
 ) {
+  createHistoryTables(db)
   while (true) {
     const unfinishedPools = fetchAllUnfinishedPools(db)
 
