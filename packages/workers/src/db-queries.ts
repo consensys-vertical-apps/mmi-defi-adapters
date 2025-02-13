@@ -6,7 +6,7 @@ import type { AdapterSettings } from '@metamask-institutional/defi-adapters/dist
 import Database, { type Database as DatabaseType } from 'better-sqlite3'
 import { logger } from './logger.js'
 
-const historicCacheDbTables = {
+const historyCacheDbTables = {
   history_logs: `
         CREATE TABLE IF NOT EXISTS history_logs (
           address CHAR(40) NOT NULL,
@@ -25,9 +25,7 @@ const historicCacheDbTables = {
 }
 
 export function createHistoryTables(db: DatabaseType) {
-  Object.values(historicCacheDbTables).forEach((table) =>
-    createTable(db, table),
-  )
+  Object.values(historyCacheDbTables).forEach((table) => createTable(db, table))
 }
 
 function createDb(dbPath: string, dbOptions: Database.Options) {
