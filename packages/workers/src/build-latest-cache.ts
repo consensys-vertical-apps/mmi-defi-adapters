@@ -9,6 +9,7 @@ import { getAddress, ethers } from 'ethers'
 import { BlockRunner } from './block-indexer.js'
 import type { Database as DatabaseType } from 'better-sqlite3'
 import { createTable } from './db-queries.js'
+import { logger } from './logger.js'
 
 export async function buildLatestCache(
   chainId: EvmChain,
@@ -17,31 +18,31 @@ export async function buildLatestCache(
   startBlockOverride?: number,
 ) {
   const chainName = ChainIdToChainNameMap[chainId]
-  console.log(`Starting indexer for chain: ${chainName}`)
+  logger.info(`Starting indexer for chain: ${chainName}`)
 
   const provider = defiProvider.chainProvider.providers[chainId]
 
   const tables: string[] = [
     `
-        CREATE TABLE IF NOT EXISTS latest_block_processed (
-          id INTEGER PRIMARY KEY DEFAULT 1,
-          latest_block_processed INTEGER NOT NULL
-        );
-      `,
+                CREATE TABLE IF NOT EXISTS latest_block_processed (
+                    id INTEGER PRIMARY KEY DEFAULT 1,
+                    latest_block_processed INTEGER NOT NULL
+                );
+            `,
     `
-      CREATE TABLE IF NOT EXISTS logs (
-        contract_address CHAR(40) NOT NULL,
-        address CHAR(40) NOT NULL,
-        UNIQUE(contract_address, address)
-      );
-    `,
+            CREATE TABLE IF NOT EXISTS logs (
+                contract_address CHAR(40) NOT NULL,
+                address CHAR(40) NOT NULL,
+                UNIQUE(contract_address, address)
+            );
+        `,
     `
-      CREATE TABLE IF NOT EXISTS contract_start_block (
-        contract_address CHAR(40) NOT NULL,
-        first_block_number INTEGER NOT NULL,
-        PRIMARY KEY (contract_address)
-      );
-    `,
+            CREATE TABLE IF NOT EXISTS contract_start_block (
+                contract_address CHAR(40) NOT NULL,
+                first_block_number INTEGER NOT NULL,
+                PRIMARY KEY (contract_address)
+            );
+        `,
   ]
 
   tables.forEach((table) => createTable(db, table))
@@ -50,25 +51,6 @@ export async function buildLatestCache(
     defiProvider,
     chainId,
     chainName,
-  })
-
-  const indexer = new BlockRunner({
-    provider,
-    chainId,
-    getStartBlockNumberFn: () => getStartBlockNumberFn(db, provider),
-    processBlockFn: async (blockNumber) =>
-      processBlockFn({
-        provider,
-        blockNumber,
-        watchContractListLowercase: new Set(
-          Array.from(watchContractListCheckSum).map((address) =>
-            address.toLowerCase(),
-          ),
-        ),
-        db,
-      }),
-    onError: async (latestSafeProcessedBlock: number) =>
-      onError(latestSafeProcessedBlock, db),
   })
 
   // if block override is set, replace all start blocks with the override value
@@ -97,6 +79,25 @@ export async function buildLatestCache(
     )
   }
 
+  const indexer = new BlockRunner({
+    provider,
+    chainId,
+    getStartBlockNumberFn: () => getStartBlockNumberFn(db, provider),
+    processBlockFn: async (blockNumber) =>
+      processBlockFn({
+        provider,
+        blockNumber,
+        watchContractListLowercase: new Set(
+          Array.from(watchContractListCheckSum).map((address) =>
+            address.toLowerCase(),
+          ),
+        ),
+        db,
+      }),
+    onError: async (latestSafeProcessedBlock: number) =>
+      onError(latestSafeProcessedBlock, db),
+  })
+
   await indexer.start()
 }
 
@@ -118,7 +119,7 @@ async function getDeFiContractAddressesCheckSum({
     }
   }
 
-  console.log(
+  logger.info(
     `Watching ${watchContractList.size} DeFi contracts on ${chainName}`,
   )
   return watchContractList

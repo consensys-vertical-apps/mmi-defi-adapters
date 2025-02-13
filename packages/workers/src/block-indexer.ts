@@ -4,6 +4,7 @@ import type { CustomJsonRpcProvider } from '@metamask-institutional/defi-adapter
 
 import { AVERAGE_BLOCKS_PER_10_MINUTES } from '@metamask-institutional/defi-adapters/dist/core/constants/AVERAGE_BLOCKS_PER_10_MINS.js'
 import { AVERAGE_BLOCKS_PER_DAY } from '@metamask-institutional/defi-adapters/dist/core/constants/AVERAGE_BLOCKS_PER_DAY.js'
+import { logger } from './logger.js'
 
 export class BlockRunner {
   private _provider: CustomJsonRpcProvider
@@ -51,16 +52,13 @@ export class BlockRunner {
     while (currentBlock >= this._latestBlockNumber) {
       try {
         const blockNumber = await this._provider.getBlockNumber()
-        console.log(`[${this._chainName}] Latest block number: ${blockNumber}`)
+        logger.info(`[${this._chainName}] Latest block number: ${blockNumber}`)
         if (blockNumber > this._latestBlockNumber) {
           this._latestBlockNumber = blockNumber
           return
         }
       } catch (error) {
-        console.error(
-          `[${this._chainName}] Error fetching block number:`,
-          error,
-        )
+        logger.error(`[${this._chainName}] Error fetching block number:`, error)
       }
       await new Promise((resolve) => setTimeout(resolve, backoff))
       backoff = Math.min(backoff * 2, 60000) // Exponential backoff up to max 1 minute
@@ -68,7 +66,7 @@ export class BlockRunner {
   }
 
   async start() {
-    console.log(`[${this._chainName}] Starting block indexer...`)
+    logger.info(`[${this._chainName}] Starting block indexer...`)
     let processingBlockNumber = await this._getStartBlockNumber()
     this._latestBlockNumber = await this._provider.getBlockNumber()
     let retryCount = 0
@@ -99,12 +97,12 @@ export class BlockRunner {
             blockPromises.push(
               this._processBlockFn(blockNum)
                 .then(() => {
-                  console.log(
+                  logger.info(
                     `[${this._chainName}] Processed block ${blockNum}`,
                   )
                 })
                 .catch((error) => {
-                  console.error(
+                  logger.error(
                     `[${this._chainName}] Error processing block ${blockNum}:`,
                     error instanceof Error ? error.stack : String(error),
                   )
@@ -116,14 +114,14 @@ export class BlockRunner {
           processingBlockNumber = batchEndBlock
         } else {
           await this._processBlockFn(processingBlockNumber).catch((error) => {
-            console.error(
+            logger.error(
               `[${this._chainName}] Error processing block ${processingBlockNumber}:`,
               error instanceof Error ? error.stack : String(error),
             )
             throw error
           })
 
-          console.log(
+          logger.info(
             `[${this._chainName}] Processed block ${processingBlockNumber}`,
           )
           processingBlockNumber++
@@ -131,12 +129,12 @@ export class BlockRunner {
 
         await logUpdate(this._chainId, this._provider)
       } catch (error) {
-        console.error(
+        logger.error(
           `[${this._chainName}] Error processing block ${processingBlockNumber}:`,
           error instanceof Error ? error.stack : String(error),
         )
 
-        console.log(
+        logger.info(
           `curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["0x${processingBlockNumber.toString(
             16,
           )}", true],"id":1}' -H "Content-Type: application/json" ${
@@ -151,7 +149,7 @@ export class BlockRunner {
 
           await this._onError(earliestSafeBlock)
 
-          console.log(
+          logger.info(
             `[${this._chainName}] Max retries exceeded for block ${processingBlockNumber}`,
           )
         }
@@ -166,7 +164,7 @@ export class BlockRunner {
         const blocksPerHour = AVERAGE_BLOCKS_PER_DAY[chain] / 24
         const lagInHours = (blocksLagging / blocksPerHour).toFixed(1)
 
-        console.log(
+        logger.info(
           `[${ChainIdToChainNameMap[chain]}] Indexer is ${lagInHours} hours behind, lagging ${blocksLagging} blocks.`,
         )
       }
