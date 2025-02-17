@@ -120,7 +120,7 @@ async function processBlockFn({
   db: DatabaseType
 }): Promise<void> {
   const receipts = await provider.send('eth_getBlockReceipts', [
-    ethers.toBeHex(blockNumber),
+    `0x${ethers.toBeHex(blockNumber).slice(2).replace(/^0+/, '')}`, // some chains need to remove leading zeros like ftm
   ])
 
   const queries: string[] = []
