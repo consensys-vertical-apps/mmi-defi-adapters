@@ -4,4 +4,5 @@ export {
   buildCachePoolFilter,
   createDatabase,
   insertContractEntries,
+  createHistoryTables,
 } from './db-queries.js'

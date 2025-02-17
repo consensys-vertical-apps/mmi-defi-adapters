@@ -48,7 +48,6 @@ export async function buildHistoricCache(
   chainId: EvmChain,
   db: Database.Database,
 ) {
-  createHistoryTables(db)
   while (true) {
     const unfinishedPools = fetchAllUnfinishedPools(db)
 

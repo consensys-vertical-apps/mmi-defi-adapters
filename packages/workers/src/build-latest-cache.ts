@@ -1,12 +1,13 @@
-import type {
-  EvmChain,
-  DefiProvider,
-  Chain,
+import {
+  type EvmChain,
+  type DefiProvider,
+  type Chain,
+  ChainName,
 } from '@metamask-institutional/defi-adapters'
-import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
+
 import type { CustomJsonRpcProvider } from '@metamask-institutional/defi-adapters/dist/core/provider/CustomJsonRpcProvider.js'
 import { getAddress, ethers } from 'ethers'
-import { BlockRunner } from './block-indexer.js'
+import { BlockRunner } from './block-runner.js'
 import type { Database as DatabaseType } from 'better-sqlite3'
 import { createTable } from './db-queries.js'
 import { logger } from './logger.js'
@@ -17,11 +18,45 @@ export async function buildLatestCache(
   db: DatabaseType,
   startBlockOverride?: number,
 ) {
-  const chainName = ChainIdToChainNameMap[chainId]
+  const chainName = ChainName[chainId]
   logger.info(`Starting indexer for chain: ${chainName}`)
 
   const provider = defiProvider.chainProvider.providers[chainId]
 
+  const allWatchListKeys = selectAllWatchListKeys(db)
+
+  const userIndexMap = new Map(
+    allWatchListKeys.map(
+      ({ contract_address, topic_0, user_address_index }) => [
+        createWatchKey(contract_address, topic_0),
+        user_address_index,
+      ],
+    ),
+  )
+
+  const indexer = new BlockRunner({
+    provider,
+    chainId,
+    getStartBlockNumberFn: () => getStartBlockNumberFn(db, provider),
+    processBlockFn: async (blockNumber) =>
+      processBlockFn({
+        provider,
+        blockNumber,
+        userIndexMap,
+        db,
+      }),
+    onError: async (latestSafeProcessedBlock: number) =>
+      onError(latestSafeProcessedBlock, db),
+  })
+
+  await indexer.start(startBlockOverride)
+}
+
+function createWatchKey(contract_address: string, topic_0: string): string {
+  return `${contract_address.toLowerCase()}#${topic_0.toLowerCase()}`
+}
+
+export function createLatestTables(db: DatabaseType) {
   const tables: string[] = [
     `
                 CREATE TABLE IF NOT EXISTS latest_block_processed (
@@ -37,98 +72,27 @@ export async function buildLatestCache(
             );
         `,
     `
-            CREATE TABLE IF NOT EXISTS contract_start_block (
-                contract_address CHAR(40) NOT NULL,
-                first_block_number INTEGER NOT NULL,
-                PRIMARY KEY (contract_address)
-            );
-        `,
+        CREATE TABLE IF NOT EXISTS history_jobs (
+          contract_address VARCHAR(40) NOT NULL,
+          topic_0 TEXT NOT NULL,
+          user_address_index INTEGER NOT NULL CHECK (user_address_index IN (1, 2, 3)),
+          block_number INTEGER NOT NULL,
+          PRIMARY KEY (contract_address, topic_0, user_address_index)
+        );`,
   ]
 
   tables.forEach((table) => createTable(db, table))
-
-  const watchContractListCheckSum = await getDeFiContractAddressesCheckSum({
-    defiProvider,
-    chainId,
-    chainName,
-  })
-
-  // if block override is set, replace all start blocks with the override value
-  if (startBlockOverride) {
-    db.exec(
-      Array.from(watchContractListCheckSum)
-        .map(
-          (address) =>
-            `INSERT OR REPLACE INTO contract_start_block (contract_address, first_block_number) VALUES ('${address}', ${startBlockOverride});`,
-        )
-        .join('\n'),
-    )
-
-    db.prepare(
-      'INSERT OR REPLACE INTO latest_block_processed (id, latest_block_processed) VALUES (1, ?)',
-    ).run(startBlockOverride)
-  } else {
-    const lastProcessedBlockNumber = await getStartBlockNumberFn(db, provider)
-    db.exec(
-      Array.from(watchContractListCheckSum)
-        .map(
-          (address) =>
-            `INSERT OR IGNORE INTO contract_start_block (contract_address, first_block_number) VALUES ('${address}', ${lastProcessedBlockNumber});`,
-        )
-        .join('\n'),
-    )
-  }
-
-  const indexer = new BlockRunner({
-    provider,
-    chainId,
-    getStartBlockNumberFn: () => getStartBlockNumberFn(db, provider),
-    processBlockFn: async (blockNumber) =>
-      processBlockFn({
-        provider,
-        blockNumber,
-        watchContractListLowercase: new Set(
-          Array.from(watchContractListCheckSum).map((address) =>
-            address.toLowerCase(),
-          ),
-        ),
-        db,
-      }),
-    onError: async (latestSafeProcessedBlock: number) =>
-      onError(latestSafeProcessedBlock, db),
-  })
-
-  await indexer.start()
-}
-
-async function getDeFiContractAddressesCheckSum({
-  defiProvider,
-  chainId,
-  chainName,
-}: { defiProvider: DefiProvider; chainId: Chain; chainName: string }) {
-  const defiPoolAddresses = await defiProvider.getSupport({
-    filterChainIds: [chainId],
-  })
-
-  const watchContractList = new Set<string>()
-  for (const pools of Object.values(defiPoolAddresses || {})) {
-    for (const pool of pools) {
-      for (const address of pool.protocolTokenAddresses?.[chainId] || []) {
-        watchContractList.add(getAddress(address).slice(2))
-      }
-    }
-  }
-
-  logger.info(
-    `Watching ${watchContractList.size} DeFi contracts on ${chainName}`,
-  )
-  return watchContractList
 }
 
 async function getStartBlockNumberFn(
   db: DatabaseType,
   provider: CustomJsonRpcProvider,
+  startBlockOverride?: number,
 ): Promise<number> {
+  if (startBlockOverride) {
+    return startBlockOverride
+  }
+
   const lastPrcessedBlock = (
     db
       .prepare('SELECT latest_block_processed FROM latest_block_processed')
@@ -147,12 +111,12 @@ async function getStartBlockNumberFn(
 async function processBlockFn({
   provider,
   blockNumber,
-  watchContractListLowercase,
+  userIndexMap,
   db,
 }: {
   provider: CustomJsonRpcProvider
   blockNumber: number
-  watchContractListLowercase: Set<string>
+  userIndexMap: Map<string, number>
   db: DatabaseType
 }): Promise<void> {
   const receipts = await provider.send('eth_getBlockReceipts', [
@@ -165,36 +129,62 @@ async function processBlockFn({
     for (const log of receipt.logs || []) {
       // retuned lowercase from provider
       const contractAddressLowercase = log.address
-      if (watchContractListLowercase.has(contractAddressLowercase.slice(2))) {
-        log.topics
-          .filter((topic: string) =>
-            topic.startsWith('0x000000000000000000000000'),
-          )
-          .forEach((topic: string) =>
-            queries.push(
-              `INSERT OR IGNORE INTO logs (contract_address, address) VALUES ('${getAddress(
-                contractAddressLowercase,
-              ).slice(2)}', '${getAddress(topic.slice(-40).toLowerCase()).slice(
-                2,
-              )}');`,
-            ),
-          )
+      const topic0 = log.topics[0]
+
+      if (!topic0) {
+        continue
+      }
+
+      const key = createWatchKey(contractAddressLowercase, topic0)
+
+      if (userIndexMap.has(key)) {
+        const userIndex = userIndexMap.get(key)!
+
+        const paddedUserAddress = log.topics[userIndex]
+
+        const userAddress = getAddress(
+          paddedUserAddress.slice(-40).toLowerCase(),
+        ).slice(2)
+
+        // Skip the zero address
+        if (userAddress === '0000000000000000000000000000000000000000') {
+          continue
+        }
+
+        queries.push(
+          `INSERT OR IGNORE INTO logs (contract_address, address) VALUES ('${getAddress(
+            contractAddressLowercase,
+          ).slice(2)}', '${userAddress}');`,
+        )
       }
     }
   }
 
-  db.transaction((inserts) => {
-    inserts.forEach((insert: string) => db.prepare(insert).run())
+  db.transaction(() => {
+    queries.forEach((insert: string) => db.prepare(insert).run())
     db.prepare(
       'INSERT OR REPLACE INTO latest_block_processed (id, latest_block_processed) VALUES (1, ?)',
     ).run(blockNumber)
-  })(queries)
+  })()
 }
 
 async function onError(latestSafeProcessedBlock: number, db: DatabaseType) {
   db.prepare(
     'INSERT OR REPLACE INTO latest_block_processed (id, latest_block_processed) VALUES (1, ?)',
   ).run(latestSafeProcessedBlock)
+}
 
-  throw new Error(`Error processing block: ${latestSafeProcessedBlock}`)
+export function selectAllWatchListKeys(db: DatabaseType) {
+  const unfinishedPools = db
+    .prepare(`
+        SELECT 	'0x' || contract_address as contract_address, topic_0, user_address_index
+        FROM 	history_jobs
+        `)
+    .all() as {
+    contract_address: string
+    topic_0: string
+    user_address_index: number
+  }[]
+
+  return unfinishedPools
 }

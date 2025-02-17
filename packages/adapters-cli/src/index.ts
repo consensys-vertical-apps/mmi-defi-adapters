@@ -11,10 +11,12 @@ import {
   createDatabase,
   insertContractEntries,
   buildLatestCache,
+  createHistoryTables,
 } from '@metamask-institutional/workers'
 import { Command } from 'commander'
 import { JsonRpcProvider, Network } from 'ethers'
 import { chainFilter } from './command-filters.js'
+import { createLatestTables } from '@metamask-institutional/workers/dist/build-latest-cache.js'
 
 const program = new Command('mmi-adapters')
 const defiProvider = new DefiProvider()
@@ -57,6 +59,8 @@ program
       chainId,
     })
 
+    createHistoryTables(db)
+
     // TODO: Have parameters to determine what pools to insert
     await insertContractEntries(defiProvider, chainId, db)
 
@@ -97,6 +101,12 @@ program
               timeout: 5000,
             },
           )
+
+          createLatestTables(db)
+
+          // TODO: Have parameters to determine what pools to insert
+          await insertContractEntries(defiProvider, chainId, db)
+
           buildLatestCache(chainId, defiProvider, db, startBlockOverride)
         }),
     )
