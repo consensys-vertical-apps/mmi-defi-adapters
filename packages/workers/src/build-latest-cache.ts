@@ -1,14 +1,13 @@
 import {
-  type EvmChain,
-  type DefiProvider,
-  type Chain,
   ChainName,
+  type DefiProvider,
+  type EvmChain,
 } from '@metamask-institutional/defi-adapters'
 
 import type { CustomJsonRpcProvider } from '@metamask-institutional/defi-adapters/dist/core/provider/CustomJsonRpcProvider.js'
-import { getAddress, ethers } from 'ethers'
-import { BlockRunner } from './block-runner.js'
 import type { Database as DatabaseType } from 'better-sqlite3'
+import { ethers, getAddress } from 'ethers'
+import { BlockRunner } from './block-runner.js'
 import { createTable } from './db-queries.js'
 import { logger } from './logger.js'
 

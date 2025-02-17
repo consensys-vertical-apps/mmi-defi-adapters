@@ -8,15 +8,15 @@ import {
 } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
 import {
   buildHistoricCache,
-  createDatabase,
-  insertContractEntries,
   buildLatestCache,
+  createDatabase,
   createHistoryTables,
+  insertContractEntries,
 } from '@metamask-institutional/workers'
+import { createLatestTables } from '@metamask-institutional/workers/dist/build-latest-cache.js'
 import { Command } from 'commander'
 import { JsonRpcProvider, Network } from 'ethers'
 import { chainFilter } from './command-filters.js'
-import { createLatestTables } from '@metamask-institutional/workers/dist/build-latest-cache.js'
 
 const program = new Command('mmi-adapters')
 const defiProvider = new DefiProvider()

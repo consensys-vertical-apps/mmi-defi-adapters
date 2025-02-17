@@ -1,4 +1,4 @@
-import { ChainName, type Chain } from '@metamask-institutional/defi-adapters'
+import { type Chain, ChainName } from '@metamask-institutional/defi-adapters'
 
 import type { CustomJsonRpcProvider } from '@metamask-institutional/defi-adapters/dist/core/provider/CustomJsonRpcProvider.js'
 

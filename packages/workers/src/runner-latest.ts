@@ -7,7 +7,7 @@ import {
 
 import { createDatabase, insertContractEntries } from './db-queries.js'
 
-import { createLatestTables, buildLatestCache } from './build-latest-cache.js'
+import { buildLatestCache, createLatestTables } from './build-latest-cache.js'
 
 const dbDirPath =
   process.env.DB_DIR_PATH ||
