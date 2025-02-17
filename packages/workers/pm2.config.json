@@ -44,6 +44,11 @@
       "name": "Linea",
       "script": "node",
       "args": ["packages/workers/dist/runner.js", "59144"]
+    },
+    {
+      "name": "Latest-Job",
+      "script": "node",
+      "args": ["packages/workers/dist/runner-latest.js"]
     }
   ]
 }

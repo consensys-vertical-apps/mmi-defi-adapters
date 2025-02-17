@@ -6,22 +6,26 @@ import type { AdapterSettings } from '@metamask-institutional/defi-adapters/dist
 import Database, { type Database as DatabaseType } from 'better-sqlite3'
 import { logger } from './logger.js'
 
-const tables = {
+const historyCacheDbTables = {
   history_logs: `
-      CREATE TABLE IF NOT EXISTS history_logs (
-        address CHAR(40) NOT NULL,
-        contract_address CHAR(40) NOT NULL,
-        PRIMARY KEY (address, contract_address)
-      );`,
+        CREATE TABLE IF NOT EXISTS history_logs (
+          address CHAR(40) NOT NULL,
+          contract_address CHAR(40) NOT NULL,
+          PRIMARY KEY (address, contract_address)
+        );`,
   history_jobs: `
-      CREATE TABLE IF NOT EXISTS history_jobs (
-        contract_address VARCHAR(40) NOT NULL,
-        topic_0 TEXT NOT NULL,
-        user_address_index INTEGER NOT NULL CHECK (user_address_index IN (1, 2, 3)),
-        block_number INTEGER NOT NULL,
-        status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'completed', 'failed')),
-        PRIMARY KEY (contract_address, topic_0, user_address_index)
-      );`,
+        CREATE TABLE IF NOT EXISTS history_jobs (
+          contract_address VARCHAR(40) NOT NULL,
+          topic_0 TEXT NOT NULL,
+          user_address_index INTEGER NOT NULL CHECK (user_address_index IN (1, 2, 3)),
+          block_number INTEGER NOT NULL,
+          status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'completed', 'failed')),
+          PRIMARY KEY (contract_address, topic_0, user_address_index)
+        );`,
+}
+
+export function createHistoryTables(db: DatabaseType) {
+  Object.values(historyCacheDbTables).forEach((table) => createTable(db, table))
 }
 
 function createDb(dbPath: string, dbOptions: Database.Options) {
@@ -33,7 +37,7 @@ function createDb(dbPath: string, dbOptions: Database.Options) {
   return db
 }
 
-function createTable(db: DatabaseType, dbTable: string) {
+export function createTable(db: DatabaseType, dbTable: string) {
   const tableExists = db
     .prepare(`SELECT name FROM sqlite_master WHERE type='table' AND name=?`)
     .get(dbTable)
@@ -45,15 +49,11 @@ function createTable(db: DatabaseType, dbTable: string) {
 
 export function createDatabase(
   dbDirPath: string,
-  chainName: string,
+  dbName: string, // without .db
   dbOptions: Database.Options,
 ): DatabaseType {
-  const dbPath = path.resolve(dbDirPath, `${chainName}_index_history.db`)
+  const dbPath = path.resolve(dbDirPath, `${dbName}.db`)
   const db = createDb(dbPath, dbOptions)
-
-  for (const table of Object.values(tables)) {
-    createTable(db, table)
-  }
 
   return db
 }
