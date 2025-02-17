@@ -2,6 +2,7 @@ import { type JsonRpcProvider, type Log, isError } from 'ethers'
 import { logger } from './logger.js'
 
 const TIMEOUT_IN_MS = 8_000
+const TIMEOUT_ERROR_MESSAGE = 'Request timed out'
 
 export async function* fetchEvents({
   provider,
@@ -39,11 +40,11 @@ export async function* fetchEvents({
       yield logs
     } catch (error) {
       if (
-        (error instanceof Error && error.message === 'Request timed out') ||
-        isError(error, 'SERVER_ERROR') ||
+        (error instanceof Error && error.message === TIMEOUT_ERROR_MESSAGE) || // Manual timeout
+        isError(error, 'SERVER_ERROR') || // Any server error
         (isError(error, 'UNKNOWN_ERROR') &&
-          ((error.message.includes('"code": -32005') && // 10K logs limit
-            toBlock - fromBlock > 1) ||
+          ((error.message.includes('"code": -32005') &&
+            toBlock - fromBlock > 0) || // 10K logs limit if fromBlock != toBlock
             error.message.includes('code": -32602'))) // Block range limit
       ) {
         const midBlock = Math.floor((fromBlock + toBlock) / 2)
@@ -66,7 +67,7 @@ export async function* fetchEvents({
 
 function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
   const timeout = new Promise<never>((_, reject) =>
-    setTimeout(() => reject(new Error('Request timed out')), ms),
+    setTimeout(() => reject(new Error(TIMEOUT_ERROR_MESSAGE)), ms),
   )
   return Promise.race([promise, timeout])
 }
