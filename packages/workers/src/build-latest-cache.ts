@@ -120,7 +120,7 @@ async function processBlockFn({
   db: DatabaseType
 }): Promise<void> {
   const receipts = await provider.send('eth_getBlockReceipts', [
-    `0x${ethers.toBeHex(blockNumber).slice(2).replace(/^0+/, '')}`,
+    `0x${ethers.toBeHex(blockNumber)}`,
   ])
 
   const queries: string[] = []
