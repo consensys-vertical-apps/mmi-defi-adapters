@@ -6,7 +6,11 @@ import {
 } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, Network } from 'ethers'
 import { buildHistoricCache } from './build-historic-cache.js'
-import { createDatabase, insertContractEntries } from './db-queries.js'
+import {
+  createDatabase,
+  createHistoryTables,
+  insertContractEntries,
+} from './db-queries.js'
 import { logger } from './logger.js'
 const chainIdInput = process.argv[2]
 
@@ -26,7 +30,7 @@ const dbDirPath =
   process.env.DB_DIR_PATH ||
   path.resolve(import.meta.dirname, '../../../databases')
 
-const db = createDatabase(dbDirPath, ChainName[chainId], {
+const db = createDatabase(dbDirPath, `${ChainName[chainId]}_index_history`, {
   fileMustExist: false,
   readonly: false,
   timeout: 5000,
@@ -40,6 +44,8 @@ const providerUrl =
 const provider = new JsonRpcProvider(providerUrl, chainId, {
   staticNetwork: Network.from(chainId),
 })
+
+createHistoryTables(db)
 
 // TODO:
 // This should NOT be called here

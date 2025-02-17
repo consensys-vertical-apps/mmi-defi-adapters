@@ -3,6 +3,7 @@ import type Database from 'better-sqlite3'
 import { JsonRpcProvider, getAddress } from 'ethers'
 import {
   completeJobs,
+  createHistoryTables,
   failJobs,
   fetchNextPoolsToProcess as fetchAllUnfinishedPools,
   insertLogs,
