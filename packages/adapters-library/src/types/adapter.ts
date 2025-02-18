@@ -3,8 +3,8 @@ import type { Protocol } from '../adapters/protocols'
 import type { AdaptersController } from '../core/adaptersController'
 import { ApyInfo } from '../core/apy-calculators/ApyCalculator'
 import type { Chain } from '../core/constants/chains'
+import { Helpers, SolanaHelpers } from '../core/helpers'
 import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { Helpers, SolanaHelpers } from '../scripts/helpers'
 import type { Erc20Metadata } from './erc20Metadata'
 
 export const TokenType = {

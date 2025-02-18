@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "nodemon",
     "build": "npm run build -w packages/adapters-library -w packages/workers -w packages/adapters-cli",
-    "build:watch": "npm run build:watch -w packages/adapters-library -w packages/workers -w packages/adapters-cli",
+    "build:watch": "npm run build:watch -w packages/adapters-library",
     "adapters-cli": "node --env-file=.env packages/adapters-library/dist/scripts/index.js",
     "cli": "node --env-file=.env packages/adapters-cli/dist/index.js",
     "build-metadata-db": "npm run adapters-cli build-metadata-db --",
@@ -45,7 +45,7 @@
     "test:integration": "npm run test:integration -w packages/adapters-library",
     "test:cov": "npm run test:cov -w packages/adapters-library",
     "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; patch-package",
-    "drop:db": "bash -c 'read -p \"Are you sure you know what you are doing? This will delete all .db files! (y/n): \" confirm && [ \"$confirm\" = \"y\" ] && rm *.db && echo \"All .db files have been deleted successfully.\" || echo \"Aborted. No files were deleted.\"'"
+    "drop:db": "bash -c 'read -p \"Are you sure you know what you are doing? This will delete all .db files! (y/n): \" confirm && [ \"$confirm\" = \"y\" ] && rm ./databases/*.db && echo \"All .db files have been deleted successfully.\" || echo \"Aborted. No files were deleted.\"'"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.7.3",

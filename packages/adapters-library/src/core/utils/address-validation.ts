@@ -1,5 +1,5 @@
 import { getAddress, isAddress } from 'ethers'
-import { Json } from '../types/json'
+import { Json } from '../../types/json'
 
 export function getInvalidAddresses(data: Json): string[] {
   if (typeof data === 'string') {

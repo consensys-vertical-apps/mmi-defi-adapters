@@ -5,7 +5,7 @@ import { parse, print, types, visit } from 'recast'
 import {
   getAggregatedValues,
   getAggregatedValuesMovements,
-} from '../adapters/aggrigateValues'
+} from '../scripts/utils/aggregateValues'
 import { Protocol } from '../adapters/protocols'
 import type { GetTransactionParams } from '../adapters/supportedProtocols'
 import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
@@ -18,8 +18,11 @@ import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import { DefiProvider } from '../defiProvider'
 import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 import type { TestCase } from '../types/testCase'
-import { multiProtocolFilter } from './commandFilters'
-import { RpcInterceptedResponses, startRpcSnapshot } from './rpcInterceptor'
+import { multiProtocolFilter } from '../core/utils/input-filters'
+import {
+  RpcInterceptedResponses,
+  startRpcSnapshot,
+} from '../tests/rpcInterceptor'
 import n = types.namedTypes
 import b = types.builders
 import { getPreviousLatency } from '../core/utils/readFile'

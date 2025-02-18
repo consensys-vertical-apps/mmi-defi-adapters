@@ -6,7 +6,7 @@ import { parse, print, types, visit } from 'recast'
 import { Chain, EvmChain } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { writeAndLintFile } from '../core/utils/writeAndLintFile'
-import { multiChainFilter } from './commandFilters'
+import { multiChainFilter } from '../core/utils/input-filters'
 import n = types.namedTypes
 
 export function blockAverage(

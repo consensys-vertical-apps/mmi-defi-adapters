@@ -6,7 +6,7 @@ import { kebabCase } from '../core/utils/caseConversion'
 import { filterMapSync } from '../core/utils/filters'
 import { DefiProvider } from '../defiProvider'
 import { TestCase } from '../types/testCase'
-import { multiProtocolFilter } from './commandFilters'
+import { multiProtocolFilter } from '../core/utils/input-filters'
 
 type BadSnapshotDetails = {
   protocolId: string

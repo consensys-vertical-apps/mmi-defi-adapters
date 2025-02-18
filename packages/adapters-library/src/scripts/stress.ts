@@ -9,7 +9,10 @@ import {
   DefiPositionResponse,
   DefiProfitsResponse,
 } from '../types/response'
-import { multiChainFilter, multiProtocolFilter } from './commandFilters'
+import {
+  multiChainFilter,
+  multiProtocolFilter,
+} from '../core/utils/input-filters'
 
 export function stressCommand(program: Command, defiProvider: DefiProvider) {
   program

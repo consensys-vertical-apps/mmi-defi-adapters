@@ -7,12 +7,9 @@ import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
-import { getInvalidAddresses } from '../scripts/addressValidation'
-import { protocolFilter } from '../scripts/commandFilters'
-import {
-  RpcInterceptedResponses,
-  startRpcMock,
-} from '../scripts/rpcInterceptor'
+import { getInvalidAddresses } from '../core/utils/address-validation'
+import { protocolFilter } from '../core/utils/input-filters'
+import { RpcInterceptedResponses, startRpcMock } from '../tests/rpcInterceptor'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2ATokenTestCases } from './aave-v2/products/a-token/tests/testCases'

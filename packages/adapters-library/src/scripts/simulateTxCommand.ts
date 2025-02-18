@@ -1,7 +1,7 @@
 import { Command } from 'commander'
 import { Chain, EvmChain } from '../core/constants/chains'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { chainFilter, protocolFilter } from './commandFilters'
+import { chainFilter, protocolFilter } from '../core/utils/input-filters'
 import { simulateTx } from './simulator/simulateTx'
 
 export function simulateTxCommand(

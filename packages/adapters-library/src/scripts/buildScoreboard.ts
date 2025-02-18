@@ -7,8 +7,11 @@ import { filterMapSync } from '../core/utils/filters'
 import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import { DefiProvider } from '../defiProvider'
 import type { TestCase } from '../types/testCase'
-import { multiProtocolFilter } from './commandFilters'
-import { RpcInterceptedResponses, startRpcSnapshot } from './rpcInterceptor'
+import { multiProtocolFilter } from '../core/utils/input-filters'
+import {
+  RpcInterceptedResponses,
+  startRpcSnapshot,
+} from '../tests/rpcInterceptor'
 
 type ScoreboardEntry = {
   key: string | undefined

@@ -23,8 +23,10 @@ import {
   ProtocolToken,
 } from '../types/IProtocolAdapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
-import { getInvalidAddresses } from './addressValidation'
-import { multiChainFilter, multiProtocolFilter } from './commandFilters'
+import {
+  multiChainFilter,
+  multiProtocolFilter,
+} from '../core/utils/input-filters'
 
 export function deleteAdapterMetadata(
   program: Command,
