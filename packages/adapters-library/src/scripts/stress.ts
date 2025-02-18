@@ -3,13 +3,16 @@ import { ethers } from 'ethers'
 import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { TimePeriod } from '../core/constants/timePeriod'
+import {
+  multiChainFilter,
+  multiProtocolFilter,
+} from '../core/utils/input-filters'
 import { DefiProvider } from '../defiProvider'
 import {
   AdapterResponse,
   DefiPositionResponse,
   DefiProfitsResponse,
 } from '../types/response'
-import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
 export function stressCommand(program: Command, defiProvider: DefiProvider) {
   program

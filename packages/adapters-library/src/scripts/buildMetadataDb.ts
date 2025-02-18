@@ -15,7 +15,12 @@ import {
 } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
+import { getInvalidAddresses } from '../core/utils/address-validation'
 import { filterMapSync } from '../core/utils/filters'
+import {
+  multiChainFilter,
+  multiProtocolFilter,
+} from '../core/utils/input-filters'
 import { logger } from '../core/utils/logger'
 import {
   AdditionalMetadataWithReservedFields,
@@ -24,8 +29,6 @@ import {
   ProtocolToken,
 } from '../types/IProtocolAdapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
-import { getInvalidAddresses } from './addressValidation'
-import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
 export function buildMetadataDb(
   program: Command,

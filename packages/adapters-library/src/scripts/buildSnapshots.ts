@@ -2,10 +2,6 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { Command } from 'commander'
 import { parse, print, types, visit } from 'recast'
-import {
-  getAggregatedValues,
-  getAggregatedValuesMovements,
-} from '../adapters/aggrigateValues'
 import { Protocol } from '../adapters/protocols'
 import type { GetTransactionParams } from '../adapters/supportedProtocols'
 import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
@@ -14,12 +10,19 @@ import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { filterMapSync } from '../core/utils/filters'
+import { multiProtocolFilter } from '../core/utils/input-filters'
 import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import { DefiProvider } from '../defiProvider'
+import {
+  getAggregatedValues,
+  getAggregatedValuesMovements,
+} from '../scripts/utils/aggregateValues'
+import {
+  RpcInterceptedResponses,
+  startRpcSnapshot,
+} from '../tests/rpcInterceptor'
 import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 import type { TestCase } from '../types/testCase'
-import { multiProtocolFilter } from './commandFilters'
-import { RpcInterceptedResponses, startRpcSnapshot } from './rpcInterceptor'
 import n = types.namedTypes
 import b = types.builders
 import { getPreviousLatency } from '../core/utils/readFile'

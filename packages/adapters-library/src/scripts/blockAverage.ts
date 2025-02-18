@@ -5,8 +5,8 @@ import { ethers } from 'ethers'
 import { parse, print, types, visit } from 'recast'
 import { Chain, EvmChain } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
+import { multiChainFilter } from '../core/utils/input-filters'
 import { writeAndLintFile } from '../core/utils/writeAndLintFile'
-import { multiChainFilter } from './commandFilters'
 import n = types.namedTypes
 
 export function blockAverage(

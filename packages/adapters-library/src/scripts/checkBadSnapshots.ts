@@ -4,9 +4,9 @@ import { Command } from 'commander'
 import { ChainIdToChainNameMap } from '../core/constants/chains'
 import { kebabCase } from '../core/utils/caseConversion'
 import { filterMapSync } from '../core/utils/filters'
+import { multiProtocolFilter } from '../core/utils/input-filters'
 import { DefiProvider } from '../defiProvider'
 import { TestCase } from '../types/testCase'
-import { multiProtocolFilter } from './commandFilters'
 
 type BadSnapshotDetails = {
   protocolId: string

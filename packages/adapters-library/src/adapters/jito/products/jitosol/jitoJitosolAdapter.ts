@@ -6,9 +6,9 @@ import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { Helpers, SolanaHelpers } from '../../../../core/helpers'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { nativeToken } from '../../../../core/utils/nativeTokens'
-import { Helpers, SolanaHelpers } from '../../../../scripts/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,

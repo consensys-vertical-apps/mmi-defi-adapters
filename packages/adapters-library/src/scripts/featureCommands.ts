@@ -5,9 +5,6 @@ import { Chain, EvmChain } from '../core/constants/chains'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { filterMapSync } from '../core/utils/filters'
-import { DefiProvider } from '../defiProvider'
-import { AdapterResponse, GetEventsRequestInput } from '../types/response'
-import { extractRpcMetrics } from './buildScoreboard'
 import {
   chainFilter,
   multiChainFilter,
@@ -15,8 +12,11 @@ import {
   multiProtocolFilter,
   multiProtocolTokenAddressFilter,
   protocolFilter,
-} from './commandFilters'
-import { startRpcSnapshot } from './rpcInterceptor'
+} from '../core/utils/input-filters'
+import { DefiProvider } from '../defiProvider'
+import { startRpcSnapshot } from '../tests/rpcInterceptor'
+import { AdapterResponse, GetEventsRequestInput } from '../types/response'
+import { extractRpcMetrics } from './buildScoreboard'
 import { simulateTx } from './simulator/simulateTx'
 
 export function featureCommands(program: Command, defiProvider: DefiProvider) {

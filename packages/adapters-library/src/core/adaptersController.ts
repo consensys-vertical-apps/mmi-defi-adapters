@@ -12,7 +12,7 @@ import {
   SolanaChainAdapters,
   WriteActionInputs,
 } from '../adapters/supportedProtocols'
-import { Helpers, SolanaHelpers } from '../scripts/helpers'
+import { Helpers, SolanaHelpers } from '../core/helpers'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import {
   PositionType,
