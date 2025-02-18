@@ -1,11 +1,11 @@
-import { Protocol } from '../../adapters/protocols.js'
-import { Chain, ChainIdToChainNameMap } from '../constants/chains.js'
+import { Protocol } from '../../adapters/protocols'
+import { Chain, ChainIdToChainNameMap } from '../constants/chains'
 import {
   chainFilter,
   multiChainFilter,
   multiProtocolFilter,
   protocolFilter,
-} from './parameter-filters.js'
+} from './parameter-filters'
 
 describe('chainFilter', () => {
   it.each(Object.values(Chain).map((chainId) => [chainId]))(
