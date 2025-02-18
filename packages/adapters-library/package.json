@@ -34,8 +34,7 @@
     "test:price": "jest src/core/utils/propagatePrice.test.ts",
     "test:tsc": "tsc --noEmit -p tsconfig.json",
     "test:integration": "DEFI_ADAPTERS_TEST_FILTER_PROTOCOL=$npm_config_protocolid DEFI_ADAPTERS_TEST_FILTER_PRODUCT=$npm_config_productid jest --coverage --coverageDirectory='coverage/e2e/' src/adapters/integration.test.ts",
-    "test:cov": "jest src --ci --coverage  --coverageDirectory='coverage/unit/' --testPathIgnorePatterns='src/adapters/integration.test.ts' --testPathIgnorePatterns='src/tests/detect-errors.test.ts'",
-    "build-docs": "typedoc --plugin typedoc-plugin-markdown --plugin typedoc-plugin-mdn-links --theme markdown --hideBreadcrumbs false --hideInPageTOC false --readme none --gitRemote origin --gitRevision main --out ./docs --sort source-order --entryPoints src/types/ --entryPointStrategy expand --excludePrivate false"
+    "test:cov": "jest src --ci --coverage  --coverageDirectory='coverage/unit/' --testPathIgnorePatterns='src/adapters/integration.test.ts' --testPathIgnorePatterns='src/tests/detect-errors.test.ts'"
   },
   "devDependencies": {
     "@typechain/ethers-v6": "^0.5.0",
@@ -56,11 +55,7 @@
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "tsc-hooks": "^1.1.2",
-    "typechain": "^8.3.1",
-    "typedoc": "^0.25.1",
-    "typedoc-gitlab-wiki-theme": "^1.1.1",
-    "typedoc-plugin-markdown": "^3.16.0",
-    "typedoc-plugin-mdn-links": "^3.1.0"
+    "typechain": "^8.3.1"
   },
   "dependencies": {
     "@metaplex-foundation/js": "^0.20.1",
