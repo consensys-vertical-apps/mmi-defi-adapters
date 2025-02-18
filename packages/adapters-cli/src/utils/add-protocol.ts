@@ -21,7 +21,7 @@ export async function addProtocol({
   )
   const contents = await fs.readFile(protocolsFile, 'utf-8')
   const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
+    parser: await import('recast/parsers/typescript.js'),
   })
 
   visit(ast, {

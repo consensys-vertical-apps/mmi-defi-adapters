@@ -29,7 +29,7 @@ export async function exportAdapter({
   )
   const contents = await fs.readFile(adaptersFile, 'utf-8')
   const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
+    parser: await import('recast/parsers/typescript.js'),
   })
 
   visit(ast, {

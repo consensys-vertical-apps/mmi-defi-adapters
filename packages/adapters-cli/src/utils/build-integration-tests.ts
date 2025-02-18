@@ -33,7 +33,7 @@ export async function buildIntegrationTests({
   )
   const contents = await fs.readFile(testsFile, 'utf-8')
   const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
+    parser: await import('recast/parsers/typescript.js'),
   })
 
   visit(ast, {

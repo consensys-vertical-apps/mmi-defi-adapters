@@ -97,7 +97,7 @@ async function updateAverages(
     './packages/adapters-library/src/core/constants/AVERAGE_BLOCKS_PER_DAY.ts'
   const contents = await fs.readFile(averageBlocksFile, 'utf-8')
   const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
+    parser: await import('recast/parsers/typescript.js'),
   })
 
   visit(ast, {

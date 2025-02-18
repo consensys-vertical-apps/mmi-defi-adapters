@@ -139,7 +139,6 @@ async function addImportsAndSchemas(
   )
   const contents = fs.readFileSync(adaptersFile, 'utf-8')
   const ast = parse(contents, {
-    //@ts-ignore
     parser: await import('recast/parsers/typescript.js'),
   })
 

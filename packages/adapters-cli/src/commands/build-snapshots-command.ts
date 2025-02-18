@@ -353,7 +353,7 @@ async function updateBlockNumber(
   )
   const contents = await fs.readFile(testCasesFile, 'utf-8')
   const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
+    parser: await import('recast/parsers/typescript.js'),
   })
 
   visit(ast, {
@@ -435,7 +435,7 @@ async function updateFilters(
   )
   const contents = await fs.readFile(testCasesFile, 'utf-8')
   const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
+    parser: await import('recast/parsers/typescript.js'),
   })
 
   visit(ast, {
