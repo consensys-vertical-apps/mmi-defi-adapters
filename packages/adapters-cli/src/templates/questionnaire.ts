@@ -1,10 +1,10 @@
 import {
-  isKebabCase,
-  isPascalCase,
-  pascalCase,
   Chain,
   type DefiProvider,
   type Protocol,
+  isKebabCase,
+  isPascalCase,
+  pascalCase,
 } from '@metamask-institutional/defi-adapters'
 import type { Answers } from 'inquirer'
 import { kebabCase } from 'lodash-es'

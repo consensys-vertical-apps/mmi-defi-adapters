@@ -6,6 +6,7 @@ import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { filterMapSync } from '../core/utils/filters'
 import { DefiProvider } from '../defiProvider'
+import { startRpcSnapshot } from '../tests/rpcInterceptor'
 import { AdapterResponse, GetEventsRequestInput } from '../types/response'
 import { extractRpcMetrics } from './buildScoreboard'
 import {
@@ -16,7 +17,6 @@ import {
   multiProtocolTokenAddressFilter,
   protocolFilter,
 } from './commandFilters'
-import { startRpcSnapshot } from '../tests/rpcInterceptor'
 import { simulateTx } from './simulator/simulateTx'
 
 export function featureCommands(program: Command, defiProvider: DefiProvider) {

@@ -1,11 +1,11 @@
 import {
-  DefiProvider,
-  multiProtocolFilter,
-  multiChainFilter,
   type AdapterResponse,
-  multiProductFilter,
-  multiProtocolTokenAddressFilter,
+  DefiProvider,
   filterMapSync,
+  multiChainFilter,
+  multiProductFilter,
+  multiProtocolFilter,
+  multiProtocolTokenAddressFilter,
 } from '@metamask-institutional/defi-adapters'
 import type { Command } from 'commander'
 import { startRpcSnapshot } from '../utils/rpc-interceptor.js'

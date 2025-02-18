@@ -31,7 +31,6 @@
     "tvl": "npm run adapters-cli tvl --",
     "deposits": "npm run adapters-cli deposits --",
     "withdrawals": "npm run adapters-cli withdrawals --",
-    "stress": "npm run adapters-cli stress --",
     "support": "npm run adapters-cli support --",
     "performance": "npm run adapters-cli performance --",
     "lint": "biome check packages",
@@ -45,7 +44,7 @@
     "test:cov": "npm run test:cov -w packages/adapters-library",
     "build-docs": "npm run build-docs -w packages/adapters-library",
     "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; patch-package",
-    "drop:db": "bash -c 'read -p \"Are you sure you know what you are doing? This will delete all .db files! (y/n): \" confirm && [ \"$confirm\" = \"y\" ] && rm *.db && echo \"All .db files have been deleted successfully.\" || echo \"Aborted. No files were deleted.\"'"
+    "drop:db": "bash -c 'read -p \"Are you sure you know what you are doing? This will delete all .db files! (y/n): \" confirm && [ \"$confirm\" = \"y\" ] && rm ./databases/*.db && echo \"All .db files have been deleted successfully.\" || echo \"Aborted. No files were deleted.\"'"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.7.3",

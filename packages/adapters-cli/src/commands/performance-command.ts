@@ -1,9 +1,9 @@
 import {
-  multiProtocolFilter,
-  multiChainFilter,
   Chain,
-  DefiProvider,
   ChainName,
+  DefiProvider,
+  multiChainFilter,
+  multiProtocolFilter,
 } from '@metamask-institutional/defi-adapters'
 import { Command } from 'commander'
 

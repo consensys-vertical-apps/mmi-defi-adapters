@@ -1,14 +1,14 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import { Command } from 'commander'
 import {
+  Chain,
   ChainName,
   DefiProvider,
-  multiProtocolFilter,
-  filterMapSync,
   type TestCase,
-  Chain,
+  filterMapSync,
+  multiProtocolFilter,
 } from '@metamask-institutional/defi-adapters'
+import { Command } from 'commander'
 import { kebabCase } from 'lodash-es'
 
 type BadSnapshotDetails = {

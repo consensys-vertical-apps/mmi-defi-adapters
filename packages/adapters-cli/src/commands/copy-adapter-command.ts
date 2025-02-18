@@ -1,18 +1,18 @@
 import { promises as fs } from 'node:fs'
-import { Command } from 'commander'
-import { lowerFirst } from 'lodash-es'
 import path from 'node:path'
 import {
-  DefiProvider,
   Chain,
+  DefiProvider,
   Protocol,
 } from '@metamask-institutional/defi-adapters'
 import {} from '@metamask-institutional/defi-adapters'
 import { pascalCase } from '@metamask-institutional/defi-adapters'
+import { Command } from 'commander'
+import { lowerFirst } from 'lodash-es'
 import { addProtocol } from '../utils/add-protocol.js'
+import { buildIntegrationTests } from '../utils/build-integration-tests.js'
 import { exportAdapter } from '../utils/export-adapter.js'
 import { writeAndLintFile } from '../utils/write-and-lint-file.js'
-import { buildIntegrationTests } from '../utils/build-integration-tests.js'
 
 export function copyAdapterCommand(
   program: Command,

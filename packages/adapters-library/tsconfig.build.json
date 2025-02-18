@@ -1,7 +1,4 @@
 {
   "extends": "./tsconfig",
-  "exclude": [
-    "src/tests/**",
-    "**/*.test.*"
-  ]
+  "exclude": ["src/tests/**", "**/*.test.*"]
 }

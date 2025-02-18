@@ -1,7 +1,7 @@
 import type {
+  Chain,
   DefiProvider,
   Protocol,
-  Chain,
 } from '@metamask-institutional/defi-adapters'
 import { supportedProtocols } from '@metamask-institutional/defi-adapters/dist/adapters/supportedProtocols.js'
 import { Command } from 'commander'

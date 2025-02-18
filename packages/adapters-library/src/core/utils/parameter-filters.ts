@@ -1,6 +1,6 @@
+import { getAddress } from 'ethers'
 import { Protocol } from '../../adapters/protocols'
 import { Chain, ChainIdToChainNameMap } from '../constants/chains'
-import { getAddress } from 'ethers'
 import { filterMapSync } from './filters'
 
 export function chainFilter(filterInput?: string): Chain | undefined {

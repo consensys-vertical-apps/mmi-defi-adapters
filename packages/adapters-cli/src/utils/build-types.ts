@@ -1,15 +1,15 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { Command } from 'commander'
-import * as recast from 'recast'
-import { parse, print, types, visit } from 'recast'
-import { glob, runTypeChain } from 'typechain'
 import {
   DefiProvider,
   Protocol,
   pascalCase,
 } from '@metamask-institutional/defi-adapters'
+import { Command } from 'commander'
 import { lowerFirst } from 'lodash-es'
+import * as recast from 'recast'
+import { parse, print, types, visit } from 'recast'
+import { glob, runTypeChain } from 'typechain'
 import { sortEntries } from './sort-entries.js'
 import { writeAndLintFile } from './write-and-lint-file.js'
 import n = types.namedTypes

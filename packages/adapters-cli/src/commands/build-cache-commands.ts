@@ -1,21 +1,21 @@
+import path from 'node:path'
 import {
-  DefiProvider,
-  chainFilter,
   Chain,
   ChainName,
+  DefiProvider,
   EvmChain,
+  chainFilter,
 } from '@metamask-institutional/defi-adapters'
 import {
+  buildHistoricCache,
+  buildLatestCache,
   createDatabase,
   createHistoryTables,
-  insertContractEntries,
-  buildHistoricCache,
   createLatestTables,
-  buildLatestCache,
+  insertContractEntries,
 } from '@metamask-institutional/workers'
 import type { Command } from 'commander'
 import { JsonRpcProvider, Network } from 'ethers'
-import path from 'node:path'
 
 export function buildCacheCommands(
   program: Command,

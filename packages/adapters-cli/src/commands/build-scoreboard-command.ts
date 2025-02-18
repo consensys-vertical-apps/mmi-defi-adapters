@@ -1,16 +1,16 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
-import { Command } from 'commander'
 import {
-  DefiProvider,
-  multiProtocolFilter,
-  filterMapSync,
-  type TestCase,
-  startRpcSnapshot,
-  Protocol,
   Chain,
+  DefiProvider,
+  Protocol,
+  type TestCase,
+  filterMapSync,
+  multiProtocolFilter,
+  startRpcSnapshot,
 } from '@metamask-institutional/defi-adapters'
 import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
+import { Command } from 'commander'
 import type { RpcInterceptedResponses } from '../utils/rpc-interceptor.js'
 import { writeAndLintFile } from '../utils/write-and-lint-file.js'
 

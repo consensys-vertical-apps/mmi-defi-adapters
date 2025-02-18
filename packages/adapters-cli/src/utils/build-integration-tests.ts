@@ -1,12 +1,12 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import { parse, print, types, visit } from 'recast'
 import { pascalCase } from '@metamask-institutional/defi-adapters'
-import { partition, lowerFirst } from 'lodash-es'
+import { lowerFirst, partition } from 'lodash-es'
+import { parse, print, types, visit } from 'recast'
 import { testCases } from '../templates/testCases.js'
-import { writeAndLintFile } from './write-and-lint-file.js'
 import { fileExists } from './file-exists.js'
 import { sortEntries } from './sort-entries.js'
+import { writeAndLintFile } from './write-and-lint-file.js'
 import n = types.namedTypes
 import b = types.builders
 

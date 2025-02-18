@@ -1,6 +1,6 @@
 import { Chain, Protocol } from '@metamask-institutional/defi-adapters'
 import { getAddress } from 'ethers'
-import { z, type ZodTypeAny } from 'zod'
+import { type ZodTypeAny, z } from 'zod'
 
 export const IsEthAddress = z
   .string()

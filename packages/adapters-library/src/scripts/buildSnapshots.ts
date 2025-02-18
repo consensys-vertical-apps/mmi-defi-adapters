@@ -16,13 +16,13 @@ import { kebabCase } from '../core/utils/caseConversion'
 import { filterMapSync } from '../core/utils/filters'
 import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import { DefiProvider } from '../defiProvider'
-import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
-import type { TestCase } from '../types/testCase'
-import { multiProtocolFilter } from './commandFilters'
 import {
   RpcInterceptedResponses,
   startRpcSnapshot,
 } from '../tests/rpcInterceptor'
+import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
+import type { TestCase } from '../types/testCase'
+import { multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes
 import b = types.builders
 import { getPreviousLatency } from '../core/utils/get-previous-latency'

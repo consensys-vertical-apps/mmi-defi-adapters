@@ -1,25 +1,25 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import { Command } from 'commander'
-import { parse, print, types, visit } from 'recast'
 import {
-  DefiProvider,
-  multiProtocolFilter,
-  filterMapSync,
-  type TestCase,
   Chain,
-  type GetTransactionParams,
-  Protocol,
   type DefiPositionResponse,
   type DefiProfitsResponse,
+  DefiProvider,
+  type GetTransactionParams,
+  Protocol,
+  type TestCase,
+  filterMapSync,
+  multiProtocolFilter,
 } from '@metamask-institutional/defi-adapters'
 import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
+import { Command } from 'commander'
 import { kebabCase } from 'lodash-es'
-import { writeAndLintFile } from '../utils/write-and-lint-file.js'
+import { parse, print, types, visit } from 'recast'
 import {
-  startRpcSnapshot,
   type RpcInterceptedResponses,
+  startRpcSnapshot,
 } from '../utils/rpc-interceptor.js'
+import { writeAndLintFile } from '../utils/write-and-lint-file.js'
 import n = types.namedTypes
 import b = types.builders
 

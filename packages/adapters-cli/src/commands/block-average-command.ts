@@ -1,13 +1,13 @@
 import { promises as fs } from 'node:fs'
+import {
+  Chain,
+  EvmChain,
+  multiChainFilter,
+} from '@metamask-institutional/defi-adapters'
 import { Command } from 'commander'
 import EthDater from 'ethereum-block-by-date'
 import { ethers } from 'ethers'
 import { parse, print, types, visit } from 'recast'
-import {
-  EvmChain,
-  multiChainFilter,
-  Chain,
-} from '@metamask-institutional/defi-adapters'
 import { writeAndLintFile } from '../utils/write-and-lint-file.js'
 
 import n = types.namedTypes

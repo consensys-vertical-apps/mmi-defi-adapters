@@ -1,10 +1,10 @@
 import { promises as fs } from 'node:fs'
 import * as path from 'node:path'
-import { parse, print, types, visit } from 'recast'
 import type { Chain } from '@metamask-institutional/defi-adapters'
-import { writeAndLintFile } from './write-and-lint-file.js'
 import { lowerFirst, partition } from 'lodash-es'
+import { parse, print, types, visit } from 'recast'
 import { sortEntries } from './sort-entries.js'
+import { writeAndLintFile } from './write-and-lint-file.js'
 import n = types.namedTypes
 import b = types.builders
 

@@ -1,27 +1,27 @@
+import { readFile } from 'node:fs/promises'
+import path from 'node:path'
 import {
-  pascalCase,
   type DefiProvider,
+  pascalCase,
 } from '@metamask-institutional/defi-adapters'
 import chalk from 'chalk'
 import type { Command } from 'commander'
-import { readFile } from 'node:fs/promises'
 import inquirer from 'inquirer'
 import { lowerFirst } from 'lodash-es'
-import path from 'node:path'
 import {
   BlankAdapterOutcomeOptions,
-  getQuestionnaire,
   QuestionAnswers,
   QuestionName,
   TemplateNames,
   Templates,
+  getQuestionnaire,
 } from '../templates/questionnaire.js'
-import { newAdapterCliLogo } from '../utils/new-adapter-cli-logo.js'
-import { Replacements } from '../utils/replacements.js'
-import { writeAndLintFile } from '../utils/write-and-lint-file.js'
 import { addProtocol } from '../utils/add-protocol.js'
 import { buildIntegrationTests } from '../utils/build-integration-tests.js'
 import { exportAdapter } from '../utils/export-adapter.js'
+import { newAdapterCliLogo } from '../utils/new-adapter-cli-logo.js'
+import { Replacements } from '../utils/replacements.js'
+import { writeAndLintFile } from '../utils/write-and-lint-file.js'
 
 const colorBlue = chalk.rgb(0, 112, 243).bold
 const boldWhiteBg = chalk.bgWhite.bold

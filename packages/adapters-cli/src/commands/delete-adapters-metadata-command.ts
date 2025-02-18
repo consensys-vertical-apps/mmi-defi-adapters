@@ -1,10 +1,10 @@
-import Database, { type Database as DatabaseType } from 'better-sqlite3'
-import { Command } from 'commander'
 import {
-  multiProtocolFilter,
   multiChainFilter,
+  multiProtocolFilter,
 } from '@metamask-institutional/defi-adapters'
 import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
+import Database, { type Database as DatabaseType } from 'better-sqlite3'
+import { Command } from 'commander'
 
 export function deleteAdapterMetadataCommand(program: Command) {
   program
