@@ -5,12 +5,14 @@ WORKDIR /app
 COPY package*.json ./
 COPY packages/adapters-library/package*.json ./packages/adapters-library/
 COPY packages/adapters-api/package*.json ./packages/adapters-api/
-COPY packages/workers/package*.json ./packages/workers/
 
 RUN npm ci
 
 COPY . .
 
-RUN npm run build
+RUN npm run build -w packages/adapters-library
+RUN npm run build -w packages/adapters-api
 
-CMD ["node", "packages/adapters-api/index.js"]
+RUN npm prune --production
+
+CMD ["node", "packages/adapters-api/dist/index.js"]
