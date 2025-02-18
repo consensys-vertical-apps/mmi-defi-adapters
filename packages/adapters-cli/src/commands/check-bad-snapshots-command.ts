@@ -7,6 +7,7 @@ import {
   multiProtocolFilter,
   filterMapSync,
   type TestCase,
+  Chain,
 } from '@metamask-institutional/defi-adapters'
 import { kebabCase } from 'lodash-es'
 
@@ -46,6 +47,10 @@ export function checkBadSnapshotsCommand(
               return undefined
             }
 
+            if (adapter.protocolDetails.chainId === Chain.Solana) {
+              return undefined
+            }
+
             return {
               protocolId: adapter.protocolDetails.protocolId,
               productId: adapter.protocolDetails.productId,
@@ -62,9 +67,7 @@ export function checkBadSnapshotsCommand(
 
         const testCases: TestCase[] = (
           await import(
-            path.resolve(
-              `../adapters/${protocolId}/products/${productId}/tests/testCases`,
-            )
+            `@metamask-institutional/defi-adapters/dist/adapters/${protocolId}/products/${productId}/tests/testCases.js`
           )
         ).testCases
 
