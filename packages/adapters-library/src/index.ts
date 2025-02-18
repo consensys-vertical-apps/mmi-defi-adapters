@@ -27,8 +27,8 @@ export {
   multiProtocolFilter,
   multiProductFilter,
   multiProtocolTokenAddressFilter,
-} from './core/utils/parameter-filters'
+} from './core/utils/input-filters'
 export { filterMapSync, filterMapAsync } from './core/utils/filters'
 export * from './core/utils/caseConversion'
-export * from './core/utils/addressValidation'
+export * from './core/utils/address-validation'
 export type { TestCase } from './types/testCase'

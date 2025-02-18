@@ -3,9 +3,8 @@
   "files": {
     "ignore": [
       "packages/adapters-library/src/**/contracts/**",
-      "packages/adapters-library/src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts",
-      "packages/adapters-library/coverage/**",
-      "packages/**/dist/**",
+      "packages/*/coverage/**",
+      "packages/*/dist/**",
       "**/package.json"
     ]
   },

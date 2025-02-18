@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 import path from 'node:path'
-import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
-import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
+import {
+  ChainName,
+  DefiProvider,
+  EvmChain,
+} from '@metamask-institutional/defi-adapters'
 import { buildCachePoolFilter } from '@metamask-institutional/workers'
 import { setCloseDatabaseHandlers } from '@metamask-institutional/workers/dist/db-queries.js'
 import Database from 'better-sqlite3'
@@ -17,7 +20,6 @@ import { copyAdapterCommand } from './commands/copy-adapter-command.js'
 import { deleteAdapterMetadataCommand } from './commands/delete-adapters-metadata-command.js'
 import { libraryCommands } from './commands/library-commands.js'
 import { newAdapterCommand } from './commands/new-adapter-command.js'
-// import './bigint-json.js'
 import { performanceCommand } from './commands/performance-command.js'
 import { buildContractTypes } from './utils/build-types.js'
 
@@ -29,9 +31,7 @@ const cachePoolFilter =
         Object.values(EvmChain).reduce(
           (acc, chainId) => {
             const db = new Database(
-              path.resolve(
-                `databases/${ChainIdToChainNameMap[chainId]}_index_history.db`,
-              ),
+              path.resolve(`databases/${ChainName[chainId]}_index_history.db`),
               {
                 readonly: true,
                 fileMustExist: true,

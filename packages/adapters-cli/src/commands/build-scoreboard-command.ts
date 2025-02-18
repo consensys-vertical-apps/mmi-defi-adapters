@@ -1,13 +1,13 @@
 import { readFile } from 'node:fs/promises'
 import {
   Chain,
+  ChainName,
   DefiProvider,
   Protocol,
   type TestCase,
   filterMapSync,
   multiProtocolFilter,
 } from '@metamask-institutional/defi-adapters'
-import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
 import { Command } from 'commander'
 import {
   type RpcInterceptedResponses,
@@ -198,7 +198,7 @@ function aggregateMetrics({
     key: key,
     protocolId: protocolId,
     productId: productId,
-    chain: ChainIdToChainNameMap[chainId],
+    chain: ChainName[chainId],
     latency: latency / 1_000,
     totalPools,
     ...rpcMetrics,

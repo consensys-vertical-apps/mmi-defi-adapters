@@ -9,6 +9,7 @@ import {
 } from '@metamask-institutional/defi-adapters'
 import type { Command } from 'commander'
 import { startRpcSnapshot } from '../utils/rpc-interceptor.js'
+import { extractRpcMetrics } from './build-scoreboard-command.js'
 
 export function libraryCommands(program: Command, defiProvider: DefiProvider) {
   program
@@ -63,16 +64,16 @@ export function libraryCommands(program: Command, defiProvider: DefiProvider) {
 
         printResponse(filterResponse(data))
 
-        // const rpcMetrics = extractRpcMetrics(msw.interceptedResponses)
+        const rpcMetrics = extractRpcMetrics(msw.interceptedResponses)
 
-        // console.log('\nMetrics:')
-        // console.log(
-        //   JSON.stringify(
-        //     { latency: (endTime - startTime) / 1_000, ...rpcMetrics },
-        //     null,
-        //     2,
-        //   ),
-        // )
+        console.log('\nMetrics:')
+        console.log(
+          JSON.stringify(
+            { latency: (endTime - startTime) / 1_000, ...rpcMetrics },
+            null,
+            2,
+          ),
+        )
 
         process.exit(0)
       },

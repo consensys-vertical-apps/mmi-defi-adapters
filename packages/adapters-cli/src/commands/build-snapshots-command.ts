@@ -2,16 +2,15 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import {
   Chain,
+  ChainName,
   type DefiPositionResponse,
   type DefiProfitsResponse,
   DefiProvider,
-  type GetTransactionParams,
   Protocol,
   type TestCase,
   filterMapSync,
   multiProtocolFilter,
 } from '@metamask-institutional/defi-adapters'
-import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
 import { Command } from 'commander'
 import { kebabCase } from 'lodash-es'
 import { parse, print, types, visit } from 'recast'
@@ -126,7 +125,7 @@ export function buildSnapshotsCommand(
           }
 
           const filePath = `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}/tests/snapshots/${
-            ChainIdToChainNameMap[testCase.chainId]
+            ChainName[testCase.chainId]
           }.${testCase.method}${
             testCase.key ? `.${kebabCase(testCase.key)}` : ''
           }.json`
