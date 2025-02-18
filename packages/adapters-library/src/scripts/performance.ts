@@ -1,10 +1,10 @@
 import { Command } from 'commander'
 import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
-import { DefiProvider } from '../defiProvider'
 import {
   multiChainFilter,
   multiProtocolFilter,
 } from '../core/utils/input-filters'
+import { DefiProvider } from '../defiProvider'
 
 type RunData = {
   positions: number

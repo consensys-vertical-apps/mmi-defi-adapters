@@ -1,7 +1,7 @@
 import { Chain } from '../../core/constants/chains'
 import {
-  DefiPositionResponse,
   DefiMovementsResponse,
+  DefiPositionResponse,
 } from '../../types/response'
 
 export function getAggregatedValues(
