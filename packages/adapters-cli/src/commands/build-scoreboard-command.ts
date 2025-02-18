@@ -73,9 +73,7 @@ export function buildScoreboardCommand(
       for (const { protocolId, productId } of allProducts) {
         const testCases: TestCase[] = (
           await import(
-            path.resolve(
-              `../adapters/${protocolId}/products/${productId}/tests/testCases`,
-            )
+            `@metamask-institutional/defi-adapters/dist/adapters/${protocolId}/products/${productId}/tests/testCases.js`
           )
         ).testCases
 
