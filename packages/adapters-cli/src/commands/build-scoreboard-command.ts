@@ -1,17 +1,18 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { Command } from 'commander'
-import { Protocol } from '../adapters/protocols'
-import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
-import { filterMapSync } from '../core/utils/filters'
-import { writeAndLintFile } from '../core/utils/writeAndLintFile'
-import { DefiProvider } from '../defiProvider'
-import type { TestCase } from '../types/testCase'
-import { multiProtocolFilter } from './commandFilters'
 import {
-  RpcInterceptedResponses,
+  DefiProvider,
+  multiProtocolFilter,
+  filterMapSync,
+  type TestCase,
   startRpcSnapshot,
-} from '../tests/rpcInterceptor'
+  Protocol,
+  Chain,
+} from '@metamask-institutional/defi-adapters'
+import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
+import type { RpcInterceptedResponses } from '../utils/rpc-interceptor.js'
+import { writeAndLintFile } from '../utils/write-and-lint-file.js'
 
 type ScoreboardEntry = {
   key: string | undefined
@@ -30,7 +31,10 @@ type RpcMetrics = {
   totalGas: string
 }
 
-export function buildScoreboard(program: Command, defiProvider: DefiProvider) {
+export function buildScoreboardCommand(
+  program: Command,
+  defiProvider: DefiProvider,
+) {
   program
     .command('build-scoreboard')
     .option(

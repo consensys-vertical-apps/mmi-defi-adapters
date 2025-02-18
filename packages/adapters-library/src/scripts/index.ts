@@ -68,35 +68,35 @@ const chainProviders = defiProvider.chainProvider.providers
 const solanaProvider = defiProvider.chainProvider.solanaProvider
 const adaptersController = defiProvider.adaptersController
 
-featureCommands(program, defiProvider)
+featureCommands(program, defiProvider) // Done
 
-checkMetadataType(program, chainProviders, solanaProvider, adaptersController)
+checkMetadataType(program, chainProviders, solanaProvider, adaptersController) // Done
 
-newAdapterCommand(program, defiProvider)
+newAdapterCommand(program, defiProvider) // Done
 
-blockAverage(program, chainProviders)
+blockAverage(program, chainProviders) // Done
 
-buildContractTypes(program)
+buildContractTypes(program) // Done
 
-buildMetadataDb(program, chainProviders, solanaProvider, adaptersController)
+buildMetadataDb(program, chainProviders, solanaProvider, adaptersController) // Done
 
-deleteAdapterMetadata(program, chainProviders, adaptersController)
+deleteAdapterMetadata(program, chainProviders, adaptersController) // Done
 
-checkDbTotals(program, chainProviders, solanaProvider, adaptersController)
+checkDbTotals(program, chainProviders, solanaProvider, adaptersController) // Done
 
-buildSnapshots(program, defiProvider)
+buildSnapshots(program, defiProvider) // Done
 
-checkBadSnapshots(program, defiProvider)
+checkBadSnapshots(program, defiProvider) // Done
 
-stressCommand(program, defiProvider)
+stressCommand(program, defiProvider) // Deprecated (profit not important)
 
-simulateTxCommand(program, chainProviders)
+simulateTxCommand(program, chainProviders) // Deprecated (write adapters not important)
 
-performance(program)
+performance(program) // Done
 
-buildScoreboard(program, defiProvider)
+buildScoreboard(program, defiProvider) // Done
 
-program
+program // Done
   .command('copy-adapter')
   .argument('[sourceProtocolId]', 'Protocol to copy')
   .argument('[newProtocolId]', 'New protocol id (kebab-case)')

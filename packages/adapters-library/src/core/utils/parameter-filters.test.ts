@@ -1,11 +1,11 @@
-import { Chain, Protocol } from '@metamask-institutional/defi-adapters'
-import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
+import { Protocol } from '../../adapters/protocols.js'
+import { Chain, ChainIdToChainNameMap } from '../constants/chains.js'
 import {
   chainFilter,
   multiChainFilter,
   multiProtocolFilter,
   protocolFilter,
-} from './command-filters.js'
+} from './parameter-filters.js'
 
 describe('chainFilter', () => {
   it.each(Object.values(Chain).map((chainId) => [chainId]))(

@@ -3,31 +3,30 @@ import path from 'node:path'
 import { Command } from 'commander'
 import { parse, print, types, visit } from 'recast'
 import {
-  getAggregatedValues,
-  getAggregatedValuesMovements,
-} from '../adapters/aggregateValues'
-import { Protocol } from '../adapters/protocols'
-import type { GetTransactionParams } from '../adapters/supportedProtocols'
-import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
-import { ProviderMissingError } from '../core/errors/errors'
-import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { bigintJsonStringify } from '../core/utils/bigintJson'
-import { kebabCase } from '../core/utils/caseConversion'
-import { filterMapSync } from '../core/utils/filters'
-import { writeAndLintFile } from '../core/utils/writeAndLintFile'
-import { DefiProvider } from '../defiProvider'
-import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
-import type { TestCase } from '../types/testCase'
-import { multiProtocolFilter } from './commandFilters'
+  DefiProvider,
+  multiProtocolFilter,
+  filterMapSync,
+  type TestCase,
+  Chain,
+  type GetTransactionParams,
+  Protocol,
+  type DefiPositionResponse,
+  type DefiProfitsResponse,
+} from '@metamask-institutional/defi-adapters'
+import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
+import { kebabCase } from 'lodash'
+import { writeAndLintFile } from '../utils/write-and-lint-file.js'
 import {
-  RpcInterceptedResponses,
   startRpcSnapshot,
-} from '../tests/rpcInterceptor'
+  type RpcInterceptedResponses,
+} from '../utils/rpc-interceptor.js'
 import n = types.namedTypes
 import b = types.builders
-import { getPreviousLatency } from '../core/utils/get-previous-latency'
 
-export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
+export function buildSnapshotsCommand(
+  program: Command,
+  defiProvider: DefiProvider,
+) {
   const allowedMethods = [
     'positions',
     'profits',
@@ -142,10 +141,9 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
               case 'positions': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await getLatestStableBlock(
-                    defiProvider.chainProvider.providers[chainId],
-                    chainId,
-                  ))
+                  (await defiProvider.chainProvider.providers[
+                    chainId
+                  ].getStableBlockNumber())
 
                 const startTime = Date.now()
 
@@ -192,169 +190,12 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                 return result
               }
 
-              case 'profits': {
-                const blockNumber =
-                  testCase.blockNumber ??
-                  (await getLatestStableBlock(
-                    defiProvider.chainProvider.providers[chainId],
-                    chainId,
-                  ))
-
-                const startTime = Date.now()
-
-                const snapshot = await defiProvider.getProfits({
-                  ...testCase.input,
-                  filterChainIds: [chainId],
-                  filterProtocolIds: [protocolId],
-                  filterProductIds: [productId],
-                  toBlockNumbersOverride: {
-                    [chainId]: blockNumber,
-                  },
-                })
-
-                const endTime = Date.now()
-
-                const result = {
-                  blockNumber,
-                  latency: getLatency(
-                    endTime,
-                    startTime,
-                    latency,
-                    previousLatency,
-                  ),
-                  snapshot,
-                }
-
-                await updateBlockNumber(
-                  protocolId,
-                  productId,
-                  index,
-                  blockNumber,
-                )
-
-                await updateFilters(
-                  protocolId,
-                  productId,
-                  index,
-                  result.snapshot,
-                )
-
-                return result
-              }
-
-              case 'deposits': {
-                const startTime = Date.now()
-                const snapshot = await defiProvider.getDeposits({
-                  ...testCase.input,
-                  chainId: chainId,
-                  protocolId: protocolId,
-                  productId: productId,
-                })
-
-                const aggregatedValues = getAggregatedValuesMovements(
-                  snapshot,
-                  chainId,
-                )
-
-                const endTime = Date.now()
-
-                return {
-                  aggregatedValues,
-                  latency: getLatency(
-                    endTime,
-                    startTime,
-                    latency,
-                    previousLatency,
-                  ),
-                  snapshot,
-                }
-              }
-
-              case 'withdrawals': {
-                const startTime = Date.now()
-                const result = await defiProvider.getWithdrawals({
-                  ...testCase.input,
-                  chainId: chainId,
-                  protocolId: protocolId,
-                  productId: productId,
-                })
-
-                const aggregatedValues = getAggregatedValuesMovements(
-                  result,
-                  chainId,
-                )
-
-                const endTime = Date.now()
-
-                return {
-                  aggregatedValues,
-                  latency: getLatency(
-                    endTime,
-                    startTime,
-                    latency,
-                    previousLatency,
-                  ),
-                  snapshot: result,
-                }
-              }
-              case 'repays': {
-                const startTime = Date.now()
-
-                const snapshot = await defiProvider.getRepays({
-                  ...testCase.input,
-                  chainId: chainId,
-                  protocolId: protocolId,
-                  productId: productId,
-                })
-
-                const endTime = Date.now()
-
-                return {
-                  latency: getLatency(
-                    endTime,
-                    startTime,
-                    latency,
-                    previousLatency,
-                  ),
-                  snapshot,
-                }
-              }
-
-              case 'borrows': {
-                const startTime = Date.now()
-                const result = await defiProvider.getBorrows({
-                  ...testCase.input,
-                  chainId: chainId,
-                  protocolId: protocolId,
-                  productId: productId,
-                })
-
-                const aggregatedValues = getAggregatedValuesMovements(
-                  result,
-                  chainId,
-                )
-
-                const endTime = Date.now()
-
-                return {
-                  latency: getLatency(
-                    endTime,
-                    startTime,
-                    latency,
-                    previousLatency,
-                  ),
-                  snapshot: result,
-                  aggregatedValues,
-                }
-              }
-
               case 'prices': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await getLatestStableBlock(
-                    defiProvider.chainProvider.providers[chainId],
-                    chainId,
-                  ))
+                  (await defiProvider.chainProvider.providers[
+                    chainId
+                  ].getStableBlockNumber())
 
                 const startTime = Date.now()
 
@@ -394,10 +235,9 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
               case 'tvl': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await getLatestStableBlock(
-                    defiProvider.chainProvider.providers[chainId],
-                    chainId,
-                  ))
+                  (await defiProvider.chainProvider.providers[
+                    chainId
+                  ].getStableBlockNumber())
 
                 const startTime = Date.now()
 
@@ -468,13 +308,16 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
             {} as RpcInterceptedResponses,
           )
 
+          // TODO: Remove this once we have a better way to handle bigint
           await writeAndLintFile(
             filePath,
-            bigintJsonStringify(
+            JSON.stringify(
               {
                 ...snapshotFileContent,
                 rpcResponses,
               },
+              (_, value) =>
+                typeof value === 'bigint' ? `${value.toString()}n` : value,
               2,
             ),
           )
@@ -498,17 +341,6 @@ function getLatency(
   }
 
   return previousLatency
-}
-
-async function getLatestStableBlock(
-  provider: CustomJsonRpcProvider,
-  chainId: Chain,
-): Promise<number> {
-  if (!provider) {
-    throw new ProviderMissingError(chainId)
-  }
-
-  return provider.getStableBlockNumber()
 }
 
 async function updateBlockNumber(
@@ -692,4 +524,83 @@ async function updateFilters(
   })
 
   await writeAndLintFile(testCasesFile, print(ast).code)
+}
+
+async function getPreviousLatency(
+  filePath: string,
+): Promise<string | undefined> {
+  try {
+    const content = await fs.readFile(filePath, 'utf-8')
+    const json = JSON.parse(content)
+
+    // Return the latency value if it exists, otherwise return undefined
+    return json.latency || undefined
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+      // File does not exist, return undefined
+      return undefined
+    }
+    throw new Error(
+      `Error reading file at ${filePath}: ${
+        (error as { message: string }).message
+      }`,
+    )
+  }
+}
+
+function getAggregatedValues(
+  response: DefiPositionResponse[],
+  chainId: Chain,
+): string[] {
+  const aggregatedValues: string[] = []
+
+  if (chainId === Chain.Linea) {
+    return aggregatedValues
+  }
+
+  for (const position of response) {
+    if (!position.success) {
+      continue
+    }
+
+    for (const protocolToken of position.tokens) {
+      const marketValue = extractMarketValue(protocolToken.tokens!) || 0
+
+      const formattedMarketValue = `USD${marketValue
+        .toFixed(2)
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`
+
+      aggregatedValues.push(formattedMarketValue)
+    }
+  }
+
+  return aggregatedValues
+}
+
+type Token = {
+  balance?: number
+  price?: number
+  tokens?: Token[]
+}
+
+function extractMarketValue(tokens: Token[]): number {
+  if (!tokens) {
+    return 0
+  }
+
+  let marketValue = 0
+  for (const token of tokens) {
+    if (token.price !== undefined) {
+      // If the token has a price, use it and skip further recursion
+      marketValue += token.balance! * token.price
+    } else if (token.tokens && token.tokens.length > 0) {
+      // Recursively calculate the market value of child tokens
+      marketValue += extractMarketValue(token.tokens)
+    } else {
+      // If no price and no child tokens, default to balance * 0 (or whatever default logic is needed)
+      marketValue += token.balance! * (token.price || 0)
+    }
+  }
+
+  return marketValue
 }

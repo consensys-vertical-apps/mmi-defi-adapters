@@ -1,115 +1,76 @@
 #!/usr/bin/env node
-import path from 'node:path'
-import { ChainName, DefiProvider } from '@metamask-institutional/defi-adapters'
-import {
-  Chain,
-  ChainIdToChainNameMap,
-  EvmChain,
-} from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
-import {
-  buildHistoricCache,
-  buildLatestCache,
-  createDatabase,
-  createHistoryTables,
-  insertContractEntries,
-} from '@metamask-institutional/workers'
-import { createLatestTables } from '@metamask-institutional/workers/dist/build-latest-cache.js'
+import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
 import { Command } from 'commander'
-import { JsonRpcProvider, Network } from 'ethers'
-import { chainFilter } from './command-filters.js'
+import { buildCacheCommands } from './commands/build-cache-commands.js'
+import { libraryCommands } from './commands/library-commands.js'
+import { checkMetadataTypeCommand } from './commands/check-metadata-type-command.js'
+import { buildMetadataCommand } from './commands/build-metadata-command.js'
+import { newAdapterCommand } from './commands/new-adapter-command.js'
+import { buildContractTypes } from './utils/build-types.js'
+import { deleteAdapterMetadataCommand } from './commands/delete-adapters-metadata-command.js'
+import { checkDbTotalsCommand } from './commands/check-db-totals-command.js'
+import './bigint-json.js'
+import { performanceCommand } from './commands/performance-command.js'
+import { buildSnapshotsCommand } from './commands/build-snapshots-command.js'
+import { checkBadSnapshotsCommand } from './commands/check-bad-snapshots-command.js'
+import { copyAdapterCommand } from './commands/copy-adapter-command.js'
+import { buildCachePoolFilter } from '@metamask-institutional/workers'
+import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
+import { setCloseDatabaseHandlers } from '@metamask-institutional/workers/dist/db-queries.js'
+import Database from 'better-sqlite3'
+import path from 'node:path'
+import { buildScoreboardCommand } from './commands/build-scoreboard-command.js'
 
-const program = new Command('mmi-adapters')
-const defiProvider = new DefiProvider()
+const program = new Command('defi-adapters')
 
-program
-  .command('build-historic-cache')
-  .argument('[chain]', 'Chain to build cache for')
-  .action(async (chain) => {
-    const chainId = chainFilter(chain)
-    if (!chainId) {
-      throw new Error('Chain is required')
-    }
+const cachePoolFilter =
+  process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE === 'true'
+    ? buildCachePoolFilter(
+        Object.values(EvmChain).reduce(
+          (acc, chainId) => {
+            const db = new Database(
+              path.join(
+                __dirname,
+                '../../../../',
+                `databases/${ChainIdToChainNameMap[chainId]}_index_history.db`,
+              ),
+              {
+                readonly: true,
+                fileMustExist: true,
+                timeout: 5000,
+              },
+            )
 
-    if (chainId === Chain.Solana) {
-      throw new Error('Solana is not supported')
-    }
+            setCloseDatabaseHandlers(db)
 
-    const providerUrl =
-      defiProvider.chainProvider.providers[chainId]._getConnection().url
+            acc[chainId] = db
 
-    const provider = new JsonRpcProvider(providerUrl, chainId, {
-      staticNetwork: Network.from(chainId),
-    })
+            return acc
+          },
+          {} as Record<EvmChain, Database.Database>,
+        ),
+      )
+    : undefined
 
-    const dbDirPath =
-      process.env.DB_DIR_PATH ||
-      path.resolve(import.meta.dirname, '../../../databases')
+const defiProvider = new DefiProvider(
+  undefined,
+  undefined,
+  undefined,
+  cachePoolFilter,
+)
 
-    const db = createDatabase(
-      dbDirPath,
-      `${ChainName[chainId]}_index_history`,
-      {
-        fileMustExist: false,
-        readonly: false,
-        timeout: 5000,
-      },
-    )
-
-    console.log(`${new Date().toISOString()}: Building historic cache`, {
-      chainId,
-    })
-
-    createHistoryTables(db)
-
-    // TODO: Have parameters to determine what pools to insert
-    await insertContractEntries(defiProvider, chainId, db)
-
-    await buildHistoricCache(provider, chainId, db)
-  })
-
-program
-  .command('build-latest-cache')
-  .option(
-    '-c, --chain <chain>',
-    'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
-  )
-  .option('-b, --block <block>', 'optional block number to start indexing from')
-  .showHelpAfterError()
-  .action(async ({ chain, block }: { chain?: string; block?: string }) => {
-    const filterChainId = chain ? (Number(chain) as EvmChain) : undefined
-    if (filterChainId && !ChainIdToChainNameMap[filterChainId]) {
-      throw new Error(`No chain matches the given filter: ${chain}`)
-    }
-    const startBlockOverride = block ? Number(block) : undefined
-
-    const dbDirPath =
-      process.env.DB_DIR_PATH ||
-      path.resolve(import.meta.dirname, '../../../databases')
-
-    await Promise.all(
-      Object.values(EvmChain)
-        .filter(
-          (chainId) => filterChainId === undefined || filterChainId === chainId,
-        )
-        .map(async (chainId) => {
-          const db = createDatabase(
-            dbDirPath,
-            `${ChainName[chainId]}_index_latest`,
-            {
-              fileMustExist: false,
-              readonly: false,
-              timeout: 5000,
-            },
-          )
-
-          createLatestTables(db)
-
-          // TODO: Have parameters to determine what pools to insert
-          await insertContractEntries(defiProvider, chainId, db)
-
-          buildLatestCache(chainId, defiProvider, db, startBlockOverride)
-        }),
-    )
-  })
+libraryCommands(program, defiProvider)
+buildCacheCommands(program, defiProvider)
+checkMetadataTypeCommand(program, defiProvider)
+buildMetadataCommand(program, defiProvider)
+deleteAdapterMetadataCommand(program)
+checkDbTotalsCommand(program, defiProvider)
+newAdapterCommand(program, defiProvider)
+buildContractTypes(program)
+performanceCommand(program)
+buildSnapshotsCommand(program, defiProvider)
+checkBadSnapshotsCommand(program, defiProvider)
+copyAdapterCommand(program, defiProvider)
+buildScoreboardCommand(program, defiProvider)
 
 program.parseAsync()

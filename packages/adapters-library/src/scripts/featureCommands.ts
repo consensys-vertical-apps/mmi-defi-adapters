@@ -16,7 +16,7 @@ import {
   multiProtocolTokenAddressFilter,
   protocolFilter,
 } from './commandFilters'
-import { startRpcSnapshot } from './rpcInterceptor'
+import { startRpcSnapshot } from '../tests/rpcInterceptor'
 import { simulateTx } from './simulator/simulateTx'
 
 export function featureCommands(program: Command, defiProvider: DefiProvider) {

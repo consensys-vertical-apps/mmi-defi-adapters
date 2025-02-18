@@ -1,7 +1,7 @@
-import { Chain, Protocol } from '@metamask-institutional/defi-adapters'
-import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
-import { filterMapSync } from '@metamask-institutional/defi-adapters/dist/core/utils/filters.js'
+import { Protocol } from '../../adapters/protocols'
+import { Chain, ChainIdToChainNameMap } from '../constants/chains'
 import { getAddress } from 'ethers'
+import { filterMapSync } from './filters'
 
 export function chainFilter(filterInput?: string): Chain | undefined {
   if (!filterInput) {
@@ -63,18 +63,6 @@ export function multiChainFilter(filterInput?: string): Chain[] | undefined {
     return cleanFilter ? chainFilter(cleanFilter) : undefined
   })
 }
-export function multiProtocolTokenAddressFilter(
-  filterInput?: string,
-): string[] | undefined {
-  if (!filterInput) {
-    return
-  }
-
-  return filterMapSync(filterInput?.split(','), (filter) => {
-    const cleanFilter = filter.trim()
-    return cleanFilter ? getAddress(cleanFilter) : undefined
-  })
-}
 
 export function multiProtocolFilter(
   filterInput?: string,
@@ -88,6 +76,7 @@ export function multiProtocolFilter(
     return cleanFilter ? protocolFilter(cleanFilter) : undefined
   })
 }
+
 export function multiProductFilter(filterInput?: string): string[] | undefined {
   if (!filterInput) {
     return
@@ -96,5 +85,18 @@ export function multiProductFilter(filterInput?: string): string[] | undefined {
   return filterMapSync(filterInput?.split(','), (filter) => {
     const cleanFilter = filter.trim()
     return cleanFilter || undefined
+  })
+}
+
+export function multiProtocolTokenAddressFilter(
+  filterInput?: string,
+): string[] | undefined {
+  if (!filterInput) {
+    return
+  }
+
+  return filterMapSync(filterInput?.split(','), (filter) => {
+    const cleanFilter = filter.trim()
+    return cleanFilter ? getAddress(cleanFilter) : undefined
   })
 }
