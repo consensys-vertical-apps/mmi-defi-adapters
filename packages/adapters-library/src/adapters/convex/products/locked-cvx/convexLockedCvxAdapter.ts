@@ -5,7 +5,7 @@ import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import { Helpers } from '../../../../scripts/helpers'
+import { Helpers } from '../../../../core/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,

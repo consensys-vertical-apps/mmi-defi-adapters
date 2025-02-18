@@ -1,6 +1,6 @@
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
-import { Helpers } from '../../scripts/helpers'
+import { Helpers } from '../../core/helpers'
 import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
 import {
   AdapterSettings,

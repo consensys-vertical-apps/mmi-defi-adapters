@@ -10,7 +10,7 @@ import {
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { logger } from '../../../../core/utils/logger'
-import { Helpers } from '../../../../scripts/helpers'
+import { Helpers } from '../../../../core/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,

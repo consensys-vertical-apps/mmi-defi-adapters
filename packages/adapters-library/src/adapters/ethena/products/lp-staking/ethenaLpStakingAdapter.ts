@@ -6,7 +6,7 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { Helpers } from '../../../../scripts/helpers'
+import { Helpers } from '../../../../core/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,

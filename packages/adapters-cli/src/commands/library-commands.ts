@@ -124,5 +124,12 @@ function filterResponse(
 }
 
 function printResponse(data: unknown) {
-  console.log(JSON.stringify(data, null, 2))
+  console.log(
+    JSON.stringify(
+      data,
+      (_, value) =>
+        typeof value === 'bigint' ? `${value.toString()}n` : value,
+      2,
+    ),
+  )
 }

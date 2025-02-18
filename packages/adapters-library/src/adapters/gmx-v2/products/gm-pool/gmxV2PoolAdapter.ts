@@ -6,7 +6,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { Helpers } from '../../../../scripts/helpers'
+import { Helpers } from '../../../../core/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,

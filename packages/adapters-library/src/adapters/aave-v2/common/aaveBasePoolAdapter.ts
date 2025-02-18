@@ -4,7 +4,7 @@ import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../core/constants/chains'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../core/utils/filters'
-import { Helpers } from '../../../scripts/helpers'
+import { Helpers } from '../../../core/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,

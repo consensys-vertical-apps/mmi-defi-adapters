@@ -5,7 +5,7 @@ import {
   CompoundV2Comptroller__factory,
 } from '../../contracts'
 import { BorrowEvent, RepayBorrowEvent } from '../../contracts/CompoundV2Cerc20'
-import { Helpers } from '../../scripts/helpers'
+import { Helpers } from '../../core/helpers'
 import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
 import {
   AdapterSettings,

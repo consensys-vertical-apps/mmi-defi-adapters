@@ -4,7 +4,7 @@ import { Chain } from '../../../core/constants/chains'
 import { CacheToDb } from '../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
-import { Helpers } from '../../../scripts/helpers'
+import { Helpers } from '../../../core/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,

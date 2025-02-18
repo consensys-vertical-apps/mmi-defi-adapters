@@ -5,7 +5,7 @@ import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { Helpers } from '../../../../scripts/helpers'
+import { Helpers } from '../../../../core/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,

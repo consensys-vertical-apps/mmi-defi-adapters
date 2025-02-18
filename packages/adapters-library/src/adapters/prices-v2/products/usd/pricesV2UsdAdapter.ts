@@ -5,7 +5,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 
 import { nativeTokenAddresses } from '../../../../core/utils/nativeTokens'
-import { Helpers } from '../../../../scripts/helpers'
+import { Helpers } from '../../../../core/helpers'
 
 import {
   AdapterSettings,

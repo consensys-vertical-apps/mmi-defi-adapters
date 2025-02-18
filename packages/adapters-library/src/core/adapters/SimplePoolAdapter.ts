@@ -1,5 +1,5 @@
 import { Protocol } from '../../adapters/protocols'
-import { Helpers } from '../../scripts/helpers'
+import { Helpers } from '../../core/helpers'
 import {
   AdditionalMetadataWithReservedFields,
   IProtocolAdapter,

@@ -8,7 +8,7 @@ import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { nativeToken } from '../../../../core/utils/nativeTokens'
-import { Helpers, SolanaHelpers } from '../../../../scripts/helpers'
+import { Helpers, SolanaHelpers } from '../../../../core/helpers'
 import {
   IProtocolAdapter,
   ProtocolToken,
