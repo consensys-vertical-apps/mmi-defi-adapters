@@ -79,11 +79,13 @@ export function initiateQuestionnaire(defiProvider: DefiProvider) {
     })
 
     console.log(
-      chalk`\n{bold New adapter created at: {bgBlack.red src/adapters/${
-        answers.protocolId
-      }/products/${answers.productId}/${lowerFirst(
-        outcomes.adapterClassName,
-      )}.ts}}\n`,
+      `\n${chalk.bold(
+        `New adapter created at: ${chalk.bgBlack.red(
+          `src/adapters/${answers.protocolId}/products/${
+            answers.productId
+          }/${lowerFirst(outcomes.adapterClassName)}.ts`,
+        )}`,
+      )}`,
     )
     console.log('The file has been saved!')
   }

@@ -8,7 +8,6 @@ const config = {
     '!src/contracts/**',
     '!src/adapters/**/contracts/**',
     '!src/**/*.test.ts',
-    '!src/scripts/**',
   ],
   setupFiles: ['<rootDir>/jest.setup.js'],
 }

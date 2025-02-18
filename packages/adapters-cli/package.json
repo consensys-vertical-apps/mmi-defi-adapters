@@ -14,10 +14,11 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",
-    "test": "jest src",
-    "test:file": "if [ -z \"$TEST_FILE\" ]; then echo 'No test file specified'; exit 1; else jest $TEST_FILE; fi",
+    "test": "vitest src",
+    "test:file": "if [ -z \"$TEST_FILE\" ]; then echo 'No test file specified'; exit 1; else vitest $TEST_FILE; fi",
     "test:tsc": "tsc --noEmit -p tsconfig.json",
-    "test:cov": "jest src --ci --coverage  --coverageDirectory='coverage/unit/'"
+    "test:cov": "vitest src --ci --coverage  --coverageDirectory='coverage/unit/'",
+    "test:update:adapter-snapshot": "vitest src/tests/new-adapter-templates.test.ts -u"
   },
   "devDependencies": {
     "@metamask-institutional/defi-adapters": "*",
