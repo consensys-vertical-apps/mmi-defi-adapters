@@ -10,8 +10,8 @@ import {
 import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
 import { Command } from 'commander'
 import {
-  startRpcSnapshot,
   type RpcInterceptedResponses,
+  startRpcSnapshot,
 } from '../utils/rpc-interceptor.js'
 import { writeAndLintFile } from '../utils/write-and-lint-file.js'
 

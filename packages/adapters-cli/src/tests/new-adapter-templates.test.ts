@@ -1,10 +1,10 @@
-import { it, expect, describe } from 'vitest'
 import type { DefiProvider } from '@metamask-institutional/defi-adapters'
-import { QuestionAnswers } from '../templates/questionnaire.js'
+import { describe, expect, it } from 'vitest'
 import {
   calculateAdapterOutcomes,
   createCode,
 } from '../commands/new-adapter-command.js'
+import { QuestionAnswers } from '../templates/questionnaire.js'
 
 function generateAllAnswers(): QuestionAnswers[] {
   const {
