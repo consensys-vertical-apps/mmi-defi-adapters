@@ -63,6 +63,18 @@ export function multiChainFilter(filterInput?: string): Chain[] | undefined {
     return cleanFilter ? chainFilter(cleanFilter) : undefined
   })
 }
+export function multiProtocolTokenAddressFilter(
+  filterInput?: string,
+): string[] | undefined {
+  if (!filterInput) {
+    return
+  }
+
+  return filterMapSync(filterInput?.split(','), (filter) => {
+    const cleanFilter = filter.trim()
+    return cleanFilter ? getAddress(cleanFilter) : undefined
+  })
+}
 
 export function multiProtocolFilter(
   filterInput?: string,
@@ -76,7 +88,6 @@ export function multiProtocolFilter(
     return cleanFilter ? protocolFilter(cleanFilter) : undefined
   })
 }
-
 export function multiProductFilter(filterInput?: string): string[] | undefined {
   if (!filterInput) {
     return
@@ -85,18 +96,5 @@ export function multiProductFilter(filterInput?: string): string[] | undefined {
   return filterMapSync(filterInput?.split(','), (filter) => {
     const cleanFilter = filter.trim()
     return cleanFilter || undefined
-  })
-}
-
-export function multiProtocolTokenAddressFilter(
-  filterInput?: string,
-): string[] | undefined {
-  if (!filterInput) {
-    return
-  }
-
-  return filterMapSync(filterInput?.split(','), (filter) => {
-    const cleanFilter = filter.trim()
-    return cleanFilter ? getAddress(cleanFilter) : undefined
   })
 }
