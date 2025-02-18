@@ -8,7 +8,7 @@ import {
   filterMapSync,
   type TestCase,
 } from '@metamask-institutional/defi-adapters'
-import { kebabCase } from 'lodash'
+import { kebabCase } from 'lodash-es'
 
 type BadSnapshotDetails = {
   protocolId: string
@@ -63,7 +63,6 @@ export function checkBadSnapshotsCommand(
         const testCases: TestCase[] = (
           await import(
             path.resolve(
-              __dirname,
               `../adapters/${protocolId}/products/${productId}/tests/testCases`,
             )
           )

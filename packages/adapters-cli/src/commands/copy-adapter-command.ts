@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs'
 import { Command } from 'commander'
-import { lowerFirst } from 'lodash'
+import { lowerFirst } from 'lodash-es'
 import path from 'node:path'
 import {
   DefiProvider,

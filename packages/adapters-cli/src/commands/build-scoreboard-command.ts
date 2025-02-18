@@ -74,7 +74,6 @@ export function buildScoreboardCommand(
         const testCases: TestCase[] = (
           await import(
             path.resolve(
-              __dirname,
               `../adapters/${protocolId}/products/${productId}/tests/testCases`,
             )
           )

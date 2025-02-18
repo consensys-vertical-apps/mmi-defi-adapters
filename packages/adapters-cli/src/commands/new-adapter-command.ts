@@ -2,11 +2,11 @@ import {
   pascalCase,
   type DefiProvider,
 } from '@metamask-institutional/defi-adapters'
-import chalk from 'chalk/index.js'
+import chalk from 'chalk'
 import type { Command } from 'commander'
 import { readFile } from 'node:fs/promises'
-import { prompt } from 'inquirer'
-import { lowerFirst } from 'lodash'
+import inquirer from 'inquirer'
+import { lowerFirst } from 'lodash-es'
 import path from 'node:path'
 import {
   BlankAdapterOutcomeOptions,
@@ -211,21 +211,23 @@ export function calculateAdapterOutcomes(
 async function welcome(defiProvider: DefiProvider) {
   showMessage(colorBlue(newAdapterCliLogo))
 
-  const listQuestionsAnswers = await prompt({
+  const listQuestionsAnswers = await inquirer.prompt({
     type: 'confirm',
     name: 'viewAllQuestions',
     message:
       'Would you like to view all questions? This will help you know what to look for in the protocol.',
-    prefix: chalk.blue('?'),
+    //@ts-ignore
+    prefix: bluePrefix,
   })
 
   if (listQuestionsAnswers.viewAllQuestions) {
     displayAllQuestions(defiProvider)
 
-    const start = await prompt({
+    const start = await inquirer.prompt({
       type: 'confirm',
       name: 'start',
       message: 'Ready to answer the questions?',
+      //@ts-ignore
       prefix: bluePrefix,
     })
 
@@ -292,15 +294,13 @@ async function askQuestion(
   ]
 
   // Step1: ask question and get answer
-  const answer = (
-    await prompt([
-      {
-        ...questionConfig,
-        prefix: chalk.blue('?'),
-        pageSize: 9990,
-      },
-    ])
-  )[nextQuestionName]
+  //@ts-ignore
+  const prompt = await inquirer.prompt({
+    ...questionConfig,
+    prefix: bluePrefix,
+    pageSize: 9990,
+  })
+  const answer = prompt[nextQuestionName]
 
   //@ts-ignore
   answers[nextQuestionName as keyof QuestionAnswers] = answer

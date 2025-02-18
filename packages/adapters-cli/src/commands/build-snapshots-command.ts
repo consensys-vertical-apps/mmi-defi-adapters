@@ -14,7 +14,7 @@ import {
   type DefiProfitsResponse,
 } from '@metamask-institutional/defi-adapters'
 import { ChainIdToChainNameMap } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
-import { kebabCase } from 'lodash'
+import { kebabCase } from 'lodash-es'
 import { writeAndLintFile } from '../utils/write-and-lint-file.js'
 import {
   startRpcSnapshot,
@@ -94,7 +94,6 @@ export function buildSnapshotsCommand(
         const testCases: TestCase[] = (
           await import(
             path.resolve(
-              __dirname,
               `../adapters/${protocolId}/products/${productId}/tests/testCases`,
             )
           )

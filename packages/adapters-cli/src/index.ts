@@ -29,9 +29,7 @@ const cachePoolFilter =
         Object.values(EvmChain).reduce(
           (acc, chainId) => {
             const db = new Database(
-              path.join(
-                __dirname,
-                '../../../../',
+              path.resolve(
                 `databases/${ChainIdToChainNameMap[chainId]}_index_history.db`,
               ),
               {

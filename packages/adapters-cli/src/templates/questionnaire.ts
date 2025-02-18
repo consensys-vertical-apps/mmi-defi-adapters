@@ -7,7 +7,7 @@ import {
   type Protocol,
 } from '@metamask-institutional/defi-adapters'
 import type { Answers } from 'inquirer'
-import { kebabCase } from 'lodash'
+import { kebabCase } from 'lodash-es'
 import { blankAdapterTemplate } from './blankAdapterTemplate.js'
 import { compoundV2BorrowMarketForkAdapterTemplate } from './compoundV2BorrowMarketForkAdapter.js'
 import { compoundV2SupplyMarketForkAdapterTemplate } from './compoundV2SupplyMarketForkAdapter.js'

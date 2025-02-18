@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { Command } from 'commander'
+import * as recast from 'recast'
 import { parse, print, types, visit } from 'recast'
 import { glob, runTypeChain } from 'typechain'
 import {
@@ -8,7 +9,7 @@ import {
   Protocol,
   pascalCase,
 } from '@metamask-institutional/defi-adapters'
-import { lowerFirst } from 'lodash'
+import { lowerFirst } from 'lodash-es'
 import { sortEntries } from './sort-entries.js'
 import { writeAndLintFile } from './write-and-lint-file.js'
 import n = types.namedTypes
@@ -138,7 +139,8 @@ async function addImportsAndSchemas(
   )
   const contents = fs.readFileSync(adaptersFile, 'utf-8')
   const ast = parse(contents, {
-    parser: require('recast/parsers/typescript'),
+    //@ts-ignore
+    parser: await import('recast/parsers/typescript.js'),
   })
 
   visit(ast, {
