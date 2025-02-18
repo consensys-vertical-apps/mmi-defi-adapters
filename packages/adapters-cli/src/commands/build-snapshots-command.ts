@@ -93,9 +93,7 @@ export function buildSnapshotsCommand(
       for (const { protocolId, productId } of allProducts) {
         const testCases: TestCase[] = (
           await import(
-            path.resolve(
-              `../adapters/${protocolId}/products/${productId}/tests/testCases`,
-            )
+            `@metamask-institutional/defi-adapters/dist/adapters/${protocolId}/products/${productId}/tests/testCases.js`
           )
         ).testCases
 
@@ -229,61 +227,6 @@ export function buildSnapshotsCommand(
                 )
 
                 return result
-              }
-
-              case 'tvl': {
-                const blockNumber =
-                  testCase.blockNumber ??
-                  (await defiProvider.chainProvider.providers[
-                    chainId
-                  ].getStableBlockNumber())
-
-                const startTime = Date.now()
-
-                const snapshot = await defiProvider.getTotalValueLocked({
-                  filterChainIds: [chainId],
-                  filterProtocolIds: [protocolId],
-                  filterProductIds: [productId],
-                  filterProtocolTokens: testCase.filterProtocolTokens,
-                  blockNumbers: {
-                    [chainId]: blockNumber,
-                  },
-                })
-
-                const endTime = Date.now()
-
-                const result = {
-                  latency: getLatency(
-                    endTime,
-                    startTime,
-                    latency,
-                    previousLatency,
-                  ),
-                  blockNumber,
-                  snapshot,
-                }
-
-                await updateBlockNumber(
-                  protocolId,
-                  productId,
-                  index,
-                  blockNumber,
-                )
-
-                return result
-              }
-
-              case 'tx-params': {
-                const inputs = {
-                  ...testCase.input,
-                  protocolId,
-                  chainId,
-                  productId,
-                } as GetTransactionParams
-
-                return {
-                  snapshot: await defiProvider.getTransactionParams(inputs),
-                }
               }
             }
           })()
