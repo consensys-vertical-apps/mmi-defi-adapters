@@ -154,14 +154,10 @@ function FilterWrapper({
         <Tabs defaultValue="positions" className="w-full">
           <TabsList>
             <TabsTrigger value="positions">Positions</TabsTrigger>
-            {/* <TabsTrigger value="support">Support</TabsTrigger> */}
           </TabsList>
           <TabsContent value="positions">
             <Positions />
           </TabsContent>
-          {/* <TabsContent value="support">
-            <Support />
-          </TabsContent> */}
         </Tabs>
       </div>
     </FiltersContext.Provider>
