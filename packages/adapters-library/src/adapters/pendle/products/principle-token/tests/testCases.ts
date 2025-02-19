@@ -25,26 +25,7 @@ export const testCases: TestCase[] = [
 
     blockNumber: 20572021,
   },
-  {
-    chainId: Chain.Ethereum,
-    method: 'profits',
-    input: {
-      userAddress: '0x117C99451cae094B3a7d56C9d3A97c96900b8e7A',
-      filterProtocolTokens: ['0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966'],
-    },
-    blockNumber: 20126536,
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'deposits',
 
-    input: {
-      userAddress: '0x117C99451cae094B3a7d56C9d3A97c96900b8e7A',
-      fromBlock: 20089673,
-      toBlock: 20089673,
-      protocolTokenAddress: '0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966',
-    },
-  },
   {
     chainId: Chain.Ethereum,
     method: 'prices',

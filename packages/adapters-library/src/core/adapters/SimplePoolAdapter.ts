@@ -126,16 +126,4 @@ export abstract class SimplePoolAdapter<
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number,
   ): Promise<UnwrappedTokenExchangeRate[]>
-
-  async getProtocolTokenMovements(input: {
-    protocolToken: Erc20Metadata
-    filter: {
-      fromBlock: number
-      toBlock: number
-      from?: string
-      to?: string
-    }
-  }): Promise<MovementsByBlock[]> {
-    return this.helpers.getErc20Movements(input)
-  }
 }
