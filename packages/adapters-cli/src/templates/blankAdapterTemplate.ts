@@ -14,11 +14,6 @@ export function blankAdapterTemplate() {
       AssetType,
       GetPositionsInput,
       ProtocolPosition,
-      GetEventsInput,
-      MovementsByBlock,
-      MovementsByBlockReward,
-      GetTotalValueLockedInput,
-      ProtocolTokenTvl,
       UnwrapInput,
       UnwrapExchangeRate,
       Underlying,
@@ -100,31 +95,6 @@ export function blankAdapterTemplate() {
         return Replacements.GET_POSITIONS.placeholder
       }
 
-      async getWithdrawals({
-        protocolTokenAddress,
-        fromBlock,
-        toBlock,
-        userAddress,
-      }: GetEventsInput): Promise<MovementsByBlock[]> {
-        return Replacements.GET_WITHDRAWALS.placeholder
-      }
-
-      async getDeposits({
-        protocolTokenAddress,
-        fromBlock,
-        toBlock,
-        userAddress,
-      }: GetEventsInput): Promise<MovementsByBlock[]> {
-        return Replacements.GET_DEPOSITS.placeholder
-      }
-
-      async getTotalValueLocked({
-        protocolTokenAddresses,
-        blockNumber,
-      }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-        return Replacements.TVL.placeholder
-      }
-
       async unwrap({
         protocolTokenAddress,
         tokenId,
@@ -135,11 +105,7 @@ export function blankAdapterTemplate() {
 
       //Replacements.GET_REWARD_POSITIONS.placeholder
     
-      //Replacements.GET_REWARD_WITHDRAWALS.placeholder
-    
       //Replacements.GET_EXTRA_REWARD_POSITIONS.placeholder
-    
-      //Replacements.GET_EXTRA_REWARD_WITHDRAWALS.placeholder
     }
     `
 }

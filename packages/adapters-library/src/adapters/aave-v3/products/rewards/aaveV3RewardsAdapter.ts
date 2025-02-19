@@ -17,15 +17,11 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -238,26 +234,6 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     ]
   }
 
-  /**
-   * Rewards claimed by a user
-   */
-  async getWithdrawals({
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolTokens = (await this.getProtocolTokens())[0]
-
-    if (!protocolTokens) {
-      throw new Error('No protocol tokens found')
-    }
-
-    return this.getClaimedRewards({
-      rewardTokens: protocolTokens.underlyingTokens,
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
   async getClaimedRewards({
     rewardTokens,
     filter: { fromBlock, toBlock, userAddress },
@@ -337,28 +313,6 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     )
 
     return movements.filter(Boolean)
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return [] // no deposits on a rewards contract
-  }
-
-  /**
-   * I don't think TVL on a claimable rewards contract makes sense
-   * In this case the reward tokens are not held in the reward contract
-   * Reward contract has balance of 0
-   * It appears the reward contract might have approvals to spend the reward tokens from things like the Arbitrum DAO
-   */
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
   }
 
   async unwrap({

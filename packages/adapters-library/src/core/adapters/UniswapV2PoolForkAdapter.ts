@@ -9,14 +9,10 @@ import { Helpers } from '../../core/helpers'
 import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -266,119 +262,6 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
     )
   }
 
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    if (this.metadataBased) {
-      return this.helpers.withdrawals({
-        protocolToken: await this.getProtocolToken(protocolTokenAddress),
-        filter: { fromBlock, toBlock, userAddress },
-      })
-    }
-
-    const protocolToken = await this.setTokenNameAndSymbol(protocolTokenAddress)
-
-    const withdrawals = await this.helpers.withdrawals({
-      protocolToken,
-      filter: { fromBlock, toBlock, userAddress },
-    })
-
-    return await Promise.all(
-      withdrawals.map(async (withdrawal) => {
-        const underlyingRates = await this.unwrap({
-          protocolTokenAddress: withdrawal.protocolToken.address,
-          blockNumber: withdrawal.blockNumber,
-        })
-
-        const protocolTokenBalance = withdrawal.tokens[0]!
-        const token0 = underlyingRates.tokens![0]!
-        const token1 = underlyingRates.tokens![1]!
-
-        return {
-          ...withdrawal,
-          protocolToken,
-          tokens: [
-            {
-              ...protocolTokenBalance,
-              name: protocolToken.name,
-              symbol: protocolToken.symbol,
-              tokens: [
-                this.underlyingTokenBalance(token0, protocolTokenBalance),
-                this.underlyingTokenBalance(token1, protocolTokenBalance),
-              ],
-            },
-          ],
-        }
-      }),
-    )
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    if (this.metadataBased) {
-      return this.helpers.deposits({
-        protocolToken: await this.getProtocolToken(protocolTokenAddress),
-        filter: { fromBlock, toBlock, userAddress },
-      })
-    }
-
-    const protocolToken = await this.setTokenNameAndSymbol(protocolTokenAddress)
-
-    const deposits = await this.helpers.deposits({
-      protocolToken,
-      filter: { fromBlock, toBlock, userAddress },
-    })
-
-    return await Promise.all(
-      deposits.map(async (deposit) => {
-        const underlyingRates = await this.unwrap({
-          protocolTokenAddress: deposit.protocolToken.address,
-          blockNumber: deposit.blockNumber,
-        })
-
-        const protocolTokenBalance = deposit.tokens[0]!
-        const token0 = underlyingRates.tokens![0]!
-        const token1 = underlyingRates.tokens![1]!
-
-        return {
-          ...deposit,
-          protocolToken,
-          tokens: [
-            {
-              ...protocolTokenBalance,
-              name: protocolToken.name,
-              symbol: protocolToken.symbol,
-              tokens: [
-                this.underlyingTokenBalance(token0, protocolTokenBalance),
-                this.underlyingTokenBalance(token1, protocolTokenBalance),
-              ],
-            },
-          ],
-        }
-      }),
-    )
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = await this.getProtocolTokens()
-
-    return await this.helpers.tvl({
-      protocolTokens,
-      filterProtocolTokenAddresses: protocolTokenAddresses,
-      blockNumber,
-    })
-  }
-
   async unwrap({
     protocolTokenAddress,
     blockNumber,
@@ -426,12 +309,6 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
         },
       ],
     }
-  }
-
-  private async getProtocolToken(protocolTokenAddress: string) {
-    const { token0, token1, underlyingTokens, ...protocolToken } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
-    return protocolToken
   }
 
   protected async fetchPoolMetadata(protocolTokenAddress: string) {
@@ -737,22 +614,6 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       name: `${name} ${token0.symbol} / ${token1.symbol}`,
       symbol: `${symbol}/${token0.symbol}/${token1.symbol}`,
       decimals: 18,
-    }
-  }
-
-  private underlyingTokenBalance(
-    token: UnwrappedTokenExchangeRate,
-    protocolTokenBalance: Erc20Metadata & { balanceRaw: bigint },
-  ) {
-    return {
-      address: token.address,
-      name: token.name,
-      symbol: token.symbol,
-      decimals: token.decimals,
-      type: TokenType.Underlying,
-      balanceRaw:
-        (token.underlyingRateRaw! * protocolTokenBalance.balanceRaw) /
-        10n ** BigInt(protocolTokenBalance.decimals),
     }
   }
 }

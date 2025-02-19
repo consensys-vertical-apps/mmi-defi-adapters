@@ -4,14 +4,10 @@ import { Helpers } from '../../core/helpers'
 import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -73,43 +69,6 @@ export abstract class CompoundV2SupplyMarketForkAdapter
     return this.helpers.getBalanceOfTokens({
       ...input,
       protocolTokens: await this.getProtocolTokens(),
-    })
-  }
-
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.deposits({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = await this.getProtocolTokens()
-
-    return await this.helpers.tvl({
-      protocolTokens,
-      filterProtocolTokenAddresses: protocolTokenAddresses,
-      blockNumber,
     })
   }
 

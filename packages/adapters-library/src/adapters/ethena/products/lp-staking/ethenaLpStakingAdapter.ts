@@ -13,15 +13,11 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -100,13 +96,6 @@ export class EthenaLpStakingAdapter implements IProtocolAdapter {
     return lpTokens
   }
 
-  private async getProtocolTokenByAddress(protocolTokenAddress: string) {
-    return this.helpers.getProtocolTokenByAddress({
-      protocolTokens: await this.getProtocolTokens(),
-      protocolTokenAddress,
-    })
-  }
-
   async getPositions({
     userAddress,
     blockNumber,
@@ -156,110 +145,6 @@ export class EthenaLpStakingAdapter implements IProtocolAdapter {
         ],
       }
     })
-  }
-
-  async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getMovements({
-      ...input,
-      filterType: 'unstake',
-    })
-  }
-
-  async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getMovements({
-      ...input,
-      filterType: 'stake',
-    })
-  }
-
-  private async getMovements({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-    filterType,
-  }: GetEventsInput & {
-    filterType: 'stake' | 'unstake'
-  }): Promise<MovementsByBlock[]> {
-    const lpStakingContract = EthenaLpStaking__factory.connect(
-      LP_STAKING_CONTRACT_ADDRESS,
-      this.provider,
-    )
-
-    const filter =
-      filterType === 'stake'
-        ? lpStakingContract.filters.Stake(userAddress, protocolTokenAddress)
-        : lpStakingContract.filters.Unstake(userAddress, protocolTokenAddress)
-
-    const events = await lpStakingContract.queryFilter(
-      filter,
-      fromBlock,
-      toBlock,
-    )
-
-    const protocolToken =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    return events.map((event) => {
-      const { amount } = event.args!
-
-      return {
-        protocolToken: {
-          address: protocolToken.address,
-          name: protocolToken.name,
-          symbol: protocolToken.symbol,
-          decimals: protocolToken.decimals,
-        },
-        blockNumber: event.blockNumber,
-        transactionHash: event.transactionHash,
-        tokens: [
-          {
-            address: protocolToken.address,
-            name: protocolToken.name,
-            symbol: protocolToken.symbol,
-            decimals: protocolToken.decimals,
-            type: TokenType.Underlying,
-            blockNumber: event.blockNumber,
-            balanceRaw: amount,
-          },
-        ],
-      }
-    })
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const lpStakingContract = EthenaLpStaking__factory.connect(
-      LP_STAKING_CONTRACT_ADDRESS,
-      this.provider,
-    )
-
-    return await Promise.all(
-      (await this.getProtocolTokens())
-        .filter(
-          (protocolToken) =>
-            !protocolTokenAddresses ||
-            protocolTokenAddresses.includes(protocolToken.address),
-        )
-        .map(async (protocolToken) => {
-          const stakeParameters =
-            await lpStakingContract.stakeParametersByToken(
-              protocolToken.address,
-              { blockTag: blockNumber },
-            )
-
-          return {
-            type: TokenType.Protocol,
-            address: protocolToken.address,
-            name: protocolToken.name,
-            symbol: protocolToken.symbol,
-            decimals: protocolToken.decimals,
-            totalSupplyRaw: stakeParameters.totalStaked,
-          }
-        }),
-    )
   }
 
   async unwrap({

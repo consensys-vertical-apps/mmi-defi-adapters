@@ -12,15 +12,11 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -217,118 +213,6 @@ export class AngleProtocolSavingsAdapter implements IProtocolAdapter {
     )
   }
 
-  async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    const tokens = await this.getProtocolTokens()
-    const {
-      underlyingTokens: [underlyingToken],
-      ...protocolToken
-    } = tokens.find((t) => t.address === input.protocolTokenAddress)!
-
-    const savingContract = Savings__factory.connect(
-      input.protocolTokenAddress,
-      this.provider,
-    )
-
-    const filter = savingContract.filters.Withdraw(undefined, input.userAddress)
-    const eventResults = await savingContract.queryFilter(
-      filter,
-      input.fromBlock,
-      input.toBlock,
-    )
-
-    return eventResults.map((event) => ({
-      blockNumber: event.blockNumber,
-      transactionHash: event.transactionHash,
-      protocolToken: protocolToken,
-      tokens: [
-        {
-          ...underlyingToken!,
-          type: TokenType.Underlying,
-          balanceRaw: event.args?.assets,
-        },
-      ],
-    }))
-  }
-
-  async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    const tokens = await this.getProtocolTokens()
-    const {
-      underlyingTokens: [underlyingToken],
-      ...protocolToken
-    } = tokens.find((t) => t.address === input.protocolTokenAddress)!
-
-    const savingContract = Savings__factory.connect(
-      input.protocolTokenAddress,
-      this.provider,
-    )
-
-    const filter = savingContract.filters.Deposit(undefined, input.userAddress)
-    const eventResults = await savingContract.queryFilter(
-      filter,
-      input.fromBlock,
-      input.toBlock,
-    )
-
-    return eventResults.map((event) => ({
-      blockNumber: event.blockNumber,
-      transactionHash: event.transactionHash,
-      protocolToken: protocolToken,
-      tokens: [
-        {
-          ...underlyingToken!,
-          type: TokenType.Underlying,
-          balanceRaw: event.args?.assets,
-        },
-      ],
-    }))
-  }
-
-  async getTotalValueLocked(
-    input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    const tokens = await this.getProtocolTokens()
-
-    const result = (await Promise.all(
-      tokens.map(
-        async ({ underlyingTokens: [underlyingToken], ...protocolToken }) => {
-          if (
-            input.protocolTokenAddresses &&
-            !input.protocolTokenAddresses.includes(protocolToken.address)
-          ) {
-            return undefined
-          }
-
-          const saving = Savings__factory.connect(
-            protocolToken.address,
-            this.provider,
-          )
-          const totalValueLocked = await saving.totalAssets({
-            blockTag: input.blockNumber,
-          })
-          const totalSupply = await saving.totalSupply({
-            blockTag: input.blockNumber,
-          })
-          return {
-            ...protocolToken,
-            type: TokenType.Protocol,
-            totalSupplyRaw: totalSupply,
-            tokens: [
-              {
-                ...underlyingToken!,
-                type: TokenType.Underlying,
-                totalSupplyRaw: totalValueLocked,
-              },
-            ],
-          }
-        },
-      ),
-    )) as ProtocolTokenTvl[]
-
-    return result.filter((result): result is ProtocolTokenTvl =>
-      Boolean(result),
-    )
-  }
-
   async unwrap(input: UnwrapInput): Promise<UnwrapExchangeRate> {
     const tokens = await this.getProtocolTokens()
     const {
@@ -360,35 +244,4 @@ export class AngleProtocolSavingsAdapter implements IProtocolAdapter {
       ],
     }
   }
-
-  // NOTE: The APY/APR feature has been removed as of March 2024.
-  // The below contains logic that may be useful for future features or reference. For more context on this decision, refer to ticket [MMI-4731].
-
-  // async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-  //   const apr = await this.getApr({
-  //     protocolTokenAddress: _input.protocolTokenAddress,
-  //   })
-
-  //   const apyDecimal = aprToApy(apr.aprDecimal, SECONDS_PER_YEAR)
-  //   return { apyDecimal, ...apr }
-  // }
-
-  // async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-  //   const saving = Savings__factory.connect(
-  //     _input.protocolTokenAddress,
-  //     this.provider,
-  //   )
-
-  //   const metadata = await this.buildMetadata()
-  //   const protocolToken = metadata.find(
-  //     (m) => m.protocolToken.address === _input.protocolTokenAddress,
-  //   )!.protocolToken
-
-  //   const apr = await saving.estimatedAPR({
-  //     blockTag: _input.blockNumber,
-  //   })
-  //   const aprDecimal = parseFloat(apr.toString()) / 1e18
-
-  //   return { aprDecimal, ...protocolToken }
-  // }
 }

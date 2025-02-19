@@ -6,10 +6,8 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetTotalValueLockedInput,
   PositionType,
   ProtocolDetails,
-  ProtocolTokenTvl,
   TokenType,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
@@ -40,12 +38,6 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
       chainId: this.chainId,
       productId: this.productId,
     }
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
   }
 
   @CacheToDb

@@ -5,10 +5,8 @@ import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetTotalValueLockedInput,
   PositionType,
   ProtocolDetails,
-  ProtocolTokenTvl,
   TokenType,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
@@ -69,81 +67,6 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
       {
         ...protocolToken,
         underlyingTokens: [underlyingToken],
-      },
-    ]
-  }
-
-  async getTotalValueLocked(
-    values: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    const { blockNumber } = values
-
-    const [vaultsRegistryAddress, protocolToken] = await Promise.all([
-      this.getVaultsRegistryAddress(),
-      this.fetchProtocolTokenMetadata(PROTOCOL_TOKEN_ADDRESS),
-    ])
-
-    const vaultsRegistryContract = VaultsRegistry__factory.connect(
-      vaultsRegistryAddress,
-      this.provider,
-    )
-
-    const osEthContract = OsEth__factory.connect(
-      protocolToken.address,
-      this.provider,
-    )
-
-    const [osEthTotalSupply, topic] = await Promise.all([
-      osEthContract.totalSupply({ blockTag: blockNumber }),
-      vaultsRegistryContract.filters['VaultAdded(address,address)'](),
-    ])
-
-    const vaultsRegistryDeploymentBlock = 18470079
-    const logs = await this.provider.getLogs({
-      fromBlock: vaultsRegistryDeploymentBlock,
-      toBlock: blockNumber || 'latest',
-      address: vaultsRegistryAddress,
-      topics: await topic.getTopicFilter(),
-    })
-
-    const vaultsAddresses: string[] = logs.map((log) => {
-      const parsedLog = vaultsRegistryContract.interface.parseLog({
-        topics: [...log.topics],
-        data: log.data,
-      })
-
-      return parsedLog?.args[1] || ZERO_ADDRESS
-    })
-
-    const vaultsSupplies = await Promise.all(
-      vaultsAddresses.map((address) => {
-        const vaultContract = Vault__factory.connect(address, this.provider)
-
-        return vaultContract.totalAssets({ blockTag: blockNumber })
-      }),
-    )
-
-    const underlyingTokenSupply = vaultsSupplies.reduce(
-      (acc, value) => acc + value,
-      0n,
-    )
-
-    const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
-      PROTOCOL_TOKEN_ADDRESS,
-    )
-
-    return [
-      {
-        ...protocolToken,
-        type: TokenType.Protocol,
-        totalSupplyRaw: osEthTotalSupply,
-        tokens: [
-          {
-            ...underlyingTokens[0]!,
-            totalSupplyRaw: underlyingTokenSupply,
-            type: TokenType.Underlying,
-          },
-        ],
       },
     ]
   }

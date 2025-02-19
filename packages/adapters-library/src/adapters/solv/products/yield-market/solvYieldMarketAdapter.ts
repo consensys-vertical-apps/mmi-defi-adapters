@@ -11,15 +11,11 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -331,132 +327,11 @@ export class SolvYieldMarketAdapter implements IProtocolAdapter {
     return tokenIds
   }
 
-  /**
-   * Computes a Pool ID from the SFT address and the slot.
-   * Some Solv smart contracts methods accept the pool id instead of the slot.
-   *
-   * @example
-   * const slot = '5310353805259224968786693768403624884928279211848504288200646724372830798580'
-   * computePoolId(slot) // returns '0xe037ef7b5f74bf3c988d8ae8ab06ad34643749ba9d217092297241420d600fce'
-   *
-   * @see https://github.com/solv-finance/SolvBTC/blob/ef5be00ec22549ac5a323378c2a914166bf0dcc1/contracts/SftWrappedToken.sol#L198
-   */
-  private computePoolId(slot: bigint): string {
-    const { openFundShareDelegateAddress } = this.yieldMarketConfig
-    const encodedData = AbiCoder.defaultAbiCoder().encode(
-      ['address', 'uint256'],
-      [openFundShareDelegateAddress, slot],
-    )
-    return keccak256(encodedData)
-  }
-
-  async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.getMovements('deposit', input)
-  }
-
-  async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.getMovements('withdraw', input)
-  }
-
-  /**
-   * The event TransferValue(uint256,uint256,uint256)
-   * is emitted on all types of movements (deposit to the GOEFS, redeem request, claiming the GOEFR)
-   *
-   * It's arguments are:
-   * _fromTokenId, _toTokenId, _value
-   *
-   * @see https://eips.ethereum.org/EIPS/eip-3525
-   */
-  private async getMovements(
-    action: 'deposit' | 'withdraw',
-    input: GetEventsInput,
-  ): Promise<MovementsByBlock[]> {
-    const isDeposit = action === 'deposit'
-    const { protocolTokenAddress, tokenId, fromBlock, toBlock } = input
-
-    if (!tokenId) throw new Error('Argument tokenId cannot be undefined')
-
-    const isShare =
-      protocolTokenAddress ===
-      this.yieldMarketConfig.openFundShareDelegateAddress
-
-    const delegateContract = isShare
-      ? this.openFundShareDelegateContract
-      : this.openFundRedemptionDelegateContract
-
-    const slot = await delegateContract.slotOf(tokenId)
-    const { id, currencyAddress } = this.getPoolConfigBy(
-      isShare ? 'slotInShareSft' : 'slotInRedemptionSft',
-      slot.toString(),
-    )
-
-    /**
-     * When depositing, we look at value transfers TO the SFT.
-     * When withdrawing, we look at value transfers FROM the SFT.
-     */
-    const filter = isDeposit
-      ? delegateContract.filters['TransferValue(uint256,uint256,uint256)'](
-          undefined,
-          tokenId,
-        )
-      : delegateContract.filters['TransferValue(uint256,uint256,uint256)'](
-          tokenId,
-        )
-
-    const [transferValueEvents, underlyingToken, decimals] = await Promise.all([
-      delegateContract.queryFilter(filter, fromBlock, toBlock),
-      this.helpers.getTokenMetadata(currencyAddress),
-      delegateContract.valueDecimals(),
-    ])
-
-    const movements: MovementsByBlock[] = await filterMapAsync(
-      transferValueEvents,
-      async (event) => {
-        const blockDate = (await event.getBlock()).date
-        if (!blockDate) throw new Error('No block date')
-
-        const [nav] = await this.navOracleContract.getSubscribeNav(
-          id,
-          (blockDate.getTime() / 1000).toFixed(0),
-        )
-
-        return {
-          transactionHash: event.transactionHash,
-          protocolToken: {
-            address: protocolTokenAddress,
-            name: id,
-            symbol: id,
-            decimals: Number(decimals),
-            tokenId: event.args[isDeposit ? 1 : 0].toString(),
-          },
-          tokens: [
-            {
-              ...underlyingToken,
-              type: 'underlying',
-              balanceRaw: (event.args[2] * nav) / 10n ** decimals,
-              priceRaw: nav,
-            },
-          ],
-          blockNumber: event.blockNumber,
-        }
-      },
-    )
-
-    return movements
-  }
-
   async unwrap({
     protocolTokenAddress,
     tokenId,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    throw new NotImplementedError()
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
     throw new NotImplementedError()
   }
 }

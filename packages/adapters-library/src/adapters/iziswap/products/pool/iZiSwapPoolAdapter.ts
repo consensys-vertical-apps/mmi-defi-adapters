@@ -12,15 +12,11 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   Underlying,
   UnwrapExchangeRate,
@@ -234,145 +230,7 @@ export class IZiSwapPoolAdapter implements IProtocolAdapter {
     }
   }
 
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    tokenId,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    if (!tokenId) {
-      throw new Error('TokenId required for iZiSwap withdrawals')
-    }
-
-    return await this.getIziswapMovements({
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-      eventType: 'withdrawals',
-      tokenId,
-    })
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    tokenId,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    if (!tokenId) {
-      throw new Error('TokenId required for iZiSwap deposits')
-    }
-    return await this.getIziswapMovements({
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-      eventType: 'deposit',
-      tokenId,
-    })
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
   async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
-  }
-
-  private async getIziswapMovements({
-    protocolTokenAddress,
-    eventType,
-    fromBlock,
-    toBlock,
-    tokenId,
-  }: {
-    protocolTokenAddress: string
-    eventType: 'withdrawals' | 'deposit'
-    fromBlock: number
-    toBlock: number
-    tokenId: string
-  }): Promise<MovementsByBlock[]> {
-    const liquidityManagerContract = LiquidityManager__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
-
-    const eventFilters = {
-      deposit: liquidityManagerContract.filters.AddLiquidity(tokenId),
-      withdrawals: liquidityManagerContract.filters.DecLiquidity(tokenId),
-    }
-
-    const liquidity = await liquidityManagerContract.liquidities(tokenId)
-
-    const { tokenX, tokenY, fee } = await liquidityManagerContract
-      .poolMetas(liquidity.poolId, { blockTag: toBlock }) // Encountered failures if nft not yet minted
-      .catch((error) => {
-        if (error?.message?.includes('Invalid token ID')) {
-          throw new Error(
-            `iZiSwap tokenId: ${tokenId} at blocknumber: ${fromBlock} does not exist, has position been minted yet or burned?`,
-          )
-        }
-
-        throw new Error(error)
-      })
-    const [tokenXMetadata, tokenYMetadata] = await Promise.all([
-      getTokenMetadata(tokenX, this.chainId, this.provider),
-      getTokenMetadata(tokenY, this.chainId, this.provider),
-    ])
-
-    const eventResults = await liquidityManagerContract.queryFilter(
-      eventFilters[eventType],
-      fromBlock,
-      toBlock,
-    )
-
-    return await Promise.all(
-      eventResults.map(async (transferEvent) => {
-        const {
-          blockNumber,
-          args: { amountX, amountY },
-          transactionHash,
-        } = transferEvent
-
-        return {
-          transactionHash,
-          protocolToken: {
-            address: protocolTokenAddress,
-            name: this.protocolTokenName(
-              tokenXMetadata.symbol,
-              tokenYMetadata.symbol,
-              fee,
-            ),
-            symbol: this.protocolTokenName(
-              tokenXMetadata.symbol,
-              tokenYMetadata.symbol,
-              fee,
-            ),
-            decimals: 18,
-            tokenId,
-          },
-          tokens: [
-            {
-              type: TokenType.Underlying,
-              balanceRaw: amountX,
-              ...tokenXMetadata,
-              transactionHash,
-              blockNumber,
-            },
-            {
-              type: TokenType.Underlying,
-              balanceRaw: amountY,
-              ...tokenYMetadata,
-              transactionHash,
-              blockNumber,
-            },
-          ],
-
-          blockNumber,
-        }
-      }),
-    )
   }
 }

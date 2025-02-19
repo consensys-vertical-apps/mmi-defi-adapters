@@ -9,14 +9,10 @@ import { Helpers } from '../../core/helpers'
 import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -130,147 +126,6 @@ export abstract class CompoundV2BorrowMarketForkAdapter
         ],
       }
     })
-  }
-
-  getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  async getBorrows({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.getRepaysOrBorrows({
-      userAddress,
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-      extractAmount: (log: LogDescription) =>
-        log.name === 'Borrow'
-          ? (log as unknown as BorrowEvent.LogDescription).args.borrowAmount
-          : undefined,
-    })
-  }
-
-  async getRepays({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.getRepaysOrBorrows({
-      userAddress,
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-      extractAmount: (log: LogDescription) =>
-        log.name === 'RepayBorrow'
-          ? (log as unknown as RepayBorrowEvent.LogDescription).args.repayAmount
-          : undefined,
-    })
-  }
-
-  private async getRepaysOrBorrows({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    extractAmount,
-  }: GetEventsInput & {
-    extractAmount: (logs: LogDescription) => bigint | undefined
-  }): Promise<MovementsByBlock[]> {
-    const {
-      underlyingTokens: [underlyingToken],
-      ...protocolToken
-    } = await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    const cTokenContract = CompoundV2Cerc20__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
-
-    const comptrollerContract = CompoundV2Comptroller__factory.connect(
-      this.contractAddresses[this.chainId]!.comptrollerAddress,
-      this.provider,
-    )
-
-    const comptrollerBorrowEventFilter =
-      comptrollerContract.filters.DistributedBorrowerComp(
-        protocolTokenAddress,
-        userAddress,
-        undefined,
-        undefined,
-      )
-
-    const comptrollerBorrowEvents = await comptrollerContract.queryFilter(
-      comptrollerBorrowEventFilter,
-      fromBlock,
-      toBlock,
-    )
-
-    // The same tx could have multiple events
-    // With this we only fetch each tx receipt once
-    const txReceipts = await Promise.all(
-      [
-        ...new Set(
-          comptrollerBorrowEvents.map((event) => event.transactionHash),
-        ),
-      ].map(
-        async (txHash) => (await this.provider.getTransactionReceipt(txHash))!,
-      ),
-    )
-
-    // Filter out logs that are not part of the cToken
-    // Filter out logs that do not meet extractAmount condition
-    return txReceipts.flatMap((txReceipt) => {
-      return filterMapSync(txReceipt.logs, (log) => {
-        const parsedLog = cTokenContract.interface.parseLog({
-          data: log.data,
-          topics: log.topics as string[],
-        })
-
-        if (!parsedLog) {
-          return undefined
-        }
-
-        const eventAmount = extractAmount(parsedLog)
-
-        if (!eventAmount) {
-          return undefined
-        }
-
-        return {
-          transactionHash: txReceipt.hash,
-          protocolToken: {
-            address: protocolToken.address,
-            name: protocolToken.name,
-            symbol: protocolToken.symbol,
-            decimals: protocolToken.decimals,
-          },
-          tokens: [
-            {
-              ...underlyingToken!,
-              balanceRaw: eventAmount,
-              type: TokenType.Underlying,
-              blockNumber: txReceipt.blockNumber,
-            },
-          ],
-          blockNumber: txReceipt.blockNumber,
-        }
-      })
-    })
-  }
-
-  getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
   }
 
   unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {

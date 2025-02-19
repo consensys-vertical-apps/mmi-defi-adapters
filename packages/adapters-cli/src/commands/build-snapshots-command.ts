@@ -26,16 +26,7 @@ export function buildSnapshotsCommand(
   program: Command,
   defiProvider: DefiProvider,
 ) {
-  const allowedMethods = [
-    'positions',
-    'profits',
-    'deposits',
-    'withdrawals',
-    'repays',
-    'borrows',
-    'prices',
-    'tvl',
-  ]
+  const allowedMethods = ['positions', 'prices']
 
   program
     .command('build-snapshots')

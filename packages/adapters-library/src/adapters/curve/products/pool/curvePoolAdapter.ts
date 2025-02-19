@@ -12,15 +12,11 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -108,37 +104,6 @@ export class CurvePoolAdapter implements IProtocolAdapter {
       ...input,
       protocolTokens: await this.getProtocolTokens(),
     })
-  }
-
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.deposits({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
   }
 
   async unwrap({

@@ -12,17 +12,12 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
-  MovementsByBlockReward,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnderlyingReward,
   UnwrapExchangeRate,
@@ -260,43 +255,6 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
     })
   }
 
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.deposits({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = await this.getProtocolTokens()
-
-    return await this.helpers.tvl({
-      protocolTokens,
-      filterProtocolTokenAddresses: protocolTokenAddresses,
-      blockNumber,
-    })
-  }
-
   async getRewardPositions({
     userAddress,
     blockNumber,
@@ -385,147 +343,5 @@ export class ConvexStakingAdapter implements IProtocolAdapter {
     if (!underlying || underlying.length === 0) return []
 
     return underlying
-  }
-
-  async getRewardWithdrawals({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlockReward[]> {
-    const { rewardTokens } =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    const mainRewardTrackerContract = ConvexRewardsFactory__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
-
-    const { name, symbol, decimals, address } =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    const crvRewardMetadata = rewardTokens.find(
-      (token) => token.address === CRV_TOKEN_ADDRESS,
-    )!
-    const convexRewardMetadata = rewardTokens.find(
-      (token) => token.address === CONVEX_TOKEN_ADDRESS,
-    )!
-
-    const filter =
-      mainRewardTrackerContract.filters['RewardPaid(address,uint256)'](
-        userAddress,
-      )
-
-    const eventResults =
-      await mainRewardTrackerContract.queryFilter<RewardPaidEvent.Event>(
-        filter,
-        fromBlock,
-        toBlock,
-      )
-
-    const cvxTokenContract = CvxMint__factory.connect(
-      convexRewardMetadata.address,
-      this.provider,
-    )
-
-    const results = eventResults.map(async (event) => {
-      const {
-        blockNumber,
-        args: { reward: protocolTokenMovementValueRaw },
-        transactionHash,
-      } = event
-
-      const cvxSupply = await cvxTokenContract.totalSupply({
-        blockTag: blockNumber,
-      })
-
-      const cvxReward = GetCVXMintAmount(
-        protocolTokenMovementValueRaw,
-        cvxSupply,
-      )
-
-      return {
-        transactionHash,
-        protocolToken: {
-          address,
-          name,
-          symbol,
-          decimals,
-        },
-        tokens: [
-          {
-            ...crvRewardMetadata,
-            balanceRaw: protocolTokenMovementValueRaw,
-            type: TokenType.UnderlyingClaimable,
-          },
-          {
-            ...convexRewardMetadata,
-            balanceRaw: cvxReward,
-            type: TokenType.UnderlyingClaimable,
-          },
-        ],
-        blockNumber: blockNumber,
-      }
-    })
-
-    return await Promise.all(results)
-  }
-
-  async getExtraRewardWithdrawals({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlockReward[]> {
-    const { name, symbol, decimals, address, extraRewardTokens } =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    const responsePromises = (extraRewardTokens ?? []).map(
-      async (extraRewardToken: ExtraRewardToken) => {
-        const extraRewardTracker = ConvexRewardTracker__factory.connect(
-          extraRewardToken.manager,
-          this.provider,
-        )
-
-        const filter =
-          extraRewardTracker.filters['RewardPaid(address,uint256)'](userAddress)
-
-        const eventResults =
-          await extraRewardTracker.queryFilter<RewardPaidEvent.Event>(
-            filter,
-            fromBlock,
-            toBlock,
-          )
-
-        return eventResults.map((event) => {
-          const {
-            blockNumber,
-            args: { reward: protocolTokenMovementValueRaw },
-            transactionHash,
-          } = event
-
-          return {
-            transactionHash: transactionHash,
-            protocolToken: { name, address, decimals, symbol },
-            tokens: [
-              {
-                address: extraRewardToken.address,
-                symbol: extraRewardToken.symbol,
-                name: extraRewardToken.name,
-                decimals: extraRewardToken.decimals,
-                balanceRaw: protocolTokenMovementValueRaw,
-                type: TokenType.UnderlyingClaimable,
-              },
-            ],
-            blockNumber: blockNumber,
-          }
-        })
-      },
-    )
-
-    const nestedResults = await Promise.all(responsePromises)
-    const response: MovementsByBlockReward[] = nestedResults.flat()
-
-    return response
   }
 }

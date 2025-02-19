@@ -157,59 +157,7 @@ export const Replacements = {
       }
     },
   },
-  GET_WITHDRAWALS: {
-    replace: (
-      outcomes: BlankAdapterOutcomeOptions,
-      updatedTemplate: string,
-      _answers: QuestionAnswers,
-    ): string => {
-      const regexWithdrawals =
-        /return Replacements.GET_WITHDRAWALS.placeholder/g
 
-      switch (outcomes.withdrawalsFunction) {
-        case 'useWithdrawalHelper':
-          return updatedTemplate.replace(
-            regexWithdrawals,
-            `return this.helpers.withdrawals({
-                  protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-                  filter: { fromBlock, toBlock, userAddress }
-                })`,
-          )
-
-        default:
-          return updatedTemplate.replace(
-            regexWithdrawals,
-            'throw new NotImplementedError()',
-          )
-      }
-    },
-  },
-  GET_DEPOSITS: {
-    replace: (
-      outcomes: BlankAdapterOutcomeOptions,
-      updatedTemplate: string,
-      _answers: QuestionAnswers,
-    ): string => {
-      const regexDeposits = /return Replacements.GET_DEPOSITS.placeholder/g
-
-      switch (outcomes.depositsFunction) {
-        case 'useDepositsHelper':
-          return updatedTemplate.replace(
-            regexDeposits,
-            `return this.helpers.deposits({
-                  protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-                  filter: { fromBlock, toBlock, userAddress }
-                })`,
-          )
-
-        default:
-          return updatedTemplate.replace(
-            regexDeposits,
-            'throw new NotImplementedError()',
-          )
-      }
-    },
-  },
   UNWRAP: {
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
@@ -235,35 +183,6 @@ export const Replacements = {
                   blockNumber
                 })`,
           )
-        default:
-          return updatedTemplate.replace(
-            regex,
-            'throw new NotImplementedError()',
-          )
-      }
-    },
-  },
-  TVL: {
-    replace: (
-      outcomes: BlankAdapterOutcomeOptions,
-      updatedTemplate: string,
-    ): string => {
-      const regex = /return Replacements.TVL.placeholder/g
-
-      switch (outcomes.defiAssetStructure) {
-        case 'singleProtocolToken':
-        case 'multipleProtocolTokens':
-          return updatedTemplate.replace(
-            regex,
-            `const protocolTokens = await this.getProtocolTokens()
-            
-              return await this.helpers.tvl({
-                protocolTokens,
-                filterProtocolTokenAddresses: protocolTokenAddresses,
-                blockNumber,
-              })`,
-          )
-
         default:
           return updatedTemplate.replace(
             regex,
@@ -347,33 +266,7 @@ export const Replacements = {
       }
     },
   },
-  GET_REWARD_WITHDRAWALS: {
-    replace: (
-      outcomes: BlankAdapterOutcomeOptions,
-      updatedTemplate: string,
-    ): string => {
-      const regexRewardWithdrawals = RegExp(
-        /\/\/Replacements.GET_REWARD_WITHDRAWALS.placeholder/,
-        'g',
-      )
 
-      switch (outcomes.hasRewards) {
-        case true:
-          return updatedTemplate.replace(
-            regexRewardWithdrawals,
-            `async getRewardWithdrawals({
-                  userAddress,
-                  protocolTokenAddress,
-                }: GetEventsInput): Promise<MovementsByBlockReward[]> {
-                  throw new NotImplementedError()
-                }`,
-          )
-
-        default:
-          return updatedTemplate.replace(regexRewardWithdrawals, '')
-      }
-    },
-  },
   GET_EXTRA_REWARD_POSITIONS: {
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
@@ -401,33 +294,7 @@ export const Replacements = {
       }
     },
   },
-  GET_EXTRA_REWARD_WITHDRAWALS: {
-    replace: (
-      outcomes: BlankAdapterOutcomeOptions,
-      updatedTemplate: string,
-    ): string => {
-      const regexRewardWithdrawals = RegExp(
-        /\/\/Replacements.GET_EXTRA_REWARD_WITHDRAWALS.placeholder/,
-        'g',
-      )
 
-      switch (outcomes.hasExtraRewards) {
-        case true:
-          return updatedTemplate.replace(
-            regexRewardWithdrawals,
-            `async getExtraRewardWithdrawals({
-                  userAddress,
-                  protocolTokenAddress,
-                }: GetEventsInput): Promise<MovementsByBlockReward[]> {
-                  throw new NotImplementedError()
-                }`,
-          )
-
-        default:
-          return updatedTemplate.replace(regexRewardWithdrawals, '')
-      }
-    },
-  },
   ENABLE_POSITION_DETECTION_BY_PROTOCOL_TOKEN_TRANSFER: {
     replace: (
       outcomes: BlankAdapterOutcomeOptions,

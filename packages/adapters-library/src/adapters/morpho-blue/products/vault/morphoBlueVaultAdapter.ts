@@ -11,15 +11,11 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -125,69 +121,6 @@ export class MorphoBlueVaultAdapter implements IProtocolAdapter {
     return this.helpers.getBalanceOfTokens({
       ...input,
       protocolTokens: await this.getProtocolTokens(),
-    })
-  }
-
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.withdrawals({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.deposits({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = await this.getProtocolTokens()
-    return await filterMapAsync(protocolTokens, async (protocolToken) => {
-      if (
-        protocolTokenAddresses &&
-        !protocolTokenAddresses.includes(protocolToken.address)
-      ) {
-        return undefined
-      }
-
-      const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
-        protocolToken.address,
-      )
-
-      const protocolTokenContact = Metamorpho__factory.connect(
-        protocolToken.address,
-        this.provider,
-      )
-
-      const protocolTokenTotalAsset = await protocolTokenContact.totalAssets({
-        blockTag: blockNumber,
-      })
-
-      return {
-        address: protocolToken.address,
-        name: protocolToken.name,
-        symbol: underlyingToken!.symbol,
-        decimals: underlyingToken!.decimals,
-        type: TokenType.Protocol,
-        totalSupplyRaw: protocolTokenTotalAsset,
-      }
     })
   }
 
