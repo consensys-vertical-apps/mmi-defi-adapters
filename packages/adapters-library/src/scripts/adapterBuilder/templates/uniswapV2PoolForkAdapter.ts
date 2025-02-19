@@ -68,5 +68,6 @@ export function uniswapV2PoolForkAdapterTemplate({
           .join(',')}
       }
     }
+  }
   `
 }

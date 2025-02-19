@@ -29,5 +29,6 @@ export function compoundV2SupplyMarketForkAdapterTemplate({
         productId: this.productId,
       }
     }
+  }
   `
 }
