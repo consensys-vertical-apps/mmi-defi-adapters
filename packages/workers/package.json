@@ -7,7 +7,6 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "private": true,
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -33,7 +32,7 @@
   },
   "dependencies": {
     "@metamask-institutional/defi-adapters": "*",
-    "better-sqlite3": "^11.8.1",
+    "better-sqlite3": "^11.2.1",
     "ethers": "^6.7.1",
     "pino": "^8.15.0"
   }

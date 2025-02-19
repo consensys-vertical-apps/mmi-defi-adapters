@@ -170,8 +170,8 @@ function PositionsDisplay({
       protocolIds?.length ? protocolIds.join(',') : null,
       chainIds?.length ? chainIds.join(',') : null,
     ],
-    queryFn: async () =>
-      await provider.getPositions({
+    queryFn: () =>
+      provider.getPositions({
         userAddress,
         filterProtocolIds: protocolIds as Protocol[] | undefined,
         filterChainIds: chainIds as Chain[] | undefined,

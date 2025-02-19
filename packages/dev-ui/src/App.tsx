@@ -3,6 +3,7 @@ import { Chain } from '@metamask-institutional/defi-adapters'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { Positions } from './Positions'
+import { Profits } from './Profits'
 import { ChainIdToChainNameMap } from './chainIdToChainNameMap'
 import { provider } from './defiAdapterLibrary'
 import { FiltersContext } from './filtersContext'
@@ -11,7 +12,10 @@ function App() {
   const { isPending, error, data } = useQuery({
     queryKey: ['support'],
     queryFn: async () => {
-      const support = await provider.getSupport()
+      const support = (await provider.getSupport()) as Record<
+        string,
+        { chains: number[] }[]
+      >
 
       const protocolOptions = Object.keys(support)
         .sort()
@@ -154,14 +158,14 @@ function FilterWrapper({
         <Tabs defaultValue="positions" className="w-full">
           <TabsList>
             <TabsTrigger value="positions">Positions</TabsTrigger>
-            {/* <TabsTrigger value="support">Support</TabsTrigger> */}
+            <TabsTrigger value="profits">Profits</TabsTrigger>
           </TabsList>
           <TabsContent value="positions">
             <Positions />
           </TabsContent>
-          {/* <TabsContent value="support">
-            <Support />
-          </TabsContent> */}
+          <TabsContent value="profits">
+            <Profits />
+          </TabsContent>
         </Tabs>
       </div>
     </FiltersContext.Provider>
