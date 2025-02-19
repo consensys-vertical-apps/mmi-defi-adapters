@@ -13,7 +13,6 @@ import { compoundV2BorrowMarketForkAdapterTemplate } from './compoundV2BorrowMar
 import { compoundV2SupplyMarketForkAdapterTemplate } from './compoundV2SupplyMarketForkAdapter.js'
 import { uniswapV2PoolForkAdapterTemplate } from './uniswapV2PoolForkAdapter.js'
 import { votingEscrowAdapterTemplate } from './votingEscrowAdapter.js'
-import { writeOnlyDeFiAdapter } from './writeOnlyDeFiAdapter.js'
 
 export const QuestionName = {
   ProtocolKey: 'protocolKey',
@@ -39,8 +38,6 @@ export const TemplateNames = {
   CompoundSupply: 'CompoundV2 Supply Market',
   CompoundBorrow: 'CompoundV2 Borrow Market',
   VotingEscrow: 'VotingEscrowAdapter (like curve and stargate voting escrow)',
-  WriteAdapterOnly:
-    'WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)',
   SmartBuilder: 'Smart Adapter Builder',
 } as const
 
@@ -51,7 +48,6 @@ export const Templates = {
   [TemplateNames.CompoundSupply]: compoundV2SupplyMarketForkAdapterTemplate,
   [TemplateNames.CompoundBorrow]: compoundV2BorrowMarketForkAdapterTemplate,
   [TemplateNames.VotingEscrow]: votingEscrowAdapterTemplate,
-  [TemplateNames.WriteAdapterOnly]: writeOnlyDeFiAdapter,
   [TemplateNames.SmartBuilder]: blankAdapterTemplate,
 } as const
 

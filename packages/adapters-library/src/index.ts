@@ -13,12 +13,6 @@ export type {
   DefiPositionResponse,
   DefiProfitsResponse,
 } from './types/response'
-export { WriteActions } from './types/writeActions'
-export type { GetTransactionParams } from './adapters/supportedProtocols'
-export {
-  GetTransactionParamsSchema,
-  WriteActionInputs,
-} from './adapters/supportedProtocols'
 export type { IUnwrapPriceCacheProvider as IUnwrapCacheProvider } from './unwrapCache'
 export {
   chainFilter,

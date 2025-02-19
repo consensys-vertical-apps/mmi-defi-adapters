@@ -1,18 +1,11 @@
 import { getAddress } from 'ethers'
-import { z } from 'zod'
+
 import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  AdapterSettings,
-  PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
-import {
-  WriteActionInputSchemas,
-  WriteActions,
-} from '../../../../types/writeActions'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+
 import { Protocol } from '../../../protocols'
-import { GetTransactionParams } from '../../../supportedProtocols'
+
 import { Cerc20__factory } from '../../contracts'
 
 export const contractAddresses: Partial<
@@ -63,50 +56,4 @@ export class MendiFinanceSupplyMarketAdapter extends CompoundV2SupplyMarketForkA
       productId: this.productId,
     }
   }
-
-  async getTransactionParams({
-    action,
-    inputs,
-  }: Extract<
-    GetTransactionParams,
-    { protocolId: typeof Protocol.MendiFinance; productId: 'supply-market' }
-  >): Promise<{ to: string; data: string }> {
-    const assetPool = Object.values(await this.getProtocolTokens()).find(
-      (pool) => pool.underlyingTokens[0]!.address === inputs.asset,
-    )
-
-    if (!assetPool) {
-      throw new Error('Asset pool not found')
-    }
-
-    const poolContract = Cerc20__factory.connect(
-      assetPool.address,
-      this.provider,
-    )
-
-    const { amount } = inputs
-
-    switch (action) {
-      case WriteActions.Deposit: {
-        return poolContract.mint.populateTransaction(amount)
-      }
-      case WriteActions.Withdraw: {
-        return poolContract.redeem.populateTransaction(amount)
-      }
-      default: {
-        throw new Error('Invalid action')
-      }
-    }
-  }
 }
-
-export const WriteActionInputs = {
-  [WriteActions.Deposit]: z.object({
-    asset: z.string(),
-    amount: z.string(),
-  }),
-  [WriteActions.Withdraw]: z.object({
-    asset: z.string(),
-    amount: z.string(),
-  }),
-} satisfies WriteActionInputSchemas

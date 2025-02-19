@@ -35,7 +35,6 @@ export function buildSnapshotsCommand(
     'borrows',
     'prices',
     'tvl',
-    'tx-params',
   ]
 
   program
