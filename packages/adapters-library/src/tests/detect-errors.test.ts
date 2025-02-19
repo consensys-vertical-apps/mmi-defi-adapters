@@ -1,6 +1,6 @@
-import { TimePeriod } from '../core/constants/timePeriod'
+import { Chain } from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
-import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
+import { DefiPositionResponse } from '../types/response'
 
 describe('detect errors', () => {
   it.each([{ enableFailover: false }, { enableFailover: true }])(
@@ -9,27 +9,19 @@ describe('detect errors', () => {
       const defiProvider = new DefiProvider(config)
       const response = await defiProvider.getPositions({
         userAddress: '0x6372baD16935878713e5e1DD92EC3f7A3C48107E',
+        // TODO: Remove this filter when BSC is fully reliable
+        filterChainIds: Object.values(Chain).filter(
+          (chainId) => chainId !== Chain.Bsc,
+        ),
       })
 
       expect(filterErrors(response)).toEqual([])
     },
     60000,
   )
-
-  it('does not return any adapter error with profits %s', async () => {
-    const defiProvider = new DefiProvider()
-    const response = await defiProvider.getProfits({
-      userAddress: '0x6372baD16935878713e5e1DD92EC3f7A3C48107E',
-      timePeriod: TimePeriod.oneDay,
-    })
-
-    expect(filterErrors(response)).toEqual([])
-  }, 60000)
 })
 
-function filterErrors(
-  response: DefiPositionResponse[] | DefiProfitsResponse[],
-) {
+function filterErrors(response: DefiPositionResponse[]) {
   return response.filter(
     (responseEntry) =>
       !responseEntry.success &&

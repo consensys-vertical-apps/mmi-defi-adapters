@@ -1,20 +1,23 @@
 {
     "name": "@metamask-institutional/adapters-api",
-    "version": "1.0.0",
-    "description": "Defi adapters api",
+    "version": "0.14.0",
+    "description": "Defi adapters API",
     "author": "MMI Team",
     "license": "MIT",
+    "engines": {
+        "node": ">=20.0.0"
+    },
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "nodemon index.js",
-        "start": "node index.js"
+        "build": "tsc -p tsconfig.build.json",
+        "start": "node dist/index.js"
     },
     "dependencies": {
+        "@hono/node-server": "^1.13.8",
         "@metamask-institutional/defi-adapters": "*",
-        "express": "^5.0.1"
+        "hono": "^4.7.2",
+        "zod": "^3.24.2"
     },
-    "devDependencies": {
-        "nodemon": "^3.1.7"
-    }
+    "devDependencies": {}
 }
