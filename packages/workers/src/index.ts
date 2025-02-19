@@ -6,3 +6,4 @@ export {
   insertContractEntries,
   createHistoryTables,
 } from './db-queries.js'
+export { createLatestTables } from './build-latest-cache.js'
