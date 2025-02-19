@@ -19,7 +19,7 @@ import {
   NotSupportedError,
   NotSupportedUnlimitedGetLogsBlockRange,
 } from './core/errors/errors'
-import { getProfits } from './core/getProfits'
+
 import { ChainProvider } from './core/provider/ChainProvider'
 import { filterMapAsync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
@@ -27,9 +27,7 @@ import { propagatePrice } from './core/utils/propagatePrice'
 import { unwrap } from './core/utils/unwrap'
 import { count } from './metricsCount'
 import {
-  enrichMovements,
   enrichPositionBalance,
-  enrichTotalValueLocked,
   enrichUnwrappedTokenExchangeRates,
 } from './responseAdapters'
 import { PoolFilter, buildProviderPoolFilter } from './tokenFilter'

@@ -18,7 +18,7 @@ import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { CacheToDb } from '../decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
-import { getErc20Movements } from '../utils/erc20Movements'
+
 import { getTokenMetadata } from '../utils/getTokenMetadata'
 import { unixTimestampToDateString } from '../utils/unixTimestampToDateString'
 

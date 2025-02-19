@@ -1,5 +1,5 @@
 import { Chain } from '../../../../../core/constants/chains'
-import { TimePeriod } from '../../../../../core/constants/timePeriod'
+
 import type { TestCase } from '../../../../../types/testCase'
 
 const User1 = '0x7BFEe91193d9Df2Ac0bFe90191D40F23c773C060' // Has some SolvBTC on Arbitrum
@@ -31,19 +31,7 @@ export const testCases: TestCase[] = [
 
     blockNumber: 20540523,
   },
-  {
-    key: 'user2',
-    chainId: Chain.Ethereum,
-    method: 'profits',
 
-    input: {
-      userAddress: User2,
-      timePeriod: TimePeriod.thirtyDays,
-      filterProtocolTokens: ['0xd9D920AA40f578ab794426F5C90F6C731D159DEf'],
-    },
-
-    blockNumber: 20540523,
-  },
   {
     key: 'user1',
     chainId: Chain.Arbitrum,
@@ -67,18 +55,5 @@ export const testCases: TestCase[] = [
     },
 
     blockNumber: 243434209,
-  },
-  {
-    key: 'user4',
-    chainId: Chain.Arbitrum,
-    method: 'profits',
-
-    input: {
-      userAddress: User4,
-      timePeriod: TimePeriod.thirtyDays,
-      filterProtocolTokens: ['0x3647c54c4c2C65bC7a2D63c0Da2809B399DBBDC0'],
-    },
-
-    blockNumber: 243434212,
   },
 ]

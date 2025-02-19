@@ -14,28 +14,4 @@ export const testCases: TestCase[] = [
 
     blockNumber: 268835087,
   },
-
-  {
-    chainId: Chain.Arbitrum,
-    method: 'deposits',
-
-    input: {
-      userAddress: '0x37914E1CAF9E5A1A69b5BcD56AAd46Ca0c167949',
-      protocolTokenAddress: '0x892785f33cdee22a30aef750f285e18c18040c3e',
-      fromBlock: 81518984,
-      toBlock: 81518984,
-    },
-  },
-
-  {
-    chainId: Chain.Arbitrum,
-    method: 'withdrawals',
-
-    input: {
-      userAddress: '0x37914E1CAF9E5A1A69b5BcD56AAd46Ca0c167949',
-      protocolTokenAddress: '0x892785f33cdee22a30aef750f285e18c18040c3e',
-      fromBlock: 174348506,
-      toBlock: 174348506,
-    },
-  },
 ]

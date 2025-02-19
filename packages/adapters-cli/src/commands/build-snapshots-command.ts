@@ -4,7 +4,6 @@ import {
   Chain,
   ChainName,
   type DefiPositionResponse,
-  type DefiProfitsResponse,
   DefiProvider,
   Protocol,
   type TestCase,
@@ -124,58 +123,6 @@ export function buildSnapshotsCommand(
 
           const snapshotFileContent = await (async () => {
             switch (testCase.method) {
-              case 'positions': {
-                const blockNumber =
-                  testCase.blockNumber ??
-                  (await defiProvider.chainProvider.providers[
-                    chainId
-                  ].getStableBlockNumber())
-
-                const startTime = Date.now()
-
-                const snapshot = await defiProvider.getPositions({
-                  ...testCase.input,
-                  filterChainIds: [chainId],
-                  filterProtocolIds: [protocolId],
-                  filterProductIds: [productId],
-                  blockNumbers: {
-                    [chainId]: blockNumber,
-                  },
-                })
-
-                const endTime = Date.now()
-
-                const aggregatedValues = getAggregatedValues(snapshot, chainId)
-
-                const result = {
-                  blockNumber,
-                  latency: getLatency(
-                    endTime,
-                    startTime,
-                    latency,
-                    previousLatency,
-                  ),
-                  aggregatedValues,
-                  snapshot,
-                }
-
-                await updateBlockNumber(
-                  protocolId,
-                  productId,
-                  index,
-                  blockNumber,
-                )
-
-                await updateFilters(
-                  protocolId,
-                  productId,
-                  index,
-                  result.snapshot,
-                )
-
-                return result
-              }
-
               case 'prices': {
                 const blockNumber =
                   testCase.blockNumber ??
@@ -338,7 +285,7 @@ async function updateFilters(
   protocolId: Protocol,
   productId: string,
   index: number,
-  snapshot: DefiPositionResponse[] | DefiProfitsResponse[],
+  snapshot: DefiPositionResponse[],
 ) {
   const protocolTokenAddresses = snapshot.flatMap((position) => {
     if (!position.success) {
