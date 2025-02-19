@@ -29,7 +29,7 @@
     "@types/inquirer": "^8.2.6",
     "@types/jest": "^29.5.12",
     "@types/lodash-es": "^4.17.12",
-    "better-sqlite3": "^11.8.1",
+    "better-sqlite3": "^11.2.1",
     "chalk": "^5.4.1",
     "commander": "^11.0.0",
     "ethereum-block-by-date": "^1.4.9",
