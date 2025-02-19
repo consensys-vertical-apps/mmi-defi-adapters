@@ -38,6 +38,7 @@ function filterErrors(
         'NotImplementedError',
         'NotSupportedError',
         'ProtocolTokenFilterRequiredError',
+        'NotSupportedUnlimitedGetLogsBlockRange',
       ].includes(responseEntry.error.details?.name),
   )
 }

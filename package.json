@@ -15,8 +15,7 @@
     "dev": "nodemon",
     "build": "npm run build -w packages/adapters-library -w packages/workers -w packages/adapters-cli",
     "build:watch": "npm run build:watch -w packages/adapters-library",
-    "adapters-cli": "node --env-file=.env packages/adapters-library/dist/scripts/index.js",
-    "cli": "node --env-file=.env packages/adapters-cli/dist/index.js",
+    "adapters-cli": "node --env-file=.env packages/adapters-cli/dist/index.js",
     "build-metadata-db": "npm run adapters-cli build-metadata-db --",
     "delete-adapter-metadata": "npm run adapters-cli delete-adapter-metadata --",
     "check-metadata-type": "npm run adapters-cli check-metadata-type --",
@@ -32,14 +31,13 @@
     "tvl": "npm run adapters-cli tvl --",
     "deposits": "npm run adapters-cli deposits --",
     "withdrawals": "npm run adapters-cli withdrawals --",
-    "stress": "npm run adapters-cli stress --",
     "support": "npm run adapters-cli support --",
     "performance": "npm run adapters-cli performance --",
     "lint": "biome check packages",
     "fix": "npm run lint -- --apply",
     "test": "npm run test -w packages/adapters-library",
     "test:file": "npm run test:file -w packages/adapters-library",
-    "test:update:adapter-snapshot": "npm run test:update:adapter-snapshot -w packages/adapters-library",
+    "test:update:adapter-snapshot": "vitest packages/adapters-cli/src/tests/new-adapter-templates.test.ts -u",
     "test:price": "npm run test:price -w packages/adapters-library",
     "test:tsc": "npm run test:tsc -w packages/adapters-library",
     "test:integration": "npm run test:integration -w packages/adapters-library",
@@ -53,6 +51,7 @@
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.0",
     "patch-package": "^8.0.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vitest": "^3.0.6"
   }
 }
