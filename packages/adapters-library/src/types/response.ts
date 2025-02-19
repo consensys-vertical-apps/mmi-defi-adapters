@@ -15,7 +15,6 @@ import type {
   UnwrapExchangeRate,
   UnwrappedTokenExchangeRate,
 } from './adapter'
-import { WriteActions } from './writeActions'
 
 export type GetEventsRequestInput = {
   userAddress: string
@@ -115,7 +114,6 @@ export type Support = Partial<
       protocolDetails: ProtocolDetails
       chains: Chain[]
       protocolTokenAddresses?: Partial<Record<Chain, string[]>>
-      writeActions?: WriteActions[]
       protocolTokens?: Partial<Record<Chain, ProtocolToken[]>>
       userEvent:
         | false

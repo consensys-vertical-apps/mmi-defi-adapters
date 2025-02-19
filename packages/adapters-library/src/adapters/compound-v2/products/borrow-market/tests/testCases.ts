@@ -1,7 +1,6 @@
 import { Chain } from '../../../../../core/constants/chains'
 import { TimePeriod } from '../../../../../core/constants/timePeriod'
 import type { TestCase } from '../../../../../types/testCase'
-import { WriteActions } from '../../../../../types/writeActions'
 
 export const testCases: TestCase[] = [
   {
@@ -74,54 +73,6 @@ export const testCases: TestCase[] = [
       fromBlock: 19274060,
       toBlock: 19274060,
       protocolTokenAddress: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
-    },
-  },
-  {
-    method: 'tx-params',
-    key: 'supply',
-    chainId: Chain.Ethereum,
-    input: {
-      action: WriteActions.Deposit,
-      inputs: {
-        asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-        amount: '10000000000000000000',
-      },
-    },
-  },
-  {
-    method: 'tx-params',
-    key: 'withdraw',
-    chainId: Chain.Ethereum,
-    input: {
-      action: WriteActions.Withdraw,
-      inputs: {
-        asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-        amount: '10000000000000000000',
-      },
-    },
-  },
-  {
-    method: 'tx-params',
-    key: 'borrow',
-    chainId: Chain.Ethereum,
-    input: {
-      action: 'borrow',
-      inputs: {
-        asset: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
-        amount: '10000000000000000000',
-      },
-    },
-  },
-  {
-    method: 'tx-params',
-    key: 'repay',
-    chainId: Chain.Ethereum,
-    input: {
-      action: 'repay',
-      inputs: {
-        asset: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
-        amount: '10000000000000000000',
-      },
     },
   },
 ]

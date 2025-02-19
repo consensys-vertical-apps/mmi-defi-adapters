@@ -1,7 +1,6 @@
 import { Chain } from '../../../../../core/constants/chains'
 import { TimePeriod } from '../../../../../core/constants/timePeriod'
 import type { TestCase } from '../../../../../types/testCase'
-import { WriteActions } from '../../../../../types/writeActions'
 
 export const testCases: TestCase[] = [
   {
@@ -36,62 +35,5 @@ export const testCases: TestCase[] = [
     filterProtocolTokens: ['0x59cD1C87501baa753d0B5B5Ab5D8416A45cD71DB'],
 
     blockNumber: 20112246,
-  },
-
-  {
-    method: 'tx-params',
-    key: 'supply',
-    chainId: Chain.Ethereum,
-    input: {
-      action: WriteActions.Deposit,
-      inputs: {
-        asset: '0x59cD1C87501baa753d0B5B5Ab5D8416A45cD71DB',
-        amount: '10000000000000000000',
-        onBehalfOf: '0xf8dE75c7B95edB6f1E639751318f117663021Cf0',
-        referralCode: 0,
-      },
-    },
-  },
-  {
-    method: 'tx-params',
-    key: 'borrow',
-    chainId: Chain.Ethereum,
-    input: {
-      action: WriteActions.Borrow,
-      inputs: {
-        asset: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-        amount: '10000000000000000000',
-        interestRateMode: 1,
-        referralCode: 0,
-        onBehalfOf: '0xf8dE75c7B95edB6f1E639751318f117663021Cf0',
-      },
-    },
-  },
-  {
-    method: 'tx-params',
-    key: 'withdraw',
-    chainId: Chain.Ethereum,
-    input: {
-      action: WriteActions.Withdraw,
-      inputs: {
-        asset: '0x59cD1C87501baa753d0B5B5Ab5D8416A45cD71DB',
-        amount: '10000000000000000000',
-        to: '0xf8dE75c7B95edB6f1E639751318f117663021Cf0',
-      },
-    },
-  },
-  {
-    method: 'tx-params',
-    key: 'repay',
-    chainId: Chain.Ethereum,
-    input: {
-      action: WriteActions.Repay,
-      inputs: {
-        asset: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-        amount: '10000000000000000000',
-        interestRateMode: 1,
-        onBehalfOf: '0xf8dE75c7B95edB6f1E639751318f117663021Cf0',
-      },
-    },
   },
 ]

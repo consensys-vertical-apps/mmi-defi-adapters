@@ -3,7 +3,6 @@ import path from 'node:path'
 import { Command } from 'commander'
 import { parse, print, types, visit } from 'recast'
 import { Protocol } from '../adapters/protocols'
-import type { GetTransactionParams } from '../adapters/supportedProtocols'
 import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
@@ -37,7 +36,6 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
     'borrows',
     'prices',
     'tvl',
-    'tx-params',
   ]
 
   program
@@ -432,19 +430,6 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                 )
 
                 return result
-              }
-
-              case 'tx-params': {
-                const inputs = {
-                  ...testCase.input,
-                  protocolId,
-                  chainId,
-                  productId,
-                } as GetTransactionParams
-
-                return {
-                  snapshot: await defiProvider.getTransactionParams(inputs),
-                }
               }
             }
           })()
