@@ -1,7 +1,7 @@
 import { pino } from 'pino'
 
 export const logger = pino({
-  msgPrefix: '[Defi Adapters] ',
+  base: { service: 'defi-adapters-library' },
   transport:
     process.env.DEFI_ADAPTERS_LOG_PRETTY === 'true'
       ? { target: 'pino-pretty' }
