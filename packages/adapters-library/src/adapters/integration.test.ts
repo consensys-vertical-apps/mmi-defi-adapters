@@ -104,10 +104,7 @@ import { testCases as stargateFarmTestCases } from './stargate/products/farm/tes
 import { testCases as stargatePoolV2TestCases } from './stargate/products/pool-v2/tests/testCases'
 import { testCases as stargatePoolTestCases } from './stargate/products/pool/tests/testCases'
 import { testCases as stargateVotingEscrowTestCases } from './stargate/products/voting-escrow/tests/testCases'
-import {
-  type GetTransactionParams,
-  supportedProtocols,
-} from './supportedProtocols'
+import { supportedProtocols } from './supportedProtocols'
 import { testCases as sushiswapV2PoolTestCases } from './sushiswap-v2/products/pool/tests/testCases'
 import { testCases as swellSwEthTestCases } from './swell/products/sw-eth/tests/testCases'
 import { testCases as syncSwapPoolTestCases } from './syncswap/products/pool/tests/testCases'
@@ -827,44 +824,6 @@ function runProductTests(
           logger.debug(
             `[Integration test] getTotalValueLocked for ${protocolId} finished`,
           )
-        })
-      })
-    }
-
-    const txParamsTestCases = testCases.filter(
-      (testCase): testCase is TestCase & { method: 'tx-params' } =>
-        testCase.method === 'tx-params',
-    )
-
-    if (txParamsTestCases.length) {
-      describe('tx-params', () => {
-        it.each(
-          txParamsTestCases.map((testCase) => [testKey(testCase), testCase]),
-        )(
-          'tx-params for test %s match',
-          async (_, testCase) => {
-            const { snapshot, defiProvider } = await fetchSnapshot(
-              testCase,
-              protocolId,
-              productId,
-            )
-
-            const inputs = {
-              ...testCase.input,
-              protocolId,
-              chainId: testCase.chainId,
-              productId,
-            } as GetTransactionParams
-
-            const response = await defiProvider.getTransactionParams(inputs)
-
-            expect(response).toEqual(snapshot)
-          },
-          TEST_TIMEOUT,
-        )
-
-        afterAll(() => {
-          logger.debug(`[Integration test] deposits for ${protocolId} finished`)
         })
       })
     }

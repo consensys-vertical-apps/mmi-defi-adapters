@@ -1,17 +1,15 @@
 import { Command } from 'commander'
 import { Protocol } from '../adapters/protocols'
-import type { GetTransactionParams } from '../adapters/supportedProtocols'
-import { Chain, EvmChain } from '../core/constants/chains'
-import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
+
+import { Chain } from '../core/constants/chains'
+
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { filterMapSync } from '../core/utils/filters'
 import {
-  chainFilter,
   multiChainFilter,
   multiProductFilter,
   multiProtocolFilter,
   multiProtocolTokenAddressFilter,
-  protocolFilter,
 } from '../core/utils/input-filters'
 import { DefiProvider } from '../defiProvider'
 import { startRpcSnapshot } from '../tests/rpcInterceptor'
@@ -33,13 +31,6 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
     defiProvider.getProfits.bind(defiProvider),
     '0xCEadFdCCd0E8E370D985c49Ed3117b2572243A4a',
     defiProvider,
-  )
-
-  transactionParamsCommand(
-    program,
-    'params',
-    defiProvider.getTransactionParams.bind(defiProvider),
-    defiProvider.chainProvider.providers,
   )
 
   addressEventsCommand(
@@ -192,123 +183,6 @@ function addressCommand(
         )
 
         process.exit(0)
-      },
-    )
-}
-
-function transactionParamsCommand(
-  program: Command,
-  commandName: string,
-  feature: (input: GetTransactionParams) => Promise<
-    AdapterResponse<{
-      params: { to: string; data: string }
-    }>
-  >,
-  chainProviders: Record<EvmChain, CustomJsonRpcProvider>,
-) {
-  program
-    .command(commandName)
-    .argument('[action]', 'Name of action you want to do on protocol')
-    .argument('[protocol]', 'Name of the protocol')
-    .argument('[productId]', 'Name of the product')
-    .argument('[chain]', 'Chain Id ')
-    .argument(
-      '[inputs]',
-      'comma-separated input params filter (e.g. 0x5000...,true,stake)',
-    )
-    .option('-s, --simulate', 'Simulate transaction against a forked provider')
-    .option(
-      '-u, --user-address <user-address>',
-      'Simulate transaction against a forked provider',
-    )
-    .option(
-      '-t, --token-address <token-address>',
-      'Address of the protocol token',
-    )
-    .option(
-      '-b, --block-number <block-number>',
-      'Block number from which the provider will be forked',
-    )
-    .option('-a, --asset <asset>', 'ERC20 asset that needs approval')
-    .showHelpAfterError()
-    .action(
-      async (
-        action,
-        protocol,
-        productId,
-        chain,
-        inputs,
-        {
-          simulate,
-          userAddress,
-          tokenAddress: protocolTokenAddress,
-          blockNumber,
-          asset,
-        },
-      ) => {
-        const txInputParams = inputs
-          .split(',')
-          .reduce((inputParams: Record<string, string>, param: string) => {
-            const [key, value] = param.split(':')
-
-            if (!key || !value) {
-              throw new Error('Invalid input params')
-            }
-
-            return {
-              ...inputParams,
-              [key]: value,
-            }
-          }, {})
-
-        const protocolId = protocolFilter(protocol)
-        const chainId = chainFilter(chain)
-
-        if (!protocolId) {
-          throw new Error('Protocol could not be parsed from input')
-        }
-        if (!chainId) {
-          throw new Error('Chain could not be parsed from input')
-        }
-        if (chainId === Chain.Solana) {
-          throw new Error('Solana is not supported')
-        }
-
-        const data = await feature({
-          action,
-          protocolId,
-          productId,
-          chainId,
-          inputs: txInputParams,
-        } as unknown as GetTransactionParams) // TO Fix
-
-        printResponse(data)
-
-        if (!data.success || !simulate) {
-          return
-        }
-
-        if (!userAddress || !protocolTokenAddress) {
-          console.warn(
-            'Cannot simulate transaction without address and protocol token address',
-          )
-          return
-        }
-
-        const provider = chainProviders[chainId]
-        await simulateTx({
-          provider,
-          chainId,
-          input: {
-            ...data.params,
-            from: userAddress,
-          },
-          protocolTokenAddress,
-          protocolId,
-          productId,
-          blockNumber: Number(blockNumber) ? Number(blockNumber) : undefined,
-          asset,
-        })
       },
     )
 }

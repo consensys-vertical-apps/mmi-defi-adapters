@@ -43,8 +43,6 @@ jobs:
           npm run build
           npm run new-adapter -- -y -t UniswapV2PoolForkAdapter
           npm run build
-          npm run new-adapter -- -y -t "WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)"
-          npm run build
 
   generate-protocol-matrix:
     runs-on: ubuntu-latest

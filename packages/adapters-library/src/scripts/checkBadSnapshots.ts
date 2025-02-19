@@ -77,7 +77,7 @@ export function checkBadSnapshots(
 
         for (const entry of entries) {
           const match = entry.name.match(
-            /^.*\.(positions|profits|deposits|withdrawals|repays|borrows|prices|tvl|tx-params)(?:\.[^.]+)?\.json$/,
+            /^.*\.(positions|profits|deposits|withdrawals|repays|borrows|prices|tvl)(?:\.[^.]+)?\.json$/,
           )
 
           if (!match || !match[1]) {

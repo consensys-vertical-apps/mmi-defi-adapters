@@ -7,7 +7,7 @@ import {
 } from './SQLiteMetadataProvider'
 import { buildVoidMetadataProviders } from './VoidMetadataProvider'
 import { Protocol } from './adapters/protocols'
-import type { GetTransactionParams } from './adapters/supportedProtocols'
+
 import { supportedProtocols } from './adapters/supportedProtocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
@@ -608,35 +608,6 @@ export class DefiProvider {
         movements: positionsMovements.map((value) =>
           enrichMovements(value, chainId),
         ),
-      }
-    }
-
-    return this.runTaskForAdapter(adapter, runner)
-  }
-
-  async getTransactionParams(input: GetTransactionParams): Promise<
-    AdapterResponse<{
-      params: { to: string; data: string }
-    }>
-  > {
-    const { protocolId, chainId, productId } = input
-
-    let adapter: IProtocolAdapter
-    try {
-      adapter = this.adaptersController.fetchAdapter(
-        chainId,
-        protocolId,
-        productId,
-      )
-    } catch (error) {
-      return this.handleError(error)
-    }
-
-    const runner = async (adapter: IProtocolAdapter) => {
-      const txParams = await adapter.getTransactionParams!(input)
-
-      return {
-        params: txParams,
       }
     }
 

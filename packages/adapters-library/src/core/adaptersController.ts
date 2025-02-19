@@ -10,7 +10,6 @@ import { Protocol } from '../adapters/protocols'
 import {
   EvmChainAdapters,
   SolanaChainAdapters,
-  WriteActionInputs,
 } from '../adapters/supportedProtocols'
 import { Helpers, SolanaHelpers } from '../core/helpers'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
@@ -21,7 +20,7 @@ import {
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { Support } from '../types/response'
-import { WriteActions } from '../types/writeActions'
+
 import { Chain, EvmChain } from './constants/chains'
 import { AdapterMissingError, NotImplementedError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
@@ -312,27 +311,10 @@ export class AdaptersController {
           )
 
           if (!product) {
-            const protocolKey = Object.entries(Protocol).find(
-              ([_, value]) => value === protocolId,
-            )![0]
-
-            const productWriteActions:
-              | Partial<Record<WriteActions, unknown>>
-              | undefined =
-              WriteActionInputs[
-                `${protocolKey}${pascalCase(
-                  productId,
-                )}WriteActionInputs` as keyof typeof WriteActionInputs
-              ]
-
             product = {
               protocolDetails: adapter.getProtocolDetails(),
               chains: [],
-              ...(productWriteActions && {
-                writeActions: Object.keys(
-                  productWriteActions,
-                ) as WriteActions[],
-              }),
+
               userEvent: adapter.adapterSettings.userEvent,
             }
 

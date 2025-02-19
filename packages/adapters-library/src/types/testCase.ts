@@ -1,4 +1,3 @@
-import type { GetTransactionParams } from '../adapters/supportedProtocols'
 import type { Chain } from '../core/constants/chains'
 import type { TimePeriod } from '../core/constants/timePeriod'
 
@@ -76,9 +75,5 @@ export type TestCase = {
       method: 'tvl'
       filterProtocolTokens: string[]
       blockNumber?: number
-    }
-  | {
-      method: 'tx-params'
-      input: Omit<GetTransactionParams, 'protocolId' | 'chainId' | 'productId'>
     }
 )

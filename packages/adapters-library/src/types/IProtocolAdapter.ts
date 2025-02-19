@@ -1,5 +1,4 @@
 import type { Protocol } from '../adapters/protocols'
-import type { GetTransactionParams } from '../adapters/supportedProtocols'
 import type { AdaptersController } from '../core/adaptersController'
 import type { Chain } from '../core/constants/chains'
 import { IHelpers } from '../core/helpers'
@@ -100,17 +99,6 @@ export interface IProtocolAdapter {
    * @returns {Promise<UnwrapExchangeRate>} Object detailing the price per share of the protocol token.
    */
   unwrap(input: UnwrapInput): Promise<UnwrapExchangeRate>
-
-  /**
-   *
-   * @remarks Returns tx params
-   *
-   * @param {TransactionParamsInput} input tx input params
-   * @returns {Promise<{to:string, data: string}>} transaction
-   */
-  getTransactionParams?(
-    input: GetTransactionParams,
-  ): Promise<{ to: string; data: string }>
 
   /**
    *
