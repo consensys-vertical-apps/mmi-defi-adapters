@@ -1,3 +1,9 @@
+import type {
+  DefiProvider,
+  EvmChain,
+} from '@metamask-institutional/defi-adapters'
+import type { PoolFilter } from '@metamask-institutional/defi-adapters/dist/tokenFilter.js'
+import type { AdapterSettings } from '@metamask-institutional/defi-adapters/dist/types/adapter.js'
 import type { Database } from 'better-sqlite3'
 
 export const dbTables = {
@@ -62,13 +68,19 @@ export function selectAllWatchListKeys(db: Database) {
   >[]
 }
 
-export function insertLogs(db: Database, logsToInsert: [string, string][]) {
+export function insertLogs(
+  db: Database,
+  logsToInsert: {
+    address: string
+    contractAddress: string
+  }[],
+) {
   const logEntryStmt = db.prepare(
     'INSERT OR IGNORE INTO logs (address, contract_address) VALUES (?, ?)',
   )
 
   db.transaction(() => {
-    for (const [contractAddress, address] of logsToInsert) {
+    for (const { address, contractAddress } of logsToInsert) {
       logEntryStmt.run(address, contractAddress)
     }
   })()
@@ -90,4 +102,51 @@ export function updateJobStatus(
       jobStmt.run(status, contractAddress.slice(2), topic0, userAddressIndex)
     }
   })()
+}
+
+export async function insertJobs(
+  db: Database,
+  protocolTokenEntries: {
+    address: string
+    topic0: string
+    userAddressIndex: number
+  }[],
+  blockNumber: number,
+) {
+  const stmt = db.prepare(
+    'INSERT OR IGNORE INTO history_jobs (contract_address, topic_0, user_address_index, block_number) VALUES (?, ?, ?, ?)',
+  )
+
+  db.transaction(() => {
+    for (const { address, topic0, userAddressIndex } of protocolTokenEntries) {
+      stmt.run(address, topic0, userAddressIndex, blockNumber)
+    }
+  })()
+}
+
+export function buildCachePoolFilter(
+  dbs: Partial<Record<EvmChain, Database>>,
+): PoolFilter {
+  return async (
+    userAddress: string,
+    chainId: EvmChain,
+    adapterSettings: AdapterSettings,
+  ) => {
+    const db = dbs[chainId]
+    if (!db || adapterSettings.userEvent === false) {
+      return undefined
+    }
+
+    const pendingPools = db
+      .prepare(`
+        SELECT 	contract_address
+        FROM 	history_logs
+        WHERE 	address = ?
+        `)
+      .all(userAddress.slice(2)) as {
+      contract_address: string
+    }[]
+
+    return pendingPools.map((pool) => `0x${pool.contract_address}`)
+  }
 }

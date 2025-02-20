@@ -5,66 +5,46 @@ import {
   DefiProvider,
   EvmChain,
   chainFilter,
+  multiChainFilter,
 } from '@metamask-institutional/defi-adapters'
-import {
-  buildHistoricCache,
-  buildLatestCache,
-  createDatabase,
-  createHistoryTables,
-  createLatestTables,
-  insertContractEntries,
-} from '@metamask-institutional/workers'
+import { runner } from '@metamask-institutional/workers'
 import type { Command } from 'commander'
-import { JsonRpcProvider, Network } from 'ethers'
 
-export function buildCacheCommands(
-  program: Command,
-  defiProvider: DefiProvider,
-) {
+export function buildCacheCommands(program: Command) {
   program
     .command('build-historic-cache')
-    .argument('[chain]', 'Chain to build cache for')
-    .action(async (chain) => {
-      const chainId = chainFilter(chain)
-      if (!chainId) {
-        throw new Error('Chain is required')
-      }
+    .option(
+      '-c, --chain <chain>',
+      'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
+    )
+    .option(
+      '-b, --block <block>',
+      'optional block number to start indexing from',
+    )
+    .showHelpAfterError()
+    .action(async ({ chain, block }: { chain?: string; block?: string }) => {
+      const filterChainIds = multiChainFilter(chain) ?? Object.values(EvmChain)
 
-      if (chainId === Chain.Solana) {
+      if (filterChainIds.includes(Chain.Solana)) {
         throw new Error('Solana is not supported')
       }
 
-      const providerUrl =
-        defiProvider.chainProvider.providers[chainId]._getConnection().url
-
-      const provider = new JsonRpcProvider(providerUrl, chainId, {
-        staticNetwork: Network.from(chainId),
-      })
+      const startBlockOverride = block ? Number(block) : undefined
 
       const dbDirPath =
         process.env.DB_DIR_PATH ||
         path.resolve(import.meta.dirname, '../../../databases')
 
-      const db = createDatabase(
-        dbDirPath,
-        `${ChainName[chainId]}_index_history`,
-        {
-          fileMustExist: false,
-          readonly: false,
-          timeout: 5000,
-        },
+      await Promise.all(
+        filterChainIds.map(async (chainId) => {
+          await runner(
+            dbDirPath,
+            chainId as EvmChain,
+            'historic',
+            startBlockOverride,
+          )
+        }),
       )
-
-      console.log(`${new Date().toISOString()}: Building historic cache`, {
-        chainId,
-      })
-
-      createHistoryTables(db)
-
-      // TODO: Have parameters to determine what pools to insert
-      await insertContractEntries(defiProvider, chainId, db)
-
-      await buildHistoricCache(provider, chainId, db)
     })
 
   program
@@ -79,10 +59,12 @@ export function buildCacheCommands(
     )
     .showHelpAfterError()
     .action(async ({ chain, block }: { chain?: string; block?: string }) => {
-      const filterChainId = chain ? (Number(chain) as EvmChain) : undefined
-      if (filterChainId && !ChainName[filterChainId]) {
-        throw new Error(`No chain matches the given filter: ${chain}`)
+      const filterChainIds = multiChainFilter(chain) ?? Object.values(EvmChain)
+
+      if (filterChainIds.includes(Chain.Solana)) {
+        throw new Error('Solana is not supported')
       }
+
       const startBlockOverride = block ? Number(block) : undefined
 
       const dbDirPath =
@@ -90,29 +72,14 @@ export function buildCacheCommands(
         path.resolve(import.meta.dirname, '../../../databases')
 
       await Promise.all(
-        Object.values(EvmChain)
-          .filter(
-            (chainId) =>
-              filterChainId === undefined || filterChainId === chainId,
+        filterChainIds.map(async (chainId) => {
+          await runner(
+            dbDirPath,
+            chainId as EvmChain,
+            'latest',
+            startBlockOverride,
           )
-          .map(async (chainId) => {
-            const db = createDatabase(
-              dbDirPath,
-              `${ChainName[chainId]}_index_latest`,
-              {
-                fileMustExist: false,
-                readonly: false,
-                timeout: 5000,
-              },
-            )
-
-            createLatestTables(db)
-
-            // TODO: Have parameters to determine what pools to insert
-            await insertContractEntries(defiProvider, chainId, db)
-
-            buildLatestCache(chainId, defiProvider, db, startBlockOverride)
-          }),
+        }),
       )
     })
 }

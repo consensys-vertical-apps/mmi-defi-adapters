@@ -58,7 +58,7 @@ const defiProvider = new DefiProvider(
 )
 
 libraryCommands(program, defiProvider)
-buildCacheCommands(program, defiProvider)
+buildCacheCommands(program)
 checkMetadataTypeCommand(program, defiProvider)
 buildMetadataCommand(program, defiProvider)
 deleteAdapterMetadataCommand(program)

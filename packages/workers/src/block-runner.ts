@@ -1,11 +1,11 @@
 import { type Chain, ChainName } from '@metamask-institutional/defi-adapters'
 import { AVERAGE_BLOCKS_PER_10_MINUTES } from '@metamask-institutional/defi-adapters/dist/core/constants/AVERAGE_BLOCKS_PER_10_MINS.js'
 import { AVERAGE_BLOCKS_PER_DAY } from '@metamask-institutional/defi-adapters/dist/core/constants/AVERAGE_BLOCKS_PER_DAY.js'
-import type { CustomJsonRpcProvider } from '@metamask-institutional/defi-adapters/dist/core/provider/CustomJsonRpcProvider.js'
 import { logger } from './logger.js'
+import type { JsonRpcProvider } from 'ethers'
 
 export class BlockRunner {
-  private _provider: CustomJsonRpcProvider
+  private _provider: JsonRpcProvider
   private _chainId: Chain
   private _chainName: string
 
@@ -23,7 +23,7 @@ export class BlockRunner {
     processBlockFn,
     onError,
   }: {
-    provider: CustomJsonRpcProvider
+    provider: JsonRpcProvider
     chainId: Chain
     getStartBlockNumberFn: () => Promise<number>
     processBlockFn: (blockNumber: number) => Promise<void>
@@ -179,7 +179,7 @@ export class BlockRunner {
   private async logUpdate(
     chain: Chain,
     processingBlockNumber: number,
-    provider: CustomJsonRpcProvider,
+    provider: JsonRpcProvider,
   ) {
     if (processingBlockNumber % AVERAGE_BLOCKS_PER_10_MINUTES[chain] === 0) {
       const currentHeadBlock = await provider.getBlockNumber()
@@ -188,7 +188,7 @@ export class BlockRunner {
       const lagInHours = (blocksLagging / blocksPerHour).toFixed(1)
 
       logger.info(
-        `[${ChainName}] Indexer is ${lagInHours} hours behind, lagging ${blocksLagging} blocks.`,
+        `[${this._chainName}] Indexer is ${lagInHours} hours behind, lagging ${blocksLagging} blocks.`,
       )
     }
   }

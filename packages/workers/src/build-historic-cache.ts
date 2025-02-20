@@ -97,7 +97,8 @@ export async function buildHistoricCache(
             fromBlock: from,
             toBlock: to,
           })) {
-            const logsToInsert: [string, string][] = []
+            const logsToInsert: { address: string; contractAddress: string }[] =
+              []
             for (const log of logs) {
               const contractAddress = getAddress(
                 log.address.toLowerCase(),
@@ -114,7 +115,10 @@ export async function buildHistoricCache(
                   `0x${topic.slice(-40).toLowerCase()}`,
                 ).slice(2)
 
-                logsToInsert.push([contractAddress, topicAddress])
+                logsToInsert.push({
+                  address: topicAddress,
+                  contractAddress,
+                })
               }
             }
 
