@@ -26,7 +26,6 @@ function filterErrors(response: DefiPositionResponse[]) {
     (responseEntry) =>
       !responseEntry.success &&
       ![
-        'NotApplicableError',
         'NotImplementedError',
         'NotSupportedError',
         'ProtocolTokenFilterRequiredError',

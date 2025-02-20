@@ -2,13 +2,8 @@ import { Connection } from '@solana/web3.js'
 import { getAddress } from 'ethers'
 import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Erc20__factory } from '../contracts'
-import { TransferEvent } from '../contracts/Erc20'
-import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
 import { Chain, EvmChain } from '../core/constants/chains'
-import {
-  MaxMovementLimitExceededError,
-  ProtocolTokenFilterRequiredError,
-} from '../core/errors/errors'
+import { ProtocolTokenFilterRequiredError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../core/utils/filters'
 import { getOnChainTokenMetadata } from '../core/utils/getTokenMetadata'
@@ -26,7 +21,7 @@ import {
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 
-export const REAL_ESTATE_TOKEN_METADATA = {
+const REAL_ESTATE_TOKEN_METADATA = {
   address: getAddress('0x6b8734ad31D42F5c05A86594314837C416ADA984'),
   name: 'Real Estate USD (REUSD)',
   symbol: 'Real Estate USD (REUSD)',

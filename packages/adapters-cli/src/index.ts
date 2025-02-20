@@ -22,7 +22,7 @@ import { libraryCommands } from './commands/library-commands.js'
 import { newAdapterCommand } from './commands/new-adapter-command.js'
 import { performanceCommand } from './commands/performance-command.js'
 import { buildContractTypes } from './utils/build-types.js'
-
+import { blockAverageCommand } from './commands/block-average-command.js'
 const program = new Command('defi-adapters')
 
 const cachePoolFilter =
@@ -70,5 +70,6 @@ buildSnapshotsCommand(program, defiProvider)
 checkBadSnapshotsCommand(program, defiProvider)
 copyAdapterCommand(program, defiProvider)
 buildScoreboardCommand(program, defiProvider)
+blockAverageCommand(program, defiProvider)
 
 program.parseAsync()

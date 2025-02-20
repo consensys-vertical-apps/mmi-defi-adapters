@@ -40,12 +40,6 @@ class BaseError extends Error {
   }
 }
 
-export class NotApplicableError extends BaseError {
-  constructor() {
-    super('Not Applicable')
-  }
-}
-
 export class NotImplementedError extends BaseError {
   constructor() {
     super('Not Implemented')
@@ -87,18 +81,6 @@ export class ProtocolSmartContractNotDeployedAtRequestedBlockNumberError extends
     this.productId = productId
     this.smartContractAddress = smartContractAddress
     this.blockNumber = blockNumber
-  }
-}
-
-export class ProviderMissingError extends BaseError {
-  chainId: Chain
-  chainName: string
-
-  constructor(chainId: Chain) {
-    super('No provider found for chain')
-
-    this.chainId = chainId
-    this.chainName = ChainIdToChainNameMap[chainId]
   }
 }
 
@@ -148,12 +130,6 @@ export class ProtocolTokenFilterRequiredError extends BaseError {
   constructor(
     message = 'Too many tokens to fetch, protocolTokenAddresses filter must be provided',
   ) {
-    super(message)
-  }
-}
-
-export class InvalidArgumentError extends BaseError {
-  constructor(message = 'Invalid argument') {
     super(message)
   }
 }

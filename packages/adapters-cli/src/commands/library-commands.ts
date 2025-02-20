@@ -62,7 +62,7 @@ export function libraryCommands(program: Command, defiProvider: DefiProvider) {
 
         msw.stop()
 
-        printResponse(filterResponse(data))
+        printResponse(data)
 
         const rpcMetrics = extractRpcMetrics(msw.interceptedResponses)
 
@@ -107,21 +107,6 @@ export function libraryCommands(program: Command, defiProvider: DefiProvider) {
 
       printResponse(data)
     })
-}
-
-function filterResponse(
-  data: AdapterResponse<unknown>[],
-): AdapterResponse<unknown>[] {
-  return filterMapSync(data, (adapterResponse) => {
-    if (
-      !adapterResponse.success &&
-      adapterResponse.error.details?.name === 'NotApplicableError'
-    ) {
-      return undefined
-    }
-
-    return adapterResponse
-  })
 }
 
 function printResponse(data: unknown) {

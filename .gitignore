@@ -131,11 +131,15 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# 
+# MacOS
+.DS_Store
+
+# TypeScript build info
 *.tsbuildinfo
 
+# Database temporary files
 *db-shm
 *db-wal
 
-databases/*_index_history.db
-databases/*_index_latest.db
+# Large Project Database files
+databases/*_index.db

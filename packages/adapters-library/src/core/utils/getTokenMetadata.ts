@@ -12,13 +12,14 @@ import { nativeToken, nativeTokenAddresses } from './nativeTokens'
  * It causes problems when fetching metadata on-chain
  * Since it appears to be a one off we will hardcode data to prevent failures
  */
-export const REAL_ESTATE_TOKEN_METADATA = {
+const REAL_ESTATE_TOKEN_METADATA = {
   address: getAddress('0x6b8734ad31D42F5c05A86594314837C416ADA984'),
   name: 'Real Estate USD (REUSD)',
   symbol: 'Real Estate USD (REUSD)',
   decimals: 18,
 }
 
+/** @deprecated Use this.helpers.getTokenMetadata instead */
 export async function getTokenMetadata(
   tokenAddress: string,
   chainId: Chain,
