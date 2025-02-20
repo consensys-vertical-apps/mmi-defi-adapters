@@ -1,5 +1,5 @@
 import { Chain } from '../../../../../core/constants/chains'
-import { TimePeriod } from '../../../../../core/constants/timePeriod'
+
 import type { TestCase } from '../../../../../types/testCase'
 
 export const testCases: TestCase[] = [
@@ -34,23 +34,5 @@ export const testCases: TestCase[] = [
     },
 
     blockNumber: 10441623,
-  },
-  {
-    chainId: Chain.Linea,
-    method: 'profits',
-
-    input: {
-      userAddress: '0x61e17C36c0f177c6A46F9Ae531E621D18c1aCD93',
-      timePeriod: TimePeriod.oneDay,
-
-      filterProtocolTokens: [
-        '0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D',
-        '0xf669C3C03D9fdF4339e19214A749E52616300E89',
-        '0xAd7f33984bed10518012013D4aB0458D37FEE6F3',
-        '0x9be5e24F05bBAfC28Da814bD59284878b388a40f',
-      ],
-    },
-
-    blockNumber: 10817930,
   },
 ]

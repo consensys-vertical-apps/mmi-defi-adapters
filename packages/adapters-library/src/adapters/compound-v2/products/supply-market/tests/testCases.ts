@@ -1,5 +1,5 @@
 import { Chain } from '../../../../../core/constants/chains'
-import { TimePeriod } from '../../../../../core/constants/timePeriod'
+
 import type { TestCase } from '../../../../../types/testCase'
 
 export const testCases: TestCase[] = [
@@ -20,37 +20,7 @@ export const testCases: TestCase[] = [
 
     blockNumber: 19383091,
   },
-  {
-    chainId: Chain.Ethereum,
-    method: 'profits',
-    input: {
-      userAddress: '0xe141062f056c612a3f013d354ab89edadaf38ffd',
-      timePeriod: TimePeriod.oneDay,
 
-      filterProtocolTokens: ['0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5'],
-    },
-    blockNumber: 19383091,
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'deposits',
-    input: {
-      userAddress: '0x54C2778651e055C40D1af89C33276ec61DbDa73C',
-      fromBlock: 19381542,
-      toBlock: 19381542,
-      protocolTokenAddress: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'withdrawals',
-    input: {
-      userAddress: '0xbEDba47B926b45938A1a8ADFe6189047DD4e9bbC',
-      fromBlock: 19382067,
-      toBlock: 19382067,
-      protocolTokenAddress: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
-    },
-  },
   {
     chainId: Chain.Ethereum,
     method: 'prices',

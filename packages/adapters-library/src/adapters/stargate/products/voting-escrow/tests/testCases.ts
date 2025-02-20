@@ -1,5 +1,5 @@
 import { Chain } from '../../../../../core/constants/chains'
-import { TimePeriod } from '../../../../../core/constants/timePeriod'
+
 import type { TestCase } from '../../../../../types/testCase'
 
 export const testCases: TestCase[] = [
@@ -16,11 +16,5 @@ export const testCases: TestCase[] = [
       ],
     },
     blockNumber: 18163124,
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'tvl',
-    filterProtocolTokens: ['0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56'],
-    blockNumber: 19661888,
   },
 ]

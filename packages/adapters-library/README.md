@@ -6,7 +6,7 @@
 
 This library is designed to simplify and standardise the process of fetching data and interacting with various DeFi protocols, which often have unique interfaces and data structures. Our adapters 1) fetch and transform underlying protocol data into a standardised format that can be easily used by portfolio dashboards and 2) generate transaction params to create and update protocol positions.
 
-> **Note:** Please note that in this library, adapters must query on-chain data to ensure accuracy and reliability, we do not accept centralised APIs to get positions, withdrawals, deposits, profits or rewards.
+> **Note:** Please note that in this library, adapters must query on-chain data to ensure accuracy and reliability, we do not accept centralised APIs to get positions or rewards.
 
 ## How to create a Read Adapter
 

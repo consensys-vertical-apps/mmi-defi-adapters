@@ -2,30 +2,14 @@ import type { Protocol } from '../adapters/protocols'
 import type { Chain, ChainName } from '../core/constants/chains'
 import { ProtocolToken } from './IProtocolAdapter'
 import type {
-  MovementsByBlock,
-  ProfitsWithRange,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenBalanceWithUnderlyings,
-  TokenTvl,
   TokenType,
   Underlying,
-  UnderlyingTokenTvl,
   UnwrapExchangeRate,
   UnwrappedTokenExchangeRate,
 } from './adapter'
-
-export type GetEventsRequestInput = {
-  userAddress: string
-  fromBlock: number
-  toBlock: number
-  protocolTokenAddress: string
-  protocolId: Protocol
-  chainId: Chain
-  productId: string
-  tokenId?: string
-}
 
 export type AdapterErrorResponse = {
   error: {
@@ -63,8 +47,6 @@ export type DisplayPosition<
     ? { iconUrl: string }
     : Record<string, never>)
 
-export type DefiProfitsResponse = AdapterResponse<ProfitsWithRange>
-
 export type PricePerShareResponse = AdapterResponse<{
   tokens: DisplayUnwrapExchangeRate[]
 }>
@@ -74,37 +56,6 @@ export type DisplayUnwrapExchangeRate = Omit<UnwrapExchangeRate, 'tokens'> & {
     underlyingRate: number
     iconUrl?: string
   })[]
-}
-
-export type TotalValueLockResponse = AdapterResponse<{
-  tokens: DisplayTokenTvl<DisplayProtocolTokenTvl>[]
-}>
-
-export type DisplayProtocolTokenTvl = Omit<ProtocolTokenTvl, 'tokens'> & {
-  totalSupply: number
-  tokens?: (UnderlyingTokenTvl & { totalSupply: number; iconUrl: string })[]
-}
-
-export type DisplayTokenTvl<
-  TokenTvlBalance extends TokenTvl & {
-    type: TokenType
-    tokens?: UnderlyingTokenTvl[]
-  },
-> = Omit<TokenTvlBalance, 'tokens'> & {
-  totalSupply: number
-  tokens?: DisplayTokenTvl<UnderlyingTokenTvl>[]
-  price: number
-  priceRaw: never
-} & (TokenTvlBalance['type'] extends typeof TokenType.Underlying
-    ? { iconUrl: string }
-    : Record<string, never>)
-
-export type DefiMovementsResponse = AdapterResponse<{
-  movements: DisplayMovementsByBlock[]
-}>
-
-export type DisplayMovementsByBlock = Omit<MovementsByBlock, 'tokens'> & {
-  tokens?: (Underlying & { balance: number })[]
 }
 
 export type Support = Partial<

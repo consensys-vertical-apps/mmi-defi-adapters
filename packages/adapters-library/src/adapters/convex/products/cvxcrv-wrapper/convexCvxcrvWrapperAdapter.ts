@@ -12,17 +12,12 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
-  MovementsByBlockReward,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnderlyingReward,
   UnwrapExchangeRate,
@@ -130,42 +125,6 @@ export class ConvexCvxcrvWrapperAdapter implements IProtocolAdapter {
     })
   }
 
-  async getWithdrawals({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.withdrawals({
-      protocolToken: this.helpers.getProtocolTokenByAddress({
-        protocolTokens: await this.getProtocolTokens(),
-        protocolTokenAddress,
-      }),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.deposits({
-      protocolToken: this.helpers.getProtocolTokenByAddress({
-        protocolTokens: await this.getProtocolTokens(),
-        protocolTokenAddress,
-      }),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
   async unwrap({
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
@@ -224,61 +183,5 @@ export class ConvexCvxcrvWrapperAdapter implements IProtocolAdapter {
         type: TokenType.UnderlyingClaimable,
       }
     })
-  }
-
-  async getRewardWithdrawals({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlockReward[]> {
-    const { rewardTokens, underlyingTokens, ...protocolToken } =
-      this.helpers.getProtocolTokenByAddress({
-        protocolTokens: await this.getProtocolTokens(),
-        protocolTokenAddress,
-      })
-
-    return (
-      await Promise.all(
-        rewardTokens.map(async (extraRewardToken) => {
-          const cvxcrvContract = CvxcrvWrapper__factory.connect(
-            protocolTokenAddress,
-            this.provider,
-          )
-
-          const filter = cvxcrvContract.filters[
-            'RewardPaid(address,address,uint256,address)'
-          ](userAddress, extraRewardToken.address)
-
-          const eventResults =
-            await cvxcrvContract.queryFilter<RewardPaidEvent.Event>(
-              filter,
-              fromBlock,
-              toBlock,
-            )
-
-          return eventResults.map((event) => {
-            const {
-              blockNumber,
-              args: { _amount: protocolTokenMovementValueRaw },
-              transactionHash,
-            } = event
-
-            return {
-              transactionHash,
-              protocolToken,
-              tokens: [
-                {
-                  ...extraRewardToken,
-                  balanceRaw: protocolTokenMovementValueRaw,
-                  type: TokenType.UnderlyingClaimable,
-                },
-              ],
-              blockNumber: blockNumber,
-            }
-          })
-        }),
-      )
-    ).flat()
   }
 }

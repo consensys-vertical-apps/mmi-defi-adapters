@@ -8,14 +8,10 @@ import {
 } from '../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -89,84 +85,6 @@ export abstract class SimplePoolAdapter<
     }
   }
 
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.withdrawals({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.deposits({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getBorrows({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.borrows({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getRepays({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.repays({
-      protocolToken:
-        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokensWithoutUnderlyingTokens = await this.getProtocolTokens()
-    const protocolTokens = await filterMapAsync(
-      protocolTokensWithoutUnderlyingTokens,
-      async (protocolToken) => {
-        const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
-          protocolToken.address,
-        )
-
-        return {
-          ...protocolToken,
-          underlyingTokens,
-        }
-      },
-    )
-
-    return await this.helpers.tvlUsingUnderlyingTokenBalances({
-      protocolTokens,
-      filterProtocolTokenAddresses: protocolTokenAddresses,
-      blockNumber,
-    })
-  }
-
   /**
    * Fetches the protocol-token metadata
    * @param protocolTokenAddress
@@ -208,16 +126,4 @@ export abstract class SimplePoolAdapter<
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number,
   ): Promise<UnwrappedTokenExchangeRate[]>
-
-  async getProtocolTokenMovements(input: {
-    protocolToken: Erc20Metadata
-    filter: {
-      fromBlock: number
-      toBlock: number
-      from?: string
-      to?: string
-    }
-  }): Promise<MovementsByBlock[]> {
-    return this.helpers.getErc20Movements(input)
-  }
 }

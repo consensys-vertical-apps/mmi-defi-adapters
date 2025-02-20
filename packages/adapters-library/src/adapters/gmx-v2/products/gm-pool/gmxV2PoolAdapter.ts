@@ -13,15 +13,11 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -157,13 +153,6 @@ export class GmxV2GmPoolAdapter implements IProtocolAdapter {
     )
   }
 
-  private async getProtocolTokenByAddress(protocolTokenAddress: string) {
-    return this.helpers.getProtocolTokenByAddress({
-      protocolTokens: await this.getProtocolTokens(),
-      protocolTokenAddress,
-    })
-  }
-
   /**
    * There are two ways of fetching underlying balances
    * First and official way is to use Reader.getWithdrawalAmountOut
@@ -271,43 +260,6 @@ export class GmxV2GmPoolAdapter implements IProtocolAdapter {
     )
   }
 
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.deposits({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = await this.getProtocolTokens()
-
-    return await this.helpers.tvl({
-      protocolTokens,
-      filterProtocolTokenAddresses: protocolTokenAddresses,
-      blockNumber,
-    })
-  }
-
   async unwrap({
     protocolTokenAddress,
     blockNumber,
@@ -330,9 +282,5 @@ export class GmxV2GmPoolAdapter implements IProtocolAdapter {
         [innerHash, market, token],
       ),
     )
-  }
-
-  private halfBigInt(value: bigint) {
-    return value % 2n === 0n ? value / 2n : (value + 1n) / 2n
   }
 }

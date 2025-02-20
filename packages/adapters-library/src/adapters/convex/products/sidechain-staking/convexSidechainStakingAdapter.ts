@@ -12,17 +12,12 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
-  MovementsByBlockReward,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnderlyingReward,
   UnwrapExchangeRate,
@@ -232,43 +227,6 @@ export class ConvexSidechainStakingAdapter implements IProtocolAdapter {
     })
   }
 
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.deposits({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = await this.getProtocolTokens()
-
-    return await this.helpers.tvl({
-      protocolTokens,
-      filterProtocolTokenAddresses: protocolTokenAddresses,
-      blockNumber,
-    })
-  }
-
   async getExtraRewardPositions({
     userAddress,
     blockNumber,
@@ -310,72 +268,6 @@ export class ConvexSidechainStakingAdapter implements IProtocolAdapter {
         type: TokenType.UnderlyingClaimable,
         ...tokenMetadata,
         balanceRaw: balance.amount,
-      }
-    })
-  }
-
-  async getExtraRewardWithdrawals({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlockReward[]> {
-    const { name, symbol, decimals, address, extraRewardTokens } =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    const extraRewardTracker = ConvexRewardFactorySidechain__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
-
-    const filter = extraRewardTracker.filters.RewardPaid(userAddress)
-
-    const eventResults =
-      await extraRewardTracker.queryFilter<RewardPaidEvent.Event>(
-        filter,
-        fromBlock,
-        toBlock,
-      )
-
-    return await filterMapAsync(eventResults, async (event) => {
-      const {
-        blockNumber,
-        args: {
-          _rewardAmount: protocolTokenMovementValueRaw,
-          _rewardToken: rewardTokenAddress,
-        },
-        transactionHash,
-      } = event
-
-      const tokenMetadata = extraRewardTokens.find(
-        (token) =>
-          token.address.toLowerCase() === rewardTokenAddress.toLowerCase(),
-      )
-
-      if (!tokenMetadata) {
-        logger.warn(
-          {
-            tokenAddress: rewardTokenAddress,
-            chainId: this.chainId,
-            protocolId: this.protocolId,
-            productId: this.productId,
-          },
-          'Token metadata not found for reward',
-        )
-        return undefined
-      }
-
-      return {
-        transactionHash: transactionHash,
-        protocolToken: { name, address, decimals, symbol },
-        tokens: [
-          {
-            ...tokenMetadata,
-            balanceRaw: protocolTokenMovementValueRaw,
-            type: TokenType.UnderlyingClaimable,
-          },
-        ],
-        blockNumber: blockNumber,
       }
     })
   }

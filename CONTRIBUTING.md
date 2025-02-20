@@ -35,7 +35,6 @@ Follow the steps below to contribute changes:
 6. Test your new adapter by running the scripts detailed in the README, e.g.,
    ```bash
    npm run positions <user address> -- -p <protocol id>
-   npm run profits <user address> -- -p <protocol id>
    npm run prices
    ```
    and so on.

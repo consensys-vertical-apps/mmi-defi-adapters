@@ -1,5 +1,4 @@
 import { Chain } from '../../../../../core/constants/chains'
-import { TimePeriod } from '../../../../../core/constants/timePeriod'
 import type { TestCase } from '../../../../../types/testCase'
 
 export const testCases: TestCase[] = [
@@ -14,12 +13,4 @@ export const testCases: TestCase[] = [
 
     blockNumber: 65028666,
   },
-  // {
-  //   chainId: Chain.Ethereum,
-  //   method: 'profits',
-  //   input: {
-  //     userAddress: '0xCEadFdCCd0E8E370D985c49Ed3117b2572243A4a',
-  //     timePeriod: TimePeriod.oneDay,
-  //   },
-  // },
 ]

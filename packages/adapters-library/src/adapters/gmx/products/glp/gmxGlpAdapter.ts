@@ -13,16 +13,12 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnderlyingReward,
   UnwrapExchangeRate,
@@ -297,46 +293,6 @@ export class GmxGlpAdapter implements IProtocolAdapter {
       baseRate: 1,
       tokens: unwrappedTokenExchangeRates,
     }
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
-  async getDeposits({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.helpers.getErc20Movements({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: {
-        fromBlock,
-        toBlock,
-        from: ZERO_ADDRESS,
-        to: userAddress,
-      },
-    })
-  }
-
-  async getWithdrawals({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.helpers.getErc20Movements({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: {
-        fromBlock,
-        toBlock,
-        from: userAddress,
-        to: ZERO_ADDRESS,
-      },
-    })
   }
 
   private async getProtocolTokenByAddress(

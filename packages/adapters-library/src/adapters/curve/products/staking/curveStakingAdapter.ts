@@ -15,17 +15,12 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
-  MovementsByBlockReward,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnderlyingReward,
   UnwrapExchangeRate,
@@ -161,78 +156,6 @@ export class CurveStakingAdapter implements IProtocolAdapter {
     })
   }
 
-  async getDeposits({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const {
-      underlyingTokens: [underlyingToken],
-      ...protocolToken
-    } = await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    //// curve staking contracts dont have transfer events so use underlying lp token events instead
-    const movements = await this.helpers.getErc20Movements({
-      protocolToken: underlyingToken!,
-      filter: {
-        fromBlock,
-        toBlock,
-        from: userAddress,
-        to: protocolTokenAddress,
-      },
-    })
-
-    movements.forEach((movement) => {
-      movement.protocolToken = protocolToken
-    })
-
-    return movements
-  }
-
-  async getWithdrawals({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const {
-      underlyingTokens: [underlyingToken],
-      ...protocolToken
-    } = await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    //// curve staking contracts dont have transfer events so use underlying lp token events instead
-    const movements = await this.helpers.getErc20Movements({
-      protocolToken: underlyingToken!,
-
-      filter: {
-        fromBlock,
-        toBlock,
-        from: protocolTokenAddress,
-        to: userAddress,
-      },
-    })
-
-    movements.forEach((movement) => {
-      movement.protocolToken = protocolToken
-    })
-
-    return movements
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = await this.getProtocolTokens()
-
-    return await this.helpers.tvl({
-      protocolTokens,
-      filterProtocolTokenAddresses: protocolTokenAddresses,
-      blockNumber,
-    })
-  }
-
   async unwrap({
     protocolTokenAddress,
     tokenId,
@@ -351,109 +274,5 @@ export class CurveStakingAdapter implements IProtocolAdapter {
       return '0xd061D61a4d941c39E5453435B6345Dc261C2fcE0'
     }
     return '0xabc000d88f23bb45525e447528dbf656a9d55bf5'
-  }
-
-  async getRewardWithdrawals({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlockReward[]> {
-    const crvMinter = CrvMinter__factory.connect(
-      this.minterAddress(),
-      this.provider,
-    )
-
-    const startBalance = await crvMinter.minted(
-      userAddress,
-      protocolTokenAddress,
-      { blockTag: fromBlock },
-    )
-    const endBalance = await crvMinter.minted(
-      userAddress,
-      protocolTokenAddress,
-      { blockTag: toBlock },
-    )
-
-    const withdrawn = endBalance - startBalance
-
-    const { underlyingTokens, gaugeType, ...protocolToken } =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    const extraRewardTokens: MovementsByBlockReward[] = []
-    if (gaugeType === GaugeType.N_GAUGE) {
-      const contract = GaugeN__factory.connect(
-        protocolToken.address,
-        this.provider,
-      )
-
-      await Promise.all(
-        Array.from({ length: 4 }).map(async (_, i) => {
-          const address = await contract.reward_tokens(i)
-          if (address === ZERO_ADDRESS) return
-
-          const claimed = await Erc20__factory.connect(address, this.provider)
-          const filter = claimed.filters.Transfer(
-            protocolTokenAddress,
-            userAddress,
-          )
-
-          const eventResults = await claimed.queryFilter<TransferEvent.Event>(
-            filter,
-            fromBlock,
-            toBlock,
-          )
-
-          eventResults.forEach(async (transferEvent) => {
-            const tokenMetadata = await getTokenMetadata(
-              address,
-              this.chainId,
-              this.provider,
-            )
-
-            const {
-              blockNumber,
-              args: { value: protocolTokenMovementValueRaw },
-              transactionHash,
-            } = transferEvent
-
-            extraRewardTokens.push({
-              transactionHash,
-              protocolToken,
-              tokens: [
-                {
-                  ...tokenMetadata,
-                  balanceRaw: protocolTokenMovementValueRaw,
-                  type: TokenType.UnderlyingClaimable,
-                },
-              ],
-              blockNumber: blockNumber,
-            })
-          })
-
-          return
-        }),
-      )
-    }
-
-    return [
-      {
-        transactionHash: '0x',
-        protocolToken,
-        tokens: [
-          {
-            ...CRV_TOKEN,
-            address:
-              CurveTokenAddresses[
-                this.chainId as keyof typeof CurveTokenAddresses
-              ],
-            balanceRaw: withdrawn,
-            type: TokenType.UnderlyingClaimable,
-          },
-        ],
-        blockNumber: toBlock,
-      },
-      ...extraRewardTokens,
-    ]
   }
 }
