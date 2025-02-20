@@ -1,15 +1,13 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
 import type Database from 'better-sqlite3'
 import { JsonRpcProvider, getAddress } from 'ethers'
-import {
-  completeJobs,
-  createHistoryTables,
-  failJobs,
-  fetchNextPoolsToProcess as fetchAllUnfinishedPools,
-  insertLogs,
-} from './db-queries.js'
 import { fetchEvents } from './fetch-events.js'
 import { logger } from './logger.js'
+import {
+  fetchUnfinishedJobs,
+  insertLogs,
+  updateJobStatus,
+} from './db-tables.js'
 
 const MaxConcurrentBatches = 10
 
@@ -49,7 +47,7 @@ export async function buildHistoricCache(
   db: Database.Database,
 ) {
   while (true) {
-    const unfinishedPools = fetchAllUnfinishedPools(db)
+    const unfinishedPools = fetchUnfinishedJobs(db)
 
     logger.info(
       {
@@ -126,7 +124,13 @@ export async function buildHistoricCache(
 
         await Promise.all(concurrentRanges)
 
-        completeJobs(db, contractAddresses, topic0, userAddressIndex)
+        updateJobStatus(
+          db,
+          contractAddresses,
+          topic0,
+          userAddressIndex,
+          'completed',
+        )
 
         logger.info(
           {
@@ -138,7 +142,13 @@ export async function buildHistoricCache(
           'Pool group processing ended',
         )
       } catch (error) {
-        failJobs(db, contractAddresses, topic0, userAddressIndex)
+        updateJobStatus(
+          db,
+          contractAddresses,
+          topic0,
+          userAddressIndex,
+          'failed',
+        )
 
         logger.error(
           {

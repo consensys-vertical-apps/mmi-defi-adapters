@@ -6,13 +6,13 @@ import {
 } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, Network } from 'ethers'
 import { buildHistoricCache } from './build-historic-cache.js'
+import { buildLatestCache, createLatestTables } from './build-latest-cache.js'
 import {
   createDatabase,
   createHistoryTables,
   insertContractEntries,
 } from './db-queries.js'
 import { logger } from './logger.js'
-import { buildLatestCache, createLatestTables } from './build-latest-cache.js'
 const chainIdInput = process.argv[2]
 
 if (!chainIdInput) {

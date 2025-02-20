@@ -9,6 +9,7 @@ import { ethers, getAddress } from 'ethers'
 import { BlockRunner } from './block-runner.js'
 import { createTable } from './db-queries.js'
 import { logger } from './logger.js'
+import { selectAllWatchListKeys } from './db-tables.js'
 
 export async function buildLatestCache(
   chainId: EvmChain,
@@ -171,19 +172,4 @@ async function onError(latestSafeProcessedBlock: number, db: DatabaseType) {
   db.prepare(
     'INSERT OR REPLACE INTO latest_block_processed (id, latest_block_processed) VALUES (1, ?)',
   ).run(latestSafeProcessedBlock)
-}
-
-export function selectAllWatchListKeys(db: DatabaseType) {
-  const unfinishedPools = db
-    .prepare(`
-        SELECT 	'0x' || contract_address as contract_address, topic_0, user_address_index
-        FROM 	history_jobs
-        `)
-    .all() as {
-    contract_address: string
-    topic_0: string
-    user_address_index: number
-  }[]
-
-  return unfinishedPools
 }
