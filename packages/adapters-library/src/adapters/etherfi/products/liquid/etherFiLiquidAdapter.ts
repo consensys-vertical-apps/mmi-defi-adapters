@@ -77,7 +77,7 @@ export class EtherFiLiquidAdapter implements IProtocolAdapter {
 
   /**
    * We need to find all "Accountant" contracts and their associated "BoringVault".
-   * - The "BoringVault" is also an ERC20, and is used to track the position / profits
+   * - The "BoringVault" is also an ERC20, and is used to track the position
    * - The "Accountant" gives the raw rate of the ERC20 in terms of the underlying
    *
    * To do so, we fetch all logs from the "Deploy" contract, which acts as a factory.

@@ -4,7 +4,6 @@ import type { TestCase } from '../../../../../types/testCase'
 
 const User1 = '0x7BFEe91193d9Df2Ac0bFe90191D40F23c773C060' // Has some SolvBTC on Arbitrum
 const User2 = '0xEBFAEEDE1D85E8E87BDe9326bc301830D55dfa8c' // Has some SolvBTC.BBN on Mainnet
-const User4 = '0xd87D6D2D766b15cDA45e3cACC8742104B5A921ea' // Has deposited + withdrew some SolvBTC over a few days
 
 export const testCases: TestCase[] = [
   {

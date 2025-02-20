@@ -93,7 +93,7 @@ Finally, if any reward method has been added, the implementation will have to be
 - `getRewardPositions`
 - `getExtraRewardPositions`
 
-## 4 Use the dev ui to valiate position and profit responses
+## 4 Use the dev ui to valiate position responses
 
 By accessing the dev ui at `http://localhost:5173/`, it is possible to check both a visual representation of user position and the raw json data returned for debugging purposes.
 

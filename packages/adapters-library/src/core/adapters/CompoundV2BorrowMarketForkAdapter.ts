@@ -1,10 +1,8 @@
-import { LogDescription } from 'ethers'
 import { Protocol } from '../../adapters/protocols'
 import {
   CompoundV2Cerc20__factory,
   CompoundV2Comptroller__factory,
 } from '../../contracts'
-import { BorrowEvent, RepayBorrowEvent } from '../../contracts/CompoundV2Cerc20'
 import { Helpers } from '../../core/helpers'
 import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
 import {
@@ -22,7 +20,7 @@ import { Chain } from '../constants/chains'
 import { CacheToDb } from '../decorators/cacheToDb'
 import { NotImplementedError } from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
-import { filterMapAsync, filterMapSync } from '../utils/filters'
+import { filterMapAsync } from '../utils/filters'
 import { getProtocolTokens } from './compoundV2ProtocolTokens'
 
 export abstract class CompoundV2BorrowMarketForkAdapter

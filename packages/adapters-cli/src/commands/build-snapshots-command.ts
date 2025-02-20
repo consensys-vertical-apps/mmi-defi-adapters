@@ -10,7 +10,7 @@ import {
   filterMapSync,
   multiProtocolFilter,
 } from '@metamask-institutional/defi-adapters'
-import { Command } from 'commander'
+import { Command, Option } from 'commander'
 import { kebabCase } from 'lodash-es'
 import { parse, print, types, visit } from 'recast'
 import {
@@ -41,22 +41,15 @@ export function buildSnapshotsCommand(
       '-k, --key <test-key>',
       'test key must be used with protocols filter',
     )
-    .option(
-      '-m, --method <method>',
-      `specify a method to run (allowed: ${allowedMethods.join(', ')})`,
+    .addOption(
+      new Option(
+        '-m, --method <method>',
+        `specify a method to run (allowed: ${allowedMethods.join(', ')})`,
+      ).choices(allowedMethods),
     )
     .option('-ul, --latency', 'update latency value')
     .showHelpAfterError()
     .action(async ({ protocols, products, key, method, latency }) => {
-      // Validate method
-      if (method && !allowedMethods.includes(method)) {
-        throw new Error(
-          `Invalid method: ${method}. Allowed methods are: ${allowedMethods.join(
-            ', ',
-          )}.`,
-        )
-      }
-
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterProductIds = (products as string | undefined)?.split(',')
 
@@ -123,6 +116,58 @@ export function buildSnapshotsCommand(
 
           const snapshotFileContent = await (async () => {
             switch (testCase.method) {
+              case 'positions': {
+                const blockNumber =
+                  testCase.blockNumber ??
+                  (await defiProvider.chainProvider.providers[
+                    chainId
+                  ].getStableBlockNumber())
+
+                const startTime = Date.now()
+
+                const snapshot = await defiProvider.getPositions({
+                  ...testCase.input,
+                  filterChainIds: [chainId],
+                  filterProtocolIds: [protocolId],
+                  filterProductIds: [productId],
+                  blockNumbers: {
+                    [chainId]: blockNumber,
+                  },
+                })
+
+                const endTime = Date.now()
+
+                const aggregatedValues = getAggregatedValues(snapshot, chainId)
+
+                const result = {
+                  blockNumber,
+                  latency: getLatency(
+                    endTime,
+                    startTime,
+                    latency,
+                    previousLatency,
+                  ),
+                  aggregatedValues,
+                  snapshot,
+                }
+
+                await updateBlockNumber(
+                  protocolId,
+                  productId,
+                  index,
+                  blockNumber,
+                )
+
+                await updateFilters(
+                  protocolId,
+                  productId,
+                  index,
+                  result.snapshot,
+                )
+
+                return result
+              }
+
               case 'prices': {
                 const blockNumber =
                   testCase.blockNumber ??
