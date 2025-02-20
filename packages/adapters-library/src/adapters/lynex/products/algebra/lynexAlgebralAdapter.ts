@@ -12,15 +12,11 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   Underlying,
   UnwrapExchangeRate,
@@ -221,49 +217,6 @@ export class LynexAlgebraAdapter implements IProtocolAdapter {
     return `${token0Symbol} / ${token1Symbol}`
   }
 
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    tokenId,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    if (!tokenId) {
-      throw new Error('TokenId required for withdrawals')
-    }
-
-    return await this.getMovements({
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-      eventType: 'withdrawals',
-      tokenId,
-    })
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    tokenId,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    if (!tokenId) {
-      throw new Error('TokenId required for deposits')
-    }
-    return await this.getMovements({
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-      eventType: 'deposit',
-      tokenId,
-    })
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
   async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
   }
@@ -282,95 +235,5 @@ export class LynexAlgebraAdapter implements IProtocolAdapter {
       balanceRaw,
       type,
     }
-  }
-
-  private async getMovements({
-    protocolTokenAddress,
-    eventType,
-    fromBlock,
-    toBlock,
-    tokenId,
-  }: {
-    protocolTokenAddress: string
-    eventType: 'withdrawals' | 'deposit'
-    fromBlock: number
-    toBlock: number
-    tokenId: string
-  }): Promise<MovementsByBlock[]> {
-    const positionsManagerContract = PositionManager__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
-
-    const eventFilters = {
-      deposit: positionsManagerContract.filters.IncreaseLiquidity(tokenId),
-      withdrawals: positionsManagerContract.filters.Collect(tokenId),
-    }
-
-    const { token0, token1 } = await positionsManagerContract
-      .positions(tokenId, { blockTag: toBlock }) // Encountered failures if nft not yet minted
-      .catch((error) => {
-        if (error?.message?.includes('Invalid token ID')) {
-          throw new Error(
-            `TokenId: ${tokenId} at blocknumber: ${fromBlock} does not exist, has position been minted yet or burned?`,
-          )
-        }
-
-        throw new Error(error)
-      })
-    const [token0Metadata, token1Metadata] = await Promise.all([
-      getTokenMetadata(token0, this.chainId, this.provider),
-      getTokenMetadata(token1, this.chainId, this.provider),
-    ])
-
-    const eventResults = await positionsManagerContract.queryFilter(
-      eventFilters[eventType],
-      fromBlock,
-      toBlock,
-    )
-
-    return await Promise.all(
-      eventResults.map(async (transferEvent) => {
-        const {
-          blockNumber,
-          args: { amount0, amount1 },
-          transactionHash,
-        } = transferEvent
-
-        return {
-          transactionHash,
-          protocolToken: {
-            address: protocolTokenAddress,
-            name: this.protocolTokenName(
-              token0Metadata.symbol,
-              token1Metadata.symbol,
-            ),
-            symbol: this.protocolTokenName(
-              token0Metadata.symbol,
-              token1Metadata.symbol,
-            ),
-            decimals: 18,
-            tokenId,
-          },
-          tokens: [
-            {
-              type: TokenType.Underlying,
-              balanceRaw: amount0,
-              ...token0Metadata,
-              transactionHash,
-              blockNumber,
-            },
-            {
-              type: TokenType.Underlying,
-              balanceRaw: amount1,
-              ...token1Metadata,
-              transactionHash,
-              blockNumber,
-            },
-          ],
-          blockNumber,
-        }
-      }),
-    )
   }
 }

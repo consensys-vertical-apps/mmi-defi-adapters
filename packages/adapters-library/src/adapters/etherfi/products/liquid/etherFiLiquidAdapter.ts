@@ -11,15 +11,11 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
@@ -81,7 +77,7 @@ export class EtherFiLiquidAdapter implements IProtocolAdapter {
 
   /**
    * We need to find all "Accountant" contracts and their associated "BoringVault".
-   * - The "BoringVault" is also an ERC20, and is used to track the position / profits
+   * - The "BoringVault" is also an ERC20, and is used to track the position
    * - The "Accountant" gives the raw rate of the ERC20 in terms of the underlying
    *
    * To do so, we fetch all logs from the "Deploy" contract, which acts as a factory.
@@ -170,58 +166,12 @@ export class EtherFiLiquidAdapter implements IProtocolAdapter {
     return uniques
   }
 
-  private async getProtocolTokenByAddress(
-    protocolTokenAddress: string,
-  ): Promise<ProtocolToken> {
-    return this.helpers.getProtocolTokenByAddress({
-      protocolTokens: await this.getProtocolTokens(),
-      protocolTokenAddress,
-    })
-  }
-
   public async getPositions(
     input: GetPositionsInput,
   ): Promise<ProtocolPosition[]> {
     return this.helpers.getBalanceOfTokens({
       ...input,
       protocolTokens: await this.getProtocolTokens(),
-    })
-  }
-
-  public async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  public async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.deposits({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  public async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = await this.getProtocolTokens()
-
-    return await this.helpers.tvl({
-      protocolTokens,
-      filterProtocolTokenAddresses: protocolTokenAddresses,
-      blockNumber,
     })
   }
 

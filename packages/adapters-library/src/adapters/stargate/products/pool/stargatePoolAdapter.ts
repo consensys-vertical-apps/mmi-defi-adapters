@@ -12,15 +12,11 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
@@ -87,46 +83,6 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     return this.helpers.getProtocolTokenByAddress({
       protocolTokens: await this.getProtocolTokens(),
       protocolTokenAddress,
-    })
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = await this.getProtocolTokens()
-
-    return await this.helpers.tvlUsingUnderlyingTokenBalances({
-      protocolTokens,
-      filterProtocolTokenAddresses: protocolTokenAddresses,
-      blockNumber,
-    })
-  }
-
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    return this.helpers.withdrawals({
-      protocolToken,
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.deposits({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
     })
   }
 

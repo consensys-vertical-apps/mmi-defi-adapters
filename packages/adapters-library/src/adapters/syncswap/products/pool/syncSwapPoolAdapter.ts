@@ -14,16 +14,11 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  AssetType,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenBalance,
   TokenType,
   Underlying,
@@ -99,12 +94,6 @@ export class SyncSwapPoolAdapter implements IProtocolAdapter {
   }
 
   unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
-    throw new NotImplementedError()
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
     throw new NotImplementedError()
   }
 
@@ -194,126 +183,6 @@ export class SyncSwapPoolAdapter implements IProtocolAdapter {
       balanceRaw,
       type,
     }
-  }
-
-  async getWithdrawals({
-    protocolTokenAddress,
-    userAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getSyncSwapMovements({
-      protocolTokenAddress,
-      userAddress,
-      fromBlock,
-      toBlock,
-      eventType: 'withdrawals',
-    })
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    userAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getSyncSwapMovements({
-      protocolTokenAddress,
-      userAddress,
-      fromBlock,
-      toBlock,
-      eventType: 'deposit',
-    })
-  }
-
-  private async getSyncSwapMovements({
-    protocolTokenAddress,
-    userAddress,
-    eventType,
-    fromBlock,
-    toBlock,
-  }: {
-    protocolTokenAddress: string
-    userAddress: string
-    eventType: 'withdrawals' | 'deposit'
-    fromBlock: number
-    toBlock: number
-  }): Promise<MovementsByBlock[]> {
-    const poolContract = BasePool__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
-
-    const eventFilters = {
-      deposit: poolContract.filters.Mint(
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        userAddress,
-      ),
-      withdrawals: poolContract.filters.Burn(
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        userAddress,
-      ),
-    }
-
-    const [token0, token1] = await poolContract.getAssets()
-    if (!token0 || !token1) {
-      throw new Error('Invalid Token')
-    }
-    const [token0Metadata, token1Metadata, protocolTokenMetadata] =
-      await Promise.all([
-        getTokenMetadata(token0, this.chainId, this.provider),
-        getTokenMetadata(token1, this.chainId, this.provider),
-        getTokenMetadata(protocolTokenAddress, this.chainId, this.provider),
-      ])
-
-    const eventResults = await poolContract.queryFilter(
-      eventFilters[eventType],
-      fromBlock,
-      toBlock,
-    )
-
-    return await Promise.all(
-      eventResults.map(async (transferEvent) => {
-        const {
-          blockNumber,
-          args: { amount0, amount1 },
-          transactionHash,
-        } = transferEvent
-
-        return {
-          transactionHash,
-          protocolToken: {
-            address: protocolTokenAddress,
-            name: protocolTokenMetadata.name,
-            symbol: protocolTokenMetadata.symbol,
-            decimals: 18,
-          },
-          tokens: [
-            {
-              type: TokenType.Underlying,
-              balanceRaw: amount0,
-              ...token0Metadata,
-              transactionHash,
-              blockNumber,
-            },
-            {
-              type: TokenType.Underlying,
-              balanceRaw: amount1,
-              ...token1Metadata,
-              transactionHash,
-              blockNumber,
-            },
-          ],
-          blockNumber,
-        }
-      }),
-    )
   }
 
   private async fetchPools(

@@ -81,7 +81,7 @@ export function checkBadSnapshotsCommand(
 
         for (const entry of entries) {
           const match = entry.name.match(
-            /^.*\.(positions|profits|deposits|withdrawals|repays|borrows|prices|tvl)(?:\.[^.]+)?\.json$/,
+            /^.*\.(positions|prices)(?:\.[^.]+)?\.json$/,
           )
 
           if (!match || !match[1]) {
@@ -102,7 +102,7 @@ export function checkBadSnapshotsCommand(
             continue
           }
 
-          if (['positions', 'profits', 'prices', 'tvl'].includes(match[1])) {
+          if (['positions', 'prices'].includes(match[1])) {
             if (parsedFile.snapshot.length === 0) {
               emptySnapshots.push({
                 protocolId,

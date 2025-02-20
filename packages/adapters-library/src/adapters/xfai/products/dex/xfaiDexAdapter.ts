@@ -7,10 +7,8 @@ import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetTotalValueLockedInput,
   PositionType,
   ProtocolDetails,
-  ProtocolTokenTvl,
   TokenType,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
@@ -93,18 +91,6 @@ export class XfaiDexAdapter extends SimplePoolAdapter {
     await Promise.all(promises)
 
     return metadataObject
-  }
-
-  async getTotalValueLocked(
-    input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    const lps = await this.getProtocolTokens()
-
-    return await this.helpers.tvl({
-      protocolTokens: lps,
-      filterProtocolTokenAddresses: input.protocolTokenAddresses,
-      blockNumber: input.blockNumber,
-    })
   }
 
   protected async unwrapProtocolToken(

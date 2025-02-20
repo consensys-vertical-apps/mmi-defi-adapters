@@ -88,17 +88,12 @@ Then check if the following methods need to be implemented or code has already b
 - `getProtocolTokens`
 - `getPositions`
 - `unwrap`
-- `getWithdrawals`
-- `getDeposits`
-- `getTotalValueLocked`
 
 Finally, if any reward method has been added, the implementation will have to be provided for it to work:
 - `getRewardPositions`
-- `getRewardWithdrawals`
 - `getExtraRewardPositions`
-- `getExtraRewardWithdrawals`
 
-## 4 Use the dev ui to valiate position and profit responses
+## 4 Use the dev ui to valiate position responses
 
 By accessing the dev ui at `http://localhost:5173/`, it is possible to check both a visual representation of user position and the raw json data returned for debugging purposes.
 
@@ -123,50 +118,6 @@ Example:
       userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
     },
   }
-```
-
-### 5.2 Profits
-To get a snapshot of the profits, you need to set `method: 'profits'` and provide an `input` field with the `userAddress` and, optionally, `timePeriod`, which will default to one day if left empty. Optionally, you can specify a `blockNumber`, but this is not required, and the latest will be used and recorded if it's left empty. This will run for all the products of this protocol.
-
-Example:
-```
-{
-    chainId: Chain.Ethereum,
-    method: 'profits',
-    input: {
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-    },
-  }
-```
-
-### 5.3 Deposits/Withdrawals/Repays/Borrows
-To get a snapshot of any of these methods, set `method: 'deposits' | 'withdrawals' | 'repays' | 'borrows'`. The input field of these methods requires additional parameters to work, including `userAddress`, `fromBlock`, `toBlock`, `protocolTokenAddress`, and `productId`.
-
-Example:
-```
-{
-    chainId: Chain.Ethereum,
-    method: 'deposits',
-    input: {
-      fromBlock: 198188138,
-      toBlock: 200597430,
-      userAddress: '0xbc0a54c02a1e80c8e25e8173a8a80baf116205b5',
-      protocolTokenAddress: '0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058',
-      productId: 'supply',
-    },
-  },
-```
-
-### 5.4 TVL
-To get a snapshot of the TVL implementation, set `method: 'tvl'` and specify the protocol tokens with `filterProtocolToken: ['protocol-token-address1', 'protocol-token-address2']`. Optionally, you can specify a `blockNumber`, but this is not required, and the latest will be used and recorded if it's left empty. This will run for all the products of this protocol.
-
-Example:
-```
-{
-    chainId: Chain.Ethereum,
-    method: 'tvl',
-    filterProtocolTokens: ['0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058'],
-  },
 ```
 
 ### 5.5 Create and verify snapshot tests

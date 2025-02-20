@@ -17,15 +17,11 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -236,129 +232,6 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
         tokens: underlyingTokens,
       },
     ]
-  }
-
-  /**
-   * Rewards claimed by a user
-   */
-  async getWithdrawals({
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolTokens = (await this.getProtocolTokens())[0]
-
-    if (!protocolTokens) {
-      throw new Error('No protocol tokens found')
-    }
-
-    return this.getClaimedRewards({
-      rewardTokens: protocolTokens.underlyingTokens,
-      filter: { fromBlock, toBlock, userAddress },
-    })
-  }
-
-  async getClaimedRewards({
-    rewardTokens,
-    filter: { fromBlock, toBlock, userAddress },
-  }: {
-    rewardTokens: Erc20Metadata[]
-    filter: {
-      fromBlock: number
-      toBlock: number
-      userAddress: string
-      from?: string
-      to?: string
-    }
-  }): Promise<MovementsByBlock[]> {
-    const protocolTokenContract = IncentivesContract__factory.connect(
-      this.INCENTIVES_CONTRACT_DETAILS.address,
-      this.provider,
-    )
-
-    const filter = protocolTokenContract.filters.RewardsClaimed(userAddress)
-
-    const eventResults =
-      await protocolTokenContract.queryFilter<RewardsClaimedEvent.Event>(
-        filter,
-        fromBlock,
-        toBlock,
-      )
-
-    // Temp fix to avoid timeouts
-    // Remember these are on per pool basis.
-    // We should monitor number
-    // 20 interactions with same pool feels a healthy limit
-    if (eventResults.length > 20) {
-      throw new MaxMovementLimitExceededError()
-    }
-
-    const movements = await Promise.all(
-      eventResults.map(async (transferEvent) => {
-        const {
-          blockNumber,
-          args: {
-            amount: protocolTokenMovementValueRaw,
-            reward: rewardAddress,
-          },
-          transactionHash,
-        } = transferEvent
-
-        const rewardToken = rewardTokens.find(
-          (token) => getAddress(token.address) === getAddress(rewardAddress),
-        )
-
-        if (!rewardToken) {
-          logger.warn(
-            `Reward token not found for address: ${rewardAddress} in protocol: ${this.protocolId}`,
-          )
-          throw new Error('Reward token not found')
-        }
-
-        return {
-          transactionHash,
-          protocolToken: {
-            ...this.INCENTIVES_CONTRACT_DETAILS,
-          },
-          tokens: [
-            {
-              address: rewardToken.address,
-              name: rewardToken.name,
-              symbol: rewardToken.symbol,
-              decimals: rewardToken.decimals,
-              balanceRaw: protocolTokenMovementValueRaw,
-              type: TokenType.Underlying,
-              blockNumber,
-            },
-          ],
-          blockNumber,
-        }
-      }),
-    )
-
-    return movements.filter(Boolean)
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return [] // no deposits on a rewards contract
-  }
-
-  /**
-   * I don't think TVL on a claimable rewards contract makes sense
-   * In this case the reward tokens are not held in the reward contract
-   * Reward contract has balance of 0
-   * It appears the reward contract might have approvals to spend the reward tokens from things like the Arbitrum DAO
-   */
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
   }
 
   async unwrap({

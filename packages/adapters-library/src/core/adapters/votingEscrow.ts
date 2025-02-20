@@ -4,14 +4,10 @@ import { Helpers } from '../../core/helpers'
 import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   Underlying,
   UnwrapExchangeRate,
@@ -22,7 +18,7 @@ import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { CacheToDb } from '../decorators/cacheToDb'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
-import { getErc20Movements } from '../utils/erc20Movements'
+
 import { getTokenMetadata } from '../utils/getTokenMetadata'
 import { unixTimestampToDateString } from '../utils/unixTimestampToDateString'
 
@@ -165,82 +161,6 @@ export abstract class VotingEscrow implements IProtocolAdapter {
         name: nameWithUnlockTime,
         decimals: protocolToken!.decimals,
         tokens,
-      },
-    ]
-  }
-
-  async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    const [protocolToken] = await this.getProtocolTokens()
-    return (
-      await Promise.all([
-        getErc20Movements({
-          protocolToken: protocolToken!,
-          provider: this.provider,
-          erc20Token: protocolToken!.underlyingTokens[0]!,
-          filter: {
-            fromBlock: input.fromBlock,
-            toBlock: input.toBlock,
-            from: this.addresses.veToken,
-            to: input.userAddress,
-          },
-        }),
-        this.getClaimedRewards(input),
-      ])
-    ).flat()
-  }
-
-  async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    const [protocolToken] = await this.getProtocolTokens()
-    return getErc20Movements({
-      protocolToken: protocolToken!,
-      provider: this.provider,
-      erc20Token: protocolToken!.underlyingTokens[0]!,
-      filter: {
-        fromBlock: input.fromBlock,
-        toBlock: input.toBlock,
-        to: this.addresses.veToken,
-        from: input.userAddress,
-      },
-    })
-  }
-
-  async getClaimedRewards(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    const [protocolToken] = await this.getProtocolTokens()
-
-    return getErc20Movements({
-      protocolToken: protocolToken!,
-      provider: this.provider,
-      erc20Token: protocolToken!.rewardTokens[0]!,
-      filter: {
-        fromBlock: input.fromBlock,
-        toBlock: input.toBlock,
-        to: input.userAddress,
-        from: this.addresses.feeDistributor,
-      },
-    })
-  }
-
-  async getTotalValueLocked({
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const crvContract = Erc20__factory.connect(
-      this.addresses.underlyingToken,
-      this.provider,
-    )
-    const [protocolToken] = await this.getProtocolTokens()
-
-    const balance = await crvContract.balanceOf(this.addresses.veToken, {
-      blockTag: blockNumber,
-    })
-
-    return [
-      {
-        totalSupplyRaw: balance,
-        type: TokenType.Protocol,
-        address: protocolToken!.address,
-        symbol: protocolToken!.symbol,
-        name: protocolToken!.name,
-        decimals: protocolToken!.decimals,
       },
     ]
   }

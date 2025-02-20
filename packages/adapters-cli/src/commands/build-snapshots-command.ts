@@ -4,14 +4,13 @@ import {
   Chain,
   ChainName,
   type DefiPositionResponse,
-  type DefiProfitsResponse,
   DefiProvider,
   Protocol,
   type TestCase,
   filterMapSync,
   multiProtocolFilter,
 } from '@metamask-institutional/defi-adapters'
-import { Command } from 'commander'
+import { Command, Option } from 'commander'
 import { kebabCase } from 'lodash-es'
 import { parse, print, types, visit } from 'recast'
 import {
@@ -26,16 +25,7 @@ export function buildSnapshotsCommand(
   program: Command,
   defiProvider: DefiProvider,
 ) {
-  const allowedMethods = [
-    'positions',
-    'profits',
-    'deposits',
-    'withdrawals',
-    'repays',
-    'borrows',
-    'prices',
-    'tvl',
-  ]
+  const allowedMethods = ['positions', 'prices']
 
   program
     .command('build-snapshots')
@@ -51,22 +41,15 @@ export function buildSnapshotsCommand(
       '-k, --key <test-key>',
       'test key must be used with protocols filter',
     )
-    .option(
-      '-m, --method <method>',
-      `specify a method to run (allowed: ${allowedMethods.join(', ')})`,
+    .addOption(
+      new Option(
+        '-m, --method <method>',
+        `specify a method to run (allowed: ${allowedMethods.join(', ')})`,
+      ).choices(allowedMethods),
     )
     .option('-ul, --latency', 'update latency value')
     .showHelpAfterError()
     .action(async ({ protocols, products, key, method, latency }) => {
-      // Validate method
-      if (method && !allowedMethods.includes(method)) {
-        throw new Error(
-          `Invalid method: ${method}. Allowed methods are: ${allowedMethods.join(
-            ', ',
-          )}.`,
-        )
-      }
-
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterProductIds = (products as string | undefined)?.split(',')
 
@@ -347,7 +330,7 @@ async function updateFilters(
   protocolId: Protocol,
   productId: string,
   index: number,
-  snapshot: DefiPositionResponse[] | DefiProfitsResponse[],
+  snapshot: DefiPositionResponse[],
 ) {
   const protocolTokenAddresses = snapshot.flatMap((position) => {
     if (!position.success) {

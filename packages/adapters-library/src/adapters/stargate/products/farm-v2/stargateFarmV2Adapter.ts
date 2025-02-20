@@ -12,17 +12,12 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
-  MovementsByBlockReward,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnderlyingReward,
   UnwrapExchangeRate,
@@ -214,159 +209,6 @@ export class StargateFarmV2Adapter implements IProtocolAdapter {
         type: TokenType.UnderlyingClaimable,
         balanceRaw: rewardAmount,
       }
-    })
-  }
-
-  async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getMovements({
-      ...input,
-      filterType: 'withdrawal',
-    })
-  }
-
-  async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getMovements({
-      ...input,
-      filterType: 'deposit',
-    })
-  }
-
-  private async getMovements({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-    filterType,
-  }: GetEventsInput & {
-    filterType: 'deposit' | 'withdrawal'
-  }): Promise<MovementsByBlock[]> {
-    const { stargateStakingAddress } = staticChainDataV2[this.chainId]!
-
-    const protocolToken =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    const lpStakingContract = StargateStaking__factory.connect(
-      stargateStakingAddress,
-      this.provider,
-    )
-
-    const filter =
-      filterType === 'deposit'
-        ? lpStakingContract.filters.Deposit(
-            protocolTokenAddress,
-            undefined,
-            userAddress, // Address that receives the tokens (to)
-            undefined,
-          )
-        : lpStakingContract.filters.Withdraw(
-            protocolTokenAddress,
-            userAddress, // Address from which the tokens are withdrawn (from)
-            undefined,
-            undefined,
-          )
-
-    const events = await lpStakingContract.queryFilter(
-      filter,
-      fromBlock,
-      toBlock,
-    )
-
-    return events.map((event) => {
-      const { amount } = event.args!
-
-      return {
-        protocolToken: {
-          address: protocolToken.address,
-          name: protocolToken.name,
-          symbol: protocolToken.symbol,
-          decimals: protocolToken.decimals,
-        },
-        blockNumber: event.blockNumber,
-        transactionHash: event.transactionHash,
-        tokens: [
-          {
-            address: protocolToken.address,
-            name: protocolToken.name,
-            symbol: protocolToken.symbol,
-            decimals: protocolToken.decimals,
-            type: TokenType.Underlying,
-            blockNumber: event.blockNumber,
-            balanceRaw: amount,
-          },
-        ],
-      }
-    })
-  }
-
-  async getRewardWithdrawals({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlockReward[]> {
-    const { rewardTokens, rewarderAddress, address, symbol, name, decimals } =
-      await this.getProtocolTokenByAddress(protocolTokenAddress)
-
-    const multiRewarderContract = StargateMultiRewarder__factory.connect(
-      rewarderAddress,
-      this.provider,
-    )
-
-    const filter = multiRewarderContract.filters.RewardsClaimed(
-      userAddress,
-      undefined,
-      undefined,
-    )
-
-    const events = await multiRewarderContract.queryFilter(
-      filter,
-      fromBlock,
-      toBlock,
-    )
-
-    return events.map((event) => {
-      const { rewardTokens: rewardTokenAddresses, amounts } = event.args!
-
-      return {
-        protocolToken: {
-          address,
-          name,
-          symbol,
-          decimals,
-        },
-        blockNumber: event.blockNumber,
-        transactionHash: event.transactionHash,
-        tokens: rewardTokenAddresses.map((rewardTokenAddress, i) => {
-          const rewardAmount = amounts[i]!
-
-          const rewardToken = rewardTokens.find(
-            (rewardToken) => rewardToken.address === rewardTokenAddress,
-          )!
-
-          return {
-            address: rewardToken.address,
-            name: rewardToken.name,
-            symbol: rewardToken.symbol,
-            decimals: rewardToken.decimals,
-            type: TokenType.UnderlyingClaimable,
-            blockNumber: event.blockNumber,
-            balanceRaw: rewardAmount,
-          }
-        }),
-      }
-    })
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = await this.getProtocolTokens()
-
-    return await this.helpers.tvl({
-      protocolTokens,
-      filterProtocolTokenAddresses: protocolTokenAddresses,
-      blockNumber,
     })
   }
 

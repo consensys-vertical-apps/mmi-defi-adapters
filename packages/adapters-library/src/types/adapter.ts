@@ -1,7 +1,6 @@
 import { Connection } from '@solana/web3.js'
 import type { Protocol } from '../adapters/protocols'
 import type { AdaptersController } from '../core/adaptersController'
-import { ApyInfo } from '../core/apy-calculators/ApyCalculator'
 import type { Chain } from '../core/constants/chains'
 import { Helpers, SolanaHelpers } from '../core/helpers'
 import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
@@ -74,33 +73,6 @@ export type UnwrapInput = {
 
   /**
    * Optional filter for pools that will be queried by an ID
-   */
-  tokenId?: string
-}
-
-export type GetEventsInput = {
-  /**
-   * User address we want to get events for
-   */
-  userAddress: string
-
-  /**
-   * Protocol token we want to check related events for
-   */
-  protocolTokenAddress: string
-
-  /**
-   * Starting blocknumber to check from
-   */
-  fromBlock: number
-
-  /**
-   * End blocknumber we want to check to e.g. current blocknumber
-   */
-  toBlock: number
-
-  /**
-   * Used by NFT Defi Positions, e.g. uniswapV3
    */
   tokenId?: string
 }
@@ -209,18 +181,6 @@ export interface GetRewardPositionsInput {
   tokenId?: string
 }
 
-export interface GetTotalValueLockedInput {
-  /**
-   * Optional filter for tokens that will be queried
-   */
-  protocolTokenAddresses?: string[]
-
-  /**
-   * Optional override param
-   */
-  blockNumber?: number
-}
-
 export interface TokenBalance extends Erc20Metadata {
   /**
    * User's balance raw
@@ -275,98 +235,6 @@ export interface UnwrapExchangeRate extends Erc20Metadata {
   baseRate: 1
   type: typeof TokenType.Protocol
   tokens?: UnwrappedTokenExchangeRate[]
-}
-
-export interface MovementsByBlock {
-  protocolToken: Erc20Metadata & { tokenId?: string }
-  /**
-   * Movements in or out of a protocol position
-   */
-  tokens: Underlying[]
-
-  /**
-   * Blocknumber movement was executed
-   */
-  blockNumber: number
-
-  transactionHash: string
-}
-
-export type MovementsByBlockReward = Omit<MovementsByBlock, 'tokens'> & {
-  tokens: UnderlyingReward[]
-}
-
-export interface TokenTvl extends Erc20Metadata {
-  /**
-   * Total underlying token locked in pool raw
-   */
-  totalSupplyRaw: bigint
-}
-
-export interface UnderlyingTokenTvl extends TokenTvl {
-  type: typeof TokenType.Underlying
-  tokens?: UnderlyingTokenTvl[]
-  priceRaw?: bigint
-}
-
-export interface ProtocolTokenTvl extends TokenTvl {
-  type: typeof TokenType.Protocol
-  tokens?: UnderlyingTokenTvl[]
-}
-
-export interface ProfitsWithRange {
-  /**
-   * Calculated profits from this block number
-   */
-  fromBlock: number
-
-  /**
-   * Calculated profits to this block number
-   */
-  toBlock: number
-  /**
-   * Profits earned by user address
-   */
-  tokens: PositionProfits[]
-
-  rawValues?: {
-    rawEndPositionValues: ProtocolPosition[]
-    rawStartPositionValues: ProtocolPosition[]
-    rawWithdrawals: MovementsByBlock[]
-    rawDeposits: MovementsByBlock[]
-  }
-}
-
-export interface UnderlyingProfitValues extends Erc20Metadata {
-  /**
-   * Profit made in this token for this period
-   */
-  profit: number
-
-  performance: number
-
-  /**
-   * Numbers used to calculate profit value
-   */
-  calculationData: CalculationData
-
-  apyInfo?: ApyInfo
-}
-
-export interface PositionProfits extends Erc20Metadata, UnderlyingProfitValues {
-  tokenId?: string
-  type: typeof TokenType.Protocol
-}
-
-export interface CalculationData {
-  withdrawals: number
-  deposits: number
-  repays: number
-  borrows: number
-  startPositionValue: number
-  endPositionValue: number
-  hasTokensWithoutUSDPrices?: boolean
-  tokensWithoutUSDPrices?: Underlying[]
 }
 
 export interface ProtocolAdapterParams {

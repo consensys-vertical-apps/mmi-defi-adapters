@@ -12,15 +12,11 @@ import {
 } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -156,31 +152,6 @@ export class BalancerV2PoolAdapter implements IProtocolAdapter {
       ...input,
       protocolTokens: await this.getProtocolTokens(),
     })
-  }
-
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
   }
 
   async unwrap({

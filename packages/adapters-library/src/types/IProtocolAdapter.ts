@@ -4,15 +4,10 @@ import type { Chain } from '../core/constants/chains'
 import { IHelpers } from '../core/helpers'
 import type {
   AdapterSettings,
-  GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
-  MovementsByBlockReward,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
@@ -100,69 +95,11 @@ export interface IProtocolAdapter {
    */
   unwrap(input: UnwrapInput): Promise<UnwrapExchangeRate>
 
-  /**
-   *
-   * @remarks Returns the user's withdrawals from a position
-   *
-   * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
-   * @returns {Promise<MovementsByBlock[]>} Array of objects detailing withdrawal events within the specified block range.
-   */
-  getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]>
-
-  /**
-   *
-   * @remarks Returns the user's deposits to a position
-   *
-   * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
-   * @returns {Promise<MovementsByBlock[]>} Array of objects detailing deposit events within the specified block range.
-   */
-  getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]>
-  /**
-   *
-   * @remarks Returns the user's withdrawals from a position
-   *
-   * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
-   * @returns {Promise<MovementsByBlock[]>} Array of objects detailing withdrawal events within the specified block range.
-   */
-  getBorrows?(input: GetEventsInput): Promise<MovementsByBlock[]>
-
-  /**
-   *
-   * @remarks Returns the user's deposits to a position
-   *
-   * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
-   * @returns {Promise<MovementsByBlock[]>} Array of objects detailing deposit events within the specified block range.
-   */
-  getRepays?(input: GetEventsInput): Promise<MovementsByBlock[]>
-
-  /**
-   *
-   * @remarks Returns the Tvl per pool defined in the underlying token
-   *
-   * @param {GetTotalValueLockedInput} input - Object with optional blockNumber override.
-   * @returns {Promise<ProtocolTokenTvl[]>} An array of objects detailing the total value locked in each protocol pool.
-   */
-  getTotalValueLocked(
-    input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]>
-
   getRewardPositions?(
     input: GetRewardPositionsInput,
   ): Promise<UnderlyingReward[]>
 
-  getRewardWithdrawals?({
-    userAddress,
-    protocolTokenAddress,
-    tokenId,
-  }: GetEventsInput): Promise<MovementsByBlockReward[]>
-
   getExtraRewardPositions?(
     input: GetRewardPositionsInput,
   ): Promise<UnderlyingReward[]>
-
-  getExtraRewardWithdrawals?({
-    userAddress,
-    protocolTokenAddress,
-    tokenId,
-  }: GetEventsInput): Promise<MovementsByBlockReward[]>
 }

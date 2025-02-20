@@ -1,5 +1,5 @@
 import { Chain } from '../../../../../core/constants/chains'
-import { TimePeriod } from '../../../../../core/constants/timePeriod'
+
 import type { TestCase } from '../../../../../types/testCase'
 
 const User3 = '0x566d2176Ecb1d8eA07D182b47B5aC57511337E00' // Has weETH on Base
@@ -18,19 +18,7 @@ export const testCases: TestCase[] = [
 
     blockNumber: 19840743,
   },
-  {
-    key: 'user3',
-    chainId: Chain.Base,
-    method: 'profits',
 
-    input: {
-      userAddress: User3,
-      timePeriod: TimePeriod.thirtyDays,
-      filterProtocolTokens: ['0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A'],
-    },
-
-    blockNumber: 19840743,
-  },
   {
     key: 'user4',
     chainId: Chain.Linea,
@@ -42,18 +30,5 @@ export const testCases: TestCase[] = [
     },
 
     blockNumber: 9527882,
-  },
-  {
-    key: 'user4',
-    chainId: Chain.Linea,
-    method: 'profits',
-
-    input: {
-      userAddress: User4,
-      timePeriod: TimePeriod.thirtyDays,
-      filterProtocolTokens: ['0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6'],
-    },
-
-    blockNumber: 9527883,
   },
 ]

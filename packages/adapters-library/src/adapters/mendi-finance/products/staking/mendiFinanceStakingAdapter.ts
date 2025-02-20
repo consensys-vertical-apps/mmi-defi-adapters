@@ -14,17 +14,12 @@ import {
 import {
   AdapterSettings,
   AssetType,
-  GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
-  MovementsByBlockReward,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   Underlying,
   UnderlyingReward,
@@ -123,37 +118,6 @@ export class MendiFinanceStakingAdapter implements IProtocolAdapter {
     return this.helpers.getBalanceOfTokens({
       ...input,
       protocolTokens: await this.getProtocolTokens(),
-    })
-  }
-
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = await this.getProtocolTokens()
-
-    return await this.helpers.tvl({
-      protocolTokens,
-      filterProtocolTokenAddresses: protocolTokenAddresses,
-      blockNumber,
     })
   }
 

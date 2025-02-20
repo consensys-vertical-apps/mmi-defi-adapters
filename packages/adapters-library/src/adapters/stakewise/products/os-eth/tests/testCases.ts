@@ -15,42 +15,7 @@ export const testCases: TestCase[] = [
     },
     blockNumber: 19240234,
   },
-  {
-    chainId: Chain.Ethereum,
-    method: 'tvl',
-    filterProtocolTokens: [protocolTokenAddress],
-    blockNumber: 19661887,
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'deposits',
-    input: {
-      userAddress,
-      protocolTokenAddress,
-      toBlock: 19240233 + 1,
-      fromBlock: 19240233 - 1,
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'profits',
-    input: {
-      userAddress,
 
-      filterProtocolTokens: [protocolTokenAddress],
-    },
-    blockNumber: 19261916,
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'withdrawals',
-    input: {
-      userAddress,
-      protocolTokenAddress,
-      toBlock: 19261916 + 1,
-      fromBlock: 19261916 - 1,
-    },
-  },
   {
     chainId: Chain.Ethereum,
     method: 'prices',
