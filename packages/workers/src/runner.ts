@@ -4,12 +4,12 @@ import {
   DefiProvider,
   EvmChain,
 } from '@metamask-institutional/defi-adapters'
+import type { Database } from 'better-sqlite3'
 import { JsonRpcProvider, Network } from 'ethers'
 import { buildHistoricCache } from './build-historic-cache.js'
 import { buildLatestCache } from './build-latest-cache.js'
-import { createDatabase, createTable } from './db-utils.js'
-import type { Database } from 'better-sqlite3'
 import { dbTables, insertJobs } from './db-tables.js'
+import { createDatabase, createTable } from './db-utils.js'
 
 export async function runner(
   dbDirPath: string,

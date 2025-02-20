@@ -1,13 +1,13 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
 import type Database from 'better-sqlite3'
 import { JsonRpcProvider, getAddress } from 'ethers'
-import { fetchEvents } from './fetch-events.js'
-import { logger } from './logger.js'
 import {
   fetchUnfinishedJobs,
   insertLogs,
   updateJobStatus,
 } from './db-tables.js'
+import { fetchEvents } from './fetch-events.js'
+import { logger } from './logger.js'
 
 const MaxConcurrentBatches = 10
 

@@ -30,7 +30,7 @@
     "support": "npm run adapters-cli support --",
     "performance": "npm run adapters-cli performance --",
     "lint": "biome check packages",
-    "fix": "npm run lint -- --apply",
+    "fix": "npm run lint -- --write",
     "test": "npm run test -w packages/adapters-library",
     "test:file": "npm run test:file -w packages/adapters-library",
     "test:update:adapter-snapshot": "vitest packages/adapters-cli/src/tests/new-adapter-templates.test.ts -u",

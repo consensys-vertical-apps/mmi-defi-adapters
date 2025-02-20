@@ -1,6 +1,6 @@
+import path from 'node:path'
 import { EvmChain } from '@metamask-institutional/defi-adapters'
 import { logger } from './logger.js'
-import path from 'node:path'
 import { runner } from './runner.js'
 
 const chainIdInput = process.argv[2]

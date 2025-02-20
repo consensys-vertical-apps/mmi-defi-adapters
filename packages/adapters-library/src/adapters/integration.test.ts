@@ -462,7 +462,7 @@ function runProductTests(
           }),
         )
       )
-        .flatMap((x) => x)
+        .flat()
         .reduce((acc, x) => {
           acc[x.key] = x.responses
           return acc

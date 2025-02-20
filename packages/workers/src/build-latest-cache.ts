@@ -4,10 +4,10 @@ import {
   type EvmChain,
 } from '@metamask-institutional/defi-adapters'
 import type { Database as DatabaseType } from 'better-sqlite3'
-import { ethers, getAddress, JsonRpcProvider } from 'ethers'
+import { JsonRpcProvider, ethers, getAddress } from 'ethers'
 import { BlockRunner } from './block-runner.js'
-import { logger } from './logger.js'
 import { selectAllWatchListKeys } from './db-tables.js'
+import { logger } from './logger.js'
 
 export async function buildLatestCache(
   provider: JsonRpcProvider,
