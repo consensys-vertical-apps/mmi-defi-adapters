@@ -4,51 +4,6 @@
       "name": "Ethereum",
       "script": "node",
       "args": ["packages/workers/dist/runner.js", "1"]
-    },
-    {
-      "name": "Optimism",
-      "script": "node",
-      "args": ["packages/workers/dist/runner.js", "10"]
-    },
-    {
-      "name": "Bsc",
-      "script": "node",
-      "args": ["packages/workers/dist/runner.js", "56"]
-    },
-    {
-      "name": "Polygon",
-      "script": "node",
-      "args": ["packages/workers/dist/runner.js", "137"]
-    },
-    {
-      "name": "Fantom",
-      "script": "node",
-      "args": ["packages/workers/dist/runner.js", "250"]
-    },
-    {
-      "name": "Base",
-      "script": "node",
-      "args": ["packages/workers/dist/runner.js", "8453"]
-    },
-    {
-      "name": "Arbitrum",
-      "script": "node",
-      "args": ["packages/workers/dist/runner.js", "42161"]
-    },
-    {
-      "name": "Avalanche",
-      "script": "node",
-      "args": ["packages/workers/dist/runner.js", "43114"]
-    },
-    {
-      "name": "Linea",
-      "script": "node",
-      "args": ["packages/workers/dist/runner.js", "59144"]
-    },
-    {
-      "name": "Latest-Job",
-      "script": "node",
-      "args": ["packages/workers/dist/runner-latest.js"]
     }
   ]
 }
