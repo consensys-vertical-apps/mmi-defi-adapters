@@ -23,28 +23,7 @@ export function buildCacheCommands(program: Command) {
     )
     .showHelpAfterError()
     .action(async ({ chain, block }: { chain?: string; block?: string }) => {
-      const filterChainIds = multiChainFilter(chain) ?? Object.values(EvmChain)
-
-      if (filterChainIds.includes(Chain.Solana)) {
-        throw new Error('Solana is not supported')
-      }
-
-      const startBlockOverride = block ? Number(block) : undefined
-
-      const dbDirPath =
-        process.env.DB_DIR_PATH ||
-        path.resolve(import.meta.dirname, '../../../databases')
-
-      await Promise.all(
-        filterChainIds.map(async (chainId) => {
-          await runner(
-            dbDirPath,
-            chainId as EvmChain,
-            'historic',
-            startBlockOverride,
-          )
-        }),
-      )
+      await startCacheBuilders({ chain, block, type: 'historic' })
     })
 
   program
@@ -59,27 +38,49 @@ export function buildCacheCommands(program: Command) {
     )
     .showHelpAfterError()
     .action(async ({ chain, block }: { chain?: string; block?: string }) => {
-      const filterChainIds = multiChainFilter(chain) ?? Object.values(EvmChain)
-
-      if (filterChainIds.includes(Chain.Solana)) {
-        throw new Error('Solana is not supported')
-      }
-
-      const startBlockOverride = block ? Number(block) : undefined
-
-      const dbDirPath =
-        process.env.DB_DIR_PATH ||
-        path.resolve(import.meta.dirname, '../../../databases')
-
-      await Promise.all(
-        filterChainIds.map(async (chainId) => {
-          await runner(
-            dbDirPath,
-            chainId as EvmChain,
-            'latest',
-            startBlockOverride,
-          )
-        }),
-      )
+      await startCacheBuilders({ chain, block, type: 'latest' })
     })
+
+  program
+    .command('build-cache')
+    .option(
+      '-c, --chain <chain>',
+      'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
+    )
+    .option(
+      '-b, --block <block>',
+      'optional block number to start indexing from',
+    )
+    .showHelpAfterError()
+    .action(async ({ chain, block }: { chain?: string; block?: string }) => {
+      await startCacheBuilders({ chain, block, type: 'both' })
+    })
+}
+
+async function startCacheBuilders({
+  chain,
+  block,
+  type,
+}: {
+  chain?: string
+  block?: string
+  type: 'historic' | 'latest' | 'both'
+}) {
+  const filterChainIds = multiChainFilter(chain) ?? Object.values(EvmChain)
+
+  if (filterChainIds.includes(Chain.Solana)) {
+    throw new Error('Solana is not supported')
+  }
+
+  const startBlockOverride = block ? Number(block) : undefined
+
+  const dbDirPath =
+    process.env.DB_DIR_PATH ||
+    path.resolve(import.meta.dirname, '../../../../databases')
+
+  await Promise.all(
+    filterChainIds.map(async (chainId) => {
+      await runner(dbDirPath, chainId as EvmChain, type, startBlockOverride)
+    }),
+  )
 }

@@ -60,13 +60,13 @@ export function setCloseDatabaseHandlers(db: DatabaseType) {
   })
 
   process.on('uncaughtException', (error) => {
-    logger.error('Uncaught Exception. Closing database connection.')
+    logger.error(error, 'Uncaught Exception. Closing database connection.')
     closeDatabase()
     process.exit(1)
   })
 
-  process.on('unhandledRejection', () => {
-    logger.error('Unhandled Rejection. Closing database connection.')
+  process.on('unhandledRejection', (error) => {
+    logger.error(error, 'Unhandled Rejection. Closing database connection.')
     closeDatabase()
     process.exit(1)
   })

@@ -46,6 +46,8 @@ export async function buildHistoricCache(
   chainId: EvmChain,
   db: Database.Database,
 ) {
+  logger.info('Starting historic cache builder')
+
   while (true) {
     const unfinishedPools = fetchUnfinishedJobs(db)
 

@@ -57,11 +57,11 @@ export class BlockRunner {
 
         if (blockNumber > this._latestBlockNumber) {
           this._latestBlockNumber = blockNumber
-          logger.info(`[${this._chainName}] New block detected: ${blockNumber}`)
+          logger.info({ blockNumber }, 'New block detected')
           break // Exit loop when a new block is found
         }
       } catch (error) {
-        logger.error(`[${this._chainName}] Error fetching block number:`, error)
+        logger.error({ error }, 'Error fetching block number')
       }
 
       // Wait with exponential backoff before retrying
@@ -73,8 +73,6 @@ export class BlockRunner {
   }
 
   async start(startBlockOverride?: number) {
-    logger.info(`[${this._chainName}] Starting block indexer...`)
-
     const firstBlock = startBlockOverride ?? (await this._getStartBlockNumber())
     let processingBlockNumber = firstBlock
 
@@ -148,12 +146,9 @@ export class BlockRunner {
   private async processSingleBlock(blockNumber: number): Promise<void> {
     try {
       await this._processBlockFn(blockNumber)
-      logger.info(`[${this._chainName}] Processed block ${blockNumber}`)
+      logger.info({ blockNumber }, 'Processed block')
     } catch (error) {
-      logger.error(
-        error,
-        `[${this._chainName}] Error processing block ${blockNumber}:`,
-      )
+      logger.error({ error }, 'Error processing block')
       throw error
     }
   }
@@ -165,10 +160,7 @@ export class BlockRunner {
     error: unknown,
     processingBlockNumber: number,
   ): Promise<void> {
-    logger.error(
-      `[${this._chainName}] Error processing block ${processingBlockNumber}:`,
-      error instanceof Error ? error.stack : String(error),
-    )
+    logger.error({ error, processingBlockNumber }, 'Error processing block')
 
     const earliestSafeBlock = processingBlockNumber - BlockRunner._BATCH_SIZE
 
@@ -188,7 +180,8 @@ export class BlockRunner {
       const lagInHours = (blocksLagging / blocksPerHour).toFixed(1)
 
       logger.info(
-        `[${this._chainName}] Indexer is ${lagInHours} hours behind, lagging ${blocksLagging} blocks.`,
+        { lagInHours, blocksLagging, blocksPerHour, currentHeadBlock },
+        'Indexer is lagging behind',
       )
     }
   }

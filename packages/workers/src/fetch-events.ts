@@ -45,7 +45,7 @@ export async function* fetchEvents({
         (isError(error, 'UNKNOWN_ERROR') &&
           ((error.message.includes('"code": -32005') &&
             toBlock - fromBlock > 0) || // 10K logs limit if fromBlock != toBlock
-            error.message.includes('code": -32602'))) // Block range limit
+            error.message.includes('code": -32062'))) // Batch size too large
       ) {
         const midBlock = Math.floor((fromBlock + toBlock) / 2)
         ranges.push({ fromBlock, toBlock: midBlock, depth: depth + 1 })
@@ -54,12 +54,7 @@ export async function* fetchEvents({
         continue
       }
 
-      logger.error(
-        {
-          error: error instanceof Error ? error.message : error,
-        },
-        'Error fetching events',
-      )
+      logger.error(error, 'Error fetching events')
       throw error
     }
   }

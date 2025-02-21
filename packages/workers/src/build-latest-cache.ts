@@ -15,8 +15,7 @@ export async function buildLatestCache(
   db: DatabaseType,
   startBlockOverride?: number,
 ) {
-  const chainName = ChainName[chainId]
-  logger.info(`Starting indexer for chain: ${chainName}`)
+  logger.info('Starting latest cache builder')
 
   const allWatchListKeys = selectAllWatchListKeys(db)
 

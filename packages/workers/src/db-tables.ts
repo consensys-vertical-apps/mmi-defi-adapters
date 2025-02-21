@@ -114,12 +114,12 @@ export async function insertJobs(
   blockNumber: number,
 ) {
   const stmt = db.prepare(
-    'INSERT OR IGNORE INTO history_jobs (contract_address, topic_0, user_address_index, block_number) VALUES (?, ?, ?, ?)',
+    'INSERT OR IGNORE INTO jobs (contract_address, topic_0, user_address_index, block_number) VALUES (?, ?, ?, ?)',
   )
 
   db.transaction(() => {
     for (const { address, topic0, userAddressIndex } of protocolTokenEntries) {
-      stmt.run(address, topic0, userAddressIndex, blockNumber)
+      stmt.run(address.slice(2), topic0, userAddressIndex, blockNumber)
     }
   })()
 }
@@ -140,7 +140,7 @@ export function buildCachePoolFilter(
     const pendingPools = db
       .prepare(`
         SELECT 	contract_address
-        FROM 	history_logs
+        FROM 	  logs
         WHERE 	address = ?
         `)
       .all(userAddress.slice(2)) as {
