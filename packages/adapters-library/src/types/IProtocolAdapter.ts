@@ -13,14 +13,7 @@ import type {
   UnwrapInput,
 } from './adapter'
 import type { Erc20Metadata } from './erc20Metadata'
-
-export type Json =
-  | null
-  | boolean
-  | number
-  | string
-  | Json[]
-  | { [prop: string]: Json }
+import { Json } from './json'
 
 export type JsonMetadata = Record<string, Json>
 

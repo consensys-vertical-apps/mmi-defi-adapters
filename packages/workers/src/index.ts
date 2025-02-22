@@ -1,9 +1,7 @@
-export { buildHistoricCache } from './build-historic-cache.js'
-export { buildLatestCache } from './build-latest-cache.js'
 export {
-  buildCachePoolFilter,
   createDatabase,
-  insertContractEntries,
-  createHistoryTables,
-} from './db-queries.js'
-export { createLatestTables } from './build-latest-cache.js'
+  createTable,
+  setCloseDatabaseHandlers,
+} from './db-utils.js'
+export { buildCachePoolFilter } from './db-tables.js'
+export { runner } from './runner.js'

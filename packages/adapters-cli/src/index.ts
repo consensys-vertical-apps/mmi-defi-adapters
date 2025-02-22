@@ -9,6 +9,7 @@ import { buildCachePoolFilter } from '@metamask-institutional/workers'
 import { setCloseDatabaseHandlers } from '@metamask-institutional/workers/dist/db-queries.js'
 import Database from 'better-sqlite3'
 import { Command } from 'commander'
+import { blockAverageCommand } from './commands/block-average-command.js'
 import { buildCacheCommands } from './commands/build-cache-commands.js'
 import { buildMetadataCommand } from './commands/build-metadata-command.js'
 import { buildScoreboardCommand } from './commands/build-scoreboard-command.js'
@@ -22,7 +23,6 @@ import { libraryCommands } from './commands/library-commands.js'
 import { newAdapterCommand } from './commands/new-adapter-command.js'
 import { performanceCommand } from './commands/performance-command.js'
 import { buildContractTypes } from './utils/build-types.js'
-
 const program = new Command('defi-adapters')
 
 const cachePoolFilter =
@@ -58,7 +58,7 @@ const defiProvider = new DefiProvider(
 )
 
 libraryCommands(program, defiProvider)
-buildCacheCommands(program, defiProvider)
+buildCacheCommands(program)
 checkMetadataTypeCommand(program, defiProvider)
 buildMetadataCommand(program, defiProvider)
 deleteAdapterMetadataCommand(program)
@@ -70,5 +70,6 @@ buildSnapshotsCommand(program, defiProvider)
 checkBadSnapshotsCommand(program, defiProvider)
 copyAdapterCommand(program, defiProvider)
 buildScoreboardCommand(program, defiProvider)
+blockAverageCommand(program, defiProvider)
 
 program.parseAsync()

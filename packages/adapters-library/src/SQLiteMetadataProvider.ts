@@ -18,7 +18,7 @@ export type IMetadataProvider = {
   getPoolCount: (protocolId: Protocol, productId: string) => Promise<number>
 }
 
-export type PoolRow = {
+type PoolRow = {
   protocol_id: string
   product_id: string
   pool_id: number | bigint | undefined
@@ -82,7 +82,7 @@ const selectAllPoolsQuery = `
         LEFT JOIN tokens ert_t ON ert.token_address = ert_t.token_address;
 `
 
-export class SQLiteMetadataProvider implements IMetadataProvider {
+class SQLiteMetadataProvider implements IMetadataProvider {
   database: Database.Database
 
   allTokens: Promise<Map<string, ProtocolToken[]>>

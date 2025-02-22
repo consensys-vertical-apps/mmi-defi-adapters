@@ -4,6 +4,4 @@ export type Json =
   | number
   | string
   | Json[]
-  | {
-      [prop: string]: Json
-    }
+  | { [prop: string]: Json }

@@ -17,4 +17,4 @@ RUN npm run build -w packages/workers
 
 RUN npm prune --production
 
-CMD ["pm2-runtime", "start", "packages/workers/pm2.config.json"]
+CMD ["pm2-runtime", "start", "packages/workers/pm2.config.cjs"]

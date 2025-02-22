@@ -30,7 +30,7 @@
     "support": "npm run adapters-cli support --",
     "performance": "npm run adapters-cli performance --",
     "lint": "biome check packages",
-    "fix": "npm run lint -- --apply",
+    "fix": "npm run lint -- --write",
     "test": "npm run test -w packages/adapters-library",
     "test:file": "npm run test:file -w packages/adapters-library",
     "test:update:adapter-snapshot": "vitest packages/adapters-cli/src/tests/new-adapter-templates.test.ts -u",
@@ -42,7 +42,7 @@
     "drop:db": "bash -c 'read -p \"Are you sure you know what you are doing? This will delete all .db files! (y/n): \" confirm && [ \"$confirm\" = \"y\" ] && rm ./databases/*.db && echo \"All .db files have been deleted successfully.\" || echo \"Aborted. No files were deleted.\"'"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.7.3",
+    "@biomejs/biome": "^1.9.4",
     "@types/node": "^20.12.10",
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.0",

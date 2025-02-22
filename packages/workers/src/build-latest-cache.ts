@@ -3,24 +3,19 @@ import {
   type DefiProvider,
   type EvmChain,
 } from '@metamask-institutional/defi-adapters'
-
-import type { CustomJsonRpcProvider } from '@metamask-institutional/defi-adapters/dist/core/provider/CustomJsonRpcProvider.js'
 import type { Database as DatabaseType } from 'better-sqlite3'
-import { ethers, getAddress } from 'ethers'
+import { JsonRpcProvider, ethers, getAddress } from 'ethers'
 import { BlockRunner } from './block-runner.js'
-import { createTable } from './db-queries.js'
+import { selectAllWatchListKeys } from './db-tables.js'
 import { logger } from './logger.js'
 
 export async function buildLatestCache(
+  provider: JsonRpcProvider,
   chainId: EvmChain,
-  defiProvider: DefiProvider,
   db: DatabaseType,
   startBlockOverride?: number,
 ) {
-  const chainName = ChainName[chainId]
-  logger.info(`Starting indexer for chain: ${chainName}`)
-
-  const provider = defiProvider.chainProvider.providers[chainId]
+  logger.info('Starting latest cache builder')
 
   const allWatchListKeys = selectAllWatchListKeys(db)
 
@@ -55,37 +50,9 @@ function createWatchKey(contract_address: string, topic_0: string): string {
   return `${contract_address.toLowerCase()}#${topic_0.toLowerCase()}`
 }
 
-export function createLatestTables(db: DatabaseType) {
-  const tables: string[] = [
-    `
-                CREATE TABLE IF NOT EXISTS latest_block_processed (
-                    id INTEGER PRIMARY KEY DEFAULT 1,
-                    latest_block_processed INTEGER NOT NULL
-                );
-            `,
-    `
-            CREATE TABLE IF NOT EXISTS logs (
-                contract_address CHAR(40) NOT NULL,
-                address CHAR(40) NOT NULL,
-                UNIQUE(contract_address, address)
-            );
-        `,
-    `
-        CREATE TABLE IF NOT EXISTS history_jobs (
-          contract_address VARCHAR(40) NOT NULL,
-          topic_0 TEXT NOT NULL,
-          user_address_index INTEGER NOT NULL CHECK (user_address_index IN (1, 2, 3)),
-          block_number INTEGER NOT NULL,
-          PRIMARY KEY (contract_address, topic_0, user_address_index)
-        );`,
-  ]
-
-  tables.forEach((table) => createTable(db, table))
-}
-
 async function getStartBlockNumberFn(
   db: DatabaseType,
-  provider: CustomJsonRpcProvider,
+  provider: JsonRpcProvider,
   startBlockOverride?: number,
 ): Promise<number> {
   if (startBlockOverride) {
@@ -113,7 +80,7 @@ async function processBlockFn({
   userIndexMap,
   db,
 }: {
-  provider: CustomJsonRpcProvider
+  provider: JsonRpcProvider
   blockNumber: number
   userIndexMap: Map<string, number>
   db: DatabaseType
@@ -171,19 +138,4 @@ async function onError(latestSafeProcessedBlock: number, db: DatabaseType) {
   db.prepare(
     'INSERT OR REPLACE INTO latest_block_processed (id, latest_block_processed) VALUES (1, ?)',
   ).run(latestSafeProcessedBlock)
-}
-
-export function selectAllWatchListKeys(db: DatabaseType) {
-  const unfinishedPools = db
-    .prepare(`
-        SELECT 	'0x' || contract_address as contract_address, topic_0, user_address_index
-        FROM 	history_jobs
-        `)
-    .all() as {
-    contract_address: string
-    topic_0: string
-    user_address_index: number
-  }[]
-
-  return unfinishedPools
 }

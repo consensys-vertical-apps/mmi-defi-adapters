@@ -4,6 +4,7 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { ZodError } from 'zod'
 import './bigint-json.js'
+import { logger } from './logger.js'
 import { GetPositionsSchema, GetSupportSchema } from './schemas.js'
 
 const port = 3000
@@ -50,10 +51,15 @@ app.get('/support', async (context) => {
   }
 })
 
-serve({
-  fetch: app.fetch,
-  port,
-})
+serve(
+  {
+    fetch: app.fetch,
+    port,
+  },
+  (info) => {
+    logger.info(`Listening on http://localhost:${info.port}`)
+  },
+)
 
 function handleErrorMessage(error: unknown) {
   if (error instanceof Error) {

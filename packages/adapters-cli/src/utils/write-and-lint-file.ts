@@ -7,5 +7,5 @@ export async function writeAndLintFile(filePath: string, content: string) {
 
   await fs.writeFile(filePath, content, 'utf-8')
 
-  exec(`biome check --apply ${filePath}`)
+  exec(`biome check --write ${filePath}`)
 }

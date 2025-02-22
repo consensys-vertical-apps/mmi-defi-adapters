@@ -39,7 +39,7 @@ const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
   },
 }
 
-export const maxUint128 = 2n ** 128n - 1n
+const maxUint128 = 2n ** 128n - 1n
 
 export class QuickswapV3PoolAdapter implements IProtocolAdapter {
   adapterSettings: AdapterSettings = {

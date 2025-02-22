@@ -45,7 +45,7 @@ export async function newAdapterCommand(
     .action(initiateQuestionnaire(defiProvider))
 }
 
-export function initiateQuestionnaire(defiProvider: DefiProvider) {
+function initiateQuestionnaire(defiProvider: DefiProvider) {
   return async ({
     yes: skipQuestions,
     template: inputTemplate,
@@ -317,10 +317,6 @@ async function askQuestion(
   return await askQuestion(nextQuestion, defiProvider, answers, outcomes)
 }
 
-export async function readBlankTemplate(filePath: string) {
-  return readFile(filePath, { encoding: 'utf8' })
-}
-
 async function createAdapterFile(
   answers: QuestionAnswers,
   code: string,
@@ -335,7 +331,7 @@ async function createAdapterFile(
   await writeAndLintFile(adapterFilePath, code)
 }
 
-export function buildAdapterFilePath(
+function buildAdapterFilePath(
   protocolId: string,
   productId: string,
   adapterClassName: string,
@@ -347,7 +343,7 @@ export function buildAdapterFilePath(
   return path.resolve(productPath, `${lowerFirst(adapterClassName)}.ts`)
 }
 
-export function generateAdapter(
+function generateAdapter(
   answers: QuestionAnswers,
   outcomes: BlankAdapterOutcomeOptions,
   blankAdapter: string,

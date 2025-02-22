@@ -55,12 +55,6 @@ export const PositionType = {
 } as const
 export type PositionType = (typeof PositionType)[keyof typeof PositionType]
 
-export type GetBalancesInput = GetPositionsInput & {
-  provider: CustomJsonRpcProvider
-  chainId: Chain
-  tokens: Erc20Metadata[]
-}
-
 export type UnwrapInput = {
   /**
    * Optional override param
@@ -147,10 +141,6 @@ export type ProtocolDetails = {
    * Unique protocol-product name
    */
   productId: string
-}
-
-export interface GetPositionsInputWithTokenAddresses extends GetPositionsInput {
-  protocolTokenAddresses: string[]
 }
 
 export interface GetPositionsInput {
@@ -251,13 +241,3 @@ export interface SolanaProtocolAdapterParams {
   adaptersController: AdaptersController
   helpers: SolanaHelpers
 }
-
-export type AggregatedFiatBalances = Record<
-  string,
-  {
-    protocolTokenMetadata: Erc20Metadata & { tokenId?: string }
-    usdRaw: bigint
-    hasTokensWithoutUSDPrices?: boolean
-    tokensWithoutUSDPrices?: Underlying[]
-  }
->
