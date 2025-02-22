@@ -55,7 +55,7 @@ export async function buildHistoricCache(
       {
         pools: unfinishedPools.length,
       },
-      'Pending pools need processing',
+      'Processing unfinished pools',
     )
 
     const nextPoolGroup = getNextPoolGroup(
@@ -86,7 +86,7 @@ export async function buildHistoricCache(
           batchSize: contractAddresses.length,
           totalPools: poolAddresses.length,
         },
-        'Pool group processing started',
+        'Fetching logs from pools batch started',
       )
 
       try {
@@ -145,7 +145,7 @@ export async function buildHistoricCache(
             batchSize: contractAddresses.length,
             totalPools: poolAddresses.length,
           },
-          'Pool group processing ended',
+          'Fetching logs from pools batch ended',
         )
       } catch (error) {
         updateJobStatus(
@@ -162,13 +162,11 @@ export async function buildHistoricCache(
             totalBatches: Math.ceil(poolAddresses.length / batchSize),
             batchSize: contractAddresses.length,
             totalPools: poolAddresses.length,
-            error: error instanceof Error ? error.message : error,
+            error: error instanceof Error ? error.message : String(error),
           },
-          'Pools batch failed',
+          'Fetching logs from pools batch failed',
         )
       }
-
-      logger.info(process.memoryUsage(), 'Memory usage')
     }
 
     await new Promise((resolve) => setTimeout(resolve, 5000))
