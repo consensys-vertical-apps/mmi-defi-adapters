@@ -28,6 +28,7 @@ export async function runner(
     createTable(db, table)
   }
 
+  // TODO: Remove this once we have support for BSC and Fantom
   if (chainId === Chain.Bsc || chainId === Chain.Fantom) {
     logger.warn(
       {
