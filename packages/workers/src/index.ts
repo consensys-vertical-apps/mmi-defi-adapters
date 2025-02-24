@@ -3,5 +3,5 @@ export {
   createTable,
   setCloseDatabaseHandlers,
 } from './db-utils.js'
-export { buildCachePoolFilter } from './db-tables.js'
+export { buildCachePoolFilter } from './db-queries.js'
 export { runner } from './runner.js'

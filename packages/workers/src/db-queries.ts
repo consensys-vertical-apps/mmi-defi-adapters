@@ -1,7 +1,4 @@
-import type {
-  DefiProvider,
-  EvmChain,
-} from '@metamask-institutional/defi-adapters'
+import type { EvmChain } from '@metamask-institutional/defi-adapters'
 import type { PoolFilter } from '@metamask-institutional/defi-adapters/dist/tokenFilter.js'
 import type { AdapterSettings } from '@metamask-institutional/defi-adapters/dist/types/adapter.js'
 import type { Database } from 'better-sqlite3'
@@ -27,11 +24,6 @@ export const dbTables = {
       id INTEGER PRIMARY KEY DEFAULT 1,
       latest_block_processed INTEGER NOT NULL
     )`,
-}
-
-type LogDbEntry = {
-  address: string
-  contract_address: string
 }
 
 type JobDbEntry = {
@@ -68,20 +60,27 @@ export function selectAllWatchListKeys(db: Database) {
   >[]
 }
 
+/**
+ * Inserts logs into the database and updates the latest block processed if a block number is provided
+ * @param db - The database instance
+ * @param logs - The logs to insert
+ * @param blockNumber - The block number to update the latest block processed to
+ */
 export function insertLogs(
   db: Database,
-  logsToInsert: {
+  logs: {
     address: string
     contractAddress: string
   }[],
+  blockNumber?: number,
 ) {
-  const logEntryStmt = db.prepare(
-    'INSERT OR IGNORE INTO logs (address, contract_address) VALUES (?, ?)',
-  )
-
   db.transaction(() => {
-    for (const { address, contractAddress } of logsToInsert) {
-      logEntryStmt.run(address, contractAddress)
+    insertLogs(db, logs)
+
+    if (blockNumber) {
+      db.prepare(
+        'INSERT OR REPLACE INTO latest_block_processed (id, latest_block_processed) VALUES (1, ?)',
+      ).run(blockNumber)
     }
   })()
 }
@@ -149,4 +148,18 @@ export function buildCachePoolFilter(
 
     return pendingPools.map((pool) => `0x${pool.contract_address}`)
   }
+}
+
+export function getLatestBlockProcessed(db: Database): number | undefined {
+  return (
+    db
+      .prepare('SELECT latest_block_processed FROM latest_block_processed')
+      .get() as { latest_block_processed?: number } | undefined
+  )?.latest_block_processed
+}
+
+export function updateLatestBlockProcessed(db: Database, blockNumber: number) {
+  db.prepare(
+    'INSERT OR REPLACE INTO latest_block_processed (id, latest_block_processed) VALUES (1, ?)',
+  ).run(blockNumber)
 }

@@ -1,11 +1,11 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
-import type Database from 'better-sqlite3'
+import type { Database } from 'better-sqlite3'
 import { JsonRpcProvider, getAddress } from 'ethers'
 import {
   fetchUnfinishedJobs,
   insertLogs,
   updateJobStatus,
-} from './db-tables.js'
+} from './db-queries.js'
 import { fetchEvents } from './fetch-events.js'
 import { logger } from './logger.js'
 
@@ -44,7 +44,7 @@ const MaxContractsPerCall: Record<EvmChain, number> = {
 export async function buildHistoricCache(
   provider: JsonRpcProvider,
   chainId: EvmChain,
-  db: Database.Database,
+  db: Database,
 ) {
   logger.info('Starting historic cache builder')
 
@@ -102,9 +102,7 @@ export async function buildHistoricCache(
             const logsToInsert: { address: string; contractAddress: string }[] =
               []
             for (const log of logs) {
-              const contractAddress = getAddress(
-                log.address.toLowerCase(),
-              ).slice(2)
+              const contractAddress = getAddress(log.address.toLowerCase())
 
               const topic = log.topics[userAddressIndex]!
 
@@ -115,7 +113,7 @@ export async function buildHistoricCache(
               ) {
                 const topicAddress = getAddress(
                   `0x${topic.slice(-40).toLowerCase()}`,
-                ).slice(2)
+                )
 
                 logsToInsert.push({
                   address: topicAddress,

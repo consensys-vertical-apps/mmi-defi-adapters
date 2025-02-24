@@ -8,7 +8,7 @@ import type { Database } from 'better-sqlite3'
 import { JsonRpcProvider, Network } from 'ethers'
 import { buildHistoricCache } from './build-historic-cache.js'
 import { buildLatestCache } from './build-latest-cache.js'
-import { dbTables, insertJobs } from './db-tables.js'
+import { dbTables, insertJobs } from './db-queries.js'
 import { createDatabase, createTable } from './db-utils.js'
 
 export async function runner(

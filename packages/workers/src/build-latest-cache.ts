@@ -1,18 +1,19 @@
-import {
-  ChainName,
-  type DefiProvider,
-  type EvmChain,
-} from '@metamask-institutional/defi-adapters'
-import type { Database as DatabaseType } from 'better-sqlite3'
-import { JsonRpcProvider, ethers, getAddress } from 'ethers'
+import { type EvmChain } from '@metamask-institutional/defi-adapters'
+import type { Database } from 'better-sqlite3'
+import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
 import { BlockRunner } from './block-runner.js'
-import { selectAllWatchListKeys } from './db-tables.js'
+import {
+  getLatestBlockProcessed,
+  insertLogs,
+  selectAllWatchListKeys,
+  updateLatestBlockProcessed,
+} from './db-queries.js'
 import { logger } from './logger.js'
 
 export async function buildLatestCache(
   provider: JsonRpcProvider,
   chainId: EvmChain,
-  db: DatabaseType,
+  db: Database,
   startBlockOverride?: number,
 ) {
   logger.info('Starting latest cache builder')
@@ -40,7 +41,7 @@ export async function buildLatestCache(
         db,
       }),
     onError: async (latestSafeProcessedBlock: number) =>
-      onError(latestSafeProcessedBlock, db),
+      updateLatestBlockProcessed(db, latestSafeProcessedBlock),
   })
 
   await indexer.start(startBlockOverride)
@@ -51,7 +52,7 @@ function createWatchKey(contract_address: string, topic_0: string): string {
 }
 
 async function getStartBlockNumberFn(
-  db: DatabaseType,
+  db: Database,
   provider: JsonRpcProvider,
   startBlockOverride?: number,
 ): Promise<number> {
@@ -59,19 +60,7 @@ async function getStartBlockNumberFn(
     return startBlockOverride
   }
 
-  const lastPrcessedBlock = (
-    db
-      .prepare('SELECT latest_block_processed FROM latest_block_processed')
-      .get() as { latest_block_processed?: number } | undefined
-  )?.latest_block_processed
-
-  if (lastPrcessedBlock) {
-    return lastPrcessedBlock
-  }
-
-  const latestBlockNumber = await provider.getBlockNumber()
-
-  return latestBlockNumber
+  return getLatestBlockProcessed(db) ?? (await provider.getBlockNumber())
 }
 
 async function processBlockFn({
@@ -83,59 +72,46 @@ async function processBlockFn({
   provider: JsonRpcProvider
   blockNumber: number
   userIndexMap: Map<string, number>
-  db: DatabaseType
+  db: Database
 }): Promise<void> {
-  const receipts = await provider.send('eth_getBlockReceipts', [
+  const receipts = (await provider.send('eth_getBlockReceipts', [
     `0x${ethers.toBeHex(blockNumber).slice(2).replace(/^0+/, '')}`, // some chains need to remove leading zeros like ftm
-  ])
+  ])) as TransactionReceipt[]
 
-  const queries: string[] = []
+  const logs: { address: string; contractAddress: string }[] = []
 
   for (const receipt of receipts?.flat() || []) {
     for (const log of receipt.logs || []) {
       // retuned lowercase from provider
-      const contractAddressLowercase = log.address
+      const contractAddress = getAddress(log.address)
       const topic0 = log.topics[0]
 
       if (!topic0) {
         continue
       }
 
-      const key = createWatchKey(contractAddressLowercase, topic0)
+      const userAddressIndex = userIndexMap.get(
+        createWatchKey(contractAddress, topic0),
+      )
 
-      if (userIndexMap.has(key)) {
-        const userIndex = userIndexMap.get(key)!
+      if (userAddressIndex) {
+        const topic = log.topics[userAddressIndex]!
 
-        const paddedUserAddress = log.topics[userIndex]
+        if (
+          topic.startsWith('0x000000000000000000000000') && // Not an address if it is does not start with 0x000000000000000000000000
+          topic !==
+            '0x0000000000000000000000000000000000000000000000000000000000000000' // Skip the zero address
+        ) {
+          const topicAddress = getAddress(`0x${topic.slice(-40).toLowerCase()}`)
 
-        const userAddress = getAddress(
-          paddedUserAddress.slice(-40).toLowerCase(),
-        ).slice(2)
-
-        // Skip the zero address
-        if (userAddress === '0000000000000000000000000000000000000000') {
-          continue
+          logs.push({
+            address: topicAddress,
+            contractAddress,
+          })
         }
-
-        queries.push(
-          `INSERT OR IGNORE INTO logs (contract_address, address) VALUES ('${getAddress(
-            contractAddressLowercase,
-          ).slice(2)}', '${userAddress}');`,
-        )
       }
     }
   }
 
-  db.transaction(() => {
-    queries.forEach((insert: string) => db.prepare(insert).run())
-    db.prepare(
-      'INSERT OR REPLACE INTO latest_block_processed (id, latest_block_processed) VALUES (1, ?)',
-    ).run(blockNumber)
-  })()
-}
-
-async function onError(latestSafeProcessedBlock: number, db: DatabaseType) {
-  db.prepare(
-    'INSERT OR REPLACE INTO latest_block_processed (id, latest_block_processed) VALUES (1, ?)',
-  ).run(latestSafeProcessedBlock)
+  insertLogs(db, logs, blockNumber)
 }
