@@ -36,6 +36,8 @@ export async function runner(
       },
       'Chain not supported',
     )
+
+    return
   }
 
   const defiProvider = new DefiProvider()
