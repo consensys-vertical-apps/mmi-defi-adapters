@@ -147,9 +147,17 @@ export class DefiProvider {
           return undefined
         }
 
+        let contractAddresses: string[] | undefined
+        try {
+          contractAddresses = await this.poolFilter(userAddress, chainId)
+        } catch (error) {
+          contractAddresses = undefined
+          logger.error(error)
+        }
+
         return {
           chainId,
-          contractAddresses: await this.poolFilter(userAddress, chainId),
+          contractAddresses,
         }
       })
     ).reduce(
