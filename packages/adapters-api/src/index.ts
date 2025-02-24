@@ -57,7 +57,7 @@ serve(
     port,
   },
   (info) => {
-    logger.info(`Listening on http://localhost:${info.port}`)
+    logger.info({ port }, 'API server is running')
   },
 )
 

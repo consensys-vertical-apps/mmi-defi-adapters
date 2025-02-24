@@ -5,8 +5,10 @@ import {
   DefiProvider,
   EvmChain,
 } from '@metamask-institutional/defi-adapters'
-import { buildCachePoolFilter } from '@metamask-institutional/workers'
-import { setCloseDatabaseHandlers } from '@metamask-institutional/workers/dist/db-queries.js'
+import {
+  buildCachePoolFilter,
+  setCloseDatabaseHandlers,
+} from '@metamask-institutional/workers'
 import Database from 'better-sqlite3'
 import { Command } from 'commander'
 import { blockAverageCommand } from './commands/block-average-command.js'
