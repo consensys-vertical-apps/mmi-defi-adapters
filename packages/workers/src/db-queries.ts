@@ -84,9 +84,7 @@ export function insertLogs(
     }
 
     if (blockNumber) {
-      db.prepare(
-        'INSERT OR REPLACE INTO latest_block_processed (id, latest_block_processed) VALUES (1, ?)',
-      ).run(blockNumber)
+      updateLatestBlockProcessed(db, blockNumber)
     }
   })()
 }

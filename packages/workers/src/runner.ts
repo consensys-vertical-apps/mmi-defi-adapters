@@ -8,7 +8,7 @@ import type { Database } from 'better-sqlite3'
 import { JsonRpcProvider, Network } from 'ethers'
 import { buildHistoricCache } from './build-historic-cache.js'
 import { buildLatestCache } from './build-latest-cache.js'
-import { dbTables, insertJobs } from './db-queries.js'
+import { dbTables, getLatestBlockProcessed, insertJobs } from './db-queries.js'
 import { createDatabase, createTable } from './db-utils.js'
 
 export async function runner(
@@ -36,7 +36,10 @@ export async function runner(
     staticNetwork: Network.from(chainId),
   })
 
-  const blockNumber = blockNumberOverride ?? (await provider.getBlockNumber())
+  const blockNumber =
+    blockNumberOverride ??
+    getLatestBlockProcessed(db) ??
+    (await provider.getBlockNumber())
 
   // TODO: By calling it here, we are only able to add new jobs whenever this script starts
   // If we dynamically call this, we need to ensure that there is no race condition with the historic and latest cache
@@ -46,13 +49,13 @@ export async function runner(
   switch (runSettings) {
     case 'both':
       runners.push(buildHistoricCache(provider, chainId, db))
-      runners.push(buildLatestCache(provider, chainId, db))
+      runners.push(buildLatestCache(provider, chainId, db, blockNumber))
       break
     case 'historic':
       runners.push(buildHistoricCache(provider, chainId, db))
       break
     case 'latest':
-      runners.push(buildLatestCache(provider, chainId, db))
+      runners.push(buildLatestCache(provider, chainId, db, blockNumber))
       break
   }
 

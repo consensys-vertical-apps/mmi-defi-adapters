@@ -3,7 +3,6 @@ import type { Database } from 'better-sqlite3'
 import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
 import { BlockRunner } from './block-runner.js'
 import {
-  getLatestBlockProcessed,
   insertLogs,
   selectAllWatchListKeys,
   updateLatestBlockProcessed,
@@ -14,7 +13,7 @@ export async function buildLatestCache(
   provider: JsonRpcProvider,
   chainId: EvmChain,
   db: Database,
-  startBlockOverride?: number,
+  startBlock: number,
 ) {
   logger.info('Starting latest cache builder')
 
@@ -32,7 +31,6 @@ export async function buildLatestCache(
   const indexer = new BlockRunner({
     provider,
     chainId,
-    getStartBlockNumberFn: () => getStartBlockNumberFn(db, provider),
     processBlockFn: async (blockNumber) =>
       processBlockFn({
         provider,
@@ -44,23 +42,11 @@ export async function buildLatestCache(
       updateLatestBlockProcessed(db, latestSafeProcessedBlock),
   })
 
-  await indexer.start(startBlockOverride)
+  await indexer.start(startBlock)
 }
 
 function createWatchKey(contract_address: string, topic_0: string): string {
   return `${contract_address.toLowerCase()}#${topic_0.toLowerCase()}`
-}
-
-async function getStartBlockNumberFn(
-  db: Database,
-  provider: JsonRpcProvider,
-  startBlockOverride?: number,
-): Promise<number> {
-  if (startBlockOverride) {
-    return startBlockOverride
-  }
-
-  return getLatestBlockProcessed(db) ?? (await provider.getBlockNumber())
 }
 
 async function processBlockFn({

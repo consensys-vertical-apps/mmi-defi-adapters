@@ -1,4 +1,4 @@
-import { type Chain, ChainName } from '@metamask-institutional/defi-adapters'
+import type { Chain } from '@metamask-institutional/defi-adapters'
 import { AVERAGE_BLOCKS_PER_10_MINUTES } from '@metamask-institutional/defi-adapters/dist/core/constants/AVERAGE_BLOCKS_PER_10_MINS.js'
 import { AVERAGE_BLOCKS_PER_DAY } from '@metamask-institutional/defi-adapters/dist/core/constants/AVERAGE_BLOCKS_PER_DAY.js'
 import type { JsonRpcProvider } from 'ethers'
@@ -7,31 +7,25 @@ import { logger } from './logger.js'
 export class BlockRunner {
   private _provider: JsonRpcProvider
   private _chainId: Chain
-  private _chainName: string
 
   private static readonly _BATCH_SIZE = 50
 
   private _latestBlockNumber: number | undefined
-  private _getStartBlockNumber: () => Promise<number>
   private _processBlockFn: (blockNumber: number) => Promise<void>
   private _onError: (latestSafeProcessedBlock: number) => Promise<void>
 
   constructor({
     provider,
     chainId,
-    getStartBlockNumberFn,
     processBlockFn,
     onError,
   }: {
     provider: JsonRpcProvider
     chainId: Chain
-    getStartBlockNumberFn: () => Promise<number>
     processBlockFn: (blockNumber: number) => Promise<void>
     onError: (latestSafeProcessedBlock: number) => Promise<void>
   }) {
-    this._chainName = ChainName[chainId]
     this._processBlockFn = processBlockFn
-    this._getStartBlockNumber = getStartBlockNumberFn
     this._onError = onError
 
     this._provider = provider
@@ -72,9 +66,8 @@ export class BlockRunner {
     return true
   }
 
-  async start(startBlockOverride?: number) {
-    const firstBlock = startBlockOverride ?? (await this._getStartBlockNumber())
-    let processingBlockNumber = firstBlock
+  async start(startBlock: number) {
+    let processingBlockNumber = startBlock
 
     // Initialize latest block number
     this._latestBlockNumber = await this._provider.getBlockNumber()
