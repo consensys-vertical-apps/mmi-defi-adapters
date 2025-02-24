@@ -148,7 +148,7 @@ export class BlockRunner {
       await this._processBlockFn(blockNumber)
       logger.info({ blockNumber }, 'Processed block')
     } catch (error) {
-      logger.error({ error }, 'Error processing block')
+      logger.error(error, 'Error processing block')
       throw error
     }
   }

@@ -74,8 +74,14 @@ export function insertLogs(
   }[],
   blockNumber?: number,
 ) {
+  const stmt = db.prepare(
+    'INSERT OR IGNORE INTO logs (address, contract_address) VALUES (?, ?)',
+  )
+
   db.transaction(() => {
-    insertLogs(db, logs)
+    for (const { address, contractAddress } of logs) {
+      stmt.run(address, contractAddress)
+    }
 
     if (blockNumber) {
       db.prepare(
