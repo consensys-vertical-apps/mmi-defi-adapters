@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { DefiProvider } from '@metamask-institutional/defi-adapters'
+import { buildDbPoolFilter } from '@metamask-institutional/workers'
 import { Command } from 'commander'
 import { blockAverageCommand } from './commands/block-average-command.js'
 import { buildCacheCommands } from './commands/build-cache-commands.js'
@@ -15,7 +16,6 @@ import { libraryCommands } from './commands/library-commands.js'
 import { newAdapterCommand } from './commands/new-adapter-command.js'
 import { performanceCommand } from './commands/performance-command.js'
 import { buildContractTypes } from './utils/build-types.js'
-import { buildDbPoolFilter } from '@metamask-institutional/workers'
 
 const program = new Command('defi-adapters')
 

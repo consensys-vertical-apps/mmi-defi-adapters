@@ -1,12 +1,12 @@
 import path from 'node:path'
-import Database from 'better-sqlite3'
-import { logger } from './logger.js'
 import {
   ChainName,
   EvmChain,
   type PoolFilter,
 } from '@metamask-institutional/defi-adapters'
+import Database from 'better-sqlite3'
 import { getAllUserPools } from './db-queries.js'
+import { logger } from './logger.js'
 
 /**
  * Returns a new or existing database instance

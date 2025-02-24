@@ -4,9 +4,9 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { ZodError } from 'zod'
 import './bigint-json.js'
+import { buildDbPoolFilter } from '@metamask-institutional/workers'
 import { logger } from './logger.js'
 import { GetPositionsSchema, GetSupportSchema } from './schemas.js'
-import { buildDbPoolFilter } from '@metamask-institutional/workers'
 
 const port = 3000
 
