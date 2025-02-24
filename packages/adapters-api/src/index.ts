@@ -6,13 +6,17 @@ import { ZodError } from 'zod'
 import './bigint-json.js'
 import { logger } from './logger.js'
 import { GetPositionsSchema, GetSupportSchema } from './schemas.js'
+import { buildDbPoolFilter } from '@metamask-institutional/workers'
 
 const port = 3000
 
+const poolFilter =
+  process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE === 'true'
+    ? buildDbPoolFilter()
+    : undefined
+
 const defiProvider = new DefiProvider({
-  config: {
-    enableFailover: false,
-  },
+  poolFilter,
 })
 
 const app = new Hono()

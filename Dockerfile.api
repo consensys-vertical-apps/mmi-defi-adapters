@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY package*.json ./
 COPY packages/adapters-library/package*.json ./packages/adapters-library/
+COPY packages/workers/package*.json ./packages/workers/
 COPY packages/adapters-api/package*.json ./packages/adapters-api/
 
 RUN npm ci
@@ -11,6 +12,7 @@ RUN npm ci
 COPY . .
 
 RUN npm run build -w packages/adapters-library
+RUN npm run build -w packages/workers
 RUN npm run build -w packages/adapters-api
 
 RUN npm prune --production
