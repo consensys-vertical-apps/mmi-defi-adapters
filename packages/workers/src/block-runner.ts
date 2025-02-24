@@ -87,7 +87,7 @@ export class BlockRunner {
             this._latestBlockNumber,
           )
         } else {
-          await this.processSingleBlock(processingBlockNumber)
+          await this._processBlockFn(processingBlockNumber)
           processingBlockNumber++
         }
 
@@ -97,7 +97,15 @@ export class BlockRunner {
           this._provider,
         )
       } catch (error) {
-        await this.handleProcessingError(error, processingBlockNumber)
+        logger.error(
+          {
+            error,
+            processingBlockNumber,
+            latestBlockNumber: this._latestBlockNumber,
+          },
+          'Error processing block',
+        )
+        await this.handleProcessingError(processingBlockNumber)
       }
     }
   }
@@ -125,8 +133,12 @@ export class BlockRunner {
     )
     const blockPromises: Promise<void>[] = []
 
-    for (let blockNum = startBlock; blockNum < batchEndBlock; blockNum++) {
-      blockPromises.push(this.processSingleBlock(blockNum))
+    for (
+      let blockNumber = startBlock;
+      blockNumber < batchEndBlock;
+      blockNumber++
+    ) {
+      blockPromises.push(this._processBlockFn(blockNumber))
     }
 
     await Promise.all(blockPromises)
@@ -134,27 +146,11 @@ export class BlockRunner {
   }
 
   /**
-   * Processes a single block.
-   */
-  private async processSingleBlock(blockNumber: number): Promise<void> {
-    try {
-      await this._processBlockFn(blockNumber)
-      logger.info({ blockNumber }, 'Processed block')
-    } catch (error) {
-      logger.error(error, 'Error processing block')
-      throw error
-    }
-  }
-
-  /**
    * Handles processing errors, including retries.
    */
   private async handleProcessingError(
-    error: unknown,
     processingBlockNumber: number,
   ): Promise<void> {
-    logger.error({ error, processingBlockNumber }, 'Error processing block')
-
     const earliestSafeBlock = processingBlockNumber - BlockRunner._BATCH_SIZE
 
     await this._onError(earliestSafeBlock)

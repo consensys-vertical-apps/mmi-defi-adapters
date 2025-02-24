@@ -100,4 +100,6 @@ async function processBlockFn({
   }
 
   insertLogs(db, logs, blockNumber)
+
+  logger.info({ blockNumber, logsProcessed: logs.length }, 'Processed block')
 }
