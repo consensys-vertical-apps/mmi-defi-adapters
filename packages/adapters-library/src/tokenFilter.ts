@@ -1,7 +1,6 @@
-import { EvmChain } from './core/constants/chains'
+import { Chain, EvmChain } from './core/constants/chains'
 import { ProviderMissingError } from './core/errors/errors'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
-import { AdapterSettings } from './types/adapter'
 
 export type PoolFilter = (
   userAddress: string,
@@ -19,6 +18,10 @@ export function buildProviderPoolFilter(
 
     if (!provider) {
       throw new ProviderMissingError(chainId)
+    }
+
+    if (!provider.hasUnlimitedGetLogsRange) {
+      return undefined
     }
 
     const transferLogs = await provider.getAllTransferLogsToAddress(userAddress)

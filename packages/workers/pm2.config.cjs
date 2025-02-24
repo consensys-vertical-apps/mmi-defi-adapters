@@ -10,21 +10,21 @@ module.exports = {
       script: 'node',
       args: ['packages/workers/dist/main.js', '10'],
     },
-    // {
-    //   name: 'Bsc',
-    //   script: 'node',
-    //   args: ['packages/workers/dist/main.js', '56'],
-    // },
+    {
+      name: 'Bsc',
+      script: 'node',
+      args: ['packages/workers/dist/main.js', '56'],
+    },
     {
       name: 'Polygon',
       script: 'node',
       args: ['packages/workers/dist/main.js', '137'],
     },
-    // {
-    //   name: 'Fantom',
-    //   script: 'node',
-    //   args: ['packages/workers/dist/main.js', '250'],
-    // },
+    {
+      name: 'Fantom',
+      script: 'node',
+      args: ['packages/workers/dist/main.js', '250'],
+    },
     {
       name: 'Base',
       script: 'node',

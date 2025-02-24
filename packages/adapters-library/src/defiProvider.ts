@@ -246,6 +246,7 @@ export class DefiProvider {
         endTime,
         timeTaken: endTime - startTime,
         timeDetails: {
+          relativeStartTime: startTime - startGetPositions,
           getPositionsTime: getPositionsTime - startTime,
           getRewardTime: getRewardTime - getPositionsTime,
           unwrapTime: unwrapTime - getRewardTime,

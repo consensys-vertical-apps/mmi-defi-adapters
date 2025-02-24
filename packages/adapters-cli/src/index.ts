@@ -25,6 +25,7 @@ import { libraryCommands } from './commands/library-commands.js'
 import { newAdapterCommand } from './commands/new-adapter-command.js'
 import { performanceCommand } from './commands/performance-command.js'
 import { buildContractTypes } from './utils/build-types.js'
+
 const program = new Command('defi-adapters')
 
 const poolFilter =
@@ -33,7 +34,7 @@ const poolFilter =
         Object.values(EvmChain).reduce(
           (acc, chainId) => {
             const db = new Database(
-              path.resolve(`databases/${ChainName[chainId]}_index_history.db`),
+              path.resolve(`databases/${ChainName[chainId]}_index.db`),
               {
                 readonly: true,
                 fileMustExist: true,

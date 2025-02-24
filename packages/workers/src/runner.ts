@@ -1,5 +1,5 @@
-import path from 'node:path'
 import {
+  Chain,
   ChainName,
   DefiProvider,
   EvmChain,
@@ -10,6 +10,7 @@ import { buildHistoricCache } from './build-historic-cache.js'
 import { buildLatestCache } from './build-latest-cache.js'
 import { dbTables, getLatestBlockProcessed, insertJobs } from './db-queries.js'
 import { createDatabase, createTable } from './db-utils.js'
+import { logger } from './logger.js'
 
 export async function runner(
   dbDirPath: string,
@@ -25,6 +26,15 @@ export async function runner(
 
   for (const table of Object.values(dbTables)) {
     createTable(db, table)
+  }
+
+  if (chainId === Chain.Bsc || chainId === Chain.Fantom) {
+    logger.warn(
+      {
+        chainId,
+      },
+      'Chain not supported',
+    )
   }
 
   const defiProvider = new DefiProvider()
