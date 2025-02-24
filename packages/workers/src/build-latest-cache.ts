@@ -1,26 +1,21 @@
-import {
-  ChainName,
-  type DefiProvider,
-  type EvmChain,
-} from '@metamask-institutional/defi-adapters'
-
-import type { CustomJsonRpcProvider } from '@metamask-institutional/defi-adapters/dist/core/provider/CustomJsonRpcProvider.js'
-import type { Database as DatabaseType } from 'better-sqlite3'
-import { ethers, getAddress } from 'ethers'
+import { type EvmChain } from '@metamask-institutional/defi-adapters'
+import type { Database } from 'better-sqlite3'
+import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
 import { BlockRunner } from './block-runner.js'
-import { createTable } from './db-queries.js'
+import {
+  insertLogs,
+  selectAllWatchListKeys,
+  updateLatestBlockProcessed,
+} from './db-queries.js'
 import { logger } from './logger.js'
 
 export async function buildLatestCache(
+  provider: JsonRpcProvider,
   chainId: EvmChain,
-  defiProvider: DefiProvider,
-  db: DatabaseType,
-  startBlockOverride?: number,
+  db: Database,
+  startBlock: number,
 ) {
-  const chainName = ChainName[chainId]
-  logger.info(`Starting indexer for chain: ${chainName}`)
-
-  const provider = defiProvider.chainProvider.providers[chainId]
+  logger.info('Starting latest cache builder')
 
   const allWatchListKeys = selectAllWatchListKeys(db)
 
@@ -36,7 +31,6 @@ export async function buildLatestCache(
   const indexer = new BlockRunner({
     provider,
     chainId,
-    getStartBlockNumberFn: () => getStartBlockNumberFn(db, provider),
     processBlockFn: async (blockNumber) =>
       processBlockFn({
         provider,
@@ -45,66 +39,14 @@ export async function buildLatestCache(
         db,
       }),
     onError: async (latestSafeProcessedBlock: number) =>
-      onError(latestSafeProcessedBlock, db),
+      updateLatestBlockProcessed(db, latestSafeProcessedBlock),
   })
 
-  await indexer.start(startBlockOverride)
+  await indexer.start(startBlock)
 }
 
 function createWatchKey(contract_address: string, topic_0: string): string {
   return `${contract_address.toLowerCase()}#${topic_0.toLowerCase()}`
-}
-
-export function createLatestTables(db: DatabaseType) {
-  const tables: string[] = [
-    `
-                CREATE TABLE IF NOT EXISTS latest_block_processed (
-                    id INTEGER PRIMARY KEY DEFAULT 1,
-                    latest_block_processed INTEGER NOT NULL
-                );
-            `,
-    `
-            CREATE TABLE IF NOT EXISTS logs (
-                contract_address CHAR(40) NOT NULL,
-                address CHAR(40) NOT NULL,
-                UNIQUE(contract_address, address)
-            );
-        `,
-    `
-        CREATE TABLE IF NOT EXISTS history_jobs (
-          contract_address VARCHAR(40) NOT NULL,
-          topic_0 TEXT NOT NULL,
-          user_address_index INTEGER NOT NULL CHECK (user_address_index IN (1, 2, 3)),
-          block_number INTEGER NOT NULL,
-          PRIMARY KEY (contract_address, topic_0, user_address_index)
-        );`,
-  ]
-
-  tables.forEach((table) => createTable(db, table))
-}
-
-async function getStartBlockNumberFn(
-  db: DatabaseType,
-  provider: CustomJsonRpcProvider,
-  startBlockOverride?: number,
-): Promise<number> {
-  if (startBlockOverride) {
-    return startBlockOverride
-  }
-
-  const lastPrcessedBlock = (
-    db
-      .prepare('SELECT latest_block_processed FROM latest_block_processed')
-      .get() as { latest_block_processed?: number } | undefined
-  )?.latest_block_processed
-
-  if (lastPrcessedBlock) {
-    return lastPrcessedBlock
-  }
-
-  const latestBlockNumber = await provider.getBlockNumber()
-
-  return latestBlockNumber
 }
 
 async function processBlockFn({
@@ -113,77 +55,51 @@ async function processBlockFn({
   userIndexMap,
   db,
 }: {
-  provider: CustomJsonRpcProvider
+  provider: JsonRpcProvider
   blockNumber: number
   userIndexMap: Map<string, number>
-  db: DatabaseType
+  db: Database
 }): Promise<void> {
-  const receipts = await provider.send('eth_getBlockReceipts', [
+  const receipts = (await provider.send('eth_getBlockReceipts', [
     `0x${ethers.toBeHex(blockNumber).slice(2).replace(/^0+/, '')}`, // some chains need to remove leading zeros like ftm
-  ])
+  ])) as TransactionReceipt[]
 
-  const queries: string[] = []
+  const logs: { address: string; contractAddress: string }[] = []
 
   for (const receipt of receipts?.flat() || []) {
     for (const log of receipt.logs || []) {
       // retuned lowercase from provider
-      const contractAddressLowercase = log.address
+      const contractAddress = getAddress(log.address)
       const topic0 = log.topics[0]
 
       if (!topic0) {
         continue
       }
 
-      const key = createWatchKey(contractAddressLowercase, topic0)
+      const userAddressIndex = userIndexMap.get(
+        createWatchKey(contractAddress, topic0),
+      )
 
-      if (userIndexMap.has(key)) {
-        const userIndex = userIndexMap.get(key)!
+      if (userAddressIndex) {
+        const topic = log.topics[userAddressIndex]!
 
-        const paddedUserAddress = log.topics[userIndex]
+        if (
+          topic.startsWith('0x000000000000000000000000') && // Not an address if it is does not start with 0x000000000000000000000000
+          topic !==
+            '0x0000000000000000000000000000000000000000000000000000000000000000' // Skip the zero address
+        ) {
+          const topicAddress = getAddress(`0x${topic.slice(-40).toLowerCase()}`)
 
-        const userAddress = getAddress(
-          paddedUserAddress.slice(-40).toLowerCase(),
-        ).slice(2)
-
-        // Skip the zero address
-        if (userAddress === '0000000000000000000000000000000000000000') {
-          continue
+          logs.push({
+            address: topicAddress,
+            contractAddress,
+          })
         }
-
-        queries.push(
-          `INSERT OR IGNORE INTO logs (contract_address, address) VALUES ('${getAddress(
-            contractAddressLowercase,
-          ).slice(2)}', '${userAddress}');`,
-        )
       }
     }
   }
 
-  db.transaction(() => {
-    queries.forEach((insert: string) => db.prepare(insert).run())
-    db.prepare(
-      'INSERT OR REPLACE INTO latest_block_processed (id, latest_block_processed) VALUES (1, ?)',
-    ).run(blockNumber)
-  })()
-}
+  insertLogs(db, logs, blockNumber)
 
-async function onError(latestSafeProcessedBlock: number, db: DatabaseType) {
-  db.prepare(
-    'INSERT OR REPLACE INTO latest_block_processed (id, latest_block_processed) VALUES (1, ?)',
-  ).run(latestSafeProcessedBlock)
-}
-
-export function selectAllWatchListKeys(db: DatabaseType) {
-  const unfinishedPools = db
-    .prepare(`
-        SELECT 	'0x' || contract_address as contract_address, topic_0, user_address_index
-        FROM 	history_jobs
-        `)
-    .all() as {
-    contract_address: string
-    topic_0: string
-    user_address_index: number
-  }[]
-
-  return unfinishedPools
+  logger.info({ blockNumber, logsProcessed: logs.length }, 'Processed block')
 }

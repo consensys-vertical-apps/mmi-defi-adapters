@@ -114,7 +114,7 @@ async function runPositions({
             },
           }
         : undefined
-      const defiProvider = new DefiProvider(config)
+      const defiProvider = new DefiProvider({ config })
 
       const startTime = Date.now()
       const positions = await defiProvider.getPositions({
@@ -175,8 +175,8 @@ function printData(data: Partial<Record<Chain, RunData[]>>) {
       chain: ChainName[Number(chainId) as Chain],
       avgTimeTaken: `${(
         runsData.reduce((acc, curr) => acc + curr.timeTaken, 0) /
-        runsData.length /
-        1000
+          runsData.length /
+          1000
       ).toFixed(2)}s`,
       positions: runsData.reduce((acc, curr) => acc + curr.positions, 0),
       positionsWithPrices: runsData.reduce(

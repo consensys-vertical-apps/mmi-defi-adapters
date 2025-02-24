@@ -1,5 +1,4 @@
 import { Chain } from '../../../../../core/constants/chains'
-
 import type { TestCase } from '../../../../../types/testCase'
 
 const User1 = '0x61Be170a52A61b318ACcF8Fc77153454B4bd5c78' // Has eETH and weETH

@@ -6,7 +6,7 @@ describe('detect errors', () => {
   it.each([{ enableFailover: false }, { enableFailover: true }])(
     'does not return any adapter error with positions %s',
     async (config) => {
-      const defiProvider = new DefiProvider(config)
+      const defiProvider = new DefiProvider({ config })
       const response = await defiProvider.getPositions({
         userAddress: '0x6372baD16935878713e5e1DD92EC3f7A3C48107E',
         // TODO: Remove this filter when BSC is fully reliable
@@ -26,7 +26,6 @@ function filterErrors(response: DefiPositionResponse[]) {
     (responseEntry) =>
       !responseEntry.success &&
       ![
-        'NotApplicableError',
         'NotImplementedError',
         'NotSupportedError',
         'ProtocolTokenFilterRequiredError',

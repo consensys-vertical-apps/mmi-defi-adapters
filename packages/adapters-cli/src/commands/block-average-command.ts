@@ -1,12 +1,13 @@
 import { promises as fs } from 'node:fs'
 import {
   Chain,
+  DefiProvider,
   EvmChain,
   multiChainFilter,
 } from '@metamask-institutional/defi-adapters'
 import { Command } from 'commander'
 import EthDater from 'ethereum-block-by-date'
-import { ethers } from 'ethers'
+import { type JsonRpcProvider } from 'ethers'
 import { parse, print, types, visit } from 'recast'
 import { writeAndLintFile } from '../utils/write-and-lint-file.js'
 
@@ -14,7 +15,7 @@ import n = types.namedTypes
 
 export function blockAverageCommand(
   program: Command,
-  chainProviders: Record<EvmChain, ethers.JsonRpcApiProvider>,
+  defiProvider: DefiProvider,
 ) {
   program
     .command('block-average')
@@ -36,7 +37,10 @@ export function blockAverageCommand(
           try {
             averageBlocksPerDay = await getAverageBlocksPerDay(
               chainId,
-              chainProviders,
+              defiProvider.chainProvider.providers as unknown as Record<
+                EvmChain,
+                JsonRpcProvider
+              >,
             )
           } catch (e) {
             console.error(
@@ -67,7 +71,7 @@ export function blockAverageCommand(
 
 async function getAverageBlocksPerDay(
   chainId: EvmChain,
-  chainProviders: Record<EvmChain, ethers.JsonRpcApiProvider>,
+  chainProviders: Record<EvmChain, JsonRpcProvider>,
 ) {
   const provider = chainProviders[chainId]
 

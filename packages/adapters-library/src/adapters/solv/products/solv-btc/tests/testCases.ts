@@ -1,5 +1,4 @@
 import { Chain } from '../../../../../core/constants/chains'
-
 import type { TestCase } from '../../../../../types/testCase'
 
 const User1 = '0x7BFEe91193d9Df2Ac0bFe90191D40F23c773C060' // Has some SolvBTC on Arbitrum

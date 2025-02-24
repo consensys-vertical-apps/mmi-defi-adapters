@@ -1,12 +1,10 @@
-import { EvmChain } from '@metamask-institutional/defi-adapters/dist/core/constants/chains.js'
-import type Database from 'better-sqlite3'
+import { EvmChain } from '@metamask-institutional/defi-adapters'
+import type { Database } from 'better-sqlite3'
 import { JsonRpcProvider, getAddress } from 'ethers'
 import {
-  completeJobs,
-  createHistoryTables,
-  failJobs,
-  fetchNextPoolsToProcess as fetchAllUnfinishedPools,
+  fetchUnfinishedJobs,
   insertLogs,
+  updateJobStatus,
 } from './db-queries.js'
 import { fetchEvents } from './fetch-events.js'
 import { logger } from './logger.js'
@@ -46,16 +44,18 @@ const MaxContractsPerCall: Record<EvmChain, number> = {
 export async function buildHistoricCache(
   provider: JsonRpcProvider,
   chainId: EvmChain,
-  db: Database.Database,
+  db: Database,
 ) {
+  logger.info('Starting historic cache builder')
+
   while (true) {
-    const unfinishedPools = fetchAllUnfinishedPools(db)
+    const unfinishedPools = fetchUnfinishedJobs(db)
 
     logger.info(
       {
         pools: unfinishedPools.length,
       },
-      'Pending pools need processing',
+      'Processing unfinished pools',
     )
 
     const nextPoolGroup = getNextPoolGroup(
@@ -86,7 +86,7 @@ export async function buildHistoricCache(
           batchSize: contractAddresses.length,
           totalPools: poolAddresses.length,
         },
-        'Pool group processing started',
+        'Fetching logs from pools batch started',
       )
 
       try {
@@ -99,11 +99,10 @@ export async function buildHistoricCache(
             fromBlock: from,
             toBlock: to,
           })) {
-            const logsToInsert: [string, string][] = []
+            const logsToInsert: { address: string; contractAddress: string }[] =
+              []
             for (const log of logs) {
-              const contractAddress = getAddress(
-                log.address.toLowerCase(),
-              ).slice(2)
+              const contractAddress = getAddress(log.address.toLowerCase())
 
               const topic = log.topics[userAddressIndex]!
 
@@ -114,9 +113,12 @@ export async function buildHistoricCache(
               ) {
                 const topicAddress = getAddress(
                   `0x${topic.slice(-40).toLowerCase()}`,
-                ).slice(2)
+                )
 
-                logsToInsert.push([contractAddress, topicAddress])
+                logsToInsert.push({
+                  address: topicAddress,
+                  contractAddress,
+                })
               }
             }
 
@@ -126,7 +128,13 @@ export async function buildHistoricCache(
 
         await Promise.all(concurrentRanges)
 
-        completeJobs(db, contractAddresses, topic0, userAddressIndex)
+        updateJobStatus(
+          db,
+          contractAddresses,
+          topic0,
+          userAddressIndex,
+          'completed',
+        )
 
         logger.info(
           {
@@ -135,10 +143,16 @@ export async function buildHistoricCache(
             batchSize: contractAddresses.length,
             totalPools: poolAddresses.length,
           },
-          'Pool group processing ended',
+          'Fetching logs from pools batch ended',
         )
       } catch (error) {
-        failJobs(db, contractAddresses, topic0, userAddressIndex)
+        updateJobStatus(
+          db,
+          contractAddresses,
+          topic0,
+          userAddressIndex,
+          'failed',
+        )
 
         logger.error(
           {
@@ -146,13 +160,11 @@ export async function buildHistoricCache(
             totalBatches: Math.ceil(poolAddresses.length / batchSize),
             batchSize: contractAddresses.length,
             totalPools: poolAddresses.length,
-            error: error instanceof Error ? error.message : error,
+            error: error instanceof Error ? error.message : String(error),
           },
-          'Pools batch failed',
+          'Fetching logs from pools batch failed',
         )
       }
-
-      logger.info(process.memoryUsage(), 'Memory usage')
     }
 
     await new Promise((resolve) => setTimeout(resolve, 5000))

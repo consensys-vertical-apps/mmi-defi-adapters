@@ -28,7 +28,7 @@ type CacheEntryLogs = { result: Array<Log>; timestamp: number }
 export class CustomJsonRpcProvider extends JsonRpcProvider {
   chainId: EvmChain
 
-  private hasUnlimitedGetLogsRange: boolean
+  private _hasUnlimitedGetLogsRange: boolean
 
   private cacheCalls: Record<string, Promise<CacheEntryCalls>>
   private cacheLogs: Record<string, Promise<CacheEntryLogs>>
@@ -69,7 +69,7 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
     this.cacheCalls = {}
     this.cacheLogs = {}
 
-    this.hasUnlimitedGetLogsRange = hasUnlimitedGetLogsRange
+    this._hasUnlimitedGetLogsRange = hasUnlimitedGetLogsRange
   }
 
   /**
@@ -168,7 +168,7 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
   }
 
   async getAllTransferLogsToAddress(address: string): Promise<Array<Log>> {
-    if (!this.hasUnlimitedGetLogsRange) {
+    if (!this._hasUnlimitedGetLogsRange) {
       throw new NotSupportedUnlimitedGetLogsBlockRange()
     }
 
@@ -205,5 +205,9 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
     }
 
     return this.getLogs(transferFilter)
+  }
+
+  public get hasUnlimitedGetLogsRange(): boolean {
+    return this._hasUnlimitedGetLogsRange
   }
 }

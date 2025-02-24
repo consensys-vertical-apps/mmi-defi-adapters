@@ -17,6 +17,7 @@ import { testCases as aaveV2RewardsTestCases } from './aave-v2/products/rewards/
 import { testCases as aaveV2StableDebtTokenTestCases } from './aave-v2/products/stable-debt-token/tests/testCases'
 import { testCases as aaveV2VariableDebtTokenTestCases } from './aave-v2/products/variable-debt-token/tests/testCases'
 import { testCases as aaveV3ATokenTestCases } from './aave-v3/products/a-token/tests/testCases'
+import { testCases as aaveV3RewardsTestCases } from './aave-v3/products/rewards/tests/testCases'
 import { testCases as aaveV3StableDebtTokenTestCases } from './aave-v3/products/stable-debt-token/tests/testCases'
 import { testCases as aaveV3StakingTestCases } from './aave-v3/products/staking/tests/testCases'
 import { testCases as aaveV3VariableDebtTokenTestCases } from './aave-v3/products/variable-debt-token/tests/testCases'
@@ -119,10 +120,14 @@ import { testCases as zerolendVestingTestCases } from './zerolend/products/vesti
 const TEST_TIMEOUT = 300000
 
 const defiProvider = new DefiProvider({
-  useMulticallInterceptor: false,
+  config: {
+    useMulticallInterceptor: false,
+  },
 })
 const defiProviderWithMulticall = new DefiProvider({
-  useMulticallInterceptor: true,
+  config: {
+    useMulticallInterceptor: true,
+  },
 })
 
 const filterProtocolId = protocolFilter(
@@ -153,6 +158,7 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
 
   [Protocol.AaveV3]: {
     ['a-token']: aaveV3ATokenTestCases,
+    ['rewards']: aaveV3RewardsTestCases,
     ['stable-debt-token']: aaveV3StableDebtTokenTestCases,
     ['staking']: aaveV3StakingTestCases,
     ['variable-debt-token']: aaveV3VariableDebtTokenTestCases,
@@ -460,7 +466,7 @@ function runProductTests(
           }),
         )
       )
-        .flatMap((x) => x)
+        .flat()
         .reduce((acc, x) => {
           acc[x.key] = x.responses
           return acc

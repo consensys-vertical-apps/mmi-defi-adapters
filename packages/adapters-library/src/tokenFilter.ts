@@ -1,12 +1,10 @@
-import { type Database } from 'better-sqlite3'
-import { EvmChain } from './core/constants/chains'
-import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
-import { AdapterSettings } from './types/adapter'
+import type { EvmChain } from './core/constants/chains'
+import { ProviderMissingError } from './core/errors/errors'
+import type { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 
 export type PoolFilter = (
   userAddress: string,
   chainId: EvmChain,
-  adapterSettings: AdapterSettings,
 ) => Promise<string[] | undefined>
 
 export function buildProviderPoolFilter(
@@ -15,15 +13,14 @@ export function buildProviderPoolFilter(
   return async (
     userAddress: string,
     chainId: EvmChain,
-    adapterSettings: AdapterSettings,
   ): Promise<string[] | undefined> => {
     const provider = providers[chainId]
 
-    if (
-      !provider ||
-      adapterSettings.userEvent !== 'Transfer' ||
-      !adapterSettings.includeInUnwrap
-    ) {
+    if (!provider) {
+      throw new ProviderMissingError(chainId)
+    }
+
+    if (!provider.hasUnlimitedGetLogsRange) {
       return undefined
     }
 

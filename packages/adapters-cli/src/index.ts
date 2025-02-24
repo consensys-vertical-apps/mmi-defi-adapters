@@ -1,14 +1,8 @@
 #!/usr/bin/env node
-import path from 'node:path'
-import {
-  ChainName,
-  DefiProvider,
-  EvmChain,
-} from '@metamask-institutional/defi-adapters'
-import { buildCachePoolFilter } from '@metamask-institutional/workers'
-import { setCloseDatabaseHandlers } from '@metamask-institutional/workers/dist/db-queries.js'
-import Database from 'better-sqlite3'
+import { DefiProvider } from '@metamask-institutional/defi-adapters'
+import { buildDbPoolFilter } from '@metamask-institutional/workers'
 import { Command } from 'commander'
+import { blockAverageCommand } from './commands/block-average-command.js'
 import { buildCacheCommands } from './commands/build-cache-commands.js'
 import { buildMetadataCommand } from './commands/build-metadata-command.js'
 import { buildScoreboardCommand } from './commands/build-scoreboard-command.js'
@@ -25,40 +19,17 @@ import { buildContractTypes } from './utils/build-types.js'
 
 const program = new Command('defi-adapters')
 
-const cachePoolFilter =
+const poolFilter =
   process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE === 'true'
-    ? buildCachePoolFilter(
-        Object.values(EvmChain).reduce(
-          (acc, chainId) => {
-            const db = new Database(
-              path.resolve(`databases/${ChainName[chainId]}_index_history.db`),
-              {
-                readonly: true,
-                fileMustExist: true,
-                timeout: 5000,
-              },
-            )
-
-            setCloseDatabaseHandlers(db)
-
-            acc[chainId] = db
-
-            return acc
-          },
-          {} as Record<EvmChain, Database.Database>,
-        ),
-      )
+    ? buildDbPoolFilter()
     : undefined
 
-const defiProvider = new DefiProvider(
-  undefined,
-  undefined,
-  undefined,
-  cachePoolFilter,
-)
+const defiProvider = new DefiProvider({
+  poolFilter,
+})
 
 libraryCommands(program, defiProvider)
-buildCacheCommands(program, defiProvider)
+buildCacheCommands(program)
 checkMetadataTypeCommand(program, defiProvider)
 buildMetadataCommand(program, defiProvider)
 deleteAdapterMetadataCommand(program)
@@ -70,5 +41,6 @@ buildSnapshotsCommand(program, defiProvider)
 checkBadSnapshotsCommand(program, defiProvider)
 copyAdapterCommand(program, defiProvider)
 buildScoreboardCommand(program, defiProvider)
+blockAverageCommand(program, defiProvider)
 
 program.parseAsync()

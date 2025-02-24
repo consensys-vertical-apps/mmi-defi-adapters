@@ -1,39 +1,33 @@
-import { type Chain, ChainName } from '@metamask-institutional/defi-adapters'
-
-import type { CustomJsonRpcProvider } from '@metamask-institutional/defi-adapters/dist/core/provider/CustomJsonRpcProvider.js'
-
-import { AVERAGE_BLOCKS_PER_10_MINUTES } from '@metamask-institutional/defi-adapters/dist/core/constants/AVERAGE_BLOCKS_PER_10_MINS.js'
-import { AVERAGE_BLOCKS_PER_DAY } from '@metamask-institutional/defi-adapters/dist/core/constants/AVERAGE_BLOCKS_PER_DAY.js'
+import {
+  AVERAGE_BLOCKS_PER_10_MINUTES,
+  AVERAGE_BLOCKS_PER_DAY,
+  type Chain,
+} from '@metamask-institutional/defi-adapters'
+import type { JsonRpcProvider } from 'ethers'
 import { logger } from './logger.js'
 
 export class BlockRunner {
-  private _provider: CustomJsonRpcProvider
+  private _provider: JsonRpcProvider
   private _chainId: Chain
-  private _chainName: string
 
   private static readonly _BATCH_SIZE = 50
 
   private _latestBlockNumber: number | undefined
-  private _getStartBlockNumber: () => Promise<number>
   private _processBlockFn: (blockNumber: number) => Promise<void>
   private _onError: (latestSafeProcessedBlock: number) => Promise<void>
 
   constructor({
     provider,
     chainId,
-    getStartBlockNumberFn,
     processBlockFn,
     onError,
   }: {
-    provider: CustomJsonRpcProvider
+    provider: JsonRpcProvider
     chainId: Chain
-    getStartBlockNumberFn: () => Promise<number>
     processBlockFn: (blockNumber: number) => Promise<void>
     onError: (latestSafeProcessedBlock: number) => Promise<void>
   }) {
-    this._chainName = ChainName[chainId]
     this._processBlockFn = processBlockFn
-    this._getStartBlockNumber = getStartBlockNumberFn
     this._onError = onError
 
     this._provider = provider
@@ -59,11 +53,11 @@ export class BlockRunner {
 
         if (blockNumber > this._latestBlockNumber) {
           this._latestBlockNumber = blockNumber
-          logger.info(`[${this._chainName}] New block detected: ${blockNumber}`)
+          logger.info({ blockNumber }, 'New block detected')
           break // Exit loop when a new block is found
         }
       } catch (error) {
-        logger.error(`[${this._chainName}] Error fetching block number:`, error)
+        logger.error({ error }, 'Error fetching block number')
       }
 
       // Wait with exponential backoff before retrying
@@ -74,11 +68,8 @@ export class BlockRunner {
     return true
   }
 
-  async start(startBlockOverride?: number) {
-    logger.info(`[${this._chainName}] Starting block indexer...`)
-
-    const firstBlock = startBlockOverride ?? (await this._getStartBlockNumber())
-    let processingBlockNumber = firstBlock
+  async start(startBlock: number) {
+    let processingBlockNumber = startBlock
 
     // Initialize latest block number
     this._latestBlockNumber = await this._provider.getBlockNumber()
@@ -98,7 +89,7 @@ export class BlockRunner {
             this._latestBlockNumber,
           )
         } else {
-          await this.processSingleBlock(processingBlockNumber)
+          await this._processBlockFn(processingBlockNumber)
           processingBlockNumber++
         }
 
@@ -108,7 +99,15 @@ export class BlockRunner {
           this._provider,
         )
       } catch (error) {
-        await this.handleProcessingError(error, processingBlockNumber)
+        logger.error(
+          {
+            error,
+            processingBlockNumber,
+            latestBlockNumber: this._latestBlockNumber,
+          },
+          'Error processing block',
+        )
+        await this.handleProcessingError(processingBlockNumber)
       }
     }
   }
@@ -136,8 +135,12 @@ export class BlockRunner {
     )
     const blockPromises: Promise<void>[] = []
 
-    for (let blockNum = startBlock; blockNum < batchEndBlock; blockNum++) {
-      blockPromises.push(this.processSingleBlock(blockNum))
+    for (
+      let blockNumber = startBlock;
+      blockNumber < batchEndBlock;
+      blockNumber++
+    ) {
+      blockPromises.push(this._processBlockFn(blockNumber))
     }
 
     await Promise.all(blockPromises)
@@ -145,33 +148,11 @@ export class BlockRunner {
   }
 
   /**
-   * Processes a single block.
-   */
-  private async processSingleBlock(blockNumber: number): Promise<void> {
-    try {
-      await this._processBlockFn(blockNumber)
-      logger.info(`[${this._chainName}] Processed block ${blockNumber}`)
-    } catch (error) {
-      logger.error(
-        error,
-        `[${this._chainName}] Error processing block ${blockNumber}:`,
-      )
-      throw error
-    }
-  }
-
-  /**
    * Handles processing errors, including retries.
    */
   private async handleProcessingError(
-    error: unknown,
     processingBlockNumber: number,
   ): Promise<void> {
-    logger.error(
-      `[${this._chainName}] Error processing block ${processingBlockNumber}:`,
-      error instanceof Error ? error.stack : String(error),
-    )
-
     const earliestSafeBlock = processingBlockNumber - BlockRunner._BATCH_SIZE
 
     await this._onError(earliestSafeBlock)
@@ -181,7 +162,7 @@ export class BlockRunner {
   private async logUpdate(
     chain: Chain,
     processingBlockNumber: number,
-    provider: CustomJsonRpcProvider,
+    provider: JsonRpcProvider,
   ) {
     if (processingBlockNumber % AVERAGE_BLOCKS_PER_10_MINUTES[chain] === 0) {
       const currentHeadBlock = await provider.getBlockNumber()
@@ -190,7 +171,8 @@ export class BlockRunner {
       const lagInHours = (blocksLagging / blocksPerHour).toFixed(1)
 
       logger.info(
-        `[${ChainName}] Indexer is ${lagInHours} hours behind, lagging ${blocksLagging} blocks.`,
+        { lagInHours, blocksLagging, blocksPerHour, currentHeadBlock },
+        'Indexer is lagging behind',
       )
     }
   }
