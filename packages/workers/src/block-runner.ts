@@ -1,6 +1,8 @@
-import type { Chain } from '@metamask-institutional/defi-adapters'
-import { AVERAGE_BLOCKS_PER_10_MINUTES } from '@metamask-institutional/defi-adapters/dist/core/constants/AVERAGE_BLOCKS_PER_10_MINS.js'
-import { AVERAGE_BLOCKS_PER_DAY } from '@metamask-institutional/defi-adapters/dist/core/constants/AVERAGE_BLOCKS_PER_DAY.js'
+import {
+  AVERAGE_BLOCKS_PER_10_MINUTES,
+  AVERAGE_BLOCKS_PER_DAY,
+  type Chain,
+} from '@metamask-institutional/defi-adapters'
 import type { JsonRpcProvider } from 'ethers'
 import { logger } from './logger.js'
 

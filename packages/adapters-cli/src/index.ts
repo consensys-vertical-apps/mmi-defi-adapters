@@ -1,15 +1,5 @@
 #!/usr/bin/env node
-import path from 'node:path'
-import {
-  ChainName,
-  DefiProvider,
-  EvmChain,
-} from '@metamask-institutional/defi-adapters'
-import {
-  buildCachePoolFilter,
-  setCloseDatabaseHandlers,
-} from '@metamask-institutional/workers'
-import Database from 'better-sqlite3'
+import { DefiProvider } from '@metamask-institutional/defi-adapters'
 import { Command } from 'commander'
 import { blockAverageCommand } from './commands/block-average-command.js'
 import { buildCacheCommands } from './commands/build-cache-commands.js'
@@ -25,32 +15,13 @@ import { libraryCommands } from './commands/library-commands.js'
 import { newAdapterCommand } from './commands/new-adapter-command.js'
 import { performanceCommand } from './commands/performance-command.js'
 import { buildContractTypes } from './utils/build-types.js'
+import { buildDbPoolFilter } from '@metamask-institutional/workers'
 
 const program = new Command('defi-adapters')
 
 const poolFilter =
   process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE === 'true'
-    ? buildCachePoolFilter(
-        Object.values(EvmChain).reduce(
-          (acc, chainId) => {
-            const db = new Database(
-              path.resolve(`databases/${ChainName[chainId]}_index.db`),
-              {
-                readonly: true,
-                fileMustExist: true,
-                timeout: 5000,
-              },
-            )
-
-            setCloseDatabaseHandlers(db)
-
-            acc[chainId] = db
-
-            return acc
-          },
-          {} as Record<EvmChain, Database.Database>,
-        ),
-      )
+    ? buildDbPoolFilter()
     : undefined
 
 const defiProvider = new DefiProvider({

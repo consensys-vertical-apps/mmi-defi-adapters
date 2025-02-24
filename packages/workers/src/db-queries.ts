@@ -1,6 +1,3 @@
-import type { EvmChain } from '@metamask-institutional/defi-adapters'
-import type { PoolFilter } from '@metamask-institutional/defi-adapters/dist/tokenFilter.js'
-import type { AdapterSettings } from '@metamask-institutional/defi-adapters/dist/types/adapter.js'
 import type { Database } from 'better-sqlite3'
 
 export const dbTables = {
@@ -141,25 +138,16 @@ export function updateLatestBlockProcessed(db: Database, blockNumber: number) {
   ).run(blockNumber)
 }
 
-export function buildCachePoolFilter(
-  dbs: Partial<Record<EvmChain, Database>>,
-): PoolFilter {
-  return async (userAddress: string, chainId: EvmChain) => {
-    const db = dbs[chainId]
-    if (!db) {
-      throw new Error(`Database not found for chain ${chainId}`)
-    }
+export function getAllUserPools(db: Database, userAddress: string) {
+  const userPools = db
+    .prepare(`
+      SELECT 	'0x' || contract_address as contract_address
+      FROM 	  logs
+      WHERE 	address = ?
+      `)
+    .all(userAddress.slice(2)) as {
+    contract_address: string
+  }[]
 
-    const userPools = db
-      .prepare(`
-        SELECT 	'0x' || contract_address as contract_address
-        FROM 	  logs
-        WHERE 	address = ?
-        `)
-      .all(userAddress.slice(2)) as {
-      contract_address: string
-    }[]
-
-    return userPools.map((pool) => pool.contract_address)
-  }
+  return userPools.map((pool) => pool.contract_address)
 }
