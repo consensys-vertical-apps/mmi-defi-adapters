@@ -23,7 +23,7 @@ import {
   enrichUnwrappedTokenExchangeRates,
 } from './responseAdapters'
 import { PoolFilter, buildProviderPoolFilter } from './tokenFilter'
-import { IProtocolAdapter } from './types/IProtocolAdapter'
+import { IProtocolAdapter, ProtocolToken } from './types/IProtocolAdapter'
 import { DeepPartial } from './types/deepPartial'
 import {
   AdapterErrorResponse,
@@ -135,7 +135,7 @@ export class DefiProvider {
     filterProtocolTokens?: string[]
     filterTokenIds?: string[]
   }): Promise<DefiPositionResponse[]> {
-    const startGetPositions = Date.now()
+    const startTime = Date.now()
 
     // TODO: We need to remove this. It can make the whole process crash if this function throws as it's not awaited
     // It also does not need to be optimized for serverless
@@ -160,7 +160,10 @@ export class DefiProvider {
       {} as Partial<Record<EvmChain, string[]>>,
     )
 
+    const userPoolFiltersFetchedTime = Date.now()
+
     const runner = async (adapter: IProtocolAdapter) => {
+      const runnerStartTime = Date.now()
       const isSolanaAddress = this.isSolanaAddress(userAddress)
       if (
         (adapter.chainId === Chain.Solana && !isSolanaAddress) ||
@@ -181,7 +184,7 @@ export class DefiProvider {
         return { tokens: [] }
       }
 
-      const startTime = Date.now()
+      const poolsFilteredTime = Date.now()
 
       const protocolPositions = await adapter.getPositions({
         userAddress,
@@ -190,7 +193,7 @@ export class DefiProvider {
         tokenIds: filterTokenIds,
       })
 
-      const getPositionsTime = Date.now()
+      const positionsFetchedTime = Date.now()
 
       await Promise.all(
         protocolPositions.map(async (pos) => {
@@ -216,7 +219,7 @@ export class DefiProvider {
         }),
       )
 
-      const getRewardTime = Date.now()
+      const rewardsFetchedTime = Date.now()
 
       await unwrap(
         adapter,
@@ -226,7 +229,7 @@ export class DefiProvider {
         this.unwrapCache,
       )
 
-      const unwrapTime = Date.now()
+      const unwrapFinishedTime = Date.now()
 
       const tokens = protocolPositions.map((protocolPosition) =>
         enrichPositionBalance(protocolPosition, adapter.chainId),
@@ -238,19 +241,20 @@ export class DefiProvider {
         ),
       )
 
-      const endTime = Date.now()
+      const runnerEndTime = Date.now()
 
       logger.info({
         source: 'adapter:positions',
-        startTime,
-        endTime,
-        timeTaken: endTime - startTime,
+        startTime: runnerStartTime,
+        endTime: runnerEndTime,
+        timeTaken: runnerEndTime - runnerStartTime,
         timeDetails: {
-          relativeStartTime: startTime - startGetPositions,
-          getPositionsTime: getPositionsTime - startTime,
-          getRewardTime: getRewardTime - getPositionsTime,
-          unwrapTime: unwrapTime - getRewardTime,
-          enrichTime: endTime - unwrapTime,
+          relativeStartTime: runnerStartTime - startTime,
+          createPoolsFilterTime: poolsFilteredTime - runnerStartTime,
+          fetchPositionsTime: positionsFetchedTime - poolsFilteredTime,
+          fetchRewardTime: rewardsFetchedTime - positionsFetchedTime,
+          unwrapTime: unwrapFinishedTime - rewardsFetchedTime,
+          enrichTime: runnerEndTime - unwrapFinishedTime,
         },
         chainId: adapter.chainId,
         chainName: ChainIdToChainNameMap[adapter.chainId],
@@ -275,16 +279,20 @@ export class DefiProvider {
         !result.success || (result.success && result.tokens.length > 0),
     )
 
-    const endGetPositions = Date.now()
+    const endTime = Date.now()
 
     logger.info({
       source: 'positions',
       successfulResponses: result.filter((r) => r.success).length,
       failedResponses: result.filter((r) => !r.success).length,
       totalResponses: result.length,
-      startTime: startGetPositions,
-      endTime: endGetPositions,
-      timeTaken: endGetPositions - startGetPositions,
+      startTime,
+      endTime,
+      timeTaken: endTime - startTime,
+      timeDetails: {
+        userPoolsByChainTime: userPoolFiltersFetchedTime - startTime,
+        fetchPositionsTime: endTime - userPoolFiltersFetchedTime,
+      },
       userAddress,
     })
 
@@ -525,16 +533,15 @@ export class DefiProvider {
       return undefined
     }
 
-    return await filterMapAsync(poolFilterAddresses, async (address) => {
-      try {
-        const protocolTokens = await adapter.getProtocolTokens()
+    let protocolTokens: ProtocolToken[] = []
+    try {
+      protocolTokens = await adapter.getProtocolTokens()
+    } catch (error) {
+      return undefined
+    }
 
-        return protocolTokens.some((token) => token.address === address)
-          ? address
-          : undefined
-      } catch (error) {
-        return undefined
-      }
-    })
+    return protocolTokens
+      .filter((token) => poolFilterAddresses.includes(token.address))
+      .map((token) => token.address)
   }
 }

@@ -80,7 +80,7 @@ export function insertLogs(
 
   db.transaction(() => {
     for (const { address, contractAddress } of logs) {
-      stmt.run(address, contractAddress)
+      stmt.run(address.slice(2), contractAddress.slice(2))
     }
 
     if (blockNumber) {
@@ -150,9 +150,9 @@ export function buildCachePoolFilter(
       throw new Error(`Database not found for chain ${chainId}`)
     }
 
-    const pendingPools = db
+    const userPools = db
       .prepare(`
-        SELECT 	'0x' || contract_address
+        SELECT 	'0x' || contract_address as contract_address
         FROM 	  logs
         WHERE 	address = ?
         `)
@@ -160,6 +160,6 @@ export function buildCachePoolFilter(
       contract_address: string
     }[]
 
-    return pendingPools.map((pool) => pool.contract_address)
+    return userPools.map((pool) => pool.contract_address)
   }
 }
