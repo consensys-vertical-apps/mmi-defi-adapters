@@ -45,6 +45,19 @@ export class NotImplementedError extends BaseError {
     super('Not Implemented')
   }
 }
+
+export class ProviderMissingError extends BaseError {
+  chainId: Chain
+  chainName: string
+
+  constructor(chainId: Chain) {
+    super('No provider found for chain')
+
+    this.chainId = chainId
+    this.chainName = ChainIdToChainNameMap[chainId]
+  }
+}
+
 export class NotSupportedUnlimitedGetLogsBlockRange extends BaseError {
   constructor() {
     super('This node provider does not support unlimited getLogs block range')

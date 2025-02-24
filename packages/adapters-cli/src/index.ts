@@ -27,7 +27,7 @@ import { performanceCommand } from './commands/performance-command.js'
 import { buildContractTypes } from './utils/build-types.js'
 const program = new Command('defi-adapters')
 
-const cachePoolFilter =
+const poolFilter =
   process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE === 'true'
     ? buildCachePoolFilter(
         Object.values(EvmChain).reduce(
@@ -52,12 +52,9 @@ const cachePoolFilter =
       )
     : undefined
 
-const defiProvider = new DefiProvider(
-  undefined,
-  undefined,
-  undefined,
-  cachePoolFilter,
-)
+const defiProvider = new DefiProvider({
+  poolFilter,
+})
 
 libraryCommands(program, defiProvider)
 buildCacheCommands(program)

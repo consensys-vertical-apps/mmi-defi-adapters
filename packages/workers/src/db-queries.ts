@@ -127,33 +127,6 @@ export async function insertJobs(
   })()
 }
 
-export function buildCachePoolFilter(
-  dbs: Partial<Record<EvmChain, Database>>,
-): PoolFilter {
-  return async (
-    userAddress: string,
-    chainId: EvmChain,
-    adapterSettings: AdapterSettings,
-  ) => {
-    const db = dbs[chainId]
-    if (!db || adapterSettings.userEvent === false) {
-      return undefined
-    }
-
-    const pendingPools = db
-      .prepare(`
-        SELECT 	contract_address
-        FROM 	  logs
-        WHERE 	address = ?
-        `)
-      .all(userAddress.slice(2)) as {
-      contract_address: string
-    }[]
-
-    return pendingPools.map((pool) => `0x${pool.contract_address}`)
-  }
-}
-
 export function getLatestBlockProcessed(db: Database): number | undefined {
   return (
     db
@@ -166,4 +139,27 @@ export function updateLatestBlockProcessed(db: Database, blockNumber: number) {
   db.prepare(
     'INSERT OR REPLACE INTO latest_block_processed (id, latest_block_processed) VALUES (1, ?)',
   ).run(blockNumber)
+}
+
+export function buildCachePoolFilter(
+  dbs: Partial<Record<EvmChain, Database>>,
+): PoolFilter {
+  return async (userAddress: string, chainId: EvmChain) => {
+    const db = dbs[chainId]
+    if (!db) {
+      throw new Error(`Database not found for chain ${chainId}`)
+    }
+
+    const pendingPools = db
+      .prepare(`
+        SELECT 	'0x' || contract_address
+        FROM 	  logs
+        WHERE 	address = ?
+        `)
+      .all(userAddress.slice(2)) as {
+      contract_address: string
+    }[]
+
+    return pendingPools.map((pool) => pool.contract_address)
+  }
 }

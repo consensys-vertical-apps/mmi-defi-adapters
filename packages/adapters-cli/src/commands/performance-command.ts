@@ -114,7 +114,7 @@ async function runPositions({
             },
           }
         : undefined
-      const defiProvider = new DefiProvider(config)
+      const defiProvider = new DefiProvider({ config })
 
       const startTime = Date.now()
       const positions = await defiProvider.getPositions({

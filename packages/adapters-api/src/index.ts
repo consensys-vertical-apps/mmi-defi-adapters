@@ -10,7 +10,9 @@ import { GetPositionsSchema, GetSupportSchema } from './schemas.js'
 const port = 3000
 
 const defiProvider = new DefiProvider({
-  enableFailover: false,
+  config: {
+    enableFailover: false,
+  },
 })
 
 const app = new Hono()

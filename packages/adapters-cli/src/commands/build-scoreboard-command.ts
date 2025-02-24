@@ -93,8 +93,10 @@ export function buildScoreboardCommand(
 
           // Recreate the provider for each test case to avoid cached data
           const defiProvider = new DefiProvider({
-            useMulticallInterceptor: false,
-            disableEthersBatching: true,
+            config: {
+              useMulticallInterceptor: false,
+              disableEthersBatching: true,
+            },
           })
 
           const msw = startRpcSnapshot(

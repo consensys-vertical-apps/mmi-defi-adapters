@@ -120,10 +120,14 @@ import { testCases as zerolendVestingTestCases } from './zerolend/products/vesti
 const TEST_TIMEOUT = 300000
 
 const defiProvider = new DefiProvider({
-  useMulticallInterceptor: false,
+  config: {
+    useMulticallInterceptor: false,
+  },
 })
 const defiProviderWithMulticall = new DefiProvider({
-  useMulticallInterceptor: true,
+  config: {
+    useMulticallInterceptor: true,
+  },
 })
 
 const filterProtocolId = protocolFilter(

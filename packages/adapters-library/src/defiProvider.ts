@@ -7,19 +7,11 @@ import {
 } from './SQLiteMetadataProvider'
 import { buildVoidMetadataProviders } from './VoidMetadataProvider'
 import { Protocol } from './adapters/protocols'
-
 import { supportedProtocols } from './adapters/supportedProtocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
-import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { Chain, ChainIdToChainNameMap } from './core/constants/chains'
-
+import { Chain, ChainIdToChainNameMap, EvmChain } from './core/constants/chains'
 import { ChecksumAddress } from './core/decorators/checksumAddress'
-import {
-  NotSupportedError,
-  NotSupportedUnlimitedGetLogsBlockRange,
-} from './core/errors/errors'
-
 import { ChainProvider } from './core/provider/ChainProvider'
 import { filterMapAsync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
@@ -53,19 +45,25 @@ export class DefiProvider {
   private metadataProviders: Record<Chain, IMetadataProvider>
   private unwrapCache: IUnwrapPriceCache
   private poolFilter: PoolFilter
+  private shouldUsePoolFilter: (adapter: IProtocolAdapter) => boolean
 
-  constructor(
-    config?: DeepPartial<IConfig>,
+  constructor({
+    config,
+    metadataProviderSettings,
+    unwrapCacheProvider,
+    poolFilter,
+  }: {
+    config?: DeepPartial<IConfig>
     metadataProviderSettings?: Record<
       Chain,
       {
         dbPath: string
         options: Database.Options
       }
-    >,
-    unwrapCacheProvider?: IUnwrapPriceCacheProvider,
-    poolFilter?: PoolFilter,
-  ) {
+    >
+    unwrapCacheProvider?: IUnwrapPriceCacheProvider
+    poolFilter?: PoolFilter
+  } = {}) {
     this.parsedConfig = new Config(config)
 
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
@@ -74,8 +72,17 @@ export class DefiProvider {
       ? buildSqliteMetadataProviders(metadataProviderSettings)
       : buildVoidMetadataProviders()
 
-    this.poolFilter =
-      poolFilter ?? buildProviderPoolFilter(this.chainProvider.providers)
+    if (poolFilter) {
+      // If a pool filter is provided, we use it as long as the adapter has a userEvent
+      this.poolFilter = poolFilter
+      this.shouldUsePoolFilter = (adapter) =>
+        !!adapter.adapterSettings.userEvent
+    } else {
+      // If no pool filter is provided, we use the default one and only use it if the adapter has Transfer event
+      this.poolFilter = buildProviderPoolFilter(this.chainProvider.providers)
+      this.shouldUsePoolFilter = (adapter) =>
+        adapter.adapterSettings.userEvent === 'Transfer'
+    }
 
     this.unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
 
@@ -129,7 +136,29 @@ export class DefiProvider {
     filterTokenIds?: string[]
   }): Promise<DefiPositionResponse[]> {
     const startGetPositions = Date.now()
+
+    // TODO: We need to remove this. It can make the whole process crash if this function throws as it's not awaited
+    // It also does not need to be optimized for serverless
     this.initAdapterControllerForUnwrapStage()
+
+    const userPoolsByChain = (
+      await filterMapAsync(Object.values(EvmChain), async (chainId) => {
+        if (filterChainIds && !filterChainIds.includes(chainId)) {
+          return undefined
+        }
+
+        return {
+          chainId,
+          contractAddresses: await this.poolFilter(userAddress, chainId),
+        }
+      })
+    ).reduce(
+      (acc, curr) => {
+        acc[curr.chainId] = curr.contractAddresses
+        return acc
+      },
+      {} as Partial<Record<EvmChain, string[]>>,
+    )
 
     const runner = async (adapter: IProtocolAdapter) => {
       const isSolanaAddress = this.isSolanaAddress(userAddress)
@@ -143,8 +172,8 @@ export class DefiProvider {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
       const protocolTokenAddresses = await this.getProtocolTokensFilter(
-        userAddress,
         filterProtocolTokens,
+        userPoolsByChain,
         adapter,
       )
 
@@ -474,23 +503,22 @@ export class DefiProvider {
   }
 
   private async getProtocolTokensFilter(
-    userAddress: string,
     filterProtocolTokens: string[] | undefined,
+    userPoolsByChain: Partial<Record<EvmChain, string[]>>,
     adapter: IProtocolAdapter,
   ): Promise<string[] | undefined> {
     if (filterProtocolTokens) {
       return filterProtocolTokens
     }
 
-    const poolFilterAddresses =
+    if (
       adapter.chainId === Chain.Solana ||
-      adapter.adapterSettings.userEvent === false
-        ? undefined
-        : await this.poolFilter(
-            userAddress,
-            adapter.chainId,
-            adapter.adapterSettings,
-          )
+      !this.shouldUsePoolFilter(adapter)
+    ) {
+      return undefined
+    }
+
+    const poolFilterAddresses = userPoolsByChain[adapter.chainId]
 
     if (!poolFilterAddresses) {
       return undefined
