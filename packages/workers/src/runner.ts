@@ -5,11 +5,15 @@ import {
   EvmChain,
 } from '@metamask-institutional/defi-adapters'
 import type { Database } from 'better-sqlite3'
-import { JsonRpcProvider, Network } from 'ethers'
+import { getAddress, JsonRpcProvider, Network } from 'ethers'
 import { buildHistoricCache } from './build-historic-cache.js'
 import { buildLatestCache } from './build-latest-cache.js'
 import { dbTables, getLatestBlockProcessed, insertJobs } from './db-queries.js'
-import { createDatabase, createTable } from './db-utils.js'
+import {
+  addColumnIfNotExists,
+  createDatabase,
+  createTable,
+} from './db-utils.js'
 import { logger } from './logger.js'
 
 export async function runner(
@@ -28,8 +32,10 @@ export async function runner(
     createTable(db, table)
   }
 
-  // TODO: Remove this once we have support for BSC and Fantom
-  if (chainId === Chain.Bsc || chainId === Chain.Fantom) {
+  newColumnsMigration(db)
+
+  // TODO: Remove this once we have support for Fantom
+  if (chainId === Chain.Fantom) {
     logger.warn(
       {
         chainId,
@@ -91,6 +97,8 @@ async function insertContractEntries(
       address: string
       topic0: string
       userAddressIndex: number
+      eventContract?: string
+      filter?: [string | null, string | null, string | null]
     }
   >()
   for (const adapterSupportArray of Object.values(defiPoolAddresses || {})) {
@@ -105,12 +113,14 @@ async function insertContractEntries(
           continue
         }
 
-        const { topic0, userAddressIndex } =
+        const { topic0, userAddressIndex, eventContract, filter } =
           adapterSupport.userEvent === 'Transfer'
             ? {
                 topic0:
                   '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
                 userAddressIndex: 2,
+                eventContract: undefined,
+                filter: undefined,
               }
             : adapterSupport.userEvent
 
@@ -120,6 +130,10 @@ async function insertContractEntries(
             address,
             topic0,
             userAddressIndex,
+            eventContract: eventContract
+              ? getAddress(eventContract.toLowerCase())
+              : undefined,
+            filter,
           },
         )
       }
@@ -127,4 +141,9 @@ async function insertContractEntries(
   }
 
   insertJobs(db, Array.from(protocolTokenEntries.values()), blockNumber)
+}
+
+function newColumnsMigration(db: Database) {
+  addColumnIfNotExists(db, 'jobs', 'event_contract', 'CHAR(42)')
+  addColumnIfNotExists(db, 'jobs', 'filter', 'TEXT')
 }

@@ -1,3 +1,4 @@
+import type { FilterOption } from '@metamask-institutional/defi-adapters'
 import type { Database } from 'better-sqlite3'
 
 export const dbTables = {
@@ -12,6 +13,8 @@ export const dbTables = {
       contract_address VARCHAR(40) NOT NULL,
       topic_0 TEXT NOT NULL,
       user_address_index INTEGER NOT NULL CHECK (user_address_index IN (1, 2, 3)),
+      event_contract VARCHAR(42),
+      filter TEXT,
       block_number INTEGER NOT NULL,
       status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'completed', 'failed')),
       PRIMARY KEY (contract_address, topic_0, user_address_index)
@@ -27,25 +30,51 @@ type JobDbEntry = {
   contract_address: string
   topic_0: string
   user_address_index: number
+  event_contract: string
+  filter: string
   block_number: number
   status: 'pending' | 'failed'
 }
 
-export function fetchUnfinishedJobs(db: Database) {
-  return db
+type JobEntry = {
+  contractAddress: string
+  topic0: string
+  userAddressIndex: number
+  eventContract: string
+  filter: [string | null, string | null, string | null]
+  blockNumber: number
+  status: 'pending' | 'failed'
+}
+
+export function fetchUnfinishedJobs(db: Database): JobEntry[] {
+  const dbResult = db
     .prepare(`
       SELECT  '0x' || contract_address as contract_address,
               topic_0,
               user_address_index,
+              event_contract,
+              filter,
               block_number,
               status
       FROM    jobs
       WHERE   status <> 'completed'`)
     .all() as JobDbEntry[]
+
+  return dbResult.map((job) => ({
+    contractAddress: job.contract_address,
+    topic0: job.topic_0,
+    userAddressIndex: job.user_address_index,
+    eventContract: job.event_contract,
+    filter: JSON.parse(job.filter),
+    blockNumber: job.block_number,
+    status: job.status,
+  }))
 }
 
-export function selectAllWatchListKeys(db: Database) {
-  return db
+export function selectAllWatchListKeys(
+  db: Database,
+): Pick<JobEntry, 'contractAddress' | 'topic0' | 'userAddressIndex'>[] {
+  const dbResult = db
     .prepare(`
       SELECT  '0x' || contract_address as contract_address,
               topic_0,
@@ -55,6 +84,12 @@ export function selectAllWatchListKeys(db: Database) {
     JobDbEntry,
     'contract_address' | 'topic_0' | 'user_address_index'
   >[]
+
+  return dbResult.map((job) => ({
+    contractAddress: job.contract_address,
+    topic0: job.topic_0,
+    userAddressIndex: job.user_address_index,
+  }))
 }
 
 /**
@@ -110,16 +145,33 @@ export async function insertJobs(
     address: string
     topic0: string
     userAddressIndex: number
+    eventContract?: string
+    filter?: [FilterOption, FilterOption, FilterOption]
   }[],
   blockNumber: number,
 ) {
+  // TODO: Insert tokenId instead of #tokenId
+
   const stmt = db.prepare(
-    'INSERT OR IGNORE INTO jobs (contract_address, topic_0, user_address_index, block_number) VALUES (?, ?, ?, ?)',
+    'INSERT OR REPLACE INTO jobs (contract_address, topic_0, user_address_index, event_contract, filter, block_number) VALUES (?, ?, ?, ?, ?, ?)',
   )
 
   db.transaction(() => {
-    for (const { address, topic0, userAddressIndex } of protocolTokenEntries) {
-      stmt.run(address.slice(2), topic0, userAddressIndex, blockNumber)
+    for (const {
+      address,
+      topic0,
+      userAddressIndex,
+      eventContract,
+      filter,
+    } of protocolTokenEntries) {
+      stmt.run(
+        address.slice(2),
+        topic0,
+        userAddressIndex,
+        eventContract,
+        JSON.stringify(filter),
+        blockNumber,
+      )
     }
   })()
 }

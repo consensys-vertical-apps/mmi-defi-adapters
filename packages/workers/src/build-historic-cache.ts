@@ -1,6 +1,6 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters'
 import type { Database } from 'better-sqlite3'
-import { JsonRpcProvider, getAddress } from 'ethers'
+import { JsonRpcProvider, getAddress, zeroPadValue } from 'ethers'
 import {
   fetchUnfinishedJobs,
   insertLogs,
@@ -72,6 +72,7 @@ export async function buildHistoricCache(
       poolAddresses,
       topic0,
       userAddressIndex,
+      filters,
       targetBlockNumber,
       batchSize,
     } = nextPoolGroup
@@ -103,6 +104,31 @@ export async function buildHistoricCache(
               []
             for (const log of logs) {
               const contractAddress = getAddress(log.address.toLowerCase())
+
+              const contractFilters = filters[contractAddress]
+              let shouldProceed = true
+              if (contractFilters) {
+                for (const [index, value] of contractFilters.entries()) {
+                  if (value === null) {
+                    continue
+                  }
+
+                  if (
+                    log.topics[index + 1] === null ||
+                    log.topics[index + 1]!.toLowerCase() !==
+                      zeroPadValue(value, 32).toLowerCase()
+                  ) {
+                    continue
+                  }
+
+                  shouldProceed = false
+                  break
+                }
+              }
+
+              if (!shouldProceed) {
+                continue
+              }
 
               const topic = log.topics[userAddressIndex]!
 
@@ -153,17 +179,6 @@ export async function buildHistoricCache(
           userAddressIndex,
           'failed',
         )
-
-        logger.error(
-          {
-            batchIndex: i / batchSize + 1,
-            totalBatches: Math.ceil(poolAddresses.length / batchSize),
-            batchSize: contractAddresses.length,
-            totalPools: poolAddresses.length,
-            error: error instanceof Error ? error.message : String(error),
-          },
-          'Fetching logs from pools batch failed',
-        )
       }
     }
 
@@ -192,10 +207,12 @@ function splitRange(
 
 function getNextPoolGroup(
   unfinishedPools: {
-    contract_address: string
-    topic_0: string
-    user_address_index: number
-    block_number: number
+    contractAddress: string
+    topic0: string
+    userAddressIndex: number
+    eventContract?: string
+    filter?: [string | null, string | null, string | null]
+    blockNumber: number
     status: 'pending' | 'failed'
   }[],
   maxBatchSize: number,
@@ -204,6 +221,7 @@ function getNextPoolGroup(
       poolAddresses: string[]
       topic0: string
       userAddressIndex: number
+      filters: Record<string, [string | null, string | null, string | null]>
       targetBlockNumber: number
       batchSize: number
     }
@@ -220,7 +238,7 @@ function getNextPoolGroup(
     // Group pools by topic_0 and user_address_index
     const groupedPools = pendingPools.reduce(
       (acc, pool) => {
-        const key = `${pool.topic_0}#${pool.user_address_index}`
+        const key = `${pool.topic0}#${pool.userAddressIndex}`
         if (!acc[key]) {
           acc[key] = []
         }
@@ -250,24 +268,51 @@ function getNextPoolGroup(
             )
 
     return {
-      poolAddresses: largestGroup.map((pool) => pool.contract_address),
-      topic0: largestGroup[0]!.topic_0,
-      userAddressIndex: largestGroup[0]!.user_address_index,
+      poolAddresses: largestGroup.map(
+        (pool) => pool.eventContract ?? pool.contractAddress,
+      ),
+      topic0: largestGroup[0]!.topic0,
+      userAddressIndex: largestGroup[0]!.userAddressIndex,
+      filters: largestGroup.reduce(
+        (acc, pool) => {
+          if (pool.filter) {
+            acc[pool.contractAddress] = pool.filter
+          }
+          return acc
+        },
+        {} as Record<string, [string | null, string | null, string | null]>,
+      ),
       targetBlockNumber: Math.max(
-        ...largestGroup.map((pool) => pool.block_number),
+        ...largestGroup.map((pool) => pool.blockNumber),
       ),
       batchSize,
     }
   }
 
-  const failedPools = unfinishedPools.filter((pool) => pool.status === 'failed')
-  const { contract_address, topic_0, user_address_index, block_number } =
-    failedPools[0]!
+  const firstFailedPool = unfinishedPools.filter(
+    (pool) => pool.status === 'failed',
+  )[0]!
+  const {
+    contractAddress,
+    topic0,
+    userAddressIndex,
+    blockNumber,
+    eventContract,
+  } = firstFailedPool
   return {
-    poolAddresses: [contract_address],
-    topic0: topic_0,
-    userAddressIndex: user_address_index,
-    targetBlockNumber: block_number,
+    poolAddresses: [eventContract ?? contractAddress],
+    topic0,
+    userAddressIndex,
+    filters: [firstFailedPool].reduce(
+      (acc, pool) => {
+        if (pool.filter) {
+          acc[pool.contractAddress] = pool.filter
+        }
+        return acc
+      },
+      {} as Record<string, [string | null, string | null, string | null]>,
+    ),
+    targetBlockNumber: blockNumber,
     batchSize: 1,
   }
 }

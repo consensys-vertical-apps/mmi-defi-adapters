@@ -100,7 +100,7 @@ async function runPositions({
   const allData: Partial<Record<Chain, RunData[]>> = {}
 
   for (const chainId of chainIds) {
-    if (chainId === Chain.Bsc) {
+    if (chainId === Chain.Bsc || chainId === Chain.Fantom) {
       continue
     }
 

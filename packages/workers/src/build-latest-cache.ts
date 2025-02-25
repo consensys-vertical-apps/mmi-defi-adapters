@@ -1,6 +1,12 @@
 import { type EvmChain } from '@metamask-institutional/defi-adapters'
 import type { Database } from 'better-sqlite3'
-import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
+import {
+  JsonRpcProvider,
+  TransactionReceipt,
+  ethers,
+  getAddress,
+  zeroPadValue,
+} from 'ethers'
 import { BlockRunner } from './block-runner.js'
 import {
   insertLogs,
@@ -20,12 +26,10 @@ export async function buildLatestCache(
   const allWatchListKeys = selectAllWatchListKeys(db)
 
   const userIndexMap = new Map(
-    allWatchListKeys.map(
-      ({ contract_address, topic_0, user_address_index }) => [
-        createWatchKey(contract_address, topic_0),
-        user_address_index,
-      ],
-    ),
+    allWatchListKeys.map(({ contractAddress, topic0, userAddressIndex }) => [
+      createWatchKey(contractAddress, topic0),
+      userAddressIndex,
+    ]),
   )
 
   const indexer = new BlockRunner({
@@ -70,6 +74,32 @@ async function processBlockFn({
     for (const log of receipt.logs || []) {
       // retuned lowercase from provider
       const contractAddress = getAddress(log.address)
+
+      const contractFilters = filters[contractAddress]
+      let shouldProceed = true
+      if (contractFilters) {
+        for (const [index, value] of contractFilters.entries()) {
+          if (value === null) {
+            continue
+          }
+
+          if (
+            log.topics[index + 1] === null ||
+            log.topics[index + 1]!.toLowerCase() !==
+              zeroPadValue(value, 32).toLowerCase()
+          ) {
+            continue
+          }
+
+          shouldProceed = false
+          break
+        }
+      }
+
+      if (!shouldProceed) {
+        continue
+      }
+
       const topic0 = log.topics[0]
 
       if (!topic0) {

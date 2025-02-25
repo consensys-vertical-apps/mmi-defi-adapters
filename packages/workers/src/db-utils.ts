@@ -112,3 +112,30 @@ export function buildDbPoolFilter(): PoolFilter {
     return getAllUserPools(db, userAddress)
   }
 }
+
+export function addColumnIfNotExists(
+  db: Database.Database,
+  tableName: string,
+  columnName: string,
+  columnDefinition: string,
+) {
+  const columnExists =
+    (
+      db
+        .prepare(`
+      SELECT COUNT(*) as count 
+      FROM pragma_table_info(?) 
+      WHERE name=?
+  `)
+        .get(tableName, columnName) as {
+        count: number
+      }
+    ).count > 0
+
+  if (!columnExists) {
+    db.prepare(`
+          ALTER TABLE ${tableName} 
+          ADD COLUMN ${columnName} ${columnDefinition}
+      `).run()
+  }
+}

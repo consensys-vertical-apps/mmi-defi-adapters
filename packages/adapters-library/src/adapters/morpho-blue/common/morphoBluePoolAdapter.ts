@@ -1,5 +1,4 @@
 import { ZeroAddress } from 'ethers'
-import { Erc20__factory } from '../../../contracts/factories/Erc20__factory'
 import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
 import { CacheToDb } from '../../../core/decorators/cacheToDb'
@@ -7,7 +6,6 @@ import { NotImplementedError } from '../../../core/errors/errors'
 import { Helpers } from '../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../core/utils/filters'
-import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {
   IProtocolAdapter,
@@ -27,19 +25,14 @@ import {
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'
 import { MarketParamsStruct, MarketStruct } from '../contracts/AdaptiveCurveIrm'
-import { SupplyEvent } from '../contracts/MorphoBlue'
-import {
-  TypedContractEvent,
-  TypedDeferredTopicFilter,
-} from '../contracts/common'
 import {
   AdaptiveCurveIrm__factory,
   MorphoBlue__factory,
 } from '../contracts/factories'
-import { MarketData, MarketParams } from '../internal-utils/Blue'
+import { MarketParams } from '../internal-utils/Blue'
 import { MorphoBlueMath } from '../internal-utils/MorphoBlue.maths'
 
-type AdditionalMetadata = {
+export type MorphoBlueAdditionalMetadata = {
   tokenId: string
   collateralToken: Erc20Metadata
 }
@@ -84,7 +77,9 @@ export abstract class MorphoBluePoolAdapter implements IProtocolAdapter {
   abstract getProtocolDetails(): ProtocolDetails
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<
+    ProtocolToken<MorphoBlueAdditionalMetadata>[]
+  > {
     const morphoBlueContract = MorphoBlue__factory.connect(
       morphoBlueContractAddresses[this.protocolId]![this.chainId]!,
       this._provider,
@@ -101,16 +96,8 @@ export abstract class MorphoBluePoolAdapter implements IProtocolAdapter {
 
       try {
         const [loanTokenData, collateralTokenData] = await Promise.all([
-          getTokenMetadata(
-            marketParams.loanToken,
-            this.chainId,
-            this._provider,
-          ),
-          getTokenMetadata(
-            marketParams.collateralToken,
-            this.chainId,
-            this._provider,
-          ),
+          this.helpers.getTokenMetadata(marketParams.loanToken),
+          this.helpers.getTokenMetadata(marketParams.collateralToken),
         ])
 
         return {
@@ -202,7 +189,6 @@ export abstract class MorphoBluePoolAdapter implements IProtocolAdapter {
       morphoBlue.market(marketId, {
         blockTag: blockNumber,
       }),
-
       morphoBlue.idToMarketParams(marketId, {
         blockTag: blockNumber,
       }),
@@ -239,21 +225,21 @@ export abstract class MorphoBluePoolAdapter implements IProtocolAdapter {
       BigInt(borrowRate),
     )
 
-    const supplyAssets = this.__MATH__.toAssetsDown(
+    const supplyAmount = this.__MATH__.toAssetsDown(
       supplyShares,
       updatedMarketData.totalSupplyAssets,
       updatedMarketData.totalSupplyShares,
     )
 
-    const borrowAssets = this.__MATH__.toAssetsDown(
+    const borrowAmount = this.__MATH__.toAssetsDown(
       borrowShares,
       updatedMarketData.totalBorrowAssets,
       updatedMarketData.totalBorrowShares,
     )
 
     return {
-      supplyAmount: supplyAssets,
-      borrowAmount: borrowAssets,
+      supplyAmount,
+      borrowAmount,
       collateralAmount,
     }
   }

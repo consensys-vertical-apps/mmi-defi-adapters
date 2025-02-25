@@ -10,7 +10,13 @@ export class MorphoBlueMarketSupplyAdapter extends MorphoBluePoolAdapter {
 
   adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
-    userEvent: false,
+    userEvent: {
+      topic0:
+        '0xedf8870433c83823eb071d3df1caa8d008f12f6440918c20d75a3602cda30fe0',
+      userAddressIndex: 3,
+      eventContract: '0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb',
+      filter: ['#tokenId', null, null],
+    },
   }
 
   getProtocolDetails(): ProtocolDetails {

@@ -2,6 +2,7 @@ import type { Protocol } from '../adapters/protocols'
 import type { Chain, ChainName } from '../core/constants/chains'
 import { ProtocolToken } from './IProtocolAdapter'
 import type {
+  FilterOption,
   ProtocolDetails,
   ProtocolPosition,
   TokenBalanceWithUnderlyings,
@@ -69,7 +70,12 @@ export type Support = Partial<
       userEvent:
         | false
         | 'Transfer'
-        | { topic0: `0x${string}`; userAddressIndex: 1 | 2 | 3 }
+        | {
+            topic0: `0x${string}`
+            userAddressIndex: 1 | 2 | 3
+            eventContract?: `0x${string}`
+            filter?: [FilterOption, FilterOption, FilterOption]
+          }
     }[]
   >
 >

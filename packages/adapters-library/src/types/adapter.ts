@@ -71,6 +71,8 @@ export type UnwrapInput = {
   tokenId?: string
 }
 
+export type FilterOption = '#tokenId' | (string & {}) | null
+
 /**
  * Settings that control adapter behavior
  * @property {boolean} includeInUnwrap - Whether this adapter's tokens should be included in unwrap operations
@@ -95,6 +97,15 @@ export type AdapterSettings = {
          * For example, in Transfer(address from, address to, uint256 value) userAddressIndex is 2
          */
         userAddressIndex: 1 | 2 | 3
+
+        /**
+         * The address of the contract that emits the event. Leave blank if the event is emitted by the pool contract
+         */
+        eventContract?: `0x${string}`
+        /**
+         * A filter that must be met for the event to be tracked
+         */
+        filter?: [FilterOption, FilterOption, FilterOption]
       }
     | 'Transfer'
     | false

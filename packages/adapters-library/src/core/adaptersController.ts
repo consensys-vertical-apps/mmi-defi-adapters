@@ -314,7 +314,6 @@ export class AdaptersController {
             product = {
               protocolDetails: adapter.getProtocolDetails(),
               chains: [],
-
               userEvent: adapter.adapterSettings.userEvent,
             }
 

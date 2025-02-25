@@ -1,13 +1,11 @@
 export { Protocol } from './adapters/protocols'
-
 export {
   Chain,
   ChainIdToChainNameMap as ChainName,
   EvmChain,
 } from './core/constants/chains'
-
 export { DefiProvider } from './defiProvider'
-export { PositionType } from './types/adapter'
+export { PositionType, type FilterOption } from './types/adapter'
 export type {
   AdapterResponse,
   DefiPositionResponse,
