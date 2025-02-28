@@ -6,6 +6,7 @@ import { ZodError } from 'zod'
 import './bigint-json.js'
 import { buildDbPoolFilter } from '@metamask-institutional/workers'
 import { logger } from './logger.js'
+import { buildMemoryUnwrapCacheProvider } from './memory-unwrap-price-cache-provider.js'
 import { GetPositionsSchema, GetSupportSchema } from './schemas.js'
 
 const port = 3000
@@ -17,6 +18,7 @@ const poolFilter =
 
 const defiProvider = new DefiProvider({
   poolFilter,
+  unwrapCacheProvider: buildMemoryUnwrapCacheProvider(),
 })
 
 const app = new Hono()
