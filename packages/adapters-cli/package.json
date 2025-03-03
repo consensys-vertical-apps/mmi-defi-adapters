@@ -2,15 +2,8 @@
   "name": "@metamask-institutional/adapters-cli",
   "version": "0.14.0",
   "description": "Local CLI for Defi adapters",
-  "engines": {
-    "node": ">=20.0.0"
-  },
+  "private": true,
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",
