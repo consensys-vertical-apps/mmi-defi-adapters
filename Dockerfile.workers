@@ -1,8 +1,10 @@
-FROM node:20
+FROM node:22-alpine
 
 WORKDIR /app
 
 RUN npm install -g pm2
+
+RUN apk add --no-cache make g++ python3
 
 COPY package*.json ./
 COPY packages/adapters-library/package*.json ./packages/adapters-library/
@@ -10,7 +12,7 @@ COPY packages/workers/package*.json ./packages/workers/
 
 RUN npm ci
 
-COPY . .
+COPY packages packages
 
 RUN npm run build -w packages/adapters-library
 RUN npm run build -w packages/workers
