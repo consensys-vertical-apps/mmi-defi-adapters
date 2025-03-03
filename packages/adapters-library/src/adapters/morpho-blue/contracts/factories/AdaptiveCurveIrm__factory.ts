@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   AdaptiveCurveIrm,
   AdaptiveCurveIrmInterface,
-} from "../AdaptiveCurveIrm";
+} from "../AdaptiveCurveIrm.js";
 
 const _abi = [
   {

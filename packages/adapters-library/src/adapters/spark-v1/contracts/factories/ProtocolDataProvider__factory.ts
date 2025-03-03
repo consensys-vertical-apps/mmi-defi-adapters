@@ -6,13 +6,13 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   ProtocolDataProvider,
   ProtocolDataProviderInterface,
-} from "../ProtocolDataProvider";
+} from "../ProtocolDataProvider.js";
 
 const _abi = [
   {
     inputs: [
       {
-        internalType: "contract ILendingPoolAddressesProvider",
+        internalType: "contract IPoolAddressesProvider",
         name: "addressesProvider",
         type: "address",
       },
@@ -25,9 +25,28 @@ const _abi = [
     name: "ADDRESSES_PROVIDER",
     outputs: [
       {
-        internalType: "contract ILendingPoolAddressesProvider",
+        internalType: "contract IPoolAddressesProvider",
         name: "",
         type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "asset",
+        type: "address",
+      },
+    ],
+    name: "getATokenTotalSupply",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -50,7 +69,7 @@ const _abi = [
             type: "address",
           },
         ],
-        internalType: "struct AaveProtocolDataProvider.TokenData[]",
+        internalType: "struct IPoolDataProvider.TokenData[]",
         name: "",
         type: "tuple[]",
       },
@@ -75,9 +94,141 @@ const _abi = [
             type: "address",
           },
         ],
-        internalType: "struct AaveProtocolDataProvider.TokenData[]",
+        internalType: "struct IPoolDataProvider.TokenData[]",
         name: "",
         type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "asset",
+        type: "address",
+      },
+    ],
+    name: "getDebtCeiling",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getDebtCeilingDecimals",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "pure",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "asset",
+        type: "address",
+      },
+    ],
+    name: "getFlashLoanEnabled",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "asset",
+        type: "address",
+      },
+    ],
+    name: "getInterestRateStrategyAddress",
+    outputs: [
+      {
+        internalType: "address",
+        name: "irStrategyAddress",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "asset",
+        type: "address",
+      },
+    ],
+    name: "getLiquidationProtocolFee",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "asset",
+        type: "address",
+      },
+    ],
+    name: "getPaused",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "isPaused",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "asset",
+        type: "address",
+      },
+    ],
+    name: "getReserveCaps",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "borrowCap",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "supplyCap",
+        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -159,7 +310,17 @@ const _abi = [
     outputs: [
       {
         internalType: "uint256",
-        name: "availableLiquidity",
+        name: "unbacked",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "accruedToTreasuryScaled",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "totalAToken",
         type: "uint256",
       },
       {
@@ -219,6 +380,25 @@ const _abi = [
         type: "address",
       },
     ],
+    name: "getReserveEModeCategory",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "asset",
+        type: "address",
+      },
+    ],
     name: "getReserveTokensAddresses",
     outputs: [
       {
@@ -235,6 +415,63 @@ const _abi = [
         internalType: "address",
         name: "variableDebtTokenAddress",
         type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "asset",
+        type: "address",
+      },
+    ],
+    name: "getSiloedBorrowing",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "asset",
+        type: "address",
+      },
+    ],
+    name: "getTotalDebt",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "asset",
+        type: "address",
+      },
+    ],
+    name: "getUnbackedMintCap",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
       },
     ],
     stateMutability: "view",

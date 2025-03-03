@@ -1,7 +1,7 @@
-import { Underlying } from '../../types/adapter'
-import { DisplayPosition } from '../../types/response'
-import { Chain } from '../constants/chains'
-import { logger } from './logger'
+import type { Underlying } from '../../types/adapter.js'
+import type { DisplayPosition } from '../../types/response.js'
+import type { Chain } from '../constants/chains.js'
+import { logger } from './logger.js'
 
 export function propagatePrice(
   token: DisplayPosition<Underlying>,

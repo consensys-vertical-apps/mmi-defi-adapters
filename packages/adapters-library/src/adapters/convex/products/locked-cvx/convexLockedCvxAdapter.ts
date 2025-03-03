@@ -1,31 +1,30 @@
-import { AdaptersController } from '../../../../core/adaptersController'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../../core/errors/errors'
-import { Helpers } from '../../../../core/helpers'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import {
+import type { AdaptersController } from '../../../../core/adaptersController.js'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import type { Helpers } from '../../../../core/helpers.js'
+import type { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider.js'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
+} from '../../../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
-  GetPositionsInput,
-  GetRewardPositionsInput,
+  type AdapterSettings,
+  type GetPositionsInput,
+  type GetRewardPositionsInput,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
   TokenType,
-  UnderlyingReward,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { Protocol } from '../../../protocols'
-import { CvxLockerV2__factory } from '../../contracts'
+  type UnderlyingReward,
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import type { Protocol } from '../../../protocols.js'
+import { CvxLockerV2__factory } from '../../contracts/index.js'
 
 type AdditionalMetadata = {
   rewardTokens: Erc20Metadata[]

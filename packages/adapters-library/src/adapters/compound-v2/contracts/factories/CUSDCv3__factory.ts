@@ -3,7 +3,11 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { CUSDCv3, CUSDCv3Interface, CometConfiguration } from "../CUSDCv3";
+import type {
+  CUSDCv3,
+  CUSDCv3Interface,
+  CometConfiguration,
+} from "../CUSDCv3.js";
 
 const _abi = [
   {

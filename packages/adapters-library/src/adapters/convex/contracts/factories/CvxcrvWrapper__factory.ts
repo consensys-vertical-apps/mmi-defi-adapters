@@ -3,7 +3,10 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { CvxcrvWrapper, CvxcrvWrapperInterface } from "../CvxcrvWrapper";
+import type {
+  CvxcrvWrapper,
+  CvxcrvWrapperInterface,
+} from "../CvxcrvWrapper.js";
 
 const _abi = [
   {

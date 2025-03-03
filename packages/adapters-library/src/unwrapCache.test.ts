@@ -1,12 +1,12 @@
-import { IPricesAdapter } from './adapters/prices-v2/products/usd/pricesV2UsdAdapter'
-import { AVERAGE_BLOCKS_PER_10_MINUTES } from './core/constants/AVERAGE_BLOCKS_PER_10_MINS'
-import { Chain } from './core/constants/chains'
-import { IProtocolAdapter } from './types/IProtocolAdapter'
+import type { IPricesAdapter } from './adapters/prices-v2/products/usd/pricesV2UsdAdapter.js'
+import { AVERAGE_BLOCKS_PER_10_MINUTES } from './core/constants/AVERAGE_BLOCKS_PER_10_MINS.js'
+import { Chain } from './core/constants/chains.js'
+import type { IProtocolAdapter } from './types/IProtocolAdapter.js'
 import {
-  IUnwrapPriceCacheProvider,
+  type IUnwrapPriceCacheProvider,
   UnwrapPriceCache,
   getTenMinuteKeyByBlock,
-} from './unwrapCache'
+} from './unwrapCache.js'
 
 describe('UnwrapCache', () => {
   describe('fetchWithCache', () => {

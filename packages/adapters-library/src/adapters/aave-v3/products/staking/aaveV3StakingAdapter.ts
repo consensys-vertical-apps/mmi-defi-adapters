@@ -1,30 +1,30 @@
-import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { Helpers } from '../../../../core/helpers'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../../../../core/utils/filters'
-import {
+import type { AdaptersController } from '../../../../core/adaptersController.js'
+import type { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import type { Helpers } from '../../../../core/helpers.js'
+import type { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider.js'
+import { filterMapAsync } from '../../../../core/utils/filters.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
+} from '../../../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
-  GetPositionsInput,
-  GetRewardPositionsInput,
+  type AdapterSettings,
+  type GetPositionsInput,
+  type GetRewardPositionsInput,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
   TokenType,
-  UnderlyingReward,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { Protocol } from '../../../protocols'
-import { StakeToken__factory } from '../../contracts'
-import { AAVE_ICON_URL } from '../rewards/aaveV3RewardsAdapter'
+  type UnderlyingReward,
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import type { Protocol } from '../../../protocols.js'
+import { StakeToken__factory } from '../../contracts/index.js'
+import { AAVE_ICON_URL } from '../rewards/aaveV3RewardsAdapter.js'
 
 type AdditionalMetadata = {
   rewardTokens: Erc20Metadata[]

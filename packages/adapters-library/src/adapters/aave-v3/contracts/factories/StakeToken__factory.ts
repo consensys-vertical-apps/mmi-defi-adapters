@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { StakeToken, StakeTokenInterface } from "../StakeToken";
+import type { StakeToken, StakeTokenInterface } from "../StakeToken.js";
 
 const _abi = [
   {

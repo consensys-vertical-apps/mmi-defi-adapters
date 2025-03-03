@@ -1,14 +1,14 @@
 import { readFile } from 'node:fs/promises'
 import {
-  Chain,
+  type Chain,
   ChainName,
   DefiProvider,
-  Protocol,
+  type Protocol,
   type TestCase,
   filterMapSync,
   multiProtocolFilter,
 } from '@metamask-institutional/defi-adapters'
-import { Command } from 'commander'
+import type { Command } from 'commander'
 import {
   type RpcInterceptedResponses,
   startRpcSnapshot,

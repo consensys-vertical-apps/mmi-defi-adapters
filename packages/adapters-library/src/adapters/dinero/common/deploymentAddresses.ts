@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { Chain } from '../../../core/constants/chains'
+import { Chain } from '../../../core/constants/chains.js'
 
 export const PX_ETH_DEPLOYMENTS: Partial<Record<Chain, string>> = {
   [Chain.Ethereum]: getAddress('0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6'),

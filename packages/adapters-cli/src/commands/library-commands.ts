@@ -1,7 +1,5 @@
 import {
-  type AdapterResponse,
-  DefiProvider,
-  filterMapSync,
+  type DefiProvider,
   multiChainFilter,
   multiProductFilter,
   multiProtocolFilter,

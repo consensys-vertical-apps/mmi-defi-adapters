@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { ApxEth, ApxEthInterface } from "../ApxEth";
+import type { ApxEth, ApxEthInterface } from "../ApxEth.js";
 
 const _abi = [
   {

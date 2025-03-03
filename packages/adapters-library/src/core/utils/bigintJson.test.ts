@@ -1,4 +1,4 @@
-import { bigintJsonParse, bigintJsonStringify } from './bigintJson'
+import { bigintJsonParse, bigintJsonStringify } from './bigintJson.js'
 
 describe('bigintJson', () => {
   describe('bigintJsonParse', () => {

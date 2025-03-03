@@ -1,5 +1,5 @@
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
-import { logger } from '../utils/logger'
+import type { IProtocolAdapter } from '../../types/IProtocolAdapter.js'
+import { logger } from '../utils/logger.js'
 
 export function CacheToDb(
   // biome-ignore lint/suspicious/noExplicitAny: Decorator code

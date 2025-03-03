@@ -1,9 +1,9 @@
 import { getAddress } from 'ethers'
-import { E_ADDRESS } from '../constants/E_ADDRESS'
-import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
-import { Chain } from '../constants/chains'
-import { logger } from './logger'
-import { nativeToken } from './nativeTokens'
+import { E_ADDRESS } from '../constants/E_ADDRESS.js'
+import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS.js'
+import { Chain } from '../constants/chains.js'
+import { logger } from './logger.js'
+import { nativeToken } from './nativeTokens.js'
 
 // names are here https://github.com/trustwallet/assets/tree/master/blockchains
 const chainNameMap: Record<Chain, string> = {

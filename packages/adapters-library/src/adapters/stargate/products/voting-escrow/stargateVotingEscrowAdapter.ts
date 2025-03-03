@@ -1,12 +1,15 @@
 import { getAddress } from 'ethers'
-import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
+import { VotingEscrow } from '../../../../core/adapters/votingEscrow.js'
 import {
-  AdapterSettings,
-  GetPositionsInput,
+  type AdapterSettings,
+  type GetPositionsInput,
   PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
-import { FeeDistributor__factory, VotingEscrow__factory } from '../../contracts'
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import {
+  FeeDistributor__factory,
+  VotingEscrow__factory,
+} from '../../contracts/index.js'
 
 export class StargateVotingEscrowAdapter extends VotingEscrow {
   productId = 'voting-escrow'

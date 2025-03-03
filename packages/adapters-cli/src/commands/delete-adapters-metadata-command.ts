@@ -4,7 +4,7 @@ import {
   multiProtocolFilter,
 } from '@metamask-institutional/defi-adapters'
 import Database, { type Database as DatabaseType } from 'better-sqlite3'
-import { Command } from 'commander'
+import type { Command } from 'commander'
 
 export function deleteAdapterMetadataCommand(program: Command) {
   program

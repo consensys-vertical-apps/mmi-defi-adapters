@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { BalMinter, BalMinterInterface } from "../BalMinter";
+import type { BalMinter, BalMinterInterface } from "../BalMinter.js";
 
 const _abi = [
   {

@@ -1,33 +1,33 @@
 import { getAddress } from 'ethers'
-import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../../core/errors/errors'
-import { Helpers } from '../../../../core/helpers'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../../../../core/utils/filters'
-import {
+import type { AdaptersController } from '../../../../core/adaptersController.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import { NotImplementedError } from '../../../../core/errors/errors.js'
+import type { Helpers } from '../../../../core/helpers.js'
+import type { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider.js'
+import { filterMapAsync } from '../../../../core/utils/filters.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
+} from '../../../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
-  GetPositionsInput,
+  type AdapterSettings,
+  type GetPositionsInput,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
   TokenType,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../../types/adapter'
-import { AAVE_ICON_URL } from '../../../aave-v3/products/rewards/aaveV3RewardsAdapter'
-import { Protocol } from '../../../protocols'
-import { protocolDataProviderContractAddresses } from '../../common/aaveBasePoolAdapter'
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../../types/adapter.js'
+import { AAVE_ICON_URL } from '../../../aave-v3/products/rewards/aaveV3RewardsAdapter.js'
+import type { Protocol } from '../../../protocols.js'
+import { protocolDataProviderContractAddresses } from '../../common/aaveBasePoolAdapter.js'
 import {
   ProtocolDataProvider__factory,
   StakedTokenIncentivesController__factory,
-} from '../../contracts'
+} from '../../contracts/index.js'
 
 type AdditionalMetadata = {
   reserveTokensWithEmissions: string[]

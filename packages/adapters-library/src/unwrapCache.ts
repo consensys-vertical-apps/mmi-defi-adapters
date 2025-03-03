@@ -1,12 +1,12 @@
-import {
+import type {
   IPricesAdapter,
   PricesInput,
-} from './adapters/prices-v2/products/usd/pricesV2UsdAdapter'
-import { AVERAGE_BLOCKS_PER_10_MINUTES } from './core/constants/AVERAGE_BLOCKS_PER_10_MINS'
-import { Chain } from './core/constants/chains'
-import { logger } from './core/utils/logger'
-import { IProtocolAdapter } from './types/IProtocolAdapter'
-import { UnwrapExchangeRate, UnwrapInput } from './types/adapter'
+} from './adapters/prices-v2/products/usd/pricesV2UsdAdapter.js'
+import { AVERAGE_BLOCKS_PER_10_MINUTES } from './core/constants/AVERAGE_BLOCKS_PER_10_MINS.js'
+import type { Chain } from './core/constants/chains.js'
+import { logger } from './core/utils/logger.js'
+import type { IProtocolAdapter } from './types/IProtocolAdapter.js'
+import type { UnwrapExchangeRate, UnwrapInput } from './types/adapter.js'
 
 const TEN_MINUTES_IN_MS = 10 * 60 * 1000
 

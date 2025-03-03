@@ -1,10 +1,10 @@
-import type {
-  Chain,
-  DefiProvider,
-  Protocol,
+import {
+  supportedProtocols,
+  type Chain,
+  type DefiProvider,
+  type Protocol,
 } from '@metamask-institutional/defi-adapters'
-import { supportedProtocols } from '@metamask-institutional/defi-adapters/dist/adapters/supportedProtocols.js'
-import { Command } from 'commander'
+import type { Command } from 'commander'
 
 export function checkDbTotalsCommand(
   program: Command,

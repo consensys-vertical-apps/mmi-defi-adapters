@@ -5,7 +5,7 @@ import {
   multiChainFilter,
   multiProtocolFilter,
 } from '@metamask-institutional/defi-adapters'
-import { Command } from 'commander'
+import type { Command } from 'commander'
 
 type RunData = {
   positions: number

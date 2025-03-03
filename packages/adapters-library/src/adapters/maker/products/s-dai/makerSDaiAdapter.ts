@@ -1,18 +1,17 @@
 import { getAddress } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { RAY_POSITIONS } from '../../../../core/constants/RAY'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../../core/errors/errors'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter.js'
+import { RAY_POSITIONS } from '../../../../core/constants/RAY.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import type { ProtocolToken } from '../../../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
+  type AdapterSettings,
   PositionType,
-  ProtocolDetails,
+  type ProtocolDetails,
   TokenType,
-  UnwrappedTokenExchangeRate,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { McdPot__factory } from '../../contracts'
+  type UnwrappedTokenExchangeRate,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import { McdPot__factory } from '../../contracts/index.js'
 
 const MCD_POT_ADDRESS = '0x197e90f9fad81970ba7976f33cbd77088e5d7cf7'
 

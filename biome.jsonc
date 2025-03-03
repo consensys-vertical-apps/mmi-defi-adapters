@@ -24,7 +24,6 @@
       },
       "style": {
         "noNonNullAssertion": "off",
-        "useImportType": "off",
         "useExponentiationOperator": "off"
       },
       "complexity": {
@@ -33,6 +32,9 @@
       },
       "performance": {
         "noAccumulatingSpread": "off"
+      },
+      "correctness": {
+        "noUnusedImports": "error"
       }
     },
     "ignore": ["rebuild-and-restart.js"]

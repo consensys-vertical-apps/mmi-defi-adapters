@@ -1,12 +1,12 @@
-import { Connection } from '@solana/web3.js'
-import { IMetadataProvider } from '../SQLiteMetadataProvider'
-import { Protocol } from '../adapters/protocols'
-import { IProtocolAdapter } from '../types/IProtocolAdapter'
-import { ProtocolAdapterParams } from '../types/adapter'
-import { AdaptersController } from './adaptersController'
-import { Chain } from './constants/chains'
-import { AdapterMissingError } from './errors/errors'
-import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
+import type { Connection } from '@solana/web3.js'
+import type { IMetadataProvider } from '../SQLiteMetadataProvider.js'
+import type { Protocol } from '../adapters/protocols.js'
+import type { IProtocolAdapter } from '../types/IProtocolAdapter.js'
+import type { ProtocolAdapterParams } from '../types/adapter.js'
+import { AdaptersController } from './adaptersController.js'
+import { Chain } from './constants/chains.js'
+import { AdapterMissingError } from './errors/errors.js'
+import type { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider.js'
 
 const evmProviders = Object.values(Chain).reduce(
   (accumulator, current) => {

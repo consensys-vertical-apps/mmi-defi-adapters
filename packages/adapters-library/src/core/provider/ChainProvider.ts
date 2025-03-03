@@ -1,13 +1,17 @@
 import { Connection } from '@solana/web3.js'
 import { FetchRequest, Network } from 'ethers'
-import { IConfig } from '../../config'
-import { Chain, ChainIdToChainNameMap, EvmChain } from '../constants/chains'
-import { logger } from '../utils/logger'
+import type { IConfig } from '../../config.js'
+import {
+  Chain,
+  ChainIdToChainNameMap,
+  type EvmChain,
+} from '../constants/chains.js'
+import { logger } from '../utils/logger.js'
 import {
   CustomJsonRpcProvider,
-  CustomJsonRpcProviderOptions,
-} from './CustomJsonRpcProvider'
-import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
+  type CustomJsonRpcProviderOptions,
+} from './CustomJsonRpcProvider.js'
+import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider.js'
 
 export class ChainProvider {
   providers: Record<EvmChain, CustomJsonRpcProvider>

@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { SMendi, SMendiInterface } from "../SMendi";
+import type { SMendi, SMendiInterface } from "../SMendi.js";
 
 const _abi = [
   {

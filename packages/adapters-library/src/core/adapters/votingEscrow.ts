@@ -1,26 +1,28 @@
-import { Protocol } from '../../adapters/protocols'
-import { Erc20__factory } from '../../contracts'
-import { Helpers } from '../../core/helpers'
-import { IProtocolAdapter, ProtocolToken } from '../../types/IProtocolAdapter'
+import type { Protocol } from '../../adapters/protocols.js'
+import type { Helpers } from '../../core/helpers.js'
+import type {
+  IProtocolAdapter,
+  ProtocolToken,
+} from '../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
-  GetPositionsInput,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
+  type AdapterSettings,
+  type GetPositionsInput,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
   TokenType,
-  Underlying,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../types/adapter'
-import { Erc20Metadata } from '../../types/erc20Metadata'
-import { AdaptersController } from '../adaptersController'
-import { Chain } from '../constants/chains'
-import { CacheToDb } from '../decorators/cacheToDb'
-import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
+  type Underlying,
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../types/adapter.js'
+import type { Erc20Metadata } from '../../types/erc20Metadata.js'
+import type { AdaptersController } from '../adaptersController.js'
+import type { Chain } from '../constants/chains.js'
+import { CacheToDb } from '../decorators/cacheToDb.js'
+import type { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider.js'
 
-import { getTokenMetadata } from '../utils/getTokenMetadata'
-import { unixTimestampToDateString } from '../utils/unixTimestampToDateString'
+import { getTokenMetadata } from '../utils/getTokenMetadata.js'
+import { unixTimestampToDateString } from '../utils/unixTimestampToDateString.js'
 
 type AdditionalMetadata = {
   rewardTokens: Erc20Metadata[]

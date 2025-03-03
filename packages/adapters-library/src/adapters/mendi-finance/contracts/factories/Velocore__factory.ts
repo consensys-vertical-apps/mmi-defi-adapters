@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Velocore, VelocoreInterface } from "../Velocore";
+import type { Velocore, VelocoreInterface } from "../Velocore.js";
 
 const _abi = [
   {

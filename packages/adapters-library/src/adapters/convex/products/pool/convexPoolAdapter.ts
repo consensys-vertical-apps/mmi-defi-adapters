@@ -1,28 +1,28 @@
-import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { Helpers } from '../../../../core/helpers'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import { filterMapSync } from '../../../../core/utils/filters'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import {
+import type { AdaptersController } from '../../../../core/adaptersController.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import type { Helpers } from '../../../../core/helpers.js'
+import type { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider.js'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl.js'
+import { filterMapSync } from '../../../../core/utils/filters.js'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
+} from '../../../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
-  GetPositionsInput,
+  type AdapterSettings,
+  type GetPositionsInput,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../../types/adapter'
-import { Protocol } from '../../../protocols'
-import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
-import { ConvexFactory__factory } from '../../contracts'
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../../types/adapter.js'
+import type { Protocol } from '../../../protocols.js'
+import { CONVEX_FACTORY_ADDRESS } from '../../common/constants.js'
+import { ConvexFactory__factory } from '../../contracts/index.js'
 
 type AdditionalMetadata = {
   poolId: number

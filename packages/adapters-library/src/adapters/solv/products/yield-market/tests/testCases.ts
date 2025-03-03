@@ -1,5 +1,5 @@
-import { Chain } from '../../../../../core/constants/chains'
-import type { TestCase } from '../../../../../types/testCase'
+import { Chain } from '../../../../../core/constants/chains.js'
+import type { TestCase } from '../../../../../types/testCase.js'
 
 const User5 = '0xabef19a5Cb082D0e512eB28363B1229B25BaB9a7' // Has Holdings and Redemptions in some yield markets on Arbitrum
 

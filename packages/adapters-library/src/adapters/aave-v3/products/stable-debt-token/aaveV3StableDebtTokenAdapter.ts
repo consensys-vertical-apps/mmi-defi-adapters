@@ -1,8 +1,11 @@
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
-import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
-import { ProtocolDataProvider } from '../../../aave-v2/contracts'
-import { AAVE_ICON_URL } from '../rewards/aaveV3RewardsAdapter'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import {
+  PositionType,
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter.js'
+import type { ProtocolDataProvider } from '../../../aave-v2/contracts/index.js'
+import { AAVE_ICON_URL } from '../rewards/aaveV3RewardsAdapter.js'
 
 export class AaveV3StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'stable-debt-token'

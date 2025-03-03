@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   StargateStaking,
   StargateStakingInterface,
-} from "../StargateStaking";
+} from "../StargateStaking.js";
 
 const _abi = [
   {

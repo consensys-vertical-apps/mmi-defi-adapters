@@ -1,22 +1,17 @@
 import { getAddress, parseEther } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter.js'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import type { ProtocolToken } from '../../../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
+  type AdapterSettings,
   PositionType,
-  ProtocolDetails,
+  type ProtocolDetails,
   TokenType,
-  UnwrappedTokenExchangeRate,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import {
-  OsEthController__factory,
-  OsEth__factory,
-  Vault__factory,
-  VaultsRegistry__factory,
-} from '../../contracts'
+  type UnwrappedTokenExchangeRate,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import { OsEthController__factory } from '../../contracts/index.js'
 
 const amount1 = parseEther('1')
 

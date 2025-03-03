@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { Command } from 'commander'
-import { glob, runTypeChain } from 'typechain'
+import type { Command } from 'commander'
+import { type CodegenConfig, glob, runTypeChain } from 'typechain'
 
 export function buildContractTypes(program: Command) {
   program
@@ -60,6 +60,9 @@ async function buildContractTypesForFolder(contractsDirectory: string) {
     allFiles,
     outDir: contractsDirectory,
     target: 'ethers-v6',
+    flags: {
+      node16Modules: true,
+    } as CodegenConfig,
   })
 
   console.debug(

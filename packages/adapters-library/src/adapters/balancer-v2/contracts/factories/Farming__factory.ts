@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Farming, FarmingInterface } from "../Farming";
+import type { Farming, FarmingInterface } from "../Farming.js";
 
 const _abi = [
   {

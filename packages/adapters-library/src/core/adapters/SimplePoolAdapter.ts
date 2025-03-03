@@ -1,27 +1,26 @@
-import { Protocol } from '../../adapters/protocols'
-import { Helpers } from '../../core/helpers'
-import {
+import type { Protocol } from '../../adapters/protocols.js'
+import type { Helpers } from '../../core/helpers.js'
+import type {
   AdditionalMetadataWithReservedFields,
   IProtocolAdapter,
   JsonMetadata,
   ProtocolToken,
-} from '../../types/IProtocolAdapter'
+} from '../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
-  GetPositionsInput,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
+  type AdapterSettings,
+  type GetPositionsInput,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
   TokenType,
-  UnwrapExchangeRate,
-  UnwrapInput,
-  UnwrappedTokenExchangeRate,
-} from '../../types/adapter'
-import { Erc20Metadata } from '../../types/erc20Metadata'
-import { AdaptersController } from '../adaptersController'
-import { Chain } from '../constants/chains'
-import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../utils/filters'
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+  type UnwrappedTokenExchangeRate,
+} from '../../types/adapter.js'
+import type { Erc20Metadata } from '../../types/erc20Metadata.js'
+import type { AdaptersController } from '../adaptersController.js'
+import type { Chain } from '../constants/chains.js'
+import type { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider.js'
 
 export abstract class SimplePoolAdapter<
   AdditionalMetadata extends

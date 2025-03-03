@@ -1,5 +1,5 @@
-import { Chain } from '../../../../../core/constants/chains'
-import type { TestCase } from '../../../../../types/testCase'
+import { Chain } from '../../../../../core/constants/chains.js'
+import type { TestCase } from '../../../../../types/testCase.js'
 
 const User3 = '0x566d2176Ecb1d8eA07D182b47B5aC57511337E00' // Has weETH on Base
 const User4 = '0x51525Be6985e1B1c46f746a231B1d186B52860DC' // Has weETH on Linea

@@ -1,14 +1,11 @@
-import { Chain } from '../../../../core/constants/chains'
 import {
-  AdapterSettings,
+  type AdapterSettings,
   PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
 
-import { Protocol } from '../../../protocols'
-
-import { ZeroLendBasePoolAdapter } from '../../common/zerolendBasePoolAdapter'
-import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
+import { ZeroLendBasePoolAdapter } from '../../common/zerolendBasePoolAdapter.js'
+import type { ProtocolDataProvider } from '../../contracts/index.js'
 
 export class ZeroLendATokenPoolAdapter extends ZeroLendBasePoolAdapter {
   productId = 'a-token'

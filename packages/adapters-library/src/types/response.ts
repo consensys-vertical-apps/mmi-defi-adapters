@@ -1,6 +1,6 @@
-import type { Protocol } from '../adapters/protocols'
-import type { Chain, ChainName } from '../core/constants/chains'
-import { ProtocolToken } from './IProtocolAdapter'
+import type { Protocol } from '../adapters/protocols.js'
+import type { Chain, ChainName } from '../core/constants/chains.js'
+import type { ProtocolToken } from './IProtocolAdapter.js'
 import type {
   ProtocolDetails,
   ProtocolPosition,
@@ -9,7 +9,7 @@ import type {
   Underlying,
   UnwrapExchangeRate,
   UnwrappedTokenExchangeRate,
-} from './adapter'
+} from './adapter.js'
 
 export type AdapterErrorResponse = {
   error: {

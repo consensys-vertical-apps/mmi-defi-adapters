@@ -7,7 +7,7 @@ import type {
   CompoundV3,
   CompoundV3Interface,
   CometConfiguration,
-} from "../CompoundV3";
+} from "../CompoundV3.js";
 
 const _abi = [
   {

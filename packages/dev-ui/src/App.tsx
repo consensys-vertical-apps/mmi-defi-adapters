@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Chain } from '@metamask-institutional/defi-adapters'
+import type { Chain } from '@metamask-institutional/defi-adapters'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { Positions } from './Positions'

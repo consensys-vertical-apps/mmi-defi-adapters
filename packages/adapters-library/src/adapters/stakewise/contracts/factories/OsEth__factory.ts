@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { OsEth, OsEthInterface } from "../OsEth";
+import type { OsEth, OsEthInterface } from "../OsEth.js";
 
 const _abi = [
   {

@@ -1,16 +1,16 @@
 import { getAddress } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter.js'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
 import {
-  AdapterSettings,
+  type AdapterSettings,
   PositionType,
-  ProtocolDetails,
+  type ProtocolDetails,
   TokenType,
-  UnwrappedTokenExchangeRate,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { RocketTokenRETH__factory } from '../../../rocket-pool/contracts'
+  type UnwrappedTokenExchangeRate,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import { RocketTokenRETH__factory } from '../../../rocket-pool/contracts/index.js'
 
 const PROTOCOL_TOKEN_ADDRESS = getAddress(
   '0xae78736Cd615f374D3085123A210448E74Fc6393',

@@ -1,4 +1,4 @@
-import type { Chain } from '../core/constants/chains'
+import type { Chain } from '../core/constants/chains.js'
 
 export type TestCase = {
   key?: string

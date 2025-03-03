@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { RouterStatic, RouterStaticInterface } from "../RouterStatic";
+import type { RouterStatic, RouterStaticInterface } from "../RouterStatic.js";
 
 const _abi = [
   {

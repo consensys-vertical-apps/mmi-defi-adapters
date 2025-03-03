@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { MutlicallOld, MutlicallOldInterface } from "../MutlicallOld";
+import type { MutlicallOld, MutlicallOldInterface } from "../MutlicallOld.js";
 
 const _abi = [
   {

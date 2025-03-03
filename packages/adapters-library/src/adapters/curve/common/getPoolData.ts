@@ -1,7 +1,7 @@
-import { Chain, ChainIdToChainNameMap } from '../../../core/constants/chains'
-import { filterMapAsync } from '../../../core/utils/filters'
-import { logger } from '../../../core/utils/logger'
-import { Protocol } from '../../protocols'
+import { Chain } from '../../../core/constants/chains.js'
+import { filterMapAsync } from '../../../core/utils/filters.js'
+import { logger } from '../../../core/utils/logger.js'
+import { Protocol } from '../../protocols.js'
 
 const CurveChainNames = {
   [Chain.Ethereum]: 'ethereum',

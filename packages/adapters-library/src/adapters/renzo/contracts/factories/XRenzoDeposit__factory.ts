@@ -3,7 +3,10 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { XRenzoDeposit, XRenzoDepositInterface } from "../XRenzoDeposit";
+import type {
+  XRenzoDeposit,
+  XRenzoDepositInterface,
+} from "../XRenzoDeposit.js";
 
 const _abi = [
   {

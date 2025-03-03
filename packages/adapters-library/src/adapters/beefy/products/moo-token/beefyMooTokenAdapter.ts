@@ -1,32 +1,30 @@
-import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../../core/errors/errors'
-import { Helpers } from '../../../../core/helpers'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../../../../core/utils/filters'
-import { logger } from '../../../../core/utils/logger'
-import {
+import type { AdaptersController } from '../../../../core/adaptersController.js'
+import type { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import type { Helpers } from '../../../../core/helpers.js'
+import type { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider.js'
+import { filterMapAsync } from '../../../../core/utils/filters.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
+} from '../../../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
-  GetPositionsInput,
+  type AdapterSettings,
+  type GetPositionsInput,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
   TokenType,
-  UnwrapExchangeRate,
-  UnwrapInput,
-  UnwrappedTokenExchangeRate,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { Protocol } from '../../../protocols'
-import { BeefyVaultV7__factory } from '../../contracts'
-import { chainIdMap } from '../../sdk/config'
-import { ApiVault, BeefyProductType } from '../../sdk/types'
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+  type UnwrappedTokenExchangeRate,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import type { Protocol } from '../../../protocols.js'
+import { BeefyVaultV7__factory } from '../../contracts/index.js'
+import { chainIdMap } from '../../sdk/config.js'
+import { type ApiVault, BeefyProductType } from '../../sdk/types.js'
 
 export class BeefyMooTokenAdapter implements IProtocolAdapter {
   productId = BeefyProductType.MOO_TOKEN

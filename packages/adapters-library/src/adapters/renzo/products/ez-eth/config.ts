@@ -1,6 +1,6 @@
 import { getAddress } from 'ethers'
-import { E_ADDRESS } from '../../../../core/constants/E_ADDRESS'
-import { Chain } from '../../../../core/constants/chains'
+import { E_ADDRESS } from '../../../../core/constants/E_ADDRESS.js'
+import { Chain } from '../../../../core/constants/chains.js'
 
 export interface TokenInfo {
   protocolToken: string

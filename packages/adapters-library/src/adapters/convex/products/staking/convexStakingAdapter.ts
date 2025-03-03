@@ -1,39 +1,41 @@
 import { getAddress } from 'ethers'
-import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { Helpers } from '../../../../core/helpers'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
+import type { AdaptersController } from '../../../../core/adaptersController.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import type { Helpers } from '../../../../core/helpers.js'
+import type { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider.js'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl.js'
 import {
+  filterMapAsync,
+  filterMapSync,
+} from '../../../../core/utils/filters.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
+} from '../../../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
-  GetPositionsInput,
-  GetRewardPositionsInput,
+  type AdapterSettings,
+  type GetPositionsInput,
+  type GetRewardPositionsInput,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
   TokenType,
-  UnderlyingReward,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { Protocol } from '../../../protocols'
-import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
-import { GetCVXMintAmount } from '../../common/cvxRewardFormula'
+  type UnderlyingReward,
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import type { Protocol } from '../../../protocols.js'
+import { CONVEX_FACTORY_ADDRESS } from '../../common/constants.js'
+import { GetCVXMintAmount } from '../../common/cvxRewardFormula.js'
 import {
   ConvexFactory__factory,
   ConvexRewardTracker__factory,
   ConvexRewardsFactory__factory,
   CvxMint__factory,
-} from '../../contracts'
-import { RewardPaidEvent } from '../../contracts/ConvexRewardsFactory'
+} from '../../contracts/index.js'
 
 const CONVEX_TOKEN_ADDRESS = getAddress(
   '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b',

@@ -1,6 +1,6 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters'
 import type { Database } from 'better-sqlite3'
-import { JsonRpcProvider, getAddress } from 'ethers'
+import { type JsonRpcProvider, getAddress } from 'ethers'
 import {
   fetchUnfinishedJobs,
   insertLogs,

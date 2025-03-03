@@ -1,18 +1,18 @@
 import { getAddress } from 'ethers'
 
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata.js'
 import {
-  AdapterSettings,
+  type AdapterSettings,
   PositionType,
-  ProtocolDetails,
+  type ProtocolDetails,
   TokenType,
-  UnwrappedTokenExchangeRate,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
+  type UnwrappedTokenExchangeRate,
+} from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
 
-import { Wusdm__factory } from '../../contracts'
+import { Wusdm__factory } from '../../contracts/index.js'
 
 const PROTOCOL_TOKEN_ADDRESS = getAddress(
   '0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812',

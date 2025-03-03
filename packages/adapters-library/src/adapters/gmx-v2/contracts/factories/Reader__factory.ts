@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Reader, ReaderInterface } from "../Reader";
+import type { Reader, ReaderInterface } from "../Reader.js";
 
 const _abi = [
   {

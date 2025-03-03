@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { Chain } from '../../../core/constants/chains'
+import { Chain } from '../../../core/constants/chains.js'
 
 export const staticChainData: Partial<
   Record<

@@ -1,33 +1,35 @@
-import { Block, getAddress } from 'ethers'
-import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain } from '../../../../core/constants/chains'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { Helpers } from '../../../../core/helpers'
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import {
+import { getAddress } from 'ethers'
+import type { AdaptersController } from '../../../../core/adaptersController.js'
+import type { Chain } from '../../../../core/constants/chains.js'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import type { Helpers } from '../../../../core/helpers.js'
+import type { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider.js'
+import { filterMapAsync } from '../../../../core/utils/filters.js'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../../types/IProtocolAdapter'
+} from '../../../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
-  GetPositionsInput,
-  GetRewardPositionsInput,
+  type AdapterSettings,
+  type GetPositionsInput,
+  type GetRewardPositionsInput,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
   TokenType,
-  UnderlyingReward,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { Protocol } from '../../../protocols'
-import { fetchAllMarkets } from '../../backend/backendSdk'
-import { PENDLE_ROUTER_STATIC_CONTRACT } from '../../backend/constants'
-import { RouterStatic__factory, YieldToken__factory } from '../../contracts'
+  type UnderlyingReward,
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../../types/adapter.js'
+import type { Protocol } from '../../../protocols.js'
+import { fetchAllMarkets } from '../../backend/backendSdk.js'
+import { PENDLE_ROUTER_STATIC_CONTRACT } from '../../backend/constants.js'
+import {
+  RouterStatic__factory,
+  YieldToken__factory,
+} from '../../contracts/index.js'
 
 type AdditionalMetadata = {
   marketAddress: string

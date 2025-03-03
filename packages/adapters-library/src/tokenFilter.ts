@@ -1,6 +1,6 @@
-import type { EvmChain } from './core/constants/chains'
-import { ProviderMissingError } from './core/errors/errors'
-import type { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
+import type { EvmChain } from './core/constants/chains.js'
+import { ProviderMissingError } from './core/errors/errors.js'
+import type { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider.js'
 
 export type PoolFilter = (
   userAddress: string,

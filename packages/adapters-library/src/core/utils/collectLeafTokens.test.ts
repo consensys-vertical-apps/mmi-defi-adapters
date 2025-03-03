@@ -1,4 +1,4 @@
-import { collectLeafTokens } from './collectLeafTokens'
+import { collectLeafTokens } from './collectLeafTokens.js'
 
 type Token = {
   name: string

@@ -1,6 +1,11 @@
-import { type EvmChain } from '@metamask-institutional/defi-adapters'
+import type { EvmChain } from '@metamask-institutional/defi-adapters'
 import type { Database } from 'better-sqlite3'
-import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
+import {
+  type JsonRpcProvider,
+  type TransactionReceipt,
+  ethers,
+  getAddress,
+} from 'ethers'
 import { BlockRunner } from './block-runner.js'
 import {
   insertLogs,

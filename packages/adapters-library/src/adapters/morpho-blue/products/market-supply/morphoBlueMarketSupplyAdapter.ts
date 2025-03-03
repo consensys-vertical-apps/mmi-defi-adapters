@@ -1,9 +1,9 @@
 import {
-  AdapterSettings,
+  type AdapterSettings,
   PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
-import { MorphoBluePoolAdapter } from '../../common/morphoBluePoolAdapter'
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import { MorphoBluePoolAdapter } from '../../common/morphoBluePoolAdapter.js'
 
 export class MorphoBlueMarketSupplyAdapter extends MorphoBluePoolAdapter {
   productId = 'market-supply'

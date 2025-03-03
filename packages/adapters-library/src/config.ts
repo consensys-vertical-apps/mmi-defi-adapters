@@ -1,7 +1,7 @@
 import { z } from 'zod'
-import { ChainName } from './core/constants/chains'
-import { logger } from './core/utils/logger'
-import { DeepPartial } from './types/deepPartial'
+import { ChainName } from './core/constants/chains.js'
+import { logger } from './core/utils/logger.js'
+import type { DeepPartial } from './types/deepPartial.js'
 
 const providers: Record<ChainName, string> = {
   ethereum: parseStringEnv(

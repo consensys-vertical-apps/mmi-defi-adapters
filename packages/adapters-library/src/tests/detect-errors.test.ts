@@ -1,6 +1,6 @@
-import { Chain } from '../core/constants/chains'
-import { DefiProvider } from '../defiProvider'
-import { DefiPositionResponse } from '../types/response'
+import { Chain } from '../core/constants/chains.js'
+import { DefiProvider } from '../defiProvider.js'
+import type { DefiPositionResponse } from '../types/response.js'
 
 describe('detect errors', () => {
   it.each([{ enableFailover: false }, { enableFailover: true }])(

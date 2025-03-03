@@ -1,6 +1,6 @@
 import { getAddress } from 'ethers'
-import { mergeWith } from 'lodash'
-import { Chain } from '../../../../core/constants/chains'
+import { mergeWith } from 'lodash-es'
+import { Chain } from '../../../../core/constants/chains.js'
 
 export interface TokenInfo {
   protocolToken: string

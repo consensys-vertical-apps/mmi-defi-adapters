@@ -1,12 +1,11 @@
 import { getAddress } from 'ethers'
 
-import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
-import { Chain } from '../../../../core/constants/chains'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
-
-import { Protocol } from '../../../protocols'
-
-import { Cerc20__factory } from '../../contracts'
+import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import {
+  PositionType,
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
 
 export const contractAddresses: Partial<
   Record<

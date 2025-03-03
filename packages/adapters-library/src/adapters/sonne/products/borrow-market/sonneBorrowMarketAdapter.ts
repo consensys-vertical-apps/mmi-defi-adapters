@@ -1,10 +1,9 @@
-import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
-import { Chain } from '../../../../core/constants/chains'
+import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter.js'
+import { Chain } from '../../../../core/constants/chains.js'
 import {
-  AdapterSettings,
   PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
 
 export class SonneBorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
   productId = 'borrow-market'

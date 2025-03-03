@@ -35,7 +35,7 @@ import type {
 } from '@metamask-institutional/defi-adapters/dist/types/adapter'
 import type { DisplayPosition } from '@metamask-institutional/defi-adapters/dist/types/response'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, type SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'
 import { JsonDisplay } from './JsonDisplay'
 import { ChainIdToChainNameMap } from './chainIdToChainNameMap'

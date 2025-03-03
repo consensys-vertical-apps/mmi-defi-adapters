@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   StargateFactory,
   StargateFactoryInterface,
-} from "../StargateFactory";
+} from "../StargateFactory.js";
 
 const _abi = [
   {

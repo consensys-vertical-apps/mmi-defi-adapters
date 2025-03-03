@@ -1,6 +1,6 @@
-import { Chain, EvmChain } from './core/constants/chains'
-import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
-import { DefiProvider } from './defiProvider'
+import { Chain, EvmChain } from './core/constants/chains.js'
+import type { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider.js'
+import { DefiProvider } from './defiProvider.js'
 
 const mockChainBlockNumbers = Object.values(EvmChain).reduce(
   (accumulator, chainId) => {

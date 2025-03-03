@@ -1,7 +1,7 @@
-import type { Protocol } from '../adapters/protocols'
-import type { AdaptersController } from '../core/adaptersController'
-import type { Chain } from '../core/constants/chains'
-import { IHelpers } from '../core/helpers'
+import type { Protocol } from '../adapters/protocols.js'
+import type { AdaptersController } from '../core/adaptersController.js'
+import type { Chain } from '../core/constants/chains.js'
+import type { IHelpers } from '../core/helpers.js'
 import type {
   AdapterSettings,
   GetPositionsInput,
@@ -11,9 +11,9 @@ import type {
   UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
-} from './adapter'
-import type { Erc20Metadata } from './erc20Metadata'
-import { Json } from './json'
+} from './adapter.js'
+import type { Erc20Metadata } from './erc20Metadata.js'
+import type { Json } from './json.js'
 
 export type JsonMetadata = Record<string, Json>
 

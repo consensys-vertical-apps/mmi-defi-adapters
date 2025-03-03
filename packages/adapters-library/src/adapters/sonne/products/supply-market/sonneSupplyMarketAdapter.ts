@@ -1,10 +1,9 @@
-import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
-import { Chain } from '../../../../core/constants/chains'
+import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter.js'
+import { Chain } from '../../../../core/constants/chains.js'
 import {
-  AdapterSettings,
   PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
 
 export class SonneSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
   productId = 'supply-market'

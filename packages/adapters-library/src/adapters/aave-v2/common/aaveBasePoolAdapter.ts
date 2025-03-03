@@ -1,15 +1,15 @@
 import { getAddress } from 'ethers'
-import { AdaptersController } from '../../../core/adaptersController'
-import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
-import { Chain } from '../../../core/constants/chains'
-import { Helpers } from '../../../core/helpers'
-import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../../../core/utils/filters'
-import {
+import type { AdaptersController } from '../../../core/adaptersController.js'
+import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS.js'
+import { Chain } from '../../../core/constants/chains.js'
+import type { Helpers } from '../../../core/helpers.js'
+import type { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider.js'
+import { filterMapAsync } from '../../../core/utils/filters.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../types/IProtocolAdapter'
-import {
+} from '../../../types/IProtocolAdapter.js'
+import type {
   AdapterSettings,
   GetPositionsInput,
   ProtocolAdapterParams,
@@ -17,13 +17,13 @@ import {
   ProtocolPosition,
   UnwrapExchangeRate,
   UnwrapInput,
-} from '../../../types/adapter'
-import { Erc20Metadata } from '../../../types/erc20Metadata'
-import { Protocol } from '../../protocols'
+} from '../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../types/erc20Metadata.js'
+import { Protocol } from '../../protocols.js'
 import {
-  ProtocolDataProvider,
+  type ProtocolDataProvider,
   ProtocolDataProvider__factory,
-} from '../contracts'
+} from '../contracts/index.js'
 
 export const protocolDataProviderContractAddresses: Partial<
   Record<

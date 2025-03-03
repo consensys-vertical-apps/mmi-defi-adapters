@@ -2,7 +2,7 @@ import {
   Chain,
   ChainName,
   DefiProvider,
-  EvmChain,
+  type EvmChain,
 } from '@metamask-institutional/defi-adapters'
 import type { Database } from 'better-sqlite3'
 import { JsonRpcProvider, Network } from 'ethers'

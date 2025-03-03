@@ -5,12 +5,12 @@ import {
   ChainName,
   type DefiPositionResponse,
   DefiProvider,
-  Protocol,
+  type Protocol,
   type TestCase,
   filterMapSync,
   multiProtocolFilter,
 } from '@metamask-institutional/defi-adapters'
-import { Command, Option } from 'commander'
+import { type Command, Option } from 'commander'
 import { kebabCase } from 'lodash-es'
 import { parse, print, types, visit } from 'recast'
 import {

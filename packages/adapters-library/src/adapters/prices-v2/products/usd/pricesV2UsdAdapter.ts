@@ -1,22 +1,25 @@
 import { getAddress } from 'ethers'
-import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain } from '../../../../core/constants/chains'
+import type { AdaptersController } from '../../../../core/adaptersController.js'
+import type { Chain } from '../../../../core/constants/chains.js'
 
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import type { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider.js'
 
-import { Helpers } from '../../../../core/helpers'
-import { nativeTokenAddresses } from '../../../../core/utils/nativeTokens'
+import type { Helpers } from '../../../../core/helpers.js'
+import { nativeTokenAddresses } from '../../../../core/utils/nativeTokens.js'
 
 import {
-  AdapterSettings,
+  type AdapterSettings,
   TokenType,
-  UnwrapExchangeRate,
-} from '../../../../types/adapter'
+  type UnwrapExchangeRate,
+} from '../../../../types/adapter.js'
 
-import { logger } from '../../../../core/utils/logger'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { ChainLink__factory, OneInchOracle__factory } from '../../contracts'
-import { priceAdapterConfig } from './priceV2Config'
+import { logger } from '../../../../core/utils/logger.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import {
+  ChainLink__factory,
+  OneInchOracle__factory,
+} from '../../contracts/index.js'
+import { priceAdapterConfig } from './priceV2Config.js'
 
 export const USD = 'USD'
 
@@ -128,7 +131,7 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
         throw new Error(`Error fetching spot price: ${response.statusText}`)
       }
 
-      const data: SpotPrice = await response.json()
+      const data = (await response.json()) as SpotPrice
       return data
     } catch (error) {
       logger.error(error, 'Failed to fetch spot price')

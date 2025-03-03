@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { AaveV3Oracle, AaveV3OracleInterface } from "../AaveV3Oracle";
+import type { AaveV3Oracle, AaveV3OracleInterface } from "../AaveV3Oracle.js";
 
 const _abi = [
   {

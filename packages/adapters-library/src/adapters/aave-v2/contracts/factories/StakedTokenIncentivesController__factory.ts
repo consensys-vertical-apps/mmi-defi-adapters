@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   StakedTokenIncentivesController,
   StakedTokenIncentivesControllerInterface,
-} from "../StakedTokenIncentivesController";
+} from "../StakedTokenIncentivesController.js";
 
 const _abi = [
   {

@@ -1,4 +1,3 @@
-import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import {
   type DefiProvider,
@@ -9,8 +8,8 @@ import type { Command } from 'commander'
 import inquirer from 'inquirer'
 import { lowerFirst } from 'lodash-es'
 import {
-  BlankAdapterOutcomeOptions,
-  QuestionAnswers,
+  type BlankAdapterOutcomeOptions,
+  type QuestionAnswers,
   QuestionName,
   TemplateNames,
   Templates,

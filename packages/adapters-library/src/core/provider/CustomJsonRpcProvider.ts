@@ -1,18 +1,18 @@
 import {
-  FetchRequest,
-  Filter,
-  FilterByBlockHash,
-  JsonRpcApiProviderOptions,
+  type FetchRequest,
+  type Filter,
+  type FilterByBlockHash,
+  type JsonRpcApiProviderOptions,
   JsonRpcProvider,
-  Log,
-  TransactionRequest,
+  type Log,
+  type TransactionRequest,
   ethers,
 } from 'ethers'
-import { count } from '../../metricsCount'
-import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../constants/AVERAGE_BLOCKS_PER_10_MINS'
-import { Chain, EvmChain } from '../constants/chains'
-import { NotSupportedUnlimitedGetLogsBlockRange } from '../errors/errors'
-import { retryHandlerFactory } from './retryHandlerFactory'
+import { count } from '../../metricsCount.js'
+import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../constants/AVERAGE_BLOCKS_PER_10_MINS.js'
+import { Chain, type EvmChain } from '../constants/chains.js'
+import { NotSupportedUnlimitedGetLogsBlockRange } from '../errors/errors.js'
+import { retryHandlerFactory } from './retryHandlerFactory.js'
 
 export type CustomJsonRpcProviderOptions = {
   rpcCallTimeoutInMs: number

@@ -1,15 +1,15 @@
-import {
+import type {
   FetchRequest,
   JsonRpcApiProviderOptions,
   TransactionRequest,
 } from 'ethers'
-import { count } from '../../metricsCount'
-import { EvmChain } from '../constants/chains'
+import { count } from '../../metricsCount.js'
+import type { EvmChain } from '../constants/chains.js'
 import {
   CustomJsonRpcProvider,
-  CustomJsonRpcProviderOptions,
-} from './CustomJsonRpcProvider'
-import { MulticallQueue } from './MulticallQueue'
+  type CustomJsonRpcProviderOptions,
+} from './CustomJsonRpcProvider.js'
+import { MulticallQueue } from './MulticallQueue.js'
 
 export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
   private multicallQueue: MulticallQueue

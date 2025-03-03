@@ -1,7 +1,7 @@
-import { ProtocolAdapterParams } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { AbstractStargateFarmAdapter } from '../../common/abstractFarmAdapter'
-import { staticChainData } from '../../common/staticChainData'
+import type { ProtocolAdapterParams } from '../../../../types/adapter.js'
+import type { Erc20Metadata } from '../../../../types/erc20Metadata.js'
+import { AbstractStargateFarmAdapter } from '../../common/abstractFarmAdapter.js'
+import { staticChainData } from '../../common/staticChainData.js'
 
 export type AdditionalMetadata = {
   poolIndex: number

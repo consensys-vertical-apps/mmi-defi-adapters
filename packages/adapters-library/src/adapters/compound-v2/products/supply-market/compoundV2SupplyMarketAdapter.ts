@@ -1,15 +1,10 @@
-import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
-import { Chain } from '../../../../core/constants/chains'
+import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter.js'
+import type { Chain } from '../../../../core/constants/chains.js'
 import {
-  AdapterSettings,
   PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
-
-import { Protocol } from '../../../protocols'
-
-import { contractAddresses } from '../../common/contractAddresses'
-import { CUSDCv3__factory } from '../../contracts'
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import { contractAddresses } from '../../common/contractAddresses.js'
 
 export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
   productId = 'supply-market'

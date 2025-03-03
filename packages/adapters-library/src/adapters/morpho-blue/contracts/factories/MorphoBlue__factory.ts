@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { MorphoBlue, MorphoBlueInterface } from "../MorphoBlue";
+import type { MorphoBlue, MorphoBlueInterface } from "../MorphoBlue.js";
 
 const _abi = [
   {

@@ -1,4 +1,4 @@
-import { BigDecimal } from './BigDecimal'
+import { BigDecimal } from './BigDecimal.js'
 
 describe('BigDecimal', () => {
   describe('constructor & toString', () => {

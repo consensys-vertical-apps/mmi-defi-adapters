@@ -1,13 +1,13 @@
 import {
   UniswapV2PoolForkAdapter,
-  UniswapV2PoolForkPositionStrategy,
-} from '../../../../core/adapters/UniswapV2PoolForkAdapter'
-import { Chain } from '../../../../core/constants/chains'
+  type UniswapV2PoolForkPositionStrategy,
+} from '../../../../core/adapters/UniswapV2PoolForkAdapter.js'
+import { Chain } from '../../../../core/constants/chains.js'
 import {
-  AdapterSettings,
+  type AdapterSettings,
   PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
 
 export class LynexClassicAdapter extends UniswapV2PoolForkAdapter {
   productId = 'classic'

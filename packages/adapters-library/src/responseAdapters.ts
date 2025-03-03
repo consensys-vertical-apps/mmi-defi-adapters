@@ -1,15 +1,17 @@
 import { formatUnits } from 'ethers'
-import { priceAdapterConfig } from './adapters/prices-v2/products/usd/priceV2Config'
-import { USD } from './adapters/prices-v2/products/usd/pricesV2UsdAdapter'
-import { Chain } from './core/constants/chains'
-import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
+import { priceAdapterConfig } from './adapters/prices-v2/products/usd/priceV2Config.js'
+import { USD } from './adapters/prices-v2/products/usd/pricesV2UsdAdapter.js'
+import type { Chain } from './core/constants/chains.js'
+import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl.js'
 import {
-  TokenBalanceWithUnderlyings,
+  type TokenBalanceWithUnderlyings,
   TokenType,
-  Underlying,
-  UnwrapExchangeRate,
-} from './types/adapter'
-import { DisplayPosition, DisplayUnwrapExchangeRate } from './types/response'
+  type UnwrapExchangeRate,
+} from './types/adapter.js'
+import type {
+  DisplayPosition,
+  DisplayUnwrapExchangeRate,
+} from './types/response.js'
 
 export function enrichPositionBalance<
   PositionBalance extends TokenBalanceWithUnderlyings & {

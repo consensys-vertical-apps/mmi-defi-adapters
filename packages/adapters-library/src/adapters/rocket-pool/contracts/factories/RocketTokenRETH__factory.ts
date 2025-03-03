@@ -13,11 +13,11 @@ import type {
   ContractDeployTransaction,
   ContractRunner,
 } from "ethers";
-import type { NonPayableOverrides } from "../common";
+import type { NonPayableOverrides } from "../common.js";
 import type {
   RocketTokenRETH,
   RocketTokenRETHInterface,
-} from "../RocketTokenRETH";
+} from "../RocketTokenRETH.js";
 
 const _abi = [
   {

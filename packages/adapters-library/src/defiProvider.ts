@@ -1,41 +1,48 @@
 import { PublicKey } from '@solana/web3.js'
-import Database from 'better-sqlite3'
+import type Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
 import {
-  IMetadataProvider,
+  type IMetadataProvider,
   buildSqliteMetadataProviders,
-} from './SQLiteMetadataProvider'
-import { buildVoidMetadataProviders } from './VoidMetadataProvider'
-import { Protocol } from './adapters/protocols'
-import { supportedProtocols } from './adapters/supportedProtocols'
-import { Config, IConfig } from './config'
-import { AdaptersController } from './core/adaptersController'
-import { Chain, ChainIdToChainNameMap, EvmChain } from './core/constants/chains'
-import { ChecksumAddress } from './core/decorators/checksumAddress'
-import { ChainProvider } from './core/provider/ChainProvider'
-import { filterMapAsync } from './core/utils/filters'
-import { logger } from './core/utils/logger'
-import { propagatePrice } from './core/utils/propagatePrice'
-import { unwrap } from './core/utils/unwrap'
-import { count } from './metricsCount'
+} from './SQLiteMetadataProvider.js'
+import { buildVoidMetadataProviders } from './VoidMetadataProvider.js'
+import type { Protocol } from './adapters/protocols.js'
+import { supportedProtocols } from './adapters/supportedProtocols.js'
+import { Config, type IConfig } from './config.js'
+import { AdaptersController } from './core/adaptersController.js'
+import {
+  Chain,
+  ChainIdToChainNameMap,
+  EvmChain,
+} from './core/constants/chains.js'
+import { ChecksumAddress } from './core/decorators/checksumAddress.js'
+import { ChainProvider } from './core/provider/ChainProvider.js'
+import { filterMapAsync } from './core/utils/filters.js'
+import { logger } from './core/utils/logger.js'
+import { propagatePrice } from './core/utils/propagatePrice.js'
+import { unwrap } from './core/utils/unwrap.js'
+import { count } from './metricsCount.js'
 import {
   enrichPositionBalance,
   enrichUnwrappedTokenExchangeRates,
-} from './responseAdapters'
-import { PoolFilter, buildProviderPoolFilter } from './tokenFilter'
-import { IProtocolAdapter, ProtocolToken } from './types/IProtocolAdapter'
-import { DeepPartial } from './types/deepPartial'
-import {
+} from './responseAdapters.js'
+import { type PoolFilter, buildProviderPoolFilter } from './tokenFilter.js'
+import type {
+  IProtocolAdapter,
+  ProtocolToken,
+} from './types/IProtocolAdapter.js'
+import type { DeepPartial } from './types/deepPartial.js'
+import type {
   AdapterErrorResponse,
   AdapterResponse,
   DefiPositionResponse,
   PricePerShareResponse,
-} from './types/response'
+} from './types/response.js'
 import {
-  IUnwrapPriceCache,
-  IUnwrapPriceCacheProvider,
+  type IUnwrapPriceCache,
+  type IUnwrapPriceCacheProvider,
   UnwrapPriceCache,
-} from './unwrapCache'
+} from './unwrapCache.js'
 
 export class DefiProvider {
   private parsedConfig

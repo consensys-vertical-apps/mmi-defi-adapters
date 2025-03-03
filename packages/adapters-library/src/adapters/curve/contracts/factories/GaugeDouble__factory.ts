@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { GaugeDouble, GaugeDoubleInterface } from "../GaugeDouble";
+import type { GaugeDouble, GaugeDoubleInterface } from "../GaugeDouble.js";
 
 const _abi = [
   {

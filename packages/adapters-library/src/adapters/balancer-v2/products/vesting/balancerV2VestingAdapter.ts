@@ -1,14 +1,14 @@
-import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
+import { VotingEscrow } from '../../../../core/adapters/votingEscrow.js'
 import {
-  AdapterSettings,
-  GetPositionsInput,
+  type AdapterSettings,
+  type GetPositionsInput,
   PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
 import {
   FeeDistributor__factory,
   VotingEscrow__factory,
-} from '../../../stargate/contracts'
+} from '../../../stargate/contracts/index.js'
 
 export class BalancerV2VestingAdapter extends VotingEscrow {
   productId = 'vesting'

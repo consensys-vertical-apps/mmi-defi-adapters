@@ -1,9 +1,9 @@
 import {
-  AdapterSettings,
+  type AdapterSettings,
   PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
-import { MorphoBasePoolAdapter } from '../../common/morphoBasePoolAdapter'
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import { MorphoBasePoolAdapter } from '../../common/morphoBasePoolAdapter.js'
 
 export class MorphoAaveV3OptimizerSupplyAdapter extends MorphoBasePoolAdapter {
   productId = 'optimizer-supply'

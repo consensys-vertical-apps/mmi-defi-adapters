@@ -1,10 +1,9 @@
-import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
+import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter.js'
 import {
-  AdapterSettings,
   PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
-import { contractAddresses } from '../../common/contractAddresses'
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import { contractAddresses } from '../../common/contractAddresses.js'
 
 export class FluxSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
   // Expected blocks per year

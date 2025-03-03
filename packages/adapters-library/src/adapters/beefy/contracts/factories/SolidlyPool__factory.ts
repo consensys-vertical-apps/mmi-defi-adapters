@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { SolidlyPool, SolidlyPoolInterface } from "../SolidlyPool";
+import type { SolidlyPool, SolidlyPoolInterface } from "../SolidlyPool.js";
 
 const _abi = [
   {

@@ -1,8 +1,8 @@
-import { DisplayPosition } from '../../types/response'
+import type { DisplayPosition } from '../../types/response.js'
 
-import { TokenType, Underlying } from '../../types/adapter'
-import { Chain } from '../constants/chains'
-import { propagatePrice } from './propagatePrice'
+import { TokenType, type Underlying } from '../../types/adapter.js'
+import { Chain } from '../constants/chains.js'
+import { propagatePrice } from './propagatePrice.js'
 
 describe('calculateTokenPrice', () => {
   const chainId = Chain.Ethereum

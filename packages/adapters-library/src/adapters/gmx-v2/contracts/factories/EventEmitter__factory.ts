@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { EventEmitter, EventEmitterInterface } from "../EventEmitter";
+import type { EventEmitter, EventEmitterInterface } from "../EventEmitter.js";
 
 const _abi = [
   {

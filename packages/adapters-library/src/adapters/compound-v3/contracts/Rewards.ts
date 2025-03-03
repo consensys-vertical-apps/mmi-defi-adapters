@@ -21,7 +21,7 @@ import type {
   TypedLogDescription,
   TypedListener,
   TypedContractMethod,
-} from "./common";
+} from "./common.js";
 
 export declare namespace CometRewards {
   export type RewardOwedStruct = { token: AddressLike; owed: BigNumberish };

@@ -19,7 +19,7 @@ import type {
   TypedEventLog,
   TypedListener,
   TypedContractMethod,
-} from "./common";
+} from "./common.js";
 
 export declare namespace Price {
   export type PropsStruct = { min: BigNumberish; max: BigNumberish };

@@ -1,10 +1,7 @@
 import path from 'node:path'
 import {
   Chain,
-  ChainName,
-  DefiProvider,
   EvmChain,
-  chainFilter,
   multiChainFilter,
 } from '@metamask-institutional/defi-adapters'
 import { runner } from '@metamask-institutional/workers'

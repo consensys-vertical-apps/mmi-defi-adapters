@@ -1,13 +1,12 @@
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
-import { ProtocolToken } from '../../../../types/IProtocolAdapter'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb.js'
+import type { ProtocolToken } from '../../../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
+  type AdapterSettings,
   PositionType,
-  ProtocolDetails,
-} from '../../../../types/adapter'
-import { ProtocolDataProvider } from '../../contracts'
-
-import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter'
+  type ProtocolDetails,
+} from '../../../../types/adapter.js'
+import type { ProtocolDataProvider } from '../../contracts/index.js'
+import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter.js'
 
 export class SparkV1SpTokenAdapter extends SparkV1BasePoolAdapter {
   productId = 'sp-token'

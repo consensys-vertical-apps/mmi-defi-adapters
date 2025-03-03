@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   BalancerPoolDataQueries,
   BalancerPoolDataQueriesInterface,
-} from "../BalancerPoolDataQueries";
+} from "../BalancerPoolDataQueries.js";
 
 const _abi = [
   {

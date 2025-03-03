@@ -18,9 +18,9 @@ import type {
   TypedEventLog,
   TypedListener,
   TypedContractMethod,
-} from "./common";
+} from "./common.js";
 
-export declare namespace AaveProtocolDataProvider {
+export declare namespace IPoolDataProvider {
   export type TokenDataStruct = { symbol: string; tokenAddress: AddressLike };
 
   export type TokenDataStructOutput = [symbol: string, tokenAddress: string] & {
@@ -33,17 +33,33 @@ export interface ProtocolDataProviderInterface extends Interface {
   getFunction(
     nameOrSignature:
       | "ADDRESSES_PROVIDER"
+      | "getATokenTotalSupply"
       | "getAllATokens"
       | "getAllReservesTokens"
+      | "getDebtCeiling"
+      | "getDebtCeilingDecimals"
+      | "getFlashLoanEnabled"
+      | "getInterestRateStrategyAddress"
+      | "getLiquidationProtocolFee"
+      | "getPaused"
+      | "getReserveCaps"
       | "getReserveConfigurationData"
       | "getReserveData"
+      | "getReserveEModeCategory"
       | "getReserveTokensAddresses"
+      | "getSiloedBorrowing"
+      | "getTotalDebt"
+      | "getUnbackedMintCap"
       | "getUserReserveData"
   ): FunctionFragment;
 
   encodeFunctionData(
     functionFragment: "ADDRESSES_PROVIDER",
     values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getATokenTotalSupply",
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "getAllATokens",
@@ -54,6 +70,34 @@ export interface ProtocolDataProviderInterface extends Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
+    functionFragment: "getDebtCeiling",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getDebtCeilingDecimals",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getFlashLoanEnabled",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getInterestRateStrategyAddress",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getLiquidationProtocolFee",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getPaused",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getReserveCaps",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
     functionFragment: "getReserveConfigurationData",
     values: [AddressLike]
   ): string;
@@ -62,7 +106,23 @@ export interface ProtocolDataProviderInterface extends Interface {
     values: [AddressLike]
   ): string;
   encodeFunctionData(
+    functionFragment: "getReserveEModeCategory",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
     functionFragment: "getReserveTokensAddresses",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getSiloedBorrowing",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getTotalDebt",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getUnbackedMintCap",
     values: [AddressLike]
   ): string;
   encodeFunctionData(
@@ -75,11 +135,40 @@ export interface ProtocolDataProviderInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "getATokenTotalSupply",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "getAllATokens",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
     functionFragment: "getAllReservesTokens",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getDebtCeiling",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getDebtCeilingDecimals",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getFlashLoanEnabled",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getInterestRateStrategyAddress",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getLiquidationProtocolFee",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "getPaused", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "getReserveCaps",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -91,7 +180,23 @@ export interface ProtocolDataProviderInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "getReserveEModeCategory",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "getReserveTokensAddresses",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getSiloedBorrowing",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getTotalDebt",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getUnbackedMintCap",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -145,15 +250,51 @@ export interface ProtocolDataProvider extends BaseContract {
 
   ADDRESSES_PROVIDER: TypedContractMethod<[], [string], "view">;
 
+  getATokenTotalSupply: TypedContractMethod<
+    [asset: AddressLike],
+    [bigint],
+    "view"
+  >;
+
   getAllATokens: TypedContractMethod<
     [],
-    [AaveProtocolDataProvider.TokenDataStructOutput[]],
+    [IPoolDataProvider.TokenDataStructOutput[]],
     "view"
   >;
 
   getAllReservesTokens: TypedContractMethod<
     [],
-    [AaveProtocolDataProvider.TokenDataStructOutput[]],
+    [IPoolDataProvider.TokenDataStructOutput[]],
+    "view"
+  >;
+
+  getDebtCeiling: TypedContractMethod<[asset: AddressLike], [bigint], "view">;
+
+  getDebtCeilingDecimals: TypedContractMethod<[], [bigint], "view">;
+
+  getFlashLoanEnabled: TypedContractMethod<
+    [asset: AddressLike],
+    [boolean],
+    "view"
+  >;
+
+  getInterestRateStrategyAddress: TypedContractMethod<
+    [asset: AddressLike],
+    [string],
+    "view"
+  >;
+
+  getLiquidationProtocolFee: TypedContractMethod<
+    [asset: AddressLike],
+    [bigint],
+    "view"
+  >;
+
+  getPaused: TypedContractMethod<[asset: AddressLike], [boolean], "view">;
+
+  getReserveCaps: TypedContractMethod<
+    [asset: AddressLike],
+    [[bigint, bigint] & { borrowCap: bigint; supplyCap: bigint }],
     "view"
   >;
 
@@ -200,9 +341,13 @@ export interface ProtocolDataProvider extends BaseContract {
         bigint,
         bigint,
         bigint,
+        bigint,
+        bigint,
         bigint
       ] & {
-        availableLiquidity: bigint;
+        unbacked: bigint;
+        accruedToTreasuryScaled: bigint;
+        totalAToken: bigint;
         totalStableDebt: bigint;
         totalVariableDebt: bigint;
         liquidityRate: bigint;
@@ -217,6 +362,12 @@ export interface ProtocolDataProvider extends BaseContract {
     "view"
   >;
 
+  getReserveEModeCategory: TypedContractMethod<
+    [asset: AddressLike],
+    [bigint],
+    "view"
+  >;
+
   getReserveTokensAddresses: TypedContractMethod<
     [asset: AddressLike],
     [
@@ -226,6 +377,20 @@ export interface ProtocolDataProvider extends BaseContract {
         variableDebtTokenAddress: string;
       }
     ],
+    "view"
+  >;
+
+  getSiloedBorrowing: TypedContractMethod<
+    [asset: AddressLike],
+    [boolean],
+    "view"
+  >;
+
+  getTotalDebt: TypedContractMethod<[asset: AddressLike], [bigint], "view">;
+
+  getUnbackedMintCap: TypedContractMethod<
+    [asset: AddressLike],
+    [bigint],
     "view"
   >;
 
@@ -265,17 +430,45 @@ export interface ProtocolDataProvider extends BaseContract {
     nameOrSignature: "ADDRESSES_PROVIDER"
   ): TypedContractMethod<[], [string], "view">;
   getFunction(
+    nameOrSignature: "getATokenTotalSupply"
+  ): TypedContractMethod<[asset: AddressLike], [bigint], "view">;
+  getFunction(
     nameOrSignature: "getAllATokens"
   ): TypedContractMethod<
     [],
-    [AaveProtocolDataProvider.TokenDataStructOutput[]],
+    [IPoolDataProvider.TokenDataStructOutput[]],
     "view"
   >;
   getFunction(
     nameOrSignature: "getAllReservesTokens"
   ): TypedContractMethod<
     [],
-    [AaveProtocolDataProvider.TokenDataStructOutput[]],
+    [IPoolDataProvider.TokenDataStructOutput[]],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "getDebtCeiling"
+  ): TypedContractMethod<[asset: AddressLike], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "getDebtCeilingDecimals"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "getFlashLoanEnabled"
+  ): TypedContractMethod<[asset: AddressLike], [boolean], "view">;
+  getFunction(
+    nameOrSignature: "getInterestRateStrategyAddress"
+  ): TypedContractMethod<[asset: AddressLike], [string], "view">;
+  getFunction(
+    nameOrSignature: "getLiquidationProtocolFee"
+  ): TypedContractMethod<[asset: AddressLike], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "getPaused"
+  ): TypedContractMethod<[asset: AddressLike], [boolean], "view">;
+  getFunction(
+    nameOrSignature: "getReserveCaps"
+  ): TypedContractMethod<
+    [asset: AddressLike],
+    [[bigint, bigint] & { borrowCap: bigint; supplyCap: bigint }],
     "view"
   >;
   getFunction(
@@ -324,9 +517,13 @@ export interface ProtocolDataProvider extends BaseContract {
         bigint,
         bigint,
         bigint,
+        bigint,
+        bigint,
         bigint
       ] & {
-        availableLiquidity: bigint;
+        unbacked: bigint;
+        accruedToTreasuryScaled: bigint;
+        totalAToken: bigint;
         totalStableDebt: bigint;
         totalVariableDebt: bigint;
         liquidityRate: bigint;
@@ -341,6 +538,9 @@ export interface ProtocolDataProvider extends BaseContract {
     "view"
   >;
   getFunction(
+    nameOrSignature: "getReserveEModeCategory"
+  ): TypedContractMethod<[asset: AddressLike], [bigint], "view">;
+  getFunction(
     nameOrSignature: "getReserveTokensAddresses"
   ): TypedContractMethod<
     [asset: AddressLike],
@@ -353,6 +553,15 @@ export interface ProtocolDataProvider extends BaseContract {
     ],
     "view"
   >;
+  getFunction(
+    nameOrSignature: "getSiloedBorrowing"
+  ): TypedContractMethod<[asset: AddressLike], [boolean], "view">;
+  getFunction(
+    nameOrSignature: "getTotalDebt"
+  ): TypedContractMethod<[asset: AddressLike], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "getUnbackedMintCap"
+  ): TypedContractMethod<[asset: AddressLike], [bigint], "view">;
   getFunction(
     nameOrSignature: "getUserReserveData"
   ): TypedContractMethod<

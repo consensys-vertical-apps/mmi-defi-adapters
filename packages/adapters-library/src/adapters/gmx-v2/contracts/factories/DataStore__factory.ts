@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { DataStore, DataStoreInterface } from "../DataStore";
+import type { DataStore, DataStoreInterface } from "../DataStore.js";
 
 const _abi = [
   {

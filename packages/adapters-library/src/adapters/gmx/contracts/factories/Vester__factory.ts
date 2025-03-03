@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Vester, VesterInterface } from "../Vester";
+import type { Vester, VesterInterface } from "../Vester.js";
 
 const _abi = [
   {

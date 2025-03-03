@@ -6,7 +6,7 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   LiquidityProviderToken,
   LiquidityProviderTokenInterface,
-} from "../LiquidityProviderToken";
+} from "../LiquidityProviderToken.js";
 
 const _abi = [
   {

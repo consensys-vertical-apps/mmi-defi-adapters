@@ -1,31 +1,29 @@
-import { Connection } from '@solana/web3.js'
-import { chain } from 'lodash'
-import { IMetadataProvider } from '../SQLiteMetadataProvider'
-import { PricesSolanaUsdAdapter } from '../adapters/prices-solana/products/usd/pricesSolanaUsdAdapter'
+import type { Connection } from '@solana/web3.js'
+import type { IMetadataProvider } from '../SQLiteMetadataProvider.js'
+import { PricesSolanaUsdAdapter } from '../adapters/prices-solana/products/usd/pricesSolanaUsdAdapter.js'
 import {
-  IPricesAdapter,
+  type IPricesAdapter,
   PricesV2UsdAdapter,
-} from '../adapters/prices-v2/products/usd/pricesV2UsdAdapter'
-import { Protocol } from '../adapters/protocols'
-import {
+} from '../adapters/prices-v2/products/usd/pricesV2UsdAdapter.js'
+import type { Protocol } from '../adapters/protocols.js'
+import type {
   EvmChainAdapters,
   SolanaChainAdapters,
-} from '../adapters/supportedProtocols'
-import { Helpers, SolanaHelpers } from '../core/helpers'
-import { IProtocolAdapter } from '../types/IProtocolAdapter'
+} from '../adapters/supportedProtocols.js'
+import { Helpers, SolanaHelpers } from '../core/helpers.js'
+import type { IProtocolAdapter } from '../types/IProtocolAdapter.js'
 import {
   PositionType,
-  ProtocolAdapterParams,
-  SolanaProtocolAdapterParams,
-} from '../types/adapter'
-import { Erc20Metadata } from '../types/erc20Metadata'
-import { Support } from '../types/response'
+  type ProtocolAdapterParams,
+  type SolanaProtocolAdapterParams,
+} from '../types/adapter.js'
+import type { Erc20Metadata } from '../types/erc20Metadata.js'
+import type { Support } from '../types/response.js'
 
-import { Chain, EvmChain } from './constants/chains'
-import { AdapterMissingError, NotImplementedError } from './errors/errors'
-import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
-import { pascalCase } from './utils/caseConversion'
-import { logger } from './utils/logger'
+import { Chain, EvmChain } from './constants/chains.js'
+import { AdapterMissingError, NotImplementedError } from './errors/errors.js'
+import type { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider.js'
+import { logger } from './utils/logger.js'
 
 type ISupportedProtocols = Partial<
   Record<Protocol, EvmChainAdapters | SolanaChainAdapters>

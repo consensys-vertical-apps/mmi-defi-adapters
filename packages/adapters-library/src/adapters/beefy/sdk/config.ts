@@ -1,22 +1,22 @@
-import { Chain } from '../../../core/constants/chains'
-import {
+import { Chain } from '../../../core/constants/chains.js'
+import type {
   ApiPlatformId,
   ApiStrategyTypeId,
   ProtocolUnwrapType,
   VaultBalanceBreakdownFetcher,
-} from './types'
-import { fetchAaveLendBalanceBreakdown } from './unwrap/aave_lend'
+} from './types.js'
+import { fetchAaveLendBalanceBreakdown } from './unwrap/aave_lend.js'
 import {
   fetchBalancerAuraBalanceLPBreakdown,
   fetchBalancerAuraBalanceMultiLPBreakdown,
   fetchBalancerAuraBalanceMultiLPLockedBreakdown,
-} from './unwrap/balancer_aura'
-import { fetchBeefyClmBalanceBreakdown } from './unwrap/beefy_clm'
-import { fetchCurveBalanceBreakdown } from './unwrap/curve'
-import { fetchGammaBalanceBreakdown } from './unwrap/gamma'
-import { fetchIchiBalanceBreakdown } from './unwrap/ichi'
-import { fetchPendleEquilibriaBalanceBreakdown } from './unwrap/pendle_equilibria'
-import { fetchSolidlyBalanceBreakdown } from './unwrap/solidly'
+} from './unwrap/balancer_aura.js'
+import { fetchBeefyClmBalanceBreakdown } from './unwrap/beefy_clm.js'
+import { fetchCurveBalanceBreakdown } from './unwrap/curve.js'
+import { fetchGammaBalanceBreakdown } from './unwrap/gamma.js'
+import { fetchIchiBalanceBreakdown } from './unwrap/ichi.js'
+import { fetchPendleEquilibriaBalanceBreakdown } from './unwrap/pendle_equilibria.js'
+import { fetchSolidlyBalanceBreakdown } from './unwrap/solidly.js'
 
 export const chainIdMap: Partial<Record<Chain, string>> = {
   [Chain.Arbitrum]: 'arbitrum',

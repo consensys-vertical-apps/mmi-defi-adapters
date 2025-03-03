@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { NavOracle, NavOracleInterface } from "../NavOracle";
+import type { NavOracle, NavOracleInterface } from "../NavOracle.js";
 
 const _abi = [
   {

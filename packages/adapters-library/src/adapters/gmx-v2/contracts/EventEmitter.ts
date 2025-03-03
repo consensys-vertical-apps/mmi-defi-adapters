@@ -22,7 +22,7 @@ import type {
   TypedLogDescription,
   TypedListener,
   TypedContractMethod,
-} from "./common";
+} from "./common.js";
 
 export declare namespace EventUtils {
   export type AddressKeyValueStruct = { key: string; value: AddressLike };

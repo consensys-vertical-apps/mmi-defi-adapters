@@ -14,8 +14,8 @@ import type {
   ContractDeployTransaction,
   ContractRunner,
 } from "ethers";
-import type { NonPayableOverrides } from "../common";
-import type { Pool, PoolInterface, WeightedPool } from "../Pool";
+import type { NonPayableOverrides } from "../common.js";
+import type { Pool, PoolInterface, WeightedPool } from "../Pool.js";
 
 const _abi = [
   {

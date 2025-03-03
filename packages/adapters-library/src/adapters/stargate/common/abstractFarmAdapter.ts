@@ -1,37 +1,36 @@
-import { Erc20__factory } from '../../../contracts'
-import { AdaptersController } from '../../../core/adaptersController'
-import { Chain } from '../../../core/constants/chains'
-import { CacheToDb } from '../../../core/decorators/cacheToDb'
-import { NotImplementedError } from '../../../core/errors/errors'
-import { Helpers } from '../../../core/helpers'
-import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../../../core/utils/filters'
-import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
-import {
+import type { AdaptersController } from '../../../core/adaptersController.js'
+import type { Chain } from '../../../core/constants/chains.js'
+import { CacheToDb } from '../../../core/decorators/cacheToDb.js'
+import { NotImplementedError } from '../../../core/errors/errors.js'
+import type { Helpers } from '../../../core/helpers.js'
+import type { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider.js'
+import { filterMapAsync } from '../../../core/utils/filters.js'
+import { getTokenMetadata } from '../../../core/utils/getTokenMetadata.js'
+import type {
   IProtocolAdapter,
   ProtocolToken,
-} from '../../../types/IProtocolAdapter'
+} from '../../../types/IProtocolAdapter.js'
 import {
-  AdapterSettings,
-  GetPositionsInput,
-  GetRewardPositionsInput,
+  type AdapterSettings,
+  type GetPositionsInput,
+  type GetRewardPositionsInput,
   PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-  ProtocolPosition,
+  type ProtocolAdapterParams,
+  type ProtocolDetails,
+  type ProtocolPosition,
   TokenType,
-  UnderlyingReward,
-  UnwrapExchangeRate,
-  UnwrapInput,
-} from '../../../types/adapter'
-import { Protocol } from '../../protocols'
+  type UnderlyingReward,
+  type UnwrapExchangeRate,
+  type UnwrapInput,
+} from '../../../types/adapter.js'
+import type { Protocol } from '../../protocols.js'
 import {
-  LpStaking,
-  LpStakingTime,
+  type LpStaking,
+  type LpStakingTime,
   LpStakingTime__factory,
   LpStaking__factory,
-} from '../contracts'
-import { AdditionalMetadata } from '../products/farm/stargateFarmAdapter'
+} from '../contracts/index.js'
+import type { AdditionalMetadata } from '../products/farm/stargateFarmAdapter.js'
 
 export abstract class AbstractStargateFarmAdapter implements IProtocolAdapter {
   productId = 'farm'

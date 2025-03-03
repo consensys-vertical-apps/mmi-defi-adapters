@@ -1,26 +1,24 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import {
-  Chain,
+  type AdditionalMetadataWithReservedFields,
+  type Chain,
   ChainName,
   type DefiProvider,
-  Protocol,
+  type Erc20ExtendedMetadata,
+  type Erc20Metadata,
+  type IProtocolAdapter,
+  type Protocol,
+  type ProtocolToken,
   filterMapSync,
   getInvalidAddresses,
   multiChainFilter,
   multiProtocolFilter,
+  supportedProtocols,
 } from '@metamask-institutional/defi-adapters'
-import { supportedProtocols } from '@metamask-institutional/defi-adapters/dist/adapters/supportedProtocols.js'
-import type {
-  AdditionalMetadataWithReservedFields,
-  Erc20ExtendedMetadata,
-  IProtocolAdapter,
-  ProtocolToken,
-} from '@metamask-institutional/defi-adapters/dist/types/IProtocolAdapter.js'
-import type { Erc20Metadata } from '@metamask-institutional/defi-adapters/dist/types/erc20Metadata.js'
 import Database from 'better-sqlite3'
 import chalk from 'chalk'
-import { Command } from 'commander'
+import type { Command } from 'commander'
 import { ZeroAddress } from 'ethers'
 
 export function buildMetadataCommand(

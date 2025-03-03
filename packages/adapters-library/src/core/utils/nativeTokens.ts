@@ -1,7 +1,7 @@
 import { getAddress } from 'ethers'
-import { E_ADDRESS } from '../constants/E_ADDRESS'
-import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
-import { Chain } from '../constants/chains'
+import { E_ADDRESS } from '../constants/E_ADDRESS.js'
+import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS.js'
+import { Chain } from '../constants/chains.js'
 
 const ETH = {
   symbol: 'ETH',
