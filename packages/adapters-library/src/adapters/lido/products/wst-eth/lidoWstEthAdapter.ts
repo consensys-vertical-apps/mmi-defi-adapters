@@ -31,6 +31,9 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
+      metadata: {
+        groupPositions: true,
+      },
     }
   }
 

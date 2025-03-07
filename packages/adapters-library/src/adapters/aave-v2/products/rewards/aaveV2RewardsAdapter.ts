@@ -76,6 +76,9 @@ export class AaveV2RewardsAdapter implements IProtocolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
+      metadata: {
+        groupPositions: true,
+      },
     }
   }
 

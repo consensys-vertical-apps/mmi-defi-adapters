@@ -35,6 +35,9 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
             decimals: 18,
           },
         ],
+        metadata: {
+          groupPositions: true,
+        },
       },
     ]
   }

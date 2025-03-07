@@ -17,6 +17,9 @@ export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
+      metadata: {
+        groupPositions: true,
+      },
     }
   }
 

@@ -17,6 +17,9 @@ export class AaveV3StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
+      metadata: {
+        groupPositions: true,
+      },
     }
   }
 
