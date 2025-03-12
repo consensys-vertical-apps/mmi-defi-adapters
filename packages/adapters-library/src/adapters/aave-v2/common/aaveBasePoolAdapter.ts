@@ -24,6 +24,7 @@ import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
 } from '../contracts'
+import { Erc20__factory } from '../../../contracts'
 
 export const protocolDataProviderContractAddresses: Partial<
   Record<
@@ -215,28 +216,33 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
           return await filterMapAsync(
             reserveTokens,
             async ({ tokenAddress }) => {
-              const reserveTokenAddresses =
+              const [reserveTokenAddresses, reserveData] = await Promise.all([
                 await protocolDataProviderContract.getReserveTokensAddresses(
                   tokenAddress,
-                )
+                ),
+                protocolDataProviderContract.getReserveData(tokenAddress),
+              ])
 
-              const [protocolToken, underlyingToken] = await Promise.all([
+              const [protocolToken, underlyingToken, tvl, rate] = await Promise.all([
                 this.helpers.getTokenMetadata(
                   this.getReserveTokenAddress(reserveTokenAddresses),
                 ),
                 this.helpers.getTokenMetadata(tokenAddress),
+                this.getReserveTVL(reserveTokenAddresses),
+                this.getReserveTokenRate(reserveData),
               ])
 
               if (protocolToken.address === ZERO_ADDRESS) {
                 return undefined
               }
-
               return {
                 ...protocolToken,
                 name: `${protocolToken.name}${
                   marketLabel ? ` (${marketLabel})` : ''
                 }`,
                 underlyingTokens: [underlyingToken],
+                tvl: tvl ? (tvl / BigInt(10 ** protocolToken.decimals)).toString() : "0",
+                rate: rate ? this.convertRayRateToPercentage(rate) : "0",
               }
             },
           )
@@ -263,6 +269,22 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
     return underlyingTokens
   }
 
+  protected async getReserveTVL(
+    reserveTokenAddresses: Awaited<
+      ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
+    >,
+  ): Promise<bigint> {
+    const aTokenAddress = reserveTokenAddresses.aTokenAddress;
+
+    const aTokenContract = Erc20__factory.connect(
+      aTokenAddress,
+      this.provider,
+    )
+
+    const totalSupply = await aTokenContract.totalSupply();
+    return totalSupply;
+  }
+
   protected abstract getReserveTokenAddress(
     reserveTokenAddresses: Awaited<
       ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
@@ -272,4 +294,9 @@ export abstract class AaveBasePoolAdapter implements IProtocolAdapter {
   protected abstract getReserveTokenRate(
     reserveData: Awaited<ReturnType<ProtocolDataProvider['getReserveData']>>,
   ): bigint
+
+  // AAVE stores rates in RAYs (10^27)
+  private convertRayRateToPercentage(rate: bigint): string {
+    return (Number((rate * 100n)  / BigInt(10 ** 25)) / 100).toString();
+  }
 }
