@@ -11,6 +11,9 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "wst-eth",
+      "metadata": {
+        "groupPositions": true
+      },
       "chainName": "ethereum",
       "success": true,
       "tokens": [
