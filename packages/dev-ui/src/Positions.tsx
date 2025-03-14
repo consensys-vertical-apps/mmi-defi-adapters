@@ -185,24 +185,23 @@ function PositionsDisplay({
 
   if (error) return `An error has occurred: ${error.message}`
 
-  if (data.length === 0) return 'No positions found'
+  const positions = data.data
 
-  const successfulPositions = data.filter(
+  if (positions.length === 0) return 'No positions found'
+
+  const successfulPositions = positions.filter(
     (position): position is DefiPositionResponse & { success: true } =>
       position.success,
   )
 
-  const groupedPositions = successfulPositions.reduce(
-    (acc, position) => {
-      const key = `${position.protocolId}#${position.chainId}`
-      if (!acc[key]) {
-        acc[key] = []
-      }
-      acc[key].push(position)
-      return acc
-    },
-    {} as Record<string, (DefiPositionResponse & { success: true })[]>,
-  )
+  const groupedPositions = successfulPositions.reduce((acc, position) => {
+    const key = `${position.protocolId}#${position.chainId}`
+    if (!acc[key]) {
+      acc[key] = []
+    }
+    acc[key].push(position)
+    return acc
+  }, {} as Record<string, (DefiPositionResponse & { success: true })[]>)
 
   return (
     <Tabs defaultValue="display" className="w-full">

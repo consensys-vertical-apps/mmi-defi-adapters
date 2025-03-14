@@ -1,9 +1,13 @@
 import type { DefiProvider } from '@metamask-institutional/defi-adapters'
 
+type ApiResponse<T> = Promise<{
+  data: Awaited<T>
+}>
+
 export const provider = {
   getSupport: async (
     input?: Parameters<DefiProvider['getSupport']>[0],
-  ): Promise<ReturnType<DefiProvider['getSupport']>> => {
+  ): ApiResponse<ReturnType<DefiProvider['getSupport']>> => {
     const urlParams = Object.entries(input ?? {}).reduce(
       (acc, [key, value]) => {
         if (value) {
@@ -28,7 +32,7 @@ export const provider = {
   },
   getPositions: async (
     input: Parameters<DefiProvider['getPositions']>[0],
-  ): Promise<ReturnType<DefiProvider['getPositions']>> => {
+  ): ApiResponse<ReturnType<DefiProvider['getPositions']>> => {
     const { userAddress, ...searchParams } = input
     const urlParams = Object.entries(searchParams).reduce(
       (acc, [key, value]) => {
