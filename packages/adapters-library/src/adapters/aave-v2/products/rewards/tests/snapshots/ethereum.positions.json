@@ -12,6 +12,9 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "rewards",
+      "metadata": {
+        "groupPositions": true
+      },
       "chainName": "ethereum",
       "success": true,
       "tokens": [

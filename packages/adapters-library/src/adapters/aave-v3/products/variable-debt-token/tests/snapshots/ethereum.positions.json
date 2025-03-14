@@ -12,6 +12,9 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "variable-debt-token",
+      "metadata": {
+        "groupPositions": true
+      },
       "chainName": "ethereum",
       "success": true,
       "tokens": [
