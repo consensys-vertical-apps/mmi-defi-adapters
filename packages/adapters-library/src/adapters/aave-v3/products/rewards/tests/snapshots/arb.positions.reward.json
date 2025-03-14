@@ -12,6 +12,9 @@
       "positionType": "supply",
       "chainId": 42161,
       "productId": "rewards",
+      "metadata": {
+        "groupPositions": true
+      },
       "chainName": "arb",
       "success": true,
       "tokens": [

@@ -141,6 +141,16 @@ export type ProtocolDetails = {
    * Unique protocol-product name
    */
   productId: string
+
+  /**
+   * Metadata for the adapter that can be used by clients
+   */
+  metadata?: {
+    /**
+     * Whether positions of the same type should be grouped together
+     */
+    groupPositions?: boolean
+  }
 }
 
 export interface GetPositionsInput {

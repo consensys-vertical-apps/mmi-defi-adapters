@@ -11,7 +11,7 @@ function App() {
   const { isPending, error, data } = useQuery({
     queryKey: ['support'],
     queryFn: async () => {
-      const support = await provider.getSupport()
+      const { data: support } = await provider.getSupport()
 
       const protocolOptions = Object.keys(support)
         .sort()

@@ -34,7 +34,9 @@ app.get('/positions/:userAddress', async (context) => {
     }
     const parsedInput = GetPositionsSchema.parse(input)
 
-    return context.json(await defiProvider.getPositions(parsedInput))
+    return context.json({
+      data: await defiProvider.getPositions(parsedInput),
+    })
   } catch (error) {
     if (error instanceof ZodError) {
       return context.json({ error: error.message }, 400)
@@ -49,7 +51,9 @@ app.get('/support', async (context) => {
     const input = context.req.query()
     const parsedInput = GetSupportSchema.parse(input)
 
-    return context.json(await defiProvider.getSupport(parsedInput))
+    return context.json({
+      data: await defiProvider.getSupport(parsedInput),
+    })
   } catch (error) {
     if (error instanceof ZodError) {
       return context.json({ error: error.message }, 400)
