@@ -1,5 +1,4 @@
-import type { Pool, PoolClient } from 'pg'
-import pg from 'pg'
+import type { Pool, PoolClient, PoolConfig } from 'pg'
 import { logger } from './logger.js'
 import { createDbPool } from './postgres-utils.js'
 
@@ -43,16 +42,20 @@ export interface CacheClient {
     }[],
     blockNumber?: number,
   ) => Promise<void>
+
+  printActiveConnections: () => Promise<number>
 }
 
 export async function createPostgresCacheClient(
   dbUrl: string,
   schema: string,
+  poolConfig?: PoolConfig,
 ): Promise<CacheClient> {
   const dbPool = createDbPool({
     dbUrl,
     schema,
     logger,
+    poolConfig,
   })
 
   await dbPool.query(`CREATE SCHEMA IF NOT EXISTS "${schema}"`)
@@ -234,6 +237,14 @@ class PostgresCacheClient implements CacheClient {
         await this.updateLatestBlockProcessed(blockNumber)
       }
     }, lockId)
+  }
+
+  async printActiveConnections() {
+    const res = await this.#dbPool.query(
+      'SELECT COUNT(*) FROM pg_stat_activity',
+    )
+
+    return res.rows[0] ? Number(res.rows[0].count) : 0
   }
 
   /**

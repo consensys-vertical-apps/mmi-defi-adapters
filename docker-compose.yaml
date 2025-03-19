@@ -18,7 +18,10 @@ services:
       - DEFI_ADAPTERS_PROVIDER_AVALANCHE
       - DEFI_ADAPTERS_PROVIDER_LINEA
       - DEFI_ADAPTERS_USE_POSITIONS_CACHE=true
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/defi-adapters
+      - CACHE_DATABASE_URL=postgresql://postgres:postgres@postgres:5432/defi-adapters
+    depends_on:
+      postgres:
+        condition: service_healthy
       
   workers:
     build:

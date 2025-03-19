@@ -4,7 +4,7 @@ import { fetchEvents } from './fetch-events.js'
 import { logger } from './logger.js'
 import type { CacheClient, JobDbEntry } from './postgres-cache-client.js'
 
-const MaxConcurrentBatches = 10
+const MaxConcurrentBatches = 5
 
 const MaxContractsPerCall: Record<EvmChain, number> = {
   [EvmChain.Ethereum]: 10,
@@ -49,6 +49,7 @@ export async function buildHistoricCache(
     logger.info(
       {
         pools: unfinishedPools.length,
+        connections: await cacheClient.printActiveConnections(),
       },
       'Processing unfinished pools',
     )
@@ -80,6 +81,7 @@ export async function buildHistoricCache(
           totalBatches: Math.ceil(poolAddresses.length / batchSize),
           batchSize: contractAddresses.length,
           totalPools: poolAddresses.length,
+          connections: await cacheClient.printActiveConnections(),
         },
         'Fetching logs from pools batch started',
       )
