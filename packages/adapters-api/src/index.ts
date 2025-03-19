@@ -4,20 +4,15 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { ZodError } from 'zod'
 import './bigint-json.js'
-import { buildDbPoolFilter } from '@metamask-institutional/workers'
+import { buildPoolFilter } from './build-pool-filter.js'
 import { logger } from './logger.js'
 import { buildMemoryUnwrapCacheProvider } from './memory-unwrap-price-cache-provider.js'
 import { GetPositionsSchema, GetSupportSchema } from './schemas.js'
 
 const port = 3000
 
-const poolFilter =
-  process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE === 'true'
-    ? buildDbPoolFilter()
-    : undefined
-
 const defiProvider = new DefiProvider({
-  poolFilter,
+  poolFilter: buildPoolFilter(),
   unwrapCacheProvider: buildMemoryUnwrapCacheProvider(),
 })
 

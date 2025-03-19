@@ -1,31 +1,24 @@
 import { type EvmChain } from '@metamask-institutional/defi-adapters'
-import type { Database } from 'better-sqlite3'
 import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
 import { BlockRunner } from './block-runner.js'
-import {
-  insertLogs,
-  selectAllWatchListKeys,
-  updateLatestBlockProcessed,
-} from './db-queries.js'
 import { logger } from './logger.js'
+import type { CacheClient } from './postgres-cache-client.js'
 
 export async function buildLatestCache(
   provider: JsonRpcProvider,
   chainId: EvmChain,
-  db: Database,
+  cacheClient: CacheClient,
   startBlock: number,
 ) {
   logger.info('Starting latest cache builder')
 
-  const allWatchListKeys = selectAllWatchListKeys(db)
+  const allJobs = await cacheClient.fetchAllJobs()
 
   const userIndexMap = new Map(
-    allWatchListKeys.map(
-      ({ contract_address, topic_0, user_address_index }) => [
-        createWatchKey(contract_address, topic_0),
-        user_address_index,
-      ],
-    ),
+    allJobs.map(({ contractAddress, topic0, userAddressIndex }) => [
+      createWatchKey(contractAddress, topic0),
+      userAddressIndex,
+    ]),
   )
 
   const indexer = new BlockRunner({
@@ -36,29 +29,29 @@ export async function buildLatestCache(
         provider,
         blockNumber,
         userIndexMap,
-        db,
+        cacheClient,
       }),
     onError: async (latestSafeProcessedBlock: number) =>
-      updateLatestBlockProcessed(db, latestSafeProcessedBlock),
+      cacheClient.updateLatestBlockProcessed(latestSafeProcessedBlock),
   })
 
   await indexer.start(startBlock)
 }
 
-function createWatchKey(contract_address: string, topic_0: string): string {
-  return `${contract_address.toLowerCase()}#${topic_0.toLowerCase()}`
+function createWatchKey(contractAddress: string, topic0: string): string {
+  return `${contractAddress.toLowerCase()}#${topic0.toLowerCase()}`
 }
 
 async function processBlockFn({
   provider,
   blockNumber,
   userIndexMap,
-  db,
+  cacheClient,
 }: {
   provider: JsonRpcProvider
   blockNumber: number
   userIndexMap: Map<string, number>
-  db: Database
+  cacheClient: CacheClient
 }): Promise<void> {
   const receipts = (await provider.send('eth_getBlockReceipts', [
     `0x${ethers.toBeHex(blockNumber).slice(2).replace(/^0+/, '')}`, // some chains need to remove leading zeros like ftm
@@ -99,7 +92,7 @@ async function processBlockFn({
     }
   }
 
-  insertLogs(db, logs, blockNumber)
+  await cacheClient.insertLogs(logs, blockNumber)
 
   logger.info({ blockNumber, logsProcessed: logs.length }, 'Processed block')
 }

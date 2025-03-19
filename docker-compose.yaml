@@ -18,6 +18,7 @@ services:
       - DEFI_ADAPTERS_PROVIDER_AVALANCHE
       - DEFI_ADAPTERS_PROVIDER_LINEA
       - DEFI_ADAPTERS_USE_POSITIONS_CACHE=true
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/defi-adapters
       
   workers:
     build:
@@ -35,6 +36,27 @@ services:
       - DEFI_ADAPTERS_PROVIDER_ARBITRUM
       - DEFI_ADAPTERS_PROVIDER_AVALANCHE
       - DEFI_ADAPTERS_PROVIDER_LINEA
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/defi-adapters
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:17
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=defi-adapters
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d defi-adapters"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
 
 volumes:
   sqlite_data:
@@ -43,3 +65,5 @@ volumes:
       type: none
       o: bind
       device: ${PWD}/databases
+  postgres_data:
+    driver: local
