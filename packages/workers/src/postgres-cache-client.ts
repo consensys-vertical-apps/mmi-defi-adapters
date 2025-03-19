@@ -53,7 +53,6 @@ export async function createPostgresCacheClient(
     dbUrl,
     schema,
     logger,
-    poolConfig: { max: 50 },
   })
 
   await dbPool.query(`CREATE SCHEMA IF NOT EXISTS "${schema}"`)
