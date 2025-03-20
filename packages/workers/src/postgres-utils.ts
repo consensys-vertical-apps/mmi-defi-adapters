@@ -1,4 +1,3 @@
-import { config } from 'node:process'
 import pg from 'pg'
 import type { Logger } from 'pino'
 
@@ -6,21 +5,22 @@ export function createDbPool({
   dbUrl,
   schema,
   logger,
-  poolConfig,
+  partialPoolConfig,
 }: {
   dbUrl: string
   schema: string
   logger?: Logger
-  poolConfig?: Omit<pg.PoolConfig, 'connectionString'>
+  partialPoolConfig?: Omit<pg.PoolConfig, 'connectionString'>
 }) {
-  const maxPoolSize = poolConfig?.max || 10 // default is 10
-
-  const dbPool = new pg.Pool({
+  const poolConfig = {
     connectionString: `${dbUrl}?options=-c%20search_path%3D${encodeURIComponent(
       schema,
     )}`,
-    ...poolConfig,
-  })
+    max: 10,
+    ...partialPoolConfig,
+  }
+
+  const dbPool = new pg.Pool(poolConfig)
 
   dbPool.on('error', (err) => {
     logger?.error({ err }, 'Database connection error')
@@ -36,20 +36,20 @@ export function createDbPool({
     const numClients = dbPool.totalCount
     const numIdle = dbPool.idleCount
     const numUsed = numClients - numIdle
+    const numWaiting = dbPool.waitingCount
 
-    if (numUsed > maxPoolSize * 0.8) {
-      // Alert at 80% capacity
+    if (numUsed > poolConfig.max * 0.8) {
       logger?.warn(
-        { numUsed, numIdle, max: maxPoolSize },
+        { numUsed, numIdle, numWaiting, max: poolConfig.max },
         'Database connection pool nearing capacity',
       )
     }
 
     logger?.info(
-      { numUsed, numIdle, max: maxPoolSize },
+      { numUsed, numIdle, numWaiting, max: poolConfig.max },
       'Connection pool status',
     )
-  }, 30000)
+  }, 10000)
 
   const gracefulShutdown = async () => {
     clearInterval(connectionMonitor)

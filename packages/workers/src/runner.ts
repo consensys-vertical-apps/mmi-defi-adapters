@@ -10,20 +10,13 @@ import { logger } from './logger.js'
 import { createPostgresCacheClient } from './postgres-cache-client.js'
 
 export async function runner(dbUrl: string, chainId: EvmChain) {
-  const historyCacheClient = await createPostgresCacheClient(
+  const cacheClient = await createPostgresCacheClient({
     dbUrl,
-    ChainName[chainId],
-    {
-      max: 5,
+    schema: ChainName[chainId],
+    partialPoolConfig: {
+      max: 8,
     },
-  )
-  const latestCacheClient = await createPostgresCacheClient(
-    dbUrl,
-    ChainName[chainId],
-    {
-      max: 5,
-    },
-  )
+  })
 
   const defiProvider = new DefiProvider()
 
@@ -35,17 +28,17 @@ export async function runner(dbUrl: string, chainId: EvmChain) {
   })
 
   const blockNumber =
-    (await latestCacheClient.getLatestBlockProcessed()) ??
+    (await cacheClient.getLatestBlockProcessed()) ??
     (await provider.getBlockNumber())
 
   // TODO: By calling it here, we are only able to add new jobs whenever this script starts
   // If we dynamically call this, we need to ensure that there is no race condition with the historic and latest cache
   const pools = await getPools(defiProvider, chainId)
-  await historyCacheClient.insertJobs(pools, blockNumber)
+  await cacheClient.insertJobs(pools, blockNumber)
 
   await Promise.all([
-    buildHistoricCache(provider, chainId, historyCacheClient),
-    // buildLatestCache(provider, chainId, latestCacheClient, blockNumber),
+    // buildHistoricCache(provider, chainId, cacheClient),
+    buildLatestCache(provider, chainId, cacheClient, blockNumber),
   ])
 
   logger.info('Finished')

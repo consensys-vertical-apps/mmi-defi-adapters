@@ -1,6 +1,6 @@
 import type { Pool, PoolClient, PoolConfig } from 'pg'
-import { logger } from './logger.js'
 import { createDbPool } from './postgres-utils.js'
+import { logger } from './logger.js'
 
 export type JobDbEntry = {
   contractAddress: string
@@ -44,16 +44,20 @@ export interface CacheClient {
   ) => Promise<void>
 }
 
-export async function createPostgresCacheClient(
-  dbUrl: string,
-  schema: string,
-  poolConfig?: PoolConfig,
-): Promise<CacheClient> {
+export async function createPostgresCacheClient({
+  dbUrl,
+  schema,
+  partialPoolConfig,
+}: {
+  dbUrl: string
+  schema: string
+  partialPoolConfig?: Omit<PoolConfig, 'connectionString'>
+}): Promise<CacheClient> {
   const dbPool = createDbPool({
     dbUrl,
     schema,
     logger,
-    poolConfig,
+    partialPoolConfig,
   })
 
   await dbPool.query(`CREATE SCHEMA IF NOT EXISTS "${schema}"`)
