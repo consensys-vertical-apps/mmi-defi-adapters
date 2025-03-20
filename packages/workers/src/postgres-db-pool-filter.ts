@@ -18,7 +18,11 @@ export function buildPostgresPoolFilter({
     (acc, chainId) => {
       const schema = ChainName[chainId]
 
-      acc[chainId] = createDbPool({ dbUrl, schema, logger })
+      acc[chainId] = createDbPool({
+        dbUrl,
+        schema,
+        logger: logger ? logger.child({ chainId }) : undefined,
+      })
 
       return acc
     },
@@ -27,7 +31,7 @@ export function buildPostgresPoolFilter({
 
   return async (userAddress: string, chainId: EvmChain) => {
     const res = await dbPools[chainId].query(
-      `SELECT contract_address as contractAddress
+      `SELECT contract_address as "contractAddress"
          FROM logs
          WHERE address = $1`,
       [userAddress],
