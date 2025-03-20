@@ -1,8 +1,4 @@
-import {
-  ChainName,
-  DefiProvider,
-  EvmChain,
-} from '@metamask-institutional/defi-adapters'
+import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, Network } from 'ethers'
 import { buildHistoricCache } from './build-historic-cache.js'
 import { buildLatestCache } from './build-latest-cache.js'
@@ -12,9 +8,10 @@ import { createPostgresCacheClient } from './postgres-cache-client.js'
 export async function runner(dbUrl: string, chainId: EvmChain) {
   const cacheClient = await createPostgresCacheClient({
     dbUrl,
-    schema: ChainName[chainId],
+    chainId,
     partialPoolConfig: {
       max: 8,
+      connectionTimeoutMillis: 10_000,
     },
   })
 
@@ -37,7 +34,7 @@ export async function runner(dbUrl: string, chainId: EvmChain) {
   await cacheClient.insertJobs(pools, blockNumber)
 
   await Promise.all([
-    // buildHistoricCache(provider, chainId, cacheClient),
+    buildHistoricCache(provider, chainId, cacheClient),
     buildLatestCache(provider, chainId, cacheClient, blockNumber),
   ])
 

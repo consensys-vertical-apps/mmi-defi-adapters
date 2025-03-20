@@ -1,6 +1,8 @@
+import { ChainName, type EvmChain } from '@metamask-institutional/defi-adapters'
+import { Mutex } from 'async-mutex'
 import type { Pool, PoolClient, PoolConfig } from 'pg'
-import { createDbPool } from './postgres-utils.js'
 import { logger } from './logger.js'
+import { createDbPool } from './postgres-utils.js'
 
 export type JobDbEntry = {
   contractAddress: string
@@ -46,13 +48,15 @@ export interface CacheClient {
 
 export async function createPostgresCacheClient({
   dbUrl,
-  schema,
+  chainId,
   partialPoolConfig,
 }: {
   dbUrl: string
-  schema: string
+  chainId: EvmChain
   partialPoolConfig?: Omit<PoolConfig, 'connectionString'>
 }): Promise<CacheClient> {
+  const schema = ChainName[chainId]
+
   const dbPool = createDbPool({
     dbUrl,
     schema,
@@ -62,7 +66,7 @@ export async function createPostgresCacheClient({
 
   await dbPool.query(`CREATE SCHEMA IF NOT EXISTS "${schema}"`)
 
-  const client = new PostgresCacheClient(dbPool)
+  const client = new PostgresCacheClient(dbPool, chainId)
   await client.migrate()
 
   return client
@@ -70,9 +74,15 @@ export async function createPostgresCacheClient({
 
 class PostgresCacheClient implements CacheClient {
   readonly #dbPool: Pool
+  readonly #chainId: EvmChain
+  readonly #logsMutex: Mutex
+  readonly #jobsMutex: Mutex
 
-  constructor(dbPool: Pool) {
+  constructor(dbPool: Pool, chainId: EvmChain) {
     this.#dbPool = dbPool
+    this.#chainId = chainId
+    this.#logsMutex = new Mutex()
+    this.#jobsMutex = new Mutex()
   }
 
   async migrate() {
@@ -168,6 +178,8 @@ class PostgresCacheClient implements CacheClient {
     }[],
     blockNumber: number,
   ) {
+    const release = await this.#jobsMutex.acquire()
+
     await this.#bulkTransaction(async (client) => {
       for (const entry of protocolTokenEntries) {
         await client.query(
@@ -178,6 +190,8 @@ class PostgresCacheClient implements CacheClient {
         )
       }
     })
+
+    release()
   }
 
   async updateJobStatus(
@@ -186,6 +200,8 @@ class PostgresCacheClient implements CacheClient {
     userAddressIndex: number,
     status: 'completed' | 'failed',
   ) {
+    const release = await this.#jobsMutex.acquire()
+
     await this.#bulkTransaction(async (client) => {
       for (const contractAddress of contractAddresses) {
         await client.query(
@@ -196,6 +212,8 @@ class PostgresCacheClient implements CacheClient {
         )
       }
     })
+
+    release()
   }
 
   async insertLogs(
@@ -205,7 +223,7 @@ class PostgresCacheClient implements CacheClient {
     }[],
     blockNumber?: number,
   ) {
-    const lockId = 12345
+    const release = await this.#logsMutex.acquire()
 
     await this.#bulkTransaction(async (client) => {
       const batchSize = 1000
@@ -238,7 +256,9 @@ class PostgresCacheClient implements CacheClient {
       if (blockNumber) {
         await this.updateLatestBlockProcessed(blockNumber)
       }
-    }, lockId)
+    })
+
+    release()
   }
 
   /**
@@ -246,16 +266,11 @@ class PostgresCacheClient implements CacheClient {
    */
   async #bulkTransaction<Result>(
     queries: (client: PoolClient) => Promise<Result>,
-    lockId?: number,
   ): Promise<Result> {
     const client = await this.#dbPool.connect()
-    try {
-      if (lockId) {
-        await client.query('SELECT pg_advisory_lock($1)', [lockId])
-      }
 
-      await client.query('BEGIN')
-      await client.query('SET TRANSACTION ISOLATION LEVEL READ COMMITTED')
+    try {
+      await client.query('BEGIN TRANSACTION ISOLATION LEVEL READ COMMITTED')
 
       const result = await queries(client)
 
@@ -266,10 +281,6 @@ class PostgresCacheClient implements CacheClient {
       await client.query('ROLLBACK')
       throw error
     } finally {
-      if (lockId) {
-        await client.query('SELECT pg_advisory_unlock($1)', [lockId])
-      }
-
       client.release()
     }
   }

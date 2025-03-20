@@ -23,7 +23,20 @@ export function createDbPool({
   const dbPool = new pg.Pool(poolConfig)
 
   dbPool.on('error', (err) => {
-    logger?.error({ err }, 'Database connection error')
+    const errorMessage = err?.message || 'Unknown error'
+    const errorStack = err?.stack || 'No stack trace'
+    logger?.error(
+      {
+        errorMessage,
+        errorStack,
+        poolStatus: {
+          totalCount: dbPool.totalCount,
+          idleCount: dbPool.idleCount,
+          waitingCount: dbPool.waitingCount,
+        },
+      },
+      'Database connection error',
+    )
   })
 
   dbPool.on('connect', (client) => {
@@ -35,8 +48,15 @@ export function createDbPool({
   const connectionMonitor = setInterval(() => {
     const numClients = dbPool.totalCount
     const numIdle = dbPool.idleCount
-    const numUsed = numClients - numIdle
     const numWaiting = dbPool.waitingCount
+    const numUsed = numClients - numIdle
+
+    if (numWaiting > 0) {
+      logger?.warn(
+        { numUsed, numIdle, numWaiting, max: poolConfig.max },
+        'Tasks waiting for database connections',
+      )
+    }
 
     if (numUsed > poolConfig.max * 0.8) {
       logger?.warn(

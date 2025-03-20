@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@metamask-institutional/defi-adapters": "*",
+    "async-mutex": "^0.5.0",
     "ethers": "^6.7.1",
     "pg": "^8.14.1",
     "pino": "^8.15.0"
