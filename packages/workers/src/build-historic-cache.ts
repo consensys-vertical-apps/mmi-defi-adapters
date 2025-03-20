@@ -49,7 +49,6 @@ export async function buildHistoricCache(
     logger.info(
       {
         pools: unfinishedPools.length,
-        connections: await cacheClient.printActiveConnections(),
       },
       'Processing unfinished pools',
     )
@@ -81,7 +80,6 @@ export async function buildHistoricCache(
           totalBatches: Math.ceil(poolAddresses.length / batchSize),
           batchSize: contractAddresses.length,
           totalPools: poolAddresses.length,
-          connections: await cacheClient.printActiveConnections(),
         },
         'Fetching logs from pools batch started',
       )
@@ -209,17 +207,14 @@ function getNextPoolGroup(
 
   if (pendingPools.length > 0) {
     // Group pools by topic_0 and user_address_index
-    const groupedPools = pendingPools.reduce(
-      (acc, pool) => {
-        const key = `${pool.topic0}#${pool.userAddressIndex}`
-        if (!acc[key]) {
-          acc[key] = []
-        }
-        acc[key]!.push(pool)
-        return acc
-      },
-      {} as Record<string, typeof pendingPools>,
-    )
+    const groupedPools = pendingPools.reduce((acc, pool) => {
+      const key = `${pool.topic0}#${pool.userAddressIndex}`
+      if (!acc[key]) {
+        acc[key] = []
+      }
+      acc[key]!.push(pool)
+      return acc
+    }, {} as Record<string, typeof pendingPools>)
 
     // Find group with most entries
     const largestGroup = Object.values(groupedPools).reduce(
@@ -231,14 +226,14 @@ function getNextPoolGroup(
       largestGroup.length <= maxBatchSize * 10
         ? 1
         : largestGroup.length >= maxBatchSize * 100
-          ? maxBatchSize
-          : Math.max(
-              1,
-              Math.floor(
-                (largestGroup.length - maxBatchSize * 10) /
-                  ((maxBatchSize * 100 - maxBatchSize * 10) / maxBatchSize),
-              ),
-            )
+        ? maxBatchSize
+        : Math.max(
+            1,
+            Math.floor(
+              (largestGroup.length - maxBatchSize * 10) /
+                ((maxBatchSize * 100 - maxBatchSize * 10) / maxBatchSize),
+            ),
+          )
 
     return {
       poolAddresses: largestGroup.map((pool) => pool.contractAddress),

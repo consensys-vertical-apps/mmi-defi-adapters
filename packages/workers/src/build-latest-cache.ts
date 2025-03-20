@@ -53,10 +53,6 @@ async function processBlockFn({
   userIndexMap: Map<string, number>
   cacheClient: CacheClient
 }): Promise<void> {
-  logger.info(
-    { connections: await cacheClient.printActiveConnections() },
-    'Active connections',
-  )
   const receipts = (await provider.send('eth_getBlockReceipts', [
     `0x${ethers.toBeHex(blockNumber).slice(2).replace(/^0+/, '')}`, // some chains need to remove leading zeros like ftm
   ])) as TransactionReceipt[]

@@ -14,14 +14,14 @@ export async function runner(dbUrl: string, chainId: EvmChain) {
     dbUrl,
     ChainName[chainId],
     {
-      max: Object.keys(EvmChain).length * 2,
+      max: 5,
     },
   )
   const latestCacheClient = await createPostgresCacheClient(
     dbUrl,
     ChainName[chainId],
     {
-      max: Object.keys(EvmChain).length,
+      max: 5,
     },
   )
 

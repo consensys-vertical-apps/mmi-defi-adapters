@@ -42,8 +42,6 @@ export interface CacheClient {
     }[],
     blockNumber?: number,
   ) => Promise<void>
-
-  printActiveConnections: () => Promise<number>
 }
 
 export async function createPostgresCacheClient(
@@ -237,14 +235,6 @@ class PostgresCacheClient implements CacheClient {
         await this.updateLatestBlockProcessed(blockNumber)
       }
     }, lockId)
-  }
-
-  async printActiveConnections() {
-    const res = await this.#dbPool.query(
-      'SELECT COUNT(*) FROM pg_stat_activity',
-    )
-
-    return res.rows[0] ? Number(res.rows[0].count) : 0
   }
 
   /**
