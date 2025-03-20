@@ -65,11 +65,11 @@ export function createDbPool({
       )
     }
 
-    logger?.info(
+    logger?.debug(
       { numUsed, numIdle, numWaiting, max: poolConfig.max },
       'Connection pool status',
     )
-  }, 10000)
+  }, 30_000)
 
   const gracefulShutdown = async () => {
     clearInterval(connectionMonitor)
