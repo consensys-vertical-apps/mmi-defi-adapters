@@ -76,11 +76,19 @@ export function buildMetadataCommand(
               //   throw new ProviderMissingError(chainId)
               // }
 
-              const chainProtocolAdapters =
-                defiProvider.adaptersController.fetchChainProtocolAdapters(
-                  chainId,
-                  protocolId,
+              let chainProtocolAdapters: Map<string, IProtocolAdapter>
+              try {
+                chainProtocolAdapters =
+                  defiProvider.adaptersController.fetchChainProtocolAdapters(
+                    chainId,
+                    protocolId,
+                  )
+              } catch (error) {
+                console.error(
+                  `No provider found for chain ${chainId} and protocol ${protocolId}`,
                 )
+                continue
+              }
 
               for (const [_, adapter] of chainProtocolAdapters) {
                 if (
