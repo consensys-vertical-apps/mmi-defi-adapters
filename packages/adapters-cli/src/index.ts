@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 import { DefiProvider } from '@metamask-institutional/defi-adapters'
-import { buildDbPoolFilter } from '@metamask-institutional/workers'
+import { buildPostgresPoolFilter } from '@metamask-institutional/workers'
 import { Command } from 'commander'
 import { blockAverageCommand } from './commands/block-average-command.js'
-import { buildCacheCommands } from './commands/build-cache-commands.js'
 import { buildMetadataCommand } from './commands/build-metadata-command.js'
 import { buildScoreboardCommand } from './commands/build-scoreboard-command.js'
 import { buildSnapshotsCommand } from './commands/build-snapshots-command.js'
@@ -19,17 +18,11 @@ import { buildContractTypes } from './utils/build-types.js'
 
 const program = new Command('defi-adapters')
 
-const poolFilter =
-  process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE === 'true'
-    ? buildDbPoolFilter()
-    : undefined
-
 const defiProvider = new DefiProvider({
-  poolFilter,
+  poolFilter: buildPoolFilter(),
 })
 
 libraryCommands(program, defiProvider)
-buildCacheCommands(program)
 checkMetadataTypeCommand(program, defiProvider)
 buildMetadataCommand(program, defiProvider)
 deleteAdapterMetadataCommand(program)
@@ -44,3 +37,17 @@ buildScoreboardCommand(program, defiProvider)
 blockAverageCommand(program, defiProvider)
 
 program.parseAsync()
+
+function buildPoolFilter() {
+  if (process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE !== 'true') {
+    return undefined
+  }
+
+  if (!process.env.CACHE_DATABASE_URL) {
+    throw new Error('CACHE_DATABASE_URL is not set')
+  }
+
+  return buildPostgresPoolFilter({
+    dbUrl: process.env.CACHE_DATABASE_URL,
+  })
+}

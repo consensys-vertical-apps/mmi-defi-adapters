@@ -41,7 +41,7 @@ describe('DefiProvider', () => {
       expect(result).toEqual(mockChainBlockNumbers)
       Object.values(EvmChain).forEach((chainId) => {
         expect(
-          defiProvider.chainProvider.providers[chainId].getStableBlockNumber,
+          defiProvider.chainProvider.providers[chainId]?.getStableBlockNumber,
         ).toHaveBeenCalled()
       })
     })
@@ -63,7 +63,7 @@ describe('DefiProvider', () => {
       )
       filtereChainIds.forEach((chainId) => {
         expect(
-          defiProvider.chainProvider.providers[chainId].getStableBlockNumber,
+          defiProvider.chainProvider.providers[chainId]?.getStableBlockNumber,
         ).toHaveBeenCalled()
       })
     })

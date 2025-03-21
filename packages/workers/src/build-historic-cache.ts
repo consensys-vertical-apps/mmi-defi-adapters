@@ -1,15 +1,13 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters'
-import type { Database } from 'better-sqlite3'
 import { JsonRpcProvider, getAddress } from 'ethers'
-import {
-  fetchUnfinishedJobs,
-  insertLogs,
-  updateJobStatus,
-} from './db-queries.js'
 import { fetchEvents } from './fetch-events.js'
 import { logger } from './logger.js'
+import type { CacheClient, JobDbEntry } from './postgres-cache-client.js'
 
-const MaxConcurrentBatches = 10
+// TODO: Create zod schema for config
+const MaxConcurrentBatches = process.env.HISTORIC_CACHE_BATCH_SIZE
+  ? Number(process.env.HISTORIC_CACHE_BATCH_SIZE)
+  : 5
 
 const MaxContractsPerCall: Record<EvmChain, number> = {
   [EvmChain.Ethereum]: 10,
@@ -44,12 +42,12 @@ const MaxContractsPerCall: Record<EvmChain, number> = {
 export async function buildHistoricCache(
   provider: JsonRpcProvider,
   chainId: EvmChain,
-  db: Database,
+  cacheClient: CacheClient,
 ) {
   logger.info('Starting historic cache builder')
 
   while (true) {
-    const unfinishedPools = fetchUnfinishedJobs(db)
+    const unfinishedPools = await cacheClient.fetchUnfinishedJobs()
 
     logger.info(
       {
@@ -122,14 +120,13 @@ export async function buildHistoricCache(
               }
             }
 
-            insertLogs(db, logsToInsert)
+            await cacheClient.insertLogs(logsToInsert)
           }
         })
 
         await Promise.all(concurrentRanges)
 
-        updateJobStatus(
-          db,
+        await cacheClient.updateJobStatus(
           contractAddresses,
           topic0,
           userAddressIndex,
@@ -146,8 +143,7 @@ export async function buildHistoricCache(
           'Fetching logs from pools batch ended',
         )
       } catch (error) {
-        updateJobStatus(
-          db,
+        await cacheClient.updateJobStatus(
           contractAddresses,
           topic0,
           userAddressIndex,
@@ -191,13 +187,9 @@ function splitRange(
 }
 
 function getNextPoolGroup(
-  unfinishedPools: {
-    contract_address: string
-    topic_0: string
-    user_address_index: number
-    block_number: number
+  unfinishedPools: (Omit<JobDbEntry, 'status'> & {
     status: 'pending' | 'failed'
-  }[],
+  })[],
   maxBatchSize: number,
 ):
   | {
@@ -220,7 +212,7 @@ function getNextPoolGroup(
     // Group pools by topic_0 and user_address_index
     const groupedPools = pendingPools.reduce(
       (acc, pool) => {
-        const key = `${pool.topic_0}#${pool.user_address_index}`
+        const key = `${pool.topic0}#${pool.userAddressIndex}`
         if (!acc[key]) {
           acc[key] = []
         }
@@ -250,24 +242,24 @@ function getNextPoolGroup(
             )
 
     return {
-      poolAddresses: largestGroup.map((pool) => pool.contract_address),
-      topic0: largestGroup[0]!.topic_0,
-      userAddressIndex: largestGroup[0]!.user_address_index,
+      poolAddresses: largestGroup.map((pool) => pool.contractAddress),
+      topic0: largestGroup[0]!.topic0,
+      userAddressIndex: largestGroup[0]!.userAddressIndex,
       targetBlockNumber: Math.max(
-        ...largestGroup.map((pool) => pool.block_number),
+        ...largestGroup.map((pool) => pool.blockNumber),
       ),
       batchSize,
     }
   }
 
   const failedPools = unfinishedPools.filter((pool) => pool.status === 'failed')
-  const { contract_address, topic_0, user_address_index, block_number } =
+  const { contractAddress, topic0, userAddressIndex, blockNumber } =
     failedPools[0]!
   return {
-    poolAddresses: [contract_address],
-    topic0: topic_0,
-    userAddressIndex: user_address_index,
-    targetBlockNumber: block_number,
+    poolAddresses: [contractAddress],
+    topic0,
+    userAddressIndex,
+    targetBlockNumber: blockNumber,
     batchSize: 1,
   }
 }

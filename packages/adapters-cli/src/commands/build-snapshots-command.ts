@@ -108,6 +108,13 @@ export function buildSnapshotsCommand(
             continue
           }
 
+          const provider = defiProvider.chainProvider.providers[chainId]
+
+          if (!provider) {
+            console.error({ chainId }, 'Provider missing for this chain')
+            continue
+          }
+
           const filePath = `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}/tests/snapshots/${
             ChainName[testCase.chainId]
           }.${testCase.method}${
@@ -121,9 +128,7 @@ export function buildSnapshotsCommand(
               case 'positions': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await defiProvider.chainProvider.providers[
-                    chainId
-                  ].getStableBlockNumber())
+                  (await provider.getStableBlockNumber())
 
                 const startTime = Date.now()
 
@@ -173,9 +178,7 @@ export function buildSnapshotsCommand(
               case 'prices': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await defiProvider.chainProvider.providers[
-                    chainId
-                  ].getStableBlockNumber())
+                  (await provider.getStableBlockNumber())
 
                 const startTime = Date.now()
 

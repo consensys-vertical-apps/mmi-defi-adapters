@@ -16,8 +16,8 @@
     "test:cov": "jest src --ci --coverage  --coverageDirectory='coverage/unit/'"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^7.6.11",
     "@types/jest": "^29.5.12",
+    "@types/pg": "^8.11.11",
     "jest": "^29.7.0",
     "pino-pretty": "^10.2.0",
     "ts-jest": "^29.1.1",
@@ -25,8 +25,9 @@
   },
   "dependencies": {
     "@metamask-institutional/defi-adapters": "*",
-    "better-sqlite3": "^11.2.1",
+    "async-mutex": "^0.5.0",
     "ethers": "^6.7.1",
+    "pg": "^8.14.1",
     "pino": "^8.15.0"
   }
 }
