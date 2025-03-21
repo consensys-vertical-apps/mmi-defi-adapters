@@ -16,14 +16,14 @@ module.exports = {
         CHAIN_ID: '10',
       },
     },
-    // {
-    //   name: 'Bsc',
-    //   script: 'node',
-    //   args: ['packages/workers/dist/main.js'],
-    //   env: {
-    //     CHAIN_ID: '56',
-    //   },
-    // },
+    {
+      name: 'Bsc',
+      script: 'node',
+      args: ['packages/workers/dist/main.js'],
+      env: {
+        CHAIN_ID: '56',
+      },
+    },
     {
       name: 'Polygon',
       script: 'node',
@@ -32,14 +32,14 @@ module.exports = {
         CHAIN_ID: '137',
       },
     },
-    // {
-    //   name: 'Fantom',
-    //   script: 'node',
-    //   args: ['packages/workers/dist/main.js'],
-    //   env: {
-    //     CHAIN_ID: '250',
-    //   },
-    // },
+    {
+      name: 'Fantom',
+      script: 'node',
+      args: ['packages/workers/dist/main.js'],
+      env: {
+        CHAIN_ID: '250',
+      },
+    },
     {
       name: 'Base',
       script: 'node',

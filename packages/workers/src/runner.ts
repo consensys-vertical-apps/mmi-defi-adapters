@@ -1,4 +1,8 @@
-import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
+import {
+  Chain,
+  DefiProvider,
+  EvmChain,
+} from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, Network } from 'ethers'
 import { buildHistoricCache } from './build-historic-cache.js'
 import { buildLatestCache } from './build-latest-cache.js'
@@ -14,6 +18,18 @@ export async function runner(dbUrl: string, chainId: EvmChain) {
       connectionTimeoutMillis: 10_000,
     },
   })
+
+  // TODO: Remove this once we have support for BSC and Fantom
+  if (chainId === Chain.Bsc || chainId === Chain.Fantom) {
+    logger.warn(
+      {
+        chainId,
+      },
+      'Chain not supported',
+    )
+
+    return
+  }
 
   const defiProvider = new DefiProvider()
 
