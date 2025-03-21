@@ -1,5 +1,5 @@
 import { Protocol } from '../../adapters/protocols'
-import { Chain, ChainIdToChainNameMap } from '../constants/chains'
+import { Chain, ChainName } from '../constants/chains'
 
 class BaseError extends Error {
   constructor(message: string) {
@@ -54,7 +54,7 @@ export class ProviderMissingError extends BaseError {
     super('No provider found for chain')
 
     this.chainId = chainId
-    this.chainName = ChainIdToChainNameMap[chainId]
+    this.chainName = ChainName[chainId]
   }
 }
 
@@ -89,7 +89,7 @@ export class ProtocolSmartContractNotDeployedAtRequestedBlockNumberError extends
 
     this.name = 'Protocol Smart Contract Not Deployed At Requested BlockNumber'
     this.chainId = chainId
-    this.chainName = ChainIdToChainNameMap[chainId]
+    this.chainName = ChainName[chainId]
     this.protocolId = protocolId
     this.productId = productId
     this.smartContractAddress = smartContractAddress
@@ -107,7 +107,7 @@ export class AdapterMissingError extends BaseError {
     super('No adapter found')
 
     this.chainId = chainId
-    this.chainName = ChainIdToChainNameMap[chainId]
+    this.chainName = ChainName[chainId]
     this.protocolId = protocolId
     this.productId = productId
   }
@@ -133,7 +133,7 @@ export class MulticallError extends BaseError {
     super(`Multicall batch failed: ${message}`)
 
     this.chainId = chainId
-    this.chainName = ChainIdToChainNameMap[chainId]
+    this.chainName = ChainName[chainId]
     this.flushTimeoutMs = flushTimeoutMs
     this.maxBatchSize = maxBatchSize
   }

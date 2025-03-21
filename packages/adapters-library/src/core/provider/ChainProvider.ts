@@ -1,7 +1,7 @@
 import { Connection } from '@solana/web3.js'
 import { FetchRequest, Network } from 'ethers'
 import { IConfig } from '../../config'
-import { Chain, ChainIdToChainNameMap, EvmChain } from '../constants/chains'
+import { ChainName, EvmChain } from '../constants/chains'
 import { logger } from '../utils/logger'
 import {
   CustomJsonRpcProvider,
@@ -33,11 +33,11 @@ export class ChainProvider {
       enableFailover: config.enableFailover,
     }
 
-    const chains = Object.values(Chain) as EvmChain[]
+    const chains = Object.values(EvmChain)
 
     return chains.reduce(
       (providers, chainId) => {
-        const chainName = ChainIdToChainNameMap[chainId]
+        const chainName = ChainName[chainId]
 
         // Throw an error if the provider URL is missing for this chain
         const providerUrl = config.provider[chainName]
@@ -59,7 +59,7 @@ export class ChainProvider {
 
         return providers
       },
-      {} as Record<Chain, CustomJsonRpcProvider>,
+      {} as Record<EvmChain, CustomJsonRpcProvider>,
     )
   }
 
@@ -85,9 +85,7 @@ export class ChainProvider {
     }
 
     const hasUnlimitedGetLogsRange =
-      this.config.hasUnlimitedEthGethLogsBlockRangeLimit[
-        ChainIdToChainNameMap[chainId]
-      ]
+      this.config.hasUnlimitedEthGethLogsBlockRangeLimit[ChainName[chainId]]
 
     if (!enableMulticallQueue) {
       logger.debug({ chainId }, 'Using standard provider')

@@ -10,7 +10,7 @@ import { Protocol } from './adapters/protocols'
 import { supportedProtocols } from './adapters/supportedProtocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
-import { Chain, ChainIdToChainNameMap, EvmChain } from './core/constants/chains'
+import { Chain, ChainName, EvmChain } from './core/constants/chains'
 import { ChecksumAddress } from './core/decorators/checksumAddress'
 import { ChainProvider } from './core/provider/ChainProvider'
 import { filterMapAsync } from './core/utils/filters'
@@ -38,7 +38,7 @@ import {
 } from './unwrapCache'
 
 export class DefiProvider {
-  private parsedConfig
+  private config: IConfig
   chainProvider: ChainProvider
   adaptersController: AdaptersController
 
@@ -64,11 +64,11 @@ export class DefiProvider {
     unwrapCacheProvider?: IUnwrapPriceCacheProvider
     poolFilter?: PoolFilter
   } = {}) {
-    this.parsedConfig = new Config(config)
+    this.config = new Config(config).values
 
-    this.chainProvider = new ChainProvider(this.parsedConfig.values)
+    this.chainProvider = new ChainProvider(this.config)
 
-    this.metadataProviders = this.parsedConfig.values.useDatabase
+    this.metadataProviders = this.config.useDatabase
       ? buildSqliteMetadataProviders(metadataProviderSettings)
       : buildVoidMetadataProviders()
 
@@ -265,7 +265,7 @@ export class DefiProvider {
           enrichTime: runnerEndTime - unwrapFinishedTime,
         },
         chainId: adapter.chainId,
-        chainName: ChainIdToChainNameMap[adapter.chainId],
+        chainName: ChainName[adapter.chainId],
         protocolId: adapter.protocolId,
         productId: adapter.productId,
         userAddress,
@@ -281,6 +281,7 @@ export class DefiProvider {
         filterProtocolIds,
         filterProductIds,
         filterChainIds,
+        useAdaptersWithUserEventOnly: this.config.useAdaptersWithUserEventOnly,
       })
     ).filter(
       (result) =>
@@ -356,7 +357,7 @@ export class DefiProvider {
             endTime,
             timeTaken: endTime - startTime,
             chainId: adapter.chainId,
-            chainName: ChainIdToChainNameMap[adapter.chainId],
+            chainName: ChainName[adapter.chainId],
             protocolId: adapter.protocolId,
             productId: adapter.productId,
             protocolTokenAddress: getAddress(address),
@@ -407,11 +408,13 @@ export class DefiProvider {
     filterProtocolIds,
     filterProductIds,
     filterChainIds,
+    useAdaptersWithUserEventOnly = false,
   }: {
     runner: (adapter: IProtocolAdapter) => ReturnType
     filterProtocolIds?: Protocol[]
     filterProductIds?: string[]
     filterChainIds?: Chain[]
+    useAdaptersWithUserEventOnly?: boolean
   }): Promise<AdapterResponse<Awaited<ReturnType>>[]> {
     const protocolPromises = Object.entries(supportedProtocols)
       .filter(
@@ -441,12 +444,13 @@ export class DefiProvider {
               )
 
             return Array.from(chainProtocolAdapters)
-              .filter(([_, adapter]) => {
-                return (
-                  !filterProductIds ||
-                  filterProductIds.includes(adapter.productId)
-                )
-              })
+              .filter(
+                ([_, adapter]) =>
+                  (!filterProductIds ||
+                    filterProductIds.includes(adapter.productId)) &&
+                  (!useAdaptersWithUserEventOnly ||
+                    adapter.adapterSettings.userEvent),
+              )
               .map(([_, adapter]) => this.runTaskForAdapter(adapter, runner))
           })
       })
@@ -467,14 +471,14 @@ export class DefiProvider {
 
       return {
         ...protocolDetails,
-        chainName: ChainIdToChainNameMap[adapter.chainId],
+        chainName: ChainName[adapter.chainId],
         success: true,
         ...adapterResult,
       }
     } catch (error) {
       return {
         ...protocolDetails,
-        chainName: ChainIdToChainNameMap[adapter.chainId],
+        chainName: ChainName[adapter.chainId],
         ...this.handleError(error),
       }
     }

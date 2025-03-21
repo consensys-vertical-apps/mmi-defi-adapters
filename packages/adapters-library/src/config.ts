@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { ChainName } from './core/constants/chains'
+import { Chain, ChainName } from './core/constants/chains'
 import { logger } from './core/utils/logger'
 import { DeepPartial } from './types/deepPartial'
 
@@ -79,16 +79,16 @@ const ConfigSchema = z
   .object({
     provider: z
       .object({
-        [ChainName.ethereum]: z.string().default(providers.ethereum),
-        [ChainName.op]: z.string().default(providers.op),
-        [ChainName.bsc]: z.string().default(providers.bsc),
-        [ChainName.matic]: z.string().default(providers.matic),
-        [ChainName.ftm]: z.string().default(providers.ftm),
-        [ChainName.base]: z.string().default(providers.base),
-        [ChainName.arb]: z.string().default(providers.arb),
-        [ChainName.avax]: z.string().default(providers.avax),
-        [ChainName.linea]: z.string().default(providers.linea),
-        [ChainName.solana]: z.string().default(providers.solana),
+        [ChainName[Chain.Ethereum]]: z.string().default(providers.ethereum),
+        [ChainName[Chain.Optimism]]: z.string().default(providers.op),
+        [ChainName[Chain.Bsc]]: z.string().default(providers.bsc),
+        [ChainName[Chain.Polygon]]: z.string().default(providers.matic),
+        [ChainName[Chain.Fantom]]: z.string().default(providers.ftm),
+        [ChainName[Chain.Base]]: z.string().default(providers.base),
+        [ChainName[Chain.Arbitrum]]: z.string().default(providers.arb),
+        [ChainName[Chain.Avalanche]]: z.string().default(providers.avax),
+        [ChainName[Chain.Linea]]: z.string().default(providers.linea),
+        [ChainName[Chain.Solana]]: z.string().default(providers.solana),
       })
       .default(providers),
     useMulticallInterceptor: z
@@ -127,54 +127,57 @@ const ConfigSchema = z
       .default(parseBooleanEnv(process.env.DEFI_ADAPTERS_USE_FAILOVER)),
     hasUnlimitedEthGethLogsBlockRangeLimit: z
       .object({
-        [ChainName.ethereum]: z
+        [ChainName[Chain.Ethereum]]: z
           .boolean()
           .default(hasUnlimitedEthGethLogsBlockRangeLimit.ethereum),
-        [ChainName.op]: z
+        [ChainName[Chain.Optimism]]: z
           .boolean()
           .default(hasUnlimitedEthGethLogsBlockRangeLimit.op),
-        [ChainName.bsc]: z
+        [ChainName[Chain.Bsc]]: z
           .boolean()
           .default(hasUnlimitedEthGethLogsBlockRangeLimit.bsc),
-        [ChainName.matic]: z
+        [ChainName[Chain.Polygon]]: z
           .boolean()
           .default(hasUnlimitedEthGethLogsBlockRangeLimit.matic),
-        [ChainName.ftm]: z
+        [ChainName[Chain.Fantom]]: z
           .boolean()
           .default(hasUnlimitedEthGethLogsBlockRangeLimit.ftm),
-        [ChainName.base]: z
+        [ChainName[Chain.Base]]: z
           .boolean()
           .default(hasUnlimitedEthGethLogsBlockRangeLimit.base),
-        [ChainName.arb]: z
+        [ChainName[Chain.Arbitrum]]: z
           .boolean()
           .default(hasUnlimitedEthGethLogsBlockRangeLimit.arb),
-        [ChainName.avax]: z
+        [ChainName[Chain.Avalanche]]: z
           .boolean()
           .default(hasUnlimitedEthGethLogsBlockRangeLimit.avax),
-        [ChainName.linea]: z
+        [ChainName[Chain.Linea]]: z
           .boolean()
           .default(hasUnlimitedEthGethLogsBlockRangeLimit.linea),
-        [ChainName.solana]: z
+        [ChainName[Chain.Solana]]: z
           .boolean()
           .default(hasUnlimitedEthGethLogsBlockRangeLimit.solana),
       })
       .default(hasUnlimitedEthGethLogsBlockRangeLimit),
     maxBatchSize: z
       .object({
-        [ChainName.ethereum]: z.number().default(maxBatchSize.ethereum),
-        [ChainName.op]: z.number().default(maxBatchSize.op),
-        [ChainName.bsc]: z.number().default(maxBatchSize.bsc),
-        [ChainName.matic]: z.number().default(maxBatchSize.matic),
-        [ChainName.ftm]: z.number().default(maxBatchSize.ftm),
-        [ChainName.base]: z.number().default(maxBatchSize.base),
-        [ChainName.arb]: z.number().default(maxBatchSize.arb),
-        [ChainName.avax]: z.number().default(maxBatchSize.avax),
-        [ChainName.linea]: z.number().default(maxBatchSize.linea),
-        [ChainName.solana]: z.number().default(maxBatchSize.solana),
+        [ChainName[Chain.Ethereum]]: z.number().default(maxBatchSize.ethereum),
+        [ChainName[Chain.Optimism]]: z.number().default(maxBatchSize.op),
+        [ChainName[Chain.Bsc]]: z.number().default(maxBatchSize.bsc),
+        [ChainName[Chain.Polygon]]: z.number().default(maxBatchSize.matic),
+        [ChainName[Chain.Fantom]]: z.number().default(maxBatchSize.ftm),
+        [ChainName[Chain.Base]]: z.number().default(maxBatchSize.base),
+        [ChainName[Chain.Arbitrum]]: z.number().default(maxBatchSize.arb),
+        [ChainName[Chain.Avalanche]]: z.number().default(maxBatchSize.avax),
+        [ChainName[Chain.Linea]]: z.number().default(maxBatchSize.linea),
+        [ChainName[Chain.Solana]]: z.number().default(maxBatchSize.solana),
       })
       .default(maxBatchSize),
     useDatabase: z.boolean().default(true),
     disableEthersBatching: z.boolean().default(false),
+    useAdaptersWithUserEventOnly: z
+      .boolean()
+      .default(process.env.USE_ADAPTERS_WITH_USER_EVENT_ONLY === 'true'),
   })
   .strict()
   .default({})
@@ -219,6 +222,7 @@ function parseStringEnv(env: string | undefined, defaultValue: string): string {
   return env || defaultValue
 }
 
+// TODO This function can have some unwanted behaviour if env is ''
 function parseBooleanEnv(env: string | undefined): boolean {
   return env !== 'false'
 }
