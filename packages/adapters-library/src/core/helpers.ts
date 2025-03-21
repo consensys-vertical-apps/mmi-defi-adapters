@@ -44,10 +44,6 @@ export class Helpers {
     public readonly provider: CustomJsonRpcProvider,
     public readonly chainId: EvmChain,
     public readonly metadataProvider: IMetadataProvider,
-    public readonly allJsonRpcProviders: Record<
-      EvmChain,
-      CustomJsonRpcProvider
-    >,
   ) {}
 
   getProtocolTokenByAddress<

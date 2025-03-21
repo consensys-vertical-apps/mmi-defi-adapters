@@ -10,7 +10,7 @@ import {
 import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
 
 export class ChainProvider {
-  providers: Record<EvmChain, CustomJsonRpcProvider>
+  providers: Partial<Record<EvmChain, CustomJsonRpcProvider>>
   solanaProvider: Connection
 
   private config: IConfig
@@ -42,7 +42,8 @@ export class ChainProvider {
         // Throw an error if the provider URL is missing for this chain
         const providerUrl = config.provider[chainName]
         if (!providerUrl) {
-          throw new Error(`Provider URL is missing for ${chainName}`)
+          logger.warn({ chainName }, 'Provider URL is missing for this chain')
+          return providers
         }
 
         const maxBatchSize = config.maxBatchSize[chainName]

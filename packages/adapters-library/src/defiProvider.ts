@@ -427,13 +427,13 @@ export class DefiProvider {
 
         // Object.entries casts the numeric key as a string. This reverses it
         return Object.entries(supportedChains)
-
           .filter(([chainIdKey, _]) => {
             return (
-              !filterChainIds || filterChainIds.includes(+chainIdKey as Chain)
+              (!filterChainIds ||
+                filterChainIds.includes(+chainIdKey as Chain)) &&
+              this.config.provider[ChainName[+chainIdKey as Chain]]
             )
           })
-
           .flatMap(([chainIdKey, _]) => {
             const chainId = +chainIdKey as Chain
 

@@ -1,5 +1,4 @@
 import { Connection } from '@solana/web3.js'
-import { chain } from 'lodash'
 import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { PricesSolanaUsdAdapter } from '../adapters/prices-solana/products/usd/pricesSolanaUsdAdapter'
 import {
@@ -20,11 +19,9 @@ import {
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { Support } from '../types/response'
-
 import { Chain, EvmChain } from './constants/chains'
 import { AdapterMissingError, NotImplementedError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
-import { pascalCase } from './utils/caseConversion'
 import { logger } from './utils/logger'
 
 type ISupportedProtocols = Partial<
@@ -47,8 +44,8 @@ export class AdaptersController {
     supportedProtocols,
     metadataProviders,
   }: {
-    evmProviders: Record<EvmChain, CustomJsonRpcProvider>
-    solanaProvider: Connection
+    evmProviders: Partial<Record<EvmChain, CustomJsonRpcProvider>>
+    solanaProvider?: Connection
     supportedProtocols: ISupportedProtocols
     metadataProviders: Record<Chain, IMetadataProvider>
   }) {
@@ -60,8 +57,11 @@ export class AdaptersController {
           ([chainIdKey, adapterClasses]) => {
             const chainId = +chainIdKey as Chain
 
-            let adapters: IProtocolAdapter[]
             if (chainId === Chain.Solana) {
+              if (!solanaProvider) {
+                return
+              }
+
               adapterClasses.forEach(
                 (
                   solanaAdapterClass: new (
@@ -82,9 +82,13 @@ export class AdaptersController {
                 },
               )
             } else {
-              const provider = providers[chainId]!
+              const provider = providers[chainId]
 
-              adapters = adapterClasses.forEach(
+              if (!provider) {
+                return
+              }
+
+              adapterClasses.forEach(
                 (
                   evmAdapterClass: new (
                     input: ProtocolAdapterParams,
@@ -99,7 +103,6 @@ export class AdaptersController {
                       provider,
                       chainId,
                       metadataProviders[chainId],
-                      providers,
                     ),
                   })
 
@@ -115,28 +118,31 @@ export class AdaptersController {
     Object.entries(EvmChain).forEach(([_, chainId]) => {
       const chain = +chainId as EvmChain
 
+      const provider = providers[chainId]
+
+      if (!provider) {
+        return
+      }
+
       const priceAdapter = new PricesV2UsdAdapter({
-        provider: providers[chain],
+        provider,
         chainId: chain,
         adaptersController: this,
-        helpers: new Helpers(
-          providers[chain],
-          chain,
-          metadataProviders[chain],
-          providers,
-        ),
+        helpers: new Helpers(provider, chain, metadataProviders[chain]),
       })
 
       this.priceAdapters.set(chain, priceAdapter)
     })
 
-    this.priceAdapters.set(
-      Chain.Solana,
-      new PricesSolanaUsdAdapter({
-        provider: solanaProvider,
-        adaptersController: this,
-      }),
-    )
+    if (solanaProvider) {
+      this.priceAdapters.set(
+        Chain.Solana,
+        new PricesSolanaUsdAdapter({
+          provider: solanaProvider,
+          adaptersController: this,
+        }),
+      )
+    }
   }
 
   private mapAdapter(adapter: IProtocolAdapter) {

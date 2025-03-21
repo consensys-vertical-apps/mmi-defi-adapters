@@ -18,7 +18,13 @@ export async function runner(dbUrl: string, chainId: EvmChain) {
   const defiProvider = new DefiProvider()
 
   const providerUrl =
-    defiProvider.chainProvider.providers[chainId]._getConnection().url
+    defiProvider.chainProvider.providers[chainId]?._getConnection().url
+
+  // TODO: Should exit even before getting this far
+  if (!providerUrl) {
+    logger.error({ chainId }, 'Provider missing for this chain')
+    return
+  }
 
   const provider = new JsonRpcProvider(providerUrl, chainId, {
     staticNetwork: Network.from(chainId),

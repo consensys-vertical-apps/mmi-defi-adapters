@@ -218,8 +218,8 @@ function parseNumberEnv(env: string | undefined, defaultValue: number): number {
 }
 
 function parseStringEnv(env: string | undefined, defaultValue: string): string {
-  // Uses defaultValue if empty string is passed
-  return env || defaultValue
+  // Uses defaultValue only if env is undefined
+  return env ?? defaultValue
 }
 
 // TODO This function can have some unwanted behaviour if env is ''
