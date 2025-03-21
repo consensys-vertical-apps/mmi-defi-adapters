@@ -4,7 +4,10 @@ import { fetchEvents } from './fetch-events.js'
 import { logger } from './logger.js'
 import type { CacheClient, JobDbEntry } from './postgres-cache-client.js'
 
-const MaxConcurrentBatches = 5
+// TODO: Create zod schema for config
+const MaxConcurrentBatches = process.env.HISTORIC_CACHE_BATCH_SIZE
+  ? Number(process.env.HISTORIC_CACHE_BATCH_SIZE)
+  : 5
 
 const MaxContractsPerCall: Record<EvmChain, number> = {
   [EvmChain.Ethereum]: 10,

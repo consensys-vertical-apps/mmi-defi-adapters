@@ -41,6 +41,8 @@ services:
       - DEFI_ADAPTERS_PROVIDER_AVALANCHE
       - DEFI_ADAPTERS_PROVIDER_LINEA
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/defi-adapters
+      - BLOCK_RUNNER_BATCH_SIZE=10
+      - HISTORIC_CACHE_BATCH_SIZE=5
     depends_on:
       postgres:
         condition: service_healthy
