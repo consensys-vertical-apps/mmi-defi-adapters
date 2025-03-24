@@ -28,6 +28,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { CompoundV3__factory, Rewards__factory } from '../../contracts'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 
 export const addresses = {
   [Chain.Ethereum]: {
@@ -110,7 +111,7 @@ export class CompoundV3LendingAdapter implements IProtocolAdapter {
       name: 'CompoundV3',
       description: 'CompoundV3 defi adapter',
       siteUrl: 'https:',
-      iconUrl: 'https://',
+      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'compound-v3'],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

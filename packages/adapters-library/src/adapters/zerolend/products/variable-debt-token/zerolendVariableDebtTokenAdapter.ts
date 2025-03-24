@@ -20,7 +20,7 @@ export class ZeroLendVariableDebtTokenPoolAdapter extends ZeroLendBasePoolAdapte
       name: 'ZeroLend VariableDebtToken', // TODO change
       description: 'ZeroLend defi adapter for variable interest-accruing token', // TODO change
       siteUrl: 'https://app.zerolend.xyz/',
-      iconUrl: 'https://app.zerolend.xyz/favicon.ico',
+      iconUrl: 'https://zerolend.xyz/favicon.ico',
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,

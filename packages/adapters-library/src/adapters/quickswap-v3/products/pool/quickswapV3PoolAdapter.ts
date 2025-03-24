@@ -25,6 +25,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { PositionManager__factory } from '../../contracts'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 
 // A deadline value needs to be passed to the call, so a stub is generated here
 const deadline = Math.floor(Date.now() - 1000) + 60 * 10
@@ -80,7 +81,7 @@ export class QuickswapV3PoolAdapter implements IProtocolAdapter {
       name: 'QuickswapV3',
       description: 'Quickswap v3 defi adapter',
       siteUrl: 'https://uniswap.org/',
-      iconUrl: '',
+      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'quickswap-v3'],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

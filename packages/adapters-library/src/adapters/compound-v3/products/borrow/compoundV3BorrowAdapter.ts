@@ -4,6 +4,7 @@ import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import {
   IProtocolAdapter,
@@ -60,7 +61,7 @@ export class CompoundV3BorrowAdapter implements IProtocolAdapter {
       name: 'CompoundV3',
       description: 'CompoundV3 defi adapter',
       siteUrl: 'https:',
-      iconUrl: 'https://',
+      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'compound-v3'],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

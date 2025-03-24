@@ -1,4 +1,5 @@
 import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import {
   AdapterSettings,
   GetPositionsInput,
@@ -28,7 +29,7 @@ export class BalancerV2VestingAdapter extends VotingEscrow {
       name: 'BalancerV2',
       description: 'BalancerV2 defi adapter',
       siteUrl: '',
-      iconUrl: '',
+      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'balancer-v2'],
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,

@@ -8,6 +8,7 @@ import {
   ProtocolDetails,
 } from '../../../../types/adapter'
 import { FeeDistributor__factory, VotingEscrow__factory } from '../../contracts'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 
 export class CurveVotingEscrowAdapter extends VotingEscrow {
   productId = 'voting-escrow'
@@ -23,7 +24,7 @@ export class CurveVotingEscrowAdapter extends VotingEscrow {
       name: 'Curve',
       description: 'Curve defi adapter',
       siteUrl: 'https:',
-      iconUrl: 'https://',
+      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'curve'],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

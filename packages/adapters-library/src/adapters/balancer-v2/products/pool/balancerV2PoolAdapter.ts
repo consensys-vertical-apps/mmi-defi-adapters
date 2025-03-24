@@ -28,6 +28,7 @@ import { Erc20, Erc20__factory } from '../../../../contracts'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Vault__factory } from '../../contracts'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 
 const vaultAddress = '0xBA12222222228d8Ba445958a75a0704d566BF2C8'
 
@@ -72,7 +73,7 @@ export class BalancerV2PoolAdapter implements IProtocolAdapter {
       name: 'BalancerV2',
       description: 'BalancerV2 defi adapter',
       siteUrl: 'https:',
-      iconUrl: 'https://',
+      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'balancer-v2'],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

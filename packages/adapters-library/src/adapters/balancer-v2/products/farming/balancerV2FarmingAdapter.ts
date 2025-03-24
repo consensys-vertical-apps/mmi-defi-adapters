@@ -3,6 +3,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import { logger } from '../../../../core/utils/logger'
 import {
   IProtocolAdapter,
@@ -72,7 +73,7 @@ export class BalancerV2FarmingAdapter implements IProtocolAdapter {
       name: 'BalancerV2',
       description: 'BalancerV2 defi adapter',
       siteUrl: 'https:',
-      iconUrl: 'https://',
+      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'balancer-v2'],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

@@ -5,6 +5,7 @@ import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   IProtocolAdapter,
@@ -63,8 +64,7 @@ export class CurvePoolAdapter implements IProtocolAdapter {
       name: 'Curve',
       description: 'Curve pool adapter',
       siteUrl: 'https://curve.fi/',
-      iconUrl:
-        'https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg',
+      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'curve'],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

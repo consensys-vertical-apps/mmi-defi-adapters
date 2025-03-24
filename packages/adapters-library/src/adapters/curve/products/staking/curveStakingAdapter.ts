@@ -33,6 +33,7 @@ import {
 } from '../../../curve/contracts'
 import { Protocol } from '../../../protocols'
 import { getCurvePoolData } from '../../common/getPoolData'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 
 const CurveTokenAddresses = {
   [Chain.Ethereum]: getAddress('0xd533a949740bb3306d119cc777fa900ba034cd52'),
@@ -98,8 +99,7 @@ export class CurveStakingAdapter implements IProtocolAdapter {
       name: 'Curve staking',
       description: 'Curve staking adapter',
       siteUrl: 'https://curve.fi/',
-      iconUrl:
-        'https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg',
+      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'curve'],
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
