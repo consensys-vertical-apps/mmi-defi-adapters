@@ -1,7 +1,7 @@
 import { ethers, getAddress, isError } from 'ethers'
 import { Erc20, Erc20__factory } from '../../contracts'
 import { Erc20Metadata } from '../../types/erc20Metadata'
-import { Chain, ChainIdToChainNameMap } from '../constants/chains'
+import { Chain, ChainName } from '../constants/chains'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { extractErrorMessage } from './extractErrorMessage'
 import { logger } from './logger'
@@ -58,7 +58,7 @@ export async function getTokenMetadata(
     tokenAddress,
     chainId,
     errorMessage,
-    chainName: ChainIdToChainNameMap[chainId],
+    chainName: ChainName[chainId],
   })
   throw new Error(errorMessage)
 }

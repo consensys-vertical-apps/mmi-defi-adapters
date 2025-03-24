@@ -10,7 +10,10 @@ export class BlockRunner {
   private _provider: JsonRpcProvider
   private _chainId: Chain
 
-  private static readonly _BATCH_SIZE = 50
+  // TODO: Create zod schema for config
+  private static readonly _BATCH_SIZE = process.env.BLOCK_RUNNER_BATCH_SIZE
+    ? Number(process.env.BLOCK_RUNNER_BATCH_SIZE)
+    : 10
 
   private _latestBlockNumber: number | undefined
   private _processBlockFn: (blockNumber: number) => Promise<void>

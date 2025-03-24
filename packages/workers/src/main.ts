@@ -1,26 +1,24 @@
-import path from 'node:path'
 import { ChainName, EvmChain } from '@metamask-institutional/defi-adapters'
 import { logger, updateLogger } from './logger.js'
 import { runner } from './runner.js'
 
-const chainIdInput = process.argv[2]
-
-if (!chainIdInput) {
+if (!process.env.CHAIN_ID) {
   logger.error('Chain ID is required')
   process.exit(1)
 }
 
-const chainId = Number.parseInt(chainIdInput, 10) as EvmChain
+const chainId = Number.parseInt(process.env.CHAIN_ID, 10) as EvmChain
 
 if (!Object.values(EvmChain).includes(chainId)) {
-  logger.error({ chainIdInput }, 'Invalid chain ID')
+  logger.error({ chainId: process.env.CHAIN_ID }, 'Invalid chain ID')
   process.exit(1)
 }
 
 updateLogger(chainId, ChainName[chainId])
 
-const dbDirPath =
-  process.env.DB_DIR_PATH ||
-  path.resolve(import.meta.dirname, '../../../databases')
+if (!process.env.DATABASE_URL) {
+  logger.error('DATABASE_URL is required')
+  process.exit(1)
+}
 
-await runner(dbDirPath, chainId, 'both')
+await runner(process.env.DATABASE_URL, chainId)

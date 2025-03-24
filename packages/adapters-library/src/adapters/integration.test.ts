@@ -1,7 +1,7 @@
 import assert from 'node:assert'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import { Chain, ChainIdToChainNameMap } from '../core/constants/chains'
+import { Chain, ChainName } from '../core/constants/chains'
 import { AdapterMissingError } from '../core/errors/errors'
 import { getInvalidAddresses } from '../core/utils/address-validation'
 import { bigintJsonParse } from '../core/utils/bigintJson'
@@ -507,7 +507,7 @@ function runProductTests(
         throw error
       }
 
-      it(`protocol token addresses are checksumed (${protocolId} # ${productId} # ${ChainIdToChainNameMap[chainId]})`, async () => {
+      it(`protocol token addresses are checksumed (${protocolId} # ${productId} # ${ChainName[chainId]})`, async () => {
         let protocolTokenAddresses: string[]
         try {
           protocolTokenAddresses = (await adapter.getProtocolTokens()).map(
@@ -619,9 +619,7 @@ function runProductTests(
 }
 
 function testKey({ chainId, method, key }: TestCase) {
-  return `${ChainIdToChainNameMap[chainId]}.${method}${
-    key ? `.${kebabCase(key)}` : ''
-  }`
+  return `${ChainName[chainId]}.${method}${key ? `.${kebabCase(key)}` : ''}`
 }
 
 async function fetchSnapshot(

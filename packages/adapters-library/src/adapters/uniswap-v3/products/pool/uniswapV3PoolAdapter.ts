@@ -1,11 +1,11 @@
 import { formatUnits, getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   IProtocolAdapter,
   ProtocolToken,
@@ -63,7 +63,7 @@ export const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)
 export class UniswapV3PoolAdapter implements IProtocolAdapter {
   adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
-    userEvent: false,
+    userEvent: 'Transfer',
   }
 
   productId = 'pool'
@@ -107,8 +107,17 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     }
   }
 
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
-    throw new NotImplementedError()
+    return [
+      {
+        address: contractAddresses[this.chainId]!.positionManager,
+        name: 'Uniswap V3 Positions NFT-V1',
+        symbol: 'UNI-V3-POS',
+        decimals: 0,
+        underlyingTokens: [],
+      },
+    ]
   }
 
   async getPositions({
@@ -160,8 +169,8 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
             },
             { from: userAddress, blockTag: blockNumber },
           ),
-          getTokenMetadata(position.token0, this.chainId, this.provider),
-          getTokenMetadata(position.token1, this.chainId, this.provider),
+          this.helpers.getTokenMetadata(position.token0),
+          this.helpers.getTokenMetadata(position.token1),
         ])
 
         const nftName = this.protocolTokenName(
