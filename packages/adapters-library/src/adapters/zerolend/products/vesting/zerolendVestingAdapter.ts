@@ -71,7 +71,7 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
       name: 'Zerolend',
       description: 'Zerolend defi adapter',
       siteUrl: '',
-      iconUrl: '',
+      iconUrl: 'https://zerolend.xyz/favicon.ico',
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,

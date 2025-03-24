@@ -19,6 +19,28 @@ describe('detect errors', () => {
     },
     60000,
   )
+
+  it('fetches protocol details and checks iconUrl is valid %s', async () => {
+    const defiProvider = new DefiProvider()
+    const protocolDetails = await defiProvider.getSupport({
+      includeProtocolTokens: false,
+    })
+
+    const invalidProtocols = Object.values(protocolDetails)
+      .flat()
+      .filter((protocol) => {
+        return !/^https?:\/\/.+/.test(protocol.protocolDetails.iconUrl)
+      })
+
+    if (invalidProtocols.length > 0) {
+      console.error(
+        'Protocols with invalid iconUrl:',
+        invalidProtocols.map((p) => p.protocolDetails.name),
+      )
+    }
+
+    expect(invalidProtocols).toEqual([])
+  })
 })
 
 function filterErrors(response: DefiPositionResponse[]) {

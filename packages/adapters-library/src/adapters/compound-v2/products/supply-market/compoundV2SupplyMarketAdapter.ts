@@ -1,5 +1,6 @@
 import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import {
   AdapterSettings,
   PositionType,
@@ -24,7 +25,7 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
       name: 'CompoundV2',
       description: 'CompoundV2 supply market adapter',
       siteUrl: 'https:',
-      iconUrl: 'https://',
+      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'compound-v2'],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

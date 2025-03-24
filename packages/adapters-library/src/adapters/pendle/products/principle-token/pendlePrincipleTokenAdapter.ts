@@ -23,6 +23,7 @@ import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
 import { PENDLE_ROUTER_STATIC_CONTRACT } from '../../backend/constants'
 import { RouterStatic__factory } from '../../contracts'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 
 type AdditionalMetadata = {
   marketAddress: string
@@ -63,7 +64,7 @@ export class PendlePrincipleTokenAdapter implements IProtocolAdapter {
       name: 'Pendle',
       description: 'Pendle Market adapter',
       siteUrl: 'https://www.pendle.finance',
-      iconUrl: 'https://app.pendle.finance/favicon.ico',
+      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'pendle'],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

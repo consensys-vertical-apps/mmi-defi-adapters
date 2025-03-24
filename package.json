@@ -34,6 +34,7 @@
     "test": "npm run test -w packages/adapters-library",
     "test:file": "npm run test:file -w packages/adapters-library",
     "test:update:adapter-snapshot": "vitest packages/adapters-cli/src/tests/new-adapter-templates.test.ts -u",
+    "test:detect-errors": "npm run test:detect-errors -w packages/adapters-library",
     "test:price": "npm run test:price -w packages/adapters-library",
     "test:tsc": "npm run test:tsc -w packages/adapters-library",
     "test:integration": "npm run test:integration -w packages/adapters-library",

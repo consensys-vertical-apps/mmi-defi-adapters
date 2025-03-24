@@ -46,7 +46,7 @@ export class ChimpExchangePoolAdapter extends SimplePoolAdapter<AdditionalMetada
       name: 'ChimpExchange',
       description: 'ChimpExchange pool adapter',
       siteUrl: 'https://app.chimp.exchange',
-      iconUrl: 'https://',
+      iconUrl: 'https://chimp.exchange/favicon.ico',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

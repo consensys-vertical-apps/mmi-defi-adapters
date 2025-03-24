@@ -13,6 +13,7 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { McdPot__factory } from '../../contracts'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 
 const MCD_POT_ADDRESS = '0x197e90f9fad81970ba7976f33cbd77088e5d7cf7'
 
@@ -33,7 +34,7 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
       name: 'Maker',
       description: 'Maker sDAI adapter',
       siteUrl: 'https:',
-      iconUrl: 'https://',
+      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'maker'],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

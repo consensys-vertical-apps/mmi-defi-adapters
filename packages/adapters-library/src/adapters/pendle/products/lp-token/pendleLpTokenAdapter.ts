@@ -30,6 +30,7 @@ import {
   LiquidityProviderToken__factory,
   RouterStatic__factory,
 } from '../../contracts'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 
 type AdditionalMetadata = {
   marketAddress: string
@@ -70,7 +71,7 @@ export class PendleLpTokenAdapter implements IProtocolAdapter {
       name: 'Pendle',
       description: 'Pendle defi adapter',
       siteUrl: 'https:',
-      iconUrl: 'https://',
+      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'pendle'],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
