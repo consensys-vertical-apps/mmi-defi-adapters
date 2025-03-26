@@ -1,0 +1,11 @@
+
+name: "Update Trivy Cache Cron"
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run daily at midnight UTC
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  update-trivy-cache:
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/trivy-update-cache.yml@v0.61.0
