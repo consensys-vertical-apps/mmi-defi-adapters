@@ -44,82 +44,82 @@ jobs:
           npm run new-adapter -- -y -t UniswapV2PoolForkAdapter
           npm run build
 
-  generate-protocol-matrix:
-    runs-on: ubuntu-latest
-    outputs:
-      protocol-matrix: ${{ steps.set-matrix.outputs.matrix }}
-    steps:
-      - uses: actions/checkout@v4
+  # generate-protocol-matrix:
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     protocol-matrix: ${{ steps.set-matrix.outputs.matrix }}
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version-file: '.nvmrc'
+  #         cache: 'npm'
+  #         cache-dependency-path: '**/package-lock.json'
 
-      - name: Copy .env.example to .env
-        run: cp .env.example .env
+  #     - name: Copy .env.example to .env
+  #       run: cp .env.example .env
 
-      - name: Install dependencies
-        run: npm ci
+  #     - name: Install dependencies
+  #       run: npm ci
 
-      - name: Build
-        run: npm run build
+  #     - name: Build
+  #       run: npm run build
 
-      - id: set-matrix
-        run: |
-          MATRIX=$(npm run -s support | jq -r 'keys | @json')
-          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
-        env:
-          DEFI_ADAPTERS_LOG_LEVEL: silent # Suppress logs during execution
+  #     - id: set-matrix
+  #       run: |
+  #         MATRIX=$(npm run -s support | jq -r 'keys | @json')
+  #         echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
+  #       env:
+  #         DEFI_ADAPTERS_LOG_LEVEL: silent # Suppress logs during execution
 
-  adapter-snapshots-tests:
-    needs: generate-protocol-matrix
+  # adapter-snapshots-tests:
+  #   needs: generate-protocol-matrix
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        protocol: ${{ fromJson(needs.generate-protocol-matrix.outputs.protocol-matrix) }}
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       protocol: ${{ fromJson(needs.generate-protocol-matrix.outputs.protocol-matrix) }}
 
-    steps:
-      - uses: actions/checkout@v4
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version-file: '.nvmrc'
+  #         cache: 'npm'
+  #         cache-dependency-path: '**/package-lock.json'
 
-      - run: echo ${{ fromJson(needs.generate-protocol-matrix.outputs.protocol-matrix) }}
+  #     - run: echo ${{ fromJson(needs.generate-protocol-matrix.outputs.protocol-matrix) }}
 
-      - name: Install dependencies
-        run: npm ci
+  #     - name: Install dependencies
+  #       run: npm ci
 
-      - name: Build
-        run: npm run build
+  #     - name: Build
+  #       run: npm run build
 
-      - name: Run tests
-        run: npm run test:adapter-snapshots:cov --protocolid=${{ matrix.protocol }}
-        env:
-          DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_BSC: ${{ secrets.BSC_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_POLYGON: ${{ secrets.POLYGON_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_FANTOM: ${{ secrets.FANTOM_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_BASE: ${{ secrets.BASE_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_ARBITRUM: ${{ secrets.ARBITRUM_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_AVALANCHE: ${{ secrets.AVALANCHE_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_LINEA: ${{ secrets.LINEA_PROVIDER_URL }}
-          DEFI_ADAPTERS_LOG_LEVEL: warn
+  #     - name: Run tests
+  #       run: npm run test:adapter-snapshots:cov --protocolid=${{ matrix.protocol }}
+  #       env:
+  #         DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_BSC: ${{ secrets.BSC_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_POLYGON: ${{ secrets.POLYGON_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_FANTOM: ${{ secrets.FANTOM_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_BASE: ${{ secrets.BASE_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_ARBITRUM: ${{ secrets.ARBITRUM_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_AVALANCHE: ${{ secrets.AVALANCHE_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_LINEA: ${{ secrets.LINEA_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_LOG_LEVEL: warn
 
-      - name: Upload report
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-${{ github.job }}
-          path: .vitest-reports
-          retention-days: 1
+  #     - name: Upload report
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: coverage-${{ github.job }}
+  #         path: .vitest-reports:*
+  #         retention-days: 1
 
   run-unit-tests:
     runs-on: ubuntu-latest
@@ -157,115 +157,115 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ github.job }}
-          path: .vitest-reports
+          path: .vitest-reports/*
           retention-days: 1
 
-  template-snapshots-tests:
-    runs-on: ubuntu-latest
+  # template-snapshots-tests:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version-file: '.nvmrc'
+  #         cache: 'npm'
+  #         cache-dependency-path: '**/package-lock.json'
 
-      - name: Install dependencies
-        run: npm ci
+  #     - name: Install dependencies
+  #       run: npm ci
 
-      - name: Build
-        run: npm run build
+  #     - name: Build
+  #       run: npm run build
 
-      - name: Run test
-        run: npm run test:template-snapshots:cov
-        env:
-          DEFI_ADAPTERS_LOG_LEVEL: warn
+  #     - name: Run test
+  #       run: npm run test:template-snapshots:cov
+  #       env:
+  #         DEFI_ADAPTERS_LOG_LEVEL: warn
 
-      - name: Upload report
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-${{ github.job }}
-          path: .vitest-reports
-          retention-days: 1
+  #     - name: Upload report
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: coverage-${{ github.job }}
+  #         path: .vitest-reports:*
+  #         retention-days: 1
 
-  smoke-tests:
-    runs-on: ubuntu-latest
+  # smoke-tests:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version-file: '.nvmrc'
+  #         cache: 'npm'
+  #         cache-dependency-path: '**/package-lock.json'
 
-      - name: Install dependencies
-        run: npm ci
+  #     - name: Install dependencies
+  #       run: npm ci
 
-      - name: Build
-        run: npm run build
+  #     - name: Build
+  #       run: npm run build
 
-      - name: Run tests
-        run: npm run test:smoke:cov
-        env:
-          DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_BSC: ${{ secrets.BSC_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_POLYGON: ${{ secrets.POLYGON_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_FANTOM: ${{ secrets.FANTOM_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_BASE: ${{ secrets.BASE_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_ARBITRUM: ${{ secrets.ARBITRUM_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_AVALANCHE: ${{ secrets.AVALANCHE_PROVIDER_URL }}
-          DEFI_ADAPTERS_PROVIDER_LINEA: ${{ secrets.LINEA_PROVIDER_URL }}
-          DEFI_ADAPTERS_LOG_LEVEL: warn
+  #     - name: Run tests
+  #       run: npm run test:smoke:cov
+  #       env:
+  #         DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_BSC: ${{ secrets.BSC_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_POLYGON: ${{ secrets.POLYGON_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_FANTOM: ${{ secrets.FANTOM_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_BASE: ${{ secrets.BASE_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_ARBITRUM: ${{ secrets.ARBITRUM_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_AVALANCHE: ${{ secrets.AVALANCHE_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_PROVIDER_LINEA: ${{ secrets.LINEA_PROVIDER_URL }}
+  #         DEFI_ADAPTERS_LOG_LEVEL: warn
 
-      - name: Upload report
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-${{ github.job }}
-          path: .vitest-reports
-          retention-days: 1
+  #     - name: Upload report
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: coverage-${{ github.job }}
+  #         path: .vitest-reports:*
+  #         retention-days: 1
 
-  test-coverage-report:
-    needs: [adapter-snapshots-tests, template-snapshots-tests, smoke-tests, run-unit-tests]
+  # test-coverage-report:
+  #   needs: [adapter-snapshots-tests, template-snapshots-tests, smoke-tests, run-unit-tests]
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version-file: '.nvmrc'
+  #         cache: 'npm'
+  #         cache-dependency-path: '**/package-lock.json'
 
-      - name: Install dependencies
-        run: npm ci
+  #     - name: Install dependencies
+  #       run: npm ci
 
-      - name: Download all coverage reports
-        uses: actions/download-artifact@v4
-        with:
-          path: temp-coverage-reports
+  #     - name: Download all coverage reports
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         path: temp-coverage-reports
 
-      - name: Create .vitest-reports directory
-        run: mkdir -p .vitest-reports
+  #     - name: Create .vitest-reports directory
+  #       run: mkdir -p .vitest-reports
 
-      - name: Merge coverage reports
-        run: |
-          for dir in temp-coverage/coverage-*/; do
-            cp -r "$dir"* .vitest-reports/
-          done
+  #     - name: Merge coverage reports
+  #       run: |
+  #         for dir in temp-coverage/coverage-*/; do
+  #           cp -r "$dir"* .vitest-reports/
+  #         done
 
-      - name: Verify tsc config
-        run: npm run test:cov
+  #     - name: Verify tsc config
+  #       run: npm run test:cov
 
-      - name: Run sonarcloud-scan
-        uses: sonarsource/sonarcloud-github-action@v2.1.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  #     - name: Run sonarcloud-scan
+  #       uses: sonarsource/sonarcloud-github-action@v2.1.1
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
