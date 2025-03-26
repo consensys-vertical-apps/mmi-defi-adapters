@@ -103,7 +103,7 @@ jobs:
         run: npm run build
 
       - name: Run tests
-        run: npm run test:adapter-snapshots:cov --protocolid=${{ matrix.protocol }}
+        run: npm run test:adapter-snapshots -- --reporter=blob --coverage --outputFile=.vitest-reports/blob-adapter-snapshots-=${{ matrix.protocol }}.json
         env:
           DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
@@ -119,7 +119,7 @@ jobs:
       - name: Upload report
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-${{ github.job }}
+          name: coverage-${{ github.job }}-${{ matrix.protocol }}
           path: .vitest-reports/*
           retention-days: 1
           include-hidden-files: true
