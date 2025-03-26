@@ -44,82 +44,86 @@ jobs:
   #         npm run new-adapter -- -y -t UniswapV2PoolForkAdapter
   #         npm run build
 
-  # generate-protocol-matrix:
-  #   runs-on: ubuntu-latest
-  #   outputs:
-  #     protocol-matrix: ${{ steps.set-matrix.outputs.matrix }}
-  #   steps:
-  #     - uses: actions/checkout@v4
+  generate-protocol-matrix:
+    runs-on: ubuntu-latest
 
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version-file: '.nvmrc'
-  #         cache: 'npm'
-  #         cache-dependency-path: '**/package-lock.json'
+    outputs:
+      protocol-matrix: ${{ steps.set-matrix.outputs.matrix }}
 
-  #     - name: Copy .env.example to .env
-  #       run: cp .env.example .env
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - name: Install dependencies
-  #       run: npm ci
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
-  #     - name: Build
-  #       run: npm run build
+      - name: Copy .env.example to .env
+        run: cp .env.example .env
 
-  #     - id: set-matrix
-  #       run: |
-  #         MATRIX=$(npm run -s support | jq -r 'keys | @json')
-  #         echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
-  #       env:
-  #         DEFI_ADAPTERS_LOG_LEVEL: silent # Suppress logs during execution
+      - name: Install dependencies
+        run: npm ci
 
-  # adapter-snapshots-tests:
-  #   needs: generate-protocol-matrix
+      - name: Build
+        run: npm run build
 
-  #   runs-on: ubuntu-latest
+      - id: set-matrix
+        run: |
+          MATRIX=$(npm run -s support | jq -r 'keys | @json')
+          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
+        env:
+          DEFI_ADAPTERS_LOG_LEVEL: silent # Suppress logs during execution
 
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       protocol: ${{ fromJson(needs.generate-protocol-matrix.outputs.protocol-matrix) }}
+  adapter-snapshots-tests:
+    needs: generate-protocol-matrix
 
-  #   steps:
-  #     - uses: actions/checkout@v4
+    runs-on: ubuntu-latest
 
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version-file: '.nvmrc'
-  #         cache: 'npm'
-  #         cache-dependency-path: '**/package-lock.json'
+    strategy:
+      fail-fast: false
+      matrix:
+        protocol: ${{ fromJson(needs.generate-protocol-matrix.outputs.protocol-matrix) }}
 
-  #     - run: echo ${{ fromJson(needs.generate-protocol-matrix.outputs.protocol-matrix) }}
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - name: Install dependencies
-  #       run: npm ci
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
-  #     - name: Build
-  #       run: npm run build
+      - run: echo ${{ fromJson(needs.generate-protocol-matrix.outputs.protocol-matrix) }}
 
-  #     - name: Run tests
-  #       run: npm run test:adapter-snapshots:cov --protocolid=${{ matrix.protocol }}
-  #       env:
-  #         DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
-  #         DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
-  #         DEFI_ADAPTERS_PROVIDER_BSC: ${{ secrets.BSC_PROVIDER_URL }}
-  #         DEFI_ADAPTERS_PROVIDER_POLYGON: ${{ secrets.POLYGON_PROVIDER_URL }}
-  #         DEFI_ADAPTERS_PROVIDER_FANTOM: ${{ secrets.FANTOM_PROVIDER_URL }}
-  #         DEFI_ADAPTERS_PROVIDER_BASE: ${{ secrets.BASE_PROVIDER_URL }}
-  #         DEFI_ADAPTERS_PROVIDER_ARBITRUM: ${{ secrets.ARBITRUM_PROVIDER_URL }}
-  #         DEFI_ADAPTERS_PROVIDER_AVALANCHE: ${{ secrets.AVALANCHE_PROVIDER_URL }}
-  #         DEFI_ADAPTERS_PROVIDER_LINEA: ${{ secrets.LINEA_PROVIDER_URL }}
-  #         DEFI_ADAPTERS_LOG_LEVEL: warn
+      - name: Install dependencies
+        run: npm ci
 
-  #     - name: Upload report
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: coverage-${{ github.job }}
-  #         path: .vitest-reports:*
-  #         retention-days: 1
+      - name: Build
+        run: npm run build
+
+      - name: Run tests
+        run: npm run test:adapter-snapshots:cov --protocolid=${{ matrix.protocol }}
+        env:
+          DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_BSC: ${{ secrets.BSC_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_POLYGON: ${{ secrets.POLYGON_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_FANTOM: ${{ secrets.FANTOM_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_BASE: ${{ secrets.BASE_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_ARBITRUM: ${{ secrets.ARBITRUM_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_AVALANCHE: ${{ secrets.AVALANCHE_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_LINEA: ${{ secrets.LINEA_PROVIDER_URL }}
+          DEFI_ADAPTERS_LOG_LEVEL: warn
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ github.job }}
+          path: .vitest-reports:*
+          retention-days: 1
+          include-hidden-files: true
+          if-no-files-found: error
 
   run-unit-tests:
     runs-on: ubuntu-latest
