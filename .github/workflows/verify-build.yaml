@@ -175,7 +175,7 @@ jobs:
         env:
           DEFI_ADAPTERS_LOG_LEVEL: warn
 
-  detect-errors-test:
+  smoke-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -194,7 +194,7 @@ jobs:
         run: npm run build
 
       - name: Run tests
-        run: npm run test:detect-errors -w packages/adapters-library
+        run: npm run test:smoke
         env:
           DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}

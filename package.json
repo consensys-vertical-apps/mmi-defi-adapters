@@ -31,13 +31,13 @@
     "performance": "npm run adapters-cli performance --",
     "lint": "biome check packages",
     "fix": "npm run lint -- --write",
-    "test": "npm run test -w packages/adapters-library",
-    "test:file": "npm run test:file -w packages/adapters-library",
-    "test:update:adapter-snapshot": "vitest packages/adapters-cli/src/tests/new-adapter-templates.test.ts -u",
-    "test:price": "npm run test:price -w packages/adapters-library",
-    "test:tsc": "npm run test:tsc -w packages/adapters-library",
-    "test:integration": "npm run test:integration -w packages/adapters-library",
-    "test:cov": "npm run test:cov -w packages/adapters-library",
+    "test": "vitest run",
+    "test:unit": "npm run test -- --project=adapters-unit --project=cli-unit",
+    "test:integration": "DEFI_ADAPTERS_TEST_FILTER_PROTOCOL=$npm_config_protocolid DEFI_ADAPTERS_TEST_FILTER_PRODUCT=$npm_config_productid npm run test -- --project=adapters-integration",
+    "test:smoke": "npm run test -- --project=adapters-smoke",
+    "test:cov": "npm run test",
+    "test:update:adapter-snapshot": "vitest run packages/adapters-cli/src/tests/new-adapter-templates.test.ts -u",
+    "test:tsc": "npm run test:tsc --workspaces --if-present",
     "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; patch-package",
     "drop:db": "bash -c 'read -p \"Are you sure you know what you are doing? This will delete all .db files! (y/n): \" confirm && [ \"$confirm\" = \"y\" ] && rm ./databases/*.db && echo \"All .db files have been deleted successfully.\" || echo \"Aborted. No files were deleted.\"'"
   },
@@ -48,6 +48,6 @@
     "nodemon": "^3.1.0",
     "patch-package": "^8.0.0",
     "typescript": "^5.4.5",
-    "vitest": "^3.0.6"
+    "vitest": "^3.0.9"
   }
 }

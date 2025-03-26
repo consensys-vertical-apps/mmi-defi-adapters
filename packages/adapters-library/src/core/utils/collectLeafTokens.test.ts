@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest'
 import { collectLeafTokens } from './collectLeafTokens'
 
 type Token = {

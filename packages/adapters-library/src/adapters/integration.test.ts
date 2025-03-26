@@ -1,6 +1,7 @@
 import assert from 'node:assert'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { Chain, ChainName } from '../core/constants/chains'
 import { AdapterMissingError } from '../core/errors/errors'
 import { getInvalidAddresses } from '../core/utils/address-validation'
