@@ -6,12 +6,6 @@ export default defineConfig({
     workspace: [
       {
         test: {
-          name: 'cli-unit',
-          include: ['packages/adapters-cli/**/*.test.ts'],
-        },
-      },
-      {
-        test: {
           name: 'adapters-unit',
           include: ['packages/adapters-library/**/*.test.ts'],
           exclude: [
@@ -22,7 +16,7 @@ export default defineConfig({
       },
       {
         test: {
-          name: 'adapters-smoke',
+          name: 'smoke',
           include: ['packages/adapters-library/src/tests/smoke.test.ts'],
           env: {
             DEFI_ADAPTERS_PROVIDER_BSC: '',
@@ -32,9 +26,15 @@ export default defineConfig({
       },
       {
         test: {
-          name: 'adapters-integration',
+          name: 'adapter-snapshots',
+          include: ['packages/adapters-library/src/adapters/snapshots.test.ts'],
+        },
+      },
+      {
+        test: {
+          name: 'template-snapshots',
           include: [
-            'packages/adapters-library/src/adapters/integration.test.ts',
+            'packages/adapters-cli/src/tests/new-adapter-templates.test.ts',
           ],
         },
       },
