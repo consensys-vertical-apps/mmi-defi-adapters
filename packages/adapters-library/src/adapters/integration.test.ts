@@ -70,6 +70,7 @@ import { testCases as makerSDaiTestCases } from './maker/products/s-dai/tests/te
 import { testCases as mendiFinanceBorrowMarketTestCases } from './mendi-finance/products/borrow-market/tests/testCases'
 import { testCases as mendiFinanceStakingTestCases } from './mendi-finance/products/staking/tests/testCases'
 import { testCases as mendiFinanceSupplyMarketTestCases } from './mendi-finance/products/supply-market/tests/testCases'
+import { testCases as metamaskPooledStakingTestCases } from './metamask/products/pooled-staking/tests/testCases'
 import { testCases as morphoAaveV2OptimizerBorrowTestCases } from './morpho-aave-v2/products/optimizer-borrow/tests/testCases'
 import { testCases as morphoAaveV2OptimizerSupplyTestCases } from './morpho-aave-v2/products/optimizer-supply/tests/testCases'
 import { testCases as morphoAaveV3OptimizerBorrowTestCases } from './morpho-aave-v3/products/optimizer-borrow/tests/testCases'
@@ -277,6 +278,10 @@ const allTestCases: Record<Protocol, Record<string, TestCase[]>> = {
     ['borrow-market']: mendiFinanceBorrowMarketTestCases,
     ['staking']: mendiFinanceStakingTestCases,
     ['supply-market']: mendiFinanceSupplyMarketTestCases,
+  },
+
+  [Protocol.Metamask]: {
+    ['pooled-staking']: metamaskPooledStakingTestCases,
   },
 
   [Protocol.MorphoAaveV2]: {
