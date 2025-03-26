@@ -144,7 +144,7 @@ jobs:
         run: npm run build
 
       - name: Run tests
-        run: npm run test:unit:cov
+        run: npm run test:unit -- --reporter=blob --coverage --outputFile=.vitest-reports/blob-unit.json
         env:
           DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
@@ -185,7 +185,7 @@ jobs:
         run: npm run build
 
       - name: Run test
-        run: npm run test:template-snapshots:cov
+        run: npm run test:template-snapshots -- --reporter=blob --coverage --outputFile=.vitest-reports/blob-template-snapshots.json
         env:
           DEFI_ADAPTERS_LOG_LEVEL: warn
 
@@ -217,7 +217,7 @@ jobs:
         run: npm run build
 
       - name: Run tests
-        run: npm run test:smoke:cov
+        run: npm run test:smoke -- --reporter=blob --coverage --outputFile=.vitest-reports/blob-smoke.json
         env:
           DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
