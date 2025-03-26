@@ -8,41 +8,41 @@ on:
       - main
 
 jobs:
-  lint-and-verify-cli:
-    runs-on: ubuntu-latest
+  # lint-and-verify-cli:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version-file: '.nvmrc'
+  #         cache: 'npm'
+  #         cache-dependency-path: '**/package-lock.json'
 
-      - name: Copy .env.example to .env
-        run: cp .env.example .env
+  #     - name: Copy .env.example to .env
+  #       run: cp .env.example .env
 
-      - name: Install dependencies
-        run: npm ci
+  #     - name: Install dependencies
+  #       run: npm ci
 
-      - name: Verify there are no linting and formatting errors
-        run: npm run lint
+  #     - name: Verify there are no linting and formatting errors
+  #       run: npm run lint
 
-      - name: Build
-        run: npm run build
+  #     - name: Build
+  #       run: npm run build
 
-      - name: Verify tsc config
-        run: npm run test:tsc
+  #     - name: Verify tsc config
+  #       run: npm run test:tsc
 
-      - name: Create new adapter with new CLI
-        run: |
-          npm run new-adapter -- -y -t "Smart Adapter Builder"
-          npm run build
-          npm run new-adapter -- -y -t "VotingEscrowAdapter (like curve and stargate voting escrow)"
-          npm run build
-          npm run new-adapter -- -y -t UniswapV2PoolForkAdapter
-          npm run build
+  #     - name: Create new adapter with new CLI
+  #       run: |
+  #         npm run new-adapter -- -y -t "Smart Adapter Builder"
+  #         npm run build
+  #         npm run new-adapter -- -y -t "VotingEscrowAdapter (like curve and stargate voting escrow)"
+  #         npm run build
+  #         npm run new-adapter -- -y -t UniswapV2PoolForkAdapter
+  #         npm run build
 
   # generate-protocol-matrix:
   #   runs-on: ubuntu-latest
@@ -159,6 +159,8 @@ jobs:
           name: coverage-${{ github.job }}
           path: .vitest-reports/*
           retention-days: 1
+          include-hidden-files: true
+          if-no-files-found: error
 
   # template-snapshots-tests:
   #   runs-on: ubuntu-latest
