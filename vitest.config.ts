@@ -39,5 +39,9 @@ export default defineConfig({
         },
       },
     ],
+    coverage: {
+      provider: 'v8',
+      exclude: ['packages/adapters-library/src/**/contracts/**', '**/dist/**'],
+    },
   },
 })
