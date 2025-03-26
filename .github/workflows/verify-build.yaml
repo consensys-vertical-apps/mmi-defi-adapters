@@ -101,7 +101,7 @@ jobs:
         run: npm run build
 
       - name: Run tests
-        run: npm run test:cov:adapter-snapshots --protocolid=${{ matrix.protocol }}
+        run: npm run test:adapter-snapshots:cov --protocolid=${{ matrix.protocol }}
         env:
           DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
@@ -140,7 +140,7 @@ jobs:
         run: npm run build
 
       - name: Run tests
-        run: npm run test:cov:unit
+        run: npm run test:unit:cov
         env:
           DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
@@ -179,7 +179,7 @@ jobs:
         run: npm run build
 
       - name: Run test
-        run: npm run test:cov:template-snapshots
+        run: npm run test:template-snapshots:cov
         env:
           DEFI_ADAPTERS_LOG_LEVEL: warn
 
@@ -209,7 +209,7 @@ jobs:
         run: npm run build
 
       - name: Run tests
-        run: npm run test:cov:smoke
+        run: npm run test:smoke:cov
         env:
           DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
@@ -245,6 +245,20 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Download all coverage reports
+        uses: actions/download-artifact@v4
+        with:
+          path: temp-coverage-reports
+
+      - name: Create .vitest-reports directory
+        run: mkdir -p .vitest-reports
+
+      - name: Merge coverage reports
+        run: |
+          for dir in temp-coverage/coverage-*/; do
+            cp -r "$dir"* .vitest-reports/
+          done
 
       - name: Verify tsc config
         run: npm run test:cov
