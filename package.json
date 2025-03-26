@@ -35,7 +35,7 @@
     "test:unit": "npm run test -- --project=adapters-unit --project=cli-unit",
     "test:integration": "DEFI_ADAPTERS_TEST_FILTER_PROTOCOL=$npm_config_protocolid DEFI_ADAPTERS_TEST_FILTER_PRODUCT=$npm_config_productid npm run test -- --project=adapters-integration",
     "test:smoke": "npm run test -- --project=adapters-smoke",
-    "test:cov": "npm run test",
+    "test:cov": "npm run test -- --coverage",
     "test:adapter-snapshot": "vitest run packages/adapters-cli/src/tests/new-adapter-templates.test.ts",
     "test:adapter-snapshot:update": "npm run test:adapter-snapshot -- -u",
     "test:tsc": "npm run test:tsc --workspaces --if-present",
@@ -44,6 +44,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/node": "^20.12.10",
+    "@vitest/coverage-v8": "^3.0.9",
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.0",
     "typescript": "^5.4.5",
