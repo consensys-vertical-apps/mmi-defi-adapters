@@ -26,14 +26,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Verify tsc config
-        run: npm run test:tsc
-
       - name: Verify there are no linting and formatting errors
         run: npm run lint
 
       - name: Build
         run: npm run build
+
+      - name: Verify tsc config
+        run: npm run test:tsc
 
       - name: Create new adapter with new CLI
         run: |
@@ -171,7 +171,7 @@ jobs:
         run: npm run build
 
       - name: Run test
-        run: npm run test -w packages/adapters-cli
+        run: npm run test:adapter-snapshot
         env:
           DEFI_ADAPTERS_LOG_LEVEL: warn
 

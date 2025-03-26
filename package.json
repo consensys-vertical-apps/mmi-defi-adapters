@@ -36,7 +36,8 @@
     "test:integration": "DEFI_ADAPTERS_TEST_FILTER_PROTOCOL=$npm_config_protocolid DEFI_ADAPTERS_TEST_FILTER_PRODUCT=$npm_config_productid npm run test -- --project=adapters-integration",
     "test:smoke": "npm run test -- --project=adapters-smoke",
     "test:cov": "npm run test",
-    "test:update:adapter-snapshot": "vitest run packages/adapters-cli/src/tests/new-adapter-templates.test.ts -u",
+    "test:adapter-snapshot": "vitest run packages/adapters-cli/src/tests/new-adapter-templates.test.ts",
+    "test:adapter-snapshot:update": "npm run test:adapter-snapshot -- -u",
     "test:tsc": "npm run test:tsc --workspaces --if-present",
     "drop:db": "bash -c 'read -p \"Are you sure you know what you are doing? This will delete all .db files! (y/n): \" confirm && [ \"$confirm\" = \"y\" ] && rm ./databases/*.db && echo \"All .db files have been deleted successfully.\" || echo \"Aborted. No files were deleted.\"'"
   },
