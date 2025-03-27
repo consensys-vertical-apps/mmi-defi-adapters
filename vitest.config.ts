@@ -9,7 +9,7 @@ export default defineConfig({
           name: 'adapters-unit',
           include: ['packages/adapters-library/**/*.test.ts'],
           exclude: [
-            'packages/adapters-library/src/adapters/integration.test.ts',
+            'packages/adapters-library/src/adapters/snapshots.test.ts',
             'packages/adapters-library/src/tests/*.test.ts',
           ],
         },

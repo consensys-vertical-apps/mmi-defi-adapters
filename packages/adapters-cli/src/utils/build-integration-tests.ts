@@ -11,7 +11,7 @@ import n = types.namedTypes
 import b = types.builders
 
 /**
- * @description Creates a new file for integration tests if it doesn't exist
+ * @description Creates a new file for snapshot tests if it doesn't exist
  */
 export async function buildIntegrationTests({
   protocolId,
@@ -29,7 +29,7 @@ export async function buildIntegrationTests({
   }
 
   const testsFile = path.resolve(
-    './packages/adapters-library/src/adapters/integration.test.ts',
+    './packages/adapters-library/src/adapters/snapshots.test.ts',
   )
   const contents = await fs.readFile(testsFile, 'utf-8')
   const ast = parse(contents, {
