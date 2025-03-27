@@ -99,9 +99,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
-
       - name: Run tests
         run: npm run test:adapter-snapshots --protocolid=${{ matrix.protocol }} -- --reporter=blob --coverage --outputFile=.vitest-reports/blob-adapter-snapshots-${{ matrix.protocol }}.json
         env:
@@ -212,9 +209,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Build
-        run: npm run build
 
       - name: Run tests
         run: npm run test:smoke -- --reporter=blob --coverage --outputFile=.vitest-reports/blob-smoke.json
