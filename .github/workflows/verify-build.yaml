@@ -263,10 +263,8 @@ jobs:
           pattern: coverage-*
           merge-multiple: true
 
-      - run: ls -R .vitest-reports
-
       - name: Generate coverage report
-        run: npm run test:cov
+        run: npm run test:cov:merge
 
       - name: Run sonarcloud-scan
         uses: sonarsource/sonarcloud-github-action@v2.1.1

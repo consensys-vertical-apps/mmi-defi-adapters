@@ -38,6 +38,7 @@
     "test:template-snapshots": "vitest run --project=template-snapshots",
     "test:template-snapshots:update": "npm run test:template-snapshots -- -u",
     "test:cov": "vitest run --coverage",
+    "test:cov:merge": "vitest run --merge-reports --reporter=junit --coverage",
     "test:tsc": "npm run test:tsc --workspaces --if-present",
     "drop:db": "bash -c 'read -p \"Are you sure you know what you are doing? This will delete all .db files! (y/n): \" confirm && [ \"$confirm\" = \"y\" ] && rm ./databases/*.db && echo \"All .db files have been deleted successfully.\" || echo \"Aborted. No files were deleted.\"'"
   },
