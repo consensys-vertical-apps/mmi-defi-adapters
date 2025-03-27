@@ -7,10 +7,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc",
     "build:watch": "npm run build -- --watch",
     "start": "node dist/runner.js",
-    "test:tsc": "tsc --noEmit -p tsconfig.json"
+    "test:tsc": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/pg": "^8.11.11",

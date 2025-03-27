@@ -32,7 +32,7 @@
     "lint": "biome check packages",
     "fix": "npm run lint -- --write",
     "test": "npm run test:unit",
-    "test:unit": "vitest run --project=adapters-unit",
+    "test:unit": "vitest run --project=unit",
     "test:smoke": "vitest run --project=smoke",
     "test:adapter-snapshots": "DEFI_ADAPTERS_TEST_FILTER_PROTOCOL=$npm_config_protocolid DEFI_ADAPTERS_TEST_FILTER_PRODUCT=$npm_config_productid vitest run --project=adapter-snapshots",
     "test:template-snapshots": "vitest run --project=template-snapshots",

@@ -10,9 +10,9 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc",
     "build:watch": "npm run build -- --watch",
-    "test:tsc": "tsc --noEmit -p tsconfig.json"
+    "test:tsc": "tsc --noEmit"
   },
   "devDependencies": {
     "@typechain/ethers-v6": "^0.5.0",
