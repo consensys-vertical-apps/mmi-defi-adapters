@@ -66,7 +66,7 @@ const allTestCases = await (async () => {
             }
             ;(await acc)[adapter.protocolDetails.productId] = (
               await import(
-                `./${adapter.protocolDetails.protocolId}/products/${adapter.protocolDetails.productId}/tests/testCases`
+                `./${adapter.protocolDetails.protocolId}/products/${adapter.protocolDetails.productId}/tests/testCases.ts`
               )
             ).testCases
 
