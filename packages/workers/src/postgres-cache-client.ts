@@ -64,7 +64,7 @@ export async function createPostgresCacheClient({
     partialPoolConfig,
   })
 
-  await dbPool.query('CREATE SCHEMA IF NOT EXISTS $1', [schema])
+  await dbPool.query(`CREATE SCHEMA IF NOT EXISTS "${schema}"`)
 
   const client = new PostgresCacheClient(dbPool, chainId)
   await client.migrate()
