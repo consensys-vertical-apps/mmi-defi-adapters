@@ -47,11 +47,13 @@ export default defineConfig({
     ],
     coverage: {
       provider: 'v8',
-      include: ['packages/*/src/**/*.ts'],
+      reporter: ['text', 'lcov', 'html'],
+      include: ['packages/*/src/**'],
       exclude: [
         'packages/adapters-library/src/**/contracts/**',
         'packages/dev-ui/**', // This code is not deployed
         'packages/adapters-cli/**', // This code is not deployed
+        'packages/*/src/main.ts', // This code is not deployed
       ],
     },
   },
