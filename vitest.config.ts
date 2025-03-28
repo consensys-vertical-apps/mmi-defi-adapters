@@ -54,9 +54,8 @@ export default defineConfig({
         'packages/dev-ui/**', // This code is not deployed
         'packages/adapters-cli/**', // This code is not deployed
         'packages/*/src/main.ts', // Do not cover main.ts
+        'packages/*/src/index.ts', // Do not cover index.ts at root
         'packages/*/src/**/logger.ts', // Do not cover logger.ts
-        'packages/adapters-library/src/index.ts', // Do not cover ths file, it just exports modules
-        'packages/workers/src/index.ts', // Do not cover ths file, it just exports modules
       ],
     },
   },
