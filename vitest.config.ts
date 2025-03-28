@@ -53,7 +53,7 @@ export default defineConfig({
         'packages/adapters-library/src/**/contracts/**',
         'packages/dev-ui/**', // This code is not deployed
         'packages/adapters-cli/**', // This code is not deployed
-        'packages/*/src/main.ts', // This code is not deployed
+        'packages/*/src/main.ts', // Do not cover main.ts
       ],
     },
   },
