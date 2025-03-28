@@ -144,6 +144,8 @@ import { QuickswapV3PoolAdapter } from './quickswap-v3/products/pool/quickswapV3
 import { JitoJitosolAdapter } from './jito/products/jitosol/jitoJitosolAdapter'
 import { ZerolendVestingAdapter } from './zerolend/products/vesting/zerolendVestingAdapter'
 
+import { MetamaskPooledStakingAdapter } from './metamask/products/pooled-staking/metamaskPooledStakingAdapter'
+
 export type EvmChainAdapters = Partial<
   Record<EvmChain, (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]>
 >
@@ -434,6 +436,10 @@ export const supportedProtocols: Record<
       MendiFinanceBorrowMarketAdapter,
       MendiFinanceStakingAdapter,
     ],
+  },
+
+  [Protocol.Metamask]: {
+    [Chain.Ethereum]: [MetamaskPooledStakingAdapter],
   },
 
   [Protocol.MorphoAaveV2]: {
