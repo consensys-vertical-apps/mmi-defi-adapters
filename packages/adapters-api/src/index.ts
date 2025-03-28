@@ -64,7 +64,7 @@ serve(
     port,
   },
   (info) => {
-    logger.info({ port }, 'API server is running')
+    logger.info({ port: info.port }, 'API server is running')
   },
 )
 

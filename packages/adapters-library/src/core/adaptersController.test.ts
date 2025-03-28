@@ -1,4 +1,5 @@
 import { Connection } from '@solana/web3.js'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Protocol } from '../adapters/protocols'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
@@ -12,13 +13,13 @@ const evmProviders = Object.values(Chain).reduce(
   (accumulator, current) => {
     return {
       ...accumulator,
-      [current]: jest.fn() as unknown as CustomJsonRpcProvider,
+      [current]: vi.fn() as unknown as CustomJsonRpcProvider,
     }
   },
   {} as Record<Chain, CustomJsonRpcProvider>,
 )
 
-const solanaProvider = jest.fn() as unknown as Connection
+const solanaProvider = vi.fn() as unknown as Connection
 
 const protocolIdMock = 'protocol-mock' as Protocol
 class MockProtocolAdapter {

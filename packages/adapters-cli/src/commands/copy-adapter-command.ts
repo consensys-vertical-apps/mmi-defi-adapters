@@ -135,7 +135,6 @@ async function copyAdapter(data: {
     )
 
     await buildIntegrationTests({
-      protocolKey: data.protocolKey,
       protocolId: data.protocolId,
       productId,
     })

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest'
 import { isKebabCase, isPascalCase, pascalCase } from './caseConversion'
 
 describe('caseConversion', () => {
