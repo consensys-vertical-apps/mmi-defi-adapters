@@ -47,7 +47,12 @@ export default defineConfig({
     ],
     coverage: {
       provider: 'v8',
-      exclude: ['packages/adapters-library/src/**/contracts/**', '**/dist/**'],
+      include: ['packages/*/src/**/*.ts'],
+      exclude: [
+        'packages/adapters-library/src/**/contracts/**',
+        'packages/dev-ui/**', // This code is not deployed
+        'packages/adapters-cli/**', // This code is not deployed
+      ],
     },
   },
 })
