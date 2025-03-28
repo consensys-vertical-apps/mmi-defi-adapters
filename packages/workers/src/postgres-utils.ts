@@ -40,7 +40,7 @@ export function createDbPool({
   })
 
   dbPool.on('connect', (client) => {
-    client.query(`SET search_path TO "${schema}"`).catch((err) => {
+    client.query('SET search_path TO $1', [schema]).catch((err) => {
       logger?.error({ err, schema }, 'Failed to set search path schema')
     })
   })
