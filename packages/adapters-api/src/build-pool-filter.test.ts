@@ -15,7 +15,7 @@ describe('buildPoolFilter', () => {
 
   it('throws error when CACHE_DATABASE_URL is not set but cache is enabled', () => {
     process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE = 'true'
-    // biome-ignore lint/performance/noDelete: <explanation>
+    // biome-ignore lint/performance/noDelete: setting as undefined does not work for process.env
     delete process.env.CACHE_DATABASE_URL
 
     expect(() => buildPoolFilter()).toThrow('CACHE_DATABASE_URL is not set')
