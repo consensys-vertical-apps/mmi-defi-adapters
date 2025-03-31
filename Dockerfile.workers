@@ -12,6 +12,7 @@ COPY packages/workers/package*.json ./packages/workers/
 
 RUN npm ci
 
+COPY metadata metadata
 COPY packages packages
 
 RUN npm run build -w packages/adapters-library

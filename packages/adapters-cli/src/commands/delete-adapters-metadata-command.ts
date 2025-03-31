@@ -54,7 +54,7 @@ export function deleteAdapterMetadataCommand(program: Command) {
         }
         const chainId = filterChainIds.pop()!
 
-        const db = new Database(`./databases/${ChainName[chainId]}.db`)
+        const db = new Database(`./metadata/${ChainName[chainId]}.db`)
 
         const poolIds = getPoolIds(db, protocolId, productId)
 
