@@ -19,7 +19,7 @@ const defiProvider = new DefiProvider({
 const app = new Hono()
 app.use('*', cors())
 
-app.get('/', (context) => context.text('Ok'))
+app.get('/health', (context) => context.json({ message: 'ok' }))
 
 app.get('/positions/:userAddress', async (context) => {
   try {
