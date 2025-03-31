@@ -17,7 +17,11 @@ export function createDbPool({
       schema,
     )}`,
     max: 10,
-    ssl: !process.env.CACHE_DATABASE_DISABLE_SSL,
+    ssl: process.env.CACHE_DATABASE_DISABLE_SSL
+      ? false
+      : {
+          rejectUnauthorized: false,
+        },
     ...partialPoolConfig,
   }
 
