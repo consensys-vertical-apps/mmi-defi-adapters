@@ -12,7 +12,7 @@ export function createDbPool({
   logger?: Logger
   partialPoolConfig?: Omit<pg.PoolConfig, 'connectionString'>
 }) {
-  const poolConfig: pg.PoolConfig = {
+  const poolConfig = {
     connectionString: `${dbUrl}?options=-c%20search_path%3D${encodeURIComponent(
       schema,
     )}`,
