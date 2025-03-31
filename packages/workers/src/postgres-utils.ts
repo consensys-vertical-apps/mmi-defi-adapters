@@ -12,11 +12,12 @@ export function createDbPool({
   logger?: Logger
   partialPoolConfig?: Omit<pg.PoolConfig, 'connectionString'>
 }) {
-  const poolConfig = {
+  const poolConfig: pg.PoolConfig = {
     connectionString: `${dbUrl}?options=-c%20search_path%3D${encodeURIComponent(
       schema,
     )}`,
     max: 10,
+    ssl: process.env.CACHE_DATABASE_SSL === 'true',
     ...partialPoolConfig,
   }
 
