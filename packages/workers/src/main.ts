@@ -16,9 +16,9 @@ if (!Object.values(EvmChain).includes(chainId)) {
 
 updateLogger(chainId, ChainName[chainId])
 
-if (!process.env.DATABASE_URL) {
-  logger.error('DATABASE_URL is required')
+if (!process.env.CACHE_DATABASE_URL) {
+  logger.error('CACHE_DATABASE_URL is required')
   process.exit(1)
 }
 
-await runner(process.env.DATABASE_URL, chainId)
+await runner(process.env.CACHE_DATABASE_URL, chainId)
