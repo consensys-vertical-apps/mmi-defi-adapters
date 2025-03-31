@@ -9,6 +9,7 @@ COPY packages/adapters-api/package*.json ./packages/adapters-api/
 
 RUN npm ci
 
+COPY databases databases
 COPY packages packages
 
 RUN npm run build -w packages/adapters-library
