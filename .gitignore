@@ -140,6 +140,3 @@ dist
 # Database temporary files
 *db-shm
 *db-wal
-
-# Large Project Database files
-databases/*_index.db
