@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "npm run build -- --watch",
-    "start": "node dist/runner.js",
+    "start": "node dist/main.js",
     "test:tsc": "tsc --noEmit"
   },
   "devDependencies": {
