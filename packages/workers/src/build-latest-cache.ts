@@ -1,7 +1,7 @@
 import { type EvmChain } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
+import type { Logger } from 'pino'
 import { BlockRunner } from './block-runner.js'
-import { logger } from './logger.js'
 import type { CacheClient } from './postgres-cache-client.js'
 
 export async function buildLatestCache(
@@ -9,6 +9,7 @@ export async function buildLatestCache(
   chainId: EvmChain,
   cacheClient: CacheClient,
   startBlock: number,
+  logger: Logger,
 ) {
   logger.info('Starting latest cache builder')
 
@@ -22,6 +23,7 @@ export async function buildLatestCache(
   )
 
   const indexer = new BlockRunner({
+    processingBlockNumber: startBlock,
     provider,
     chainId,
     processBlockFn: async (blockNumber) =>
@@ -30,12 +32,14 @@ export async function buildLatestCache(
         blockNumber,
         userIndexMap,
         cacheClient,
+        logger,
       }),
     onError: async (latestSafeProcessedBlock: number) =>
       cacheClient.updateLatestBlockProcessed(latestSafeProcessedBlock),
+    logger,
   })
 
-  await indexer.start(startBlock)
+  await indexer.start()
 }
 
 function createWatchKey(contractAddress: string, topic0: string): string {
@@ -47,15 +51,20 @@ async function processBlockFn({
   blockNumber,
   userIndexMap,
   cacheClient,
+  logger,
 }: {
   provider: JsonRpcProvider
   blockNumber: number
   userIndexMap: Map<string, number>
   cacheClient: CacheClient
+  logger: Logger
 }): Promise<void> {
+  const startTime = Date.now()
   const receipts = (await provider.send('eth_getBlockReceipts', [
     `0x${ethers.toBeHex(blockNumber).slice(2).replace(/^0+/, '')}`, // some chains need to remove leading zeros like ftm
   ])) as TransactionReceipt[]
+
+  const receiptsFetchTime = Date.now()
 
   const logs: { address: string; contractAddress: string }[] = []
 
@@ -92,7 +101,24 @@ async function processBlockFn({
     }
   }
 
-  await cacheClient.insertLogs(logs, blockNumber)
+  const logsProcessedTime = Date.now()
 
-  logger.info({ blockNumber, logsProcessed: logs.length }, 'Processed block')
+  if (logs.length > 0) {
+    await cacheClient.insertLogs(logs, blockNumber)
+  }
+
+  const logsInsertTime = Date.now()
+
+  logger.debug(
+    {
+      blockNumber,
+      logsProcessed: logs.length,
+      startTime,
+      totalTime: logsInsertTime - startTime,
+      receiptsFetchTime: receiptsFetchTime - startTime,
+      logsProcessedTime: logsProcessedTime - receiptsFetchTime,
+      logsInsertTime: logsInsertTime - logsProcessedTime,
+    },
+    'Processed block',
+  )
 }

@@ -1,5 +1,5 @@
 import { type JsonRpcProvider, type Log, isError } from 'ethers'
-import { logger } from './logger.js'
+import type { Logger } from 'pino'
 
 const TIMEOUT_IN_MS = 8_000
 const TIMEOUT_ERROR_MESSAGE = 'Request timed out'
@@ -10,6 +10,7 @@ export async function* fetchEvents({
   topic0,
   fromBlock,
   toBlock,
+  logger,
   depth = 0,
 }: {
   provider: JsonRpcProvider
@@ -17,6 +18,7 @@ export async function* fetchEvents({
   topic0: string // Some providers (BSC) behave erratically when passing null for topic filters
   fromBlock: number
   toBlock: number
+  logger: Logger
   depth?: number
 }): AsyncGenerator<Log[], void, unknown> {
   const ranges: { fromBlock: number; toBlock: number; depth: number }[] = []

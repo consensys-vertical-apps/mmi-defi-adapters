@@ -6,10 +6,11 @@ import {
 import { Hono } from 'hono'
 import { Mocked, beforeEach, describe, expect, it, vi } from 'vitest'
 import { buildApi } from './build-api'
-
+import { DbService } from './db-service'
 describe('buildApi', () => {
   let app: Hono
   let mockDefiProvider: Mocked<DefiProvider>
+  let mockDbService: Mocked<DbService>
 
   beforeEach(() => {
     app = new Hono()
@@ -17,15 +18,16 @@ describe('buildApi', () => {
       getPositions: vi.fn(),
       getSupport: vi.fn(),
     } as unknown as DefiProvider)
+    mockDbService = vi.mocked({} as unknown as DbService)
 
-    buildApi(app, mockDefiProvider)
+    buildApi(app, mockDefiProvider, mockDbService)
   })
 
-  describe('GET /', () => {
+  describe('GET /health', () => {
     it('should return Ok', async () => {
-      const res = await app.request('/')
+      const res = await app.request('/health')
       expect(res.status).toBe(200)
-      expect(await res.text()).toBe('Ok')
+      expect(await res.json()).toEqual({ message: 'ok' })
     })
   })
 

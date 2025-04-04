@@ -51,6 +51,8 @@ export default defineConfig({
       include: ['packages/*/src/**'],
       exclude: [
         'packages/adapters-library/src/**/contracts/**',
+        'packages/adapters-library/src/tests/**',
+        'packages/adapters-library/src/**/products/*/tests/**',
         'packages/dev-ui/**', // This code is not deployed
         'packages/adapters-cli/**', // This code is not deployed
         'packages/*/src/main.ts', // Do not cover main.ts
