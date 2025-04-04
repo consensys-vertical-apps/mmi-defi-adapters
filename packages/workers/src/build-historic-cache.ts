@@ -9,7 +9,7 @@ const SIXTY_SECONDS = 60_000
 // TODO: Create zod schema for config
 const MaxConcurrentBatches = process.env.HISTORIC_CACHE_BATCH_SIZE
   ? Number(process.env.HISTORIC_CACHE_BATCH_SIZE)
-  : 3
+  : 5
 
 const MaxContractsPerCall: Record<EvmChain, number> = {
   [EvmChain.Ethereum]: 10,

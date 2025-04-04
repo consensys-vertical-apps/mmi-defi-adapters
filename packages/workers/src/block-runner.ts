@@ -42,11 +42,7 @@ export class BlockRunner {
     this._chainId = chainId
     this._logger = logger
 
-    // TODO: Reconsider how it can be configured
-    this._batchSize =
-      chainId === Chain.Arbitrum || chainId === Chain.Polygon
-        ? 30
-        : Number(process.env.BLOCK_RUNNER_BATCH_SIZE || 10)
+    this._batchSize = Number(process.env.BLOCK_RUNNER_BATCH_SIZE || 10)
   }
 
   private async waitForBlockToBeReady(): Promise<true> {

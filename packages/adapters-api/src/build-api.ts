@@ -56,6 +56,17 @@ export function buildApi(
     }
   })
 
+  app.get('/user-pools/:userAddress', async (context) => {
+    try {
+      const userAddress = IsEthAddress.parse(context.req.param('userAddress'))
+      return context.json({
+        data: await dbService.getAddressPools(userAddress),
+      })
+    } catch (error) {
+      return context.json({ error: handleErrorMessage(error) }, 500)
+    }
+  })
+
   app.get('/stats/blocks', async (context) => {
     try {
       return context.json({
@@ -95,17 +106,6 @@ export function buildApi(
     try {
       return context.json({
         data: await dbService.getTableSizesStats(),
-      })
-    } catch (error) {
-      return context.json({ error: handleErrorMessage(error) }, 500)
-    }
-  })
-
-  app.get('/user-pools/:userAddress', async (context) => {
-    try {
-      const userAddress = IsEthAddress.parse(context.req.param('userAddress'))
-      return context.json({
-        data: await dbService.getAddressPools(userAddress),
       })
     } catch (error) {
       return context.json({ error: handleErrorMessage(error) }, 500)
