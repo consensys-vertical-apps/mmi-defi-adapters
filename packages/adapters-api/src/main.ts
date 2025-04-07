@@ -1,11 +1,12 @@
 import { serve } from '@hono/node-server'
-import { DefiProvider } from '@metamask-institutional/defi-adapters'
+import { EvmChain } from '@metamask-institutional/defi-adapters'
 import { Hono } from 'hono'
 import './bigint-json.js'
 import { buildApi } from './build-api.js'
-import { buildPoolFilter } from './build-pool-filter.js'
+import { buildServices } from './build-services.js'
 import { logger } from './logger.js'
-import { buildMemoryUnwrapCacheProvider } from './memory-unwrap-price-cache-provider.js'
+
+process.setMaxListeners(Object.keys(EvmChain).length * 2)
 
 if (process.env.PORT && Number.isNaN(Number(process.env.PORT))) {
   logger.error('PORT is not set or is not a number')
@@ -14,13 +15,11 @@ if (process.env.PORT && Number.isNaN(Number(process.env.PORT))) {
 
 const port = process.env.PORT ? Number(process.env.PORT) : 3000
 
-const defiProvider = new DefiProvider({
-  poolFilter: buildPoolFilter(),
-  unwrapCacheProvider: buildMemoryUnwrapCacheProvider(),
-})
+const { dbService, defiProvider } = buildServices()
 
 const app = new Hono()
-buildApi(app, defiProvider)
+
+buildApi(app, defiProvider, dbService)
 
 serve(
   {

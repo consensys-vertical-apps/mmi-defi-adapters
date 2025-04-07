@@ -1,8 +1,10 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, getAddress } from 'ethers'
+import type { Logger } from 'pino'
 import { fetchEvents } from './fetch-events.js'
-import { logger } from './logger.js'
 import type { CacheClient, JobDbEntry } from './postgres-cache-client.js'
+
+const SIXTY_SECONDS = 60_000
 
 // TODO: Create zod schema for config
 const MaxConcurrentBatches = process.env.HISTORIC_CACHE_BATCH_SIZE
@@ -43,22 +45,25 @@ export async function buildHistoricCache(
   provider: JsonRpcProvider,
   chainId: EvmChain,
   cacheClient: CacheClient,
+  logger: Logger,
 ) {
   logger.info('Starting historic cache builder')
 
   while (true) {
     const unfinishedPools = await cacheClient.fetchUnfinishedJobs()
 
-    logger.info(
-      {
-        pools: unfinishedPools.length,
-      },
-      'Processing unfinished pools',
-    )
-
     const nextPoolGroup = getNextPoolGroup(
       unfinishedPools,
       MaxContractsPerCall[chainId],
+    )
+
+    logger.info(
+      {
+        unfinishedPools: unfinishedPools.length,
+        nextPoolGroup: nextPoolGroup?.poolAddresses.length,
+        batchSize: nextPoolGroup?.batchSize,
+      },
+      'Unfinished pools to process',
     )
 
     if (!nextPoolGroup) {
@@ -74,13 +79,40 @@ export async function buildHistoricCache(
       batchSize,
     } = nextPoolGroup
 
+    const totalBatches = Math.ceil(poolAddresses.length / batchSize)
+
+    const processedEntities = {
+      poolsProcessed: 0,
+      logsProcessed: 0,
+      poolsFailed: 0,
+      blocksProcessed: 0,
+      batchesProcessed: 0,
+    }
+
+    const interval = setInterval(() => {
+      logger.info(
+        {
+          unfinishedPools: unfinishedPools.length,
+          nextPoolGroup: poolAddresses.length,
+          batchSize,
+          totalBatches,
+          topic0,
+          userAddressIndex,
+          targetBlockNumber,
+          ...processedEntities,
+          blocksMissing: targetBlockNumber - processedEntities.blocksProcessed,
+        },
+        'Historic cache iteration progress',
+      )
+    }, SIXTY_SECONDS)
+
     for (let i = 0; i < poolAddresses.length; i += batchSize) {
       const contractAddresses = poolAddresses.slice(i, i + batchSize)
 
       logger.info(
         {
           batchIndex: i / batchSize + 1,
-          totalBatches: Math.ceil(poolAddresses.length / batchSize),
+          totalBatches,
           batchSize: contractAddresses.length,
           totalPools: poolAddresses.length,
         },
@@ -96,6 +128,7 @@ export async function buildHistoricCache(
             topic0,
             fromBlock: from,
             toBlock: to,
+            logger,
           })) {
             const logsToInsert: { address: string; contractAddress: string }[] =
               []
@@ -121,6 +154,9 @@ export async function buildHistoricCache(
             }
 
             await cacheClient.insertLogs(logsToInsert)
+
+            processedEntities.logsProcessed += logsToInsert.length
+            processedEntities.blocksProcessed += to - from + 1
           }
         })
 
@@ -133,15 +169,7 @@ export async function buildHistoricCache(
           'completed',
         )
 
-        logger.info(
-          {
-            batchIndex: i / batchSize + 1,
-            totalBatches: Math.ceil(poolAddresses.length / batchSize),
-            batchSize: contractAddresses.length,
-            totalPools: poolAddresses.length,
-          },
-          'Fetching logs from pools batch ended',
-        )
+        processedEntities.poolsProcessed += contractAddresses.length
       } catch (error) {
         await cacheClient.updateJobStatus(
           contractAddresses,
@@ -153,15 +181,21 @@ export async function buildHistoricCache(
         logger.error(
           {
             batchIndex: i / batchSize + 1,
-            totalBatches: Math.ceil(poolAddresses.length / batchSize),
+            totalBatches,
             batchSize: contractAddresses.length,
             totalPools: poolAddresses.length,
             error: error instanceof Error ? error.message : String(error),
           },
           'Fetching logs from pools batch failed',
         )
+
+        processedEntities.poolsFailed += contractAddresses.length
       }
+
+      processedEntities.batchesProcessed += 1
     }
+
+    clearInterval(interval)
 
     await new Promise((resolve) => setTimeout(resolve, 5000))
   }
