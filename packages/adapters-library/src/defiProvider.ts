@@ -143,7 +143,10 @@ export class DefiProvider {
 
     const userPoolsByChain = (
       await filterMapAsync(Object.values(EvmChain), async (chainId) => {
-        if (filterChainIds && !filterChainIds.includes(chainId)) {
+        if (
+          filterProtocolTokens ||
+          (filterChainIds && !filterChainIds.includes(chainId))
+        ) {
           return undefined
         }
 

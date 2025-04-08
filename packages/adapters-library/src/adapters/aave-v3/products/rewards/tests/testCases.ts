@@ -20,10 +20,10 @@ export const testCases: TestCase[] = [
     method: 'positions',
 
     input: {
-      userAddress: '0xb83F1688C0b7ebb155a830ae78F71527Ef55e759',
+      userAddress: '0xAa0c3d6fD25Aa2C23AED2659197EF39AeA306172',
       filterProtocolTokens: ['0x8164Cc65827dcFe994AB23944CBC90e0aa80bFcb'],
     },
 
-    blockNumber: 21330297,
+    blockNumber: 22224621,
   },
 ]

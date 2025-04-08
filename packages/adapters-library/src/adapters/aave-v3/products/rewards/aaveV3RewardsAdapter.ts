@@ -1,6 +1,5 @@
 import { ethers, getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
@@ -118,7 +117,7 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken[]> {
+  async getProtocolTokens(): Promise<[ProtocolToken]> {
     const rewardTokenAddresses = await this.incentivesContract.getRewardsList()
 
     const rewardTokens = await Promise.all(
@@ -132,93 +131,43 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     ]
   }
 
-  private detectPositionEventSignature(
-    eventSignature = 'Transfer(address,address,uint256)',
-  ): string {
-    return ethers.id(eventSignature)
-  }
-
-  /**
-   * Checks if the user has ever opened a position in AaveV3
-   * Return AToken addresses if found
-   */
-  private async openPositions(userAddress: string): Promise<string[]> {
-    const topic0 = this.detectPositionEventSignature()
-    const topic1 = ethers.zeroPadValue(ZERO_ADDRESS, 32)
-    const topic2 = ethers.zeroPadValue(userAddress, 32)
-
-    const logs = await this.provider.getLogs({
-      topics: [topic0, topic1, topic2],
-      fromBlock: '0x',
-      toBlock: 'latest',
-    })
-
-    const aTokenAddresses = (
-      await this.helpers.metadataProvider.getMetadata({
-        protocolId: Protocol.AaveV3,
-        productId: 'a-token',
-      })
-    ).map((token) => token.address)
-
-    const filteredLogs = logs
-      .filter((log) => aTokenAddresses.includes(log.address))
-      .map((log) => log.address)
-
-    return [...new Set(filteredLogs)]
-  }
-
   async getPositions({
     userAddress,
     blockNumber,
     protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const protocolTokens = await this.getProtocolTokens()
-    const protocolToken = protocolTokens[0]
-
-    if (!protocolToken) {
-      throw new Error('No protocol token found')
-    }
+    const [protocolToken] = await this.getProtocolTokens()
 
     if (
       protocolTokenAddresses &&
-      protocolTokenAddresses.length > 0 &&
       !protocolTokenAddresses.includes(protocolToken.address)
     ) {
       return []
     }
 
-    const addressFilter = await this.openPositions(userAddress)
+    const rewards = await filterMapAsync(
+      protocolToken.underlyingTokens,
+      async (rewardToken) => {
+        const accruedReward =
+          await this.incentivesContract.getUserAccruedRewards(
+            userAddress,
+            rewardToken.address,
+            { blockTag: blockNumber },
+          )
 
-    if (!addressFilter.length) {
-      return []
-    }
-
-    const userRewards = await this.incentivesContract.getAllUserRewards(
-      addressFilter,
-      userAddress,
-      { blockTag: blockNumber },
-    )
-
-    const underlyingTokens = await filterMapAsync(
-      userRewards.unclaimedAmounts,
-      async (unclaimedAmount, i) => {
-        if (!unclaimedAmount) {
+        if (!accruedReward) {
           return undefined
         }
 
-        const underlying = protocolToken.underlyingTokens.find(
-          (underlying) => underlying.address === userRewards.rewardsList[i],
-        )!
-
         return {
-          ...underlying,
+          ...rewardToken,
           type: TokenType.UnderlyingClaimable,
-          balanceRaw: unclaimedAmount,
+          balanceRaw: accruedReward,
         }
       },
     )
 
-    if (underlyingTokens.length === 0) {
+    if (rewards.length === 0) {
       return []
     }
 
@@ -227,7 +176,7 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
         type: TokenType.Protocol,
         balanceRaw: 1n, // choose 1 here as a zero value may cause the position to be ignored on UIs our adapters currently expecting a protocol token but on contract positions there is no token
         ...this.INCENTIVES_CONTRACT_DETAILS,
-        tokens: underlyingTokens,
+        tokens: rewards,
       },
     ]
   }
