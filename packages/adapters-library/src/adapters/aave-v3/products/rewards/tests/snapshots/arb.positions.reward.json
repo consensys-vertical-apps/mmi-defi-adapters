@@ -1,7 +1,7 @@
 {
   "blockNumber": 264107941,
-  "latency": "Latency: 0.558 seconds",
-  "aggregatedValues": [],
+  "latency": "Latency: 3.174 seconds",
+  "aggregatedValues": ["USD0.00"],
   "snapshot": [
     {
       "protocolId": "aave-v3",
@@ -16,14 +16,45 @@
         "groupPositions": true
       },
       "chainName": "arb",
-      "success": false,
-      "error": {
-        "message": "server response 500 Unhandled Exception (request={  }, response={  }, error=null, info={ \"requestUrl\": \"https://arbitrum-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02\", \"responseBody\": \"{\\\"name\\\":\\\"TypeError\\\",\\\"message\\\":\\\"Cannot destructure property 'result' of 'responses.find(...)' as it is undefined.\\\",\\\"stack\\\":\\\"TypeError: Cannot destructure property 'result' of 'responses.find(...)' as it is undefined.\\\\n    at file:///Users/bergarces/repos/consensys/mmi-defi-adapters/packages/adapters-cli/dist/utils/rpc-interceptor.js:47:21\\\\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\\\\n    at async file:///Users/bergarces/repos/consensys/mmi-defi-adapters/node_modules/msw/lib/core/handlers/RequestHandler.mjs:123:24\\\\n    at async HttpHandler.run (file:///Users/bergarces/repos/consensys/mmi-defi-adapters/node_modules/msw/lib/core/handlers/RequestHandler.mjs:109:28)\\\\n    at async executeHandlers (file:///Users/bergarces/repos/consensys/mmi-defi-adapters/node_modules/msw/lib/core/utils/executeHandlers.mjs:10:14)\\\\n    at async until (file:///Users/bergarces/repos/consensys/mmi-defi-adapters/node_modules/@open-draft/until/lib/index.mjs:4:18)\\\\n    at async handleRequest (file:///Users/bergarces/repos/consensys/mmi-defi-adapters/node_modules/msw/lib/core/utils/handleRequest.mjs:12:24)\\\\n    at async _Emitter.<anonymous> (file:///Users/bergarces/repos/consensys/mmi-defi-adapters/node_modules/msw/lib/node/index.mjs:41:26)\\\\n    at async emitAsync (file:///Users/bergarces/repos/consensys/mmi-defi-adapters/node_modules/@mswjs/interceptors/lib/node/chunk-5KMS5CTP.mjs:68:5)\\\\n    at async file:///Users/bergarces/repos/consensys/mmi-defi-adapters/node_modules/@mswjs/interceptors/lib/node/chunk-5KMS5CTP.mjs:173:5\\\"}\", \"responseStatus\": \"500 Unhandled Exception\" }, code=SERVER_ERROR, version=6.13.5)",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "type": "protocol",
+          "balanceRaw": "1n",
+          "address": "0x929EC64c34a17401F460460D4B9390518E5B473e",
+          "name": "Aave V3 Rewards",
+          "symbol": "Rewards",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+              "name": "Arbitrum",
+              "symbol": "ARB",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "51482652603369n",
+              "balance": 0.000051482652603369,
+              "price": 0.552715452863096,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
+            }
+          ],
+          "balance": 1e-18
         }
-      }
+      ]
     }
   ],
-  "rpcResponses": {}
+  "rpcResponses": {
+    "00d5f20474b86367ab6e32bd8baafbea": {
+      "result": "0x00000000000000000000000000000000000000000000000000002ed2bd3873e9"
+    },
+    "8b433b1841f9f5fe3c7fb58c047a6c25": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "e743e118c678bec9dc3bc4217d38e1a1": {
+      "result": "0x00000000000000000000000000000000000000000000000100000000000aa4950000000000000000000000000000000000000000000000000000003b8510169000000000000000000000000000000000000000000000000000000000670e884600000000000000000000000000000000000000000000000000000000670e884600000000000000000000000000000000000000000000000100000000000aa495"
+    },
+    "4d6f493537a9c4c138a1b5f751ea137d": {
+      "result": "0x0000000000000000000000000000000000000000000000000000c4a4dafb305e"
+    }
+  }
 }
