@@ -19,9 +19,7 @@ import {
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
-
 import { Protocol } from '../../../protocols'
-
 import { PoolStaking, PoolStaking__factory } from '../../contracts'
 
 const METAMASK_POOLED_STAKING_CONTRACT = getAddress(
@@ -40,7 +38,7 @@ export class MetamaskPooledStakingAdapter implements IProtocolAdapter {
     userEvent: {
       topic0:
         '0x861a4138e41fb21c121a7dbb1053df465c837fc77380cc7226189a662281be2c',
-      userAddressIndex: 1,
+      userAddressIndex: 2,
     },
   }
 
@@ -83,7 +81,7 @@ export class MetamaskPooledStakingAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken[]> {
+  async getProtocolTokens(): Promise<[ProtocolToken]> {
     const underlyingToken = await this.helpers.getTokenMetadata(LIDO_STAKED_ETH)
     return [
       {
@@ -97,13 +95,8 @@ export class MetamaskPooledStakingAdapter implements IProtocolAdapter {
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const protocolTokens = await this.getProtocolTokens()
-
-    if (protocolTokens.length !== 1) {
-      throw new Error('Only one protocol token is supported')
-    }
-
-    const { underlyingTokens, ...protocolToken } = protocolTokens[0]!
+    const [{ underlyingTokens, ...protocolToken }] =
+      await this.getProtocolTokens()
 
     const balance = await this.poolContract.getShares(input.userAddress)
 
@@ -116,22 +109,9 @@ export class MetamaskPooledStakingAdapter implements IProtocolAdapter {
     ]
   }
 
-  async unwrap({
-    protocolTokenAddress,
-    tokenId,
-    blockNumber,
-  }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const protocolTokens = await this.getProtocolTokens()
-
-    if (protocolTokens.length !== 1) {
-      throw new Error('Only one protocol token is supported')
-    }
-
-    const { underlyingTokens, ...protocolToken } = protocolTokens[0]!
-
-    if (underlyingTokens.length !== 1) {
-      throw new Error('Only one underlying token is supported')
-    }
+  async unwrap({ blockNumber }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    const [{ underlyingTokens, ...protocolToken }] =
+      await this.getProtocolTokens()
 
     const totalSupply = await this.poolContract.totalShares({
       blockTag: blockNumber,
@@ -149,10 +129,7 @@ export class MetamaskPooledStakingAdapter implements IProtocolAdapter {
     )
 
     return {
-      address: protocolToken.address,
-      name: protocolToken.name,
-      symbol: protocolToken.symbol,
-      decimals: protocolToken.decimals,
+      ...protocolToken,
       baseRate: 1,
       type: TokenType.Protocol,
       tokens: [
