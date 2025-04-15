@@ -20,4 +20,4 @@ RUN npm run build -w packages/adapters-api
 
 RUN npm prune --production
 
-CMD ["node", "packages/adapters-api/dist/index.js"]
+CMD ["node", "packages/adapters-api/dist/main.js"]
