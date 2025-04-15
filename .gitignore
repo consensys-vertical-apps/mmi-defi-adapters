@@ -119,7 +119,8 @@ dist
 # TernJS port file
 .tern-port
 
-.vscode
+.vscode/*
+!.vscode/settings.json
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
@@ -140,6 +141,3 @@ dist
 # Database temporary files
 *db-shm
 *db-wal
-
-# Large Project Database files
-databases/*_index.db

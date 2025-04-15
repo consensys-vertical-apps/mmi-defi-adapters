@@ -47,7 +47,18 @@ export default defineConfig({
     ],
     coverage: {
       provider: 'v8',
-      exclude: ['packages/adapters-library/src/**/contracts/**', '**/dist/**'],
+      reporter: ['text', 'lcov', 'html'],
+      include: ['packages/*/src/**'],
+      exclude: [
+        'packages/adapters-library/src/**/contracts/**',
+        'packages/adapters-library/src/tests/**',
+        'packages/adapters-library/src/**/products/*/tests/**',
+        'packages/dev-ui/**', // This code is not deployed
+        'packages/adapters-cli/**', // This code is not deployed
+        'packages/*/src/main.ts', // Do not cover main.ts
+        'packages/*/src/index.ts', // Do not cover index.ts at root
+        'packages/*/src/**/logger.ts', // Do not cover logger.ts
+      ],
     },
   },
 })

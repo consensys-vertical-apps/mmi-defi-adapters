@@ -1,43 +1,51 @@
 import {
-  AVERAGE_BLOCKS_PER_10_MINUTES,
   AVERAGE_BLOCKS_PER_DAY,
-  type Chain,
+  Chain,
 } from '@metamask-institutional/defi-adapters'
 import type { JsonRpcProvider } from 'ethers'
-import { logger } from './logger.js'
+import type { Logger } from 'pino'
+
+const SIXTY_SECONDS = 60_000
 
 export class BlockRunner {
   private _provider: JsonRpcProvider
   private _chainId: Chain
-
-  // TODO: Create zod schema for config
-  private static readonly _BATCH_SIZE = process.env.BLOCK_RUNNER_BATCH_SIZE
-    ? Number(process.env.BLOCK_RUNNER_BATCH_SIZE)
-    : 10
-
-  private _latestBlockNumber: number | undefined
+  private _logger: Logger
+  private _batchSize: number
   private _processBlockFn: (blockNumber: number) => Promise<void>
   private _onError: (latestSafeProcessedBlock: number) => Promise<void>
 
+  private _processingBlockNumber: number
+  private _latestBlockNumber: number | undefined
+
   constructor({
+    processingBlockNumber,
     provider,
     chainId,
     processBlockFn,
     onError,
+    logger,
   }: {
+    processingBlockNumber: number
     provider: JsonRpcProvider
     chainId: Chain
     processBlockFn: (blockNumber: number) => Promise<void>
     onError: (latestSafeProcessedBlock: number) => Promise<void>
+    logger: Logger
   }) {
+    this._processingBlockNumber = processingBlockNumber
+
     this._processBlockFn = processBlockFn
     this._onError = onError
 
     this._provider = provider
     this._chainId = chainId
+    this._logger = logger
+
+    this._batchSize = Number(process.env.BLOCK_RUNNER_BATCH_SIZE || 10)
   }
 
-  private async waitForBlockToBeReady(currentBlock: number): Promise<true> {
+  private async waitForBlockToBeReady(): Promise<true> {
     let backoff = 1000 // Start with 1 second
 
     // Initialize latest block number if not already set
@@ -46,21 +54,20 @@ export class BlockRunner {
     }
 
     // If the current block is already processable, return it
-    if (currentBlock <= this._latestBlockNumber) {
+    if (this._processingBlockNumber <= this._latestBlockNumber) {
       return true
     }
 
-    while (currentBlock > this._latestBlockNumber) {
+    while (this._processingBlockNumber > this._latestBlockNumber) {
       try {
         const blockNumber = await this._provider.getBlockNumber()
 
         if (blockNumber > this._latestBlockNumber) {
           this._latestBlockNumber = blockNumber
-          logger.info({ blockNumber }, 'New block detected')
           break // Exit loop when a new block is found
         }
       } catch (error) {
-        logger.error({ error }, 'Error fetching block number')
+        this._logger.error({ error }, 'Error fetching block number')
       }
 
       // Wait with exponential backoff before retrying
@@ -71,58 +78,41 @@ export class BlockRunner {
     return true
   }
 
-  async start(startBlock: number) {
-    let processingBlockNumber = startBlock
-
+  async start() {
     // Initialize latest block number
     this._latestBlockNumber = await this._provider.getBlockNumber()
 
+    this.setLogInterval()
+
     while (true) {
       try {
-        await this.waitForBlockToBeReady(processingBlockNumber)
+        await this.waitForBlockToBeReady()
 
-        const shouldBatch = this.shouldBatch(
-          processingBlockNumber,
-          this._latestBlockNumber,
-        )
+        const shouldBatch =
+          this._latestBlockNumber - this._processingBlockNumber >
+          this._batchSize
 
         if (shouldBatch) {
-          processingBlockNumber = await this.processBatchBlocks(
-            processingBlockNumber,
+          this._processingBlockNumber = await this.processBatchBlocks(
+            this._processingBlockNumber,
             this._latestBlockNumber,
           )
         } else {
-          await this._processBlockFn(processingBlockNumber)
-          processingBlockNumber++
+          await this._processBlockFn(this._processingBlockNumber)
+          this._processingBlockNumber++
         }
-
-        await this.logUpdate(
-          this._chainId,
-          processingBlockNumber,
-          this._provider,
-        )
       } catch (error) {
-        logger.error(
+        this._logger.error(
           {
             error,
-            processingBlockNumber,
+            processingBlockNumber: this._processingBlockNumber,
             latestBlockNumber: this._latestBlockNumber,
           },
           'Error processing block',
         )
-        await this.handleProcessingError(processingBlockNumber)
+        await this.handleProcessingError(this._processingBlockNumber)
       }
     }
-  }
-
-  /**
-   * Determines whether blocks should be processed in batch mode.
-   */
-  private shouldBatch(
-    processingBlockNumber: number,
-    latestBlockNumber: number,
-  ): boolean {
-    return latestBlockNumber - processingBlockNumber > BlockRunner._BATCH_SIZE
   }
 
   /**
@@ -133,7 +123,7 @@ export class BlockRunner {
     latestBlockNumber: number,
   ): Promise<number> {
     const batchEndBlock = Math.min(
-      startBlock + BlockRunner._BATCH_SIZE,
+      startBlock + this._batchSize,
       latestBlockNumber,
     )
     const blockPromises: Promise<void>[] = []
@@ -156,27 +146,40 @@ export class BlockRunner {
   private async handleProcessingError(
     processingBlockNumber: number,
   ): Promise<void> {
-    const earliestSafeBlock = processingBlockNumber - BlockRunner._BATCH_SIZE
+    const earliestSafeBlock = processingBlockNumber - this._batchSize
 
     await this._onError(earliestSafeBlock)
     await new Promise((res) => setTimeout(res, 1000))
   }
 
-  private async logUpdate(
-    chain: Chain,
-    processingBlockNumber: number,
-    provider: JsonRpcProvider,
-  ) {
-    if (processingBlockNumber % AVERAGE_BLOCKS_PER_10_MINUTES[chain] === 0) {
-      const currentHeadBlock = await provider.getBlockNumber()
-      const blocksLagging = currentHeadBlock - processingBlockNumber
-      const blocksPerHour = AVERAGE_BLOCKS_PER_DAY[chain] / 24
-      const lagInHours = (blocksLagging / blocksPerHour).toFixed(1)
+  private setLogInterval() {
+    const BLOCKS_PER_HOUR = AVERAGE_BLOCKS_PER_DAY[this._chainId] / 24
 
-      logger.info(
-        { lagInHours, blocksLagging, blocksPerHour, currentHeadBlock },
-        'Indexer is lagging behind',
-      )
+    const runInterval = async () => {
+      try {
+        const currentHeadBlock = await this._provider.getBlockNumber()
+        const blocksLagging = currentHeadBlock - this._processingBlockNumber
+        const lagInHours = (blocksLagging / BLOCKS_PER_HOUR).toFixed(1)
+
+        this._logger.info(
+          {
+            lagInHours,
+            blocksLagging,
+            blocksPerHour: BLOCKS_PER_HOUR,
+            currentHeadBlock,
+          },
+          'Latest block cache update',
+        )
+      } catch (error) {
+        // Handle any errors that occur during execution
+        this._logger.error({ error }, 'Error in interval execution')
+      } finally {
+        // Schedule the next execution
+        setTimeout(runInterval, SIXTY_SECONDS)
+      }
     }
+
+    // Start the first execution
+    setTimeout(runInterval, SIXTY_SECONDS)
   }
 }

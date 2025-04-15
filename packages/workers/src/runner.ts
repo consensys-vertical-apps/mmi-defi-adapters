@@ -4,29 +4,30 @@ import {
   EvmChain,
 } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, Network } from 'ethers'
+import type { Logger } from 'pino'
 import { buildHistoricCache } from './build-historic-cache.js'
 import { buildLatestCache } from './build-latest-cache.js'
-import { logger } from './logger.js'
-import { createPostgresCacheClient } from './postgres-cache-client.js'
+import {
+  type CacheClient,
+  createPostgresCacheClient,
+} from './postgres-cache-client.js'
 
-export async function runner(dbUrl: string, chainId: EvmChain) {
+export async function runner(dbUrl: string, chainId: EvmChain, logger: Logger) {
+  logger.info('Starting runner')
+
   const cacheClient = await createPostgresCacheClient({
     dbUrl,
     chainId,
     partialPoolConfig: {
-      max: 8,
+      max: 15,
       connectionTimeoutMillis: 10_000,
     },
+    logger,
   })
 
   // TODO: Remove this once we have support for BSC and Fantom
   if (chainId === Chain.Bsc || chainId === Chain.Fantom) {
-    logger.warn(
-      {
-        chainId,
-      },
-      'Chain not supported',
-    )
+    logger.warn('Chain not supported')
 
     return
   }
@@ -38,7 +39,7 @@ export async function runner(dbUrl: string, chainId: EvmChain) {
 
   // TODO: Should exit even before getting this far
   if (!providerUrl) {
-    logger.error({ chainId }, 'Provider missing for this chain')
+    logger.error('Provider missing for this chain')
     return
   }
 
@@ -46,21 +47,20 @@ export async function runner(dbUrl: string, chainId: EvmChain) {
     staticNetwork: Network.from(chainId),
   })
 
-  const blockNumber =
-    (await cacheClient.getLatestBlockProcessed()) ??
-    (await provider.getBlockNumber())
+  const blockNumber = await getBlockToProcess(cacheClient, provider, logger)
 
   // TODO: By calling it here, we are only able to add new jobs whenever this script starts
   // If we dynamically call this, we need to ensure that there is no race condition with the historic and latest cache
   const pools = await getPools(defiProvider, chainId)
-  await cacheClient.insertJobs(pools, blockNumber)
+
+  const newPools = await cacheClient.insertJobs(pools, blockNumber)
+
+  logger.info({ totalJobs: pools.length, newJobs: newPools }, 'Jobs updated')
 
   await Promise.all([
-    buildHistoricCache(provider, chainId, cacheClient),
-    buildLatestCache(provider, chainId, cacheClient, blockNumber),
+    buildHistoricCache(provider, chainId, cacheClient, logger),
+    buildLatestCache(provider, chainId, cacheClient, blockNumber, logger),
   ])
-
-  logger.info('Finished')
 }
 
 async function getPools(defiProvider: DefiProvider, chainId: EvmChain) {
@@ -110,4 +110,29 @@ async function getPools(defiProvider: DefiProvider, chainId: EvmChain) {
   }
 
   return Array.from(protocolTokenEntries.values())
+}
+
+async function getBlockToProcess(
+  cacheClient: CacheClient,
+  provider: JsonRpcProvider,
+  logger: Logger,
+) {
+  const dbBlockNumber = await cacheClient.getLatestBlockProcessed()
+
+  if (dbBlockNumber) {
+    logger.info({ dbBlockNumber }, 'Last block processed fetched from DB')
+    return dbBlockNumber
+  }
+
+  try {
+    const blockNumber = await provider.getBlockNumber()
+    logger.info({ blockNumber }, 'Block number fetched from provider')
+    return blockNumber
+  } catch (error) {
+    logger.error(
+      { error, providerUrl: provider._getConnection().url },
+      'Error fetching block number',
+    )
+    process.exit(1)
+  }
 }
