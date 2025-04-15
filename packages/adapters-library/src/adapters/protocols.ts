@@ -24,6 +24,7 @@ export const Protocol = {
   Lynex: 'lynex',
   Maker: 'maker',
   MendiFinance: 'mendi-finance',
+  Metamask: 'metamask',
   MorphoAaveV2: 'morpho-aave-v2',
   MorphoAaveV3: 'morpho-aave-v3',
   MorphoBlue: 'morpho-blue',
