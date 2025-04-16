@@ -81,7 +81,7 @@ export class QuickswapV3PoolAdapter implements IProtocolAdapter {
       name: 'QuickswapV3',
       description: 'Quickswap v3 defi adapter',
       siteUrl: 'https://uniswap.org/',
-      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'quickswap-v3'],
+      iconUrl: TrustWalletProtocolIconMap[Protocol.QuickswapV3],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

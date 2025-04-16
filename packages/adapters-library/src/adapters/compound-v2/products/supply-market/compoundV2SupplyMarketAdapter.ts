@@ -25,7 +25,7 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
       name: 'CompoundV2',
       description: 'CompoundV2 supply market adapter',
       siteUrl: 'https:',
-      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'compound-v2'],
+      iconUrl: TrustWalletProtocolIconMap[Protocol.CompoundV2],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

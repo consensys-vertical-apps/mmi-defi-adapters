@@ -64,7 +64,7 @@ export class CurvePoolAdapter implements IProtocolAdapter {
       name: 'Curve',
       description: 'Curve pool adapter',
       siteUrl: 'https://curve.fi/',
-      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'curve'],
+      iconUrl: TrustWalletProtocolIconMap[Protocol.Curve],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

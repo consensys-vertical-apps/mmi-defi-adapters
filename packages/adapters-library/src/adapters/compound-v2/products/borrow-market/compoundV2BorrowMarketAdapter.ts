@@ -2,6 +2,7 @@ import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/Com
 import { Chain } from '../../../../core/constants/chains'
 import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import { Protocol } from '../../../protocols'
 
 import { contractAddresses } from '../../common/contractAddresses'
 
@@ -18,7 +19,7 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAda
       name: 'CompoundV2',
       description: 'CompoundV2 borrow market adapter',
       siteUrl: 'https:',
-      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'compound-v2'],
+      iconUrl: TrustWalletProtocolIconMap[Protocol.CompoundV2],
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,

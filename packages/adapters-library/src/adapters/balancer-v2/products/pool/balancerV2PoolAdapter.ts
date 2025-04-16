@@ -73,7 +73,7 @@ export class BalancerV2PoolAdapter implements IProtocolAdapter {
       name: 'BalancerV2',
       description: 'BalancerV2 defi adapter',
       siteUrl: 'https:',
-      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'balancer-v2'],
+      iconUrl: TrustWalletProtocolIconMap[Protocol.BalancerV2],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

@@ -99,7 +99,7 @@ export class CurveStakingAdapter implements IProtocolAdapter {
       name: 'Curve staking',
       description: 'Curve staking adapter',
       siteUrl: 'https://curve.fi/',
-      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'curve'],
+      iconUrl: TrustWalletProtocolIconMap[Protocol.Curve],
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,

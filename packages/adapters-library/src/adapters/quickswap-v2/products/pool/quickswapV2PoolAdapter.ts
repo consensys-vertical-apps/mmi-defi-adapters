@@ -11,6 +11,7 @@ import {
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
+import { Protocol } from '../../../protocols'
 
 export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   productId = 'pool'
@@ -31,7 +32,7 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
       name: 'QuickswapV2',
       description: 'QuickswapV2 pool adapter',
       siteUrl: 'https://quickswap.exchange/#/pools/v2',
-      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'quickswap-v2'],
+      iconUrl: TrustWalletProtocolIconMap[Protocol.QuickswapV2],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

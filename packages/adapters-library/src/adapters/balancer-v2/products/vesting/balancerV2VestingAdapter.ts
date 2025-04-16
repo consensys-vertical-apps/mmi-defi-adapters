@@ -6,6 +6,7 @@ import {
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
+import { Protocol } from '../../../protocols'
 import {
   FeeDistributor__factory,
   VotingEscrow__factory,
@@ -29,7 +30,7 @@ export class BalancerV2VestingAdapter extends VotingEscrow {
       name: 'BalancerV2',
       description: 'BalancerV2 defi adapter',
       siteUrl: '',
-      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'balancer-v2'],
+      iconUrl: TrustWalletProtocolIconMap[Protocol.BalancerV2],
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,

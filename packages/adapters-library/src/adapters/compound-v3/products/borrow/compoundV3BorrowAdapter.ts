@@ -61,7 +61,7 @@ export class CompoundV3BorrowAdapter implements IProtocolAdapter {
       name: 'CompoundV3',
       description: 'CompoundV3 defi adapter',
       siteUrl: 'https:',
-      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'compound-v3'],
+      iconUrl: TrustWalletProtocolIconMap[Protocol.CompoundV3],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

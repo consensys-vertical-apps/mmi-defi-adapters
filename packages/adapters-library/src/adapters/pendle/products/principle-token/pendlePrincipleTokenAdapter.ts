@@ -64,7 +64,7 @@ export class PendlePrincipleTokenAdapter implements IProtocolAdapter {
       name: 'Pendle',
       description: 'Pendle Market adapter',
       siteUrl: 'https://www.pendle.finance',
-      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'pendle'],
+      iconUrl: TrustWalletProtocolIconMap[Protocol.Pendle],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

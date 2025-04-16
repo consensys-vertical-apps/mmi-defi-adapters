@@ -67,7 +67,7 @@ export class PendleStandardisedYieldTokenAdapter implements IProtocolAdapter {
       name: 'Pendle',
       description: 'Pendle defi adapter',
       siteUrl: 'https:',
-      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'pendle'],
+      iconUrl: TrustWalletProtocolIconMap[Protocol.Pendle],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

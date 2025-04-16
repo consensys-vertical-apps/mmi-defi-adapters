@@ -59,7 +59,7 @@ export class QuickswapV2DQuickAdapter implements IProtocolAdapter {
       name: 'QuickswapV2',
       description: 'QuickswapV2 defi adapter',
       siteUrl: 'https:',
-      iconUrl: TrustWalletProtocolIconMap[this.protocolId as 'quickswap-v2'],
+      iconUrl: TrustWalletProtocolIconMap[Protocol.QuickswapV2],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
