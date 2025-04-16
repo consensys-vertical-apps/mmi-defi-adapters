@@ -12,6 +12,7 @@ import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { RpcInterceptedResponses, startRpcMock } from '../tests/rpcInterceptor'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
+import { AdapterResponse, DefiPositionResponse } from '../types/response'
 import { TestCase } from '../types/testCase'
 import { Protocol } from './protocols'
 import { supportedProtocols } from './supportedProtocols'
@@ -210,7 +211,9 @@ function runProductTests(
               blockNumbers: { [testCase.chainId]: blockNumber },
             })
 
-            expect(response).toEqual(snapshot)
+            expect(sanitizeSnapshot(response)).toEqual(
+              sanitizeSnapshot(snapshot),
+            )
 
             for (const positions of response) {
               expect(positions.success).toBe(true)
@@ -257,7 +260,9 @@ function runProductTests(
               blockNumbers: { [testCase.chainId]: blockNumber },
             })
 
-            expect(response).toEqual(snapshot)
+            expect(sanitizeSnapshot(response)).toEqual(
+              sanitizeSnapshot(snapshot),
+            )
           },
           TEST_TIMEOUT,
         )
@@ -310,7 +315,7 @@ async function loadJsonFile(
   const { snapshot, blockNumber, rpcResponses } = bigintJsonParse(
     expectedString,
   ) as {
-    snapshot: unknown
+    snapshot: DefiPositionResponse[]
     blockNumber?: number
     rpcResponses?: RpcInterceptedResponses
   }
@@ -319,5 +324,14 @@ async function loadJsonFile(
     snapshot,
     blockNumber,
     rpcResponses,
+  }
+}
+
+// This is to avoid having to update every snapshot when a new field is added to the response
+function sanitizeSnapshot(snapshot: AdapterResponse<unknown>[]) {
+  for (const position of snapshot) {
+    if (position.success) {
+      position.protocolDisplayName = ''
+    }
   }
 }
