@@ -4,6 +4,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
@@ -30,7 +31,6 @@ import {
   LiquidityProviderToken__factory,
   RouterStatic__factory,
 } from '../../contracts'
-import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 
 type AdditionalMetadata = {
   marketAddress: string

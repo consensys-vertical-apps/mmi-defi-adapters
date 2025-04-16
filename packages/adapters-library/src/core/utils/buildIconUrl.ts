@@ -1,10 +1,10 @@
 import { getAddress } from 'ethers'
+import { Protocol } from '../../adapters/protocols'
 import { E_ADDRESS } from '../constants/E_ADDRESS'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { Chain } from '../constants/chains'
 import { logger } from './logger'
 import { nativeToken } from './nativeTokens'
-import { Protocol } from '../../adapters/protocols'
 
 // names are here https://github.com/trustwallet/assets/tree/master/blockchains
 const chainNameMap: Record<Chain, string> = {

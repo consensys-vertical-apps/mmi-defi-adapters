@@ -25,10 +25,10 @@ import {
 import { Protocol } from '../../../protocols'
 
 import { Erc20, Erc20__factory } from '../../../../contracts'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Vault__factory } from '../../contracts'
-import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 
 const vaultAddress = '0xBA12222222228d8Ba445958a75a0704d566BF2C8'
 

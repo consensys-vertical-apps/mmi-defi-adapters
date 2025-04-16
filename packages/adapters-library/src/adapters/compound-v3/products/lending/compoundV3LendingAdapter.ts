@@ -5,6 +5,7 @@ import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import { logger } from '../../../../core/utils/logger'
 import {
   IProtocolAdapter,
@@ -28,7 +29,6 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { CompoundV3__factory, Rewards__factory } from '../../contracts'
-import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 
 export const addresses = {
   [Chain.Ethereum]: {

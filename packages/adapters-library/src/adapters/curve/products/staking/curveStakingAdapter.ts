@@ -7,6 +7,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
@@ -33,7 +34,6 @@ import {
 } from '../../../curve/contracts'
 import { Protocol } from '../../../protocols'
 import { getCurvePoolData } from '../../common/getPoolData'
-import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 
 const CurveTokenAddresses = {
   [Chain.Ethereum]: getAddress('0xd533a949740bb3306d119cc777fa900ba034cd52'),

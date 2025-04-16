@@ -4,6 +4,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import {
   IProtocolAdapter,
   ProtocolToken,
@@ -23,7 +24,6 @@ import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
 import { PENDLE_ROUTER_STATIC_CONTRACT } from '../../backend/constants'
 import { RouterStatic__factory } from '../../contracts'
-import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 
 type AdditionalMetadata = {
   marketAddress: string

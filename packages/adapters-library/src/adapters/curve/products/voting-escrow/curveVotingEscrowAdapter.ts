@@ -1,5 +1,6 @@
 import { getAddress } from 'ethers'
 import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import {
   AdapterSettings,
   AssetType,
@@ -7,9 +8,8 @@ import {
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
-import { FeeDistributor__factory, VotingEscrow__factory } from '../../contracts'
-import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import { Protocol } from '../../../protocols'
+import { FeeDistributor__factory, VotingEscrow__factory } from '../../contracts'
 
 export class CurveVotingEscrowAdapter extends VotingEscrow {
   productId = 'voting-escrow'

@@ -333,33 +333,31 @@ export class AdaptersController {
             const protocolTokenAddresses = (
               await adapter.getProtocolTokens().catch(() => undefined)
             )?.map((token) => token.address)
-  
+
             if (protocolTokenAddresses) {
               if (!product.protocolTokenAddresses) {
                 product.protocolTokenAddresses = {}
               }
-  
+
               product.protocolTokenAddresses[chainId] = protocolTokenAddresses
             }
-  
+
             if (!includeProtocolTokens) {
               continue
             }
-  
+
             const protocolTokens = await adapter
               .getProtocolTokens()
               .catch(() => undefined)
-  
+
             if (protocolTokens) {
               if (!product.protocolTokens) {
                 product.protocolTokens = {}
               }
-  
+
               product.protocolTokens[chainId] = protocolTokens
             }
           }
-
-
         }
       }
     }
