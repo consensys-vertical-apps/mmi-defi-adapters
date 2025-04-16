@@ -31,24 +31,24 @@
     "performance": "npm run adapters-cli performance --",
     "lint": "biome check packages",
     "fix": "npm run lint -- --write",
-    "test": "npm run test -w packages/adapters-library",
-    "test:file": "npm run test:file -w packages/adapters-library",
-    "test:update:adapter-snapshot": "vitest packages/adapters-cli/src/tests/new-adapter-templates.test.ts -u",
-    "test:detect-errors": "npm run test:detect-errors -w packages/adapters-library",
-    "test:price": "npm run test:price -w packages/adapters-library",
-    "test:tsc": "npm run test:tsc -w packages/adapters-library",
-    "test:integration": "npm run test:integration -w packages/adapters-library",
-    "test:cov": "npm run test:cov -w packages/adapters-library",
-    "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; patch-package",
-    "drop:db": "bash -c 'read -p \"Are you sure you know what you are doing? This will delete all .db files! (y/n): \" confirm && [ \"$confirm\" = \"y\" ] && rm ./databases/*.db && echo \"All .db files have been deleted successfully.\" || echo \"Aborted. No files were deleted.\"'"
+    "test": "npm run test:unit",
+    "test:unit": "vitest run --project=unit",
+    "test:smoke": "vitest run --project=smoke",
+    "test:adapter-snapshots": "DEFI_ADAPTERS_TEST_FILTER_PROTOCOL=$npm_config_protocolid DEFI_ADAPTERS_TEST_FILTER_PRODUCT=$npm_config_productid vitest run --project=adapter-snapshots",
+    "test:template-snapshots": "vitest run --project=template-snapshots",
+    "test:template-snapshots:update": "npm run test:template-snapshots -- -u",
+    "test:cov": "vitest run --coverage",
+    "test:cov:merge": "vitest run --merge-reports --reporter=junit --coverage",
+    "test:tsc": "npm run test:tsc --workspaces --if-present",
+    "drop:db": "bash -c 'read -p \"Are you sure you know what you are doing? This will delete all .db files! (y/n): \" confirm && [ \"$confirm\" = \"y\" ] && rm ./metadata/*.db && echo \"All .db files have been deleted successfully.\" || echo \"Aborted. No files were deleted.\"'"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/node": "^20.12.10",
+    "@vitest/coverage-v8": "^3.0.9",
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.0",
-    "patch-package": "^8.0.0",
     "typescript": "^5.4.5",
-    "vitest": "^3.0.6"
+    "vitest": "^3.0.9"
   }
 }

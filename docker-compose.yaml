@@ -5,26 +5,28 @@ services:
       dockerfile: Dockerfile.api
     ports:
       - "3000:3000"
-    volumes:
-      - sqlite_data:/app/databases
     environment:
       - DEFI_ADAPTERS_PROVIDER_ETHEREUM
       - DEFI_ADAPTERS_PROVIDER_OPTIMISM
-      - DEFI_ADAPTERS_PROVIDER_BSC
+      - DEFI_ADAPTERS_PROVIDER_BSC=
       - DEFI_ADAPTERS_PROVIDER_POLYGON
-      - DEFI_ADAPTERS_PROVIDER_FANTOM
+      - DEFI_ADAPTERS_PROVIDER_FANTOM=
       - DEFI_ADAPTERS_PROVIDER_BASE
       - DEFI_ADAPTERS_PROVIDER_ARBITRUM
       - DEFI_ADAPTERS_PROVIDER_AVALANCHE
       - DEFI_ADAPTERS_PROVIDER_LINEA
       - DEFI_ADAPTERS_USE_POSITIONS_CACHE=true
+      - USE_ADAPTERS_WITH_USER_EVENT_ONLY=true
+      - CACHE_DATABASE_URL=postgresql://postgres:postgres@postgres:5432/defi-adapters
+      - CACHE_DATABASE_DISABLE_SSL=true
+    depends_on:
+      postgres:
+        condition: service_healthy
       
   workers:
     build:
       context: .
       dockerfile: Dockerfile.workers
-    volumes:
-      - sqlite_data:/app/databases
     environment:
       - DEFI_ADAPTERS_PROVIDER_ETHEREUM
       - DEFI_ADAPTERS_PROVIDER_OPTIMISM
@@ -35,11 +37,31 @@ services:
       - DEFI_ADAPTERS_PROVIDER_ARBITRUM
       - DEFI_ADAPTERS_PROVIDER_AVALANCHE
       - DEFI_ADAPTERS_PROVIDER_LINEA
+      - CACHE_DATABASE_URL=postgresql://postgres:postgres@postgres:5432/defi-adapters
+      - CACHE_DATABASE_DISABLE_SSL=true
+      - BLOCK_RUNNER_BATCH_SIZE=10
+      - HISTORIC_CACHE_BATCH_SIZE=5
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:17
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=defi-adapters
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d defi-adapters"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
 
 volumes:
-  sqlite_data:
+  postgres_data:
     driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ${PWD}/databases

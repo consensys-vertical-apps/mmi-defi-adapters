@@ -76,11 +76,19 @@ export function buildMetadataCommand(
               //   throw new ProviderMissingError(chainId)
               // }
 
-              const chainProtocolAdapters =
-                defiProvider.adaptersController.fetchChainProtocolAdapters(
-                  chainId,
-                  protocolId,
+              let chainProtocolAdapters: Map<string, IProtocolAdapter>
+              try {
+                chainProtocolAdapters =
+                  defiProvider.adaptersController.fetchChainProtocolAdapters(
+                    chainId,
+                    protocolId,
+                  )
+              } catch (error) {
+                console.error(
+                  `No provider found for chain ${chainId} and protocol ${protocolId}`,
                 )
+                continue
+              }
 
               for (const [_, adapter] of chainProtocolAdapters) {
                 if (
@@ -489,7 +497,7 @@ function createDatabases(
  */
 function createDatabase(name: string) {
   try {
-    const dbPath = path.resolve(`./databases/${name}.db`)
+    const dbPath = path.resolve(`./metadata/${name}.db`)
 
     if (fs.existsSync(dbPath)) {
       console.debug(`Database file already exists: ${dbPath}`)

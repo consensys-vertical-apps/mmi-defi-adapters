@@ -1,3 +1,4 @@
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { IPricesAdapter } from './adapters/prices-v2/products/usd/pricesV2UsdAdapter'
 import { AVERAGE_BLOCKS_PER_10_MINUTES } from './core/constants/AVERAGE_BLOCKS_PER_10_MINS'
 import { Chain } from './core/constants/chains'
@@ -13,11 +14,11 @@ describe('UnwrapCache', () => {
     const unwrapResult = {}
     const mockUnwrapAdapter = {
       chainId: Chain.Ethereum,
-      unwrap: jest.fn().mockResolvedValue(unwrapResult),
+      unwrap: vi.fn().mockResolvedValue(unwrapResult),
     } as unknown as IProtocolAdapter
     const mockPriceAdapter = {
       chainId: Chain.Ethereum,
-      getPrice: jest.fn().mockResolvedValue(unwrapResult),
+      getPrice: vi.fn().mockResolvedValue(unwrapResult),
     } as unknown as IPricesAdapter
 
     const unwrapInput = {
@@ -35,7 +36,7 @@ describe('UnwrapCache', () => {
     }
 
     beforeEach(() => {
-      jest.clearAllMocks()
+      vi.clearAllMocks()
     })
 
     it('returns immediatelly if there is no provider', async () => {
@@ -52,8 +53,8 @@ describe('UnwrapCache', () => {
 
     it('misses cache if no value is provided', async () => {
       const unwrapCacheProvider = {
-        getFromDb: jest.fn(),
-        setToDb: jest.fn(),
+        getFromDb: vi.fn(),
+        setToDb: vi.fn(),
       } as IUnwrapPriceCacheProvider
       const unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
 
@@ -70,8 +71,8 @@ describe('UnwrapCache', () => {
 
     it('hits cache if a value is provided', async () => {
       const unwrapCacheProvider = {
-        getFromDb: jest.fn().mockResolvedValueOnce({}),
-        setToDb: jest.fn(),
+        getFromDb: vi.fn().mockResolvedValueOnce({}),
+        setToDb: vi.fn(),
       } as IUnwrapPriceCacheProvider
       const unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
 
@@ -87,8 +88,8 @@ describe('UnwrapCache', () => {
     })
     it('misses price cache if no value is provided', async () => {
       const unwrapCacheProvider = {
-        getFromDb: jest.fn(),
-        setToDb: jest.fn(),
+        getFromDb: vi.fn(),
+        setToDb: vi.fn(),
       } as IUnwrapPriceCacheProvider
       const unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
 
@@ -105,8 +106,8 @@ describe('UnwrapCache', () => {
 
     it('hits price cache if a value is provided', async () => {
       const unwrapCacheProvider = {
-        getFromDb: jest.fn().mockResolvedValueOnce({}),
-        setToDb: jest.fn(),
+        getFromDb: vi.fn().mockResolvedValueOnce({}),
+        setToDb: vi.fn(),
       } as IUnwrapPriceCacheProvider
       const unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
 
@@ -145,7 +146,7 @@ describe('getTenMinuteKeyByBlock', () => {
   })
 
   it('returns same key with timestamps within the same 10 minutes range', async () => {
-    const mockDateNow = jest
+    const mockDateNow = vi
       .spyOn(Date, 'now')
       .mockImplementationOnce(() => new Date('2024-09-01T00:00:00Z').getTime())
       .mockImplementationOnce(() => new Date('2024-09-01T00:01:00Z').getTime())
@@ -159,7 +160,7 @@ describe('getTenMinuteKeyByBlock', () => {
   })
 
   it('returns same key with timestamps that are in different ranges', async () => {
-    const mockDateNow = jest
+    const mockDateNow = vi
       .spyOn(Date, 'now')
       .mockImplementationOnce(() => new Date('2024-09-01T00:00:00Z').getTime())
       .mockImplementationOnce(() => new Date('2024-09-01T00:10:00Z').getTime())

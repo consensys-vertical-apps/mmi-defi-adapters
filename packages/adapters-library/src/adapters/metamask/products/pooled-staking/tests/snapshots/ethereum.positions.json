@@ -1,0 +1,61 @@
+{
+  "blockNumber": 22127227,
+  "latency": "Latency: 2.86 seconds",
+  "aggregatedValues": ["USD103.37"],
+  "snapshot": [
+    {
+      "protocolId": "metamask",
+      "name": "Metamask",
+      "description": "Metamask defi adapter",
+      "siteUrl": "https://portfolio.metamask.io/",
+      "iconUrl": "https://portfolio.metamask.io/favicon.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "pooled-staking",
+      "protocolDisplayName": "MetaMask Staking",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4FEF9D741011476750A243aC70b9789a63dd47Df",
+          "name": "Metamask",
+          "symbol": "METAMASK",
+          "decimals": 18,
+          "type": "protocol",
+          "balanceRaw": "48806725151497524n",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "49999999999999999n",
+              "balance": 0.049999999999999996,
+              "price": 2067.31006079,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "balance": 0.048806725151497525
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "22fafb1e961ef43f59f28cbba6538494": {
+      "result": []
+    },
+    "bbf8935400ca9fbb412ecbef3f551a18": {
+      "result": "0x00000000000000000000000000000000000000000000000000ad65753b4e1d34"
+    },
+    "66500d89c020d6b5d4e1068217038937": {
+      "result": "0x000000000000000000000000000000000000000000000716002862d8c4cb5aeb"
+    },
+    "248efbd9a39bed6fe585a35f74ad1229": {
+      "result": "0x00000000000000000000000000000000000000000000074259e0efdc434ef214"
+    },
+    "e8ef7a24d910011e12783021ba32a606": {
+      "result": "0x0000000000000000000000000000000000000000000000070000000000002541000000000000000000000000000000000000000000000000000000302220d07f0000000000000000000000000000000000000000000000000000000067e333e10000000000000000000000000000000000000000000000000000000067e333ef0000000000000000000000000000000000000000000000070000000000002541"
+    }
+  }
+}

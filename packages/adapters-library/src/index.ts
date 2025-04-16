@@ -1,16 +1,13 @@
 export { Protocol } from './adapters/protocols'
 
-export {
-  Chain,
-  ChainIdToChainNameMap as ChainName,
-  EvmChain,
-} from './core/constants/chains'
+export { Chain, ChainName, EvmChain } from './core/constants/chains'
 
 export { DefiProvider } from './defiProvider'
 export { PositionType } from './types/adapter'
 export type {
   AdapterResponse,
   DefiPositionResponse,
+  Support,
 } from './types/response'
 export type { IUnwrapPriceCacheProvider as IUnwrapCacheProvider } from './unwrapCache'
 export {

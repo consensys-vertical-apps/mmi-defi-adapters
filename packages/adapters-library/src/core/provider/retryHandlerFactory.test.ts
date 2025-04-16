@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from 'vitest'
 import { retryHandlerFactory } from './retryHandlerFactory'
 
 describe('retryHandlerFactory', () => {
@@ -37,7 +38,7 @@ describe('retryHandlerFactory', () => {
       maxRetries: 1,
     })
 
-    const call = jest.fn().mockRejectedValueOnce(new Error('Not a timeout'))
+    const call = vi.fn().mockRejectedValueOnce(new Error('Not a timeout'))
 
     await expect(retryHandler(call)).rejects.toThrow('Not a timeout')
 
@@ -50,7 +51,7 @@ describe('retryHandlerFactory', () => {
       maxRetries: 1,
     })
 
-    const call = jest
+    const call = vi
       .fn()
       .mockRejectedValueOnce(new Error('Operation timed out'))
       .mockResolvedValueOnce({})

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest'
 import { bigintJsonParse, bigintJsonStringify } from './bigintJson'
 
 describe('bigintJson', () => {

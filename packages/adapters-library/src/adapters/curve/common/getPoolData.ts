@@ -1,4 +1,4 @@
-import { Chain, ChainIdToChainNameMap } from '../../../core/constants/chains'
+import { Chain } from '../../../core/constants/chains'
 import { filterMapAsync } from '../../../core/utils/filters'
 import { logger } from '../../../core/utils/logger'
 import { Protocol } from '../../protocols'

@@ -1,17 +1,18 @@
 import { getAddress } from 'ethers'
+import { Mock, beforeEach, describe, expect, it, vi } from 'vitest'
 import { DefiProvider } from '../../defiProvider'
 import { ChecksumAddress } from './checksumAddress'
 
 // Mock the getAddress function from ethers to simplify testing
-jest.mock('ethers', () => ({
-  getAddress: jest.fn((address: string) => `checksum-${address}`),
+vi.mock('ethers', () => ({
+  getAddress: vi.fn((address: string) => `checksum-${address}`),
 }))
 
 describe('ChecksumAddress Decorator', () => {
-  let originalMethod: jest.Mock
+  let originalMethod: Mock
 
   beforeEach(() => {
-    originalMethod = jest.fn().mockResolvedValue('original method result')
+    originalMethod = vi.fn().mockResolvedValue('original method result')
   })
 
   it('should convert a single address string to checksum format', async () => {

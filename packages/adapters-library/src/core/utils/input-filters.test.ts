@@ -1,5 +1,6 @@
+import { describe, expect, it } from 'vitest'
 import { Protocol } from '../../adapters/protocols'
-import { Chain, ChainIdToChainNameMap } from '../constants/chains'
+import { Chain, ChainName } from '../constants/chains'
 import {
   chainFilter,
   multiChainFilter,
@@ -24,7 +25,7 @@ describe('chainFilter', () => {
 
   it.each(
     Object.values(Chain).map(
-      (chainId) => [ChainIdToChainNameMap[chainId], chainId] as [string, Chain],
+      (chainId) => [ChainName[chainId], chainId] as [string, Chain],
     ),
   )(
     'returns the correct chainId when any of its names is provided: %s',

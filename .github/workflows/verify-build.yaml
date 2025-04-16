@@ -26,14 +26,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Verify tsc config
-        run: npm run test:tsc
-
       - name: Verify there are no linting and formatting errors
         run: npm run lint
 
       - name: Build
         run: npm run build
+
+      - name: Verify tsc config
+        run: npm run test:tsc
 
       - name: Create new adapter with new CLI
         run: |
@@ -46,8 +46,10 @@ jobs:
 
   generate-protocol-matrix:
     runs-on: ubuntu-latest
+
     outputs:
       protocol-matrix: ${{ steps.set-matrix.outputs.matrix }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -73,7 +75,7 @@ jobs:
         env:
           DEFI_ADAPTERS_LOG_LEVEL: silent # Suppress logs during execution
 
-  integration-tests:
+  adapter-snapshots-tests:
     needs: generate-protocol-matrix
 
     runs-on: ubuntu-latest
@@ -97,11 +99,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
-
       - name: Run tests
-        run: npm run test:integration --protocolid=${{ matrix.protocol }}
+        run: npm run test:adapter-snapshots --protocolid=${{ matrix.protocol }} -- --reporter=default --reporter=blob  --coverage --outputFile=.vitest-reports/blob-adapter-snapshots-${{ matrix.protocol }}.json
         env:
           DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
@@ -112,9 +111,18 @@ jobs:
           DEFI_ADAPTERS_PROVIDER_ARBITRUM: ${{ secrets.ARBITRUM_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_AVALANCHE: ${{ secrets.AVALANCHE_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_LINEA: ${{ secrets.LINEA_PROVIDER_URL }}
-          DEFI_ADAPTERS_LOG_LEVEL: warn
+          DEFI_ADAPTERS_LOG_LEVEL: info
 
-  run-unit-tests:
+      - name: Upload partial report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ github.job }}-${{ matrix.protocol }}
+          path: .vitest-reports/*
+          retention-days: 1
+          include-hidden-files: true
+          if-no-files-found: error
+
+  unit-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -133,7 +141,7 @@ jobs:
         run: npm run build
 
       - name: Run tests
-        run: npm run test:cov
+        run: npm run test:unit -- --reporter=default --reporter=blob --coverage --outputFile=.vitest-reports/blob-unit.json
         env:
           DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
@@ -146,13 +154,16 @@ jobs:
           DEFI_ADAPTERS_PROVIDER_LINEA: ${{ secrets.LINEA_PROVIDER_URL }}
           DEFI_ADAPTERS_LOG_LEVEL: warn
 
-      - name: Run sonarcloud-scan
-        uses: sonarsource/sonarcloud-github-action@v2.1.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Upload partial report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ github.job }}
+          path: .vitest-reports/*
+          retention-days: 1
+          include-hidden-files: true
+          if-no-files-found: error
 
-  template-snapshots-test:
+  template-snapshots-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -171,11 +182,20 @@ jobs:
         run: npm run build
 
       - name: Run test
-        run: npm run test -w packages/adapters-cli
+        run: npm run test:template-snapshots -- --reporter=default --reporter=blob --coverage --outputFile=.vitest-reports/blob-template-snapshots.json
         env:
           DEFI_ADAPTERS_LOG_LEVEL: warn
 
-  detect-errors-test:
+      - name: Upload partial report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ github.job }}
+          path: .vitest-reports/*
+          retention-days: 1
+          include-hidden-files: true
+          if-no-files-found: error
+
+  smoke-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -190,11 +210,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
-
       - name: Run tests
-        run: npm run test:detect-errors -w packages/adapters-library
+        run: npm run test:smoke -- --reporter=default --reporter=blob --coverage --outputFile=.vitest-reports/blob-smoke.json
         env:
           DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
@@ -206,3 +223,46 @@ jobs:
           DEFI_ADAPTERS_PROVIDER_AVALANCHE: ${{ secrets.AVALANCHE_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_LINEA: ${{ secrets.LINEA_PROVIDER_URL }}
           DEFI_ADAPTERS_LOG_LEVEL: warn
+
+      - name: Upload partial report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ github.job }}
+          path: .vitest-reports/*
+          retention-days: 1
+          include-hidden-files: true
+          if-no-files-found: error
+
+  coverage-report:
+    needs: [adapter-snapshots-tests, template-snapshots-tests, smoke-tests, unit-tests]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download all coverage reports
+        uses: actions/download-artifact@v4
+        with:
+          path: .vitest-reports
+          pattern: coverage-*
+          merge-multiple: true
+
+      - name: Generate coverage report
+        run: npm run test:cov:merge
+
+      - name: Run sonarcloud-scan
+        uses: sonarsource/sonarcloud-github-action@v2.1.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
