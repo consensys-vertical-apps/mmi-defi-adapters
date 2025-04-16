@@ -48,72 +48,66 @@ export function buildTrustAssetIconUrl(
 }
 
 export const TrustWalletProtocolIconMap = {
-  'aave-v2':
+  [Protocol.AaveV2]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/aave.com.png',
-  'aave-v3':
+  [Protocol.AaveV3]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/aave.com.png',
-  'angle-protocol':
+  [Protocol.AngleProtocol]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/angle.money.png',
-  'balancer-v2':
+  [Protocol.BalancerV2]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/balancer.exchange.png',
-  beefy:
+  [Protocol.Beefy]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/app.beefy.finance.png',
-
-  'compound-v2':
+  [Protocol.CompoundV2]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/compound.finance.png',
-  'compound-v3':
+  [Protocol.CompoundV3]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/compound.finance.png',
-  convex:
+  [Protocol.Convex]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/www.convexfinance.com.png',
-  curve:
+  [Protocol.Curve]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/curve.fi.png',
-
-  gmx: 'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/gmx.io.png',
-  'gmx-v2':
+  [Protocol.Gmx]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/gmx.io.png',
-
-  jito: 'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/www.jito.network.png',
-  lido: 'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/lido.fi.png',
-
-  maker:
+  [Protocol.GmxV2]:
+    'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/gmx.io.png',
+  [Protocol.Jito]:
+    'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/www.jito.network.png',
+  [Protocol.Lido]:
+    'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/lido.fi.png',
+  [Protocol.Maker]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/makerdao.com.png',
-
-  'morpho-aave-v2':
+  [Protocol.MorphoAaveV2]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/app.morpho.org.png',
-  'morpho-aave-v3':
+  [Protocol.MorphoAaveV3]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/app.morpho.org.png',
-  'morpho-blue':
+  [Protocol.MorphoBlue]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/app.morpho.org.png',
-  'morpho-compound-v2':
+  [Protocol.MorphoCompoundV2]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/app.morpho.org.png',
-
-  'pancakeswap-v2':
+  [Protocol.PancakeswapV2]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/pancakeswap.finance.png',
-  pendle:
+  [Protocol.Pendle]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/pendle.finance.png',
-  'quickswap-v2':
+  [Protocol.QuickswapV2]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/quickswap.exchange.png',
-  'quickswap-v3':
+  [Protocol.QuickswapV3]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/quickswap.exchange.png',
-  renzo:
+  [Protocol.Renzo]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/www.renzoprotocol.com.png',
-  'rocket-pool':
+  [Protocol.RocketPool]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/rocketpool.net.png',
-
-  'spark-v1':
+  [Protocol.SparkV1]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/www.spark.fi.png',
-  'stake-wise':
+  [Protocol.StakeWise]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/app.stakepark.xyz.png',
-  stargate:
+  [Protocol.Stargate]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/stargate.finance.png',
-  'sushiswap-v2':
+  [Protocol.SushiswapV2]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/app.sushi.com.png',
-
-  'uniswap-v2':
+  [Protocol.UniswapV2]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/app.uniswap.org.png',
-  'uniswap-v3':
+  [Protocol.UniswapV3]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/app.uniswap.org.png',
-
-  'zero-lend':
+  [Protocol.ZeroLend]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/zerolend.xyz.png',
 } as const

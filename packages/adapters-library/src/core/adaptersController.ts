@@ -329,34 +329,32 @@ export class AdaptersController {
 
           product.chains.push(chainId)
 
-          if (includeProtocolTokens) {
-            const protocolTokenAddresses = (
-              await adapter.getProtocolTokens().catch(() => undefined)
-            )?.map((token) => token.address)
+          const protocolTokenAddresses = (
+            await adapter.getProtocolTokens().catch(() => undefined)
+          )?.map((token) => token.address)
 
-            if (protocolTokenAddresses) {
-              if (!product.protocolTokenAddresses) {
-                product.protocolTokenAddresses = {}
-              }
-
-              product.protocolTokenAddresses[chainId] = protocolTokenAddresses
+          if (protocolTokenAddresses) {
+            if (!product.protocolTokenAddresses) {
+              product.protocolTokenAddresses = {}
             }
 
-            if (!includeProtocolTokens) {
-              continue
+            product.protocolTokenAddresses[chainId] = protocolTokenAddresses
+          }
+
+          if (!includeProtocolTokens) {
+            continue
+          }
+
+          const protocolTokens = await adapter
+            .getProtocolTokens()
+            .catch(() => undefined)
+
+          if (protocolTokens) {
+            if (!product.protocolTokens) {
+              product.protocolTokens = {}
             }
 
-            const protocolTokens = await adapter
-              .getProtocolTokens()
-              .catch(() => undefined)
-
-            if (protocolTokens) {
-              if (!product.protocolTokens) {
-                product.protocolTokens = {}
-              }
-
-              product.protocolTokens[chainId] = protocolTokens
-            }
+            product.protocolTokens[chainId] = protocolTokens
           }
         }
       }
