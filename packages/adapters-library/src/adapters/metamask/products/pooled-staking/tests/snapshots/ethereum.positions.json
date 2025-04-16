@@ -1,6 +1,6 @@
 {
   "blockNumber": 22127227,
-  "latency": "Latency: 2.61 seconds",
+  "latency": "Latency: 2.86 seconds",
   "aggregatedValues": ["USD103.37"],
   "snapshot": [
     {
@@ -9,9 +9,10 @@
       "description": "Metamask defi adapter",
       "siteUrl": "https://portfolio.metamask.io/",
       "iconUrl": "https://portfolio.metamask.io/favicon.png",
-      "positionType": "supply",
+      "positionType": "stake",
       "chainId": 1,
       "productId": "pooled-staking",
+      "protocolDisplayName": "MetaMask Staking",
       "chainName": "ethereum",
       "success": true,
       "tokens": [
@@ -24,28 +25,15 @@
           "balanceRaw": "48806725151497524n",
           "tokens": [
             {
-              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
-              "name": "Liquid staked Ether 2.0",
-              "symbol": "stETH",
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "49999999999999999n",
-              "tokens": [
-                {
-                  "address": "0x0000000000000000000000000000000000000000",
-                  "name": "Ethereum",
-                  "symbol": "ETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "balanceRaw": "49999999999999999n",
-                  "balance": 0.049999999999999996,
-                  "price": 2067.31006079,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-                }
-              ],
               "balance": 0.049999999999999996,
               "price": 2067.31006079,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ],
           "balance": 0.048806725151497525

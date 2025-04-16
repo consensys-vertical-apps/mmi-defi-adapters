@@ -438,7 +438,7 @@ export const supportedProtocols: Record<
     ],
   },
 
-  [Protocol.Metamask]: {
+  [Protocol.MetaMask]: {
     [Chain.Ethereum]: [MetamaskPooledStakingAdapter],
   },
 

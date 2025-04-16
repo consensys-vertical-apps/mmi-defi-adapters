@@ -1,5 +1,6 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { Helpers } from '../../../../core/helpers'
@@ -25,8 +26,6 @@ import { PoolStaking, PoolStaking__factory } from '../../contracts'
 const METAMASK_POOLED_STAKING_CONTRACT = getAddress(
   '0x4FEF9D741011476750A243aC70b9789a63dd47Df',
 )
-const LIDO_STAKED_ETH = getAddress('0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84')
-
 export class MetamaskPooledStakingAdapter implements IProtocolAdapter {
   productId = 'pooled-staking'
   protocolId: Protocol
@@ -74,7 +73,7 @@ export class MetamaskPooledStakingAdapter implements IProtocolAdapter {
       description: 'Metamask defi adapter',
       siteUrl: 'https://portfolio.metamask.io/',
       iconUrl: 'https://portfolio.metamask.io/favicon.png',
-      positionType: PositionType.Supply,
+      positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
     }
@@ -82,7 +81,7 @@ export class MetamaskPooledStakingAdapter implements IProtocolAdapter {
 
   @CacheToDb
   async getProtocolTokens(): Promise<[ProtocolToken]> {
-    const underlyingToken = await this.helpers.getTokenMetadata(LIDO_STAKED_ETH)
+    const underlyingToken = await this.helpers.getTokenMetadata(ZERO_ADDRESS)
     return [
       {
         address: METAMASK_POOLED_STAKING_CONTRACT,

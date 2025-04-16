@@ -6,13 +6,14 @@ import {
   buildSqliteMetadataProviders,
 } from './SQLiteMetadataProvider'
 import { buildVoidMetadataProviders } from './VoidMetadataProvider'
-import { Protocol } from './adapters/protocols'
+import { Protocol, ProtocolDisplayName } from './adapters/protocols'
 import { supportedProtocols } from './adapters/supportedProtocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
 import { Chain, ChainName, EvmChain } from './core/constants/chains'
 import { ChecksumAddress } from './core/decorators/checksumAddress'
 import { ChainProvider } from './core/provider/ChainProvider'
+import { pascalCase } from './core/utils/caseConversion'
 import { filterMapAsync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
 import { propagatePrice } from './core/utils/propagatePrice'
@@ -471,6 +472,9 @@ export class DefiProvider {
 
       return {
         ...protocolDetails,
+        protocolDisplayName:
+          ProtocolDisplayName[adapter.protocolId] ??
+          pascalCase(adapter.protocolId),
         chainName: ChainName[adapter.chainId],
         success: true,
         ...adapterResult,

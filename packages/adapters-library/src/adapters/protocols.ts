@@ -24,7 +24,7 @@ export const Protocol = {
   Lynex: 'lynex',
   Maker: 'maker',
   MendiFinance: 'mendi-finance',
-  Metamask: 'metamask',
+  MetaMask: 'metamask',
   MorphoAaveV2: 'morpho-aave-v2',
   MorphoAaveV3: 'morpho-aave-v3',
   MorphoBlue: 'morpho-blue',
@@ -50,3 +50,10 @@ export const Protocol = {
   ZeroLend: 'zerolend',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
+
+// TODO: Have this be generated from a question in the CLI
+export const ProtocolDisplayName: Partial<Record<Protocol, string>> = {
+  [Protocol.AaveV2]: 'Aave V2',
+  [Protocol.AaveV3]: 'Aave V3',
+  [Protocol.MetaMask]: 'MetaMask Staking',
+} as const
