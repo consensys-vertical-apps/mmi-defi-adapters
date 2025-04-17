@@ -37,6 +37,7 @@ import {
   IUnwrapPriceCacheProvider,
   UnwrapPriceCache,
 } from './unwrapCache'
+import { TrustWalletProtocolIconMap } from './core/utils/buildIconUrl'
 
 export class DefiProvider {
   private config: IConfig
@@ -476,6 +477,9 @@ export class DefiProvider {
           ProtocolDisplayName[adapter.protocolId] ??
           pascalCase(adapter.protocolId),
         chainName: ChainName[adapter.chainId],
+        iconUrl:
+          TrustWalletProtocolIconMap[adapter.protocolId] ??
+          protocolDetails.iconUrl,
         success: true,
         ...adapterResult,
       }
