@@ -13,6 +13,7 @@ import { AdaptersController } from './core/adaptersController'
 import { Chain, ChainName, EvmChain } from './core/constants/chains'
 import { ChecksumAddress } from './core/decorators/checksumAddress'
 import { ChainProvider } from './core/provider/ChainProvider'
+import { TrustWalletProtocolIconMap } from './core/utils/buildIconUrl'
 import { pascalCase } from './core/utils/caseConversion'
 import { filterMapAsync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
@@ -476,6 +477,9 @@ export class DefiProvider {
           ProtocolDisplayName[adapter.protocolId] ??
           pascalCase(adapter.protocolId),
         chainName: ChainName[adapter.chainId],
+        iconUrl:
+          TrustWalletProtocolIconMap[adapter.protocolId] ??
+          protocolDetails.iconUrl,
         success: true,
         ...adapterResult,
       }

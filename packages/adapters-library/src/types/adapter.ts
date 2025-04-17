@@ -124,7 +124,7 @@ export type ProtocolDetails = {
   /**
    * Protocol icon
    */
-  iconUrl: string
+  iconUrl: string | undefined
 
   /**
    * Protocol website

@@ -47,7 +47,7 @@ export function buildTrustAssetIconUrl(
   }
 }
 
-export const TrustWalletProtocolIconMap = {
+export const TrustWalletProtocolIconMap: Partial<Record<Protocol, string>> = {
   [Protocol.AaveV2]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/aave.com.png',
   [Protocol.AaveV3]:
@@ -110,4 +110,4 @@ export const TrustWalletProtocolIconMap = {
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/app.uniswap.org.png',
   [Protocol.ZeroLend]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/zerolend.xyz.png',
-} as const
+}
