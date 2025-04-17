@@ -24,7 +24,7 @@ export class ZeroLendATokenPoolAdapter extends ZeroLendBasePoolAdapter {
       name: 'ZeroLend AToken', // todo change
       description: 'ZeroLend defi adapter for yield-generating token', // todo change
       siteUrl: 'https://app.zerolend.xyz/',
-      iconUrl: 'https://app.zerolend.xyz/favicon.ico',
+      iconUrl: 'https://zerolend.xyz/favicon.ico',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

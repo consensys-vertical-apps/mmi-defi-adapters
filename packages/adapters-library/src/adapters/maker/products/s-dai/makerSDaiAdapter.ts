@@ -3,6 +3,7 @@ import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { RAY_POSITIONS } from '../../../../core/constants/RAY'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import { ProtocolToken } from '../../../../types/IProtocolAdapter'
 import {
   AdapterSettings,
@@ -12,6 +13,7 @@ import {
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { Protocol } from '../../../protocols'
 import { McdPot__factory } from '../../contracts'
 
 const MCD_POT_ADDRESS = '0x197e90f9fad81970ba7976f33cbd77088e5d7cf7'
@@ -33,7 +35,7 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
       name: 'Maker',
       description: 'Maker sDAI adapter',
       siteUrl: 'https:',
-      iconUrl: 'https://',
+      iconUrl: TrustWalletProtocolIconMap[Protocol.Maker],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

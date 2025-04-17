@@ -5,11 +5,13 @@ import {
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import {
   AdapterSettings,
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
+import { Protocol } from '../../../protocols'
 
 export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   productId = 'pool'
@@ -30,8 +32,7 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
       name: 'QuickswapV2',
       description: 'QuickswapV2 pool adapter',
       siteUrl: 'https://quickswap.exchange/#/pools/v2',
-      iconUrl:
-        'https://seeklogo.com/images/Q/quickswap-quick-logo-B9D689A214-seeklogo.com.png',
+      iconUrl: TrustWalletProtocolIconMap[Protocol.QuickswapV2],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
