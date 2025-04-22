@@ -225,8 +225,8 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
     })
   })
 
-  app.doc('/doc', {
-    openapi: '3.0.0',
+  app.doc31('/docs', {
+    openapi: '3.1.0',
     info: {
       version: '1.0.0',
       title: 'DeFi Adapters API',
