@@ -32,9 +32,14 @@ const parseAndCheck = <T extends ZodTypeAny>(schema: T) => {
     .pipe(schema)
 }
 
-export const GetPositionsSchema = z
+export const GetPositionsParamsSchema = z
   .object({
     userAddress: IsEthAddress,
+  })
+  .strict()
+
+export const GetPositionsQuerySchema = z
+  .object({
     filterProtocolIds: parseAndCheck(
       z.array(z.nativeEnum(Protocol)),
     ).optional(),
@@ -46,7 +51,7 @@ export const GetPositionsSchema = z
   })
   .strict()
 
-export const GetSupportSchema = z.object({
+export const GetSupportParamsSchema = z.object({
   filterProtocolIds: parseAndCheck(z.array(z.nativeEnum(Protocol))).optional(),
   filterChainIds: parseAndCheck(z.array(z.nativeEnum(Chain))).optional(),
   includeProtocolTokens: parseAndCheck(z.boolean()).optional(),
