@@ -1,4 +1,4 @@
-import { createRoute, OpenAPIHono, z } from '@hono/zod-openapi'
+import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi'
 import { DefiProvider } from '@metamask-institutional/defi-adapters'
 import { type PinoLogger, pinoLogger } from 'hono-pino'
 import { cors } from 'hono/cors'
@@ -6,18 +6,21 @@ import './bigint-json.js'
 import { type RequestIdVariables, requestId } from 'hono/request-id'
 import type { ContentfulStatusCode } from 'hono/utils/http-status'
 import type { DbService } from './db-service.js'
+import {
+  INTERNAL_SERVER_ERROR,
+  OK,
+  UNPROCESSABLE_ENTITY,
+} from './http-status-codes.js'
 import { logger } from './logger.js'
 import {
   GetPositionsParamsSchema,
   GetPositionsQuerySchema,
-  GetSupportParamsSchema,
+  GetPositionsResponseSchema,
+  GetSupportQuerySchema,
+  GetSupportResponseSchema,
   IsEthAddress,
+  ValidationErrorSchema,
 } from './schemas.js'
-import {
-  UNPROCESSABLE_ENTITY,
-  INTERNAL_SERVER_ERROR,
-  OK,
-} from './http-status-codes.js'
 
 function createApp() {
   return new OpenAPIHono<{
@@ -31,7 +34,7 @@ function createApp() {
         return c.json(
           {
             success: result.success,
-            error: result.error.flatten(),
+            error: result.error,
           },
           UNPROCESSABLE_ENTITY,
         )
@@ -103,7 +106,7 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
           content: {
             'application/json': {
               schema: z.object({
-                data: z.array(z.any()), // TODO
+                data: GetPositionsResponseSchema,
               }),
             },
           },
@@ -112,7 +115,7 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
         [UNPROCESSABLE_ENTITY]: {
           content: {
             'application/json': {
-              schema: z.any(), // TODO
+              schema: ValidationErrorSchema,
             },
           },
           description: 'Invalid input',
@@ -123,12 +126,17 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
       const { userAddress } = context.req.valid('param')
       const getPositionsInput = context.req.valid('query')
 
-      return context.json({
-        data: await defiProvider.getPositions({
-          userAddress,
-          ...getPositionsInput,
-        }),
-      })
+      const data = (await defiProvider.getPositions({
+        userAddress,
+        ...getPositionsInput,
+      })) as GetPositionsResponseSchema
+
+      return context.json(
+        {
+          data,
+        },
+        200,
+      )
     },
   )
 
@@ -138,18 +146,18 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
       method: 'get',
       tags: ['defi'],
       request: {
-        query: GetSupportParamsSchema,
+        query: GetSupportQuerySchema,
       },
       responses: {
         [OK]: {
           content: {
             'application/json': {
               schema: z.object({
-                data: z.object({}), // TODO
+                data: GetSupportResponseSchema,
               }),
             },
           },
-          description: 'Returns positions for the given address',
+          description: 'Returns support for the given address',
         },
         [UNPROCESSABLE_ENTITY]: {
           content: {
@@ -164,9 +172,16 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
     async (context) => {
       const getSupportInput = context.req.valid('query')
 
-      return context.json({
-        data: await defiProvider.getSupport(getSupportInput),
-      })
+      const data = (await defiProvider.getSupport(
+        getSupportInput,
+      )) as GetSupportResponseSchema
+
+      return context.json(
+        {
+          data,
+        },
+        200,
+      )
     },
   )
 
