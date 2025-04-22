@@ -1,21 +1,74 @@
+import { OpenAPIHono } from '@hono/zod-openapi'
 import { DefiProvider } from '@metamask-institutional/defi-adapters'
-import { Hono } from 'hono'
+import { type PinoLogger, pinoLogger } from 'hono-pino'
 import { cors } from 'hono/cors'
 import { ZodError } from 'zod'
 import './bigint-json.js'
+import { type RequestIdVariables, requestId } from 'hono/request-id'
+import type { ContentfulStatusCode } from 'hono/utils/http-status'
 import type { DbService } from './db-service.js'
+import {
+  INTERNAL_SERVER_ERROR,
+  OK,
+  UNPROCESSABLE_ENTITY,
+} from './http-codes.js'
+import { logger } from './logger.js'
 import {
   GetPositionsSchema,
   GetSupportSchema,
   IsEthAddress,
 } from './schemas.js'
 
-export function buildApi(
-  app: Hono,
-  defiProvider: DefiProvider,
-  dbService: DbService,
-) {
+function createApp() {
+  return new OpenAPIHono<{
+    Variables: RequestIdVariables & {
+      logger: PinoLogger
+    }
+  }>({
+    strict: false,
+    defaultHook: (result, c) => {
+      if (!result.success) {
+        return c.json(
+          {
+            success: result.success,
+            error: result.error,
+          },
+          UNPROCESSABLE_ENTITY,
+        )
+      }
+    },
+  })
+}
+
+function addMiddleware(app: ReturnType<typeof createApp>) {
   app.use('*', cors())
+  app.use('*', requestId())
+  app.use(
+    '*',
+    pinoLogger({
+      pino: logger,
+    }),
+  )
+
+  app.onError((err, c) => {
+    const statusCode =
+      'status' in err
+        ? (err.status as ContentfulStatusCode)
+        : INTERNAL_SERVER_ERROR
+
+    return c.json(
+      {
+        message: err.message,
+      },
+      statusCode,
+    )
+  })
+}
+
+export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
+  const app = createApp()
+
+  addMiddleware(app)
 
   app.get('/health', (context) => context.json({ message: 'ok' }))
 
@@ -121,6 +174,8 @@ export function buildApi(
       return context.json({ error: handleErrorMessage(error) }, 500)
     }
   })
+
+  return app
 }
 
 function handleErrorMessage(error: unknown) {

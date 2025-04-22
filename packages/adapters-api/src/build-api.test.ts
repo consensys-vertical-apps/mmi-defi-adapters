@@ -3,24 +3,22 @@ import {
   DefiProvider,
   Support,
 } from '@metamask-institutional/defi-adapters'
-import { Hono } from 'hono'
 import { Mocked, beforeEach, describe, expect, it, vi } from 'vitest'
 import { buildApi } from './build-api'
 import { DbService } from './db-service'
 describe('buildApi', () => {
-  let app: Hono
+  let app: ReturnType<typeof buildApi>
   let mockDefiProvider: Mocked<DefiProvider>
   let mockDbService: Mocked<DbService>
 
   beforeEach(() => {
-    app = new Hono()
     mockDefiProvider = vi.mocked({
       getPositions: vi.fn(),
       getSupport: vi.fn(),
     } as unknown as DefiProvider)
     mockDbService = vi.mocked({} as unknown as DbService)
 
-    buildApi(app, mockDefiProvider, mockDbService)
+    app = buildApi(mockDefiProvider, mockDbService)
   })
 
   describe('GET /health', () => {
