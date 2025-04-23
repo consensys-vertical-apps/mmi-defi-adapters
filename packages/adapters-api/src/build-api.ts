@@ -15,12 +15,14 @@ import { logger } from './logger.js'
 import {
   GetPositionsParamsSchema,
   GetPositionsQuerySchema,
-  GetPositionsResponseSchema,
   GetSupportQuerySchema,
-  GetSupportResponseSchema,
   IsEthAddress,
+} from './schemas-request.js'
+import {
+  GetPositionsResponseSchema,
+  GetSupportResponseSchema,
   ValidationErrorSchema,
-} from './schemas.js'
+} from './schemas-response.js'
 
 function createApp() {
   return new OpenAPIHono<{
