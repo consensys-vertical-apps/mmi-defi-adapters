@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { IsEthAddress } from './schemas.js'
+import { IsEthAddress } from './schemas-request.js'
 
 describe('schemas', () => {
   describe('IsEthAddress', () => {

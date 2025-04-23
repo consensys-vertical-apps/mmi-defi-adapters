@@ -1,6 +1,5 @@
 import { serve } from '@hono/node-server'
 import { EvmChain } from '@metamask-institutional/defi-adapters'
-import { Hono } from 'hono'
 import './bigint-json.js'
 import { buildApi } from './build-api.js'
 import { buildServices } from './build-services.js'
@@ -17,9 +16,7 @@ const port = process.env.PORT ? Number(process.env.PORT) : 3000
 
 const { dbService, defiProvider } = buildServices()
 
-const app = new Hono()
-
-buildApi(app, defiProvider, dbService)
+const app = buildApi(defiProvider, dbService)
 
 serve(
   {
