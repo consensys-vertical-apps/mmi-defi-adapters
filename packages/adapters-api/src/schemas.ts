@@ -89,20 +89,44 @@ const TokenSchema = z.object({
   balance: z.number(),
 })
 
-const BaseUnderlyingTokenSchema = z.object({
-  ...TokenSchema.shape,
-  type: z.enum([TokenType.Underlying, TokenType.UnderlyingClaimable]),
-  price: z.number(),
-  iconUrl: z.string(),
-})
+const BaseUnderlyingTokenSchema = z
+  .object({
+    ...TokenSchema.shape,
+    type: z.enum([TokenType.Underlying, TokenType.UnderlyingClaimable]),
+    price: z.number(),
+    iconUrl: z.string(),
+  })
+  .openapi({
+    type: 'object',
+    description: 'Base underlying token information',
+    properties: {
+      type: {
+        type: 'string',
+        enum: [TokenType.Underlying, TokenType.UnderlyingClaimable],
+      },
+      price: { type: 'number' },
+      iconUrl: { type: 'string' },
+    },
+  })
 
 type UnderlyingTokenSchema = z.infer<typeof BaseUnderlyingTokenSchema> & {
   tokens?: UnderlyingTokenSchema[]
 }
 
-const UnderlyingTokenSchema: z.ZodType<UnderlyingTokenSchema> =
-  BaseUnderlyingTokenSchema.extend({
-    tokens: z.lazy(() => UnderlyingTokenSchema.array()).optional(),
+const UnderlyingTokenSchema: z.ZodType<UnderlyingTokenSchema> = z
+  .object({
+    ...BaseUnderlyingTokenSchema.shape,
+    tokens: z.lazy(() => UnderlyingTokenSchema.array().optional()),
+  })
+  .openapi({
+    type: 'object',
+    description: 'Underlying token with optional nested tokens',
+    properties: {
+      tokens: {
+        type: 'array',
+        items: { $ref: '#/components/schemas/UnderlyingToken' },
+      },
+    },
   })
 
 const ProtocolTokenSchema = z.object({
