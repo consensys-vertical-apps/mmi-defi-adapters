@@ -38,22 +38,37 @@ describe('buildApi', () => {
         mockPositions as unknown as DefiPositionResponse[],
       )
 
-      const res = await app.request(`/positions/${userAddress}`)
+      const res = await app.request(
+        `/positions/${userAddress}?filterProtocolIds=["aave-v2"]`,
+      )
       const json = await res.json()
 
       expect(res.status).toBe(200)
       expect(json).toEqual({ data: mockPositions })
       expect(mockDefiProvider.getPositions).toHaveBeenCalledWith({
         userAddress,
+        filterProtocolIds: ['aave-v2'],
       })
     })
 
-    it('should return 400 for invalid input', async () => {
+    it('should return 422 for invalid input', async () => {
       const res = await app.request('/positions/invalid-address')
       const json = await res.json()
 
-      expect(res.status).toBe(400)
-      expect(json).toHaveProperty('error')
+      expect(res.status).toBe(422)
+      expect(json).toEqual({
+        success: false,
+        error: {
+          issues: [
+            {
+              code: 'custom',
+              message: 'Invalid ethereum address',
+              path: ['userAddress'],
+            },
+          ],
+          name: 'ZodError',
+        },
+      })
     })
 
     it('should return 500 for provider errors', async () => {
@@ -65,7 +80,10 @@ describe('buildApi', () => {
       const json = await res.json()
 
       expect(res.status).toBe(500)
-      expect(json).toEqual({ error: 'Provider error' })
+      expect(json).toEqual({
+        success: false,
+        error: 'Provider error',
+      })
     })
   })
 
@@ -76,20 +94,36 @@ describe('buildApi', () => {
         mockSupport as unknown as Support,
       )
 
-      const res = await app.request('/support')
+      const res = await app.request('/support?filterProtocolIds=["aave-v2"]')
       const json = await res.json()
 
       expect(res.status).toBe(200)
       expect(json).toEqual({ data: mockSupport })
-      expect(mockDefiProvider.getSupport).toHaveBeenCalled()
+      expect(mockDefiProvider.getSupport).toHaveBeenCalledWith({
+        filterProtocolIds: ['aave-v2'],
+      })
     })
 
-    it('should return 400 for invalid input', async () => {
+    it('should return 422 for invalid input', async () => {
       const res = await app.request('/support?filterProtocolIds=invalid')
       const json = await res.json()
 
-      expect(res.status).toBe(400)
-      expect(json).toHaveProperty('error')
+      expect(res.status).toBe(422)
+      expect(json).toEqual({
+        success: false,
+        error: {
+          issues: [
+            {
+              code: 'invalid_type',
+              expected: 'array',
+              received: 'string',
+              message: 'Expected array, received string',
+              path: ['filterProtocolIds'],
+            },
+          ],
+          name: 'ZodError',
+        },
+      })
     })
 
     it('should return 500 for provider errors', async () => {
@@ -99,7 +133,10 @@ describe('buildApi', () => {
       const json = await res.json()
 
       expect(res.status).toBe(500)
-      expect(json).toEqual({ error: 'Provider error' })
+      expect(json).toEqual({
+        success: false,
+        error: 'Provider error',
+      })
     })
   })
 })

@@ -61,7 +61,8 @@ function addMiddleware(app: ReturnType<typeof createApp>) {
 
     return c.json(
       {
-        message: err.message,
+        success: false,
+        error: err.message,
       },
       statusCode,
     )
@@ -162,7 +163,7 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
         [UNPROCESSABLE_ENTITY]: {
           content: {
             'application/json': {
-              schema: z.any(), // TODO
+              schema: ValidationErrorSchema,
             },
           },
           description: 'Invalid input',

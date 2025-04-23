@@ -14,25 +14,17 @@ export const IsEthAddress = z
   })
   .transform((address) => getAddress(address.toLowerCase()))
 
-const StringToJSONSchema = z.string().transform((str, ctx): unknown => {
-  try {
-    return JSON.parse(str)
-  } catch (_) {
-    ctx.addIssue({ code: 'custom', message: 'Invalid JSON' })
-    return z.NEVER
-  }
-})
-
 const parseAndCheck = <T extends ZodTypeAny>(schema: T) => {
   return z
     .string()
     .optional()
-    .transform((str) => {
-      if (!str) {
-        return undefined
+    .transform((val: string | undefined) => {
+      if (val === undefined) return undefined
+      try {
+        return JSON.parse(val)
+      } catch {
+        return val
       }
-
-      return StringToJSONSchema.parse(str)
     })
     .pipe(schema)
 }
@@ -46,20 +38,20 @@ export const GetPositionsParamsSchema = z
 export const GetPositionsQuerySchema = z
   .object({
     filterProtocolIds: parseAndCheck(
-      z.array(z.nativeEnum(Protocol)),
-    ).optional(),
-    filterProductIds: parseAndCheck(z.array(z.string())).optional(),
-    filterChainIds: parseAndCheck(z.array(z.nativeEnum(Chain))).optional(),
-    blockNumbers: parseAndCheck(z.record(z.string(), z.number())).optional(),
-    filterProtocolTokens: parseAndCheck(z.array(z.string())).optional(),
-    filterTokenIds: parseAndCheck(z.array(z.string())).optional(),
+      z.array(z.nativeEnum(Protocol)).optional(),
+    ),
+    filterProductIds: parseAndCheck(z.array(z.string()).optional()),
+    filterChainIds: parseAndCheck(z.array(z.nativeEnum(Chain)).optional()),
+    blockNumbers: parseAndCheck(z.record(z.string(), z.number()).optional()),
+    filterProtocolTokens: parseAndCheck(z.array(z.string()).optional()),
+    filterTokenIds: parseAndCheck(z.array(z.string()).optional()),
   })
   .strict()
 
 export const GetSupportQuerySchema = z.object({
   filterProtocolIds: parseAndCheck(z.array(z.nativeEnum(Protocol))).optional(),
-  filterChainIds: parseAndCheck(z.array(z.nativeEnum(Chain))).optional(),
-  includeProtocolTokens: parseAndCheck(z.boolean()).optional(),
+  filterChainIds: parseAndCheck(z.array(z.nativeEnum(Chain)).optional()),
+  includeProtocolTokens: parseAndCheck(z.boolean().optional()),
 })
 
 const ProtocolDetailsSchema = z.object({
