@@ -226,7 +226,7 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
     })
   })
 
-  app.doc31('/docs', {
+  app.doc31('/openapi', {
     openapi: '3.1.0',
     info: {
       version: '1.0.0',
