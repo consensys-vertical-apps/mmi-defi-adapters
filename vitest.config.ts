@@ -17,7 +17,6 @@ export default defineConfig({
             'packages/adapters-library/src/adapters/snapshots.test.ts',
             'packages/adapters-library/src/tests/smoke.test.ts',
             'packages/adapters-cli/src/tests/new-adapter-templates.test.ts',
-            '**/node_modules',
           ],
         },
       },
