@@ -99,14 +99,6 @@ const BaseUnderlyingTokenSchema = z
   .openapi({
     type: 'object',
     description: 'Base underlying token information',
-    properties: {
-      type: {
-        type: 'string',
-        enum: [TokenType.Underlying, TokenType.UnderlyingClaimable],
-      },
-      price: { type: 'number' },
-      iconUrl: { type: 'string' },
-    },
   })
 
 type UnderlyingTokenSchema = z.infer<typeof BaseUnderlyingTokenSchema> & {
@@ -121,12 +113,6 @@ const UnderlyingTokenSchema: z.ZodType<UnderlyingTokenSchema> = z
   .openapi({
     type: 'object',
     description: 'Underlying token with optional nested tokens',
-    properties: {
-      tokens: {
-        type: 'array',
-        items: { $ref: '#/components/schemas/UnderlyingToken' },
-      },
-    },
   })
 
 const ProtocolTokenSchema = z.object({
