@@ -89,13 +89,13 @@ async function getPools(defiProvider: DefiProvider, chainId: EvmChain) {
         eventAbi: string
       }
   >()
-  for (const adapterSupportArray of Object.values(defiPoolAddresses || {})) {
+  for (const adapterSupportArray of Object.values(defiPoolAddresses ?? {})) {
     for (const { userEvent, protocolTokenAddresses } of adapterSupportArray) {
       if (!userEvent) {
         continue
       }
 
-      for (const address of protocolTokenAddresses?.[chainId] || []) {
+      for (const address of protocolTokenAddresses?.[chainId] ?? []) {
         if (userEvent === 'Transfer') {
           const topic0 =
             '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
