@@ -1,15 +1,8 @@
 import { type EvmChain } from '@metamask-institutional/defi-adapters'
-import {
-  Interface,
-  JsonRpcProvider,
-  TransactionReceipt,
-  ZeroAddress,
-  ethers,
-  getAddress,
-} from 'ethers'
+import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
 import type { Logger } from 'pino'
 import { BlockRunner } from './block-runner.js'
-import { parseLog } from './event-parsing.js'
+import { parseUserEventLog } from './parse-user-event-log.js'
 import type { CacheClient } from './postgres-cache-client.js'
 
 export async function buildLatestCache(
@@ -101,7 +94,7 @@ async function processBlockFn({
       const { userAddressIndex, eventAbi } = userIndexEntry
 
       try {
-        const userAddress = parseLog(log, eventAbi, userAddressIndex)
+        const userAddress = parseUserEventLog(log, eventAbi, userAddressIndex)
 
         if (userAddress) {
           logs.push({

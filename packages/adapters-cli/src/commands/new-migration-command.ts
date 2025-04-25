@@ -3,6 +3,7 @@ import path from 'node:path'
 import { Command } from 'commander'
 import { kebabCase } from 'lodash-es'
 import { writeAndLintFile } from '../utils/write-and-lint-file.js'
+
 export function newMigrationCommand(program: Command) {
   program
     .command('new-migration')

@@ -1,8 +1,8 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters'
-import { Interface, JsonRpcProvider, ZeroAddress, getAddress } from 'ethers'
+import { JsonRpcProvider, getAddress } from 'ethers'
 import type { Logger } from 'pino'
-import { parseLog } from './event-parsing.js'
 import { fetchEvents } from './fetch-events.js'
+import { parseUserEventLog } from './parse-user-event-log.js'
 import type { CacheClient, JobDbEntry } from './postgres-cache-client.js'
 
 const SIXTY_SECONDS = 60_000
@@ -139,7 +139,11 @@ export async function buildHistoricCache(
               const contractAddress = getAddress(log.address.toLowerCase())
 
               try {
-                const userAddress = parseLog(log, eventAbi, userAddressIndex)
+                const userAddress = parseUserEventLog(
+                  log,
+                  eventAbi,
+                  userAddressIndex,
+                )
 
                 if (userAddress) {
                   logsToInsert.push({
