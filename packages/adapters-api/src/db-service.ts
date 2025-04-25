@@ -16,7 +16,7 @@ export type JobsStats = {
 export type FailedJobs = {
   contractAddress: string
   topic0: string
-  userAddressIndex: string
+  userAddressIndex: number
   blockNumber: number
 }
 

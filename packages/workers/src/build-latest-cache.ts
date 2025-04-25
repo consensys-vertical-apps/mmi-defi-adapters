@@ -1,7 +1,15 @@
 import { type EvmChain } from '@metamask-institutional/defi-adapters'
-import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
+import {
+  Interface,
+  JsonRpcProvider,
+  TransactionReceipt,
+  ZeroAddress,
+  ethers,
+  getAddress,
+} from 'ethers'
 import type { Logger } from 'pino'
 import { BlockRunner } from './block-runner.js'
+import { parseLog } from './event-parsing.js'
 import type { CacheClient } from './postgres-cache-client.js'
 
 export async function buildLatestCache(
@@ -16,9 +24,9 @@ export async function buildLatestCache(
   const allJobs = await cacheClient.fetchAllJobs()
 
   const userIndexMap = new Map(
-    allJobs.map(({ contractAddress, topic0, userAddressIndex }) => [
+    allJobs.map(({ contractAddress, topic0, userAddressIndex, eventAbi }) => [
       createWatchKey(contractAddress, topic0),
-      userAddressIndex,
+      { userAddressIndex, eventAbi },
     ]),
   )
 
@@ -55,7 +63,13 @@ async function processBlockFn({
 }: {
   provider: JsonRpcProvider
   blockNumber: number
-  userIndexMap: Map<string, number>
+  userIndexMap: Map<
+    string,
+    {
+      userAddressIndex: number
+      eventAbi: string | null
+    }
+  >
   cacheClient: CacheClient
   logger: Logger
 }): Promise<void> {
@@ -70,33 +84,41 @@ async function processBlockFn({
 
   for (const receipt of receipts?.flat() || []) {
     for (const log of receipt.logs || []) {
-      // retuned lowercase from provider
-      const contractAddress = getAddress(log.address)
       const topic0 = log.topics[0]
-
       if (!topic0) {
         continue
       }
 
-      const userAddressIndex = userIndexMap.get(
+      const contractAddress = getAddress(log.address.toLowerCase())
+
+      const userIndexEntry = userIndexMap.get(
         createWatchKey(contractAddress, topic0),
       )
+      if (!userIndexEntry) {
+        continue
+      }
 
-      if (userAddressIndex) {
-        const topic = log.topics[userAddressIndex]!
+      const { userAddressIndex, eventAbi } = userIndexEntry
 
-        if (
-          topic.startsWith('0x000000000000000000000000') && // Not an address if it is does not start with 0x000000000000000000000000
-          topic !==
-            '0x0000000000000000000000000000000000000000000000000000000000000000' // Skip the zero address
-        ) {
-          const topicAddress = getAddress(`0x${topic.slice(-40).toLowerCase()}`)
+      try {
+        const userAddress = parseLog(log, eventAbi, userAddressIndex)
 
+        if (userAddress) {
           logs.push({
-            address: topicAddress,
+            address: userAddress,
             contractAddress,
           })
         }
+      } catch (error) {
+        logger.error(
+          {
+            error: error instanceof Error ? error.message : String(error),
+            txHash: log.transactionHash,
+            eventAbi,
+            userAddressIndex,
+          },
+          'Error parsing log',
+        )
       }
     }
   }

@@ -1,6 +1,7 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters'
-import { JsonRpcProvider, getAddress } from 'ethers'
+import { Interface, JsonRpcProvider, ZeroAddress, getAddress } from 'ethers'
 import type { Logger } from 'pino'
+import { parseLog } from './event-parsing.js'
 import { fetchEvents } from './fetch-events.js'
 import type { CacheClient, JobDbEntry } from './postgres-cache-client.js'
 
@@ -29,7 +30,7 @@ const MaxContractsPerCall: Record<EvmChain, number> = {
  * Steps:
  * 1. Fetch the next set of pools that need processing from the database.
  *    a. First all the pending pools are fetched.
- *    b. The pools are grouped by topic_0 and user_address_index.
+ *    b. The pools are grouped by topic0 and userAddressIndex.
  *    c. The group with the most entries is selected and the maximum block number is used as target.
  *    d. An optimal batch size is calculated.
  * 2. If no pools are pending, wait for 30 seconds before checking again.
@@ -74,6 +75,7 @@ export async function buildHistoricCache(
     const {
       poolAddresses,
       topic0,
+      eventAbi,
       userAddressIndex,
       targetBlockNumber,
       batchSize,
@@ -97,6 +99,7 @@ export async function buildHistoricCache(
           batchSize,
           totalBatches,
           topic0,
+          eventAbi,
           userAddressIndex,
           targetBlockNumber,
           ...processedEntities,
@@ -135,21 +138,26 @@ export async function buildHistoricCache(
             for (const log of logs) {
               const contractAddress = getAddress(log.address.toLowerCase())
 
-              const topic = log.topics[userAddressIndex]!
+              try {
+                const userAddress = parseLog(log, eventAbi, userAddressIndex)
 
-              if (
-                topic.startsWith('0x000000000000000000000000') && // Not an address if it is does not start with 0x000000000000000000000000
-                topic !==
-                  '0x0000000000000000000000000000000000000000000000000000000000000000' // Skip the zero address
-              ) {
-                const topicAddress = getAddress(
-                  `0x${topic.slice(-40).toLowerCase()}`,
+                if (userAddress) {
+                  logsToInsert.push({
+                    address: userAddress,
+                    contractAddress,
+                  })
+                }
+              } catch (error) {
+                logger.error(
+                  {
+                    error:
+                      error instanceof Error ? error.message : String(error),
+                    txHash: log.transactionHash,
+                    eventAbi,
+                    userAddressIndex,
+                  },
+                  'Error parsing log',
                 )
-
-                logsToInsert.push({
-                  address: topicAddress,
-                  contractAddress,
-                })
               }
             }
 
@@ -228,7 +236,8 @@ function getNextPoolGroup(
 ):
   | {
       poolAddresses: string[]
-      topic0: string
+      topic0: `0x${string}`
+      eventAbi: string | null
       userAddressIndex: number
       targetBlockNumber: number
       batchSize: number
@@ -243,7 +252,7 @@ function getNextPoolGroup(
   )
 
   if (pendingPools.length > 0) {
-    // Group pools by topic_0 and user_address_index
+    // Group pools by topic0 and userAddressIndex
     const groupedPools = pendingPools.reduce(
       (acc, pool) => {
         const key = `${pool.topic0}#${pool.userAddressIndex}`
@@ -278,6 +287,7 @@ function getNextPoolGroup(
     return {
       poolAddresses: largestGroup.map((pool) => pool.contractAddress),
       topic0: largestGroup[0]!.topic0,
+      eventAbi: largestGroup[0]!.eventAbi,
       userAddressIndex: largestGroup[0]!.userAddressIndex,
       targetBlockNumber: Math.max(
         ...largestGroup.map((pool) => pool.blockNumber),
@@ -287,11 +297,12 @@ function getNextPoolGroup(
   }
 
   const failedPools = unfinishedPools.filter((pool) => pool.status === 'failed')
-  const { contractAddress, topic0, userAddressIndex, blockNumber } =
+  const { contractAddress, topic0, eventAbi, userAddressIndex, blockNumber } =
     failedPools[0]!
   return {
     poolAddresses: [contractAddress],
     topic0,
+    eventAbi,
     userAddressIndex,
     targetBlockNumber: blockNumber,
     batchSize: 1,

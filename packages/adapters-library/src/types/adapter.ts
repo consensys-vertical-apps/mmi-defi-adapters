@@ -76,9 +76,10 @@ export type UnwrapInput = {
  * @property {boolean} includeInUnwrap - Whether this adapter's tokens should be included in unwrap operations
  * @property {number} [version] - Optional version number for the adapter
  * @property {object|string|false} userEvent - Configuration for tracking user events:
- *   - If object: Contains topic0 hash and userAddressIndex for custom events
- *   - If "Transfer": Uses standard ERC20/721 Transfer events
- *   - If false: User events are not tracked
+ *   - Object with topic0 and userAddressIndex for events in which the user address is indexed
+ *   - Object with eventAbi and userAddressArgument for events in which the user address is part of the data
+ *   - "Transfer" uses standard ERC20/721 Transfer events
+ *   - false if no user events are tracked
  */
 export type AdapterSettings = {
   includeInUnwrap: boolean
@@ -90,11 +91,24 @@ export type AdapterSettings = {
          * Must be a hex string starting with "0x"
          */
         topic0: `0x${string}`
+
         /**
          * The index of the user address that would have acquired a position (1-3)
          * For example, in Transfer(address from, address to, uint256 value) userAddressIndex is 2
          */
         userAddressIndex: 1 | 2 | 3
+      }
+    | {
+        /**
+         * The abi of the event to track e.g. "event Borrow(address borrower, uint borrowAmount, uint accountBorrows, uint totalBorrows)"
+         */
+        eventAbi: `event ${string}(${string})`
+
+        /**
+         * The argument of the event that represents the user address
+         * e.g. "borrower" in the example above
+         */
+        userAddressArgument: string
       }
     | 'Transfer'
     | false

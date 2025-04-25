@@ -3,10 +3,11 @@ import {
   DefiProvider,
   EvmChain,
 } from '@metamask-institutional/defi-adapters'
-import { JsonRpcProvider, Network } from 'ethers'
+import { Interface, JsonRpcProvider, Network, id } from 'ethers'
 import type { Logger } from 'pino'
 import { buildHistoricCache } from './build-historic-cache.js'
 import { buildLatestCache } from './build-latest-cache.js'
+import { logger } from './logger.js'
 import {
   type CacheClient,
   createPostgresCacheClient,
@@ -68,43 +69,98 @@ async function getPools(defiProvider: DefiProvider, chainId: EvmChain) {
     filterChainIds: [chainId],
   })
 
+  const createProtocolTokenKey = (
+    address: string,
+    topic0: `0x${string}`,
+    userAddressIndex: number,
+  ) => `${address}#${topic0}#${userAddressIndex}`
+
   const protocolTokenEntries = new Map<
     string,
-    {
-      address: string
-      topic0: string
-      userAddressIndex: number
-    }
+    | {
+        contractAddress: string
+        topic0: `0x${string}`
+        userAddressIndex: 1 | 2 | 3
+      }
+    | {
+        contractAddress: string
+        topic0: `0x${string}`
+        userAddressIndex: number
+        eventAbi: string
+      }
   >()
   for (const adapterSupportArray of Object.values(defiPoolAddresses || {})) {
-    for (const adapterSupport of adapterSupportArray) {
-      if (!adapterSupport.userEvent) {
+    for (const { userEvent, protocolTokenAddresses } of adapterSupportArray) {
+      if (!userEvent) {
         continue
       }
 
-      for (const address of adapterSupport.protocolTokenAddresses?.[chainId] ||
-        []) {
-        if (!adapterSupport.userEvent) {
-          continue
+      for (const address of protocolTokenAddresses?.[chainId] || []) {
+        if (userEvent === 'Transfer') {
+          const topic0 =
+            '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
+          const userAddressIndex = 2
+
+          protocolTokenEntries.set(
+            createProtocolTokenKey(address, topic0, userAddressIndex),
+            {
+              contractAddress: address,
+              topic0,
+              userAddressIndex,
+            },
+          )
+        } else if ('topic0' in userEvent && 'userAddressIndex' in userEvent) {
+          const topic0 = userEvent.topic0
+          const userAddressIndex = userEvent.userAddressIndex
+
+          protocolTokenEntries.set(
+            createProtocolTokenKey(address, topic0, userAddressIndex),
+            {
+              contractAddress: address,
+              topic0,
+              userAddressIndex,
+            },
+          )
+        } else if (
+          'eventAbi' in userEvent &&
+          'userAddressArgument' in userEvent
+        ) {
+          const iface = new Interface([userEvent.eventAbi])
+          const eventFragment = iface.fragments[0]
+          if (!eventFragment || eventFragment.type !== 'event') {
+            logger.error(
+              {
+                contractAddress: address,
+                userEvent,
+                eventFragment: eventFragment?.format(),
+              },
+              'Event fragment is not an event',
+            )
+
+            continue
+          }
+
+          const topic0 = id(eventFragment.format()) as `0x${string}`
+          const userAddressIndex = eventFragment.inputs.findIndex(
+            (input) => input.name === userEvent.userAddressArgument,
+          )
+
+          if (userAddressIndex === -1) {
+            logger.error(
+              { address, userEvent, eventFragment: eventFragment.format() },
+              'User address index not found',
+            )
+          }
+          protocolTokenEntries.set(
+            createProtocolTokenKey(address, topic0, userAddressIndex),
+            {
+              contractAddress: address,
+              topic0,
+              userAddressIndex,
+              eventAbi: userEvent.eventAbi,
+            },
+          )
         }
-
-        const { topic0, userAddressIndex } =
-          adapterSupport.userEvent === 'Transfer'
-            ? {
-                topic0:
-                  '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
-                userAddressIndex: 2,
-              }
-            : adapterSupport.userEvent
-
-        protocolTokenEntries.set(
-          `${address.slice(2)}#${topic0}#${userAddressIndex}`,
-          {
-            address,
-            topic0,
-            userAddressIndex,
-          },
-        )
       }
     }
   }
