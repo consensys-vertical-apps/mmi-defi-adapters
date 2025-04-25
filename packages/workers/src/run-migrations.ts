@@ -1,6 +1,5 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import type { Pool } from 'pg'
 import type { Logger } from 'pino'
 
@@ -21,9 +20,9 @@ export async function runMigrations(pool: Pool, logger: Logger) {
 
     const migrationsApplied = rows.map((row) => row.name)
 
-    const __dirname = path.dirname(fileURLToPath(import.meta.url))
-
-    const migrations = (await fs.readdir(path.join(__dirname, 'migrations')))
+    const migrations = (
+      await fs.readdir(path.join(import.meta.dirname, 'migrations'))
+    )
       .filter(
         (file) =>
           /^\d{4}-.+\.js$/.test(file) &&
