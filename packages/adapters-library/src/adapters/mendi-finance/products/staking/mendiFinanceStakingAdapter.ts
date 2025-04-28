@@ -72,7 +72,7 @@ export class MendiFinanceStakingAdapter implements IProtocolAdapter {
       name: 'MendiFinance',
       description: 'MendiFinance defi adapter',
       siteUrl: 'https:',
-      iconUrl: 'https://',
+      iconUrl: 'https://mendi.finance/favicon.ico',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

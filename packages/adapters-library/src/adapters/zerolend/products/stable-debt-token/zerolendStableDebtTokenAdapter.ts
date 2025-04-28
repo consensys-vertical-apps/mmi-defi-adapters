@@ -20,7 +20,7 @@ export class ZeroLendStableDebtTokenPoolAdapter extends ZeroLendBasePoolAdapter 
       name: 'ZeroLend StableDebtToken', // TODO change
       description: 'ZeroLend defi adapter for stable interest-accruing token', // TODO change
       siteUrl: 'https://app.zerolend.xyz/',
-      iconUrl: 'https://app.zerolend.xyz/favicon.ico',
+      iconUrl: 'https://zerolend.xyz/favicon.ico',
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,

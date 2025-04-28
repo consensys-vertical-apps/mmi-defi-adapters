@@ -1,7 +1,8 @@
 import { type EvmChain } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
+import type { Logger } from 'pino'
 import { BlockRunner } from './block-runner.js'
-import { logger } from './logger.js'
+import { parseUserEventLog } from './parse-user-event-log.js'
 import type { CacheClient } from './postgres-cache-client.js'
 
 export async function buildLatestCache(
@@ -9,19 +10,21 @@ export async function buildLatestCache(
   chainId: EvmChain,
   cacheClient: CacheClient,
   startBlock: number,
+  logger: Logger,
 ) {
   logger.info('Starting latest cache builder')
 
   const allJobs = await cacheClient.fetchAllJobs()
 
   const userIndexMap = new Map(
-    allJobs.map(({ contractAddress, topic0, userAddressIndex }) => [
+    allJobs.map(({ contractAddress, topic0, userAddressIndex, eventAbi }) => [
       createWatchKey(contractAddress, topic0),
-      userAddressIndex,
+      { userAddressIndex, eventAbi },
     ]),
   )
 
   const indexer = new BlockRunner({
+    processingBlockNumber: startBlock,
     provider,
     chainId,
     processBlockFn: async (blockNumber) =>
@@ -30,12 +33,14 @@ export async function buildLatestCache(
         blockNumber,
         userIndexMap,
         cacheClient,
+        logger,
       }),
     onError: async (latestSafeProcessedBlock: number) =>
       cacheClient.updateLatestBlockProcessed(latestSafeProcessedBlock),
+    logger,
   })
 
-  await indexer.start(startBlock)
+  await indexer.start()
 }
 
 function createWatchKey(contractAddress: string, topic0: string): string {
@@ -47,52 +52,88 @@ async function processBlockFn({
   blockNumber,
   userIndexMap,
   cacheClient,
+  logger,
 }: {
   provider: JsonRpcProvider
   blockNumber: number
-  userIndexMap: Map<string, number>
+  userIndexMap: Map<
+    string,
+    {
+      userAddressIndex: number
+      eventAbi: string | null
+    }
+  >
   cacheClient: CacheClient
+  logger: Logger
 }): Promise<void> {
+  const startTime = Date.now()
   const receipts = (await provider.send('eth_getBlockReceipts', [
     `0x${ethers.toBeHex(blockNumber).slice(2).replace(/^0+/, '')}`, // some chains need to remove leading zeros like ftm
   ])) as TransactionReceipt[]
+
+  const receiptsFetchTime = Date.now()
 
   const logs: { address: string; contractAddress: string }[] = []
 
   for (const receipt of receipts?.flat() || []) {
     for (const log of receipt.logs || []) {
-      // retuned lowercase from provider
-      const contractAddress = getAddress(log.address)
       const topic0 = log.topics[0]
-
       if (!topic0) {
         continue
       }
 
-      const userAddressIndex = userIndexMap.get(
+      const contractAddress = getAddress(log.address.toLowerCase())
+
+      const userIndexEntry = userIndexMap.get(
         createWatchKey(contractAddress, topic0),
       )
+      if (!userIndexEntry) {
+        continue
+      }
 
-      if (userAddressIndex) {
-        const topic = log.topics[userAddressIndex]!
+      const { userAddressIndex, eventAbi } = userIndexEntry
 
-        if (
-          topic.startsWith('0x000000000000000000000000') && // Not an address if it is does not start with 0x000000000000000000000000
-          topic !==
-            '0x0000000000000000000000000000000000000000000000000000000000000000' // Skip the zero address
-        ) {
-          const topicAddress = getAddress(`0x${topic.slice(-40).toLowerCase()}`)
+      try {
+        const userAddress = parseUserEventLog(log, eventAbi, userAddressIndex)
 
+        if (userAddress) {
           logs.push({
-            address: topicAddress,
+            address: userAddress,
             contractAddress,
           })
         }
+      } catch (error) {
+        logger.error(
+          {
+            error: error instanceof Error ? error.message : String(error),
+            txHash: log.transactionHash,
+            eventAbi,
+            userAddressIndex,
+          },
+          'Error parsing log',
+        )
       }
     }
   }
 
-  await cacheClient.insertLogs(logs, blockNumber)
+  const logsProcessedTime = Date.now()
 
-  logger.info({ blockNumber, logsProcessed: logs.length }, 'Processed block')
+  if (logs.length > 0) {
+    await cacheClient.insertLogs(logs, blockNumber)
+  }
+
+  const logsInsertTime = Date.now()
+
+  logger.debug(
+    {
+      blockNumber,
+      logsProcessed: logs.length,
+      startTime,
+      totalTime: logsInsertTime - startTime,
+      receiptsFetchTime: receiptsFetchTime - startTime,
+      logsProcessedTime: logsProcessedTime - receiptsFetchTime,
+      logsInsertTime: logsInsertTime - logsProcessedTime,
+    },
+    'Processed block',
+  )
 }

@@ -5,6 +5,7 @@ import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import { logger } from '../../../../core/utils/logger'
 import {
   IProtocolAdapter,
@@ -110,7 +111,7 @@ export class CompoundV3LendingAdapter implements IProtocolAdapter {
       name: 'CompoundV3',
       description: 'CompoundV3 defi adapter',
       siteUrl: 'https:',
-      iconUrl: 'https://',
+      iconUrl: TrustWalletProtocolIconMap[Protocol.CompoundV3],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

@@ -4,6 +4,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
@@ -80,7 +81,7 @@ export class QuickswapV3PoolAdapter implements IProtocolAdapter {
       name: 'QuickswapV3',
       description: 'Quickswap v3 defi adapter',
       siteUrl: 'https://uniswap.org/',
-      iconUrl: '',
+      iconUrl: TrustWalletProtocolIconMap[Protocol.QuickswapV3],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

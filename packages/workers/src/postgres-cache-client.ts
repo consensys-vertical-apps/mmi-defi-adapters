@@ -1,20 +1,20 @@
 import { ChainName, type EvmChain } from '@metamask-institutional/defi-adapters'
 import { Mutex } from 'async-mutex'
 import type { Pool, PoolClient, PoolConfig } from 'pg'
-import { logger } from './logger.js'
+import type { Logger } from 'pino'
 import { createDbPool } from './postgres-utils.js'
+import { runMigrations } from './run-migrations.js'
 
 export type JobDbEntry = {
   contractAddress: string
-  topic0: string
+  topic0: `0x${string}`
+  eventAbi: string | null
   userAddressIndex: number
   blockNumber: number
   status: 'pending' | 'failed' | 'completed'
 }
 
 export interface CacheClient {
-  migrate: () => Promise<void>
-
   getLatestBlockProcessed: () => Promise<number | undefined>
   updateLatestBlockProcessed: (blockNumber: number) => Promise<void>
 
@@ -24,15 +24,16 @@ export interface CacheClient {
   >
   insertJobs: (
     protocolTokenEntries: {
-      address: string
-      topic0: string
+      contractAddress: string
+      topic0: `0x${string}`
+      eventAbi?: string
       userAddressIndex: number
     }[],
     blockNumber: number,
-  ) => Promise<void>
+  ) => Promise<number>
   updateJobStatus: (
     contractAddresses: string[],
-    topic0: string,
+    topic0: `0x${string}`,
     userAddressIndex: number,
     status: 'completed' | 'failed',
   ) => Promise<void>
@@ -43,17 +44,19 @@ export interface CacheClient {
       contractAddress: string
     }[],
     blockNumber?: number,
-  ) => Promise<void>
+  ) => Promise<number>
 }
 
 export async function createPostgresCacheClient({
   dbUrl,
   chainId,
   partialPoolConfig,
+  logger,
 }: {
   dbUrl: string
   chainId: EvmChain
   partialPoolConfig?: Omit<PoolConfig, 'connectionString'>
+  logger: Logger
 }): Promise<CacheClient> {
   const schema = ChainName[chainId]
 
@@ -66,60 +69,24 @@ export async function createPostgresCacheClient({
 
   await dbPool.query(`CREATE SCHEMA IF NOT EXISTS "${schema}"`)
 
-  const client = new PostgresCacheClient(dbPool, chainId)
-  await client.migrate()
+  await runMigrations(dbPool, logger)
+
+  const client = new PostgresCacheClient(dbPool, logger)
 
   return client
 }
 
 class PostgresCacheClient implements CacheClient {
   readonly #dbPool: Pool
-  readonly #chainId: EvmChain
   readonly #logsMutex: Mutex
   readonly #jobsMutex: Mutex
+  readonly #logger: Logger
 
-  constructor(dbPool: Pool, chainId: EvmChain) {
+  constructor(dbPool: Pool, logger: Logger) {
     this.#dbPool = dbPool
-    this.#chainId = chainId
     this.#logsMutex = new Mutex()
     this.#jobsMutex = new Mutex()
-  }
-
-  async migrate() {
-    // TODO Run migrations instead of creating the tables here
-    await this.#bulkTransaction(async (client) => {
-      await client.query(
-        `CREATE TABLE IF NOT EXISTS logs (
-           address TEXT NOT NULL,
-           contract_address TEXT NOT NULL,
-           PRIMARY KEY (address, contract_address)
-         )`,
-      )
-
-      await client.query(
-        `CREATE TABLE IF NOT EXISTS jobs (
-           contract_address TEXT NOT NULL,
-           topic_0 TEXT NOT NULL,
-           user_address_index INTEGER NOT NULL CHECK (user_address_index IN (1, 2, 3)),
-           block_number INTEGER NOT NULL,
-           status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'completed', 'failed')),
-           PRIMARY KEY (contract_address, topic_0, user_address_index)
-         )`,
-      )
-
-      await client.query(
-        `CREATE TABLE IF NOT EXISTS settings (
-           key TEXT PRIMARY KEY,
-           value TEXT
-         )`,
-      )
-
-      await client.query(
-        `INSERT INTO settings (key, value)
-         VALUES ('latest_block_processed', NULL)
-         ON CONFLICT DO NOTHING`,
-      )
-    })
+    this.#logger = logger
   }
 
   async getLatestBlockProcessed(): Promise<number | undefined> {
@@ -141,22 +108,28 @@ class PostgresCacheClient implements CacheClient {
   }
 
   async fetchAllJobs() {
-    const res = await this.#dbPool.query(
+    const res = await this.#dbPool.query<JobDbEntry>(
       `SELECT contract_address as "contractAddress",
               topic_0 as "topic0",
+              event_abi as "eventAbi",
               user_address_index as "userAddressIndex",
               block_number as "blockNumber",
               status
        FROM jobs`,
     )
 
-    return res.rows as JobDbEntry[]
+    return res.rows
   }
 
   async fetchUnfinishedJobs() {
-    const res = await this.#dbPool.query(
+    const res = await this.#dbPool.query<
+      Omit<JobDbEntry, 'status'> & {
+        status: 'pending' | 'failed'
+      }
+    >(
       `SELECT contract_address as "contractAddress",
               topic_0 as "topic0",
+              event_abi as "eventAbi",
               user_address_index as "userAddressIndex",
               block_number as "blockNumber",
               status
@@ -165,38 +138,48 @@ class PostgresCacheClient implements CacheClient {
       ['completed'],
     )
 
-    return res.rows as (Omit<JobDbEntry, 'status'> & {
-      status: 'pending' | 'failed'
-    })[]
+    return res.rows
   }
 
   async insertJobs(
     protocolTokenEntries: {
-      address: string
-      topic0: string
+      contractAddress: string
+      topic0: `0x${string}`
+      eventAbi?: string
       userAddressIndex: number
     }[],
     blockNumber: number,
   ) {
     const release = await this.#jobsMutex.acquire()
 
+    let insertedCount = 0
     await this.#bulkTransaction(async (client) => {
       for (const entry of protocolTokenEntries) {
-        await client.query(
-          `INSERT INTO jobs (contract_address, topic_0, user_address_index, block_number)
-           VALUES ($1, $2, $3, $4)
+        const result = await client.query(
+          `INSERT INTO jobs (contract_address, topic_0, event_abi, user_address_index, block_number)
+           VALUES ($1, $2, $3, $4, $5)
            ON CONFLICT DO NOTHING`,
-          [entry.address, entry.topic0, entry.userAddressIndex, blockNumber],
+          [
+            entry.contractAddress,
+            entry.topic0,
+            entry.eventAbi,
+            entry.userAddressIndex,
+            blockNumber,
+          ],
         )
+
+        insertedCount += result.rowCount ?? 0
       }
     })
 
     release()
+
+    return insertedCount
   }
 
   async updateJobStatus(
     contractAddresses: string[],
-    topic0: string,
+    topic0: `0x${string}`,
     userAddressIndex: number,
     status: 'completed' | 'failed',
   ) {
@@ -225,6 +208,7 @@ class PostgresCacheClient implements CacheClient {
   ) {
     const release = await this.#logsMutex.acquire()
 
+    let insertedCount = 0
     await this.#bulkTransaction(async (client) => {
       const batchSize = 1000
       for (let i = 0; i < logs.length; i += batchSize) {
@@ -237,14 +221,16 @@ class PostgresCacheClient implements CacheClient {
           contractAddress,
         ])
 
-        await client.query(
+        const result = await client.query(
           `INSERT INTO logs (address, contract_address)
            VALUES ${values}
            ON CONFLICT DO NOTHING`,
           params,
         )
 
-        logger.debug(
+        insertedCount += result.rowCount ?? 0
+
+        this.#logger.debug(
           {
             logs: logs.length,
             blockNumber,
@@ -259,6 +245,8 @@ class PostgresCacheClient implements CacheClient {
     })
 
     release()
+
+    return insertedCount
   }
 
   /**

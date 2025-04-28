@@ -1,8 +1,11 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, getAddress } from 'ethers'
+import type { Logger } from 'pino'
 import { fetchEvents } from './fetch-events.js'
-import { logger } from './logger.js'
+import { parseUserEventLog } from './parse-user-event-log.js'
 import type { CacheClient, JobDbEntry } from './postgres-cache-client.js'
+
+const SIXTY_SECONDS = 60_000
 
 // TODO: Create zod schema for config
 const MaxConcurrentBatches = process.env.HISTORIC_CACHE_BATCH_SIZE
@@ -27,7 +30,7 @@ const MaxContractsPerCall: Record<EvmChain, number> = {
  * Steps:
  * 1. Fetch the next set of pools that need processing from the database.
  *    a. First all the pending pools are fetched.
- *    b. The pools are grouped by topic_0 and user_address_index.
+ *    b. The pools are grouped by topic0 and userAddressIndex.
  *    c. The group with the most entries is selected and the maximum block number is used as target.
  *    d. An optimal batch size is calculated.
  * 2. If no pools are pending, wait for 30 seconds before checking again.
@@ -43,22 +46,25 @@ export async function buildHistoricCache(
   provider: JsonRpcProvider,
   chainId: EvmChain,
   cacheClient: CacheClient,
+  logger: Logger,
 ) {
   logger.info('Starting historic cache builder')
 
   while (true) {
     const unfinishedPools = await cacheClient.fetchUnfinishedJobs()
 
-    logger.info(
-      {
-        pools: unfinishedPools.length,
-      },
-      'Processing unfinished pools',
-    )
-
     const nextPoolGroup = getNextPoolGroup(
       unfinishedPools,
       MaxContractsPerCall[chainId],
+    )
+
+    logger.info(
+      {
+        unfinishedPools: unfinishedPools.length,
+        nextPoolGroup: nextPoolGroup?.poolAddresses.length,
+        batchSize: nextPoolGroup?.batchSize,
+      },
+      'Unfinished pools to process',
     )
 
     if (!nextPoolGroup) {
@@ -69,10 +75,39 @@ export async function buildHistoricCache(
     const {
       poolAddresses,
       topic0,
+      eventAbi,
       userAddressIndex,
       targetBlockNumber,
       batchSize,
     } = nextPoolGroup
+
+    const totalBatches = Math.ceil(poolAddresses.length / batchSize)
+
+    const processedEntities = {
+      poolsProcessed: 0,
+      logsProcessed: 0,
+      poolsFailed: 0,
+      blocksProcessed: 0,
+      batchesProcessed: 0,
+    }
+
+    const interval = setInterval(() => {
+      logger.info(
+        {
+          unfinishedPools: unfinishedPools.length,
+          nextPoolGroup: poolAddresses.length,
+          batchSize,
+          totalBatches,
+          topic0,
+          eventAbi,
+          userAddressIndex,
+          targetBlockNumber,
+          ...processedEntities,
+          blocksMissing: targetBlockNumber - processedEntities.blocksProcessed,
+        },
+        'Historic cache iteration progress',
+      )
+    }, SIXTY_SECONDS)
 
     for (let i = 0; i < poolAddresses.length; i += batchSize) {
       const contractAddresses = poolAddresses.slice(i, i + batchSize)
@@ -80,7 +115,7 @@ export async function buildHistoricCache(
       logger.info(
         {
           batchIndex: i / batchSize + 1,
-          totalBatches: Math.ceil(poolAddresses.length / batchSize),
+          totalBatches,
           batchSize: contractAddresses.length,
           totalPools: poolAddresses.length,
         },
@@ -96,31 +131,44 @@ export async function buildHistoricCache(
             topic0,
             fromBlock: from,
             toBlock: to,
+            logger,
           })) {
             const logsToInsert: { address: string; contractAddress: string }[] =
               []
             for (const log of logs) {
               const contractAddress = getAddress(log.address.toLowerCase())
 
-              const topic = log.topics[userAddressIndex]!
-
-              if (
-                topic.startsWith('0x000000000000000000000000') && // Not an address if it is does not start with 0x000000000000000000000000
-                topic !==
-                  '0x0000000000000000000000000000000000000000000000000000000000000000' // Skip the zero address
-              ) {
-                const topicAddress = getAddress(
-                  `0x${topic.slice(-40).toLowerCase()}`,
+              try {
+                const userAddress = parseUserEventLog(
+                  log,
+                  eventAbi,
+                  userAddressIndex,
                 )
 
-                logsToInsert.push({
-                  address: topicAddress,
-                  contractAddress,
-                })
+                if (userAddress) {
+                  logsToInsert.push({
+                    address: userAddress,
+                    contractAddress,
+                  })
+                }
+              } catch (error) {
+                logger.error(
+                  {
+                    error:
+                      error instanceof Error ? error.message : String(error),
+                    txHash: log.transactionHash,
+                    eventAbi,
+                    userAddressIndex,
+                  },
+                  'Error parsing log',
+                )
               }
             }
 
             await cacheClient.insertLogs(logsToInsert)
+
+            processedEntities.logsProcessed += logsToInsert.length
+            processedEntities.blocksProcessed += to - from + 1
           }
         })
 
@@ -133,15 +181,7 @@ export async function buildHistoricCache(
           'completed',
         )
 
-        logger.info(
-          {
-            batchIndex: i / batchSize + 1,
-            totalBatches: Math.ceil(poolAddresses.length / batchSize),
-            batchSize: contractAddresses.length,
-            totalPools: poolAddresses.length,
-          },
-          'Fetching logs from pools batch ended',
-        )
+        processedEntities.poolsProcessed += contractAddresses.length
       } catch (error) {
         await cacheClient.updateJobStatus(
           contractAddresses,
@@ -153,15 +193,21 @@ export async function buildHistoricCache(
         logger.error(
           {
             batchIndex: i / batchSize + 1,
-            totalBatches: Math.ceil(poolAddresses.length / batchSize),
+            totalBatches,
             batchSize: contractAddresses.length,
             totalPools: poolAddresses.length,
             error: error instanceof Error ? error.message : String(error),
           },
           'Fetching logs from pools batch failed',
         )
+
+        processedEntities.poolsFailed += contractAddresses.length
       }
+
+      processedEntities.batchesProcessed += 1
     }
+
+    clearInterval(interval)
 
     await new Promise((resolve) => setTimeout(resolve, 5000))
   }
@@ -194,7 +240,8 @@ function getNextPoolGroup(
 ):
   | {
       poolAddresses: string[]
-      topic0: string
+      topic0: `0x${string}`
+      eventAbi: string | null
       userAddressIndex: number
       targetBlockNumber: number
       batchSize: number
@@ -209,7 +256,7 @@ function getNextPoolGroup(
   )
 
   if (pendingPools.length > 0) {
-    // Group pools by topic_0 and user_address_index
+    // Group pools by topic0 and userAddressIndex
     const groupedPools = pendingPools.reduce(
       (acc, pool) => {
         const key = `${pool.topic0}#${pool.userAddressIndex}`
@@ -244,6 +291,7 @@ function getNextPoolGroup(
     return {
       poolAddresses: largestGroup.map((pool) => pool.contractAddress),
       topic0: largestGroup[0]!.topic0,
+      eventAbi: largestGroup[0]!.eventAbi,
       userAddressIndex: largestGroup[0]!.userAddressIndex,
       targetBlockNumber: Math.max(
         ...largestGroup.map((pool) => pool.blockNumber),
@@ -253,11 +301,12 @@ function getNextPoolGroup(
   }
 
   const failedPools = unfinishedPools.filter((pool) => pool.status === 'failed')
-  const { contractAddress, topic0, userAddressIndex, blockNumber } =
+  const { contractAddress, topic0, eventAbi, userAddressIndex, blockNumber } =
     failedPools[0]!
   return {
     poolAddresses: [contractAddress],
     topic0,
+    eventAbi,
     userAddressIndex,
     targetBlockNumber: blockNumber,
     batchSize: 1,

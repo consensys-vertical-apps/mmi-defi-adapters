@@ -13,6 +13,7 @@ import { copyAdapterCommand } from './commands/copy-adapter-command.js'
 import { deleteAdapterMetadataCommand } from './commands/delete-adapters-metadata-command.js'
 import { libraryCommands } from './commands/library-commands.js'
 import { newAdapterCommand } from './commands/new-adapter-command.js'
+import { newMigrationCommand } from './commands/new-migration-command.js'
 import { performanceCommand } from './commands/performance-command.js'
 import { buildContractTypes } from './utils/build-types.js'
 
@@ -35,6 +36,7 @@ checkBadSnapshotsCommand(program, defiProvider)
 copyAdapterCommand(program, defiProvider)
 buildScoreboardCommand(program, defiProvider)
 blockAverageCommand(program, defiProvider)
+newMigrationCommand(program)
 
 program.parseAsync()
 

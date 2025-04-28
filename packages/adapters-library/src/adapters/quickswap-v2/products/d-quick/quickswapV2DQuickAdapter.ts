@@ -3,6 +3,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import {
   IProtocolAdapter,
   ProtocolToken,
@@ -58,7 +59,7 @@ export class QuickswapV2DQuickAdapter implements IProtocolAdapter {
       name: 'QuickswapV2',
       description: 'QuickswapV2 defi adapter',
       siteUrl: 'https:',
-      iconUrl: 'https://',
+      iconUrl: TrustWalletProtocolIconMap[Protocol.QuickswapV2],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

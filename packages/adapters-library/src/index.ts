@@ -3,8 +3,12 @@ export { Protocol } from './adapters/protocols'
 export { Chain, ChainName, EvmChain } from './core/constants/chains'
 
 export { DefiProvider } from './defiProvider'
-export { PositionType } from './types/adapter'
-export type { AdapterResponse, DefiPositionResponse } from './types/response'
+export { PositionType, TokenType } from './types/adapter'
+export type {
+  AdapterResponse,
+  DefiPositionResponse,
+  Support,
+} from './types/response'
 export type { IUnwrapPriceCacheProvider as IUnwrapCacheProvider } from './unwrapCache'
 export {
   chainFilter,

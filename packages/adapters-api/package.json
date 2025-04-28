@@ -1,20 +1,23 @@
 {
-    "name": "@metamask-institutional/adapters-api",
-    "version": "0.14.0",
-    "description": "Defi adapters API",
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "build": "tsc -p tsconfig.build.json",
-        "start": "node dist/index.js"
-    },
-    "dependencies": {
-        "@hono/node-server": "^1.13.8",
-        "@metamask-institutional/defi-adapters": "*",
-        "@metamask-institutional/workers": "*",
-        "hono": "^4.7.2",
-        "pino": "^8.15.0",
-        "zod": "^3.24.2"
-    },
-    "devDependencies": {}
+  "name": "@metamask-institutional/adapters-api",
+  "version": "0.14.0",
+  "description": "Defi adapters API",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "test:tsc": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.14.1",
+    "@hono/zod-openapi": "^0.19.5",
+    "@metamask-institutional/defi-adapters": "*",
+    "@metamask-institutional/workers": "*",
+    "hono": "^4.7.7",
+    "hono-pino": "^0.8.0",
+    "pg": "^8.14.1",
+    "pino": "^9.6.0",
+    "zod": "^3.24.2"
+  }
 }

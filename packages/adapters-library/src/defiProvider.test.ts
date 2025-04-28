@@ -1,3 +1,4 @@
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { Chain, EvmChain } from './core/constants/chains'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { DefiProvider } from './defiProvider'
@@ -24,7 +25,7 @@ describe('DefiProvider', () => {
           ...accumulator,
           [chainId]: {
             chainId,
-            getStableBlockNumber: jest
+            getStableBlockNumber: vi
               .fn()
               .mockResolvedValue(mockChainBlockNumbers[chainId]),
           },

@@ -4,6 +4,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
@@ -69,7 +70,7 @@ export class PendleYieldTokenAdapter implements IProtocolAdapter {
       name: 'Pendle',
       description: 'Pendle Market adapter',
       siteUrl: 'https://www.pendle.finance',
-      iconUrl: 'https://app.pendle.finance/favicon.ico',
+      iconUrl: TrustWalletProtocolIconMap[Protocol.Pendle],
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

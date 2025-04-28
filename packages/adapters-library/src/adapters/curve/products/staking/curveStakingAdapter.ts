@@ -7,6 +7,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { TrustWalletProtocolIconMap } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
@@ -98,8 +99,7 @@ export class CurveStakingAdapter implements IProtocolAdapter {
       name: 'Curve staking',
       description: 'Curve staking adapter',
       siteUrl: 'https://curve.fi/',
-      iconUrl:
-        'https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg',
+      iconUrl: TrustWalletProtocolIconMap[Protocol.Curve],
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
