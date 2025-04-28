@@ -27,17 +27,16 @@ type CacheEntryCalls = { result: string; timestamp: number }
 type CacheEntryLogs = { result: Array<Log>; timestamp: number }
 
 export class CustomJsonRpcProvider extends JsonRpcProvider {
-  chainId: EvmChain
+  readonly chainId: EvmChain
 
-  private _hasUnlimitedGetLogsRange: boolean
-  private _enableCache: boolean
+  private readonly _hasUnlimitedGetLogsRange: boolean
+  private readonly _enableCache: boolean
 
-  private cacheCalls: Record<string, Promise<CacheEntryCalls>>
-  private cacheLogs: Record<string, Promise<CacheEntryLogs>>
+  private readonly cacheCalls: Record<string, Promise<CacheEntryCalls>>
+  private readonly cacheLogs: Record<string, Promise<CacheEntryLogs>>
 
-  callRetryHandler: ReturnType<typeof retryHandlerFactory>
-
-  logsRetryHandler: ReturnType<typeof retryHandlerFactory>
+  private readonly callRetryHandler: ReturnType<typeof retryHandlerFactory>
+  private readonly logsRetryHandler: ReturnType<typeof retryHandlerFactory>
 
   constructor({
     fetchRequest,
