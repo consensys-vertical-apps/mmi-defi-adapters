@@ -29,6 +29,7 @@
     "unwrap": "npm run adapters-cli unwrap --",
     "support": "npm run adapters-cli support --",
     "performance": "npm run adapters-cli performance --",
+    "new-migration": "npm run adapters-cli new-migration --",
     "lint": "biome check packages",
     "fix": "npm run lint -- --write",
     "test": "npm run test:unit",

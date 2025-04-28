@@ -30,7 +30,11 @@ export abstract class CompoundV2BorrowMarketForkAdapter
 
   adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
-    userEvent: false,
+    userEvent: {
+      eventAbi:
+        'event Borrow(address borrower, uint borrowAmount, uint accountBorrows, uint totalBorrows)',
+      userAddressArgument: 'borrower',
+    },
   }
 
   protocolId: Protocol

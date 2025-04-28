@@ -2,6 +2,7 @@ import type { Protocol } from '../adapters/protocols'
 import type { Chain, ChainName } from '../core/constants/chains'
 import { ProtocolToken } from './IProtocolAdapter'
 import type {
+  AdapterSettings,
   ProtocolDetails,
   ProtocolPosition,
   TokenBalanceWithUnderlyings,
@@ -67,10 +68,7 @@ export type Support = Partial<
       chains: Chain[]
       protocolTokenAddresses?: Partial<Record<Chain, string[]>>
       protocolTokens?: Partial<Record<Chain, ProtocolToken[]>>
-      userEvent:
-        | false
-        | 'Transfer'
-        | { topic0: `0x${string}`; userAddressIndex: 1 | 2 | 3 }
+      userEvent: AdapterSettings['userEvent']
     }[]
   >
 >
