@@ -1,0 +1,116 @@
+name: Defiadapters API & Workers - Build and Deploy
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  build-defiadapters-api-image:
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/docker-build-and-validate.yml@v0.61.0
+    with:
+      github_advanced_security_enabled: true
+      trivy_ignore_failure: true
+      trivy_skip_db_updates: true
+      trivy_skip_java_db_updates: true
+      jfrog_auth_enabled: true
+      file: Dockerfile.api
+      artifact_name: defiadapters-api-build
+      artifact_path: defiadapters-api-build.tar
+
+  build-defiadapters-workers-image:
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/docker-build-and-validate.yml@v0.61.0
+    with:
+      github_advanced_security_enabled: true
+      trivy_ignore_failure: true
+      trivy_skip_db_updates: true
+      trivy_skip_java_db_updates: true
+      jfrog_auth_enabled: true
+      file: Dockerfile.workers
+      artifact_name: defiadapters-workers-build
+      artifact_path: defiadapters-workers-build.tar
+
+  create-tag:
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/create-eph-tag.yml@v0.60.0
+
+  deploy-dev-api:
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v0.60.0
+    needs:
+      - build-defiadapters-api-image
+      - create-tag
+    with:
+      environment: dev
+      argocd_workload_repository: ${{ vars.API_WORKLOAD_REPO }}
+      workload_path: workload/dev/main
+      aws_role: ${{ vars.AWS_ROLE_DEV_API }}
+      aws_region: ${{ vars.AWS_REGION }}
+      ecr_repository: ${{ vars.ECR_REPO_DEV_API }}
+      image_tag: ${{ needs.create-tag.outputs.tag }}
+      artifact_name: defiadapters-api-build
+      artifact_path: defiadapters-api-build.tar
+
+    secrets:
+      deploy_key: ${{ secrets.DEPLOY_KEY_VA_MMCX_DEFIADAPTERS_API_WORKLOAD }}
+
+  deploy-dev-workers:
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v0.60.0
+    needs:
+      - build-defiadapters-workers-image
+      - create-tag
+    with:
+      environment: dev
+      argocd_workload_repository: ${{ vars.WORKER_WORKLOAD_REPO }}
+      workload_path: workload/dev/main
+      aws_role: ${{ vars.AWS_ROLE_DEV_WORKER }}
+      aws_region: ${{ vars.AWS_REGION }}
+      ecr_repository: ${{ vars.ECR_REPO_DEV_WORKER }}
+      image_tag: ${{ needs.create-tag.outputs.tag }}
+      artifact_name: defiadapters-workers-build
+      artifact_path: defiadapters-workers-build.tar 
+
+    secrets:
+      deploy_key: ${{ secrets.DEPLOY_KEY_VA_MMCX_DEFIADAPTERS_WORKER_WORKLOAD }}
+
+  deploy-prd-api:
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v0.60.0
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs:
+      - build-defiadapters-api-image
+      - create-tag
+      - deploy-dev-api
+    with:
+      environment: prd
+      argocd_workload_repository: ${{ vars.API_WORKLOAD_REPO }}
+      workload_path: workload/prd/main
+      aws_role: ${{ vars.AWS_ROLE_PRD_API }}
+      aws_region: ${{ vars.AWS_REGION }}
+      ecr_repository: ${{ vars.ECR_REPO_PRD_API }}
+      image_tag: ${{ needs.create-tag.outputs.tag }}
+      artifact_name: defiadapters-api-build
+      artifact_path: defiadapters-api-build.tar
+
+    secrets:
+      deploy_key: ${{ secrets.DEPLOY_KEY_VA_MMCX_DEFIADAPTERS_API_WORKLOAD }}
+
+  deploy-prd-workers:
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v0.60.0
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs:
+      - build-defiadapters-workers-image
+      - create-tag
+      - deploy-dev-workers
+    with:
+      environment: prd
+      argocd_workload_repository: ${{ vars.WORKER_WORKLOAD_REPO }}
+      workload_path: workload/prd/main
+      aws_role: ${{ vars.AWS_ROLE_PRD_WORKER }}
+      aws_region: ${{ vars.AWS_REGION }}
+      ecr_repository: ${{ vars.ECR_REPO_PRD_WORKER }}
+      image_tag: ${{ needs.create-tag.outputs.tag }}
+      artifact_name: defiadapters-workers-build
+      artifact_path: defiadapters-workers-build.tar 
+
+    secrets:
+      deploy_key: ${{ secrets.DEPLOY_KEY_VA_MMCX_DEFIADAPTERS_WORKER_WORKLOAD }}
