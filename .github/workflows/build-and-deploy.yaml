@@ -34,9 +34,11 @@ jobs:
 
   create-tag:
     uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/create-eph-tag.yml@v0.60.0
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
   deploy-dev-api:
     uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v0.60.0
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - build-defiadapters-api-image
       - create-tag
@@ -56,6 +58,7 @@ jobs:
 
   deploy-dev-workers:
     uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v0.60.0
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - build-defiadapters-workers-image
       - create-tag
@@ -70,5 +73,43 @@ jobs:
       artifact_name: defiadapters-workers-build
       artifact_path: defiadapters-workers-build.tar 
 
+    secrets:
+      deploy_key: ${{ secrets.DEPLOY_KEY_VA_MMCX_DEFIADAPTERS_WORKER_WORKLOAD }}
+
+  deploy-prd-api:
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v0.60.0
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs:
+      - deploy-dev-api
+    with:
+      environment: prd
+      argocd_workload_repository: consensys-vertical-apps/va-mmcx-defiadapters-api-workload
+      workload_path: workload/prd/main
+      aws_role: arn:aws:iam::921473456820:role/ecr-github-mmcx-prd-defiadapters-api
+      aws_region: us-east-2
+      ecr_repository: mmcx/prd/defiadapters-api
+      image_tag: ${{ needs.create-tag.outputs.tag }}
+      artifact_name: defiadapters-api-build
+      artifact_path: defiadapters-api-build.tar
+    
+    secrets:
+      deploy_key: ${{ secrets.DEPLOY_KEY_VA_MMCX_DEFIADAPTERS_API_WORKLOAD }}
+
+  deploy-prd-workers:
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v0.60.0
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs:
+      - deploy-dev-workers
+    with:
+      environment: prd
+      argocd_workload_repository: consensys-vertical-apps/va-mmcx-defiadapters-worker-workload
+      workload_path: workload/prd/main
+      aws_role: arn:aws:iam::921473456820:role/ecr-github-mmcx-prd-defiadapters-worker
+      aws_region: us-east-2
+      ecr_repository: mmcx/prd/defiadapters-worker
+      image_tag: ${{ needs.create-tag.outputs.tag }}
+      artifact_name: defiadapters-workers-build
+      artifact_path: defiadapters-workers-build.tar
+    
     secrets:
       deploy_key: ${{ secrets.DEPLOY_KEY_VA_MMCX_DEFIADAPTERS_WORKER_WORKLOAD }}
