@@ -19,6 +19,7 @@ export type CustomJsonRpcProviderOptions = {
   rpcCallRetries: number
   rpcGetLogsTimeoutInMs: number
   rpcGetLogsRetries: number
+  enableCache: boolean
 }
 const THIRTY_MINUTES = 30 * 60 * 1000
 
@@ -26,16 +27,16 @@ type CacheEntryCalls = { result: string; timestamp: number }
 type CacheEntryLogs = { result: Array<Log>; timestamp: number }
 
 export class CustomJsonRpcProvider extends JsonRpcProvider {
-  chainId: EvmChain
+  readonly chainId: EvmChain
 
-  private _hasUnlimitedGetLogsRange: boolean
+  private readonly _hasUnlimitedGetLogsRange: boolean
+  private readonly _enableCache: boolean
 
-  private cacheCalls: Record<string, Promise<CacheEntryCalls>>
-  private cacheLogs: Record<string, Promise<CacheEntryLogs>>
+  private readonly cacheCalls: Record<string, Promise<CacheEntryCalls>>
+  private readonly cacheLogs: Record<string, Promise<CacheEntryLogs>>
 
-  callRetryHandler: ReturnType<typeof retryHandlerFactory>
-
-  logsRetryHandler: ReturnType<typeof retryHandlerFactory>
+  private readonly callRetryHandler: ReturnType<typeof retryHandlerFactory>
+  private readonly logsRetryHandler: ReturnType<typeof retryHandlerFactory>
 
   constructor({
     fetchRequest,
@@ -45,9 +46,9 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
       rpcCallRetries,
       rpcGetLogsTimeoutInMs,
       rpcGetLogsRetries,
+      enableCache,
     },
     jsonRpcProviderOptions,
-
     hasUnlimitedGetLogsRange,
   }: {
     fetchRequest: FetchRequest
@@ -70,6 +71,7 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
     this.cacheLogs = {}
 
     this._hasUnlimitedGetLogsRange = hasUnlimitedGetLogsRange
+    this._enableCache = enableCache
   }
 
   /**
@@ -94,6 +96,19 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
   }
 
   async call(transaction: TransactionRequest): Promise<string> {
+    const callHandler = async () => {
+      const result = this.callRetryHandler(() => super.call(transaction))
+
+      return {
+        result: await result,
+        timestamp: Date.now(),
+      }
+    }
+
+    if (!this._enableCache) {
+      return (await callHandler()).result
+    }
+
     const key = JSON.stringify({
       ...transaction,
       chainId: transaction.chainId?.toString(), // JSON.stringify cannot serialize bigints by default
@@ -111,14 +126,7 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
       }
     }
 
-    const entryPromise = (async () => {
-      const result = this.callRetryHandler(() => super.call(transaction))
-
-      return {
-        result: await result,
-        timestamp: Date.now(),
-      }
-    })()
+    const entryPromise = callHandler()
 
     this.cacheCalls[key] = entryPromise
 
@@ -126,6 +134,19 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
   }
 
   async getLogs(filter: Filter | FilterByBlockHash): Promise<Array<Log>> {
+    const getLogsHandler = async () => {
+      const result = this.logsRetryHandler(() => super.getLogs(filter))
+
+      return {
+        result: await result,
+        timestamp: Date.now(),
+      }
+    }
+
+    if (!this._enableCache) {
+      return (await getLogsHandler()).result
+    }
+
     const startTime = Date.now()
     const key = JSON.stringify(filter)
 
@@ -141,14 +162,7 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
       }
     }
 
-    const entryPromise = (async () => {
-      const result = this.logsRetryHandler(() => super.getLogs(filter))
-
-      return {
-        result: await result,
-        timestamp: Date.now(),
-      }
-    })()
+    const entryPromise = getLogsHandler()
 
     this.cacheLogs[key] = entryPromise
 

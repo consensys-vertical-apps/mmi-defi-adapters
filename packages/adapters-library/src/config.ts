@@ -178,6 +178,9 @@ const ConfigSchema = z
     useAdaptersWithUserEventOnly: z
       .boolean()
       .default(process.env.USE_ADAPTERS_WITH_USER_EVENT_ONLY === 'true'),
+    enableRpcCache: z
+      .boolean()
+      .default(process.env.ENABLE_RPC_CACHE === 'true'),
   })
   .strict()
   .default({})

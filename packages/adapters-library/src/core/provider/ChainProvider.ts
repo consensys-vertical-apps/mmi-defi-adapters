@@ -29,6 +29,7 @@ export class ChainProvider {
         rpcCallRetries: config.rpcCallRetries,
         rpcGetLogsTimeoutInMs: config.rpcGetLogsTimeoutInMs,
         rpcGetLogsRetries: config.rpcGetLogsRetries,
+        enableCache: config.enableRpcCache,
       },
       enableFailover: config.enableFailover,
     }
