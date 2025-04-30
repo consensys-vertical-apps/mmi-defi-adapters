@@ -69,7 +69,7 @@ export class MetamaskValidatorStakingAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken[]> {
+  async getProtocolTokens(): Promise<[ProtocolToken]> {
     return [
       {
         address: getAddress('0xdc71affc862fceb6ad32be58e098423a7727bebd'),
@@ -122,7 +122,7 @@ export class MetamaskValidatorStakingAdapter implements IProtocolAdapter {
 
     const { underlyingTokens, ...protocolToken } = (
       await this.getProtocolTokens()
-    )[0]!
+    )[0]
 
     return [
       {
