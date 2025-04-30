@@ -81,6 +81,7 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - deploy-dev-api
+      - create-tag
     with:
       environment: prd
       argocd_workload_repository: consensys-vertical-apps/va-mmcx-defiadapters-api-workload
@@ -100,6 +101,7 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - deploy-dev-workers
+      - create-tag
     with:
       environment: prd
       argocd_workload_repository: consensys-vertical-apps/va-mmcx-defiadapters-worker-workload
