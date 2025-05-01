@@ -69,8 +69,8 @@ export class MetamaskPooledStakingAdapter implements IProtocolAdapter {
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'Metamask',
-      description: 'Metamask defi adapter',
+      name: 'MetaMask',
+      description: 'MetaMask defi adapter',
       siteUrl: 'https://portfolio.metamask.io/',
       iconUrl: 'https://portfolio.metamask.io/favicon.png',
       positionType: PositionType.Staked,

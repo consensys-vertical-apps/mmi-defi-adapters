@@ -5,8 +5,8 @@
   "snapshot": [
     {
       "protocolId": "metamask",
-      "name": "Metamask",
-      "description": "Metamask defi adapter",
+      "name": "MetaMask",
+      "description": "MetaMask defi adapter",
       "siteUrl": "https://portfolio.metamask.io/",
       "iconUrl": "https://portfolio.metamask.io/favicon.png",
       "positionType": "stake",

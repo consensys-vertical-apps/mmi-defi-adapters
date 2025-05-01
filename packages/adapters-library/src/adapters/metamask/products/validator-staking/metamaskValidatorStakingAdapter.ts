@@ -1,10 +1,12 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import {
+  Erc20ExtendedMetadata,
   IProtocolAdapter,
   ProtocolToken,
 } from '../../../../types/IProtocolAdapter'
@@ -16,11 +18,39 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   TokenType,
+  Underlying,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { NotImplementedError } from '../../../../core/errors/errors'
+
+interface StakingResponse {
+  accounts: Account[]
+}
+
+interface Account {
+  account: string
+  validators: Validator[]
+}
+
+interface Validator {
+  publicKey: string
+  account: string
+  index: number
+  balance: string
+  rate: string
+  daysActive: number
+  status: string
+  availableCLRewards: string
+  availableELRewards: string
+  slashed: boolean
+  contractAddress: string
+}
+
+interface SingleProtocolToken extends ProtocolToken {
+  underlyingTokens: [Erc20ExtendedMetadata]
+}
 
 export class MetamaskValidatorStakingAdapter implements IProtocolAdapter {
   productId = 'validator-staking'
@@ -58,8 +88,8 @@ export class MetamaskValidatorStakingAdapter implements IProtocolAdapter {
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'Metamask',
-      description: 'Metamask defi adapter',
+      name: 'MetaMask',
+      description: 'MetaMask defi adapter',
       siteUrl: 'https://portfolio.metamask.io/',
       iconUrl: 'https://portfolio.metamask.io/favicon.png',
       positionType: PositionType.Staked,
@@ -69,78 +99,68 @@ export class MetamaskValidatorStakingAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<[ProtocolToken]> {
+  async getProtocolTokens(): Promise<[SingleProtocolToken]> {
+    const underlyingToken = await this.helpers.getTokenMetadata(ZERO_ADDRESS)
     return [
       {
         address: getAddress('0xdc71affc862fceb6ad32be58e098423a7727bebd'),
-        name: 'Metamask Staked ETH',
+        name: 'MetaMask Validator',
         symbol: 'stETH',
         decimals: 18,
-        underlyingTokens: [
-          {
-            address: ZERO_ADDRESS,
-            name: 'Ethereum',
-            symbol: 'ETH',
-            decimals: 18,
-          },
-        ],
+        underlyingTokens: [underlyingToken],
       },
     ]
-  }
-
-  private async getProtocolTokenByAddress(protocolTokenAddress: string) {
-    return this.helpers.getProtocolTokenByAddress({
-      protocolTokens: await this.getProtocolTokens(),
-      protocolTokenAddress,
-    })
   }
 
   async getPositions({
     userAddress,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const url = `https://staking.api.cx.metamask.io/v1/staking/balances/1?address=${userAddress}`
+    const url = `https://staking.api.cx.metamask.io/v1/direct-staking/validators/prod?addresses=${userAddress}`
 
     const response = await fetch(url)
     if (!response.ok) {
       throw new Error(`Failed to fetch protocol tokens: ${response.statusText}`)
     }
 
-    const data: {
-      balances: {
-        type: 'staked-pool' | 'staked-validator'
-        name: string
-        balance: string
-      }[]
-    } = await response.json()
-
-    const validatorStakingBalance = data.balances.find(
-      (balance) => balance.type === 'staked-validator',
-    )
-    if (!validatorStakingBalance) {
-      throw new Error('No validator staking balance found')
-    }
+    const data: StakingResponse = await response.json()
 
     const { underlyingTokens, ...protocolToken } = (
       await this.getProtocolTokens()
     )[0]
 
-    return [
-      {
-        ...protocolToken,
-        type: TokenType.Protocol,
-        balanceRaw: BigInt(validatorStakingBalance.balance),
-      },
-    ]
+    const underlyingToken = underlyingTokens[0]
+
+    return data.accounts.flatMap((result) => {
+      return result.validators.map((validator) => {
+        return {
+          ...protocolToken,
+          type: TokenType.Protocol,
+          balanceRaw: BigInt(validator.balance),
+          tokens: [
+            {
+              ...underlyingToken,
+              balanceRaw: BigInt(validator.balance),
+              type: TokenType.Underlying,
+            },
+            {
+              ...underlyingToken,
+              balanceRaw: BigInt(validator.availableCLRewards),
+              type: TokenType.UnderlyingClaimable,
+            },
+            {
+              ...underlyingToken,
+              balanceRaw: BigInt(validator.availableELRewards),
+              type: TokenType.UnderlyingClaimable,
+            },
+          ],
+        }
+      })
+    })
   }
 
   async unwrap({
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    return this.helpers.unwrapOneToOne({
-      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
-      underlyingTokens: (
-        await this.getProtocolTokenByAddress(protocolTokenAddress)
-      ).underlyingTokens,
-    })
+    throw new NotImplementedError()
   }
 }
