@@ -48,9 +48,11 @@ interface Validator {
   contractAddress: string
 }
 
-interface SingleProtocolToken extends ProtocolToken {
+interface ProtocolTokenWithSingleUnderlyingTokenArray extends ProtocolToken {
   underlyingTokens: [Erc20ExtendedMetadata]
 }
+
+type SingleProtocolTokenArray = [ProtocolTokenWithSingleUnderlyingTokenArray]
 
 export class MetamaskValidatorStakingAdapter implements IProtocolAdapter {
   productId = 'validator-staking'
@@ -99,7 +101,7 @@ export class MetamaskValidatorStakingAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<[SingleProtocolToken]> {
+  async getProtocolTokens(): Promise<SingleProtocolTokenArray> {
     const underlyingToken = await this.helpers.getTokenMetadata(ZERO_ADDRESS)
     return [
       {
