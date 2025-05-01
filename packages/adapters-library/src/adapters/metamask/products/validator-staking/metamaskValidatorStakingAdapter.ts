@@ -3,6 +3,7 @@ import { AdaptersController } from '../../../../core/adaptersController'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToDb } from '../../../../core/decorators/cacheToDb'
+import { NotImplementedError } from '../../../../core/errors/errors'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import {
@@ -23,7 +24,6 @@ import {
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
-import { NotImplementedError } from '../../../../core/errors/errors'
 
 interface StakingResponse {
   accounts: Account[]
