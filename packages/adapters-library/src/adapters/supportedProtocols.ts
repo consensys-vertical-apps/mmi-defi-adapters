@@ -146,6 +146,8 @@ import { ZerolendVestingAdapter } from './zerolend/products/vesting/zerolendVest
 
 import { MetamaskPooledStakingAdapter } from './metamask/products/pooled-staking/metamaskPooledStakingAdapter'
 
+import { MetamaskValidatorStakingAdapter } from './metamask/products/validator-staking/metamaskValidatorStakingAdapter'
+
 export type EvmChainAdapters = Partial<
   Record<EvmChain, (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]>
 >
@@ -439,7 +441,10 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.MetaMask]: {
-    [Chain.Ethereum]: [MetamaskPooledStakingAdapter],
+    [Chain.Ethereum]: [
+      MetamaskValidatorStakingAdapter,
+      MetamaskPooledStakingAdapter,
+    ],
   },
 
   [Protocol.MorphoAaveV2]: {
