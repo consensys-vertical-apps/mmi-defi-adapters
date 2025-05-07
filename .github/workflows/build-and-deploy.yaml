@@ -1,8 +1,5 @@
 name: Defiadapters API & Workers - Build and Deploy
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
       - main
