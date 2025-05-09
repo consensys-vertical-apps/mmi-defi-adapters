@@ -5,6 +5,7 @@ import { cors } from 'hono/cors'
 import './bigint-json.js'
 import { type RequestIdVariables, requestId } from 'hono/request-id'
 import type { ContentfulStatusCode } from 'hono/utils/http-status'
+import * as client from 'prom-client'
 import type { DbService } from './db-service.js'
 import {
   INTERNAL_SERVER_ERROR,
@@ -76,24 +77,17 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
 
   addMiddleware(app)
 
-  app.openapi(
-    createRoute({
-      path: '/health',
-      method: 'get',
-      tags: ['health'],
-      responses: {
-        [OK]: {
-          content: {
-            'application/json': {
-              schema: z.object({ message: z.literal('ok') }),
-            },
-          },
-          description: 'Returns an OK status if the API is healthy',
-        },
-      },
-    }),
-    (context) => context.json({ message: 'ok' as const }),
-  )
+  client.register.clear()
+  client.collectDefaultMetrics({})
+
+  app.get('/health', async (context) => {
+    return context.json({ message: 'ok' })
+  })
+
+  app.get('/metrics', async (context) => {
+    context.header('Content-Type', client.register.contentType)
+    return context.body(await client.register.metrics())
+  })
 
   app.openapi(
     createRoute({
