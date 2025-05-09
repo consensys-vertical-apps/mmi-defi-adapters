@@ -77,6 +77,7 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
 
   addMiddleware(app)
 
+  client.register.clear()
   client.collectDefaultMetrics({})
 
   app.get('/health', async (context) => {
