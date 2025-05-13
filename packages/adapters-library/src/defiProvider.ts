@@ -174,107 +174,168 @@ export class DefiProvider {
 
     const runner = async (adapter: IProtocolAdapter) => {
       const runnerStartTime = Date.now()
-      const isSolanaAddress = this.isSolanaAddress(userAddress)
-      if (
-        (adapter.chainId === Chain.Solana && !isSolanaAddress) ||
-        (adapter.chainId !== Chain.Solana && isSolanaAddress)
-      ) {
-        return { tokens: [] }
-      }
+      let poolsFilteredTime: number | undefined
+      let positionsFetchedTime: number | undefined
+      let rewardsFetchedTime: number | undefined
+      let unwrapFinishedTime: number | undefined
+      let runnerEndTime: number | undefined
 
       const blockNumber = blockNumbers?.[adapter.chainId]
 
-      const protocolTokenAddresses = await this.getProtocolTokensFilter(
-        filterProtocolTokens,
-        userPoolsByChain,
-        adapter,
-      )
+      try {
+        const isSolanaAddress = this.isSolanaAddress(userAddress)
+        if (
+          (adapter.chainId === Chain.Solana && !isSolanaAddress) ||
+          (adapter.chainId !== Chain.Solana && isSolanaAddress)
+        ) {
+          return { tokens: [] }
+        }
 
-      if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
-        return { tokens: [] }
+        const protocolTokenAddresses = await this.getProtocolTokensFilter(
+          filterProtocolTokens,
+          userPoolsByChain,
+          adapter,
+        )
+
+        if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
+          runnerEndTime = Date.now()
+          logger.info({
+            source: 'adapter:positions:filtered',
+            startTime: runnerStartTime,
+            endTime: runnerEndTime,
+            timeTaken: runnerEndTime - runnerStartTime,
+            timeDetails: {
+              relativeStartTime: runnerStartTime - startTime,
+              createPoolsFilterTime: runnerEndTime - runnerStartTime,
+            },
+            chainId: adapter.chainId,
+            chainName: ChainName[adapter.chainId],
+            protocolId: adapter.protocolId,
+            productId: adapter.productId,
+            userAddress,
+            blockNumber,
+          })
+
+          return { tokens: [] }
+        }
+
+        poolsFilteredTime = Date.now()
+
+        const protocolPositions = await adapter.getPositions({
+          userAddress,
+          blockNumber,
+          protocolTokenAddresses,
+          tokenIds: filterTokenIds,
+        })
+
+        positionsFetchedTime = Date.now()
+
+        await Promise.all(
+          protocolPositions.map(async (pos) => {
+            const [rewards = [], extraRewards = []] = await Promise.all([
+              adapter.getRewardPositions?.({
+                userAddress,
+                blockNumber,
+                protocolTokenAddress: pos.address,
+              }),
+              adapter.getExtraRewardPositions?.({
+                userAddress,
+                blockNumber,
+                protocolTokenAddress: pos.address,
+              }),
+            ])
+
+            if (rewards.length > 0) {
+              pos.tokens = [...(pos.tokens ?? []), ...rewards]
+            }
+            if (extraRewards.length > 0) {
+              pos.tokens = [...(pos.tokens ?? []), ...extraRewards]
+            }
+          }),
+        )
+
+        rewardsFetchedTime = Date.now()
+
+        await unwrap(
+          adapter,
+          blockNumber,
+          protocolPositions,
+          'balanceRaw',
+          this.unwrapCache,
+        )
+
+        unwrapFinishedTime = Date.now()
+
+        const tokens = protocolPositions.map((protocolPosition) =>
+          enrichPositionBalance(protocolPosition, adapter.chainId),
+        )
+
+        tokens.forEach((protocolPosition) =>
+          protocolPosition.tokens?.forEach((token) =>
+            propagatePrice(token, adapter.chainId),
+          ),
+        )
+
+        runnerEndTime = Date.now()
+
+        logger.info({
+          source: 'adapter:positions',
+          startTime: runnerStartTime,
+          endTime: runnerEndTime,
+          timeTaken: runnerEndTime - runnerStartTime,
+          timeDetails: {
+            relativeStartTime: runnerStartTime - startTime,
+            createPoolsFilterTime: poolsFilteredTime - runnerStartTime,
+            fetchPositionsTime: positionsFetchedTime - poolsFilteredTime,
+            fetchRewardTime: rewardsFetchedTime - positionsFetchedTime,
+            unwrapTime: unwrapFinishedTime - rewardsFetchedTime,
+            enrichTime: runnerEndTime - unwrapFinishedTime,
+          },
+          chainId: adapter.chainId,
+          chainName: ChainName[adapter.chainId],
+          protocolId: adapter.protocolId,
+          productId: adapter.productId,
+          userAddress,
+          blockNumber,
+        })
+
+        return { tokens }
+      } catch (error) {
+        runnerEndTime = Date.now()
+
+        logger.info({
+          source: 'adapter:positions:error',
+          startTime: runnerStartTime,
+          endTime: runnerEndTime,
+          timeTaken: runnerEndTime - runnerStartTime,
+          timeDetails: {
+            relativeStartTime: runnerStartTime - startTime,
+            createPoolsFilterTime: poolsFilteredTime
+              ? poolsFilteredTime - runnerStartTime
+              : undefined,
+            fetchPositionsTime: positionsFetchedTime
+              ? positionsFetchedTime - poolsFilteredTime!
+              : undefined,
+            fetchRewardTime: rewardsFetchedTime
+              ? rewardsFetchedTime - positionsFetchedTime!
+              : undefined,
+            unwrapTime: unwrapFinishedTime
+              ? unwrapFinishedTime - rewardsFetchedTime!
+              : undefined,
+            enrichTime: runnerEndTime
+              ? runnerEndTime - unwrapFinishedTime!
+              : undefined,
+          },
+          chainId: adapter.chainId,
+          chainName: ChainName[adapter.chainId],
+          protocolId: adapter.protocolId,
+          productId: adapter.productId,
+          userAddress,
+          blockNumber,
+        })
+
+        throw error
       }
-
-      const poolsFilteredTime = Date.now()
-
-      const protocolPositions = await adapter.getPositions({
-        userAddress,
-        blockNumber,
-        protocolTokenAddresses,
-        tokenIds: filterTokenIds,
-      })
-
-      const positionsFetchedTime = Date.now()
-
-      await Promise.all(
-        protocolPositions.map(async (pos) => {
-          const [rewards = [], extraRewards = []] = await Promise.all([
-            adapter.getRewardPositions?.({
-              userAddress,
-              blockNumber,
-              protocolTokenAddress: pos.address,
-            }),
-            adapter.getExtraRewardPositions?.({
-              userAddress,
-              blockNumber,
-              protocolTokenAddress: pos.address,
-            }),
-          ])
-
-          if (rewards.length > 0) {
-            pos.tokens = [...(pos.tokens ?? []), ...rewards]
-          }
-          if (extraRewards.length > 0) {
-            pos.tokens = [...(pos.tokens ?? []), ...extraRewards]
-          }
-        }),
-      )
-
-      const rewardsFetchedTime = Date.now()
-
-      await unwrap(
-        adapter,
-        blockNumber,
-        protocolPositions,
-        'balanceRaw',
-        this.unwrapCache,
-      )
-
-      const unwrapFinishedTime = Date.now()
-
-      const tokens = protocolPositions.map((protocolPosition) =>
-        enrichPositionBalance(protocolPosition, adapter.chainId),
-      )
-
-      tokens.forEach((protocolPosition) =>
-        protocolPosition.tokens?.forEach((token) =>
-          propagatePrice(token, adapter.chainId),
-        ),
-      )
-
-      const runnerEndTime = Date.now()
-
-      logger.info({
-        source: 'adapter:positions',
-        startTime: runnerStartTime,
-        endTime: runnerEndTime,
-        timeTaken: runnerEndTime - runnerStartTime,
-        timeDetails: {
-          relativeStartTime: runnerStartTime - startTime,
-          createPoolsFilterTime: poolsFilteredTime - runnerStartTime,
-          fetchPositionsTime: positionsFetchedTime - poolsFilteredTime,
-          fetchRewardTime: rewardsFetchedTime - positionsFetchedTime,
-          unwrapTime: unwrapFinishedTime - rewardsFetchedTime,
-          enrichTime: runnerEndTime - unwrapFinishedTime,
-        },
-        chainId: adapter.chainId,
-        chainName: ChainName[adapter.chainId],
-        protocolId: adapter.protocolId,
-        productId: adapter.productId,
-        userAddress,
-        blockNumber,
-      })
-
-      return { tokens }
     }
 
     const result = (

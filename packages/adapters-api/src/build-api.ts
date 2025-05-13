@@ -1,10 +1,11 @@
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi'
-import { DefiProvider } from '@metamask-institutional/defi-adapters'
+import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
 import { type PinoLogger, pinoLogger } from 'hono-pino'
 import { cors } from 'hono/cors'
 import './bigint-json.js'
 import { type RequestIdVariables, requestId } from 'hono/request-id'
 import type { ContentfulStatusCode } from 'hono/utils/http-status'
+import * as client from 'prom-client'
 import type { DbService } from './db-service.js'
 import {
   INTERNAL_SERVER_ERROR,
@@ -76,24 +77,17 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
 
   addMiddleware(app)
 
-  app.openapi(
-    createRoute({
-      path: '/health',
-      method: 'get',
-      tags: ['health'],
-      responses: {
-        [OK]: {
-          content: {
-            'application/json': {
-              schema: z.object({ message: z.literal('ok') }),
-            },
-          },
-          description: 'Returns an OK status if the API is healthy',
-        },
-      },
-    }),
-    (context) => context.json({ message: 'ok' as const }),
-  )
+  client.register.clear()
+  client.collectDefaultMetrics({})
+
+  app.get('/health', async (context) => {
+    return context.json({ message: 'ok' })
+  })
+
+  app.get('/metrics', async (context) => {
+    context.header('Content-Type', client.register.contentType)
+    return context.body(await client.register.metrics())
+  })
 
   app.openapi(
     createRoute({
@@ -225,6 +219,28 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
   app.get('/stats/failed-jobs', async (context) => {
     return context.json({
       data: await dbService.getFailedJobs(),
+    })
+  })
+
+  app.get('/rpc-types', async (context) => {
+    const data = Object.values(EvmChain).reduce(
+      (acc, chainId) => {
+        const providerUrl =
+          defiProvider.chainProvider.providers[chainId]?._getConnection().url
+
+        if (providerUrl) {
+          acc[chainId] = providerUrl.includes('infura.org/jsonrpc')
+            ? 'priority'
+            : 'regular'
+        }
+
+        return acc
+      },
+      {} as Record<EvmChain, string>,
+    )
+
+    return context.json({
+      data,
     })
   })
 
