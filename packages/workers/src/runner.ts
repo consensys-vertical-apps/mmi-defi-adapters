@@ -13,7 +13,12 @@ import {
   createPostgresCacheClient,
 } from './postgres-cache-client.js'
 
-export async function runner(dbUrl: string, chainId: EvmChain, logger: Logger) {
+export async function runner(
+  defiProvider: DefiProvider,
+  dbUrl: string,
+  chainId: EvmChain,
+  logger: Logger,
+) {
   logger.info('Starting runner')
 
   const cacheClient = await createPostgresCacheClient({
@@ -26,19 +31,9 @@ export async function runner(dbUrl: string, chainId: EvmChain, logger: Logger) {
     logger,
   })
 
-  // TODO: Remove this once we have support for BSC and Fantom
-  if (chainId === Chain.Bsc || chainId === Chain.Fantom) {
-    logger.warn('Chain not supported')
-
-    return
-  }
-
-  const defiProvider = new DefiProvider()
-
   const providerUrl =
     defiProvider.chainProvider.providers[chainId]?._getConnection().url
 
-  // TODO: Should exit even before getting this far
   if (!providerUrl) {
     logger.error('Provider missing for this chain')
     return

@@ -13,7 +13,7 @@ const providers: Record<ChainName, string> = {
     'https://optimism-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
   ),
   bsc: parseStringEnv(
-    process.env.DEFI_ADAPTERS_PROVIDER_BSC,
+    '', // TODO: Replace with process.env.DEFI_ADAPTERS_PROVIDER_BSC when ready
     'https://bsc-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
   ),
   matic: parseStringEnv(
@@ -21,7 +21,7 @@ const providers: Record<ChainName, string> = {
     'https://polygon-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
   ),
   ftm: parseStringEnv(
-    process.env.DEFI_ADAPTERS_PROVIDER_FANTOM,
+    '', // TODO: Replace with process.env.DEFI_ADAPTERS_PROVIDER_FANTOM when ready
     'https://rpc.ftm.tools',
   ),
   base: parseStringEnv(

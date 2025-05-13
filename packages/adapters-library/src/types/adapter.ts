@@ -265,3 +265,25 @@ export interface SolanaProtocolAdapterParams {
   adaptersController: AdaptersController
   helpers: SolanaHelpers
 }
+
+export type AdapterPositionsMetrics =
+  | {
+      status: 'success'
+      startTime: number
+      poolsFilteredTime: number
+      positionsFetchedTime: number
+      rewardsFetchedTime: number
+      unwrapFinishedTime: number
+      endTime: number
+    }
+  | {
+      status: 'skipped:chain-address' | 'skipped:filter-address'
+      startTime: number
+      endTime: number
+    }
+  | {
+      status: 'error'
+      message: string
+      startTime: number
+      endTime: number
+    }
