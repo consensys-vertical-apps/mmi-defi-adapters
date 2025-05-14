@@ -222,21 +222,31 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
     })
   })
 
-  app.get('/rpc-types', async (context) => {
+  app.get('/stats/rpc-types', async (context) => {
     const data = Object.values(EvmChain).reduce(
       (acc, chainId) => {
         const providerUrl =
           defiProvider.chainProvider.providers[chainId]?._getConnection().url
 
-        if (providerUrl) {
-          acc[chainId] = providerUrl.includes('infura.org/jsonrpc')
-            ? 'priority'
-            : 'regular'
-        }
+        acc[chainId] = (() => {
+          switch (true) {
+            case providerUrl === undefined:
+              return 'disabled'
+            case providerUrl?.includes('infura.io'):
+              return 'infura'
+            case providerUrl?.includes('infura.org/jsonrpc'):
+              return 'infura-priority'
+            default:
+              return 'other'
+          }
+        })()
 
         return acc
       },
-      {} as Record<EvmChain, string>,
+      {} as Record<
+        EvmChain,
+        'infura' | 'infura-priority' | 'disabled' | 'other'
+      >,
     )
 
     return context.json({

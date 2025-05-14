@@ -178,7 +178,7 @@ export class DefiProvider {
       let positionsFetchedTime: number | undefined
       let rewardsFetchedTime: number | undefined
       let unwrapFinishedTime: number | undefined
-      let runnerEndTime: number | undefined
+      let enrichTime: number | undefined
 
       const blockNumber = blockNumbers?.[adapter.chainId]
 
@@ -198,28 +198,10 @@ export class DefiProvider {
         )
 
         if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
-          runnerEndTime = Date.now()
-          logger.info({
-            source: 'adapter:positions:filtered',
-            startTime: runnerStartTime,
-            endTime: runnerEndTime,
-            timeTaken: runnerEndTime - runnerStartTime,
-            timeDetails: {
-              relativeStartTime: runnerStartTime - startTime,
-              createPoolsFilterTime: runnerEndTime - runnerStartTime,
-            },
-            chainId: adapter.chainId,
-            chainName: ChainName[adapter.chainId],
-            protocolId: adapter.protocolId,
-            productId: adapter.productId,
-            userAddress,
-            blockNumber,
-          })
-
           return { tokens: [] }
         }
 
-        poolsFilteredTime = Date.now()
+        const poolsFilteredTime = Date.now()
 
         const protocolPositions = await adapter.getPositions({
           userAddress,
@@ -228,7 +210,7 @@ export class DefiProvider {
           tokenIds: filterTokenIds,
         })
 
-        positionsFetchedTime = Date.now()
+        const positionsFetchedTime = Date.now()
 
         await Promise.all(
           protocolPositions.map(async (pos) => {
@@ -254,7 +236,7 @@ export class DefiProvider {
           }),
         )
 
-        rewardsFetchedTime = Date.now()
+        const rewardsFetchedTime = Date.now()
 
         await unwrap(
           adapter,
@@ -264,7 +246,7 @@ export class DefiProvider {
           this.unwrapCache,
         )
 
-        unwrapFinishedTime = Date.now()
+        const unwrapFinishedTime = Date.now()
 
         const tokens = protocolPositions.map((protocolPosition) =>
           enrichPositionBalance(protocolPosition, adapter.chainId),
@@ -276,10 +258,10 @@ export class DefiProvider {
           ),
         )
 
-        runnerEndTime = Date.now()
+        const runnerEndTime = Date.now()
 
         logger.info({
-          source: 'adapter:positions',
+          source: 'adapter:positions:completed',
           startTime: runnerStartTime,
           endTime: runnerEndTime,
           timeTaken: runnerEndTime - runnerStartTime,
@@ -301,10 +283,10 @@ export class DefiProvider {
 
         return { tokens }
       } catch (error) {
-        runnerEndTime = Date.now()
+        const runnerEndTime = Date.now()
 
         logger.info({
-          source: 'adapter:positions:error',
+          source: 'adapter:positions:failed',
           startTime: runnerStartTime,
           endTime: runnerEndTime,
           timeTaken: runnerEndTime - runnerStartTime,
@@ -322,9 +304,7 @@ export class DefiProvider {
             unwrapTime: unwrapFinishedTime
               ? unwrapFinishedTime - rewardsFetchedTime!
               : undefined,
-            enrichTime: runnerEndTime
-              ? runnerEndTime - unwrapFinishedTime!
-              : undefined,
+            enrichTime: runnerEndTime - unwrapFinishedTime!,
           },
           chainId: adapter.chainId,
           chainName: ChainName[adapter.chainId],
@@ -547,7 +527,13 @@ export class DefiProvider {
     } catch (error) {
       return {
         ...protocolDetails,
+        protocolDisplayName:
+          ProtocolDisplayName[adapter.protocolId] ??
+          pascalCase(adapter.protocolId),
         chainName: ChainName[adapter.chainId],
+        iconUrl:
+          TrustWalletProtocolIconMap[adapter.protocolId] ??
+          protocolDetails.iconUrl,
         ...this.handleError(error),
       }
     }
