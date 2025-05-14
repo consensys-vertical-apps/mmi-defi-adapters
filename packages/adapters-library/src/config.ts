@@ -3,6 +3,8 @@ import { Chain, ChainName } from './core/constants/chains'
 import { logger } from './core/utils/logger'
 import { DeepPartial } from './types/deepPartial'
 
+const CHAIN_NOT_ENABLED = ''
+
 const providers: Record<ChainName, string> = {
   ethereum: parseStringEnv(
     process.env.DEFI_ADAPTERS_PROVIDER_ETHEREUM,
@@ -13,17 +15,14 @@ const providers: Record<ChainName, string> = {
     'https://optimism-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
   ),
   bsc: parseStringEnv(
-    '', // TODO: Replace with process.env.DEFI_ADAPTERS_PROVIDER_BSC when ready
+    CHAIN_NOT_ENABLED,
     'https://bsc-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
   ),
   matic: parseStringEnv(
     process.env.DEFI_ADAPTERS_PROVIDER_POLYGON,
     'https://polygon-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
   ),
-  ftm: parseStringEnv(
-    '', // TODO: Replace with process.env.DEFI_ADAPTERS_PROVIDER_FANTOM when ready
-    'https://rpc.ftm.tools',
-  ),
+  ftm: parseStringEnv(CHAIN_NOT_ENABLED, 'https://rpc.ftm.tools'),
   base: parseStringEnv(
     process.env.DEFI_ADAPTERS_PROVIDER_BASE,
     'https://base-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
