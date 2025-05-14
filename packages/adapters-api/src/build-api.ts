@@ -1,5 +1,5 @@
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi'
-import { DefiProvider } from '@metamask-institutional/defi-adapters'
+import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
 import { type PinoLogger, pinoLogger } from 'hono-pino'
 import { cors } from 'hono/cors'
 import './bigint-json.js'
@@ -219,6 +219,38 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
   app.get('/stats/failed-jobs', async (context) => {
     return context.json({
       data: await dbService.getFailedJobs(),
+    })
+  })
+
+  app.get('/stats/rpc-types', async (context) => {
+    const data = Object.values(EvmChain).reduce(
+      (acc, chainId) => {
+        const providerUrl =
+          defiProvider.chainProvider.providers[chainId]?._getConnection().url
+
+        acc[chainId] = (() => {
+          switch (true) {
+            case providerUrl === undefined:
+              return 'disabled'
+            case providerUrl?.includes('infura.io'):
+              return 'infura'
+            case providerUrl?.includes('infura.org/jsonrpc'):
+              return 'infura-priority'
+            default:
+              return 'other'
+          }
+        })()
+
+        return acc
+      },
+      {} as Record<
+        EvmChain,
+        'infura' | 'infura-priority' | 'disabled' | 'other'
+      >,
+    )
+
+    return context.json({
+      data,
     })
   })
 
