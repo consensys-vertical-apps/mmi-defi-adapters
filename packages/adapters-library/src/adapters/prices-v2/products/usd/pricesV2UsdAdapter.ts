@@ -1,5 +1,7 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
+import { E_ADDRESS } from '../../../../core/constants/E_ADDRESS'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
@@ -41,7 +43,7 @@ export interface SpotPrice {
 }
 
 export interface GetSpotPriceByAddressInput {
-  tokenAddresses: string
+  tokenAddress: string
   vsCurrency?: string
 }
 
@@ -103,17 +105,19 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
   }
 
   private async getSpotPriceByAddress({
-    tokenAddresses,
+    tokenAddress,
     vsCurrency = 'usd',
   }: GetSpotPriceByAddressInput): Promise<SpotPrice | null> {
-    const url = `${BASE_URL}/v1/chains/${this.chainId}/spot-prices/${tokenAddresses}`
+    const url = `${BASE_URL}/v1/chains/${this.chainId}/spot-prices/${
+      tokenAddress === E_ADDRESS ? ZERO_ADDRESS : tokenAddress
+    }`
 
     const urlObject = new URL(url)
     urlObject.searchParams.append('vsCurrency', vsCurrency)
 
     logger.info(
       {
-        tokenAddresses,
+        tokenAddress,
         currency: vsCurrency,
         chainId: this.chainId,
         url: urlObject.toString(),
@@ -129,8 +133,10 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
         },
       })
 
-      if (!response.ok) {
-        throw new Error(`Error fetching spot price: ${response.statusText}`)
+      if (!response.ok || response.status === 204) {
+        throw new Error(
+          `Error fetching spot price - ${response.status} - ${response.statusText}`,
+        )
       }
 
       const data: SpotPrice = await response.json()
@@ -138,9 +144,10 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
     } catch (error) {
       logger.error(
         {
-          tokenAddresses,
+          tokenAddress,
           currency: vsCurrency,
           chainId: this.chainId,
+          url: urlObject.toString(),
           error: extractErrorMessage(error),
         },
         'Failed to fetch spot price',
@@ -171,7 +178,7 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
   }): Promise<UnwrapExchangeRate> {
     if (!blockNumber) {
       const spotPriceByAddress = await this.getSpotPriceByAddress({
-        tokenAddresses: tokenMetadata.address,
+        tokenAddress: tokenMetadata.address,
       })
 
       if (spotPriceByAddress) {
@@ -215,7 +222,7 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
 
     logger.info(
       {
-        tokenAddresses: tokenMetadata.address,
+        tokenAddress: tokenMetadata.address,
         vsCurrency: USD,
         chainId: this.chainId,
       },
