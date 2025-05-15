@@ -1,24 +1,22 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-
 import { Helpers } from '../../../../core/helpers'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { extractErrorMessage } from '../../../../core/utils/extractErrorMessage'
+import { logger } from '../../../../core/utils/logger'
 import { nativeTokenAddresses } from '../../../../core/utils/nativeTokens'
-
 import {
   AdapterSettings,
   TokenType,
   UnwrapExchangeRate,
 } from '../../../../types/adapter'
-
-import { logger } from '../../../../core/utils/logger'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { ChainLink__factory, OneInchOracle__factory } from '../../contracts'
 import { priceAdapterConfig } from './priceV2Config'
 
 export const USD = 'USD'
+const BASE_URL = 'https://price-api.metafi.codefi.network'
 
 export interface SpotPrice {
   allTimeHigh?: number
@@ -45,7 +43,6 @@ export interface SpotPrice {
 export interface GetSpotPriceByAddressInput {
   tokenAddresses: string
   vsCurrency?: string
-  chainId: number
 }
 
 export type PricesInput = {
@@ -108,16 +105,24 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
   private async getSpotPriceByAddress({
     tokenAddresses,
     vsCurrency = 'usd',
-    chainId,
   }: GetSpotPriceByAddressInput): Promise<SpotPrice | null> {
-    const baseUrl = 'https://price-api.metafi.codefi.network'
-    const url = `${baseUrl}/v1/chains/${chainId}/spot-prices/${tokenAddresses}`
+    const url = `${BASE_URL}/v1/chains/${this.chainId}/spot-prices/${tokenAddresses}`
+
+    const urlObject = new URL(url)
+    urlObject.searchParams.append('vsCurrency', vsCurrency)
+
+    logger.info(
+      {
+        tokenAddresses,
+        currency: vsCurrency,
+        chainId: this.chainId,
+        url: urlObject.toString(),
+      },
+      'Fetching spot prices',
+    )
 
     try {
-      const params = new URLSearchParams()
-      if (vsCurrency) params.append('vsCurrency', vsCurrency)
-
-      const response = await fetch(`${url}?${params.toString()}`, {
+      const response = await fetch(urlObject.toString(), {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -131,7 +136,16 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
       const data: SpotPrice = await response.json()
       return data
     } catch (error) {
-      logger.error(error, 'Failed to fetch spot price')
+      logger.error(
+        {
+          tokenAddresses,
+          currency: vsCurrency,
+          chainId: this.chainId,
+          url: urlObject.toString(),
+          error: extractErrorMessage(error),
+        },
+        'Failed to fetch spot price',
+      )
       return null
     }
   }
@@ -157,14 +171,13 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
     tokenMetadata: Erc20Metadata
   }): Promise<UnwrapExchangeRate> {
     if (!blockNumber) {
-      const getSpotPriceByAddress = await this.getSpotPriceByAddress({
+      const spotPriceByAddress = await this.getSpotPriceByAddress({
         tokenAddresses: tokenMetadata.address,
-        chainId: this.chainId,
       })
 
-      if (getSpotPriceByAddress) {
+      if (spotPriceByAddress) {
         const priceAdapterPrice = BigInt(
-          getSpotPriceByAddress.price *
+          spotPriceByAddress.price *
             10 **
               priceAdapterConfig[
                 this.chainId as keyof typeof priceAdapterConfig
@@ -200,6 +213,15 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
         `Onchain price adapter config not found for chain ${this.chainId}`,
       )
     }
+
+    logger.info(
+      {
+        tokenAddresses: tokenMetadata.address,
+        vsCurrency: USD,
+        chainId: this.chainId,
+      },
+      'Fetching on-chain prices',
+    )
 
     const [erc20TokenPriceInEth, ethPriceUSD] = await Promise.all([
       this.getTokenPriceInEth({
