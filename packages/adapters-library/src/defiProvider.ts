@@ -139,10 +139,6 @@ export class DefiProvider {
   }): Promise<DefiPositionResponse[]> {
     const startTime = Date.now()
 
-    // TODO: We need to remove this. It can make the whole process crash if this function throws as it's not awaited
-    // It also does not need to be optimized for serverless
-    this.initAdapterControllerForUnwrapStage()
-
     const userPoolsByChain = (
       await filterMapAsync(Object.values(EvmChain), async (chainId) => {
         if (filterChainIds && !filterChainIds.includes(chainId)) {
@@ -178,7 +174,6 @@ export class DefiProvider {
       let positionsFetchedTime: number | undefined
       let rewardsFetchedTime: number | undefined
       let unwrapFinishedTime: number | undefined
-      let enrichTime: number | undefined
 
       const blockNumber = blockNumbers?.[adapter.chainId]
 
@@ -563,10 +558,6 @@ export class DefiProvider {
       success: false,
       error: adapterError,
     }
-  }
-
-  private initAdapterControllerForUnwrapStage() {
-    this.adaptersController.init()
   }
 
   private isSolanaAddress(address: string) {
