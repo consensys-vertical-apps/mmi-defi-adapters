@@ -23,9 +23,18 @@ export async function unwrap(
   fieldToUpdate: string,
   unwrapCache: IUnwrapPriceCache,
 ) {
+  const tokensSeen = new Set<string>()
+
   return await Promise.all(
     tokens.map(async (token) => {
-      await unwrapToken(adapter, blockNumber, token, fieldToUpdate, unwrapCache)
+      await unwrapToken(
+        adapter,
+        blockNumber,
+        token,
+        fieldToUpdate,
+        unwrapCache,
+        tokensSeen,
+      )
     }),
   )
 }
@@ -36,7 +45,10 @@ async function unwrapToken(
   token: Token,
   fieldToUpdate: string,
   unwrapCache: IUnwrapPriceCache,
+  tokensSeen: Set<string>,
 ) {
+  tokensSeen.add(token.address)
+
   const underlyingProtocolTokenAdapter =
     await adapter.adaptersController.fetchTokenAdapter(
       adapter.chainId,
@@ -90,15 +102,18 @@ async function unwrapToken(
   }
 
   await Promise.all(
-    token.tokens?.map(async (underlyingToken) => {
-      await unwrapToken(
-        adapter,
-        blockNumber,
-        underlyingToken,
-        fieldToUpdate,
-        unwrapCache,
-      )
-    }) ?? [],
+    token.tokens
+      ?.filter((underlyingToken) => !tokensSeen.has(underlyingToken.address))
+      .map(async (underlyingToken) => {
+        await unwrapToken(
+          adapter,
+          blockNumber,
+          underlyingToken,
+          fieldToUpdate,
+          unwrapCache,
+          tokensSeen,
+        )
+      }) ?? [],
   )
 }
 
