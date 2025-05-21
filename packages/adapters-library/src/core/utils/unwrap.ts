@@ -1,13 +1,11 @@
-import { Protocol } from '../../adapters/protocols'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { TokenType, UnderlyingTokenTypeMap } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
-import { IUnwrapPriceCache } from '../../unwrapCache'
 import {
   NotImplementedError,
   ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
 } from '../errors/errors'
-import { logger } from './logger'
+import type { IUnwrapCache } from '../unwrapCache'
 
 type Token = Erc20Metadata & {
   tokens?: Token[]
@@ -20,7 +18,7 @@ export async function unwrap(
   blockNumber: number | undefined,
   tokens: Token[],
   fieldToUpdate: string,
-  unwrapCache: IUnwrapPriceCache,
+  unwrapCache: IUnwrapCache,
 ) {
   return await Promise.all(
     tokens.map(async (token) => {
@@ -41,7 +39,7 @@ async function unwrapToken(
   blockNumber: number | undefined,
   token: Token,
   fieldToUpdate: string,
-  unwrapCache: IUnwrapPriceCache,
+  unwrapCache: IUnwrapCache,
   tokensSeen: string[],
 ) {
   const underlyingProtocolTokenAdapter =
@@ -118,7 +116,7 @@ async function fetchUnwrapExchangeRates(
   underlyingProtocolTokenAdapter: IProtocolAdapter,
   underlyingProtocolTokenPosition: Token,
   blockNumber: number | undefined,
-  unwrapCache: IUnwrapPriceCache,
+  unwrapCache: IUnwrapCache,
 ) {
   try {
     return await unwrapCache.fetchUnwrapWithCache(
@@ -145,7 +143,7 @@ async function fetchPrice(
   adapter: IProtocolAdapter,
   token: Erc20Metadata & { priceRaw?: bigint },
   blockNumber: number | undefined,
-  unwrapCache: IUnwrapPriceCache,
+  unwrapCache: IUnwrapCache,
 ) {
   const priceAdapter = adapter.adaptersController.priceAdapters.get(
     adapter.chainId,
@@ -155,21 +153,10 @@ async function fetchPrice(
     throw new Error(`Price adapter missing for chain ${adapter.chainId}`)
   }
 
-  try {
-    const price = await unwrapCache.fetchPriceWithCache(priceAdapter, {
-      tokenMetadata: token,
-      blockNumber,
-    })
+  const price = await unwrapCache.fetchPriceWithCache(priceAdapter, {
+    tokenMetadata: token,
+    blockNumber,
+  })
 
-    return price.tokens![0]!.underlyingRateRaw
-  } catch (error) {
-    logger.debug(
-      {
-        error,
-        blockNumber,
-        token,
-      },
-      'Error getting price for underlying token',
-    )
-  }
+  return price?.tokens?.[0]?.underlyingRateRaw
 }

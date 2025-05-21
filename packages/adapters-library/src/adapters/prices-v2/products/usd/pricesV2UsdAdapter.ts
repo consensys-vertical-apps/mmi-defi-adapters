@@ -6,6 +6,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { extractErrorMessage } from '../../../../core/utils/extractErrorMessage'
+import { fetchWithRetry } from '../../../../core/utils/fetchWithRetry'
 import { logger } from '../../../../core/utils/logger'
 import { nativeTokenAddresses } from '../../../../core/utils/nativeTokens'
 import {
@@ -108,25 +109,25 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
     tokenAddress,
     vsCurrency = 'usd',
   }: GetSpotPriceByAddressInput): Promise<SpotPrice | null> {
-    const url = `${BASE_URL}/v1/chains/${this.chainId}/spot-prices/${
-      tokenAddress === E_ADDRESS ? ZERO_ADDRESS : tokenAddress
-    }`
-
-    const urlObject = new URL(url)
-    urlObject.searchParams.append('vsCurrency', vsCurrency)
+    const url = new URL(
+      `${BASE_URL}/v1/chains/${this.chainId}/spot-prices/${
+        tokenAddress === E_ADDRESS ? ZERO_ADDRESS : tokenAddress
+      }`,
+    )
+    url.searchParams.append('vsCurrency', vsCurrency)
 
     logger.info(
       {
         tokenAddress,
         currency: vsCurrency,
         chainId: this.chainId,
-        url: urlObject.toString(),
+        url: url.toString(),
       },
       'Fetching spot prices',
     )
 
     try {
-      const response = await fetch(urlObject.toString(), {
+      const response = await fetchWithRetry(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -147,7 +148,7 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
           tokenAddress,
           currency: vsCurrency,
           chainId: this.chainId,
-          url: urlObject.toString(),
+          url: url.toString(),
           error: extractErrorMessage(error),
         },
         'Failed to fetch spot price',

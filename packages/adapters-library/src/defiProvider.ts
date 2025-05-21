@@ -13,6 +13,7 @@ import { AdaptersController } from './core/adaptersController'
 import { Chain, ChainName, EvmChain } from './core/constants/chains'
 import { ChecksumAddress } from './core/decorators/checksumAddress'
 import { ChainProvider } from './core/provider/ChainProvider'
+import { IUnwrapCache, MemoryUnwrapCache } from './core/unwrapCache'
 import { TrustWalletProtocolIconMap } from './core/utils/buildIconUrl'
 import { pascalCase } from './core/utils/caseConversion'
 import { filterMapAsync } from './core/utils/filters'
@@ -33,26 +34,21 @@ import {
   DefiPositionResponse,
   PricePerShareResponse,
 } from './types/response'
-import {
-  IUnwrapPriceCache,
-  IUnwrapPriceCacheProvider,
-  UnwrapPriceCache,
-} from './unwrapCache'
 
 export class DefiProvider {
-  private config: IConfig
+  private readonly config: IConfig
   chainProvider: ChainProvider
   adaptersController: AdaptersController
 
-  private metadataProviders: Record<Chain, IMetadataProvider>
-  private unwrapCache: IUnwrapPriceCache
-  private poolFilter: PoolFilter
-  private shouldUsePoolFilter: (adapter: IProtocolAdapter) => boolean
+  private readonly metadataProviders: Record<Chain, IMetadataProvider>
+  private readonly unwrapCache: IUnwrapCache
+  private readonly poolFilter: PoolFilter
+  private readonly shouldUsePoolFilter: (adapter: IProtocolAdapter) => boolean
 
   constructor({
     config,
     metadataProviderSettings,
-    unwrapCacheProvider,
+    unwrapCache,
     poolFilter,
   }: {
     config?: DeepPartial<IConfig>
@@ -63,7 +59,7 @@ export class DefiProvider {
         options: Database.Options
       }
     >
-    unwrapCacheProvider?: IUnwrapPriceCacheProvider
+    unwrapCache?: IUnwrapCache
     poolFilter?: PoolFilter
   } = {}) {
     this.config = new Config(config).values
@@ -86,7 +82,7 @@ export class DefiProvider {
         adapter.adapterSettings.userEvent === 'Transfer'
     }
 
-    this.unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
+    this.unwrapCache = unwrapCache ?? new MemoryUnwrapCache(600_000)
 
     this.adaptersController = new AdaptersController({
       evmProviders: this.chainProvider.providers,
