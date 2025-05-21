@@ -20,7 +20,7 @@ export interface IUnwrapCache {
 export class MemoryUnwrapCache implements IUnwrapCache {
   private readonly cache: Map<
     string,
-    { value: UnwrapExchangeRate; expiryTime: number }
+    Promise<{ value: UnwrapExchangeRate; expiryTime: number }>
   >
   private readonly expiryTimeInMs: number
 
@@ -67,18 +67,18 @@ export class MemoryUnwrapCache implements IUnwrapCache {
 
     const cachedEntry = this.cache.get(key)
 
-    if (cachedEntry && cachedEntry.expiryTime > Date.now()) {
-      return cachedEntry.value
+    if (cachedEntry && (await cachedEntry).expiryTime > Date.now()) {
+      return (await cachedEntry).value
     }
 
-    const value = await fetcher()
-
-    this.cache.set(key, {
-      value,
+    const promiseEntry = (async () => ({
+      value: await fetcher(),
       expiryTime: this.getNewExpiryTime(),
-    })
+    }))()
 
-    return value
+    this.cache.set(key, promiseEntry)
+
+    return (await promiseEntry).value
   }
 
   private getNewExpiryTime(): number {
