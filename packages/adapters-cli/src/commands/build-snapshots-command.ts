@@ -95,7 +95,10 @@ export function buildSnapshotsCommand(
               enableRpcCache: false,
               enableFailover: false,
               useAdaptersWithUserEventOnly: false,
-              useDatabase: false,
+              includePrices: !(
+                testCase.method === 'positions' &&
+                testCase.includePrices === false
+              ),
             },
             poolFilter: () => Promise.resolve(undefined),
           })

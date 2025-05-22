@@ -235,6 +235,7 @@ export class DefiProvider {
           protocolPositions,
           'balanceRaw',
           this.unwrapCache,
+          this.config.includePrices,
         )
 
         const unwrapFinishedTime = Date.now()

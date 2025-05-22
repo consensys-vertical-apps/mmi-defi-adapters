@@ -19,6 +19,7 @@ export async function unwrap(
   tokens: Token[],
   fieldToUpdate: string,
   unwrapCache: IUnwrapCache,
+  includePrices: boolean,
 ) {
   return await Promise.all(
     tokens.map(async (token) => {
@@ -28,6 +29,7 @@ export async function unwrap(
         token,
         fieldToUpdate,
         unwrapCache,
+        includePrices,
         [token.address],
       )
     }),
@@ -40,6 +42,7 @@ async function unwrapToken(
   token: Token,
   fieldToUpdate: string,
   unwrapCache: IUnwrapCache,
+  includePrices: boolean,
   tokensSeen: string[],
 ) {
   const underlyingProtocolTokenAdapter =
@@ -58,6 +61,7 @@ async function unwrapToken(
         token,
         blockNumber,
         unwrapCache,
+        includePrices,
       )
       if (tokenPriceRaw) {
         token.priceRaw = tokenPriceRaw
@@ -106,6 +110,7 @@ async function unwrapToken(
           underlyingToken,
           fieldToUpdate,
           unwrapCache,
+          includePrices,
           [...tokensSeen, underlyingToken.address],
         )
       }) ?? [],
@@ -144,7 +149,12 @@ async function fetchPrice(
   token: Erc20Metadata & { priceRaw?: bigint },
   blockNumber: number | undefined,
   unwrapCache: IUnwrapCache,
+  includePrices: boolean,
 ) {
+  if (!includePrices) {
+    return undefined
+  }
+
   const priceAdapter = adapter.adaptersController.priceAdapters.get(
     adapter.chainId,
   )
@@ -158,5 +168,5 @@ async function fetchPrice(
     blockNumber,
   })
 
-  return price?.tokens?.[0]?.underlyingRateRaw
+  return price.tokens?.[0]?.underlyingRateRaw
 }

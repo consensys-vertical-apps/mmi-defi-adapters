@@ -12,6 +12,7 @@ export type TestCase = {
         filterTokenIds?: string[]
       }
       blockNumber?: number
+      includePrices?: boolean
     }
   | {
       method: 'prices'
