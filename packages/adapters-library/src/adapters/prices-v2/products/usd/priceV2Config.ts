@@ -1,6 +1,12 @@
 import { getAddress } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 
+// For ChainLink USD ETH Feeds use the following link:
+// https://docs.chain.link/data-feeds/price-feeds/addresses?page=1&testnetPage=1&network=ethereum&search=ETH+%2F+USD
+
+// For OneInch Price Oracle use the following link:
+// https://github.com/1inch/spot-price-aggregator?tab=readme-ov-file#supported-deployments
+
 const OneInchPriceOracleCommon = getAddress(
   '0x00000000000D6FFc74A8feb35aF5827bf57f6786',
 )
@@ -66,7 +72,6 @@ export const priceAdapterConfig = {
     decimals: 18,
     chainlinkDecimals: 8,
   },
-
   [Chain.Arbitrum]: {
     wrappedEth: getAddress('0x82af49447d8a07e3bd95bd0d56f35241523fbab1'),
     oracle: OneInchPriceOracleCommon,
@@ -103,7 +108,6 @@ export const priceAdapterConfig = {
     chainlinkUsdEthFeed: getAddress(
       '0x71041dddad3595f9ced3dccfbe3d1f4b0a16bb70',
     ),
-
     wrappedToken: {
       symbol: 'WETH',
       name: 'Wrapped Ether',
