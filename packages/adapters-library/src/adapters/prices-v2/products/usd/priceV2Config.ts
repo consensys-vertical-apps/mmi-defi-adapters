@@ -8,6 +8,10 @@ import { Chain } from '../../../../core/constants/chains'
 // https://github.com/1inch/spot-price-aggregator?tab=readme-ov-file#supported-deployments
 
 const OneInchPriceOracleCommon = getAddress(
+  '0x0AdDd25a91563696D8567Df78D5A01C9a991F9B8',
+)
+
+const OneInchPriceOracleLinea = getAddress(
   '0x00000000000D6FFc74A8feb35aF5827bf57f6786',
 )
 
@@ -119,7 +123,7 @@ export const priceAdapterConfig = {
   },
   [Chain.Linea]: {
     wrappedEth: getAddress('0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f'),
-    oracle: OneInchPriceOracleCommon,
+    oracle: OneInchPriceOracleLinea,
     chainlinkUsdEthFeed: getAddress(
       '0x3c6Cd9Cc7c7a4c2Cf5a82734CD249D7D593354dA',
     ),

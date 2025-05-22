@@ -35,7 +35,7 @@ const _abi = [
       },
       {
         internalType: "address",
-        name: "owner_",
+        name: "owner",
         type: "address",
       },
     ],
@@ -59,34 +59,7 @@ const _abi = [
   },
   {
     inputs: [],
-    name: "MathOverflowedMulDiv",
-    type: "error",
-  },
-  {
-    inputs: [],
     name: "OracleAlreadyAdded",
-    type: "error",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "owner",
-        type: "address",
-      },
-    ],
-    name: "OwnableInvalidOwner",
-    type: "error",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "account",
-        type: "address",
-      },
-    ],
-    name: "OwnableUnauthorizedAccount",
     type: "error",
   },
   {
@@ -433,147 +406,6 @@ const _abi = [
         internalType: "uint256",
         name: "weightedRate",
         type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "contract IERC20",
-        name: "srcToken",
-        type: "address",
-      },
-      {
-        internalType: "bool",
-        name: "useSrcWrappers",
-        type: "bool",
-      },
-      {
-        internalType: "contract IERC20[]",
-        name: "customConnectors",
-        type: "address[]",
-      },
-      {
-        internalType: "uint256",
-        name: "thresholdFilter",
-        type: "uint256",
-      },
-    ],
-    name: "getRatesAndWeightsToEthWithCustomConnectors",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "wrappedPrice",
-        type: "uint256",
-      },
-      {
-        components: [
-          {
-            internalType: "uint256",
-            name: "maxOracleWeight",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "size",
-            type: "uint256",
-          },
-          {
-            components: [
-              {
-                internalType: "uint256",
-                name: "rate",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "weight",
-                type: "uint256",
-              },
-            ],
-            internalType: "struct OraclePrices.OraclePrice[]",
-            name: "oraclePrices",
-            type: "tuple[]",
-          },
-        ],
-        internalType: "struct OraclePrices.Data",
-        name: "ratesAndWeights",
-        type: "tuple",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "contract IERC20",
-        name: "srcToken",
-        type: "address",
-      },
-      {
-        internalType: "contract IERC20",
-        name: "dstToken",
-        type: "address",
-      },
-      {
-        internalType: "bool",
-        name: "useWrappers",
-        type: "bool",
-      },
-      {
-        internalType: "contract IERC20[]",
-        name: "customConnectors",
-        type: "address[]",
-      },
-      {
-        internalType: "uint256",
-        name: "thresholdFilter",
-        type: "uint256",
-      },
-    ],
-    name: "getRatesAndWeightsWithCustomConnectors",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "wrappedPrice",
-        type: "uint256",
-      },
-      {
-        components: [
-          {
-            internalType: "uint256",
-            name: "maxOracleWeight",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "size",
-            type: "uint256",
-          },
-          {
-            components: [
-              {
-                internalType: "uint256",
-                name: "rate",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "weight",
-                type: "uint256",
-              },
-            ],
-            internalType: "struct OraclePrices.OraclePrice[]",
-            name: "oraclePrices",
-            type: "tuple[]",
-          },
-        ],
-        internalType: "struct OraclePrices.Data",
-        name: "ratesAndWeights",
-        type: "tuple",
       },
     ],
     stateMutability: "view",
