@@ -1,9 +1,14 @@
-import { URL } from 'node:url'
-
-const MAX_RETRIES = 3
+const MAX_RETRIES = 1 // 1 retry after first failure
 
 export async function fetchWithRetry(
-  url: URL,
+  url: string | URL | Request,
+  options?: RequestInit,
+): Promise<Response> {
+  return fetchWithRetryRecursive(url, options, MAX_RETRIES)
+}
+
+async function fetchWithRetryRecursive(
+  url: string | URL | Request,
   options?: RequestInit,
   retries = MAX_RETRIES,
 ): Promise<Response> {
@@ -17,6 +22,6 @@ export async function fetchWithRetry(
     if (retries <= 0) {
       throw error
     }
-    return fetchWithRetry(url, options, retries - 1)
+    return fetchWithRetryRecursive(url, options, retries - 1)
   }
 }
