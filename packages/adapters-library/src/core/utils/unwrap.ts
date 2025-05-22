@@ -4,7 +4,6 @@ import { TokenType, UnderlyingTokenTypeMap } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IUnwrapPriceCache } from '../../unwrapCache'
 import {
-  AdapterMissingError,
   NotImplementedError,
   ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
 } from '../errors/errors'
@@ -23,8 +22,6 @@ export async function unwrap(
   fieldToUpdate: string,
   unwrapCache: IUnwrapPriceCache,
 ) {
-  const tokensSeen = new Set<string>()
-
   return await Promise.all(
     tokens.map(async (token) => {
       await unwrapToken(
@@ -33,7 +30,7 @@ export async function unwrap(
         token,
         fieldToUpdate,
         unwrapCache,
-        tokensSeen,
+        [token.address],
       )
     }),
   )
@@ -45,10 +42,8 @@ async function unwrapToken(
   token: Token,
   fieldToUpdate: string,
   unwrapCache: IUnwrapPriceCache,
-  tokensSeen: Set<string>,
+  tokensSeen: string[],
 ) {
-  tokensSeen.add(token.address)
-
   const underlyingProtocolTokenAdapter =
     await adapter.adaptersController.fetchTokenAdapter(
       adapter.chainId,
@@ -103,7 +98,9 @@ async function unwrapToken(
 
   await Promise.all(
     token.tokens
-      ?.filter((underlyingToken) => !tokensSeen.has(underlyingToken.address))
+      ?.filter(
+        (underlyingToken) => !tokensSeen.includes(underlyingToken.address),
+      )
       .map(async (underlyingToken) => {
         await unwrapToken(
           adapter,
@@ -111,7 +108,7 @@ async function unwrapToken(
           underlyingToken,
           fieldToUpdate,
           unwrapCache,
-          tokensSeen,
+          [...tokensSeen, underlyingToken.address],
         )
       }) ?? [],
   )
