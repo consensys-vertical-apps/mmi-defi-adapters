@@ -92,7 +92,12 @@ export function buildSnapshotsCommand(
             config: {
               useMulticallInterceptor: false,
               disableEthersBatching: true,
+              enableRpcCache: false,
+              enableFailover: false,
+              useAdaptersWithUserEventOnly: false,
+              useDatabase: false,
             },
+            poolFilter: () => Promise.resolve(undefined),
           })
 
           const msw = startRpcSnapshot(

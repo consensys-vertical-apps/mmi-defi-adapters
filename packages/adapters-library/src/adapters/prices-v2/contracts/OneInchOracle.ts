@@ -23,6 +23,31 @@ import type {
   TypedContractMethod,
 } from "./common";
 
+export declare namespace OraclePrices {
+  export type OraclePriceStruct = { rate: BigNumberish; weight: BigNumberish };
+
+  export type OraclePriceStructOutput = [rate: bigint, weight: bigint] & {
+    rate: bigint;
+    weight: bigint;
+  };
+
+  export type DataStruct = {
+    maxOracleWeight: BigNumberish;
+    size: BigNumberish;
+    oraclePrices: OraclePrices.OraclePriceStruct[];
+  };
+
+  export type DataStructOutput = [
+    maxOracleWeight: bigint,
+    size: bigint,
+    oraclePrices: OraclePrices.OraclePriceStructOutput[]
+  ] & {
+    maxOracleWeight: bigint;
+    size: bigint;
+    oraclePrices: OraclePrices.OraclePriceStructOutput[];
+  };
+}
+
 export interface OneInchOracleInterface extends Interface {
   getFunction(
     nameOrSignature:
@@ -35,6 +60,8 @@ export interface OneInchOracleInterface extends Interface {
       | "getRateToEthWithThreshold"
       | "getRateWithCustomConnectors"
       | "getRateWithThreshold"
+      | "getRatesAndWeightsToEthWithCustomConnectors"
+      | "getRatesAndWeightsWithCustomConnectors"
       | "multiWrapper"
       | "oracles"
       | "owner"
@@ -92,6 +119,14 @@ export interface OneInchOracleInterface extends Interface {
     values: [AddressLike, AddressLike, boolean, BigNumberish]
   ): string;
   encodeFunctionData(
+    functionFragment: "getRatesAndWeightsToEthWithCustomConnectors",
+    values: [AddressLike, boolean, AddressLike[], BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getRatesAndWeightsWithCustomConnectors",
+    values: [AddressLike, AddressLike, boolean, AddressLike[], BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "multiWrapper",
     values?: undefined
   ): string;
@@ -143,6 +178,14 @@ export interface OneInchOracleInterface extends Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "getRateWithThreshold",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getRatesAndWeightsToEthWithCustomConnectors",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getRatesAndWeightsWithCustomConnectors",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -361,6 +404,39 @@ export interface OneInchOracle extends BaseContract {
     "view"
   >;
 
+  getRatesAndWeightsToEthWithCustomConnectors: TypedContractMethod<
+    [
+      srcToken: AddressLike,
+      useSrcWrappers: boolean,
+      customConnectors: AddressLike[],
+      thresholdFilter: BigNumberish
+    ],
+    [
+      [bigint, OraclePrices.DataStructOutput] & {
+        wrappedPrice: bigint;
+        ratesAndWeights: OraclePrices.DataStructOutput;
+      }
+    ],
+    "view"
+  >;
+
+  getRatesAndWeightsWithCustomConnectors: TypedContractMethod<
+    [
+      srcToken: AddressLike,
+      dstToken: AddressLike,
+      useWrappers: boolean,
+      customConnectors: AddressLike[],
+      thresholdFilter: BigNumberish
+    ],
+    [
+      [bigint, OraclePrices.DataStructOutput] & {
+        wrappedPrice: bigint;
+        ratesAndWeights: OraclePrices.DataStructOutput;
+      }
+    ],
+    "view"
+  >;
+
   multiWrapper: TypedContractMethod<[], [string], "view">;
 
   oracles: TypedContractMethod<
@@ -474,6 +550,41 @@ export interface OneInchOracle extends BaseContract {
       thresholdFilter: BigNumberish
     ],
     [bigint],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "getRatesAndWeightsToEthWithCustomConnectors"
+  ): TypedContractMethod<
+    [
+      srcToken: AddressLike,
+      useSrcWrappers: boolean,
+      customConnectors: AddressLike[],
+      thresholdFilter: BigNumberish
+    ],
+    [
+      [bigint, OraclePrices.DataStructOutput] & {
+        wrappedPrice: bigint;
+        ratesAndWeights: OraclePrices.DataStructOutput;
+      }
+    ],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "getRatesAndWeightsWithCustomConnectors"
+  ): TypedContractMethod<
+    [
+      srcToken: AddressLike,
+      dstToken: AddressLike,
+      useWrappers: boolean,
+      customConnectors: AddressLike[],
+      thresholdFilter: BigNumberish
+    ],
+    [
+      [bigint, OraclePrices.DataStructOutput] & {
+        wrappedPrice: bigint;
+        ratesAndWeights: OraclePrices.DataStructOutput;
+      }
+    ],
     "view"
   >;
   getFunction(

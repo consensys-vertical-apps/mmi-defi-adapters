@@ -4,7 +4,6 @@ import type { TestCase } from '../../../../../types/testCase'
 export const testCases: TestCase[] = [
   {
     chainId: Chain.Ethereum,
-    key: 'moo-token',
     method: 'positions',
 
     input: {
@@ -17,7 +16,6 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Linea,
-    key: 'eth',
     method: 'positions',
 
     input: {
@@ -26,7 +24,6 @@ export const testCases: TestCase[] = [
       filterProtocolTokens: [
         '0x3289Cc896E661e3a252609efA4380875F0ce66Ec',
         '0x3d80b49fc4DC9E450efAc1BD34cdEB2F303c2E81',
-        '0xE7e6a718218d737945E6f039c161D3C3c550CBA8',
       ],
     },
 

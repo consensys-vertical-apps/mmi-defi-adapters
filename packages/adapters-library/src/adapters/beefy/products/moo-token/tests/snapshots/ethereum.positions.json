@@ -1,6 +1,6 @@
 {
   "blockNumber": 21342510,
-  "latency": "Latency: 1.601 seconds",
+  "latency": "Latency: 2.962 seconds",
   "aggregatedValues": ["USD2.91"],
   "snapshot": [
     {
@@ -8,10 +8,11 @@
       "name": "Beefy",
       "description": "Beefy defi adapter",
       "siteUrl": "https://beefy.com",
-      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/dapps/app.beefy.finance.png",
       "positionType": "supply",
       "chainId": 1,
       "productId": "moo-token",
+      "protocolDisplayName": "Beefy",
       "chainName": "ethereum",
       "success": true,
       "tokens": [
@@ -39,7 +40,7 @@
                   "type": "underlying",
                   "balanceRaw": "2910432n",
                   "balance": 2.910432,
-                  "price": 0.9984879963186358,
+                  "price": 0.9984892829005392,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
                 },
                 {
@@ -78,11 +79,11 @@
     "7dcf710f1acb5589bca7c939a2a8bcb1": {
       "result": "0x0000000000000000000000000000000000000000000000070000000000000d3900000000000000000000000000000000000000000000000000000059f660f937000000000000000000000000000000000000000000000000000000006752c0f2000000000000000000000000000000000000000000000000000000006752c0ff0000000000000000000000000000000000000000000000070000000000000d39"
     },
-    "39b304f4388d1e0fae86d568b5be4a5a": {
+    "257bad5a1fe957c614b8c3bb5e1acb53": {
       "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
-    "186b7efde4b895c3e75eda93da5c047c": {
-      "result": "0x000000000000000000000000000000000000000000d5c207247f81108989ddcb"
+    "f4c73a2b6527f7eddc72de0b707c8aed": {
+      "result": "0x000000000000000000000000000000000000000000d5c219318181f6e7fa89aa"
     }
   }
 }
