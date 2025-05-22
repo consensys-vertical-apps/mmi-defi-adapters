@@ -5,7 +5,6 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Linea,
     method: 'positions',
-    includePrices: false,
 
     input: {
       userAddress: '0xAaCa2395971909e2CE417a342f283AcF08C1dcaF',

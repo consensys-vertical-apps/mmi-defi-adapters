@@ -1,18 +1,8 @@
 import { getAddress } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 
-// For ChainLink USD ETH Feeds use the following link:
-// https://docs.chain.link/data-feeds/price-feeds/addresses?page=1&testnetPage=1&network=ethereum&search=ETH+%2F+USD
-
-// For OneInch Price Oracle use the following link:
-// https://github.com/1inch/spot-price-aggregator?tab=readme-ov-file#supported-deployments
-
 const OneInchPriceOracleCommon = getAddress(
   '0x0AdDd25a91563696D8567Df78D5A01C9a991F9B8',
-)
-
-const OneInchPriceOracleLinea = getAddress(
-  '0x00000000000D6FFc74A8feb35aF5827bf57f6786',
 )
 
 export const priceAdapterConfig = {
@@ -37,6 +27,7 @@ export const priceAdapterConfig = {
     chainlinkUsdEthFeed: getAddress(
       '0x13e3ee699d1909e989722e753853ae30b17e08c5',
     ),
+
     wrappedToken: {
       symbol: 'WETH',
       name: 'Wrapped Ether',
@@ -52,6 +43,7 @@ export const priceAdapterConfig = {
     chainlinkUsdEthFeed: getAddress(
       '0x9ef1b8c0e4f7dc8bf5719ea496883dc6401d5b2e',
     ),
+
     wrappedToken: {
       symbol: 'WBNB',
       name: 'Wrapped BNB',
@@ -67,6 +59,7 @@ export const priceAdapterConfig = {
     chainlinkUsdEthFeed: getAddress(
       '0xf9680d99d6c9589e2a93a78a04a279e509205945',
     ),
+
     wrappedToken: {
       symbol: 'WMATIC',
       name: 'Wrapped Matic',
@@ -76,12 +69,14 @@ export const priceAdapterConfig = {
     decimals: 18,
     chainlinkDecimals: 8,
   },
+
   [Chain.Arbitrum]: {
     wrappedEth: getAddress('0x82af49447d8a07e3bd95bd0d56f35241523fbab1'),
     oracle: OneInchPriceOracleCommon,
     chainlinkUsdEthFeed: getAddress(
       '0x639fe6ab55c921f74e7fac1ee960c0b6293ba612',
     ),
+
     wrappedToken: {
       symbol: 'WETH',
       name: 'Wrapped Ether',
@@ -97,6 +92,7 @@ export const priceAdapterConfig = {
     chainlinkUsdEthFeed: getAddress(
       '0x976b3d034e162d8bd72d6b9c989d545b839003b0',
     ),
+
     wrappedToken: {
       symbol: 'WETH',
       name: 'Wrapped Ether',
@@ -112,25 +108,11 @@ export const priceAdapterConfig = {
     chainlinkUsdEthFeed: getAddress(
       '0x71041dddad3595f9ced3dccfbe3d1f4b0a16bb70',
     ),
+
     wrappedToken: {
       symbol: 'WETH',
       name: 'Wrapped Ether',
       address: getAddress('0x4200000000000000000000000000000000000006'),
-      decimals: 18,
-    },
-    decimals: 18,
-    chainlinkDecimals: 8,
-  },
-  [Chain.Linea]: {
-    wrappedEth: getAddress('0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f'),
-    oracle: OneInchPriceOracleLinea,
-    chainlinkUsdEthFeed: getAddress(
-      '0x3c6Cd9Cc7c7a4c2Cf5a82734CD249D7D593354dA',
-    ),
-    wrappedToken: {
-      symbol: 'WETH',
-      name: 'Wrapped Ether',
-      address: getAddress('0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f'),
       decimals: 18,
     },
     decimals: 18,
