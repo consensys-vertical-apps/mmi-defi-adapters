@@ -9,7 +9,6 @@ export type {
   DefiPositionResponse,
   Support,
 } from './types/response'
-export type { IUnwrapCache } from './core/unwrapCache'
 export {
   chainFilter,
   protocolFilter,
