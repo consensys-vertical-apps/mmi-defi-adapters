@@ -80,7 +80,6 @@ export abstract class ZeroLendBasePoolAdapter implements IProtocolAdapter {
 
   async unwrap({
     protocolTokenAddress,
-    tokenId,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     return this.helpers.unwrapOneToOne({

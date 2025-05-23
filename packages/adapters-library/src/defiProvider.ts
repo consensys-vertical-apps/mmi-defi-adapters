@@ -13,6 +13,7 @@ import { AdaptersController } from './core/adaptersController'
 import { Chain, ChainName, EvmChain } from './core/constants/chains'
 import { ChecksumAddress } from './core/decorators/checksumAddress'
 import { ChainProvider } from './core/provider/ChainProvider'
+import { IUnwrapCache, MemoryUnwrapCache } from './core/unwrapCache'
 import { TrustWalletProtocolIconMap } from './core/utils/buildIconUrl'
 import { pascalCase } from './core/utils/caseConversion'
 import { filterMapAsync } from './core/utils/filters'
@@ -33,26 +34,20 @@ import {
   DefiPositionResponse,
   PricePerShareResponse,
 } from './types/response'
-import {
-  IUnwrapPriceCache,
-  IUnwrapPriceCacheProvider,
-  UnwrapPriceCache,
-} from './unwrapCache'
 
 export class DefiProvider {
-  private config: IConfig
+  private readonly config: IConfig
   chainProvider: ChainProvider
   adaptersController: AdaptersController
 
-  private metadataProviders: Record<Chain, IMetadataProvider>
-  private unwrapCache: IUnwrapPriceCache
-  private poolFilter: PoolFilter
-  private shouldUsePoolFilter: (adapter: IProtocolAdapter) => boolean
+  private readonly metadataProviders: Record<Chain, IMetadataProvider>
+  private readonly unwrapCache: IUnwrapCache
+  private readonly poolFilter: PoolFilter
+  private readonly shouldUsePoolFilter: (adapter: IProtocolAdapter) => boolean
 
   constructor({
     config,
     metadataProviderSettings,
-    unwrapCacheProvider,
     poolFilter,
   }: {
     config?: DeepPartial<IConfig>
@@ -63,7 +58,6 @@ export class DefiProvider {
         options: Database.Options
       }
     >
-    unwrapCacheProvider?: IUnwrapPriceCacheProvider
     poolFilter?: PoolFilter
   } = {}) {
     this.config = new Config(config).values
@@ -86,7 +80,7 @@ export class DefiProvider {
         adapter.adapterSettings.userEvent === 'Transfer'
     }
 
-    this.unwrapCache = new UnwrapPriceCache(unwrapCacheProvider)
+    this.unwrapCache = new MemoryUnwrapCache()
 
     this.adaptersController = new AdaptersController({
       evmProviders: this.chainProvider.providers,
@@ -139,10 +133,6 @@ export class DefiProvider {
   }): Promise<DefiPositionResponse[]> {
     const startTime = Date.now()
 
-    // TODO: We need to remove this. It can make the whole process crash if this function throws as it's not awaited
-    // It also does not need to be optimized for serverless
-    this.initAdapterControllerForUnwrapStage()
-
     const userPoolsByChain = (
       await filterMapAsync(Object.values(EvmChain), async (chainId) => {
         if (filterChainIds && !filterChainIds.includes(chainId)) {
@@ -178,7 +168,6 @@ export class DefiProvider {
       let positionsFetchedTime: number | undefined
       let rewardsFetchedTime: number | undefined
       let unwrapFinishedTime: number | undefined
-      let enrichTime: number | undefined
 
       const blockNumber = blockNumbers?.[adapter.chainId]
 
@@ -563,10 +552,6 @@ export class DefiProvider {
       success: false,
       error: adapterError,
     }
-  }
-
-  private initAdapterControllerForUnwrapStage() {
-    this.adaptersController.init()
   }
 
   private isSolanaAddress(address: string) {

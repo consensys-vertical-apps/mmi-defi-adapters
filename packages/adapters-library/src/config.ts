@@ -95,11 +95,6 @@ const ConfigSchema = z
       .default(
         parseBooleanEnv(process.env.DEFI_ADAPTERS_USE_MULTICALL_INTERCEPTOR),
       ),
-    useGetAllTransferLogs: z
-      .boolean()
-      .default(
-        parseBooleanEnv(process.env.DEFI_ADAPTERS_USE_GET_ALL_TRANSFER_LOGS),
-      ),
     rpcCallTimeoutInMs: z
       .number()
       .default(

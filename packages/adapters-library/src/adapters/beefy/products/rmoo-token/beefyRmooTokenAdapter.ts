@@ -116,7 +116,6 @@ export class BeefyRmooTokenAdapter implements IProtocolAdapter {
 
   async unwrap({
     protocolTokenAddress,
-    tokenId,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     const {
@@ -133,7 +132,6 @@ export class BeefyRmooTokenAdapter implements IProtocolAdapter {
 
     const mooTokenUwrapRes = await mooAdapter.unwrap({
       protocolTokenAddress: underlyingToken!.address,
-      tokenId,
       blockNumber,
     })
 
