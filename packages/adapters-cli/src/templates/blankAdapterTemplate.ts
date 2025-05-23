@@ -97,7 +97,6 @@ export function blankAdapterTemplate() {
 
       async unwrap({
         protocolTokenAddress,
-        tokenId,
         blockNumber,
       }: UnwrapInput): Promise<UnwrapExchangeRate> {
         return Replacements.UNWRAP.placeholder
