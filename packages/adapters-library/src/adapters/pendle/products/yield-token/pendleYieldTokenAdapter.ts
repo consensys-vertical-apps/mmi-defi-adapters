@@ -158,7 +158,7 @@ export class PendleYieldTokenAdapter implements IProtocolAdapter {
     } = await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const oracle = RouterStatic__factory.connect(
-      PENDLE_ROUTER_STATIC_CONTRACT,
+      PENDLE_ROUTER_STATIC_CONTRACT[this.chainId]!,
       this.provider,
     )
 
