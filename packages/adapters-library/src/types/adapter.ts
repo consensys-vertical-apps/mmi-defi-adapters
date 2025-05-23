@@ -64,11 +64,6 @@ export type UnwrapInput = {
    * Protocol token address (LP token address).
    */
   protocolTokenAddress: string
-
-  /**
-   * Optional filter for pools that will be queried by an ID
-   */
-  tokenId?: string
 }
 
 /**

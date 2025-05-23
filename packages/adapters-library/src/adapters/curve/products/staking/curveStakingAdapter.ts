@@ -158,7 +158,6 @@ export class CurveStakingAdapter implements IProtocolAdapter {
 
   async unwrap({
     protocolTokenAddress,
-    tokenId,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     const { underlyingTokens, ...protocolToken } =

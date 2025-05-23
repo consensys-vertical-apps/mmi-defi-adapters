@@ -109,7 +109,6 @@ export class RenzoEzEthAdapter implements IProtocolAdapter {
 
   async unwrap({
     protocolTokenAddress,
-    tokenId,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     const {

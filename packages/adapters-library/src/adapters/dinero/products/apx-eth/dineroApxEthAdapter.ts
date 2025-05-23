@@ -98,7 +98,6 @@ export class DineroApxEthAdapter implements IProtocolAdapter {
 
   async unwrap({
     protocolTokenAddress,
-    tokenId,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     return this.helpers.unwrapTokenAsRatio({
