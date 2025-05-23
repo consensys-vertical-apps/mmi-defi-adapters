@@ -169,7 +169,7 @@ export class DefiProvider {
       let rewardsFetchedTime: number | undefined
       let unwrapFinishedTime: number | undefined
 
-      const blockNumber = 19250308
+      const blockNumber = blockNumbers?.[adapter.chainId]
 
       try {
         const isSolanaAddress = this.isSolanaAddress(userAddress)
@@ -181,7 +181,7 @@ export class DefiProvider {
         }
 
         const protocolTokenAddresses = await this.getProtocolTokensFilter(
-          ['0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c'],
+          filterProtocolTokens,
           userPoolsByChain,
           adapter,
         )
@@ -233,7 +233,6 @@ export class DefiProvider {
           protocolPositions,
           'balanceRaw',
           this.unwrapCache,
-          this.config.includePrices,
         )
 
         const unwrapFinishedTime = Date.now()

@@ -175,7 +175,6 @@ const ConfigSchema = z
     enableRpcCache: z
       .boolean()
       .default(process.env.ENABLE_RPC_CACHE === 'true'),
-    includePrices: z.boolean().default(true),
   })
   .strict()
   .default({})
