@@ -6,6 +6,8 @@ import {
   ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
 } from '../errors/errors'
 import type { IUnwrapCache } from '../unwrapCache'
+import { extractErrorMessage } from './extractErrorMessage'
+import { logger } from './logger'
 
 type Token = Erc20Metadata & {
   tokens?: Token[]
@@ -163,10 +165,24 @@ async function fetchPrice(
     throw new Error(`Price adapter missing for chain ${adapter.chainId}`)
   }
 
-  const price = await unwrapCache.fetchPriceWithCache(priceAdapter, {
-    tokenMetadata: token,
-    blockNumber,
-  })
+  try {
+    const price = await unwrapCache.fetchPriceWithCache(priceAdapter, {
+      tokenMetadata: token,
+      blockNumber,
+    })
 
-  return price.tokens?.[0]?.underlyingRateRaw
+    return price.tokens![0]!.underlyingRateRaw
+  } catch (error) {
+    logger.debug(
+      {
+        error: extractErrorMessage(error),
+        blockNumber,
+        token,
+        chainId: adapter.chainId,
+        protocolId: adapter.protocolId,
+        productId: adapter.productId,
+      },
+      'Error getting price for underlying token',
+    )
+  }
 }
