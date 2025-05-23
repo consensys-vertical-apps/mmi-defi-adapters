@@ -1,0 +1,104 @@
+{
+  "blockNumber": 12929711,
+  "latency": "Latency: 30.29 seconds",
+  "aggregatedValues": [],
+  "snapshot": [
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "moo-token",
+      "chainName": "linea",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x3289Cc896E661e3a252609efA4380875F0ce66Ec",
+          "name": "Moo StargateV2 WETH",
+          "symbol": "mooStargateV2WETH",
+          "decimals": 18,
+          "balanceRaw": "740171648608789815n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "742917305032686149n",
+              "balance": 0.7429173050326862,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "balance": 0.7401716486087898
+        },
+        {
+          "address": "0x3d80b49fc4DC9E450efAc1BD34cdEB2F303c2E81",
+          "name": "Moo Mendi WETH",
+          "symbol": "mooMendiWETH",
+          "decimals": 18,
+          "balanceRaw": "755853080356746718n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "798483489398881384n",
+              "balance": 0.7984834893988814,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "balance": 0.7558530803567467
+        },
+        {
+          "address": "0xE7e6a718218d737945E6f039c161D3C3c550CBA8",
+          "name": "Moo Mendi USDC",
+          "symbol": "mooMendiUSDC",
+          "decimals": 18,
+          "balanceRaw": "129843249n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "141472650n",
+              "balance": 141.47265,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ],
+          "balance": 1.29843249e-10
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "b2b12a54639aae7dd76fe7471a2cc60c": {
+      "result": "0x0000000000000000000000000000000000000000000000000a459e315c246537"
+    },
+    "f9db193fed5278f7ad8bc389fac2008a": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000007bd4031"
+    },
+    "9acd2a668fe6a33daf2c2736c1e5550b": {
+      "result": "0x0000000000000000000000000000000000000000000000000a7d545f350c75de"
+    },
+    "ac7955172fc59ca72de353696d781458": {
+      "result": "0x0000000000000000000000000000000000000000000000000f1ee9886b2fe422"
+    },
+    "e1b88921c9f11d28e5442e8230d70a6a": {
+      "result": "0x0000000000000000000000000000000000000000000000000dede475af365179"
+    },
+    "1355a89f4bd9176cf4c752525b7ace6d": {
+      "result": "0x0000000000000000000000000000000000000000000000000ea9168eec1ddd82"
+    }
+  }
+}

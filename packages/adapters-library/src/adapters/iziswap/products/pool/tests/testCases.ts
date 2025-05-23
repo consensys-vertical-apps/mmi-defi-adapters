@@ -5,12 +5,10 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Linea,
     method: 'positions',
-
     input: {
-      userAddress: '0x4159f5DF51faB9b89335990FFFaf1Eb66008A4b1',
+      userAddress: '0x9bb2fac54f168bce6986c3856fcb42d5c365b689',
       filterProtocolTokens: ['0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c'],
     },
-
-    blockNumber: 19250308,
+    blockNumber: 1119633,
   },
 ]
