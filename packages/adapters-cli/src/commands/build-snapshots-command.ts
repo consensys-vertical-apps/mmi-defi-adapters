@@ -93,7 +93,6 @@ export function buildSnapshotsCommand(
               useMulticallInterceptor: false,
               disableEthersBatching: true,
             },
-            poolFilter: () => Promise.resolve(undefined),
           })
 
           const msw = startRpcSnapshot(
