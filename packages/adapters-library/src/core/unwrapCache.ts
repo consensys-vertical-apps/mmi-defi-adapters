@@ -6,6 +6,8 @@ import type { IProtocolAdapter } from '../types/IProtocolAdapter'
 import type { UnwrapExchangeRate, UnwrapInput } from '../types/adapter'
 import type { Chain } from './constants/chains'
 
+const TEN_MINUTES_IN_MS = 10 * 60 * 1000
+
 export interface IUnwrapCache {
   fetchUnwrapWithCache(
     adapter: IProtocolAdapter,
@@ -24,7 +26,7 @@ export class MemoryUnwrapCache implements IUnwrapCache {
   >
   private readonly expiryTimeInMs: number
 
-  constructor(expiryTimeInMs = 600_000) {
+  constructor(expiryTimeInMs = TEN_MINUTES_IN_MS) {
     this.cache = new Map()
     this.expiryTimeInMs = expiryTimeInMs
   }

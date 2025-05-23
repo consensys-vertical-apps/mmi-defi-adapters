@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, Mock, vi } from 'vitest'
+import { Mock, afterEach, describe, expect, it, vi } from 'vitest'
 import { fetchWithRetry } from './fetchWithRetry'
 
 describe('fetchWithRetry', () => {

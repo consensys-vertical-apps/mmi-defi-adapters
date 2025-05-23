@@ -48,7 +48,6 @@ export class DefiProvider {
   constructor({
     config,
     metadataProviderSettings,
-    unwrapCache,
     poolFilter,
   }: {
     config?: DeepPartial<IConfig>
@@ -59,7 +58,6 @@ export class DefiProvider {
         options: Database.Options
       }
     >
-    unwrapCache?: IUnwrapCache
     poolFilter?: PoolFilter
   } = {}) {
     this.config = new Config(config).values
@@ -82,7 +80,7 @@ export class DefiProvider {
         adapter.adapterSettings.userEvent === 'Transfer'
     }
 
-    this.unwrapCache = unwrapCache ?? new MemoryUnwrapCache(600_000)
+    this.unwrapCache = new MemoryUnwrapCache()
 
     this.adaptersController = new AdaptersController({
       evmProviders: this.chainProvider.providers,
@@ -171,7 +169,7 @@ export class DefiProvider {
       let rewardsFetchedTime: number | undefined
       let unwrapFinishedTime: number | undefined
 
-      const blockNumber = blockNumbers?.[adapter.chainId]
+      const blockNumber = 19250308
 
       try {
         const isSolanaAddress = this.isSolanaAddress(userAddress)
@@ -183,7 +181,7 @@ export class DefiProvider {
         }
 
         const protocolTokenAddresses = await this.getProtocolTokensFilter(
-          filterProtocolTokens,
+          ['0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c'],
           userPoolsByChain,
           adapter,
         )
