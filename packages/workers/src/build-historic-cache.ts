@@ -4,6 +4,7 @@ import type { Logger } from 'pino'
 import { fetchEvents } from './fetch-events.js'
 import { parseUserEventLog } from './parse-user-event-log.js'
 import type { CacheClient, JobDbEntry } from './postgres-cache-client.js'
+import { extractErrorMessage } from './extractErrorMessage.js'
 
 const SIXTY_SECONDS = 60_000
 
@@ -154,8 +155,7 @@ export async function buildHistoricCache(
               } catch (error) {
                 logger.error(
                   {
-                    error:
-                      error instanceof Error ? error.message : String(error),
+                    error: extractErrorMessage(error),
                     txHash: log.transactionHash,
                     eventAbi,
                     userAddressIndex,
@@ -196,7 +196,7 @@ export async function buildHistoricCache(
             totalBatches,
             batchSize: contractAddresses.length,
             totalPools: poolAddresses.length,
-            error: error instanceof Error ? error.message : String(error),
+            error: extractErrorMessage(error),
           },
           'Fetching logs from pools batch failed',
         )

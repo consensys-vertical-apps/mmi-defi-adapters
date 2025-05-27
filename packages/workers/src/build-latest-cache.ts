@@ -4,6 +4,7 @@ import type { Logger } from 'pino'
 import { BlockRunner } from './block-runner.js'
 import { parseUserEventLog } from './parse-user-event-log.js'
 import type { CacheClient } from './postgres-cache-client.js'
+import { extractErrorMessage } from './extractErrorMessage.js'
 
 export async function buildLatestCache(
   provider: JsonRpcProvider,
@@ -105,7 +106,7 @@ async function processBlockFn({
       } catch (error) {
         logger.error(
           {
-            error: error instanceof Error ? error.message : String(error),
+            error: extractErrorMessage(error),
             txHash: log.transactionHash,
             eventAbi,
             userAddressIndex,

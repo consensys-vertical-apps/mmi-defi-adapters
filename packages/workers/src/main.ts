@@ -1,6 +1,7 @@
 import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
 import { logger } from './logger.js'
 import { runner } from './runner.js'
+import { extractErrorMessage } from './extractErrorMessage.js'
 
 if (!process.env.CACHE_DATABASE_URL) {
   logger.error('CACHE_DATABASE_URL is required')
@@ -19,6 +20,11 @@ await Promise.all(
       process.env.CACHE_DATABASE_URL!,
       chainId,
       childLogger,
-    )
+    ).catch((error) => {
+      childLogger.error(
+        { error: extractErrorMessage(error) },
+        'Runner execution failed',
+      )
+    })
   }),
 )
