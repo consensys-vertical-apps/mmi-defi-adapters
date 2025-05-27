@@ -7,12 +7,12 @@ import { Interface, JsonRpcProvider, Network, id } from 'ethers'
 import type { Logger } from 'pino'
 import { buildHistoricCache } from './build-historic-cache.js'
 import { buildLatestCache } from './build-latest-cache.js'
+import { extractErrorMessage } from './extractErrorMessage.js'
 import { logger } from './logger.js'
 import {
   type CacheClient,
   createPostgresCacheClient,
 } from './postgres-cache-client.js'
-import { extractErrorMessage } from './extractErrorMessage.js'
 
 export async function runner(
   defiProvider: DefiProvider,

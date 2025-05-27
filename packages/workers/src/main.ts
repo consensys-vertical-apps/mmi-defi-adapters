@@ -1,7 +1,7 @@
 import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
+import { extractErrorMessage } from './extractErrorMessage.js'
 import { logger } from './logger.js'
 import { runner } from './runner.js'
-import { extractErrorMessage } from './extractErrorMessage.js'
 
 if (!process.env.CACHE_DATABASE_URL) {
   logger.error('CACHE_DATABASE_URL is required')

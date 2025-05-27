@@ -2,9 +2,9 @@ import { type EvmChain } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
 import type { Logger } from 'pino'
 import { BlockRunner } from './block-runner.js'
+import { extractErrorMessage } from './extractErrorMessage.js'
 import { parseUserEventLog } from './parse-user-event-log.js'
 import type { CacheClient } from './postgres-cache-client.js'
-import { extractErrorMessage } from './extractErrorMessage.js'
 
 export async function buildLatestCache(
   provider: JsonRpcProvider,
