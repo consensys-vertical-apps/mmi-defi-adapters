@@ -9,7 +9,6 @@ export type {
   DefiPositionResponse,
   Support,
 } from './types/response'
-export type { IUnwrapPriceCacheProvider as IUnwrapCacheProvider } from './unwrapCache'
 export {
   chainFilter,
   protocolFilter,

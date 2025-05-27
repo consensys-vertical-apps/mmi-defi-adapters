@@ -169,10 +169,6 @@ export class AdaptersController {
     protocolAdapters.set(productId, adapter)
   }
 
-  async init() {
-    await this.buildProtocolTokens()
-  }
-
   async fetchTokenAdapter(
     chainId: Chain,
     tokenAddress: string,

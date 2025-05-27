@@ -4,6 +4,7 @@ import {
 } from '@metamask-institutional/defi-adapters'
 import type { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
+import { extractErrorMessage } from './extractErrorMessage.js'
 
 const SIXTY_SECONDS = 60_000
 
@@ -67,7 +68,10 @@ export class BlockRunner {
           break // Exit loop when a new block is found
         }
       } catch (error) {
-        this._logger.error({ error }, 'Error fetching block number')
+        this._logger.error(
+          { error: extractErrorMessage(error) },
+          'Error fetching block number',
+        )
       }
 
       // Wait with exponential backoff before retrying
@@ -172,7 +176,10 @@ export class BlockRunner {
         )
       } catch (error) {
         // Handle any errors that occur during execution
-        this._logger.error({ error }, 'Error in interval execution')
+        this._logger.error(
+          { error: extractErrorMessage(error) },
+          'Error in interval execution',
+        )
       } finally {
         // Schedule the next execution
         setTimeout(runInterval, SIXTY_SECONDS)

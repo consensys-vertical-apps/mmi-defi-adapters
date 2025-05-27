@@ -234,7 +234,6 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
 
   async unwrap({
     protocolTokenAddress,
-    tokenId,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
