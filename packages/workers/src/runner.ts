@@ -7,6 +7,7 @@ import { Interface, JsonRpcProvider, Network, id } from 'ethers'
 import type { Logger } from 'pino'
 import { buildHistoricCache } from './build-historic-cache.js'
 import { buildLatestCache } from './build-latest-cache.js'
+import { extractErrorMessage } from './extractErrorMessage.js'
 import { logger } from './logger.js'
 import {
   type CacheClient,
@@ -54,8 +55,22 @@ export async function runner(
   logger.info({ totalJobs: pools.length, newJobs: newPools }, 'Jobs updated')
 
   await Promise.all([
-    buildHistoricCache(provider, chainId, cacheClient, logger),
-    buildLatestCache(provider, chainId, cacheClient, blockNumber, logger),
+    buildHistoricCache(provider, chainId, cacheClient, logger).catch(
+      (error) => {
+        logger.error(
+          { error: extractErrorMessage(error) },
+          'Error occurred building historic cache',
+        )
+      },
+    ),
+    buildLatestCache(provider, chainId, cacheClient, blockNumber, logger).catch(
+      (error) => {
+        logger.error(
+          { error: extractErrorMessage(error) },
+          'Error occurred building latest block cache',
+        )
+      },
+    ),
   ])
 }
 
