@@ -534,6 +534,12 @@ export const supportedProtocols: Record<
       PendleStandardisedYieldTokenAdapter,
       PendleLpTokenAdapter,
     ],
+    [Chain.Base]: [
+      PendleYieldTokenAdapter,
+      PendlePrincipleTokenAdapter,
+      PendleStandardisedYieldTokenAdapter,
+      PendleLpTokenAdapter,
+    ],
   },
 
   [Protocol.QuickswapV2]: {

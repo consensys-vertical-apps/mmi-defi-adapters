@@ -111,11 +111,10 @@ export class PendlePrincipleTokenAdapter implements IProtocolAdapter {
     } = await this.getProtocolTokenByAddress(protocolTokenAddress)
 
     const oracle = RouterStatic__factory.connect(
-      PENDLE_ROUTER_STATIC_CONTRACT,
+      PENDLE_ROUTER_STATIC_CONTRACT[this.chainId]!,
       this.provider,
     )
 
-    // missing block number atm
     const rate = await oracle.getPtToSyRate(marketAddress, {
       blockTag: blockNumber,
     })
