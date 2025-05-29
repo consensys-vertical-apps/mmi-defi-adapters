@@ -7,13 +7,19 @@ import { Interface, JsonRpcProvider, Network, id } from 'ethers'
 import type { Logger } from 'pino'
 import { buildHistoricCache } from './build-historic-cache.js'
 import { buildLatestCache } from './build-latest-cache.js'
+import { extractErrorMessage } from './extractErrorMessage.js'
 import { logger } from './logger.js'
 import {
   type CacheClient,
   createPostgresCacheClient,
 } from './postgres-cache-client.js'
 
-export async function runner(dbUrl: string, chainId: EvmChain, logger: Logger) {
+export async function runner(
+  defiProvider: DefiProvider,
+  dbUrl: string,
+  chainId: EvmChain,
+  logger: Logger,
+) {
   logger.info('Starting runner')
 
   const cacheClient = await createPostgresCacheClient({
@@ -26,19 +32,9 @@ export async function runner(dbUrl: string, chainId: EvmChain, logger: Logger) {
     logger,
   })
 
-  // TODO: Remove this once we have support for BSC and Fantom
-  if (chainId === Chain.Bsc || chainId === Chain.Fantom) {
-    logger.warn('Chain not supported')
-
-    return
-  }
-
-  const defiProvider = new DefiProvider()
-
   const providerUrl =
     defiProvider.chainProvider.providers[chainId]?._getConnection().url
 
-  // TODO: Should exit even before getting this far
   if (!providerUrl) {
     logger.error('Provider missing for this chain')
     return
@@ -59,8 +55,22 @@ export async function runner(dbUrl: string, chainId: EvmChain, logger: Logger) {
   logger.info({ totalJobs: pools.length, newJobs: newPools }, 'Jobs updated')
 
   await Promise.all([
-    buildHistoricCache(provider, chainId, cacheClient, logger),
-    buildLatestCache(provider, chainId, cacheClient, blockNumber, logger),
+    buildHistoricCache(provider, chainId, cacheClient, logger).catch(
+      (error) => {
+        logger.error(
+          { error: extractErrorMessage(error) },
+          'Error occurred building historic cache',
+        )
+      },
+    ),
+    buildLatestCache(provider, chainId, cacheClient, blockNumber, logger).catch(
+      (error) => {
+        logger.error(
+          { error: extractErrorMessage(error) },
+          'Error occurred building latest block cache',
+        )
+      },
+    ),
   ])
 }
 

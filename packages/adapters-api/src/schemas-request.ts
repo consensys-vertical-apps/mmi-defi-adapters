@@ -32,19 +32,17 @@ export const GetPositionsParamsSchema = z
 
 export const GetPositionsQuerySchema = z
   .object({
+    filterChainIds: parseAndCheck(z.array(z.nativeEnum(Chain)).optional()),
     filterProtocolIds: parseAndCheck(
       z.array(z.nativeEnum(Protocol)).optional(),
     ),
     filterProductIds: parseAndCheck(z.array(z.string()).optional()),
-    filterChainIds: parseAndCheck(z.array(z.nativeEnum(Chain)).optional()),
-    blockNumbers: parseAndCheck(z.record(z.string(), z.number()).optional()),
     filterProtocolTokens: parseAndCheck(z.array(z.string()).optional()),
-    filterTokenIds: parseAndCheck(z.array(z.string()).optional()),
   })
   .strict()
 
 export const GetSupportQuerySchema = z.object({
-  filterProtocolIds: parseAndCheck(z.array(z.nativeEnum(Protocol))).optional(),
   filterChainIds: parseAndCheck(z.array(z.nativeEnum(Chain)).optional()),
+  filterProtocolIds: parseAndCheck(z.array(z.nativeEnum(Protocol))).optional(),
   includeProtocolTokens: parseAndCheck(z.boolean().optional()),
 })

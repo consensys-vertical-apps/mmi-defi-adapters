@@ -104,7 +104,7 @@ export class DeriPoolAdapter implements IProtocolAdapter {
 
   adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
-    userEvent: 'Transfer',
+    userEvent: false,
   }
 
   adaptersController: AdaptersController

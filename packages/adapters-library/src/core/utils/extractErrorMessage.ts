@@ -3,4 +3,4 @@ export const extractErrorMessage = (error: unknown): string =>
     ? error.message
     : typeof error === 'string'
       ? error
-      : 'Cannot extract error message'
+      : String(error)

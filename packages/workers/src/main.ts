@@ -1,4 +1,5 @@
-import { EvmChain } from '@metamask-institutional/defi-adapters'
+import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
+import { extractErrorMessage } from './extractErrorMessage.js'
 import { logger } from './logger.js'
 import { runner } from './runner.js'
 
@@ -9,9 +10,21 @@ if (!process.env.CACHE_DATABASE_URL) {
 
 logger.info('Starting workers')
 
+const defiProvider = new DefiProvider()
+
 await Promise.all(
   Object.values(EvmChain).map(async (chainId) => {
     const childLogger = logger.child({ chainId })
-    await runner(process.env.CACHE_DATABASE_URL!, chainId, childLogger)
+    await runner(
+      defiProvider,
+      process.env.CACHE_DATABASE_URL!,
+      chainId,
+      childLogger,
+    ).catch((error) => {
+      childLogger.error(
+        { error: extractErrorMessage(error) },
+        'Runner execution failed',
+      )
+    })
   }),
 )

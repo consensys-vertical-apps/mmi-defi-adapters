@@ -1,24 +1,25 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
+import { E_ADDRESS } from '../../../../core/constants/E_ADDRESS'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
-
-import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-
 import { Helpers } from '../../../../core/helpers'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { extractErrorMessage } from '../../../../core/utils/extractErrorMessage'
+import { fetchWithRetry } from '../../../../core/utils/fetchWithRetry'
+import { logger } from '../../../../core/utils/logger'
 import { nativeTokenAddresses } from '../../../../core/utils/nativeTokens'
-
 import {
   AdapterSettings,
   TokenType,
   UnwrapExchangeRate,
 } from '../../../../types/adapter'
-
-import { logger } from '../../../../core/utils/logger'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { ChainLink__factory, OneInchOracle__factory } from '../../contracts'
 import { priceAdapterConfig } from './priceV2Config'
 
 export const USD = 'USD'
+const BASE_URL = 'https://price-api.metafi.codefi.network'
 
 export interface SpotPrice {
   allTimeHigh?: number
@@ -43,9 +44,8 @@ export interface SpotPrice {
 }
 
 export interface GetSpotPriceByAddressInput {
-  tokenAddresses: string
+  tokenAddress: string
   vsCurrency?: string
-  chainId: number
 }
 
 export type PricesInput = {
@@ -106,32 +106,53 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
   }
 
   private async getSpotPriceByAddress({
-    tokenAddresses,
+    tokenAddress,
     vsCurrency = 'usd',
-    chainId,
   }: GetSpotPriceByAddressInput): Promise<SpotPrice | null> {
-    const baseUrl = 'https://price-api.metafi.codefi.network'
-    const url = `${baseUrl}/v1/chains/${chainId}/spot-prices/${tokenAddresses}`
+    const url = new URL(
+      `${BASE_URL}/v1/chains/${this.chainId}/spot-prices/${
+        tokenAddress === E_ADDRESS ? ZERO_ADDRESS : tokenAddress
+      }`,
+    )
+    url.searchParams.append('vsCurrency', vsCurrency)
+
+    logger.info(
+      {
+        tokenAddress,
+        currency: vsCurrency,
+        chainId: this.chainId,
+        url: url.toString(),
+      },
+      'Fetching spot prices',
+    )
 
     try {
-      const params = new URLSearchParams()
-      if (vsCurrency) params.append('vsCurrency', vsCurrency)
-
-      const response = await fetch(`${url}?${params.toString()}`, {
+      const response = await fetchWithRetry(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
       })
 
-      if (!response.ok) {
-        throw new Error(`Error fetching spot price: ${response.statusText}`)
+      if (!response.ok || response.status === 204) {
+        throw new Error(
+          `Error fetching spot price - ${response.status} - ${response.statusText}`,
+        )
       }
 
       const data: SpotPrice = await response.json()
       return data
     } catch (error) {
-      logger.error(error, 'Failed to fetch spot price')
+      logger.error(
+        {
+          tokenAddress,
+          currency: vsCurrency,
+          chainId: this.chainId,
+          url: url.toString(),
+          error: extractErrorMessage(error),
+        },
+        'Failed to fetch spot price',
+      )
       return null
     }
   }
@@ -157,14 +178,13 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
     tokenMetadata: Erc20Metadata
   }): Promise<UnwrapExchangeRate> {
     if (!blockNumber) {
-      const getSpotPriceByAddress = await this.getSpotPriceByAddress({
-        tokenAddresses: tokenMetadata.address,
-        chainId: this.chainId,
+      const spotPriceByAddress = await this.getSpotPriceByAddress({
+        tokenAddress: tokenMetadata.address,
       })
 
-      if (getSpotPriceByAddress) {
+      if (spotPriceByAddress) {
         const priceAdapterPrice = BigInt(
-          getSpotPriceByAddress.price *
+          spotPriceByAddress.price *
             10 **
               priceAdapterConfig[
                 this.chainId as keyof typeof priceAdapterConfig
@@ -200,6 +220,15 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
         `Onchain price adapter config not found for chain ${this.chainId}`,
       )
     }
+
+    logger.info(
+      {
+        tokenAddress: tokenMetadata.address,
+        vsCurrency: USD,
+        chainId: this.chainId,
+      },
+      'Fetching on-chain prices',
+    )
 
     const [erc20TokenPriceInEth, ethPriceUSD] = await Promise.all([
       this.getTokenPriceInEth({

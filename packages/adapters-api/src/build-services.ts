@@ -4,16 +4,11 @@ import { createDbPool } from '@metamask-institutional/workers'
 import pg from 'pg'
 import { NoDbService, PostgresService } from './db-service.js'
 import { logger } from './logger.js'
-import { buildMemoryUnwrapCacheProvider } from './memory-unwrap-price-cache-provider.js'
 
 export function buildServices() {
-  const unwrapCacheProvider = buildMemoryUnwrapCacheProvider()
-
   if (process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE !== 'true') {
     const dbService = new NoDbService()
-    const defiProvider = new DefiProvider({
-      unwrapCacheProvider,
-    })
+    const defiProvider = new DefiProvider()
 
     return {
       dbService,
@@ -28,7 +23,6 @@ export function buildServices() {
   const dbService = new PostgresService(buildDbPools())
   const defiProvider = new DefiProvider({
     poolFilter: dbService.getAddressChainPools.bind(dbService),
-    unwrapCacheProvider,
   })
 
   return {

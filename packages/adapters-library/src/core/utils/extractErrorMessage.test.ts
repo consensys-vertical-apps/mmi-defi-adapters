@@ -19,11 +19,11 @@ describe('extractErrorMessage', () => {
     expect(result).toEqual(errorMessage)
   })
 
-  it('returns default message if error cannot be extracted', async () => {
+  it('stringifies error if it is not an instance of Error or a string', async () => {
     const error = 25n
 
     const result = extractErrorMessage(error)
 
-    expect(result).toEqual('Cannot extract error message')
+    expect(result).toEqual('25')
   })
 })
