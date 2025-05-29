@@ -36,8 +36,13 @@ export async function buildLatestCache(
         cacheClient,
         logger,
       }),
-    onError: async (latestSafeProcessedBlock: number) =>
-      cacheClient.updateLatestBlockProcessed(latestSafeProcessedBlock),
+    onError: async (latestSafeProcessedBlock: number) => {
+      logger.info(
+        { latestSafeProcessedBlock },
+        'Rewinding latest safe processing block',
+      )
+      await cacheClient.updateLatestBlockProcessed(latestSafeProcessedBlock)
+    },
     logger,
   })
 
