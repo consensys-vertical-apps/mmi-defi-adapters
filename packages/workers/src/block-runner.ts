@@ -76,7 +76,7 @@ export class BlockRunner {
 
       // Wait with exponential backoff before retrying
       await new Promise((resolve) => setTimeout(resolve, backoff))
-      backoff = Math.min(backoff * 2, 60000) // Cap at 1 minute
+      backoff = Math.min(backoff * 2, SIXTY_SECONDS)
     }
 
     return true
@@ -159,34 +159,20 @@ export class BlockRunner {
   private setLogInterval() {
     const BLOCKS_PER_HOUR = AVERAGE_BLOCKS_PER_DAY[this._chainId] / 24
 
-    const runInterval = async () => {
-      try {
-        const currentHeadBlock = await this._provider.getBlockNumber()
-        const blocksLagging = currentHeadBlock - this._processingBlockNumber
-        const lagInHours = (blocksLagging / BLOCKS_PER_HOUR).toFixed(1)
+    setInterval(() => {
+      const blocksLagging =
+        (this._latestBlockNumber ?? 0) - this._processingBlockNumber
+      const lagInHours = (blocksLagging / BLOCKS_PER_HOUR).toFixed(1)
 
-        this._logger.info(
-          {
-            lagInHours,
-            blocksLagging,
-            blocksPerHour: BLOCKS_PER_HOUR,
-            currentHeadBlock,
-          },
-          'Latest block cache update',
-        )
-      } catch (error) {
-        // Handle any errors that occur during execution
-        this._logger.error(
-          { error: extractErrorMessage(error) },
-          'Error in interval execution',
-        )
-      } finally {
-        // Schedule the next execution
-        setTimeout(runInterval, SIXTY_SECONDS)
-      }
-    }
-
-    // Start the first execution
-    setTimeout(runInterval, SIXTY_SECONDS)
+      this._logger.info(
+        {
+          lagInHours,
+          blocksLagging,
+          blocksPerHour: BLOCKS_PER_HOUR,
+          currentHeadBlock: this._latestBlockNumber,
+        },
+        'Latest block cache update',
+      )
+    }, SIXTY_SECONDS)
   }
 }
