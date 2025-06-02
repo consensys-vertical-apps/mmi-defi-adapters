@@ -1,3 +1,4 @@
+import { parentPort } from 'node:worker_threads'
 import { type EvmChain } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
 import type { Logger } from 'pino'
@@ -30,6 +31,7 @@ export async function buildLatestCache(
     chainId,
     processBlockFn: async (blockNumber) =>
       processBlockFn({
+        chainId,
         provider,
         blockNumber,
         userIndexMap,
@@ -54,12 +56,14 @@ function createWatchKey(contractAddress: string, topic0: string): string {
 }
 
 async function processBlockFn({
+  chainId,
   provider,
   blockNumber,
   userIndexMap,
   cacheClient,
   logger,
 }: {
+  chainId: EvmChain
   provider: JsonRpcProvider
   blockNumber: number
   userIndexMap: Map<
@@ -142,4 +146,9 @@ async function processBlockFn({
     },
     'Processed block',
   )
+
+  parentPort?.postMessage({
+    chainId,
+    blockNumber,
+  })
 }

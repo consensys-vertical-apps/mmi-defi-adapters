@@ -27,6 +27,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.workers
+    ports:
+      - "3001:3000"
     environment:
       - DEFI_ADAPTERS_PROVIDER_ETHEREUM
       - DEFI_ADAPTERS_PROVIDER_OPTIMISM

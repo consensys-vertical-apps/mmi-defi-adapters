@@ -55,22 +55,33 @@ export async function runner(
   logger.info({ totalJobs: pools.length, newJobs: newPools }, 'Jobs updated')
 
   await Promise.all([
-    buildHistoricCache(provider, chainId, cacheClient, logger).catch(
-      (error) => {
-        logger.error(
-          { error: extractErrorMessage(error) },
-          'Error occurred building historic cache',
-        )
-      },
-    ),
-    buildLatestCache(provider, chainId, cacheClient, blockNumber, logger).catch(
-      (error) => {
-        logger.error(
-          { error: extractErrorMessage(error) },
-          'Error occurred building latest block cache',
-        )
-      },
-    ),
+    buildHistoricCache(
+      provider,
+      chainId,
+      cacheClient,
+      logger.child({
+        subService: 'historic-cache',
+      }),
+    ).catch((error) => {
+      logger.error(
+        { error: extractErrorMessage(error) },
+        'Error occurred building historic cache',
+      )
+    }),
+    buildLatestCache(
+      provider,
+      chainId,
+      cacheClient,
+      blockNumber,
+      logger.child({
+        subService: 'latest-cache',
+      }),
+    ).catch((error) => {
+      logger.error(
+        { error: extractErrorMessage(error) },
+        'Error occurred building latest block cache',
+      )
+    }),
   ])
 }
 

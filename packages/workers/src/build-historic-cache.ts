@@ -69,7 +69,7 @@ export async function buildHistoricCache(
     )
 
     if (!nextPoolGroup) {
-      await new Promise((resolve) => setTimeout(resolve, 30000))
+      await new Promise((resolve) => setTimeout(resolve, SIXTY_SECONDS))
       continue
     }
 
