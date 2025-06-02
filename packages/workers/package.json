@@ -17,10 +17,14 @@
     "pino-pretty": "^13.0.0"
   },
   "dependencies": {
+    "@hono/node-server": "^1.14.3",
     "@metamask-institutional/defi-adapters": "*",
     "async-mutex": "^0.5.0",
     "ethers": "^6.7.1",
+    "hono": "^4.7.11",
+    "hono-pino": "^0.8.0",
     "pg": "^8.14.1",
-    "pino": "^9.6.0"
+    "pino": "^9.6.0",
+    "prom-client": "^15.1.3"
   }
 }
