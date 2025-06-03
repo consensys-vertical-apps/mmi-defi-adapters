@@ -6,6 +6,7 @@ import { BlockRunner } from './block-runner.js'
 import { extractErrorMessage } from './extractErrorMessage.js'
 import { parseUserEventLog } from './parse-user-event-log.js'
 import type { CacheClient } from './postgres-cache-client.js'
+import { withTimeout } from './with-timeout.js'
 
 export async function buildLatestCache(
   provider: JsonRpcProvider,
@@ -77,9 +78,11 @@ async function processBlockFn({
   logger: Logger
 }): Promise<void> {
   const startTime = Date.now()
-  const receipts = (await provider.send('eth_getBlockReceipts', [
-    `0x${ethers.toBeHex(blockNumber).slice(2).replace(/^0+/, '')}`, // some chains need to remove leading zeros like ftm
-  ])) as TransactionReceipt[]
+  const receipts: TransactionReceipt[] = await withTimeout(
+    provider.send('eth_getBlockReceipts', [
+      `0x${ethers.toBeHex(blockNumber).slice(2).replace(/^0+/, '')}`, // some chains need to remove leading zeros like ftm
+    ]),
+  )
 
   const receiptsFetchTime = Date.now()
 

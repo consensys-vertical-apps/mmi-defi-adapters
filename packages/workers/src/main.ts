@@ -46,7 +46,7 @@ const app = buildApi(workersInfo)
 serve(
   {
     fetch: app.fetch,
-    port: process.env.PORT ? Number(process.env.PORT) : 3000,
+    port: process.env.PORT ? Number(process.env.PORT) : 4000,
   },
   (info) => {
     logger.info({ port: info.port }, 'Workers API server is running')

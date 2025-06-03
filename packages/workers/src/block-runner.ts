@@ -5,6 +5,7 @@ import {
 import type { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
 import { extractErrorMessage } from './extractErrorMessage.js'
+import { withTimeout } from './with-timeout.js'
 
 const SIXTY_SECONDS = 60_000
 
@@ -51,7 +52,9 @@ export class BlockRunner {
 
     // Initialize latest block number if not already set
     if (!this._latestBlockNumber) {
-      this._latestBlockNumber = await this._provider.getBlockNumber()
+      this._latestBlockNumber = await withTimeout(
+        this._provider.getBlockNumber(),
+      )
     }
 
     // If the current block is already processable, return it
@@ -61,7 +64,7 @@ export class BlockRunner {
 
     while (this._processingBlockNumber > this._latestBlockNumber) {
       try {
-        const blockNumber = await this._provider.getBlockNumber()
+        const blockNumber = await withTimeout(this._provider.getBlockNumber())
 
         if (blockNumber > this._latestBlockNumber) {
           this._latestBlockNumber = blockNumber
@@ -84,7 +87,7 @@ export class BlockRunner {
 
   async start() {
     // Initialize latest block number
-    this._latestBlockNumber = await this._provider.getBlockNumber()
+    this._latestBlockNumber = await withTimeout(this._provider.getBlockNumber())
 
     this.setLogInterval()
 
