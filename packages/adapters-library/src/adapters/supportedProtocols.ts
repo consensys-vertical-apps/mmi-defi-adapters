@@ -312,6 +312,7 @@ export const supportedProtocols: Record<
 
   [Protocol.CarbonDeFi]: {
     [Chain.Ethereum]: [CarbonDeFiStrategiesAdapter],
+    [Chain.Sei]: [CarbonDeFiStrategiesAdapter],
   },
 
   [Protocol.ChimpExchange]: {
