@@ -67,9 +67,25 @@ export const count = {
       maxRequestTime: 0,
     },
   },
-
   [Chain.Fantom]: {
     name: 'Fantom',
+    multicallRequests: {
+      total: 0,
+      totalInternalRequest: 0,
+      maxRequestTime: 0,
+    },
+    nonMulticallRequests: {
+      total: 0,
+      maxRequestTime: 0,
+    },
+    logRequests: {
+      total: 0,
+
+      maxRequestTime: 0,
+    },
+  },
+  [Chain.Sei]: {
+    name: 'Sei',
     multicallRequests: {
       total: 0,
       totalInternalRequest: 0,

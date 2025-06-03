@@ -19,6 +19,7 @@ const MaxContractsPerCall: Record<EvmChain, number> = {
   [EvmChain.Bsc]: 10,
   [EvmChain.Polygon]: 5,
   [EvmChain.Fantom]: 10,
+  [EvmChain.Sei]: 10,
   [EvmChain.Base]: 10,
   [EvmChain.Arbitrum]: 10,
   [EvmChain.Avalanche]: 10,
