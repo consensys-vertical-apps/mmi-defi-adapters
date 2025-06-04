@@ -5,10 +5,10 @@ import {
   multiProtocolFilter,
   multiProtocolTokenAddressFilter,
 } from '@metamask-institutional/defi-adapters'
+import { buildPostgresPoolFilter } from '@metamask-institutional/workers'
 import type { Command } from 'commander'
 import { startRpcSnapshot } from '../utils/rpc-interceptor.js'
 import { extractRpcMetrics } from './build-scoreboard-command.js'
-import { buildPostgresPoolFilter } from '@metamask-institutional/workers'
 
 export function libraryCommands(program: Command) {
   program
