@@ -13,10 +13,7 @@ import { writeAndLintFile } from '../utils/write-and-lint-file.js'
 
 import n = types.namedTypes
 
-export function blockAverageCommand(
-  program: Command,
-  defiProvider: DefiProvider,
-) {
+export function blockAverageCommand(program: Command) {
   program
     .command('block-average')
     .option(
@@ -26,6 +23,8 @@ export function blockAverageCommand(
     .showHelpAfterError()
     .action(async ({ chains: chainFilterInput }) => {
       const filterChainIds = multiChainFilter(chainFilterInput)
+
+      const defiProvider = new DefiProvider()
 
       const averageBlocksPerDayMap = await Object.values(EvmChain)
         .filter((chainId) => {

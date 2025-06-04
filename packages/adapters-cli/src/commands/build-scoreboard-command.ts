@@ -32,10 +32,7 @@ type RpcMetrics = {
   totalGas: string
 }
 
-export function buildScoreboardCommand(
-  program: Command,
-  defiProvider: DefiProvider,
-) {
+export function buildScoreboardCommand(program: Command) {
   program
     .command('build-scoreboard')
     .option(
@@ -50,6 +47,8 @@ export function buildScoreboardCommand(
     .action(async ({ protocols, products }) => {
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterProductIds = (products as string | undefined)?.split(',')
+
+      const defiProvider = new DefiProvider()
 
       const allProtocols = await defiProvider.getSupport({ filterProtocolIds })
       const allProducts = Object.values(allProtocols).flatMap(

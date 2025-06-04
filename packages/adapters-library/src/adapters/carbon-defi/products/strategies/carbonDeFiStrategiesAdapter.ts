@@ -38,6 +38,10 @@ const contractAddresses: Partial<
     carbonControllerAddress: '0xC537e898CD774e2dCBa3B14Ea6f34C93d5eA45e1',
     voucherContractAddress: '0x3660F04B79751e31128f6378eAC70807e38f554E',
   },
+  [Chain.Sei]: {
+    carbonControllerAddress: '0xe4816658ad10bF215053C533cceAe3f59e1f1087',
+    voucherContractAddress: '0xA4682A2A5Fe02feFF8Bd200240A41AD0E6EaF8d5',
+  },
 }
 
 const StrategyUpdateReasonEdit = 0n
