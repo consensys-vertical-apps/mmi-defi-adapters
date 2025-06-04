@@ -168,6 +168,15 @@ export const staticChainDataV2: Partial<
       '0x25BBf59ef9246Dc65bFac8385D55C5e524A7B9eA',
     ),
   },
+  [Chain.Sei]: {
+    poolAddresses: {
+      poolUsdcAddress: getAddress('0x45d417612e177672958dC0537C45a8f8d754Ac2E'),
+      poolUsdtAddress: getAddress('0x0dB9afb4C33be43a0a0e396Fd1383B4ea97aB10a'),
+    },
+    stargateStakingAddress: getAddress(
+      '0x8c1014B5936dD88BAA5F4DB0423C3003615E03a0',
+    ),
+  },
 }
 
 /**
