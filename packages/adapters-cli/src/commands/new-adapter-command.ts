@@ -1,9 +1,6 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
-import {
-  type DefiProvider,
-  pascalCase,
-} from '@metamask-institutional/defi-adapters'
+import { DefiProvider, pascalCase } from '@metamask-institutional/defi-adapters'
 import chalk from 'chalk'
 import type { Command } from 'commander'
 import inquirer from 'inquirer'
@@ -33,62 +30,59 @@ type QuestionnaireType = Awaited<ReturnType<typeof getQuestionnaire>>
 type KeyofQuestionnaire = keyof QuestionnaireType
 type ValueOfQuestionnaire = QuestionnaireType[KeyofQuestionnaire]
 
-export async function newAdapterCommand(
-  program: Command,
-  defiProvider: DefiProvider,
-) {
+export async function newAdapterCommand(program: Command) {
   program
     .command('new-adapter')
     .description('Start the interactive CLI questionnaire')
     .option('-y, --yes', 'Skip prompts and use default values')
     .option('-t, --template <template>', 'Template to use')
-    .action(initiateQuestionnaire(defiProvider))
-}
+    .action(
+      async ({
+        yes: skipQuestions,
+        template: inputTemplate,
+      }: {
+        yes: boolean
+        template: QuestionAnswers['forkCheck']
+      }) => {
+        const defiProvider = new DefiProvider()
 
-function initiateQuestionnaire(defiProvider: DefiProvider) {
-  return async ({
-    yes: skipQuestions,
-    template: inputTemplate,
-  }: {
-    yes: boolean
-    template: QuestionAnswers['forkCheck']
-  }) => {
-    if (!skipQuestions) {
-      const exit = await welcome(defiProvider)
-      if (exit) {
-        return
-      }
-    }
+        if (!skipQuestions) {
+          const exit = await welcome(defiProvider)
+          if (exit) {
+            return
+          }
+        }
 
-    const answers = await getAnswersAndOutcomes(
-      defiProvider,
-      skipQuestions,
-      inputTemplate,
+        const answers = await getAnswersAndOutcomes(
+          defiProvider,
+          skipQuestions,
+          inputTemplate,
+        )
+
+        const outcomes = calculateAdapterOutcomes(defiProvider, answers)
+
+        const code: string = await createCode(answers, outcomes)
+
+        await createAdapterFile(answers, code, outcomes)
+        await buildIntegrationTests(answers)
+        await addProtocol(answers)
+        await exportAdapter({
+          ...answers,
+          adapterClassName: outcomes.adapterClassName,
+        })
+
+        console.log(
+          `\n${chalk.bold(
+            `New adapter created at: ${chalk.bgBlack.red(
+              `src/adapters/${answers.protocolId}/products/${
+                answers.productId
+              }/${lowerFirst(outcomes.adapterClassName)}.ts`,
+            )}`,
+          )}`,
+        )
+        console.log('The file has been saved!')
+      },
     )
-
-    const outcomes = calculateAdapterOutcomes(defiProvider, answers)
-
-    const code: string = await createCode(answers, outcomes)
-
-    await createAdapterFile(answers, code, outcomes)
-    await buildIntegrationTests(answers)
-    await addProtocol(answers)
-    await exportAdapter({
-      ...answers,
-      adapterClassName: outcomes.adapterClassName,
-    })
-
-    console.log(
-      `\n${chalk.bold(
-        `New adapter created at: ${chalk.bgBlack.red(
-          `src/adapters/${answers.protocolId}/products/${
-            answers.productId
-          }/${lowerFirst(outcomes.adapterClassName)}.ts`,
-        )}`,
-      )}`,
-    )
-    console.log('The file has been saved!')
-  }
 }
 
 export async function createCode(

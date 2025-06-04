@@ -19,37 +19,19 @@ import { buildContractTypes } from './utils/build-types.js'
 
 const program = new Command('defi-adapters')
 
-const defiProvider = new DefiProvider({
-  poolFilter: buildPoolFilter(),
-})
-
-libraryCommands(program, defiProvider)
-checkMetadataTypeCommand(program, defiProvider)
-buildMetadataCommand(program, defiProvider)
+libraryCommands(program)
+checkMetadataTypeCommand(program)
+buildMetadataCommand(program)
 deleteAdapterMetadataCommand(program)
-checkDbTotalsCommand(program, defiProvider)
-newAdapterCommand(program, defiProvider)
+checkDbTotalsCommand(program)
+newAdapterCommand(program)
 buildContractTypes(program)
 performanceCommand(program)
-buildSnapshotsCommand(program, defiProvider)
-checkBadSnapshotsCommand(program, defiProvider)
-copyAdapterCommand(program, defiProvider)
-buildScoreboardCommand(program, defiProvider)
-blockAverageCommand(program, defiProvider)
+buildSnapshotsCommand(program)
+checkBadSnapshotsCommand(program)
+copyAdapterCommand(program)
+buildScoreboardCommand(program)
+blockAverageCommand(program)
 newMigrationCommand(program)
 
 program.parseAsync()
-
-function buildPoolFilter() {
-  if (process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE !== 'true') {
-    return undefined
-  }
-
-  if (!process.env.CACHE_DATABASE_URL) {
-    throw new Error('CACHE_DATABASE_URL is not set')
-  }
-
-  return buildPostgresPoolFilter({
-    dbUrl: process.env.CACHE_DATABASE_URL,
-  })
-}

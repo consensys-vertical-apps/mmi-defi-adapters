@@ -1,21 +1,20 @@
-import type {
-  Chain,
+import {
   DefiProvider,
-  Protocol,
+  type Chain,
+  type Protocol,
 } from '@metamask-institutional/defi-adapters'
 import { supportedProtocols } from '@metamask-institutional/defi-adapters/dist/adapters/supportedProtocols.js'
 import { Command } from 'commander'
 
-export function checkDbTotalsCommand(
-  program: Command,
-  defiProvider: DefiProvider,
-) {
+export function checkDbTotalsCommand(program: Command) {
   program
     .command('check-db-totals')
 
     .showHelpAfterError()
     .action(async () => {
       const dbAdapters = []
+
+      const defiProvider = new DefiProvider()
 
       for (const [protocolIdKey, supportedChains] of Object.entries(
         supportedProtocols,

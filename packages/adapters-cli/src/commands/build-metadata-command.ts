@@ -3,7 +3,7 @@ import path from 'node:path'
 import {
   Chain,
   ChainName,
-  type DefiProvider,
+  DefiProvider,
   Protocol,
   filterMapSync,
   getInvalidAddresses,
@@ -23,10 +23,7 @@ import chalk from 'chalk'
 import { Command } from 'commander'
 import { ZeroAddress } from 'ethers'
 
-export function buildMetadataCommand(
-  program: Command,
-  defiProvider: DefiProvider,
-) {
+export function buildMetadataCommand(program: Command) {
   program
     .command('build-metadata-db')
     .option(
@@ -53,6 +50,8 @@ export function buildMetadataCommand(
         const filterChainIds = multiChainFilter(chains)
 
         const dbConnections = createDatabases(filterChainIds)
+
+        const defiProvider = new DefiProvider()
 
         try {
           for (const [chainId, db] of dbConnections) {
@@ -498,6 +497,8 @@ function createDatabases(
 function createDatabase(name: string) {
   try {
     const dbPath = path.resolve(`./metadata/${name}.db`)
+
+    console.log('DKJHASJKDKHJAHJKHKJAHKJDS')
 
     if (fs.existsSync(dbPath)) {
       console.debug(`Database file already exists: ${dbPath}`)

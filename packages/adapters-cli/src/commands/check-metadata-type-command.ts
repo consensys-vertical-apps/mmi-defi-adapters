@@ -1,21 +1,21 @@
-import type {
-  Chain,
+import {
   DefiProvider,
-  Protocol,
+  type Chain,
+  type Protocol,
 } from '@metamask-institutional/defi-adapters'
 import { supportedProtocols } from '@metamask-institutional/defi-adapters/dist/adapters/supportedProtocols.js'
 import type { Command } from 'commander'
 
-export function checkMetadataTypeCommand(
-  program: Command,
-  defiProvider: DefiProvider,
-) {
+export function checkMetadataTypeCommand(program: Command) {
   program
     .command('check-metadata-type')
     .showHelpAfterError()
     .action(async () => {
       const dbAdapters = []
       const other = []
+
+      const defiProvider = new DefiProvider()
+
       for (const [protocolIdKey, supportedChains] of Object.entries(
         supportedProtocols,
       )) {
