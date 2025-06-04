@@ -39,8 +39,8 @@ const contractAddresses: Partial<
     voucherContractAddress: '0x3660F04B79751e31128f6378eAC70807e38f554E',
   },
   [Chain.Sei]: {
-    carbonControllerAddress: 'ADD ADDRESS HERE',
-    voucherContractAddress: 'ADD ADDRESS HERE',
+    carbonControllerAddress: '0xe4816658ad10bF215053C533cceAe3f59e1f1087',
+    voucherContractAddress: '0xA4682A2A5Fe02feFF8Bd200240A41AD0E6EaF8d5',
   },
 }
 
