@@ -1,8 +1,6 @@
 import { type JsonRpcProvider, type Log, isError } from 'ethers'
 import type { Logger } from 'pino'
-
-const TIMEOUT_IN_MS = 8_000
-const TIMEOUT_ERROR_MESSAGE = 'Request timed out'
+import { TIMEOUT_ERROR_MESSAGE, withTimeout } from './with-timeout.js'
 
 export async function* fetchEvents({
   provider,
@@ -36,7 +34,6 @@ export async function* fetchEvents({
           toBlock,
           topics: [topic0],
         }),
-        TIMEOUT_IN_MS,
       )
 
       yield logs
@@ -71,11 +68,4 @@ export async function* fetchEvents({
       throw error
     }
   }
-}
-
-function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
-  const timeout = new Promise<never>((_, reject) =>
-    setTimeout(() => reject(new Error(TIMEOUT_ERROR_MESSAGE)), ms),
-  )
-  return Promise.race([promise, timeout])
 }
