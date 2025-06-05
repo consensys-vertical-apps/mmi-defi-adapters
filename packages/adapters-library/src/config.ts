@@ -24,7 +24,7 @@ const providers: Record<ChainName, string> = {
   ),
   ftm: parseStringEnv(CHAIN_NOT_ENABLED, 'https://rpc.ftm.tools'),
   sei: parseStringEnv(
-    process.env.DEFI_ADAPTERS_PROVIDER_SEI,
+    CHAIN_NOT_ENABLED,
     'https://sei-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
   ),
   base: parseStringEnv(
