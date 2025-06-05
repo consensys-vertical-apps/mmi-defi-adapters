@@ -17,10 +17,7 @@ type BadSnapshotDetails = {
   fileName: string
 }
 
-export function checkBadSnapshotsCommand(
-  program: Command,
-  defiProvider: DefiProvider,
-) {
+export function checkBadSnapshotsCommand(program: Command) {
   program
     .command('check-bad-snapshots')
     .option(
@@ -35,6 +32,8 @@ export function checkBadSnapshotsCommand(
     .action(async ({ protocols, products, key }) => {
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterProductIds = (products as string | undefined)?.split(',')
+
+      const defiProvider = new DefiProvider()
 
       const allProtocols = await defiProvider.getSupport({ filterProtocolIds })
       const allProducts = Object.values(allProtocols).flatMap(

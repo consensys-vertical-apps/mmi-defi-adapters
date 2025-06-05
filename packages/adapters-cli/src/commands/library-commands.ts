@@ -1,17 +1,16 @@
 import {
-  type AdapterResponse,
   DefiProvider,
-  filterMapSync,
   multiChainFilter,
   multiProductFilter,
   multiProtocolFilter,
   multiProtocolTokenAddressFilter,
 } from '@metamask-institutional/defi-adapters'
+import { buildPostgresPoolFilter } from '@metamask-institutional/workers'
 import type { Command } from 'commander'
 import { startRpcSnapshot } from '../utils/rpc-interceptor.js'
 import { extractRpcMetrics } from './build-scoreboard-command.js'
 
-export function libraryCommands(program: Command, defiProvider: DefiProvider) {
+export function libraryCommands(program: Command) {
   program
     .command('positions')
     .argument('[userAddress]', 'Address of the target account')
@@ -43,6 +42,10 @@ export function libraryCommands(program: Command, defiProvider: DefiProvider) {
 
         const filterProtocolTokens =
           multiProtocolTokenAddressFilter(protocolTokens)
+
+        const defiProvider = new DefiProvider({
+          poolFilter: buildPoolFilter(),
+        })
 
         const msw = startRpcSnapshot(
           Object.values(defiProvider.chainProvider.providers).map(
@@ -99,6 +102,10 @@ export function libraryCommands(program: Command, defiProvider: DefiProvider) {
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterChainIds = multiChainFilter(chains)
 
+      const defiProvider = new DefiProvider({
+        poolFilter: buildPoolFilter(),
+      })
+
       const data = await defiProvider.getSupport({
         filterChainIds,
         filterProtocolIds,
@@ -118,4 +125,18 @@ function printResponse(data: unknown) {
       2,
     ),
   )
+}
+
+function buildPoolFilter() {
+  if (process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE !== 'true') {
+    return undefined
+  }
+
+  if (!process.env.CACHE_DATABASE_URL) {
+    throw new Error('CACHE_DATABASE_URL is not set')
+  }
+
+  return buildPostgresPoolFilter({
+    dbUrl: process.env.CACHE_DATABASE_URL,
+  })
 }

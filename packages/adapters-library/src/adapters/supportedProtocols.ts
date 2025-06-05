@@ -312,6 +312,7 @@ export const supportedProtocols: Record<
 
   [Protocol.CarbonDeFi]: {
     [Chain.Ethereum]: [CarbonDeFiStrategiesAdapter],
+    [Chain.Sei]: [CarbonDeFiStrategiesAdapter],
   },
 
   [Protocol.ChimpExchange]: {
@@ -637,6 +638,7 @@ export const supportedProtocols: Record<
       StargatePoolV2Adapter,
       StargateFarmV2Adapter,
     ],
+    [Chain.Sei]: [StargatePoolV2Adapter, StargateFarmV2Adapter],
   },
 
   [Protocol.SushiswapV2]: {

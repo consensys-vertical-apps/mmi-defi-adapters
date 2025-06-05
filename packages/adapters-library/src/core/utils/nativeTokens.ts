@@ -35,6 +35,11 @@ export const nativeToken = {
     symbol: 'FTM',
     decimals: 18,
   },
+  [Chain.Sei]: {
+    name: 'Sei',
+    symbol: 'SEI',
+    decimals: 18,
+  },
   [Chain.Solana]: {
     address: 'So11111111111111111111111111111111111111112',
     name: 'Solana',

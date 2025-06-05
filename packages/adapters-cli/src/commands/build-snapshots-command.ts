@@ -21,10 +21,7 @@ import { writeAndLintFile } from '../utils/write-and-lint-file.js'
 import n = types.namedTypes
 import b = types.builders
 
-export function buildSnapshotsCommand(
-  program: Command,
-  defiProvider: DefiProvider,
-) {
+export function buildSnapshotsCommand(program: Command) {
   const allowedMethods = ['positions', 'prices']
 
   program
@@ -52,6 +49,8 @@ export function buildSnapshotsCommand(
     .action(async ({ protocols, products, key, method, latency }) => {
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterProductIds = (products as string | undefined)?.split(',')
+
+      const defiProvider = new DefiProvider()
 
       const allProtocols = await defiProvider.getSupport({ filterProtocolIds })
       const allProducts = Object.values(allProtocols).flatMap(
