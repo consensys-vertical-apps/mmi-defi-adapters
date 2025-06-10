@@ -5,7 +5,7 @@ import { logger } from './logger.js'
 import {
   type CacheClient,
   createPostgresCacheClient,
-} from './postgres-cache-client.js'
+} from './database/postgres-cache-client.js'
 import { runnerLoop } from './runner-loop.js'
 import { updateNewJobs } from './update-new-jobs.js'
 import { extractErrorMessage } from './utils/extractErrorMessage.js'

@@ -1,7 +1,7 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, getAddress } from 'ethers'
 import type { Logger } from 'pino'
-import type { CacheClient } from '../postgres-cache-client.js'
+import type { CacheClient } from '../database/postgres-cache-client.js'
 import { extractErrorMessage } from '../utils/extractErrorMessage.js'
 import { fetchEvents } from './fetch-events.js'
 import { getNextPoolGroup } from './get-next-pool-group.js'

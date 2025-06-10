@@ -9,7 +9,10 @@ import type {
 } from 'ethers'
 import type { Logger } from 'pino'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import type { CacheClient, JobDbEntry } from '../postgres-cache-client.js'
+import type {
+  CacheClient,
+  JobDbEntry,
+} from '../database/postgres-cache-client.js'
 import { buildHistoricCache } from './build-historic-cache.js'
 import * as fetchEvents from './fetch-events.js'
 import * as getNextPoolGroup from './get-next-pool-group.js'

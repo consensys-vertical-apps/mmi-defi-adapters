@@ -4,7 +4,7 @@ import type {
 } from '@metamask-institutional/defi-adapters'
 import { Interface, id } from 'ethers'
 import type { Logger } from 'pino'
-import type { CacheClient } from './postgres-cache-client.js'
+import type { CacheClient } from './database/postgres-cache-client.js'
 
 export async function updateNewJobs({
   chainId,

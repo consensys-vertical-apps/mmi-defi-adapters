@@ -4,7 +4,7 @@ import type {
 } from '@metamask-institutional/defi-adapters'
 import type { Logger } from 'pino'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import type { CacheClient } from './postgres-cache-client.js'
+import type { CacheClient } from './database/postgres-cache-client.js'
 import { updateNewJobs } from './update-new-jobs'
 
 vi.mock('ethers', async () => ({

@@ -8,7 +8,7 @@ import {
   createPostgresCacheClient,
 } from './postgres-cache-client.js'
 import { createDbPool } from './postgres-utils.js'
-import { runMigrations } from './run-migrations.js'
+import { runMigrations } from '../run-migrations.js'
 
 vi.mock('./postgres-utils.js')
 vi.mock('./run-migrations.js')
