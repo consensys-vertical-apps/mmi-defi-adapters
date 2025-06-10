@@ -6,7 +6,8 @@ import {
 import type { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
 import { buildHistoricCache } from './cache/build-historic-cache.js'
-import { buildLatestCache, createWatchKey } from './cache/build-latest-cache.js'
+import { buildLatestCache } from './cache/build-latest-cache.js'
+import { createWatchKey } from './cache/create-watch-key.js'
 import type { CacheClient } from './postgres-cache-client.js'
 
 const SIXTY_SECONDS = 60_000

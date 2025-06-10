@@ -1,17 +1,16 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, getAddress } from 'ethers'
 import type { Logger } from 'pino'
-import type { CacheClient, JobDbEntry } from '../postgres-cache-client.js'
+import type { CacheClient } from '../postgres-cache-client.js'
 import { extractErrorMessage } from '../utils/extractErrorMessage.js'
 import { fetchEvents } from './fetch-events.js'
-import { parseUserEventLog } from './parse-user-event-log.js'
 import { getNextPoolGroup } from './get-next-pool-group.js'
+import { parseUserEventLog } from './parse-user-event-log.js'
 
 const SIXTY_SECONDS = 60_000
 
-const MaxConcurrentBatches = process.env.HISTORIC_CACHE_BATCH_SIZE
-  ? Number(process.env.HISTORIC_CACHE_BATCH_SIZE)
-  : 5
+const MAX_CONCURRENT_BATCHES =
+  Number(process.env.HISTORIC_CACHE_BATCH_SIZE) || 5
 
 /**
  * This function represents a single iteration that processes pending pools to build the historic cache.
@@ -104,7 +103,7 @@ export async function buildHistoricCache(
     )
 
     try {
-      const ranges = splitRange(0, targetBlockNumber, MaxConcurrentBatches)
+      const ranges = splitRange(0, targetBlockNumber, MAX_CONCURRENT_BATCHES)
       const concurrentRanges = ranges.map(async ({ from, to }) => {
         for await (const logs of fetchEvents({
           provider,

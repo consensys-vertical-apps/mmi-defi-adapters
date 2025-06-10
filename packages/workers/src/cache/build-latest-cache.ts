@@ -1,13 +1,11 @@
-import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
+import { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
 import type { CacheClient } from '../postgres-cache-client.js'
 import { extractErrorMessage } from '../utils/extractErrorMessage.js'
-import { withTimeout } from '../utils/with-timeout.js'
-import { parseUserEventLog } from './parse-user-event-log.js'
+import { processBlock } from './process-block.js'
+import { waitForBlock } from './wait-for-block.js'
 
-const SIXTY_SECONDS = 60_000
 const ONE_SECOND = 1_000
-
 const BATCH_SIZE = Number(process.env.BLOCK_RUNNER_BATCH_SIZE) || 10
 
 /**
@@ -55,7 +53,7 @@ export async function buildLatestCache({
   let latestBlockNumber: number | undefined
 
   try {
-    latestBlockNumber = await waitForBlockToBeReady(
+    latestBlockNumber = await waitForBlock(
       processingBlockNumber,
       provider,
       logger,
@@ -91,39 +89,6 @@ export async function buildLatestCache({
   return {
     nextProcessingBlockNumber,
     latestBlockNumber,
-  }
-}
-
-export function createWatchKey(
-  contractAddress: string,
-  topic0: string,
-): string {
-  return `${contractAddress.toLowerCase()}#${topic0.toLowerCase()}`
-}
-
-async function waitForBlockToBeReady(
-  targetBlockNumber: number,
-  provider: JsonRpcProvider,
-  logger: Logger,
-): Promise<number> {
-  let backoff = ONE_SECOND
-
-  while (true) {
-    try {
-      const latestBlockNumber = await withTimeout(provider.getBlockNumber())
-      if (latestBlockNumber >= targetBlockNumber) {
-        return latestBlockNumber
-      }
-    } catch (error) {
-      logger.error(
-        { error: extractErrorMessage(error) },
-        'Error fetching block number',
-      )
-    }
-
-    // Wait with exponential backoff before retrying
-    await new Promise((resolve) => setTimeout(resolve, backoff))
-    backoff = Math.min(backoff * 2, SIXTY_SECONDS)
   }
 }
 
@@ -194,75 +159,6 @@ async function processBlocks({
   }
 
   return latestProcessedBlockNumber + 1
-}
-
-async function processBlock({
-  provider,
-  blockNumber,
-  userIndexMap,
-  logger,
-}: {
-  provider: JsonRpcProvider
-  blockNumber: number
-  userIndexMap: Map<
-    string,
-    {
-      userAddressIndex: number
-      eventAbi: string | null
-    }
-  >
-  logger: Logger
-}): Promise<{ address: string; contractAddress: string }[]> {
-  const receipts: TransactionReceipt[] = await withTimeout(
-    provider.send('eth_getBlockReceipts', [
-      `0x${ethers.toBeHex(blockNumber).slice(2).replace(/^0+/, '')}`, // some chains need to remove leading zeros like ftm
-    ]),
-  )
-
-  const logs: { address: string; contractAddress: string }[] = []
-
-  for (const receipt of receipts?.flat() || []) {
-    for (const log of receipt.logs || []) {
-      const topic0 = log.topics[0]
-      if (!topic0) {
-        continue
-      }
-
-      const contractAddress = getAddress(log.address.toLowerCase())
-
-      const userIndexEntry = userIndexMap.get(
-        createWatchKey(contractAddress, topic0),
-      )
-      if (!userIndexEntry) {
-        continue
-      }
-
-      const { userAddressIndex, eventAbi } = userIndexEntry
-
-      try {
-        const userAddress = parseUserEventLog(log, eventAbi, userAddressIndex)
-
-        if (userAddress) {
-          logs.push({
-            address: userAddress,
-            contractAddress,
-          })
-        }
-      } catch (error) {
-        logger.error(
-          {
-            error: extractErrorMessage(error),
-            txHash: log.transactionHash,
-            eventAbi,
-            userAddressIndex,
-          },
-          'Error parsing log',
-        )
-      }
-    }
-  }
-
-  return logs
 }
 
 async function processError(
