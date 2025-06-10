@@ -31,10 +31,8 @@ export async function getNextPoolGroup(
     const groupedPools = pendingPools.reduce(
       (acc, pool) => {
         const key = `${pool.topic0}#${pool.userAddressIndex}`
-        if (!acc[key]) {
-          acc[key] = []
-        }
-        acc[key]!.push(pool)
+        acc[key] ??= []
+        acc[key].push(pool)
         return acc
       },
       {} as Record<string, typeof pendingPools>,

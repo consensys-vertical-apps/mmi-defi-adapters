@@ -14,8 +14,6 @@ vi.mock('./postgres-utils.js')
 vi.mock('./run-migrations.js')
 vi.mock('async-mutex')
 
-type MockQueryResult = Partial<QueryResult>
-
 describe('PostgresCacheClient', () => {
   let mockPool: Pool
   let mockClient: PoolClient

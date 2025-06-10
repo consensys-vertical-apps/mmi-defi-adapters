@@ -1,5 +1,4 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters'
-import type { JsonRpcProvider } from 'ethers'
 import { Hono } from 'hono'
 import { pinoLogger } from 'hono-pino'
 import type { ContentfulStatusCode } from 'hono/utils/http-status'
