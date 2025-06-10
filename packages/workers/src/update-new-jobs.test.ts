@@ -3,9 +3,9 @@ import type {
   EvmChain,
 } from '@metamask-institutional/defi-adapters'
 import type { Logger } from 'pino'
-import { describe, expect, it, vi, beforeEach } from 'vitest'
-import { updateNewJobs } from './update-new-jobs'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { CacheClient } from './postgres-cache-client.js'
+import { updateNewJobs } from './update-new-jobs'
 
 vi.mock('ethers', async () => ({
   ...(await vi.importActual('ethers')),

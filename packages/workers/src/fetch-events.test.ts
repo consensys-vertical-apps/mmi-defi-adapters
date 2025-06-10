@@ -1,6 +1,6 @@
 import { type JsonRpcProvider, type Log, isError } from 'ethers'
 import type { Logger } from 'pino'
-import { describe, expect, it, vi, beforeEach } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { fetchEvents } from './fetch-events'
 import { TIMEOUT_ERROR_MESSAGE } from './utils/with-timeout'
 

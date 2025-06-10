@@ -1,14 +1,14 @@
 import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
-import { extractErrorMessage } from './utils/extractErrorMessage.js'
-import { logger } from './logger.js'
-import {
-  createPostgresCacheClient,
-  type CacheClient,
-} from './postgres-cache-client.js'
 import { JsonRpcProvider, Network } from 'ethers'
 import type { Logger } from 'pino'
-import { updateNewJobs } from './update-new-jobs.js'
+import { logger } from './logger.js'
+import {
+  type CacheClient,
+  createPostgresCacheClient,
+} from './postgres-cache-client.js'
 import { runnerLoop } from './runner-loop.js'
+import { updateNewJobs } from './update-new-jobs.js'
+import { extractErrorMessage } from './utils/extractErrorMessage.js'
 
 if (!process.env.CACHE_DATABASE_URL) {
   logger.error('CACHE_DATABASE_URL is required')

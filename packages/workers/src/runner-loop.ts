@@ -1,13 +1,13 @@
 import { parentPort } from 'node:worker_threads'
-import type { JsonRpcProvider } from 'ethers'
-import { buildHistoricCache } from './build-historic-cache.js'
-import { buildLatestCache, createWatchKey } from './build-latest-cache.js'
 import {
   AVERAGE_BLOCKS_PER_DAY,
   type EvmChain,
 } from '@metamask-institutional/defi-adapters'
-import type { CacheClient } from './postgres-cache-client.js'
+import type { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
+import { buildHistoricCache } from './build-historic-cache.js'
+import { buildLatestCache, createWatchKey } from './build-latest-cache.js'
+import type { CacheClient } from './postgres-cache-client.js'
 
 const SIXTY_SECONDS = 60_000
 
