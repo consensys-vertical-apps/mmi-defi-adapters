@@ -36,10 +36,6 @@ export async function* fetchEvents({
         }),
       )
 
-      if (logs.length > 0) {
-        logger.info({ logs }, 'Fetched events')
-      }
-
       yield logs
     } catch (error) {
       if (

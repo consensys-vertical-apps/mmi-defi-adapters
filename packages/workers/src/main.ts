@@ -42,7 +42,7 @@ startChainProcessingWorker()
 function startChainProcessingWorker() {
   const workerPath = path.resolve(
     path.dirname(fileURLToPath(import.meta.url)),
-    'worker-main.js',
+    'main-worker.js',
   )
 
   logger.info({ workerPath }, 'Starting chain processing worker')
