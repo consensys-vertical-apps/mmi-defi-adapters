@@ -1,5 +1,3 @@
-import { parentPort } from 'node:worker_threads'
-import { type EvmChain } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
 import type { Logger } from 'pino'
 import { extractErrorMessage } from './utils/extractErrorMessage.js'
@@ -12,17 +10,34 @@ const ONE_SECOND = 1_000
 
 const BATCH_SIZE = Number(process.env.BLOCK_RUNNER_BATCH_SIZE) || 10
 
+/**
+ * This function represents a single iteration that processes a block (or batch of blocks) to build the latest cache.
+ *
+ * Steps:
+ * 1. Wait for the block to be ready
+ *    a. Fetch the latest block number from the provider.
+ *    b. If the latest block number is equal or greater than the target block number, return the latest block number.
+ *    c. If the latest block number is less than the target block number or there's an error, repeat step 1b after a delay.
+ * 2. Use the difference between the latest block number and the target block number to determine if batching is needed.
+ *    a. If batching is needed, process a batch of blocks.
+ *    b. If batching is not needed, process a single block.
+ * 3. For every block processed.
+ *    a. Fetch the logs for the block.
+ *    b. For each log, check if it's an event we're watching for.
+ *    c. If it's an event we're watching for, parse the log and add the entry to the list.
+ *    d. Return the list of logs
+ * 4. Insert the logs into the database
+ * 5. Return the next block number to process and the latest block number.
+ */
 export async function buildLatestCache({
   processingBlockNumber,
   provider,
-  chainId,
   cacheClient,
   userIndexMap,
   logger,
 }: {
   processingBlockNumber: number
   provider: JsonRpcProvider
-  chainId: EvmChain
   cacheClient: CacheClient
   userIndexMap: Map<
     string,
@@ -32,7 +47,10 @@ export async function buildLatestCache({
     }
   >
   logger: Logger
-}): Promise<number> {
+}): Promise<{
+  nextProcessingBlockNumber: number
+  latestBlockNumber: number | undefined
+}> {
   let nextProcessingBlockNumber: number
   let latestBlockNumber: number | undefined
 
@@ -46,7 +64,6 @@ export async function buildLatestCache({
     nextProcessingBlockNumber = await processBlocks({
       processingBlockNumber,
       latestBlockNumber,
-      chainId,
       provider,
       userIndexMap,
       cacheClient,
@@ -71,7 +88,10 @@ export async function buildLatestCache({
     await new Promise((res) => setTimeout(res, ONE_SECOND))
   }
 
-  return nextProcessingBlockNumber
+  return {
+    nextProcessingBlockNumber,
+    latestBlockNumber,
+  }
 }
 
 export function createWatchKey(
@@ -110,7 +130,6 @@ async function waitForBlockToBeReady(
 async function processBlocks({
   processingBlockNumber,
   latestBlockNumber,
-  chainId,
   provider,
   userIndexMap,
   cacheClient,
@@ -118,7 +137,6 @@ async function processBlocks({
 }: {
   processingBlockNumber: number
   latestBlockNumber: number
-  chainId: EvmChain
   provider: JsonRpcProvider
   userIndexMap: Map<
     string,
@@ -132,6 +150,9 @@ async function processBlocks({
 }) {
   const shouldBatch = latestBlockNumber - processingBlockNumber > BATCH_SIZE
 
+  let logs: { address: string; contractAddress: string }[]
+  let latestProcessedBlockNumber: number
+
   if (shouldBatch) {
     const batchEndBlock = Math.min(
       processingBlockNumber + BATCH_SIZE,
@@ -143,90 +164,44 @@ async function processBlocks({
       (_, index) => processingBlockNumber + index,
     )
 
-    await Promise.all(
-      blockRange.map((blockNumber) =>
-        processBlock({
-          chainId,
-          provider,
-          blockNumber,
-          userIndexMap,
-          cacheClient,
-          logger,
-        }),
-      ),
-    )
+    logs = (
+      await Promise.all(
+        blockRange.map((blockNumber) =>
+          processBlock({
+            provider,
+            blockNumber,
+            userIndexMap,
+            logger,
+          }),
+        ),
+      )
+    ).flat()
 
-    return batchEndBlock
+    latestProcessedBlockNumber = batchEndBlock - 1
+  } else {
+    logs = await processBlock({
+      provider,
+      blockNumber: processingBlockNumber,
+      userIndexMap,
+      logger,
+    })
+
+    latestProcessedBlockNumber = processingBlockNumber
   }
 
-  await processBlock({
-    chainId,
-    provider,
-    blockNumber: processingBlockNumber,
-    userIndexMap,
-    cacheClient,
-    logger,
-  })
-
-  return processingBlockNumber + 1
-}
-
-async function processBatchBlocks({
-  chainId,
-  provider,
-  startBlock,
-  latestBlockNumber,
-  userIndexMap,
-  cacheClient,
-  logger,
-}: {
-  chainId: EvmChain
-  provider: JsonRpcProvider
-  startBlock: number
-  latestBlockNumber: number
-  userIndexMap: Map<
-    string,
-    {
-      userAddressIndex: number
-      eventAbi: string | null
-    }
-  >
-  cacheClient: CacheClient
-  logger: Logger
-}): Promise<number> {
-  const batchEndBlock = Math.min(startBlock + BATCH_SIZE, latestBlockNumber)
-  const blockPromises: Promise<void>[] = []
-
-  for (
-    let blockNumber = startBlock;
-    blockNumber < batchEndBlock;
-    blockNumber++
-  ) {
-    blockPromises.push(
-      processBlock({
-        chainId,
-        provider,
-        blockNumber,
-        userIndexMap,
-        cacheClient,
-        logger,
-      }),
-    )
+  if (logs.length > 0) {
+    await cacheClient.insertLogs(logs, latestProcessedBlockNumber)
   }
 
-  await Promise.all(blockPromises)
-  return batchEndBlock
+  return latestProcessedBlockNumber + 1
 }
 
 async function processBlock({
-  chainId,
   provider,
   blockNumber,
   userIndexMap,
-  cacheClient,
   logger,
 }: {
-  chainId: EvmChain
   provider: JsonRpcProvider
   blockNumber: number
   userIndexMap: Map<
@@ -236,17 +211,13 @@ async function processBlock({
       eventAbi: string | null
     }
   >
-  cacheClient: CacheClient
   logger: Logger
-}): Promise<void> {
-  const startTime = Date.now()
+}): Promise<{ address: string; contractAddress: string }[]> {
   const receipts: TransactionReceipt[] = await withTimeout(
     provider.send('eth_getBlockReceipts', [
       `0x${ethers.toBeHex(blockNumber).slice(2).replace(/^0+/, '')}`, // some chains need to remove leading zeros like ftm
     ]),
   )
-
-  const receiptsFetchTime = Date.now()
 
   const logs: { address: string; contractAddress: string }[] = []
 
@@ -291,31 +262,7 @@ async function processBlock({
     }
   }
 
-  const logsProcessedTime = Date.now()
-
-  if (logs.length > 0) {
-    await cacheClient.insertLogs(logs, blockNumber)
-  }
-
-  const logsInsertTime = Date.now()
-
-  logger.debug(
-    {
-      blockNumber,
-      logsProcessed: logs.length,
-      startTime,
-      totalTime: logsInsertTime - startTime,
-      receiptsFetchTime: receiptsFetchTime - startTime,
-      logsProcessedTime: logsProcessedTime - receiptsFetchTime,
-      logsInsertTime: logsInsertTime - logsProcessedTime,
-    },
-    'Processed block',
-  )
-
-  parentPort?.postMessage({
-    chainId,
-    blockNumber,
-  })
+  return logs
 }
 
 async function processError(

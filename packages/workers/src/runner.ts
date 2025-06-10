@@ -59,36 +59,6 @@ export async function runner(
     cacheClient,
     logger,
   })
-
-  // await Promise.all([
-  //   buildHistoricCache(
-  //     provider,
-  //     chainId,
-  //     cacheClient,
-  //     logger.child({
-  //       subService: 'historic-cache',
-  //     }),
-  //   ).catch((error) => {
-  //     logger.error(
-  //       { error: extractErrorMessage(error) },
-  //       'Error occurred building historic cache',
-  //     )
-  //   }),
-  //   buildLatestCache(
-  //     provider,
-  //     chainId,
-  //     cacheClient,
-  //     blockNumber,
-  //     logger.child({
-  //       subService: 'latest-cache',
-  //     }),
-  //   ).catch((error) => {
-  //     logger.error(
-  //       { error: extractErrorMessage(error) },
-  //       'Error occurred building latest block cache',
-  //     )
-  //   }),
-  // ])
 }
 
 async function getPools(defiProvider: DefiProvider, chainId: EvmChain) {

@@ -40,8 +40,8 @@ export function buildApi(
     Record<
       EvmChain,
       {
-        provider: JsonRpcProvider
         lastProcessedBlockNumber?: number
+        latestBlockNumber?: number
         updatedAt: number
       }
     >
@@ -64,21 +64,17 @@ export function buildApi(
             return undefined
           }
 
-          const latestBlockNumber =
-            await chainWorkerInfo.provider.getBlockNumber()
-
           const blocksLagging =
-            latestBlockNumber && chainWorkerInfo.lastProcessedBlockNumber
-              ? Math.max(
-                  0,
-                  latestBlockNumber - chainWorkerInfo.lastProcessedBlockNumber,
-                )
+            chainWorkerInfo.latestBlockNumber &&
+            chainWorkerInfo.lastProcessedBlockNumber
+              ? chainWorkerInfo.latestBlockNumber -
+                chainWorkerInfo.lastProcessedBlockNumber
               : undefined
 
           return {
             chainId,
             lastProcessedBlockNumber: chainWorkerInfo.lastProcessedBlockNumber,
-            latestBlockNumber,
+            latestBlockNumber: chainWorkerInfo.latestBlockNumber,
             updatedAt: chainWorkerInfo.updatedAt,
             blocksLagging,
             healthy: Date.now() - chainWorkerInfo.updatedAt < TEN_MINUTES_IN_MS,

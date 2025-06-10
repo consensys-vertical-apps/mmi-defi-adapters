@@ -1,9 +1,15 @@
+import { parentPort } from 'node:worker_threads'
 import type { JsonRpcProvider } from 'ethers'
 import { buildHistoricCache } from './build-historic-cache.js'
 import { buildLatestCache, createWatchKey } from './build-latest-cache.js'
-import type { EvmChain } from '@metamask-institutional/defi-adapters'
+import {
+  AVERAGE_BLOCKS_PER_DAY,
+  type EvmChain,
+} from '@metamask-institutional/defi-adapters'
 import type { CacheClient } from './postgres-cache-client.js'
 import type { Logger } from 'pino'
+
+const SIXTY_SECONDS = 60_000
 
 export async function runnerLoop({
   blockNumber,
@@ -28,8 +34,6 @@ export async function runnerLoop({
           subService: 'historic-cache',
         }),
       )
-
-      await new Promise((resolve) => setTimeout(resolve, 5000))
     }
   }
 
@@ -43,17 +47,46 @@ export async function runnerLoop({
       ]),
     )
 
-    let processingBlockNumber = blockNumber
+    let nextProcessingBlockNumber = blockNumber
+    let latestBlockNumber = await provider.getBlockNumber()
+
+    const BLOCKS_PER_HOUR = AVERAGE_BLOCKS_PER_DAY[chainId] / 24
+
+    setInterval(() => {
+      const blocksLagging = latestBlockNumber - nextProcessingBlockNumber - 1
+      const lagInHours = (blocksLagging / BLOCKS_PER_HOUR).toFixed(1)
+
+      logger.info(
+        {
+          processingBlockNumber: nextProcessingBlockNumber,
+          latestBlockNumber,
+          blocksLagging,
+          blocksPerHour: BLOCKS_PER_HOUR,
+          lagInHours,
+        },
+        'Latest block cache update',
+      )
+    }, SIXTY_SECONDS)
+
     while (true) {
-      processingBlockNumber = await buildLatestCache({
-        processingBlockNumber,
+      const result = await buildLatestCache({
+        processingBlockNumber: nextProcessingBlockNumber,
         provider,
-        chainId,
         cacheClient,
         userIndexMap,
         logger: logger.child({
           subService: 'latest-cache',
         }),
+      })
+
+      nextProcessingBlockNumber = result.nextProcessingBlockNumber
+      latestBlockNumber = result.latestBlockNumber ?? latestBlockNumber
+
+      // Report block number to parent process for health monitoring
+      parentPort?.postMessage({
+        chainId,
+        lastProcessedBlockNumber: nextProcessingBlockNumber - 1,
+        latestBlockNumber,
       })
     }
   }

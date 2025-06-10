@@ -2,29 +2,13 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Worker } from 'node:worker_threads'
 import { serve } from '@hono/node-server'
-import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
-import { JsonRpcProvider, Network } from 'ethers'
+import { EvmChain } from '@metamask-institutional/defi-adapters'
 import { buildApi } from './api/build-api.js'
 import { logger } from './logger.js'
 
-const THIRTY_SECONDS_IN_MS = 30_000
-
-const defiProvider = new DefiProvider()
-
 const workersInfo = Object.values(EvmChain).reduce(
   (acc, chainId) => {
-    const providerUrl =
-      defiProvider.chainProvider.providers[chainId]?._getConnection().url
-
-    if (!providerUrl) {
-      return acc
-    }
-
     acc[chainId] = {
-      provider: new JsonRpcProvider(providerUrl, chainId, {
-        staticNetwork: Network.from(chainId),
-        cacheTimeout: THIRTY_SECONDS_IN_MS,
-      }),
       updatedAt: Date.now(),
     }
     return acc
@@ -33,8 +17,8 @@ const workersInfo = Object.values(EvmChain).reduce(
     Record<
       EvmChain,
       {
-        provider: JsonRpcProvider
         lastProcessedBlockNumber?: number
+        latestBlockNumber?: number
         updatedAt: number
       }
     >
@@ -67,18 +51,24 @@ function startChainProcessingWorker() {
 
   worker.on(
     'message',
-    (message: { chainId: EvmChain; blockNumber: number }) => {
-      const chainWorkerInfo = workersInfo[message.chainId]
+    ({
+      chainId,
+      lastProcessedBlockNumber,
+      latestBlockNumber,
+    }: {
+      chainId: EvmChain
+      lastProcessedBlockNumber: number
+      latestBlockNumber: number
+    }) => {
+      const chainWorkerInfo = workersInfo[chainId]
 
       if (!chainWorkerInfo) {
-        logger.warn(
-          { chainId: message.chainId },
-          'Chain worker not found during update',
-        )
+        logger.warn({ chainId }, 'Chain worker not found during update')
         return
       }
 
-      chainWorkerInfo.lastProcessedBlockNumber = message.blockNumber
+      chainWorkerInfo.lastProcessedBlockNumber = lastProcessedBlockNumber
+      chainWorkerInfo.latestBlockNumber = latestBlockNumber
       chainWorkerInfo.updatedAt = Date.now()
     },
   )

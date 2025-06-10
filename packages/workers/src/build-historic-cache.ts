@@ -6,9 +6,8 @@ import { fetchEvents } from './fetch-events.js'
 import { parseUserEventLog } from './parse-user-event-log.js'
 import type { CacheClient, JobDbEntry } from './postgres-cache-client.js'
 
-const SIXTY_SECONDS_IN_MS = 60_000
+const SIXTY_SECONDS = 60_000
 
-// TODO: Create zod schema for config
 const MaxConcurrentBatches = process.env.HISTORIC_CACHE_BATCH_SIZE
   ? Number(process.env.HISTORIC_CACHE_BATCH_SIZE)
   : 5
@@ -27,7 +26,7 @@ const MaxContractsPerCall: Record<EvmChain, number> = {
 }
 
 /**
- * This function continuously processes pending pools to build a historic cache.
+ * This function represents a single iteration that processes pending pools to build the historic cache.
  *
  * Steps:
  * 1. Fetch the next set of pools that need processing from the database.
@@ -35,14 +34,12 @@ const MaxContractsPerCall: Record<EvmChain, number> = {
  *    b. The pools are grouped by topic0 and userAddressIndex.
  *    c. The group with the most entries is selected and the maximum block number is used as target.
  *    d. An optimal batch size is calculated.
- * 2. If no pools are pending, wait for 30 seconds before checking again.
- * 3. Process the group of pools in the batches returned in step 1:
+ * 2. If no pools are pending, wait for 60 seconds and return.
+ * 3. Process the group of pools in the batches returned in step 1.
  *    a. Split the block range into smaller ranges for concurrent processing.
  *    b. Fetch events for each concurrent range and inset logs.
  *    c. When all ranges have completed, mark the jobs as complete in the database.
  * 4. If an error occurs, mark the jobs as failed.
- * 5. Log memory usage after processing each batch.
- * 6. Wait for 5 seconds before processing the next batch.
  */
 export async function buildHistoricCache(
   provider: JsonRpcProvider,
@@ -67,7 +64,7 @@ export async function buildHistoricCache(
   )
 
   if (!nextPoolGroup) {
-    await new Promise((resolve) => setTimeout(resolve, SIXTY_SECONDS_IN_MS))
+    await new Promise((resolve) => setTimeout(resolve, SIXTY_SECONDS))
     return
   }
 
@@ -106,7 +103,7 @@ export async function buildHistoricCache(
       },
       'Historic cache iteration progress',
     )
-  }, SIXTY_SECONDS_IN_MS)
+  }, SIXTY_SECONDS)
 
   for (let i = 0; i < poolAddresses.length; i += batchSize) {
     const contractAddresses = poolAddresses.slice(i, i + batchSize)
