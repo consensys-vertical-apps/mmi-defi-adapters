@@ -4,7 +4,7 @@ import { Worker } from 'node:worker_threads'
 import { serve } from '@hono/node-server'
 import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, Network } from 'ethers'
-import { buildApi } from './build-api.js'
+import { buildApi } from './api/build-api.js'
 import { logger } from './logger.js'
 
 const THIRTY_SECONDS_IN_MS = 30_000

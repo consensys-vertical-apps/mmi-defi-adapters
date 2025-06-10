@@ -1,5 +1,5 @@
 import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
-import { extractErrorMessage } from './extractErrorMessage.js'
+import { extractErrorMessage } from './utils/extractErrorMessage.js'
 import { logger } from './logger.js'
 import { runner } from './runner.js'
 

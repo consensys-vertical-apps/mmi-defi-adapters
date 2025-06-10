@@ -1,6 +1,6 @@
 import { type JsonRpcProvider, type Log, isError } from 'ethers'
 import type { Logger } from 'pino'
-import { TIMEOUT_ERROR_MESSAGE, withTimeout } from './with-timeout.js'
+import { TIMEOUT_ERROR_MESSAGE, withTimeout } from './utils/with-timeout.js'
 
 export async function* fetchEvents({
   provider,
@@ -36,6 +36,10 @@ export async function* fetchEvents({
         }),
       )
 
+      if (logs.length > 0) {
+        logger.info({ logs }, 'Fetched events')
+      }
+
       yield logs
     } catch (error) {
       if (
@@ -45,6 +49,7 @@ export async function* fetchEvents({
           ((error.message.includes('"code": -32005') &&
             toBlock - fromBlock > 0) || // 10K logs limit if fromBlock != toBlock
             error.message.includes('code": -32062') || // Batch size too large
+            error.message.includes('code": -32602') || // eth_getLogs is limited to 5000 block range
             error.message.includes('code": -32603'))) // Server timeout
       ) {
         const midBlock = Math.floor((fromBlock + toBlock) / 2)

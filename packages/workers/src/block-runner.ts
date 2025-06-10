@@ -4,8 +4,8 @@ import {
 } from '@metamask-institutional/defi-adapters'
 import type { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
-import { extractErrorMessage } from './extractErrorMessage.js'
-import { withTimeout } from './with-timeout.js'
+import { extractErrorMessage } from './utils/extractErrorMessage.js'
+import { withTimeout } from './utils/with-timeout.js'
 
 const SIXTY_SECONDS = 60_000
 

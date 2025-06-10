@@ -4,7 +4,7 @@ import { Hono } from 'hono'
 import { pinoLogger } from 'hono-pino'
 import type { ContentfulStatusCode } from 'hono/utils/http-status'
 import * as client from 'prom-client'
-import { logger } from './logger.js'
+import { logger } from '../logger.js'
 
 const TEN_MINUTES_IN_MS = 600_000
 const INTERNAL_SERVER_ERROR = 500

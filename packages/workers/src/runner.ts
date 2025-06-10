@@ -5,14 +5,12 @@ import {
 } from '@metamask-institutional/defi-adapters'
 import { Interface, JsonRpcProvider, Network, id } from 'ethers'
 import type { Logger } from 'pino'
-import { buildHistoricCache } from './build-historic-cache.js'
-import { buildLatestCache } from './build-latest-cache.js'
-import { extractErrorMessage } from './extractErrorMessage.js'
 import { logger } from './logger.js'
 import {
   type CacheClient,
   createPostgresCacheClient,
 } from './postgres-cache-client.js'
+import { runnerLoop } from './runner-loop.js'
 
 export async function runner(
   defiProvider: DefiProvider,
@@ -54,35 +52,43 @@ export async function runner(
 
   logger.info({ totalJobs: pools.length, newJobs: newPools }, 'Jobs updated')
 
-  await Promise.all([
-    buildHistoricCache(
-      provider,
-      chainId,
-      cacheClient,
-      logger.child({
-        subService: 'historic-cache',
-      }),
-    ).catch((error) => {
-      logger.error(
-        { error: extractErrorMessage(error) },
-        'Error occurred building historic cache',
-      )
-    }),
-    buildLatestCache(
-      provider,
-      chainId,
-      cacheClient,
-      blockNumber,
-      logger.child({
-        subService: 'latest-cache',
-      }),
-    ).catch((error) => {
-      logger.error(
-        { error: extractErrorMessage(error) },
-        'Error occurred building latest block cache',
-      )
-    }),
-  ])
+  await runnerLoop({
+    blockNumber,
+    provider,
+    chainId,
+    cacheClient,
+    logger,
+  })
+
+  // await Promise.all([
+  //   buildHistoricCache(
+  //     provider,
+  //     chainId,
+  //     cacheClient,
+  //     logger.child({
+  //       subService: 'historic-cache',
+  //     }),
+  //   ).catch((error) => {
+  //     logger.error(
+  //       { error: extractErrorMessage(error) },
+  //       'Error occurred building historic cache',
+  //     )
+  //   }),
+  //   buildLatestCache(
+  //     provider,
+  //     chainId,
+  //     cacheClient,
+  //     blockNumber,
+  //     logger.child({
+  //       subService: 'latest-cache',
+  //     }),
+  //   ).catch((error) => {
+  //     logger.error(
+  //       { error: extractErrorMessage(error) },
+  //       'Error occurred building latest block cache',
+  //     )
+  //   }),
+  // ])
 }
 
 async function getPools(defiProvider: DefiProvider, chainId: EvmChain) {

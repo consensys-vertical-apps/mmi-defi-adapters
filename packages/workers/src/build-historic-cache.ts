@@ -1,12 +1,12 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, getAddress } from 'ethers'
 import type { Logger } from 'pino'
-import { extractErrorMessage } from './extractErrorMessage.js'
+import { extractErrorMessage } from './utils/extractErrorMessage.js'
 import { fetchEvents } from './fetch-events.js'
 import { parseUserEventLog } from './parse-user-event-log.js'
 import type { CacheClient, JobDbEntry } from './postgres-cache-client.js'
 
-const SIXTY_SECONDS = 60_000
+const SIXTY_SECONDS_IN_MS = 60_000
 
 // TODO: Create zod schema for config
 const MaxConcurrentBatches = process.env.HISTORIC_CACHE_BATCH_SIZE
@@ -50,168 +50,162 @@ export async function buildHistoricCache(
   cacheClient: CacheClient,
   logger: Logger,
 ) {
-  logger.info('Starting historic cache builder')
+  const unfinishedPools = await cacheClient.fetchUnfinishedJobs()
 
-  while (true) {
-    const unfinishedPools = await cacheClient.fetchUnfinishedJobs()
+  const nextPoolGroup = getNextPoolGroup(
+    unfinishedPools,
+    MaxContractsPerCall[chainId],
+  )
 
-    const nextPoolGroup = getNextPoolGroup(
-      unfinishedPools,
-      MaxContractsPerCall[chainId],
-    )
+  logger.info(
+    {
+      unfinishedPools: unfinishedPools.length,
+      nextPoolGroup: nextPoolGroup?.poolAddresses.length,
+      batchSize: nextPoolGroup?.batchSize,
+    },
+    'Pools waiting to be processed',
+  )
 
+  if (!nextPoolGroup) {
+    await new Promise((resolve) => setTimeout(resolve, SIXTY_SECONDS_IN_MS))
+    return
+  }
+
+  const {
+    poolAddresses,
+    topic0,
+    eventAbi,
+    userAddressIndex,
+    targetBlockNumber,
+    batchSize,
+  } = nextPoolGroup
+
+  const totalBatches = Math.ceil(poolAddresses.length / batchSize)
+
+  const processedEntities = {
+    poolsProcessed: 0,
+    logsProcessed: 0,
+    poolsFailed: 0,
+    blocksProcessed: 0,
+    batchesProcessed: 0,
+  }
+
+  const interval = setInterval(() => {
     logger.info(
       {
         unfinishedPools: unfinishedPools.length,
-        nextPoolGroup: nextPoolGroup?.poolAddresses.length,
-        batchSize: nextPoolGroup?.batchSize,
+        nextPoolGroup: poolAddresses.length,
+        batchSize,
+        totalBatches,
+        topic0,
+        eventAbi,
+        userAddressIndex,
+        targetBlockNumber,
+        ...processedEntities,
+        blocksMissing: targetBlockNumber - processedEntities.blocksProcessed,
       },
-      'Unfinished pools to process',
+      'Historic cache iteration progress',
+    )
+  }, SIXTY_SECONDS_IN_MS)
+
+  for (let i = 0; i < poolAddresses.length; i += batchSize) {
+    const contractAddresses = poolAddresses.slice(i, i + batchSize)
+
+    logger.info(
+      {
+        batchIndex: i / batchSize + 1,
+        totalBatches,
+        batchSize: contractAddresses.length,
+        totalPools: poolAddresses.length,
+      },
+      'Fetching logs from pools batch started',
     )
 
-    if (!nextPoolGroup) {
-      await new Promise((resolve) => setTimeout(resolve, SIXTY_SECONDS))
-      continue
-    }
-
-    const {
-      poolAddresses,
-      topic0,
-      eventAbi,
-      userAddressIndex,
-      targetBlockNumber,
-      batchSize,
-    } = nextPoolGroup
-
-    const totalBatches = Math.ceil(poolAddresses.length / batchSize)
-
-    const processedEntities = {
-      poolsProcessed: 0,
-      logsProcessed: 0,
-      poolsFailed: 0,
-      blocksProcessed: 0,
-      batchesProcessed: 0,
-    }
-
-    const interval = setInterval(() => {
-      logger.info(
-        {
-          unfinishedPools: unfinishedPools.length,
-          nextPoolGroup: poolAddresses.length,
-          batchSize,
-          totalBatches,
+    try {
+      const ranges = splitRange(0, targetBlockNumber, MaxConcurrentBatches)
+      const concurrentRanges = ranges.map(async ({ from, to }) => {
+        for await (const logs of fetchEvents({
+          provider,
+          contractAddresses,
           topic0,
-          eventAbi,
-          userAddressIndex,
-          targetBlockNumber,
-          ...processedEntities,
-          blocksMissing: targetBlockNumber - processedEntities.blocksProcessed,
-        },
-        'Historic cache iteration progress',
+          fromBlock: from,
+          toBlock: to,
+          logger,
+        })) {
+          const logsToInsert: { address: string; contractAddress: string }[] =
+            []
+          for (const log of logs) {
+            const contractAddress = getAddress(log.address.toLowerCase())
+
+            try {
+              const userAddress = parseUserEventLog(
+                log,
+                eventAbi,
+                userAddressIndex,
+              )
+
+              if (userAddress) {
+                logsToInsert.push({
+                  address: userAddress,
+                  contractAddress,
+                })
+              }
+            } catch (error) {
+              logger.error(
+                {
+                  error: extractErrorMessage(error),
+                  txHash: log.transactionHash,
+                  eventAbi,
+                  userAddressIndex,
+                },
+                'Error parsing log',
+              )
+            }
+          }
+
+          await cacheClient.insertLogs(logsToInsert)
+
+          processedEntities.logsProcessed += logsToInsert.length
+          processedEntities.blocksProcessed += to - from + 1
+        }
+      })
+
+      await Promise.all(concurrentRanges)
+
+      await cacheClient.updateJobStatus(
+        contractAddresses,
+        topic0,
+        userAddressIndex,
+        'completed',
       )
-    }, SIXTY_SECONDS)
 
-    for (let i = 0; i < poolAddresses.length; i += batchSize) {
-      const contractAddresses = poolAddresses.slice(i, i + batchSize)
+      processedEntities.poolsProcessed += contractAddresses.length
+    } catch (error) {
+      await cacheClient.updateJobStatus(
+        contractAddresses,
+        topic0,
+        userAddressIndex,
+        'failed',
+      )
 
-      logger.info(
+      logger.error(
         {
           batchIndex: i / batchSize + 1,
           totalBatches,
           batchSize: contractAddresses.length,
           totalPools: poolAddresses.length,
+          error: extractErrorMessage(error),
         },
-        'Fetching logs from pools batch started',
+        'Fetching logs from pools batch failed',
       )
 
-      try {
-        const ranges = splitRange(0, targetBlockNumber, MaxConcurrentBatches)
-        const concurrentRanges = ranges.map(async ({ from, to }) => {
-          for await (const logs of fetchEvents({
-            provider,
-            contractAddresses,
-            topic0,
-            fromBlock: from,
-            toBlock: to,
-            logger,
-          })) {
-            const logsToInsert: { address: string; contractAddress: string }[] =
-              []
-            for (const log of logs) {
-              const contractAddress = getAddress(log.address.toLowerCase())
-
-              try {
-                const userAddress = parseUserEventLog(
-                  log,
-                  eventAbi,
-                  userAddressIndex,
-                )
-
-                if (userAddress) {
-                  logsToInsert.push({
-                    address: userAddress,
-                    contractAddress,
-                  })
-                }
-              } catch (error) {
-                logger.error(
-                  {
-                    error: extractErrorMessage(error),
-                    txHash: log.transactionHash,
-                    eventAbi,
-                    userAddressIndex,
-                  },
-                  'Error parsing log',
-                )
-              }
-            }
-
-            await cacheClient.insertLogs(logsToInsert)
-
-            processedEntities.logsProcessed += logsToInsert.length
-            processedEntities.blocksProcessed += to - from + 1
-          }
-        })
-
-        await Promise.all(concurrentRanges)
-
-        await cacheClient.updateJobStatus(
-          contractAddresses,
-          topic0,
-          userAddressIndex,
-          'completed',
-        )
-
-        processedEntities.poolsProcessed += contractAddresses.length
-      } catch (error) {
-        await cacheClient.updateJobStatus(
-          contractAddresses,
-          topic0,
-          userAddressIndex,
-          'failed',
-        )
-
-        logger.error(
-          {
-            batchIndex: i / batchSize + 1,
-            totalBatches,
-            batchSize: contractAddresses.length,
-            totalPools: poolAddresses.length,
-            error: extractErrorMessage(error),
-          },
-          'Fetching logs from pools batch failed',
-        )
-
-        processedEntities.poolsFailed += contractAddresses.length
-      }
-
-      processedEntities.batchesProcessed += 1
+      processedEntities.poolsFailed += contractAddresses.length
     }
 
-    clearInterval(interval)
-
-    await new Promise((resolve) => setTimeout(resolve, 5000))
+    processedEntities.batchesProcessed += 1
   }
+
+  clearInterval(interval)
 }
 
 function splitRange(
