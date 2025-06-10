@@ -9,7 +9,6 @@ vi.mock('./utils/with-timeout.js', async () => ({
   withTimeout: vi.fn(),
 }))
 
-// Mock the isError function from ethers
 vi.mock('ethers', async () => ({
   ...(await vi.importActual('ethers')),
   isError: vi.fn(),
