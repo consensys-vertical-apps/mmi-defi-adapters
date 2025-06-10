@@ -72,6 +72,8 @@ await Promise.all(
         { chainId, error: extractErrorMessage(error) },
         'Runner execution failed',
       )
+
+      process.exit(1)
     }
   }),
 )
