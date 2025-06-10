@@ -1,67 +1,36 @@
-import {
-  Chain,
+import type {
   DefiProvider,
   EvmChain,
 } from '@metamask-institutional/defi-adapters'
-import { Interface, JsonRpcProvider, Network, id } from 'ethers'
 import type { Logger } from 'pino'
-import { logger } from './logger.js'
-import {
-  type CacheClient,
-  createPostgresCacheClient,
-} from './postgres-cache-client.js'
-import { runnerLoop } from './runner-loop.js'
+import type { CacheClient } from './postgres-cache-client.js'
+import { id, Interface } from 'ethers'
 
-export async function runner(
-  defiProvider: DefiProvider,
-  dbUrl: string,
-  chainId: EvmChain,
-  logger: Logger,
-) {
-  logger.info('Starting runner')
-
-  const cacheClient = await createPostgresCacheClient({
-    dbUrl,
-    chainId,
-    partialPoolConfig: {
-      max: 15,
-      connectionTimeoutMillis: 10_000,
-    },
-    logger,
-  })
-
-  const providerUrl =
-    defiProvider.chainProvider.providers[chainId]?._getConnection().url
-
-  if (!providerUrl) {
-    logger.error('Provider missing for this chain')
-    return
-  }
-
-  const provider = new JsonRpcProvider(providerUrl, chainId, {
-    staticNetwork: Network.from(chainId),
-  })
-
-  const blockNumber = await getBlockToProcess(cacheClient, provider, logger)
-
-  // TODO: By calling it here, we are only able to add new jobs whenever this script starts
-  // If we dynamically call this, we need to ensure that there is no race condition with the historic and latest cache
-  const pools = await getPools(defiProvider, chainId)
+export async function updateNewJobs({
+  chainId,
+  blockNumber,
+  defiProvider,
+  cacheClient,
+  logger,
+}: {
+  chainId: EvmChain
+  blockNumber: number
+  defiProvider: DefiProvider
+  cacheClient: CacheClient
+  logger: Logger
+}) {
+  const pools = await fetchAllPools(defiProvider, chainId, logger)
 
   const newPools = await cacheClient.insertJobs(pools, blockNumber)
 
   logger.info({ totalJobs: pools.length, newJobs: newPools }, 'Jobs updated')
-
-  await runnerLoop({
-    blockNumber,
-    provider,
-    chainId,
-    cacheClient,
-    logger,
-  })
 }
 
-async function getPools(defiProvider: DefiProvider, chainId: EvmChain) {
+async function fetchAllPools(
+  defiProvider: DefiProvider,
+  chainId: EvmChain,
+  logger: Logger,
+) {
   const defiPoolAddresses = await defiProvider.getSupport({
     filterChainIds: [chainId],
   })
@@ -163,29 +132,4 @@ async function getPools(defiProvider: DefiProvider, chainId: EvmChain) {
   }
 
   return Array.from(protocolTokenEntries.values())
-}
-
-async function getBlockToProcess(
-  cacheClient: CacheClient,
-  provider: JsonRpcProvider,
-  logger: Logger,
-) {
-  const dbBlockNumber = await cacheClient.getLatestBlockProcessed()
-
-  if (dbBlockNumber) {
-    logger.info({ dbBlockNumber }, 'Last block processed fetched from DB')
-    return dbBlockNumber
-  }
-
-  try {
-    const blockNumber = await provider.getBlockNumber()
-    logger.info({ blockNumber }, 'Block number fetched from provider')
-    return blockNumber
-  } catch (error) {
-    logger.error(
-      { error, providerUrl: provider._getConnection().url },
-      'Error fetching block number',
-    )
-    process.exit(1)
-  }
 }
