@@ -3,12 +3,12 @@ import { Mutex } from 'async-mutex'
 import type { Pool, PoolClient, QueryResult } from 'pg'
 import type { Logger } from 'pino'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { runMigrations } from '../run-migrations.js'
 import {
   type CacheClient,
   createPostgresCacheClient,
 } from './postgres-cache-client.js'
 import { createDbPool } from './postgres-utils.js'
+import { runMigrations } from './run-migrations.js'
 
 vi.mock('./postgres-utils.js')
 vi.mock('./run-migrations.js')
