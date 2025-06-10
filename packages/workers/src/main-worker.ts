@@ -1,11 +1,11 @@
 import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider, Network } from 'ethers'
 import type { Logger } from 'pino'
-import { logger } from './logger.js'
 import {
   type CacheClient,
   createPostgresCacheClient,
 } from './database/postgres-cache-client.js'
+import { logger } from './logger.js'
 import { runnerLoop } from './runner-loop.js'
 import { updateNewJobs } from './update-new-jobs.js'
 import { extractErrorMessage } from './utils/extractErrorMessage.js'
