@@ -5,8 +5,8 @@ import {
 } from '@metamask-institutional/defi-adapters'
 import type { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
-import { buildHistoricCache } from './build-historic-cache.js'
-import { buildLatestCache, createWatchKey } from './build-latest-cache.js'
+import { buildHistoricCache } from './cache/build-historic-cache.js'
+import { buildLatestCache, createWatchKey } from './cache/build-latest-cache.js'
 import type { CacheClient } from './postgres-cache-client.js'
 
 const SIXTY_SECONDS = 60_000

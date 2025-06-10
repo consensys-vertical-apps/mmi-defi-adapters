@@ -1,9 +1,9 @@
 import { JsonRpcProvider, TransactionReceipt, ethers, getAddress } from 'ethers'
 import type { Logger } from 'pino'
+import type { CacheClient } from '../postgres-cache-client.js'
+import { extractErrorMessage } from '../utils/extractErrorMessage.js'
+import { withTimeout } from '../utils/with-timeout.js'
 import { parseUserEventLog } from './parse-user-event-log.js'
-import type { CacheClient } from './postgres-cache-client.js'
-import { extractErrorMessage } from './utils/extractErrorMessage.js'
-import { withTimeout } from './utils/with-timeout.js'
 
 const SIXTY_SECONDS = 60_000
 const ONE_SECOND = 1_000

@@ -1,11 +1,11 @@
 import { type JsonRpcProvider, type Log, isError } from 'ethers'
 import type { Logger } from 'pino'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { fetchEvents } from './fetch-events'
-import { TIMEOUT_ERROR_MESSAGE } from './utils/with-timeout'
+import { TIMEOUT_ERROR_MESSAGE } from '../utils/with-timeout.js'
+import { fetchEvents } from './fetch-events.js'
 
-vi.mock('./utils/with-timeout.js', async () => ({
-  ...(await vi.importActual('./utils/with-timeout.js')),
+vi.mock('../utils/with-timeout.js', async () => ({
+  ...(await vi.importActual('../utils/with-timeout.js')),
   withTimeout: vi.fn(),
 }))
 
@@ -52,7 +52,7 @@ describe('fetchEvents', () => {
     it('should yield logs when request is successful', async () => {
       const mockLogs = [] as unknown as Log[]
 
-      const { withTimeout } = await import('./utils/with-timeout.js')
+      const { withTimeout } = await import('../utils/with-timeout.js')
       vi.mocked(withTimeout).mockResolvedValue(mockLogs)
 
       const generator = fetchEvents(defaultParams)
@@ -78,7 +78,7 @@ describe('fetchEvents', () => {
     it('should split range and retry on timeout error', async () => {
       const mockLogs = [] as unknown as Log[]
 
-      const { withTimeout } = await import('./utils/with-timeout.js')
+      const { withTimeout } = await import('../utils/with-timeout.js')
       const timeoutError = new Error(TIMEOUT_ERROR_MESSAGE)
 
       vi.mocked(withTimeout)
@@ -106,7 +106,7 @@ describe('fetchEvents', () => {
 
     it('should split range on SERVER_ERROR', async () => {
       const mockLogs = [] as unknown as Log[]
-      const { withTimeout } = await import('./utils/with-timeout.js')
+      const { withTimeout } = await import('../utils/with-timeout.js')
 
       const serverError = new Error('Server error')
       // Mock isError to return true for SERVER_ERROR
@@ -139,7 +139,7 @@ describe('fetchEvents', () => {
 
     it('should split range on -32005 error (10K logs limit)', async () => {
       const mockLogs = [] as unknown as Log[]
-      const { withTimeout } = await import('./utils/with-timeout.js')
+      const { withTimeout } = await import('../utils/with-timeout.js')
 
       const unknownError = new Error(
         '{"code": -32005, "message": "query returned more than 10000 results"}',
@@ -173,7 +173,7 @@ describe('fetchEvents', () => {
     })
 
     it('should split range on -32062 error (batch size too large)', async () => {
-      const { withTimeout } = await import('./utils/with-timeout.js')
+      const { withTimeout } = await import('../utils/with-timeout.js')
 
       const unknownError = new Error(
         '{"code": -32062, "message": "batch size too large"}',
@@ -206,7 +206,7 @@ describe('fetchEvents', () => {
     })
 
     it('should split range on -32602 error (5000 block range limit)', async () => {
-      const { withTimeout } = await import('./utils/with-timeout.js')
+      const { withTimeout } = await import('../utils/with-timeout.js')
 
       const unknownError = new Error(
         '{"code": -32602, "message": "eth_getLogs is limited to 5000 block range"}',
@@ -239,7 +239,7 @@ describe('fetchEvents', () => {
     })
 
     it('should split range on -32603 error (server timeout)', async () => {
-      const { withTimeout } = await import('./utils/with-timeout.js')
+      const { withTimeout } = await import('../utils/with-timeout.js')
 
       const unknownError = new Error(
         '{"code": -32603, "message": "server timeout"}',
@@ -272,7 +272,7 @@ describe('fetchEvents', () => {
     })
 
     it('should not split range on -32005 error when fromBlock equals toBlock', async () => {
-      const { withTimeout } = await import('./utils/with-timeout.js')
+      const { withTimeout } = await import('../utils/with-timeout.js')
 
       const unknownError = new Error(
         '{"code": -32005, "message": "query returned more than 10000 results"}',
@@ -307,7 +307,7 @@ describe('fetchEvents', () => {
     })
 
     it('should throw and log error for non-retryable errors', async () => {
-      const { withTimeout } = await import('./utils/with-timeout.js')
+      const { withTimeout } = await import('../utils/with-timeout.js')
 
       const nonRetryableError = new Error('Some other error')
       vi.mocked(isError).mockReturnValue(false)
@@ -334,7 +334,7 @@ describe('fetchEvents', () => {
   describe('depth tracking', () => {
     it('should track depth correctly during recursive splits', async () => {
       const mockLogs = [] as unknown as Log[]
-      const { withTimeout } = await import('./utils/with-timeout.js')
+      const { withTimeout } = await import('../utils/with-timeout.js')
 
       const timeoutError = new Error(TIMEOUT_ERROR_MESSAGE)
       vi.mocked(withTimeout)
@@ -366,7 +366,7 @@ describe('fetchEvents', () => {
   describe('parameter validation', () => {
     it('should handle multiple contract addresses', async () => {
       const mockLogs = [] as unknown as Log[]
-      const { withTimeout } = await import('./utils/with-timeout.js')
+      const { withTimeout } = await import('../utils/with-timeout.js')
       vi.mocked(withTimeout).mockResolvedValue(mockLogs)
 
       const addresses = [
@@ -393,7 +393,7 @@ describe('fetchEvents', () => {
 
     it('should use correct topic0 parameter', async () => {
       const mockLogs = [] as unknown as Log[]
-      const { withTimeout } = await import('./utils/with-timeout.js')
+      const { withTimeout } = await import('../utils/with-timeout.js')
       vi.mocked(withTimeout).mockResolvedValue(mockLogs)
 
       const customTopic =

@@ -1,6 +1,6 @@
 import { type JsonRpcProvider, type Log, isError } from 'ethers'
 import type { Logger } from 'pino'
-import { TIMEOUT_ERROR_MESSAGE, withTimeout } from './utils/with-timeout.js'
+import { TIMEOUT_ERROR_MESSAGE, withTimeout } from '../utils/with-timeout.js'
 
 export async function* fetchEvents({
   provider,
