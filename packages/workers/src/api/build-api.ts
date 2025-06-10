@@ -54,34 +54,32 @@ export function buildApi(
   client.register.clear()
   client.collectDefaultMetrics({})
 
-  app.get('/health', async (c) => {
-    const chainHealthReport = (
-      await Promise.all(
-        Object.values(EvmChain).map(async (chainId) => {
-          const chainWorkerInfo = workersInfo[chainId]
+  app.get('/health', (c) => {
+    const chainHealthReport = Object.values(EvmChain)
+      .map((chainId) => {
+        const chainWorkerInfo = workersInfo[chainId]
 
-          if (!chainWorkerInfo) {
-            return undefined
-          }
+        if (!chainWorkerInfo) {
+          return undefined
+        }
 
-          const blocksLagging =
-            chainWorkerInfo.latestBlockNumber &&
-            chainWorkerInfo.lastProcessedBlockNumber
-              ? chainWorkerInfo.latestBlockNumber -
-                chainWorkerInfo.lastProcessedBlockNumber
-              : undefined
+        const blocksLagging =
+          chainWorkerInfo.latestBlockNumber &&
+          chainWorkerInfo.lastProcessedBlockNumber
+            ? chainWorkerInfo.latestBlockNumber -
+              chainWorkerInfo.lastProcessedBlockNumber
+            : undefined
 
-          return {
-            chainId,
-            lastProcessedBlockNumber: chainWorkerInfo.lastProcessedBlockNumber,
-            latestBlockNumber: chainWorkerInfo.latestBlockNumber,
-            updatedAt: chainWorkerInfo.updatedAt,
-            blocksLagging,
-            healthy: Date.now() - chainWorkerInfo.updatedAt < TEN_MINUTES_IN_MS,
-          }
-        }),
-      )
-    ).filter((x): x is NonNullable<typeof x> => Boolean(x))
+        return {
+          chainId,
+          lastProcessedBlockNumber: chainWorkerInfo.lastProcessedBlockNumber,
+          latestBlockNumber: chainWorkerInfo.latestBlockNumber,
+          updatedAt: chainWorkerInfo.updatedAt,
+          blocksLagging,
+          healthy: Date.now() - chainWorkerInfo.updatedAt < TEN_MINUTES_IN_MS,
+        }
+      })
+      .filter((x): x is NonNullable<typeof x> => Boolean(x))
 
     if (chainHealthReport.some((chainHealth) => !chainHealth.healthy)) {
       return c.json(

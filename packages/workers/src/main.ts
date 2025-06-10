@@ -2,12 +2,19 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Worker } from 'node:worker_threads'
 import { serve } from '@hono/node-server'
-import { EvmChain } from '@metamask-institutional/defi-adapters'
+import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
 import { buildApi } from './api/build-api.js'
 import { logger } from './logger.js'
 
+const defiProvider = new DefiProvider()
+
 const workersInfo = Object.values(EvmChain).reduce(
   (acc, chainId) => {
+    // Do not add an entry for chains that are not supported
+    if (!defiProvider.chainProvider.providers[chainId]) {
+      return acc
+    }
+
     acc[chainId] = {
       updatedAt: Date.now(),
     }
