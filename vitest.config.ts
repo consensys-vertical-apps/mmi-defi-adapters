@@ -59,6 +59,7 @@ export default defineConfig({
         'packages/*/src/index.ts', // Do not cover index.ts at root
         'packages/*/src/**/logger.ts', // Do not cover logger.ts
         'packages/workers/src/migrations/**', // Do not cover migrations
+        'packages/workers/src/main-worker.ts', // Do not cover main-worker.ts
       ],
     },
   },
