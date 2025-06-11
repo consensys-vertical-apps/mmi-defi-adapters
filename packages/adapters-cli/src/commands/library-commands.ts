@@ -98,7 +98,7 @@ export function libraryCommands(program: Command) {
       false,
     )
     .option(
-      '-e, --filterMissingUserEvent [filterMissingUserEvent]',
+      '-e, --filterWhereUserEventMissing [filterWhereUserEventMissing]',
       'missing user event filter',
       false,
     )
@@ -108,7 +108,7 @@ export function libraryCommands(program: Command) {
         protocols,
         chains,
         includeProtocolTokens,
-        filterMissingUserEvent,
+        filterWhereUserEventMissing,
       }) => {
         const filterProtocolIds = multiProtocolFilter(protocols)
         const filterChainIds = multiChainFilter(chains)
@@ -121,7 +121,7 @@ export function libraryCommands(program: Command) {
           filterChainIds,
           filterProtocolIds,
           includeProtocolTokens,
-          filterMissingUserEvent,
+          filterWhereUserEventMissing,
         })
 
         printResponse(data)

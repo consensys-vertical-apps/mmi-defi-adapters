@@ -285,12 +285,12 @@ export class AdaptersController {
     filterChainIds,
     filterProtocolIds,
     includeProtocolTokens,
-    filterMissingUserEvent,
+    filterWhereUserEventMissing,
   }: {
     filterChainIds?: Chain[] | undefined
     filterProtocolIds?: Protocol[] | undefined
     includeProtocolTokens?: boolean
-    filterMissingUserEvent?: boolean
+    filterWhereUserEventMissing?: boolean
   } = {}): Promise<Support> {
     const support: Support = {}
     for (const [chainId, protocols] of this.adapters.entries()) {
@@ -308,7 +308,10 @@ export class AdaptersController {
         }
 
         for (const [productId, adapter] of products.entries()) {
-          if (filterMissingUserEvent && adapter.adapterSettings.userEvent) {
+          if (
+            filterWhereUserEventMissing &&
+            adapter.adapterSettings.userEvent
+          ) {
             continue
           }
 
