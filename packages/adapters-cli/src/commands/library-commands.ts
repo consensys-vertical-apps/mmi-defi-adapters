@@ -97,23 +97,36 @@ export function libraryCommands(program: Command) {
       'include full protocol token data',
       false,
     )
+    .option(
+      '-e, --filterMissingUserEvent [filterMissingUserEvent]',
+      'missing user event filter',
+      false,
+    )
     .showHelpAfterError()
-    .action(async ({ protocols, chains, includeProtocolTokens }) => {
-      const filterProtocolIds = multiProtocolFilter(protocols)
-      const filterChainIds = multiChainFilter(chains)
-
-      const defiProvider = new DefiProvider({
-        poolFilter: buildPoolFilter(),
-      })
-
-      const data = await defiProvider.getSupport({
-        filterChainIds,
-        filterProtocolIds,
+    .action(
+      async ({
+        protocols,
+        chains,
         includeProtocolTokens,
-      })
+        filterMissingUserEvent,
+      }) => {
+        const filterProtocolIds = multiProtocolFilter(protocols)
+        const filterChainIds = multiChainFilter(chains)
 
-      printResponse(data)
-    })
+        const defiProvider = new DefiProvider({
+          poolFilter: buildPoolFilter(),
+        })
+
+        const data = await defiProvider.getSupport({
+          filterChainIds,
+          filterProtocolIds,
+          includeProtocolTokens,
+          filterMissingUserEvent,
+        })
+
+        printResponse(data)
+      },
+    )
 }
 
 function printResponse(data: unknown) {
