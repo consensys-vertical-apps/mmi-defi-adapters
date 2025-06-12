@@ -16,6 +16,7 @@ import { AdapterResponse, DefiPositionResponse } from '../types/response'
 import { TestCase } from '../types/testCase'
 import { Protocol } from './protocols'
 import { supportedProtocols } from './supportedProtocols'
+import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 
 const TEST_TIMEOUT = 300000
 
@@ -233,6 +234,141 @@ function runProductTests(
           )
         })
       })
+
+      // Only run user event tests if there are positions test cases with both txHash and userEvent configured
+      const hasUserEventTest = positionsTestCases.some(
+        (testCase) =>
+          testCase.input.openingPositionTxHash &&
+          !!defiProvider.adaptersController.fetchAdapter(
+            testCase.chainId,
+            protocolId,
+            productId,
+          ).adapterSettings.userEvent,
+      )
+
+      if (hasUserEventTest) {
+        describe('userEventExistsInTransaction', () => {
+          it.each(
+            positionsTestCases.map((testCase) => [testKey(testCase), testCase]),
+          )(
+            'User event for test %s match',
+            async (_, testCase) => {
+              const { defiProvider } = await fetchSnapshot(
+                testCase,
+                protocolId,
+                productId,
+              )
+              if (testCase.input.openingPositionTxHash) {
+                const adapter = defiProvider.adaptersController.fetchAdapter(
+                  testCase.chainId,
+                  protocolId,
+                  productId,
+                )
+                if (adapter.adapterSettings.userEvent) {
+                  const txRecipt = (await defiProvider.chainProvider.providers[
+                    testCase.chainId
+                  ]) as CustomJsonRpcProvider
+
+                  const txReceipt = await txRecipt.getTransactionReceipt(
+                    testCase.input.openingPositionTxHash,
+                  )
+
+                  if (!txReceipt) {
+                    throw new Error(
+                      `Transaction receipt not found for txHash: ${testCase.input.openingPositionTxHash}`,
+                    )
+                  }
+
+                  //Need to handle other cases (e.g., eventAbi or "Transfer")
+                  let expectedUserEventHash: string | undefined
+                  let expectedUserAddressIndex: number | undefined
+                  const userEvent = adapter.adapterSettings.userEvent!
+                  if (
+                    typeof userEvent === 'object' &&
+                    'topic0' in userEvent &&
+                    typeof userEvent.topic0 === 'string'
+                  ) {
+                    expectedUserEventHash = userEvent.topic0
+                    expectedUserAddressIndex = userEvent.userAddressIndex
+                  }
+
+                  const userAddress = testCase.input.userAddress.toLowerCase()
+                  const logs = txReceipt.logs || []
+
+                  let poolAddresses: string[]
+                  try {
+                    poolAddresses = (await adapter.getProtocolTokens()).map(
+                      (x) => x.address.toLowerCase(),
+                    )
+
+                    if (poolAddresses.length === 0) {
+                      throw new Error(
+                        `No protocol tokens found for ${protocolId} / ${productId} on chain ${ChainName[testCase.chainId]} must be implement to use userEvent`,
+                      )
+                    }
+                  } catch (error) {
+                    if (error?.name === 'NotImplementedError') {
+                      throw new Error(
+                        `getProtocolTokens is not implemented for adapter ${protocolId} / ${productId} on chain ${ChainName[testCase.chainId]} must be implement to use userEvent`,
+                      )
+                    }
+                    throw error
+                  }
+
+                  if (expectedUserEventHash) {
+                    // Must have a matching poolAddress in the logs, else throw
+                    const hasMatchingPoolAddress = logs.some((log) =>
+                      poolAddresses.includes(log.address.toLowerCase()),
+                    )
+                    if (!hasMatchingPoolAddress) {
+                      throw new Error(
+                        `
+                        . Expected one of: ${poolAddresses.join(
+                          ', ',
+                        )}, but got log addresses: ${logs
+                          .map((l) => l.address)
+                          .join(', ')}`,
+                      )
+                    }
+                  }
+
+                  const matchingLog = logs.find((log) => {
+                    if (!poolAddresses.includes(log.address.toLowerCase())) {
+                      return false
+                    }
+                    if (
+                      expectedUserEventHash &&
+                      log.topics[0] === expectedUserEventHash
+                    ) {
+                      if (
+                        typeof expectedUserAddressIndex === 'number' &&
+                        log.topics.length > expectedUserAddressIndex
+                      ) {
+                        // topics are hex encoded, user address is last 40 chars
+                        const topicValue =
+                          log.topics[expectedUserAddressIndex].toLowerCase()
+                        return topicValue.endsWith(
+                          userAddress.replace(/^0x/, ''),
+                        )
+                      }
+                      return false
+                    }
+                    return false
+                  })
+                  expect(matchingLog).toBeDefined()
+                }
+              }
+            },
+            TEST_TIMEOUT,
+          )
+
+          afterAll(() => {
+            logger.debug(
+              `[Integration test] checkUserEvent for ${protocolId} finished`,
+            )
+          })
+        })
+      }
     }
 
     const pricesTestCases = testCases.filter(
