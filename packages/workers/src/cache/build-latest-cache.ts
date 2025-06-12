@@ -47,18 +47,17 @@ export async function buildLatestCache({
   logger: Logger
 }): Promise<{
   nextProcessingBlockNumber: number
-  latestBlockNumber: number | undefined
+  latestBlockNumber: number
 }> {
   let nextProcessingBlockNumber: number
-  let latestBlockNumber: number | undefined
+
+  const latestBlockNumber = await waitForBlock(
+    processingBlockNumber,
+    provider,
+    logger,
+  )
 
   try {
-    latestBlockNumber = await waitForBlock(
-      processingBlockNumber,
-      provider,
-      logger,
-    )
-
     nextProcessingBlockNumber = await processBlocks({
       processingBlockNumber,
       latestBlockNumber,

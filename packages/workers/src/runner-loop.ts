@@ -81,7 +81,7 @@ export async function runnerLoop({
       })
 
       nextProcessingBlockNumber = result.nextProcessingBlockNumber
-      latestBlockNumber = result.latestBlockNumber ?? latestBlockNumber
+      latestBlockNumber = result.latestBlockNumber
 
       // Report block number to parent process for health monitoring
       parentPort?.postMessage({
