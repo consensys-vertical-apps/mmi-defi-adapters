@@ -10,6 +10,8 @@ export const testCases: TestCase[] = [
       userAddress: '0xB1C95aC3fcFB2A21A79BA5f95Cce0Ff2237f1692',
       filterProtocolTokens: ['0x8eF88E4c7CfbbaC1C163f7eddd4B578792201de6'],
       filterTokenIds: ['144215'],
+      openingPositionTxHash:
+        '0x53c59dbbd68fc713f4bf673c2bddd148b7e94577996a9b67e6997474d49e9355',
     },
 
     blockNumber: 65031322,
@@ -27,6 +29,7 @@ export const testCases: TestCase[] = [
       ],
 
       filterTokenIds: ['143872', '144209'],
+      openingPositionTxHash: '',
     },
 
     blockNumber: 65031322,

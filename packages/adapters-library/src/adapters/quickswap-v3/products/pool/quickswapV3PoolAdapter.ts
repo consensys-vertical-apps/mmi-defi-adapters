@@ -26,6 +26,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { PositionManager__factory } from '../../contracts'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 // A deadline value needs to be passed to the call, so a stub is generated here
 const deadline = Math.floor(Date.now() - 1000) + 60 * 10
@@ -45,7 +46,11 @@ const maxUint128 = 2n ** 128n - 1n
 export class QuickswapV3PoolAdapter implements IProtocolAdapter {
   adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
-    userEvent: false,
+    userEvent: {
+      topic0:
+        '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
+      userAddressIndex: 2,
+    },
   }
 
   productId = 'pool'
@@ -80,7 +85,7 @@ export class QuickswapV3PoolAdapter implements IProtocolAdapter {
       protocolId: this.protocolId,
       name: 'QuickswapV3',
       description: 'Quickswap v3 defi adapter',
-      siteUrl: 'https://uniswap.org/',
+      siteUrl: 'https://quickswap.exchange/',
       iconUrl: TrustWalletProtocolIconMap[Protocol.QuickswapV3],
       positionType: PositionType.Supply,
       chainId: this.chainId,
@@ -88,8 +93,17 @@ export class QuickswapV3PoolAdapter implements IProtocolAdapter {
     }
   }
 
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
-    throw new NotImplementedError()
+    return [
+      {
+        address: contractAddresses[this.chainId]!.positionManager,
+        name: 'QuickSwap V3 Positions NFT-V1',
+        symbol: 'QS-V3-POS',
+        decimals: 0,
+        underlyingTokens: [],
+      },
+    ]
   }
 
   async getPositions({
@@ -140,8 +154,8 @@ export class QuickswapV3PoolAdapter implements IProtocolAdapter {
           },
           { from: userAddress, blockTag: blockNumber },
         ),
-        getTokenMetadata(position.token0, this.chainId, this.provider),
-        getTokenMetadata(position.token1, this.chainId, this.provider),
+        this.helpers.getTokenMetadata(position.token0),
+        this.helpers.getTokenMetadata(position.token1),
       ])
 
       const nftName = this.protocolTokenName(
