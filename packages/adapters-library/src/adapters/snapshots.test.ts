@@ -235,7 +235,7 @@ function runProductTests(
         })
       })
 
-      // Only run user event tests if there are positions test cases with both txHash and userEvent configured
+      // Only run user event tests if there are positions test cases with txHash defined and userEvent configured in the adapter
       const hasUserEventTest = positionsTestCases.some(
         (testCase) =>
           testCase.input.openingPositionTxHash &&
