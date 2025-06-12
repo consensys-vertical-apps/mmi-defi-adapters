@@ -64,8 +64,15 @@ export function buildApi(
             return undefined
           }
 
-          const latestBlockNumber =
-            await chainWorkerInfo.provider.getBlockNumber()
+          let latestBlockNumber: number | undefined
+          try {
+            latestBlockNumber = await chainWorkerInfo.provider.getBlockNumber()
+          } catch (error) {
+            logger.error(
+              { error, chainId },
+              'Error fetching latest block number during healthcheck',
+            )
+          }
 
           const blocksLagging =
             latestBlockNumber && chainWorkerInfo.lastProcessedBlockNumber
