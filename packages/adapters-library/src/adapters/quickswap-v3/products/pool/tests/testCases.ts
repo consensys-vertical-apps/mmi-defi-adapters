@@ -29,7 +29,6 @@ export const testCases: TestCase[] = [
       ],
 
       filterTokenIds: ['143872', '144209'],
-      openingPositionTxHash: '',
     },
 
     blockNumber: 65031322,
