@@ -104,8 +104,8 @@ export const options = {
     // Load test: steady load, 1 iteration per address
     load_test: {
       executor: 'per-vu-iterations',
-      vus: addresses.length,
-      iterations: addresses.length,
+      vus: addresses.length, // 94 concurrent VUs
+      iterations: addresses.length, // 94 iterations
       maxDuration: '5m',
       exec: 'default',
     },
@@ -121,7 +121,7 @@ export const options = {
       exec: 'default',
       gracefulRampDown: '30s',
     },
-    // Spike test: sudden spike to 5x addresses, then drop
+    // // Spike test: sudden spike to 5x addresses, then drop
     spike_test: {
       executor: 'ramping-arrival-rate',
       startRate: 1,
@@ -135,7 +135,7 @@ export const options = {
       ],
       exec: 'default',
     },
-    // Soak test: steady load for 30 minutes
+    // // Soak test: steady load for 30 minutes
     soak_test: {
       executor: 'constant-vus',
       vus: addresses.length,
@@ -151,6 +151,9 @@ const totalPositionsMetric = new Trend(
 )
 
 export default function () {
+  console.log(
+    `VU ${__VU} of ${__ITER} - Fetching defi adapters for address: ${addresses[__VU - 1]}`,
+  )
   const address = addresses[__VU - 1]
   const url = `https://defiadapters.api.cx.metamask.io/positions/${address}`
   const res = http.get(url)
