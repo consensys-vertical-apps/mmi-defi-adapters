@@ -15,6 +15,7 @@ const chainNameMap: Record<Chain, string> = {
   [Chain.Ethereum]: 'ethereum',
   [Chain.Bsc]: 'binance',
   [Chain.Fantom]: 'fantom',
+  [Chain.Sei]: 'sei',
   [Chain.Base]: 'base',
   [Chain.Linea]: 'linea',
   [Chain.Solana]: 'solana',

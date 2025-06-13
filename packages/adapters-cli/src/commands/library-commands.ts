@@ -1,17 +1,16 @@
 import {
-  type AdapterResponse,
   DefiProvider,
-  filterMapSync,
   multiChainFilter,
   multiProductFilter,
   multiProtocolFilter,
   multiProtocolTokenAddressFilter,
 } from '@metamask-institutional/defi-adapters'
+import { buildPostgresPoolFilter } from '@metamask-institutional/workers'
 import type { Command } from 'commander'
 import { startRpcSnapshot } from '../utils/rpc-interceptor.js'
 import { extractRpcMetrics } from './build-scoreboard-command.js'
 
-export function libraryCommands(program: Command, defiProvider: DefiProvider) {
+export function libraryCommands(program: Command) {
   program
     .command('positions')
     .argument('[userAddress]', 'Address of the target account')
@@ -43,6 +42,10 @@ export function libraryCommands(program: Command, defiProvider: DefiProvider) {
 
         const filterProtocolTokens =
           multiProtocolTokenAddressFilter(protocolTokens)
+
+        const defiProvider = new DefiProvider({
+          poolFilter: buildPoolFilter(),
+        })
 
         const msw = startRpcSnapshot(
           Object.values(defiProvider.chainProvider.providers).map(
@@ -94,19 +97,36 @@ export function libraryCommands(program: Command, defiProvider: DefiProvider) {
       'include full protocol token data',
       false,
     )
+    .option(
+      '-e, --filterWhereUserEventMissing [filterWhereUserEventMissing]',
+      'missing user event filter',
+      false,
+    )
     .showHelpAfterError()
-    .action(async ({ protocols, chains, includeProtocolTokens }) => {
-      const filterProtocolIds = multiProtocolFilter(protocols)
-      const filterChainIds = multiChainFilter(chains)
-
-      const data = await defiProvider.getSupport({
-        filterChainIds,
-        filterProtocolIds,
+    .action(
+      async ({
+        protocols,
+        chains,
         includeProtocolTokens,
-      })
+        filterWhereUserEventMissing,
+      }) => {
+        const filterProtocolIds = multiProtocolFilter(protocols)
+        const filterChainIds = multiChainFilter(chains)
 
-      printResponse(data)
-    })
+        const defiProvider = new DefiProvider({
+          poolFilter: buildPoolFilter(),
+        })
+
+        const data = await defiProvider.getSupport({
+          filterChainIds,
+          filterProtocolIds,
+          includeProtocolTokens,
+          filterWhereUserEventMissing,
+        })
+
+        printResponse(data)
+      },
+    )
 }
 
 function printResponse(data: unknown) {
@@ -118,4 +138,18 @@ function printResponse(data: unknown) {
       2,
     ),
   )
+}
+
+function buildPoolFilter() {
+  if (process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE !== 'true') {
+    return undefined
+  }
+
+  if (!process.env.CACHE_DATABASE_URL) {
+    throw new Error('CACHE_DATABASE_URL is not set')
+  }
+
+  return buildPostgresPoolFilter({
+    dbUrl: process.env.CACHE_DATABASE_URL,
+  })
 }

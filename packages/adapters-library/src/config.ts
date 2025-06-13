@@ -23,6 +23,10 @@ const providers: Record<ChainName, string> = {
     'https://polygon-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
   ),
   ftm: parseStringEnv(CHAIN_NOT_ENABLED, 'https://rpc.ftm.tools'),
+  sei: parseStringEnv(
+    CHAIN_NOT_ENABLED,
+    'https://sei-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
+  ),
   base: parseStringEnv(
     process.env.DEFI_ADAPTERS_PROVIDER_BASE,
     'https://base-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
@@ -54,6 +58,7 @@ const maxBatchSize: Record<ChainName, number> = {
   bsc: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_BSC, 100),
   matic: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_POLYGON, 100),
   ftm: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_FANTOM, 100),
+  sei: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_SEI, 100),
   base: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_BASE, 100),
   arb: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_ARBITRUM, 5),
   avax: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_AVALANCHE, 100),
@@ -67,6 +72,7 @@ const hasUnlimitedEthGethLogsBlockRangeLimit: Record<ChainName, boolean> = {
   bsc: false,
   matic: true,
   ftm: false,
+  sei: false,
   base: true,
   arb: true,
   avax: true,
@@ -83,6 +89,7 @@ const ConfigSchema = z
         [ChainName[Chain.Bsc]]: z.string().default(providers.bsc),
         [ChainName[Chain.Polygon]]: z.string().default(providers.matic),
         [ChainName[Chain.Fantom]]: z.string().default(providers.ftm),
+        [ChainName[Chain.Sei]]: z.string().default(providers.sei),
         [ChainName[Chain.Base]]: z.string().default(providers.base),
         [ChainName[Chain.Arbitrum]]: z.string().default(providers.arb),
         [ChainName[Chain.Avalanche]]: z.string().default(providers.avax),
@@ -136,6 +143,9 @@ const ConfigSchema = z
         [ChainName[Chain.Fantom]]: z
           .boolean()
           .default(hasUnlimitedEthGethLogsBlockRangeLimit.ftm),
+        [ChainName[Chain.Sei]]: z
+          .boolean()
+          .default(hasUnlimitedEthGethLogsBlockRangeLimit.sei),
         [ChainName[Chain.Base]]: z
           .boolean()
           .default(hasUnlimitedEthGethLogsBlockRangeLimit.base),
@@ -160,6 +170,7 @@ const ConfigSchema = z
         [ChainName[Chain.Bsc]]: z.number().default(maxBatchSize.bsc),
         [ChainName[Chain.Polygon]]: z.number().default(maxBatchSize.matic),
         [ChainName[Chain.Fantom]]: z.number().default(maxBatchSize.ftm),
+        [ChainName[Chain.Sei]]: z.number().default(maxBatchSize.sei),
         [ChainName[Chain.Base]]: z.number().default(maxBatchSize.base),
         [ChainName[Chain.Arbitrum]]: z.number().default(maxBatchSize.arb),
         [ChainName[Chain.Avalanche]]: z.number().default(maxBatchSize.avax),

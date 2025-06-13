@@ -14,10 +14,7 @@ import { buildIntegrationTests } from '../utils/build-integration-tests.js'
 import { exportAdapter } from '../utils/export-adapter.js'
 import { writeAndLintFile } from '../utils/write-and-lint-file.js'
 
-export function copyAdapterCommand(
-  program: Command,
-  defiProvider: DefiProvider,
-) {
+export function copyAdapterCommand(program: Command) {
   program
     .command('copy-adapter')
     .argument('[sourceProtocolId]', 'Protocol to copy')
@@ -29,6 +26,8 @@ export function copyAdapterCommand(
     )
     .action(
       async (sourceProtocolId, newProtocolId, newProtocolKey, chainKeys) => {
+        const defiProvider = new DefiProvider()
+
         await copyAdapter({
           protocolKey: newProtocolKey,
           protocolId: newProtocolId,
