@@ -111,7 +111,7 @@ export const options = {
     //   executor: 'per-vu-iterations',
     //   vus: 1, // 94 concurrent VUs
     //   iterations: addresses.length, // 94 iterations
-    //   maxDuration: '2m',
+    //   maxDuration: '5m',
     //   exec: 'default',
     // },
     // Stress test: ramp up to 3x addresses, then hold
