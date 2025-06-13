@@ -1,6 +1,6 @@
 import http from 'k6/http'
 import { check } from 'k6'
-import { Trend } from 'k6/metrics'
+import { Trend, Counter } from 'k6/metrics'
 
 const addresses = [
   '0x47ab2ba28c381011fa1f25417c4c2b2c0d5b4781',
@@ -101,59 +101,76 @@ const addresses = [
 
 export const options = {
   scenarios: {
+    // simple: {
+    //   executor: 'shared-iterations',
+    //   vus: addresses.length,
+    //   iterations: addresses.length,
+    // },
     // Load test: steady load, 1 iteration per address
-    load_test: {
-      executor: 'per-vu-iterations',
-      vus: addresses.length, // 94 concurrent VUs
-      iterations: addresses.length, // 94 iterations
-      maxDuration: '5m',
-      exec: 'default',
-    },
+    // load_test: {
+    //   executor: 'per-vu-iterations',
+    //   vus: 1, // 94 concurrent VUs
+    //   iterations: addresses.length, // 94 iterations
+    //   maxDuration: '2m',
+    //   exec: 'default',
+    // },
     // Stress test: ramp up to 3x addresses, then hold
     stress_test: {
       executor: 'ramping-vus',
       startVUs: 0,
       stages: [
-        { duration: '2m', target: addresses.length * 3 },
-        { duration: '3m', target: addresses.length * 3 },
+        // Ramp up to 1x addresses over 1 minutes
+        { duration: '1m', target: addresses.length },
+        // Hold at 1x addresses for 1 minutes
+        { duration: '1m', target: addresses.length },
+        // Ramp up to 2x addresses over 1 minutes
+        { duration: '1m', target: addresses.length * 2 },
+        // Hold at 2x addresses for 1 minutes
+        { duration: '1m', target: addresses.length * 2 },
+        // Ramp up to 3x addresses over 1 minutes
+        { duration: '1m', target: addresses.length * 3 },
+        // Hold at 3x addresses for 1 minutes
+        { duration: '1m', target: addresses.length * 3 },
+        // Ramp down to 0 over 1 minutes
         { duration: '1m', target: 0 },
       ],
       exec: 'default',
       gracefulRampDown: '30s',
     },
     // // Spike test: sudden spike to 5x addresses, then drop
-    spike_test: {
-      executor: 'ramping-arrival-rate',
-      startRate: 1,
-      timeUnit: '1s',
-      preAllocatedVUs: addresses.length * 5,
-      maxVUs: addresses.length * 5,
-      stages: [
-        { target: addresses.length * 5, duration: '10s' },
-        { target: addresses.length * 5, duration: '30s' },
-        { target: 1, duration: '10s' },
-      ],
-      exec: 'default',
-    },
+    // spike_test: {
+    //   executor: 'ramping-arrival-rate',
+    //   startRate: 1,
+    //   timeUnit: '1s',
+    //   preAllocatedVUs: addresses.length * 5,
+    //   maxVUs: addresses.length * 5,
+    //   stages: [
+    //     { target: addresses.length * 5, duration: '10s' },
+    //     { target: addresses.length * 5, duration: '30s' },
+    //     { target: 1, duration: '10s' },
+    //   ],
+    //   exec: 'default',
+    // },
     // // Soak test: steady load for 30 minutes
-    soak_test: {
-      executor: 'constant-vus',
-      vus: addresses.length,
-      duration: '30m',
-      exec: 'default',
-    },
+    // soak_test: {
+    //   executor: 'constant-vus',
+    //   vus: addresses.length,
+    //   duration: '30m',
+    //   exec: 'default',
+    // },
   },
 }
 
+// Custom metrics to track total positions and tokens note they work on the simple scenario only
+const totalPositionsCountForAllAddresses = new Counter(
+  'total_positions_count_for_all_addresses',
+)
 const totalPositionsMetric = new Trend(
   'total_positions_per_address_ignore_ms_unit',
   true,
 )
 
 export default function () {
-  console.log(
-    `VU ${__VU} of ${__ITER} - Fetching defi adapters for address: ${addresses[__VU - 1]}`,
-  )
   const address = addresses[__VU - 1]
   const url = `https://defiadapters.api.cx.metamask.io/positions/${address}`
   const res = http.get(url)
@@ -171,6 +188,7 @@ export default function () {
   )
   // Record total positions for this VU
   totalPositionsMetric.add(totalTokens)
+  totalPositionsCountForAllAddresses.add(totalTokens)
 
   // const line =
   //   defiData.length > 0
@@ -180,10 +198,9 @@ export default function () {
   // console.log(line)
 
   check(res, {
-    'status is 200': (r) => r.status === 200,
-    'response is array': () => Array.isArray(response.data),
-    'all adapters successful': (r) =>
-      Array.isArray(response.data) &&
-      response.data.every((adapter) => adapter.success === true),
+    'status is 200': () => res.status === 200,
+    'response is array': () => Array.isArray(response),
+    'all adapters successful': () =>
+      defiData.every((adapter) => adapter.success === true),
   })
 }
