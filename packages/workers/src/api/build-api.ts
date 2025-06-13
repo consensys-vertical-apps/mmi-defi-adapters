@@ -1,10 +1,9 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters'
-import type { JsonRpcProvider } from 'ethers'
 import { Hono } from 'hono'
 import { pinoLogger } from 'hono-pino'
 import type { ContentfulStatusCode } from 'hono/utils/http-status'
 import * as client from 'prom-client'
-import { logger } from './logger.js'
+import { logger } from '../logger.js'
 
 const TEN_MINUTES_IN_MS = 600_000
 const INTERNAL_SERVER_ERROR = 500
@@ -40,8 +39,8 @@ export function buildApi(
     Record<
       EvmChain,
       {
-        provider: JsonRpcProvider
         lastProcessedBlockNumber?: number
+        latestBlockNumber?: number
         updatedAt: number
       }
     >
@@ -54,45 +53,32 @@ export function buildApi(
   client.register.clear()
   client.collectDefaultMetrics({})
 
-  app.get('/health', async (c) => {
-    const chainHealthReport = (
-      await Promise.all(
-        Object.values(EvmChain).map(async (chainId) => {
-          const chainWorkerInfo = workersInfo[chainId]
+  app.get('/health', (c) => {
+    const chainHealthReport = Object.values(EvmChain)
+      .map((chainId) => {
+        const chainWorkerInfo = workersInfo[chainId]
 
-          if (!chainWorkerInfo) {
-            return undefined
-          }
+        if (!chainWorkerInfo) {
+          return undefined
+        }
 
-          let latestBlockNumber: number | undefined
-          try {
-            latestBlockNumber = await chainWorkerInfo.provider.getBlockNumber()
-          } catch (error) {
-            logger.error(
-              { error, chainId },
-              'Error fetching latest block number during healthcheck',
-            )
-          }
+        const blocksLagging =
+          chainWorkerInfo.latestBlockNumber &&
+          chainWorkerInfo.lastProcessedBlockNumber
+            ? chainWorkerInfo.latestBlockNumber -
+              chainWorkerInfo.lastProcessedBlockNumber
+            : undefined
 
-          const blocksLagging =
-            latestBlockNumber && chainWorkerInfo.lastProcessedBlockNumber
-              ? Math.max(
-                  0,
-                  latestBlockNumber - chainWorkerInfo.lastProcessedBlockNumber,
-                )
-              : undefined
-
-          return {
-            chainId,
-            lastProcessedBlockNumber: chainWorkerInfo.lastProcessedBlockNumber,
-            latestBlockNumber,
-            updatedAt: chainWorkerInfo.updatedAt,
-            blocksLagging,
-            healthy: Date.now() - chainWorkerInfo.updatedAt < TEN_MINUTES_IN_MS,
-          }
-        }),
-      )
-    ).filter((x): x is NonNullable<typeof x> => Boolean(x))
+        return {
+          chainId,
+          lastProcessedBlockNumber: chainWorkerInfo.lastProcessedBlockNumber,
+          latestBlockNumber: chainWorkerInfo.latestBlockNumber,
+          updatedAt: chainWorkerInfo.updatedAt,
+          blocksLagging,
+          healthy: Date.now() - chainWorkerInfo.updatedAt < TEN_MINUTES_IN_MS,
+        }
+      })
+      .filter((x): x is NonNullable<typeof x> => Boolean(x))
 
     if (chainHealthReport.some((chainHealth) => !chainHealth.healthy)) {
       return c.json(

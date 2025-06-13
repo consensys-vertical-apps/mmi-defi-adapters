@@ -1,6 +1,8 @@
 import pg from 'pg'
 import type { Logger } from 'pino'
 
+const THIRTY_SECONDS = 30_000
+
 export function createDbPool({
   dbUrl,
   schema,
@@ -74,7 +76,7 @@ export function createDbPool({
       { numUsed, numIdle, numWaiting, max: poolConfig.max },
       'Connection pool status',
     )
-  }, 30_000)
+  }, THIRTY_SECONDS)
 
   const gracefulShutdown = async () => {
     clearInterval(connectionMonitor)

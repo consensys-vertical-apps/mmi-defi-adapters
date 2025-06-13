@@ -1,28 +1,20 @@
 import { EvmChain } from '@metamask-institutional/defi-adapters'
-import { JsonRpcProvider } from 'ethers'
 import { describe, expect, it, vi } from 'vitest'
 import { buildApi } from './build-api'
 
 describe('buildApi', () => {
   const mockHealthyWorkersInfo = {
     [EvmChain.Ethereum]: {
-      provider: {
-        getBlockNumber: vi.fn().mockResolvedValue(10),
-      } as unknown as JsonRpcProvider,
       lastProcessedBlockNumber: 10,
+      latestBlockNumber: 10,
       updatedAt: Date.now(),
     },
     [EvmChain.Base]: {
-      provider: {
-        getBlockNumber: vi.fn().mockResolvedValue(11),
-      } as unknown as JsonRpcProvider,
       lastProcessedBlockNumber: 10,
+      latestBlockNumber: 11,
       updatedAt: Date.now(),
     },
     [EvmChain.Arbitrum]: {
-      provider: {
-        getBlockNumber: vi.fn().mockResolvedValue(10),
-      } as unknown as JsonRpcProvider,
       updatedAt: Date.now(),
     },
   }
@@ -55,7 +47,7 @@ describe('buildApi', () => {
           {
             chainId: EvmChain.Arbitrum,
             lastProcessedBlockNumber: undefined,
-            latestBlockNumber: 10,
+            latestBlockNumber: undefined,
             updatedAt: expect.any(Number),
             blocksLagging: undefined,
             healthy: true,
