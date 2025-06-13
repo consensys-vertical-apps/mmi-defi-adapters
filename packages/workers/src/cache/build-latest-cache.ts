@@ -154,6 +154,7 @@ async function processBlocks({
   }
 
   if (logs.length > 0) {
+    // note we reduced db writes by only updating blocknumber when we have logs this improved performance
     await cacheClient.insertLogs(logs, latestProcessedBlockNumber)
   }
 

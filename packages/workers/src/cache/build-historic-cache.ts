@@ -144,6 +144,8 @@ export async function buildHistoricCache(
             }
           }
 
+          // Warning: Do not pass 'blockNumber' to insertLogs in history job. This can corrupt the logs database.
+          // TODO: Improve type safety for insertLogs input parameters for history/latest jobs
           await cacheClient.insertLogs(logsToInsert)
 
           processedEntities.logsProcessed += logsToInsert.length

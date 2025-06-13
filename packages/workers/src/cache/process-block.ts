@@ -39,6 +39,7 @@ export async function processBlock({
     for (const log of receipt.logs || []) {
       const topic0 = log.topics[0]
       if (!topic0) {
+        // skip when no topic0 because our adapters expect a topic0 
         continue
       }
 
