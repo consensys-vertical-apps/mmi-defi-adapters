@@ -18,7 +18,7 @@ export function createDbPool({
     connectionString: `${dbUrl}?options=-c%20search_path%3D${encodeURIComponent(
       schema,
     )}`,
-    max: 10,
+    max: 8,
     ssl: process.env.CACHE_DATABASE_DISABLE_SSL
       ? false
       : {
