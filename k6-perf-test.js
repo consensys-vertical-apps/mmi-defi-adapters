@@ -1,5 +1,6 @@
 import http from 'k6/http'
 import { check } from 'k6'
+import { Trend } from 'k6/metrics'
 
 const addresses = [
   '0x47ab2ba28c381011fa1f25417c4c2b2c0d5b4781',
@@ -99,16 +100,87 @@ const addresses = [
 ]
 
 export const options = {
-  vus: addresses.length,
-  iterations: addresses.length,
+  scenarios: {
+    // Load test: steady load, 1 iteration per address
+    load_test: {
+      executor: 'per-vu-iterations',
+      vus: addresses.length,
+      iterations: addresses.length,
+      maxDuration: '5m',
+      exec: 'default',
+    },
+    // Stress test: ramp up to 3x addresses, then hold
+    stress_test: {
+      executor: 'ramping-vus',
+      startVUs: 0,
+      stages: [
+        { duration: '2m', target: addresses.length * 3 },
+        { duration: '3m', target: addresses.length * 3 },
+        { duration: '1m', target: 0 },
+      ],
+      exec: 'default',
+      gracefulRampDown: '30s',
+    },
+    // Spike test: sudden spike to 5x addresses, then drop
+    spike_test: {
+      executor: 'ramping-arrival-rate',
+      startRate: 1,
+      timeUnit: '1s',
+      preAllocatedVUs: addresses.length * 5,
+      maxVUs: addresses.length * 5,
+      stages: [
+        { target: addresses.length * 5, duration: '10s' },
+        { target: addresses.length * 5, duration: '30s' },
+        { target: 1, duration: '10s' },
+      ],
+      exec: 'default',
+    },
+    // Soak test: steady load for 30 minutes
+    soak_test: {
+      executor: 'constant-vus',
+      vus: addresses.length,
+      duration: '30m',
+      exec: 'default',
+    },
+  },
 }
+
+const totalPositionsMetric = new Trend(
+  'total_positions_per_address_ignore_ms_unit',
+  true,
+)
 
 export default function () {
   const address = addresses[__VU - 1]
   const url = `https://defiadapters.api.cx.metamask.io/positions/${address}`
   const res = http.get(url)
 
+  const response = res.json()
+
+  const defiData = Array.isArray(response.data) ? response.data : []
+  const totalTokens = defiData.reduce(
+    (sum, protocolChainAdapter) =>
+      sum +
+      (Array.isArray(protocolChainAdapter.tokens)
+        ? protocolChainAdapter.tokens.length
+        : 0),
+    0,
+  )
+  // Record total positions for this VU
+  totalPositionsMetric.add(totalTokens)
+
+  // const line =
+  //   defiData.length > 0
+  //     ? `Address: ${address}, Defi adapters count: ${defiData.length}, Total positions count: ${totalTokens}\n`
+  //     : `No defi data found for address: ${address}\n`
+  // // In k6, console.log output can be redirected to a file using --out
+  // console.log(line)
+
   check(res, {
     'status is 200': (r) => r.status === 200,
+    'response is array': () => Array.isArray(response.data),
+    'all adapters successful': (r) =>
+      Array.isArray(response.data) &&
+      response.data.every((adapter) => adapter.success === true),
   })
 }

@@ -49,11 +49,9 @@
     "@types/node": "^20.12.10",
     "@vitest/coverage-v8": "^3.0.9",
     "dotenv": "^16.4.5",
+    "k6": "^0.0.0",
     "nodemon": "^3.1.0",
     "typescript": "^5.4.5",
     "vitest": "^3.0.9"
-  },
-  "dependencies": {
-    "k6": "^0.0.0"
   }
 }
