@@ -1,5 +1,5 @@
 import http from 'k6/http'
-import { check } from 'k6'
+import { check, sleep } from 'k6'
 import { Trend, Counter } from 'k6/metrics'
 
 const addresses = [
@@ -107,36 +107,36 @@ export const options = {
     //   iterations: addresses.length,
     // },
     // Load test: steady load, 1 iteration per address
-    // load_test: {
-    //   executor: 'per-vu-iterations',
-    //   vus: 1, // 94 concurrent VUs
-    //   iterations: addresses.length, // 94 iterations
-    //   maxDuration: '5m',
-    //   exec: 'default',
-    // },
-    // Stress test: ramp up to 3x addresses, then hold
-    stress_test: {
-      executor: 'ramping-vus',
-      startVUs: 0,
-      stages: [
-        // Ramp up to 1x addresses over 1 minutes
-        { duration: '1m', target: addresses.length },
-        // Hold at 1x addresses for 1 minutes
-        { duration: '1m', target: addresses.length },
-        // Ramp up to 2x addresses over 1 minutes
-        { duration: '1m', target: addresses.length * 2 },
-        // Hold at 2x addresses for 1 minutes
-        { duration: '1m', target: addresses.length * 2 },
-        // Ramp up to 3x addresses over 1 minutes
-        { duration: '1m', target: addresses.length * 3 },
-        // Hold at 3x addresses for 1 minutes
-        { duration: '1m', target: addresses.length * 3 },
-        // Ramp down to 0 over 1 minutes
-        { duration: '1m', target: 0 },
-      ],
+    load_test: {
+      executor: 'per-vu-iterations',
+      vus: addresses.length, // 94 concurrent VUs
+      iterations: addresses.length, // 94 iterations
+      maxDuration: '5m',
       exec: 'default',
-      gracefulRampDown: '30s',
     },
+    // Stress test: ramp up to 3x addresses, then hold
+    // stress_test: {
+    //   executor: 'ramping-vus',
+    //   startVUs: 0,
+    //   stages: [
+    //     // Ramp up to 1x addresses over 1 minutes
+    //     { duration: '1m', target: addresses.length },
+    //     // Hold at 1x addresses for 1 minutes
+    //     { duration: '1m', target: addresses.length },
+    //     // Ramp up to 2x addresses over 1 minutes
+    //     { duration: '1m', target: addresses.length * 2 },
+    //     // Hold at 2x addresses for 1 minutes
+    //     { duration: '1m', target: addresses.length * 2 },
+    //     // Ramp up to 3x addresses over 1 minutes
+    //     { duration: '1m', target: addresses.length * 3 },
+    //     // Hold at 3x addresses for 1 minutes
+    //     { duration: '1m', target: addresses.length * 3 },
+    //     // Ramp down to 0 over 1 minutes
+    //     { duration: '1m', target: 0 },
+    //   ],
+    //   exec: 'default',
+    //   gracefulRampDown: '30s',
+    // },
     // // Spike test: sudden spike to 5x addresses, then drop
     // spike_test: {
     //   executor: 'ramping-arrival-rate',
@@ -198,9 +198,11 @@ export default function () {
   // console.log(line)
 
   check(res, {
-    'status is 200': () => res.status === 200,
-    'response is array': () => Array.isArray(response),
+    'status is 200': (r) => r.status === 200,
+    'response is array': () => Array.isArray(response.data),
     'all adapters successful': () =>
       defiData.every((adapter) => adapter.success === true),
   })
+
+  sleep(1) // Sleep for 1 second to simulate a delay between requests
 }
