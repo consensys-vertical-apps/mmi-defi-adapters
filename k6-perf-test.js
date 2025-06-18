@@ -99,67 +99,64 @@ const addresses = [
   '0x1D3DC4b584bc687fB3C9AdC1761858694728B1b3',
 ]
 
-export const options = {
-  scenarios: {
-    // simple: {
-    //   executor: 'shared-iterations',
-    //   vus: addresses.length,
-    //   iterations: addresses.length,
-    // },
-    // Load test: steady load, 1 iteration per address
+export const options = (() => {
+  // Get scenario name from environment variable, default to 'simple'
+  // To run the load_test scenario, use:
+  // k6 run --env SCENARIO=load_test k6-perf-test.js
+  const scenario = __ENV.SCENARIO || 'simple'
+
+  const scenarios = {
+    simple: {
+      executor: 'shared-iterations',
+      vus: addresses.length,
+      iterations: addresses.length,
+    },
     load_test: {
       executor: 'per-vu-iterations',
-      vus: addresses.length, // 94 concurrent VUs
-      iterations: addresses.length, // 94 iterations
+      vus: addresses.length,
+      iterations: addresses.length,
       maxDuration: '5m',
       exec: 'default',
     },
-    // Stress test: ramp up to 3x addresses, then hold
-    // stress_test: {
-    //   executor: 'ramping-vus',
-    //   startVUs: 0,
-    //   stages: [
-    //     // Ramp up to 1x addresses over 1 minutes
-    //     { duration: '1m', target: addresses.length },
-    //     // Hold at 1x addresses for 1 minutes
-    //     { duration: '1m', target: addresses.length },
-    //     // Ramp up to 2x addresses over 1 minutes
-    //     { duration: '1m', target: addresses.length * 2 },
-    //     // Hold at 2x addresses for 1 minutes
-    //     { duration: '1m', target: addresses.length * 2 },
-    //     // Ramp up to 3x addresses over 1 minutes
-    //     { duration: '1m', target: addresses.length * 3 },
-    //     // Hold at 3x addresses for 1 minutes
-    //     { duration: '1m', target: addresses.length * 3 },
-    //     // Ramp down to 0 over 1 minutes
-    //     { duration: '1m', target: 0 },
-    //   ],
-    //   exec: 'default',
-    //   gracefulRampDown: '30s',
-    // },
-    // // Spike test: sudden spike to 5x addresses, then drop
-    // spike_test: {
-    //   executor: 'ramping-arrival-rate',
-    //   startRate: 1,
-    //   timeUnit: '1s',
-    //   preAllocatedVUs: addresses.length * 5,
-    //   maxVUs: addresses.length * 5,
-    //   stages: [
-    //     { target: addresses.length * 5, duration: '10s' },
-    //     { target: addresses.length * 5, duration: '30s' },
-    //     { target: 1, duration: '10s' },
-    //   ],
-    //   exec: 'default',
-    // },
-    // // Soak test: steady load for 30 minutes
-    // soak_test: {
-    //   executor: 'constant-vus',
-    //   vus: addresses.length,
-    //   duration: '30m',
-    //   exec: 'default',
-    // },
-  },
-}
+    stress_test: {
+      executor: 'ramping-vus',
+      startVUs: 0,
+      stages: [
+        { duration: '1m', target: addresses.length },
+        { duration: '1m', target: addresses.length * 2 },
+        { duration: '1m', target: addresses.length * 3 },
+        { duration: '1m', target: 0 },
+      ],
+      exec: 'default',
+      gracefulRampDown: '30s',
+    },
+    spike_test: {
+      executor: 'ramping-arrival-rate',
+      startRate: 1,
+      timeUnit: '1s',
+      preAllocatedVUs: addresses.length * 5,
+      maxVUs: addresses.length * 5,
+      stages: [
+        { target: addresses.length * 5, duration: '10s' },
+        { target: addresses.length * 5, duration: '30s' },
+        { target: 1, duration: '10s' },
+      ],
+      exec: 'default',
+    },
+    soak_test: {
+      executor: 'constant-vus',
+      vus: addresses.length,
+      duration: '30m',
+      exec: 'default',
+    },
+  }
+
+  return {
+    scenarios: {
+      [scenario]: scenarios[scenario],
+    },
+  }
+})()
 
 // Custom metrics to track total positions and tokens note they work on the simple scenario only
 const totalPositionsCountForAllAddresses = new Counter(
@@ -171,7 +168,9 @@ const totalPositionsMetric = new Trend(
 )
 
 export default function () {
-  const address = addresses[__VU - 1]
+  // Use modulo to always pick a valid address, even if __VU > addresses.length
+  const address = addresses[(__VU - 1) % addresses.length]
+  console.log(`VU ${__VU} - Fetching defi data for address: ${address}`)
   const url = `https://defiadapters.api.cx.metamask.io/positions/${address}`
   const res = http.get(url)
 
@@ -189,13 +188,6 @@ export default function () {
   // Record total positions for this VU
   totalPositionsMetric.add(totalTokens)
   totalPositionsCountForAllAddresses.add(totalTokens)
-
-  // const line =
-  //   defiData.length > 0
-  //     ? `Address: ${address}, Defi adapters count: ${defiData.length}, Total positions count: ${totalTokens}\n`
-  //     : `No defi data found for address: ${address}\n`
-  // // In k6, console.log output can be redirected to a file using --out
-  // console.log(line)
 
   check(res, {
     'status is 200': (r) => r.status === 200,
