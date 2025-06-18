@@ -93,6 +93,10 @@ export function libraryCommands(program: Command) {
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
     )
     .option(
+      '-pd, --product-ids <product-ids>',
+      'comma-separated product id filter (e.g. reward, a-token, staking)',
+    )
+    .option(
       '-pt, --includeProtocolTokens [includeProtocolTokens]',
       'include full protocol token data',
       false,
@@ -107,11 +111,13 @@ export function libraryCommands(program: Command) {
       async ({
         protocols,
         chains,
+        productIds,
         includeProtocolTokens,
         filterWhereUserEventMissing,
       }) => {
         const filterProtocolIds = multiProtocolFilter(protocols)
         const filterChainIds = multiChainFilter(chains)
+        const filterProductIds = multiProductFilter(productIds)
 
         const defiProvider = new DefiProvider({
           poolFilter: buildPoolFilter(),
@@ -122,6 +128,7 @@ export function libraryCommands(program: Command) {
           filterProtocolIds,
           includeProtocolTokens,
           filterWhereUserEventMissing,
+          filterProductIds,
         })
 
         printResponse(data)

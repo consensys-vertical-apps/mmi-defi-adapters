@@ -33,6 +33,17 @@ export async function processBlock({
     ]),
   )
 
+  return processReceipts(receipts, userIndexMap, logger)
+}
+
+export function processReceipts(
+  receipts: TransactionReceipt[],
+  userIndexMap: Map<
+    string,
+    { userAddressIndex: number; eventAbi: string | null }
+  >,
+  logger: Logger,
+) {
   const logs: { address: string; contractAddress: string }[] = []
 
   for (const receipt of receipts?.flat() || []) {

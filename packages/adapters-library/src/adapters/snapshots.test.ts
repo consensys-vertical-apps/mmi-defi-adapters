@@ -1,9 +1,15 @@
 import assert from 'node:assert'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import {
+  buildTokenEventMappings,
+  createWatchKey,
+  processReceipts,
+} from '@metamask-institutional/workers'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { Chain, ChainName } from '../core/constants/chains'
 import { AdapterMissingError } from '../core/errors/errors'
+import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { getInvalidAddresses } from '../core/utils/address-validation'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
@@ -16,7 +22,6 @@ import { AdapterResponse, DefiPositionResponse } from '../types/response'
 import { TestCase } from '../types/testCase'
 import { Protocol } from './protocols'
 import { supportedProtocols } from './supportedProtocols'
-import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 
 const TEST_TIMEOUT = 300000
 
@@ -258,105 +263,86 @@ function runProductTests(
                 protocolId,
                 productId,
               )
-              if (testCase.input.openingPositionTxHash) {
-                const adapter = defiProvider.adaptersController.fetchAdapter(
-                  testCase.chainId,
-                  protocolId,
-                  productId,
+
+              const adapter = defiProvider.adaptersController.fetchAdapter(
+                testCase.chainId,
+                protocolId,
+                productId,
+              )
+
+              if (
+                !testCase.input.openingPositionTxHash ||
+                !adapter?.adapterSettings.userEvent
+              ) {
+                return
+              }
+
+              const txRecipt = (await defiProvider.chainProvider.providers[
+                testCase.chainId
+              ]) as CustomJsonRpcProvider
+
+              const txReceipt = await txRecipt.getTransactionReceipt(
+                testCase.input.openingPositionTxHash,
+              )
+
+              if (!txReceipt) {
+                throw new Error(
+                  `Transaction receipt not found for txHash: ${testCase.input.openingPositionTxHash}`,
                 )
-                if (adapter.adapterSettings.userEvent) {
-                  const txRecipt = (await defiProvider.chainProvider.providers[
-                    testCase.chainId
-                  ]) as CustomJsonRpcProvider
+              }
 
-                  const txReceipt = await txRecipt.getTransactionReceipt(
-                    testCase.input.openingPositionTxHash,
-                  )
+              const defiPoolAddresses = await defiProvider.getSupport({
+                filterChainIds: [testCase.chainId],
+                filterProtocolIds: [protocolId],
+                filterProductIds: [productId],
+              })
 
-                  if (!txReceipt) {
-                    throw new Error(
-                      `Transaction receipt not found for txHash: ${testCase.input.openingPositionTxHash}`,
-                    )
-                  }
+              const allPools = buildTokenEventMappings(
+                defiPoolAddresses,
+                testCase.chainId,
+                logger,
+              )
 
-                  //Need to handle other cases (e.g., eventAbi or "Transfer")
-                  let expectedUserEventHash: string | undefined
-                  let expectedUserAddressIndex: number | undefined
-                  const userEvent = adapter.adapterSettings.userEvent!
-                  if (
-                    typeof userEvent === 'object' &&
-                    'topic0' in userEvent &&
-                    typeof userEvent.topic0 === 'string'
-                  ) {
-                    expectedUserEventHash = userEvent.topic0
-                    expectedUserAddressIndex = userEvent.userAddressIndex
-                  }
+              if (allPools.length === 0) {
+                throw new Error(
+                  `No pools found for protocol ${protocolId} and product ${productId} on chain ${ChainName[testCase.chainId]} dont forget to add and build your pools (npm run build-metadata-db -- -p ${protocolId})`,
+                )
+              }
 
-                  const userAddress = testCase.input.userAddress.toLowerCase()
-                  const logs = txReceipt.logs || []
+              const userIndexMap = new Map(
+                allPools.map(
+                  ({ contractAddress, topic0, userAddressIndex, ...rest }) => [
+                    createWatchKey(contractAddress, topic0),
+                    'eventAbi' in rest
+                      ? { userAddressIndex, eventAbi: rest.eventAbi }
+                      : { userAddressIndex, eventAbi: null },
+                  ],
+                ),
+              )
 
-                  let poolAddresses: string[]
-                  try {
-                    poolAddresses = (await adapter.getProtocolTokens()).map(
-                      (x) => x.address.toLowerCase(),
-                    )
+              const processedLogs = processReceipts(
+                [txReceipt],
+                userIndexMap,
+                logger.child({
+                  subService: 'userEventExistsInTransaction',
+                }),
+              )
 
-                    if (poolAddresses.length === 0) {
-                      throw new Error(
-                        `No protocol tokens found for ${protocolId} / ${productId} on chain ${ChainName[testCase.chainId]} must be implement to use userEvent`,
-                      )
-                    }
-                  } catch (error) {
-                    if (error?.name === 'NotImplementedError') {
-                      throw new Error(
-                        `getProtocolTokens is not implemented for adapter ${protocolId} / ${productId} on chain ${ChainName[testCase.chainId]} must be implement to use userEvent`,
-                      )
-                    }
-                    throw error
-                  }
+              const userAddress = testCase.input.userAddress.toLowerCase()
 
-                  if (expectedUserEventHash) {
-                    // Must have a matching poolAddress in the logs, else throw
-                    const hasMatchingPoolAddress = logs.some((log) =>
-                      poolAddresses.includes(log.address.toLowerCase()),
-                    )
-                    if (!hasMatchingPoolAddress) {
-                      throw new Error(
-                        `
-                        . Expected one of: ${poolAddresses.join(
-                          ', ',
-                        )}, but got log addresses: ${logs
-                          .map((l) => l.address)
-                          .join(', ')}`,
-                      )
-                    }
-                  }
+              const matchingProcessedLog = processedLogs.find(
+                (log) => log.address.toLowerCase() === userAddress,
+              )
+              expect(matchingProcessedLog).toBeDefined()
 
-                  const matchingLog = logs.find((log) => {
-                    if (!poolAddresses.includes(log.address.toLowerCase())) {
-                      return false
-                    }
-                    if (
-                      expectedUserEventHash &&
-                      log.topics[0] === expectedUserEventHash
-                    ) {
-                      if (
-                        typeof expectedUserAddressIndex === 'number' &&
-                        log.topics.length > expectedUserAddressIndex
-                      ) {
-                        // topics are hex encoded, user address is last 40 chars
-                        const topicValue =
-                          log.topics[expectedUserAddressIndex].toLowerCase()
-                        return topicValue.endsWith(
-                          userAddress.replace(/^0x/, ''),
-                        )
-                      }
-                      return false
-                    }
-                    return false
-                  })
-                  expect(matchingLog).toBeDefined()
-                }
+              if (!matchingProcessedLog) {
+                console.warn(
+                  'Processed Logs:',
+                  JSON.stringify(processedLogs, null, 2),
+                )
+                throw new Error(
+                  `No matching user address found in processed logs for ${userAddress}`,
+                )
               }
             },
             TEST_TIMEOUT,
