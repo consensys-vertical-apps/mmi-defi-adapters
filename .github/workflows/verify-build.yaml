@@ -99,6 +99,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build
+        run: npm run build
+
       - name: Run tests
         run: npm run test:adapter-snapshots --protocolid=${{ matrix.protocol }} -- --reporter=default --reporter=blob  --coverage --outputFile=.vitest-reports/blob-adapter-snapshots-${{ matrix.protocol }}.json
         env:

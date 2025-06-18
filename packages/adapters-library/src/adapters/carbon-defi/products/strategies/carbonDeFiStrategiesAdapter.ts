@@ -1,5 +1,6 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
@@ -54,7 +55,7 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
 
   adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
-    userEvent: false,
+    userEvent: 'Transfer',
   }
 
   adaptersController: AdaptersController
@@ -88,8 +89,17 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     }
   }
 
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
-    throw new NotImplementedError()
+    return [
+      {
+        address: contractAddresses[this.chainId]!.voucherContractAddress,
+        name: 'CarbonDeFi NFT',
+        symbol: 'CARBON-STRAT',
+        decimals: 0,
+        underlyingTokens: [],
+      },
+    ]
   }
 
   private protocolTokenName(token0Symbol: string, token1Symbol: string) {
