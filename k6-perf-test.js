@@ -196,5 +196,5 @@ export default function () {
       defiData.every((adapter) => adapter.success === true),
   })
 
-  sleep(1) // Sleep for 1 second to simulate a delay between requests
+  sleep(1)
 }
