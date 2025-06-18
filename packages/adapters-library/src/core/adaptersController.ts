@@ -284,11 +284,15 @@ export class AdaptersController {
   async getSupport({
     filterChainIds,
     filterProtocolIds,
+    filterProductIds,
     includeProtocolTokens,
+    filterWhereUserEventMissing,
   }: {
-    filterChainIds?: Chain[] | undefined
-    filterProtocolIds?: Protocol[] | undefined
+    filterChainIds?: Chain[]
+    filterProtocolIds?: Protocol[]
+    filterProductIds?: string[]
     includeProtocolTokens?: boolean
+    filterWhereUserEventMissing?: boolean
   } = {}): Promise<Support> {
     const support: Support = {}
     for (const [chainId, protocols] of this.adapters.entries()) {
@@ -306,6 +310,16 @@ export class AdaptersController {
         }
 
         for (const [productId, adapter] of products.entries()) {
+          if (filterProductIds && !filterProductIds.includes(productId)) {
+            continue
+          }
+          if (
+            filterWhereUserEventMissing &&
+            adapter.adapterSettings.userEvent
+          ) {
+            continue
+          }
+
           let product = support[protocolId]!.find(
             (productEntry) =>
               adapter.getProtocolDetails().productId ===

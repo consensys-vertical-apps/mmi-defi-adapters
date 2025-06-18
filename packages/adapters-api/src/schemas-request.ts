@@ -45,4 +45,5 @@ export const GetSupportQuerySchema = z.object({
   filterChainIds: parseAndCheck(z.array(z.nativeEnum(Chain)).optional()),
   filterProtocolIds: parseAndCheck(z.array(z.nativeEnum(Protocol))).optional(),
   includeProtocolTokens: parseAndCheck(z.boolean().optional()),
+  filterWhereUserEventMissing: parseAndCheck(z.boolean().optional()),
 })

@@ -422,7 +422,9 @@ export class DefiProvider {
   async getSupport(input?: {
     filterChainIds?: Chain[] | undefined
     filterProtocolIds?: Protocol[] | undefined
+    filterProductIds?: string[] | undefined
     includeProtocolTokens?: boolean
+    filterWhereUserEventMissing?: boolean
   }) {
     return await this.adaptersController.getSupport(input)
   }

@@ -10,6 +10,7 @@ export type TestCase = {
         userAddress: string
         filterProtocolTokens?: string[]
         filterTokenIds?: string[]
+        openingPositionTxHash?: string
       }
       blockNumber?: number
     }

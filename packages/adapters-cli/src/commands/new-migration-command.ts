@@ -12,7 +12,10 @@ export function newMigrationCommand(program: Command) {
     .action(async (migrationName: string) => {
       const lastMigration = (
         await fs.readdir(
-          path.join(import.meta.dirname, '../../../workers/src/migrations'),
+          path.join(
+            import.meta.dirname,
+            '../../../workers/src/database/migrations',
+          ),
         )
       )
         .filter((file) => /^\d{4}-.+\.ts$/.test(file))
@@ -23,7 +26,7 @@ export function newMigrationCommand(program: Command) {
       const nextMigrationFileName = `${nextMigrationNumber.toString().padStart(4, '0')}-${kebabCase(migrationName)}`
 
       await writeAndLintFile(
-        `./packages/workers/src/migrations/${nextMigrationFileName}.ts`,
+        `./packages/workers/src/database/migrations/${nextMigrationFileName}.ts`,
         `
         import type { Pool } from 'pg'
 

@@ -93,27 +93,47 @@ export function libraryCommands(program: Command) {
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
     )
     .option(
+      '-pd, --product-ids <product-ids>',
+      'comma-separated product id filter (e.g. reward, a-token, staking)',
+    )
+    .option(
       '-pt, --includeProtocolTokens [includeProtocolTokens]',
       'include full protocol token data',
       false,
     )
+    .option(
+      '-e, --filterWhereUserEventMissing [filterWhereUserEventMissing]',
+      'missing user event filter',
+      false,
+    )
     .showHelpAfterError()
-    .action(async ({ protocols, chains, includeProtocolTokens }) => {
-      const filterProtocolIds = multiProtocolFilter(protocols)
-      const filterChainIds = multiChainFilter(chains)
-
-      const defiProvider = new DefiProvider({
-        poolFilter: buildPoolFilter(),
-      })
-
-      const data = await defiProvider.getSupport({
-        filterChainIds,
-        filterProtocolIds,
+    .action(
+      async ({
+        protocols,
+        chains,
+        productIds,
         includeProtocolTokens,
-      })
+        filterWhereUserEventMissing,
+      }) => {
+        const filterProtocolIds = multiProtocolFilter(protocols)
+        const filterChainIds = multiChainFilter(chains)
+        const filterProductIds = multiProductFilter(productIds)
 
-      printResponse(data)
-    })
+        const defiProvider = new DefiProvider({
+          poolFilter: buildPoolFilter(),
+        })
+
+        const data = await defiProvider.getSupport({
+          filterChainIds,
+          filterProtocolIds,
+          includeProtocolTokens,
+          filterWhereUserEventMissing,
+          filterProductIds,
+        })
+
+        printResponse(data)
+      },
+    )
 }
 
 function printResponse(data: unknown) {
