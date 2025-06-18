@@ -46,11 +46,7 @@ const maxUint128 = 2n ** 128n - 1n
 export class QuickswapV3PoolAdapter implements IProtocolAdapter {
   adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
-    userEvent: {
-      topic0:
-        '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
-      userAddressIndex: 2,
-    },
+    userEvent: 'Transfer',
   }
 
   productId = 'pool'
