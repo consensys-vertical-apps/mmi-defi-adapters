@@ -29,7 +29,6 @@ await Promise.all(
         chainId,
         partialPoolConfig: {
           max: 15,
-          connectionTimeoutMillis: 10_000,
         },
         logger: childLogger,
       })
