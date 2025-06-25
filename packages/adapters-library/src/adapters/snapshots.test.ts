@@ -1,9 +1,15 @@
 import assert from 'node:assert'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import {
+  buildTokenEventMappings,
+  createWatchKey,
+  processReceipts,
+} from '@metamask-institutional/workers'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { Chain, ChainName } from '../core/constants/chains'
 import { AdapterMissingError } from '../core/errors/errors'
+import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { getInvalidAddresses } from '../core/utils/address-validation'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
@@ -233,6 +239,122 @@ function runProductTests(
           )
         })
       })
+
+      // Only run user event tests if there are positions test cases with txHash defined and userEvent configured in the adapter
+      const hasUserEventTest = positionsTestCases.some(
+        (testCase) =>
+          testCase.input.openingPositionTxHash &&
+          !!defiProvider.adaptersController.fetchAdapter(
+            testCase.chainId,
+            protocolId,
+            productId,
+          ).adapterSettings.userEvent,
+      )
+
+      if (hasUserEventTest) {
+        describe('userEventExistsInTransaction', () => {
+          it.each(
+            positionsTestCases.map((testCase) => [testKey(testCase), testCase]),
+          )(
+            'User event for test %s match',
+            async (_, testCase) => {
+              const { defiProvider } = await fetchSnapshot(
+                testCase,
+                protocolId,
+                productId,
+              )
+
+              const adapter = defiProvider.adaptersController.fetchAdapter(
+                testCase.chainId,
+                protocolId,
+                productId,
+              )
+
+              if (
+                !testCase.input.openingPositionTxHash ||
+                !adapter?.adapterSettings.userEvent
+              ) {
+                return
+              }
+
+              const txRecipt = (await defiProvider.chainProvider.providers[
+                testCase.chainId
+              ]) as CustomJsonRpcProvider
+
+              const txReceipt = await txRecipt.getTransactionReceipt(
+                testCase.input.openingPositionTxHash,
+              )
+
+              if (!txReceipt) {
+                throw new Error(
+                  `Transaction receipt not found for txHash: ${testCase.input.openingPositionTxHash}`,
+                )
+              }
+
+              const defiPoolAddresses = await defiProvider.getSupport({
+                filterChainIds: [testCase.chainId],
+                filterProtocolIds: [protocolId],
+                filterProductIds: [productId],
+              })
+
+              const allPools = buildTokenEventMappings(
+                defiPoolAddresses,
+                testCase.chainId,
+                logger,
+              )
+
+              if (allPools.length === 0) {
+                throw new Error(
+                  `No pools found for protocol ${protocolId} and product ${productId} on chain ${ChainName[testCase.chainId]} dont forget to add and build your pools (npm run build-metadata-db -- -p ${protocolId})`,
+                )
+              }
+
+              const userIndexMap = new Map(
+                allPools.map(
+                  ({ contractAddress, topic0, userAddressIndex, ...rest }) => [
+                    createWatchKey(contractAddress, topic0),
+                    'eventAbi' in rest
+                      ? { userAddressIndex, eventAbi: rest.eventAbi }
+                      : { userAddressIndex, eventAbi: null },
+                  ],
+                ),
+              )
+
+              const processedLogs = processReceipts(
+                [txReceipt],
+                userIndexMap,
+                logger.child({
+                  subService: 'userEventExistsInTransaction',
+                }),
+              )
+
+              const userAddress = testCase.input.userAddress.toLowerCase()
+
+              const matchingProcessedLog = processedLogs.find(
+                (log) => log.address.toLowerCase() === userAddress,
+              )
+              expect(matchingProcessedLog).toBeDefined()
+
+              if (!matchingProcessedLog) {
+                console.warn(
+                  'Processed Logs:',
+                  JSON.stringify(processedLogs, null, 2),
+                )
+                throw new Error(
+                  `No matching user address found in processed logs for ${userAddress}`,
+                )
+              }
+            },
+            TEST_TIMEOUT,
+          )
+
+          afterAll(() => {
+            logger.debug(
+              `[Integration test] checkUserEvent for ${protocolId} finished`,
+            )
+          })
+        })
+      }
     }
 
     const pricesTestCases = testCases.filter(

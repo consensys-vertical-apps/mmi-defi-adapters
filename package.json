@@ -41,13 +41,20 @@
     "test:cov": "vitest run --coverage",
     "test:cov:merge": "vitest run --merge-reports --reporter=junit --coverage",
     "test:tsc": "npm run test:tsc --workspaces --if-present",
-    "drop:db": "bash -c 'read -p \"Are you sure you know what you are doing? This will delete all .db files! (y/n): \" confirm && [ \"$confirm\" = \"y\" ] && rm ./metadata/*.db && echo \"All .db files have been deleted successfully.\" || echo \"Aborted. No files were deleted.\"'"
+    "drop:db": "bash -c 'read -p \"Are you sure you know what you are doing? This will delete all .db files! (y/n): \" confirm && [ \"$confirm\" = \"y\" ] && rm ./metadata/*.db && echo \"All .db files have been deleted successfully.\" || echo \"Aborted. No files were deleted.\"'",
+    "perf:simple": "k6 run k6-perf-test.js",
+    "perf:load-test": "k6 run --env SCENARIO=load_test k6-perf-test.js",
+    "perf:soak-test": "k6 run --env SCENARIO=soak_test k6-perf-test.js",
+    "perf:spike-test": "k6 run --env SCENARIO=spike_test k6-perf-test.js",
+    "perf:stress-test": "k6 run --env SCENARIO=stress_test k6-perf-test.js"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@types/k6": "^1.0.2",
     "@types/node": "^20.12.10",
     "@vitest/coverage-v8": "^3.0.9",
     "dotenv": "^16.4.5",
+    "k6": "^0.0.0",
     "nodemon": "^3.1.0",
     "typescript": "^5.4.5",
     "vitest": "^3.0.9"

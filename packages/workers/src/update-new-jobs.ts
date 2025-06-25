@@ -1,6 +1,8 @@
 import type {
+  Chain,
   DefiProvider,
   EvmChain,
+  Support,
 } from '@metamask-institutional/defi-adapters'
 import { Interface, id } from 'ethers'
 import type { Logger } from 'pino'
@@ -26,7 +28,7 @@ export async function updateNewJobs({
   logger.info({ totalJobs: pools.length, newJobs: newPools }, 'Jobs updated')
 }
 
-async function fetchAllPools(
+export async function fetchAllPools(
   defiProvider: DefiProvider,
   chainId: EvmChain,
   logger: Logger,
@@ -35,6 +37,14 @@ async function fetchAllPools(
     filterChainIds: [chainId],
   })
 
+  return buildTokenEventMappings(defiPoolAddresses, chainId, logger)
+}
+
+export function buildTokenEventMappings(
+  defiPoolAddresses: Support,
+  chainId: Chain,
+  logger: Logger,
+) {
   const createProtocolTokenKey = (
     address: string,
     topic0: `0x${string}`,
