@@ -28,8 +28,8 @@ await Promise.all(
         dbUrl: process.env.CACHE_DATABASE_URL!,
         chainId,
         partialPoolConfig: {
-          max: 15,
-          connectionTimeoutMillis: 10_000,
+          max: 10,
+          idleTimeoutMillis: 0,
         },
         logger: childLogger,
       })
