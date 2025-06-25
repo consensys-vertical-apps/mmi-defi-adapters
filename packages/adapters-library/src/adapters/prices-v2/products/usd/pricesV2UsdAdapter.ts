@@ -16,7 +16,7 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { ChainLink__factory, OneInchOracle__factory } from '../../contracts'
-import { priceAdapterConfig } from './priceV2Config'
+import { fiatDecimals, priceAdapterConfig } from './priceV2Config'
 
 export const USD = 'USD'
 const BASE_URL = 'https://price-api.metafi.codefi.network'
@@ -184,11 +184,7 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
 
       if (spotPriceByAddress) {
         const priceAdapterPrice = BigInt(
-          spotPriceByAddress.price *
-            10 **
-              priceAdapterConfig[
-                this.chainId as keyof typeof priceAdapterConfig
-              ].decimals,
+          spotPriceByAddress.price * 10 ** fiatDecimals,
         )
 
         return {
@@ -202,10 +198,7 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
             {
               type: TokenType.Underlying,
               underlyingRateRaw: priceAdapterPrice,
-              decimals:
-                priceAdapterConfig[
-                  this.chainId as keyof typeof priceAdapterConfig
-                ].decimals,
+              decimals: fiatDecimals,
               name: USD,
               symbol: USD,
               address: USD,
@@ -257,9 +250,7 @@ export class PricesV2UsdAdapter implements IPricesAdapter {
         {
           type: TokenType.Underlying,
           underlyingRateRaw: BigInt(tokenPriceInUSD.toString()),
-          decimals:
-            priceAdapterConfig[this.chainId as keyof typeof priceAdapterConfig]
-              .decimals,
+          decimals: fiatDecimals,
           name: USD,
           symbol: USD,
           address: USD,

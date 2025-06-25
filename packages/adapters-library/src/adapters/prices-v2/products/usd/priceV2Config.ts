@@ -5,6 +5,8 @@ const OneInchPriceOracleCommon = getAddress(
   '0x0AdDd25a91563696D8567Df78D5A01C9a991F9B8',
 )
 
+export const fiatDecimals = 18
+
 export const priceAdapterConfig = {
   [Chain.Ethereum]: {
     wrappedEth: getAddress('0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'),
@@ -18,7 +20,6 @@ export const priceAdapterConfig = {
       address: getAddress('0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'),
       decimals: 18,
     },
-    decimals: 18,
     chainlinkDecimals: 8,
   },
   [Chain.Optimism]: {
@@ -34,7 +35,6 @@ export const priceAdapterConfig = {
       address: getAddress('0x4200000000000000000000000000000000000006'),
       decimals: 18,
     },
-    decimals: 18,
     chainlinkDecimals: 8,
   },
   [Chain.Bsc]: {
@@ -50,7 +50,6 @@ export const priceAdapterConfig = {
       address: getAddress('0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'),
       decimals: 18,
     },
-    decimals: 18,
     chainlinkDecimals: 8,
   },
   [Chain.Polygon]: {
@@ -66,7 +65,6 @@ export const priceAdapterConfig = {
       address: getAddress('0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270'),
       decimals: 18,
     },
-    decimals: 18,
     chainlinkDecimals: 8,
   },
 
@@ -83,7 +81,6 @@ export const priceAdapterConfig = {
       address: getAddress('0x82af49447d8a07e3bd95bd0d56f35241523fbab1'),
       decimals: 18,
     },
-    decimals: 18,
     chainlinkDecimals: 8,
   },
   [Chain.Avalanche]: {
@@ -99,7 +96,6 @@ export const priceAdapterConfig = {
       address: getAddress('0x49d5c2bdffac6ce2bfdb6640f4f80f226bc10bab'),
       decimals: 18,
     },
-    decimals: 18,
     chainlinkDecimals: 8,
   },
   [Chain.Base]: {
@@ -115,7 +111,6 @@ export const priceAdapterConfig = {
       address: getAddress('0x4200000000000000000000000000000000000006'),
       decimals: 18,
     },
-    decimals: 18,
     chainlinkDecimals: 8,
   },
 }
