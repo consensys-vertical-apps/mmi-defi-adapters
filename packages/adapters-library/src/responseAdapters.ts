@@ -1,12 +1,11 @@
 import { formatUnits } from 'ethers'
-import { priceAdapterConfig } from './adapters/prices-v2/products/usd/priceV2Config'
+import { fiatDecimals } from './adapters/prices-v2/products/usd/priceV2Config'
 import { USD } from './adapters/prices-v2/products/usd/pricesV2UsdAdapter'
 import { Chain } from './core/constants/chains'
 import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
 import {
   TokenBalanceWithUnderlyings,
   TokenType,
-  Underlying,
   UnwrapExchangeRate,
 } from './types/adapter'
 import { DisplayPosition, DisplayUnwrapExchangeRate } from './types/response'
@@ -21,11 +20,7 @@ export function enrichPositionBalance<
     ...balance,
     balance: +formatUnits(balance.balanceRaw, balance.decimals),
     price: balance.priceRaw
-      ? +formatUnits(
-          balance.priceRaw,
-          priceAdapterConfig[chainId as keyof typeof priceAdapterConfig]
-            .decimals,
-        )
+      ? +formatUnits(balance.priceRaw, fiatDecimals)
       : undefined,
     priceRaw: undefined,
     ...(balance.tokens
