@@ -93,7 +93,8 @@ export class MetamaskValidatorStakingAdapter implements IProtocolAdapter {
       name: 'MetaMask',
       description: 'MetaMask defi adapter',
       siteUrl: 'https://portfolio.metamask.io/',
-      iconUrl: 'https://portfolio.metamask.io/favicon.png',
+      iconUrl:
+        'https://raw.githubusercontent.com/MetaMask/metamask-extension/master/app/images/logo/metamask-fox-bg.svg',
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
