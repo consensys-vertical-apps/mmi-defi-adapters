@@ -99,14 +99,16 @@ const addresses = [
   '0x1D3DC4b584bc687fB3C9AdC1761858694728B1b3',
 ]
 
+const useRandomAddresses = __ENV.RANDOM_ADDRESSES === 'true'
+
 export const options = (() => {
   // Get scenario name from environment variable, default to 'simple'
   // To run the load_test scenario, use:
   // k6 run --env SCENARIO=load_test k6-perf-test.js
-  const scenario = __ENV.SCENARIO || 'simple'
+  const scenario = __ENV.SCENARIO || 'smoke_test'
 
   const scenarios = {
-    simple: {
+    smoke_test: {
       executor: 'shared-iterations',
       vus: addresses.length,
       iterations: addresses.length,
@@ -155,6 +157,12 @@ export const options = (() => {
     scenarios: {
       [scenario]: scenarios[scenario],
     },
+    cloud: {
+      // Project: Default project
+      projectID: 3778470,
+      // Test runs with the same name groups test runs together.
+      name: `DeFi API Load Test ${scenario} ${useRandomAddresses ? 'no_positions_addresses' : 'addresses_with_many_positions'}`,
+    },
   }
 })()
 
@@ -167,10 +175,19 @@ const totalPositionsMetric = new Trend(
   true,
 )
 
+function generateEthereumAddress() {
+  let hex = '0x'
+  for (let i = 0; i < 40; i++) {
+    hex += Math.floor(Math.random() * 16).toString(16)
+  }
+  return hex
+}
+
 export default function () {
-  // Use modulo to always pick a valid address, even if __VU > addresses.length
-  const address = addresses[(__VU - 1) % addresses.length]
-  console.log(`VU ${__VU} - Fetching defi data for address: ${address}`)
+  const address = useRandomAddresses
+    ? generateEthereumAddress()
+    : addresses[(__VU - 1) % addresses.length] // Use modulo to always pick a valid address, even if __VU > addresses.length
+
   const url = `https://defiadapters.api.cx.metamask.io/positions/${address}`
   const res = http.get(url)
 

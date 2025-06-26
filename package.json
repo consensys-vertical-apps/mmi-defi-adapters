@@ -42,11 +42,15 @@
     "test:cov:merge": "vitest run --merge-reports --reporter=junit --coverage",
     "test:tsc": "npm run test:tsc --workspaces --if-present",
     "drop:db": "bash -c 'read -p \"Are you sure you know what you are doing? This will delete all .db files! (y/n): \" confirm && [ \"$confirm\" = \"y\" ] && rm ./metadata/*.db && echo \"All .db files have been deleted successfully.\" || echo \"Aborted. No files were deleted.\"'",
-    "perf:simple": "k6 run k6-perf-test.js",
-    "perf:load-test": "k6 run --env SCENARIO=load_test k6-perf-test.js",
-    "perf:soak-test": "k6 run --env SCENARIO=soak_test k6-perf-test.js",
-    "perf:spike-test": "k6 run --env SCENARIO=spike_test k6-perf-test.js",
-    "perf:stress-test": "k6 run --env SCENARIO=stress_test k6-perf-test.js"
+    "perf:base": "k6 run --out cloud k6-perf-test.js",
+    "perf:smoke": "npm run perf:base",
+    "perf:load-test": "npm run perf:base -- --env SCENARIO=load_test",
+    "perf:stress-test": "npm run perf:base -- --env SCENARIO=stress_test",
+    "perf:load-test:random": "npm run perf:base -- --env SCENARIO=load_test --env RANDOM_ADDRESSES=true",
+    "perf:stress-test:random": "npm run perf:base -- --env SCENARIO=stress_test --env RANDOM_ADDRESSES=true",
+    "perf:spike-test:random": "npm run perf:base -- --env SCENARIO=spike_test --env RANDOM_ADDRESSES=true",
+    "perf:soak-test:random": "npm run perf:base -- --env SCENARIO=soak_test --env RANDOM_ADDRESSES=true",
+    "perf:all": "node k6-perf-test-run-all.js"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -60,3 +64,5 @@
     "vitest": "^3.0.9"
   }
 }
+
+
