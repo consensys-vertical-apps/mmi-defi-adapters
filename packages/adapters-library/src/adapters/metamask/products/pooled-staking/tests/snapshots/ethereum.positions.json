@@ -8,7 +8,7 @@
       "name": "MetaMask",
       "description": "MetaMask defi adapter",
       "siteUrl": "https://portfolio.metamask.io/",
-      "iconUrl": "https://portfolio.metamask.io/favicon.png",
+      "iconUrl": "https://raw.githubusercontent.com/MetaMask/metamask-extension/master/app/images/logo/metamask-fox-bg.svg",
       "positionType": "stake",
       "chainId": 1,
       "productId": "pooled-staking",
