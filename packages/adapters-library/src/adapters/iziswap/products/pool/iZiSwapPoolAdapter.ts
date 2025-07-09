@@ -59,7 +59,7 @@ export class IZiSwapPoolAdapter implements IProtocolAdapter {
 
   adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
-    userEvent: false,
+    userEvent: 'Transfer',
   }
 
   adaptersController: AdaptersController
@@ -157,8 +157,8 @@ export class IZiSwapPoolAdapter implements IProtocolAdapter {
             maxUint128,
             { from: userAddress, blockTag: blockNumber },
           ),
-          getTokenMetadata(poolMeta.tokenX, this.chainId, this.provider),
-          getTokenMetadata(poolMeta.tokenY, this.chainId, this.provider),
+          this.helpers.getTokenMetadata(poolMeta.tokenX),
+          this.helpers.getTokenMetadata(poolMeta.tokenY),
         ])
 
         const nftName = this.protocolTokenName(
