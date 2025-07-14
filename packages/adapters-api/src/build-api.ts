@@ -154,7 +154,7 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
               }),
             },
           },
-          description: 'Returns support for the given address',
+          description: 'Returns supported protocols',
         },
         [UNPROCESSABLE_ENTITY]: {
           content: {

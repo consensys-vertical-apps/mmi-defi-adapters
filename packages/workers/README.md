@@ -36,9 +36,9 @@ Every time a worker thread starts, the following steps occur:
 There is a single postgres database. Each chain has its own schema with its own set of tables. All tables are identical.
 
 ### Tables
-- `jobs`: This table has an entry for each DeFi pool that we support and it includes information about the event and argument that we need to extract in order to determine if an address has had a position in that pool. It also includes the block in which we started processing the pool, as well as whether we've finished processing all the blocks before.
+- `jobs`: This table has an entry for each supported DeFi pool and it includes information about the event and argument that are need to extract in order to determine if an address has had a position in that pool. It also includes the block in which the pool was added to the table, as well as whether it has finished processing all the blocks before.
 
-- `logs`: This is a very basic two columns table that indicates if an ethereum address has had a position with a pool that we support. The first column, important for indexing purposes, is the ethereum address, the second one is the pool address. This table is only queried by ethereum address so that it returns the list of pools that address has had positions with.
+- `logs`: This is a very basic two columns table that indicates if an ethereum address has had a position with a supported pool. The first column, important for indexing purposes, is the ethereum address, the second one is the pool address. This table is only queried by ethereum address so that it returns the list of pools that address has had positions with.
 
 - `settings`: This is a set of persisted keys and values. For the time being, it only stores the latest block processed for that chain.
 
