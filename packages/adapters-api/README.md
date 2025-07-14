@@ -1,5 +1,5 @@
 # Package Description
-This package serves as the entry point for an API that uses the logic inside adapters library and is supported by the database maintained by workers.
+This package serves as the entry point for an API that uses the logic inside the adapters library and is supported by the database maintained by the workers.
 
 # Architecture Overview
 
@@ -12,10 +12,10 @@ Based on the value of `userAddress` (and optionally a set of query string parame
 Returns a list of supported protocols
 
 ## `/user-pools/:userAddress`
-Returns a list of supported pools that address has interacted with.
+Returns a list of supported pools that the address has interacted with.
 
 ## `/health`
-Returns a simple message in order to signal that the service is healthy.
+Returns a simple message to signal that the service is healthy.
 
 ## `/metrics`
 Returns the output of the prometheus client.
