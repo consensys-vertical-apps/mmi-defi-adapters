@@ -12,13 +12,13 @@ import {
   TemplateNames,
   Templates,
   getQuestionnaire,
-} from '../templates/questionnaire.js'
-import { addProtocol } from '../utils/add-protocol.js'
-import { buildIntegrationTests } from '../utils/build-integration-tests.js'
-import { exportAdapter } from '../utils/export-adapter.js'
-import { newAdapterCliLogo } from '../utils/new-adapter-cli-logo.js'
-import { Replacements } from '../utils/replacements.js'
-import { writeAndLintFile } from '../utils/write-and-lint-file.js'
+} from '../templates/questionnaire.ts'
+import { addProtocol } from '../utils/add-protocol.ts'
+import { buildIntegrationTests } from '../utils/build-integration-tests.ts'
+import { exportAdapter } from '../utils/export-adapter.ts'
+import { newAdapterCliLogo } from '../utils/new-adapter-cli-logo.ts'
+import { Replacements } from '../utils/replacements.ts'
+import { writeAndLintFile } from '../utils/write-and-lint-file.ts'
 
 const colorBlue = chalk.rgb(0, 112, 243).bold
 const boldWhiteBg = chalk.bgWhite.bold

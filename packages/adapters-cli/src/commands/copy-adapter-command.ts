@@ -9,10 +9,10 @@ import {} from '@metamask-institutional/defi-adapters'
 import { pascalCase } from '@metamask-institutional/defi-adapters'
 import { Command } from 'commander'
 import { lowerFirst } from 'lodash-es'
-import { addProtocol } from '../utils/add-protocol.js'
-import { buildIntegrationTests } from '../utils/build-integration-tests.js'
-import { exportAdapter } from '../utils/export-adapter.js'
-import { writeAndLintFile } from '../utils/write-and-lint-file.js'
+import { addProtocol } from '../utils/add-protocol.ts'
+import { buildIntegrationTests } from '../utils/build-integration-tests.ts'
+import { exportAdapter } from '../utils/export-adapter.ts'
+import { writeAndLintFile } from '../utils/write-and-lint-file.ts'
 
 export function copyAdapterCommand(program: Command) {
   program

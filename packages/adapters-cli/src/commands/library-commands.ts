@@ -7,8 +7,8 @@ import {
 } from '@metamask-institutional/defi-adapters'
 import { buildPostgresPoolFilter } from '@metamask-institutional/workers'
 import type { Command } from 'commander'
-import { startRpcSnapshot } from '../utils/rpc-interceptor.js'
-import { extractRpcMetrics } from './build-scoreboard-command.js'
+import { startRpcSnapshot } from '../utils/rpc-interceptor.ts'
+import { extractRpcMetrics } from './build-scoreboard-command.ts'
 
 export function libraryCommands(program: Command) {
   program
