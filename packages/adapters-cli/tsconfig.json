@@ -19,7 +19,8 @@
 
     /* If the code is running typescript without transpiling */
     "noEmit": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "module": "NodeNext"
   },
   "include": ["src"],
   "exclude": ["src/tests/**", "**/*.test.*"]
