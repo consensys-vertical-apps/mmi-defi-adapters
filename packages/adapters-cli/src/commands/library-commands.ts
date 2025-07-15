@@ -4,6 +4,7 @@ import {
   multiProductFilter,
   multiProtocolFilter,
   multiProtocolTokenAddressFilter,
+  type PoolFilter,
 } from '@metamask-institutional/defi-adapters'
 import { buildPostgresPoolFilter } from '@metamask-institutional/workers'
 import type { Command } from 'commander'
@@ -40,11 +41,46 @@ export function libraryCommands(program: Command) {
         const filterProductIds = multiProductFilter(productIds)
         const filterChainIds = multiChainFilter(chains)
 
+        let resolvedUserAddress = userAddress
+        if (!resolvedUserAddress) {
+          console.error(
+            'No user address provided. Using default address 0x47ab2ba28c381011fa1f25417c4c2b2c0d5b4781',
+          )
+          resolvedUserAddress = '0x47ab2ba28c381011fa1f25417c4c2b2c0d5b4781'
+        }
+
         const filterProtocolTokens =
           multiProtocolTokenAddressFilter(protocolTokens)
 
+        if (!buildPoolFilter() && !filterProtocolTokens) {
+          console.log(
+            'No DeFi positions cache detected max 10 pools per adapter per chain only.',
+          )
+        }
+
+        const backUpFilter: PoolFilter = async (userAddress, chainId) => {
+          const poolFilterBackup = new DefiProvider()
+          const support = await poolFilterBackup.getSupport({
+            filterChainIds: [chainId],
+            filterProtocolIds,
+            filterProductIds,
+          })
+          // Flatten all protocolTokenAddresses from support object
+          const protocolTokenAddresses = Object.values(support)
+            .flat(2)
+            .flatMap((protocol) =>
+              (protocol.protocolTokenAddresses?.[chainId] ?? []).slice(0, 10),
+            )
+
+          console.debug(
+            `Using ${protocolTokenAddresses.length} protocol token addresses as backup filter for chain ${chainId}`,
+          )
+
+          return protocolTokenAddresses
+        }
+
         const defiProvider = new DefiProvider({
-          poolFilter: buildPoolFilter(),
+          poolFilter: buildPoolFilter() ?? backUpFilter,
         })
 
         const msw = startRpcSnapshot(
@@ -55,7 +91,7 @@ export function libraryCommands(program: Command) {
 
         const startTime = Date.now()
         const data = await defiProvider.getPositions({
-          userAddress,
+          userAddress: resolvedUserAddress,
           filterProtocolIds,
           filterProductIds,
           filterChainIds,

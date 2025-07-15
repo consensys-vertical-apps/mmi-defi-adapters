@@ -191,13 +191,9 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
       })
     }
 
-    const transferLogs = await this.provider.getAllTransferLogsToAddress(
-      input.userAddress,
-    )
-
     // Get all unique UniswapV2 pair addresses from the transfer logs
     const uniswapV2Addresses = await filterMapAsync(
-      Array.from(new Set(transferLogs.map((log) => log.address))),
+      input.protocolTokenAddresses,
       async (address) => {
         const pairContract = UniswapV2Pair__factory.connect(
           address,

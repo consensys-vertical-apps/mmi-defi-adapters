@@ -17,7 +17,7 @@ import { buildContractTypes } from './utils/build-types.ts'
 
 const program = new Command('defi-adapters')
 
-libraryCommands(program)
+libraryCommands(program) // positions and support
 checkMetadataTypeCommand(program)
 buildMetadataCommand(program)
 deleteAdapterMetadataCommand(program)

@@ -25,7 +25,7 @@ import {
   enrichPositionBalance,
   enrichUnwrappedTokenExchangeRates,
 } from './responseAdapters'
-import { PoolFilter, buildProviderPoolFilter } from './tokenFilter'
+import { PoolFilter } from './tokenFilter'
 import { IProtocolAdapter, ProtocolToken } from './types/IProtocolAdapter'
 import { DeepPartial } from './types/deepPartial'
 import {
@@ -42,8 +42,7 @@ export class DefiProvider {
 
   private readonly metadataProviders: Record<Chain, IMetadataProvider>
   private readonly unwrapCache: IUnwrapCache
-  private readonly poolFilter: PoolFilter
-  private readonly shouldUsePoolFilter: (adapter: IProtocolAdapter) => boolean
+  private readonly poolFilter?: PoolFilter
 
   constructor({
     config,
@@ -71,15 +70,7 @@ export class DefiProvider {
     if (poolFilter) {
       // If a pool filter is provided, we use it as long as the adapter has a userEvent
       this.poolFilter = poolFilter
-      this.shouldUsePoolFilter = (adapter) =>
-        !!adapter.adapterSettings.userEvent
-    } else {
-      // If no pool filter is provided, we use the default one and only use it if the adapter has Transfer event
-      this.poolFilter = buildProviderPoolFilter(this.chainProvider.providers)
-      this.shouldUsePoolFilter = (adapter) =>
-        adapter.adapterSettings.userEvent === 'Transfer'
     }
-
     this.unwrapCache = new MemoryUnwrapCache()
 
     this.adaptersController = new AdaptersController({
@@ -131,6 +122,16 @@ export class DefiProvider {
     filterProtocolTokens?: string[]
     filterTokenIds?: string[]
   }): Promise<DefiPositionResponse[]> {
+    // if (
+    //   !this.poolFilter ||
+    //   !filterProtocolTokens ||
+    //   filterProtocolTokens.length === 0
+    // ) {
+    //   throw new Error(
+    //     'Pool filter is not set or filter protocol tokens are not provided',
+    //   )
+    // }
+
     const startTime = Date.now()
 
     const userPoolsByChain = (
@@ -141,7 +142,7 @@ export class DefiProvider {
 
         let contractAddresses: string[] | undefined
         try {
-          contractAddresses = await this.poolFilter(userAddress, chainId)
+          contractAddresses = await this.poolFilter!(userAddress, chainId)
         } catch (error) {
           contractAddresses = undefined
           logger.error(error)
@@ -574,10 +575,7 @@ export class DefiProvider {
       return filterProtocolTokens
     }
 
-    if (
-      adapter.chainId === Chain.Solana ||
-      !this.shouldUsePoolFilter(adapter)
-    ) {
+    if (adapter.chainId === Chain.Solana) {
       return undefined
     }
 

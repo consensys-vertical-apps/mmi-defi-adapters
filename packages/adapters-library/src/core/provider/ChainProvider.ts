@@ -84,9 +84,6 @@ export class ChainProvider {
       fetchRequest.setHeader('Enable-Failover', 'true')
     }
 
-    const hasUnlimitedGetLogsRange =
-      this.config.hasUnlimitedEthGethLogsBlockRangeLimit[ChainName[chainId]]
-
     if (!enableMulticallQueue) {
       logger.debug({ chainId }, 'Using standard provider')
       return new CustomJsonRpcProvider({
@@ -97,7 +94,6 @@ export class ChainProvider {
           staticNetwork: Network.from(chainId),
           batchMaxCount: this.config.disableEthersBatching ? 1 : undefined,
         },
-        hasUnlimitedGetLogsRange,
       })
     }
 
@@ -110,7 +106,6 @@ export class ChainProvider {
       jsonRpcProviderOptions: {
         staticNetwork: Network.from(chainId),
       },
-      hasUnlimitedGetLogsRange,
       maxBatchSize,
     })
   }

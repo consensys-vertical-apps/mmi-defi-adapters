@@ -58,12 +58,6 @@ export class ProviderMissingError extends BaseError {
   }
 }
 
-export class NotSupportedUnlimitedGetLogsBlockRange extends BaseError {
-  constructor() {
-    super('This node provider does not support unlimited getLogs block range')
-  }
-}
-
 export class NotSupportedError extends BaseError {}
 
 export class MaxMovementLimitExceededError extends BaseError {
