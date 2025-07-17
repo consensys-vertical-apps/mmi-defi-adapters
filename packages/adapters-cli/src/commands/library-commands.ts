@@ -1,10 +1,10 @@
 import {
   DefiProvider,
+  type PoolFilter,
   multiChainFilter,
   multiProductFilter,
   multiProtocolFilter,
   multiProtocolTokenAddressFilter,
-  type PoolFilter,
 } from '@metamask-institutional/defi-adapters'
 import { buildPostgresPoolFilter } from '@metamask-institutional/workers'
 import type { Command } from 'commander'
