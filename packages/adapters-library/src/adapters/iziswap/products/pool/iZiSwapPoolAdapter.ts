@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
@@ -26,7 +27,6 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { maxUint128 } from '../../../uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { LiquidityManager__factory } from '../../contracts/factories'
-import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const contractAddresses: Partial<Record<Chain, { liquidityManager: string }>> =
   {
