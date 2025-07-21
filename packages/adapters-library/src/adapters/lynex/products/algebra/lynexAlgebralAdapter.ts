@@ -25,6 +25,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { PositionManager__factory } from '../../contracts'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 // Parameter needed for static call request
 // Set the date in the future to ensure the static call request doesn't trigger smart contract validation
@@ -50,7 +51,7 @@ export class LynexAlgebraAdapter implements IProtocolAdapter {
 
   adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
-    userEvent: false,
+    userEvent: 'Transfer',
   }
 
   adaptersController: AdaptersController
@@ -84,8 +85,17 @@ export class LynexAlgebraAdapter implements IProtocolAdapter {
     }
   }
 
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
-    throw new NotImplementedError()
+    return [
+      {
+        address: contractAddresses[this.chainId]!.positionManager,
+        name: 'Algebra Positions NFT-V1',
+        symbol: 'ALGB-POS',
+        decimals: 0,
+        underlyingTokens: [],
+      },
+    ]
   }
 
   async getPositions({

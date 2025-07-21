@@ -1,0 +1,173 @@
+{
+  "blockNumber": 21119825,
+  "latency": "Latency: 2.828 seconds",
+  "aggregatedValues": [],
+  "snapshot": [
+    {
+      "protocolId": "lynex",
+      "name": "Lynex Algebra",
+      "description": "Lynex Algebra defi adapter",
+      "siteUrl": "https://app.lynex.fi/",
+      "iconUrl": "https://app.lynex.fi/logo.png",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "algebra",
+      "protocolDisplayName": "Lynex",
+      "chainName": "linea",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x5D3D9E20ad27dd61182505230D1bD075bd249E4B",
+          "tokenId": "18799",
+          "name": "USDC / WETH",
+          "symbol": "USDC / WETH",
+          "decimals": 18,
+          "balanceRaw": "40311139317055n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "96970502n",
+              "type": "underlying",
+              "balance": 96.970502,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "255628n",
+              "type": "underlying-claimable",
+              "balance": 0.255628,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "20698275593962172n",
+              "type": "underlying",
+              "balance": 0.020698275593962173,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "65311165670858n",
+              "type": "underlying-claimable",
+              "balance": 0.000065311165670858,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "balance": 0.000040311139317055
+        },
+        {
+          "address": "0x5D3D9E20ad27dd61182505230D1bD075bd249E4B",
+          "tokenId": "18798",
+          "name": "USDC / WETH",
+          "symbol": "USDC / WETH",
+          "decimals": 18,
+          "balanceRaw": "444435922846064n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "1069113292n",
+              "type": "underlying",
+              "balance": 1069.113292,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "2818344n",
+              "type": "underlying-claimable",
+              "balance": 2.818344,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "228201369913471222n",
+              "type": "underlying",
+              "balance": 0.22820136991347123,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "720064693750772n",
+              "type": "underlying-claimable",
+              "balance": 0.000720064693750772,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "balance": 0.000444435922846064
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "239faf72767c76ea96ee9b1fee4136cf": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000002"
+    },
+    "1c5f2cda1985e8e5c407a6710ea75ef1": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000496e"
+    },
+    "d4132f3dd555160ac374497fab6dc4c1": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000496f"
+    },
+    "25e9f3b5e2448793cec870d84d0497e1": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff000000000000000000000000e5d7c2a44ffddf6b295a15c148167daaaf5cf34f000000000000000000000000000000000000000000000000000000000002f328000000000000000000000000000000000000000000000000000000000002f8c8000000000000000000000000000000000000000000000000000194364d4e81700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "44c33bf2bf8cc794ad3ab5e25b018a0c": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff000000000000000000000000e5d7c2a44ffddf6b295a15c148167daaaf5cf34f000000000000000000000000000000000000000000000000000000000002f328000000000000000000000000000000000000000000000000000000000002f8c8000000000000000000000000000000000000000000000000000024a9ab23b53f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "88f3d189b3e3ca76154424954f274b10": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045745544800000000000000000000000000000000000000000000000000000000"
+    },
+    "31a7efe382f0de555f50acc077e43dec": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d5772617070656420457468657200000000000000000000000000000000000000"
+    },
+    "39cfb4df870b5e94406462db547a7362": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    "367e89349853ccf3d8c11438d5561802": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
+    },
+    "c7bcbf5449d2a8d9192c2794bf57c6f1": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    "3b2f55335c74c23bdbd8f0f4f70cd164": {
+      "result": "0x00000000000000000000000000000000000000000000000000000000002b012800000000000000000000000000000000000000000000000000028ee520494bf4"
+    },
+    "7e83a3aabb85b71384c0850afa1dcc11": {
+      "result": "0x000000000000000000000000000000000000000000000000000000003fb95fcc000000000000000000000000000000000000000000000000032abbefd6f330f6"
+    },
+    "060f4085539bd91d596c51a52f39adb1": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000003e68c00000000000000000000000000000000000000000000000000003b6670d465ca"
+    },
+    "03980d86e075fed01892e148788cc0c8": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000005c7a706000000000000000000000000000000000000000000000000004988f8d43dc2bc"
+    },
+    "0eb7096c5052622cd89a58ed410711df": {
+      "result": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553444300000000000000000000000000000000000000000000000000000000"
+    }
+  }
+}
