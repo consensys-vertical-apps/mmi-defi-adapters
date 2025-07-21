@@ -123,26 +123,6 @@ export class DefiProvider {
     filterProtocolTokens?: string[]
     filterTokenIds?: string[]
   }): Promise<DefiPositionResponse[]> {
-    console.log({
-      userAddress,
-      filterProtocolIds,
-      filterProductIds,
-      filterChainIds,
-      blockNumbers,
-      filterProtocolTokens, // TODO: Use this
-      filterTokenIds,
-    })
-
-    // if (
-    //   !this.poolFilter ||
-    //   !filterProtocolTokens ||
-    //   filterProtocolTokens.length === 0
-    // ) {
-    //   throw new Error(
-    //     'Pool filter is not set or filter protocol tokens are not provided',
-    //   )
-    // }
-
     const startTime = Date.now()
 
     const userPoolsByChain = (

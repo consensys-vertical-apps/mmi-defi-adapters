@@ -17,7 +17,11 @@ const DEFAULT_MAX_POOLS_PER_ADAPTER_TO_CHECK = 10
 export function libraryCommands(program: Command) {
   program
     .command('positions')
-    .argument('[userAddress]', 'Address of the target account')
+    .argument(
+      '[userAddress]',
+      'Address of the target account',
+      DEFAULT_USER_ADDRESS,
+    )
     .option(
       '-p, --protocols <protocols>',
       'comma-separated protocols filter (e.g. stargate,aave-v2)',
@@ -44,25 +48,22 @@ export function libraryCommands(program: Command) {
         const filterProductIds = multiProductFilter(productIds)
         const filterChainIds = multiChainFilter(chains)
 
-        const resolvedUserAddress = userAddress ?? DEFAULT_USER_ADDRESS
-        if (!userAddress) {
-          console.log(
-            `No user address provided. Using default address ${DEFAULT_USER_ADDRESS}`,
-          )
-        }
+        console.log(`Get positions for address ${DEFAULT_USER_ADDRESS}`)
 
         const filterProtocolTokens =
           multiProtocolTokenAddressFilter(protocolTokens)
 
-        if (!buildPoolFilter() && !filterProtocolTokens) {
+        const filterUsingLocalIndex = buildFilterUsingLocalIndex()
+
+        if (!filterUsingLocalIndex && !filterProtocolTokens) {
           console.log(
             `No DeFi positions cache detected max ${DEFAULT_MAX_POOLS_PER_ADAPTER_TO_CHECK} pools per adapter per chain only.`,
           )
         }
 
         const filter: PoolFilter = async (userAddress, chainId) => {
-          if (buildPoolFilter()) {
-            return buildPoolFilter()!(userAddress, chainId)
+          if (filterUsingLocalIndex) {
+            return buildFilterUsingLocalIndex()!(userAddress, chainId)
           }
 
           if (filterProtocolTokens) {
@@ -104,7 +105,7 @@ export function libraryCommands(program: Command) {
 
         const startTime = Date.now()
         const data = await defiProvider.getPositions({
-          userAddress: resolvedUserAddress,
+          userAddress: userAddress,
           filterProtocolIds,
           filterProductIds,
           filterChainIds,
@@ -169,7 +170,7 @@ export function libraryCommands(program: Command) {
         const filterProductIds = multiProductFilter(productIds)
 
         const defiProvider = new DefiProvider({
-          poolFilter: buildPoolFilter(),
+          poolFilter: buildFilterUsingLocalIndex(),
         })
 
         const data = await defiProvider.getSupport({
@@ -196,7 +197,7 @@ function printResponse(data: unknown) {
   )
 }
 
-function buildPoolFilter() {
+function buildFilterUsingLocalIndex() {
   if (process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE !== 'true') {
     return undefined
   }
