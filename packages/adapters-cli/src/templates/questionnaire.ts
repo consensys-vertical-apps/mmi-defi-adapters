@@ -8,11 +8,11 @@ import {
 } from '@metamask-institutional/defi-adapters'
 import type { Answers } from 'inquirer'
 import { kebabCase } from 'lodash-es'
-import { blankAdapterTemplate } from './blankAdapterTemplate.js'
-import { compoundV2BorrowMarketForkAdapterTemplate } from './compoundV2BorrowMarketForkAdapter.js'
-import { compoundV2SupplyMarketForkAdapterTemplate } from './compoundV2SupplyMarketForkAdapter.js'
-import { uniswapV2PoolForkAdapterTemplate } from './uniswapV2PoolForkAdapter.js'
-import { votingEscrowAdapterTemplate } from './votingEscrowAdapter.js'
+import { blankAdapterTemplate } from './blankAdapterTemplate.ts'
+import { compoundV2BorrowMarketForkAdapterTemplate } from './compoundV2BorrowMarketForkAdapter.ts'
+import { compoundV2SupplyMarketForkAdapterTemplate } from './compoundV2SupplyMarketForkAdapter.ts'
+import { uniswapV2PoolForkAdapterTemplate } from './uniswapV2PoolForkAdapter.ts'
+import { votingEscrowAdapterTemplate } from './votingEscrowAdapter.ts'
 
 export const QuestionName = {
   ProtocolKey: 'protocolKey',

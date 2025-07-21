@@ -5,8 +5,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "build:watch": "npm run build -- --watch",
     "test:tsc": "tsc --noEmit"
   },
   "devDependencies": {

@@ -16,10 +16,11 @@ import { parse, print, types, visit } from 'recast'
 import {
   type RpcInterceptedResponses,
   startRpcSnapshot,
-} from '../utils/rpc-interceptor.js'
-import { writeAndLintFile } from '../utils/write-and-lint-file.js'
-import n = types.namedTypes
-import b = types.builders
+} from '../utils/rpc-interceptor.ts'
+import { writeAndLintFile } from '../utils/write-and-lint-file.ts'
+
+const n = types.namedTypes
+const b = types.builders
 
 export function buildSnapshotsCommand(program: Command) {
   const allowedMethods = ['positions', 'prices']
@@ -385,7 +386,7 @@ async function updateFilters(
         }
 
         const inputNode = testCaseNode.properties.find(
-          (property): property is n.ObjectProperty =>
+          (property): property is types.namedTypes.ObjectProperty =>
             n.ObjectProperty.check(property) &&
             n.Identifier.check(property.key) &&
             property.key.name === 'input',

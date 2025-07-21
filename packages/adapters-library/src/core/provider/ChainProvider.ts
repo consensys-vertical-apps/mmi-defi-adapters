@@ -42,7 +42,6 @@ export class ChainProvider {
 
         const providerUrl = config.provider[chainName]
         if (!providerUrl) {
-          logger.warn({ chainName }, 'Provider URL is missing for this chain')
           return providers
         }
 

@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
+import { ExitPromptError } from '@inquirer/core'
 import { DefiProvider, pascalCase } from '@metamask-institutional/defi-adapters'
 import chalk from 'chalk'
 import type { Command } from 'commander'
@@ -12,13 +13,13 @@ import {
   TemplateNames,
   Templates,
   getQuestionnaire,
-} from '../templates/questionnaire.js'
-import { addProtocol } from '../utils/add-protocol.js'
-import { buildIntegrationTests } from '../utils/build-integration-tests.js'
-import { exportAdapter } from '../utils/export-adapter.js'
-import { newAdapterCliLogo } from '../utils/new-adapter-cli-logo.js'
-import { Replacements } from '../utils/replacements.js'
-import { writeAndLintFile } from '../utils/write-and-lint-file.js'
+} from '../templates/questionnaire.ts'
+import { addProtocol } from '../utils/add-protocol.ts'
+import { buildIntegrationTests } from '../utils/build-integration-tests.ts'
+import { exportAdapter } from '../utils/export-adapter.ts'
+import { newAdapterCliLogo } from '../utils/new-adapter-cli-logo.ts'
+import { Replacements } from '../utils/replacements.ts'
+import { writeAndLintFile } from '../utils/write-and-lint-file.ts'
 
 const colorBlue = chalk.rgb(0, 112, 243).bold
 const boldWhiteBg = chalk.bgWhite.bold
@@ -207,30 +208,38 @@ export function calculateAdapterOutcomes(
 async function welcome(defiProvider: DefiProvider) {
   showMessage(colorBlue(newAdapterCliLogo))
 
-  const listQuestionsAnswers = await inquirer.prompt({
-    type: 'confirm',
-    name: 'viewAllQuestions',
-    message:
-      'Would you like to view all questions? This will help you know what to look for in the protocol.',
-    //@ts-ignore
-    prefix: bluePrefix,
-  })
-
-  if (listQuestionsAnswers.viewAllQuestions) {
-    displayAllQuestions(defiProvider)
-
-    const start = await inquirer.prompt({
+  try {
+    const listQuestionsAnswers = await inquirer.prompt({
       type: 'confirm',
-      name: 'start',
-      message: 'Ready to answer the questions?',
+      name: 'viewAllQuestions',
+      message:
+        'Would you like to view all questions? This will help you know what to look for in the protocol.',
       //@ts-ignore
       prefix: bluePrefix,
     })
 
-    if (!start.start) {
-      showMessage('Goodbye!')
+    if (listQuestionsAnswers.viewAllQuestions) {
+      displayAllQuestions(defiProvider)
+
+      const start = await inquirer.prompt({
+        type: 'confirm',
+        name: 'start',
+        message: 'Ready to answer the questions?',
+        //@ts-ignore
+        prefix: bluePrefix,
+      })
+
+      if (!start.start) {
+        showMessage('\nGoodbye!')
+        return true
+      }
+    }
+  } catch (error) {
+    if (error instanceof ExitPromptError) {
+      showMessage('\nOperation cancelled by user. Goodbye!')
       return true
     }
+    throw error
   }
 }
 
@@ -289,26 +298,34 @@ async function askQuestion(
     nextQuestionName
   ]
 
-  // Step1: ask question and get answer
-  //@ts-ignore
-  const prompt = await inquirer.prompt({
-    ...questionConfig,
-    prefix: bluePrefix,
-    pageSize: 9990,
-  })
-  const answer = prompt[nextQuestionName]
+  try {
+    // Step1: ask question and get answer
+    //@ts-ignore
+    const prompt = await inquirer.prompt({
+      ...questionConfig,
+      prefix: bluePrefix,
+      pageSize: 9990,
+    })
+    const answer = prompt[nextQuestionName]
 
-  //@ts-ignore
-  answers[nextQuestionName as keyof QuestionAnswers] = answer
+    //@ts-ignore
+    answers[nextQuestionName as keyof QuestionAnswers] = answer
 
-  //@ts-ignore
-  if (questionConfig.next(answer) === 'end') {
-    return answers
+    //@ts-ignore
+    if (questionConfig.next(answer) === 'end') {
+      return answers
+    }
+
+    //@ts-ignore
+    const nextQuestion = questionConfig.next(answer) as QuestionName
+    return await askQuestion(nextQuestion, defiProvider, answers, outcomes)
+  } catch (error) {
+    if (error instanceof ExitPromptError) {
+      showMessage('\nOperation cancelled by user. Goodbye!')
+      process.exit(0)
+    }
+    throw error
   }
-
-  //@ts-ignore
-  const nextQuestion = questionConfig.next(answer) as QuestionName
-  return await askQuestion(nextQuestion, defiProvider, answers, outcomes)
 }
 
 async function createAdapterFile(

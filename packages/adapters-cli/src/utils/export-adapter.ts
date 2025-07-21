@@ -3,10 +3,11 @@ import * as path from 'node:path'
 import type { Chain } from '@metamask-institutional/defi-adapters'
 import { lowerFirst, partition } from 'lodash-es'
 import { parse, print, types, visit } from 'recast'
-import { sortEntries } from './sort-entries.js'
-import { writeAndLintFile } from './write-and-lint-file.js'
-import n = types.namedTypes
-import b = types.builders
+import { sortEntries } from './sort-entries.ts'
+import { writeAndLintFile } from './write-and-lint-file.ts'
+
+const n = types.namedTypes
+const b = types.builders
 
 /**
  * @description Writes changes to include new adapter in src/adapters/supportedProtocols.ts file
@@ -34,7 +35,7 @@ export async function exportAdapter({
 
   visit(ast, {
     visitProgram(path) {
-      const programNode = path.value as n.Program
+      const programNode = path.value as types.namedTypes.Program
 
       addAdapterImport(programNode, protocolId, productId, adapterClassName)
 
@@ -64,7 +65,7 @@ export async function exportAdapter({
  * @param programNode AST node for the Protocol program
  */
 function addAdapterImport(
-  programNode: n.Program,
+  programNode: types.namedTypes.Program,
   protocolId: string,
   productId: string,
   adapterClassName: string,
@@ -88,7 +89,7 @@ function addAdapterImport(
  * @param supportedProtocolsDeclaratorNode AST node for the supportedProtocols declarator
  */
 function addAdapterEntries(
-  supportedProtocolsDeclaratorNode: n.VariableDeclarator,
+  supportedProtocolsDeclaratorNode: types.namedTypes.VariableDeclarator,
   protocolKey: string,
   adapterClassName: string,
   chainKeys: (keyof typeof Chain)[],
@@ -109,7 +110,7 @@ function addAdapterEntries(
       }
 
       return property.key.property.name === protocolKey
-    }) as n.ObjectProperty
+    }) as types.namedTypes.ObjectProperty
 
   if (!protocolChainsObjectPropertyNode) {
     protocolChainsObjectPropertyNode = buildSupportedProtocolEntry(protocolKey)
@@ -122,8 +123,10 @@ function addAdapterEntries(
       supportedProtocolsObjectNode.properties,
       (entry) =>
         (
-          ((entry as n.ObjectProperty).key as n.MemberExpression)
-            .property as n.Identifier
+          (
+            (entry as types.namedTypes.ObjectProperty)
+              .key as types.namedTypes.MemberExpression
+          ).property as types.namedTypes.Identifier
         ).name,
     )
   }
@@ -146,7 +149,7 @@ function addAdapterEntries(
 
         return property.key.property.name === chainKey
       },
-    ) as n.ObjectProperty
+    ) as types.namedTypes.ObjectProperty
 
     if (!protocolChainEntryNode) {
       protocolChainEntryNode = buildChainEntry(chainKey)

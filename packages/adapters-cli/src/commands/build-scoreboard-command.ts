@@ -12,8 +12,8 @@ import { Command } from 'commander'
 import {
   type RpcInterceptedResponses,
   startRpcSnapshot,
-} from '../utils/rpc-interceptor.js'
-import { writeAndLintFile } from '../utils/write-and-lint-file.js'
+} from '../utils/rpc-interceptor.ts'
+import { writeAndLintFile } from '../utils/write-and-lint-file.ts'
 
 type ScoreboardEntry = {
   key: string | undefined
