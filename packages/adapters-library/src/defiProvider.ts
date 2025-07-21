@@ -42,7 +42,7 @@ export class DefiProvider {
 
   private readonly metadataProviders: Record<Chain, IMetadataProvider>
   private readonly unwrapCache: IUnwrapCache
-  private readonly poolFilter?: PoolFilter
+  private readonly poolFilter: PoolFilter
 
   constructor({
     config,
@@ -67,10 +67,11 @@ export class DefiProvider {
       ? buildSqliteMetadataProviders(metadataProviderSettings)
       : buildVoidMetadataProviders()
 
-    if (poolFilter) {
-      // If a pool filter is provided, we use it as long as the adapter has a userEvent
-      this.poolFilter = poolFilter
-    }
+    this.poolFilter =
+      poolFilter ??
+      (() => {
+        throw new Error('Pool filter is not set')
+      })
     this.unwrapCache = new MemoryUnwrapCache()
 
     this.adaptersController = new AdaptersController({
@@ -122,6 +123,16 @@ export class DefiProvider {
     filterProtocolTokens?: string[]
     filterTokenIds?: string[]
   }): Promise<DefiPositionResponse[]> {
+    console.log({
+      userAddress,
+      filterProtocolIds,
+      filterProductIds,
+      filterChainIds,
+      blockNumbers,
+      filterProtocolTokens, // TODO: Use this
+      filterTokenIds,
+    })
+
     // if (
     //   !this.poolFilter ||
     //   !filterProtocolTokens ||
@@ -142,7 +153,7 @@ export class DefiProvider {
 
         let contractAddresses: string[] | undefined
         try {
-          contractAddresses = await this.poolFilter!(userAddress, chainId)
+          contractAddresses = await this.poolFilter(userAddress, chainId)
         } catch (error) {
           contractAddresses = undefined
           logger.error(error)

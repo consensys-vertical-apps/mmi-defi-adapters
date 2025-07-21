@@ -11,6 +11,9 @@ import type { Command } from 'commander'
 import { startRpcSnapshot } from '../utils/rpc-interceptor.ts'
 import { extractRpcMetrics } from './build-scoreboard-command.ts'
 
+const DEFAULT_USER_ADDRESS = '0x47ab2ba28c381011fa1f25417c4c2b2c0d5b4781'
+const DEFAULT_MAX_POOLS_PER_ADAPTER_TO_CHECK = 10
+
 export function libraryCommands(program: Command) {
   program
     .command('positions')
@@ -41,12 +44,11 @@ export function libraryCommands(program: Command) {
         const filterProductIds = multiProductFilter(productIds)
         const filterChainIds = multiChainFilter(chains)
 
-        let resolvedUserAddress = userAddress
-        if (!resolvedUserAddress) {
-          console.error(
-            'No user address provided. Using default address 0x47ab2ba28c381011fa1f25417c4c2b2c0d5b4781',
+        const resolvedUserAddress = userAddress ?? DEFAULT_USER_ADDRESS
+        if (!userAddress) {
+          console.log(
+            `No user address provided. Using default address ${DEFAULT_USER_ADDRESS}`,
           )
-          resolvedUserAddress = '0x47ab2ba28c381011fa1f25417c4c2b2c0d5b4781'
         }
 
         const filterProtocolTokens =
@@ -54,13 +56,21 @@ export function libraryCommands(program: Command) {
 
         if (!buildPoolFilter() && !filterProtocolTokens) {
           console.log(
-            'No DeFi positions cache detected max 10 pools per adapter per chain only.',
+            `No DeFi positions cache detected max ${DEFAULT_MAX_POOLS_PER_ADAPTER_TO_CHECK} pools per adapter per chain only.`,
           )
         }
 
-        const backUpFilter: PoolFilter = async (userAddress, chainId) => {
-          const poolFilterBackup = new DefiProvider()
-          const support = await poolFilterBackup.getSupport({
+        const filter: PoolFilter = async (userAddress, chainId) => {
+          if (buildPoolFilter()) {
+            return buildPoolFilter()!(userAddress, chainId)
+          }
+
+          if (filterProtocolTokens) {
+            return undefined // Use protocol token filter if provided no pool filter required
+          }
+
+          const defiProvider = new DefiProvider()
+          const support = await defiProvider.getSupport({
             filterChainIds: [chainId],
             filterProtocolIds,
             filterProductIds,
@@ -69,18 +79,21 @@ export function libraryCommands(program: Command) {
           const protocolTokenAddresses = Object.values(support)
             .flat(2)
             .flatMap((protocol) =>
-              (protocol.protocolTokenAddresses?.[chainId] ?? []).slice(0, 10),
+              (protocol.protocolTokenAddresses?.[chainId] ?? []).slice(
+                0,
+                DEFAULT_MAX_POOLS_PER_ADAPTER_TO_CHECK,
+              ),
             )
 
           console.debug(
-            `Using ${protocolTokenAddresses.length} protocol token addresses as backup filter for chain ${chainId}`,
+            `Using ${protocolTokenAddresses.length} protocol token addresses as filter for chain ${chainId}`,
           )
 
           return protocolTokenAddresses
         }
 
         const defiProvider = new DefiProvider({
-          poolFilter: buildPoolFilter() ?? backUpFilter,
+          poolFilter: filter,
         })
 
         const msw = startRpcSnapshot(

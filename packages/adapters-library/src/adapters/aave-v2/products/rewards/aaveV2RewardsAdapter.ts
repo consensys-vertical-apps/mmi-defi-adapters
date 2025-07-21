@@ -159,12 +159,6 @@ export class AaveV2RewardsAdapter implements IProtocolAdapter {
     blockNumber,
     protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    console.log({
-      userAddress,
-      blockNumber,
-      protocolTokenAddresses,
-    })
-
     const { underlyingTokens, reserveTokensWithEmissions, ...protocolToken } = (
       await this.getProtocolTokens()
     )[0]!
