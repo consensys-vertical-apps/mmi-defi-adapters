@@ -93,6 +93,7 @@ export function buildSnapshotsCommand(program: Command) {
               useMulticallInterceptor: false,
               disableEthersBatching: true,
             },
+            poolFilter: async () => undefined, // Disable pool filter for snapshots
           })
 
           const msw = startRpcSnapshot(

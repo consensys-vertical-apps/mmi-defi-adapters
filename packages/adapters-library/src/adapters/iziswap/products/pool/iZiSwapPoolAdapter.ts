@@ -26,6 +26,7 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { maxUint128 } from '../../../uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { LiquidityManager__factory } from '../../contracts/factories'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 
 const contractAddresses: Partial<Record<Chain, { liquidityManager: string }>> =
   {
@@ -92,9 +93,17 @@ export class IZiSwapPoolAdapter implements IProtocolAdapter {
       productId: this.productId,
     }
   }
-
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
-    throw new NotImplementedError()
+    return [
+      {
+        address: contractAddresses[this.chainId]!.liquidityManager,
+        name: 'iZiSwap Liquidity NFT',
+        symbol: 'IZISWAP-LIQUIDITY-NFT',
+        decimals: 0,
+        underlyingTokens: [],
+      },
+    ]
   }
 
   async getPositions({

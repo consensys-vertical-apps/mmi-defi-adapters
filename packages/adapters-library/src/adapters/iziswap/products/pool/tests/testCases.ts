@@ -17,12 +17,12 @@ export const testCases: TestCase[] = [
     key: '2',
 
     input: {
-      userAddress: '0xDa4eCF93f4FF9aa1F868a39C5520d29e1A9F07De',
+      userAddress: '0x4DaB76769Baba52643C9648890b801627150E043',
       filterProtocolTokens: ['0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c'],
       openingPositionTxHash:
-        '0x8ff686dae6f77175e7f55f47806181e70d69758495df43db6a566cf29b9f76ab',
+        '0x47a3136154856fbea1d6e51e0e5da3daf043dd8c2dc90c9ae005056f4060ce22',
     },
 
-    blockNumber: 20715268,
+    blockNumber: 21105907,
   },
 ]
