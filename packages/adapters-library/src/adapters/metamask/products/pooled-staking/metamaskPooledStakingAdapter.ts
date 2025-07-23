@@ -100,6 +100,10 @@ export class MetamaskPooledStakingAdapter implements IProtocolAdapter {
 
     const balance = await this.poolContract.getShares(input.userAddress)
 
+    if (!balance) {
+      return []
+    }
+
     return [
       {
         ...protocolToken,
