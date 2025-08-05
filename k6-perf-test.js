@@ -171,7 +171,7 @@ export default function () {
   // Use modulo to always pick a valid address, even if __VU > addresses.length
   const address = addresses[(__VU - 1) % addresses.length]
   console.log(`VU ${__VU} - Fetching defi data for address: ${address}`)
-  const url = `https://defiadapters.dev-api.cx.metamask.io/positions/${address}`
+  const url = `https://defiadapters.api.cx.metamask.io/positions/${address}`
   const res = http.get(url)
 
   const response = res.json()
