@@ -1,3 +1,4 @@
+import https from 'node:https'
 import { Connection } from '@solana/web3.js'
 import { FetchRequest, Network } from 'ethers'
 import { IConfig } from '../../config'
@@ -8,6 +9,14 @@ import {
   CustomJsonRpcProviderOptions,
 } from './CustomJsonRpcProvider'
 import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
+
+export const DEFAULT_HTTP_AGENT_OPTIONS: https.AgentOptions = {
+  keepAlive: true, // Enable keep-alive to reuse connections
+  keepAliveMsecs: 30000, // Keep-alive interval (30 seconds)
+  maxSockets: 50, // Maximum number of active sockets
+  maxFreeSockets: 20, // Maximum number of idle sockets in the pool
+  timeout: 60000, // Free socket timeout (1 minute)
+}
 
 export class ChainProvider {
   providers: Partial<Record<EvmChain, CustomJsonRpcProvider>>
@@ -79,6 +88,10 @@ export class ChainProvider {
     maxBatchSize: number
   }): CustomJsonRpcProvider {
     const fetchRequest = new FetchRequest(url)
+
+    fetchRequest.getUrlFunc = FetchRequest.createGetUrlFunc({
+      options: DEFAULT_HTTP_AGENT_OPTIONS,
+    })
 
     if (enableFailover) {
       fetchRequest.setHeader('Enable-Failover', 'true')
