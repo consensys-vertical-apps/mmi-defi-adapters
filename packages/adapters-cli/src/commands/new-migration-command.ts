@@ -2,7 +2,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { Command } from 'commander'
 import { kebabCase } from 'lodash-es'
-import { writeAndLintFile } from '../utils/write-and-lint-file.js'
+import { writeAndLintFile } from '../utils/write-and-lint-file.ts'
 
 export function newMigrationCommand(program: Command) {
   program

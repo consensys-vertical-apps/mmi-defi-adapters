@@ -8,7 +8,7 @@ export type TestCase = {
       method: 'positions'
       input: {
         userAddress: string
-        filterProtocolTokens?: string[]
+        filterProtocolTokens: string[]
         filterTokenIds?: string[]
         openingPositionTxHash?: string
       }

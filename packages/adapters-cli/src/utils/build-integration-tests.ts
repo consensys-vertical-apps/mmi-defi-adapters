@@ -1,6 +1,6 @@
-import { testCases } from '../templates/testCases.js'
-import { fileExists } from './file-exists.js'
-import { writeAndLintFile } from './write-and-lint-file.js'
+import { testCases } from '../templates/testCases.ts'
+import { fileExists } from './file-exists.ts'
+import { writeAndLintFile } from './write-and-lint-file.ts'
 
 /**
  * @description Creates a new file for snapshot tests if it doesn't exist

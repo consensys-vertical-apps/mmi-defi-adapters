@@ -1,10 +1,11 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { parse, print, types, visit } from 'recast'
-import { sortEntries } from './sort-entries.js'
-import { writeAndLintFile } from './write-and-lint-file.js'
-import n = types.namedTypes
-import b = types.builders
+import { sortEntries } from './sort-entries.ts'
+import { writeAndLintFile } from './write-and-lint-file.ts'
+
+const n = types.namedTypes
+const b = types.builders
 
 /**
  * @description Writes changes to include new adapter in src/adapters/protocols.ts file
@@ -49,7 +50,7 @@ export async function addProtocol({
  * @param protocolListDeclaratorNode AST node for the Protocol declarator
  */
 function addProtocolEntry(
-  protocolListDeclaratorNode: n.VariableDeclarator,
+  protocolListDeclaratorNode: types.namedTypes.VariableDeclarator,
   protocolKey: string,
   protocolId: string,
 ) {
@@ -80,7 +81,11 @@ function addProtocolEntry(
 
     sortEntries(
       protocolListObjectNode.expression.properties,
-      (entry) => ((entry as n.ObjectProperty).key as n.Identifier).name,
+      (entry) =>
+        (
+          (entry as types.namedTypes.ObjectProperty)
+            .key as types.namedTypes.Identifier
+        ).name,
     )
   }
 }
