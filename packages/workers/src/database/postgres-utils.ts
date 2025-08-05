@@ -18,8 +18,8 @@ export function createDbPool({
     connectionString: `${dbUrl}?options=-c%20search_path%3D${encodeURIComponent(
       schema,
     )}`,
-    max: 75,
-    min: 40,
+    max: 25,
+    min: 15,
     connectionTimeoutMillis: 600, // 600 ms
     idleTimeoutMillis: 60 * 1000, // 60 sec
     ssl: process.env.CACHE_DATABASE_DISABLE_SSL
