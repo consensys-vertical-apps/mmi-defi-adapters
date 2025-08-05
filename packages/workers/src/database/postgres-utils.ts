@@ -20,8 +20,8 @@ export function createDbPool({
     )}`,
     max: 25,
     min: 15,
-    connectionTimeoutMillis: 1000, // 1 s
-    idleTimeoutMillis: 60 * 1000, // 60 sec
+    connectionTimeoutMillis: 0, // No timeout
+    idleTimeoutMillis: 10 * 1000, // 10 sec
     ssl: process.env.CACHE_DATABASE_DISABLE_SSL
       ? false
       : {
