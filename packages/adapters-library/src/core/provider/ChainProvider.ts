@@ -1,3 +1,4 @@
+import https from 'node:https'
 import { Connection } from '@solana/web3.js'
 import { FetchRequest, Network } from 'ethers'
 import { IConfig } from '../../config'
@@ -8,7 +9,6 @@ import {
   CustomJsonRpcProviderOptions,
 } from './CustomJsonRpcProvider'
 import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
-import https from 'node:https'
 
 export const DEFAULT_HTTP_AGENT_OPTIONS: https.AgentOptions = {
   keepAlive: true, // Enable keep-alive to reuse connections
