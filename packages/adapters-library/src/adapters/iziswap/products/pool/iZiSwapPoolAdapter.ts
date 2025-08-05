@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
@@ -59,7 +60,7 @@ export class IZiSwapPoolAdapter implements IProtocolAdapter {
 
   adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
-    userEvent: false,
+    userEvent: 'Transfer',
   }
 
   adaptersController: AdaptersController
@@ -92,9 +93,17 @@ export class IZiSwapPoolAdapter implements IProtocolAdapter {
       productId: this.productId,
     }
   }
-
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
-    throw new NotImplementedError()
+    return [
+      {
+        address: contractAddresses[this.chainId]!.liquidityManager,
+        name: 'iZiSwap Liquidity NFT',
+        symbol: 'IZISWAP-LIQUIDITY-NFT',
+        decimals: 0,
+        underlyingTokens: [],
+      },
+    ]
   }
 
   async getPositions({
@@ -157,8 +166,8 @@ export class IZiSwapPoolAdapter implements IProtocolAdapter {
             maxUint128,
             { from: userAddress, blockTag: blockNumber },
           ),
-          getTokenMetadata(poolMeta.tokenX, this.chainId, this.provider),
-          getTokenMetadata(poolMeta.tokenY, this.chainId, this.provider),
+          this.helpers.getTokenMetadata(poolMeta.tokenX),
+          this.helpers.getTokenMetadata(poolMeta.tokenY),
         ])
 
         const nftName = this.protocolTokenName(

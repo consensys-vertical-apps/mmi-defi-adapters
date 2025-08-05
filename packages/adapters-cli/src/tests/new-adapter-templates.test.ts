@@ -3,8 +3,8 @@ import { describe, expect, it } from 'vitest'
 import {
   calculateAdapterOutcomes,
   createCode,
-} from '../commands/new-adapter-command.js'
-import { QuestionAnswers } from '../templates/questionnaire.js'
+} from '../commands/new-adapter-command.ts'
+import { QuestionAnswers } from '../templates/questionnaire.ts'
 
 function generateAllAnswers(): QuestionAnswers[] {
   const {

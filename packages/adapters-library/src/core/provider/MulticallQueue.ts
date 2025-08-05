@@ -10,13 +10,12 @@ import {
 } from 'ethers'
 import { Multicall, Multicall3 } from '../../contracts/Multicall'
 import { count } from '../../metricsCount'
-import { Chain, EvmChain } from '../constants/chains'
+import { EvmChain } from '../constants/chains'
 import { MulticallError } from '../errors/errors'
 import { logger } from '../utils/logger'
 
 import { Multicall__factory } from '../../contracts'
 import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
-import { CustomJsonRpcProvider } from './CustomJsonRpcProvider'
 
 interface PendingCall {
   callParams: {

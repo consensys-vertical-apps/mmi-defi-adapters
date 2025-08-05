@@ -1,7 +1,7 @@
 import type {
   BlankAdapterOutcomeOptions,
   QuestionAnswers,
-} from '../templates/questionnaire.js'
+} from '../templates/questionnaire.ts'
 
 export const Replacements = {
   GET_PROTOCOL_TOKENS: {

@@ -6,12 +6,10 @@ import {
   JsonRpcProvider,
   Log,
   TransactionRequest,
-  ethers,
 } from 'ethers'
 import { count } from '../../metricsCount'
 import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../constants/AVERAGE_BLOCKS_PER_10_MINS'
 import { Chain, EvmChain } from '../constants/chains'
-import { NotSupportedUnlimitedGetLogsBlockRange } from '../errors/errors'
 import { retryHandlerFactory } from './retryHandlerFactory'
 
 export type CustomJsonRpcProviderOptions = {
@@ -29,7 +27,6 @@ type CacheEntryLogs = { result: Array<Log>; timestamp: number }
 export class CustomJsonRpcProvider extends JsonRpcProvider {
   readonly chainId: EvmChain
 
-  private readonly _hasUnlimitedGetLogsRange: boolean
   private readonly _enableCache: boolean
 
   private readonly cacheCalls: Record<string, Promise<CacheEntryCalls>>
@@ -49,13 +46,11 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
       enableCache,
     },
     jsonRpcProviderOptions,
-    hasUnlimitedGetLogsRange,
   }: {
     fetchRequest: FetchRequest
     chainId: EvmChain
     customOptions: CustomJsonRpcProviderOptions
     jsonRpcProviderOptions?: JsonRpcApiProviderOptions
-    hasUnlimitedGetLogsRange: boolean
   }) {
     super(fetchRequest, chainId, jsonRpcProviderOptions)
     this.chainId = chainId
@@ -70,7 +65,6 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
     this.cacheCalls = {}
     this.cacheLogs = {}
 
-    this._hasUnlimitedGetLogsRange = hasUnlimitedGetLogsRange
     this._enableCache = enableCache
   }
 
@@ -132,7 +126,6 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
 
     return (await entryPromise).result
   }
-
   async getLogs(filter: Filter | FilterByBlockHash): Promise<Array<Log>> {
     const getLogsHandler = async () => {
       const result = this.logsRetryHandler(() => super.getLogs(filter))
@@ -179,49 +172,5 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
     }
 
     return result
-  }
-
-  async getAllTransferLogsToAddress(address: string): Promise<Array<Log>> {
-    if (!this._hasUnlimitedGetLogsRange) {
-      throw new NotSupportedUnlimitedGetLogsBlockRange()
-    }
-
-    if (this.chainId === Chain.Polygon) {
-      const transferEventSignature = ethers.id(
-        'Transfer(address,address,uint256)',
-      )
-
-      const transferFilter = {
-        fromBlock: 0,
-        toBlock: 'latest',
-        topics: [
-          transferEventSignature,
-          '0x0000000000000000000000000000000000000000000000000000000000000000',
-          ethers.zeroPadValue(address, 32), // to address
-        ],
-      }
-
-      return this.getLogs(transferFilter)
-    }
-
-    const transferEventSignature = ethers.id(
-      'Transfer(address,address,uint256)',
-    )
-
-    const transferFilter = {
-      fromBlock: 0,
-      toBlock: 'latest',
-      topics: [
-        transferEventSignature,
-        null,
-        ethers.zeroPadValue(address, 32), // to address
-      ],
-    }
-
-    return this.getLogs(transferFilter)
-  }
-
-  public get hasUnlimitedGetLogsRange(): boolean {
-    return this._hasUnlimitedGetLogsRange
   }
 }

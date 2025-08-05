@@ -66,20 +66,6 @@ const maxBatchSize: Record<ChainName, number> = {
   solana: 1, // TODO Not relevant, find a way to remove this
 }
 
-const hasUnlimitedEthGethLogsBlockRangeLimit: Record<ChainName, boolean> = {
-  ethereum: true,
-  op: true,
-  bsc: false,
-  matic: true,
-  ftm: false,
-  sei: false,
-  base: true,
-  arb: true,
-  avax: true,
-  linea: true,
-  solana: false, // TODO Not relevant, find a way to remove this
-}
-
 const ConfigSchema = z
   .object({
     provider: z
@@ -126,43 +112,6 @@ const ConfigSchema = z
     enableFailover: z
       .boolean()
       .default(parseBooleanEnv(process.env.DEFI_ADAPTERS_USE_FAILOVER)),
-    hasUnlimitedEthGethLogsBlockRangeLimit: z
-      .object({
-        [ChainName[Chain.Ethereum]]: z
-          .boolean()
-          .default(hasUnlimitedEthGethLogsBlockRangeLimit.ethereum),
-        [ChainName[Chain.Optimism]]: z
-          .boolean()
-          .default(hasUnlimitedEthGethLogsBlockRangeLimit.op),
-        [ChainName[Chain.Bsc]]: z
-          .boolean()
-          .default(hasUnlimitedEthGethLogsBlockRangeLimit.bsc),
-        [ChainName[Chain.Polygon]]: z
-          .boolean()
-          .default(hasUnlimitedEthGethLogsBlockRangeLimit.matic),
-        [ChainName[Chain.Fantom]]: z
-          .boolean()
-          .default(hasUnlimitedEthGethLogsBlockRangeLimit.ftm),
-        [ChainName[Chain.Sei]]: z
-          .boolean()
-          .default(hasUnlimitedEthGethLogsBlockRangeLimit.sei),
-        [ChainName[Chain.Base]]: z
-          .boolean()
-          .default(hasUnlimitedEthGethLogsBlockRangeLimit.base),
-        [ChainName[Chain.Arbitrum]]: z
-          .boolean()
-          .default(hasUnlimitedEthGethLogsBlockRangeLimit.arb),
-        [ChainName[Chain.Avalanche]]: z
-          .boolean()
-          .default(hasUnlimitedEthGethLogsBlockRangeLimit.avax),
-        [ChainName[Chain.Linea]]: z
-          .boolean()
-          .default(hasUnlimitedEthGethLogsBlockRangeLimit.linea),
-        [ChainName[Chain.Solana]]: z
-          .boolean()
-          .default(hasUnlimitedEthGethLogsBlockRangeLimit.solana),
-      })
-      .default(hasUnlimitedEthGethLogsBlockRangeLimit),
     maxBatchSize: z
       .object({
         [ChainName[Chain.Ethereum]]: z.number().default(maxBatchSize.ethereum),

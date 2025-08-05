@@ -9,9 +9,9 @@ import { Command } from 'commander'
 import EthDater from 'ethereum-block-by-date'
 import { type JsonRpcProvider } from 'ethers'
 import { parse, print, types, visit } from 'recast'
-import { writeAndLintFile } from '../utils/write-and-lint-file.js'
+import { writeAndLintFile } from '../utils/write-and-lint-file.ts'
 
-import n = types.namedTypes
+const n = types.namedTypes
 
 export function blockAverageCommand(program: Command) {
   program
