@@ -8,14 +8,11 @@ describe('detect errors', () => {
   it.each([{ enableFailover: false }, { enableFailover: true }])(
     'does not return any adapter error with positions %s',
     async (config) => {
-      // This test requires a poolFilter, which is typically constructed from the defi log index.
-      // Since the pipeline environment lacks access to the defi log index, we provide a mock poolFilter here.
-      // The mock data below is real and was obtained from:
-      // https://defiadapters.api.cx.metamask.io/user-pools/0x6372baD16935878713e5e1DD92EC3f7A3C48107E
       const poolFilter: PoolFilter = (
         _userAddress: string,
         chainId: EvmChain,
       ) => {
+        // I got this users pools by calling https://defiadapters.api.cx.metamask.io/user-pools/0x6372baD16935878713e5e1DD92EC3f7A3C48107E
         const userPools = {
           '1': [
             '0x06C055753e37356b463813a288B2b0931B024dD4',
