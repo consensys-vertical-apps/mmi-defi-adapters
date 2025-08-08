@@ -1,8 +1,12 @@
 <p align="center">
-  <img src="https://images.ctfassets.net/9sy2a0egs6zh/2XUXAYxxFFVjPlZABUoiLg/d0ff82237d3e5d9bd1097a98e0754453/MMI-icon.svg" width="500">
+  <img src="metamask-logo.jpg" width="80"><br>
+  <sub>🦊 The world’s leading crypto wallet.</sub>
+  <br><br>
+  <img src="metamask-defi-tab.jpeg" width="500"><br>
+  <sub>MetaMask DeFi tab, powered by these adapters.</sub>
 </p>
 
-# Welcome to our DeFi Adapter Library! 🚀
+# Welcome to MetaMask's DeFi Adapter Library! 🦊
 
 This library is designed to simplify and standardise the process of fetching data and interacting with various DeFi protocols, which often have unique interfaces and data structures. Our adapters 1) fetch and transform underlying protocol data into a standardised format that can be easily used by portfolio dashboards and 2) generate transaction params to create and update protocol positions.
 
