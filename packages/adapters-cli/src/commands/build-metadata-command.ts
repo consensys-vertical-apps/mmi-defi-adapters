@@ -1,3 +1,4 @@
+import { execSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
 import {
@@ -22,7 +23,6 @@ import Database from 'better-sqlite3'
 import chalk from 'chalk'
 import { Command } from 'commander'
 import { ZeroAddress } from 'ethers'
-import { execSync } from 'node:child_process'
 
 export function buildMetadataCommand(program: Command) {
   program
