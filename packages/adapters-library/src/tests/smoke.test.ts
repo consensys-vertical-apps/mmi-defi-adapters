@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { DefiProvider } from '../defiProvider'
-import { DefiPositionResponse } from '../types/response'
-import { PoolFilter } from '../tokenFilter'
 import { EvmChain } from '../core/constants/chains'
+import { DefiProvider } from '../defiProvider'
+import { PoolFilter } from '../tokenFilter'
+import { DefiPositionResponse } from '../types/response'
 
 describe('detect errors', () => {
   it.each([{ enableFailover: false }, { enableFailover: true }])(
