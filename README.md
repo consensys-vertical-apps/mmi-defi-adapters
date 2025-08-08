@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="metamask-logo.jpg" width="80"><br>
+  <img src="MetaMask-icon-fox.svg" width="800"><br>
   <sub>🦊 The world’s leading crypto wallet.</sub>
   <br><br>
-  <img src="metamask-defi-tab.jpeg" width="500"><br>
+  <img src="metamask-defi-tab.jpeg" width="800"><br>
   <sub>MetaMask DeFi tab, powered by these adapters.</sub>
 </p>
 
