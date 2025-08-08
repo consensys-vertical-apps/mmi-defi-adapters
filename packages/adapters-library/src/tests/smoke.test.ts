@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest'
+import { EvmChain } from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
+import { PoolFilter } from '../tokenFilter'
 import { DefiPositionResponse } from '../types/response'
 
 describe('detect errors', () => {
