@@ -1,10 +1,20 @@
-<p align="center">
-  <img src="MetaMask-icon-fox.svg" width="800"><br>
-  <sub>🦊 The world’s leading crypto wallet.</sub>
-  <br><br>
-  <img src="metamask-defi-tab.jpeg" width="800"><br>
-  <sub>MetaMask DeFi tab, powered by these adapters.</sub>
-</p>
+<div align="center">
+
+<img src="MetaMask-icon-fox.svg" alt="MetaMask Fox Logo" width="200"/>
+
+<br/>
+
+**🦊 The world’s leading crypto wallet.**
+
+<br/><br/>
+
+<img src="metamask-defi-tab.jpeg" alt="MetaMask DeFi Tab Screenshot" width="600"/>
+
+<br/>
+
+_MetaMask DeFi tab, powered by this adapter library._
+
+</div>
 
 # Welcome to MetaMask's DeFi Adapter Library! 🦊
 
