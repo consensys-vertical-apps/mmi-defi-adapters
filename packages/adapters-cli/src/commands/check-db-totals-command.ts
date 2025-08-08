@@ -5,6 +5,7 @@ import {
 } from '@metamask-institutional/defi-adapters'
 import { supportedProtocols } from '@metamask-institutional/defi-adapters/dist/adapters/supportedProtocols.js'
 import { Command } from 'commander'
+import { promises as fs } from 'node:fs'
 
 export function checkDbTotalsCommand(program: Command) {
   program
@@ -59,31 +60,35 @@ export function checkDbTotalsCommand(program: Command) {
         }
       }
 
-      console.log('--- Cached Adapters Summary ---\n')
+      const outputLines: string[] = []
+
+      outputLines.push('--- Cached Adapters Summary ---\n')
 
       // Log for Database Cached Adapters
       if (dbAdapters.length > 0) {
-        console.log('Database Pool totals Adapters:')
+        outputLines.push('Database Pool totals Adapters:')
         let totalPools = 0
         dbAdapters.forEach((adapter) => {
-          console.log(
-            ` ChainId ${adapter.chainId} Protocol ID: ${adapter.protocolId} - Product ID: ${adapter.productId} - Total Pools: ${adapter.totalNumberOfPools}`,
+          outputLines.push(
+            ` ChainId: ${adapter.chainId} Protocol ID: ${adapter.protocolId} Product ID: ${adapter.productId} Total Pools: ${adapter.totalNumberOfPools}`,
           )
-
           totalPools += adapter.totalNumberOfPools
         })
-        console.log(`  Total Pools Adapters: ${totalPools}\n`)
+        outputLines.push(`  Total Pools Adapters: ${totalPools}\n`)
       }
       if (dbAdapters.length > 0) {
-        console.log('Adapters with zero pools 0:')
-
+        outputLines.push('Adapters with zero pools 0:')
         dbAdapters.forEach((adapter) => {
           if (adapter.totalNumberOfPools === 0) {
-            console.error(
-              ` ChainId ${adapter.chainId}  Protocol ID: ${adapter.protocolId} - Product ID: ${adapter.productId} - Total Pools: ${adapter.totalNumberOfPools}`,
+            outputLines.push(
+              ` ChainId: ${adapter.chainId}  Protocol ID: ${adapter.protocolId} Product ID: ${adapter.productId} Total Pools: ${adapter.totalNumberOfPools}`,
             )
           }
         })
       }
+
+      const outputPath = './db-totals-summary.txt'
+      await fs.writeFile(outputPath, outputLines.join('\n'), 'utf-8')
+      console.log(`Results written to ${outputPath}`)
     })
 }
