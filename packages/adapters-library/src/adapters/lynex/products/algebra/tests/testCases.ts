@@ -20,4 +20,18 @@ export const testCases: TestCase[] = [
     },
     blockNumber: 5184581,
   },
+  {
+    chainId: Chain.Linea,
+    method: 'positions',
+    key: '2',
+
+    input: {
+      userAddress: '0x4A4fbACCf1B987338252223fCe34FC02a98c9343',
+      openingPositionTxHash:
+        '0x3e3a226c437a151a5c0d6cde3383f32ffb531a0c3a726ba92cbeb5d4e12bbd48',
+      filterProtocolTokens: ['0x5D3D9E20ad27dd61182505230D1bD075bd249E4B'],
+    },
+
+    blockNumber: 21119825,
+  },
 ]

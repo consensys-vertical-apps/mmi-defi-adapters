@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { CacheToDb } from '../../../../core/decorators/cacheToDb'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { Helpers } from '../../../../core/helpers'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
@@ -50,7 +51,7 @@ export class LynexAlgebraAdapter implements IProtocolAdapter {
 
   adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
-    userEvent: false,
+    userEvent: 'Transfer',
   }
 
   adaptersController: AdaptersController
@@ -84,8 +85,17 @@ export class LynexAlgebraAdapter implements IProtocolAdapter {
     }
   }
 
+  @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
-    throw new NotImplementedError()
+    return [
+      {
+        address: contractAddresses[this.chainId]!.positionManager,
+        name: 'Algebra Positions NFT-V1',
+        symbol: 'ALGB-POS',
+        decimals: 0,
+        underlyingTokens: [],
+      },
+    ]
   }
 
   async getPositions({
