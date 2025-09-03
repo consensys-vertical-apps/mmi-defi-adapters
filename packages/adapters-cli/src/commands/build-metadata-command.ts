@@ -23,6 +23,7 @@ import Database from 'better-sqlite3'
 import chalk from 'chalk'
 import { Command } from 'commander'
 import { ZeroAddress } from 'ethers'
+import { execSync } from 'node:child_process'
 
 export function buildMetadataCommand(program: Command) {
   program
@@ -124,6 +125,12 @@ export function buildMetadataCommand(program: Command) {
             }
           }
         } finally {
+          try {
+            execSync('npm run check-db-totals', { stdio: 'inherit' })
+          } catch (err) {
+            console.error('Failed to run check-db-totals:', err)
+          }
+
           for (const [_, db] of Object.values(dbConnections)) {
             db.close()
           }
