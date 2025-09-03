@@ -237,7 +237,7 @@ export const supportedProtocols: Record<
     [Chain.Polygon]: [AngleProtocolSavingsAdapter],
     [Chain.Arbitrum]: [AngleProtocolSavingsAdapter],
     [Chain.Linea]: [AngleProtocolSavingsAdapter],
-    [Chain.Bsc]: [AngleProtocolSavingsAdapter],
+    // [Chain.Bsc]: [AngleProtocolSavingsAdapter],
     [Chain.Avalanche]: [AngleProtocolSavingsAdapter],
     [Chain.Base]: [AngleProtocolSavingsAdapter],
   },
@@ -268,12 +268,12 @@ export const supportedProtocols: Record<
       BeefyRcowTokenAdapter,
       BeefyRmooTokenAdapter,
     ],
-    [Chain.Bsc]: [
-      BeefyCowTokenAdapter,
-      BeefyMooTokenAdapter,
-      BeefyRcowTokenAdapter,
-      BeefyRmooTokenAdapter,
-    ],
+    // [Chain.Bsc]: [
+    //   BeefyCowTokenAdapter,
+    //   BeefyMooTokenAdapter,
+    //   BeefyRcowTokenAdapter,
+    //   BeefyRmooTokenAdapter,
+    // ],
     [Chain.Polygon]: [
       BeefyCowTokenAdapter,
       BeefyMooTokenAdapter,
@@ -314,7 +314,7 @@ export const supportedProtocols: Record<
 
   [Protocol.CarbonDeFi]: {
     [Chain.Ethereum]: [CarbonDeFiStrategiesAdapter],
-    [Chain.Sei]: [CarbonDeFiStrategiesAdapter],
+    // [Chain.Sei]: [CarbonDeFiStrategiesAdapter],
   },
 
   [Protocol.ChimpExchange]: {
@@ -365,7 +365,7 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Deri]: {
-    [Chain.Bsc]: [DeriPoolAdapter],
+    // [Chain.Bsc]: [DeriPoolAdapter],
     [Chain.Arbitrum]: [DeriPoolAdapter],
     [Chain.Linea]: [DeriPoolAdapter],
   },
@@ -413,7 +413,7 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.IZiSwap]: {
-    [Chain.Bsc]: [IZiSwapPoolAdapter],
+    // [Chain.Bsc]: [IZiSwapPoolAdapter],
     [Chain.Base]: [IZiSwapPoolAdapter],
     [Chain.Arbitrum]: [IZiSwapPoolAdapter],
     [Chain.Linea]: [IZiSwapPoolAdapter],
@@ -506,7 +506,7 @@ export const supportedProtocols: Record<
 
   [Protocol.PancakeswapV2]: {
     [Chain.Ethereum]: [PancakeswapV2PoolAdapter],
-    [Chain.Bsc]: [PancakeswapV2PoolAdapter],
+    // [Chain.Bsc]: [PancakeswapV2PoolAdapter],
     [Chain.Base]: [PancakeswapV2PoolAdapter],
     [Chain.Arbitrum]: [PancakeswapV2PoolAdapter],
     [Chain.Linea]: [PancakeswapV2PoolAdapter],
@@ -525,12 +525,12 @@ export const supportedProtocols: Record<
       PendleStandardisedYieldTokenAdapter,
       PendleLpTokenAdapter,
     ],
-    [Chain.Bsc]: [
-      PendleYieldTokenAdapter,
-      PendlePrincipleTokenAdapter,
-      PendleStandardisedYieldTokenAdapter,
-      PendleLpTokenAdapter,
-    ],
+    // [Chain.Bsc]: [
+    //   PendleYieldTokenAdapter,
+    //   PendlePrincipleTokenAdapter,
+    //   PendleStandardisedYieldTokenAdapter,
+    //   PendleLpTokenAdapter,
+    // ],
     [Chain.Optimism]: [
       PendleYieldTokenAdapter,
       PendlePrincipleTokenAdapter,
@@ -555,7 +555,7 @@ export const supportedProtocols: Record<
 
   [Protocol.Renzo]: {
     [Chain.Ethereum]: [RenzoEzEthAdapter],
-    [Chain.Bsc]: [RenzoEzEthAdapter],
+    // [Chain.Bsc]: [RenzoEzEthAdapter],
     [Chain.Base]: [RenzoEzEthAdapter],
     [Chain.Arbitrum]: [RenzoEzEthAdapter],
     [Chain.Linea]: [RenzoEzEthAdapter],
@@ -567,7 +567,7 @@ export const supportedProtocols: Record<
 
   [Protocol.Solv]: {
     [Chain.Ethereum]: [SolvSolvBtcAdapter],
-    [Chain.Bsc]: [SolvSolvBtcAdapter, SolvYieldMarketAdapter],
+    // [Chain.Bsc]: [SolvSolvBtcAdapter, SolvYieldMarketAdapter],
     [Chain.Arbitrum]: [SolvSolvBtcAdapter, SolvYieldMarketAdapter],
     [Chain.Avalanche]: [SolvSolvBtcAdapter],
   },
@@ -602,12 +602,12 @@ export const supportedProtocols: Record<
       StargatePoolV2Adapter,
       StargateFarmV2Adapter,
     ],
-    [Chain.Bsc]: [
-      StargatePoolAdapter,
-      StargateFarmAdapter,
-      StargatePoolV2Adapter,
-      StargateFarmV2Adapter,
-    ],
+    // [Chain.Bsc]: [
+    //   StargatePoolAdapter,
+    //   StargateFarmAdapter,
+    //   StargatePoolV2Adapter,
+    //   StargateFarmV2Adapter,
+    // ],
     [Chain.Polygon]: [
       StargatePoolAdapter,
       StargateFarmAdapter,
@@ -640,12 +640,12 @@ export const supportedProtocols: Record<
       StargatePoolV2Adapter,
       StargateFarmV2Adapter,
     ],
-    [Chain.Sei]: [StargatePoolV2Adapter, StargateFarmV2Adapter],
+    // [Chain.Sei]: [StargatePoolV2Adapter, StargateFarmV2Adapter],
   },
 
   [Protocol.SushiswapV2]: {
     [Chain.Ethereum]: [SushiswapV2PoolAdapter],
-    [Chain.Bsc]: [SushiswapV2PoolAdapter],
+    // [Chain.Bsc]: [SushiswapV2PoolAdapter],
     [Chain.Polygon]: [SushiswapV2PoolAdapter],
     // [Chain.Fantom]: [SushiswapV2PoolAdapter],
     [Chain.Base]: [SushiswapV2PoolAdapter],
@@ -664,7 +664,7 @@ export const supportedProtocols: Record<
   [Protocol.UniswapV2]: {
     [Chain.Ethereum]: [UniswapV2PoolAdapter],
     [Chain.Optimism]: [UniswapV2PoolAdapter],
-    [Chain.Bsc]: [UniswapV2PoolAdapter],
+    // [Chain.Bsc]: [UniswapV2PoolAdapter],
     [Chain.Polygon]: [UniswapV2PoolAdapter],
     [Chain.Base]: [UniswapV2PoolAdapter],
     [Chain.Arbitrum]: [UniswapV2PoolAdapter],
@@ -676,7 +676,7 @@ export const supportedProtocols: Record<
     [Chain.Arbitrum]: [UniswapV3PoolAdapter],
     [Chain.Optimism]: [UniswapV3PoolAdapter],
     [Chain.Polygon]: [UniswapV3PoolAdapter],
-    [Chain.Bsc]: [UniswapV3PoolAdapter],
+    // [Chain.Bsc]: [UniswapV3PoolAdapter],
     [Chain.Base]: [UniswapV3PoolAdapter],
   },
 
