@@ -42,7 +42,7 @@ export class DefiProvider {
 
   private readonly metadataProviders: Record<Chain, IMetadataProvider>
   private readonly unwrapCache: IUnwrapCache
-  private readonly poolFilter: PoolFilter
+  private readonly poolFilter: PoolFilter | (() => undefined)
 
   constructor({
     config,
@@ -70,7 +70,9 @@ export class DefiProvider {
     this.poolFilter =
       poolFilter ??
       (() => {
-        throw new Error('Pool filter is not set')
+        console.log('User positions detection cache is not set')
+
+        return undefined
       })
     this.unwrapCache = new MemoryUnwrapCache()
 
@@ -133,7 +135,9 @@ export class DefiProvider {
 
         let contractAddresses: string[] | undefined
         try {
-          contractAddresses = await this.poolFilter(userAddress, chainId)
+          contractAddresses = this.poolFilter
+            ? await this.poolFilter(userAddress, chainId)
+            : undefined
         } catch (error) {
           contractAddresses = undefined
           logger.error(error)

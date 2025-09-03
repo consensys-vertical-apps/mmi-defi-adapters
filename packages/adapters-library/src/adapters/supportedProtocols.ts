@@ -148,6 +148,8 @@ import { MetamaskPooledStakingAdapter } from './metamask/products/pooled-staking
 
 import { MetamaskValidatorStakingAdapter } from './metamask/products/validator-staking/metamaskValidatorStakingAdapter'
 
+import { UniswapV4PoolAdapter } from './uniswap-v4/products/pool/uniswapV4PoolAdapter'
+
 export type EvmChainAdapters = Partial<
   Record<EvmChain, (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]>
 >
@@ -676,6 +678,14 @@ export const supportedProtocols: Record<
     [Chain.Polygon]: [UniswapV3PoolAdapter],
     [Chain.Bsc]: [UniswapV3PoolAdapter],
     [Chain.Base]: [UniswapV3PoolAdapter],
+  },
+
+  [Protocol.UniswapV4]: {
+    [Chain.Ethereum]: [UniswapV4PoolAdapter],
+    [Chain.Optimism]: [UniswapV4PoolAdapter],
+    [Chain.Polygon]: [UniswapV4PoolAdapter],
+    [Chain.Base]: [UniswapV4PoolAdapter],
+    [Chain.Arbitrum]: [UniswapV4PoolAdapter],
   },
 
   [Protocol.Xfai]: {
