@@ -1,9 +1,9 @@
-import { ethers } from 'ethers'
 import { SqrtPriceMath } from '@uniswap/v3-sdk'
-import JSBI from 'jsbi'
 import Decimal from 'decimal.js'
-import { PositionManager, StateView } from '../../contracts'
+import { ethers } from 'ethers'
+import JSBI from 'jsbi'
 import { Helpers } from '../../../../core/helpers'
+import { PositionManager, StateView } from '../../contracts'
 
 // https://gist.github.com/ahmedali8/3145761bda88d8dad4ca1f01e8b9f989
 // Helper functions from the gist

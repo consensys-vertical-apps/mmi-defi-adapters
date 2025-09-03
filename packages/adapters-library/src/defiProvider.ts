@@ -70,7 +70,7 @@ export class DefiProvider {
     this.poolFilter =
       poolFilter ??
       (() => {
-        console.log('User positions detection cache is not set')
+        logger.info('User positions detection cache is not set')
 
         return undefined
       })
