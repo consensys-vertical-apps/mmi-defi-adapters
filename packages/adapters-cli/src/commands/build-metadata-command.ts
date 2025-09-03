@@ -1,3 +1,4 @@
+import { execSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
 import {
@@ -123,6 +124,12 @@ export function buildMetadataCommand(program: Command) {
             }
           }
         } finally {
+          try {
+            execSync('npm run check-db-totals', { stdio: 'inherit' })
+          } catch (err) {
+            console.error('Failed to run check-db-totals:', err)
+          }
+
           for (const [_, db] of Object.values(dbConnections)) {
             db.close()
           }

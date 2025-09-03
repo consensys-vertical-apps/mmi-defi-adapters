@@ -78,10 +78,8 @@ export class PancakeswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
         type: 'factory',
       },
       [Chain.Linea]: {
-        type: 'graphql',
+        type: 'factory',
         factoryAddress: '0x02a84c1b3BBD7401a5f7fa98a384EBC70bB5749E',
-        subgraphUrl:
-          'https://graph-query.linea.build/subgraphs/name/pancakeswap/exhange-v2',
       },
     }
   }

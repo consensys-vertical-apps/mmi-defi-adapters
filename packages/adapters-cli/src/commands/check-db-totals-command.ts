@@ -1,3 +1,4 @@
+import { promises as fs } from 'node:fs'
 import {
   type Chain,
   DefiProvider,
