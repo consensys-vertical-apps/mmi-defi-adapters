@@ -1,6 +1,6 @@
 # DeFi Adapter Development Helper
 
-This guide captures key learnings from creating DeFi adapters, specifically based on the Uniswap V4 adapter development process.
+This guide captures key learnings from creating DeFi adapters, including both contract-based adapters (like Uniswap V4) and non-contract-based adapters (like ETH2 validator staking).
 
 ## 🚀 Quick Start Process
 
@@ -27,6 +27,7 @@ npm run build-snapshots -- -p <protocol-name>
 
 ## 📁 File Structure
 
+### Contract-Based Adapters
 ```
 packages/adapters-library/src/adapters/<protocol>/
 ├── contracts/
@@ -45,9 +46,24 @@ packages/adapters-library/src/adapters/<protocol>/
 └── ...
 ```
 
+### Non-Contract-Based Adapters (External APIs)
+```
+packages/adapters-library/src/adapters/<protocol>/
+├── products/
+│   └── <product-type>/
+│       ├── <protocol>Adapter.ts       # Main adapter implementation
+│       └── tests/
+│           ├── testCases.ts           # Test cases with real addresses
+│           └── snapshots/
+│               └── <chain>.positions.json  # Snapshot test results
+└── ...
+```
+
 ## 🔧 Key Implementation Patterns
 
-### 1. Contract Addresses Structure
+### 1. Contract-Based Adapters
+
+#### Contract Addresses Structure
 ```typescript
 const contractAddresses: Partial<
   Record<Chain, { contract1: string; contract2: string }>
@@ -60,7 +76,7 @@ const contractAddresses: Partial<
 }
 ```
 
-### 2. Main Adapter Class Structure
+#### Main Adapter Class Structure
 ```typescript
 export class ProtocolAdapter implements IProtocolAdapter {
   productId = 'product-type'
@@ -96,7 +112,7 @@ export class ProtocolAdapter implements IProtocolAdapter {
 }
 ```
 
-### 3. Position Processing Pattern
+#### Position Processing Pattern
 ```typescript
 return filterMapAsync(tokenIds, async (tokenId) => {
   try {
@@ -148,6 +164,142 @@ return filterMapAsync(tokenIds, async (tokenId) => {
     return undefined
   }
 })
+```
+
+### 2. Non-Contract-Based Adapters (External APIs)
+
+#### External API Integration Pattern
+```typescript
+export class ProtocolAdapter implements IProtocolAdapter {
+  productId = 'product-type'
+  protocolId: Protocol
+  chainId: Chain
+
+  constructor(chainId: Chain) {
+    this.chainId = chainId
+    this.protocolId = Protocol.ProtocolName
+  }
+
+  async getPositions({
+    tokenIds,
+  }: GetPositionsInput): Promise<ProtocolPosition[]> {
+    if (!tokenIds || tokenIds.length === 0) {
+      return []
+    }
+
+    // Fetch data from external API
+    const externalData = await this.fetchExternalData(tokenIds)
+
+    if (!externalData) {
+      return []
+    }
+
+    // Process and return positions
+    const protocolTokens = await this.getProtocolTokens()
+    const protocolToken = protocolTokens[0]!
+
+    return [
+      {
+        address: protocolToken.address,
+        name: protocolToken.name,
+        symbol: protocolToken.symbol,
+        decimals: protocolToken.decimals,
+        balanceRaw: this.calculateBalance(externalData),
+        type: TokenType.Protocol,
+        tokens: protocolToken.underlyingTokens.map((token) => ({
+          address: token.address,
+          name: token.name,
+          symbol: token.symbol,
+          decimals: token.decimals,
+          balanceRaw: this.calculateBalance(externalData),
+          type: TokenType.Underlying,
+        })),
+      },
+    ]
+  }
+
+  private async fetchExternalData(tokenIds: string[]): Promise<ExternalData | null> {
+    try {
+      const baseUrl = 'https://api.example.com/endpoint'
+      const url = new URL(baseUrl)
+      url.searchParams.set('ids', tokenIds.join(','))
+
+      const response = await fetch(url.toString(), {
+        method: 'GET',
+        headers: {
+          'accept': 'application/json',
+        },
+      })
+
+      if (!response.ok) {
+        logger.error(`API request failed: ${response.status} ${response.statusText}`)
+        return null
+      }
+
+      return await response.json()
+    } catch (error) {
+      logger.error('Error fetching external data:', error)
+      return null
+    }
+  }
+
+  async getTokenIds({
+    userAddress,
+  }: GetTokenIdsInput): Promise<string[]> {
+    // For external APIs, tokenIds might be derived from user address
+    // or fetched from another endpoint
+    return ['token1', 'token2'] // Example implementation
+  }
+
+  async unwrap({
+    protocolTokenAddress,
+  }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    return this.helpers.unwrapOneToOne({
+      protocolToken: await this.getProtocolTokenByAddress(protocolTokenAddress),
+      underlyingTokens: (
+        await this.getProtocolTokenByAddress(protocolTokenAddress)
+      ).underlyingTokens,
+    })
+  }
+}
+```
+
+#### API Response Handling
+```typescript
+// Define response types
+interface ApiResponse {
+  data: ApiDataItem[]
+  // other metadata fields
+}
+
+interface ApiDataItem {
+  id: string
+  balance: string
+  // other fields
+}
+
+// Handle array responses
+const data: ApiResponse = await response.json()
+const items = data.data.filter(item => 
+  tokenIds.includes(item.id)
+)
+
+// Convert balances (common patterns)
+const balanceInWei = BigInt(item.balance) * BigInt(10 ** 9) // gwei to wei
+const balanceInWei = BigInt(item.balance) // if already in wei
+```
+
+#### URL Construction Best Practices
+```typescript
+// Use URL constructor for proper parameter encoding
+const baseUrl = 'https://api.example.com/endpoint'
+const url = new URL(baseUrl)
+url.searchParams.set('status', 'active')
+url.searchParams.set('id', tokenIds.join(','))
+
+// For debugging
+console.log('API URL:', url.toString())
+console.log('Response:', JSON.stringify(data, null, 2))
 ```
 
 ## 🛠 Common Helper Functions
@@ -266,6 +418,34 @@ export const testCases: TestCase[] = [
 **Problem**: Missing packages like `decimal.js`, `jsbi`
 **Solution**: Add to `packages/adapters-library/package.json`
 
+### 6. External API Issues
+**Problem**: API responses don't match expected structure
+**Solution**: 
+- Use `JSON.stringify(data, null, 2)` for debugging
+- Define proper TypeScript interfaces for responses
+- Handle array vs single object responses correctly
+
+### 7. URL Parameter Construction
+**Problem**: Malformed URLs or incorrect parameter encoding
+**Solution**: 
+- Use `new URL()` constructor instead of string concatenation
+- Use `url.searchParams.set()` for proper encoding
+- Test URLs manually before implementing
+
+### 8. Balance Conversion Errors
+**Problem**: Incorrect unit conversions (gwei vs wei vs ETH)
+**Solution**:
+- Verify the API response unit (gwei, wei, etc.)
+- Use proper conversion factors (1 ETH = 10^18 wei = 10^9 gwei)
+- Add debugging logs to verify conversions
+
+### 9. Protocol Token Address Consistency
+**Problem**: Hardcoded addresses instead of using `getProtocolTokens()`
+**Solution**:
+- Always use `protocolToken.address` from `getProtocolTokens()`
+- Avoid hardcoding addresses in `getPositions()`
+- Ensure consistency between `getProtocolTokens()` and `getPositions()`
+
 ## 🔍 Debugging Tips
 
 ### 1. Add Console Logs
@@ -294,6 +474,27 @@ console.log('Type:', typeof value)
 console.log('Constructor:', value?.constructor?.name)
 ```
 
+### 4. Debug External API Responses
+```typescript
+// Pretty print API responses
+console.log('API Response:', JSON.stringify(response, null, 2))
+
+// Log URL construction
+console.log('Request URL:', url.toString())
+
+// Verify balance conversions
+console.log('Raw balance:', rawBalance)
+console.log('Converted balance:', convertedBalance.toString())
+console.log('Balance in ETH:', (Number(convertedBalance) / 1e18).toFixed(9))
+```
+
+### 5. Test API Endpoints Manually
+```bash
+# Test with curl to verify API behavior
+curl -X GET "https://api.example.com/endpoint?status=active&id=0x123" \
+  -H "accept: application/json"
+```
+
 ## 📚 External Resources
 
 ### 1. Protocol Documentation
@@ -313,14 +514,26 @@ console.log('Constructor:', value?.constructor?.name)
 
 ## 🎯 Best Practices
 
+### General Practices
 1. **Start with CLI tools**: Use `npm run new-adapter` for proper structure
-2. **Verify ABIs**: Always double-check ABI content and format
-3. **Test incrementally**: Run snapshots frequently during development
-4. **Handle errors gracefully**: Use try-catch and return undefined for failures
-5. **Use proper types**: Leverage generated contract types
-6. **Follow patterns**: Use existing adapters as reference
-7. **Document addresses**: Include source links for contract addresses
-8. **Test thoroughly**: Use real data and multiple test cases
+2. **Test incrementally**: Run snapshots frequently during development
+3. **Handle errors gracefully**: Use try-catch and return undefined for failures
+4. **Follow patterns**: Use existing adapters as reference
+5. **Test thoroughly**: Use real data and multiple test cases
+
+### Contract-Based Adapters
+6. **Verify ABIs**: Always double-check ABI content and format
+7. **Use proper types**: Leverage generated contract types
+8. **Document addresses**: Include source links for contract addresses
+
+### External API Adapters
+9. **Define response types**: Create proper TypeScript interfaces for API responses
+10. **Use URL constructor**: Always use `new URL()` for proper parameter encoding
+11. **Handle array responses**: Check if API returns single object or array
+12. **Verify unit conversions**: Double-check balance conversions (gwei/wei/ETH)
+13. **Test API endpoints**: Use curl or Postman to verify API behavior manually
+14. **Add debugging logs**: Use `JSON.stringify(data, null, 2)` for response debugging
+15. **Centralize token info**: Use `getProtocolTokens()` instead of hardcoding addresses
 
 ## 🚨 Critical Reminders
 

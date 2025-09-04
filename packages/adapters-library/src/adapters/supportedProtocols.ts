@@ -150,6 +150,8 @@ import { MetamaskValidatorStakingAdapter } from './metamask/products/validator-s
 
 import { UniswapV4PoolAdapter } from './uniswap-v4/products/pool/uniswapV4PoolAdapter'
 
+import { Eth2ValidatorStakingStakingAdapter } from './eth-2-validator-staking/products/staking/eth2ValidatorStakingStakingAdapter'
+
 export type EvmChainAdapters = Partial<
   Record<EvmChain, (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]>
 >
@@ -377,6 +379,10 @@ export const supportedProtocols: Record<
     // [Chain.Base]: [DineroPxEthAdapter, DineroApxEthAdapter],
     // [Chain.Arbitrum]: [DineroPxEthAdapter, DineroApxEthAdapter],
     // [Chain.Linea]: [DineroPxEthAdapter, DineroApxEthAdapter],
+  },
+
+  [Protocol.Eth2ValidatorStaking]: {
+    [Chain.Ethereum]: [Eth2ValidatorStakingStakingAdapter],
   },
 
   [Protocol.Ethena]: {
