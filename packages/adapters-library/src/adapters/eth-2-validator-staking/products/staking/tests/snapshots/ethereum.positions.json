@@ -1,0 +1,49 @@
+{
+  "blockNumber": 23283020,
+  "latency": "Latency: 0.245 seconds",
+  "aggregatedValues": ["USD283,082.24"],
+  "snapshot": [
+    {
+      "protocolId": "eth-2-validator-staking",
+      "name": "ETH2 Validator Staking",
+      "description": "Ethereum 2.0 validator staking positions via Alchemy beacon node API",
+      "siteUrl": "https://ethereum.org/en/staking/",
+      "iconUrl": "https://ethereum.org/static/6b935ac0e6194247347855dc3d328e83/6ed5f/eth-diamond-black.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "staking",
+      "protocolDisplayName": "Eth2ValidatorStaking",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x00000000219ab540356cBB839Cbe05303d7705Fa",
+          "name": "ETH2 Validator Staking",
+          "symbol": "ETH2-VALIDATOR",
+          "decimals": 18,
+          "balanceRaw": "64023238437000000000n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "balanceRaw": "64023238437000000000n",
+              "type": "underlying",
+              "balance": 64.023238437,
+              "price": 4421.554569,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "balance": 64.023238437
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "5fa5a5dd508302808d80b264ce84a335": {
+      "result": "0x000000000000000000000000000000000000000000000007000000000000444000000000000000000000000000000000000000000000000000000066f284d9840000000000000000000000000000000000000000000000000000000068b8462e0000000000000000000000000000000000000000000000000000000068b846430000000000000000000000000000000000000000000000070000000000004440"
+    }
+  }
+}

@@ -13,6 +13,7 @@ export const Protocol = {
   Curve: 'curve',
   Deri: 'deri',
   Dinero: 'dinero',
+  Eth2ValidatorStaking: 'eth-2-validator-staking',
   Ethena: 'ethena',
   EtherFi: 'etherfi',
   Flux: 'flux',
