@@ -104,6 +104,20 @@ export type AdapterSettings = {
          * e.g. "borrower" in the example above
          */
         userAddressArgument: string
+        /**
+         * Optional additional metadata arguments to extract from the event
+         * Maps metadata keys to event argument names
+         * For example, for DepositEvent: { pubkey: "pubkey", withdrawalCredentials: "withdrawal_credentials" }
+         * Note: Multiple values per user will be stored as arrays in the database
+         * This allows users to have multiple public keys (ETH2) or token IDs (Uniswap V4)
+         */
+        additionalMetadataArguments?: Record<string, string>
+        /**
+         * Optional transformation type to convert the raw user address value before using it
+         * Useful for cases where the event argument is not directly an address (e.g., bytes that contain an address)
+         * Available types: 'eth2-withdrawal-credentials'
+         */
+        transformUserAddressType?: string
       }
     | 'Transfer'
     | false

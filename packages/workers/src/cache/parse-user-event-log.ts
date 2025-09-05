@@ -1,11 +1,15 @@
 import { Interface, type Log, ZeroAddress, getAddress } from 'ethers'
+import { getUserAddressTransformer } from './user-address-transformers.js'
 
 export function parseUserEventLog(
   log: Log,
   eventAbi: string | null,
   userAddressIndex: number,
+  additionalMetadataArguments?: Record<string, string>,
+  transformUserAddressType?: string,
 ) {
   let userAddress: string | undefined
+  let metadata: Record<string, string> | undefined
 
   if (eventAbi) {
     const iface = new Interface([eventAbi])
@@ -16,7 +20,39 @@ export function parseUserEventLog(
     }
 
     const data = decoded.args[userAddressIndex] as string
-    userAddress = getAddress(data.toLowerCase())
+
+    // Apply transformation if provided, otherwise use the data as-is
+    const transformer = getUserAddressTransformer(transformUserAddressType)
+    const rawAddress = transformer ? transformer(data) : data
+
+    // If transformer returns null, skip this log entry
+    if (rawAddress === null) {
+      return undefined
+    }
+
+    userAddress = getAddress(rawAddress.toLowerCase())
+
+    // Extract additional metadata if specified
+    if (additionalMetadataArguments) {
+      metadata = {}
+      for (const [key, argName] of Object.entries(
+        additionalMetadataArguments,
+      )) {
+        const argIndex = iface.fragments[0]?.inputs.findIndex(
+          (input) => input.name === argName,
+        )
+
+        if (argIndex === -1) {
+          throw new Error(
+            `Argument ${argName} not found in event abi ${eventAbi}`,
+          )
+        }
+
+        if (argIndex !== undefined && decoded.args[argIndex] !== undefined) {
+          metadata[key] = decoded.args[argIndex] as string
+        }
+      }
+    }
   } else {
     const topic = log.topics[userAddressIndex]
 
@@ -33,6 +69,6 @@ export function parseUserEventLog(
   }
 
   if (userAddress !== ZeroAddress) {
-    return userAddress
+    return { userAddress, metadata }
   }
 }

@@ -1,6 +1,6 @@
 import {
   DefiProvider,
-  type PoolFilter,
+  type DefiPositionDetection,
   multiChainFilter,
   multiProductFilter,
   multiProtocolFilter,
@@ -53,7 +53,8 @@ export function libraryCommands(program: Command) {
         const filterProtocolTokens =
           multiProtocolTokenAddressFilter(protocolTokens)
 
-        const filterUsingLocalIndex = buildFilterUsingLocalIndex()
+        const filterUsingLocalIndex =
+          buildDefiPositionDetectionUsingLocalIndex()
 
         if (!filterUsingLocalIndex && !filterProtocolTokens) {
           console.log(
@@ -61,9 +62,12 @@ export function libraryCommands(program: Command) {
           )
         }
 
-        const filter: PoolFilter = async (userAddress, chainId) => {
+        const filter: DefiPositionDetection = async (userAddress, chainId) => {
           if (filterUsingLocalIndex) {
-            return buildFilterUsingLocalIndex()!(userAddress, chainId)
+            return buildDefiPositionDetectionUsingLocalIndex()!(
+              userAddress,
+              chainId,
+            )
           }
 
           if (filterProtocolTokens) {
@@ -90,11 +94,13 @@ export function libraryCommands(program: Command) {
             `Using ${protocolTokenAddresses.length} protocol token addresses as filter for chain ${chainId}`,
           )
 
-          return protocolTokenAddresses
+          return {
+            contractAddresses: protocolTokenAddresses,
+          }
         }
 
         const defiProvider = new DefiProvider({
-          poolFilter: filter,
+          defiPositionDetection: filter,
         })
 
         const msw = startRpcSnapshot(
@@ -170,7 +176,7 @@ export function libraryCommands(program: Command) {
         const filterProductIds = multiProductFilter(productIds)
 
         const defiProvider = new DefiProvider({
-          poolFilter: buildFilterUsingLocalIndex(),
+          defiPositionDetection: buildDefiPositionDetectionUsingLocalIndex(),
         })
 
         const data = await defiProvider.getSupport({
@@ -197,7 +203,7 @@ function printResponse(data: unknown) {
   )
 }
 
-function buildFilterUsingLocalIndex() {
+function buildDefiPositionDetectionUsingLocalIndex() {
   if (process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE !== 'true') {
     return undefined
   }

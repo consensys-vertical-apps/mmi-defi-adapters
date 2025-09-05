@@ -40,7 +40,17 @@ export interface DbService {
   getAddressChainPools: (
     userAddress: string,
     chainId: EvmChain,
-  ) => Promise<string[]>
+  ) => Promise<{
+    contractAddresses: string[]
+    tokenIds: Record<string, string[]>
+  }>
+  getAddressChainPoolsWithMetadata: (
+    userAddress: string,
+    chainId: EvmChain,
+  ) => Promise<{
+    contractAddresses: string[]
+    tokenIds: Record<string, string[]>
+  }>
   getBlocksStats: (
     getLatestBlockNumber: (chainId: EvmChain) => Promise<number | undefined>,
   ) => Promise<Partial<Record<EvmChain, BlocksStats>>>
@@ -63,7 +73,7 @@ export class PostgresService implements DbService {
     return Object.values(EvmChain).reduce(
       async (acc, chainId) => {
         const pools = await this.getAddressChainPools(userAddress, chainId)
-        ;(await acc)[chainId] = pools
+        ;(await acc)[chainId] = pools.contractAddresses
         return acc
       },
       {} as Promise<Partial<Record<EvmChain, string[]>>>,
@@ -73,17 +83,71 @@ export class PostgresService implements DbService {
   async getAddressChainPools(
     userAddress: string,
     chainId: EvmChain,
-  ): Promise<string[]> {
+  ): Promise<{
+    contractAddresses: string[]
+    tokenIds: Record<string, string[]>
+  }> {
     const res = await this.#dbPools[chainId].query(
-      `SELECT contract_address as "contractAddress"
+      `SELECT DISTINCT contract_address as "contractAddress", metadata_key, metadata_value
          FROM logs
          WHERE address = $1`,
       [userAddress],
     )
 
-    return (res.rows as { contractAddress: string }[]).map(
-      ({ contractAddress }) => contractAddress,
+    const contractAddresses = new Set<string>()
+    const tokenIds: Record<string, string[]> = {}
+
+    for (const row of res.rows) {
+      const { contractAddress, metadata_key, metadata_value } = row
+      contractAddresses.add(contractAddress)
+
+      if (metadata_key && metadata_value) {
+        if (!tokenIds[contractAddress]) {
+          tokenIds[contractAddress] = []
+        }
+        tokenIds[contractAddress].push(metadata_value)
+      }
+    }
+
+    return {
+      contractAddresses: Array.from(contractAddresses),
+      tokenIds,
+    }
+  }
+
+  async getAddressChainPoolsWithMetadata(
+    userAddress: string,
+    chainId: EvmChain,
+  ): Promise<{
+    contractAddresses: string[]
+    tokenIds: Record<string, string[]>
+  }> {
+    const res = await this.#dbPools[chainId].query(
+      `SELECT DISTINCT contract_address as "contractAddress", metadata_key, metadata_value
+         FROM logs
+         WHERE address = $1`,
+      [userAddress],
     )
+
+    const contractAddresses = new Set<string>()
+    const tokenIds: Record<string, string[]> = {}
+
+    for (const row of res.rows) {
+      const { contractAddress, metadata_key, metadata_value } = row
+      contractAddresses.add(contractAddress)
+
+      if (metadata_key && metadata_value) {
+        if (!tokenIds[contractAddress]) {
+          tokenIds[contractAddress] = []
+        }
+        tokenIds[contractAddress].push(metadata_value)
+      }
+    }
+
+    return {
+      contractAddresses: Array.from(contractAddresses),
+      tokenIds,
+    }
   }
 
   async getBlocksStats(
@@ -225,7 +289,16 @@ export class NoDbService implements DbService {
   getAddressPools(): Promise<Partial<Record<EvmChain, string[]>>> {
     throw new Error('Not Implemented')
   }
-  getAddressChainPools(): Promise<string[]> {
+  getAddressChainPools(): Promise<{
+    contractAddresses: string[]
+    tokenIds: Record<string, string[]>
+  }> {
+    throw new Error('Not Implemented')
+  }
+  getAddressChainPoolsWithMetadata(): Promise<{
+    contractAddresses: string[]
+    tokenIds: Record<string, string[]>
+  }> {
     throw new Error('Not Implemented')
   }
   getBlocksStats(): Promise<Partial<Record<EvmChain, BlocksStats>>> {

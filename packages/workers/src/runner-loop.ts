@@ -42,10 +42,24 @@ export async function runnerLoop({
     const allJobs = await cacheClient.fetchAllJobs()
 
     const userIndexMap = new Map(
-      allJobs.map(({ contractAddress, topic0, userAddressIndex, eventAbi }) => [
-        createWatchKey(contractAddress, topic0),
-        { userAddressIndex, eventAbi },
-      ]),
+      allJobs.map(
+        ({
+          contractAddress,
+          topic0,
+          userAddressIndex,
+          eventAbi,
+          additionalMetadataArguments,
+          transformUserAddressType,
+        }) => [
+          createWatchKey(contractAddress, topic0),
+          {
+            userAddressIndex,
+            eventAbi,
+            additionalMetadataArguments,
+            transformUserAddressType,
+          },
+        ],
+      ),
     )
 
     let nextProcessingBlockNumber = blockNumber

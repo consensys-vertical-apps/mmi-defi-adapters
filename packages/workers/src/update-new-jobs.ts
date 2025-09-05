@@ -63,6 +63,8 @@ export function buildTokenEventMappings(
         topic0: `0x${string}`
         userAddressIndex: number
         eventAbi: string
+        additionalMetadataArguments?: Record<string, string>
+        transformUserAddressType?: string
       }
   >()
   for (const adapterSupportArray of Object.values(defiPoolAddresses ?? {})) {
@@ -134,6 +136,9 @@ export function buildTokenEventMappings(
               topic0,
               userAddressIndex,
               eventAbi: userEvent.eventAbi,
+              additionalMetadataArguments:
+                userEvent.additionalMetadataArguments,
+              transformUserAddressType: userEvent.transformUserAddressType,
             },
           )
         }

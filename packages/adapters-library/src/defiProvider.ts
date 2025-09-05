@@ -25,7 +25,7 @@ import {
   enrichPositionBalance,
   enrichUnwrappedTokenExchangeRates,
 } from './responseAdapters'
-import { PoolFilter } from './tokenFilter'
+import { DefiPositionDetection } from './tokenFilter'
 import { IProtocolAdapter, ProtocolToken } from './types/IProtocolAdapter'
 import { DeepPartial } from './types/deepPartial'
 import {
@@ -42,12 +42,12 @@ export class DefiProvider {
 
   private readonly metadataProviders: Record<Chain, IMetadataProvider>
   private readonly unwrapCache: IUnwrapCache
-  private readonly poolFilter: PoolFilter | (() => undefined)
+  private readonly defiPoolDetection: DefiPositionDetection | (() => undefined)
 
   constructor({
     config,
     metadataProviderSettings,
-    poolFilter,
+    defiPositionDetection,
   }: {
     config?: DeepPartial<IConfig>
     metadataProviderSettings?: Record<
@@ -57,7 +57,7 @@ export class DefiProvider {
         options: Database.Options
       }
     >
-    poolFilter?: PoolFilter
+    defiPositionDetection?: DefiPositionDetection
   } = {}) {
     this.config = new Config(config).values
 
@@ -67,10 +67,10 @@ export class DefiProvider {
       ? buildSqliteMetadataProviders(metadataProviderSettings)
       : buildVoidMetadataProviders()
 
-    this.poolFilter =
-      poolFilter ??
+    this.defiPoolDetection =
+      defiPositionDetection ??
       (() => {
-        logger.info('User positions detection cache is not set')
+        logger.info('DeFi pool detection is not set')
 
         return undefined
       })
@@ -134,26 +134,42 @@ export class DefiProvider {
         }
 
         let contractAddresses: string[] | undefined
+        let tokenIdsPerContractAddress: Record<string, string[]> | undefined
         try {
-          contractAddresses = this.poolFilter
-            ? await this.poolFilter(userAddress, chainId)
+          const result = this.defiPoolDetection
+            ? await this.defiPoolDetection(userAddress, chainId)
             : undefined
+
+          if (result) {
+            contractAddresses = result.contractAddresses
+            tokenIdsPerContractAddress = result.tokenIds
+          }
         } catch (error) {
           contractAddresses = undefined
+          tokenIdsPerContractAddress = undefined
           logger.error(error)
         }
 
         return {
           chainId,
           contractAddresses,
+          tokenIds: tokenIdsPerContractAddress,
         }
       })
     ).reduce(
       (acc, curr) => {
-        acc[curr.chainId] = curr.contractAddresses
+        acc[curr.chainId] = {
+          contractAddresses: curr.contractAddresses || [],
+          tokenIds: curr.tokenIds,
+        }
         return acc
       },
-      {} as Partial<Record<EvmChain, string[]>>,
+      {} as Partial<
+        Record<
+          EvmChain,
+          { contractAddresses: string[]; tokenIds?: Record<string, string[]> }
+        >
+      >,
     )
 
     const userPoolFiltersFetchedTime = Date.now()
@@ -185,6 +201,15 @@ export class DefiProvider {
         if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
           return { tokens: [] }
         }
+        // Extract tokenIds from userPoolData for this adapter's chain
+        const userPoolData = userPoolsByChain[adapter.chainId as EvmChain]
+        const userTokenIds = userPoolData?.tokenIds
+        const combinedTokenIds =
+          userTokenIds && protocolTokenAddresses
+            ? protocolTokenAddresses.flatMap(
+                (address) => userTokenIds[address] || [],
+              )
+            : filterTokenIds
 
         const poolsFilteredTime = Date.now()
 
@@ -192,7 +217,7 @@ export class DefiProvider {
           userAddress,
           blockNumber,
           protocolTokenAddresses,
-          tokenIds: filterTokenIds,
+          tokenIds: combinedTokenIds,
         })
 
         const positionsFetchedTime = Date.now()
@@ -563,7 +588,12 @@ export class DefiProvider {
 
   private async getProtocolTokensFilter(
     filterProtocolTokens: string[] | undefined,
-    userPoolsByChain: Partial<Record<EvmChain, string[]>>,
+    userPoolsByChain: Partial<
+      Record<
+        EvmChain,
+        { contractAddresses: string[]; tokenIds?: Record<string, string[]> }
+      >
+    >,
     adapter: IProtocolAdapter,
   ): Promise<string[] | undefined> {
     if (filterProtocolTokens) {
@@ -574,11 +604,13 @@ export class DefiProvider {
       return undefined
     }
 
-    const poolFilterAddresses = userPoolsByChain[adapter.chainId]
+    const userPoolData = userPoolsByChain[adapter.chainId]
 
-    if (!poolFilterAddresses) {
+    if (!userPoolData?.contractAddresses) {
       return undefined
     }
+
+    const poolFilterAddresses = userPoolData.contractAddresses
 
     let protocolTokens: ProtocolToken[] = []
     try {
