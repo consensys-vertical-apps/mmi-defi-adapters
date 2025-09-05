@@ -42,6 +42,7 @@ export async function buildLatestCache({
     {
       userAddressIndex: number
       eventAbi: string | null
+      additionalMetadataArguments?: Record<string, string>
     }
   >
   logger: Logger
@@ -107,6 +108,7 @@ async function processBlocks({
     {
       userAddressIndex: number
       eventAbi: string | null
+      additionalMetadataArguments?: Record<string, string>
     }
   >
   cacheClient: CacheClient

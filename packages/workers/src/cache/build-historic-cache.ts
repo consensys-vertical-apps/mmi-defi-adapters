@@ -57,6 +57,8 @@ export async function buildHistoricCache(
     topic0,
     eventAbi,
     userAddressIndex,
+    additionalMetadataArguments,
+    transformUserAddressType,
     targetBlockNumber,
     batchSize,
   } = nextPoolGroup
@@ -103,6 +105,8 @@ export async function buildHistoricCache(
     )
 
     try {
+      // Start from block 0 for historical processing - this is correct for initial processing
+      // The issue might be elsewhere. Let's keep this as is for now.
       const ranges = splitRange(0, targetBlockNumber, MAX_CONCURRENT_BATCHES)
       const concurrentRanges = ranges.map(async ({ from, to }) => {
         for await (const logs of fetchEvents({
@@ -113,22 +117,28 @@ export async function buildHistoricCache(
           toBlock: to,
           logger,
         })) {
-          const logsToInsert: { address: string; contractAddress: string }[] =
-            []
+          const logsToInsert: {
+            address: string
+            contractAddress: string
+            metadata?: Record<string, string>
+          }[] = []
           for (const log of logs) {
             const contractAddress = getAddress(log.address.toLowerCase())
 
             try {
-              const userAddress = parseUserEventLog(
+              const result = parseUserEventLog(
                 log,
                 eventAbi,
                 userAddressIndex,
+                additionalMetadataArguments,
+                transformUserAddressType,
               )
 
-              if (userAddress) {
+              if (result) {
                 logsToInsert.push({
-                  address: userAddress,
+                  address: result.userAddress,
                   contractAddress,
+                  metadata: result.metadata,
                 })
               }
             } catch (error) {

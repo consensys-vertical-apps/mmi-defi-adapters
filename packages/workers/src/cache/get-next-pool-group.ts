@@ -64,6 +64,8 @@ export async function getNextPoolGroup(
       topic0: largestGroup[0]!.topic0,
       eventAbi: largestGroup[0]!.eventAbi,
       userAddressIndex: largestGroup[0]!.userAddressIndex,
+      additionalMetadataArguments: largestGroup[0]!.additionalMetadataArguments,
+      transformUserAddressType: largestGroup[0]!.transformUserAddressType,
       targetBlockNumber: Math.max(
         ...largestGroup.map((pool) => pool.blockNumber),
       ),
@@ -72,13 +74,22 @@ export async function getNextPoolGroup(
   }
 
   const failedPools = unfinishedPools.filter((pool) => pool.status === 'failed')
-  const { contractAddress, topic0, eventAbi, userAddressIndex, blockNumber } =
-    failedPools[0]!
+  const {
+    contractAddress,
+    topic0,
+    eventAbi,
+    userAddressIndex,
+    blockNumber,
+    additionalMetadataArguments,
+    transformUserAddressType,
+  } = failedPools[0]!
   return {
     poolAddresses: [contractAddress],
     topic0,
     eventAbi,
     userAddressIndex,
+    additionalMetadataArguments,
+    transformUserAddressType,
     targetBlockNumber: blockNumber,
     batchSize: 1,
   }

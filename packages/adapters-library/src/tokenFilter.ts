@@ -1,6 +1,12 @@
 import type { EvmChain } from './core/constants/chains'
 
-export type PoolFilter = (
+export type DefiPositionDetection = (
   userAddress: string,
   chainId: EvmChain,
-) => Promise<string[] | undefined>
+) => Promise<
+  | {
+      contractAddresses: string[]
+      tokenIds?: Record<string, string[]> // contractAddress -> metadata values
+    }
+  | undefined
+>

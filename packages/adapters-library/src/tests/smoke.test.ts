@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import { EvmChain } from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
-import { PoolFilter } from '../tokenFilter'
+import { DefiPositionDetection } from '../tokenFilter'
 import { DefiPositionResponse } from '../types/response'
 
 describe('detect errors', () => {
   it.each([{ enableFailover: false }, { enableFailover: true }])(
     'does not return any adapter error with positions %s',
     async (config) => {
-      const poolFilter: PoolFilter = (
+      const poolFilter: DefiPositionDetection = (
         _userAddress: string,
         chainId: EvmChain,
       ) => {
@@ -79,10 +79,15 @@ describe('detect errors', () => {
           ],
         }
 
-        return Promise.resolve(userPools[chainId])
+        return Promise.resolve({
+          contractAddresses: userPools[chainId] || [],
+        })
       }
 
-      const defiProvider = new DefiProvider({ config, poolFilter })
+      const defiProvider = new DefiProvider({
+        config,
+        defiPositionDetection: poolFilter,
+      })
       const response = await defiProvider.getPositions({
         userAddress: '0x6372baD16935878713e5e1DD92EC3f7A3C48107E',
       })
@@ -101,7 +106,7 @@ describe('detect errors', () => {
     const invalidProtocols = Object.values(protocolDetails)
       .flat()
       .filter((protocol) => {
-        return !/^https?:\/\/.+/.test(protocol.protocolDetails.iconUrl)
+        return !protocol.protocolDetails.iconUrl || !/^https?:\/\/.+/.test(protocol.protocolDetails.iconUrl)
       })
 
     if (invalidProtocols.length > 0) {

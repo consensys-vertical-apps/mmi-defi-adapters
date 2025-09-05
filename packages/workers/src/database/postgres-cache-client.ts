@@ -12,6 +12,8 @@ export type JobDbEntry = {
   userAddressIndex: number
   blockNumber: number
   status: 'pending' | 'failed' | 'completed'
+  additionalMetadataArguments?: Record<string, string>
+  transformUserAddressType?: string
 }
 
 export interface CacheClient {
@@ -28,6 +30,7 @@ export interface CacheClient {
       topic0: `0x${string}`
       eventAbi?: string
       userAddressIndex: number
+      additionalMetadataArguments?: Record<string, string>
     }[],
     blockNumber: number,
   ) => Promise<number>
@@ -42,9 +45,15 @@ export interface CacheClient {
     logs: {
       address: string
       contractAddress: string
+      metadata?: Record<string, string>
     }[],
     blockNumber?: number,
   ) => Promise<number>
+
+  getUserMetadata: (
+    userAddress: string,
+    contractAddress?: string,
+  ) => Promise<Record<string, string[]>>
 }
 
 export async function createPostgresCacheClient({
@@ -114,7 +123,9 @@ class PostgresCacheClient implements CacheClient {
               event_abi as "eventAbi",
               user_address_index as "userAddressIndex",
               block_number as "blockNumber",
-              status
+              status,
+              additional_metadata_arguments as "additionalMetadataArguments",
+              transform_user_address_type as "transformUserAddressType"
        FROM jobs`,
     )
 
@@ -132,7 +143,9 @@ class PostgresCacheClient implements CacheClient {
               event_abi as "eventAbi",
               user_address_index as "userAddressIndex",
               block_number as "blockNumber",
-              status
+              status,
+              additional_metadata_arguments as "additionalMetadataArguments",
+              transform_user_address_type as "transformUserAddressType"
        FROM jobs
        WHERE status <> $1`,
       ['completed'],
@@ -147,6 +160,8 @@ class PostgresCacheClient implements CacheClient {
       topic0: `0x${string}`
       eventAbi?: string
       userAddressIndex: number
+      additionalMetadataArguments?: Record<string, string>
+      transformUserAddressType?: string
     }[],
     blockNumber: number,
   ) {
@@ -156,8 +171,8 @@ class PostgresCacheClient implements CacheClient {
     await this.#bulkTransaction(async (client) => {
       for (const entry of protocolTokenEntries) {
         const result = await client.query(
-          `INSERT INTO jobs (contract_address, topic_0, event_abi, user_address_index, block_number)
-           VALUES ($1, $2, $3, $4, $5)
+          `INSERT INTO jobs (contract_address, topic_0, event_abi, user_address_index, block_number, additional_metadata_arguments, transform_user_address_type)
+           VALUES ($1, $2, $3, $4, $5, $6, $7)
            ON CONFLICT DO NOTHING`,
           [
             entry.contractAddress,
@@ -165,6 +180,10 @@ class PostgresCacheClient implements CacheClient {
             entry.eventAbi,
             entry.userAddressIndex,
             blockNumber,
+            entry.additionalMetadataArguments
+              ? JSON.stringify(entry.additionalMetadataArguments)
+              : null,
+            entry.transformUserAddressType || null,
           ],
         )
 
@@ -203,6 +222,7 @@ class PostgresCacheClient implements CacheClient {
     logs: {
       address: string
       contractAddress: string
+      metadata?: Record<string, string>
     }[],
     blockNumber?: number,
   ) {
@@ -214,17 +234,25 @@ class PostgresCacheClient implements CacheClient {
       for (let i = 0; i < logs.length; i += batchSize) {
         const batch = logs.slice(i, i + batchSize)
         const values = batch
-          .map((_log, idx) => `($${idx * 2 + 1}, $${idx * 2 + 2})`)
+          .map(
+            (_log, idx) =>
+              `($${idx * 4 + 1}, $${idx * 4 + 2}, $${idx * 4 + 3}, $${idx * 4 + 4})`,
+          )
           .join(',')
-        const params = batch.flatMap(({ address, contractAddress }) => [
-          address,
-          contractAddress,
-        ])
+        const params = batch.flatMap(
+          ({ address, contractAddress, metadata }) => {
+            // Each log will have at most one metadata key-value pair
+            const metadataKey = metadata ? Object.keys(metadata)[0] : null
+            const metadataValue = metadata ? Object.values(metadata)[0] : null
+
+            return [address, contractAddress, metadataKey, metadataValue]
+          },
+        )
 
         const result = await client.query(
-          `INSERT INTO logs (address, contract_address)
+          `INSERT INTO logs (address, contract_address, metadata_key, metadata_value)
            VALUES ${values}
-           ON CONFLICT DO NOTHING`,
+           ON CONFLICT (address, contract_address, metadata_key, metadata_value) DO NOTHING`,
           params,
         )
 
@@ -247,6 +275,39 @@ class PostgresCacheClient implements CacheClient {
     release()
 
     return insertedCount
+  }
+
+  async getUserMetadata(
+    userAddress: string,
+    contractAddress?: string,
+  ): Promise<Record<string, string[]>> {
+    const query = contractAddress
+      ? `SELECT metadata_key, metadata_value 
+         FROM logs 
+         WHERE address = $1 AND contract_address = $2 AND metadata_key IS NOT NULL`
+      : `SELECT metadata_key, metadata_value 
+         FROM logs 
+         WHERE address = $1 AND metadata_key IS NOT NULL`
+
+    const params = contractAddress
+      ? [userAddress, contractAddress]
+      : [userAddress]
+
+    const res = await this.#dbPool.query(query, params)
+
+    // Group values by metadata key
+    const result: Record<string, string[]> = {}
+    for (const row of res.rows) {
+      const key = row.metadata_key
+      const value = row.metadata_value
+
+      if (!result[key]) {
+        result[key] = []
+      }
+      result[key].push(value)
+    }
+
+    return result
   }
 
   /**
