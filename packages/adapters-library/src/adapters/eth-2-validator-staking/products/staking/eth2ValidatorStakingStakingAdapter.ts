@@ -16,9 +16,9 @@ import {
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
+  TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
-  TokenType,
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
 
@@ -66,10 +66,11 @@ export class Eth2ValidatorStakingStakingAdapter implements IProtocolAdapter {
       eventAbi:
         'event DepositEvent(bytes pubkey, bytes withdrawal_credentials, bytes amount, bytes signature, bytes index)',
       userAddressArgument: 'withdrawal_credentials',
-      additionalMetadataArguments: {
-        pubkey: 'pubkey',
-      },
       transformUserAddressType: 'eth2-withdrawal-credentials',
+      additionalMetadataArguments: {
+        argumentName: 'pubkey',
+        transformMetadataType: undefined,
+      },
     },
   }
 
@@ -170,15 +171,9 @@ export class Eth2ValidatorStakingStakingAdapter implements IProtocolAdapter {
   }
 
   async getPositions({
-    userAddress,
-    protocolTokenAddresses,
     tokenIds: userPubkeys, // bit of a hack to use tokenIds as userPubkeys
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    if (!userAddress) {
-      return []
-    }
-
-    if (!userPubkeys || userPubkeys.length === 0) {
+    if (!userPubkeys || !userPubkeys.length) {
       return []
     }
 

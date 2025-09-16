@@ -1,3 +1,4 @@
+import { type AdditionalMetadataConfig } from '@metamask-institutional/defi-adapters'
 import {
   type JsonRpcProvider,
   type TransactionReceipt,
@@ -7,6 +8,7 @@ import {
 import type { Logger } from 'pino'
 import { extractErrorMessage } from '../utils/extractErrorMessage.js'
 import { withTimeout } from '../utils/with-timeout.js'
+import type { UserIndex } from './build-latest-cache.js'
 import { createWatchKey } from './create-watch-key.js'
 import { parseUserEventLog } from './parse-user-event-log.js'
 
@@ -18,15 +20,7 @@ export async function processBlock({
 }: {
   provider: JsonRpcProvider
   blockNumber: number
-  userIndexMap: Map<
-    string,
-    {
-      userAddressIndex: number
-      eventAbi: string | null
-      additionalMetadataArguments?: Record<string, string>
-      transformUserAddressType?: string
-    }
-  >
+  userIndexMap: UserIndex
   logger: Logger
 }): Promise<
   {
@@ -46,15 +40,7 @@ export async function processBlock({
 
 export function processReceipts(
   receipts: TransactionReceipt[],
-  userIndexMap: Map<
-    string,
-    {
-      userAddressIndex: number
-      eventAbi: string | null
-      additionalMetadataArguments?: Record<string, string>
-      transformUserAddressType?: string
-    }
-  >,
+  userIndexMap: UserIndex,
   logger: Logger,
 ) {
   const logs: {

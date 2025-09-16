@@ -6,7 +6,7 @@ import {
 import type { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
 import { buildHistoricCache } from './cache/build-historic-cache.js'
-import { buildLatestCache } from './cache/build-latest-cache.js'
+import { type UserIndex, buildLatestCache } from './cache/build-latest-cache.js'
 import { createWatchKey } from './cache/create-watch-key.js'
 import type { CacheClient } from './database/postgres-cache-client.js'
 
@@ -41,7 +41,7 @@ export async function runnerLoop({
   const latestCacheLoop = async () => {
     const allJobs = await cacheClient.fetchAllJobs()
 
-    const userIndexMap = new Map(
+    const userIndexMap: UserIndex = new Map(
       allJobs.map(
         ({
           contractAddress,

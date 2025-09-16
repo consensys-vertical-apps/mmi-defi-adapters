@@ -1,11 +1,14 @@
+import {
+  type AdditionalMetadataConfig,
+  LOG_ARGUMENT_TRANSFORMERS,
+} from '@metamask-institutional/defi-adapters'
 import { Interface, type Log, ZeroAddress, getAddress } from 'ethers'
-import { getUserAddressTransformer } from './user-address-transformers.js'
 
 export function parseUserEventLog(
   log: Log,
   eventAbi: string | null,
   userAddressIndex: number,
-  additionalMetadataArguments?: Record<string, string>,
+  additionalMetadataArguments?: AdditionalMetadataConfig,
   transformUserAddressType?: string,
 ) {
   let userAddress: string | undefined
@@ -22,7 +25,9 @@ export function parseUserEventLog(
     const data = decoded.args[userAddressIndex] as string
 
     // Apply transformation if provided, otherwise use the data as-is
-    const transformer = getUserAddressTransformer(transformUserAddressType)
+    const transformer = transformUserAddressType
+      ? LOG_ARGUMENT_TRANSFORMERS[transformUserAddressType]
+      : undefined
     const rawAddress = transformer ? transformer(data) : data
 
     // If transformer returns null, skip this log entry
@@ -32,25 +37,24 @@ export function parseUserEventLog(
 
     userAddress = getAddress(rawAddress.toLowerCase())
 
-    // Extract additional metadata if specified
+    // Extract additional metadata mapped to tokenId if specified
     if (additionalMetadataArguments) {
       metadata = {}
-      for (const [key, argName] of Object.entries(
-        additionalMetadataArguments,
-      )) {
-        const argIndex = iface.fragments[0]?.inputs.findIndex(
-          (input) => input.name === argName,
+
+      const argIndex = iface.fragments[0]?.inputs.findIndex(
+        (input) => input.name === additionalMetadataArguments.argumentName,
+      )
+
+      if (argIndex === -1) {
+        throw new Error(
+          `Argument ${additionalMetadataArguments.argumentName} not found in event abi ${eventAbi}`,
         )
+      }
 
-        if (argIndex === -1) {
-          throw new Error(
-            `Argument ${argName} not found in event abi ${eventAbi}`,
-          )
-        }
-
-        if (argIndex !== undefined && decoded.args[argIndex] !== undefined) {
-          metadata[key] = decoded.args[argIndex] as string
-        }
+      if (argIndex !== undefined && decoded.args[argIndex] !== undefined) {
+        metadata[additionalMetadataArguments.argumentName] = decoded.args[
+          argIndex
+        ] as string
       }
     }
   } else {

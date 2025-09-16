@@ -6,6 +6,11 @@ import { Helpers, SolanaHelpers } from '../core/helpers'
 import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import type { Erc20Metadata } from './erc20Metadata'
 
+export type AdditionalMetadataConfig = {
+  argumentName: string
+  transformMetadataType?: string
+}
+
 export const TokenType = {
   Protocol: 'protocol',
   Underlying: 'underlying',
@@ -105,19 +110,19 @@ export type AdapterSettings = {
          */
         userAddressArgument: string
         /**
-         * Optional additional metadata arguments to extract from the event
-         * Maps metadata keys to event argument names
-         * For example, for DepositEvent: { pubkey: "pubkey", withdrawalCredentials: "withdrawal_credentials" }
-         * Note: Multiple values per user will be stored as arrays in the database
-         * This allows users to have multiple public keys (ETH2) or token IDs (Uniswap V4)
-         */
-        additionalMetadataArguments?: Record<string, string>
-        /**
          * Optional transformation type to convert the raw user address value before using it
          * Useful for cases where the event argument is not directly an address (e.g., bytes that contain an address)
          * Available types: 'eth2-withdrawal-credentials'
          */
         transformUserAddressType?: string
+        /**
+         * Optional additional metadata configuration that gets mapped to tokenId
+         * Specifies the event argument name and transformation type for additional metadata
+         * For example: { argumentName: "pubkey", transformMetadataType: "hex-to-base64" }
+         * Note: The underlying implementation supports multiple metadata for future expansion
+         * Note: The transformMetadataType value is stored in the database for future transformation support
+         */
+        additionalMetadataArguments?: AdditionalMetadataConfig
       }
     | 'Transfer'
     | false

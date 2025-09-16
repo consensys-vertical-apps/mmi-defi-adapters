@@ -1,11 +1,11 @@
 /**
- * User address transformation functions
+ * Log argument transformation functions
  * These functions convert raw event data to actual user addresses
  */
 
-export type UserAddressTransformer = (rawValue: string) => string | null
+export type LogArgumentTransformer = (rawValue: string) => string | null
 
-export const USER_ADDRESS_TRANSFORMERS: Record<string, UserAddressTransformer> =
+export const LOG_ARGUMENT_TRANSFORMERS: Record<string, LogArgumentTransformer> =
   {
     /**
      * Extract address from ETH2 withdrawal credentials
@@ -32,13 +32,3 @@ export const USER_ADDRESS_TRANSFORMERS: Record<string, UserAddressTransformer> =
       return `0x${addressHex.toLowerCase()}`
     },
   }
-
-export function getUserAddressTransformer(
-  transformType?: string,
-): UserAddressTransformer | undefined {
-  if (!transformType) {
-    return undefined
-  }
-
-  return USER_ADDRESS_TRANSFORMERS[transformType]
-}

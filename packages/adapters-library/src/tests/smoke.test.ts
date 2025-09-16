@@ -8,7 +8,7 @@ describe('detect errors', () => {
   it.each([{ enableFailover: false }, { enableFailover: true }])(
     'does not return any adapter error with positions %s',
     async (config) => {
-      const poolFilter: DefiPositionDetection = (
+      const getDefiPositionsDetection: DefiPositionDetection = (
         _userAddress: string,
         chainId: EvmChain,
       ) => {
@@ -86,7 +86,7 @@ describe('detect errors', () => {
 
       const defiProvider = new DefiProvider({
         config,
-        defiPositionDetection: poolFilter,
+        getDefiPositionsDetection,
       })
       const response = await defiProvider.getPositions({
         userAddress: '0x6372baD16935878713e5e1DD92EC3f7A3C48107E',
@@ -106,7 +106,10 @@ describe('detect errors', () => {
     const invalidProtocols = Object.values(protocolDetails)
       .flat()
       .filter((protocol) => {
-        return !protocol.protocolDetails.iconUrl || !/^https?:\/\/.+/.test(protocol.protocolDetails.iconUrl)
+        return (
+          !protocol.protocolDetails.iconUrl ||
+          !/^https?:\/\/.+/.test(protocol.protocolDetails.iconUrl)
+        )
       })
 
     if (invalidProtocols.length > 0) {

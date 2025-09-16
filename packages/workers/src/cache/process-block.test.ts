@@ -99,8 +99,8 @@ describe('processBlock', () => {
       .mockReturnValueOnce('watchkey2')
 
     vi.mocked(parseUserEventLog)
-      .mockReturnValueOnce('0xUser1')
-      .mockReturnValueOnce('0xUser2')
+      .mockReturnValueOnce({ userAddress: '0xUser1', metadata: undefined })
+      .mockReturnValueOnce({ userAddress: '0xUser2', metadata: undefined })
 
     const result = await processBlock({
       provider,
@@ -110,8 +110,16 @@ describe('processBlock', () => {
     })
 
     expect(result).toEqual([
-      { address: '0xUser1', contractAddress: '0xcontract1' },
-      { address: '0xUser2', contractAddress: '0xcontract2' },
+      {
+        address: '0xUser1',
+        contractAddress: '0xcontract1',
+        metadata: undefined,
+      },
+      {
+        address: '0xUser2',
+        contractAddress: '0xcontract2',
+        metadata: undefined,
+      },
     ])
     expect(parseUserEventLog).toHaveBeenCalledTimes(2)
   })

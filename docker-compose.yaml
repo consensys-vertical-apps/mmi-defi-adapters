@@ -47,6 +47,7 @@ services:
       postgres:
         condition: service_healthy
 
+  # Optional: To run just database service (run manually docker-compose up postgres)
   postgres:
     image: postgres:17
     ports:
@@ -64,7 +65,7 @@ services:
       retries: 5
     restart: unless-stopped
 
-  # Optional: Reset database service (run manually when needed)
+  # Optional: Reset database service (run manually when needed docker-compose --profile reset run reset-db)
   reset-db:
     image: postgres:17
     environment:

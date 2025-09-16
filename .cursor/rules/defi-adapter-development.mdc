@@ -1,6 +1,12 @@
-# DeFi Adapter Development Helper
+---
+description: DeFi Adapter Development Rules and Patterns
+globs: ["packages/adapters-library/src/adapters/**/*", "packages/workers/src/**/*"]
+alwaysApply: true
+---
 
-This guide captures key learnings from creating DeFi adapters, including both contract-based adapters (like Uniswap V4) and non-contract-based adapters (like ETH2 validator staking).
+# DeFi Adapter Development Rules
+
+This file contains key learnings and patterns for creating DeFi adapters, including both contract-based adapters (like Uniswap V4) and non-contract-based adapters (like ETH2 validator staking).
 
 ## 🚀 Quick Start Process
 
@@ -403,7 +409,6 @@ export const testCases: TestCase[] = [
 **Problem**: Wrong ABI content or malformed JSON
 **Solution**: 
 - Verify ABI source (official docs, GitHub, Etherscan)
-- Use `sed` to clean TypeScript syntax from ABIs
 - Ensure valid JSON format
 
 ### 3. Contract Address Mismatches
@@ -543,3 +548,25 @@ curl -X GET "https://api.example.com/endpoint?status=active&id=0x123" \
 - Handle missing data gracefully (return undefined, not errors)
 - Use proper error handling and logging
 - Follow the established file structure and naming conventions
+
+## 🔧 Metadata Handling
+
+### Additional Metadata Configuration
+When creating adapters that need to extract additional metadata from events:
+
+```typescript
+adapterSettings: AdapterSettings = {
+  userEvent: {
+    eventAbi: 'event DepositEvent(bytes pubkey, bytes withdrawal_credentials, bytes amount, bytes signature, bytes index)',
+    userAddressArgument: 'withdrawal_credentials',
+    metadata: { argumentName: 'pubkey' },  // Extracts 'pubkey' as additional metadata
+    transformUserAddressType: 'eth2-withdrawal-credentials',
+  },
+}
+```
+
+### Key Points:
+- `metadata` specifies which event argument to extract as additional metadata
+- This metadata gets stored in the database and passed to adapters as `tokenIds`
+- The underlying implementation supports multiple metadata for future expansion
+- Use this for protocols like ETH2 staking (pubkey) or Uniswap V4 (tokenId)

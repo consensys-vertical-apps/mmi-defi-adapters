@@ -1,4 +1,5 @@
 import type {
+  AdditionalMetadataConfig,
   Chain,
   DefiProvider,
   EvmChain,
@@ -63,7 +64,7 @@ export function buildTokenEventMappings(
         topic0: `0x${string}`
         userAddressIndex: number
         eventAbi: string
-        additionalMetadataArguments?: Record<string, string>
+        additionalMetadataArguments?: AdditionalMetadataConfig
         transformUserAddressType?: string
       }
   >()

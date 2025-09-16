@@ -4,11 +4,16 @@ export { Chain, ChainName, EvmChain } from './core/constants/chains'
 
 export { DefiProvider } from './defiProvider'
 export { PositionType, TokenType } from './types/adapter'
+export {
+  type LogArgumentTransformer,
+  LOG_ARGUMENT_TRANSFORMERS,
+} from './core/utils/log-argument-transformers'
 export type {
   AdapterResponse,
   DefiPositionResponse,
   Support,
 } from './types/response'
+export type { DefiPositionDetection } from './tokenFilter'
 export {
   chainFilter,
   protocolFilter,
@@ -21,6 +26,6 @@ export { filterMapSync, filterMapAsync } from './core/utils/filters'
 export * from './core/utils/caseConversion'
 export * from './core/utils/address-validation'
 export type { TestCase } from './types/testCase'
-export type { DefiPositionDetection } from './tokenFilter'
 export { AVERAGE_BLOCKS_PER_10_MINUTES } from './core/constants/AVERAGE_BLOCKS_PER_10_MINS'
 export { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
+export type { AdditionalMetadataConfig } from './types/adapter'

@@ -1,3 +1,17 @@
+/**
+ * DeFi Provider - Main entry point for querying DeFi positions
+ *
+ * This module handles the complex flow of:
+ * 1. Detecting user's DeFi positions across all chains using database queries
+ * 2. Extracting position metadata (e.g., token IDs, validator pubkeys) for each contract
+ * 3. Filtering positions by protocol, chain, and product
+ * 4. Calling individual protocol adapters with the relevant metadata
+ * 5. Aggregating and enriching the results
+ *
+ * The metadata system supports 1:many relationships between users and their DeFi positions,
+ * enabling protocols like ETH2 staking (multiple validator pubkeys) and Uniswap V4 (multiple token IDs).
+ */
+
 import { PublicKey } from '@solana/web3.js'
 import Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
@@ -42,12 +56,14 @@ export class DefiProvider {
 
   private readonly metadataProviders: Record<Chain, IMetadataProvider>
   private readonly unwrapCache: IUnwrapCache
-  private readonly defiPoolDetection: DefiPositionDetection | (() => undefined)
+  private readonly getDefiPositionsDetection:
+    | DefiPositionDetection
+    | (() => undefined)
 
   constructor({
     config,
     metadataProviderSettings,
-    defiPositionDetection,
+    getDefiPositionsDetection,
   }: {
     config?: DeepPartial<IConfig>
     metadataProviderSettings?: Record<
@@ -57,20 +73,29 @@ export class DefiProvider {
         options: Database.Options
       }
     >
-    defiPositionDetection?: DefiPositionDetection
+    getDefiPositionsDetection?: DefiPositionDetection
   } = {}) {
     this.config = new Config(config).values
 
     this.chainProvider = new ChainProvider(this.config)
 
+    // TODO: Check with Bernardo why this was added - might be for PL - imo whole library depends on accessing protocol metadata
     this.metadataProviders = this.config.useDatabase
       ? buildSqliteMetadataProviders(metadataProviderSettings)
       : buildVoidMetadataProviders()
 
-    this.defiPoolDetection =
-      defiPositionDetection ??
+    this.getDefiPositionsDetection =
+      getDefiPositionsDetection ??
       (() => {
-        logger.info('DeFi pool detection is not set')
+        logger.info({
+          message: 'DeFi pool detection is not set',
+          instructions: {
+            setup: 'To build a local cache, run: docker-compose up --build',
+            warning:
+              'This will start indexing all DeFi positions for all chains',
+            note: 'Ensure DEFI_ADAPTERS_USE_POSITIONS_CACHE, CACHE_DATABASE_URL, and CACHE_DATABASE_DISABLE_SSL are set accordingly in your environment variables',
+          },
+        })
 
         return undefined
       })
@@ -127,47 +152,68 @@ export class DefiProvider {
   }): Promise<DefiPositionResponse[]> {
     const startTime = Date.now()
 
-    const userPoolsByChain = (
+    // Step 1: Detect user's DeFi positions across all chains
+    // This queries the database for the user's DeFi position's contract addresses and associated metadata
+    // (example metadata - validator pubkeys for ETH2 staking, token IDs for Uniswap V4)
+    const defiPositionsDetectedByChain = (
       await filterMapAsync(Object.values(EvmChain), async (chainId) => {
+        if (!this.chainProvider.providers[chainId]) {
+          return undefined
+        }
+
+        // Skip chains that are filtered out
         if (filterChainIds && !filterChainIds.includes(chainId)) {
           return undefined
         }
 
         let contractAddresses: string[] | undefined
-        let tokenIdsPerContractAddress: Record<string, string[]> | undefined
+        let positionMetadataByContractAddress:
+          | Record<string, string[]>
+          | undefined
         try {
-          const result = this.defiPoolDetection
-            ? await this.defiPoolDetection(userAddress, chainId)
+          // Query the database for user's positions on this chain
+          const result = this.getDefiPositionsDetection
+            ? await this.getDefiPositionsDetection(userAddress, chainId)
             : undefined
 
           if (result) {
+            // Extract contract addresses where user has positions
             contractAddresses = result.contractAddresses
-            tokenIdsPerContractAddress = result.tokenIds
+            // Extract metadata for each contract (e.g., token IDs, validator pubkeys)
+            positionMetadataByContractAddress =
+              result.positionMetadataByContractAddress
           }
         } catch (error) {
+          // If detection fails, clear the data and log the error
+          // This way if one chain fails, we don't block the other chains
           contractAddresses = undefined
-          tokenIdsPerContractAddress = undefined
+          positionMetadataByContractAddress = undefined
           logger.error(error)
         }
 
         return {
           chainId,
           contractAddresses,
-          tokenIds: tokenIdsPerContractAddress,
+          positionMetadataByContractAddress,
         }
       })
     ).reduce(
+      // Convert array to object keyed by chain ID for easier lookup
       (acc, curr) => {
         acc[curr.chainId] = {
           contractAddresses: curr.contractAddresses || [],
-          tokenIds: curr.tokenIds,
+          positionMetadataByContractAddress:
+            curr.positionMetadataByContractAddress,
         }
         return acc
       },
       {} as Partial<
         Record<
           EvmChain,
-          { contractAddresses: string[]; tokenIds?: Record<string, string[]> }
+          {
+            contractAddresses: string[]
+            positionMetadataByContractAddress?: Record<string, string[]>
+          }
         >
       >,
     )
@@ -194,30 +240,45 @@ export class DefiProvider {
 
         const protocolTokenAddresses = await this.getProtocolTokensFilter(
           filterProtocolTokens,
-          userPoolsByChain,
+          defiPositionsDetectedByChain,
           adapter,
         )
 
         if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
           return { tokens: [] }
         }
-        // Extract tokenIds from userPoolData for this adapter's chain
-        const userPoolData = userPoolsByChain[adapter.chainId as EvmChain]
-        const userTokenIds = userPoolData?.tokenIds
-        const combinedTokenIds =
-          userTokenIds && protocolTokenAddresses
+        // Step 2: Extract detected positions for this specific adapter's chain
+        const userDeFiPositionsDetected =
+          defiPositionsDetectedByChain[adapter.chainId as EvmChain]
+
+        // Extract the metadata (e.g., token IDs, validator pubkeys) for each contract
+        const userDeFiPositionsMetadata =
+          userDeFiPositionsDetected?.positionMetadataByContractAddress
+
+        // Step 3: Combine metadata for all protocol token addresses
+        // This flattens all metadata values for contracts that the adapter supports
+        // For example: if user has token IDs [1,2,3] for contract A and [4,5] for contract B,
+        // and the adapter supports both contracts, we get [1,2,3,4,5]
+        const combinedMetadata =
+          userDeFiPositionsMetadata && protocolTokenAddresses
             ? protocolTokenAddresses.flatMap(
-                (address) => userTokenIds[address] || [],
+                (address) => userDeFiPositionsMetadata[address] || [],
               )
             : filterTokenIds
 
         const poolsFilteredTime = Date.now()
 
+        // Step 4: Call the adapter with the combined metadata
+        // The adapter receives all relevant metadata as 'tokenIds' for backward compatibility
+        // For ETH2 staking: tokenIds contains validator pubkeys
+        // For Uniswap V4: tokenIds contains actual token IDs
+        // For other protocols: tokenIds contains whatever metadata was stored
+        // TODO: Remove tokenIds and replace with metadata directly
         const protocolPositions = await adapter.getPositions({
           userAddress,
           blockNumber,
           protocolTokenAddresses,
-          tokenIds: combinedTokenIds,
+          tokenIds: combinedMetadata, // This is the flattened metadata from all contracts
         })
 
         const positionsFetchedTime = Date.now()

@@ -26,7 +26,6 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { PositionManager__factory, StateView__factory } from '../../contracts'
 import { getPosition } from './uniswapV4-helper'
-import { logger } from '../../../../core/utils/logger'
 
 // Uniswap V4 contract addresses from https://docs.uniswap.org/contracts/v4/deployments
 
@@ -68,9 +67,8 @@ export class UniswapV4PoolAdapter implements IProtocolAdapter {
         'event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)',
       userAddressArgument: 'to',
       additionalMetadataArguments: {
-        tokenId: 'tokenId',
-        // Note: Multiple tokenIds per user will be stored as arrays in the database
-        // This allows users to have multiple Uniswap V4 positions
+        argumentName: 'tokenId',
+        transformMetadataType: undefined,
       },
     },
   }

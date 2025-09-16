@@ -1,4 +1,5 @@
 import { ChainName, type EvmChain } from '@metamask-institutional/defi-adapters'
+import { type AdditionalMetadataConfig } from '@metamask-institutional/defi-adapters'
 import { Mutex } from 'async-mutex'
 import type { Pool, PoolClient, PoolConfig } from 'pg'
 import type { Logger } from 'pino'
@@ -12,7 +13,7 @@ export type JobDbEntry = {
   userAddressIndex: number
   blockNumber: number
   status: 'pending' | 'failed' | 'completed'
-  additionalMetadataArguments?: Record<string, string>
+  additionalMetadataArguments?: AdditionalMetadataConfig
   transformUserAddressType?: string
 }
 
@@ -30,7 +31,7 @@ export interface CacheClient {
       topic0: `0x${string}`
       eventAbi?: string
       userAddressIndex: number
-      additionalMetadataArguments?: Record<string, string>
+      additionalMetadataArguments?: AdditionalMetadataConfig
     }[],
     blockNumber: number,
   ) => Promise<number>
@@ -49,11 +50,6 @@ export interface CacheClient {
     }[],
     blockNumber?: number,
   ) => Promise<number>
-
-  getUserMetadata: (
-    userAddress: string,
-    contractAddress?: string,
-  ) => Promise<Record<string, string[]>>
 }
 
 export async function createPostgresCacheClient({
@@ -160,7 +156,7 @@ class PostgresCacheClient implements CacheClient {
       topic0: `0x${string}`
       eventAbi?: string
       userAddressIndex: number
-      additionalMetadataArguments?: Record<string, string>
+      additionalMetadataArguments?: AdditionalMetadataConfig
       transformUserAddressType?: string
     }[],
     blockNumber: number,
@@ -233,20 +229,55 @@ class PostgresCacheClient implements CacheClient {
       const batchSize = 1000
       for (let i = 0; i < logs.length; i += batchSize) {
         const batch = logs.slice(i, i + batchSize)
-        const values = batch
+
+        // Process each log to extract all metadata entries
+        const logEntries: Array<{
+          address: string
+          contractAddress: string
+          metadataKey: string | null
+          metadataValue: string | null
+        }> = []
+
+        for (const { address, contractAddress, metadata } of batch) {
+          if (metadata && Object.keys(metadata).length > 0) {
+            // Create an entry for each metadata key-value pair
+            for (const [key, value] of Object.entries(metadata)) {
+              logEntries.push({
+                address,
+                contractAddress,
+                metadataKey: key,
+                metadataValue: value,
+              })
+            }
+          } else {
+            // Create a single entry with null metadata for logs without metadata
+            logEntries.push({
+              address,
+              contractAddress,
+              metadataKey: null,
+              metadataValue: null,
+            })
+          }
+        }
+
+        if (logEntries.length === 0) {
+          continue
+        }
+
+        // Generate SQL values and parameters for all log entries
+        const values = logEntries
           .map(
-            (_log, idx) =>
+            (_, idx) =>
               `($${idx * 4 + 1}, $${idx * 4 + 2}, $${idx * 4 + 3}, $${idx * 4 + 4})`,
           )
           .join(',')
-        const params = batch.flatMap(
-          ({ address, contractAddress, metadata }) => {
-            // Each log will have at most one metadata key-value pair
-            const metadataKey = metadata ? Object.keys(metadata)[0] : null
-            const metadataValue = metadata ? Object.values(metadata)[0] : null
-
-            return [address, contractAddress, metadataKey, metadataValue]
-          },
+        const params = logEntries.flatMap(
+          ({ address, contractAddress, metadataKey, metadataValue }) => [
+            address,
+            contractAddress,
+            metadataKey,
+            metadataValue,
+          ],
         )
 
         const result = await client.query(
@@ -261,6 +292,7 @@ class PostgresCacheClient implements CacheClient {
         this.#logger.debug(
           {
             logs: logs.length,
+            logEntries: logEntries.length,
             blockNumber,
           },
           'Inserted logs',
@@ -275,39 +307,6 @@ class PostgresCacheClient implements CacheClient {
     release()
 
     return insertedCount
-  }
-
-  async getUserMetadata(
-    userAddress: string,
-    contractAddress?: string,
-  ): Promise<Record<string, string[]>> {
-    const query = contractAddress
-      ? `SELECT metadata_key, metadata_value 
-         FROM logs 
-         WHERE address = $1 AND contract_address = $2 AND metadata_key IS NOT NULL`
-      : `SELECT metadata_key, metadata_value 
-         FROM logs 
-         WHERE address = $1 AND metadata_key IS NOT NULL`
-
-    const params = contractAddress
-      ? [userAddress, contractAddress]
-      : [userAddress]
-
-    const res = await this.#dbPool.query(query, params)
-
-    // Group values by metadata key
-    const result: Record<string, string[]> = {}
-    for (const row of res.rows) {
-      const key = row.metadata_key
-      const value = row.metadata_value
-
-      if (!result[key]) {
-        result[key] = []
-      }
-      result[key].push(value)
-    }
-
-    return result
   }
 
   /**
