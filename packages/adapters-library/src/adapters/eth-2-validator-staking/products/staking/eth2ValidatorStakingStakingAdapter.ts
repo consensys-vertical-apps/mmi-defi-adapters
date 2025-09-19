@@ -16,9 +16,9 @@ import {
   ProtocolAdapterParams,
   ProtocolDetails,
   ProtocolPosition,
+  TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
-  TokenType,
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
 
