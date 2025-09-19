@@ -208,7 +208,7 @@ describe('buildHistoricCache', () => {
       eventAbi:
         'event Transfer(address indexed from, address indexed to, uint256 value)',
       userAddressIndex: 1,
-      additionalMetadataMappedToTokenId: undefined,
+      additionalMetadataArguments: undefined,
       transformUserAddressType: undefined,
       targetBlockNumber: 1000,
       batchSize: 1,
