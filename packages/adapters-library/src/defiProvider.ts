@@ -652,7 +652,10 @@ export class DefiProvider {
     userPoolsByChain: Partial<
       Record<
         EvmChain,
-        { contractAddresses: string[]; tokenIds?: Record<string, string[]> }
+        {
+          contractAddresses: string[]
+          positionMetadataByContractAddress?: Record<string, string[]>
+        }
       >
     >,
     adapter: IProtocolAdapter,

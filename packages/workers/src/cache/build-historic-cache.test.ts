@@ -175,7 +175,7 @@ describe('buildHistoricCache', () => {
       {
         address: '0xuser2',
         contractAddress: '0xaddress2',
-        additionalMetadataArguments: undefined,
+        metadata: undefined,
       },
     ])
     expect(cacheClient.updateJobStatus).toHaveBeenCalledWith(

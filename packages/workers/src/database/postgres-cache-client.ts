@@ -222,13 +222,13 @@ class PostgresCacheClient implements CacheClient {
     }[],
     blockNumber?: number,
   ) {
-    const release = await this.#logsMutex.acquire()
-
     let insertedCount = 0
 
     if (logs.length === 0) {
       return insertedCount
     }
+
+    const release = await this.#logsMutex.acquire()
 
     await this.#bulkTransaction(async (client) => {
       const batchSize = 1000
