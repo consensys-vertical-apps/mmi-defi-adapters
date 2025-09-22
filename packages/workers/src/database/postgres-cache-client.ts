@@ -225,6 +225,11 @@ class PostgresCacheClient implements CacheClient {
     const release = await this.#logsMutex.acquire()
 
     let insertedCount = 0
+
+    if (logs.length === 0) {
+      return insertedCount
+    }
+
     await this.#bulkTransaction(async (client) => {
       const batchSize = 1000
       for (let i = 0; i < logs.length; i += batchSize) {
@@ -258,10 +263,6 @@ class PostgresCacheClient implements CacheClient {
               metadataValue: null,
             })
           }
-        }
-
-        if (logEntries.length === 0) {
-          continue
         }
 
         // Generate SQL values and parameters for all log entries
