@@ -1,3 +1,4 @@
+import { type AdditionalMetadataConfig } from '@metamask-institutional/defi-adapters'
 import {
   type JsonRpcProvider,
   type TransactionReceipt,
@@ -7,6 +8,7 @@ import {
 import type { Logger } from 'pino'
 import { extractErrorMessage } from '../utils/extractErrorMessage.js'
 import { withTimeout } from '../utils/with-timeout.js'
+import type { UserIndex } from './build-latest-cache.js'
 import { createWatchKey } from './create-watch-key.js'
 import { parseUserEventLog } from './parse-user-event-log.js'
 
@@ -18,15 +20,15 @@ export async function processBlock({
 }: {
   provider: JsonRpcProvider
   blockNumber: number
-  userIndexMap: Map<
-    string,
-    {
-      userAddressIndex: number
-      eventAbi: string | null
-    }
-  >
+  userIndexMap: UserIndex
   logger: Logger
-}): Promise<{ address: string; contractAddress: string }[]> {
+}): Promise<
+  {
+    address: string
+    contractAddress: string
+    metadata?: Record<string, string>
+  }[]
+> {
   const receipts: TransactionReceipt[] = await withTimeout(
     provider.send('eth_getBlockReceipts', [
       `0x${ethers.toBeHex(blockNumber).slice(2).replace(/^0+/, '')}`, // some chains need to remove leading zeros like ftm
@@ -38,13 +40,14 @@ export async function processBlock({
 
 export function processReceipts(
   receipts: TransactionReceipt[],
-  userIndexMap: Map<
-    string,
-    { userAddressIndex: number; eventAbi: string | null }
-  >,
+  userIndexMap: UserIndex,
   logger: Logger,
 ) {
-  const logs: { address: string; contractAddress: string }[] = []
+  const logs: {
+    address: string
+    contractAddress: string
+    metadata?: Record<string, string>
+  }[] = []
 
   for (const receipt of receipts?.flat() || []) {
     for (const log of receipt.logs || []) {
@@ -63,15 +66,27 @@ export function processReceipts(
         continue
       }
 
-      const { userAddressIndex, eventAbi } = userIndexEntry
+      const {
+        userAddressIndex,
+        eventAbi,
+        additionalMetadataArguments,
+        transformUserAddressType,
+      } = userIndexEntry
 
       try {
-        const userAddress = parseUserEventLog(log, eventAbi, userAddressIndex)
+        const result = parseUserEventLog(
+          log,
+          eventAbi,
+          userAddressIndex,
+          additionalMetadataArguments,
+          transformUserAddressType,
+        )
 
-        if (userAddress) {
+        if (result) {
           logs.push({
-            address: userAddress,
+            address: result.userAddress,
             contractAddress,
+            metadata: result.metadata,
           })
         }
       } catch (error) {

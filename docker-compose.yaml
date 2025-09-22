@@ -47,6 +47,7 @@ services:
       postgres:
         condition: service_healthy
 
+  # Optional: To run just database service (run manually docker-compose up postgres)
   postgres:
     image: postgres:17
     ports:
@@ -63,6 +64,26 @@ services:
       timeout: 5s
       retries: 5
     restart: unless-stopped
+
+  # Optional: Reset database service (run manually when needed docker-compose --profile reset run reset-db)
+  reset-db:
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    command: >
+      sh -c "
+        psql -h postgres -U postgres -c 'DROP DATABASE IF EXISTS \"defi-adapters\";' &&
+        psql -h postgres -U postgres -c 'CREATE DATABASE \"defi-adapters\";' &&
+        echo 'Database reset complete!'
+      "
+    depends_on:
+      - postgres
+    profiles:
+      - reset
 
 volumes:
   postgres_data:

@@ -1,4 +1,4 @@
-export { buildPostgresPoolFilter } from './database/postgres-db-pool-filter.js'
+export { buildPostgresDefiPositionsDetectionQuery } from './database/postgres-db-pool-filter.js'
 export { createDbPool } from './database/postgres-utils.js'
 
 export { buildTokenEventMappings } from './update-new-jobs.js'

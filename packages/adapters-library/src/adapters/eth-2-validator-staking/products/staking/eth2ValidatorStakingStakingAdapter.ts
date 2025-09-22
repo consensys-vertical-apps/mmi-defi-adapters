@@ -24,15 +24,8 @@ import { Protocol } from '../../../protocols'
 
 /**
  * ETH2 Validator Staking Adapter
- * Queries Alchemy beacon node API for validator information
+ * Queries beacon node API for validator information
  */
-type AdditionalMetadata = {
-  validatorIndex?: string
-  validatorPubkey?: string
-  status?: string
-  effectiveBalance?: string
-  slashed?: boolean
-}
 
 // Alchemy Beacon Node API types
 interface ValidatorData {
@@ -69,7 +62,16 @@ export class Eth2ValidatorStakingStakingAdapter implements IProtocolAdapter {
 
   adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
-    userEvent: false,
+    userEvent: {
+      eventAbi:
+        'event DepositEvent(bytes pubkey, bytes withdrawal_credentials, bytes amount, bytes signature, bytes index)',
+      userAddressArgument: 'withdrawal_credentials',
+      transformUserAddressType: 'eth2-withdrawal-credentials',
+      additionalMetadataArguments: {
+        argumentName: 'pubkey',
+        transformMetadataType: undefined,
+      },
+    },
   }
 
   private provider: CustomJsonRpcProvider
@@ -109,11 +111,10 @@ export class Eth2ValidatorStakingStakingAdapter implements IProtocolAdapter {
   }
 
   @CacheToDb
-  async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
+  async getProtocolTokens(): Promise<ProtocolToken[]> {
     const underlyingToken = await this.helpers.getTokenMetadata(
       '0x0000000000000000000000000000000000000000',
     ) // ETH
-
     return [
       {
         address: getAddress('0x00000000219ab540356cBB839Cbe05303d7705Fa'),
@@ -170,17 +171,13 @@ export class Eth2ValidatorStakingStakingAdapter implements IProtocolAdapter {
   }
 
   async getPositions({
-    tokenIds: validatorPubkeys,
+    tokenIds: userPubkeys, // bit of a hack to use tokenIds as userPubkeys
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    if (!validatorPubkeys || validatorPubkeys.length === 0) {
+    if (!userPubkeys || !userPubkeys.length) {
       return []
     }
 
-    // For ETH2 staking, we'll query the specific validator pubkey
-    // In a real implementation, you might want to query by withdrawal credentials
-    // or other methods to find validators associated with a user address
-
-    const validatorData = await this.fetchValidatorData(validatorPubkeys)
+    const validatorData = await this.fetchValidatorData(userPubkeys)
 
     if (!validatorData) {
       return []

@@ -22,7 +22,12 @@ export function buildServices() {
 
   const dbService = new PostgresService(buildDbPools())
   const defiProvider = new DefiProvider({
-    poolFilter: dbService.getAddressChainPools.bind(dbService),
+    getDefiPositionsDetection: async (
+      userAddress: string,
+      chainId: EvmChain,
+    ) => {
+      return await dbService.getDefiPositionsDetection(userAddress, chainId)
+    },
   })
 
   return {

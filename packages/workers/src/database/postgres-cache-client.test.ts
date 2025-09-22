@@ -213,7 +213,7 @@ describe('PostgresCacheClient', () => {
       vi.mocked(mockClient.query).mockImplementation(async (query, params) => {
         if (typeof query === 'string' && query.startsWith('INSERT')) {
           // Batch size is 1000, params are (address, contractAddress)
-          const rowCount = (params as string[]).length / 2
+          const rowCount = (params as string[]).length / 4
           return { rowCount } as QueryResult
         }
         return {} as QueryResult
@@ -230,7 +230,7 @@ describe('PostgresCacheClient', () => {
         )
       expect(firstInsert).toBeDefined()
       if (firstInsert) {
-        expect(firstInsert[1]).toHaveLength(2000)
+        expect(firstInsert[1]).toHaveLength(4000)
       }
     })
 
