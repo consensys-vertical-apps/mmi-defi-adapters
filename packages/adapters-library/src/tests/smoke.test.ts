@@ -12,7 +12,6 @@ describe('detect errors', () => {
         _userAddress: string,
         chainId: EvmChain,
       ) => {
-        // I got this users pools by calling https://defiadapters.api.cx.metamask.io/user-pools/0x6372baD16935878713e5e1DD92EC3f7A3C48107E
         const userPools = {
           '1': [
             '0x06C055753e37356b463813a288B2b0931B024dD4',
