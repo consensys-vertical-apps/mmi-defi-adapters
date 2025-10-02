@@ -106,6 +106,7 @@ export class DefiProvider {
       solanaProvider: this.chainProvider.solanaProvider,
       supportedProtocols,
       metadataProviders: this.metadataProviders,
+      config: this.config,
     })
   }
 

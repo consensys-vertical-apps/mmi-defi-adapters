@@ -230,82 +230,90 @@ class PostgresCacheClient implements CacheClient {
 
     const release = await this.#logsMutex.acquire()
 
-    await this.#bulkTransaction(async (client) => {
-      const batchSize = 1000
-      for (let i = 0; i < logs.length; i += batchSize) {
-        const batch = logs.slice(i, i + batchSize)
+    try {
+      await this.#bulkTransaction(async (client) => {
+        const batchSize = 1000
+        for (let i = 0; i < logs.length; i += batchSize) {
+          const batch = logs.slice(i, i + batchSize)
 
-        // Process each log to extract all metadata entries
-        const logEntries: Array<{
-          address: string
-          contractAddress: string
-          metadataKey: string | null
-          metadataValue: string | null
-        }> = []
+          // Process each log to extract all metadata entries
+          const logEntries: Array<{
+            address: string
+            contractAddress: string
+            metadataKey: string | null
+            metadataValue: string | null
+          }> = []
 
-        for (const { address, contractAddress, metadata } of batch) {
-          if (metadata && Object.keys(metadata).length > 0) {
-            // Create an entry for each metadata key-value pair
-            for (const [key, value] of Object.entries(metadata)) {
+          for (const { address, contractAddress, metadata } of batch) {
+            if (metadata && Object.keys(metadata).length > 0) {
+              // Create an entry for each metadata key-value pair
+              for (const [key, value] of Object.entries(metadata)) {
+                logEntries.push({
+                  address,
+                  contractAddress,
+                  metadataKey: key,
+                  metadataValue: value,
+                })
+              }
+            } else {
+              // Create a single entry with null metadata for logs without metadata
               logEntries.push({
                 address,
                 contractAddress,
-                metadataKey: key,
-                metadataValue: value,
+                metadataKey: null,
+                metadataValue: null,
               })
             }
-          } else {
-            // Create a single entry with null metadata for logs without metadata
-            logEntries.push({
+          }
+
+          // Generate SQL values and parameters for all log entries
+          const values = logEntries
+            .map(
+              (_, idx) =>
+                `($${idx * 4 + 1}, $${idx * 4 + 2}, $${idx * 4 + 3}, $${idx * 4 + 4})`,
+            )
+            .join(',')
+          const params = logEntries.flatMap(
+            ({ address, contractAddress, metadataKey, metadataValue }) => [
               address,
               contractAddress,
-              metadataKey: null,
-              metadataValue: null,
-            })
-          }
+              metadataKey,
+              metadataValue,
+            ],
+          )
+
+          const result = await client.query(
+            `INSERT INTO logs (address, contract_address, metadata_key, metadata_value)
+             VALUES ${values}
+             ON CONFLICT (address, contract_address, metadata_key, metadata_value) DO NOTHING`,
+            params,
+          )
+
+          insertedCount += result.rowCount ?? 0
+
+          this.#logger.debug(
+            {
+              logs: logs.length,
+              logEntries: logEntries.length,
+              blockNumber,
+            },
+            'Inserted logs',
+          )
         }
 
-        // Generate SQL values and parameters for all log entries
-        const values = logEntries
-          .map(
-            (_, idx) =>
-              `($${idx * 4 + 1}, $${idx * 4 + 2}, $${idx * 4 + 3}, $${idx * 4 + 4})`,
-          )
-          .join(',')
-        const params = logEntries.flatMap(
-          ({ address, contractAddress, metadataKey, metadataValue }) => [
-            address,
-            contractAddress,
-            metadataKey,
-            metadataValue,
-          ],
-        )
-
-        const result = await client.query(
-          `INSERT INTO logs (address, contract_address, metadata_key, metadata_value)
-           VALUES ${values}
-           ON CONFLICT (address, contract_address, metadata_key, metadata_value) DO NOTHING`,
-          params,
-        )
-
-        insertedCount += result.rowCount ?? 0
-
-        this.#logger.debug(
-          {
-            logs: logs.length,
-            logEntries: logEntries.length,
-            blockNumber,
-          },
-          'Inserted logs',
-        )
-      }
-
-      if (blockNumber) {
-        await this.updateLatestBlockProcessed(blockNumber)
-      }
-    })
-
-    release()
+        if (blockNumber) {
+          await this.updateLatestBlockProcessed(blockNumber)
+        }
+      })
+    } catch (error) {
+      this.#logger.error(
+        { error: error instanceof Error ? error.message : String(error) },
+        'Error inserting logs',
+      )
+      throw error
+    } finally {
+      release()
+    }
 
     return insertedCount
   }

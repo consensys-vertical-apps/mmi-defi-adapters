@@ -8,7 +8,7 @@ import type { Erc20Metadata } from './erc20Metadata'
 
 export type AdditionalMetadataConfig = {
   argumentName: string
-  transformMetadataType?: string
+  transformMetadataType: undefined // currently only support no transformation
 }
 
 export const TokenType = {

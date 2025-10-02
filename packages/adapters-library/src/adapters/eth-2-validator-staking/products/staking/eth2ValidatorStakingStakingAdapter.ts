@@ -50,16 +50,11 @@ interface ValidatorResponse {
   data: ValidatorData[]
 }
 
-// Alchemy API configuration
-const BEACON_NODE_API_KEY = 'e47c37f60c640ea5e3cd515b5140eafac797e036'
-const BEACON_BASE_URL = 'https://bold-green-shard.quiknode.pro'
-
 export class Eth2ValidatorStakingStakingAdapter implements IProtocolAdapter {
   productId = 'staking'
   protocolId: Protocol
   chainId: Chain
   helpers: Helpers
-
   adapterSettings: AdapterSettings = {
     includeInUnwrap: true,
     userEvent: {
@@ -140,7 +135,7 @@ export class Eth2ValidatorStakingStakingAdapter implements IProtocolAdapter {
     pubkey: string[],
   ): Promise<ValidatorData[] | null> {
     try {
-      const baseUrl = `${BEACON_BASE_URL}/${BEACON_NODE_API_KEY}/eth/v1/beacon/states/head/validators`
+      const baseUrl = `${this.helpers.config.beaconBaseUrl}/${this.helpers.config.beaconNodeApiKey}/eth/v1/beacon/states/head/validators`
 
       const url = new URL(baseUrl)
       url.searchParams.set('id', pubkey.join(','))

@@ -263,15 +263,6 @@ jobs:
       - name: Generate coverage report
         run: npm run test:cov:merge
 
-      - name: Setup Node.js v20 for SonarCloud
-        # SonarCloud's JavaScript/TypeScript analysis requires Node.js v20+ because it uses
-        # the toReversed() method which was introduced in Node.js v20. The SonarCloud Docker
-        # container runs with Node.js v18.20.1 by default, causing the analysis to fail.
-        # By setting up Node.js v20 here, SonarCloud will use the compatible version.
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
       - name: Run sonarcloud-scan
         uses: sonarsource/sonarcloud-github-action@v2.1.1
         env:

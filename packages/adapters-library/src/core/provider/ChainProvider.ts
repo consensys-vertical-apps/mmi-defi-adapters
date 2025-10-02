@@ -49,16 +49,6 @@ export class ChainProvider {
       (providers, chainId) => {
         const chainName = ChainName[chainId]
 
-        // TODO: Uncomment this when feature fully tested and stable I saw errors when running some CLI commands
-        // TODO: Add a new config parameter to enable this feature and test with CLI commands
-        // Handy if we want to limit the worker to a specific chain
-        // if (
-        //   process.env.LOCAL_ENABLE_THIS_CHAIN_ONLY &&
-        //   !process.env.LOCAL_ENABLE_THIS_CHAIN_ONLY.includes(chainName)
-        // ) {
-        //   return providers
-        // }
-
         const providerUrl = config.provider[chainName]
         if (!providerUrl) {
           return providers

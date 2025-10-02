@@ -20,6 +20,7 @@ import {
   UnwrapExchangeRate,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
+import { IConfig } from '../config'
 
 const REAL_ESTATE_TOKEN_METADATA = {
   address: getAddress('0x6b8734ad31D42F5c05A86594314837C416ADA984'),
@@ -44,6 +45,7 @@ export class Helpers {
     public readonly provider: CustomJsonRpcProvider,
     public readonly chainId: EvmChain,
     public readonly metadataProvider: IMetadataProvider,
+    public readonly config: IConfig,
   ) {}
 
   getProtocolTokenByAddress<

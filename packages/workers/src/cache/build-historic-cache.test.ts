@@ -170,7 +170,7 @@ describe('buildHistoricCache', () => {
       {
         address: '0xuser1',
         contractAddress: '0xaddress1',
-        additionalMetadataArguments: undefined,
+        metadata: undefined,
       },
       {
         address: '0xuser2',
