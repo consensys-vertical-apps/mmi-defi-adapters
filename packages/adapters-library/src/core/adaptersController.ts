@@ -10,6 +10,7 @@ import {
   EvmChainAdapters,
   SolanaChainAdapters,
 } from '../adapters/supportedProtocols'
+import { IConfig } from '../config'
 import { Helpers, SolanaHelpers } from '../core/helpers'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import {
@@ -23,7 +24,6 @@ import { Chain, EvmChain } from './constants/chains'
 import { AdapterMissingError, NotImplementedError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 import { logger } from './utils/logger'
-import { IConfig } from '../config'
 
 type ISupportedProtocols = Partial<
   Record<Protocol, EvmChainAdapters | SolanaChainAdapters>

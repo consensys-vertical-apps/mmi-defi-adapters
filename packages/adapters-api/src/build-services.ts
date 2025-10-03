@@ -22,7 +22,8 @@ export function buildServices() {
 
   const dbService = new PostgresService(buildDbPools())
   const defiProvider = new DefiProvider({
-    getDefiPositionsDetection: dbService.getDefiPositionsDetection.bind(dbService),
+    getDefiPositionsDetection:
+      dbService.getDefiPositionsDetection.bind(dbService),
   })
 
   return {

@@ -1,6 +1,7 @@
 import { Connection } from '@solana/web3.js'
 import { getAddress } from 'ethers'
 import { IMetadataProvider } from '../SQLiteMetadataProvider'
+import { IConfig } from '../config'
 import { Erc20__factory } from '../contracts'
 import { Chain, EvmChain } from '../core/constants/chains'
 import { ProtocolTokenFilterRequiredError } from '../core/errors/errors'
@@ -20,7 +21,6 @@ import {
   UnwrapExchangeRate,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
-import { IConfig } from '../config'
 
 const REAL_ESTATE_TOKEN_METADATA = {
   address: getAddress('0x6b8734ad31D42F5c05A86594314837C416ADA984'),
