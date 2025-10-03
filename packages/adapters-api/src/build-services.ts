@@ -22,12 +22,7 @@ export function buildServices() {
 
   const dbService = new PostgresService(buildDbPools())
   const defiProvider = new DefiProvider({
-    getDefiPositionsDetection: async (
-      userAddress: string,
-      chainId: EvmChain,
-    ) => {
-      return await dbService.getDefiPositionsDetection(userAddress, chainId)
-    },
+    getDefiPositionsDetection: dbService.getDefiPositionsDetection.bind(dbService),
   })
 
   return {
