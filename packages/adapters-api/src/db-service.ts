@@ -50,7 +50,15 @@ export type DeFiPositionsDetected = {
 export interface DbService {
   getDefiPositionsDetectionPerChain: (
     userAddress: string,
-  ) => Promise<Partial<Record<EvmChain, string[]>>>
+  ) => Promise<
+    Partial<
+      Record<
+        EvmChain,
+        | string[]
+        | { contractAddresses: string[]; metadata: Record<string, string[]> }
+      >
+    >
+  >
   getDefiPositionsDetection: (
     userAddress: string,
     chainId: EvmChain,
@@ -73,15 +81,43 @@ export class PostgresService implements DbService {
 
   async getDefiPositionsDetectionPerChain(
     userAddress: string,
-  ): Promise<Partial<Record<EvmChain, string[]>>> {
-    return Object.values(EvmChain).reduce(
-      async (acc, chainId) => {
-        const pools = await this.getDefiPositionsDetection(userAddress, chainId)
-        ;(await acc)[chainId] = pools.contractAddresses
-        return acc
-      },
-      {} as Promise<Partial<Record<EvmChain, string[]>>>,
-    )
+  ): Promise<
+    Partial<
+      Record<
+        EvmChain,
+        | string[]
+        | { contractAddresses: string[]; metadata: Record<string, string[]> }
+      >
+    >
+  > {
+    const result: Partial<
+      Record<
+        EvmChain,
+        | string[]
+        | { contractAddresses: string[]; metadata: Record<string, string[]> }
+      >
+    > = {}
+    for (const chainId of Object.values(EvmChain)) {
+      const positions = await this.getDefiPositionsDetection(
+        userAddress,
+        chainId,
+      )
+      if (positions && positions.contractAddresses.length > 0) {
+        // Check if there's any metadata for any contract
+        const hasMetadata =
+          Object.keys(positions.positionMetadataByContractAddress).length > 0
+
+        if (hasMetadata) {
+          result[chainId] = {
+            contractAddresses: positions.contractAddresses,
+            metadata: positions.positionMetadataByContractAddress,
+          }
+        } else {
+          result[chainId] = positions.contractAddresses
+        }
+      }
+    }
+    return result
   }
 
   /**
@@ -268,7 +304,13 @@ export class PostgresService implements DbService {
 
 export class NoDbService implements DbService {
   getDefiPositionsDetectionPerChain(): Promise<
-    Partial<Record<EvmChain, string[]>>
+    Partial<
+      Record<
+        EvmChain,
+        | string[]
+        | { contractAddresses: string[]; metadata: Record<string, string[]> }
+      >
+    >
   > {
     throw new Error('Not Implemented')
   }
