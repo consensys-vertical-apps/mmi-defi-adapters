@@ -187,6 +187,7 @@ export class PostgresService implements DbService {
       return {
         latestBlockProcessed,
         latestBlockNumber,
+        chainName: ChainName[chainId],
         laggingBlocks:
           latestBlockNumber && latestBlockProcessed
             ? latestBlockNumber - latestBlockProcessed
