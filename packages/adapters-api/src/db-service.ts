@@ -136,7 +136,7 @@ export class PostgresService implements DbService {
   ): Promise<DeFiPositionsDetected> {
     // Query the logs table for all positions and metadata for this user
     const res = await this.#dbPools[chainId].query(
-      `SELECT DISTINCT contract_address as "contractAddress", metadata_key, metadata_value
+      `SELECT contract_address as "contractAddress", metadata_key, metadata_value
          FROM logs
          WHERE address = $1`,
       [userAddress],
