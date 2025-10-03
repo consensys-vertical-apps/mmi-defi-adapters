@@ -33,14 +33,36 @@ export type TableSizesStats = {
   indexSize: string
 }[]
 
+/**
+ * Represents DeFi positions detected for a user on a specific chain
+ *
+ * @property contractAddresses - Array of contract addresses where user has positions
+ * @property positionMetadataByContractAddress - Maps contract address to array of metadata values
+ *   - For ETH2 staking: maps to validator pubkeys
+ *   - For Uniswap V4: maps to token IDs
+ *   - For other protocols: maps to whatever metadata was extracted from events
+ */
+export type DeFiPositionsDetected = {
+  contractAddresses: string[]
+  positionMetadataByContractAddress: Record<string, string[]>
+}
+
 export interface DbService {
-  getAddressPools: (
+  getDefiPositionsDetectionPerChain: (
     userAddress: string,
-  ) => Promise<Partial<Record<EvmChain, string[]>>>
-  getAddressChainPools: (
+  ) => Promise<
+    Partial<
+      Record<
+        EvmChain,
+        | string[]
+        | { contractAddresses: string[]; metadata: Record<string, string[]> }
+      >
+    >
+  >
+  getDefiPositionsDetection: (
     userAddress: string,
     chainId: EvmChain,
-  ) => Promise<string[]>
+  ) => Promise<DeFiPositionsDetected>
   getBlocksStats: (
     getLatestBlockNumber: (chainId: EvmChain) => Promise<number | undefined>,
   ) => Promise<Partial<Record<EvmChain, BlocksStats>>>
@@ -57,33 +79,92 @@ export class PostgresService implements DbService {
     this.#dbPools = dbPools
   }
 
-  async getAddressPools(
+  async getDefiPositionsDetectionPerChain(
     userAddress: string,
-  ): Promise<Partial<Record<EvmChain, string[]>>> {
-    return Object.values(EvmChain).reduce(
-      async (acc, chainId) => {
-        const pools = await this.getAddressChainPools(userAddress, chainId)
-        ;(await acc)[chainId] = pools
-        return acc
-      },
-      {} as Promise<Partial<Record<EvmChain, string[]>>>,
-    )
+  ): Promise<
+    Partial<
+      Record<
+        EvmChain,
+        | string[]
+        | { contractAddresses: string[]; metadata: Record<string, string[]> }
+      >
+    >
+  > {
+    const result: Partial<
+      Record<
+        EvmChain,
+        | string[]
+        | { contractAddresses: string[]; metadata: Record<string, string[]> }
+      >
+    > = {}
+    for (const chainId of Object.values(EvmChain)) {
+      const positions = await this.getDefiPositionsDetection(
+        userAddress,
+        chainId,
+      )
+      if (positions && positions.contractAddresses.length > 0) {
+        // Check if there's any metadata for any contract
+        const hasMetadata =
+          Object.keys(positions.positionMetadataByContractAddress).length > 0
+
+        if (hasMetadata) {
+          result[chainId] = {
+            contractAddresses: positions.contractAddresses,
+            metadata: positions.positionMetadataByContractAddress,
+          }
+        } else {
+          result[chainId] = positions.contractAddresses
+        }
+      }
+    }
+    return result
   }
 
-  async getAddressChainPools(
+  /**
+   * Detects DeFi positions for a user on a specific chain
+   *
+   * This queries the logs table to find:
+   * 1. All contract addresses where the user has positions
+   * 2. Associated metadata for each contract (e.g., token IDs, validator pubkeys)
+   *
+   * The metadata comes from event logs that were processed and stored with
+   * additional_metadata_arguments configuration in the adapter settings.
+   */
+  async getDefiPositionsDetection(
     userAddress: string,
     chainId: EvmChain,
-  ): Promise<string[]> {
+  ): Promise<DeFiPositionsDetected> {
+    // Query the logs table for all positions and metadata for this user
     const res = await this.#dbPools[chainId].query(
-      `SELECT contract_address as "contractAddress"
+      `SELECT contract_address as "contractAddress", metadata_key, metadata_value
          FROM logs
          WHERE address = $1`,
       [userAddress],
     )
 
-    return (res.rows as { contractAddress: string }[]).map(
-      ({ contractAddress }) => contractAddress,
-    )
+    const contractAddresses = new Set<string>()
+    const positionMetadataByContractAddress: Record<string, string[]> = {}
+
+    // Process each row to build the response
+    for (const row of res.rows) {
+      const { contractAddress, metadata_key, metadata_value } = row
+
+      // Add contract address to the set (automatically handles duplicates)
+      contractAddresses.add(contractAddress)
+
+      // If this row has metadata, add it to the contract's metadata array
+      if (metadata_key && metadata_value) {
+        if (!positionMetadataByContractAddress[contractAddress]) {
+          positionMetadataByContractAddress[contractAddress] = []
+        }
+        positionMetadataByContractAddress[contractAddress].push(metadata_value)
+      }
+    }
+
+    return {
+      contractAddresses: Array.from(contractAddresses),
+      positionMetadataByContractAddress,
+    }
   }
 
   async getBlocksStats(
@@ -223,10 +304,18 @@ export class PostgresService implements DbService {
 }
 
 export class NoDbService implements DbService {
-  getAddressPools(): Promise<Partial<Record<EvmChain, string[]>>> {
+  getDefiPositionsDetectionPerChain(): Promise<
+    Partial<
+      Record<
+        EvmChain,
+        | string[]
+        | { contractAddresses: string[]; metadata: Record<string, string[]> }
+      >
+    >
+  > {
     throw new Error('Not Implemented')
   }
-  getAddressChainPools(): Promise<string[]> {
+  getDefiPositionsDetection(): Promise<DeFiPositionsDetected> {
     throw new Error('Not Implemented')
   }
   getBlocksStats(): Promise<Partial<Record<EvmChain, BlocksStats>>> {

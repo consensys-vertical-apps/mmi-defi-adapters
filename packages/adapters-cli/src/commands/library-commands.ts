@@ -1,13 +1,19 @@
 import {
+  ChainName,
+  type DefiPositionDetection,
   DefiProvider,
-  type PoolFilter,
+  EvmChain,
   multiChainFilter,
   multiProductFilter,
   multiProtocolFilter,
   multiProtocolTokenAddressFilter,
 } from '@metamask-institutional/defi-adapters'
-import { buildPostgresPoolFilter } from '@metamask-institutional/workers'
+import {
+  buildPostgresDefiPositionsDetectionQuery,
+  createDbPool,
+} from '@metamask-institutional/workers'
 import type { Command } from 'commander'
+import pg from 'pg'
 import { startRpcSnapshot } from '../utils/rpc-interceptor.ts'
 import { extractRpcMetrics } from './build-scoreboard-command.ts'
 
@@ -53,17 +59,29 @@ export function libraryCommands(program: Command) {
         const filterProtocolTokens =
           multiProtocolTokenAddressFilter(protocolTokens)
 
-        const filterUsingLocalIndex = buildFilterUsingLocalIndex()
+        const filterUsingLocalIndex =
+          await buildDefiPositionsDetectionUsingLocalIndex()
 
         if (!filterUsingLocalIndex && !filterProtocolTokens) {
-          console.log(
-            `No DeFi positions cache detected max ${DEFAULT_MAX_POOLS_PER_ADAPTER_TO_CHECK} pools per adapter per chain only.`,
-          )
+          console.log(`No DeFi positions cache detected. Max ${DEFAULT_MAX_POOLS_PER_ADAPTER_TO_CHECK} pools per adapter per chain only.
+            
+To set up local cache:
+1. Run: docker-compose up --build
+2. Set environment variables in .env:
+   - DEFI_ADAPTERS_USE_POSITIONS_CACHE=true
+   - CACHE_DATABASE_URL=postgresql://postgres:postgres@0.0.0.0:5432/defi-adapters
+   - CACHE_DATABASE_DISABLE_SSL=true
+   - LOCAL_ENABLE_THIS_CHAIN_ONLY=ethereum (to limit scope to specific chains)
+   
+Warning: This will start indexing all DeFi positions for all chains unless scope is limited.`)
         }
 
-        const filter: PoolFilter = async (userAddress, chainId) => {
+        const getDefiPositionsDetection: DefiPositionDetection = async (
+          userAddress,
+          chainId,
+        ) => {
           if (filterUsingLocalIndex) {
-            return buildFilterUsingLocalIndex()!(userAddress, chainId)
+            return await filterUsingLocalIndex(userAddress, chainId)
           }
 
           if (filterProtocolTokens) {
@@ -90,11 +108,13 @@ export function libraryCommands(program: Command) {
             `Using ${protocolTokenAddresses.length} protocol token addresses as filter for chain ${chainId}`,
           )
 
-          return protocolTokenAddresses
+          return {
+            contractAddresses: protocolTokenAddresses,
+          }
         }
 
         const defiProvider = new DefiProvider({
-          poolFilter: filter,
+          getDefiPositionsDetection,
         })
 
         const msw = startRpcSnapshot(
@@ -170,7 +190,8 @@ export function libraryCommands(program: Command) {
         const filterProductIds = multiProductFilter(productIds)
 
         const defiProvider = new DefiProvider({
-          poolFilter: buildFilterUsingLocalIndex(),
+          getDefiPositionsDetection:
+            await buildDefiPositionsDetectionUsingLocalIndex(),
         })
 
         const data = await defiProvider.getSupport({
@@ -197,7 +218,7 @@ function printResponse(data: unknown) {
   )
 }
 
-function buildFilterUsingLocalIndex() {
+async function buildDefiPositionsDetectionUsingLocalIndex() {
   if (process.env.DEFI_ADAPTERS_USE_POSITIONS_CACHE !== 'true') {
     return undefined
   }
@@ -206,7 +227,51 @@ function buildFilterUsingLocalIndex() {
     throw new Error('CACHE_DATABASE_URL is not set')
   }
 
-  return buildPostgresPoolFilter({
+  // Test database connection for all chains before proceeding
+  const testConnections = async () => {
+    const dbPools = Object.values(EvmChain).reduce(
+      (acc, chainId) => {
+        const schema = ChainName[chainId]
+
+        acc[chainId] = createDbPool({
+          dbUrl: process.env.CACHE_DATABASE_URL!,
+          schema,
+        })
+
+        return acc
+      },
+      {} as Record<EvmChain, pg.Pool>,
+    )
+
+    const testPromises = Object.entries(dbPools).map(
+      async ([chainId, pool]) => {
+        const schema = ChainName[chainId as unknown as EvmChain]
+
+        try {
+          // Test the connection with a simple query
+          await pool.query('SELECT 1')
+          await pool.end()
+          return true
+        } catch (error) {
+          await pool.end()
+          console.log(
+            `Failed to connect to database schema '${schema}'. Error: ${error instanceof Error ? error.message : String(error)}`,
+          )
+          return undefined
+        }
+      },
+    )
+
+    const connectionTestResults = await Promise.all(testPromises)
+    return connectionTestResults.every((result) => result !== undefined)
+  }
+
+  const connectionTestResult = await testConnections()
+  if (connectionTestResult === false) {
+    return undefined
+  }
+
+  return buildPostgresDefiPositionsDetectionQuery({
     dbUrl: process.env.CACHE_DATABASE_URL,
   })
 }

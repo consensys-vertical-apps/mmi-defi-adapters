@@ -10,6 +10,7 @@ import {
   EvmChainAdapters,
   SolanaChainAdapters,
 } from '../adapters/supportedProtocols'
+import { IConfig } from '../config'
 import { Helpers, SolanaHelpers } from '../core/helpers'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import {
@@ -43,11 +44,13 @@ export class AdaptersController {
     solanaProvider,
     supportedProtocols,
     metadataProviders,
+    config,
   }: {
     evmProviders: Partial<Record<EvmChain, CustomJsonRpcProvider>>
     solanaProvider?: Connection
     supportedProtocols: ISupportedProtocols
     metadataProviders: Record<Chain, IMetadataProvider>
+    config: IConfig
   }) {
     Object.entries(supportedProtocols).forEach(
       ([protocolIdKey, supportedChains]) => {
@@ -103,6 +106,7 @@ export class AdaptersController {
                       provider,
                       chainId,
                       metadataProviders[chainId],
+                      config,
                     ),
                   })
 
@@ -128,7 +132,7 @@ export class AdaptersController {
         provider,
         chainId: chain,
         adaptersController: this,
-        helpers: new Helpers(provider, chain, metadataProviders[chain]),
+        helpers: new Helpers(provider, chain, metadataProviders[chain], config),
       })
 
       this.priceAdapters.set(chain, priceAdapter)

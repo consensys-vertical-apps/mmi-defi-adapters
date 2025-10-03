@@ -185,7 +185,7 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
   app.get('/user-pools/:userAddress', async (context) => {
     const userAddress = IsEthAddress.parse(context.req.param('userAddress'))
     return context.json({
-      data: await dbService.getAddressPools(userAddress),
+      data: await dbService.getDefiPositionsDetectionPerChain(userAddress),
     })
   })
 

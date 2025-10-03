@@ -49,6 +49,10 @@ const providers: Record<ChainName, string> = {
   ),
 }
 
+// Beacon node configuration
+const BEACON_NODE_API_KEY = parseStringEnv(process.env.BEACON_NODE_API_KEY, '')
+const BEACON_BASE_URL = parseStringEnv(process.env.BEACON_BASE_URL, '')
+
 const maxBatchSize: Record<ChainName, number> = {
   ethereum: parseNumberEnv(
     process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_ETHEREUM,
@@ -135,6 +139,8 @@ const ConfigSchema = z
     enableRpcCache: z
       .boolean()
       .default(process.env.ENABLE_RPC_CACHE === 'true'),
+    beaconNodeApiKey: z.string().default(BEACON_NODE_API_KEY),
+    beaconBaseUrl: z.string().default(BEACON_BASE_URL),
   })
   .strict()
   .default({})

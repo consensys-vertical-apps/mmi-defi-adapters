@@ -6,6 +6,11 @@ import { Helpers, SolanaHelpers } from '../core/helpers'
 import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import type { Erc20Metadata } from './erc20Metadata'
 
+export type AdditionalMetadataConfig = {
+  argumentName: string
+  transformMetadataType: undefined // currently only support no transformation
+}
+
 export const TokenType = {
   Protocol: 'protocol',
   Underlying: 'underlying',
@@ -104,6 +109,20 @@ export type AdapterSettings = {
          * e.g. "borrower" in the example above
          */
         userAddressArgument: string
+        /**
+         * Optional transformation type to convert the raw user address value before using it
+         * Useful for cases where the event argument is not directly an address (e.g., bytes that contain an address)
+         * Available types: 'eth2-withdrawal-credentials'
+         */
+        transformUserAddressType?: string
+        /**
+         * Optional additional metadata configuration that gets mapped to tokenId
+         * Specifies the event argument name and transformation type for additional metadata
+         * For example: { argumentName: "pubkey", transformMetadataType: "hex-to-base64" }
+         * Note: The underlying implementation supports multiple metadata for future expansion
+         * Note: The transformMetadataType value is stored in the database for future transformation support
+         */
+        additionalMetadataArguments?: AdditionalMetadataConfig
       }
     | 'Transfer'
     | false

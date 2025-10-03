@@ -1,4 +1,5 @@
 import { ChainName, type EvmChain } from '@metamask-institutional/defi-adapters'
+import { type AdditionalMetadataConfig } from '@metamask-institutional/defi-adapters'
 import { Mutex } from 'async-mutex'
 import type { Pool, PoolClient, PoolConfig } from 'pg'
 import type { Logger } from 'pino'
@@ -12,6 +13,8 @@ export type JobDbEntry = {
   userAddressIndex: number
   blockNumber: number
   status: 'pending' | 'failed' | 'completed'
+  additionalMetadataArguments?: AdditionalMetadataConfig
+  transformUserAddressType?: string
 }
 
 export interface CacheClient {
@@ -28,6 +31,7 @@ export interface CacheClient {
       topic0: `0x${string}`
       eventAbi?: string
       userAddressIndex: number
+      additionalMetadataArguments?: AdditionalMetadataConfig
     }[],
     blockNumber: number,
   ) => Promise<number>
@@ -42,6 +46,7 @@ export interface CacheClient {
     logs: {
       address: string
       contractAddress: string
+      metadata?: Record<string, string>
     }[],
     blockNumber?: number,
   ) => Promise<number>
@@ -114,7 +119,9 @@ class PostgresCacheClient implements CacheClient {
               event_abi as "eventAbi",
               user_address_index as "userAddressIndex",
               block_number as "blockNumber",
-              status
+              status,
+              additional_metadata_arguments as "additionalMetadataArguments",
+              transform_user_address_type as "transformUserAddressType"
        FROM jobs`,
     )
 
@@ -132,7 +139,9 @@ class PostgresCacheClient implements CacheClient {
               event_abi as "eventAbi",
               user_address_index as "userAddressIndex",
               block_number as "blockNumber",
-              status
+              status,
+              additional_metadata_arguments as "additionalMetadataArguments",
+              transform_user_address_type as "transformUserAddressType"
        FROM jobs
        WHERE status <> $1`,
       ['completed'],
@@ -147,6 +156,8 @@ class PostgresCacheClient implements CacheClient {
       topic0: `0x${string}`
       eventAbi?: string
       userAddressIndex: number
+      additionalMetadataArguments?: AdditionalMetadataConfig
+      transformUserAddressType?: string
     }[],
     blockNumber: number,
   ) {
@@ -156,8 +167,8 @@ class PostgresCacheClient implements CacheClient {
     await this.#bulkTransaction(async (client) => {
       for (const entry of protocolTokenEntries) {
         const result = await client.query(
-          `INSERT INTO jobs (contract_address, topic_0, event_abi, user_address_index, block_number)
-           VALUES ($1, $2, $3, $4, $5)
+          `INSERT INTO jobs (contract_address, topic_0, event_abi, user_address_index, block_number, additional_metadata_arguments, transform_user_address_type)
+           VALUES ($1, $2, $3, $4, $5, $6, $7)
            ON CONFLICT DO NOTHING`,
           [
             entry.contractAddress,
@@ -165,6 +176,10 @@ class PostgresCacheClient implements CacheClient {
             entry.eventAbi,
             entry.userAddressIndex,
             blockNumber,
+            entry.additionalMetadataArguments
+              ? JSON.stringify(entry.additionalMetadataArguments)
+              : null,
+            entry.transformUserAddressType || null,
           ],
         )
 
@@ -203,48 +218,102 @@ class PostgresCacheClient implements CacheClient {
     logs: {
       address: string
       contractAddress: string
+      metadata?: Record<string, string>
     }[],
     blockNumber?: number,
   ) {
+    let insertedCount = 0
+
+    if (logs.length === 0) {
+      return insertedCount
+    }
+
     const release = await this.#logsMutex.acquire()
 
-    let insertedCount = 0
-    await this.#bulkTransaction(async (client) => {
-      const batchSize = 1000
-      for (let i = 0; i < logs.length; i += batchSize) {
-        const batch = logs.slice(i, i + batchSize)
-        const values = batch
-          .map((_log, idx) => `($${idx * 2 + 1}, $${idx * 2 + 2})`)
-          .join(',')
-        const params = batch.flatMap(({ address, contractAddress }) => [
-          address,
-          contractAddress,
-        ])
+    try {
+      await this.#bulkTransaction(async (client) => {
+        const batchSize = 1000
+        for (let i = 0; i < logs.length; i += batchSize) {
+          const batch = logs.slice(i, i + batchSize)
 
-        const result = await client.query(
-          `INSERT INTO logs (address, contract_address)
-           VALUES ${values}
-           ON CONFLICT DO NOTHING`,
-          params,
-        )
+          // Process each log to extract all metadata entries
+          const logEntries: Array<{
+            address: string
+            contractAddress: string
+            metadataKey: string | null
+            metadataValue: string | null
+          }> = []
 
-        insertedCount += result.rowCount ?? 0
+          for (const { address, contractAddress, metadata } of batch) {
+            if (metadata && Object.keys(metadata).length > 0) {
+              // Create an entry for each metadata key-value pair
+              for (const [key, value] of Object.entries(metadata)) {
+                logEntries.push({
+                  address,
+                  contractAddress,
+                  metadataKey: key,
+                  metadataValue: value,
+                })
+              }
+            } else {
+              // Create a single entry with null metadata for logs without metadata
+              logEntries.push({
+                address,
+                contractAddress,
+                metadataKey: null,
+                metadataValue: null,
+              })
+            }
+          }
 
-        this.#logger.debug(
-          {
-            logs: logs.length,
-            blockNumber,
-          },
-          'Inserted logs',
-        )
-      }
+          // Generate SQL values and parameters for all log entries
+          const values = logEntries
+            .map(
+              (_, idx) =>
+                `($${idx * 4 + 1}, $${idx * 4 + 2}, $${idx * 4 + 3}, $${idx * 4 + 4})`,
+            )
+            .join(',')
+          const params = logEntries.flatMap(
+            ({ address, contractAddress, metadataKey, metadataValue }) => [
+              address,
+              contractAddress,
+              metadataKey,
+              metadataValue,
+            ],
+          )
 
-      if (blockNumber) {
-        await this.updateLatestBlockProcessed(blockNumber)
-      }
-    })
+          const result = await client.query(
+            `INSERT INTO logs (address, contract_address, metadata_key, metadata_value)
+             VALUES ${values}
+             ON CONFLICT (address, contract_address, metadata_key, metadata_value) DO NOTHING`,
+            params,
+          )
 
-    release()
+          insertedCount += result.rowCount ?? 0
+
+          this.#logger.debug(
+            {
+              logs: logs.length,
+              logEntries: logEntries.length,
+              blockNumber,
+            },
+            'Inserted logs',
+          )
+        }
+
+        if (blockNumber) {
+          await this.updateLatestBlockProcessed(blockNumber)
+        }
+      })
+    } catch (error) {
+      this.#logger.error(
+        { error: error instanceof Error ? error.message : String(error) },
+        'Error inserting logs',
+      )
+      throw error
+    } finally {
+      release()
+    }
 
     return insertedCount
   }

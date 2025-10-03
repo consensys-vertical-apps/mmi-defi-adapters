@@ -1,3 +1,4 @@
+import type { AdditionalMetadataConfig } from '@metamask-institutional/defi-adapters'
 import { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
 import type { CacheClient } from '../database/postgres-cache-client.js'
@@ -7,6 +8,24 @@ import { waitForBlock } from './wait-for-block.js'
 
 const ONE_SECOND = 1_000
 const BATCH_SIZE = Number(process.env.BLOCK_RUNNER_BATCH_SIZE) || 10
+
+export type UserIndex = Map<
+  string,
+  {
+    userAddressIndex: number
+    eventAbi: string | null
+    additionalMetadataArguments?: AdditionalMetadataConfig
+    transformUserAddressType?: string
+  }
+>
+
+export type MetadataResult = Record<string, string>
+
+export type LogResult = {
+  address: string
+  contractAddress: string
+  metadata?: MetadataResult
+}[]
 
 /**
  * This function represents a single iteration that processes a block (or batch of blocks) to build the latest cache.
@@ -37,13 +56,7 @@ export async function buildLatestCache({
   processingBlockNumber: number
   provider: JsonRpcProvider
   cacheClient: CacheClient
-  userIndexMap: Map<
-    string,
-    {
-      userAddressIndex: number
-      eventAbi: string | null
-    }
-  >
+  userIndexMap: UserIndex
   logger: Logger
 }): Promise<{
   nextProcessingBlockNumber: number
@@ -102,19 +115,13 @@ async function processBlocks({
   processingBlockNumber: number
   latestBlockNumber: number
   provider: JsonRpcProvider
-  userIndexMap: Map<
-    string,
-    {
-      userAddressIndex: number
-      eventAbi: string | null
-    }
-  >
+  userIndexMap: UserIndex
   cacheClient: CacheClient
   logger: Logger
 }) {
   const shouldBatch = latestBlockNumber - processingBlockNumber > BATCH_SIZE
 
-  let logs: { address: string; contractAddress: string }[]
+  let logs: LogResult
   let latestProcessedBlockNumber: number
 
   if (shouldBatch) {

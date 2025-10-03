@@ -62,7 +62,15 @@ export class UniswapV4PoolAdapter implements IProtocolAdapter {
 
   adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
-    userEvent: false,
+    userEvent: {
+      eventAbi:
+        'event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)',
+      userAddressArgument: 'to',
+      additionalMetadataArguments: {
+        argumentName: 'tokenId',
+        transformMetadataType: undefined,
+      },
+    },
   }
 
   private provider: CustomJsonRpcProvider

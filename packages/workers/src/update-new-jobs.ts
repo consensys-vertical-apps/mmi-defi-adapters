@@ -1,4 +1,5 @@
 import type {
+  AdditionalMetadataConfig,
   Chain,
   DefiProvider,
   EvmChain,
@@ -63,6 +64,8 @@ export function buildTokenEventMappings(
         topic0: `0x${string}`
         userAddressIndex: number
         eventAbi: string
+        additionalMetadataArguments?: AdditionalMetadataConfig
+        transformUserAddressType?: string
       }
   >()
   for (const adapterSupportArray of Object.values(defiPoolAddresses ?? {})) {
@@ -134,6 +137,9 @@ export function buildTokenEventMappings(
               topic0,
               userAddressIndex,
               eventAbi: userEvent.eventAbi,
+              additionalMetadataArguments:
+                userEvent.additionalMetadataArguments,
+              transformUserAddressType: userEvent.transformUserAddressType,
             },
           )
         }

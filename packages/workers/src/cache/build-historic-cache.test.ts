@@ -129,6 +129,8 @@ describe('buildHistoricCache', () => {
       eventAbi:
         'event Transfer(address indexed from, address indexed to, uint256 value)',
       userAddressIndex: 1,
+      additionalMetadataArguments: undefined,
+      transformUserAddressType: undefined,
       targetBlockNumber: 1000,
       batchSize: 2,
     }
@@ -153,8 +155,8 @@ describe('buildHistoricCache', () => {
       }
     })
     vi.spyOn(parseUserEventLog, 'parseUserEventLog')
-      .mockReturnValueOnce('0xuser1')
-      .mockReturnValueOnce('0xuser2')
+      .mockReturnValueOnce({ userAddress: '0xuser1', metadata: undefined })
+      .mockReturnValueOnce({ userAddress: '0xuser2', metadata: undefined })
     vi.spyOn(cacheClient, 'insertLogs').mockResolvedValue(0)
     vi.spyOn(cacheClient, 'updateJobStatus').mockResolvedValue(undefined)
 
@@ -165,8 +167,16 @@ describe('buildHistoricCache', () => {
     expect(fetchEvents.fetchEvents).toHaveBeenCalledTimes(5) // MaxConcurrentBatches
     expect(parseUserEventLog.parseUserEventLog).toHaveBeenCalledTimes(2)
     expect(cacheClient.insertLogs).toHaveBeenCalledWith([
-      { address: '0xuser1', contractAddress: '0xaddress1' },
-      { address: '0xuser2', contractAddress: '0xaddress2' },
+      {
+        address: '0xuser1',
+        contractAddress: '0xaddress1',
+        metadata: undefined,
+      },
+      {
+        address: '0xuser2',
+        contractAddress: '0xaddress2',
+        metadata: undefined,
+      },
     ])
     expect(cacheClient.updateJobStatus).toHaveBeenCalledWith(
       nextPoolGroup.poolAddresses,
@@ -198,6 +208,8 @@ describe('buildHistoricCache', () => {
       eventAbi:
         'event Transfer(address indexed from, address indexed to, uint256 value)',
       userAddressIndex: 1,
+      additionalMetadataArguments: undefined,
+      transformUserAddressType: undefined,
       targetBlockNumber: 1000,
       batchSize: 1,
     }
@@ -254,6 +266,8 @@ describe('buildHistoricCache', () => {
       eventAbi:
         'event Transfer(address indexed from, address indexed to, uint256 value)',
       userAddressIndex: 1,
+      additionalMetadataArguments: undefined,
+      transformUserAddressType: undefined,
       targetBlockNumber: 1000,
       batchSize: 1,
     }
@@ -288,7 +302,7 @@ describe('buildHistoricCache', () => {
       nextPoolGroup.userAddressIndex,
       'completed',
     )
-    // But inserts no logs
-    expect(cacheClient.insertLogs).toHaveBeenCalledWith([])
+    // But inserts no logs (insertLogs is not called when logsToInsert is empty)
+    expect(cacheClient.insertLogs).not.toHaveBeenCalled()
   })
 })

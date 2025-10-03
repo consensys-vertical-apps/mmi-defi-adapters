@@ -1,6 +1,7 @@
 import { Connection } from '@solana/web3.js'
 import { getAddress } from 'ethers'
 import { IMetadataProvider } from '../SQLiteMetadataProvider'
+import { IConfig } from '../config'
 import { Erc20__factory } from '../contracts'
 import { Chain, EvmChain } from '../core/constants/chains'
 import { ProtocolTokenFilterRequiredError } from '../core/errors/errors'
@@ -44,6 +45,7 @@ export class Helpers {
     public readonly provider: CustomJsonRpcProvider,
     public readonly chainId: EvmChain,
     public readonly metadataProvider: IMetadataProvider,
+    public readonly config: IConfig,
   ) {}
 
   getProtocolTokenByAddress<

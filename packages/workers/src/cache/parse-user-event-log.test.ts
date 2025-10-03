@@ -20,7 +20,7 @@ describe('parseUserEventLog', () => {
 
       const result = parseUserEventLog(mockLog, eventAbi, topicIndex)
 
-      expect(result).toEqual(userAddr)
+      expect(result).toEqual({ userAddress: userAddr, metadata: undefined })
     })
 
     it('throws error if topic index is out of bounds', () => {
@@ -74,7 +74,7 @@ describe('parseUserEventLog', () => {
 
       const result = parseUserEventLog(mockLog, eventAbi, userAddressIndex)
 
-      expect(result).toEqual(userAddr)
+      expect(result).toEqual({ userAddress: userAddr, metadata: undefined })
     })
 
     it('throws error if log does not match event abi', () => {
@@ -103,6 +103,59 @@ describe('parseUserEventLog', () => {
       const result = parseUserEventLog(mockLog, eventAbi, userAddressIndex)
 
       expect(result).toBeUndefined()
+    })
+
+    it('extracts additional metadata when specified', () => {
+      const eventAbiWithMetadata =
+        'event DepositEvent(bytes pubkey, bytes withdrawal_credentials, uint256 amount, bytes signature, uint256 index)'
+      const eventAbiInterface = new Interface([eventAbiWithMetadata])
+
+      const mockLog = eventAbiInterface.encodeEventLog('DepositEvent', [
+        '0x1234567890abcdef',
+        userAddr,
+        1000000000000000000n,
+        '0xabcdef1234567890',
+        1,
+      ]) as unknown as Log
+      const userAddressIndex = 1
+      const additionalMetadataArguments = { argumentName: 'pubkey' }
+
+      const result = parseUserEventLog(
+        mockLog,
+        eventAbiWithMetadata,
+        userAddressIndex,
+        additionalMetadataArguments,
+      )
+
+      expect(result).toEqual({
+        userAddress: userAddr,
+        metadata: { pubkey: '0x1234567890abcdef' },
+      })
+    })
+
+    it('throws error if metadata argument not found in event abi', () => {
+      const eventAbiWithMetadata =
+        'event DepositEvent(bytes pubkey, bytes withdrawal_credentials, uint256 amount, bytes signature, uint256 index)'
+      const eventAbiInterface = new Interface([eventAbiWithMetadata])
+
+      const mockLog = eventAbiInterface.encodeEventLog('DepositEvent', [
+        '0x1234567890abcdef',
+        userAddr,
+        1000000000000000000n,
+        '0xabcdef1234567890',
+        1,
+      ]) as unknown as Log
+      const userAddressIndex = 1
+      const additionalMetadataArguments = { argumentName: 'nonexistent' }
+
+      expect(() =>
+        parseUserEventLog(
+          mockLog,
+          eventAbiWithMetadata,
+          userAddressIndex,
+          additionalMetadataArguments,
+        ),
+      ).toThrow('Argument nonexistent not found in event abi')
     })
   })
 })

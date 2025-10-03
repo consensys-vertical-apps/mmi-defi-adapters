@@ -6,7 +6,7 @@ export const testCases: TestCase[] = [
   //   chainId: Chain.Ethereum,
   //   method: 'positions',
   //   input: {
-  //     userAddress: '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
+  //     userAddress: '0x00000000006267Dd559d14F5AdeF3f777aE7bB0E',
   //     filterProtocolTokens: ['0x0000000000000000000000000000000000000000'],
   //     filterTokenIds: [
   //       '0xB4D362F81FC2DD9FDC5A8BF69D1716521326C6F2A0F3E8F42B85625D3AFFF3A13377E72018EA14BB9C15AA5137DDBD69',
