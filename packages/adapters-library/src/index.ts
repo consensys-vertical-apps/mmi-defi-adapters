@@ -7,6 +7,7 @@ export { PositionType, TokenType } from './types/adapter'
 export {
   type LogArgumentTransformer,
   LOG_ARGUMENT_TRANSFORMERS,
+  ETH2_TYPE_00_WITHDRAWAL_PLACEHOLDER_ADDRESS,
 } from './core/utils/log-argument-transformers'
 export type {
   AdapterResponse,
@@ -29,3 +30,4 @@ export type { TestCase } from './types/testCase'
 export { AVERAGE_BLOCKS_PER_10_MINUTES } from './core/constants/AVERAGE_BLOCKS_PER_10_MINS'
 export { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 export type { AdditionalMetadataConfig } from './types/adapter'
+export { ETH2_DEPOSIT_CONTRACT_ADDRESS } from './adapters/eth-2-validator-staking/products/staking/eth2ValidatorStakingStakingAdapter'

@@ -12,36 +12,30 @@ const providers: Record<ChainName, string> = {
   ),
   op: parseStringEnv(
     process.env.DEFI_ADAPTERS_PROVIDER_OPTIMISM,
-    'https://optimism-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
-  ),
-  bsc: parseStringEnv(
     CHAIN_NOT_ENABLED,
-    'https://bsc-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
   ),
+  bsc: parseStringEnv(CHAIN_NOT_ENABLED, CHAIN_NOT_ENABLED),
   matic: parseStringEnv(
     process.env.DEFI_ADAPTERS_PROVIDER_POLYGON,
-    'https://polygon-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
-  ),
-  ftm: parseStringEnv(CHAIN_NOT_ENABLED, 'https://rpc.ftm.tools'),
-  sei: parseStringEnv(
     CHAIN_NOT_ENABLED,
-    'https://sei-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
   ),
+  ftm: parseStringEnv(CHAIN_NOT_ENABLED, CHAIN_NOT_ENABLED),
+  sei: parseStringEnv(CHAIN_NOT_ENABLED, CHAIN_NOT_ENABLED),
   base: parseStringEnv(
     process.env.DEFI_ADAPTERS_PROVIDER_BASE,
-    'https://base-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
+    CHAIN_NOT_ENABLED,
   ),
   arb: parseStringEnv(
     process.env.DEFI_ADAPTERS_PROVIDER_ARBITRUM,
-    'https://arbitrum-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
+    CHAIN_NOT_ENABLED,
   ),
   avax: parseStringEnv(
     process.env.DEFI_ADAPTERS_PROVIDER_AVALANCHE,
-    'https://avalanche-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
+    CHAIN_NOT_ENABLED,
   ),
   linea: parseStringEnv(
     process.env.DEFI_ADAPTERS_PROVIDER_LINEA,
-    'https://linea-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
+    CHAIN_NOT_ENABLED,
   ),
   solana: parseStringEnv(
     process.env.DEFI_ADAPTERS_PROVIDER_SOLANA,
