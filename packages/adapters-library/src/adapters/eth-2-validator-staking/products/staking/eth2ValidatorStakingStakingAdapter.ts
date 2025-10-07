@@ -27,6 +27,12 @@ import { Protocol } from '../../../protocols'
  * Queries beacon node API for validator information
  */
 
+// Cache entry interface for standardized validator positions
+interface CacheEntry {
+  position: ProtocolPosition
+  timestamp: number
+}
+
 // Alchemy Beacon Node API types
 interface ValidatorData {
   index: string
@@ -70,6 +76,12 @@ export class Eth2ValidatorStakingStakingAdapter implements IProtocolAdapter {
   }
 
   private provider: CustomJsonRpcProvider
+
+  // 24-hour in-memory cache for standardized positions to protect API credits
+  private positionCache = new Map<string, CacheEntry>()
+  private readonly CACHE_DURATION_MS = 24 * 60 * 60 * 1000 // 24 hours
+  private lastCacheCleanup = 0
+  private readonly CACHE_CLEANUP_INTERVAL_MS = 60 * 60 * 1000 // Clean up every hour
 
   adaptersController: AdaptersController
 
@@ -129,7 +141,7 @@ export class Eth2ValidatorStakingStakingAdapter implements IProtocolAdapter {
   }
 
   /**
-   * Fetch validator data from Alchemy beacon node API
+   * Fetch validator data from beacon node API with 24-hour caching
    */
   private async fetchValidatorData(
     pubkey: string[],
@@ -156,12 +168,23 @@ export class Eth2ValidatorStakingStakingAdapter implements IProtocolAdapter {
 
       const data: ValidatorResponse = await response.json()
 
-      console.log('Response:', JSON.stringify(data, null, 2))
-
       return data.data
     } catch (error) {
       logger.error('Error fetching validator data:', error)
       return null
+    }
+  }
+
+  /**
+   * Clear expired cache entries to prevent memory leaks
+   */
+  private clearExpiredCache(): void {
+    const now = Date.now()
+
+    for (const [key, entry] of this.positionCache.entries()) {
+      if (now - entry.timestamp >= this.CACHE_DURATION_MS) {
+        this.positionCache.delete(key)
+      }
     }
   }
 
@@ -170,6 +193,29 @@ export class Eth2ValidatorStakingStakingAdapter implements IProtocolAdapter {
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     if (!userPubkeys || !userPubkeys.length) {
       return []
+    }
+
+    if (userPubkeys.length > 100) {
+      // For V1 we will return here to protect API credits
+      // only staking providers like coinbase and lido likely to have more than 100 validators and they are not our target user
+      // We can review this decision in future perhaps when we have switched from Quicknode to an internal beacon node api
+      return []
+    }
+
+    // Create cache key from sorted pubkeys to ensure consistency
+    const cacheKey = userPubkeys.sort().join(',')
+    const now = Date.now()
+
+    // Check if we have cached position that's still valid
+    const cachedEntry = this.positionCache.get(cacheKey)
+    if (cachedEntry && now - cachedEntry.timestamp < this.CACHE_DURATION_MS) {
+      return [cachedEntry.position]
+    }
+
+    // Clean up expired cache entries periodically (only every hour to avoid performance impact)
+    if (now - this.lastCacheCleanup > this.CACHE_CLEANUP_INTERVAL_MS) {
+      this.clearExpiredCache()
+      this.lastCacheCleanup = now
     }
 
     const validatorData = await this.fetchValidatorData(userPubkeys)
@@ -190,24 +236,29 @@ export class Eth2ValidatorStakingStakingAdapter implements IProtocolAdapter {
     const protocolTokens = await this.getProtocolTokens()
     const protocolToken = protocolTokens[0]!
 
-    return [
-      {
-        address: protocolToken.address,
-        name: 'ETH2 Validator Staking',
-        symbol: protocolToken.symbol,
-        decimals: protocolToken.decimals,
+    const position: ProtocolPosition = {
+      address: protocolToken.address,
+      name: 'ETH2 Validator Staking',
+      symbol: protocolToken.symbol,
+      decimals: protocolToken.decimals,
+      balanceRaw: balanceInWei,
+      type: TokenType.Protocol,
+      tokens: protocolToken.underlyingTokens.map((token) => ({
+        address: token.address,
+        name: token.name,
+        symbol: token.symbol,
+        decimals: token.decimals,
         balanceRaw: balanceInWei,
-        type: TokenType.Protocol,
-        tokens: protocolToken.underlyingTokens.map((token) => ({
-          address: token.address,
-          name: token.name,
-          symbol: token.symbol,
-          decimals: token.decimals,
-          balanceRaw: balanceInWei,
-          type: TokenType.Underlying,
-        })),
-      },
-    ]
+        type: TokenType.Underlying,
+      })),
+    }
+
+    // Cache the standardized position for 24 hours
+    this.positionCache.set(cacheKey, {
+      position,
+      timestamp: now,
+    })
+    return [position]
   }
 
   async unwrap({
