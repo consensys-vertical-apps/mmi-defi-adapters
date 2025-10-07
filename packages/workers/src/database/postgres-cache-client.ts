@@ -1,5 +1,10 @@
-import { ChainName, type EvmChain } from '@metamask-institutional/defi-adapters'
-import { type AdditionalMetadataConfig } from '@metamask-institutional/defi-adapters'
+import {
+  ChainName,
+  type EvmChain,
+  type AdditionalMetadataConfig,
+  ETH2_DEPOSIT_CONTRACT_ADDRESS,
+  ETH2_TYPE_00_WITHDRAWAL_PLACEHOLDER_ADDRESS,
+} from '@metamask-institutional/defi-adapters'
 import { Mutex } from 'async-mutex'
 import type { Pool, PoolClient, PoolConfig } from 'pg'
 import type { Logger } from 'pino'
@@ -50,6 +55,11 @@ export interface CacheClient {
     }[],
     blockNumber?: number,
   ) => Promise<number>
+
+  getEth2StakingPubkeysWithPlaceholderAddress: () => Promise<string[]>
+  updateUserAddressesForPubkeys: (
+    updates: Array<{ pubkey: string; userAddress: string }>,
+  ) => Promise<void>
 }
 
 export async function createPostgresCacheClient({
@@ -92,6 +102,71 @@ class PostgresCacheClient implements CacheClient {
     this.#logsMutex = new Mutex()
     this.#jobsMutex = new Mutex()
     this.#logger = logger
+  }
+
+  /**
+   * Returns all ETH2 staking public keys (validator pubkeys) that are associated with the
+   * placeholder withdrawal credentials address (i.e., the ETH2 deposit contract's placeholder address).
+   * This is used to identify all validator pubkeys for which the withdrawal credentials
+   *
+   */
+  async getEth2StakingPubkeysWithPlaceholderAddress(): Promise<string[]> {
+    // Query logs where user_address is the placeholder address and metadata_value contains a pubkey
+    // We assume metadata_value is a stringified JSON, so we use LIKE to filter, then parse in JS
+    // Query all metadata_value fields for the placeholder address, and return as a string array.
+    // 300k values should be fine in memory for most modern servers (a few tens of MB).
+    const res = await this.#dbPool.query<{ metadata_value: string }>(
+      `
+      SELECT metadata_value
+      FROM logs
+      WHERE address = $1
+      `,
+      [ETH2_TYPE_00_WITHDRAWAL_PLACEHOLDER_ADDRESS],
+    )
+    // Each metadata_value is expected to be a string (e.g., a pubkey)
+    // Return as a string array
+    return res.rows.map((row) => row.metadata_value)
+  }
+
+  /**
+   * Updates user addresses for specific validator pubkeys
+   * This is used when BLS withdrawal credentials are updated to Ethereum addresses
+   *
+   * @param updates Array of objects containing pubkey and new user address
+   */
+  async updateUserAddressesForPubkeys(
+    updates: Array<{ pubkey: string; userAddress: string }>,
+  ): Promise<void> {
+    if (updates.length === 0) {
+      return
+    }
+
+    // Use a transaction to ensure all updates succeed or fail together
+    const client = await this.#dbPool.connect()
+    try {
+      await client.query('BEGIN')
+
+      // Update each pubkey-userAddress pair
+      for (const { pubkey, userAddress } of updates) {
+        await client.query(
+          `
+          UPDATE logs 
+          SET address = $1
+          WHERE address = $2
+            AND metadata_key = 'pubkey'
+            AND metadata_value = $3
+          `,
+          [userAddress, ETH2_TYPE_00_WITHDRAWAL_PLACEHOLDER_ADDRESS, pubkey],
+        )
+      }
+
+      await client.query('COMMIT')
+    } catch (error) {
+      await client.query('ROLLBACK')
+      throw error
+    } finally {
+      client.release()
+    }
   }
 
   async getLatestBlockProcessed(): Promise<number | undefined> {

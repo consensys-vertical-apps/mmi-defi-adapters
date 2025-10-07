@@ -3,7 +3,18 @@
  * These functions convert raw event data to actual user addresses
  */
 
+import { getAddress } from 'ethers'
+
 export type LogArgumentTransformer = (rawValue: string) => string | null
+
+/**
+ * Placeholder address used for ETH2 Type 00 (BLS) withdrawal credentials that haven't been updated yet
+ * This address is used as a placeholder for validators that still have BLS withdrawal credentials
+ * and need to be periodically checked for updates to Ethereum withdrawal credentials
+ */
+export const ETH2_TYPE_00_WITHDRAWAL_PLACEHOLDER_ADDRESS = getAddress(
+  '0x000000000000000000000000000000000000faff',
+)
 
 export const LOG_ARGUMENT_TRANSFORMERS: Record<string, LogArgumentTransformer> =
   {
@@ -20,9 +31,9 @@ export const LOG_ARGUMENT_TRANSFORMERS: Record<string, LogArgumentTransformer> =
 
       // Check if this is BLS withdrawal credentials (starts with 00)
       if (hex.startsWith('00')) {
-        // Return a dummy address for BLS credentials
+        // Return a placeholder address for BLS credentials
         // We can use this to periodically check if the BLS credentials have been updated
-        return '0x000000000000000000000000000000000000faff'
+        return ETH2_TYPE_00_WITHDRAWAL_PLACEHOLDER_ADDRESS
       }
 
       // Extract the last 20 bytes (40 hex characters) which represent the address

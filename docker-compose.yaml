@@ -19,6 +19,8 @@ services:
       - USE_ADAPTERS_WITH_USER_EVENT_ONLY=true
       - CACHE_DATABASE_URL=postgresql://postgres:postgres@postgres:5432/defi-adapters
       - CACHE_DATABASE_DISABLE_SSL=true
+      - BEACON_BASE_URL
+      - BEACON_NODE_API_KEY
     depends_on:
       postgres:
         condition: service_healthy
@@ -43,8 +45,10 @@ services:
       - CACHE_DATABASE_DISABLE_SSL=true
       - BLOCK_RUNNER_BATCH_SIZE=10
       - HISTORIC_CACHE_BATCH_SIZE=5
+      - BEACON_BASE_URL
+      - BEACON_NODE_API_KEY
     depends_on:
-      postgres:
+      postgres:             
         condition: service_healthy
 
   # Optional: To run just database service (run manually docker-compose up postgres)

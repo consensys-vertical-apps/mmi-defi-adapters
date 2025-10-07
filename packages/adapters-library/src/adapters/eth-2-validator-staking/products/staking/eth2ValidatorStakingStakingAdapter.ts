@@ -21,11 +21,16 @@ import {
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 
 /**
  * ETH2 Validator Staking Adapter
  * Queries beacon node API for validator information
  */
+
+export const ETH2_DEPOSIT_CONTRACT_ADDRESS = getAddress(
+  '0x00000000219ab540356cBB839Cbe05303d7705Fa',
+)
 
 // Alchemy Beacon Node API types
 interface ValidatorData {
@@ -107,12 +112,10 @@ export class Eth2ValidatorStakingStakingAdapter implements IProtocolAdapter {
 
   @CacheToDb
   async getProtocolTokens(): Promise<ProtocolToken[]> {
-    const underlyingToken = await this.helpers.getTokenMetadata(
-      '0x0000000000000000000000000000000000000000',
-    ) // ETH
+    const underlyingToken = await this.helpers.getTokenMetadata(ZERO_ADDRESS) // ETH
     return [
       {
-        address: getAddress('0x00000000219ab540356cBB839Cbe05303d7705Fa'),
+        address: getAddress(ETH2_DEPOSIT_CONTRACT_ADDRESS),
         name: 'ETH2 Validator Staking',
         symbol: 'ETH2-VALIDATOR',
         decimals: 18,
