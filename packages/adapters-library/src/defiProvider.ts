@@ -267,6 +267,13 @@ export class DefiProvider {
               )
             : filterTokenIds
 
+        // If no metadata is available and no filterTokenIds provided, pass undefined
+        // This allows adapters to fall back to their getTokenIds() method
+        const finalTokenIds =
+          combinedMetadata && combinedMetadata.length > 0
+            ? combinedMetadata
+            : undefined
+
         const poolsFilteredTime = Date.now()
 
         // Step 4: Call the adapter with the combined metadata
@@ -279,7 +286,7 @@ export class DefiProvider {
           userAddress,
           blockNumber,
           protocolTokenAddresses,
-          tokenIds: combinedMetadata, // This is the flattened metadata from all contracts
+          tokenIds: finalTokenIds, // This is the flattened metadata from all contracts, or undefined if no metadata
         })
 
         const positionsFetchedTime = Date.now()

@@ -65,15 +65,13 @@ export function libraryCommands(program: Command) {
         if (!filterUsingLocalIndex && !filterProtocolTokens) {
           console.log(`No DeFi positions cache detected. Max ${DEFAULT_MAX_POOLS_PER_ADAPTER_TO_CHECK} pools per adapter per chain only.
             
-To set up local cache:
-1. Run: docker-compose up --build
-2. Set environment variables in .env:
-   - DEFI_ADAPTERS_USE_POSITIONS_CACHE=true
-   - CACHE_DATABASE_URL=postgresql://postgres:postgres@0.0.0.0:5432/defi-adapters
-   - CACHE_DATABASE_DISABLE_SSL=true
-   - LOCAL_ENABLE_THIS_CHAIN_ONLY=ethereum (to limit scope to specific chains)
-   
-Warning: This will start indexing all DeFi positions for all chains unless scope is limited.`)
+              To set up local cache:
+              1. Run: docker-compose up --build
+              2. Set environment variables in .env:
+                - DEFI_ADAPTERS_USE_POSITIONS_CACHE=true
+                - CACHE_DATABASE_URL=postgresql://postgres:postgres@0.0.0.0:5432/defi-adapters
+                - CACHE_DATABASE_DISABLE_SSL=true
+                - LOCAL_ENABLE_THIS_CHAIN_ONLY=ethereum (to limit scope to specific chains)`)
         }
 
         const getDefiPositionsDetection: DefiPositionDetection = async (
