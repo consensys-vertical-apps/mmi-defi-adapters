@@ -1,4 +1,4 @@
-import { EvmChain } from '@metamask-institutional/defi-adapters'
+import { EvmChain } from '@metamask-private/defi-adapters'
 import { Hono } from 'hono'
 import { pinoLogger } from 'hono-pino'
 import type { ContentfulStatusCode } from 'hono/utils/http-status'

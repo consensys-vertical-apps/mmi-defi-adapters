@@ -3,7 +3,7 @@ import {
   PositionType,
   Protocol,
   TokenType,
-} from '@metamask-institutional/defi-adapters'
+} from '@metamask-private/defi-adapters'
 import { z } from 'zod'
 
 // All these schemas are generated for the OpenAPI spec, not for validation

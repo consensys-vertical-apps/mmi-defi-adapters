@@ -2,7 +2,7 @@ import { parentPort } from 'node:worker_threads'
 import {
   AVERAGE_BLOCKS_PER_DAY,
   type EvmChain,
-} from '@metamask-institutional/defi-adapters'
+} from '@metamask-private/defi-adapters'
 import type { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
 import { buildHistoricCache } from './cache/build-historic-cache.js'

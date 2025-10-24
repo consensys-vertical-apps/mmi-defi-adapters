@@ -5,7 +5,7 @@ import {
   buildTokenEventMappings,
   createWatchKey,
   processReceipts,
-} from '@metamask-institutional/workers'
+} from '@metamask-private/workers'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { Chain, ChainName } from '../core/constants/chains'
 import { AdapterMissingError } from '../core/errors/errors'

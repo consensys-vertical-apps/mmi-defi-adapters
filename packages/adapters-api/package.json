@@ -1,19 +1,45 @@
 {
-  "name": "@metamask-institutional/adapters-api",
-  "version": "0.14.0",
+  "name": "@metamask-private/adapters-api",
+  "version": "0.15.0",
   "description": "Defi adapters API",
-  "private": true,
+  "keywords": [
+    "defi",
+    "metamask",
+    "api",
+    "adapters"
+  ],
+  "author": "MMI Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/consensys-vertical-apps/mmi-defi-adapters"
+  },
+  "bugs": {
+    "url": "https://github.com/consensys-vertical-apps/mmi-defi-adapters/issues"
+  },
+  "homepage": "https://github.com/consensys-vertical-apps/mmi-defi-adapters#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "node dist/main.js",
-    "test:tsc": "tsc --noEmit"
+    "test:tsc": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@hono/node-server": "^1.14.1",
     "@hono/zod-openapi": "^0.19.5",
-    "@metamask-institutional/defi-adapters": "*",
-    "@metamask-institutional/workers": "*",
+    "@metamask-private/defi-adapters": "^0.15.0",
+    "@metamask-private/workers": "^0.15.0",
     "hono": "^4.7.7",
     "hono-pino": "^0.8.0",
     "pg": "^8.14.1",

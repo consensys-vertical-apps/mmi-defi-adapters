@@ -1,4 +1,4 @@
-import { EvmChain } from '@metamask-institutional/defi-adapters'
+import { EvmChain } from '@metamask-private/defi-adapters'
 import { describe, expect, it, vi } from 'vitest'
 import { buildApi } from './build-api'
 

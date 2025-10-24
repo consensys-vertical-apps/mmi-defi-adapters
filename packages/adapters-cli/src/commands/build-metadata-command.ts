@@ -10,15 +10,15 @@ import {
   getInvalidAddresses,
   multiChainFilter,
   multiProtocolFilter,
-} from '@metamask-institutional/defi-adapters'
-import { supportedProtocols } from '@metamask-institutional/defi-adapters/dist/adapters/supportedProtocols.js'
+} from '@metamask-private/defi-adapters'
+import { supportedProtocols } from '@metamask-private/defi-adapters/dist/adapters/supportedProtocols.js'
 import type {
   AdditionalMetadataWithReservedFields,
   Erc20ExtendedMetadata,
   IProtocolAdapter,
   ProtocolToken,
-} from '@metamask-institutional/defi-adapters/dist/types/IProtocolAdapter.js'
-import type { Erc20Metadata } from '@metamask-institutional/defi-adapters/dist/types/erc20Metadata.js'
+} from '@metamask-private/defi-adapters/dist/types/IProtocolAdapter.js'
+import type { Erc20Metadata } from '@metamask-private/defi-adapters/dist/types/erc20Metadata.js'
 import Database from 'better-sqlite3'
 import chalk from 'chalk'
 import { Command } from 'commander'

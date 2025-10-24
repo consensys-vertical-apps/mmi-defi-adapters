@@ -1,7 +1,7 @@
 import type {
   DefiProvider,
   EvmChain,
-} from '@metamask-institutional/defi-adapters'
+} from '@metamask-private/defi-adapters'
 import type { Logger } from 'pino'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { CacheClient } from './database/postgres-cache-client.js'

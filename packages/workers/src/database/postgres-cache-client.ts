@@ -1,5 +1,5 @@
-import { ChainName, type EvmChain } from '@metamask-institutional/defi-adapters'
-import { type AdditionalMetadataConfig } from '@metamask-institutional/defi-adapters'
+import { ChainName, type EvmChain } from '@metamask-private/defi-adapters'
+import { type AdditionalMetadataConfig } from '@metamask-private/defi-adapters'
 import { Mutex } from 'async-mutex'
 import type { Pool, PoolClient, PoolConfig } from 'pg'
 import type { Logger } from 'pino'

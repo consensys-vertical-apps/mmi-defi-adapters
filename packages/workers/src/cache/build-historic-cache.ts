@@ -1,4 +1,4 @@
-import { EvmChain } from '@metamask-institutional/defi-adapters'
+import { EvmChain } from '@metamask-private/defi-adapters'
 import { JsonRpcProvider, getAddress } from 'ethers'
 import type { Logger } from 'pino'
 import type { CacheClient } from '../database/postgres-cache-client.js'

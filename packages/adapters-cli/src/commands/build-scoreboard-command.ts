@@ -7,7 +7,7 @@ import {
   type TestCase,
   filterMapSync,
   multiProtocolFilter,
-} from '@metamask-institutional/defi-adapters'
+} from '@metamask-private/defi-adapters'
 import { Command } from 'commander'
 import {
   type RpcInterceptedResponses,
@@ -73,7 +73,7 @@ export function buildScoreboardCommand(program: Command) {
       for (const { protocolId, productId } of allProducts) {
         const testCases: TestCase[] = (
           await import(
-            `@metamask-institutional/defi-adapters/dist/adapters/${protocolId}/products/${productId}/tests/testCases.js`
+            `@metamask-private/defi-adapters/dist/adapters/${protocolId}/products/${productId}/tests/testCases.js`
           )
         ).testCases
 

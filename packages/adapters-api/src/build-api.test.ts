@@ -2,7 +2,7 @@ import {
   DefiPositionResponse,
   DefiProvider,
   Support,
-} from '@metamask-institutional/defi-adapters'
+} from '@metamask-private/defi-adapters'
 import { Mocked, beforeEach, describe, expect, it, vi } from 'vitest'
 import { buildApi } from './build-api'
 import { DbService } from './db-service'

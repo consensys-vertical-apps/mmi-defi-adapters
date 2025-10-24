@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs'
 import * as path from 'node:path'
-import type { Chain } from '@metamask-institutional/defi-adapters'
+import type { Chain } from '@metamask-private/defi-adapters'
 import { lowerFirst, partition } from 'lodash-es'
 import { parse, print, types, visit } from 'recast'
 import { sortEntries } from './sort-entries.ts'
