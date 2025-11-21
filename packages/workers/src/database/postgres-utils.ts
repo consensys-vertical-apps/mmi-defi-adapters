@@ -3,6 +3,10 @@ import type { Logger } from 'pino'
 
 const THIRTY_SECONDS = 30_000
 
+function parseNumberEnv(env: string | undefined, defaultValue: number): number {
+  return env ? Number(env) : defaultValue
+}
+
 export function createDbPool({
   dbUrl,
   schema,
@@ -18,8 +22,8 @@ export function createDbPool({
     connectionString: `${dbUrl}?options=-c%20search_path%3D${encodeURIComponent(
       schema,
     )}`,
-    max: 25,
-    min: 15,
+    max: parseNumberEnv(process.env.CACHE_DATABASE_POOL_MAX, 25),
+    min: parseNumberEnv(process.env.CACHE_DATABASE_POOL_MIN, 15),
     connectionTimeoutMillis: 0, // No timeout
     idleTimeoutMillis: 10 * 1000, // 10 sec
     ssl: process.env.CACHE_DATABASE_DISABLE_SSL
