@@ -1,4 +1,4 @@
-import { ChainName, EvmChain } from '@metamask-institutional/defi-adapters'
+import { ChainName, EvmChain } from '@metamask-private/defi-adapters'
 import pg from 'pg'
 
 export type BlocksStats = {

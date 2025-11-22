@@ -7,11 +7,11 @@ import {
   multiProductFilter,
   multiProtocolFilter,
   multiProtocolTokenAddressFilter,
-} from '@metamask-institutional/defi-adapters'
+} from '@metamask-private/defi-adapters'
 import {
   buildPostgresDefiPositionsDetectionQuery,
   createDbPool,
-} from '@metamask-institutional/workers'
+} from '@metamask-private/workers'
 import type { Command } from 'commander'
 import pg from 'pg'
 import { startRpcSnapshot } from '../utils/rpc-interceptor.ts'

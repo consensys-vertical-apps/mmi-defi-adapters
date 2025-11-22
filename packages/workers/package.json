@@ -1,16 +1,41 @@
 {
-  "name": "@metamask-institutional/workers",
-  "version": "0.14.0",
-  "description": "Defi adapters for MMI Dashboard",
-  "private": true,
+  "name": "@metamask-private/workers",
+  "version": "0.15.0",
+  "description": "Defi adapters workers for MMI Dashboard",
+  "keywords": [
+    "defi",
+    "metamask",
+    "workers",
+    "adapters"
+  ],
+  "author": "MMI Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/consensys-vertical-apps/mmi-defi-adapters"
+  },
+  "bugs": {
+    "url": "https://github.com/consensys-vertical-apps/mmi-defi-adapters/issues"
+  },
+  "homepage": "https://github.com/consensys-vertical-apps/mmi-defi-adapters#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
     "build:watch": "npm run build -- --watch",
     "start": "node dist/main.js",
-    "test:tsc": "tsc --noEmit"
+    "test:tsc": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@types/pg": "^8.11.11",
@@ -18,7 +43,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.14.3",
-    "@metamask-institutional/defi-adapters": "*",
+    "@metamask-private/defi-adapters": "^0.15.0",
     "async-mutex": "^0.5.0",
     "ethers": "^6.7.1",
     "hono": "^4.7.11",

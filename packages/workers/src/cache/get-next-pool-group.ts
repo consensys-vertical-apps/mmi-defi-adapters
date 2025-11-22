@@ -1,4 +1,4 @@
-import { EvmChain } from '@metamask-institutional/defi-adapters'
+import { EvmChain } from '@metamask-private/defi-adapters'
 import type { CacheClient } from '../database/postgres-cache-client.js'
 
 const MaxContractsPerCall: Record<EvmChain, number> = {

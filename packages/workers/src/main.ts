@@ -2,7 +2,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Worker } from 'node:worker_threads'
 import { serve } from '@hono/node-server'
-import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
+import { DefiProvider, EvmChain } from '@metamask-private/defi-adapters'
 import { buildApi } from './api/build-api.js'
 import { logger } from './logger.js'
 

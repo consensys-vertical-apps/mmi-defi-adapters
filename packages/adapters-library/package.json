@@ -1,18 +1,47 @@
 {
-  "name": "@metamask-institutional/defi-adapters",
-  "version": "0.14.0",
-  "description": "Defi adapters for MMI Dashboard",
+  "name": "@metamask-private/defi-adapters",
+  "version": "0.15.0",
+  "description": "Defi adapters for MMI Dashboard - simplify and standardise fetching data from various DeFi protocols",
+  "keywords": [
+    "defi",
+    "metamask",
+    "ethereum",
+    "blockchain",
+    "web3",
+    "adapter",
+    "protocol",
+    "dapp",
+    "positions",
+    "portfolio",
+    "solana"
+  ],
+  "author": "MMI Team",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/consensys-vertical-apps/mmi-defi-adapters"
   },
+  "bugs": {
+    "url": "https://github.com/consensys-vertical-apps/mmi-defi-adapters/issues"
+  },
+  "homepage": "https://github.com/consensys-vertical-apps/mmi-defi-adapters#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "build": "tsc",
     "build:watch": "npm run build -- --watch",
-    "test:tsc": "tsc --noEmit"
+    "test:tsc": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@typechain/ethers-v6": "^0.5.0",

@@ -1,4 +1,4 @@
-import type { DefiProvider } from '@metamask-institutional/defi-adapters'
+import type { DefiProvider } from '@metamask-private/defi-adapters'
 import { describe, expect, it } from 'vitest'
 import {
   calculateAdapterOutcomes,

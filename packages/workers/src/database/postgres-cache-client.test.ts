@@ -1,4 +1,4 @@
-import { ChainName, EvmChain } from '@metamask-institutional/defi-adapters'
+import { ChainName, EvmChain } from '@metamask-private/defi-adapters'
 import { Mutex } from 'async-mutex'
 import type { Pool, PoolClient, QueryResult } from 'pg'
 import type { Logger } from 'pino'
