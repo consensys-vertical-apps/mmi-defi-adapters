@@ -1,0 +1,20 @@
+name: Publish
+
+on:
+  workflow_call:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    strategy:
+      matrix:
+        node-version: [22.x]
+    uses: ./.github/workflows/js-publish-npm.yml
+    with:
+      environment: prd
+      node_version: ${{ matrix.node-version }}
+      npm_client: npm
+
