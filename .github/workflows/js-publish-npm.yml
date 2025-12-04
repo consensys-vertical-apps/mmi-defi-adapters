@@ -1,0 +1,103 @@
+---
+name: Publish to JFrog NPM Registry
+
+permissions:
+  id-token: write
+  contents: read
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: GitHub environment
+        required: true
+        type: string
+      npm_client:
+        description: npm client to use
+        type: string
+        default: npm
+      npm_client_production_flag:
+        description: Npm client production flag
+        type: string
+        required: false
+        default: "--frozen-lockfile"
+      yarn_version:
+        description: yarn version
+        type: string
+        default: "1"
+        required: false
+      npm_registry_name:
+        description: The registry name for NPM config
+        type: string
+        default: "npm"
+        required: false
+      node_version:
+        description: Node.js version for actions/setup-node
+        type: string
+        required: true
+      npm_registry_url:
+        description: Internal NPM registry
+        required: false
+        type: string
+        default: "https://consensys.jfrog.io/artifactory/api/npm/npm/"
+      jfrog_oidc_provider_name:
+        description: OIDC provider name as configured on JFrog Platform
+        type: string
+        default: "github"
+        required: false
+      jfrog_audience:
+        description: jfrog audience for oidc implementation
+        type: string
+        required: false
+      jfrog_local_repo:
+        description: jfrog local repo for npm
+        type: string
+        default: "npm-local"
+        required: false
+
+jobs:
+  publish_on_tag:
+    environment: ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node Base actions
+        uses: ./.github/actions/node-base-actions
+        with:
+          node_version: ${{ inputs.node_version }}
+          npm_client: ${{ inputs.npm_client }}
+          npm_client_production_flag: ${{ inputs.npm_client_production_flag }}
+          npm_registry_name: ${{ inputs.npm_registry_name }}
+          npm_deploy_registry_name: ${{ inputs.jfrog_local_repo }}
+          npm_registry_url: ${{ inputs.npm_registry_url }}
+          jfrog_oidc_provider_name: ${{ inputs.jfrog_oidc_provider_name }}
+          jfrog_audience: ${{ inputs.jfrog_audience }}
+          yarn_version: ${{ inputs.yarn_version }}
+
+      - name: NPM publish
+        run: |
+          npm config get userconfig
+          # Build from root (monorepo)
+          ${{ inputs.npm_client }} run build
+          # Publish only adapters-library package
+          cd packages/adapters-library
+          if [ "${{ inputs.npm_client }}" = "yarn" ]; then
+            echo "Publishing with ${{ inputs.npm_client }} client"
+            ${{ inputs.npm_client }} run publish
+          else
+            echo "Publishing with jf ${{ inputs.npm_client }} client"
+            jf npm publish
+          fi
+
+      - name: Publish Build info With JFrog CLI
+        working-directory: packages/adapters-library
+        run: |
+          # Collect environment variables for the build
+          jf rt build-collect-env
+          # Collect VCS details from git and add them to the build
+          jf rt build-add-git
+          # Publish build info
+          jf rt build-publish
+

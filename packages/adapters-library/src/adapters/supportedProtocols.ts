@@ -368,8 +368,8 @@ export const supportedProtocols: Record<
 
   [Protocol.Deri]: {
     // [Chain.Bsc]: [DeriPoolAdapter],
-    [Chain.Arbitrum]: [DeriPoolAdapter],
-    [Chain.Linea]: [DeriPoolAdapter],
+    // [Chain.Arbitrum]: [DeriPoolAdapter],
+    // [Chain.Linea]: [DeriPoolAdapter],
   },
 
   [Protocol.Dinero]: {

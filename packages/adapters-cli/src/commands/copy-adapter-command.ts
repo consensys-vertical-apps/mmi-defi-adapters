@@ -1,12 +1,8 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import {
-  Chain,
-  DefiProvider,
-  Protocol,
-} from '@metamask-institutional/defi-adapters'
-import {} from '@metamask-institutional/defi-adapters'
-import { pascalCase } from '@metamask-institutional/defi-adapters'
+import { Chain, DefiProvider, Protocol } from '@codefi/defi-adapters'
+import {} from '@codefi/defi-adapters'
+import { pascalCase } from '@codefi/defi-adapters'
 import { Command } from 'commander'
 import { lowerFirst } from 'lodash-es'
 import { addProtocol } from '../utils/add-protocol.ts'

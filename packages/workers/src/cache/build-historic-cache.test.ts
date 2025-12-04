@@ -1,4 +1,4 @@
-import { EvmChain } from '@metamask-institutional/defi-adapters'
+import { EvmChain } from '@codefi/defi-adapters'
 import type {
   Block,
   JsonRpcProvider,

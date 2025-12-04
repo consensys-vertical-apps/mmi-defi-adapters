@@ -7,6 +7,10 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   lint-and-verify-cli:
     runs-on: ubuntu-latest
@@ -263,9 +267,13 @@ jobs:
       - name: Generate coverage report
         run: npm run test:cov:merge
 
-      - name: Run sonarcloud-scan
-        uses: sonarsource/sonarcloud-github-action@v2.1.1
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-action@v5.3.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+  publish:
+    needs: [coverage-report]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/publish.yaml

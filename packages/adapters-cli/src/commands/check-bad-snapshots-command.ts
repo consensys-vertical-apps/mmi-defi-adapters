@@ -7,7 +7,7 @@ import {
   type TestCase,
   filterMapSync,
   multiProtocolFilter,
-} from '@metamask-institutional/defi-adapters'
+} from '@codefi/defi-adapters'
 import { Command } from 'commander'
 import { kebabCase } from 'lodash-es'
 
@@ -66,7 +66,7 @@ export function checkBadSnapshotsCommand(program: Command) {
 
         const testCases: TestCase[] = (
           await import(
-            `@metamask-institutional/defi-adapters/dist/adapters/${protocolId}/products/${productId}/tests/testCases.js`
+            `@codefi/defi-adapters/dist/adapters/${protocolId}/products/${productId}/tests/testCases.js`
           )
         ).testCases
 

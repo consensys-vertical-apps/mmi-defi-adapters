@@ -7,7 +7,7 @@ import {
   multiProductFilter,
   multiProtocolFilter,
   multiProtocolTokenAddressFilter,
-} from '@metamask-institutional/defi-adapters'
+} from '@codefi/defi-adapters'
 import {
   buildPostgresDefiPositionsDetectionQuery,
   createDbPool,

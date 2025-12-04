@@ -1,5 +1,5 @@
+import { EvmChain } from '@codefi/defi-adapters'
 import { serve } from '@hono/node-server'
-import { EvmChain } from '@metamask-institutional/defi-adapters'
 import './bigint-json.js'
 import { buildApi } from './build-api.js'
 import { buildServices } from './build-services.js'

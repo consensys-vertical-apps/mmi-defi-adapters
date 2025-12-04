@@ -1,5 +1,5 @@
 {
-  "name": "@metamask-institutional/defi-adapters",
+  "name": "@codefi/defi-adapters",
   "version": "0.14.0",
   "description": "Defi adapters for MMI Dashboard",
   "repository": {
@@ -9,13 +9,18 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "build:watch": "npm run build -- --watch",
+    "release": "standard-version",
     "test:tsc": "tsc --noEmit"
   },
   "devDependencies": {
     "@typechain/ethers-v6": "^0.5.0",
+    "standard-version": "^9.3.2",
     "@types/better-sqlite3": "^7.6.11",
     "@types/inquirer": "^8.2.6",
     "@types/lodash": "^4.14.197",

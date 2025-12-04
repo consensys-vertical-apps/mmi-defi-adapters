@@ -2,7 +2,7 @@ import {
   ChainName,
   type DefiPositionDetection,
   EvmChain,
-} from '@metamask-institutional/defi-adapters'
+} from '@codefi/defi-adapters'
 import pg from 'pg'
 import type { Logger } from 'pino'
 import { createDbPool } from './postgres-utils.js'

@@ -1,0 +1,172 @@
+name: Base Node actions
+description: Base Node actions to restore cache, setup the node version and install packages if reqd
+inputs:
+  node_version:
+    description: Node.js version.
+    required: true
+  npm_client:
+    description: Npm client used for build and validation
+    required: true
+  npm_client_production_flag:
+    description: Npm client production flag
+    required: false
+    default: "--frozen-lockfile"
+  npm_registry_name:
+    description: Private registry name to resolve dependencies
+    required: false
+    default: "npm"
+  npm_deploy_registry_name:
+    description: Private registry name to deploy artifacts
+    required: false
+    default: "npm-local"
+  npm_registry_url:
+    description: Private registry URL
+    required: false
+    default: "https://consensys.jfrog.io/artifactory/api/npm/npm/"
+  node_modules_cache_key_prefix:
+    description: Cache key prefix for cached node_modules
+    required: false
+    default: "node-modules"
+  jfrog_url:
+    description: JFrog URL
+    default: https://consensys.jfrog.io
+    required: false
+  jfrog_oidc_provider_name:
+    description: OIDC provider name as configured on JFrog Platform
+    default: github
+    required: false
+  jfrog_audience:
+    description: audience for JFrog OIDC
+    required: false
+  yarn_version:
+    description: yarn version
+    required: false
+    default: "1"
+  yarn_client_production_flag:
+    description: Yarn client production flag for yarn 4
+    required: false
+    default: "--immutable"
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: NPM client check
+      shell: bash
+      env:
+        NPM_CLIENT: ${{ inputs.npm_client }}
+      run: |
+        if [[ ! "$NPM_CLIENT" =~ ^(yarn|npm|pnpm)$ ]]; then
+          echo "Please use a supported NPM client \'npm\' or \'yarn\'"
+          exit 1
+        fi
+
+    - name: JFrog Auth
+      uses: jfrog/setup-jfrog-cli@9fe0f98bd45b19e6e931d457f4e98f8f84461fb5
+      id: jfrog_token
+      env:
+        JF_URL: ${{ inputs.jfrog_url }}
+      with:
+        oidc-provider-name: ${{ inputs.jfrog_oidc_provider_name }}
+        oidc-audience: ${{ inputs.jfrog_audience }}
+
+    - name: Corepack enable
+      shell: bash
+      env:
+        NPM_CLIENT: ${{ inputs.npm_client }}
+        YARN_VERSION: ${{ inputs.yarn_version }}
+      run: |
+        if [ "$NPM_CLIENT" = "yarn" ] && [ "$YARN_VERSION" = "4" ]; then
+          corepack enable
+        fi
+        if [ "$NPM_CLIENT" = "pnpm" ]; then
+          corepack enable
+        fi
+
+    - uses: pnpm/action-setup@v4
+      if: ${{ inputs.npm_client == 'pnpm' }}
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node_version }}
+        always-auth: true
+        cache: ${{ inputs.npm_client }}
+      env:
+        JFROG_ACCESS_TOKEN: ${{ steps.jfrog_token.outputs.oidc-token }}
+
+    - name: Setup lock file name
+      id: lock_file_name
+      shell: bash
+      env:
+        NPM_CLIENT: ${{ inputs.npm_client }}
+      run: |
+        if [ "$NPM_CLIENT" = "yarn" ]; then
+          echo "file_name=**/yarn.lock" >> "$GITHUB_OUTPUT"
+        elif [ "$NPM_CLIENT" = "pnpm" ]; then
+          echo "file_name=**/pnpm-lock.yaml" >> "$GITHUB_OUTPUT"
+        else
+          echo "file_name=**/package-lock.json" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Set jf npm config
+      shell: bash
+      env:
+        JFROG_NPM_REPO: ${{ inputs.npm_registry_name }}
+        JFROG_NPM_DEPLOY_REPO: ${{ inputs.npm_deploy_registry_name }}
+      run: |
+        jf npm-config --global=true --repo-resolve="$JFROG_NPM_REPO" --repo-deploy="$JFROG_NPM_DEPLOY_REPO"
+
+    - name: Set npmrc config
+      shell: bash
+      env:
+        REGISTRY_URL: ${{ inputs.npm_registry_url }}
+        JFROG_ACCESS_TOKEN: ${{ steps.jfrog_token.outputs.oidc-token }}
+      run: |
+        npm config set registry "$REGISTRY_URL"
+        npm config set ${REGISTRY_URL#http*:}:_authToken $JFROG_ACCESS_TOKEN
+
+        # Find the user-level .npmrc file
+        NPMRC_PATH=$(npm config get userconfig)
+
+        if [ -n "$NPMRC_PATH" ]; then
+          echo "always-auth=true" >> "$NPMRC_PATH"
+          echo "Updated .npmrc at $NPMRC_PATH"
+        else
+          echo "Warning: Could not find user-level .npmrc. Creating one in the home directory."
+          NPMRC_PATH="$HOME/.npmrc"
+          echo "always-auth=true" >> "$NPMRC_PATH"
+        fi
+
+    - name: Set yarn 4 config
+      if: ${{ inputs.npm_client == 'yarn' && inputs.yarn_version == '4' }}
+      shell: bash
+      env:
+        REGISTRY_URL: ${{ inputs.npm_registry_url }}
+        JFROG_ACCESS_TOKEN: ${{ steps.jfrog_token.outputs.oidc-token }}
+      run: |
+        yarn config set -H npmRegistryServer $REGISTRY_URL
+        yarn config set -H 'npmRegistries["https://consensys.jfrog.io/artifactory/api/npm/npm/"].npmAlwaysAuth' true
+        yarn config set -H 'npmRegistries["https://consensys.jfrog.io/artifactory/api/npm/npm/"].npmAuthToken' $JFROG_ACCESS_TOKEN
+
+    - name: NPM client install
+      shell: bash
+      env:
+        NPM_CLIENT: ${{ inputs.npm_client }}
+        YARN_VERSION: ${{ inputs.yarn_version }}
+        NODE_AUTH_TOKEN: ${{ steps.jfrog_token.outputs.oidc-token }}
+        JFROG_ACCESS_TOKEN: ${{ steps.jfrog_token.outputs.oidc-token }}
+      run: |
+        if [ "$NPM_CLIENT" = "yarn" ]; then
+          if [ "$YARN_VERSION" = "4" ]; then
+            yarn install ${{ inputs.yarn_client_production_flag }}
+          else
+            yarn install ${{ inputs.npm_client_production_flag }}
+          fi
+        elif [ "$NPM_CLIENT" = "pnpm" ]; then
+          pnpm install ${{ inputs.npm_client_production_flag }}
+        else
+          jf npm ci --audit=false
+        fi

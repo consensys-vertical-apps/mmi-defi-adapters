@@ -4,7 +4,7 @@ import {
   DefiProvider,
   EvmChain,
   multiChainFilter,
-} from '@metamask-institutional/defi-adapters'
+} from '@codefi/defi-adapters'
 import { Command } from 'commander'
 import EthDater from 'ethereum-block-by-date'
 import { type JsonRpcProvider } from 'ethers'

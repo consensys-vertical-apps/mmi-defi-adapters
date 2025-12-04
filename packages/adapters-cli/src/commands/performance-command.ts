@@ -4,7 +4,7 @@ import {
   DefiProvider,
   multiChainFilter,
   multiProtocolFilter,
-} from '@metamask-institutional/defi-adapters'
+} from '@codefi/defi-adapters'
 import { Command } from 'commander'
 
 type RunData = {

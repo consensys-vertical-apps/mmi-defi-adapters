@@ -71,3 +71,45 @@ Watch the [build your snapshot tests video](https://drive.google.com/file/d/1pVW
 8. Populate your test cases file.
 9. Run:
    - `npm run build-snapshots -- -p <protocol-id>` to build your snapshot tests
+
+## Publishing the Adapter Library
+
+The adapter library is published to the `@codefi/defi-adapters` package on JFrog NPM registry.
+
+### Automatic Publishing
+
+Publishing happens automatically when changes are merged to `main`:
+
+1. All tests must pass (lint, unit tests, adapter snapshots, etc.)
+2. The `publish` workflow runs and publishes to JFrog
+
+### Version Management
+
+We use [standard-version](https://github.com/conventional-changelog/standard-version) for versioning based on [Conventional Commits](https://www.conventionalcommits.org/).
+
+**Before merging to main**, bump the version:
+
+```bash
+cd packages/adapters-library
+
+# Auto-bump based on commit history (recommended)
+npm run release
+
+# Or force a specific bump type
+npm run release -- --release-as patch   # 0.14.0 → 0.14.1
+npm run release -- --release-as minor   # 0.14.0 → 0.15.0
+npm run release -- --release-as major   # 0.14.0 → 1.0.0
+```
+
+This will:
+
+1. Analyze your conventional commits (`feat:`, `fix:`, `BREAKING CHANGE:`, etc.)
+2. Bump the version in `package.json`
+3. Generate/update `CHANGELOG.md`
+4. Create a git commit and tag
+
+### Conventional Commit Examples
+
+- `fix: resolve balance calculation error` → patch bump
+- `feat: add new protocol adapter` → minor bump
+- `feat!: change API response format` → major bump (breaking change)

@@ -1,4 +1,4 @@
-import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
+import { DefiProvider, EvmChain } from '@codefi/defi-adapters'
 import { JsonRpcProvider, Network } from 'ethers'
 import type { Logger } from 'pino'
 import {

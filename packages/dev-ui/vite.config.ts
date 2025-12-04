@@ -40,7 +40,7 @@ export default defineConfig({
   plugins: [react()],
   define: projectEnvs,
   // optimizeDeps: {
-  //   include: ['@metamask-institutional/defi-adapters'],
+  //   include: ['@codefi/defi-adapters'],
   // },
   // build: {
   //   commonjsOptions: {

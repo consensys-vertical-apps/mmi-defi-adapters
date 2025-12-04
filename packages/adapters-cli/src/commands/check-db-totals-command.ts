@@ -1,10 +1,6 @@
 import { promises as fs } from 'node:fs'
-import {
-  type Chain,
-  DefiProvider,
-  type Protocol,
-} from '@metamask-institutional/defi-adapters'
-import { supportedProtocols } from '@metamask-institutional/defi-adapters/dist/adapters/supportedProtocols.js'
+import { type Chain, DefiProvider, type Protocol } from '@codefi/defi-adapters'
+import { supportedProtocols } from '@codefi/defi-adapters/dist/adapters/supportedProtocols.js'
 import { Command } from 'commander'
 
 export function checkDbTotalsCommand(program: Command) {
