@@ -1,13 +1,13 @@
-import { describe, expect, it, vi, beforeEach, type Mock } from 'vitest'
-import { TokenType } from '../../types/adapter'
+import { type Mock, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { IProtocolAdapter } from '../../types/IProtocolAdapter'
-import type { IUnwrapCache } from '../unwrapCache'
+import { TokenType } from '../../types/adapter'
 import { Chain } from '../constants/chains'
-import { unwrap } from './unwrap'
 import {
   NotImplementedError,
   ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
 } from '../errors/errors'
+import type { IUnwrapCache } from '../unwrapCache'
+import { unwrap } from './unwrap'
 
 describe('unwrap', () => {
   let mockAdapter: IProtocolAdapter
@@ -101,10 +101,13 @@ describe('unwrap', () => {
 
     await unwrap(mockAdapter, undefined, tokens, 'balanceRaw', mockUnwrapCache)
 
-    expect(mockFetchUnwrapWithCache).toHaveBeenCalledWith(mockUnderlyingAdapter, {
-      protocolTokenAddress: '0xProtocolToken',
-      blockNumber: undefined,
-    })
+    expect(mockFetchUnwrapWithCache).toHaveBeenCalledWith(
+      mockUnderlyingAdapter,
+      {
+        protocolTokenAddress: '0xProtocolToken',
+        blockNumber: undefined,
+      },
+    )
     expect(tokens[0].tokens).toHaveLength(1)
     expect(tokens[0].tokens![0].address).toBe('0xUnderlyingToken')
     expect(tokens[0].tokens![0].balanceRaw).toBe(1500000000000000000n)
@@ -374,7 +377,13 @@ describe('unwrap', () => {
     mockFetchTokenAdapter.mockResolvedValue(mockUnderlyingAdapter)
     mockFetchUnwrapWithCache.mockResolvedValue({ tokens: [] })
 
-    await unwrap(mockAdapter, blockNumber, tokens, 'balanceRaw', mockUnwrapCache)
+    await unwrap(
+      mockAdapter,
+      blockNumber,
+      tokens,
+      'balanceRaw',
+      mockUnwrapCache,
+    )
 
     expect(mockFetchUnwrapWithCache).toHaveBeenCalledWith(
       mockUnderlyingAdapter,
@@ -456,4 +465,3 @@ describe('unwrap', () => {
     expect(tokens[0].tokens![0].balanceRaw).toBe(3000000000000000000n)
   })
 })
-
