@@ -267,15 +267,8 @@ jobs:
       - name: Generate coverage report
         run: npm run test:cov:merge
 
-      - name: Get Node.js path
-        id: node-path
-        run: echo "path=$(which node)" >> $GITHUB_OUTPUT
-
-      - name: Run sonarcloud-scan
-        uses: sonarsource/sonarcloud-github-action@v4
-        with:
-          args: >
-            -Dsonar.nodejs.executable=${{ steps.node-path.outputs.path }}
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-action@v5.3.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
