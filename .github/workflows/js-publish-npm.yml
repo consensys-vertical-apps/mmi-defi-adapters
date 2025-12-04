@@ -83,7 +83,7 @@ jobs:
           ${{ inputs.npm_client }} run build
           # Publish only adapters-library package
           cd packages/adapters-library
-          if [ ${{ inputs.npm_client }}  = "yarn" ]; then
+          if [ "${{ inputs.npm_client }}" = "yarn" ]; then
             echo "Publishing with ${{ inputs.npm_client }} client"
             ${{ inputs.npm_client }} run publish
           else

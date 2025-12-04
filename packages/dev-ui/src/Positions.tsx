@@ -28,12 +28,12 @@ import type {
   Chain,
   DefiPositionResponse,
   Protocol,
-} from '@metamask-institutional/defi-adapters'
+} from '@codefi/defi-adapters'
 import type {
   TokenType,
   Underlying,
-} from '@metamask-institutional/defi-adapters/dist/types/adapter'
-import type { DisplayPosition } from '@metamask-institutional/defi-adapters/dist/types/response'
+} from '@codefi/defi-adapters/dist/types/adapter'
+import type { DisplayPosition } from '@codefi/defi-adapters/dist/types/response'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'

@@ -1,7 +1,7 @@
 import {
   type AdditionalMetadataConfig,
   LOG_ARGUMENT_TRANSFORMERS,
-} from '@metamask-institutional/defi-adapters'
+} from '@codefi/defi-adapters'
 import { Interface, type Log, ZeroAddress, getAddress } from 'ethers'
 
 export function parseUserEventLog(

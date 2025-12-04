@@ -4,7 +4,7 @@ import type {
   DefiProvider,
   EvmChain,
   Support,
-} from '@metamask-institutional/defi-adapters'
+} from '@codefi/defi-adapters'
 import { Interface, id } from 'ethers'
 import type { Logger } from 'pino'
 import type { CacheClient } from './database/postgres-cache-client.js'

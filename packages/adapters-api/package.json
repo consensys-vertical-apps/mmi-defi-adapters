@@ -12,7 +12,7 @@
   "dependencies": {
     "@hono/node-server": "^1.14.1",
     "@hono/zod-openapi": "^0.19.5",
-    "@metamask-institutional/defi-adapters": "*",
+    "@codefi/defi-adapters": "*",
     "@metamask-institutional/workers": "*",
     "hono": "^4.7.7",
     "hono-pino": "^0.8.0",

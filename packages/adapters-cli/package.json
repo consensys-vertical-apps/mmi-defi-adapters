@@ -8,7 +8,7 @@
     "test:tsc": "tsc --noEmit"
   },
   "devDependencies": {
-    "@metamask-institutional/defi-adapters": "*",
+    "@codefi/defi-adapters": "*",
     "@metamask-institutional/workers": "*",
     "@solana/web3.js": "^1.98.0",
     "@types/better-sqlite3": "^7.6.11",

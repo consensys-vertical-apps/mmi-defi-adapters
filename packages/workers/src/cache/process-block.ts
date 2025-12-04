@@ -1,4 +1,4 @@
-import { type AdditionalMetadataConfig } from '@metamask-institutional/defi-adapters'
+import { type AdditionalMetadataConfig } from '@codefi/defi-adapters'
 import {
   type JsonRpcProvider,
   type TransactionReceipt,

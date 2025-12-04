@@ -275,6 +275,5 @@ jobs:
 
   publish:
     needs: [coverage-report]
-    # TODO: Uncomment after testing publish on PR
-    # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     uses: ./.github/workflows/publish.yaml

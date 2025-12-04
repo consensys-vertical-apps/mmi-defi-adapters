@@ -4,9 +4,9 @@ import {
   Chain,
   DefiProvider,
   Protocol,
-} from '@metamask-institutional/defi-adapters'
-import {} from '@metamask-institutional/defi-adapters'
-import { pascalCase } from '@metamask-institutional/defi-adapters'
+} from '@codefi/defi-adapters'
+import {} from '@codefi/defi-adapters'
+import { pascalCase } from '@codefi/defi-adapters'
 import { Command } from 'commander'
 import { lowerFirst } from 'lodash-es'
 import { addProtocol } from '../utils/add-protocol.ts'

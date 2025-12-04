@@ -1,5 +1,5 @@
-import { DefiProvider, EvmChain } from '@metamask-institutional/defi-adapters'
-import { ChainName } from '@metamask-institutional/defi-adapters'
+import { DefiProvider, EvmChain } from '@codefi/defi-adapters'
+import { ChainName } from '@codefi/defi-adapters'
 import { createDbPool } from '@metamask-institutional/workers'
 import pg from 'pg'
 import { NoDbService, PostgresService } from './db-service.js'
