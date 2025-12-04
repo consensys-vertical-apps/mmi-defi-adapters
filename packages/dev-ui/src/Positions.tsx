@@ -22,8 +22,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/solid'
-import { DevTool } from '@hookform/devtools'
 import type {
   Chain,
   DefiPositionResponse,
@@ -34,6 +32,8 @@ import type {
   Underlying,
 } from '@codefi/defi-adapters/dist/types/adapter'
 import type { DisplayPosition } from '@codefi/defi-adapters/dist/types/response'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/solid'
+import { DevTool } from '@hookform/devtools'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'

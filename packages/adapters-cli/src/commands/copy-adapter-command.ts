@@ -1,10 +1,6 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import {
-  Chain,
-  DefiProvider,
-  Protocol,
-} from '@codefi/defi-adapters'
+import { Chain, DefiProvider, Protocol } from '@codefi/defi-adapters'
 import {} from '@codefi/defi-adapters'
 import { pascalCase } from '@codefi/defi-adapters'
 import { Command } from 'commander'
