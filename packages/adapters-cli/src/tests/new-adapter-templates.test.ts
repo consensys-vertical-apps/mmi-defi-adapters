@@ -1,4 +1,4 @@
-import type { DefiProvider } from '@codefi/defi-adapters'
+import type { DefiProvider } from '@codefi/mmi-defi-adapters'
 import { describe, expect, it } from 'vitest'
 import {
   calculateAdapterOutcomes,

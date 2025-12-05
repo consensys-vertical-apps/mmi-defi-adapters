@@ -1,4 +1,4 @@
-import type { AdditionalMetadataConfig } from '@codefi/defi-adapters'
+import type { AdditionalMetadataConfig } from '@codefi/mmi-defi-adapters'
 import { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
 import type { CacheClient } from '../database/postgres-cache-client.js'

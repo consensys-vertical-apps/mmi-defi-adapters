@@ -1,5 +1,5 @@
-import { ChainName, type EvmChain } from '@codefi/defi-adapters'
-import { type AdditionalMetadataConfig } from '@codefi/defi-adapters'
+import { ChainName, type EvmChain } from '@codefi/mmi-defi-adapters'
+import { type AdditionalMetadataConfig } from '@codefi/mmi-defi-adapters'
 import { Mutex } from 'async-mutex'
 import type { Pool, PoolClient, PoolConfig } from 'pg'
 import type { Logger } from 'pino'

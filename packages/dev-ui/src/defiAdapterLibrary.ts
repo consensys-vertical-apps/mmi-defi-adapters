@@ -1,4 +1,4 @@
-import type { DefiProvider } from '@codefi/defi-adapters'
+import type { DefiProvider } from '@codefi/mmi-defi-adapters'
 
 type ApiResponse<T> = Promise<{
   data: Awaited<T>

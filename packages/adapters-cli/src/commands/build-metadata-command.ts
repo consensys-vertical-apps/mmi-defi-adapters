@@ -10,15 +10,15 @@ import {
   getInvalidAddresses,
   multiChainFilter,
   multiProtocolFilter,
-} from '@codefi/defi-adapters'
-import { supportedProtocols } from '@codefi/defi-adapters/dist/adapters/supportedProtocols.js'
+} from '@codefi/mmi-defi-adapters'
+import { supportedProtocols } from '@codefi/mmi-defi-adapters/dist/adapters/supportedProtocols.js'
 import type {
   AdditionalMetadataWithReservedFields,
   Erc20ExtendedMetadata,
   IProtocolAdapter,
   ProtocolToken,
-} from '@codefi/defi-adapters/dist/types/IProtocolAdapter.js'
-import type { Erc20Metadata } from '@codefi/defi-adapters/dist/types/erc20Metadata.js'
+} from '@codefi/mmi-defi-adapters/dist/types/IProtocolAdapter.js'
+import type { Erc20Metadata } from '@codefi/mmi-defi-adapters/dist/types/erc20Metadata.js'
 import Database from 'better-sqlite3'
 import chalk from 'chalk'
 import { Command } from 'commander'

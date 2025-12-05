@@ -1,4 +1,4 @@
-import { ChainName, EvmChain } from '@codefi/defi-adapters'
+import { ChainName, EvmChain } from '@codefi/mmi-defi-adapters'
 import pg from 'pg'
 
 export type BlocksStats = {

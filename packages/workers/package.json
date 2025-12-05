@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.14.3",
-    "@codefi/defi-adapters": "*",
+    "@codefi/mmi-defi-adapters": "*",
     "async-mutex": "^0.5.0",
     "ethers": "^6.7.1",
     "hono": "^4.7.11",

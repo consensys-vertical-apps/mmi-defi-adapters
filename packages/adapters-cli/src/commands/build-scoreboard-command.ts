@@ -7,7 +7,7 @@ import {
   type TestCase,
   filterMapSync,
   multiProtocolFilter,
-} from '@codefi/defi-adapters'
+} from '@codefi/mmi-defi-adapters'
 import { Command } from 'commander'
 import {
   type RpcInterceptedResponses,
@@ -73,7 +73,7 @@ export function buildScoreboardCommand(program: Command) {
       for (const { protocolId, productId } of allProducts) {
         const testCases: TestCase[] = (
           await import(
-            `@codefi/defi-adapters/dist/adapters/${protocolId}/products/${productId}/tests/testCases.js`
+            `@codefi/mmi-defi-adapters/dist/adapters/${protocolId}/products/${productId}/tests/testCases.js`
           )
         ).testCases
 

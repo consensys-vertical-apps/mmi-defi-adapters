@@ -2,7 +2,7 @@ import {
   ChainName,
   multiChainFilter,
   multiProtocolFilter,
-} from '@codefi/defi-adapters'
+} from '@codefi/mmi-defi-adapters'
 import Database, { type Database as DatabaseType } from 'better-sqlite3'
 import { Command } from 'commander'
 

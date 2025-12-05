@@ -2,7 +2,7 @@ import {
   ChainName,
   type DefiPositionDetection,
   EvmChain,
-} from '@codefi/defi-adapters'
+} from '@codefi/mmi-defi-adapters'
 import pg from 'pg'
 import type { Logger } from 'pino'
 import { createDbPool } from './postgres-utils.js'

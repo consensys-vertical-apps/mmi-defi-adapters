@@ -26,12 +26,12 @@ import type {
   Chain,
   DefiPositionResponse,
   Protocol,
-} from '@codefi/defi-adapters'
+} from '@codefi/mmi-defi-adapters'
 import type {
   TokenType,
   Underlying,
-} from '@codefi/defi-adapters/dist/types/adapter'
-import type { DisplayPosition } from '@codefi/defi-adapters/dist/types/response'
+} from '@codefi/mmi-defi-adapters/dist/types/adapter'
+import type { DisplayPosition } from '@codefi/mmi-defi-adapters/dist/types/response'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/solid'
 import { DevTool } from '@hookform/devtools'
 import { useQuery, useQueryClient } from '@tanstack/react-query'

@@ -5,7 +5,7 @@ import {
   isKebabCase,
   isPascalCase,
   pascalCase,
-} from '@codefi/defi-adapters'
+} from '@codefi/mmi-defi-adapters'
 import type { Answers } from 'inquirer'
 import { kebabCase } from 'lodash-es'
 import { blankAdapterTemplate } from './blankAdapterTemplate.ts'

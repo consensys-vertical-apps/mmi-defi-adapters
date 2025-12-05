@@ -1,4 +1,4 @@
-import type { Chain } from '@codefi/defi-adapters'
+import type { Chain } from '@codefi/mmi-defi-adapters'
 
 export function uniswapV2PoolForkAdapterTemplate({
   protocolKey,
