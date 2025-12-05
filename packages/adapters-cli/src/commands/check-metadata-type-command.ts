@@ -1,5 +1,5 @@
-import { type Chain, DefiProvider, type Protocol } from '@codefi/defi-adapters'
-import { supportedProtocols } from '@codefi/defi-adapters/dist/adapters/supportedProtocols.js'
+import { type Chain, DefiProvider, type Protocol } from '@codefi/mmi-defi-adapters'
+import { supportedProtocols } from '@codefi/mmi-defi-adapters/dist/adapters/supportedProtocols.js'
 import type { Command } from 'commander'
 
 export function checkMetadataTypeCommand(program: Command) {

@@ -1,4 +1,4 @@
-import type { DefiProvider, EvmChain } from '@codefi/defi-adapters'
+import type { DefiProvider, EvmChain } from '@codefi/mmi-defi-adapters'
 import type { Logger } from 'pino'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { CacheClient } from './database/postgres-cache-client.js'

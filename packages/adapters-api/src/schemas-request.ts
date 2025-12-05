@@ -1,4 +1,4 @@
-import { Chain, Protocol } from '@codefi/defi-adapters'
+import { Chain, Protocol } from '@codefi/mmi-defi-adapters'
 import { getAddress } from 'ethers'
 import { type ZodTypeAny, z } from 'zod'
 

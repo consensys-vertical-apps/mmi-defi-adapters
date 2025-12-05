@@ -7,7 +7,7 @@ import {
   multiProductFilter,
   multiProtocolFilter,
   multiProtocolTokenAddressFilter,
-} from '@codefi/defi-adapters'
+} from '@codefi/mmi-defi-adapters'
 import {
   buildPostgresDefiPositionsDetectionQuery,
   createDbPool,

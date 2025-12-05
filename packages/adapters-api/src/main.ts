@@ -1,4 +1,4 @@
-import { EvmChain } from '@codefi/defi-adapters'
+import { EvmChain } from '@codefi/mmi-defi-adapters'
 import { serve } from '@hono/node-server'
 import './bigint-json.js'
 import { buildApi } from './build-api.js'

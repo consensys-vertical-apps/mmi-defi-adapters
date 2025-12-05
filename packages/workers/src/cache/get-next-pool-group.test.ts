@@ -1,4 +1,4 @@
-import { EvmChain } from '@codefi/defi-adapters'
+import { EvmChain } from '@codefi/mmi-defi-adapters'
 import { describe, expect, it } from 'vitest'
 import { getNextPoolGroup } from './get-next-pool-group'
 

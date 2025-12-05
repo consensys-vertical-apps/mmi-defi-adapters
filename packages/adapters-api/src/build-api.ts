@@ -1,4 +1,4 @@
-import { DefiProvider, EvmChain } from '@codefi/defi-adapters'
+import { DefiProvider, EvmChain } from '@codefi/mmi-defi-adapters'
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi'
 import { type PinoLogger, pinoLogger } from 'hono-pino'
 import { cors } from 'hono/cors'

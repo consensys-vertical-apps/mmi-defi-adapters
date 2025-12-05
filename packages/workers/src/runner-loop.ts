@@ -1,5 +1,5 @@
 import { parentPort } from 'node:worker_threads'
-import { AVERAGE_BLOCKS_PER_DAY, type EvmChain } from '@codefi/defi-adapters'
+import { AVERAGE_BLOCKS_PER_DAY, type EvmChain } from '@codefi/mmi-defi-adapters'
 import type { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
 import { buildHistoricCache } from './cache/build-historic-cache.js'

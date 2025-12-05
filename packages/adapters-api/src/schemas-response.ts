@@ -1,4 +1,4 @@
-import { Chain, PositionType, Protocol, TokenType } from '@codefi/defi-adapters'
+import { Chain, PositionType, Protocol, TokenType } from '@codefi/mmi-defi-adapters'
 import { z } from 'zod'
 
 // All these schemas are generated for the OpenAPI spec, not for validation

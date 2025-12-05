@@ -1,7 +1,7 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Worker } from 'node:worker_threads'
-import { DefiProvider, EvmChain } from '@codefi/defi-adapters'
+import { DefiProvider, EvmChain } from '@codefi/mmi-defi-adapters'
 import { serve } from '@hono/node-server'
 import { buildApi } from './api/build-api.js'
 import { logger } from './logger.js'
