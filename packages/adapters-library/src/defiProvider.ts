@@ -2,7 +2,7 @@
  * DeFi Provider - Main entry point for querying DeFi positions
  *
  * This module handles the complex flow of:
- * 1. Detecting user's DeFi positions across all chains using database queries
+ * 1. Detecting users' DeFi positions across all chains using database queries
  * 2. Extracting position metadata (e.g., token IDs, validator pubkeys) for each contract
  * 3. Filtering positions by protocol, chain, and product
  * 4. Calling individual protocol adapters with the relevant metadata
