@@ -168,5 +168,5 @@ runs:
         elif [ "$NPM_CLIENT" = "pnpm" ]; then
           pnpm install ${{ inputs.npm_client_production_flag }}
         else
-          jf npm ci --audit=false
+          jf npm ci --audit=false --include=optional
         fi
