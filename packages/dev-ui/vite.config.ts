@@ -40,7 +40,7 @@ export default defineConfig({
   plugins: [react()],
   define: projectEnvs,
   // optimizeDeps: {
-  //   include: ['@codefi/defi-adapters'],
+  //   include: ['@codefi/mmi-defi-adapters'],
   // },
   // build: {
   //   commonjsOptions: {

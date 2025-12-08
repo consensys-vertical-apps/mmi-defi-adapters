@@ -1,4 +1,4 @@
-import { EvmChain } from '@codefi/defi-adapters'
+import { EvmChain } from '@codefi/mmi-defi-adapters'
 import { JsonRpcProvider, getAddress } from 'ethers'
 import type { Logger } from 'pino'
 import type { CacheClient } from '../database/postgres-cache-client.js'

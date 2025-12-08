@@ -9,7 +9,7 @@ import {
   type TestCase,
   filterMapSync,
   multiProtocolFilter,
-} from '@codefi/defi-adapters'
+} from '@codefi/mmi-defi-adapters'
 import { Command, Option } from 'commander'
 import { kebabCase } from 'lodash-es'
 import { parse, print, types, visit } from 'recast'
@@ -74,7 +74,7 @@ export function buildSnapshotsCommand(program: Command) {
       for (const { protocolId, productId } of allProducts) {
         const testCases: TestCase[] = (
           await import(
-            `@codefi/defi-adapters/dist/adapters/${protocolId}/products/${productId}/tests/testCases.js`
+            `@codefi/mmi-defi-adapters/dist/adapters/${protocolId}/products/${productId}/tests/testCases.js`
           )
         ).testCases
 

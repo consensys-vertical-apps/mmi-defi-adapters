@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
-import { DefiProvider, pascalCase } from '@codefi/defi-adapters'
+import { DefiProvider, pascalCase } from '@codefi/mmi-defi-adapters'
 import { ExitPromptError } from '@inquirer/core'
 import chalk from 'chalk'
 import type { Command } from 'commander'

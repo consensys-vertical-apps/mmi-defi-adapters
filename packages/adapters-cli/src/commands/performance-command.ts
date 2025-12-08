@@ -4,7 +4,7 @@ import {
   DefiProvider,
   multiChainFilter,
   multiProtocolFilter,
-} from '@codefi/defi-adapters'
+} from '@codefi/mmi-defi-adapters'
 import { Command } from 'commander'
 
 type RunData = {
