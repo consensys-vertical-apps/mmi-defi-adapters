@@ -74,7 +74,7 @@ Watch the [build your snapshot tests video](https://drive.google.com/file/d/1pVW
 
 ## Publishing the Adapter Library
 
-The adapter library is published to the `@codefi/mmi-defi-adapters` package on JFrog NPM registry.
+The adapter library is published to the `@codefi/defi-adapters` package on JFrog NPM registry.
 
 ### Automatic Publishing
 

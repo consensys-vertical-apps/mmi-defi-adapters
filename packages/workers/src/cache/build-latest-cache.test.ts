@@ -1,7 +1,7 @@
 import type { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import type { CacheClient } from '../postgres-cache-client.js'
+import type { CacheClient } from '../database/postgres-cache-client.js'
 import { extractErrorMessage } from '../utils/extractErrorMessage.js'
 import { buildLatestCache } from './build-latest-cache.js'
 import { processBlock } from './process-block.js'
