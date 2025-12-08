@@ -164,8 +164,8 @@ export abstract class UniswapV2PoolForkAdapter implements IProtocolAdapter {
           )
         } catch (error) {
           logger.error(
-            `Error processing pair: ${pair.pairAddress}`,
-            (error as Error).message,
+            { pairAddress: pair.pairAddress, error: (error as Error).message },
+            'Error processing pair',
           )
         }
       })

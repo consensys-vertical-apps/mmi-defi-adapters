@@ -170,7 +170,10 @@ export class Eth2ValidatorStakingStakingAdapter implements IProtocolAdapter {
 
       return data.data
     } catch (error) {
-      logger.error('Error fetching validator data:', error)
+      logger.error(
+        { error: error instanceof Error ? error.message : String(error) },
+        'Error fetching validator data',
+      )
       return null
     }
   }
