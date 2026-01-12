@@ -1,6 +1,7 @@
 import { Chain } from '../../../../../core/constants/chains'
 import type { TestCase } from '../../../../../types/testCase'
 
+// need to skip - getting rpc failure
 export const testCases: TestCase[] = [
   // {
   //   chainId: Chain.Polygon,
