@@ -8,10 +8,11 @@
       "name": "Aave v3 Staking",
       "description": "AaveV3 defi adapter for Safety Module staking",
       "siteUrl": "https://app.aave.com/staking/",
-      "iconUrl": "https://cryptologos.cc/logos/aave-aave-logo.png",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/dapps/aave.com.png",
       "positionType": "stake",
       "chainId": 1,
       "productId": "staking",
+      "protocolDisplayName": "Aave V3",
       "chainName": "ethereum",
       "success": true,
       "tokens": [
@@ -61,11 +62,11 @@
     "731ce42c7bf681cde66ce61e5f845885": {
       "result": "0x00000000000000000000000000000000000000000000000700000000000006e90000000000000000000000000000000000000000000000000000004190af6cd000000000000000000000000000000000000000000000000000000000672cb65400000000000000000000000000000000000000000000000000000000672cb66300000000000000000000000000000000000000000000000700000000000006e9"
     },
-    "a527f1dc81f463bf406299c2a6112af0": {
-      "result": "0x00000000000000000000000000000000000000000000000000014300d9716556"
-    },
     "540e67fcfa7c02400c79a292fc5da6ca": {
       "result": "0x00000000000000000000000000000000000000000000000000e6da0cd3b408b2"
+    },
+    "a527f1dc81f463bf406299c2a6112af0": {
+      "result": "0x00000000000000000000000000000000000000000000000000014300d9716556"
     }
   }
 }

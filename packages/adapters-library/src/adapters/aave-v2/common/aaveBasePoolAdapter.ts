@@ -131,6 +131,13 @@ export const protocolDataProviderContractAddresses: Partial<
         ),
       },
     ],
+    [Chain.Linea]: [
+      {
+        protocolDataProvider: getAddress(
+          '0x47cd4b507B81cB831669c71c7077f4daF6762FF4',
+        ),
+      },
+    ],
   },
 }
 

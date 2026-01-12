@@ -231,6 +231,12 @@ export const supportedProtocols: Record<
       AaveV3VariableDebtTokenPoolAdapter,
       AaveV3RewardsAdapter,
     ],
+
+    [Chain.Linea]: [
+      AaveV3ATokenPoolAdapter,
+      AaveV3VariableDebtTokenPoolAdapter,
+      AaveV3RewardsAdapter,
+    ],
   },
 
   [Protocol.AngleProtocol]: {

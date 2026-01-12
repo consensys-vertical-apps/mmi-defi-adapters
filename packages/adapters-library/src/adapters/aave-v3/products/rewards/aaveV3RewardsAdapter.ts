@@ -57,6 +57,7 @@ export class AaveV3RewardsAdapter implements IProtocolAdapter {
     [Chain.Base]: getAddress('0xf9cc4F0D883F1a1eb2c253bdb46c254Ca51E1F44'),
     [Chain.Polygon]: getAddress('0x929EC64c34a17401F460460D4B9390518E5B473e'),
     [Chain.Optimism]: getAddress('0x929EC64c34a17401F460460D4B9390518E5B473e'),
+    [Chain.Linea]: getAddress('0xc67bb8F2314fA0df50cBa314c6509A7bdAD500C0'),
   }
 
   private INCENTIVES_CONTRACT_DETAILS: Erc20Metadata

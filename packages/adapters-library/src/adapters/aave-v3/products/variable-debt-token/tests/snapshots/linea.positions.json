@@ -1,0 +1,51 @@
+{
+  "blockNumber": 27758460,
+  "latency": "Latency: 0.866 seconds",
+  "aggregatedValues": [],
+  "snapshot": [
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 VariableDebtToken",
+      "description": "Aave v3 defi adapter for variable interest-accruing token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/dapps/aave.com.png",
+      "positionType": "borrow",
+      "chainId": 59144,
+      "productId": "variable-debt-token",
+      "metadata": {
+        "groupPositions": true
+      },
+      "protocolDisplayName": "Aave V3",
+      "chainName": "linea",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x8619B395Fd96DCFe3f2711d8BF84b26338db0294",
+          "name": "Aave Linea Variable Debt mUSD",
+          "symbol": "variableDebtLinmUSD",
+          "decimals": 6,
+          "balanceRaw": "32009069712n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xacA92E438df0B2401fF60dA7E4337B687a2435DA",
+              "name": "MetaMask USD",
+              "symbol": "mUSD",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "32009069712n",
+              "balance": 32009.069712,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xacA92E438df0B2401fF60dA7E4337B687a2435DA/logo.png"
+            }
+          ],
+          "balance": 32009.069712
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "3b062dd72eb3f466658ccad8279a768e": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000773e3a490"
+    }
+  }
+}
