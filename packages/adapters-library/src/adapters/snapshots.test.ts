@@ -54,47 +54,77 @@ const normalizeNegativeZero = (obj) => {
   return obj
 }
 
-const allTestCases = await (async () => {
-  const support = await defiProvider.getSupport({
-    filterProtocolIds: filterProtocolId ? [filterProtocolId] : undefined,
-    includeProtocolTokens: false,
-  })
+let allTestCases: Record<Protocol, Record<string, TestCase[]>>
 
-  return await Object.values(support).reduce(
-    async (acc, adapters) => {
-      ;(await acc)[adapters[0].protocolDetails.protocolId] =
-        await adapters.reduce(
-          async (acc, adapter) => {
-            if (
-              filterProductId &&
-              adapter.protocolDetails.productId !== filterProductId
-            ) {
+try {
+  allTestCases = await (async () => {
+    const support = await defiProvider.getSupport({
+      filterProtocolIds: filterProtocolId ? [filterProtocolId] : undefined,
+      includeProtocolTokens: false,
+    })
+
+    return await Object.values(support).reduce(
+      async (acc, adapters) => {
+        ;(await acc)[adapters[0].protocolDetails.protocolId] =
+          await adapters.reduce(
+            async (acc, adapter) => {
+              if (
+                filterProductId &&
+                adapter.protocolDetails.productId !== filterProductId
+              ) {
+                return acc
+              }
+              try {
+                ;(await acc)[adapter.protocolDetails.productId] = (
+                  await import(
+                    `./${adapter.protocolDetails.protocolId}/products/${adapter.protocolDetails.productId}/tests/testCases`
+                  )
+                ).testCases
+              } catch (error) {
+                logger.error(
+                  {
+                    error,
+                    protocolId: adapter.protocolDetails.protocolId,
+                    productId: adapter.protocolDetails.productId,
+                  },
+                  'Failed to load test cases',
+                )
+                ;(await acc)[adapter.protocolDetails.productId] = []
+              }
+
               return acc
-            }
-            ;(await acc)[adapter.protocolDetails.productId] = (
-              await import(
-                `./${adapter.protocolDetails.protocolId}/products/${adapter.protocolDetails.productId}/tests/testCases`
-              )
-            ).testCases
+            },
+            {} as Promise<Record<string, TestCase[]>>,
+          )
 
-            return acc
-          },
-          {} as Promise<Record<string, TestCase[]>>,
-        )
+        return acc
+      },
+      {} as Promise<Record<Protocol, Record<string, TestCase[]>>>,
+    )
+  })()
+} catch (error) {
+  logger.error({ error, filterProtocolId, filterProductId }, 'Failed to load test cases')
+  allTestCases = {} as Record<Protocol, Record<string, TestCase[]>>
+}
 
-      return acc
-    },
-    {} as Promise<Record<Protocol, Record<string, TestCase[]>>>,
-  )
-})()
-
-Object.entries(allTestCases).forEach(([protocolId, protocolTestCases]) => {
-  Object.entries(protocolTestCases).forEach(([productId, productTestCases]) => {
-    describe(protocolId, () => {
-      runProductTests(protocolId as Protocol, productId, productTestCases)
+// Always create at least one describe block so Vitest recognizes this as a test file
+if (Object.keys(allTestCases).length === 0) {
+  describe('Test case loading failed', () => {
+    it('should have loaded test cases', () => {
+      throw new Error(
+        `No test cases found. Filter: protocolId=${filterProtocolId}, productId=${filterProductId}. Check that the protocol/product exists and has test cases.`,
+      )
     })
   })
-})
+} else {
+  Object.entries(allTestCases).forEach(([protocolId, protocolTestCases]) => {
+    Object.entries(protocolTestCases).forEach(([productId, productTestCases]) => {
+      describe(protocolId, () => {
+        runProductTests(protocolId as Protocol, productId, productTestCases)
+      })
+    })
+  })
+}
 
 function runProductTests(
   protocolId: Protocol,
