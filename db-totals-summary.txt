@@ -11,9 +11,9 @@ Database Pool totals Adapters:
  ChainId: 43114 Protocol ID: aave-v2 Product ID: a-token Total Pools: 7
  ChainId: 43114 Protocol ID: aave-v2 Product ID: stable-debt-token Total Pools: 7
  ChainId: 43114 Protocol ID: aave-v2 Product ID: variable-debt-token Total Pools: 7
- ChainId: 1 Protocol ID: aave-v3 Product ID: a-token Total Pools: 63
+ ChainId: 1 Protocol ID: aave-v3 Product ID: a-token Total Pools: 73
  ChainId: 1 Protocol ID: aave-v3 Product ID: stable-debt-token Total Pools: 32
- ChainId: 1 Protocol ID: aave-v3 Product ID: variable-debt-token Total Pools: 63
+ ChainId: 1 Protocol ID: aave-v3 Product ID: variable-debt-token Total Pools: 73
  ChainId: 1 Protocol ID: aave-v3 Product ID: rewards Total Pools: 1
  ChainId: 1 Protocol ID: aave-v3 Product ID: staking Total Pools: 3
  ChainId: 10 Protocol ID: aave-v3 Product ID: a-token Total Pools: 14
@@ -24,18 +24,21 @@ Database Pool totals Adapters:
  ChainId: 137 Protocol ID: aave-v3 Product ID: stable-debt-token Total Pools: 14
  ChainId: 137 Protocol ID: aave-v3 Product ID: variable-debt-token Total Pools: 21
  ChainId: 137 Protocol ID: aave-v3 Product ID: rewards Total Pools: 1
- ChainId: 8453 Protocol ID: aave-v3 Product ID: a-token Total Pools: 13
+ ChainId: 8453 Protocol ID: aave-v3 Product ID: a-token Total Pools: 14
  ChainId: 8453 Protocol ID: aave-v3 Product ID: stable-debt-token Total Pools: 7
- ChainId: 8453 Protocol ID: aave-v3 Product ID: variable-debt-token Total Pools: 13
+ ChainId: 8453 Protocol ID: aave-v3 Product ID: variable-debt-token Total Pools: 14
  ChainId: 8453 Protocol ID: aave-v3 Product ID: rewards Total Pools: 1
- ChainId: 42161 Protocol ID: aave-v3 Product ID: a-token Total Pools: 19
+ ChainId: 42161 Protocol ID: aave-v3 Product ID: a-token Total Pools: 20
  ChainId: 42161 Protocol ID: aave-v3 Product ID: stable-debt-token Total Pools: 15
- ChainId: 42161 Protocol ID: aave-v3 Product ID: variable-debt-token Total Pools: 19
+ ChainId: 42161 Protocol ID: aave-v3 Product ID: variable-debt-token Total Pools: 20
  ChainId: 42161 Protocol ID: aave-v3 Product ID: rewards Total Pools: 1
- ChainId: 43114 Protocol ID: aave-v3 Product ID: a-token Total Pools: 14
+ ChainId: 43114 Protocol ID: aave-v3 Product ID: a-token Total Pools: 18
  ChainId: 43114 Protocol ID: aave-v3 Product ID: stable-debt-token Total Pools: 10
- ChainId: 43114 Protocol ID: aave-v3 Product ID: variable-debt-token Total Pools: 14
+ ChainId: 43114 Protocol ID: aave-v3 Product ID: variable-debt-token Total Pools: 18
  ChainId: 43114 Protocol ID: aave-v3 Product ID: rewards Total Pools: 1
+ ChainId: 59144 Protocol ID: aave-v3 Product ID: a-token Total Pools: 9
+ ChainId: 59144 Protocol ID: aave-v3 Product ID: variable-debt-token Total Pools: 9
+ ChainId: 59144 Protocol ID: aave-v3 Product ID: rewards Total Pools: 1
  ChainId: 1 Protocol ID: angle-protocol Product ID: savings Total Pools: 2
  ChainId: 10 Protocol ID: angle-protocol Product ID: savings Total Pools: 2
  ChainId: 137 Protocol ID: angle-protocol Product ID: savings Total Pools: 2
@@ -44,15 +47,15 @@ Database Pool totals Adapters:
  ChainId: 43114 Protocol ID: angle-protocol Product ID: savings Total Pools: 2
  ChainId: 59144 Protocol ID: angle-protocol Product ID: savings Total Pools: 1
  ChainId: 1 Protocol ID: balancer-v2 Product ID: vesting Total Pools: 1
- ChainId: 1 Protocol ID: balancer-v2 Product ID: pool Total Pools: 1783
- ChainId: 1 Protocol ID: balancer-v2 Product ID: farming Total Pools: 327
- ChainId: 10 Protocol ID: balancer-v2 Product ID: pool Total Pools: 366
- ChainId: 137 Protocol ID: balancer-v2 Product ID: pool Total Pools: 3860
- ChainId: 8453 Protocol ID: balancer-v2 Product ID: pool Total Pools: 514
- ChainId: 42161 Protocol ID: balancer-v2 Product ID: pool Total Pools: 1519
- ChainId: 43114 Protocol ID: balancer-v2 Product ID: pool Total Pools: 92
+ ChainId: 1 Protocol ID: balancer-v2 Product ID: pool Total Pools: 1789
+ ChainId: 1 Protocol ID: balancer-v2 Product ID: farming Total Pools: 333
+ ChainId: 10 Protocol ID: balancer-v2 Product ID: pool Total Pools: 370
+ ChainId: 137 Protocol ID: balancer-v2 Product ID: pool Total Pools: 3864
+ ChainId: 8453 Protocol ID: balancer-v2 Product ID: pool Total Pools: 528
+ ChainId: 42161 Protocol ID: balancer-v2 Product ID: pool Total Pools: 1523
+ ChainId: 43114 Protocol ID: balancer-v2 Product ID: pool Total Pools: 97
  ChainId: 1 Protocol ID: beefy Product ID: cow-token Total Pools: 0
- ChainId: 1 Protocol ID: beefy Product ID: moo-token Total Pools: 137
+ ChainId: 1 Protocol ID: beefy Product ID: moo-token Total Pools: 166
  ChainId: 1 Protocol ID: beefy Product ID: rcow-token Total Pools: 0
  ChainId: 1 Protocol ID: beefy Product ID: rmoo-token Total Pools: 10
  ChainId: 10 Protocol ID: beefy Product ID: cow-token Total Pools: 39
@@ -63,20 +66,20 @@ Database Pool totals Adapters:
  ChainId: 137 Protocol ID: beefy Product ID: moo-token Total Pools: 15
  ChainId: 137 Protocol ID: beefy Product ID: rcow-token Total Pools: 21
  ChainId: 137 Protocol ID: beefy Product ID: rmoo-token Total Pools: 1
- ChainId: 8453 Protocol ID: beefy Product ID: cow-token Total Pools: 160
- ChainId: 8453 Protocol ID: beefy Product ID: moo-token Total Pools: 276
- ChainId: 8453 Protocol ID: beefy Product ID: rcow-token Total Pools: 147
- ChainId: 8453 Protocol ID: beefy Product ID: rmoo-token Total Pools: 70
- ChainId: 42161 Protocol ID: beefy Product ID: cow-token Total Pools: 123
- ChainId: 42161 Protocol ID: beefy Product ID: moo-token Total Pools: 179
+ ChainId: 8453 Protocol ID: beefy Product ID: cow-token Total Pools: 176
+ ChainId: 8453 Protocol ID: beefy Product ID: moo-token Total Pools: 310
+ ChainId: 8453 Protocol ID: beefy Product ID: rcow-token Total Pools: 160
+ ChainId: 8453 Protocol ID: beefy Product ID: rmoo-token Total Pools: 73
+ ChainId: 42161 Protocol ID: beefy Product ID: cow-token Total Pools: 124
+ ChainId: 42161 Protocol ID: beefy Product ID: moo-token Total Pools: 182
  ChainId: 42161 Protocol ID: beefy Product ID: rcow-token Total Pools: 123
  ChainId: 42161 Protocol ID: beefy Product ID: rmoo-token Total Pools: 64
  ChainId: 43114 Protocol ID: beefy Product ID: cow-token Total Pools: 8
- ChainId: 43114 Protocol ID: beefy Product ID: moo-token Total Pools: 24
+ ChainId: 43114 Protocol ID: beefy Product ID: moo-token Total Pools: 26
  ChainId: 43114 Protocol ID: beefy Product ID: rcow-token Total Pools: 8
  ChainId: 43114 Protocol ID: beefy Product ID: rmoo-token Total Pools: 6
- ChainId: 59144 Protocol ID: beefy Product ID: cow-token Total Pools: 12
- ChainId: 59144 Protocol ID: beefy Product ID: moo-token Total Pools: 35
+ ChainId: 59144 Protocol ID: beefy Product ID: cow-token Total Pools: 17
+ ChainId: 59144 Protocol ID: beefy Product ID: moo-token Total Pools: 41
  ChainId: 59144 Protocol ID: beefy Product ID: rcow-token Total Pools: 12
  ChainId: 59144 Protocol ID: beefy Product ID: rmoo-token Total Pools: 0
  ChainId: 1 Protocol ID: carbon-defi Product ID: strategies Total Pools: 1
@@ -93,34 +96,35 @@ Database Pool totals Adapters:
  ChainId: 8453 Protocol ID: compound-v3 Product ID: borrow Total Pools: 4
  ChainId: 42161 Protocol ID: compound-v3 Product ID: lending Total Pools: 4
  ChainId: 42161 Protocol ID: compound-v3 Product ID: borrow Total Pools: 4
- ChainId: 1 Protocol ID: convex Product ID: pool Total Pools: 487
+ ChainId: 1 Protocol ID: convex Product ID: pool Total Pools: 521
  ChainId: 1 Protocol ID: convex Product ID: staked-cvx Total Pools: 1
- ChainId: 1 Protocol ID: convex Product ID: staking Total Pools: 487
+ ChainId: 1 Protocol ID: convex Product ID: staking Total Pools: 521
  ChainId: 1 Protocol ID: convex Product ID: cvxcrv-wrapper Total Pools: 1
  ChainId: 1 Protocol ID: convex Product ID: locked-cvx Total Pools: 1
  ChainId: 137 Protocol ID: convex Product ID: sidechain-staking Total Pools: 18
  ChainId: 42161 Protocol ID: convex Product ID: sidechain-staking Total Pools: 39
- ChainId: 1 Protocol ID: curve Product ID: pool Total Pools: 442
- ChainId: 1 Protocol ID: curve Product ID: staking Total Pools: 374
+ ChainId: 1 Protocol ID: curve Product ID: pool Total Pools: 496
+ ChainId: 1 Protocol ID: curve Product ID: staking Total Pools: 418
  ChainId: 1 Protocol ID: curve Product ID: voting-escrow Total Pools: 1
- ChainId: 10 Protocol ID: curve Product ID: pool Total Pools: 14
+ ChainId: 10 Protocol ID: curve Product ID: pool Total Pools: 15
  ChainId: 10 Protocol ID: curve Product ID: staking Total Pools: 14
- ChainId: 137 Protocol ID: curve Product ID: pool Total Pools: 13
+ ChainId: 137 Protocol ID: curve Product ID: pool Total Pools: 16
  ChainId: 137 Protocol ID: curve Product ID: staking Total Pools: 11
- ChainId: 8453 Protocol ID: curve Product ID: pool Total Pools: 11
+ ChainId: 8453 Protocol ID: curve Product ID: pool Total Pools: 12
  ChainId: 8453 Protocol ID: curve Product ID: staking Total Pools: 7
- ChainId: 42161 Protocol ID: curve Product ID: pool Total Pools: 50
+ ChainId: 42161 Protocol ID: curve Product ID: pool Total Pools: 51
  ChainId: 42161 Protocol ID: curve Product ID: staking Total Pools: 42
- ChainId: 43114 Protocol ID: curve Product ID: pool Total Pools: 7
- ChainId: 43114 Protocol ID: curve Product ID: staking Total Pools: 5
+ ChainId: 43114 Protocol ID: curve Product ID: pool Total Pools: 8
+ ChainId: 43114 Protocol ID: curve Product ID: staking Total Pools: 7
  ChainId: 1 Protocol ID: dinero Product ID: px-eth Total Pools: 1
  ChainId: 1 Protocol ID: dinero Product ID: apx-eth Total Pools: 1
+ ChainId: 1 Protocol ID: eth-2-validator-staking Product ID: staking Total Pools: 1
  ChainId: 1 Protocol ID: ethena Product ID: staked-usde Total Pools: 1
  ChainId: 1 Protocol ID: ethena Product ID: lp-staking Total Pools: 15
  ChainId: 1 Protocol ID: ethena Product ID: staked-ena Total Pools: 1
  ChainId: 1 Protocol ID: etherfi Product ID: e-eth Total Pools: 1
  ChainId: 1 Protocol ID: etherfi Product ID: we-eth Total Pools: 1
- ChainId: 1 Protocol ID: etherfi Product ID: liquid Total Pools: 71
+ ChainId: 1 Protocol ID: etherfi Product ID: liquid Total Pools: 92
  ChainId: 8453 Protocol ID: etherfi Product ID: l2 Total Pools: 1
  ChainId: 59144 Protocol ID: etherfi Product ID: l2 Total Pools: 1
  ChainId: 1 Protocol ID: flux Product ID: supply-market Total Pools: 5
@@ -131,15 +135,15 @@ Database Pool totals Adapters:
  ChainId: 43114 Protocol ID: gmx Product ID: glp Total Pools: 1
  ChainId: 43114 Protocol ID: gmx Product ID: farming Total Pools: 2
  ChainId: 43114 Protocol ID: gmx Product ID: vesting Total Pools: 2
- ChainId: 42161 Protocol ID: gmx-v2 Product ID: gm-pool Total Pools: 92
- ChainId: 43114 Protocol ID: gmx-v2 Product ID: gm-pool Total Pools: 17
+ ChainId: 42161 Protocol ID: gmx-v2 Product ID: gm-pool Total Pools: 118
+ ChainId: 43114 Protocol ID: gmx-v2 Product ID: gm-pool Total Pools: 20
  ChainId: 8453 Protocol ID: iziswap Product ID: pool Total Pools: 1
  ChainId: 42161 Protocol ID: iziswap Product ID: pool Total Pools: 1
  ChainId: 59144 Protocol ID: iziswap Product ID: pool Total Pools: 1
  ChainId: -1 Protocol ID: jito Product ID: jitosol Total Pools: 1
  ChainId: 1 Protocol ID: lido Product ID: st-eth Total Pools: 1
  ChainId: 1 Protocol ID: lido Product ID: wst-eth Total Pools: 1
- ChainId: 59144 Protocol ID: lynex Product ID: classic Total Pools: 18
+ ChainId: 59144 Protocol ID: lynex Product ID: classic Total Pools: 19
  ChainId: 1 Protocol ID: maker Product ID: s-dai Total Pools: 1
  ChainId: 59144 Protocol ID: mendi-finance Product ID: supply-market Total Pools: 9
  ChainId: 59144 Protocol ID: mendi-finance Product ID: borrow-market Total Pools: 9
@@ -150,12 +154,12 @@ Database Pool totals Adapters:
  ChainId: 1 Protocol ID: morpho-aave-v2 Product ID: optimizer-supply Total Pools: 7
  ChainId: 1 Protocol ID: morpho-aave-v3 Product ID: optimizer-supply Total Pools: 9
  ChainId: 1 Protocol ID: morpho-aave-v3 Product ID: optimizer-borrow Total Pools: 1
- ChainId: 1 Protocol ID: morpho-blue Product ID: market-supply Total Pools: 730
- ChainId: 1 Protocol ID: morpho-blue Product ID: market-borrow Total Pools: 730
+ ChainId: 1 Protocol ID: morpho-blue Product ID: market-supply Total Pools: 1051
+ ChainId: 1 Protocol ID: morpho-blue Product ID: market-borrow Total Pools: 1051
  ChainId: 1 Protocol ID: morpho-blue Product ID: vault Total Pools: 87
  ChainId: 8453 Protocol ID: morpho-blue Product ID: market-supply Total Pools: 102
  ChainId: 8453 Protocol ID: morpho-blue Product ID: market-borrow Total Pools: 102
- ChainId: 8453 Protocol ID: morpho-blue Product ID: vault Total Pools: 90
+ ChainId: 8453 Protocol ID: morpho-blue Product ID: vault Total Pools: 91
  ChainId: 1 Protocol ID: morpho-compound-v2 Product ID: optimizer-supply Total Pools: 8
  ChainId: 1 Protocol ID: morpho-compound-v2 Product ID: optimizer-borrow Total Pools: 8
  ChainId: 1 Protocol ID: mountain-protocol Product ID: usdm Total Pools: 1
@@ -168,27 +172,27 @@ Database Pool totals Adapters:
  ChainId: 8453 Protocol ID: mountain-protocol Product ID: wusdm Total Pools: 1
  ChainId: 42161 Protocol ID: mountain-protocol Product ID: usdm Total Pools: 1
  ChainId: 42161 Protocol ID: mountain-protocol Product ID: wusdm Total Pools: 1
- ChainId: 1 Protocol ID: pancakeswap-v2 Product ID: pool Total Pools: 4860
+ ChainId: 1 Protocol ID: pancakeswap-v2 Product ID: pool Total Pools: 5892
  ChainId: 8453 Protocol ID: pancakeswap-v2 Product ID: pool Total Pools: 12
- ChainId: 42161 Protocol ID: pancakeswap-v2 Product ID: pool Total Pools: 693
- ChainId: 59144 Protocol ID: pancakeswap-v2 Product ID: pool Total Pools: 97
- ChainId: 1 Protocol ID: pendle Product ID: yield-token Total Pools: 286
- ChainId: 1 Protocol ID: pendle Product ID: principle-token Total Pools: 286
- ChainId: 1 Protocol ID: pendle Product ID: standardised-yield-token Total Pools: 184
- ChainId: 1 Protocol ID: pendle Product ID: lp-token Total Pools: 287
+ ChainId: 42161 Protocol ID: pancakeswap-v2 Product ID: pool Total Pools: 748
+ ChainId: 59144 Protocol ID: pancakeswap-v2 Product ID: pool Total Pools: 127
+ ChainId: 1 Protocol ID: pendle Product ID: yield-token Total Pools: 380
+ ChainId: 1 Protocol ID: pendle Product ID: principle-token Total Pools: 380
+ ChainId: 1 Protocol ID: pendle Product ID: standardised-yield-token Total Pools: 230
+ ChainId: 1 Protocol ID: pendle Product ID: lp-token Total Pools: 381
  ChainId: 10 Protocol ID: pendle Product ID: yield-token Total Pools: 2
  ChainId: 10 Protocol ID: pendle Product ID: principle-token Total Pools: 2
  ChainId: 10 Protocol ID: pendle Product ID: standardised-yield-token Total Pools: 2
  ChainId: 10 Protocol ID: pendle Product ID: lp-token Total Pools: 2
- ChainId: 8453 Protocol ID: pendle Product ID: yield-token Total Pools: 21
- ChainId: 8453 Protocol ID: pendle Product ID: principle-token Total Pools: 21
- ChainId: 8453 Protocol ID: pendle Product ID: standardised-yield-token Total Pools: 16
- ChainId: 8453 Protocol ID: pendle Product ID: lp-token Total Pools: 21
- ChainId: 42161 Protocol ID: pendle Product ID: yield-token Total Pools: 73
- ChainId: 42161 Protocol ID: pendle Product ID: principle-token Total Pools: 73
- ChainId: 42161 Protocol ID: pendle Product ID: standardised-yield-token Total Pools: 41
- ChainId: 42161 Protocol ID: pendle Product ID: lp-token Total Pools: 73
- ChainId: 137 Protocol ID: quickswap-v2 Product ID: pool Total Pools: 150
+ ChainId: 8453 Protocol ID: pendle Product ID: yield-token Total Pools: 28
+ ChainId: 8453 Protocol ID: pendle Product ID: principle-token Total Pools: 28
+ ChainId: 8453 Protocol ID: pendle Product ID: standardised-yield-token Total Pools: 21
+ ChainId: 8453 Protocol ID: pendle Product ID: lp-token Total Pools: 28
+ ChainId: 42161 Protocol ID: pendle Product ID: yield-token Total Pools: 86
+ ChainId: 42161 Protocol ID: pendle Product ID: principle-token Total Pools: 86
+ ChainId: 42161 Protocol ID: pendle Product ID: standardised-yield-token Total Pools: 48
+ ChainId: 42161 Protocol ID: pendle Product ID: lp-token Total Pools: 86
+ ChainId: 137 Protocol ID: quickswap-v2 Product ID: pool Total Pools: 154
  ChainId: 137 Protocol ID: quickswap-v2 Product ID: d-quick Total Pools: 1
  ChainId: 137 Protocol ID: quickswap-v3 Product ID: pool Total Pools: 1
  ChainId: 1 Protocol ID: renzo Product ID: ez-eth Total Pools: 1
@@ -203,14 +207,14 @@ Database Pool totals Adapters:
  ChainId: 10 Protocol ID: sonne Product ID: borrow-market Total Pools: 13
  ChainId: 8453 Protocol ID: sonne Product ID: supply-market Total Pools: 7
  ChainId: 8453 Protocol ID: sonne Product ID: borrow-market Total Pools: 7
- ChainId: 1 Protocol ID: spark-v1 Product ID: sp-token Total Pools: 16
- ChainId: 1 Protocol ID: spark-v1 Product ID: variable-debt-token Total Pools: 16
+ ChainId: 1 Protocol ID: spark-v1 Product ID: sp-token Total Pools: 17
+ ChainId: 1 Protocol ID: spark-v1 Product ID: variable-debt-token Total Pools: 17
  ChainId: 1 Protocol ID: stakewise Product ID: os-eth Total Pools: 1
  ChainId: 1 Protocol ID: stargate Product ID: pool Total Pools: 13
  ChainId: 1 Protocol ID: stargate Product ID: voting-escrow Total Pools: 1
  ChainId: 1 Protocol ID: stargate Product ID: farm Total Pools: 8
  ChainId: 1 Protocol ID: stargate Product ID: pool-v2 Total Pools: 5
- ChainId: 1 Protocol ID: stargate Product ID: farm-v2 Total Pools: 3
+ ChainId: 1 Protocol ID: stargate Product ID: farm-v2 Total Pools: 4
  ChainId: 10 Protocol ID: stargate Product ID: pool Total Pools: 8
  ChainId: 10 Protocol ID: stargate Product ID: farm Total Pools: 6
  ChainId: 10 Protocol ID: stargate Product ID: pool-v2 Total Pools: 3
@@ -222,7 +226,7 @@ Database Pool totals Adapters:
  ChainId: 8453 Protocol ID: stargate Product ID: pool Total Pools: 2
  ChainId: 8453 Protocol ID: stargate Product ID: farm Total Pools: 2
  ChainId: 8453 Protocol ID: stargate Product ID: pool-v2 Total Pools: 2
- ChainId: 8453 Protocol ID: stargate Product ID: farm-v2 Total Pools: 2
+ ChainId: 8453 Protocol ID: stargate Product ID: farm-v2 Total Pools: 3
  ChainId: 42161 Protocol ID: stargate Product ID: pool Total Pools: 7
  ChainId: 42161 Protocol ID: stargate Product ID: farm Total Pools: 4
  ChainId: 42161 Protocol ID: stargate Product ID: pool-v2 Total Pools: 3
@@ -231,28 +235,33 @@ Database Pool totals Adapters:
  ChainId: 43114 Protocol ID: stargate Product ID: pool Total Pools: 6
  ChainId: 43114 Protocol ID: stargate Product ID: farm Total Pools: 3
  ChainId: 43114 Protocol ID: stargate Product ID: pool-v2 Total Pools: 2
- ChainId: 43114 Protocol ID: stargate Product ID: farm-v2 Total Pools: 2
+ ChainId: 43114 Protocol ID: stargate Product ID: farm-v2 Total Pools: 3
  ChainId: 59144 Protocol ID: stargate Product ID: pool Total Pools: 1
  ChainId: 59144 Protocol ID: stargate Product ID: farm Total Pools: 1
  ChainId: 59144 Protocol ID: stargate Product ID: pool-v2 Total Pools: 1
  ChainId: 59144 Protocol ID: stargate Product ID: farm-v2 Total Pools: 1
  ChainId: 1 Protocol ID: sushiswap-v2 Product ID: pool Total Pools: 147
  ChainId: 137 Protocol ID: sushiswap-v2 Product ID: pool Total Pools: 38
- ChainId: 8453 Protocol ID: sushiswap-v2 Product ID: pool Total Pools: 5220
+ ChainId: 8453 Protocol ID: sushiswap-v2 Product ID: pool Total Pools: 5557
  ChainId: 42161 Protocol ID: sushiswap-v2 Product ID: pool Total Pools: 74
  ChainId: 43114 Protocol ID: sushiswap-v2 Product ID: pool Total Pools: 0
  ChainId: 1 Protocol ID: swell Product ID: sw-eth Total Pools: 1
  ChainId: 1 Protocol ID: uniswap-v2 Product ID: pool Total Pools: 3031
- ChainId: 10 Protocol ID: uniswap-v2 Product ID: pool Total Pools: 704
+ ChainId: 10 Protocol ID: uniswap-v2 Product ID: pool Total Pools: 5119
  ChainId: 137 Protocol ID: uniswap-v2 Product ID: pool Total Pools: 14
  ChainId: 8453 Protocol ID: uniswap-v2 Product ID: pool Total Pools: 9999
  ChainId: 42161 Protocol ID: uniswap-v2 Product ID: pool Total Pools: 18
- ChainId: 43114 Protocol ID: uniswap-v2 Product ID: pool Total Pools: 5164
+ ChainId: 43114 Protocol ID: uniswap-v2 Product ID: pool Total Pools: 6203
  ChainId: 1 Protocol ID: uniswap-v3 Product ID: pool Total Pools: 1
  ChainId: 10 Protocol ID: uniswap-v3 Product ID: pool Total Pools: 1
  ChainId: 137 Protocol ID: uniswap-v3 Product ID: pool Total Pools: 1
  ChainId: 8453 Protocol ID: uniswap-v3 Product ID: pool Total Pools: 1
  ChainId: 42161 Protocol ID: uniswap-v3 Product ID: pool Total Pools: 1
+ ChainId: 1 Protocol ID: uniswap-v4 Product ID: pool Total Pools: 1
+ ChainId: 10 Protocol ID: uniswap-v4 Product ID: pool Total Pools: 1
+ ChainId: 137 Protocol ID: uniswap-v4 Product ID: pool Total Pools: 1
+ ChainId: 8453 Protocol ID: uniswap-v4 Product ID: pool Total Pools: 1
+ ChainId: 42161 Protocol ID: uniswap-v4 Product ID: pool Total Pools: 1
  ChainId: 59144 Protocol ID: xfai Product ID: dex Total Pools: 28
  ChainId: 1 Protocol ID: zerolend Product ID: a-token Total Pools: 7
  ChainId: 1 Protocol ID: zerolend Product ID: stable-debt-token Total Pools: 7
@@ -261,7 +270,7 @@ Database Pool totals Adapters:
  ChainId: 59144 Protocol ID: zerolend Product ID: a-token Total Pools: 18
  ChainId: 59144 Protocol ID: zerolend Product ID: stable-debt-token Total Pools: 18
  ChainId: 59144 Protocol ID: zerolend Product ID: variable-debt-token Total Pools: 18
-  Total Pools Adapters: 47026
+  Total Pools Adapters: 55424
 
 Adapters with zero pools 0:
  ChainId: 1  Protocol ID: beefy Product ID: cow-token Total Pools: 0
