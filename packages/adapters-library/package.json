@@ -1,6 +1,6 @@
 {
   "name": "@codefi/mmi-defi-adapters",
-  "version": "0.14.3",
+  "version": "0.14.4",
   "description": "Defi adapters for MMI Dashboard",
   "repository": {
     "type": "git",
