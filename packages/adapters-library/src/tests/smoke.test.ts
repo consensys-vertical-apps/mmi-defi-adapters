@@ -84,7 +84,10 @@ describe('detect errors', () => {
       }
 
       const defiProvider = new DefiProvider({
-        config,
+        config: {
+          ...config,
+          useMulticallInterceptor: false,
+        },
         getDefiPositionsDetection,
       })
       const response = await defiProvider.getPositions({
