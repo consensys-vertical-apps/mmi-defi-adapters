@@ -81,6 +81,8 @@ try {
                   )
                 ).testCases
               } catch (error) {
+                const errorMsg = `Failed to load test cases for ${adapter.protocolDetails.protocolId}/${adapter.protocolDetails.productId}: ${error instanceof Error ? error.message : String(error)}`
+                console.error(errorMsg)
                 logger.error(
                   {
                     error,
@@ -103,26 +105,53 @@ try {
     )
   })()
 } catch (error) {
-  logger.error({ error, filterProtocolId, filterProductId }, 'Failed to load test cases')
+  const errorMsg = `Failed to load test cases: ${error instanceof Error ? error.message : String(error)}`
+  console.error(errorMsg)
+  logger.error(
+    { error, filterProtocolId, filterProductId },
+    'Failed to load test cases',
+  )
   allTestCases = {} as Record<Protocol, Record<string, TestCase[]>>
 }
 
 // Always create at least one describe block so Vitest recognizes this as a test file
-if (Object.keys(allTestCases).length === 0) {
+const totalTestCases = Object.values(allTestCases).reduce(
+  (sum, protocolTestCases) =>
+    sum +
+    Object.values(protocolTestCases).reduce(
+      (protocolSum, testCases) => protocolSum + testCases.length,
+      0,
+    ),
+  0,
+)
+
+if (totalTestCases === 0) {
+  const foundProtocols = Object.keys(allTestCases)
+  const foundProducts = Object.entries(allTestCases).flatMap(
+    ([protocolId, protocolTestCases]) =>
+      Object.keys(protocolTestCases).map(
+        (productId) => `${protocolId}/${productId}`,
+      ),
+  )
+
   describe('Test case loading failed', () => {
     it('should have loaded test cases', () => {
       throw new Error(
-        `No test cases found. Filter: protocolId=${filterProtocolId}, productId=${filterProductId}. Check that the protocol/product exists and has test cases.`,
+        `No test cases found. Filter: protocolId=${filterProtocolId}, productId=${filterProductId}. Found protocols: ${foundProtocols.length > 0 ? foundProtocols.join(', ') : 'none'}. Found products: ${foundProducts.length > 0 ? foundProducts.join(', ') : 'none'}. Check that the protocol/product exists and has test cases.`,
       )
     })
   })
 } else {
   Object.entries(allTestCases).forEach(([protocolId, protocolTestCases]) => {
-    Object.entries(protocolTestCases).forEach(([productId, productTestCases]) => {
-      describe(protocolId, () => {
-        runProductTests(protocolId as Protocol, productId, productTestCases)
-      })
-    })
+    Object.entries(protocolTestCases).forEach(
+      ([productId, productTestCases]) => {
+        if (productTestCases.length > 0) {
+          describe(protocolId, () => {
+            runProductTests(protocolId as Protocol, productId, productTestCases)
+          })
+        }
+      },
+    )
   })
 }
 
