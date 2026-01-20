@@ -42,7 +42,7 @@ export class ZerolendVestingAdapter implements IProtocolAdapter {
 
   readonly adapterSettings: AdapterSettings = {
     includeInUnwrap: false,
-    userEvent: false,
+    userEvent: 'Transfer',
   }
 
   private readonly addresses = {
