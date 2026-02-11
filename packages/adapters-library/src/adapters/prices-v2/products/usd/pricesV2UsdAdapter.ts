@@ -19,7 +19,7 @@ import { ChainLink__factory, OneInchOracle__factory } from '../../contracts'
 import { fiatDecimals, priceAdapterConfig } from './priceV2Config'
 
 export const USD = 'USD'
-const BASE_URL = 'https://price-api.metafi.codefi.network'
+const BASE_URL = process.env.PRICE_API ?? 'https://price-api.metafi.codefi.network'
 
 export interface SpotPrice {
   allTimeHigh?: number
