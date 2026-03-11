@@ -28,7 +28,7 @@ const DEPOSITED_EVENT_TOPIC0 = id(
 
 const VAULT_METADATA = {
   name: 'OK-BITOK Vault',
-  symbol: 'OKB-V',
+  symbol: 'OK-BITOK',
   decimals: 6,
 } as const
 
@@ -96,8 +96,8 @@ export class OkBitokVaultAdapter implements IProtocolAdapter {
       protocolId: this.protocolId,
       name: 'OK-BITOK Vault',
       description: 'OK-BITOK vault adapter',
-      siteUrl: 'https://app.okbitok.com/',
-      iconUrl: undefined,
+      siteUrl: 'https://ok-bitok.com/',
+      iconUrl: 'https://ok-bitok.com/logo.png',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

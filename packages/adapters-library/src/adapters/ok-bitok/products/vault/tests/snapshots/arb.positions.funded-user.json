@@ -7,7 +7,8 @@
       "protocolId": "ok-bitok",
       "name": "OK-BITOK Vault",
       "description": "OK-BITOK vault adapter",
-      "siteUrl": "https://app.okbitok.com/",
+      "siteUrl": "https://ok-bitok.com/",
+      "iconUrl": "https://ok-bitok.com/logo.png",
       "positionType": "supply",
       "chainId": 42161,
       "productId": "vault",
@@ -18,7 +19,7 @@
         {
           "address": "0xD772A28caf98cCF3c774c704cA9514A4914b50A0",
           "name": "OK-BITOK Vault",
-          "symbol": "OKB-V",
+          "symbol": "OK-BITOK",
           "decimals": 6,
           "underlyingTokens": [
             {
