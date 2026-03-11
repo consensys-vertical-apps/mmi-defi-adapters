@@ -1,0 +1,65 @@
+{
+  "blockNumber": 440517222,
+  "latency": "Latency: 0.003 seconds",
+  "aggregatedValues": ["USD101.34"],
+  "snapshot": [
+    {
+      "protocolId": "ok-bitok",
+      "name": "OK-BITOK Vault",
+      "description": "OK-BITOK vault adapter",
+      "siteUrl": "https://app.okbitok.com/",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "vault",
+      "protocolDisplayName": "OkBitok",
+      "chainName": "arb",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xD772A28caf98cCF3c774c704cA9514A4914b50A0",
+          "name": "OK-BITOK Vault",
+          "symbol": "OKB-V",
+          "decimals": 6,
+          "underlyingTokens": [
+            {
+              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6
+            }
+          ],
+          "balanceRaw": "100317838n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "101323524n",
+              "balance": 101.323524,
+              "price": 1.000194714508863,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
+            }
+          ],
+          "balance": 100.317838
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "ea1b8c39c28267d4d4dbb84b99a44f12": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000005faba8e"
+    },
+    "5fd5ec355c969e3aa31a6a3cb35adc0c": {
+      "result": "0x0000000000000000000000000000000000000000000000000e0454762421c037"
+    },
+    "c67f2b1d323b4faf28ac24f8f67ef1d3": {
+      "result": "0x00000000000000000000000000000000000000000196038e6fa336439d00ea76"
+    },
+    "e2217a3886af4128cb2c51aa15a0e2f9": {
+      "result": "0x00000000000000000000000000000000000000000000000100000000001203ff0000000000000000000000000000000000000000000000000000002f71be63600000000000000000000000000000000000000000000000000000000069b0ce320000000000000000000000000000000000000000000000000000000069b0ce3200000000000000000000000000000000000000000000000100000000001203ff"
+    }
+  }
+}

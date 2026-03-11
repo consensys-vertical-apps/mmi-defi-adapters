@@ -1,0 +1,11 @@
+{
+  "blockNumber": 440517222,
+  "latency": "Latency: 0.001 seconds",
+  "aggregatedValues": [],
+  "snapshot": [],
+  "rpcResponses": {
+    "94d931f252fafa8e1bd567e3c1210a50": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  }
+}
