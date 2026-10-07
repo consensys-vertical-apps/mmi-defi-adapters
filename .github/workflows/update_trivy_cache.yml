@@ -8,4 +8,6 @@ on:
 
 jobs:
   update-trivy-cache:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/trivy-update-cache.yml@v0.61.0
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/trivy-update-cache.yml@v1.19.1
+    secrets:
+      WIZ_SENSOR_TOKEN: ${{ secrets.WIZ_SENSOR_TOKEN }}

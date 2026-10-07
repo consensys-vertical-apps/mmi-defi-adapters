@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-defiadapters-api-image:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/docker-build-and-validate.yml@v0.61.0
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/docker-build-and-validate.yml@v1.19.1
     with:
       github_advanced_security_enabled: true
       trivy_ignore_failure: true
@@ -17,8 +17,10 @@ jobs:
       artifact_name: defiadapters-api-build
       artifact_path: defiadapters-api-build.tar
 
+    secrets:
+      WIZ_SENSOR_TOKEN: ${{ secrets.WIZ_SENSOR_TOKEN }}
   build-defiadapters-workers-image:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/docker-build-and-validate.yml@v0.61.0
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/docker-build-and-validate.yml@v1.19.1
     with:
       github_advanced_security_enabled: true
       trivy_ignore_failure: true
@@ -29,12 +31,16 @@ jobs:
       artifact_name: defiadapters-workers-build
       artifact_path: defiadapters-workers-build.tar
 
+    secrets:
+      WIZ_SENSOR_TOKEN: ${{ secrets.WIZ_SENSOR_TOKEN }}
   create-tag:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/create-eph-tag.yml@v0.60.0
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/create-eph-tag.yml@v1.19.1
+    secrets:
+      WIZ_SENSOR_TOKEN: ${{ secrets.WIZ_SENSOR_TOKEN }}
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
   deploy-dev-api:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v0.60.0
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v1.19.1
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - build-defiadapters-api-image
@@ -51,10 +57,11 @@ jobs:
       artifact_path: defiadapters-api-build.tar
 
     secrets:
+      WIZ_SENSOR_TOKEN: ${{ secrets.WIZ_SENSOR_TOKEN }}
       deploy_key: ${{ secrets.DEPLOY_KEY_VA_MMCX_DEFIADAPTERS_API_WORKLOAD }}
 
   deploy-dev-workers:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v0.60.0
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v1.19.1
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - build-defiadapters-workers-image
@@ -71,10 +78,11 @@ jobs:
       artifact_path: defiadapters-workers-build.tar 
 
     secrets:
+      WIZ_SENSOR_TOKEN: ${{ secrets.WIZ_SENSOR_TOKEN }}
       deploy_key: ${{ secrets.DEPLOY_KEY_VA_MMCX_DEFIADAPTERS_WORKER_WORKLOAD }}
 
   deploy-prd-api:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v0.60.0
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v1.19.1
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - deploy-dev-api
@@ -91,10 +99,11 @@ jobs:
       artifact_path: defiadapters-api-build.tar
     
     secrets:
+      WIZ_SENSOR_TOKEN: ${{ secrets.WIZ_SENSOR_TOKEN }}
       deploy_key: ${{ secrets.DEPLOY_KEY_VA_MMCX_DEFIADAPTERS_API_WORKLOAD }}
 
   deploy-prd-workers:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v0.60.0
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v1.19.1
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - deploy-dev-workers
@@ -111,4 +120,5 @@ jobs:
       artifact_path: defiadapters-workers-build.tar
     
     secrets:
+      WIZ_SENSOR_TOKEN: ${{ secrets.WIZ_SENSOR_TOKEN }}
       deploy_key: ${{ secrets.DEPLOY_KEY_VA_MMCX_DEFIADAPTERS_WORKER_WORKLOAD }}
