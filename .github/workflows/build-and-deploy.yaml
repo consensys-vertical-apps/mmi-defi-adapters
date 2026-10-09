@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-defiadapters-api-image:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/docker-build-and-validate.yml@v1.19.1
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/docker-build-and-validate.yml@ee5456cf63f32f96987af955f66bd6b1b8b5cbd8
     with:
       github_advanced_security_enabled: true
       trivy_ignore_failure: true
@@ -20,7 +20,7 @@ jobs:
     secrets:
       WIZ_SENSOR_TOKEN: ${{ secrets.WIZ_SENSOR_TOKEN }}
   build-defiadapters-workers-image:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/docker-build-and-validate.yml@v1.19.1
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/docker-build-and-validate.yml@ee5456cf63f32f96987af955f66bd6b1b8b5cbd8
     with:
       github_advanced_security_enabled: true
       trivy_ignore_failure: true
@@ -34,13 +34,13 @@ jobs:
     secrets:
       WIZ_SENSOR_TOKEN: ${{ secrets.WIZ_SENSOR_TOKEN }}
   create-tag:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/create-eph-tag.yml@v1.19.1
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/create-eph-tag.yml@ee5456cf63f32f96987af955f66bd6b1b8b5cbd8
     secrets:
       WIZ_SENSOR_TOKEN: ${{ secrets.WIZ_SENSOR_TOKEN }}
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
   deploy-dev-api:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v1.19.1
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@ee5456cf63f32f96987af955f66bd6b1b8b5cbd8
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - build-defiadapters-api-image
@@ -61,7 +61,7 @@ jobs:
       deploy_key: ${{ secrets.DEPLOY_KEY_VA_MMCX_DEFIADAPTERS_API_WORKLOAD }}
 
   deploy-dev-workers:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v1.19.1
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@ee5456cf63f32f96987af955f66bd6b1b8b5cbd8
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - build-defiadapters-workers-image
@@ -82,7 +82,7 @@ jobs:
       deploy_key: ${{ secrets.DEPLOY_KEY_VA_MMCX_DEFIADAPTERS_WORKER_WORKLOAD }}
 
   deploy-prd-api:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v1.19.1
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@ee5456cf63f32f96987af955f66bd6b1b8b5cbd8
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - deploy-dev-api
@@ -103,7 +103,7 @@ jobs:
       deploy_key: ${{ secrets.DEPLOY_KEY_VA_MMCX_DEFIADAPTERS_API_WORKLOAD }}
 
   deploy-prd-workers:
-    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@v1.19.1
+    uses: consensys-vertical-apps/shared-services-workflows/.github/workflows/deploy.yml@ee5456cf63f32f96987af955f66bd6b1b8b5cbd8
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - deploy-dev-workers
