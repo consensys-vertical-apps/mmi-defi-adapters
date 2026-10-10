@@ -1,0 +1,46 @@
+{
+  "blockNumber": 52435010,
+  "latency": "Latency: 0.214 seconds",
+  "aggregatedValues": [],
+  "snapshot": [],
+  "rpcResponses": {
+    "271be61cac512b966ebbb659f3ae0edf": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "request": {
+        "method": "eth_call",
+        "params": [
+          {
+            "to": "0x4032d83fb4a2b905259ae49abad1a1ac00635066",
+            "data": "0xe07995eb0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "0x3201842"
+        ]
+      },
+      "metrics": {
+        "startTime": 1791659918454,
+        "endTime": 1791659918493,
+        "timeTaken": 39,
+        "estimatedGas": "24161"
+      }
+    },
+    "6efd75a3b05496c925a823be1f8a0686": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "request": {
+        "method": "eth_call",
+        "params": [
+          {
+            "to": "0x4032d83fb4a2b905259ae49abad1a1ac00635066",
+            "data": "0x98807d840000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "0x3201842"
+        ]
+      },
+      "metrics": {
+        "startTime": 1791659918454,
+        "endTime": 1791659918554,
+        "timeTaken": 100,
+        "estimatedGas": "24051"
+      }
+    }
+  }
+}
