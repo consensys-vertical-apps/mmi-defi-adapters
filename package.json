@@ -15,6 +15,7 @@
     "dev": "nodemon",
     "build": "npm run build -w packages/adapters-library -w packages/workers -w packages/adapters-api",
     "build:watch": "npm run build:watch -w packages/adapters-library",
+    "start:workers": "npm run start -w packages/workers",
     "adapters-cli": "node --experimental-strip-types --env-file=.env packages/adapters-cli/src/index.ts",
     "build-metadata-db": "npm run adapters-cli build-metadata-db --",
     "delete-adapter-metadata": "npm run adapters-cli delete-adapter-metadata --",

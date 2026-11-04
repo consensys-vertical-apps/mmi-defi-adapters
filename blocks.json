@@ -1,0 +1,44 @@
+{
+    "1": {
+        "latestBlockProcessed": 26340338,
+        "latestBlockNumber": 26340340,
+        "chainName": "ethereum",
+        "laggingBlocks": 2
+    },
+    "10": {
+        "latestBlockProcessed": 159091575,
+        "latestBlockNumber": 159091591,
+        "chainName": "op",
+        "laggingBlocks": 16
+    },
+    "137": {
+        "latestBlockProcessed": 96717668,
+        "latestBlockNumber": 96717670,
+        "chainName": "matic",
+        "laggingBlocks": 2
+    },
+    "8453": {
+        "latestBlockProcessed": 53496303,
+        "latestBlockNumber": 53496306,
+        "chainName": "base",
+        "laggingBlocks": 3
+    },
+    "42161": {
+        "latestBlockProcessed": 521126230,
+        "latestBlockNumber": 521126314,
+        "chainName": "arb",
+        "laggingBlocks": 84
+    },
+    "43114": {
+        "latestBlockProcessed": 99388281,
+        "latestBlockNumber": 99388293,
+        "chainName": "avax",
+        "laggingBlocks": 12
+    },
+    "59144": {
+        "latestBlockProcessed": 32514534,
+        "latestBlockNumber": 32514536,
+        "chainName": "linea",
+        "laggingBlocks": 2
+    }
+}

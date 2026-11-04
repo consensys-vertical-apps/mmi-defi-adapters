@@ -271,6 +271,75 @@ describe('fetchEvents', () => {
       expect(resultCount).toBe(2)
     })
 
+    it('should split range on -32000 error (log index / receipt holes)', async () => {
+      const { withTimeout } = await import('../utils/with-timeout.js')
+
+      const unknownError = new Error(
+        'could not coalesce error (error={ "code": -32000, "message": "failed to process log index epoch" })',
+      )
+      vi.mocked(isError).mockImplementation((_error, code) => {
+        return code === 'UNKNOWN_ERROR'
+      })
+
+      const mockLogs = [] as unknown as Log[]
+      vi.mocked(withTimeout)
+        .mockRejectedValueOnce(unknownError)
+        .mockResolvedValueOnce(mockLogs)
+        .mockResolvedValueOnce(mockLogs)
+
+      const generator = fetchEvents(defaultParams)
+
+      let resultCount = 0
+      let done = false
+      while (!done) {
+        const result = await generator.next()
+        if (result.done) {
+          done = true
+        } else {
+          resultCount++
+        }
+      }
+
+      expect(resultCount).toBe(2)
+      expect(withTimeout).toHaveBeenCalledTimes(3)
+    })
+
+    it('should skip single block on -32000 error when fromBlock equals toBlock', async () => {
+      const { withTimeout } = await import('../utils/with-timeout.js')
+
+      const unknownError = new Error(
+        'could not coalesce error (error={ "code": -32000, "message": "failed to retrieve receipts" })',
+      )
+      vi.mocked(isError).mockImplementation((_error, code) => {
+        return code === 'UNKNOWN_ERROR'
+      })
+
+      vi.mocked(withTimeout).mockRejectedValue(unknownError)
+
+      const params = {
+        ...defaultParams,
+        fromBlock: 1000,
+        toBlock: 1000,
+      }
+
+      const generator = fetchEvents(params)
+      const result = await generator.next()
+
+      expect(result.done).toBe(true)
+      expect(mockLogger.warn).toHaveBeenCalledWith(
+        expect.objectContaining({
+          error: unknownError,
+          fromBlock: 1000,
+          toBlock: 1000,
+          depth: 0,
+          contractAddresses: params.contractAddresses,
+          topic0: params.topic0,
+        }),
+        'Skipping block after retryable eth_getLogs failure',
+      )
+      expect(mockLogger.error).not.toHaveBeenCalled()
+    })
+
     it('should not split range on -32005 error when fromBlock equals toBlock', async () => {
       const { withTimeout } = await import('../utils/with-timeout.js')
 
