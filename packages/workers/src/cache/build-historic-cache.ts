@@ -116,7 +116,7 @@ export async function buildHistoricCache(
           fromBlock: from,
           toBlock: to,
           logger,
-        })) { 
+        })) {
           const logsToInsert: {
             address: string
             contractAddress: string
