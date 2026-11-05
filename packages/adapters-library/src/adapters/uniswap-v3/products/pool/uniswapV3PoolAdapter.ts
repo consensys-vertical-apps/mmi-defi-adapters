@@ -56,6 +56,10 @@ const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
   [Chain.Base]: {
     positionManager: getAddress('0x03a520b32C04BF3bEEf7BEb72E919cf822Ed34f1'),
   },
+  // https://developers.uniswap.org/docs/protocols/v3/deployments/v3-robinhood-chain-deployments
+  [Chain.Robinhood]: {
+    positionManager: getAddress('0x73991a25C818Bf1f1128dEAaB1492D45638DE0D3'),
+  },
 }
 
 export const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)

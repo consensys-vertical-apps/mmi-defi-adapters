@@ -205,7 +205,7 @@ describe('fetchEvents', () => {
       expect(resultCount).toBe(2)
     })
 
-    it('should split range on -32602 error (5000 block range limit)', async () => {
+    it('should chunk range on -32602 error (5000 block range limit)', async () => {
       const { withTimeout } = await import('../utils/with-timeout.js')
 
       const unknownError = new Error(
@@ -215,15 +215,24 @@ describe('fetchEvents', () => {
         return code === 'UNKNOWN_ERROR'
       })
 
+      // 15000 inclusive blocks (0..14999) → three 5000-block chunks after one failure
+      const fromBlock = 0
+      const toBlock = 14_999
+      const maxBlocks = 5000
+      const expectedChunks = Math.ceil((toBlock - fromBlock + 1) / maxBlocks)
+
       const mockLogs = [] as unknown as Log[]
-      vi.mocked(withTimeout)
-        .mockRejectedValueOnce(unknownError)
-        .mockResolvedValueOnce(mockLogs)
-        .mockResolvedValueOnce(mockLogs)
+      vi.mocked(withTimeout).mockRejectedValueOnce(unknownError)
+      for (let i = 0; i < expectedChunks; i++) {
+        vi.mocked(withTimeout).mockResolvedValueOnce(mockLogs)
+      }
 
-      const generator = fetchEvents(defaultParams)
+      const generator = fetchEvents({
+        ...defaultParams,
+        fromBlock,
+        toBlock,
+      })
 
-      // Consume all results
       let resultCount = 0
       let done = false
       while (!done) {
@@ -235,7 +244,27 @@ describe('fetchEvents', () => {
         }
       }
 
-      expect(resultCount).toBe(2)
+      expect(resultCount).toBe(expectedChunks)
+      expect(withTimeout).toHaveBeenCalledTimes(1 + expectedChunks)
+
+      const getLogsCalls = vi.mocked(mockProvider.getLogs).mock.calls.slice(1)
+      for (const [filter] of getLogsCalls) {
+        const size =
+          (filter.toBlock as number) - (filter.fromBlock as number) + 1
+        expect(size).toBeLessThanOrEqual(maxBlocks)
+      }
+      expect(getLogsCalls[0]?.[0]).toMatchObject({
+        fromBlock: 0,
+        toBlock: 4999,
+      })
+      expect(getLogsCalls[1]?.[0]).toMatchObject({
+        fromBlock: 5000,
+        toBlock: 9999,
+      })
+      expect(getLogsCalls[2]?.[0]).toMatchObject({
+        fromBlock: 10_000,
+        toBlock: 14_999,
+      })
     })
 
     it('should split range on -32603 error (server timeout)', async () => {
@@ -269,6 +298,63 @@ describe('fetchEvents', () => {
       }
 
       expect(resultCount).toBe(2)
+    })
+
+    it('should chunk range when provider reports block range exceeds limit', async () => {
+      const { withTimeout } = await import('../utils/with-timeout.js')
+
+      // Robinhood / some Orbit RPCs return this without a JSON-RPC code we already match
+      const fromBlock = 0
+      const toBlock = 166_541
+      const maxBlocks = 10_000
+      const rangeError = new Error(
+        `range ${toBlock - fromBlock + 1} exceeds limit of ${maxBlocks}`,
+      )
+      vi.mocked(isError).mockReturnValue(false)
+
+      const expectedChunks = Math.ceil((toBlock - fromBlock + 1) / maxBlocks)
+      const mockLogs = [] as unknown as Log[]
+      vi.mocked(withTimeout).mockRejectedValueOnce(rangeError)
+      for (let i = 0; i < expectedChunks; i++) {
+        vi.mocked(withTimeout).mockResolvedValueOnce(mockLogs)
+      }
+
+      const generator = fetchEvents({
+        ...defaultParams,
+        fromBlock,
+        toBlock,
+      })
+
+      let resultCount = 0
+      let done = false
+      while (!done) {
+        const result = await generator.next()
+        if (result.done) {
+          done = true
+        } else {
+          resultCount++
+        }
+      }
+
+      // 1 failed oversized call + N successful chunks sized to the parsed limit
+      expect(resultCount).toBe(expectedChunks)
+      expect(withTimeout).toHaveBeenCalledTimes(1 + expectedChunks)
+
+      const getLogsCalls = vi.mocked(mockProvider.getLogs).mock.calls.slice(1)
+      expect(getLogsCalls).toHaveLength(expectedChunks)
+      for (const [filter] of getLogsCalls) {
+        const size =
+          (filter.toBlock as number) - (filter.fromBlock as number) + 1
+        expect(size).toBeLessThanOrEqual(maxBlocks)
+      }
+      expect(getLogsCalls[0]?.[0]).toMatchObject({
+        fromBlock: 0,
+        toBlock: 9999,
+      })
+      expect(getLogsCalls.at(-1)?.[0]).toMatchObject({
+        fromBlock: 160_000,
+        toBlock: 166_541,
+      })
     })
 
     it('should split range on -32000 error (log index / receipt holes)', async () => {

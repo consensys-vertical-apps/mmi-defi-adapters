@@ -690,6 +690,7 @@ export const supportedProtocols: Record<
     [Chain.Polygon]: [UniswapV3PoolAdapter],
     // [Chain.Bsc]: [UniswapV3PoolAdapter],
     [Chain.Base]: [UniswapV3PoolAdapter],
+    [Chain.Robinhood]: [UniswapV3PoolAdapter],
   },
 
   [Protocol.UniswapV4]: {

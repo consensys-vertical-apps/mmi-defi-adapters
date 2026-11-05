@@ -12,6 +12,7 @@ const MaxContractsPerCall: Record<EvmChain, number> = {
   [EvmChain.Arbitrum]: 10,
   [EvmChain.Avalanche]: 10,
   [EvmChain.Linea]: 10,
+  [EvmChain.Robinhood]: 10,
 }
 
 export async function getNextPoolGroup(

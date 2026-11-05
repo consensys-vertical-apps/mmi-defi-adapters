@@ -80,6 +80,11 @@ const providers: Record<ChainName, string> = {
     'https://linea-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
     Chain.Linea,
   ),
+  robinhood: resolveProviderUrl(
+    process.env.DEFI_ADAPTERS_PROVIDER_ROBINHOOD,
+    'https://rpc.mainnet.chain.robinhood.com',
+    Chain.Robinhood,
+  ),
   solana: resolveProviderUrl(
     process.env.DEFI_ADAPTERS_PROVIDER_SOLANA,
     'https://api.mainnet-beta.solana.com',
@@ -105,6 +110,10 @@ const maxBatchSize: Record<ChainName, number> = {
   arb: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_ARBITRUM, 5),
   avax: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_AVALANCHE, 100),
   linea: parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_LINEA, 100),
+  robinhood: parseNumberEnv(
+    process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_ROBINHOOD,
+    100,
+  ),
   solana: 1, // TODO Not relevant, find a way to remove this
 }
 
@@ -122,6 +131,7 @@ const ConfigSchema = z
         [ChainName[Chain.Arbitrum]]: z.string().default(providers.arb),
         [ChainName[Chain.Avalanche]]: z.string().default(providers.avax),
         [ChainName[Chain.Linea]]: z.string().default(providers.linea),
+        [ChainName[Chain.Robinhood]]: z.string().default(providers.robinhood),
         [ChainName[Chain.Solana]]: z.string().default(providers.solana),
       })
       .default(providers),
@@ -166,6 +176,7 @@ const ConfigSchema = z
         [ChainName[Chain.Arbitrum]]: z.number().default(maxBatchSize.arb),
         [ChainName[Chain.Avalanche]]: z.number().default(maxBatchSize.avax),
         [ChainName[Chain.Linea]]: z.number().default(maxBatchSize.linea),
+        [ChainName[Chain.Robinhood]]: z.number().default(maxBatchSize.robinhood),
         [ChainName[Chain.Solana]]: z.number().default(maxBatchSize.solana),
       })
       .default(maxBatchSize),

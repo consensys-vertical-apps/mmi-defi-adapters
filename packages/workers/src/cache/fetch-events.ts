@@ -18,19 +18,27 @@ function isRetryableGetLogsError(
     return true
   }
 
-  if (!isError(error, 'UNKNOWN_ERROR')) {
-    return false
-  }
+  const message = error instanceof Error ? error.message : String(error)
 
-  const message = error.message
+  // Provider block-range caps (e.g. Robinhood: "range 10408 exceeds limit of 10000")
+  // Match on message text — ethers may wrap these outside UNKNOWN_ERROR.
+  const isBlockRangeLimit =
+    /exceeds limit of \d+/i.test(message) ||
+    message.toLowerCase().includes('block range') ||
+    message.includes('eth_getLogs is limited')
 
   // Infura/Linea log-index holes — split when possible, skip when single block
-  if (
+  const isLogIndexHole =
     message.includes('code": -32000') ||
     message.includes('failed to process log index') ||
     message.includes('failed to retrieve receipts')
-  ) {
-    return true
+
+  if (isBlockRangeLimit || isLogIndexHole) {
+    return toBlock - fromBlock > 0 || isLogIndexHole
+  }
+
+  if (!isError(error, 'UNKNOWN_ERROR')) {
+    return false
   }
 
   // Range / result-size limits only help when the window can still shrink
@@ -47,10 +55,52 @@ function isRetryableGetLogsError(
 }
 
 /**
- * Fetches event logs for the given contracts/topic, bisecting the block range on
- * retryable RPC errors. Single-block ranges that still fail with a retryable
- * provider error (e.g. Linea -32000 log-index holes) are skipped so historic
- * backfill can continue.
+ * Parses a provider max block-range from known eth_getLogs error messages.
+ */
+function parseMaxBlockRange(message: string): number | undefined {
+  // Step 1: Robinhood / Orbit style — "range 166542 exceeds limit of 10000"
+  const exceedsMatch = message.match(/exceeds limit of (\d+)/i)
+  if (exceedsMatch) {
+    return Number(exceedsMatch[1])
+  }
+
+  // Step 2: Infura style — "eth_getLogs is limited to 5000 block range"
+  const limitedMatch = message.match(
+    /eth_getLogs is limited to (\d+) block range/i,
+  )
+  if (limitedMatch) {
+    return Number(limitedMatch[1])
+  }
+
+  return undefined
+}
+
+/**
+ * Splits [fromBlock, toBlock] into consecutive windows of at most maxBlocks (inclusive).
+ */
+function chunkBlockRange(
+  fromBlock: number,
+  toBlock: number,
+  maxBlocks: number,
+): { fromBlock: number; toBlock: number }[] {
+  const chunks: { fromBlock: number; toBlock: number }[] = []
+  let start = fromBlock
+
+  // Step: walk the window in inclusive slices of maxBlocks
+  while (start <= toBlock) {
+    const end = Math.min(start + maxBlocks - 1, toBlock)
+    chunks.push({ fromBlock: start, toBlock: end })
+    start = end + 1
+  }
+
+  return chunks
+}
+
+/**
+ * Fetches event logs for the given contracts/topic. On retryable RPC errors with a
+ * known max block-range, chunks the window to that size; otherwise bisects.
+ * Single-block ranges that still fail with a retryable provider error
+ * (e.g. Linea -32000 log-index holes) are skipped so historic backfill can continue.
  */
 export async function* fetchEvents({
   provider,
@@ -121,7 +171,19 @@ export async function* fetchEvents({
         continue
       }
 
-      // Step 3b: bisect and retry both halves
+      const message = error instanceof Error ? error.message : String(error)
+      const maxBlocks = parseMaxBlockRange(message)
+      const rangeSize = toBlock - fromBlock + 1
+
+      // Step 3b: when the provider states a max block-range, chunk to that size
+      if (maxBlocks !== undefined && rangeSize > maxBlocks) {
+        for (const chunk of chunkBlockRange(fromBlock, toBlock, maxBlocks)) {
+          ranges.push({ ...chunk, depth: depth + 1 })
+        }
+        continue
+      }
+
+      // Step 3c: unknown safe window size — bisect and retry both halves
       const midBlock = Math.floor((fromBlock + toBlock) / 2)
       ranges.push({ fromBlock, toBlock: midBlock, depth: depth + 1 })
       ranges.push({ fromBlock: midBlock + 1, toBlock, depth: depth + 1 })
