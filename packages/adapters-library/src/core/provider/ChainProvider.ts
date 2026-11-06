@@ -20,14 +20,17 @@ export const DEFAULT_HTTP_AGENT_OPTIONS: https.AgentOptions = {
 
 export class ChainProvider {
   providers: Partial<Record<EvmChain, CustomJsonRpcProvider>>
-  solanaProvider: Connection
+  solanaProvider: Connection | undefined
 
   private config: IConfig
 
   constructor(config: IConfig) {
     this.config = config
     this.providers = this.initializeEvmProviders(this.config)
-    this.solanaProvider = new Connection(config.provider.solana)
+    // Solana Connection rejects empty URLs; skip when chain is disabled
+    this.solanaProvider = config.provider.solana
+      ? new Connection(config.provider.solana)
+      : undefined
   }
 
   private initializeEvmProviders(config: IConfig) {

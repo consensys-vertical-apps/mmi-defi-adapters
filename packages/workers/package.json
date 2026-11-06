@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "npm run build -- --watch",
-    "start": "node dist/main.js",
+    "start": "DOTENV_CONFIG_PATH=../../.env DOTENV_CONFIG_OVERRIDE=true node --import dotenv/config dist/main.js",
     "test:tsc": "tsc --noEmit"
   },
   "devDependencies": {

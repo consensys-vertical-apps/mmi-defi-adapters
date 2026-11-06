@@ -1,6 +1,88 @@
 # Package Description
 This package serves as the entry point for a worker process that scans every supported chain for events that will be used to determine all the pools a specific EVM address has had a DeFi position with.
 
+# Local development
+
+Workers need PostgreSQL and RPC providers. Without a populated cache DB, the API/CLI cannot detect which pools a user has interacted with.
+
+## 1. Environment
+
+From the repo root, copy `.env.example` to `.env` (if you do not already have one) and set at least:
+
+```bash
+# Required for workers + positions cache consumers
+CACHE_DATABASE_URL=postgresql://postgres:postgres@0.0.0.0:5432/defi-adapters
+CACHE_DATABASE_DISABLE_SSL=true
+
+# Required for adapters-api / CLI to read the cache
+DEFI_ADAPTERS_USE_POSITIONS_CACHE=true
+USE_ADAPTERS_WITH_USER_EVENT_ONLY=true
+
+# Only index these chains (recommended for local). Without this, unset
+# DEFI_ADAPTERS_PROVIDER_* vars fall back to built-in Infura defaults.
+DEFI_ADAPTERS_ENABLED_CHAINS=ethereum
+
+DEFI_ADAPTERS_PROVIDER_ETHEREUM=https://mainnet.infura.io/v3/<your-key>
+```
+
+Postgres credentials from `docker-compose.yaml` are user `postgres`, password `postgres`, database `defi-adapters`.
+
+`npm run start:workers` / `npm run start:api` load the repo-root `.env` automatically (with override). Edit `.env`, restart the process — no shell `export` / `source` needed.
+
+## 2. Start Postgres
+
+From the repo root:
+
+```bash
+docker compose up postgres
+```
+
+## 3. Build and run workers (hybrid / recommended for coding)
+
+```bash
+nvm use 22
+npm i
+npm run build
+npm run start:workers
+```
+
+The start script loads the repo-root `.env` automatically (with override), so you do **not** need to `export` / `source` env vars in your shell. Edit `.env`, restart the process, and the new values apply.
+
+Workers listen on port `4000` by default (`/health`, `/metrics`).
+
+On a fresh database, historic cache backfills every registered pool from block 0 — expect a long initial sync. Limit chains (above) to keep local runs manageable.
+
+### Optional: API + UI alongside workers
+
+```bash
+npm run start:api   # API only (also loads root .env)
+# or
+npm run dev         # rebuild library + API + UI
+```
+
+Ensure `DEFI_ADAPTERS_USE_POSITIONS_CACHE=true` so the API reads from Postgres.
+
+## 4. Full Docker stack (alternative)
+
+Builds and runs Postgres, workers, and API together. Provider URLs are taken from the host `.env`:
+
+```bash
+docker compose up --build
+```
+
+- API: `3000`
+- Workers: `4000`
+- Postgres: `5432`
+
+## 5. Verify
+
+- Workers health: `http://localhost:4000/health` (block progress should advance for enabled chains)
+- Query positions once some historic/latest indexing has run:
+
+```bash
+npm run positions <userAddress> -- -c ethereum
+```
+
 # Architecture Overview
 <p align="center">
   <img src="./readme-assets/workers-architecture.png" width="1200">

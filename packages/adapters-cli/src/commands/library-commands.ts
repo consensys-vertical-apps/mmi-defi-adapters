@@ -71,7 +71,7 @@ export function libraryCommands(program: Command) {
                 - DEFI_ADAPTERS_USE_POSITIONS_CACHE=true
                 - CACHE_DATABASE_URL=postgresql://postgres:postgres@0.0.0.0:5432/defi-adapters
                 - CACHE_DATABASE_DISABLE_SSL=true
-                - LOCAL_ENABLE_THIS_CHAIN_ONLY=ethereum (to limit scope to specific chains)`)
+                - DEFI_ADAPTERS_ENABLED_CHAINS=ethereum (to limit scope to specific chains)`)
         }
 
         const getDefiPositionsDetection: DefiPositionDetection = async (

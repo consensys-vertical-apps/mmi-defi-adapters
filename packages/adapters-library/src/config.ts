@@ -1,51 +1,89 @@
 import { z } from 'zod'
 import { Chain, ChainName } from './core/constants/chains'
+import { multiChainFilter } from './core/utils/input-filters'
 import { logger } from './core/utils/logger'
 import { DeepPartial } from './types/deepPartial'
 
 const CHAIN_NOT_ENABLED = ''
 
+/**
+ * Optional comma-separated chain allowlist (e.g. `ethereum,linea`).
+ * When set, every other chain provider is forced empty so defaults do not kick in.
+ */
+const enabledChainIds = multiChainFilter(
+  process.env.DEFI_ADAPTERS_ENABLED_CHAINS,
+)
+
+/**
+ * Resolves a provider URL, honouring DEFI_ADAPTERS_ENABLED_CHAINS when set.
+ */
+function resolveProviderUrl(
+  envValue: string | undefined,
+  defaultValue: string,
+  chainId: Chain,
+): string {
+  const url = parseStringEnv(envValue, defaultValue)
+  if (!enabledChainIds) {
+    return url
+  }
+  return enabledChainIds.includes(chainId) ? url : CHAIN_NOT_ENABLED
+}
+
 const providers: Record<ChainName, string> = {
-  ethereum: parseStringEnv(
+  ethereum: resolveProviderUrl(
     process.env.DEFI_ADAPTERS_PROVIDER_ETHEREUM,
     'https://mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
+    Chain.Ethereum,
   ),
-  op: parseStringEnv(
+  op: resolveProviderUrl(
     process.env.DEFI_ADAPTERS_PROVIDER_OPTIMISM,
     'https://optimism-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
+    Chain.Optimism,
   ),
-  bsc: parseStringEnv(
+  bsc: resolveProviderUrl(
     CHAIN_NOT_ENABLED,
     'https://bsc-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
+    Chain.Bsc,
   ),
-  matic: parseStringEnv(
+  matic: resolveProviderUrl(
     process.env.DEFI_ADAPTERS_PROVIDER_POLYGON,
     'https://polygon-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
+    Chain.Polygon,
   ),
-  ftm: parseStringEnv(CHAIN_NOT_ENABLED, 'https://rpc.ftm.tools'),
-  sei: parseStringEnv(
+  ftm: resolveProviderUrl(
+    CHAIN_NOT_ENABLED,
+    'https://rpc.ftm.tools',
+    Chain.Fantom,
+  ),
+  sei: resolveProviderUrl(
     CHAIN_NOT_ENABLED,
     'https://sei-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
+    Chain.Sei,
   ),
-  base: parseStringEnv(
+  base: resolveProviderUrl(
     process.env.DEFI_ADAPTERS_PROVIDER_BASE,
     'https://base-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
+    Chain.Base,
   ),
-  arb: parseStringEnv(
+  arb: resolveProviderUrl(
     process.env.DEFI_ADAPTERS_PROVIDER_ARBITRUM,
     'https://arbitrum-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
+    Chain.Arbitrum,
   ),
-  avax: parseStringEnv(
+  avax: resolveProviderUrl(
     process.env.DEFI_ADAPTERS_PROVIDER_AVALANCHE,
     'https://avalanche-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
+    Chain.Avalanche,
   ),
-  linea: parseStringEnv(
+  linea: resolveProviderUrl(
     process.env.DEFI_ADAPTERS_PROVIDER_LINEA,
     'https://linea-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
+    Chain.Linea,
   ),
-  solana: parseStringEnv(
+  solana: resolveProviderUrl(
     process.env.DEFI_ADAPTERS_PROVIDER_SOLANA,
     'https://api.mainnet-beta.solana.com',
+    Chain.Solana,
   ),
 }
 
