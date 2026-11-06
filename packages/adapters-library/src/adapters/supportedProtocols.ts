@@ -52,6 +52,7 @@ import { PancakeswapV2PoolAdapter } from './pancakeswap-v2/products/pool/pancake
 
 import { MountainProtocolUsdmAdapter } from './mountain-protocol/products/usdm/mountainProtocolUsdmAdapter'
 import { MountainProtocolWUsdmAdapter } from './mountain-protocol/products/wusdm/mountainProtocolWUsdmAdapter'
+import { NetnetCapitalStakedAdapter } from './netnet-capital/products/staked/netnetCapitalStakedAdapter'
 import { Protocol } from './protocols'
 import { QuickswapV2PoolAdapter } from './quickswap-v2/products/pool/quickswapV2PoolAdapter'
 import { RocketPoolRethAdapter } from './rocket-pool/products/reth/rocketPoolRethAdapter'
@@ -514,6 +515,10 @@ export const supportedProtocols: Record<
       MountainProtocolWUsdmAdapter,
     ],
     [Chain.Base]: [MountainProtocolUsdmAdapter, MountainProtocolWUsdmAdapter],
+  },
+
+  [Protocol.NetNetCapital]: {
+    [Chain.Robinhood]: [NetnetCapitalStakedAdapter],
   },
 
   [Protocol.PancakeswapV2]: {

@@ -31,6 +31,7 @@ export const Protocol = {
   MorphoBlue: 'morpho-blue',
   MorphoCompoundV2: 'morpho-compound-v2',
   MountainProtocol: 'mountain-protocol',
+  NetNetCapital: 'netnet-capital',
   PancakeswapV2: 'pancakeswap-v2',
   Pendle: 'pendle',
   QuickswapV2: 'quickswap-v2',
