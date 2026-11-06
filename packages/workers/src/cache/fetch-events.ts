@@ -196,7 +196,6 @@ export async function* fetchEvents({
       )
 
       yield logs
-      continue
     } catch (error) {
       const resolution = resolveGetLogsFailure(error, rangeFrom, rangeTo)
 
