@@ -176,7 +176,9 @@ const ConfigSchema = z
         [ChainName[Chain.Arbitrum]]: z.number().default(maxBatchSize.arb),
         [ChainName[Chain.Avalanche]]: z.number().default(maxBatchSize.avax),
         [ChainName[Chain.Linea]]: z.number().default(maxBatchSize.linea),
-        [ChainName[Chain.Robinhood]]: z.number().default(maxBatchSize.robinhood),
+        [ChainName[Chain.Robinhood]]: z
+          .number()
+          .default(maxBatchSize.robinhood),
         [ChainName[Chain.Solana]]: z.number().default(maxBatchSize.solana),
       })
       .default(maxBatchSize),

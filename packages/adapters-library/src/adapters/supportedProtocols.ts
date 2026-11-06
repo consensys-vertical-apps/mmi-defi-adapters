@@ -50,9 +50,9 @@ import { MorphoCompoundV2OptimizerBorrowAdapter } from './morpho-compound-v2/pro
 import { MorphoCompoundV2OptimizerSupplyAdapter } from './morpho-compound-v2/products/optimizer-supply/morphoCompoundV2OptimizerSupplyAdapter'
 import { PancakeswapV2PoolAdapter } from './pancakeswap-v2/products/pool/pancakeswapV2PoolAdapter'
 
+import { FablesPoolAdapter } from './fables/products/pool/fablesPoolAdapter'
 import { MountainProtocolUsdmAdapter } from './mountain-protocol/products/usdm/mountainProtocolUsdmAdapter'
 import { MountainProtocolWUsdmAdapter } from './mountain-protocol/products/wusdm/mountainProtocolWUsdmAdapter'
-import { FablesPoolAdapter } from './fables/products/pool/fablesPoolAdapter'
 import { NetnetCapitalStakedAdapter } from './netnet-capital/products/staked/netnetCapitalStakedAdapter'
 import { Protocol } from './protocols'
 import { QuickswapV2PoolAdapter } from './quickswap-v2/products/pool/quickswapV2PoolAdapter'
