@@ -16,6 +16,7 @@ export const Protocol = {
   Eth2ValidatorStaking: 'eth-2-validator-staking',
   Ethena: 'ethena',
   EtherFi: 'etherfi',
+  Fables: 'fables',
   Flux: 'flux',
   Gmx: 'gmx',
   GmxV2: 'gmx-v2',
