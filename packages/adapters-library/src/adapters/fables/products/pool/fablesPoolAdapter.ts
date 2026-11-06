@@ -143,7 +143,7 @@ export class FablesPoolAdapter implements IProtocolAdapter {
     tokenIds,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     // Step 1: Positions are keyed by range id from Transfer metadata
-    if (!tokenIds || tokenIds.length === 0) {
+    if (!tokenIds?.length) {
       return []
     }
 
@@ -158,15 +158,22 @@ export class FablesPoolAdapter implements IProtocolAdapter {
     const positions: ProtocolPosition[] = []
     for (const hook of hooks) {
       const ledger = new Contract(hook.address, LEDGER_ABI, this.provider)
+      const balanceOf = ledger.balanceOf
+
+      // Step: Skip hook if the ledger ABI surface is missing balanceOf
+      if (typeof balanceOf !== 'function') {
+        console.error('Fables ledger missing balanceOf', {
+          hook: hook.address,
+        })
+        continue
+      }
 
       const hookPositions = await filterMapAsync(tokenIds, async (tokenId) => {
         try {
           // Step: Read ERC-6909 receipt balance for this range id
-          const balanceRaw = (await ledger.balanceOf!(
-            userAddress,
-            BigInt(tokenId),
-            { blockTag: blockNumber },
-          )) as bigint
+          const balanceRaw = (await balanceOf(userAddress, BigInt(tokenId), {
+            blockTag: blockNumber,
+          })) as bigint
 
           if (balanceRaw === 0n) {
             return undefined

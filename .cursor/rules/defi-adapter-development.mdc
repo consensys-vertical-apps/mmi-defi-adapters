@@ -189,7 +189,7 @@ export class ProtocolAdapter implements IProtocolAdapter {
   async getPositions({
     tokenIds,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    if (!tokenIds || tokenIds.length === 0) {
+    if (!tokenIds?.length) {
       return []
     }
 

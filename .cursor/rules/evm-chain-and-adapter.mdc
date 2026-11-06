@@ -44,6 +44,7 @@ Typical product: staked / wrapped ERC20 with `userEvent: 'Transfer'` so workers 
    - Register only on the target chain(s) in `supportedProtocols.ts`
 3. Contract addresses: checksum with `getAddress`, cite official docs in a short comment
 4. Unwrap: 1:1 to underlying is fine for gating / balance detection unless a real rate is required
+5. Always add `products/<product>/tests/testCases.ts` exporting `testCases` (can be `[]` until real position snapshots exist) — snapshot CI imports this path for every protocol/product
 
 Multiple protocol tokens in one product → multiple jobs (one per address). That is expected.
 

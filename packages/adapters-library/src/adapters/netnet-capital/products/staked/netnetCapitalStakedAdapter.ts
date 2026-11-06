@@ -86,11 +86,18 @@ export class NetnetCapitalStakedAdapter extends SimplePoolAdapter {
       protocolTokenMetadata.address,
     )
 
-    const pricePerShareRaw = BigInt(10 ** underlyingToken!.decimals)
+    // Step: Require underlying NET metadata for a 1:1 unwrap rate
+    if (!underlyingToken) {
+      throw new Error(
+        `Missing underlying token for NetNet protocol token ${protocolTokenMetadata.address}`,
+      )
+    }
+
+    const pricePerShareRaw = BigInt(10 ** underlyingToken.decimals)
 
     return [
       {
-        ...underlyingToken!,
+        ...underlyingToken,
         type: TokenType.Underlying,
         underlyingRateRaw: pricePerShareRaw,
       },
