@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+# Block the commit if the Biome linter fails.
+set -e
+
+echo "pre-commit: running npm run lint..."
+npm run lint

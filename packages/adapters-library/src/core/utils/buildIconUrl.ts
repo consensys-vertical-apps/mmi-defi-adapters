@@ -18,6 +18,8 @@ const chainNameMap: Record<Chain, string> = {
   [Chain.Sei]: 'sei',
   [Chain.Base]: 'base',
   [Chain.Linea]: 'linea',
+  // Trust Wallet has no robinhood folder yet; ethereum icons are a safe fallback for ETH gas token assets
+  [Chain.Robinhood]: 'ethereum',
   [Chain.Solana]: 'solana',
 }
 

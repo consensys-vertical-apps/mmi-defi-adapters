@@ -12,6 +12,7 @@ export const EvmChain = {
   Arbitrum: 42161,
   Avalanche: 43114,
   Linea: 59144,
+  Robinhood: 4663,
 } as const
 export type EvmChain = (typeof EvmChain)[keyof typeof EvmChain]
 
@@ -37,6 +38,7 @@ export const ChainName = {
   [Chain.Arbitrum]: 'arb',
   [Chain.Avalanche]: 'avax',
   [Chain.Linea]: 'linea',
+  [Chain.Robinhood]: 'robinhood',
   [Chain.Solana]: 'solana',
 } as const
 export type ChainName = (typeof ChainName)[keyof typeof ChainName]

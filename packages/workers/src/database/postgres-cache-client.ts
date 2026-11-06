@@ -282,10 +282,16 @@ class PostgresCacheClient implements CacheClient {
             ],
           )
 
+          // Match logs_unique_null_safe_idx (COALESCE treats NULL metadata as '')
           const result = await client.query(
             `INSERT INTO logs (address, contract_address, metadata_key, metadata_value)
              VALUES ${values}
-             ON CONFLICT (address, contract_address, metadata_key, metadata_value) DO NOTHING`,
+             ON CONFLICT (
+               address,
+               contract_address,
+               (COALESCE(metadata_key, '')),
+               (COALESCE(metadata_value, ''))
+             ) DO NOTHING`,
             params,
           )
 

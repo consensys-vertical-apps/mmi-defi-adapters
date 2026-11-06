@@ -173,4 +173,20 @@ export const count = {
       maxRequestTime: 0,
     },
   },
+  [Chain.Robinhood]: {
+    name: 'Robinhood',
+    multicallRequests: {
+      total: 0,
+      totalInternalRequest: 0,
+      maxRequestTime: 0,
+    },
+    nonMulticallRequests: {
+      total: 0,
+      maxRequestTime: 0,
+    },
+    logRequests: {
+      total: 0,
+      maxRequestTime: 0,
+    },
+  },
 }
