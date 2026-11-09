@@ -1,3 +1,4 @@
+import { EvmChain } from '@codefi/mmi-defi-adapters'
 import { type JsonRpcProvider, type Log, isError } from 'ethers'
 import type { Logger } from 'pino'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
@@ -38,6 +39,7 @@ describe('fetchEvents', () => {
     fromBlock: 1000,
     toBlock: 2000,
     logger: mockLogger,
+    chainId: EvmChain.Ethereum,
   }
 
   beforeEach(() => {

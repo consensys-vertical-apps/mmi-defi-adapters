@@ -4,6 +4,7 @@ import { pinoLogger } from 'hono-pino'
 import type { ContentfulStatusCode } from 'hono/utils/http-status'
 import * as client from 'prom-client'
 import { logger } from '../logger.js'
+import { initWorkerMetrics } from '../metrics/index.js'
 
 const TEN_MINUTES_IN_MS = 600_000
 const INTERNAL_SERVER_ERROR = 500
@@ -50,8 +51,10 @@ export function buildApi(
 
   addMiddleware(app)
 
+  // Step: reset registry, collect Node defaults, then register custom counters
   client.register.clear()
   client.collectDefaultMetrics({})
+  initWorkerMetrics()
 
   app.get('/health', (c) => {
     const chainHealthReport = Object.values(EvmChain)

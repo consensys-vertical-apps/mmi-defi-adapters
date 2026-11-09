@@ -1,5 +1,7 @@
+import type { EvmChain } from '@codefi/mmi-defi-adapters'
 import type { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
+import { emitRpcCall } from '../metrics/index.js'
 import { extractErrorMessage } from '../utils/extractErrorMessage.js'
 import { withTimeout } from '../utils/with-timeout.js'
 
@@ -10,11 +12,18 @@ export async function waitForBlock(
   targetBlockNumber: number,
   provider: JsonRpcProvider,
   logger: Logger,
+  chainId: EvmChain,
 ): Promise<number> {
   let backoff = ONE_SECOND
 
   while (true) {
     try {
+      // Step: count each eth_blockNumber poll while waiting for the target
+      emitRpcCall({
+        chainId,
+        method: 'eth_blockNumber',
+        phase: 'latest',
+      })
       const latestBlockNumber = await withTimeout(provider.getBlockNumber())
       if (latestBlockNumber >= targetBlockNumber) {
         return latestBlockNumber

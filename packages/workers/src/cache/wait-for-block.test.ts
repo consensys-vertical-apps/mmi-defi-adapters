@@ -1,3 +1,4 @@
+import { EvmChain } from '@codefi/mmi-defi-adapters'
 import type { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
@@ -38,7 +39,12 @@ describe('waitForBlock', () => {
     const latestBlockNumber = 101
     vi.mocked(provider.getBlockNumber).mockResolvedValue(latestBlockNumber)
 
-    const result = await waitForBlock(targetBlockNumber, provider, logger)
+    const result = await waitForBlock(
+      targetBlockNumber,
+      provider,
+      logger,
+      EvmChain.Ethereum,
+    )
 
     expect(result).toBe(latestBlockNumber)
     expect(provider.getBlockNumber).toHaveBeenCalledOnce()
@@ -52,7 +58,12 @@ describe('waitForBlock', () => {
       .mockResolvedValueOnce(99)
       .mockResolvedValueOnce(100)
 
-    const promise = waitForBlock(targetBlockNumber, provider, logger)
+    const promise = waitForBlock(
+      targetBlockNumber,
+      provider,
+      logger,
+      EvmChain.Ethereum,
+    )
 
     await vi.advanceTimersToNextTimerAsync() // 1s backoff
     await vi.advanceTimersToNextTimerAsync() // 2s backoff
@@ -71,7 +82,12 @@ describe('waitForBlock', () => {
       .mockResolvedValueOnce(99)
       .mockResolvedValueOnce(101)
 
-    const promise = waitForBlock(targetBlockNumber, provider, logger)
+    const promise = waitForBlock(
+      targetBlockNumber,
+      provider,
+      logger,
+      EvmChain.Ethereum,
+    )
 
     await vi.advanceTimersToNextTimerAsync() // 1s backoff
     await vi.advanceTimersToNextTimerAsync() // 2s backoff
@@ -93,7 +109,12 @@ describe('waitForBlock', () => {
       .mockResolvedValueOnce(97)
       .mockResolvedValueOnce(100)
 
-    const promise = waitForBlock(targetBlockNumber, provider, logger)
+    const promise = waitForBlock(
+      targetBlockNumber,
+      provider,
+      logger,
+      EvmChain.Ethereum,
+    )
     const ONE_SECOND = 1000
 
     // 1st attempt fails, waits 1s
@@ -120,7 +141,12 @@ describe('waitForBlock', () => {
       .mockResolvedValueOnce(97) // 60s (capped)
       .mockResolvedValue(100) // Success
 
-    const promise = waitForBlock(targetBlockNumber, provider, logger)
+    const promise = waitForBlock(
+      targetBlockNumber,
+      provider,
+      logger,
+      EvmChain.Ethereum,
+    )
 
     await vi.runAllTimersAsync()
 

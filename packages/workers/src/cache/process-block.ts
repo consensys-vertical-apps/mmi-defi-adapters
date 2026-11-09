@@ -1,4 +1,7 @@
-import { type AdditionalMetadataConfig } from '@codefi/mmi-defi-adapters'
+import {
+  type AdditionalMetadataConfig,
+  type EvmChain,
+} from '@codefi/mmi-defi-adapters'
 import {
   type JsonRpcProvider,
   type TransactionReceipt,
@@ -6,6 +9,7 @@ import {
   getAddress,
 } from 'ethers'
 import type { Logger } from 'pino'
+import { emitRpcCall } from '../metrics/index.js'
 import { extractErrorMessage } from '../utils/extractErrorMessage.js'
 import { withTimeout } from '../utils/with-timeout.js'
 import type { UserIndex } from './build-latest-cache.js'
@@ -17,11 +21,13 @@ export async function processBlock({
   blockNumber,
   userIndexMap,
   logger,
+  chainId,
 }: {
   provider: JsonRpcProvider
   blockNumber: number
   userIndexMap: UserIndex
   logger: Logger
+  chainId: EvmChain
 }): Promise<
   {
     address: string
@@ -29,6 +35,12 @@ export async function processBlock({
     metadata?: Record<string, string>
   }[]
 > {
+  // Step: count eth_getBlockReceipts used by the latest-cache path
+  emitRpcCall({
+    chainId,
+    method: 'eth_getBlockReceipts',
+    phase: 'latest',
+  })
   const receipts: TransactionReceipt[] = await withTimeout(
     provider.send('eth_getBlockReceipts', [
       `0x${ethers.toBeHex(blockNumber).slice(2).replace(/^0+/, '')}`, // some chains need to remove leading zeros like ftm

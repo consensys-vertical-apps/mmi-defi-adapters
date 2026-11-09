@@ -85,12 +85,16 @@ describe('buildApi', () => {
   })
 
   describe('GET /metrics', () => {
-    it('should return metrics', async () => {
+    it('should return metrics including worker counters', async () => {
       const app = buildApi(mockHealthyWorkersInfo)
 
       const res = await app.request('/metrics')
+      const body = await res.text()
 
       expect(res.status).toBe(200)
+      expect(body).toContain('defi_workers_rpc_calls_total')
+      expect(body).toContain('defi_workers_wallets_seen_total')
+      expect(body).toContain('defi_workers_wallets_inserted_total')
     })
   })
 })
