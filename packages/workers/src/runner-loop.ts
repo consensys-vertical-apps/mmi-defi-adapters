@@ -9,6 +9,7 @@ import { buildHistoricCache } from './cache/build-historic-cache.js'
 import { type UserIndex, buildLatestCache } from './cache/build-latest-cache.js'
 import { createWatchKey } from './cache/create-watch-key.js'
 import type { CacheClient } from './database/postgres-cache-client.js'
+import { emitRpcCall } from './metrics/index.js'
 
 const SIXTY_SECONDS = 60_000
 
@@ -63,6 +64,12 @@ export async function runnerLoop({
     )
 
     let nextProcessingBlockNumber = blockNumber
+    // Step: seed latest block number for lag reporting
+    emitRpcCall({
+      chainId,
+      method: 'eth_blockNumber',
+      phase: 'latest',
+    })
     let latestBlockNumber = await provider.getBlockNumber()
 
     const BLOCKS_PER_HOUR = AVERAGE_BLOCKS_PER_DAY[chainId] / 24
@@ -92,6 +99,7 @@ export async function runnerLoop({
         logger: logger.child({
           subService: 'latest-cache',
         }),
+        chainId,
       })
 
       nextProcessingBlockNumber = result.nextProcessingBlockNumber

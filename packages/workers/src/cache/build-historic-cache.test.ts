@@ -65,7 +65,7 @@ describe('buildHistoricCache', () => {
     provider = {} as JsonRpcProvider
     cacheClient = {
       fetchUnfinishedJobs: vi.fn(),
-      insertLogs: vi.fn(),
+      insertLogs: vi.fn().mockResolvedValue(0),
       updateJobStatus: vi.fn(),
     } as unknown as CacheClient
     logger = {

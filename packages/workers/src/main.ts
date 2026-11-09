@@ -5,6 +5,7 @@ import { DefiProvider, EvmChain } from '@codefi/mmi-defi-adapters'
 import { serve } from '@hono/node-server'
 import { buildApi } from './api/build-api.js'
 import { logger } from './logger.js'
+import { applyMetricEvent, isWorkerMetricEvent } from './metrics/index.js'
 
 const defiProvider = new DefiProvider()
 
@@ -56,27 +57,30 @@ function startChainProcessingWorker() {
 
   const worker = new Worker(workerPath)
 
-  worker.on(
-    'message',
-    ({
-      chainId,
-      lastProcessedBlockNumber,
-      latestBlockNumber,
-    }: {
-      chainId: EvmChain
-      lastProcessedBlockNumber: number
-      latestBlockNumber: number
-    }) => {
-      const chainWorkerInfo = workersInfo[chainId]
+  worker.on('message', (message: unknown) => {
+    // Step: apply Prometheus metric events from the worker thread
+    if (isWorkerMetricEvent(message)) {
+      applyMetricEvent(message)
+      return
+    }
 
-      if (!chainWorkerInfo) {
-        logger.warn({ chainId }, 'Chain worker not found during update')
-        return
+    // Step: update health snapshot from latest-cache progress messages
+    const { chainId, lastProcessedBlockNumber, latestBlockNumber } =
+      message as {
+        chainId: EvmChain
+        lastProcessedBlockNumber: number
+        latestBlockNumber: number
       }
 
-      chainWorkerInfo.lastProcessedBlockNumber = lastProcessedBlockNumber
-      chainWorkerInfo.latestBlockNumber = latestBlockNumber
-      chainWorkerInfo.updatedAt = Date.now()
-    },
-  )
+    const chainWorkerInfo = workersInfo[chainId]
+
+    if (!chainWorkerInfo) {
+      logger.warn({ chainId }, 'Chain worker not found during update')
+      return
+    }
+
+    chainWorkerInfo.lastProcessedBlockNumber = lastProcessedBlockNumber
+    chainWorkerInfo.latestBlockNumber = latestBlockNumber
+    chainWorkerInfo.updatedAt = Date.now()
+  })
 }

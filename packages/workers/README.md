@@ -97,7 +97,17 @@ Runs a Hono API instance that exposes `/health` and `/metrics` endpoints.
 
 The `/health` endpoint receives a message from every worker thread every time a new block is processed. If no message is received from any worker thread within 10 minutes, the health check fails.
 
-The `/metrics` endpoint is just the output of the prometheus client.
+The `/metrics` endpoint is the Prometheus text exposition from `prom-client` (Node defaults plus custom worker counters).
+
+### Custom metrics
+
+Indexing runs in worker threads; counters are updated on the main thread after `postMessage` metric events.
+
+| Metric | Labels | Meaning |
+| --- | --- | --- |
+| `defi_workers_rpc_calls_total` | `chainId`, `method`, `phase` | RPC attempts (`eth_getLogs`, `eth_getBlockReceipts`, `eth_blockNumber`); `phase` is `historic` or `latest` |
+| `defi_workers_wallets_seen_total` | `chainId`, `phase` | Unique wallet addresses in a log batch before insert |
+| `defi_workers_wallets_inserted_total` | `chainId`, `phase` | Rows actually inserted by `insertLogs` (`rowCount`) |
 
 ## Worker thread
 

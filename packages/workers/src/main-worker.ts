@@ -6,6 +6,7 @@ import {
   createPostgresCacheClient,
 } from './database/postgres-cache-client.js'
 import { logger } from './logger.js'
+import { emitRpcCall } from './metrics/index.js'
 import { runnerLoop } from './runner-loop.js'
 import { updateNewJobs } from './update-new-jobs.js'
 import { extractErrorMessage } from './utils/extractErrorMessage.js'
@@ -50,6 +51,7 @@ await Promise.all(
         cacheClient,
         provider,
         childLogger,
+        chainId,
       )
 
       await updateNewJobs({
@@ -82,6 +84,7 @@ async function getBlockToProcess(
   cacheClient: CacheClient,
   provider: JsonRpcProvider,
   logger: Logger,
+  chainId: EvmChain,
 ) {
   const dbBlockNumber = await cacheClient.getLatestBlockProcessed()
 
@@ -91,6 +94,12 @@ async function getBlockToProcess(
   }
 
   try {
+    // Step: bootstrap start block from RPC when the DB has no checkpoint
+    emitRpcCall({
+      chainId,
+      method: 'eth_blockNumber',
+      phase: 'latest',
+    })
     const blockNumber = await provider.getBlockNumber()
     logger.info({ blockNumber }, 'Block number fetched from provider')
     return blockNumber

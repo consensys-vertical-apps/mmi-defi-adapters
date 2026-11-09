@@ -1,7 +1,14 @@
-import type { AdditionalMetadataConfig } from '@codefi/mmi-defi-adapters'
+import type {
+  AdditionalMetadataConfig,
+  EvmChain,
+} from '@codefi/mmi-defi-adapters'
 import { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
 import type { CacheClient } from '../database/postgres-cache-client.js'
+import {
+  countUniqueWallets,
+  emitWalletInsertMetrics,
+} from '../metrics/index.js'
 import { extractErrorMessage } from '../utils/extractErrorMessage.js'
 import { processBlock } from './process-block.js'
 import { waitForBlock } from './wait-for-block.js'
@@ -52,12 +59,14 @@ export async function buildLatestCache({
   cacheClient,
   userIndexMap,
   logger,
+  chainId,
 }: {
   processingBlockNumber: number
   provider: JsonRpcProvider
   cacheClient: CacheClient
   userIndexMap: UserIndex
   logger: Logger
+  chainId: EvmChain
 }): Promise<{
   nextProcessingBlockNumber: number
   latestBlockNumber: number
@@ -68,6 +77,7 @@ export async function buildLatestCache({
     processingBlockNumber,
     provider,
     logger,
+    chainId,
   )
 
   try {
@@ -78,6 +88,7 @@ export async function buildLatestCache({
       userIndexMap,
       cacheClient,
       logger,
+      chainId,
     })
   } catch (error) {
     logger.error(
@@ -111,6 +122,7 @@ async function processBlocks({
   userIndexMap,
   cacheClient,
   logger,
+  chainId,
 }: {
   processingBlockNumber: number
   latestBlockNumber: number
@@ -118,6 +130,7 @@ async function processBlocks({
   userIndexMap: UserIndex
   cacheClient: CacheClient
   logger: Logger
+  chainId: EvmChain
 }) {
   const shouldBatch = latestBlockNumber - processingBlockNumber > BATCH_SIZE
 
@@ -143,6 +156,7 @@ async function processBlocks({
             blockNumber,
             userIndexMap,
             logger,
+            chainId,
           }),
         ),
       )
@@ -155,6 +169,7 @@ async function processBlocks({
       blockNumber: processingBlockNumber,
       userIndexMap,
       logger,
+      chainId,
     })
 
     latestProcessedBlockNumber = processingBlockNumber
@@ -162,7 +177,18 @@ async function processBlocks({
 
   if (logs.length > 0) {
     // note we reduced db writes by only updating blocknumber when we have logs this improved performance
-    await cacheClient.insertLogs(logs, latestProcessedBlockNumber)
+    // Step: insert logs, then report wallets seen vs rows inserted
+    const walletsSeen = countUniqueWallets(logs)
+    const walletsInserted = await cacheClient.insertLogs(
+      logs,
+      latestProcessedBlockNumber,
+    )
+    emitWalletInsertMetrics({
+      chainId,
+      phase: 'latest',
+      walletsSeen,
+      walletsInserted,
+    })
   }
 
   return latestProcessedBlockNumber + 1

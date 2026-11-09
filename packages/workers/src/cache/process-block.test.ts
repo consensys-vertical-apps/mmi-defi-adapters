@@ -1,3 +1,4 @@
+import { EvmChain } from '@codefi/mmi-defi-adapters'
 import type { JsonRpcProvider, Log, TransactionReceipt } from 'ethers'
 import type { Logger } from 'pino'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
@@ -61,6 +62,7 @@ describe('processBlock', () => {
       blockNumber: 1,
       userIndexMap,
       logger,
+      chainId: EvmChain.Ethereum,
     })
     expect(result).toEqual([])
     expect(provider.send).toHaveBeenCalledWith('eth_getBlockReceipts', ['0x1'])
@@ -107,6 +109,7 @@ describe('processBlock', () => {
       blockNumber: 1,
       userIndexMap,
       logger,
+      chainId: EvmChain.Ethereum,
     })
 
     expect(result).toEqual([
@@ -145,6 +148,7 @@ describe('processBlock', () => {
       blockNumber: 1,
       userIndexMap,
       logger,
+      chainId: EvmChain.Ethereum,
     })
 
     expect(result).toEqual([])
@@ -170,6 +174,7 @@ describe('processBlock', () => {
       blockNumber: 1,
       userIndexMap,
       logger,
+      chainId: EvmChain.Ethereum,
     })
 
     expect(result).toEqual([])
@@ -206,6 +211,7 @@ describe('processBlock', () => {
       blockNumber: 1,
       userIndexMap,
       logger,
+      chainId: EvmChain.Ethereum,
     })
 
     expect(result).toEqual([])
@@ -227,6 +233,7 @@ describe('processBlock', () => {
       blockNumber: 1,
       userIndexMap,
       logger,
+      chainId: EvmChain.Ethereum,
     })
     expect(result).toEqual([])
 
@@ -239,6 +246,7 @@ describe('processBlock', () => {
       blockNumber: 1,
       userIndexMap,
       logger,
+      chainId: EvmChain.Ethereum,
     })
     expect(result).toEqual([])
   })

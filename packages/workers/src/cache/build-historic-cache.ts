@@ -2,6 +2,10 @@ import { EvmChain } from '@codefi/mmi-defi-adapters'
 import { JsonRpcProvider, getAddress } from 'ethers'
 import type { Logger } from 'pino'
 import type { CacheClient } from '../database/postgres-cache-client.js'
+import {
+  countUniqueWallets,
+  emitWalletInsertMetrics,
+} from '../metrics/index.js'
 import { extractErrorMessage } from '../utils/extractErrorMessage.js'
 import { fetchEvents } from './fetch-events.js'
 import { getNextPoolGroup } from './get-next-pool-group.js'
@@ -116,6 +120,8 @@ export async function buildHistoricCache(
           fromBlock: from,
           toBlock: to,
           logger,
+          chainId,
+          phase: 'historic',
         })) {
           const logsToInsert: {
             address: string
@@ -158,7 +164,15 @@ export async function buildHistoricCache(
           // TODO: Improve type safety for insertLogs input parameters for history/latest jobs
 
           if (logsToInsert.length > 0) {
-            await cacheClient.insertLogs(logsToInsert)
+            // Step: insert logs, then report wallets seen vs rows inserted
+            const walletsSeen = countUniqueWallets(logsToInsert)
+            const walletsInserted = await cacheClient.insertLogs(logsToInsert)
+            emitWalletInsertMetrics({
+              chainId,
+              phase: 'historic',
+              walletsSeen,
+              walletsInserted,
+            })
           }
 
           processedEntities.logsProcessed += logsToInsert.length

@@ -1,5 +1,7 @@
+import type { EvmChain } from '@codefi/mmi-defi-adapters'
 import { type JsonRpcProvider, type Log, isError } from 'ethers'
 import type { Logger } from 'pino'
+import { type CachePhase, emitRpcCall } from '../metrics/index.js'
 import { TIMEOUT_ERROR_MESSAGE, withTimeout } from '../utils/with-timeout.js'
 
 type BlockRange = {
@@ -160,6 +162,8 @@ export async function* fetchEvents({
   fromBlock,
   toBlock,
   logger,
+  chainId,
+  phase = 'historic',
   depth = 0,
 }: {
   provider: JsonRpcProvider
@@ -168,6 +172,8 @@ export async function* fetchEvents({
   fromBlock: number
   toBlock: number
   logger: Logger
+  chainId: EvmChain
+  phase?: CachePhase
   depth?: number
 }): AsyncGenerator<Log[], void, unknown> {
   const ranges: BlockRange[] = [{ fromBlock, toBlock, depth }]
@@ -185,7 +191,8 @@ export async function* fetchEvents({
     } = current
 
     try {
-      // Step: attempt eth_getLogs for this window
+      // Step: count every eth_getLogs attempt, then fetch the window
+      emitRpcCall({ chainId, method: 'eth_getLogs', phase })
       const logs = await withTimeout(
         provider.getLogs({
           address: contractAddresses,

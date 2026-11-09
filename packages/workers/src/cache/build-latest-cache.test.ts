@@ -1,3 +1,4 @@
+import { EvmChain } from '@codefi/mmi-defi-adapters'
 import type { JsonRpcProvider } from 'ethers'
 import type { Logger } from 'pino'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
@@ -25,7 +26,7 @@ describe('buildLatestCache', () => {
       getBlockNumber: vi.fn(),
     } as unknown as JsonRpcProvider
     cacheClient = {
-      insertLogs: vi.fn(),
+      insertLogs: vi.fn().mockResolvedValue(1),
       updateLatestBlockProcessed: vi.fn(),
     } as unknown as CacheClient
     logger = {
@@ -57,12 +58,14 @@ describe('buildLatestCache', () => {
       cacheClient,
       userIndexMap,
       logger,
+      chainId: EvmChain.Ethereum,
     })
 
     expect(waitForBlock).toHaveBeenCalledWith(
       processingBlockNumber,
       provider,
       logger,
+      EvmChain.Ethereum,
     )
     expect(result.nextProcessingBlockNumber).toBe(101)
     expect(result.latestBlockNumber).toBe(105)
@@ -72,6 +75,7 @@ describe('buildLatestCache', () => {
       blockNumber: processingBlockNumber,
       userIndexMap,
       logger,
+      chainId: EvmChain.Ethereum,
     })
     expect(cacheClient.insertLogs).toHaveBeenCalledWith(
       [{ address: '0xUser', contractAddress: '0xContract' }],
@@ -102,6 +106,7 @@ describe('buildLatestCache', () => {
       cacheClient,
       userIndexMap,
       logger,
+      chainId: EvmChain.Ethereum,
     })
 
     const batchEndBlock = processingBlockNumber + BATCH_SIZE
@@ -136,6 +141,7 @@ describe('buildLatestCache', () => {
       cacheClient,
       userIndexMap,
       logger,
+      chainId: EvmChain.Ethereum,
     })
 
     await vi.advanceTimersByTimeAsync(1000)
@@ -173,6 +179,7 @@ describe('buildLatestCache', () => {
       cacheClient,
       userIndexMap,
       logger,
+      chainId: EvmChain.Ethereum,
     })
     await vi.advanceTimersByTimeAsync(1000)
     const result = await promise
