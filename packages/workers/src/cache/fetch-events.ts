@@ -2,6 +2,17 @@ import { type JsonRpcProvider, type Log, isError } from 'ethers'
 import type { Logger } from 'pino'
 import { TIMEOUT_ERROR_MESSAGE, withTimeout } from '../utils/with-timeout.js'
 
+type BlockRange = {
+  fromBlock: number
+  toBlock: number
+  depth: number
+}
+
+type GetLogsFailureResolution =
+  | { action: 'rethrow' }
+  | { action: 'skip' }
+  | { action: 'enqueue'; ranges: Omit<BlockRange, 'depth'>[] }
+
 /**
  * Returns true when the RPC error should trigger a range bisect (or a single-block skip).
  */
@@ -18,19 +29,27 @@ function isRetryableGetLogsError(
     return true
   }
 
-  if (!isError(error, 'UNKNOWN_ERROR')) {
-    return false
-  }
+  const message = error instanceof Error ? error.message : String(error)
 
-  const message = error.message
+  // Provider block-range caps (e.g. Robinhood: "range 10408 exceeds limit of 10000")
+  // Match on message text — ethers may wrap these outside UNKNOWN_ERROR.
+  const isBlockRangeLimit =
+    /exceeds limit of \d+/i.test(message) ||
+    message.toLowerCase().includes('block range') ||
+    message.includes('eth_getLogs is limited')
 
   // Infura/Linea log-index holes — split when possible, skip when single block
-  if (
+  const isLogIndexHole =
     message.includes('code": -32000') ||
     message.includes('failed to process log index') ||
     message.includes('failed to retrieve receipts')
-  ) {
-    return true
+
+  if (isBlockRangeLimit || isLogIndexHole) {
+    return toBlock - fromBlock > 0 || isLogIndexHole
+  }
+
+  if (!isError(error, 'UNKNOWN_ERROR')) {
+    return false
   }
 
   // Range / result-size limits only help when the window can still shrink
@@ -47,10 +66,92 @@ function isRetryableGetLogsError(
 }
 
 /**
- * Fetches event logs for the given contracts/topic, bisecting the block range on
- * retryable RPC errors. Single-block ranges that still fail with a retryable
- * provider error (e.g. Linea -32000 log-index holes) are skipped so historic
- * backfill can continue.
+ * Parses a provider max block-range from known eth_getLogs error messages.
+ */
+function parseMaxBlockRange(message: string): number | undefined {
+  // Step 1: Robinhood / Orbit style — "range 166542 exceeds limit of 10000"
+  const exceedsMatch = message.match(/exceeds limit of (\d+)/i)
+  if (exceedsMatch) {
+    return Number(exceedsMatch[1])
+  }
+
+  // Step 2: Infura style — "eth_getLogs is limited to 5000 block range"
+  const limitedMatch = message.match(
+    /eth_getLogs is limited to (\d+) block range/i,
+  )
+  if (limitedMatch) {
+    return Number(limitedMatch[1])
+  }
+
+  return undefined
+}
+
+/**
+ * Splits [fromBlock, toBlock] into consecutive windows of at most maxBlocks (inclusive).
+ */
+function chunkBlockRange(
+  fromBlock: number,
+  toBlock: number,
+  maxBlocks: number,
+): { fromBlock: number; toBlock: number }[] {
+  const chunks: { fromBlock: number; toBlock: number }[] = []
+  let start = fromBlock
+
+  // Step: walk the window in inclusive slices of maxBlocks
+  while (start <= toBlock) {
+    const end = Math.min(start + maxBlocks - 1, toBlock)
+    chunks.push({ fromBlock: start, toBlock: end })
+    start = end + 1
+  }
+
+  return chunks
+}
+
+/**
+ * Decides how to recover from a failed eth_getLogs call for a block window.
+ */
+function resolveGetLogsFailure(
+  error: unknown,
+  fromBlock: number,
+  toBlock: number,
+): GetLogsFailureResolution {
+  if (!isRetryableGetLogsError(error, fromBlock, toBlock)) {
+    return { action: 'rethrow' }
+  }
+
+  // Step: single block still failing — skip so backfill can proceed
+  if (fromBlock === toBlock) {
+    return { action: 'skip' }
+  }
+
+  const message = error instanceof Error ? error.message : String(error)
+  const maxBlocks = parseMaxBlockRange(message)
+  const rangeSize = toBlock - fromBlock + 1
+
+  // Step: when the provider states a max block-range, chunk to that size
+  if (maxBlocks !== undefined && rangeSize > maxBlocks) {
+    return {
+      action: 'enqueue',
+      ranges: chunkBlockRange(fromBlock, toBlock, maxBlocks),
+    }
+  }
+
+  // Step: unknown safe window size — bisect and retry both halves
+  const midBlock = Math.floor((fromBlock + toBlock) / 2)
+  return {
+    action: 'enqueue',
+    ranges: [
+      { fromBlock, toBlock: midBlock },
+      { fromBlock: midBlock + 1, toBlock },
+    ],
+  }
+}
+
+/**
+ * Fetches event logs for the given contracts/topic. On retryable RPC errors with a
+ * known max block-range, chunks the window to that size; otherwise bisects.
+ * Single-block ranges that still fail with a retryable provider error
+ * (e.g. Linea -32000 log-index holes) are skipped so historic backfill can continue.
  */
 export async function* fetchEvents({
   provider,
@@ -69,34 +170,42 @@ export async function* fetchEvents({
   logger: Logger
   depth?: number
 }): AsyncGenerator<Log[], void, unknown> {
-  const ranges: { fromBlock: number; toBlock: number; depth: number }[] = []
-
-  // Step 1: seed the work queue with the requested range
-  ranges.push({ fromBlock, toBlock, depth })
+  const ranges: BlockRange[] = [{ fromBlock, toBlock, depth }]
 
   while (ranges.length > 0) {
-    const { fromBlock, toBlock, depth } = ranges.shift()!
+    const current = ranges.shift()
+    if (!current) {
+      break
+    }
+
+    const {
+      fromBlock: rangeFrom,
+      toBlock: rangeTo,
+      depth: rangeDepth,
+    } = current
 
     try {
-      // Step 2: attempt eth_getLogs for this window
+      // Step: attempt eth_getLogs for this window
       const logs = await withTimeout(
         provider.getLogs({
           address: contractAddresses,
-          fromBlock,
-          toBlock,
+          fromBlock: rangeFrom,
+          toBlock: rangeTo,
           topics: [topic0],
         }),
       )
 
       yield logs
     } catch (error) {
-      if (!isRetryableGetLogsError(error, fromBlock, toBlock)) {
+      const resolution = resolveGetLogsFailure(error, rangeFrom, rangeTo)
+
+      if (resolution.action === 'rethrow') {
         logger.error(
           {
             error,
-            fromBlock,
-            toBlock,
-            depth,
+            fromBlock: rangeFrom,
+            toBlock: rangeTo,
+            depth: rangeDepth,
             contractAddresses,
             topic0,
           },
@@ -105,14 +214,13 @@ export async function* fetchEvents({
         throw error
       }
 
-      // Step 3a: single block still failing — skip so backfill can proceed
-      if (fromBlock === toBlock) {
+      if (resolution.action === 'skip') {
         logger.warn(
           {
             error,
-            fromBlock,
-            toBlock,
-            depth,
+            fromBlock: rangeFrom,
+            toBlock: rangeTo,
+            depth: rangeDepth,
             contractAddresses,
             topic0,
           },
@@ -121,10 +229,10 @@ export async function* fetchEvents({
         continue
       }
 
-      // Step 3b: bisect and retry both halves
-      const midBlock = Math.floor((fromBlock + toBlock) / 2)
-      ranges.push({ fromBlock, toBlock: midBlock, depth: depth + 1 })
-      ranges.push({ fromBlock: midBlock + 1, toBlock, depth: depth + 1 })
+      // Step: enqueue chunked or bisected windows
+      for (const range of resolution.ranges) {
+        ranges.push({ ...range, depth: rangeDepth + 1 })
+      }
     }
   }
 }

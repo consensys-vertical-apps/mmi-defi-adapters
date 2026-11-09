@@ -30,6 +30,7 @@ export const nativeToken = {
   [Chain.Avalanche]: ETH,
   [Chain.Base]: ETH,
   [Chain.Linea]: ETH,
+  [Chain.Robinhood]: ETH,
   [Chain.Fantom]: {
     name: 'Fantom',
     symbol: 'FTM',

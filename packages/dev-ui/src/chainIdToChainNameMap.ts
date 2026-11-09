@@ -9,6 +9,7 @@ export const ChainIdToChainNameMap = {
   [42161]: 'Arbitrum',
   [43114]: 'Avalanche',
   [59144]: 'Linea',
+  [4663]: 'Robinhood',
 } as const
 export type ChainIdToChainNameMap =
   (typeof ChainIdToChainNameMap)[keyof typeof ChainIdToChainNameMap]

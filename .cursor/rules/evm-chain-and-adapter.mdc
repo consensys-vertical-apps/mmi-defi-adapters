@@ -1,0 +1,92 @@
+---
+description: Base steps to add a new EVM chain and Transfer-gated adapters (workers + metadata)
+alwaysApply: false
+---
+
+# Add EVM chain + adapter (base)
+
+Always `nvm use 22` before npm commands. Prefer existing adapters (e.g. Mountain Protocol, NetNet Capital) over inventing new patterns.
+
+## 0. Check before creating
+
+Before writing a new adapter or product:
+
+1. Search `protocols.ts`, `supportedProtocols.ts`, and `packages/adapters-library/src/adapters/` for the protocol / product / token addresses
+2. If the adapter (or an equivalent product covering the same tokens) already exists — **reuse or extend it; do not reinvent**
+3. Only scaffold a new protocol/product when nothing suitable exists
+
+Same for chains: if `Chain` / `ChainName` already has the id, skip chain wiring and go straight to the adapter.
+
+## 1. New EVM chain (skip if chain already exists)
+
+Wire the chain id everywhere other EVM chains appear:
+
+- `packages/adapters-library/src/core/constants/chains.ts` — `Chain` enum + `ChainName`
+- `packages/adapters-library/src/core/utils/nativeTokens.ts`
+- `packages/adapters-library/src/core/constants/AVERAGE_BLOCKS_PER_DAY.ts` (use a sibling L2 estimate if unknown)
+- `packages/adapters-library/src/config.ts` — provider URL + `maxBatchSize` + zod defaults
+- `packages/adapters-library/src/metricsCount.ts`
+- `packages/adapters-library/src/core/utils/buildIconUrl.ts` if needed
+- `.env` / `.env.example` — `DEFI_ADAPTERS_PROVIDER_<CHAIN>=...`
+- Workers: any per-chain maps (e.g. `get-next-pool-group.ts` batch size)
+
+Postgres schema is created per chain name by workers; no special schema hand-write for a normal EVM chain.
+
+## 2. New Transfer-gated ERC20 adapter (SimplePool)
+
+Typical product: staked / wrapped ERC20 with `userEvent: 'Transfer'` so workers create **one job per protocol token address**.
+
+1. Add `Protocol.Foo: 'foo'` in `protocols.ts`
+2. Implement adapter under `packages/adapters-library/src/adapters/<protocol>/products/<product>/`
+   - Extend `SimplePoolAdapter`
+   - `adapterSettings`: `{ includeInUnwrap: true, userEvent: 'Transfer' }`
+   - `getProtocolTokens()` with `@CacheToDb`; use **`this.helpers.getTokenMetadata(address)`** (not deprecated `getTokenMetadata`)
+   - Register only on the target chain(s) in `supportedProtocols.ts`
+3. Contract addresses: checksum with `getAddress`, cite official docs in a short comment
+4. Unwrap: 1:1 to underlying is fine for gating / balance detection unless a real rate is required
+5. Always add `products/<product>/tests/testCases.ts` exporting `testCases` (can be `[]` until real position snapshots exist) — snapshot CI imports this path for every protocol/product
+
+Multiple protocol tokens in one product → multiple jobs (one per address). That is expected.
+
+## 3. Build metadata
+
+```bash
+nvm use 22
+npm run build
+npm run build-metadata-db -- -p <protocol-id> -c <chain-name>
+```
+
+Confirm pools land in `metadata/<chain-name>.db`.
+
+## 4. Local workers smoke (historic sample — not full tip)
+
+Env (repo-root `.env`):
+
+- `DEFI_ADAPTERS_ENABLED_CHAINS=<CHAIN_NAME>` (must match `ChainName`; wrong/missing → `No chain matches`)
+- Working `DEFI_ADAPTERS_PROVIDER_<CHAIN>` RPC
+- Postgres up (`docker compose up postgres`); `CACHE_DATABASE_URL` set
+
+```bash
+npm run build
+npm run start:workers
+```
+
+Keep the worker process in a **persistent** shell (a short shell exit kills npm-started workers).
+
+Validate for a **few minutes only** — do **not** wait for full historic (~tens of millions of blocks). Do **not** mark jobs completed to skip historic unless the user asks.
+
+Checklist:
+
+- Workers start without `No chain matches ...`
+- Jobs inserted for each protocol token (`Transfer` topic0, `user_address_index` = 2 for ERC20 `to`)
+- Historic runs (`Fetching logs from pools batch started`); no sustained fatal loop (401 / 429 storm)
+- `logs` row count for those `contract_address` values increases, **or** clear proof historic is fetching with no hard failures if early ranges have no Transfers
+- Latest-cache also alive (`Latest block cache update`)
+- Stop workers after the sample; leave DB/jobs for inspection
+
+## 5. Known pitfalls
+
+- Historic `eth_getLogs` range-limit errors: workers chunk by parsed limit (do not invent bisect for that case)
+- Logs unique must be NULL-safe on `(address, contract_address)` or duplicates break gating
+- Missing provider for other chains when only one is enabled → expected `Provider missing for this chain` noise; ignore if target chain is healthy
+- `@CacheToDb` tokens must exist in metadata DB before workers create useful jobs

@@ -50,8 +50,10 @@ import { MorphoCompoundV2OptimizerBorrowAdapter } from './morpho-compound-v2/pro
 import { MorphoCompoundV2OptimizerSupplyAdapter } from './morpho-compound-v2/products/optimizer-supply/morphoCompoundV2OptimizerSupplyAdapter'
 import { PancakeswapV2PoolAdapter } from './pancakeswap-v2/products/pool/pancakeswapV2PoolAdapter'
 
+import { FablesPoolAdapter } from './fables/products/pool/fablesPoolAdapter'
 import { MountainProtocolUsdmAdapter } from './mountain-protocol/products/usdm/mountainProtocolUsdmAdapter'
 import { MountainProtocolWUsdmAdapter } from './mountain-protocol/products/wusdm/mountainProtocolWUsdmAdapter'
+import { NetnetCapitalStakedAdapter } from './netnet-capital/products/staked/netnetCapitalStakedAdapter'
 import { Protocol } from './protocols'
 import { QuickswapV2PoolAdapter } from './quickswap-v2/products/pool/quickswapV2PoolAdapter'
 import { RocketPoolRethAdapter } from './rocket-pool/products/reth/rocketPoolRethAdapter'
@@ -516,6 +518,14 @@ export const supportedProtocols: Record<
     [Chain.Base]: [MountainProtocolUsdmAdapter, MountainProtocolWUsdmAdapter],
   },
 
+  [Protocol.NetNetCapital]: {
+    [Chain.Robinhood]: [NetnetCapitalStakedAdapter],
+  },
+
+  [Protocol.Fables]: {
+    [Chain.Robinhood]: [FablesPoolAdapter],
+  },
+
   [Protocol.PancakeswapV2]: {
     [Chain.Ethereum]: [PancakeswapV2PoolAdapter],
     // [Chain.Bsc]: [PancakeswapV2PoolAdapter],
@@ -690,6 +700,7 @@ export const supportedProtocols: Record<
     [Chain.Polygon]: [UniswapV3PoolAdapter],
     // [Chain.Bsc]: [UniswapV3PoolAdapter],
     [Chain.Base]: [UniswapV3PoolAdapter],
+    [Chain.Robinhood]: [UniswapV3PoolAdapter],
   },
 
   [Protocol.UniswapV4]: {
