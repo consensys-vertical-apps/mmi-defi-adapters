@@ -4,7 +4,7 @@ import {
   Protocol,
   TokenType,
 } from '@codefi/mmi-defi-adapters'
-import { z } from 'zod'
+import { z } from '@hono/zod-openapi'
 
 // All these schemas are generated for the OpenAPI spec, not for validation
 

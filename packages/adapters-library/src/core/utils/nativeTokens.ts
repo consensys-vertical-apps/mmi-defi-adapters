@@ -41,10 +41,4 @@ export const nativeToken = {
     symbol: 'SEI',
     decimals: 18,
   },
-  [Chain.Solana]: {
-    address: 'So11111111111111111111111111111111111111112',
-    name: 'Solana',
-    symbol: 'SOL',
-    decimals: 9,
-  },
 } as const

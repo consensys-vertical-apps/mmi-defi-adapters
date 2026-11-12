@@ -1,23 +1,14 @@
-import { Connection } from '@solana/web3.js'
 import { IMetadataProvider } from '../SQLiteMetadataProvider'
-import { PricesSolanaUsdAdapter } from '../adapters/prices-solana/products/usd/pricesSolanaUsdAdapter'
 import {
   IPricesAdapter,
   PricesV2UsdAdapter,
 } from '../adapters/prices-v2/products/usd/pricesV2UsdAdapter'
 import { Protocol } from '../adapters/protocols'
-import {
-  EvmChainAdapters,
-  SolanaChainAdapters,
-} from '../adapters/supportedProtocols'
+import { EvmChainAdapters } from '../adapters/supportedProtocols'
 import { IConfig } from '../config'
-import { Helpers, SolanaHelpers } from '../core/helpers'
+import { Helpers } from '../core/helpers'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
-import {
-  PositionType,
-  ProtocolAdapterParams,
-  SolanaProtocolAdapterParams,
-} from '../types/adapter'
+import { PositionType, ProtocolAdapterParams } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { Support } from '../types/response'
 import { Chain, EvmChain } from './constants/chains'
@@ -25,9 +16,7 @@ import { AdapterMissingError, NotImplementedError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 import { logger } from './utils/logger'
 
-type ISupportedProtocols = Partial<
-  Record<Protocol, EvmChainAdapters | SolanaChainAdapters>
->
+type ISupportedProtocols = Partial<Record<Protocol, EvmChainAdapters>>
 
 export class AdaptersController {
   private adapters: Map<Chain, Map<Protocol, Map<string, IProtocolAdapter>>> =
@@ -41,13 +30,11 @@ export class AdaptersController {
 
   constructor({
     evmProviders: providers,
-    solanaProvider,
     supportedProtocols,
     metadataProviders,
     config,
   }: {
     evmProviders: Partial<Record<EvmChain, CustomJsonRpcProvider>>
-    solanaProvider?: Connection
     supportedProtocols: ISupportedProtocols
     metadataProviders: Record<Chain, IMetadataProvider>
     config: IConfig
@@ -59,61 +46,34 @@ export class AdaptersController {
         Object.entries(supportedChains).forEach(
           ([chainIdKey, adapterClasses]) => {
             const chainId = +chainIdKey as Chain
+            const provider = providers[chainId]
 
-            if (chainId === Chain.Solana) {
-              if (!solanaProvider) {
-                return
-              }
+            if (!provider) {
+              return
+            }
 
-              adapterClasses.forEach(
-                (
-                  solanaAdapterClass: new (
-                    input: SolanaProtocolAdapterParams,
-                  ) => IProtocolAdapter,
-                ) => {
-                  const adapter = new solanaAdapterClass({
-                    provider: solanaProvider,
-                    protocolId,
-                    adaptersController: this,
-                    helpers: new SolanaHelpers(
-                      solanaProvider,
-                      metadataProviders[chainId],
-                    ),
-                  })
-
-                  this.mapAdapter(adapter)
-                },
-              )
-            } else {
-              const provider = providers[chainId]
-
-              if (!provider) {
-                return
-              }
-
-              adapterClasses.forEach(
-                (
-                  evmAdapterClass: new (
-                    input: ProtocolAdapterParams,
-                  ) => IProtocolAdapter,
-                ) => {
-                  const adapter = new evmAdapterClass({
+            adapterClasses.forEach(
+              (
+                evmAdapterClass: new (
+                  input: ProtocolAdapterParams,
+                ) => IProtocolAdapter,
+              ) => {
+                const adapter = new evmAdapterClass({
+                  provider,
+                  chainId,
+                  protocolId,
+                  adaptersController: this,
+                  helpers: new Helpers(
                     provider,
                     chainId,
-                    protocolId,
-                    adaptersController: this,
-                    helpers: new Helpers(
-                      provider,
-                      chainId,
-                      metadataProviders[chainId],
-                      config,
-                    ),
-                  })
+                    metadataProviders[chainId],
+                    config,
+                  ),
+                })
 
-                  this.mapAdapter(adapter)
-                },
-              )
-            }
+                this.mapAdapter(adapter)
+              },
+            )
           },
         )
       },
@@ -137,16 +97,6 @@ export class AdaptersController {
 
       this.priceAdapters.set(chain, priceAdapter)
     })
-
-    if (solanaProvider) {
-      this.priceAdapters.set(
-        Chain.Solana,
-        new PricesSolanaUsdAdapter({
-          provider: solanaProvider,
-          adaptersController: this,
-        }),
-      )
-    }
   }
 
   private mapAdapter(adapter: IProtocolAdapter) {

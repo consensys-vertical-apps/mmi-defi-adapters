@@ -4,7 +4,6 @@ import { E_ADDRESS } from '../constants/E_ADDRESS'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { Chain } from '../constants/chains'
 import { logger } from './logger'
-import { nativeToken } from './nativeTokens'
 
 // names are here https://github.com/trustwallet/assets/tree/master/blockchains
 const chainNameMap: Record<Chain, string> = {
@@ -20,7 +19,6 @@ const chainNameMap: Record<Chain, string> = {
   [Chain.Linea]: 'linea',
   // Trust Wallet has no robinhood folder yet; ethereum icons are a safe fallback for ETH gas token assets
   [Chain.Robinhood]: 'ethereum',
-  [Chain.Solana]: 'solana',
 }
 
 export function buildTrustAssetIconUrl(
@@ -28,18 +26,11 @@ export function buildTrustAssetIconUrl(
   smartContractAddress: string,
 ) {
   try {
-    const address =
-      chainId === Chain.Solana
-        ? smartContractAddress
-        : getAddress(smartContractAddress)
+    const address = getAddress(smartContractAddress)
 
     const chainName = chainNameMap[chainId]
 
-    if (
-      [ZERO_ADDRESS, E_ADDRESS, nativeToken[Chain.Solana].address].includes(
-        address,
-      )
-    ) {
+    if ([ZERO_ADDRESS, E_ADDRESS].includes(address)) {
       return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/${chainName}/info/logo.png`
     }
 
@@ -73,8 +64,6 @@ export const TrustWalletProtocolIconMap: Partial<Record<Protocol, string>> = {
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/gmx.io.png',
   [Protocol.GmxV2]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/gmx.io.png',
-  [Protocol.Jito]:
-    'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/www.jito.network.png',
   [Protocol.Lido]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/dapps/lido.fi.png',
   [Protocol.Maker]:

@@ -1,7 +1,7 @@
-import { Connection } from '@solana/web3.js'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { Protocol } from '../adapters/protocols'
+import { IConfig } from '../config'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { ProtocolAdapterParams } from '../types/adapter'
 import { AdaptersController } from './adaptersController'
@@ -18,8 +18,6 @@ const evmProviders = Object.values(Chain).reduce(
   },
   {} as Record<Chain, CustomJsonRpcProvider>,
 )
-
-const solanaProvider = vi.fn() as unknown as Connection
 
 const protocolIdMock = 'protocol-mock' as Protocol
 class MockProtocolAdapter {
@@ -39,15 +37,17 @@ const supportedProtocols = {
   >
 >
 
+const mockConfig = {} as IConfig
+
 describe('AdaptersController', () => {
   let adaptersController: AdaptersController
 
   beforeEach(() => {
     adaptersController = new AdaptersController({
       evmProviders,
-      solanaProvider,
       supportedProtocols,
       metadataProviders: {} as unknown as Record<Chain, IMetadataProvider>,
+      config: mockConfig,
     })
   })
 
@@ -60,7 +60,6 @@ describe('AdaptersController', () => {
       const codeThatThrows = () =>
         new AdaptersController({
           evmProviders,
-          solanaProvider,
           supportedProtocols: {
             [protocolIdMock]: {
               [Chain.Ethereum]: [MockProtocolAdapter, MockProtocolAdapter],
@@ -77,6 +76,7 @@ describe('AdaptersController', () => {
             >
           >,
           metadataProviders: {} as unknown as Record<Chain, IMetadataProvider>,
+          config: mockConfig,
         })
 
       expect(codeThatThrows).toThrowError('Duplicated adapter')

@@ -40,11 +40,11 @@ describe('PostgresCacheClient', () => {
 
     vi.mocked(createDbPool).mockReturnValue(mockPool)
     vi.mocked(runMigrations).mockResolvedValue(undefined)
+    // Step: Vitest 5 requires a class when the mock is constructed with `new`
     vi.mocked(Mutex).mockImplementation(
-      () =>
-        ({
-          acquire: vi.fn().mockResolvedValue(mockRelease),
-        }) as unknown as Mutex,
+      class {
+        acquire = vi.fn().mockResolvedValue(mockRelease)
+      } as unknown as typeof Mutex,
     )
 
     // We need to create the client within beforeEach to have spies on its methods

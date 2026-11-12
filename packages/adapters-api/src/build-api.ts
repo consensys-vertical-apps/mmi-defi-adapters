@@ -1,5 +1,10 @@
 import { DefiProvider, EvmChain } from '@codefi/mmi-defi-adapters'
-import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi'
+import {
+  OpenAPIHono,
+  createRoute,
+  z,
+  type RouteConfig,
+} from '@hono/zod-openapi'
 import { type PinoLogger, pinoLogger } from 'hono-pino'
 import { cors } from 'hono/cors'
 import './bigint-json.js'
@@ -34,10 +39,14 @@ function createApp() {
     strict: false,
     defaultHook: (result, c) => {
       if (!result.success) {
+        // Step: Zod 4 ZodError JSON.stringify omits issues; expose them explicitly
         return c.json(
           {
             success: result.success,
-            error: result.error,
+            error: {
+              name: result.error.name,
+              issues: result.error.issues,
+            },
           },
           UNPROCESSABLE_ENTITY,
         )
@@ -89,98 +98,105 @@ export function buildApi(defiProvider: DefiProvider, dbService: DbService) {
     return context.body(await client.register.metrics())
   })
 
-  app.openapi(
-    createRoute({
-      path: '/positions/{userAddress}',
-      method: 'get',
-      tags: ['defi'],
-      request: {
-        params: GetPositionsParamsSchema,
-        query: GetPositionsQuerySchema,
-      },
-      responses: {
-        [OK]: {
-          content: {
-            'application/json': {
-              schema: z.object({
-                data: GetPositionsResponseSchema,
-              }),
-            },
-          },
-          description: 'Returns positions for the given address',
-        },
-        [UNPROCESSABLE_ENTITY]: {
-          content: {
-            'application/json': {
-              schema: ValidationErrorSchema,
-            },
-          },
-          description: 'Invalid input',
-        },
-      },
-    }),
-    async (context) => {
-      const { userAddress } = context.req.valid('param')
-      const getPositionsInput = context.req.valid('query')
-
-      const data = (await defiProvider.getPositions({
-        userAddress,
-        ...getPositionsInput,
-      })) as GetPositionsResponseSchema
-
-      return context.json(
-        {
-          data,
-        },
-        200,
-      )
+  // Step: keep method as Method literal for @hono/zod-openapi RouteConfig typing
+  const positionsRoute = createRoute({
+    path: '/positions/{userAddress}',
+    method: 'get',
+    tags: ['defi'],
+    request: {
+      params: GetPositionsParamsSchema,
+      query: GetPositionsQuerySchema,
     },
-  )
-
-  app.openapi(
-    createRoute({
-      path: '/support',
-      method: 'get',
-      tags: ['defi'],
-      request: {
-        query: GetSupportQuerySchema,
-      },
-      responses: {
-        [OK]: {
-          content: {
-            'application/json': {
-              schema: z.object({
-                data: GetSupportResponseSchema,
-              }),
-            },
+    responses: {
+      [OK]: {
+        content: {
+          'application/json': {
+            schema: z.object({
+              data: GetPositionsResponseSchema,
+            }),
           },
-          description: 'Returns supported protocols',
         },
-        [UNPROCESSABLE_ENTITY]: {
-          content: {
-            'application/json': {
-              schema: ValidationErrorSchema,
-            },
-          },
-          description: 'Invalid input',
-        },
+        description: 'Returns positions for the given address',
       },
-    }),
-    async (context) => {
-      const getSupportInput = context.req.valid('query')
-
-      const data = (await defiProvider.getSupport(
-        getSupportInput,
-      )) as GetSupportResponseSchema
-
-      return context.json(
-        {
-          data,
+      [UNPROCESSABLE_ENTITY]: {
+        content: {
+          'application/json': {
+            schema: ValidationErrorSchema,
+          },
         },
-        200,
-      )
+        description: 'Invalid input',
+      },
     },
-  )
+  })
+
+  app.openapi(positionsRoute as RouteConfig, async (context) => {
+    const { userAddress } = context.req.valid('param' as never) as {
+      userAddress: string
+    }
+    const getPositionsInput = context.req.valid('query' as never) as Record<
+      string,
+      unknown
+    >
+
+    const data = (await defiProvider.getPositions({
+      userAddress,
+      ...getPositionsInput,
+    })) as GetPositionsResponseSchema
+
+    return context.json(
+      {
+        data,
+      },
+      200,
+    )
+  })
+
+  const supportRoute = createRoute({
+    path: '/support',
+    method: 'get',
+    tags: ['defi'],
+    request: {
+      query: GetSupportQuerySchema,
+    },
+    responses: {
+      [OK]: {
+        content: {
+          'application/json': {
+            schema: z.object({
+              data: GetSupportResponseSchema,
+            }),
+          },
+        },
+        description: 'Returns supported protocols',
+      },
+      [UNPROCESSABLE_ENTITY]: {
+        content: {
+          'application/json': {
+            schema: ValidationErrorSchema,
+          },
+        },
+        description: 'Invalid input',
+      },
+    },
+  })
+
+  app.openapi(supportRoute as RouteConfig, async (context) => {
+    const getSupportInput = context.req.valid('query' as never) as Record<
+      string,
+      unknown
+    >
+
+    const data = (await defiProvider.getSupport(
+      getSupportInput,
+    )) as unknown as GetSupportResponseSchema
+
+    return context.json(
+      {
+        data,
+      },
+      200,
+    )
+  })
 
   app.get('/user-pools/:userAddress', async (context) => {
     const userAddress = IsEthAddress.parse(context.req.param('userAddress'))

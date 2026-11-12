@@ -7,7 +7,12 @@ import { updateNewJobs } from './update-new-jobs'
 vi.mock('ethers', async () => ({
   ...(await vi.importActual('ethers')),
   id: vi.fn(),
-  Interface: vi.fn(),
+  // Step: Vitest 5 requires class-compatible mocks for `new Interface(...)`
+  Interface: vi.fn(
+    class MockInterface {
+      fragments: unknown[] = []
+    },
+  ),
 }))
 
 describe('updateNewJobs', () => {
@@ -153,13 +158,11 @@ describe('updateNewJobs', () => {
         inputs: [{ name: 'user' }, { name: 'amount' }],
       }
 
-      const mockInterface = {
-        fragments: [mockEventFragment],
-      }
-
       const { Interface, id } = await import('ethers')
-      vi.mocked(Interface).mockReturnValue(
-        mockInterface as unknown as InstanceType<typeof Interface>,
+      vi.mocked(Interface).mockImplementation(
+        class {
+          fragments = [mockEventFragment]
+        } as unknown as typeof Interface,
       )
       vi.mocked(id).mockReturnValue(
         '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef',
@@ -284,13 +287,11 @@ describe('updateNewJobs', () => {
         format: vi.fn().mockReturnValue('transfer(address to, uint256 amount)'),
       }
 
-      const mockInterface = {
-        fragments: [mockEventFragment],
-      }
-
       const { Interface } = await import('ethers')
-      vi.mocked(Interface).mockReturnValue(
-        mockInterface as unknown as InstanceType<typeof Interface>,
+      vi.mocked(Interface).mockImplementation(
+        class {
+          fragments = [mockEventFragment]
+        } as unknown as typeof Interface,
       )
 
       vi.mocked(mockDefiProvider.getSupport).mockResolvedValue(
@@ -339,13 +340,11 @@ describe('updateNewJobs', () => {
         inputs: [{ name: 'amount' }, { name: 'token' }],
       }
 
-      const mockInterface = {
-        fragments: [mockEventFragment],
-      }
-
       const { Interface, id } = await import('ethers')
-      vi.mocked(Interface).mockReturnValue(
-        mockInterface as unknown as InstanceType<typeof Interface>,
+      vi.mocked(Interface).mockImplementation(
+        class {
+          fragments = [mockEventFragment]
+        } as unknown as typeof Interface,
       )
       vi.mocked(id).mockReturnValue(
         '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef',

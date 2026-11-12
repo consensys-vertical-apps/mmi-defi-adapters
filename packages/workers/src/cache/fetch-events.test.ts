@@ -42,11 +42,10 @@ describe('fetchEvents', () => {
     chainId: EvmChain.Ethereum,
   }
 
-  beforeEach(() => {
+  beforeEach(async () => {
     vi.clearAllMocks()
-    const { withTimeout } = vi.hoisted(() => ({
-      withTimeout: vi.fn(),
-    }))
+    // Step: Reset withTimeout to pass-through; keep hoists at module top level (Vitest 5)
+    const { withTimeout } = await import('../utils/with-timeout.js')
     vi.mocked(withTimeout).mockImplementation((promise) => promise)
   })
 
