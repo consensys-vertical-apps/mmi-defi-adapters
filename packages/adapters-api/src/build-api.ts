@@ -1,9 +1,9 @@
 import { DefiProvider, EvmChain } from '@codefi/mmi-defi-adapters'
 import {
   OpenAPIHono,
+  type RouteConfig,
   createRoute,
   z,
-  type RouteConfig,
 } from '@hono/zod-openapi'
 import { type PinoLogger, pinoLogger } from 'hono-pino'
 import { cors } from 'hono/cors'
