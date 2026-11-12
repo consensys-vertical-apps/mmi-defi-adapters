@@ -116,8 +116,7 @@ describe('buildApi', () => {
             {
               code: 'invalid_type',
               expected: 'array',
-              received: 'string',
-              message: 'Expected array, received string',
+              message: 'Invalid input: expected array, received string',
               path: ['filterProtocolIds'],
             },
           ],

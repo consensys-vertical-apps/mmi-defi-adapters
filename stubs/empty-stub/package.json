@@ -1,0 +1,7 @@
+{
+  "name": "empty-stub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Empty stub used via npm overrides to drop unused vulnerable transitive deps",
+  "main": "index.js"
+}

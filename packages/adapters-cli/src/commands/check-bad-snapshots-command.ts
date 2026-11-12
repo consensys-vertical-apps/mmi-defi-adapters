@@ -46,10 +46,6 @@ export function checkBadSnapshotsCommand(program: Command) {
               return undefined
             }
 
-            if (adapter.protocolDetails.chainId === Chain.Solana) {
-              return undefined
-            }
-
             return {
               protocolId: adapter.protocolDetails.protocolId,
               productId: adapter.protocolDetails.productId,

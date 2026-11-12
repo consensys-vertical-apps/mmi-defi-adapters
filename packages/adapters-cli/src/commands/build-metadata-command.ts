@@ -68,14 +68,6 @@ export function buildMetadataCommand(program: Command) {
                 continue
               }
 
-              // if (
-              //   (chainId !== Chain.Solana && !chainProviders[chainId]) ||
-              //   (chainId === Chain.Solana && !solanaProvider)
-              // ) {
-              //   console.error({ chainId }, 'No provider found for chain')
-              //   throw new ProviderMissingError(chainId)
-              // }
-
               let chainProtocolAdapters: Map<string, IProtocolAdapter>
               try {
                 chainProtocolAdapters =
