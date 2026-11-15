@@ -85,11 +85,6 @@ const providers: Record<ChainName, string> = {
     'https://rpc.mainnet.chain.robinhood.com',
     Chain.Robinhood,
   ),
-  solana: resolveProviderUrl(
-    process.env.DEFI_ADAPTERS_PROVIDER_SOLANA,
-    'https://api.mainnet-beta.solana.com',
-    Chain.Solana,
-  ),
 }
 
 // Beacon node configuration
@@ -114,7 +109,6 @@ const maxBatchSize: Record<ChainName, number> = {
     process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_ROBINHOOD,
     100,
   ),
-  solana: 1, // TODO Not relevant, find a way to remove this
 }
 
 const ConfigSchema = z
@@ -132,7 +126,6 @@ const ConfigSchema = z
         [ChainName[Chain.Avalanche]]: z.string().default(providers.avax),
         [ChainName[Chain.Linea]]: z.string().default(providers.linea),
         [ChainName[Chain.Robinhood]]: z.string().default(providers.robinhood),
-        [ChainName[Chain.Solana]]: z.string().default(providers.solana),
       })
       .default(providers),
     useMulticallInterceptor: z
@@ -179,7 +172,6 @@ const ConfigSchema = z
         [ChainName[Chain.Robinhood]]: z
           .number()
           .default(maxBatchSize.robinhood),
-        [ChainName[Chain.Solana]]: z.number().default(maxBatchSize.solana),
       })
       .default(maxBatchSize),
     useDatabase: z.boolean().default(true),
@@ -194,7 +186,6 @@ const ConfigSchema = z
     beaconBaseUrl: z.string().default(BEACON_BASE_URL),
   })
   .strict()
-  .default({})
 
 export type IConfig = z.infer<typeof ConfigSchema>
 
@@ -202,13 +193,14 @@ export class Config {
   private config: IConfig
 
   constructor(config?: DeepPartial<IConfig>) {
-    const parsedConfig = ConfigSchema.safeParse(config)
+    // Step: parse with field-level defaults (Zod 4 no longer allows `.default({})`)
+    const parsedConfig = ConfigSchema.safeParse(config ?? {})
 
     if (!parsedConfig.success) {
       logger.error(
         {
           message: parsedConfig.error.message,
-          errors: parsedConfig.error.errors,
+          errors: parsedConfig.error.issues,
         },
         'Invalid configuration',
       )

@@ -14,5 +14,4 @@ export const AVERAGE_BLOCKS_PER_DAY: Record<Chain, number> = {
   [Chain.Linea]: 42698,
   // Robinhood is an Arbitrum Orbit L2; use Arbitrum-like throughput until block-average is run
   [Chain.Robinhood]: 320278,
-  [Chain.Solana]: 1, // TODO Add real blocks per day for Solana
 }

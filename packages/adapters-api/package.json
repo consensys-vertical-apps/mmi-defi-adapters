@@ -10,15 +10,15 @@
     "test:tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "@hono/node-server": "^1.14.1",
-    "@hono/zod-openapi": "^0.19.5",
     "@codefi/mmi-defi-adapters": "*",
+    "@hono/node-server": "^1.19.19",
+    "@hono/zod-openapi": "^1.6.3",
     "@metamask-institutional/workers": "*",
-    "hono": "^4.7.7",
+    "hono": "^4.13.18",
     "hono-pino": "^0.8.0",
     "pg": "^8.14.1",
     "pino": "^9.6.0",
     "prom-client": "^15.1.3",
-    "zod": "^3.24.2"
+    "zod": "^4.6.7"
   }
 }

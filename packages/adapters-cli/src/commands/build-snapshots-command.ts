@@ -103,11 +103,6 @@ export function buildSnapshotsCommand(program: Command) {
 
           const chainId = testCase.chainId
 
-          // TODO Add Solana support for snapshots
-          if (chainId === Chain.Solana) {
-            continue
-          }
-
           const provider = defiProvider.chainProvider.providers[chainId]
 
           if (!provider) {

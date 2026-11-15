@@ -24,14 +24,6 @@ export function checkMetadataTypeCommand(program: Command) {
         for (const [chainIdKey, _] of Object.entries(supportedChains)) {
           const chainId = +chainIdKey as Chain
 
-          // if (
-          //   (chainId !== Chain.Solana && !chainProviders[chainId]) ||
-          //   (chainId === Chain.Solana && !solanaProvider)
-          // ) {
-          //   logger.error({ chainId }, 'No provider found for chain')
-          //   throw new ProviderMissingError(chainId)
-          // }
-
           const chainProtocolAdapters =
             defiProvider.adaptersController.fetchChainProtocolAdapters(
               chainId,

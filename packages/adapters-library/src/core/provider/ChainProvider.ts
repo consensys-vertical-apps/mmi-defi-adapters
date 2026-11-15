@@ -1,5 +1,4 @@
 import https from 'node:https'
-import { Connection } from '@solana/web3.js'
 import { FetchRequest, Network } from 'ethers'
 import { IConfig } from '../../config'
 import { ChainName, EvmChain } from '../constants/chains'
@@ -20,17 +19,12 @@ export const DEFAULT_HTTP_AGENT_OPTIONS: https.AgentOptions = {
 
 export class ChainProvider {
   providers: Partial<Record<EvmChain, CustomJsonRpcProvider>>
-  solanaProvider: Connection | undefined
 
   private config: IConfig
 
   constructor(config: IConfig) {
     this.config = config
     this.providers = this.initializeEvmProviders(this.config)
-    // Solana Connection rejects empty URLs; skip when chain is disabled
-    this.solanaProvider = config.provider.solana
-      ? new Connection(config.provider.solana)
-      : undefined
   }
 
   private initializeEvmProviders(config: IConfig) {

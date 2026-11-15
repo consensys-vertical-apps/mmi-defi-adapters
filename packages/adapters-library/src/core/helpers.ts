@@ -1,4 +1,3 @@
-import { Connection } from '@solana/web3.js'
 import { getAddress } from 'ethers'
 import { IMetadataProvider } from '../SQLiteMetadataProvider'
 import { IConfig } from '../config'
@@ -31,13 +30,6 @@ const REAL_ESTATE_TOKEN_METADATA = {
 
 export interface IHelpers {
   readonly metadataProvider: IMetadataProvider
-}
-
-export class SolanaHelpers {
-  constructor(
-    public readonly provider: Connection,
-    public readonly metadataProvider: IMetadataProvider,
-  ) {}
 }
 
 export class Helpers {

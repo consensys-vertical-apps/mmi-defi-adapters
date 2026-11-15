@@ -12,7 +12,6 @@
  * enabling protocols like ETH2 staking (multiple validator pubkeys) and Uniswap V4 (multiple token IDs).
  */
 
-import { PublicKey } from '@solana/web3.js'
 import Database from 'better-sqlite3'
 import { getAddress } from 'ethers'
 import {
@@ -103,7 +102,6 @@ export class DefiProvider {
 
     this.adaptersController = new AdaptersController({
       evmProviders: this.chainProvider.providers,
-      solanaProvider: this.chainProvider.solanaProvider,
       supportedProtocols,
       metadataProviders: this.metadataProviders,
       config: this.config,
@@ -231,14 +229,6 @@ export class DefiProvider {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
       try {
-        const isSolanaAddress = this.isSolanaAddress(userAddress)
-        if (
-          (adapter.chainId === Chain.Solana && !isSolanaAddress) ||
-          (adapter.chainId !== Chain.Solana && isSolanaAddress)
-        ) {
-          return { tokens: [] }
-        }
-
         const protocolTokenAddresses = await this.getProtocolTokensFilter(
           filterProtocolTokens,
           defiPositionsDetectedByChain,
@@ -646,15 +636,6 @@ export class DefiProvider {
     }
   }
 
-  private isSolanaAddress(address: string) {
-    try {
-      new PublicKey(address)
-      return true
-    } catch (error) {
-      return false
-    }
-  }
-
   private async getProtocolTokensFilter(
     filterProtocolTokens: string[] | undefined,
     userPoolsByChain: Partial<
@@ -670,10 +651,6 @@ export class DefiProvider {
   ): Promise<string[] | undefined> {
     if (filterProtocolTokens) {
       return filterProtocolTokens
-    }
-
-    if (adapter.chainId === Chain.Solana) {
-      return undefined
     }
 
     const userPoolData = userPoolsByChain[adapter.chainId]

@@ -1,6 +1,7 @@
 import { Chain, Protocol } from '@codefi/mmi-defi-adapters'
+import { z } from '@hono/zod-openapi'
 import { getAddress } from 'ethers'
-import { type ZodTypeAny, z } from 'zod'
+import type { ZodType } from 'zod'
 
 export const IsEthAddress = z
   .string()
@@ -9,7 +10,7 @@ export const IsEthAddress = z
   })
   .transform((address) => getAddress(address.toLowerCase()))
 
-const parseAndCheck = <T extends ZodTypeAny>(schema: T) => {
+const parseAndCheck = <T extends ZodType>(schema: T) => {
   return z
     .string()
     .optional()

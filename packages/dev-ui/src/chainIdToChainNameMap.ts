@@ -1,5 +1,4 @@
 export const ChainIdToChainNameMap = {
-  [-1]: 'Solana',
   [1]: 'Ethereum',
   [10]: 'Optimism',
   [56]: 'Bsc',
