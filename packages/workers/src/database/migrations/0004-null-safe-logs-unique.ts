@@ -2,37 +2,69 @@ import type { Pool } from 'pg'
 
 /**
  * Postgres UNIQUE treats NULLs as distinct, so (addr, contract, NULL, NULL) can
- * be inserted unlimited times. Replace the constraint with a COALESCE-based
- * unique index and collapse existing duplicates first.
+ * be inserted unlimited times. Rebuild `logs` via table swap: copy one row per
+ * logical key, add a COALESCE-based unique index, then swap tables.
+ *
+ * Prefer this over in-place DELETE for large tables (full rewrite, shorter lock
+ * window on the hot path than deleting millions of duplicate rows).
+ *
+ * Note: search_path / transaction / migrations bookkeeping are handled by the
+ * migration runner (per-chain schema).
  */
 export default async function (client: Pool) {
-  // Step 1: keep one row per logical key (NULLs treated as empty string)
+  // Step 1: create empty replacement table (no old unique constraint)
   await client.query(`
-    DELETE FROM logs
-    WHERE ctid NOT IN (
-      SELECT MIN(ctid)
-      FROM logs
-      GROUP BY
-        address,
-        contract_address,
-        COALESCE(metadata_key, ''),
-        COALESCE(metadata_value, '')
+    CREATE TABLE logs_new (
+      address TEXT NOT NULL,
+      contract_address TEXT NOT NULL,
+      metadata_key TEXT,
+      metadata_value TEXT
     )
   `)
 
-  // Step 2: drop the NULL-unsafe unique constraint
+  // Step 2: copy one row per logical key (NULLs treated as ''); keep oldest ctid
   await client.query(`
-    ALTER TABLE logs DROP CONSTRAINT IF EXISTS logs_unique_all_columns
+    INSERT INTO logs_new (address, contract_address, metadata_key, metadata_value)
+    SELECT DISTINCT ON (
+      address,
+      contract_address,
+      COALESCE(metadata_key, ''),
+      COALESCE(metadata_value, '')
+    )
+      address,
+      contract_address,
+      metadata_key,
+      metadata_value
+    FROM logs
+    ORDER BY
+      address,
+      contract_address,
+      COALESCE(metadata_key, ''),
+      COALESCE(metadata_value, ''),
+      ctid
   `)
 
-  // Step 3: enforce uniqueness treating NULL metadata as ''
+  // Step 3: null-safe unique index (matches insertLogs ON CONFLICT target)
   await client.query(`
-    CREATE UNIQUE INDEX IF NOT EXISTS logs_unique_null_safe_idx
-    ON logs (
+    CREATE UNIQUE INDEX logs_unique_null_safe_idx
+    ON logs_new (
       address,
       contract_address,
       (COALESCE(metadata_key, '')),
       (COALESCE(metadata_value, ''))
     )
+  `)
+
+  // Step 4: atomic rename swap
+  await client.query(`
+    ALTER TABLE logs RENAME TO logs_old
+  `)
+  await client.query(`
+    ALTER TABLE logs_new RENAME TO logs
+  `)
+
+  // Step 5: drop old table (and logs_unique_all_columns with it)
+  await client.query(`
+    DROP TABLE logs_old
   `)
 }
