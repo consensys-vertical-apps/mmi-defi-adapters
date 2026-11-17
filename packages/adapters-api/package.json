@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/adapters-api",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Defi adapters API",
   "private": true,
   "type": "module",
