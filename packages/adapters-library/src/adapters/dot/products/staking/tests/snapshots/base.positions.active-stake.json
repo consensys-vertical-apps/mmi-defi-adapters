@@ -1,0 +1,122 @@
+{
+  "blockNumber": 52435010,
+  "latency": "Latency: 0.551 seconds",
+  "aggregatedValues": ["USD51,291.49"],
+  "snapshot": [
+    {
+      "protocolId": "dot",
+      "chainId": 8453,
+      "productId": "staking",
+      "name": "Dot",
+      "description": "DOT staking principal, including pending withdrawals. Seven-day withdrawal cooldown. AI rewards are managed separately in the Dot app.",
+      "siteUrl": "https://app.usedot.xyz/staking",
+      "iconUrl": "https://app.usedot.xyz/dot-mark.png",
+      "positionType": "stake",
+      "protocolDisplayName": "Dot",
+      "chainName": "base",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4032d83Fb4a2B905259aE49aBAD1a1Ac00635066",
+          "name": "DOT staking (including pending withdrawals)",
+          "symbol": "DOT",
+          "decimals": 18,
+          "balanceRaw": "5284734784603203573617698n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x23A2847d772803f9EFC64B4277b782b06296FE51",
+              "name": "Dot",
+              "symbol": "DOT",
+              "decimals": 18,
+              "balanceRaw": "5284734784603203573617698n",
+              "type": "underlying",
+              "balance": 5284734.784603204,
+              "price": 0.009705593053578328,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x23A2847d772803f9EFC64B4277b782b06296FE51/logo.png"
+            }
+          ],
+          "balance": 5284734.784603204
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "5cff7c7f902240edadad9e64f062c654": {
+      "result": "0x000000000000000000000000000000000000000000045f160bf617b5f5db9422",
+      "request": {
+        "method": "eth_call",
+        "params": [
+          {
+            "to": "0x4032d83fb4a2b905259ae49abad1a1ac00635066",
+            "data": "0x98807d8400000000000000000000000034d8dd4a7fb90a545214d2aa47951eecce16839c"
+          },
+          "0x3201842"
+        ]
+      },
+      "metrics": {
+        "startTime": 1791659912357,
+        "endTime": 1791659912396,
+        "timeTaken": 39,
+        "estimatedGas": "24291"
+      }
+    },
+    "5c2ccbaddc1a868f4bca311028fb51c5": {
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "request": {
+        "method": "eth_call",
+        "params": [
+          {
+            "to": "0x4032d83fb4a2b905259ae49abad1a1ac00635066",
+            "data": "0xe07995eb00000000000000000000000034d8dd4a7fb90a545214d2aa47951eecce16839c"
+          },
+          "0x3201842"
+        ]
+      },
+      "metrics": {
+        "startTime": 1791659912357,
+        "endTime": 1791659912463,
+        "timeTaken": 106,
+        "estimatedGas": "24401"
+      }
+    },
+    "9928f3636866b309fad777e62f80dea3": {
+      "result": "0x0000000000000000000000000000000000000000000000030000000000001d2a0000000000000000000000000000000000000000000000000000003a6ee28292000000000000000000000000000000000000000000000000000000006aca8961000000000000000000000000000000000000000000000000000000006aca896f0000000000000000000000000000000000000000000000030000000000001d2a",
+      "request": {
+        "method": "eth_call",
+        "params": [
+          {
+            "to": "0x71041dddad3595f9ced3dccfbe3d1f4b0a16bb70",
+            "data": "0xfeaf968c"
+          },
+          "0x3201842"
+        ]
+      },
+      "metrics": {
+        "startTime": 1791659912595,
+        "endTime": 1791659912635,
+        "timeTaken": 40,
+        "estimatedGas": "39887"
+      }
+    },
+    "1a0ecf0531de98bd3524d3dbf66f54b6": {
+      "result": "0x000000000000000000000000000000000000000000000000000003846a71481e",
+      "request": {
+        "method": "eth_call",
+        "params": [
+          {
+            "to": "0x0addd25a91563696d8567df78d5a01c9a991f9b8",
+            "data": "0x802431fb00000000000000000000000023a2847d772803f9efc64b4277b782b06296fe5100000000000000000000000042000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "0x3201842"
+        ]
+      },
+      "metrics": {
+        "startTime": 1791659912596,
+        "endTime": 1791659912705,
+        "timeTaken": 109,
+        "estimatedGas": "699983"
+      }
+    }
+  }
+}

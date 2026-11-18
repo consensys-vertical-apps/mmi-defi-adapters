@@ -25,6 +25,7 @@ import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
 import { CurveVotingEscrowAdapter } from './curve/products/voting-escrow/curveVotingEscrowAdapter'
 import { DeriPoolAdapter } from './deri/products/pool/deriPoolAdapter'
+import { DotStakingAdapter } from './dot/products/staking/dotStakingAdapter'
 import { EthenaStakedUsdeAdapter } from './ethena/products/staked-usde/ethenaStakedUsdeAdapter'
 import { FluxBorrowMarketAdapter } from './flux/products/borrow-market/fluxBorrowMarketAdapter'
 import { FluxSupplyMarketAdapter } from './flux/products/supply-market/fluxSupplyMarketAdapter'
@@ -371,6 +372,10 @@ export const supportedProtocols: Record<Protocol, EvmChainAdapters> = {
     // [Chain.Base]: [DineroPxEthAdapter, DineroApxEthAdapter],
     // [Chain.Arbitrum]: [DineroPxEthAdapter, DineroApxEthAdapter],
     // [Chain.Linea]: [DineroPxEthAdapter, DineroApxEthAdapter],
+  },
+
+  [Protocol.Dot]: {
+    [Chain.Base]: [DotStakingAdapter],
   },
 
   [Protocol.Eth2ValidatorStaking]: {

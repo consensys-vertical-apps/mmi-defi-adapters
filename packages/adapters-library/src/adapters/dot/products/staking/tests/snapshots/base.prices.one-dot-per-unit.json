@@ -1,0 +1,42 @@
+{
+  "latency": "Latency: 0.001 seconds",
+  "blockNumber": 52435010,
+  "snapshot": [
+    {
+      "protocolId": "dot",
+      "chainId": 8453,
+      "productId": "staking",
+      "name": "Dot",
+      "description": "DOT staking principal, including pending withdrawals. Seven-day withdrawal cooldown. AI rewards are managed separately in the Dot app.",
+      "siteUrl": "https://app.usedot.xyz/staking",
+      "iconUrl": "https://app.usedot.xyz/dot-mark.png",
+      "positionType": "stake",
+      "protocolDisplayName": "Dot",
+      "chainName": "base",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4032d83Fb4a2B905259aE49aBAD1a1Ac00635066",
+          "name": "DOT staking (including pending withdrawals)",
+          "symbol": "DOT",
+          "decimals": 18,
+          "type": "protocol",
+          "baseRate": 1,
+          "tokens": [
+            {
+              "address": "0x23A2847d772803f9EFC64B4277b782b06296FE51",
+              "name": "Dot",
+              "symbol": "DOT",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "1000000000000000000n",
+              "underlyingRate": 1,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x23A2847d772803f9EFC64B4277b782b06296FE51/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {}
+}
