@@ -1,0 +1,69 @@
+{
+  "blockNumber": 26500925,
+  "latency": "Latency: 0.491 seconds",
+  "aggregatedValues": ["USD770.29"],
+  "snapshot": [
+    {
+      "protocolId": "immute",
+      "name": "Immute",
+      "description": "Immute (IMT) bonding-curve token on Ethereum mainnet. Shows IMT balance, the contract sell quote in ETH (net of the 10% sell fee) and ETH claimable from accrued fee distributions",
+      "siteUrl": "https://immute.io/",
+      "iconUrl": "https://immute.io/icon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "imt",
+      "protocolDisplayName": "Immute",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xDCfDC48c941561d7ec5E819834e6D99A0c838Dd3",
+          "name": "Immute",
+          "symbol": "IMT",
+          "decimals": 18,
+          "type": "protocol",
+          "balanceRaw": "9476838250966440926672n",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "405000000000000000n",
+              "balance": 0.405,
+              "price": 1692.9444,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "49999999999999018n",
+              "balance": 0.04999999999999902,
+              "price": 1692.9444,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "balance": 9476.83825096644
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "24203a64a1b5381c0598c984c799b9a1": {
+      "result": "0x000000000000000000000000000000000000000000000201bd8ce2d020e6ddd0"
+    },
+    "56a94a26840687ba38a50f7a4eead8e2": {
+      "result": "0x000000000000000000000000000000000000000000000000059ed95aae088000"
+    },
+    "dc055ea854ba1b376bf9bf6218a7d1c4": {
+      "result": "0x00000000000000000000000000000000000000000000000000b1a2bc2ec4fc2a"
+    },
+    "fec03fe97dec359c50e4fda3e5bfa20d": {
+      "result": "0x0000000000000000000000000000000000000000000000070000000000008e49000000000000000000000000000000000000000000000000000000276abc2640000000000000000000000000000000000000000000000000000000006b086308000000000000000000000000000000000000000000000000000000006b08631f0000000000000000000000000000000000000000000000070000000000008e49"
+    }
+  }
+}

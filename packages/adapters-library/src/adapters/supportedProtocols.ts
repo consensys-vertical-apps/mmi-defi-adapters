@@ -29,6 +29,7 @@ import { EthenaStakedUsdeAdapter } from './ethena/products/staked-usde/ethenaSta
 import { FluxBorrowMarketAdapter } from './flux/products/borrow-market/fluxBorrowMarketAdapter'
 import { FluxSupplyMarketAdapter } from './flux/products/supply-market/fluxSupplyMarketAdapter'
 import { GmxGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
+import { ImmuteImtAdapter } from './immute/products/imt/immuteImtAdapter'
 import { IZiSwapPoolAdapter } from './iziswap/products/pool/iZiSwapPoolAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
@@ -408,6 +409,10 @@ export const supportedProtocols: Record<Protocol, EvmChainAdapters> = {
   [Protocol.GmxV2]: {
     [Chain.Arbitrum]: [GmxV2GmPoolAdapter],
     [Chain.Avalanche]: [GmxV2GmPoolAdapter],
+  },
+
+  [Protocol.Immute]: {
+    [Chain.Ethereum]: [ImmuteImtAdapter],
   },
 
   [Protocol.IZiSwap]: {

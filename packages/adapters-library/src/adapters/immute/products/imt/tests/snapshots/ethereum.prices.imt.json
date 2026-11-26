@@ -1,0 +1,46 @@
+{
+  "latency": "Latency: 0.123 seconds",
+  "blockNumber": 26500925,
+  "snapshot": [
+    {
+      "protocolId": "immute",
+      "name": "Immute",
+      "description": "Immute (IMT) bonding-curve token on Ethereum mainnet. Shows IMT balance, the contract sell quote in ETH (net of the 10% sell fee) and ETH claimable from accrued fee distributions",
+      "siteUrl": "https://immute.io/",
+      "iconUrl": "https://immute.io/icon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "imt",
+      "protocolDisplayName": "Immute",
+      "chainName": "ethereum",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xDCfDC48c941561d7ec5E819834e6D99A0c838Dd3",
+          "name": "Immute",
+          "symbol": "IMT",
+          "decimals": 18,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "85377044258698n",
+              "underlyingRate": 0.000085377044258698,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rpcResponses": {
+    "57e2de4d161e1c3e53ff75b756fa24c4": {
+      "result": "0x00000000000000000000000000000000000000000000000000004da664651f8a"
+    }
+  }
+}
