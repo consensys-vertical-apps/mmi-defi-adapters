@@ -137,6 +137,7 @@ Database Pool totals Adapters:
  ChainId: 43114 Protocol ID: gmx Product ID: vesting Total Pools: 2
  ChainId: 42161 Protocol ID: gmx-v2 Product ID: gm-pool Total Pools: 118
  ChainId: 43114 Protocol ID: gmx-v2 Product ID: gm-pool Total Pools: 20
+ ChainId: 1 Protocol ID: immute Product ID: imt Total Pools: 1
  ChainId: 8453 Protocol ID: iziswap Product ID: pool Total Pools: 1
  ChainId: 42161 Protocol ID: iziswap Product ID: pool Total Pools: 1
  ChainId: 59144 Protocol ID: iziswap Product ID: pool Total Pools: 1
@@ -270,7 +271,7 @@ Database Pool totals Adapters:
  ChainId: 59144 Protocol ID: zerolend Product ID: a-token Total Pools: 18
  ChainId: 59144 Protocol ID: zerolend Product ID: stable-debt-token Total Pools: 18
  ChainId: 59144 Protocol ID: zerolend Product ID: variable-debt-token Total Pools: 18
-  Total Pools Adapters: 55424
+  Total Pools Adapters: 55425
 
 Adapters with zero pools 0:
  ChainId: 1  Protocol ID: beefy Product ID: cow-token Total Pools: 0

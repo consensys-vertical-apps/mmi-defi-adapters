@@ -20,6 +20,7 @@ export const Protocol = {
   Flux: 'flux',
   Gmx: 'gmx',
   GmxV2: 'gmx-v2',
+  Immute: 'immute',
   IZiSwap: 'iziswap',
   Lido: 'lido',
   Lynex: 'lynex',
